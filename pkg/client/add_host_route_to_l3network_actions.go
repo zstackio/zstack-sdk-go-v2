@@ -1,0 +1,20 @@
+// Copyright (c) ZStack.io, Inc.
+
+package client
+
+import (
+	"github.com/kataras/golog"
+
+	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
+	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+)
+
+// AddHostRouteToL3Network 操作AddHostRouteToL3Network
+func (cli *ZSClient) AddHostRouteToL3Network(params param.AddHostRouteToL3NetworkParam) (*view.AddHostRouteToL3NetworkEventView, error) {
+	resp := view.AddHostRouteToL3NetworkEventView{}
+	if err := cli.Post("v1/l3-networks/{l3NetworkUuid}/hostroute", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+

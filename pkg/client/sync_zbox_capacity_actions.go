@@ -1,0 +1,20 @@
+// Copyright (c) ZStack.io, Inc.
+
+package client
+
+import (
+	"github.com/kataras/golog"
+
+	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
+	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+)
+
+// SyncZBoxCapacity 操作SyncZBoxCapacity
+func (cli *ZSClient) SyncZBoxCapacity(uuid string, params param.SyncZBoxCapacityParam) (*view.SyncZBoxCapacityEventView, error) {
+	resp := view.SyncZBoxCapacityEventView{}
+	if err := cli.Put("v1/zbox/{uuid}/actions", uuid, params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
