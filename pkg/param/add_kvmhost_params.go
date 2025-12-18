@@ -2,22 +2,21 @@
 
 package param
 
-// AddKVMHostDetailParam AddKVMHost详细参数
+// AddKVMHostDetailParam AddKVMHost detail param
 type AddKVMHostDetailParam struct {
-	rest string `json:"username" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest int `json:"sshPort,omitempty"`
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"managementIp" validate:"required"` // 必填
-	rest string `json:"clusterUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	SshPort int `json:"sshPort,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp" validate:"required"`
+	ClusterUuid string `json:"clusterUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddKVMHostParam AddKVMHost请求参数
+// AddKVMHostParam AddKVMHost request param
 type AddKVMHostParam struct {
 	BaseParam
-	Params AddKVMHostDetailParam `json:"params"` // 详细参数
+	Params AddKVMHostDetailParam `json:"params"`
 }
-

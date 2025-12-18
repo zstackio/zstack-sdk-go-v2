@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CalculateAccountSpending 操作CalculateAccountSpending
+// CalculateAccountSpending operates on CalculateAccountSpending
 func (cli *ZSClient) CalculateAccountSpending(uuid string, params param.CalculateAccountSpendingParam) (*view.CalculateAccountSpendingView, error) {
 	resp := view.CalculateAccountSpendingView{}
 	if err := cli.Put("v1/billings/accounts/{accountUuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CalculateAccountSpending(uuid string, params param.Calculat
 	}
 	return &resp, nil
 }
-

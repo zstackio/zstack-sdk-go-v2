@@ -2,14 +2,13 @@
 
 package param
 
-// IsReadyToGoDetailParam IsReadyToGo详细参数
+// IsReadyToGoDetailParam IsReadyToGo detail param
 type IsReadyToGoDetailParam struct {
-	rest string `json:"managementNodeId,omitempty"`
+	ManagementNodeId string `json:"managementNodeId,omitempty"`
 }
 
-// IsReadyToGoParam IsReadyToGo请求参数
+// IsReadyToGoParam IsReadyToGo request param
 type IsReadyToGoParam struct {
 	BaseParam
-	Params IsReadyToGoDetailParam `json:"params"` // 详细参数
+	Params IsReadyToGoDetailParam `json:"params"`
 }
-

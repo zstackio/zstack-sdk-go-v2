@@ -2,16 +2,15 @@
 
 package param
 
-// SyncVpcVpnGatewayFromRemoteDetailParam SyncVpcVpnGatewayFromRemote详细参数
+// SyncVpcVpnGatewayFromRemoteDetailParam SyncVpcVpnGatewayFromRemote detail param
 type SyncVpcVpnGatewayFromRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncVpcVpnGatewayFromRemoteParam SyncVpcVpnGatewayFromRemote请求参数
+// SyncVpcVpnGatewayFromRemoteParam SyncVpcVpnGatewayFromRemote request param
 type SyncVpcVpnGatewayFromRemoteParam struct {
 	BaseParam
-	Params SyncVpcVpnGatewayFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncVpcVpnGatewayFromRemoteDetailParam `json:"params"`
 }
-

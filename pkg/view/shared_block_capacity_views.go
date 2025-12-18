@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SharedBlockCapacityInventoryView SharedBlockCapacity
 type SharedBlockCapacityInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest int64 `json:"totalCapacity,omitempty"`
-	rest int64 `json:"availableCapacity,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

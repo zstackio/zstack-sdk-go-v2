@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BackupStorageZoneRefInventoryView BackupStorageZoneRef
 type BackupStorageZoneRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"backupStorageUuid,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

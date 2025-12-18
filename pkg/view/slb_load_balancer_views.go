@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SlbLoadBalancerInventoryView SlbLoadBalancer
 type SlbLoadBalancerInventoryView struct {
-	rest string `json:"slbGroupUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"serverGroupUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"vipUuid,omitempty"`
-	rest string `json:"ipv6VipUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []LoadBalancerListenerInventoryView `json:"listeners,omitempty"`
+	SlbGroupUuid string `json:"slbGroupUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	Ipv6VipUuid string `json:"ipv6VipUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Listeners []LoadBalancerListenerInventoryView `json:"listeners,omitempty"`
 }
 

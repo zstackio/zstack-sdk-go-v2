@@ -2,14 +2,13 @@
 
 package param
 
-// SyncImageSizeDetailParam SyncImageSize详细参数
+// SyncImageSizeDetailParam SyncImageSize detail param
 type SyncImageSizeDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// SyncImageSizeParam SyncImageSize请求参数
+// SyncImageSizeParam SyncImageSize request param
 type SyncImageSizeParam struct {
 	BaseParam
-	Params SyncImageSizeDetailParam `json:"params"` // 详细参数
+	Params SyncImageSizeDetailParam `json:"params"`
 }
-

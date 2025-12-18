@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // L3NetworkDnsInventoryView L3NetworkDns
 type L3NetworkDnsInventoryView struct {
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest string `json:"dns,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Dns string `json:"dns,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,21 +2,20 @@
 
 package param
 
-// AddLdapServerDetailParam AddLdapServer详细参数
+// AddLdapServerDetailParam AddLdapServer detail param
 type AddLdapServerDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"base" validate:"required"` // 必填
-	rest string `json:"username" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest string `json:"encryption" validate:"required"` // 必填
-	rest string `json:"scope" validate:"required"` // 必填
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Url string `json:"url" validate:"required"`
+	Base string `json:"base" validate:"required"`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	Encryption string `json:"encryption" validate:"required"`
+	Scope string `json:"scope" validate:"required"`
 }
 
-// AddLdapServerParam AddLdapServer请求参数
+// AddLdapServerParam AddLdapServer request param
 type AddLdapServerParam struct {
 	BaseParam
-	Params AddLdapServerDetailParam `json:"params"` // 详细参数
+	Params AddLdapServerDetailParam `json:"params"`
 }
-

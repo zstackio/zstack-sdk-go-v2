@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CheckElaborationContent 操作CheckElaborationContent
+// CheckElaborationContent operates on CheckElaborationContent
 func (cli *ZSClient) CheckElaborationContent(params param.CheckElaborationContentParam) (*view.CheckElaborationContentView, error) {
 	resp := view.CheckElaborationContentView{}
 	if err := cli.Post("v1/errorcode/elaborations/check", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CheckElaborationContent(params param.CheckElaborationConten
 	}
 	return &resp, nil
 }
-

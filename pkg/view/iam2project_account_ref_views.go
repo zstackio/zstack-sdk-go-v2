@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // IAM2ProjectAccountRefInventoryView IAM2ProjectAccountRef
 type IAM2ProjectAccountRefInventoryView struct {
-	rest string `json:"projectUuid,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ProjectUuid string `json:"projectUuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

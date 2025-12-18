@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ExportNbdVolumes 操作ExportNbdVolumes
+// ExportNbdVolumes operates on ExportNbdVolumes
 func (cli *ZSClient) ExportNbdVolumes(params param.ExportNbdVolumesParam) (*view.ExportNbdVolumesEventView, error) {
 	resp := view.ExportNbdVolumesEventView{}
 	if err := cli.Post("v1/cbt-task/exportvolume", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ExportNbdVolumes(params param.ExportNbdVolumesParam) (*view
 	}
 	return &resp, nil
 }
-

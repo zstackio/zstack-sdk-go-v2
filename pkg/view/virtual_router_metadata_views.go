@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VirtualRouterMetadataInventoryView VirtualRouterMetadata
 type VirtualRouterMetadataInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"zvrVersion,omitempty"`
-	rest string `json:"vyosVersion,omitempty"`
-	rest string `json:"kernelVersion,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ZvrVersion string `json:"zvrVersion,omitempty"`
+	VyosVersion string `json:"vyosVersion,omitempty"`
+	KernelVersion string `json:"kernelVersion,omitempty"`
 }
 

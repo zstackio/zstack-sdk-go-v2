@@ -2,16 +2,15 @@
 
 package param
 
-// AddHostRouteToL3NetworkDetailParam AddHostRouteToL3Network详细参数
+// AddHostRouteToL3NetworkDetailParam AddHostRouteToL3Network detail param
 type AddHostRouteToL3NetworkDetailParam struct {
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest string `json:"prefix" validate:"required"` // 必填
-	rest string `json:"nexthop" validate:"required"` // 必填
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	Prefix string `json:"prefix" validate:"required"`
+	Nexthop string `json:"nexthop" validate:"required"`
 }
 
-// AddHostRouteToL3NetworkParam AddHostRouteToL3Network请求参数
+// AddHostRouteToL3NetworkParam AddHostRouteToL3Network request param
 type AddHostRouteToL3NetworkParam struct {
 	BaseParam
-	Params AddHostRouteToL3NetworkDetailParam `json:"params"` // 详细参数
+	Params AddHostRouteToL3NetworkDetailParam `json:"params"`
 }
-

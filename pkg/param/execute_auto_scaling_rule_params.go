@@ -2,14 +2,13 @@
 
 package param
 
-// ExecuteAutoScalingRuleDetailParam ExecuteAutoScalingRule详细参数
+// ExecuteAutoScalingRuleDetailParam ExecuteAutoScalingRule detail param
 type ExecuteAutoScalingRuleDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ExecuteAutoScalingRuleParam ExecuteAutoScalingRule请求参数
+// ExecuteAutoScalingRuleParam ExecuteAutoScalingRule request param
 type ExecuteAutoScalingRuleParam struct {
 	BaseParam
-	Params ExecuteAutoScalingRuleDetailParam `json:"params"` // 详细参数
+	Params ExecuteAutoScalingRuleDetailParam `json:"params"`
 }
-

@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VolumeBackupStorageRefInventoryView VolumeBackupStorageRef
 type VolumeBackupStorageRefInventoryView struct {
-	rest string `json:"volumeBackupUuid,omitempty"`
-	rest string `json:"backupStorageUuid,omitempty"`
-	rest string `json:"installPath,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VolumeBackupUuid string `json:"volumeBackupUuid,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
+	InstallPath string `json:"installPath,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

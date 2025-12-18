@@ -2,14 +2,13 @@
 
 package param
 
-// RevertTemplateConfigDetailParam RevertTemplateConfig详细参数
+// RevertTemplateConfigDetailParam RevertTemplateConfig detail param
 type RevertTemplateConfigDetailParam struct {
-	rest string `json:"templateUuid" validate:"required"` // 必填
+	TemplateUuid string `json:"templateUuid" validate:"required"`
 }
 
-// RevertTemplateConfigParam RevertTemplateConfig请求参数
+// RevertTemplateConfigParam RevertTemplateConfig request param
 type RevertTemplateConfigParam struct {
 	BaseParam
-	Params RevertTemplateConfigDetailParam `json:"params"` // 详细参数
+	Params RevertTemplateConfigDetailParam `json:"params"`
 }
-

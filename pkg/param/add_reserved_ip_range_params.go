@@ -2,18 +2,17 @@
 
 package param
 
-// AddReservedIpRangeDetailParam AddReservedIpRange详细参数
+// AddReservedIpRangeDetailParam AddReservedIpRange detail param
 type AddReservedIpRangeDetailParam struct {
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest string `json:"startIp" validate:"required"` // 必填
-	rest string `json:"endIp" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	StartIp string `json:"startIp" validate:"required"`
+	EndIp string `json:"endIp" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddReservedIpRangeParam AddReservedIpRange请求参数
+// AddReservedIpRangeParam AddReservedIpRange request param
 type AddReservedIpRangeParam struct {
 	BaseParam
-	Params AddReservedIpRangeDetailParam `json:"params"` // 详细参数
+	Params AddReservedIpRangeDetailParam `json:"params"`
 }
-

@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ShareableVolumeVmInstanceRefInventoryView ShareableVolumeVmInstanceRef
 type ShareableVolumeVmInstanceRefInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"volumeUuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest int `json:"deviceId,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VolumeUuid string `json:"volumeUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	DeviceId int `json:"deviceId,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

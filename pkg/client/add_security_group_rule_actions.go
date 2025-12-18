@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddSecurityGroupRule 操作AddSecurityGroupRule
+// AddSecurityGroupRule adds SecurityGroupRule
 func (cli *ZSClient) AddSecurityGroupRule(params param.AddSecurityGroupRuleParam) (*view.AddSecurityGroupRuleEventView, error) {
 	resp := view.AddSecurityGroupRuleEventView{}
 	if err := cli.Post("v1/security-groups/{securityGroupUuid}/rules", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddSecurityGroupRule(params param.AddSecurityGroupRuleParam
 	}
 	return &resp, nil
 }
-

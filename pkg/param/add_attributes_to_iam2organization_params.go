@@ -2,15 +2,14 @@
 
 package param
 
-// AddAttributesToIAM2OrganizationDetailParam AddAttributesToIAM2Organization详细参数
+// AddAttributesToIAM2OrganizationDetailParam AddAttributesToIAM2Organization detail param
 type AddAttributesToIAM2OrganizationDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []interface{} `json:"attributes" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Attributes []interface{} `json:"attributes" validate:"required"`
 }
 
-// AddAttributesToIAM2OrganizationParam AddAttributesToIAM2Organization请求参数
+// AddAttributesToIAM2OrganizationParam AddAttributesToIAM2Organization request param
 type AddAttributesToIAM2OrganizationParam struct {
 	BaseParam
-	Params AddAttributesToIAM2OrganizationDetailParam `json:"params"` // 详细参数
+	Params AddAttributesToIAM2OrganizationDetailParam `json:"params"`
 }
-

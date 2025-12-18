@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddHostToHostSchedulingRuleGroup 操作AddHostToHostSchedulingRuleGroup
+// AddHostToHostSchedulingRuleGroup adds HostToHostSchedulingRuleGroup
 func (cli *ZSClient) AddHostToHostSchedulingRuleGroup(params param.AddHostToHostSchedulingRuleGroupParam) (*view.AddHostToHostSchedulingRuleGroupEventView, error) {
 	resp := view.AddHostToHostSchedulingRuleGroupEventView{}
 	if err := cli.Post("v1/hostSchedulingRuleGroup/{hostGroupUuid}/host/{hostUuid}", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddHostToHostSchedulingRuleGroup(params param.AddHostToHost
 	}
 	return &resp, nil
 }
-

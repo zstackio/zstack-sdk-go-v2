@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // DRSVmMigrationActivityInventoryView DRSVmMigrationActivity
 type DRSVmMigrationActivityInventoryView struct {
-	rest string `json:"drsUuid,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vmUuid,omitempty"`
-	rest string `json:"vmSourceHostUuid,omitempty"`
-	rest string `json:"vmTargetHostUuid,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"result,omitempty"`
-	rest string `json:"reason,omitempty"`
-	rest string `json:"adviceUuid,omitempty"`
-	rest string `json:"cause,omitempty"`
-	rest time.Time `json:"endDate,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	DrsUuid string `json:"drsUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VmUuid string `json:"vmUuid,omitempty"`
+	VmSourceHostUuid string `json:"vmSourceHostUuid,omitempty"`
+	VmTargetHostUuid string `json:"vmTargetHostUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	Result string `json:"result,omitempty"`
+	Reason string `json:"reason,omitempty"`
+	AdviceUuid string `json:"adviceUuid,omitempty"`
+	Cause string `json:"cause,omitempty"`
+	EndDate time.Time `json:"endDate,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

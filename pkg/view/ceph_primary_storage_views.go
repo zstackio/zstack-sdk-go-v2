@@ -4,27 +4,29 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // CephPrimaryStorageInventoryView CephPrimaryStorage
 type CephPrimaryStorageInventoryView struct {
-	rest []CephPrimaryStorageMonInventoryView `json:"mons,omitempty"`
-	rest []CephPrimaryStoragePoolInventoryView `json:"pools,omitempty"`
-	rest string `json:"fsid,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest int64 `json:"totalCapacity,omitempty"`
-	rest int64 `json:"availableCapacity,omitempty"`
-	rest int64 `json:"totalPhysicalCapacity,omitempty"`
-	rest int64 `json:"availablePhysicalCapacity,omitempty"`
-	rest int64 `json:"systemUsedCapacity,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"mountPath,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []string `json:"attachedClusterUuids,omitempty"`
+	Mons []CephPrimaryStorageMonInventoryView `json:"mons,omitempty"`
+	Pools []CephPrimaryStoragePoolInventoryView `json:"pools,omitempty"`
+	Fsid string `json:"fsid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Url string `json:"url,omitempty"`
+	Description string `json:"description,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
+	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
+	SystemUsedCapacity int64 `json:"systemUsedCapacity,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	MountPath string `json:"mountPath,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

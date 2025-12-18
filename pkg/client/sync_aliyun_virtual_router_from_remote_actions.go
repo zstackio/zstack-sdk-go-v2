@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncAliyunVirtualRouterFromRemote 操作SyncAliyunVirtualRouterFromRemote
+// SyncAliyunVirtualRouterFromRemote operates on SyncAliyunVirtualRouterFromRemote
 func (cli *ZSClient) SyncAliyunVirtualRouterFromRemote(uuid string, params param.SyncAliyunVirtualRouterFromRemoteParam) (*view.SyncAliyunVirtualRouterFromRemoteEventView, error) {
 	resp := view.SyncAliyunVirtualRouterFromRemoteEventView{}
 	if err := cli.Put("v1/hybrid/aliyun/vrouter/{vpcUuid}/sync", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncAliyunVirtualRouterFromRemote(uuid string, params param
 	}
 	return &resp, nil
 }
-

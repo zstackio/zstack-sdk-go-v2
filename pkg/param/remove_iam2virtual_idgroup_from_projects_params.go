@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveIAM2VirtualIDGroupFromProjectsDetailParam RemoveIAM2VirtualIDGroupFromProjects详细参数
+// RemoveIAM2VirtualIDGroupFromProjectsDetailParam RemoveIAM2VirtualIDGroupFromProjects detail param
 type RemoveIAM2VirtualIDGroupFromProjectsDetailParam struct {
-	rest []string `json:"projectUuids,omitempty"`
-	rest []string `json:"groupUuids,omitempty"`
+	ProjectUuids []string `json:"projectUuids,omitempty"`
+	GroupUuids []string `json:"groupUuids,omitempty"`
 }
 
-// RemoveIAM2VirtualIDGroupFromProjectsParam RemoveIAM2VirtualIDGroupFromProjects请求参数
+// RemoveIAM2VirtualIDGroupFromProjectsParam RemoveIAM2VirtualIDGroupFromProjects request param
 type RemoveIAM2VirtualIDGroupFromProjectsParam struct {
 	BaseParam
-	Params RemoveIAM2VirtualIDGroupFromProjectsDetailParam `json:"params"` // 详细参数
+	Params RemoveIAM2VirtualIDGroupFromProjectsDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// ApplyMonitorTemplateToMonitorGroupDetailParam ApplyMonitorTemplateToMonitorGroup详细参数
+// ApplyMonitorTemplateToMonitorGroupDetailParam ApplyMonitorTemplateToMonitorGroup detail param
 type ApplyMonitorTemplateToMonitorGroupDetailParam struct {
-	rest string `json:"templateUuid" validate:"required"` // 必填
-	rest string `json:"groupUuid" validate:"required"` // 必填
+	TemplateUuid string `json:"templateUuid" validate:"required"`
+	GroupUuid string `json:"groupUuid" validate:"required"`
 }
 
-// ApplyMonitorTemplateToMonitorGroupParam ApplyMonitorTemplateToMonitorGroup请求参数
+// ApplyMonitorTemplateToMonitorGroupParam ApplyMonitorTemplateToMonitorGroup request param
 type ApplyMonitorTemplateToMonitorGroupParam struct {
 	BaseParam
-	Params ApplyMonitorTemplateToMonitorGroupDetailParam `json:"params"` // 详细参数
+	Params ApplyMonitorTemplateToMonitorGroupDetailParam `json:"params"`
 }
-

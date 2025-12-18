@@ -2,14 +2,13 @@
 
 package param
 
-// RefreshCaptchaDetailParam RefreshCaptcha详细参数
+// RefreshCaptchaDetailParam RefreshCaptcha detail param
 type RefreshCaptchaDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RefreshCaptchaParam RefreshCaptcha请求参数
+// RefreshCaptchaParam RefreshCaptcha request param
 type RefreshCaptchaParam struct {
 	BaseParam
-	Params RefreshCaptchaDetailParam `json:"params"` // 详细参数
+	Params RefreshCaptchaDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// SetFlowMeterRouterIdDetailParam SetFlowMeterRouterId详细参数
+// SetFlowMeterRouterIdDetailParam SetFlowMeterRouterId detail param
 type SetFlowMeterRouterIdDetailParam struct {
-	rest string `json:"vRouterUuid" validate:"required"` // 必填
-	rest int64 `json:"routerId" validate:"required"` // 必填
+	VRouterUuid string `json:"vRouterUuid" validate:"required"`
+	RouterId int64 `json:"routerId" validate:"required"`
 }
 
-// SetFlowMeterRouterIdParam SetFlowMeterRouterId请求参数
+// SetFlowMeterRouterIdParam SetFlowMeterRouterId request param
 type SetFlowMeterRouterIdParam struct {
 	BaseParam
-	Params SetFlowMeterRouterIdDetailParam `json:"params"` // 详细参数
+	Params SetFlowMeterRouterIdDetailParam `json:"params"`
 }
-

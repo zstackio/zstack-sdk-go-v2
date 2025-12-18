@@ -2,18 +2,17 @@
 
 package param
 
-// BatchAddBareMetal2IpmiChassisDetailParam BatchAddBareMetal2IpmiChassis详细参数
+// BatchAddBareMetal2IpmiChassisDetailParam BatchAddBareMetal2IpmiChassis detail param
 type BatchAddBareMetal2IpmiChassisDetailParam struct {
-	rest string `json:"chassisInfo" validate:"required"` // 必填
-	rest string `json:"longJobName,omitempty"`
-	rest string `json:"longJobDescription,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	ChassisInfo string `json:"chassisInfo" validate:"required"`
+	LongJobName string `json:"longJobName,omitempty"`
+	LongJobDescription string `json:"longJobDescription,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// BatchAddBareMetal2IpmiChassisParam BatchAddBareMetal2IpmiChassis请求参数
+// BatchAddBareMetal2IpmiChassisParam BatchAddBareMetal2IpmiChassis request param
 type BatchAddBareMetal2IpmiChassisParam struct {
 	BaseParam
-	Params BatchAddBareMetal2IpmiChassisDetailParam `json:"params"` // 详细参数
+	Params BatchAddBareMetal2IpmiChassisDetailParam `json:"params"`
 }
-

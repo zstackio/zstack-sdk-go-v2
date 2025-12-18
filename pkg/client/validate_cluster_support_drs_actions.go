@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ValidateClusterSupportDRS 操作ValidateClusterSupportDRS
+// ValidateClusterSupportDRS operates on ValidateClusterSupportDRS
 func (cli *ZSClient) ValidateClusterSupportDRS(params param.ValidateClusterSupportDRSParam) (*view.ValidateClusterSupportDRSView, error) {
 	var resp view.ValidateClusterSupportDRSView
 	if err := cli.Get("v1/clusters/{clusterUuid}/drs/valid", "", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ValidateClusterSupportDRS(params param.ValidateClusterSuppo
 	}
 	return &resp, nil
 }
-

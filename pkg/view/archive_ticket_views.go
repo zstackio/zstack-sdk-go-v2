@@ -4,21 +4,23 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ArchiveTicketInventoryView ArchiveTicket
 type ArchiveTicketInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"ticketUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest []interface{} `json:"request,omitempty"`
-	rest string `json:"accountSystemType,omitempty"`
-	rest interface{} `json:"accountSystemContext,omitempty"`
-	rest string `json:"currentFlowUuid,omitempty"`
-	rest string `json:"flowCollectionUuid,omitempty"`
-	rest string `json:"ticketTypeUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	TicketUuid string `json:"ticketUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	Request []interface{} `json:"request,omitempty"`
+	AccountSystemType string `json:"accountSystemType,omitempty"`
+	AccountSystemContext interface{} `json:"accountSystemContext,omitempty"`
+	CurrentFlowUuid string `json:"currentFlowUuid,omitempty"`
+	FlowCollectionUuid string `json:"flowCollectionUuid,omitempty"`
+	TicketTypeUuid string `json:"ticketTypeUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

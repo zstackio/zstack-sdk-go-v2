@@ -2,21 +2,20 @@
 
 package param
 
-// SdnControllerChangeHostDetailParam SdnControllerChangeHost详细参数
+// SdnControllerChangeHostDetailParam SdnControllerChangeHost detail param
 type SdnControllerChangeHostDetailParam struct {
-	rest string `json:"sdnControllerUuid" validate:"required"` // 必填
-	rest string `json:"hostUuid" validate:"required"` // 必填
-	rest string `json:"vSwitchType,omitempty"`
-	rest []string `json:"nicNames,omitempty"`
-	rest string `json:"vtepIp,omitempty"`
-	rest string `json:"netmask,omitempty"`
-	rest string `json:"bondMode,omitempty"`
-	rest string `json:"lacpMode,omitempty"`
+	SdnControllerUuid string `json:"sdnControllerUuid" validate:"required"`
+	HostUuid string `json:"hostUuid" validate:"required"`
+	VSwitchType string `json:"vSwitchType,omitempty"`
+	NicNames []string `json:"nicNames,omitempty"`
+	VtepIp string `json:"vtepIp,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
+	BondMode string `json:"bondMode,omitempty"`
+	LacpMode string `json:"lacpMode,omitempty"`
 }
 
-// SdnControllerChangeHostParam SdnControllerChangeHost请求参数
+// SdnControllerChangeHostParam SdnControllerChangeHost request param
 type SdnControllerChangeHostParam struct {
 	BaseParam
-	Params SdnControllerChangeHostDetailParam `json:"params"` // 详细参数
+	Params SdnControllerChangeHostDetailParam `json:"params"`
 }
-

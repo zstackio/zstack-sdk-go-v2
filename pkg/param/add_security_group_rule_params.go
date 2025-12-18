@@ -2,17 +2,16 @@
 
 package param
 
-// AddSecurityGroupRuleDetailParam AddSecurityGroupRule详细参数
+// AddSecurityGroupRuleDetailParam AddSecurityGroupRule detail param
 type AddSecurityGroupRuleDetailParam struct {
-	rest string `json:"securityGroupUuid" validate:"required"` // 必填
-	rest []interface{} `json:"rules" validate:"required"` // 必填
-	rest []string `json:"remoteSecurityGroupUuids,omitempty"`
-	rest int `json:"priority,omitempty"`
+	SecurityGroupUuid string `json:"securityGroupUuid" validate:"required"`
+	Rules []interface{} `json:"rules" validate:"required"`
+	RemoteSecurityGroupUuids []string `json:"remoteSecurityGroupUuids,omitempty"`
+	Priority int `json:"priority,omitempty"`
 }
 
-// AddSecurityGroupRuleParam AddSecurityGroupRule请求参数
+// AddSecurityGroupRuleParam AddSecurityGroupRule request param
 type AddSecurityGroupRuleParam struct {
 	BaseParam
-	Params AddSecurityGroupRuleDetailParam `json:"params"` // 详细参数
+	Params AddSecurityGroupRuleDetailParam `json:"params"`
 }
-

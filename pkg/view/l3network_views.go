@@ -4,28 +4,30 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // L3NetworkInventoryView L3Network
 type L3NetworkInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest int `json:"internalId,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"l2NetworkUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"dnsDomain,omitempty"`
-	rest bool `json:"system,omitempty"`
-	rest string `json:"category,omitempty"`
-	rest int `json:"ipVersion,omitempty"`
-	rest bool `json:"enableIPAM,omitempty"`
-	rest bool `json:"isolated,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []string `json:"dns,omitempty"`
-	rest []IpRangeInventoryView `json:"ipRanges,omitempty"`
-	rest []NetworkServiceL3NetworkRefInventoryView `json:"networkServices,omitempty"`
-	rest []L3NetworkHostRouteInventoryView `json:"hostRoute,omitempty"`
-	rest []ReservedIpRangeInventoryView `json:"reservedIpRanges,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	InternalId int `json:"internalId,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	L2NetworkUuid string `json:"l2NetworkUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	DnsDomain string `json:"dnsDomain,omitempty"`
+	System bool `json:"system,omitempty"`
+	Category string `json:"category,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	EnableIPAM bool `json:"enableIPAM,omitempty"`
+	Isolated bool `json:"isolated,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Dns []string `json:"dns,omitempty"`
+	IpRanges []IpRangeInventoryView `json:"ipRanges,omitempty"`
+	NetworkServices []NetworkServiceL3NetworkRefInventoryView `json:"networkServices,omitempty"`
+	HostRoute []L3NetworkHostRouteInventoryView `json:"hostRoute,omitempty"`
+	ReservedIpRanges []ReservedIpRangeInventoryView `json:"reservedIpRanges,omitempty"`
 }
 

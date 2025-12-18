@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // TicketTypeTicketFlowCollectionRefInventoryView TicketTypeTicketFlowCollectionRef
 type TicketTypeTicketFlowCollectionRefInventoryView struct {
-	rest string `json:"ticketTypeUuid,omitempty"`
-	rest string `json:"ticketFlowCollectionUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	TicketTypeUuid string `json:"ticketTypeUuid,omitempty"`
+	TicketFlowCollectionUuid string `json:"ticketFlowCollectionUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

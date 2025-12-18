@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetVmEmulatorPinning 操作SetVmEmulatorPinning
+// SetVmEmulatorPinning operates on SetVmEmulatorPinning
 func (cli *ZSClient) SetVmEmulatorPinning(uuid string, params param.SetVmEmulatorPinningParam) (*view.SetVmEmulatorPinningEventView, error) {
 	resp := view.SetVmEmulatorPinningEventView{}
 	if err := cli.Put("v1/vm-instances/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetVmEmulatorPinning(uuid string, params param.SetVmEmulato
 	}
 	return &resp, nil
 }
-

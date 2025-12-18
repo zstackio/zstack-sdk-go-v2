@@ -2,20 +2,19 @@
 
 package param
 
-// AddSharedMountPointPrimaryStorageDetailParam AddSharedMountPointPrimaryStorage详细参数
+// AddSharedMountPointPrimaryStorageDetailParam AddSharedMountPointPrimaryStorage detail param
 type AddSharedMountPointPrimaryStorageDetailParam struct {
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Url string `json:"url" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddSharedMountPointPrimaryStorageParam AddSharedMountPointPrimaryStorage请求参数
+// AddSharedMountPointPrimaryStorageParam AddSharedMountPointPrimaryStorage request param
 type AddSharedMountPointPrimaryStorageParam struct {
 	BaseParam
-	Params AddSharedMountPointPrimaryStorageDetailParam `json:"params"` // 详细参数
+	Params AddSharedMountPointPrimaryStorageDetailParam `json:"params"`
 }
-

@@ -2,17 +2,16 @@
 
 package param
 
-// RevokeResourceSharingDetailParam RevokeResourceSharing详细参数
+// RevokeResourceSharingDetailParam RevokeResourceSharing detail param
 type RevokeResourceSharingDetailParam struct {
-	rest []string `json:"resourceUuids" validate:"required"` // 必填
-	rest bool `json:"toPublic,omitempty"`
-	rest []string `json:"accountUuids,omitempty"`
-	rest bool `json:"all,omitempty"`
+	ResourceUuids []string `json:"resourceUuids" validate:"required"`
+	ToPublic bool `json:"toPublic,omitempty"`
+	AccountUuids []string `json:"accountUuids,omitempty"`
+	All bool `json:"all,omitempty"`
 }
 
-// RevokeResourceSharingParam RevokeResourceSharing请求参数
+// RevokeResourceSharingParam RevokeResourceSharing request param
 type RevokeResourceSharingParam struct {
 	BaseParam
-	Params RevokeResourceSharingDetailParam `json:"params"` // 详细参数
+	Params RevokeResourceSharingDetailParam `json:"params"`
 }
-

@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MttyDeviceInventoryView MttyDevice
 type MttyDeviceInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"virtStatus,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	VirtStatus string `json:"virtStatus,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

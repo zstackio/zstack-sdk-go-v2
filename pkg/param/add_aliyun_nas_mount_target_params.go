@@ -2,18 +2,17 @@
 
 package param
 
-// AddAliyunNasMountTargetDetailParam AddAliyunNasMountTarget详细参数
+// AddAliyunNasMountTargetDetailParam AddAliyunNasMountTarget detail param
 type AddAliyunNasMountTargetDetailParam struct {
-	rest string `json:"nasFSUuid" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"mountDomain" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	NasFSUuid string `json:"nasFSUuid" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	MountDomain string `json:"mountDomain" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAliyunNasMountTargetParam AddAliyunNasMountTarget请求参数
+// AddAliyunNasMountTargetParam AddAliyunNasMountTarget request param
 type AddAliyunNasMountTargetParam struct {
 	BaseParam
-	Params AddAliyunNasMountTargetDetailParam `json:"params"` // 详细参数
+	Params AddAliyunNasMountTargetDetailParam `json:"params"`
 }
-

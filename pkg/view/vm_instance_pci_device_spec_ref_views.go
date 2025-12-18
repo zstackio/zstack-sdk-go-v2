@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmInstancePciDeviceSpecRefInventoryView VmInstancePciDeviceSpecRef
 type VmInstancePciDeviceSpecRefInventoryView struct {
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest string `json:"pciSpecUuid,omitempty"`
-	rest int `json:"pciDeviceNumber,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	PciSpecUuid string `json:"pciSpecUuid,omitempty"`
+	PciDeviceNumber int `json:"pciDeviceNumber,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

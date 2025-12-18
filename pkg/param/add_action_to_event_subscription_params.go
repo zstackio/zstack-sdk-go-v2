@@ -2,16 +2,15 @@
 
 package param
 
-// AddActionToEventSubscriptionDetailParam AddActionToEventSubscription详细参数
+// AddActionToEventSubscriptionDetailParam AddActionToEventSubscription detail param
 type AddActionToEventSubscriptionDetailParam struct {
-	rest string `json:"subscriptionUuid" validate:"required"` // 必填
-	rest string `json:"actionUuid" validate:"required"` // 必填
-	rest string `json:"actionType" validate:"required"` // 必填
+	SubscriptionUuid string `json:"subscriptionUuid" validate:"required"`
+	ActionUuid string `json:"actionUuid" validate:"required"`
+	ActionType string `json:"actionType" validate:"required"`
 }
 
-// AddActionToEventSubscriptionParam AddActionToEventSubscription请求参数
+// AddActionToEventSubscriptionParam AddActionToEventSubscription request param
 type AddActionToEventSubscriptionParam struct {
 	BaseParam
-	Params AddActionToEventSubscriptionDetailParam `json:"params"` // 详细参数
+	Params AddActionToEventSubscriptionDetailParam `json:"params"`
 }
-

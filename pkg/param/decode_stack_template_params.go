@@ -2,18 +2,17 @@
 
 package param
 
-// DecodeStackTemplateDetailParam DecodeStackTemplate详细参数
+// DecodeStackTemplateDetailParam DecodeStackTemplate detail param
 type DecodeStackTemplateDetailParam struct {
-	rest string `json:"type,omitempty"`
-	rest string `json:"templateContent,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"parameters,omitempty"`
-	rest string `json:"preparameters,omitempty"`
+	Type string `json:"type,omitempty"`
+	TemplateContent string `json:"templateContent,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Parameters string `json:"parameters,omitempty"`
+	Preparameters string `json:"preparameters,omitempty"`
 }
 
-// DecodeStackTemplateParam DecodeStackTemplate请求参数
+// DecodeStackTemplateParam DecodeStackTemplate request param
 type DecodeStackTemplateParam struct {
 	BaseParam
-	Params DecodeStackTemplateDetailParam `json:"params"` // 详细参数
+	Params DecodeStackTemplateDetailParam `json:"params"`
 }
-

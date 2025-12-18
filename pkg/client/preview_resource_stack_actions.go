@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// PreviewResourceStack 操作PreviewResourceStack
+// PreviewResourceStack operates on PreviewResourceStack
 func (cli *ZSClient) PreviewResourceStack(params param.PreviewResourceStackParam) (*view.PreviewResourceStackView, error) {
 	resp := view.PreviewResourceStackView{}
 	if err := cli.Post("v1/cloudformation/stack/preview", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) PreviewResourceStack(params param.PreviewResourceStackParam
 	}
 	return &resp, nil
 }
-

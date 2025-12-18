@@ -4,27 +4,29 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // RaidPhysicalDriveInventoryView RaidPhysicalDrive
 type RaidPhysicalDriveInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"raidLevel,omitempty"`
-	rest string `json:"raidControllerUuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest int `json:"enclosureDeviceId,omitempty"`
-	rest int `json:"slotNumber,omitempty"`
-	rest int `json:"deviceId,omitempty"`
-	rest int `json:"diskGroup,omitempty"`
-	rest string `json:"wwn,omitempty"`
-	rest string `json:"serialNumber,omitempty"`
-	rest string `json:"deviceModel,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest string `json:"driveState,omitempty"`
-	rest string `json:"locateStatus,omitempty"`
-	rest string `json:"driveType,omitempty"`
-	rest string `json:"mediaType,omitempty"`
-	rest int `json:"rotationRate,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	RaidLevel string `json:"raidLevel,omitempty"`
+	RaidControllerUuid string `json:"raidControllerUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	EnclosureDeviceId int `json:"enclosureDeviceId,omitempty"`
+	SlotNumber int `json:"slotNumber,omitempty"`
+	DeviceId int `json:"deviceId,omitempty"`
+	DiskGroup int `json:"diskGroup,omitempty"`
+	Wwn string `json:"wwn,omitempty"`
+	SerialNumber string `json:"serialNumber,omitempty"`
+	DeviceModel string `json:"deviceModel,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	DriveState string `json:"driveState,omitempty"`
+	LocateStatus string `json:"locateStatus,omitempty"`
+	DriveType string `json:"driveType,omitempty"`
+	MediaType string `json:"mediaType,omitempty"`
+	RotationRate int `json:"rotationRate,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,14 +2,13 @@
 
 package param
 
-// PrometheusQueryMetadataDetailParam PrometheusQueryMetadata详细参数
+// PrometheusQueryMetadataDetailParam PrometheusQueryMetadata detail param
 type PrometheusQueryMetadataDetailParam struct {
-	rest []string `json:"matches" validate:"required"` // 必填
+	Matches []string `json:"matches" validate:"required"`
 }
 
-// PrometheusQueryMetadataParam PrometheusQueryMetadata请求参数
+// PrometheusQueryMetadataParam PrometheusQueryMetadata request param
 type PrometheusQueryMetadataParam struct {
 	BaseParam
-	Params PrometheusQueryMetadataDetailParam `json:"params"` // 详细参数
+	Params PrometheusQueryMetadataDetailParam `json:"params"`
 }
-

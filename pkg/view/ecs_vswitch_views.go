@@ -4,18 +4,20 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // EcsVSwitchInventoryView EcsVSwitch
 type EcsVSwitchInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vSwitchId,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"cidrBlock,omitempty"`
-	rest int `json:"availableIpAddressCount,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"ecsVpcUuid,omitempty"`
-	rest string `json:"identityZoneUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VSwitchId string `json:"vSwitchId,omitempty"`
+	Status string `json:"status,omitempty"`
+	CidrBlock string `json:"cidrBlock,omitempty"`
+	AvailableIpAddressCount int `json:"availableIpAddressCount,omitempty"`
+	Description string `json:"description,omitempty"`
+	Name string `json:"name,omitempty"`
+	EcsVpcUuid string `json:"ecsVpcUuid,omitempty"`
+	IdentityZoneUuid string `json:"identityZoneUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

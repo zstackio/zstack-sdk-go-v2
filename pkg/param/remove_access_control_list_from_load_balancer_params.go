@@ -2,16 +2,15 @@
 
 package param
 
-// RemoveAccessControlListFromLoadBalancerDetailParam RemoveAccessControlListFromLoadBalancer详细参数
+// RemoveAccessControlListFromLoadBalancerDetailParam RemoveAccessControlListFromLoadBalancer detail param
 type RemoveAccessControlListFromLoadBalancerDetailParam struct {
-	rest []string `json:"aclUuids" validate:"required"` // 必填
-	rest string `json:"listenerUuid" validate:"required"` // 必填
-	rest []string `json:"serverGroupUuids,omitempty"`
+	AclUuids []string `json:"aclUuids" validate:"required"`
+	ListenerUuid string `json:"listenerUuid" validate:"required"`
+	ServerGroupUuids []string `json:"serverGroupUuids,omitempty"`
 }
 
-// RemoveAccessControlListFromLoadBalancerParam RemoveAccessControlListFromLoadBalancer请求参数
+// RemoveAccessControlListFromLoadBalancerParam RemoveAccessControlListFromLoadBalancer request param
 type RemoveAccessControlListFromLoadBalancerParam struct {
 	BaseParam
-	Params RemoveAccessControlListFromLoadBalancerDetailParam `json:"params"` // 详细参数
+	Params RemoveAccessControlListFromLoadBalancerDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// UnlockIdentityDetailParam UnlockIdentity详细参数
+// UnlockIdentityDetailParam UnlockIdentity detail param
 type UnlockIdentityDetailParam struct {
-	rest string `json:"resourceName" validate:"required"` // 必填
-	rest string `json:"loginType" validate:"required"` // 必填
+	ResourceName string `json:"resourceName" validate:"required"`
+	LoginType string `json:"loginType" validate:"required"`
 }
 
-// UnlockIdentityParam UnlockIdentity请求参数
+// UnlockIdentityParam UnlockIdentity request param
 type UnlockIdentityParam struct {
 	BaseParam
-	Params UnlockIdentityDetailParam `json:"params"` // 详细参数
+	Params UnlockIdentityDetailParam `json:"params"`
 }
-

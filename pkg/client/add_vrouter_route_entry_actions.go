@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddVRouterRouteEntry 操作AddVRouterRouteEntry
+// AddVRouterRouteEntry adds VRouterRouteEntry
 func (cli *ZSClient) AddVRouterRouteEntry(params param.AddVRouterRouteEntryParam) (*view.AddVRouterRouteEntryEventView, error) {
 	resp := view.AddVRouterRouteEntryEventView{}
 	if err := cli.Post("v1/vrouter-route-tables/{routeTableUuid}/route-entries", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddVRouterRouteEntry(params param.AddVRouterRouteEntryParam
 	}
 	return &resp, nil
 }
-

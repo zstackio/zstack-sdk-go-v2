@@ -2,21 +2,20 @@
 
 package param
 
-// AddAliyunEbsBackupStorageDetailParam AddAliyunEbsBackupStorage详细参数
+// AddAliyunEbsBackupStorageDetailParam AddAliyunEbsBackupStorage detail param
 type AddAliyunEbsBackupStorageDetailParam struct {
-	rest string `json:"ossBucketUuid" validate:"required"` // 必填
-	rest string `json:"url,omitempty"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest bool `json:"importImages,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	OssBucketUuid string `json:"ossBucketUuid" validate:"required"`
+	Url string `json:"url,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ImportImages bool `json:"importImages,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAliyunEbsBackupStorageParam AddAliyunEbsBackupStorage请求参数
+// AddAliyunEbsBackupStorageParam AddAliyunEbsBackupStorage request param
 type AddAliyunEbsBackupStorageParam struct {
 	BaseParam
-	Params AddAliyunEbsBackupStorageDetailParam `json:"params"` // 详细参数
+	Params AddAliyunEbsBackupStorageDetailParam `json:"params"`
 }
-

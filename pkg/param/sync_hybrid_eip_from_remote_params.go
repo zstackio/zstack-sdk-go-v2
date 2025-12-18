@@ -2,17 +2,16 @@
 
 package param
 
-// SyncHybridEipFromRemoteDetailParam SyncHybridEipFromRemote详细参数
+// SyncHybridEipFromRemoteDetailParam SyncHybridEipFromRemote detail param
 type SyncHybridEipFromRemoteDetailParam struct {
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Type string `json:"type" validate:"required"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncHybridEipFromRemoteParam SyncHybridEipFromRemote请求参数
+// SyncHybridEipFromRemoteParam SyncHybridEipFromRemote request param
 type SyncHybridEipFromRemoteParam struct {
 	BaseParam
-	Params SyncHybridEipFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncHybridEipFromRemoteDetailParam `json:"params"`
 }
-

@@ -2,18 +2,17 @@
 
 package param
 
-// AckAlarmDataDetailParam AckAlarmData详细参数
+// AckAlarmDataDetailParam AckAlarmData detail param
 type AckAlarmDataDetailParam struct {
-	rest string `json:"alarmUuid" validate:"required"` // 必填
-	rest string `json:"alertDataUuid" validate:"required"` // 必填
-	rest string `json:"dataType" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest int `json:"ackPeriodSec" validate:"required"` // 必填
+	AlarmUuid string `json:"alarmUuid" validate:"required"`
+	AlertDataUuid string `json:"alertDataUuid" validate:"required"`
+	DataType string `json:"dataType" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	AckPeriodSec int `json:"ackPeriodSec" validate:"required"`
 }
 
-// AckAlarmDataParam AckAlarmData请求参数
+// AckAlarmDataParam AckAlarmData request param
 type AckAlarmDataParam struct {
 	BaseParam
-	Params AckAlarmDataDetailParam `json:"params"` // 详细参数
+	Params AckAlarmDataDetailParam `json:"params"`
 }
-

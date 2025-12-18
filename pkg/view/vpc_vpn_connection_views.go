@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcVpnConnectionInventoryView VpcVpnConnection
 type VpcVpnConnectionInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"accountName,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"connectionId,omitempty"`
-	rest string `json:"userGatewayUuid,omitempty"`
-	rest string `json:"vpnGatewayUuid,omitempty"`
-	rest string `json:"localSubnet,omitempty"`
-	rest string `json:"remoteSubnet,omitempty"`
-	rest string `json:"ikeConfigUuid,omitempty"`
-	rest string `json:"ipsecConfigUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AccountName string `json:"accountName,omitempty"`
+	Type string `json:"type,omitempty"`
+	Name string `json:"name,omitempty"`
+	Status string `json:"status,omitempty"`
+	Description string `json:"description,omitempty"`
+	ConnectionId string `json:"connectionId,omitempty"`
+	UserGatewayUuid string `json:"userGatewayUuid,omitempty"`
+	VpnGatewayUuid string `json:"vpnGatewayUuid,omitempty"`
+	LocalSubnet string `json:"localSubnet,omitempty"`
+	RemoteSubnet string `json:"remoteSubnet,omitempty"`
+	IkeConfigUuid string `json:"ikeConfigUuid,omitempty"`
+	IpsecConfigUuid string `json:"ipsecConfigUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

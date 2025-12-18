@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveDnsFromL3NetworkDetailParam RemoveDnsFromL3Network详细参数
+// RemoveDnsFromL3NetworkDetailParam RemoveDnsFromL3Network detail param
 type RemoveDnsFromL3NetworkDetailParam struct {
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest string `json:"dns" validate:"required"` // 必填
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	Dns string `json:"dns" validate:"required"`
 }
 
-// RemoveDnsFromL3NetworkParam RemoveDnsFromL3Network请求参数
+// RemoveDnsFromL3NetworkParam RemoveDnsFromL3Network request param
 type RemoveDnsFromL3NetworkParam struct {
 	BaseParam
-	Params RemoveDnsFromL3NetworkDetailParam `json:"params"` // 详细参数
+	Params RemoveDnsFromL3NetworkDetailParam `json:"params"`
 }
-

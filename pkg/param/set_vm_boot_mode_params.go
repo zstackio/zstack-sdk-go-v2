@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmBootModeDetailParam SetVmBootMode详细参数
+// SetVmBootModeDetailParam SetVmBootMode detail param
 type SetVmBootModeDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"bootMode" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	BootMode string `json:"bootMode" validate:"required"`
 }
 
-// SetVmBootModeParam SetVmBootMode请求参数
+// SetVmBootModeParam SetVmBootMode request param
 type SetVmBootModeParam struct {
 	BaseParam
-	Params SetVmBootModeDetailParam `json:"params"` // 详细参数
+	Params SetVmBootModeDetailParam `json:"params"`
 }
-

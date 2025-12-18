@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcHaGroupNetworkServiceRefInventoryView VpcHaGroupNetworkServiceRef
 type VpcHaGroupNetworkServiceRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"vpcHaRouterUuid,omitempty"`
-	rest string `json:"networkServiceName,omitempty"`
-	rest string `json:"networkServiceUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	VpcHaRouterUuid string `json:"vpcHaRouterUuid,omitempty"`
+	NetworkServiceName string `json:"networkServiceName,omitempty"`
+	NetworkServiceUuid string `json:"networkServiceUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

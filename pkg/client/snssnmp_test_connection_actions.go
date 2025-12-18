@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SNSSnmpTestConnection 操作SNSSnmpTestConnection
+// SNSSnmpTestConnection operates on SNSSnmpTestConnection
 func (cli *ZSClient) SNSSnmpTestConnection(params param.SNSSnmpTestConnectionParam) (*view.SNSSnmpTestConnectionEventView, error) {
 	resp := view.SNSSnmpTestConnectionEventView{}
 	if err := cli.Post("v1/sns/application-endpoints/snmp/test-connection", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SNSSnmpTestConnection(params param.SNSSnmpTestConnectionPar
 	}
 	return &resp, nil
 }
-

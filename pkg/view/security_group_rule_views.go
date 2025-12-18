@@ -4,26 +4,28 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SecurityGroupRuleInventoryView SecurityGroupRule
 type SecurityGroupRuleInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"securityGroupUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest int `json:"ipVersion,omitempty"`
-	rest string `json:"protocol,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest int `json:"priority,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"srcIpRange,omitempty"`
-	rest string `json:"dstIpRange,omitempty"`
-	rest string `json:"srcPortRange,omitempty"`
-	rest string `json:"dstPortRange,omitempty"`
-	rest string `json:"action,omitempty"`
-	rest string `json:"remoteSecurityGroupUuid,omitempty"`
-	rest string `json:"allowedCidr,omitempty"`
-	rest int `json:"startPort,omitempty"`
-	rest int `json:"endPort,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	SecurityGroupUuid string `json:"securityGroupUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	State string `json:"state,omitempty"`
+	Priority int `json:"priority,omitempty"`
+	Description string `json:"description,omitempty"`
+	SrcIpRange string `json:"srcIpRange,omitempty"`
+	DstIpRange string `json:"dstIpRange,omitempty"`
+	SrcPortRange string `json:"srcPortRange,omitempty"`
+	DstPortRange string `json:"dstPortRange,omitempty"`
+	Action string `json:"action,omitempty"`
+	RemoteSecurityGroupUuid string `json:"remoteSecurityGroupUuid,omitempty"`
+	AllowedCidr string `json:"allowedCidr,omitempty"`
+	StartPort int `json:"startPort,omitempty"`
+	EndPort int `json:"endPort,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

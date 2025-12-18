@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AlarmActionInventoryView AlarmAction
 type AlarmActionInventoryView struct {
-	rest string `json:"alarmUuid,omitempty"`
-	rest string `json:"actionType,omitempty"`
-	rest string `json:"actionUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	AlarmUuid string `json:"alarmUuid,omitempty"`
+	ActionType string `json:"actionType,omitempty"`
+	ActionUuid string `json:"actionUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

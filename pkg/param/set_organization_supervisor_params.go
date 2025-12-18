@@ -2,15 +2,14 @@
 
 package param
 
-// SetOrganizationSupervisorDetailParam SetOrganizationSupervisor详细参数
+// SetOrganizationSupervisorDetailParam SetOrganizationSupervisor detail param
 type SetOrganizationSupervisorDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"virtualIDUuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	VirtualIDUuid string `json:"virtualIDUuid" validate:"required"`
 }
 
-// SetOrganizationSupervisorParam SetOrganizationSupervisor请求参数
+// SetOrganizationSupervisorParam SetOrganizationSupervisor request param
 type SetOrganizationSupervisorParam struct {
 	BaseParam
-	Params SetOrganizationSupervisorDetailParam `json:"params"` // 详细参数
+	Params SetOrganizationSupervisorDetailParam `json:"params"`
 }
-

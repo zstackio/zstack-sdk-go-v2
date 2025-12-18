@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddSimulatorPrimaryStorage 操作AddSimulatorPrimaryStorage
+// AddSimulatorPrimaryStorage adds SimulatorPrimaryStorage
 func (cli *ZSClient) AddSimulatorPrimaryStorage(params param.AddSimulatorPrimaryStorageParam) (*view.AddPrimaryStorageEventView, error) {
 	resp := view.AddPrimaryStorageEventView{}
 	if err := cli.Post("v1/primary-storage/simulators", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddSimulatorPrimaryStorage(params param.AddSimulatorPrimary
 	}
 	return &resp, nil
 }
-

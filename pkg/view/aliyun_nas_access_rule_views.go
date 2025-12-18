@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AliyunNasAccessRuleInventoryView AliyunNasAccessRule
 type AliyunNasAccessRuleInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"accessGroupUuid,omitempty"`
-	rest string `json:"sourceCidr,omitempty"`
-	rest string `json:"rule,omitempty"`
-	rest int `json:"priority,omitempty"`
-	rest string `json:"userAccess,omitempty"`
-	rest string `json:"ruleId,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AccessGroupUuid string `json:"accessGroupUuid,omitempty"`
+	SourceCidr string `json:"sourceCidr,omitempty"`
+	Rule string `json:"rule,omitempty"`
+	Priority int `json:"priority,omitempty"`
+	UserAccess string `json:"userAccess,omitempty"`
+	RuleId string `json:"ruleId,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

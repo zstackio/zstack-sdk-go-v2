@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AutoScalingTemplateGroupRefInventoryView AutoScalingTemplateGroupRef
 type AutoScalingTemplateGroupRefInventoryView struct {
-	rest string `json:"templateUuid,omitempty"`
-	rest string `json:"groupUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	TemplateUuid string `json:"templateUuid,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

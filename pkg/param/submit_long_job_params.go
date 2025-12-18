@@ -2,20 +2,19 @@
 
 package param
 
-// SubmitLongJobDetailParam SubmitLongJob详细参数
+// SubmitLongJobDetailParam SubmitLongJob detail param
 type SubmitLongJobDetailParam struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"jobName" validate:"required"` // 必填
-	rest string `json:"jobData" validate:"required"` // 必填
-	rest string `json:"targetResourceUuid,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	JobName string `json:"jobName" validate:"required"`
+	JobData string `json:"jobData" validate:"required"`
+	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SubmitLongJobParam SubmitLongJob请求参数
+// SubmitLongJobParam SubmitLongJob request param
 type SubmitLongJobParam struct {
 	BaseParam
-	Params SubmitLongJobDetailParam `json:"params"` // 详细参数
+	Params SubmitLongJobDetailParam `json:"params"`
 }
-

@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PortMirrorSessionMirrorNetworkRefInventoryView PortMirrorSessionMirrorNetworkRef
 type PortMirrorSessionMirrorNetworkRefInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"srcTunnelUuid,omitempty"`
-	rest string `json:"dstTunnelUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"sessionUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest MirrorNetworkUsedIpInventoryView `json:"srcTunnel,omitempty"`
-	rest MirrorNetworkUsedIpInventoryView `json:"dstTunnel,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	SrcTunnelUuid string `json:"srcTunnelUuid,omitempty"`
+	DstTunnelUuid string `json:"dstTunnelUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	SessionUuid string `json:"sessionUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	SrcTunnel MirrorNetworkUsedIpInventoryView `json:"srcTunnel,omitempty"`
+	DstTunnel MirrorNetworkUsedIpInventoryView `json:"dstTunnel,omitempty"`
 }
 

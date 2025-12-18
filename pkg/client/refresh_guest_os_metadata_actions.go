@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// RefreshGuestOsMetadata 操作RefreshGuestOsMetadata
+// RefreshGuestOsMetadata operates on RefreshGuestOsMetadata
 func (cli *ZSClient) RefreshGuestOsMetadata(uuid string, params param.RefreshGuestOsMetadataParam) (*view.RefreshGuestOsMetadataEventView, error) {
 	resp := view.RefreshGuestOsMetadataEventView{}
 	if err := cli.Put("v1/guest-os/metadata/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) RefreshGuestOsMetadata(uuid string, params param.RefreshGue
 	}
 	return &resp, nil
 }
-

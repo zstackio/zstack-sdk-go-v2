@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ExecuteDRSScheduling 操作ExecuteDRSScheduling
+// ExecuteDRSScheduling operates on ExecuteDRSScheduling
 func (cli *ZSClient) ExecuteDRSScheduling(uuid string, params param.ExecuteDRSSchedulingParam) (*view.ExecuteDRSSchedulingEventView, error) {
 	resp := view.ExecuteDRSSchedulingEventView{}
 	if err := cli.Put("v1/clusters/drs/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ExecuteDRSScheduling(uuid string, params param.ExecuteDRSSc
 	}
 	return &resp, nil
 }
-

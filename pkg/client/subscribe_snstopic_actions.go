@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SubscribeSNSTopic 操作SubscribeSNSTopic
+// SubscribeSNSTopic operates on SubscribeSNSTopic
 func (cli *ZSClient) SubscribeSNSTopic(params param.SubscribeSNSTopicParam) (*view.SubscribeSNSTopicEventView, error) {
 	resp := view.SubscribeSNSTopicEventView{}
 	if err := cli.Post("v1/sns/topics/{topicUuid}/endpoints/{endpointUuid}", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SubscribeSNSTopic(params param.SubscribeSNSTopicParam) (*vi
 	}
 	return &resp, nil
 }
-

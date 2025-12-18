@@ -2,25 +2,24 @@
 
 package param
 
-// ValidateSecurityGroupRuleDetailParam ValidateSecurityGroupRule详细参数
+// ValidateSecurityGroupRuleDetailParam ValidateSecurityGroupRule detail param
 type ValidateSecurityGroupRuleDetailParam struct {
-	rest string `json:"securityGroupUuid" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"protocol" validate:"required"` // 必填
-	rest string `json:"remoteSecurityGroupUuid,omitempty"`
-	rest int `json:"ipVersion,omitempty"`
-	rest string `json:"srcIpRange,omitempty"`
-	rest string `json:"dstIpRange,omitempty"`
-	rest string `json:"dstPortRange,omitempty"`
-	rest string `json:"action,omitempty"`
-	rest int `json:"startPort,omitempty"`
-	rest int `json:"endPort,omitempty"`
-	rest string `json:"allowedCidr,omitempty"`
+	SecurityGroupUuid string `json:"securityGroupUuid" validate:"required"`
+	Type string `json:"type" validate:"required"`
+	Protocol string `json:"protocol" validate:"required"`
+	RemoteSecurityGroupUuid string `json:"remoteSecurityGroupUuid,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	SrcIpRange string `json:"srcIpRange,omitempty"`
+	DstIpRange string `json:"dstIpRange,omitempty"`
+	DstPortRange string `json:"dstPortRange,omitempty"`
+	Action string `json:"action,omitempty"`
+	StartPort int `json:"startPort,omitempty"`
+	EndPort int `json:"endPort,omitempty"`
+	AllowedCidr string `json:"allowedCidr,omitempty"`
 }
 
-// ValidateSecurityGroupRuleParam ValidateSecurityGroupRule请求参数
+// ValidateSecurityGroupRuleParam ValidateSecurityGroupRule request param
 type ValidateSecurityGroupRuleParam struct {
 	BaseParam
-	Params ValidateSecurityGroupRuleDetailParam `json:"params"` // 详细参数
+	Params ValidateSecurityGroupRuleDetailParam `json:"params"`
 }
-

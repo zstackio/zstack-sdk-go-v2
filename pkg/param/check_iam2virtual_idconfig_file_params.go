@@ -2,14 +2,13 @@
 
 package param
 
-// CheckIAM2VirtualIDConfigFileDetailParam CheckIAM2VirtualIDConfigFile详细参数
+// CheckIAM2VirtualIDConfigFileDetailParam CheckIAM2VirtualIDConfigFile detail param
 type CheckIAM2VirtualIDConfigFileDetailParam struct {
-	rest string `json:"virtualIDInfos" validate:"required"` // 必填
+	VirtualIDInfos string `json:"virtualIDInfos" validate:"required"`
 }
 
-// CheckIAM2VirtualIDConfigFileParam CheckIAM2VirtualIDConfigFile请求参数
+// CheckIAM2VirtualIDConfigFileParam CheckIAM2VirtualIDConfigFile request param
 type CheckIAM2VirtualIDConfigFileParam struct {
 	BaseParam
-	Params CheckIAM2VirtualIDConfigFileDetailParam `json:"params"` // 详细参数
+	Params CheckIAM2VirtualIDConfigFileDetailParam `json:"params"`
 }
-

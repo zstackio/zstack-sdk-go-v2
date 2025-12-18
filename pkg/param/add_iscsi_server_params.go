@@ -2,20 +2,19 @@
 
 package param
 
-// AddIscsiServerDetailParam AddIscsiServer详细参数
+// AddIscsiServerDetailParam AddIscsiServer detail param
 type AddIscsiServerDetailParam struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"ip" validate:"required"` // 必填
-	rest int `json:"port,omitempty"`
-	rest string `json:"chapUserName,omitempty"`
-	rest string `json:"chapUserPassword,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name,omitempty"`
+	Ip string `json:"ip" validate:"required"`
+	Port int `json:"port,omitempty"`
+	ChapUserName string `json:"chapUserName,omitempty"`
+	ChapUserPassword string `json:"chapUserPassword,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddIscsiServerParam AddIscsiServer请求参数
+// AddIscsiServerParam AddIscsiServer request param
 type AddIscsiServerParam struct {
 	BaseParam
-	Params AddIscsiServerDetailParam `json:"params"` // 详细参数
+	Params AddIscsiServerDetailParam `json:"params"`
 }
-

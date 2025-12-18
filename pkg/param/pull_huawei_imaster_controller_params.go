@@ -2,15 +2,14 @@
 
 package param
 
-// PullHuaweiIMasterControllerDetailParam PullHuaweiIMasterController详细参数
+// PullHuaweiIMasterControllerDetailParam PullHuaweiIMasterController detail param
 type PullHuaweiIMasterControllerDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"pullSwitch,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	PullSwitch bool `json:"pullSwitch,omitempty"`
 }
 
-// PullHuaweiIMasterControllerParam PullHuaweiIMasterController请求参数
+// PullHuaweiIMasterControllerParam PullHuaweiIMasterController request param
 type PullHuaweiIMasterControllerParam struct {
 	BaseParam
-	Params PullHuaweiIMasterControllerDetailParam `json:"params"` // 详细参数
+	Params PullHuaweiIMasterControllerDetailParam `json:"params"`
 }
-

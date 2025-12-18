@@ -2,17 +2,16 @@
 
 package param
 
-// SyncAliyunSnapshotRemoteDetailParam SyncAliyunSnapshotRemote详细参数
+// SyncAliyunSnapshotRemoteDetailParam SyncAliyunSnapshotRemote detail param
 type SyncAliyunSnapshotRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"snapshotId,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	SnapshotId string `json:"snapshotId,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncAliyunSnapshotRemoteParam SyncAliyunSnapshotRemote请求参数
+// SyncAliyunSnapshotRemoteParam SyncAliyunSnapshotRemote request param
 type SyncAliyunSnapshotRemoteParam struct {
 	BaseParam
-	Params SyncAliyunSnapshotRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncAliyunSnapshotRemoteDetailParam `json:"params"`
 }
-

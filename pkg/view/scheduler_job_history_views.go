@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SchedulerJobHistoryInventoryView SchedulerJobHistory
 type SchedulerJobHistoryInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"triggerUuid,omitempty"`
-	rest string `json:"schedulerJobUuid,omitempty"`
-	rest string `json:"schedulerJobGroupUuid,omitempty"`
-	rest string `json:"jobType,omitempty"`
-	rest time.Time `json:"startTime,omitempty"`
-	rest int64 `json:"executeTime,omitempty"`
-	rest string `json:"targetResourceUuid,omitempty"`
-	rest string `json:"requestDump,omitempty"`
-	rest string `json:"resultDump,omitempty"`
-	rest bool `json:"success,omitempty"`
-	rest string `json:"fireInstanceId,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	TriggerUuid string `json:"triggerUuid,omitempty"`
+	SchedulerJobUuid string `json:"schedulerJobUuid,omitempty"`
+	SchedulerJobGroupUuid string `json:"schedulerJobGroupUuid,omitempty"`
+	JobType string `json:"jobType,omitempty"`
+	StartTime time.Time `json:"startTime,omitempty"`
+	ExecuteTime int64 `json:"executeTime,omitempty"`
+	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
+	RequestDump string `json:"requestDump,omitempty"`
+	ResultDump string `json:"resultDump,omitempty"`
+	Success bool `json:"success,omitempty"`
+	FireInstanceId string `json:"fireInstanceId,omitempty"`
 }
 

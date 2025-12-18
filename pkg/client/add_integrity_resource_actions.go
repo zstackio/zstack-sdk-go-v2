@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddIntegrityResource 操作AddIntegrityResource
+// AddIntegrityResource adds IntegrityResource
 func (cli *ZSClient) AddIntegrityResource(params param.AddIntegrityResourceParam) (*view.AddIntegrityResourceEventView, error) {
 	resp := view.AddIntegrityResourceEventView{}
 	if err := cli.Post("v1/integrity/resource/actions", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddIntegrityResource(params param.AddIntegrityResourceParam
 	}
 	return &resp, nil
 }
-

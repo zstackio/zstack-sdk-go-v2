@@ -2,19 +2,18 @@
 
 package param
 
-// LogInByAccountDetailParam LogInByAccount详细参数
+// LogInByAccountDetailParam LogInByAccount detail param
 type LogInByAccountDetailParam struct {
-	rest string `json:"accountName" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest string `json:"accountType,omitempty"`
-	rest string `json:"captchaUuid,omitempty"`
-	rest string `json:"verifyCode,omitempty"`
-	rest map[string]string `json:"clientInfo,omitempty"`
+	AccountName string `json:"accountName" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	AccountType string `json:"accountType,omitempty"`
+	CaptchaUuid string `json:"captchaUuid,omitempty"`
+	VerifyCode string `json:"verifyCode,omitempty"`
+	ClientInfo map[string]string `json:"clientInfo,omitempty"`
 }
 
-// LogInByAccountParam LogInByAccount请求参数
+// LogInByAccountParam LogInByAccount request param
 type LogInByAccountParam struct {
 	BaseParam
-	Params LogInByAccountDetailParam `json:"params"` // 详细参数
+	Params LogInByAccountDetailParam `json:"params"`
 }
-

@@ -2,14 +2,13 @@
 
 package param
 
-// InspectBareMetal2ChassisDetailParam InspectBareMetal2Chassis详细参数
+// InspectBareMetal2ChassisDetailParam InspectBareMetal2Chassis detail param
 type InspectBareMetal2ChassisDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// InspectBareMetal2ChassisParam InspectBareMetal2Chassis请求参数
+// InspectBareMetal2ChassisParam InspectBareMetal2Chassis request param
 type InspectBareMetal2ChassisParam struct {
 	BaseParam
-	Params InspectBareMetal2ChassisDetailParam `json:"params"` // 详细参数
+	Params InspectBareMetal2ChassisDetailParam `json:"params"`
 }
-

@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectSdnControllerDetailParam ReconnectSdnController详细参数
+// ReconnectSdnControllerDetailParam ReconnectSdnController detail param
 type ReconnectSdnControllerDetailParam struct {
-	rest string `json:"sdnControllerUuid" validate:"required"` // 必填
+	SdnControllerUuid string `json:"sdnControllerUuid" validate:"required"`
 }
 
-// ReconnectSdnControllerParam ReconnectSdnController请求参数
+// ReconnectSdnControllerParam ReconnectSdnController request param
 type ReconnectSdnControllerParam struct {
 	BaseParam
-	Params ReconnectSdnControllerDetailParam `json:"params"` // 详细参数
+	Params ReconnectSdnControllerDetailParam `json:"params"`
 }
-

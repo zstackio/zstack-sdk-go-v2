@@ -2,21 +2,20 @@
 
 package param
 
-// AddIAM2TicketFlowDetailParam AddIAM2TicketFlow详细参数
+// AddIAM2TicketFlowDetailParam AddIAM2TicketFlow detail param
 type AddIAM2TicketFlowDetailParam struct {
-	rest string `json:"approverUuid" validate:"required"` // 必填
-	rest string `json:"approverTitle,omitempty"`
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"collectionUuid" validate:"required"` // 必填
-	rest string `json:"parentFlowUuid,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	ApproverUuid string `json:"approverUuid" validate:"required"`
+	ApproverTitle string `json:"approverTitle,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	CollectionUuid string `json:"collectionUuid" validate:"required"`
+	ParentFlowUuid string `json:"parentFlowUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddIAM2TicketFlowParam AddIAM2TicketFlow请求参数
+// AddIAM2TicketFlowParam AddIAM2TicketFlow request param
 type AddIAM2TicketFlowParam struct {
 	BaseParam
-	Params AddIAM2TicketFlowDetailParam `json:"params"` // 详细参数
+	Params AddIAM2TicketFlowDetailParam `json:"params"`
 }
-

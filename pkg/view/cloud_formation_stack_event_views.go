@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // CloudFormationStackEventInventoryView CloudFormationStackEvent
 type CloudFormationStackEventInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"action,omitempty"`
-	rest string `json:"content,omitempty"`
-	rest string `json:"resourceName,omitempty"`
-	rest string `json:"actionStatus,omitempty"`
-	rest string `json:"stackUuid,omitempty"`
-	rest string `json:"duration,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	Description string `json:"description,omitempty"`
+	Action string `json:"action,omitempty"`
+	Content string `json:"content,omitempty"`
+	ResourceName string `json:"resourceName,omitempty"`
+	ActionStatus string `json:"actionStatus,omitempty"`
+	StackUuid string `json:"stackUuid,omitempty"`
+	Duration string `json:"duration,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

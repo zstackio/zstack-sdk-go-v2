@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddEventRuleTemplate 操作AddEventRuleTemplate
+// AddEventRuleTemplate adds EventRuleTemplate
 func (cli *ZSClient) AddEventRuleTemplate(params param.AddEventRuleTemplateParam) (*view.AddEventRuleTemplateEventView, error) {
 	resp := view.AddEventRuleTemplateEventView{}
 	if err := cli.Post("v1/zwatch/monitortemplates/evenrules", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddEventRuleTemplate(params param.AddEventRuleTemplateParam
 	}
 	return &resp, nil
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// SetL3NetworkMtuDetailParam SetL3NetworkMtu详细参数
+// SetL3NetworkMtuDetailParam SetL3NetworkMtu detail param
 type SetL3NetworkMtuDetailParam struct {
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest int `json:"mtu" validate:"required"` // 必填
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	Mtu int `json:"mtu" validate:"required"`
 }
 
-// SetL3NetworkMtuParam SetL3NetworkMtu请求参数
+// SetL3NetworkMtuParam SetL3NetworkMtu request param
 type SetL3NetworkMtuParam struct {
 	BaseParam
-	Params SetL3NetworkMtuDetailParam `json:"params"` // 详细参数
+	Params SetL3NetworkMtuDetailParam `json:"params"`
 }
-

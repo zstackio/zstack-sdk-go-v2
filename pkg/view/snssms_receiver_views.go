@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SNSSmsReceiverInventoryView SNSSmsReceiver
 type SNSSmsReceiverInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"phoneNumber,omitempty"`
-	rest string `json:"endpointUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	PhoneNumber string `json:"phoneNumber,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

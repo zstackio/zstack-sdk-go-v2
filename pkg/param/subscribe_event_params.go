@@ -2,16 +2,20 @@
 
 package param
 
-// UpdateSubscribeEventDetailParam UpdateSubscribeEvent详细参数
-type UpdateSubscribeEventDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"emergencyLevel,omitempty"`
-	rest string `json:"name,omitempty"`
+// SubscribeEventDetailParam SubscribeEvent detail param
+type SubscribeEventDetailParam struct {
+	Name string `json:"name,omitempty"`
+	Namespace string `json:"namespace" validate:"required"`
+	EventName string `json:"eventName" validate:"required"`
+	Actions []interface{} `json:"actions,omitempty"`
+	Labels []interface{} `json:"labels,omitempty"`
+	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// UpdateSubscribeEventParam UpdateSubscribeEvent请求参数
-type UpdateSubscribeEventParam struct {
+// SubscribeEventParam SubscribeEvent request param
+type SubscribeEventParam struct {
 	BaseParam
-	Params UpdateSubscribeEventDetailParam `json:"params"` // 详细参数
+	Params SubscribeEventDetailParam `json:"params"`
 }
-

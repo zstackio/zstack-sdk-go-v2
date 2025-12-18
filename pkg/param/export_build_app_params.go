@@ -2,14 +2,13 @@
 
 package param
 
-// ExportBuildAppDetailParam ExportBuildApp详细参数
+// ExportBuildAppDetailParam ExportBuildApp detail param
 type ExportBuildAppDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ExportBuildAppParam ExportBuildApp请求参数
+// ExportBuildAppParam ExportBuildApp request param
 type ExportBuildAppParam struct {
 	BaseParam
-	Params ExportBuildAppDetailParam `json:"params"` // 详细参数
+	Params ExportBuildAppDetailParam `json:"params"`
 }
-

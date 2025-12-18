@@ -2,18 +2,17 @@
 
 package param
 
-// AddSNSWeComAtPersonDetailParam AddSNSWeComAtPerson详细参数
+// AddSNSWeComAtPersonDetailParam AddSNSWeComAtPerson detail param
 type AddSNSWeComAtPersonDetailParam struct {
-	rest string `json:"userId" validate:"required"` // 必填
-	rest string `json:"endpointUuid" validate:"required"` // 必填
-	rest string `json:"remark,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	UserId string `json:"userId" validate:"required"`
+	EndpointUuid string `json:"endpointUuid" validate:"required"`
+	Remark string `json:"remark,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddSNSWeComAtPersonParam AddSNSWeComAtPerson请求参数
+// AddSNSWeComAtPersonParam AddSNSWeComAtPerson request param
 type AddSNSWeComAtPersonParam struct {
 	BaseParam
-	Params AddSNSWeComAtPersonDetailParam `json:"params"` // 详细参数
+	Params AddSNSWeComAtPersonDetailParam `json:"params"`
 }
-

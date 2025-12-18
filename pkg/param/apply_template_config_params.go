@@ -2,14 +2,13 @@
 
 package param
 
-// ApplyTemplateConfigDetailParam ApplyTemplateConfig详细参数
+// ApplyTemplateConfigDetailParam ApplyTemplateConfig detail param
 type ApplyTemplateConfigDetailParam struct {
-	rest string `json:"templateUuid" validate:"required"` // 必填
+	TemplateUuid string `json:"templateUuid" validate:"required"`
 }
 
-// ApplyTemplateConfigParam ApplyTemplateConfig请求参数
+// ApplyTemplateConfigParam ApplyTemplateConfig request param
 type ApplyTemplateConfigParam struct {
 	BaseParam
-	Params ApplyTemplateConfigDetailParam `json:"params"` // 详细参数
+	Params ApplyTemplateConfigDetailParam `json:"params"`
 }
-

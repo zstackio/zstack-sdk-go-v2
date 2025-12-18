@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmSoundTypeDetailParam SetVmSoundType详细参数
+// SetVmSoundTypeDetailParam SetVmSoundType detail param
 type SetVmSoundTypeDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"soundType" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	SoundType string `json:"soundType" validate:"required"`
 }
 
-// SetVmSoundTypeParam SetVmSoundType请求参数
+// SetVmSoundTypeParam SetVmSoundType request param
 type SetVmSoundTypeParam struct {
 	BaseParam
-	Params SetVmSoundTypeDetailParam `json:"params"` // 详细参数
+	Params SetVmSoundTypeDetailParam `json:"params"`
 }
-

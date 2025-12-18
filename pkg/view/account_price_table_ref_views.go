@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AccountPriceTableRefInventoryView AccountPriceTableRef
 type AccountPriceTableRefInventoryView struct {
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"tableUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

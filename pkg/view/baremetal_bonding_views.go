@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BaremetalBondingInventoryView BaremetalBonding
 type BaremetalBondingInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"chassisUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest int `json:"mode,omitempty"`
-	rest string `json:"slaves,omitempty"`
-	rest string `json:"opts,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ChassisUuid string `json:"chassisUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Mode int `json:"mode,omitempty"`
+	Slaves string `json:"slaves,omitempty"`
+	Opts string `json:"opts,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

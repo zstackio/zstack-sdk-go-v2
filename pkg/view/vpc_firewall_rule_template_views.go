@@ -4,26 +4,28 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcFirewallRuleTemplateInventoryView VpcFirewallRuleTemplate
 type VpcFirewallRuleTemplateInventoryView struct {
-	rest string `json:"action,omitempty"`
-	rest string `json:"protocol,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"destPort,omitempty"`
-	rest string `json:"sourcePort,omitempty"`
-	rest string `json:"sourceIp,omitempty"`
-	rest string `json:"destIp,omitempty"`
-	rest string `json:"allowStates,omitempty"`
-	rest string `json:"tcpFlag,omitempty"`
-	rest string `json:"icmpTypeName,omitempty"`
-	rest int `json:"ruleNumber,omitempty"`
-	rest bool `json:"enableLog,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest bool `json:"isDefault,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"uuid,omitempty"`
+	Action string `json:"action,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	Name string `json:"name,omitempty"`
+	DestPort string `json:"destPort,omitempty"`
+	SourcePort string `json:"sourcePort,omitempty"`
+	SourceIp string `json:"sourceIp,omitempty"`
+	DestIp string `json:"destIp,omitempty"`
+	AllowStates string `json:"allowStates,omitempty"`
+	TcpFlag string `json:"tcpFlag,omitempty"`
+	IcmpTypeName string `json:"icmpTypeName,omitempty"`
+	RuleNumber int `json:"ruleNumber,omitempty"`
+	EnableLog bool `json:"enableLog,omitempty"`
+	State string `json:"state,omitempty"`
+	IsDefault bool `json:"isDefault,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 }
 

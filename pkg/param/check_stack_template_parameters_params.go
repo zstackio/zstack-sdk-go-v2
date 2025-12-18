@@ -2,16 +2,15 @@
 
 package param
 
-// CheckStackTemplateParametersDetailParam CheckStackTemplateParameters详细参数
+// CheckStackTemplateParametersDetailParam CheckStackTemplateParameters detail param
 type CheckStackTemplateParametersDetailParam struct {
-	rest string `json:"type,omitempty"`
-	rest string `json:"templateContent,omitempty"`
-	rest string `json:"uuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	TemplateContent string `json:"templateContent,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 }
 
-// CheckStackTemplateParametersParam CheckStackTemplateParameters请求参数
+// CheckStackTemplateParametersParam CheckStackTemplateParameters request param
 type CheckStackTemplateParametersParam struct {
 	BaseParam
-	Params CheckStackTemplateParametersDetailParam `json:"params"` // 详细参数
+	Params CheckStackTemplateParametersDetailParam `json:"params"`
 }
-

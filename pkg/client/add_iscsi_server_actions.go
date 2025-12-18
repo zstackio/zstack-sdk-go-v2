@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddIscsiServer 操作AddIscsiServer
+// AddIscsiServer adds IscsiServer
 func (cli *ZSClient) AddIscsiServer(params param.AddIscsiServerParam) (*view.AddIscsiServerEventView, error) {
 	resp := view.AddIscsiServerEventView{}
 	if err := cli.Post("v1/storage-devices/iscsi/servers", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddIscsiServer(params param.AddIscsiServerParam) (*view.Add
 	}
 	return &resp, nil
 }
-

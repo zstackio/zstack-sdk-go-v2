@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ExecuteGuestVmCommand 操作ExecuteGuestVmCommand
+// ExecuteGuestVmCommand operates on ExecuteGuestVmCommand
 func (cli *ZSClient) ExecuteGuestVmCommand(params param.ExecuteGuestVmCommandParam) (*view.ExecuteGuestVmCommandEventView, error) {
 	resp := view.ExecuteGuestVmCommandEventView{}
 	if err := cli.Post("v1/vm-instances/commands/exec", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ExecuteGuestVmCommand(params param.ExecuteGuestVmCommandPar
 	}
 	return &resp, nil
 }
-

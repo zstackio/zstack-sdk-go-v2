@@ -2,16 +2,15 @@
 
 package param
 
-// RemoveInstanceFromMonitorGroupDetailParam RemoveInstanceFromMonitorGroup详细参数
+// RemoveInstanceFromMonitorGroupDetailParam RemoveInstanceFromMonitorGroup detail param
 type RemoveInstanceFromMonitorGroupDetailParam struct {
-	rest string `json:"groupUuid" validate:"required"` // 必填
-	rest string `json:"instanceUuid" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	GroupUuid string `json:"groupUuid" validate:"required"`
+	InstanceUuid string `json:"instanceUuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveInstanceFromMonitorGroupParam RemoveInstanceFromMonitorGroup请求参数
+// RemoveInstanceFromMonitorGroupParam RemoveInstanceFromMonitorGroup request param
 type RemoveInstanceFromMonitorGroupParam struct {
 	BaseParam
-	Params RemoveInstanceFromMonitorGroupDetailParam `json:"params"` // 详细参数
+	Params RemoveInstanceFromMonitorGroupDetailParam `json:"params"`
 }
-

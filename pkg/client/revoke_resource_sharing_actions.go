@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// RevokeResourceSharing 操作RevokeResourceSharing
+// RevokeResourceSharing operates on RevokeResourceSharing
 func (cli *ZSClient) RevokeResourceSharing(uuid string, params param.RevokeResourceSharingParam) (*view.RevokeResourceSharingEventView, error) {
 	resp := view.RevokeResourceSharingEventView{}
 	if err := cli.Put("v1/accounts/resources/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) RevokeResourceSharing(uuid string, params param.RevokeResou
 	}
 	return &resp, nil
 }
-

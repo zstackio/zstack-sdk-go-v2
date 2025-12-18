@@ -2,19 +2,18 @@
 
 package param
 
-// AddBuildAppDetailParam AddBuildApp详细参数
+// AddBuildAppDetailParam AddBuildApp detail param
 type AddBuildAppDetailParam struct {
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"type,omitempty"`
-	rest string `json:"backupStorageUuid,omitempty"`
-	rest string `json:"hostname,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Url string `json:"url" validate:"required"`
+	Type string `json:"type,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
+	Hostname string `json:"hostname,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddBuildAppParam AddBuildApp请求参数
+// AddBuildAppParam AddBuildApp request param
 type AddBuildAppParam struct {
 	BaseParam
-	Params AddBuildAppDetailParam `json:"params"` // 详细参数
+	Params AddBuildAppDetailParam `json:"params"`
 }
-

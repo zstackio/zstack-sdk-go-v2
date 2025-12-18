@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmQgaDetailParam SetVmQga详细参数
+// SetVmQgaDetailParam SetVmQga detail param
 type SetVmQgaDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"enable" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Enable bool `json:"enable" validate:"required"`
 }
 
-// SetVmQgaParam SetVmQga请求参数
+// SetVmQgaParam SetVmQga request param
 type SetVmQgaParam struct {
 	BaseParam
-	Params SetVmQgaDetailParam `json:"params"` // 详细参数
+	Params SetVmQgaDetailParam `json:"params"`
 }
-

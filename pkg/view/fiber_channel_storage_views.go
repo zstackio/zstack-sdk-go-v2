@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // FiberChannelStorageInventoryView FiberChannelStorage
 type FiberChannelStorageInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"wwnn,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest []FiberChannelLunInventoryView `json:"fiberChannelLuns,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Wwnn string `json:"wwnn,omitempty"`
+	State string `json:"state,omitempty"`
+	FiberChannelLuns []FiberChannelLunInventoryView `json:"fiberChannelLuns,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,15 +2,14 @@
 
 package param
 
-// SyncContainerManagementEndpointDetailParam SyncContainerManagementEndpoint详细参数
+// SyncContainerManagementEndpointDetailParam SyncContainerManagementEndpoint detail param
 type SyncContainerManagementEndpointDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"zoneUuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
 }
 
-// SyncContainerManagementEndpointParam SyncContainerManagementEndpoint请求参数
+// SyncContainerManagementEndpointParam SyncContainerManagementEndpoint request param
 type SyncContainerManagementEndpointParam struct {
 	BaseParam
-	Params SyncContainerManagementEndpointDetailParam `json:"params"` // 详细参数
+	Params SyncContainerManagementEndpointDetailParam `json:"params"`
 }
-

@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // EventRuleTemplateInventoryView EventRuleTemplate
 type EventRuleTemplateInventoryView struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"monitorTemplateUuid,omitempty"`
-	rest string `json:"namespace,omitempty"`
-	rest string `json:"eventName,omitempty"`
-	rest string `json:"emergencyLevel,omitempty"`
-	rest string `json:"labels,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	MonitorTemplateUuid string `json:"monitorTemplateUuid,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	EventName string `json:"eventName,omitempty"`
+	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+	Labels string `json:"labels,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 }
 

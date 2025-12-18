@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // H3cSdnControllerTenantInventoryView H3cSdnControllerTenant
 type H3cSdnControllerTenantInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"sdnControllerUuid,omitempty"`
-	rest string `json:"tenantUuid,omitempty"`
-	rest string `json:"vdsUuid,omitempty"`
-	rest string `json:"tenantName,omitempty"`
-	rest string `json:"vdsName,omitempty"`
-	rest string `json:"cloudDomainName,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
+	TenantUuid string `json:"tenantUuid,omitempty"`
+	VdsUuid string `json:"vdsUuid,omitempty"`
+	TenantName string `json:"tenantName,omitempty"`
+	VdsName string `json:"vdsName,omitempty"`
+	CloudDomainName string `json:"cloudDomainName,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

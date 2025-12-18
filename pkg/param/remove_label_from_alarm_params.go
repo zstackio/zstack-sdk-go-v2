@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveLabelFromAlarmDetailParam RemoveLabelFromAlarm详细参数
+// RemoveLabelFromAlarmDetailParam RemoveLabelFromAlarm detail param
 type RemoveLabelFromAlarmDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveLabelFromAlarmParam RemoveLabelFromAlarm请求参数
+// RemoveLabelFromAlarmParam RemoveLabelFromAlarm request param
 type RemoveLabelFromAlarmParam struct {
 	BaseParam
-	Params RemoveLabelFromAlarmDetailParam `json:"params"` // 详细参数
+	Params RemoveLabelFromAlarmDetailParam `json:"params"`
 }
-

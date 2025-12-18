@@ -2,15 +2,14 @@
 
 package param
 
-// AddIntegrityResourceDetailParam AddIntegrityResource详细参数
+// AddIntegrityResourceDetailParam AddIntegrityResource detail param
 type AddIntegrityResourceDetailParam struct {
-	rest string `json:"resourceType" validate:"required"` // 必填
-	rest int `json:"integrityResourceDataRangeInDays,omitempty"`
+	ResourceType string `json:"resourceType" validate:"required"`
+	IntegrityResourceDataRangeInDays int `json:"integrityResourceDataRangeInDays,omitempty"`
 }
 
-// AddIntegrityResourceParam AddIntegrityResource请求参数
+// AddIntegrityResourceParam AddIntegrityResource request param
 type AddIntegrityResourceParam struct {
 	BaseParam
-	Params AddIntegrityResourceDetailParam `json:"params"` // 详细参数
+	Params AddIntegrityResourceDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// SetIAM2ProjectContainerClusterDetailParam SetIAM2ProjectContainerCluster详细参数
+// SetIAM2ProjectContainerClusterDetailParam SetIAM2ProjectContainerCluster detail param
 type SetIAM2ProjectContainerClusterDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"containerUuid" validate:"required"` // 必填
-	rest int64 `json:"clusterId" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	ContainerUuid string `json:"containerUuid" validate:"required"`
+	ClusterId int64 `json:"clusterId" validate:"required"`
 }
 
-// SetIAM2ProjectContainerClusterParam SetIAM2ProjectContainerCluster请求参数
+// SetIAM2ProjectContainerClusterParam SetIAM2ProjectContainerCluster request param
 type SetIAM2ProjectContainerClusterParam struct {
 	BaseParam
-	Params SetIAM2ProjectContainerClusterDetailParam `json:"params"` // 详细参数
+	Params SetIAM2ProjectContainerClusterDetailParam `json:"params"`
 }
-

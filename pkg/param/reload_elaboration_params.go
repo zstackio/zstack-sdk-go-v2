@@ -2,13 +2,12 @@
 
 package param
 
-// ReloadElaborationDetailParam ReloadElaboration详细参数
+// ReloadElaborationDetailParam ReloadElaboration detail param
 type ReloadElaborationDetailParam struct {
 }
 
-// ReloadElaborationParam ReloadElaboration请求参数
+// ReloadElaborationParam ReloadElaboration request param
 type ReloadElaborationParam struct {
 	BaseParam
-	Params ReloadElaborationDetailParam `json:"params"` // 详细参数
+	Params ReloadElaborationDetailParam `json:"params"`
 }
-

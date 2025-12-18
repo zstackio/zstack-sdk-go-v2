@@ -2,17 +2,16 @@
 
 package param
 
-// SetVmQxlMemoryDetailParam SetVmQxlMemory详细参数
+// SetVmQxlMemoryDetailParam SetVmQxlMemory detail param
 type SetVmQxlMemoryDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest int `json:"ram,omitempty"`
-	rest int `json:"vram,omitempty"`
-	rest int `json:"vgamem,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Ram int `json:"ram,omitempty"`
+	Vram int `json:"vram,omitempty"`
+	Vgamem int `json:"vgamem,omitempty"`
 }
 
-// SetVmQxlMemoryParam SetVmQxlMemory请求参数
+// SetVmQxlMemoryParam SetVmQxlMemory request param
 type SetVmQxlMemoryParam struct {
 	BaseParam
-	Params SetVmQxlMemoryDetailParam `json:"params"` // 详细参数
+	Params SetVmQxlMemoryDetailParam `json:"params"`
 }
-

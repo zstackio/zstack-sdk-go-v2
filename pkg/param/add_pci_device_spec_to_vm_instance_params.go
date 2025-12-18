@@ -2,16 +2,15 @@
 
 package param
 
-// AddPciDeviceSpecToVmInstanceDetailParam AddPciDeviceSpecToVmInstance详细参数
+// AddPciDeviceSpecToVmInstanceDetailParam AddPciDeviceSpecToVmInstance detail param
 type AddPciDeviceSpecToVmInstanceDetailParam struct {
-	rest string `json:"pciSpecUuid" validate:"required"` // 必填
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
-	rest int `json:"pciDeviceNumber,omitempty"`
+	PciSpecUuid string `json:"pciSpecUuid" validate:"required"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
+	PciDeviceNumber int `json:"pciDeviceNumber,omitempty"`
 }
 
-// AddPciDeviceSpecToVmInstanceParam AddPciDeviceSpecToVmInstance请求参数
+// AddPciDeviceSpecToVmInstanceParam AddPciDeviceSpecToVmInstance request param
 type AddPciDeviceSpecToVmInstanceParam struct {
 	BaseParam
-	Params AddPciDeviceSpecToVmInstanceDetailParam `json:"params"` // 详细参数
+	Params AddPciDeviceSpecToVmInstanceDetailParam `json:"params"`
 }
-

@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // UserProxyConfigInventoryView UserProxyConfig
 type UserProxyConfigInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"proxyType,omitempty"`
-	rest string `json:"proxyHost,omitempty"`
-	rest int `json:"proxyPort,omitempty"`
-	rest string `json:"proxyUsername,omitempty"`
-	rest string `json:"proxyPassword,omitempty"`
-	rest bool `json:"isEnabled,omitempty"`
-	rest string `json:"proxyProtocolVersion,omitempty"`
-	rest bool `json:"useSsl,omitempty"`
-	rest string `json:"noProxy,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ProxyType string `json:"proxyType,omitempty"`
+	ProxyHost string `json:"proxyHost,omitempty"`
+	ProxyPort int `json:"proxyPort,omitempty"`
+	ProxyUsername string `json:"proxyUsername,omitempty"`
+	ProxyPassword string `json:"proxyPassword,omitempty"`
+	IsEnabled bool `json:"isEnabled,omitempty"`
+	ProxyProtocolVersion string `json:"proxyProtocolVersion,omitempty"`
+	UseSsl bool `json:"useSsl,omitempty"`
+	NoProxy string `json:"noProxy,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

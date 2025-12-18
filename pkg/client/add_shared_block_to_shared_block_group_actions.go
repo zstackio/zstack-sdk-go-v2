@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddSharedBlockToSharedBlockGroup 操作AddSharedBlockToSharedBlockGroup
+// AddSharedBlockToSharedBlockGroup adds SharedBlockToSharedBlockGroup
 func (cli *ZSClient) AddSharedBlockToSharedBlockGroup(params param.AddSharedBlockToSharedBlockGroupParam) (*view.AddSharedBlockToSharedBlockGroupEventView, error) {
 	resp := view.AddSharedBlockToSharedBlockGroupEventView{}
 	if err := cli.Post("v1/primary-storage/sharedblockgroup/{uuid}/sharedblocks", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddSharedBlockToSharedBlockGroup(params param.AddSharedBloc
 	}
 	return &resp, nil
 }
-

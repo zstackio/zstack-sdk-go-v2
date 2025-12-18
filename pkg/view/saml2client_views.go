@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SAML2ClientInventoryView SAML2Client
 type SAML2ClientInventoryView struct {
-	rest string `json:"idpMetadataBase64,omitempty"`
-	rest string `json:"spX509Certificate,omitempty"`
-	rest string `json:"spMetadataUrl,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"clientType,omitempty"`
-	rest string `json:"loginType,omitempty"`
-	rest string `json:"loginMNUrl,omitempty"`
-	rest string `json:"redirectUrl,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
+	IdpMetadataBase64 string `json:"idpMetadataBase64,omitempty"`
+	SpX509Certificate string `json:"spX509Certificate,omitempty"`
+	SpMetadataUrl string `json:"spMetadataUrl,omitempty"`
+	State string `json:"state,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ClientType string `json:"clientType,omitempty"`
+	LoginType string `json:"loginType,omitempty"`
+	LoginMNUrl string `json:"loginMNUrl,omitempty"`
+	RedirectUrl string `json:"redirectUrl,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	Attributes []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
 }
 

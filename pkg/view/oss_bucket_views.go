@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // OssBucketInventoryView OssBucket
 type OssBucketInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"bucketName,omitempty"`
-	rest string `json:"dataCenterUuid,omitempty"`
-	rest string `json:"current,omitempty"`
-	rest string `json:"regionName,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	BucketName string `json:"bucketName,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	Current string `json:"current,omitempty"`
+	RegionName string `json:"regionName,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

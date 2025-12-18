@@ -2,17 +2,16 @@
 
 package param
 
-// AddInstanceToMonitorGroupDetailParam AddInstanceToMonitorGroup详细参数
+// AddInstanceToMonitorGroupDetailParam AddInstanceToMonitorGroup detail param
 type AddInstanceToMonitorGroupDetailParam struct {
-	rest string `json:"instanceUuid" validate:"required"` // 必填
-	rest string `json:"groupUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	InstanceUuid string `json:"instanceUuid" validate:"required"`
+	GroupUuid string `json:"groupUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddInstanceToMonitorGroupParam AddInstanceToMonitorGroup请求参数
+// AddInstanceToMonitorGroupParam AddInstanceToMonitorGroup request param
 type AddInstanceToMonitorGroupParam struct {
 	BaseParam
-	Params AddInstanceToMonitorGroupDetailParam `json:"params"` // 详细参数
+	Params AddInstanceToMonitorGroupDetailParam `json:"params"`
 }
-

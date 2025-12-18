@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ResourceInventoryView Resource
 type ResourceInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"resourceName,omitempty"`
-	rest string `json:"resourceType,omitempty"`
-	rest string `json:"concreteResourceType,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ResourceName string `json:"resourceName,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	ConcreteResourceType string `json:"concreteResourceType,omitempty"`
 }
 

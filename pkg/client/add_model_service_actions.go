@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddModelService 操作AddModelService
+// AddModelService adds ModelService
 func (cli *ZSClient) AddModelService(params param.AddModelServiceParam) (*view.AddModelServiceEventView, error) {
 	resp := view.AddModelServiceEventView{}
 	if err := cli.Post("v1/ai/model-services", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddModelService(params param.AddModelServiceParam) (*view.A
 	}
 	return &resp, nil
 }
-

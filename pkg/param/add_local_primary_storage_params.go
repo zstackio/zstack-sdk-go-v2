@@ -2,20 +2,19 @@
 
 package param
 
-// AddLocalPrimaryStorageDetailParam AddLocalPrimaryStorage详细参数
+// AddLocalPrimaryStorageDetailParam AddLocalPrimaryStorage detail param
 type AddLocalPrimaryStorageDetailParam struct {
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Url string `json:"url" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddLocalPrimaryStorageParam AddLocalPrimaryStorage请求参数
+// AddLocalPrimaryStorageParam AddLocalPrimaryStorage request param
 type AddLocalPrimaryStorageParam struct {
 	BaseParam
-	Params AddLocalPrimaryStorageDetailParam `json:"params"` // 详细参数
+	Params AddLocalPrimaryStorageDetailParam `json:"params"`
 }
-

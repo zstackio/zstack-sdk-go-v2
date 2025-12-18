@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // RoleInventoryView Role
 type RoleInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"identity,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []RolePolicyStatementInventoryView `json:"statements,omitempty"`
-	rest []RolePolicyRefInventoryView `json:"policies,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Identity string `json:"identity,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Statements []RolePolicyStatementInventoryView `json:"statements,omitempty"`
+	Policies []RolePolicyRefInventoryView `json:"policies,omitempty"`
 }
 

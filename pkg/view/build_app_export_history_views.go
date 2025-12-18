@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BuildAppExportHistoryInventoryView BuildAppExportHistory
 type BuildAppExportHistoryInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"buildAppUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"path,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest string `json:"md5Sum,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	BuildAppUuid string `json:"buildAppUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Path string `json:"path,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	Md5Sum string `json:"md5Sum,omitempty"`
+	Version string `json:"version,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

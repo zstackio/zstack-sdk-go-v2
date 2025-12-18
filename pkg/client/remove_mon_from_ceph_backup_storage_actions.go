@@ -3,14 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// RemoveMonFromCephBackupStorage 操作RemoveMonFromCephBackupStorage
+// RemoveMonFromCephBackupStorage removes MonFromCephBackupStorage
 func (cli *ZSClient) RemoveMonFromCephBackupStorage(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/backup-storage/ceph/{uuid}/mons", uuid, string(deleteMode))
 }
-

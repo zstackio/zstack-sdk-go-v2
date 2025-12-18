@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SchedulerJobGroupJobRefInventoryView SchedulerJobGroupJobRef
 type SchedulerJobGroupJobRefInventoryView struct {
-	rest string `json:"schedulerJobGroupUuid,omitempty"`
-	rest string `json:"schedulerJobUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	SchedulerJobGroupUuid string `json:"schedulerJobGroupUuid,omitempty"`
+	SchedulerJobUuid string `json:"schedulerJobUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

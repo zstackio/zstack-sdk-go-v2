@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ScsiLunHostRefInventoryView ScsiLunHostRef
 type ScsiLunHostRefInventoryView struct {
-	rest string `json:"scsiLunUuid,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"path,omitempty"`
-	rest string `json:"hctl,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ScsiLunUuid string `json:"scsiLunUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	Path string `json:"path,omitempty"`
+	Hctl string `json:"hctl,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,15 +2,14 @@
 
 package param
 
-// AddDnsToL3NetworkDetailParam AddDnsToL3Network详细参数
+// AddDnsToL3NetworkDetailParam AddDnsToL3Network detail param
 type AddDnsToL3NetworkDetailParam struct {
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest string `json:"dns" validate:"required"` // 必填
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	Dns string `json:"dns" validate:"required"`
 }
 
-// AddDnsToL3NetworkParam AddDnsToL3Network请求参数
+// AddDnsToL3NetworkParam AddDnsToL3Network request param
 type AddDnsToL3NetworkParam struct {
 	BaseParam
-	Params AddDnsToL3NetworkDetailParam `json:"params"` // 详细参数
+	Params AddDnsToL3NetworkDetailParam `json:"params"`
 }
-

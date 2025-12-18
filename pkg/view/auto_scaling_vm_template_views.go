@@ -4,29 +4,31 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AutoScalingVmTemplateInventoryView AutoScalingVmTemplate
 type AutoScalingVmTemplateInventoryView struct {
-	rest string `json:"vmInstanceName,omitempty"`
-	rest string `json:"vmInstanceType,omitempty"`
-	rest string `json:"vmInstanceDescription,omitempty"`
-	rest string `json:"vmInstanceOfferingUuid,omitempty"`
-	rest string `json:"imageUuid,omitempty"`
-	rest []string `json:"l3NetworkUuids,omitempty"`
-	rest string `json:"rootDiskOfferingUuid,omitempty"`
-	rest []string `json:"dataDiskOfferingUuids,omitempty"`
-	rest string `json:"vmInstanceZoneUuid,omitempty"`
-	rest string `json:"vmInstanceClusterUuid,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"primaryStorageUuidForRootVolume,omitempty"`
-	rest string `json:"defaultL3NetworkUuid,omitempty"`
-	rest string `json:"strategy,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest []string `json:"systemTags,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VmInstanceName string `json:"vmInstanceName,omitempty"`
+	VmInstanceType string `json:"vmInstanceType,omitempty"`
+	VmInstanceDescription string `json:"vmInstanceDescription,omitempty"`
+	VmInstanceOfferingUuid string `json:"vmInstanceOfferingUuid,omitempty"`
+	ImageUuid string `json:"imageUuid,omitempty"`
+	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
+	RootDiskOfferingUuid string `json:"rootDiskOfferingUuid,omitempty"`
+	DataDiskOfferingUuids []string `json:"dataDiskOfferingUuids,omitempty"`
+	VmInstanceZoneUuid string `json:"vmInstanceZoneUuid,omitempty"`
+	VmInstanceClusterUuid string `json:"vmInstanceClusterUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	PrimaryStorageUuidForRootVolume string `json:"primaryStorageUuidForRootVolume,omitempty"`
+	DefaultL3NetworkUuid string `json:"defaultL3NetworkUuid,omitempty"`
+	Strategy string `json:"strategy,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	SystemTags []string `json:"systemTags,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

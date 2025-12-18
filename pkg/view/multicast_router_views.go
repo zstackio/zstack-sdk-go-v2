@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MulticastRouterInventoryView MulticastRouter
 type MulticastRouterInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []MulticastRouterRendezvousPointInventoryView `json:"rpGroups,omitempty"`
-	rest []MulticastRouterVpcVRouterRefInventoryView `json:"vpcVrs,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	RpGroups []MulticastRouterRendezvousPointInventoryView `json:"rpGroups,omitempty"`
+	VpcVrs []MulticastRouterVpcVRouterRefInventoryView `json:"vpcVrs,omitempty"`
 }
 

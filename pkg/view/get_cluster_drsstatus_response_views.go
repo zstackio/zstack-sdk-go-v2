@@ -1,0 +1,10 @@
+// Copyright (c) ZStack.io, Inc.
+
+package view
+
+// GetClusterDRSStatusView GetClusterDRSStatus
+type GetClusterDRSStatusView struct {
+	HostLoadOverThreshold []interface{} `json:"hostLoadOverThreshold,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+

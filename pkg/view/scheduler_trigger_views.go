@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SchedulerTriggerInventoryView SchedulerTrigger
 type SchedulerTriggerInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"cron,omitempty"`
-	rest string `json:"schedulerType,omitempty"`
-	rest int `json:"schedulerInterval,omitempty"`
-	rest int `json:"repeatCount,omitempty"`
-	rest time.Time `json:"startTime,omitempty"`
-	rest time.Time `json:"stopTime,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []string `json:"jobsUuid,omitempty"`
-	rest []string `json:"jobGroupsUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Cron string `json:"cron,omitempty"`
+	SchedulerType string `json:"schedulerType,omitempty"`
+	SchedulerInterval int `json:"schedulerInterval,omitempty"`
+	RepeatCount int `json:"repeatCount,omitempty"`
+	StartTime time.Time `json:"startTime,omitempty"`
+	StopTime time.Time `json:"stopTime,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	JobsUuid []string `json:"jobsUuid,omitempty"`
+	JobGroupsUuid []string `json:"jobGroupsUuid,omitempty"`
 }
 

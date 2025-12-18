@@ -2,14 +2,13 @@
 
 package param
 
-// RerunLongJobDetailParam RerunLongJob详细参数
+// RerunLongJobDetailParam RerunLongJob detail param
 type RerunLongJobDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RerunLongJobParam RerunLongJob请求参数
+// RerunLongJobParam RerunLongJob request param
 type RerunLongJobParam struct {
 	BaseParam
-	Params RerunLongJobDetailParam `json:"params"` // 详细参数
+	Params RerunLongJobDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// SyncEcsSecurityGroupRuleFromRemoteDetailParam SyncEcsSecurityGroupRuleFromRemote详细参数
+// SyncEcsSecurityGroupRuleFromRemoteDetailParam SyncEcsSecurityGroupRuleFromRemote detail param
 type SyncEcsSecurityGroupRuleFromRemoteDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncEcsSecurityGroupRuleFromRemoteParam SyncEcsSecurityGroupRuleFromRemote请求参数
+// SyncEcsSecurityGroupRuleFromRemoteParam SyncEcsSecurityGroupRuleFromRemote request param
 type SyncEcsSecurityGroupRuleFromRemoteParam struct {
 	BaseParam
-	Params SyncEcsSecurityGroupRuleFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncEcsSecurityGroupRuleFromRemoteDetailParam `json:"params"`
 }
-

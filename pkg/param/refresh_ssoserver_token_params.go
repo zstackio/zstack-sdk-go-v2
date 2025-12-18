@@ -2,15 +2,14 @@
 
 package param
 
-// RefreshSSOServerTokenDetailParam RefreshSSOServerToken详细参数
+// RefreshSSOServerTokenDetailParam RefreshSSOServerToken detail param
 type RefreshSSOServerTokenDetailParam struct {
-	rest string `json:"token" validate:"required"` // 必填
-	rest int64 `json:"duration,omitempty"`
+	Token string `json:"token" validate:"required"`
+	Duration int64 `json:"duration,omitempty"`
 }
 
-// RefreshSSOServerTokenParam RefreshSSOServerToken请求参数
+// RefreshSSOServerTokenParam RefreshSSOServerToken request param
 type RefreshSSOServerTokenParam struct {
 	BaseParam
-	Params RefreshSSOServerTokenDetailParam `json:"params"` // 详细参数
+	Params RefreshSSOServerTokenDetailParam `json:"params"`
 }
-

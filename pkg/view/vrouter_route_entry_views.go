@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VRouterRouteEntryInventoryView VRouterRouteEntry
 type VRouterRouteEntryInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"routeTableUuid,omitempty"`
-	rest string `json:"destination,omitempty"`
-	rest string `json:"target,omitempty"`
-	rest int `json:"distance,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	RouteTableUuid string `json:"routeTableUuid,omitempty"`
+	Destination string `json:"destination,omitempty"`
+	Target string `json:"target,omitempty"`
+	Distance int `json:"distance,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

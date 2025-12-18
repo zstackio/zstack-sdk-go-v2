@@ -2,14 +2,13 @@
 
 package param
 
-// SyncVCenterDetailParam SyncVCenter详细参数
+// SyncVCenterDetailParam SyncVCenter detail param
 type SyncVCenterDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// SyncVCenterParam SyncVCenter请求参数
+// SyncVCenterParam SyncVCenter request param
 type SyncVCenterParam struct {
 	BaseParam
-	Params SyncVCenterDetailParam `json:"params"` // 详细参数
+	Params SyncVCenterDetailParam `json:"params"`
 }
-

@@ -4,23 +4,25 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // OvnControllerVmOfferingInventoryView OvnControllerVmOffering
 type OvnControllerVmOfferingInventoryView struct {
-	rest string `json:"managementNetworkUuid,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"imageUuid,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest int `json:"cpuNum,omitempty"`
-	rest int `json:"cpuSpeed,omitempty"`
-	rest int64 `json:"memorySize,omitempty"`
-	rest int64 `json:"reservedMemorySize,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"allocatorStrategy,omitempty"`
-	rest int `json:"sortKey,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"state,omitempty"`
+	ManagementNetworkUuid string `json:"managementNetworkUuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	ImageUuid string `json:"imageUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	CpuSpeed int `json:"cpuSpeed,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty"`
+	ReservedMemorySize int64 `json:"reservedMemorySize,omitempty"`
+	Type string `json:"type,omitempty"`
+	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
+	SortKey int `json:"sortKey,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	State string `json:"state,omitempty"`
 }
 

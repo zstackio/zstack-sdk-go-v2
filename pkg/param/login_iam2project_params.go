@@ -2,15 +2,14 @@
 
 package param
 
-// LoginIAM2ProjectDetailParam LoginIAM2Project详细参数
+// LoginIAM2ProjectDetailParam LoginIAM2Project detail param
 type LoginIAM2ProjectDetailParam struct {
-	rest string `json:"projectName" validate:"required"` // 必填
-	rest map[string]string `json:"clientInfo,omitempty"`
+	ProjectName string `json:"projectName" validate:"required"`
+	ClientInfo map[string]string `json:"clientInfo,omitempty"`
 }
 
-// LoginIAM2ProjectParam LoginIAM2Project请求参数
+// LoginIAM2ProjectParam LoginIAM2Project request param
 type LoginIAM2ProjectParam struct {
 	BaseParam
-	Params LoginIAM2ProjectDetailParam `json:"params"` // 详细参数
+	Params LoginIAM2ProjectDetailParam `json:"params"`
 }
-

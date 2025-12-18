@@ -2,15 +2,14 @@
 
 package param
 
-// AddIAM2VirtualIDsToOrganizationDetailParam AddIAM2VirtualIDsToOrganization详细参数
+// AddIAM2VirtualIDsToOrganizationDetailParam AddIAM2VirtualIDsToOrganization detail param
 type AddIAM2VirtualIDsToOrganizationDetailParam struct {
-	rest []string `json:"virtualIDUuids" validate:"required"` // 必填
-	rest string `json:"organizationUuid" validate:"required"` // 必填
+	VirtualIDUuids []string `json:"virtualIDUuids" validate:"required"`
+	OrganizationUuid string `json:"organizationUuid" validate:"required"`
 }
 
-// AddIAM2VirtualIDsToOrganizationParam AddIAM2VirtualIDsToOrganization请求参数
+// AddIAM2VirtualIDsToOrganizationParam AddIAM2VirtualIDsToOrganization request param
 type AddIAM2VirtualIDsToOrganizationParam struct {
 	BaseParam
-	Params AddIAM2VirtualIDsToOrganizationDetailParam `json:"params"` // 详细参数
+	Params AddIAM2VirtualIDsToOrganizationDetailParam `json:"params"`
 }
-

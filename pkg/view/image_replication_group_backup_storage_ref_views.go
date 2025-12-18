@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ImageReplicationGroupBackupStorageRefInventoryView ImageReplicationGroupBackupStorageRef
 type ImageReplicationGroupBackupStorageRefInventoryView struct {
-	rest string `json:"replicationGroupUuid,omitempty"`
-	rest string `json:"backupStorageUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ReplicationGroupUuid string `json:"replicationGroupUuid,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

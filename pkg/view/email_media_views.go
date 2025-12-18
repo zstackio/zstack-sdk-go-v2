@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // EmailMediaInventoryView EmailMedia
 type EmailMediaInventoryView struct {
-	rest string `json:"smtpServer,omitempty"`
-	rest int `json:"smtpPort,omitempty"`
-	rest string `json:"username,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
+	SmtpServer string `json:"smtpServer,omitempty"`
+	SmtpPort int `json:"smtpPort,omitempty"`
+	Username string `json:"username,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
 }
 

@@ -4,23 +4,25 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VipInventoryView Vip
 type VipInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest string `json:"ip,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"gateway,omitempty"`
-	rest string `json:"netmask,omitempty"`
-	rest int `json:"prefixLen,omitempty"`
-	rest string `json:"serviceProvider,omitempty"`
-	rest []string `json:"peerL3NetworkUuids,omitempty"`
-	rest []VipNetworkServicesRefInventoryView `json:"servicesRefs,omitempty"`
-	rest string `json:"useFor,omitempty"`
-	rest bool `json:"system,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	State string `json:"state,omitempty"`
+	Gateway string `json:"gateway,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
+	PrefixLen int `json:"prefixLen,omitempty"`
+	ServiceProvider string `json:"serviceProvider,omitempty"`
+	PeerL3NetworkUuids []string `json:"peerL3NetworkUuids,omitempty"`
+	ServicesRefs []VipNetworkServicesRefInventoryView `json:"servicesRefs,omitempty"`
+	UseFor string `json:"useFor,omitempty"`
+	System bool `json:"system,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

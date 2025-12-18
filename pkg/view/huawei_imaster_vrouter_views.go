@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // HuaweiIMasterVRouterInventoryView HuaweiIMasterVRouter
 type HuaweiIMasterVRouterInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"logicalNetworkId,omitempty"`
-	rest string `json:"tenantId,omitempty"`
-	rest string `json:"fabricUuid,omitempty"`
-	rest string `json:"sdnControllerUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	LogicalNetworkId string `json:"logicalNetworkId,omitempty"`
+	TenantId string `json:"tenantId,omitempty"`
+	FabricUuid string `json:"fabricUuid,omitempty"`
+	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

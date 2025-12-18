@@ -2,14 +2,13 @@
 
 package param
 
-// CheckFirewallRuleConfigFileDetailParam CheckFirewallRuleConfigFile详细参数
+// CheckFirewallRuleConfigFileDetailParam CheckFirewallRuleConfigFile detail param
 type CheckFirewallRuleConfigFileDetailParam struct {
-	rest string `json:"ruleInfo" validate:"required"` // 必填
+	RuleInfo string `json:"ruleInfo" validate:"required"`
 }
 
-// CheckFirewallRuleConfigFileParam CheckFirewallRuleConfigFile请求参数
+// CheckFirewallRuleConfigFileParam CheckFirewallRuleConfigFile request param
 type CheckFirewallRuleConfigFileParam struct {
 	BaseParam
-	Params CheckFirewallRuleConfigFileDetailParam `json:"params"` // 详细参数
+	Params CheckFirewallRuleConfigFileDetailParam `json:"params"`
 }
-

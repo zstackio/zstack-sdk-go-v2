@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BareMetal2ChassisOfferingInventoryView BareMetal2ChassisOffering
 type BareMetal2ChassisOfferingInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"architecture,omitempty"`
-	rest string `json:"cpuModelName,omitempty"`
-	rest int `json:"cpuNum,omitempty"`
-	rest int64 `json:"memorySize,omitempty"`
-	rest string `json:"bootMode,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"provisionType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	CpuModelName string `json:"cpuModelName,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty"`
+	BootMode string `json:"bootMode,omitempty"`
+	State string `json:"state,omitempty"`
+	ProvisionType string `json:"provisionType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

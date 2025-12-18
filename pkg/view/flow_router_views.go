@@ -4,10 +4,12 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // FlowRouterInventoryView FlowRouter
 type FlowRouterInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest int64 `json:"systemID,omitempty"`
-	rest string `json:"type,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	SystemID int64 `json:"systemID,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 

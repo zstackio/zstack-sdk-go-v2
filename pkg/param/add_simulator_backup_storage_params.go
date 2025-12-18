@@ -2,22 +2,21 @@
 
 package param
 
-// AddSimulatorBackupStorageDetailParam AddSimulatorBackupStorage详细参数
+// AddSimulatorBackupStorageDetailParam AddSimulatorBackupStorage detail param
 type AddSimulatorBackupStorageDetailParam struct {
-	rest int64 `json:"totalCapacity,omitempty"`
-	rest int64 `json:"availableCapacity,omitempty"`
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest bool `json:"importImages,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	Url string `json:"url" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ImportImages bool `json:"importImages,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddSimulatorBackupStorageParam AddSimulatorBackupStorage请求参数
+// AddSimulatorBackupStorageParam AddSimulatorBackupStorage request param
 type AddSimulatorBackupStorageParam struct {
 	BaseParam
-	Params AddSimulatorBackupStorageDetailParam `json:"params"` // 详细参数
+	Params AddSimulatorBackupStorageDetailParam `json:"params"`
 }
-

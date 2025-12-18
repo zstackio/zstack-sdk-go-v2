@@ -2,15 +2,14 @@
 
 package param
 
-// UnprotectVmInstanceRecoveryPointDetailParam UnprotectVmInstanceRecoveryPoint详细参数
+// UnprotectVmInstanceRecoveryPointDetailParam UnprotectVmInstanceRecoveryPoint detail param
 type UnprotectVmInstanceRecoveryPointDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
-	rest int64 `json:"groupId" validate:"required"` // 必填
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
+	GroupId int64 `json:"groupId" validate:"required"`
 }
 
-// UnprotectVmInstanceRecoveryPointParam UnprotectVmInstanceRecoveryPoint请求参数
+// UnprotectVmInstanceRecoveryPointParam UnprotectVmInstanceRecoveryPoint request param
 type UnprotectVmInstanceRecoveryPointParam struct {
 	BaseParam
-	Params UnprotectVmInstanceRecoveryPointDetailParam `json:"params"` // 详细参数
+	Params UnprotectVmInstanceRecoveryPointDetailParam `json:"params"`
 }
-

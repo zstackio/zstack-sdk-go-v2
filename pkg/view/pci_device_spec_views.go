@@ -4,27 +4,29 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PciDeviceSpecInventoryView PciDeviceSpec
 type PciDeviceSpecInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"vendorId,omitempty"`
-	rest string `json:"vendor,omitempty"`
-	rest string `json:"deviceId,omitempty"`
-	rest string `json:"device,omitempty"`
-	rest string `json:"subvendorId,omitempty"`
-	rest string `json:"subdeviceId,omitempty"`
-	rest string `json:"ramSize,omitempty"`
-	rest int `json:"maxPartNum,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest bool `json:"isVirtual,omitempty"`
-	rest bool `json:"allowResourceConfigWithMultipleDevices,omitempty"`
-	rest string `json:"romVersion,omitempty"`
-	rest string `json:"romMd5sum,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest int `json:"maxAvailableDevicesPerHost,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	VendorId string `json:"vendorId,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	Device string `json:"device,omitempty"`
+	SubvendorId string `json:"subvendorId,omitempty"`
+	SubdeviceId string `json:"subdeviceId,omitempty"`
+	RamSize string `json:"ramSize,omitempty"`
+	MaxPartNum int `json:"maxPartNum,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	IsVirtual bool `json:"isVirtual,omitempty"`
+	AllowResourceConfigWithMultipleDevices bool `json:"allowResourceConfigWithMultipleDevices,omitempty"`
+	RomVersion string `json:"romVersion,omitempty"`
+	RomMd5sum string `json:"romMd5sum,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
 }
 

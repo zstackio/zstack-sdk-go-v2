@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MonitorTriggerActionRefInventoryView MonitorTriggerActionRef
 type MonitorTriggerActionRefInventoryView struct {
-	rest string `json:"triggerUuid,omitempty"`
-	rest string `json:"actionUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	TriggerUuid string `json:"triggerUuid,omitempty"`
+	ActionUuid string `json:"actionUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

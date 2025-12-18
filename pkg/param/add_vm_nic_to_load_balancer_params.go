@@ -2,15 +2,14 @@
 
 package param
 
-// AddVmNicToLoadBalancerDetailParam AddVmNicToLoadBalancer详细参数
+// AddVmNicToLoadBalancerDetailParam AddVmNicToLoadBalancer detail param
 type AddVmNicToLoadBalancerDetailParam struct {
-	rest []string `json:"vmNicUuids" validate:"required"` // 必填
-	rest string `json:"listenerUuid" validate:"required"` // 必填
+	VmNicUuids []string `json:"vmNicUuids" validate:"required"`
+	ListenerUuid string `json:"listenerUuid" validate:"required"`
 }
 
-// AddVmNicToLoadBalancerParam AddVmNicToLoadBalancer请求参数
+// AddVmNicToLoadBalancerParam AddVmNicToLoadBalancer request param
 type AddVmNicToLoadBalancerParam struct {
 	BaseParam
-	Params AddVmNicToLoadBalancerDetailParam `json:"params"` // 详细参数
+	Params AddVmNicToLoadBalancerDetailParam `json:"params"`
 }
-

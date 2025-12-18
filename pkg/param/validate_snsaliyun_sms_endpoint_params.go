@@ -2,15 +2,14 @@
 
 package param
 
-// ValidateSNSAliyunSmsEndpointDetailParam ValidateSNSAliyunSmsEndpoint详细参数
+// ValidateSNSAliyunSmsEndpointDetailParam ValidateSNSAliyunSmsEndpoint detail param
 type ValidateSNSAliyunSmsEndpointDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"phoneNumbers" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	PhoneNumbers []string `json:"phoneNumbers" validate:"required"`
 }
 
-// ValidateSNSAliyunSmsEndpointParam ValidateSNSAliyunSmsEndpoint请求参数
+// ValidateSNSAliyunSmsEndpointParam ValidateSNSAliyunSmsEndpoint request param
 type ValidateSNSAliyunSmsEndpointParam struct {
 	BaseParam
-	Params ValidateSNSAliyunSmsEndpointDetailParam `json:"params"` // 详细参数
+	Params ValidateSNSAliyunSmsEndpointDetailParam `json:"params"`
 }
-

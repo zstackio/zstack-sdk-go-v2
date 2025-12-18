@@ -4,21 +4,23 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // HostNetworkInterfaceLldpRefInventoryView HostNetworkInterfaceLldpRef
 type HostNetworkInterfaceLldpRefInventoryView struct {
-	rest string `json:"lldpUuid,omitempty"`
-	rest string `json:"chassisId,omitempty"`
-	rest int `json:"timeToLive,omitempty"`
-	rest string `json:"managementAddress,omitempty"`
-	rest string `json:"systemName,omitempty"`
-	rest string `json:"systemDescription,omitempty"`
-	rest string `json:"systemCapabilities,omitempty"`
-	rest string `json:"portId,omitempty"`
-	rest string `json:"portDescription,omitempty"`
-	rest int `json:"vlanId,omitempty"`
-	rest int64 `json:"aggregationPortId,omitempty"`
-	rest int `json:"mtu,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	LldpUuid string `json:"lldpUuid,omitempty"`
+	ChassisId string `json:"chassisId,omitempty"`
+	TimeToLive int `json:"timeToLive,omitempty"`
+	ManagementAddress string `json:"managementAddress,omitempty"`
+	SystemName string `json:"systemName,omitempty"`
+	SystemDescription string `json:"systemDescription,omitempty"`
+	SystemCapabilities string `json:"systemCapabilities,omitempty"`
+	PortId string `json:"portId,omitempty"`
+	PortDescription string `json:"portDescription,omitempty"`
+	VlanId int `json:"vlanId,omitempty"`
+	AggregationPortId int64 `json:"aggregationPortId,omitempty"`
+	Mtu int `json:"mtu,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

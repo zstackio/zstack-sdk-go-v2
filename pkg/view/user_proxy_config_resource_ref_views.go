@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // UserProxyConfigResourceRefInventoryView UserProxyConfigResourceRef
 type UserProxyConfigResourceRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"proxyUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ProxyUuid string `json:"proxyUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

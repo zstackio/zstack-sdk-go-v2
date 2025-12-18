@@ -2,15 +2,14 @@
 
 package param
 
-// RegisterLicenseServerDetailParam RegisterLicenseServer详细参数
+// RegisterLicenseServerDetailParam RegisterLicenseServer detail param
 type RegisterLicenseServerDetailParam struct {
-	rest string `json:"ip" validate:"required"` // 必填
-	rest map[string]interface{} `json:"loginParams" validate:"required"` // 必填
+	Ip string `json:"ip" validate:"required"`
+	LoginParams map[string]interface{} `json:"loginParams" validate:"required"`
 }
 
-// RegisterLicenseServerParam RegisterLicenseServer请求参数
+// RegisterLicenseServerParam RegisterLicenseServer request param
 type RegisterLicenseServerParam struct {
 	BaseParam
-	Params RegisterLicenseServerDetailParam `json:"params"` // 详细参数
+	Params RegisterLicenseServerDetailParam `json:"params"`
 }
-

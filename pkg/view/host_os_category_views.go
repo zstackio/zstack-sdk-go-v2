@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // HostOsCategoryInventoryView HostOsCategory
 type HostOsCategoryInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"architecture,omitempty"`
-	rest string `json:"osReleaseVersion,omitempty"`
-	rest []KvmHostHypervisorMetadataInventoryView `json:"metadataList,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	OsReleaseVersion string `json:"osReleaseVersion,omitempty"`
+	MetadataList []KvmHostHypervisorMetadataInventoryView `json:"metadataList,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

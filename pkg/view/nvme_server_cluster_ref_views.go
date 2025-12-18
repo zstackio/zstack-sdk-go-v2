@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // NvmeServerClusterRefInventoryView NvmeServerClusterRef
 type NvmeServerClusterRefInventoryView struct {
-	rest string `json:"nvmeServerUuid,omitempty"`
-	rest string `json:"clusterUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	NvmeServerUuid string `json:"nvmeServerUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

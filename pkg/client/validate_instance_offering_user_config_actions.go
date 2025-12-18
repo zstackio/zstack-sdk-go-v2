@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ValidateInstanceOfferingUserConfig 操作ValidateInstanceOfferingUserConfig
+// ValidateInstanceOfferingUserConfig operates on ValidateInstanceOfferingUserConfig
 func (cli *ZSClient) ValidateInstanceOfferingUserConfig(uuid string, params param.ValidateInstanceOfferingUserConfigParam) (*view.ValidateInstanceOfferingUserConfigEventView, error) {
 	resp := view.ValidateInstanceOfferingUserConfigEventView{}
 	if err := cli.Put("v1/billings/accounts/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ValidateInstanceOfferingUserConfig(uuid string, params para
 	}
 	return &resp, nil
 }
-

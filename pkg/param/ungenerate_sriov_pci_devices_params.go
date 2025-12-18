@@ -2,14 +2,13 @@
 
 package param
 
-// UngenerateSriovPciDevicesDetailParam UngenerateSriovPciDevices详细参数
+// UngenerateSriovPciDevicesDetailParam UngenerateSriovPciDevices detail param
 type UngenerateSriovPciDevicesDetailParam struct {
-	rest string `json:"pciDeviceUuid" validate:"required"` // 必填
+	PciDeviceUuid string `json:"pciDeviceUuid" validate:"required"`
 }
 
-// UngenerateSriovPciDevicesParam UngenerateSriovPciDevices请求参数
+// UngenerateSriovPciDevicesParam UngenerateSriovPciDevices request param
 type UngenerateSriovPciDevicesParam struct {
 	BaseParam
-	Params UngenerateSriovPciDevicesDetailParam `json:"params"` // 详细参数
+	Params UngenerateSriovPciDevicesDetailParam `json:"params"`
 }
-

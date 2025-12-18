@@ -2,15 +2,14 @@
 
 package param
 
-// LogOutDetailParam LogOut详细参数
+// LogOutDetailParam LogOut detail param
 type LogOutDetailParam struct {
-	rest string `json:"sessionUuid,omitempty"`
-	rest map[string]string `json:"clientInfo,omitempty"`
+	SessionUuid string `json:"sessionUuid,omitempty"`
+	ClientInfo map[string]string `json:"clientInfo,omitempty"`
 }
 
-// LogOutParam LogOut请求参数
+// LogOutParam LogOut request param
 type LogOutParam struct {
 	BaseParam
-	Params LogOutDetailParam `json:"params"` // 详细参数
+	Params LogOutDetailParam `json:"params"`
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// BootstrapMiniHost 操作BootstrapMiniHost
+// BootstrapMiniHost operates on BootstrapMiniHost
 func (cli *ZSClient) BootstrapMiniHost(params param.BootstrapMiniHostParam) (*view.BootstrapMiniHostEventView, error) {
 	resp := view.BootstrapMiniHostEventView{}
 	if err := cli.Post("v1/mini-clusters/hosts", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) BootstrapMiniHost(params param.BootstrapMiniHostParam) (*vi
 	}
 	return &resp, nil
 }
-

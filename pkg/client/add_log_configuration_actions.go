@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddLogConfiguration 操作AddLogConfiguration
+// AddLogConfiguration adds LogConfiguration
 func (cli *ZSClient) AddLogConfiguration(params param.AddLogConfigurationParam) (*view.AddLogConfigurationEventView, error) {
 	resp := view.AddLogConfigurationEventView{}
 	if err := cli.Post("v1/log/configurations", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddLogConfiguration(params param.AddLogConfigurationParam) 
 	}
 	return &resp, nil
 }
-

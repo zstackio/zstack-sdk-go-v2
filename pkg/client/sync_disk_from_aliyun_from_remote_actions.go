@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncDiskFromAliyunFromRemote 操作SyncDiskFromAliyunFromRemote
+// SyncDiskFromAliyunFromRemote operates on SyncDiskFromAliyunFromRemote
 func (cli *ZSClient) SyncDiskFromAliyunFromRemote(params param.SyncDiskFromAliyunFromRemoteParam) (*view.SyncDiskFromAliyunFromRemoteEventView, error) {
 	resp := view.SyncDiskFromAliyunFromRemoteEventView{}
 	if err := cli.Post("v1/hybrid/aliyun/disk/{identityUuid}/sync", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncDiskFromAliyunFromRemote(params param.SyncDiskFromAliyu
 	}
 	return &resp, nil
 }
-

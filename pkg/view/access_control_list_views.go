@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AccessControlListInventoryView AccessControlList
 type AccessControlListInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest int `json:"ipVersion,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []AccessControlListEntryInventoryView `json:"entries,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Entries []AccessControlListEntryInventoryView `json:"entries,omitempty"`
 }
 

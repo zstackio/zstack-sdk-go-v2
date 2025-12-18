@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddTicketTypesToTicketFlowCollection 操作AddTicketTypesToTicketFlowCollection
+// AddTicketTypesToTicketFlowCollection adds TicketTypesToTicketFlowCollection
 func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(params param.AddTicketTypesToTicketFlowCollectionParam) (*view.AddTicketTypesToTicketFlowCollectionEventView, error) {
 	resp := view.AddTicketTypesToTicketFlowCollectionEventView{}
 	if err := cli.Post("v1/tickets/flow-collections/{ticketFlowCollectionUuid}/ticket-types", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(params param.AddTicket
 	}
 	return &resp, nil
 }
-

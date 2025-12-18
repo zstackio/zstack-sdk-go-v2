@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ExecuteAutoScalingRule 操作ExecuteAutoScalingRule
+// ExecuteAutoScalingRule operates on ExecuteAutoScalingRule
 func (cli *ZSClient) ExecuteAutoScalingRule(uuid string, params param.ExecuteAutoScalingRuleParam) (*view.ExecuteAutoScalingRuleEventView, error) {
 	resp := view.ExecuteAutoScalingRuleEventView{}
 	if err := cli.Put("v1/autoscaling/rules/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ExecuteAutoScalingRule(uuid string, params param.ExecuteAut
 	}
 	return &resp, nil
 }
-

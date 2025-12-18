@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectConsoleProxyAgentDetailParam ReconnectConsoleProxyAgent详细参数
+// ReconnectConsoleProxyAgentDetailParam ReconnectConsoleProxyAgent detail param
 type ReconnectConsoleProxyAgentDetailParam struct {
-	rest []string `json:"agentUuids,omitempty"`
+	AgentUuids []string `json:"agentUuids,omitempty"`
 }
 
-// ReconnectConsoleProxyAgentParam ReconnectConsoleProxyAgent请求参数
+// ReconnectConsoleProxyAgentParam ReconnectConsoleProxyAgent request param
 type ReconnectConsoleProxyAgentParam struct {
 	BaseParam
-	Params ReconnectConsoleProxyAgentDetailParam `json:"params"` // 详细参数
+	Params ReconnectConsoleProxyAgentDetailParam `json:"params"`
 }
-

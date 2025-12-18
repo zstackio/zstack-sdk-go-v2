@@ -4,10 +4,12 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ModelServiceRefInventoryView ModelServiceRef
 type ModelServiceRefInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"modelUuid,omitempty"`
-	rest string `json:"modelServiceUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ModelUuid string `json:"modelUuid,omitempty"`
+	ModelServiceUuid string `json:"modelServiceUuid,omitempty"`
 }
 

@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AlertInventoryView Alert
 type AlertInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"triggerUuid,omitempty"`
-	rest string `json:"targetResourceUuid,omitempty"`
-	rest string `json:"content,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	TriggerUuid string `json:"triggerUuid,omitempty"`
+	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
+	Content string `json:"content,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

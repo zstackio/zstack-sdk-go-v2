@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveCertificateFromLoadBalancerListenerDetailParam RemoveCertificateFromLoadBalancerListener详细参数
+// RemoveCertificateFromLoadBalancerListenerDetailParam RemoveCertificateFromLoadBalancerListener detail param
 type RemoveCertificateFromLoadBalancerListenerDetailParam struct {
-	rest string `json:"certificateUuid" validate:"required"` // 必填
-	rest string `json:"listenerUuid" validate:"required"` // 必填
+	CertificateUuid string `json:"certificateUuid" validate:"required"`
+	ListenerUuid string `json:"listenerUuid" validate:"required"`
 }
 
-// RemoveCertificateFromLoadBalancerListenerParam RemoveCertificateFromLoadBalancerListener请求参数
+// RemoveCertificateFromLoadBalancerListenerParam RemoveCertificateFromLoadBalancerListener request param
 type RemoveCertificateFromLoadBalancerListenerParam struct {
 	BaseParam
-	Params RemoveCertificateFromLoadBalancerListenerDetailParam `json:"params"` // 详细参数
+	Params RemoveCertificateFromLoadBalancerListenerDetailParam `json:"params"`
 }
-

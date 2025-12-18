@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LocalStorageResourceRefInventoryView LocalStorageResourceRef
 type LocalStorageResourceRefInventoryView struct {
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest string `json:"resourceType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

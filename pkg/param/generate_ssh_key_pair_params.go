@@ -2,15 +2,14 @@
 
 package param
 
-// GenerateSshKeyPairDetailParam GenerateSshKeyPair详细参数
+// GenerateSshKeyPairDetailParam GenerateSshKeyPair detail param
 type GenerateSshKeyPairDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
 }
 
-// GenerateSshKeyPairParam GenerateSshKeyPair请求参数
+// GenerateSshKeyPairParam GenerateSshKeyPair request param
 type GenerateSshKeyPairParam struct {
 	BaseParam
-	Params GenerateSshKeyPairDetailParam `json:"params"` // 详细参数
+	Params GenerateSshKeyPairDetailParam `json:"params"`
 }
-

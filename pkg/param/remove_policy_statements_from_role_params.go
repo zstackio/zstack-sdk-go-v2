@@ -2,15 +2,14 @@
 
 package param
 
-// RemovePolicyStatementsFromRoleDetailParam RemovePolicyStatementsFromRole详细参数
+// RemovePolicyStatementsFromRoleDetailParam RemovePolicyStatementsFromRole detail param
 type RemovePolicyStatementsFromRoleDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"policyStatementUuids" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	PolicyStatementUuids []string `json:"policyStatementUuids" validate:"required"`
 }
 
-// RemovePolicyStatementsFromRoleParam RemovePolicyStatementsFromRole请求参数
+// RemovePolicyStatementsFromRoleParam RemovePolicyStatementsFromRole request param
 type RemovePolicyStatementsFromRoleParam struct {
 	BaseParam
-	Params RemovePolicyStatementsFromRoleDetailParam `json:"params"` // 详细参数
+	Params RemovePolicyStatementsFromRoleDetailParam `json:"params"`
 }
-

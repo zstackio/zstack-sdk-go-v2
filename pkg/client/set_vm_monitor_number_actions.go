@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetVmMonitorNumber 操作SetVmMonitorNumber
+// SetVmMonitorNumber operates on SetVmMonitorNumber
 func (cli *ZSClient) SetVmMonitorNumber(uuid string, params param.SetVmMonitorNumberParam) (*view.SetVmMonitorNumberEventView, error) {
 	resp := view.SetVmMonitorNumberEventView{}
 	if err := cli.Put("v1/vm-instances/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetVmMonitorNumber(uuid string, params param.SetVmMonitorNu
 	}
 	return &resp, nil
 }
-

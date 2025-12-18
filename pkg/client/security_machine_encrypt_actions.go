@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SecurityMachineEncrypt 操作SecurityMachineEncrypt
+// SecurityMachineEncrypt operates on SecurityMachineEncrypt
 func (cli *ZSClient) SecurityMachineEncrypt(params param.SecurityMachineEncryptParam) (*view.SecurityMachineEncryptEventView, error) {
 	resp := view.SecurityMachineEncryptEventView{}
 	if err := cli.Post("v1/security-machine/encrypt/actions", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SecurityMachineEncrypt(params param.SecurityMachineEncryptP
 	}
 	return &resp, nil
 }
-

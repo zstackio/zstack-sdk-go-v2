@@ -2,14 +2,13 @@
 
 package param
 
-// SyncPrimaryStorageCapacityDetailParam SyncPrimaryStorageCapacity详细参数
+// SyncPrimaryStorageCapacityDetailParam SyncPrimaryStorageCapacity detail param
 type SyncPrimaryStorageCapacityDetailParam struct {
-	rest string `json:"primaryStorageUuid" validate:"required"` // 必填
+	PrimaryStorageUuid string `json:"primaryStorageUuid" validate:"required"`
 }
 
-// SyncPrimaryStorageCapacityParam SyncPrimaryStorageCapacity请求参数
+// SyncPrimaryStorageCapacityParam SyncPrimaryStorageCapacity request param
 type SyncPrimaryStorageCapacityParam struct {
 	BaseParam
-	Params SyncPrimaryStorageCapacityDetailParam `json:"params"` // 详细参数
+	Params SyncPrimaryStorageCapacityDetailParam `json:"params"`
 }
-

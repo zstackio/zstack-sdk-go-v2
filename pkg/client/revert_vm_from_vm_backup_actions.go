@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// RevertVmFromVmBackup 操作RevertVmFromVmBackup
+// RevertVmFromVmBackup operates on RevertVmFromVmBackup
 func (cli *ZSClient) RevertVmFromVmBackup(uuid string, params param.RevertVmFromVmBackupParam) (*view.RevertVmFromVmBackupEventView, error) {
 	resp := view.RevertVmFromVmBackupEventView{}
 	if err := cli.Put("v1/vm-backups/{groupUuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) RevertVmFromVmBackup(uuid string, params param.RevertVmFrom
 	}
 	return &resp, nil
 }
-

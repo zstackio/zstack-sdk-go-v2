@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // DRSAdviceInventoryView DRSAdvice
 type DRSAdviceInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"drsUuid,omitempty"`
-	rest string `json:"adviceGroupUuid,omitempty"`
-	rest string `json:"vmUuid,omitempty"`
-	rest string `json:"vmSourceHostUuid,omitempty"`
-	rest string `json:"vmTargetHostUuid,omitempty"`
-	rest string `json:"reason,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	DrsUuid string `json:"drsUuid,omitempty"`
+	AdviceGroupUuid string `json:"adviceGroupUuid,omitempty"`
+	VmUuid string `json:"vmUuid,omitempty"`
+	VmSourceHostUuid string `json:"vmSourceHostUuid,omitempty"`
+	VmTargetHostUuid string `json:"vmTargetHostUuid,omitempty"`
+	Reason string `json:"reason,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

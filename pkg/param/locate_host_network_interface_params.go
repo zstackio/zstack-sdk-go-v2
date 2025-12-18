@@ -2,16 +2,15 @@
 
 package param
 
-// LocateHostNetworkInterfaceDetailParam LocateHostNetworkInterface详细参数
+// LocateHostNetworkInterfaceDetailParam LocateHostNetworkInterface detail param
 type LocateHostNetworkInterfaceDetailParam struct {
-	rest string `json:"hostUuid" validate:"required"` // 必填
-	rest string `json:"networkInterfaceName" validate:"required"` // 必填
-	rest int64 `json:"interval,omitempty"`
+	HostUuid string `json:"hostUuid" validate:"required"`
+	NetworkInterfaceName string `json:"networkInterfaceName" validate:"required"`
+	Interval int64 `json:"interval,omitempty"`
 }
 
-// LocateHostNetworkInterfaceParam LocateHostNetworkInterface请求参数
+// LocateHostNetworkInterfaceParam LocateHostNetworkInterface request param
 type LocateHostNetworkInterfaceParam struct {
 	BaseParam
-	Params LocateHostNetworkInterfaceDetailParam `json:"params"` // 详细参数
+	Params LocateHostNetworkInterfaceDetailParam `json:"params"`
 }
-

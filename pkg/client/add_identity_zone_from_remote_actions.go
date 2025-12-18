@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddIdentityZoneFromRemote 操作AddIdentityZoneFromRemote
+// AddIdentityZoneFromRemote adds IdentityZoneFromRemote
 func (cli *ZSClient) AddIdentityZoneFromRemote(params param.AddIdentityZoneFromRemoteParam) (*view.AddIdentityZoneFromRemoteEventView, error) {
 	resp := view.AddIdentityZoneFromRemoteEventView{}
 	if err := cli.Post("v1/hybrid/identity-zone", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddIdentityZoneFromRemote(params param.AddIdentityZoneFromR
 	}
 	return &resp, nil
 }
-

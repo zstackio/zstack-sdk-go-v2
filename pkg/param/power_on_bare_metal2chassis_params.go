@@ -2,15 +2,14 @@
 
 package param
 
-// PowerOnBareMetal2ChassisDetailParam PowerOnBareMetal2Chassis详细参数
+// PowerOnBareMetal2ChassisDetailParam PowerOnBareMetal2Chassis detail param
 type PowerOnBareMetal2ChassisDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"bootDev,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	BootDev string `json:"bootDev,omitempty"`
 }
 
-// PowerOnBareMetal2ChassisParam PowerOnBareMetal2Chassis请求参数
+// PowerOnBareMetal2ChassisParam PowerOnBareMetal2Chassis request param
 type PowerOnBareMetal2ChassisParam struct {
 	BaseParam
-	Params PowerOnBareMetal2ChassisDetailParam `json:"params"` // 详细参数
+	Params PowerOnBareMetal2ChassisDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// SsoClientPushDataDetailParam SsoClientPushData详细参数
+// SsoClientPushDataDetailParam SsoClientPushData detail param
 type SsoClientPushDataDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"dataType,omitempty"`
-	rest string `json:"serverUrl,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	DataType string `json:"dataType,omitempty"`
+	ServerUrl string `json:"serverUrl,omitempty"`
 }
 
-// SsoClientPushDataParam SsoClientPushData请求参数
+// SsoClientPushDataParam SsoClientPushData request param
 type SsoClientPushDataParam struct {
 	BaseParam
-	Params SsoClientPushDataDetailParam `json:"params"` // 详细参数
+	Params SsoClientPushDataDetailParam `json:"params"`
 }
-

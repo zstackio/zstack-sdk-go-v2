@@ -2,15 +2,14 @@
 
 package param
 
-// PutMetricDataDetailParam PutMetricData详细参数
+// PutMetricDataDetailParam PutMetricData detail param
 type PutMetricDataDetailParam struct {
-	rest string `json:"namespace" validate:"required"` // 必填
-	rest []interface{} `json:"data" validate:"required"` // 必填
+	Namespace string `json:"namespace" validate:"required"`
+	Data []interface{} `json:"data" validate:"required"`
 }
 
-// PutMetricDataParam PutMetricData请求参数
+// PutMetricDataParam PutMetricData request param
 type PutMetricDataParam struct {
 	BaseParam
-	Params PutMetricDataDetailParam `json:"params"` // 详细参数
+	Params PutMetricDataDetailParam `json:"params"`
 }
-

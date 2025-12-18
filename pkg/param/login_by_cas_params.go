@@ -2,17 +2,16 @@
 
 package param
 
-// LoginByCasDetailParam LoginByCas详细参数
+// LoginByCasDetailParam LoginByCas detail param
 type LoginByCasDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
-	rest map[string]string `json:"clientInfo,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	Type string `json:"type" validate:"required"`
+	ClientInfo map[string]string `json:"clientInfo,omitempty"`
 }
 
-// LoginByCasParam LoginByCas请求参数
+// LoginByCasParam LoginByCas request param
 type LoginByCasParam struct {
 	BaseParam
-	Params LoginByCasDetailParam `json:"params"` // 详细参数
+	Params LoginByCasDetailParam `json:"params"`
 }
-

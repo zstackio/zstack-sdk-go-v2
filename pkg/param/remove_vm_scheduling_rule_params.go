@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveVmSchedulingRuleDetailParam RemoveVmSchedulingRule详细参数
+// RemoveVmSchedulingRuleDetailParam RemoveVmSchedulingRule detail param
 type RemoveVmSchedulingRuleDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveVmSchedulingRuleParam RemoveVmSchedulingRule请求参数
+// RemoveVmSchedulingRuleParam RemoveVmSchedulingRule request param
 type RemoveVmSchedulingRuleParam struct {
 	BaseParam
-	Params RemoveVmSchedulingRuleDetailParam `json:"params"` // 详细参数
+	Params RemoveVmSchedulingRuleDetailParam `json:"params"`
 }
-

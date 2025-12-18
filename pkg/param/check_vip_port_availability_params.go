@@ -2,18 +2,17 @@
 
 package param
 
-// CheckVipPortAvailabilityDetailParam CheckVipPortAvailability详细参数
+// CheckVipPortAvailabilityDetailParam CheckVipPortAvailability detail param
 type CheckVipPortAvailabilityDetailParam struct {
-	rest string `json:"vipUuid" validate:"required"` // 必填
-	rest int `json:"port" validate:"required"` // 必填
-	rest string `json:"protocolType" validate:"required"` // 必填
-	rest int `json:"limit,omitempty"`
-	rest int `json:"start,omitempty"`
+	VipUuid string `json:"vipUuid" validate:"required"`
+	Port int `json:"port" validate:"required"`
+	ProtocolType string `json:"protocolType" validate:"required"`
+	Limit int `json:"limit,omitempty"`
+	Start int `json:"start,omitempty"`
 }
 
-// CheckVipPortAvailabilityParam CheckVipPortAvailability请求参数
+// CheckVipPortAvailabilityParam CheckVipPortAvailability request param
 type CheckVipPortAvailabilityParam struct {
 	BaseParam
-	Params CheckVipPortAvailabilityDetailParam `json:"params"` // 详细参数
+	Params CheckVipPortAvailabilityDetailParam `json:"params"`
 }
-

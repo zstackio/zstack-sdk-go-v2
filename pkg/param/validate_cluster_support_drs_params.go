@@ -2,14 +2,13 @@
 
 package param
 
-// ValidateClusterSupportDRSDetailParam ValidateClusterSupportDRS详细参数
+// ValidateClusterSupportDRSDetailParam ValidateClusterSupportDRS detail param
 type ValidateClusterSupportDRSDetailParam struct {
-	rest string `json:"clusterUuid" validate:"required"` // 必填
+	ClusterUuid string `json:"clusterUuid" validate:"required"`
 }
 
-// ValidateClusterSupportDRSParam ValidateClusterSupportDRS请求参数
+// ValidateClusterSupportDRSParam ValidateClusterSupportDRS request param
 type ValidateClusterSupportDRSParam struct {
 	BaseParam
-	Params ValidateClusterSupportDRSDetailParam `json:"params"` // 详细参数
+	Params ValidateClusterSupportDRSDetailParam `json:"params"`
 }
-

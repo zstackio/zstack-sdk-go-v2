@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncIdentityFromRemote 操作SyncIdentityFromRemote
+// SyncIdentityFromRemote operates on SyncIdentityFromRemote
 func (cli *ZSClient) SyncIdentityFromRemote(params param.SyncIdentityFromRemoteParam) (*view.SyncIdentityFromRemoteEventView, error) {
 	var resp view.SyncIdentityFromRemoteEventView
 	if err := cli.Get("v1/hybrid/identity-zone/{uuid}/sync", "", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncIdentityFromRemote(params param.SyncIdentityFromRemoteP
 	}
 	return &resp, nil
 }
-

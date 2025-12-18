@@ -2,16 +2,15 @@
 
 package param
 
-// AddBackendServerToServerGroupDetailParam AddBackendServerToServerGroup详细参数
+// AddBackendServerToServerGroupDetailParam AddBackendServerToServerGroup detail param
 type AddBackendServerToServerGroupDetailParam struct {
-	rest string `json:"serverGroupUuid" validate:"required"` // 必填
-	rest []interface{} `json:"vmNics,omitempty"`
-	rest []interface{} `json:"servers,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid" validate:"required"`
+	VmNics []interface{} `json:"vmNics,omitempty"`
+	Servers []interface{} `json:"servers,omitempty"`
 }
 
-// AddBackendServerToServerGroupParam AddBackendServerToServerGroup请求参数
+// AddBackendServerToServerGroupParam AddBackendServerToServerGroup request param
 type AddBackendServerToServerGroupParam struct {
 	BaseParam
-	Params AddBackendServerToServerGroupDetailParam `json:"params"` // 详细参数
+	Params AddBackendServerToServerGroupDetailParam `json:"params"`
 }
-

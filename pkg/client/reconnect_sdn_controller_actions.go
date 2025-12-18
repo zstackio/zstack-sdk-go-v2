@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ReconnectSdnController 操作ReconnectSdnController
+// ReconnectSdnController operates on ReconnectSdnController
 func (cli *ZSClient) ReconnectSdnController(uuid string, params param.ReconnectSdnControllerParam) (*view.ReconnectSdnControllerEventView, error) {
 	resp := view.ReconnectSdnControllerEventView{}
 	if err := cli.Put("v1/sdn-controllers/{sdnControllerUuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ReconnectSdnController(uuid string, params param.ReconnectS
 	}
 	return &resp, nil
 }
-

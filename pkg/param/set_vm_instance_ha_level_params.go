@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmInstanceHaLevelDetailParam SetVmInstanceHaLevel详细参数
+// SetVmInstanceHaLevelDetailParam SetVmInstanceHaLevel detail param
 type SetVmInstanceHaLevelDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"level" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Level string `json:"level" validate:"required"`
 }
 
-// SetVmInstanceHaLevelParam SetVmInstanceHaLevel请求参数
+// SetVmInstanceHaLevelParam SetVmInstanceHaLevel request param
 type SetVmInstanceHaLevelParam struct {
 	BaseParam
-	Params SetVmInstanceHaLevelDetailParam `json:"params"` // 详细参数
+	Params SetVmInstanceHaLevelDetailParam `json:"params"`
 }
-

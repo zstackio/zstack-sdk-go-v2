@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// MoveDirectory 操作MoveDirectory
+// MoveDirectory operates on MoveDirectory
 func (cli *ZSClient) MoveDirectory(uuid string, params param.MoveDirectoryParam) (*view.MoveDirectoryEventView, error) {
 	resp := view.MoveDirectoryEventView{}
 	if err := cli.Put("v1/move/directory", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) MoveDirectory(uuid string, params param.MoveDirectoryParam)
 	}
 	return &resp, nil
 }
-

@@ -2,20 +2,19 @@
 
 package param
 
-// AddV2VConversionHostDetailParam AddV2VConversionHost详细参数
+// AddV2VConversionHostDetailParam AddV2VConversionHost detail param
 type AddV2VConversionHostDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"hostUuid" validate:"required"` // 必填
-	rest string `json:"storagePath" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type" validate:"required"`
+	HostUuid string `json:"hostUuid" validate:"required"`
+	StoragePath string `json:"storagePath" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddV2VConversionHostParam AddV2VConversionHost请求参数
+// AddV2VConversionHostParam AddV2VConversionHost request param
 type AddV2VConversionHostParam struct {
 	BaseParam
-	Params AddV2VConversionHostDetailParam `json:"params"` // 详细参数
+	Params AddV2VConversionHostDetailParam `json:"params"`
 }
-

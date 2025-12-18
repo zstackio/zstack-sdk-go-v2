@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// InspectBareMetal2Chassis 操作InspectBareMetal2Chassis
+// InspectBareMetal2Chassis operates on InspectBareMetal2Chassis
 func (cli *ZSClient) InspectBareMetal2Chassis(uuid string, params param.InspectBareMetal2ChassisParam) (*view.InspectBareMetal2ChassisEventView, error) {
 	resp := view.InspectBareMetal2ChassisEventView{}
 	if err := cli.Put("v1/baremetal2/chassis/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) InspectBareMetal2Chassis(uuid string, params param.InspectB
 	}
 	return &resp, nil
 }
-

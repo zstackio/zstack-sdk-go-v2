@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncDataCenterFromRemote 操作SyncDataCenterFromRemote
+// SyncDataCenterFromRemote operates on SyncDataCenterFromRemote
 func (cli *ZSClient) SyncDataCenterFromRemote(params param.SyncDataCenterFromRemoteParam) (*view.SyncDataCenterFromRemoteEventView, error) {
 	var resp view.SyncDataCenterFromRemoteEventView
 	if err := cli.Get("v1/hybrid/data-center/{uuid}/sync", "", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncDataCenterFromRemote(params param.SyncDataCenterFromRem
 	}
 	return &resp, nil
 }
-

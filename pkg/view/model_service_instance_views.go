@@ -4,23 +4,25 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ModelServiceInstanceInventoryView ModelServiceInstance
 type ModelServiceInstanceInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"modelServiceGroupUuid,omitempty"`
-	rest string `json:"yaml,omitempty"`
-	rest string `json:"k8sResourceYaml,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest map[string]string `json:"urlMaps,omitempty"`
-	rest string `json:"internalUrl,omitempty"`
-	rest string `json:"jupyterUrl,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest int `json:"nodeRank,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest VmInstanceInventoryView `json:"vm,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	ModelServiceGroupUuid string `json:"modelServiceGroupUuid,omitempty"`
+	Yaml string `json:"yaml,omitempty"`
+	K8sResourceYaml string `json:"k8sResourceYaml,omitempty"`
+	Status string `json:"status,omitempty"`
+	Url string `json:"url,omitempty"`
+	UrlMaps map[string]string `json:"urlMaps,omitempty"`
+	InternalUrl string `json:"internalUrl,omitempty"`
+	JupyterUrl string `json:"jupyterUrl,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	NodeRank int `json:"nodeRank,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	Vm VmInstanceInventoryView `json:"vm,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

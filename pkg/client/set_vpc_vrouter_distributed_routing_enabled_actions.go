@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetVpcVRouterDistributedRoutingEnabled 操作SetVpcVRouterDistributedRoutingEnabled
+// SetVpcVRouterDistributedRoutingEnabled operates on SetVpcVRouterDistributedRoutingEnabled
 func (cli *ZSClient) SetVpcVRouterDistributedRoutingEnabled(params param.SetVpcVRouterDistributedRoutingEnabledParam) (*view.SetVpcVRouterDistributedRoutingEnabledEventView, error) {
 	resp := view.SetVpcVRouterDistributedRoutingEnabledEventView{}
 	if err := cli.Post("v1/vpc/virtual-routers/{uuid}/distributed-routing", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetVpcVRouterDistributedRoutingEnabled(params param.SetVpcV
 	}
 	return &resp, nil
 }
-

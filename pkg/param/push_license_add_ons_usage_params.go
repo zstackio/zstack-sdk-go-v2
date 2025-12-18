@@ -2,14 +2,13 @@
 
 package param
 
-// PushLicenseAddOnsUsageDetailParam PushLicenseAddOnsUsage详细参数
+// PushLicenseAddOnsUsageDetailParam PushLicenseAddOnsUsage detail param
 type PushLicenseAddOnsUsageDetailParam struct {
-	rest string `json:"addOnsUsage" validate:"required"` // 必填
+	AddOnsUsage string `json:"addOnsUsage" validate:"required"`
 }
 
-// PushLicenseAddOnsUsageParam PushLicenseAddOnsUsage请求参数
+// PushLicenseAddOnsUsageParam PushLicenseAddOnsUsage request param
 type PushLicenseAddOnsUsageParam struct {
 	BaseParam
-	Params PushLicenseAddOnsUsageDetailParam `json:"params"` // 详细参数
+	Params PushLicenseAddOnsUsageDetailParam `json:"params"`
 }
-

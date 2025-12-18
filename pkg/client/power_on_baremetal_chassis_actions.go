@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// PowerOnBaremetalChassis 操作PowerOnBaremetalChassis
+// PowerOnBaremetalChassis operates on PowerOnBaremetalChassis
 func (cli *ZSClient) PowerOnBaremetalChassis(uuid string, params param.PowerOnBaremetalChassisParam) (*view.PowerOnBaremetalChassisEventView, error) {
 	resp := view.PowerOnBaremetalChassisEventView{}
 	if err := cli.Put("v1/baremetal/chassis/{chassisUuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) PowerOnBaremetalChassis(uuid string, params param.PowerOnBa
 	}
 	return &resp, nil
 }
-

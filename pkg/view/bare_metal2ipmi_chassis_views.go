@@ -4,26 +4,28 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BareMetal2IpmiChassisInventoryView BareMetal2IpmiChassis
 type BareMetal2IpmiChassisInventoryView struct {
-	rest string `json:"ipmiAddress,omitempty"`
-	rest int `json:"ipmiPort,omitempty"`
-	rest string `json:"ipmiUsername,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"clusterUuid,omitempty"`
-	rest string `json:"chassisOfferingUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"powerStatus,omitempty"`
-	rest string `json:"provisionType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []BareMetal2ChassisNicInventoryView `json:"chassisNics,omitempty"`
-	rest []BareMetal2ChassisDiskInventoryView `json:"chassisDisks,omitempty"`
-	rest BareMetal2ChassisOfferingInventoryView `json:"chassisOffering,omitempty"`
+	IpmiAddress string `json:"ipmiAddress,omitempty"`
+	IpmiPort int `json:"ipmiPort,omitempty"`
+	IpmiUsername string `json:"ipmiUsername,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	ChassisOfferingUuid string `json:"chassisOfferingUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	PowerStatus string `json:"powerStatus,omitempty"`
+	ProvisionType string `json:"provisionType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	ChassisNics []BareMetal2ChassisNicInventoryView `json:"chassisNics,omitempty"`
+	ChassisDisks []BareMetal2ChassisDiskInventoryView `json:"chassisDisks,omitempty"`
+	ChassisOffering BareMetal2ChassisOfferingInventoryView `json:"chassisOffering,omitempty"`
 }
 

@@ -3,18 +3,15 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddAliyunNasAccessGroup 操作AddAliyunNasAccessGroup
-func (cli *ZSClient) AddAliyunNasAccessGroup(uuid string, params param.AddAliyunNasAccessGroupParam) (*view.AddAliyunNasAccessGroupEventView, error) {
+// AddAliyunNasAccessGroup adds AliyunNasAccessGroup
+func (cli *ZSClient) AddAliyunNasAccessGroup(params param.AddAliyunNasAccessGroupParam) (*view.AddAliyunNasAccessGroupEventView, error) {
 	resp := view.AddAliyunNasAccessGroupEventView{}
-	if err := cli.Put("v1/nas/aliyun/access", uuid, params, &resp); err != nil {
+	if err := cli.Post("v1/nas/aliyun/access", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-

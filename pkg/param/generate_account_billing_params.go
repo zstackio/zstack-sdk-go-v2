@@ -2,14 +2,13 @@
 
 package param
 
-// GenerateAccountBillingDetailParam GenerateAccountBilling详细参数
+// GenerateAccountBillingDetailParam GenerateAccountBilling detail param
 type GenerateAccountBillingDetailParam struct {
-	rest string `json:"accountUuid" validate:"required"` // 必填
+	AccountUuid string `json:"accountUuid" validate:"required"`
 }
 
-// GenerateAccountBillingParam GenerateAccountBilling请求参数
+// GenerateAccountBillingParam GenerateAccountBilling request param
 type GenerateAccountBillingParam struct {
 	BaseParam
-	Params GenerateAccountBillingDetailParam `json:"params"` // 详细参数
+	Params GenerateAccountBillingDetailParam `json:"params"`
 }
-

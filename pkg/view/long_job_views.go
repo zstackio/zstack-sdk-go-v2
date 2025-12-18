@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LongJobInventoryView LongJob
 type LongJobInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"apiId,omitempty"`
-	rest string `json:"jobName,omitempty"`
-	rest string `json:"jobData,omitempty"`
-	rest string `json:"jobResult,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"targetResourceUuid,omitempty"`
-	rest string `json:"managementNodeUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest int64 `json:"executeTime,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ApiId string `json:"apiId,omitempty"`
+	JobName string `json:"jobName,omitempty"`
+	JobData string `json:"jobData,omitempty"`
+	JobResult string `json:"jobResult,omitempty"`
+	State string `json:"state,omitempty"`
+	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
+	ManagementNodeUuid string `json:"managementNodeUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	ExecuteTime int64 `json:"executeTime,omitempty"`
 }
 

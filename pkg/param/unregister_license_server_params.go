@@ -2,14 +2,13 @@
 
 package param
 
-// UnregisterLicenseServerDetailParam UnregisterLicenseServer详细参数
+// UnregisterLicenseServerDetailParam UnregisterLicenseServer detail param
 type UnregisterLicenseServerDetailParam struct {
-	rest string `json:"clientAuthorizedNodeUuid,omitempty"`
+	ClientAuthorizedNodeUuid string `json:"clientAuthorizedNodeUuid,omitempty"`
 }
 
-// UnregisterLicenseServerParam UnregisterLicenseServer请求参数
+// UnregisterLicenseServerParam UnregisterLicenseServer request param
 type UnregisterLicenseServerParam struct {
 	BaseParam
-	Params UnregisterLicenseServerDetailParam `json:"params"` // 详细参数
+	Params UnregisterLicenseServerDetailParam `json:"params"`
 }
-

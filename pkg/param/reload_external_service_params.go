@@ -2,14 +2,13 @@
 
 package param
 
-// ReloadExternalServiceDetailParam ReloadExternalService详细参数
+// ReloadExternalServiceDetailParam ReloadExternalService detail param
 type ReloadExternalServiceDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
+	Name string `json:"name" validate:"required"`
 }
 
-// ReloadExternalServiceParam ReloadExternalService请求参数
+// ReloadExternalServiceParam ReloadExternalService request param
 type ReloadExternalServiceParam struct {
 	BaseParam
-	Params ReloadExternalServiceDetailParam `json:"params"` // 详细参数
+	Params ReloadExternalServiceDetailParam `json:"params"`
 }
-

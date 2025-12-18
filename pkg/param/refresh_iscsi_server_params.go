@@ -2,14 +2,13 @@
 
 package param
 
-// RefreshIscsiServerDetailParam RefreshIscsiServer详细参数
+// RefreshIscsiServerDetailParam RefreshIscsiServer detail param
 type RefreshIscsiServerDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RefreshIscsiServerParam RefreshIscsiServer请求参数
+// RefreshIscsiServerParam RefreshIscsiServer request param
 type RefreshIscsiServerParam struct {
 	BaseParam
-	Params RefreshIscsiServerDetailParam `json:"params"` // 详细参数
+	Params RefreshIscsiServerDetailParam `json:"params"`
 }
-

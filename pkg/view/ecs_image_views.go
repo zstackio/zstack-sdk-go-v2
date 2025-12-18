@@ -4,21 +4,23 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // EcsImageInventoryView EcsImage
 type EcsImageInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"localImageUuid,omitempty"`
-	rest string `json:"ecsImageId,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest int64 `json:"ecsImageSize,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"dataCenterUuid,omitempty"`
-	rest string `json:"platform,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"ossMd5Sum,omitempty"`
-	rest string `json:"format,omitempty"`
-	rest string `json:"osName,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	LocalImageUuid string `json:"localImageUuid,omitempty"`
+	EcsImageId string `json:"ecsImageId,omitempty"`
+	Name string `json:"name,omitempty"`
+	EcsImageSize int64 `json:"ecsImageSize,omitempty"`
+	Description string `json:"description,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	Type string `json:"type,omitempty"`
+	OssMd5Sum string `json:"ossMd5Sum,omitempty"`
+	Format string `json:"format,omitempty"`
+	OsName string `json:"osName,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

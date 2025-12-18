@@ -2,16 +2,15 @@
 
 package param
 
-// UploadFileToVmDetailParam UploadFileToVm详细参数
+// UploadFileToVmDetailParam UploadFileToVm detail param
 type UploadFileToVmDetailParam struct {
-	rest []string `json:"vmInstanceUuids" validate:"required"` // 必填
-	rest string `json:"fileContent" validate:"required"` // 必填
-	rest string `json:"remotePath" validate:"required"` // 必填
+	VmInstanceUuids []string `json:"vmInstanceUuids" validate:"required"`
+	FileContent string `json:"fileContent" validate:"required"`
+	RemotePath string `json:"remotePath" validate:"required"`
 }
 
-// UploadFileToVmParam UploadFileToVm请求参数
+// UploadFileToVmParam UploadFileToVm request param
 type UploadFileToVmParam struct {
 	BaseParam
-	Params UploadFileToVmDetailParam `json:"params"` // 详细参数
+	Params UploadFileToVmDetailParam `json:"params"`
 }
-

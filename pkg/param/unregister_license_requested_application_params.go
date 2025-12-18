@@ -2,14 +2,13 @@
 
 package param
 
-// UnregisterLicenseRequestedApplicationDetailParam UnregisterLicenseRequestedApplication详细参数
+// UnregisterLicenseRequestedApplicationDetailParam UnregisterLicenseRequestedApplication detail param
 type UnregisterLicenseRequestedApplicationDetailParam struct {
-	rest string `json:"appId" validate:"required"` // 必填
+	AppId string `json:"appId" validate:"required"`
 }
 
-// UnregisterLicenseRequestedApplicationParam UnregisterLicenseRequestedApplication请求参数
+// UnregisterLicenseRequestedApplicationParam UnregisterLicenseRequestedApplication request param
 type UnregisterLicenseRequestedApplicationParam struct {
 	BaseParam
-	Params UnregisterLicenseRequestedApplicationDetailParam `json:"params"` // 详细参数
+	Params UnregisterLicenseRequestedApplicationDetailParam `json:"params"`
 }
-

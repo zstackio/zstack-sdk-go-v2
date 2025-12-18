@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SSOServerTokenInventoryView SSOServerToken
 type SSOServerTokenInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"accessToken,omitempty"`
-	rest string `json:"idToken,omitempty"`
-	rest string `json:"refreshToken,omitempty"`
-	rest string `json:"userUuid,omitempty"`
-	rest string `json:"sessionUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AccessToken string `json:"accessToken,omitempty"`
+	IdToken string `json:"idToken,omitempty"`
+	RefreshToken string `json:"refreshToken,omitempty"`
+	UserUuid string `json:"userUuid,omitempty"`
+	SessionUuid string `json:"sessionUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

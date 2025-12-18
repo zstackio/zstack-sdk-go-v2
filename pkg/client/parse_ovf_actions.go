@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ParseOvf 操作ParseOvf
+// ParseOvf operates on ParseOvf
 func (cli *ZSClient) ParseOvf(params param.ParseOvfParam) (*view.ParseOvfView, error) {
 	resp := view.ParseOvfView{}
 	if err := cli.Post("v1/ovf/parse", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ParseOvf(params param.ParseOvfParam) (*view.ParseOvfView, e
 	}
 	return &resp, nil
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmEmulatorPinningDetailParam SetVmEmulatorPinning详细参数
+// SetVmEmulatorPinningDetailParam SetVmEmulatorPinning detail param
 type SetVmEmulatorPinningDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"emulatorPinning" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	EmulatorPinning string `json:"emulatorPinning" validate:"required"`
 }
 
-// SetVmEmulatorPinningParam SetVmEmulatorPinning请求参数
+// SetVmEmulatorPinningParam SetVmEmulatorPinning request param
 type SetVmEmulatorPinningParam struct {
 	BaseParam
-	Params SetVmEmulatorPinningDetailParam `json:"params"` // 详细参数
+	Params SetVmEmulatorPinningDetailParam `json:"params"`
 }
-

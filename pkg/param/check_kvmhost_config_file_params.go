@@ -2,14 +2,13 @@
 
 package param
 
-// CheckKVMHostConfigFileDetailParam CheckKVMHostConfigFile详细参数
+// CheckKVMHostConfigFileDetailParam CheckKVMHostConfigFile detail param
 type CheckKVMHostConfigFileDetailParam struct {
-	rest string `json:"hostInfo" validate:"required"` // 必填
+	HostInfo string `json:"hostInfo" validate:"required"`
 }
 
-// CheckKVMHostConfigFileParam CheckKVMHostConfigFile请求参数
+// CheckKVMHostConfigFileParam CheckKVMHostConfigFile request param
 type CheckKVMHostConfigFileParam struct {
 	BaseParam
-	Params CheckKVMHostConfigFileDetailParam `json:"params"` // 详细参数
+	Params CheckKVMHostConfigFileDetailParam `json:"params"`
 }
-

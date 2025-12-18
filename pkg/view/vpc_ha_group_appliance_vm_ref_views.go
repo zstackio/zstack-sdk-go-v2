@@ -4,9 +4,11 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcHaGroupApplianceVmRefInventoryView VpcHaGroupApplianceVmRef
 type VpcHaGroupApplianceVmRefInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vpcHaRouterUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VpcHaRouterUuid string `json:"vpcHaRouterUuid,omitempty"`
 }
 

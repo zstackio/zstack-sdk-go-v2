@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncVolumeSize 操作SyncVolumeSize
+// SyncVolumeSize operates on SyncVolumeSize
 func (cli *ZSClient) SyncVolumeSize(uuid string, params param.SyncVolumeSizeParam) (*view.SyncVolumeSizeEventView, error) {
 	resp := view.SyncVolumeSizeEventView{}
 	if err := cli.Put("v1/volumes/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncVolumeSize(uuid string, params param.SyncVolumeSizePara
 	}
 	return &resp, nil
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetIpOnHostNetworkInterface 操作SetIpOnHostNetworkInterface
+// SetIpOnHostNetworkInterface operates on SetIpOnHostNetworkInterface
 func (cli *ZSClient) SetIpOnHostNetworkInterface(params param.SetIpOnHostNetworkInterfaceParam) (*view.SetIpOnHostNetworkInterfaceEventView, error) {
 	resp := view.SetIpOnHostNetworkInterfaceEventView{}
 	if err := cli.Post("v1/hosts/nics/{interfaceUuid}/ip", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetIpOnHostNetworkInterface(params param.SetIpOnHostNetwork
 	}
 	return &resp, nil
 }
-

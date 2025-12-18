@@ -4,9 +4,11 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PciDevicePciDeviceOfferingRefInventoryView PciDevicePciDeviceOfferingRef
 type PciDevicePciDeviceOfferingRefInventoryView struct {
-	rest string `json:"pciDeviceUuid,omitempty"`
-	rest string `json:"pciDeviceOfferingUuid,omitempty"`
+	PciDeviceUuid string `json:"pciDeviceUuid,omitempty"`
+	PciDeviceOfferingUuid string `json:"pciDeviceOfferingUuid,omitempty"`
 }
 

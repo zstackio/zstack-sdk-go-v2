@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AliyunProxyVpcInventoryView AliyunProxyVpc
 type AliyunProxyVpcInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vpcName,omitempty"`
-	rest string `json:"cidrBlock,omitempty"`
-	rest string `json:"vRouterUuid,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest []AliyunProxyVSwitchInventoryView `json:"aliyunProxyVSwitches,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest bool `json:"isDefault,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VpcName string `json:"vpcName,omitempty"`
+	CidrBlock string `json:"cidrBlock,omitempty"`
+	VRouterUuid string `json:"vRouterUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	AliyunProxyVSwitches []AliyunProxyVSwitchInventoryView `json:"aliyunProxyVSwitches,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	IsDefault bool `json:"isDefault,omitempty"`
 }
 

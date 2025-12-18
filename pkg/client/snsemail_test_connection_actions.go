@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SNSEmailTestConnection 操作SNSEmailTestConnection
+// SNSEmailTestConnection operates on SNSEmailTestConnection
 func (cli *ZSClient) SNSEmailTestConnection(params param.SNSEmailTestConnectionParam) (*view.SNSEmailTestConnectionEventView, error) {
 	resp := view.SNSEmailTestConnectionEventView{}
 	if err := cli.Post("v1/sns/application-endpoints/email/test-connection", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SNSEmailTestConnection(params param.SNSEmailTestConnectionP
 	}
 	return &resp, nil
 }
-

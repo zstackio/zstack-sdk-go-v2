@@ -2,15 +2,14 @@
 
 package param
 
-// EnableCbtTaskDetailParam EnableCbtTask详细参数
+// EnableCbtTaskDetailParam EnableCbtTask detail param
 type EnableCbtTaskDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"bitmapName,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	BitmapName string `json:"bitmapName,omitempty"`
 }
 
-// EnableCbtTaskParam EnableCbtTask请求参数
+// EnableCbtTaskParam EnableCbtTask request param
 type EnableCbtTaskParam struct {
 	BaseParam
-	Params EnableCbtTaskDetailParam `json:"params"` // 详细参数
+	Params EnableCbtTaskDetailParam `json:"params"`
 }
-

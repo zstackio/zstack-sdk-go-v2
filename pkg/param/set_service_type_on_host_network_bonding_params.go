@@ -2,16 +2,15 @@
 
 package param
 
-// SetServiceTypeOnHostNetworkBondingDetailParam SetServiceTypeOnHostNetworkBonding详细参数
+// SetServiceTypeOnHostNetworkBondingDetailParam SetServiceTypeOnHostNetworkBonding detail param
 type SetServiceTypeOnHostNetworkBondingDetailParam struct {
-	rest []string `json:"bondingUuids" validate:"required"` // 必填
-	rest []int `json:"vlanIds,omitempty"`
-	rest []string `json:"serviceTypes,omitempty"`
+	BondingUuids []string `json:"bondingUuids" validate:"required"`
+	VlanIds []int `json:"vlanIds,omitempty"`
+	ServiceTypes []string `json:"serviceTypes,omitempty"`
 }
 
-// SetServiceTypeOnHostNetworkBondingParam SetServiceTypeOnHostNetworkBonding请求参数
+// SetServiceTypeOnHostNetworkBondingParam SetServiceTypeOnHostNetworkBonding request param
 type SetServiceTypeOnHostNetworkBondingParam struct {
 	BaseParam
-	Params SetServiceTypeOnHostNetworkBondingDetailParam `json:"params"` // 详细参数
+	Params SetServiceTypeOnHostNetworkBondingDetailParam `json:"params"`
 }
-

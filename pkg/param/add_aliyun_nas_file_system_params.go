@@ -2,18 +2,17 @@
 
 package param
 
-// AddAliyunNasFileSystemDetailParam AddAliyunNasFileSystem详细参数
+// AddAliyunNasFileSystemDetailParam AddAliyunNasFileSystem detail param
 type AddAliyunNasFileSystemDetailParam struct {
-	rest string `json:"fileSystemId" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	FileSystemId string `json:"fileSystemId" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAliyunNasFileSystemParam AddAliyunNasFileSystem请求参数
+// AddAliyunNasFileSystemParam AddAliyunNasFileSystem request param
 type AddAliyunNasFileSystemParam struct {
 	BaseParam
-	Params AddAliyunNasFileSystemDetailParam `json:"params"` // 详细参数
+	Params AddAliyunNasFileSystemDetailParam `json:"params"`
 }
-

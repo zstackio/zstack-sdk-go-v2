@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // EcsImageUsageInventoryView EcsImageUsage
 type EcsImageUsageInventoryView struct {
-	rest int `json:"id,omitempty"`
-	rest string `json:"ecsImageUuid,omitempty"`
-	rest string `json:"snapshotUuidOfCreatedImage,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int `json:"id,omitempty"`
+	EcsImageUuid string `json:"ecsImageUuid,omitempty"`
+	SnapshotUuidOfCreatedImage string `json:"snapshotUuidOfCreatedImage,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

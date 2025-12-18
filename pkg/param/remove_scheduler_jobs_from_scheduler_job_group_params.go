@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveSchedulerJobsFromSchedulerJobGroupDetailParam RemoveSchedulerJobsFromSchedulerJobGroup详细参数
+// RemoveSchedulerJobsFromSchedulerJobGroupDetailParam RemoveSchedulerJobsFromSchedulerJobGroup detail param
 type RemoveSchedulerJobsFromSchedulerJobGroupDetailParam struct {
-	rest string `json:"schedulerJobGroupUuid" validate:"required"` // 必填
-	rest []string `json:"schedulerJobUuids" validate:"required"` // 必填
+	SchedulerJobGroupUuid string `json:"schedulerJobGroupUuid" validate:"required"`
+	SchedulerJobUuids []string `json:"schedulerJobUuids" validate:"required"`
 }
 
-// RemoveSchedulerJobsFromSchedulerJobGroupParam RemoveSchedulerJobsFromSchedulerJobGroup请求参数
+// RemoveSchedulerJobsFromSchedulerJobGroupParam RemoveSchedulerJobsFromSchedulerJobGroup request param
 type RemoveSchedulerJobsFromSchedulerJobGroupParam struct {
 	BaseParam
-	Params RemoveSchedulerJobsFromSchedulerJobGroupDetailParam `json:"params"` // 详细参数
+	Params RemoveSchedulerJobsFromSchedulerJobGroupDetailParam `json:"params"`
 }
-

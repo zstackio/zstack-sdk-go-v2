@@ -2,15 +2,14 @@
 
 package param
 
-// TokenIntrospectionDetailParam TokenIntrospection详细参数
+// TokenIntrospectionDetailParam TokenIntrospection detail param
 type TokenIntrospectionDetailParam struct {
-	rest string `json:"token" validate:"required"` // 必填
-	rest string `json:"tokenType" validate:"required"` // 必填
+	Token string `json:"token" validate:"required"`
+	TokenType string `json:"tokenType" validate:"required"`
 }
 
-// TokenIntrospectionParam TokenIntrospection请求参数
+// TokenIntrospectionParam TokenIntrospection request param
 type TokenIntrospectionParam struct {
 	BaseParam
-	Params TokenIntrospectionDetailParam `json:"params"` // 详细参数
+	Params TokenIntrospectionDetailParam `json:"params"`
 }
-

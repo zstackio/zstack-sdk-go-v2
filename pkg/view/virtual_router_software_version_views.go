@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VirtualRouterSoftwareVersionInventoryView VirtualRouterSoftwareVersion
 type VirtualRouterSoftwareVersionInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"softwareName,omitempty"`
-	rest string `json:"currentVersion,omitempty"`
-	rest string `json:"latestVersion,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	SoftwareName string `json:"softwareName,omitempty"`
+	CurrentVersion string `json:"currentVersion,omitempty"`
+	LatestVersion string `json:"latestVersion,omitempty"`
 }
 

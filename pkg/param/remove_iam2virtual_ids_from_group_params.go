@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveIAM2VirtualIDsFromGroupDetailParam RemoveIAM2VirtualIDsFromGroup详细参数
+// RemoveIAM2VirtualIDsFromGroupDetailParam RemoveIAM2VirtualIDsFromGroup detail param
 type RemoveIAM2VirtualIDsFromGroupDetailParam struct {
-	rest []string `json:"virtualIDUuids" validate:"required"` // 必填
-	rest string `json:"groupUuid" validate:"required"` // 必填
+	VirtualIDUuids []string `json:"virtualIDUuids" validate:"required"`
+	GroupUuid string `json:"groupUuid" validate:"required"`
 }
 
-// RemoveIAM2VirtualIDsFromGroupParam RemoveIAM2VirtualIDsFromGroup请求参数
+// RemoveIAM2VirtualIDsFromGroupParam RemoveIAM2VirtualIDsFromGroup request param
 type RemoveIAM2VirtualIDsFromGroupParam struct {
 	BaseParam
-	Params RemoveIAM2VirtualIDsFromGroupDetailParam `json:"params"` // 详细参数
+	Params RemoveIAM2VirtualIDsFromGroupDetailParam `json:"params"`
 }
-

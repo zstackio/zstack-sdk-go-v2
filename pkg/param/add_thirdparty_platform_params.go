@@ -2,20 +2,19 @@
 
 package param
 
-// AddThirdpartyPlatformDetailParam AddThirdpartyPlatform详细参数
+// AddThirdpartyPlatformDetailParam AddThirdpartyPlatform detail param
 type AddThirdpartyPlatformDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"template" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Type string `json:"type" validate:"required"`
+	Url string `json:"url" validate:"required"`
+	Template string `json:"template" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddThirdpartyPlatformParam AddThirdpartyPlatform请求参数
+// AddThirdpartyPlatformParam AddThirdpartyPlatform request param
 type AddThirdpartyPlatformParam struct {
 	BaseParam
-	Params AddThirdpartyPlatformDetailParam `json:"params"` // 详细参数
+	Params AddThirdpartyPlatformDetailParam `json:"params"`
 }
-

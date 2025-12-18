@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PreconfigurationTemplateInventoryView PreconfigurationTemplate
 type PreconfigurationTemplateInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"distribution,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"content,omitempty"`
-	rest string `json:"md5sum,omitempty"`
-	rest bool `json:"isPredefined,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []string `json:"customParams,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Distribution string `json:"distribution,omitempty"`
+	Type string `json:"type,omitempty"`
+	Content string `json:"content,omitempty"`
+	Md5sum string `json:"md5sum,omitempty"`
+	IsPredefined bool `json:"isPredefined,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CustomParams []string `json:"customParams,omitempty"`
 }
 

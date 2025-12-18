@@ -2,15 +2,14 @@
 
 package param
 
-// BindModelToServiceDetailParam BindModelToService详细参数
+// BindModelToServiceDetailParam BindModelToService detail param
 type BindModelToServiceDetailParam struct {
-	rest string `json:"modelUuid" validate:"required"` // 必填
-	rest string `json:"modelServiceUuid" validate:"required"` // 必填
+	ModelUuid string `json:"modelUuid" validate:"required"`
+	ModelServiceUuid string `json:"modelServiceUuid" validate:"required"`
 }
 
-// BindModelToServiceParam BindModelToService请求参数
+// BindModelToServiceParam BindModelToService request param
 type BindModelToServiceParam struct {
 	BaseParam
-	Params BindModelToServiceDetailParam `json:"params"` // 详细参数
+	Params BindModelToServiceDetailParam `json:"params"`
 }
-

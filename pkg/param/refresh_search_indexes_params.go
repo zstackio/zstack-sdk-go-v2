@@ -2,13 +2,12 @@
 
 package param
 
-// RefreshSearchIndexesDetailParam RefreshSearchIndexes详细参数
+// RefreshSearchIndexesDetailParam RefreshSearchIndexes detail param
 type RefreshSearchIndexesDetailParam struct {
 }
 
-// RefreshSearchIndexesParam RefreshSearchIndexes请求参数
+// RefreshSearchIndexesParam RefreshSearchIndexes request param
 type RefreshSearchIndexesParam struct {
 	BaseParam
-	Params RefreshSearchIndexesDetailParam `json:"params"` // 详细参数
+	Params RefreshSearchIndexesDetailParam `json:"params"`
 }
-

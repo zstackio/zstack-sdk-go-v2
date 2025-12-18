@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // GuestVmScriptExecutedRecordInventoryView GuestVmScriptExecutedRecord
 type GuestVmScriptExecutedRecordInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"scriptUuid,omitempty"`
-	rest string `json:"recordName,omitempty"`
-	rest int `json:"scriptTimeout,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"executor,omitempty"`
-	rest int `json:"executionCount,omitempty"`
-	rest int `json:"version,omitempty"`
-	rest string `json:"encodingType,omitempty"`
-	rest string `json:"scriptContent,omitempty"`
-	rest string `json:"renderParams,omitempty"`
-	rest time.Time `json:"startTime,omitempty"`
-	rest time.Time `json:"endTime,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ScriptUuid string `json:"scriptUuid,omitempty"`
+	RecordName string `json:"recordName,omitempty"`
+	ScriptTimeout int `json:"scriptTimeout,omitempty"`
+	Status string `json:"status,omitempty"`
+	Executor string `json:"executor,omitempty"`
+	ExecutionCount int `json:"executionCount,omitempty"`
+	Version int `json:"version,omitempty"`
+	EncodingType string `json:"encodingType,omitempty"`
+	ScriptContent string `json:"scriptContent,omitempty"`
+	RenderParams string `json:"renderParams,omitempty"`
+	StartTime time.Time `json:"startTime,omitempty"`
+	EndTime time.Time `json:"endTime,omitempty"`
 }
 

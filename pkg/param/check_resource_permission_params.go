@@ -2,14 +2,13 @@
 
 package param
 
-// CheckResourcePermissionDetailParam CheckResourcePermission详细参数
+// CheckResourcePermissionDetailParam CheckResourcePermission detail param
 type CheckResourcePermissionDetailParam struct {
-	rest string `json:"resourceType" validate:"required"` // 必填
+	ResourceType string `json:"resourceType" validate:"required"`
 }
 
-// CheckResourcePermissionParam CheckResourcePermission请求参数
+// CheckResourcePermissionParam CheckResourcePermission request param
 type CheckResourcePermissionParam struct {
 	BaseParam
-	Params CheckResourcePermissionDetailParam `json:"params"` // 详细参数
+	Params CheckResourcePermissionDetailParam `json:"params"`
 }
-

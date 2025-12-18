@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveMonFromCephPrimaryStorageDetailParam RemoveMonFromCephPrimaryStorage详细参数
+// RemoveMonFromCephPrimaryStorageDetailParam RemoveMonFromCephPrimaryStorage detail param
 type RemoveMonFromCephPrimaryStorageDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"monHostnames" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	MonHostnames []string `json:"monHostnames" validate:"required"`
 }
 
-// RemoveMonFromCephPrimaryStorageParam RemoveMonFromCephPrimaryStorage请求参数
+// RemoveMonFromCephPrimaryStorageParam RemoveMonFromCephPrimaryStorage request param
 type RemoveMonFromCephPrimaryStorageParam struct {
 	BaseParam
-	Params RemoveMonFromCephPrimaryStorageDetailParam `json:"params"` // 详细参数
+	Params RemoveMonFromCephPrimaryStorageDetailParam `json:"params"`
 }
-

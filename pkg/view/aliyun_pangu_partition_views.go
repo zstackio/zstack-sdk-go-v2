@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AliyunPanguPartitionInventoryView AliyunPanguPartition
 type AliyunPanguPartitionInventoryView struct {
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"identityZoneUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"appName,omitempty"`
-	rest string `json:"partitionName,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	IdentityZoneUuid string `json:"identityZoneUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	AppName string `json:"appName,omitempty"`
+	PartitionName string `json:"partitionName,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

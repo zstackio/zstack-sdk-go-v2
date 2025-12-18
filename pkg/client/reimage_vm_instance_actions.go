@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ReimageVmInstance 操作ReimageVmInstance
+// ReimageVmInstance operates on ReimageVmInstance
 func (cli *ZSClient) ReimageVmInstance(uuid string, params param.ReimageVmInstanceParam) (*view.ReimageVmInstanceEventView, error) {
 	resp := view.ReimageVmInstanceEventView{}
 	if err := cli.Put("v1/vm-instances/{vmInstanceUuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ReimageVmInstance(uuid string, params param.ReimageVmInstan
 	}
 	return &resp, nil
 }
-

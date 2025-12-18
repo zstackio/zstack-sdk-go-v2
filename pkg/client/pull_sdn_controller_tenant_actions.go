@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// PullSdnControllerTenant 操作PullSdnControllerTenant
+// PullSdnControllerTenant operates on PullSdnControllerTenant
 func (cli *ZSClient) PullSdnControllerTenant(uuid string, params param.PullSdnControllerTenantParam) (*view.PullSdnControllerTenantEventView, error) {
 	resp := view.PullSdnControllerTenantEventView{}
 	if err := cli.Put("v1/sdn-controllers/{uuid}/tenant/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) PullSdnControllerTenant(uuid string, params param.PullSdnCo
 	}
 	return &resp, nil
 }
-

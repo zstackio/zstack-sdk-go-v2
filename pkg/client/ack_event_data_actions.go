@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AckEventData 操作AckEventData
+// AckEventData operates on AckEventData
 func (cli *ZSClient) AckEventData(params param.AckEventDataParam) (*view.AckAlertDataEventView, error) {
 	resp := view.AckAlertDataEventView{}
 	if err := cli.Post("v1/zwatch/event-histories/acknowledgments", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AckEventData(params param.AckEventDataParam) (*view.AckAler
 	}
 	return &resp, nil
 }
-

@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // RemoteVtepInventoryView RemoteVtep
 type RemoteVtepInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"clusterUuid,omitempty"`
-	rest string `json:"vtepIp,omitempty"`
-	rest int `json:"port,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"poolUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	VtepIp string `json:"vtepIp,omitempty"`
+	Port int `json:"port,omitempty"`
+	Type string `json:"type,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	PoolUuid string `json:"poolUuid,omitempty"`
 }
 

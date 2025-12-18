@@ -2,15 +2,14 @@
 
 package param
 
-// AddVmNicToSecurityGroupDetailParam AddVmNicToSecurityGroup详细参数
+// AddVmNicToSecurityGroupDetailParam AddVmNicToSecurityGroup detail param
 type AddVmNicToSecurityGroupDetailParam struct {
-	rest string `json:"securityGroupUuid" validate:"required"` // 必填
-	rest []string `json:"vmNicUuids" validate:"required"` // 必填
+	SecurityGroupUuid string `json:"securityGroupUuid" validate:"required"`
+	VmNicUuids []string `json:"vmNicUuids" validate:"required"`
 }
 
-// AddVmNicToSecurityGroupParam AddVmNicToSecurityGroup请求参数
+// AddVmNicToSecurityGroupParam AddVmNicToSecurityGroup request param
 type AddVmNicToSecurityGroupParam struct {
 	BaseParam
-	Params AddVmNicToSecurityGroupDetailParam `json:"params"` // 详细参数
+	Params AddVmNicToSecurityGroupDetailParam `json:"params"`
 }
-

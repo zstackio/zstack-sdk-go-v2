@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AlarmLabelInventoryView AlarmLabel
 type AlarmLabelInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"key,omitempty"`
-	rest string `json:"operator,omitempty"`
-	rest string `json:"value,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Key string `json:"key,omitempty"`
+	Operator string `json:"operator,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 

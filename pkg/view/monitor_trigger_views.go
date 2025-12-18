@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MonitorTriggerInventoryView MonitorTrigger
 type MonitorTriggerInventoryView struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"expression,omitempty"`
-	rest string `json:"recoveryExpression,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest int `json:"duration,omitempty"`
-	rest string `json:"targetResourceUuid,omitempty"`
-	rest time.Time `json:"lastStatusChangeTime,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Expression string `json:"expression,omitempty"`
+	RecoveryExpression string `json:"recoveryExpression,omitempty"`
+	Description string `json:"description,omitempty"`
+	Status string `json:"status,omitempty"`
+	State string `json:"state,omitempty"`
+	Duration int `json:"duration,omitempty"`
+	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
+	LastStatusChangeTime time.Time `json:"lastStatusChangeTime,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

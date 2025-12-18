@@ -2,14 +2,13 @@
 
 package param
 
-// ValidatePriceUserConfigDetailParam ValidatePriceUserConfig详细参数
+// ValidatePriceUserConfigDetailParam ValidatePriceUserConfig detail param
 type ValidatePriceUserConfigDetailParam struct {
-	rest string `json:"config" validate:"required"` // 必填
+	Config string `json:"config" validate:"required"`
 }
 
-// ValidatePriceUserConfigParam ValidatePriceUserConfig请求参数
+// ValidatePriceUserConfigParam ValidatePriceUserConfig request param
 type ValidatePriceUserConfigParam struct {
 	BaseParam
-	Params ValidatePriceUserConfigDetailParam `json:"params"` // 详细参数
+	Params ValidatePriceUserConfigDetailParam `json:"params"`
 }
-

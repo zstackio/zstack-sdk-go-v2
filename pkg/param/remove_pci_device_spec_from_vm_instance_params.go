@@ -2,15 +2,14 @@
 
 package param
 
-// RemovePciDeviceSpecFromVmInstanceDetailParam RemovePciDeviceSpecFromVmInstance详细参数
+// RemovePciDeviceSpecFromVmInstanceDetailParam RemovePciDeviceSpecFromVmInstance detail param
 type RemovePciDeviceSpecFromVmInstanceDetailParam struct {
-	rest string `json:"pciSpecUuid" validate:"required"` // 必填
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
+	PciSpecUuid string `json:"pciSpecUuid" validate:"required"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
 }
 
-// RemovePciDeviceSpecFromVmInstanceParam RemovePciDeviceSpecFromVmInstance请求参数
+// RemovePciDeviceSpecFromVmInstanceParam RemovePciDeviceSpecFromVmInstance request param
 type RemovePciDeviceSpecFromVmInstanceParam struct {
 	BaseParam
-	Params RemovePciDeviceSpecFromVmInstanceDetailParam `json:"params"` // 详细参数
+	Params RemovePciDeviceSpecFromVmInstanceDetailParam `json:"params"`
 }
-

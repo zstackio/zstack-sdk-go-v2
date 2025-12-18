@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveAttributesFromIAM2OrganizationDetailParam RemoveAttributesFromIAM2Organization详细参数
+// RemoveAttributesFromIAM2OrganizationDetailParam RemoveAttributesFromIAM2Organization detail param
 type RemoveAttributesFromIAM2OrganizationDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"attributeUuids" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	AttributeUuids []string `json:"attributeUuids" validate:"required"`
 }
 
-// RemoveAttributesFromIAM2OrganizationParam RemoveAttributesFromIAM2Organization请求参数
+// RemoveAttributesFromIAM2OrganizationParam RemoveAttributesFromIAM2Organization request param
 type RemoveAttributesFromIAM2OrganizationParam struct {
 	BaseParam
-	Params RemoveAttributesFromIAM2OrganizationDetailParam `json:"params"` // 详细参数
+	Params RemoveAttributesFromIAM2OrganizationDetailParam `json:"params"`
 }
-

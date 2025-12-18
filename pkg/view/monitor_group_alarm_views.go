@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MonitorGroupAlarmInventoryView MonitorGroupAlarm
 type MonitorGroupAlarmInventoryView struct {
-	rest string `json:"groupUuid,omitempty"`
-	rest string `json:"alarmUuid,omitempty"`
-	rest string `json:"metricRuleTemplateUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest string `json:"uuid,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
+	AlarmUuid string `json:"alarmUuid,omitempty"`
+	MetricRuleTemplateUuid string `json:"metricRuleTemplateUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 }
 

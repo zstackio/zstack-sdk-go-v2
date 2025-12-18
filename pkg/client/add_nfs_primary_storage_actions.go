@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddNfsPrimaryStorage 操作AddNfsPrimaryStorage
+// AddNfsPrimaryStorage adds NfsPrimaryStorage
 func (cli *ZSClient) AddNfsPrimaryStorage(params param.AddNfsPrimaryStorageParam) (*view.AddPrimaryStorageEventView, error) {
 	resp := view.AddPrimaryStorageEventView{}
 	if err := cli.Post("v1/primary-storage/nfs", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddNfsPrimaryStorage(params param.AddNfsPrimaryStorageParam
 	}
 	return &resp, nil
 }
-

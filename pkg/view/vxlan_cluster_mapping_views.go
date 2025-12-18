@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VxlanClusterMappingInventoryView VxlanClusterMapping
 type VxlanClusterMappingInventoryView struct {
-	rest string `json:"vxlanUuid,omitempty"`
-	rest string `json:"clusterUuid,omitempty"`
-	rest int `json:"vlanId,omitempty"`
-	rest string `json:"physicalInterface,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VxlanUuid string `json:"vxlanUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	VlanId int `json:"vlanId,omitempty"`
+	PhysicalInterface string `json:"physicalInterface,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

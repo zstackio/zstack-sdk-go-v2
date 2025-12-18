@@ -2,14 +2,13 @@
 
 package param
 
-// UngenerateSeMdevDevicesDetailParam UngenerateSeMdevDevices详细参数
+// UngenerateSeMdevDevicesDetailParam UngenerateSeMdevDevices detail param
 type UngenerateSeMdevDevicesDetailParam struct {
-	rest string `json:"mttyDeviceUuid" validate:"required"` // 必填
+	MttyDeviceUuid string `json:"mttyDeviceUuid" validate:"required"`
 }
 
-// UngenerateSeMdevDevicesParam UngenerateSeMdevDevices请求参数
+// UngenerateSeMdevDevicesParam UngenerateSeMdevDevices request param
 type UngenerateSeMdevDevicesParam struct {
 	BaseParam
-	Params UngenerateSeMdevDevicesDetailParam `json:"params"` // 详细参数
+	Params UngenerateSeMdevDevicesDetailParam `json:"params"`
 }
-

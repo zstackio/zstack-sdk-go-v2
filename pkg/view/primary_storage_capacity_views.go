@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PrimaryStorageCapacityInventoryView PrimaryStorageCapacity
 type PrimaryStorageCapacityInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest int64 `json:"totalCapacity,omitempty"`
-	rest int64 `json:"availableCapacity,omitempty"`
-	rest int64 `json:"totalPhysicalCapacity,omitempty"`
-	rest int64 `json:"availablePhysicalCapacity,omitempty"`
-	rest int64 `json:"systemUsedCapacity,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
+	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
+	SystemUsedCapacity int64 `json:"systemUsedCapacity,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

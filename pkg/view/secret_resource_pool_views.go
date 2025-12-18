@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SecretResourcePoolInventoryView SecretResourcePool
 type SecretResourcePoolInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"model,omitempty"`
-	rest int `json:"heartbeatInterval,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"ability,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	Model string `json:"model,omitempty"`
+	HeartbeatInterval int `json:"heartbeatInterval,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Ability string `json:"ability,omitempty"`
 }
 

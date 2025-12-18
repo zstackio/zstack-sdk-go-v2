@@ -4,21 +4,23 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BaremetalChassisInventoryView BaremetalChassis
 type BaremetalChassisInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"clusterUuid,omitempty"`
-	rest string `json:"pxeServerUuid,omitempty"`
-	rest string `json:"ipmiAddress,omitempty"`
-	rest int `json:"ipmiPort,omitempty"`
-	rest string `json:"ipmiUsername,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []BaremetalHardwareInfoInventoryView `json:"hardwareInfos,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	PxeServerUuid string `json:"pxeServerUuid,omitempty"`
+	IpmiAddress string `json:"ipmiAddress,omitempty"`
+	IpmiPort int `json:"ipmiPort,omitempty"`
+	IpmiUsername string `json:"ipmiUsername,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	HardwareInfos []BaremetalHardwareInfoInventoryView `json:"hardwareInfos,omitempty"`
 }
 

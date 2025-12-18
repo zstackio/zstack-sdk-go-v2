@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcSnatStateInventoryView VpcSnatState
 type VpcSnatStateInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vpcUuid,omitempty"`
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VpcUuid string `json:"vpcUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

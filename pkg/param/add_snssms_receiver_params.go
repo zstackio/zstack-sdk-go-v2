@@ -2,20 +2,19 @@
 
 package param
 
-// AddSNSSmsReceiverDetailParam AddSNSSmsReceiver详细参数
+// AddSNSSmsReceiverDetailParam AddSNSSmsReceiver detail param
 type AddSNSSmsReceiverDetailParam struct {
-	rest string `json:"phoneNumber,omitempty"`
-	rest []string `json:"phoneNumberList,omitempty"`
-	rest string `json:"endpointUuid" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	PhoneNumber string `json:"phoneNumber,omitempty"`
+	PhoneNumberList []string `json:"phoneNumberList,omitempty"`
+	EndpointUuid string `json:"endpointUuid" validate:"required"`
+	Type string `json:"type" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddSNSSmsReceiverParam AddSNSSmsReceiver请求参数
+// AddSNSSmsReceiverParam AddSNSSmsReceiver request param
 type AddSNSSmsReceiverParam struct {
 	BaseParam
-	Params AddSNSSmsReceiverDetailParam `json:"params"` // 详细参数
+	Params AddSNSSmsReceiverDetailParam `json:"params"`
 }
-

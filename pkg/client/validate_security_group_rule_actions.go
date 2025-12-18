@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ValidateSecurityGroupRule 操作ValidateSecurityGroupRule
+// ValidateSecurityGroupRule operates on ValidateSecurityGroupRule
 func (cli *ZSClient) ValidateSecurityGroupRule(params param.ValidateSecurityGroupRuleParam) (*view.ValidateSecurityGroupRuleView, error) {
 	var resp view.ValidateSecurityGroupRuleView
 	if err := cli.Get("v1/security-groups/{securityGroupUuid}/rules/validation", "", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ValidateSecurityGroupRule(params param.ValidateSecurityGrou
 	}
 	return &resp, nil
 }
-

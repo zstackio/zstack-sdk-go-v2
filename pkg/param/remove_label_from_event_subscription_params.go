@@ -2,14 +2,13 @@
 
 package param
 
-// RemoveLabelFromEventSubscriptionDetailParam RemoveLabelFromEventSubscription详细参数
+// RemoveLabelFromEventSubscriptionDetailParam RemoveLabelFromEventSubscription detail param
 type RemoveLabelFromEventSubscriptionDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RemoveLabelFromEventSubscriptionParam RemoveLabelFromEventSubscription请求参数
+// RemoveLabelFromEventSubscriptionParam RemoveLabelFromEventSubscription request param
 type RemoveLabelFromEventSubscriptionParam struct {
 	BaseParam
-	Params RemoveLabelFromEventSubscriptionDetailParam `json:"params"` // 详细参数
+	Params RemoveLabelFromEventSubscriptionDetailParam `json:"params"`
 }
-

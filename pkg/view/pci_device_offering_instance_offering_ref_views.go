@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PciDeviceOfferingInstanceOfferingRefInventoryView PciDeviceOfferingInstanceOfferingRef
 type PciDeviceOfferingInstanceOfferingRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"instanceOfferingUuid,omitempty"`
-	rest string `json:"pciDeviceOfferingUuid,omitempty"`
-	rest interface{} `json:"metadata,omitempty"`
-	rest int `json:"pciDeviceCount,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	InstanceOfferingUuid string `json:"instanceOfferingUuid,omitempty"`
+	PciDeviceOfferingUuid string `json:"pciDeviceOfferingUuid,omitempty"`
+	Metadata interface{} `json:"metadata,omitempty"`
+	PciDeviceCount int `json:"pciDeviceCount,omitempty"`
 }
 

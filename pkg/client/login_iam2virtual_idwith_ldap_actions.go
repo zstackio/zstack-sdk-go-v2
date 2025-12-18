@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// LoginIAM2VirtualIDWithLdap 操作LoginIAM2VirtualIDWithLdap
+// LoginIAM2VirtualIDWithLdap operates on LoginIAM2VirtualIDWithLdap
 func (cli *ZSClient) LoginIAM2VirtualIDWithLdap(uuid string, params param.LoginIAM2VirtualIDWithLdapParam) (*view.LoginIAM2VirtualIDWithLdapView, error) {
 	resp := view.LoginIAM2VirtualIDWithLdapView{}
 	if err := cli.Put("v1/iam2/login/virtual-ids/ldap", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) LoginIAM2VirtualIDWithLdap(uuid string, params param.LoginI
 	}
 	return &resp, nil
 }
-

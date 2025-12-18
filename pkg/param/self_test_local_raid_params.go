@@ -2,14 +2,13 @@
 
 package param
 
-// SelfTestLocalRaidDetailParam SelfTestLocalRaid详细参数
+// SelfTestLocalRaidDetailParam SelfTestLocalRaid detail param
 type SelfTestLocalRaidDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// SelfTestLocalRaidParam SelfTestLocalRaid请求参数
+// SelfTestLocalRaidParam SelfTestLocalRaid request param
 type SelfTestLocalRaidParam struct {
 	BaseParam
-	Params SelfTestLocalRaidDetailParam `json:"params"` // 详细参数
+	Params SelfTestLocalRaidDetailParam `json:"params"`
 }
-

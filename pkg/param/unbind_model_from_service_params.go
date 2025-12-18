@@ -2,15 +2,14 @@
 
 package param
 
-// UnbindModelFromServiceDetailParam UnbindModelFromService详细参数
+// UnbindModelFromServiceDetailParam UnbindModelFromService detail param
 type UnbindModelFromServiceDetailParam struct {
-	rest string `json:"modelUuid" validate:"required"` // 必填
-	rest string `json:"modelServiceUuid" validate:"required"` // 必填
+	ModelUuid string `json:"modelUuid" validate:"required"`
+	ModelServiceUuid string `json:"modelServiceUuid" validate:"required"`
 }
 
-// UnbindModelFromServiceParam UnbindModelFromService请求参数
+// UnbindModelFromServiceParam UnbindModelFromService request param
 type UnbindModelFromServiceParam struct {
 	BaseParam
-	Params UnbindModelFromServiceDetailParam `json:"params"` // 详细参数
+	Params UnbindModelFromServiceDetailParam `json:"params"`
 }
-

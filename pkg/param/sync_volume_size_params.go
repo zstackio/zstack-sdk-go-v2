@@ -2,14 +2,13 @@
 
 package param
 
-// SyncVolumeSizeDetailParam SyncVolumeSize详细参数
+// SyncVolumeSizeDetailParam SyncVolumeSize detail param
 type SyncVolumeSizeDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// SyncVolumeSizeParam SyncVolumeSize请求参数
+// SyncVolumeSizeParam SyncVolumeSize request param
 type SyncVolumeSizeParam struct {
 	BaseParam
-	Params SyncVolumeSizeDetailParam `json:"params"` // 详细参数
+	Params SyncVolumeSizeDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// MountVmInstanceRecoveryPointDetailParam MountVmInstanceRecoveryPoint详细参数
+// MountVmInstanceRecoveryPointDetailParam MountVmInstanceRecoveryPoint detail param
 type MountVmInstanceRecoveryPointDetailParam struct {
-	rest string `json:"vmUuid" validate:"required"` // 必填
-	rest int64 `json:"groupId" validate:"required"` // 必填
-	rest bool `json:"https,omitempty"`
+	VmUuid string `json:"vmUuid" validate:"required"`
+	GroupId int64 `json:"groupId" validate:"required"`
+	Https bool `json:"https,omitempty"`
 }
 
-// MountVmInstanceRecoveryPointParam MountVmInstanceRecoveryPoint请求参数
+// MountVmInstanceRecoveryPointParam MountVmInstanceRecoveryPoint request param
 type MountVmInstanceRecoveryPointParam struct {
 	BaseParam
-	Params MountVmInstanceRecoveryPointDetailParam `json:"params"` // 详细参数
+	Params MountVmInstanceRecoveryPointDetailParam `json:"params"`
 }
-

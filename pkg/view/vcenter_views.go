@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VCenterInventoryView VCenter
 type VCenterInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"domainName,omitempty"`
-	rest int `json:"port,omitempty"`
-	rest string `json:"userName,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest bool `json:"https,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	DomainName string `json:"domainName,omitempty"`
+	Port int `json:"port,omitempty"`
+	UserName string `json:"userName,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Version string `json:"version,omitempty"`
+	Https bool `json:"https,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

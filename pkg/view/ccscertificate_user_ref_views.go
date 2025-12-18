@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // CCSCertificateUserRefInventoryView CCSCertificateUserRef
 type CCSCertificateUserRefInventoryView struct {
-	rest string `json:"userUuid,omitempty"`
-	rest string `json:"certificateUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	UserUuid string `json:"userUuid,omitempty"`
+	CertificateUuid string `json:"certificateUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

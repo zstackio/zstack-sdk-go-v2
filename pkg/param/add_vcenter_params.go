@@ -2,23 +2,22 @@
 
 package param
 
-// AddVCenterDetailParam AddVCenter详细参数
+// AddVCenterDetailParam AddVCenter detail param
 type AddVCenterDetailParam struct {
-	rest string `json:"username" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest bool `json:"https,omitempty"`
-	rest int `json:"port,omitempty"`
-	rest string `json:"domainName" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Https bool `json:"https,omitempty"`
+	Port int `json:"port,omitempty"`
+	DomainName string `json:"domainName" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddVCenterParam AddVCenter请求参数
+// AddVCenterParam AddVCenter request param
 type AddVCenterParam struct {
 	BaseParam
-	Params AddVCenterDetailParam `json:"params"` // 详细参数
+	Params AddVCenterDetailParam `json:"params"`
 }
-

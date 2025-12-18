@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// PrimaryStorageMigrateVm 操作PrimaryStorageMigrateVm
+// PrimaryStorageMigrateVm operates on PrimaryStorageMigrateVm
 func (cli *ZSClient) PrimaryStorageMigrateVm(uuid string, params param.PrimaryStorageMigrateVmParam) (*view.PrimaryStorageMigrateVmEventView, error) {
 	resp := view.PrimaryStorageMigrateVmEventView{}
 	if err := cli.Put("v1/vm-instances/{vmInstanceUuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) PrimaryStorageMigrateVm(uuid string, params param.PrimarySt
 	}
 	return &resp, nil
 }
-

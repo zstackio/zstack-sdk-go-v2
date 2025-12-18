@@ -2,18 +2,17 @@
 
 package param
 
-// CalculateAccountBillingSpendingDetailParam CalculateAccountBillingSpending详细参数
+// CalculateAccountBillingSpendingDetailParam CalculateAccountBillingSpending detail param
 type CalculateAccountBillingSpendingDetailParam struct {
-	rest string `json:"accountUuid" validate:"required"` // 必填
-	rest int64 `json:"dateStart,omitempty"`
-	rest int64 `json:"dateEnd,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest bool `json:"simple,omitempty"`
+	AccountUuid string `json:"accountUuid" validate:"required"`
+	DateStart int64 `json:"dateStart,omitempty"`
+	DateEnd int64 `json:"dateEnd,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Simple bool `json:"simple,omitempty"`
 }
 
-// CalculateAccountBillingSpendingParam CalculateAccountBillingSpending请求参数
+// CalculateAccountBillingSpendingParam CalculateAccountBillingSpending request param
 type CalculateAccountBillingSpendingParam struct {
 	BaseParam
-	Params CalculateAccountBillingSpendingDetailParam `json:"params"` // 详细参数
+	Params CalculateAccountBillingSpendingDetailParam `json:"params"`
 }
-

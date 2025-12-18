@@ -2,15 +2,14 @@
 
 package param
 
-// RunSchedulerTriggerDetailParam RunSchedulerTrigger详细参数
+// RunSchedulerTriggerDetailParam RunSchedulerTrigger detail param
 type RunSchedulerTriggerDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"jobUuids,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	JobUuids []string `json:"jobUuids,omitempty"`
 }
 
-// RunSchedulerTriggerParam RunSchedulerTrigger请求参数
+// RunSchedulerTriggerParam RunSchedulerTrigger request param
 type RunSchedulerTriggerParam struct {
 	BaseParam
-	Params RunSchedulerTriggerDetailParam `json:"params"` // 详细参数
+	Params RunSchedulerTriggerDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// AddSchedulerJobsToSchedulerJobGroupDetailParam AddSchedulerJobsToSchedulerJobGroup详细参数
+// AddSchedulerJobsToSchedulerJobGroupDetailParam AddSchedulerJobsToSchedulerJobGroup detail param
 type AddSchedulerJobsToSchedulerJobGroupDetailParam struct {
-	rest string `json:"schedulerJobGroupUuid" validate:"required"` // 必填
-	rest []string `json:"schedulerJobUuids" validate:"required"` // 必填
+	SchedulerJobGroupUuid string `json:"schedulerJobGroupUuid" validate:"required"`
+	SchedulerJobUuids []string `json:"schedulerJobUuids" validate:"required"`
 }
 
-// AddSchedulerJobsToSchedulerJobGroupParam AddSchedulerJobsToSchedulerJobGroup请求参数
+// AddSchedulerJobsToSchedulerJobGroupParam AddSchedulerJobsToSchedulerJobGroup request param
 type AddSchedulerJobsToSchedulerJobGroupParam struct {
 	BaseParam
-	Params AddSchedulerJobsToSchedulerJobGroupDetailParam `json:"params"` // 详细参数
+	Params AddSchedulerJobsToSchedulerJobGroupDetailParam `json:"params"`
 }
-

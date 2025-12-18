@@ -2,13 +2,12 @@
 
 package param
 
-// SyncLicenseCapacityDetailParam SyncLicenseCapacity详细参数
+// SyncLicenseCapacityDetailParam SyncLicenseCapacity detail param
 type SyncLicenseCapacityDetailParam struct {
 }
 
-// SyncLicenseCapacityParam SyncLicenseCapacity请求参数
+// SyncLicenseCapacityParam SyncLicenseCapacity request param
 type SyncLicenseCapacityParam struct {
 	BaseParam
-	Params SyncLicenseCapacityDetailParam `json:"params"` // 详细参数
+	Params SyncLicenseCapacityDetailParam `json:"params"`
 }
-

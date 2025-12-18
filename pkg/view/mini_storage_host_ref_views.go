@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MiniStorageHostRefInventoryView MiniStorageHostRef
 type MiniStorageHostRefInventoryView struct {
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest int64 `json:"totalCapacity,omitempty"`
-	rest int64 `json:"availableCapacity,omitempty"`
-	rest int64 `json:"totalPhysicalCapacity,omitempty"`
-	rest int64 `json:"availablePhysicalCapacity,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
+	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

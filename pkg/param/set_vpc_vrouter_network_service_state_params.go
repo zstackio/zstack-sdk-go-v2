@@ -2,17 +2,16 @@
 
 package param
 
-// SetVpcVRouterNetworkServiceStateDetailParam SetVpcVRouterNetworkServiceState详细参数
+// SetVpcVRouterNetworkServiceStateDetailParam SetVpcVRouterNetworkServiceState detail param
 type SetVpcVRouterNetworkServiceStateDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"networkService" validate:"required"` // 必填
-	rest string `json:"state" validate:"required"` // 必填
-	rest string `json:"l3NetworkUuid,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	NetworkService string `json:"networkService" validate:"required"`
+	State string `json:"state" validate:"required"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 }
 
-// SetVpcVRouterNetworkServiceStateParam SetVpcVRouterNetworkServiceState请求参数
+// SetVpcVRouterNetworkServiceStateParam SetVpcVRouterNetworkServiceState request param
 type SetVpcVRouterNetworkServiceStateParam struct {
 	BaseParam
-	Params SetVpcVRouterNetworkServiceStateDetailParam `json:"params"` // 详细参数
+	Params SetVpcVRouterNetworkServiceStateDetailParam `json:"params"`
 }
-

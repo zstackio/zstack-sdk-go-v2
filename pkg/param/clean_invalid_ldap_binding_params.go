@@ -2,13 +2,12 @@
 
 package param
 
-// CleanInvalidLdapBindingDetailParam CleanInvalidLdapBinding详细参数
+// CleanInvalidLdapBindingDetailParam CleanInvalidLdapBinding detail param
 type CleanInvalidLdapBindingDetailParam struct {
 }
 
-// CleanInvalidLdapBindingParam CleanInvalidLdapBinding请求参数
+// CleanInvalidLdapBindingParam CleanInvalidLdapBinding request param
 type CleanInvalidLdapBindingParam struct {
 	BaseParam
-	Params CleanInvalidLdapBindingDetailParam `json:"params"` // 详细参数
+	Params CleanInvalidLdapBindingDetailParam `json:"params"`
 }
-

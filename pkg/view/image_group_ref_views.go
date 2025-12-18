@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ImageGroupRefInventoryView ImageGroupRef
 type ImageGroupRefInventoryView struct {
-	rest string `json:"imageUuid,omitempty"`
-	rest string `json:"imageGroupUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ImageUuid string `json:"imageUuid,omitempty"`
+	ImageGroupUuid string `json:"imageGroupUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

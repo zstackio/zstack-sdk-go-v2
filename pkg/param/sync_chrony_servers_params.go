@@ -2,13 +2,12 @@
 
 package param
 
-// SyncChronyServersDetailParam SyncChronyServers详细参数
+// SyncChronyServersDetailParam SyncChronyServers detail param
 type SyncChronyServersDetailParam struct {
 }
 
-// SyncChronyServersParam SyncChronyServers请求参数
+// SyncChronyServersParam SyncChronyServers request param
 type SyncChronyServersParam struct {
 	BaseParam
-	Params SyncChronyServersDetailParam `json:"params"` // 详细参数
+	Params SyncChronyServersDetailParam `json:"params"`
 }
-

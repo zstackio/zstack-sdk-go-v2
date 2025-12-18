@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmCleanTrafficDetailParam SetVmCleanTraffic详细参数
+// SetVmCleanTrafficDetailParam SetVmCleanTraffic detail param
 type SetVmCleanTrafficDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"enable" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Enable bool `json:"enable" validate:"required"`
 }
 
-// SetVmCleanTrafficParam SetVmCleanTraffic请求参数
+// SetVmCleanTrafficParam SetVmCleanTraffic request param
 type SetVmCleanTrafficParam struct {
 	BaseParam
-	Params SetVmCleanTrafficDetailParam `json:"params"` // 详细参数
+	Params SetVmCleanTrafficDetailParam `json:"params"`
 }
-

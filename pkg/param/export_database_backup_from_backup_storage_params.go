@@ -2,15 +2,14 @@
 
 package param
 
-// ExportDatabaseBackupFromBackupStorageDetailParam ExportDatabaseBackupFromBackupStorage详细参数
+// ExportDatabaseBackupFromBackupStorageDetailParam ExportDatabaseBackupFromBackupStorage detail param
 type ExportDatabaseBackupFromBackupStorageDetailParam struct {
-	rest string `json:"backupStorageUuid" validate:"required"` // 必填
-	rest string `json:"databaseBackupUuid" validate:"required"` // 必填
+	BackupStorageUuid string `json:"backupStorageUuid" validate:"required"`
+	DatabaseBackupUuid string `json:"databaseBackupUuid" validate:"required"`
 }
 
-// ExportDatabaseBackupFromBackupStorageParam ExportDatabaseBackupFromBackupStorage请求参数
+// ExportDatabaseBackupFromBackupStorageParam ExportDatabaseBackupFromBackupStorage request param
 type ExportDatabaseBackupFromBackupStorageParam struct {
 	BaseParam
-	Params ExportDatabaseBackupFromBackupStorageDetailParam `json:"params"` // 详细参数
+	Params ExportDatabaseBackupFromBackupStorageDetailParam `json:"params"`
 }
-

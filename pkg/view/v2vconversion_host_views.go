@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // V2VConversionHostInventoryView V2VConversionHost
 type V2VConversionHostInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"storagePath,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest int64 `json:"totalSize,omitempty"`
-	rest int64 `json:"availableSize,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"hostStatus,omitempty"`
-	rest string `json:"hostState,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	StoragePath string `json:"storagePath,omitempty"`
+	State string `json:"state,omitempty"`
+	TotalSize int64 `json:"totalSize,omitempty"`
+	AvailableSize int64 `json:"availableSize,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	HostStatus string `json:"hostStatus,omitempty"`
+	HostState string `json:"hostState,omitempty"`
 }
 

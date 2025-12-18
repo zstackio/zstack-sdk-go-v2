@@ -2,17 +2,16 @@
 
 package param
 
-// AddBackupStoragesToReplicationGroupDetailParam AddBackupStoragesToReplicationGroup详细参数
+// AddBackupStoragesToReplicationGroupDetailParam AddBackupStoragesToReplicationGroup detail param
 type AddBackupStoragesToReplicationGroupDetailParam struct {
-	rest string `json:"replicationGroupUuid" validate:"required"` // 必填
-	rest []string `json:"backupStorageUuids" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	ReplicationGroupUuid string `json:"replicationGroupUuid" validate:"required"`
+	BackupStorageUuids []string `json:"backupStorageUuids" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddBackupStoragesToReplicationGroupParam AddBackupStoragesToReplicationGroup请求参数
+// AddBackupStoragesToReplicationGroupParam AddBackupStoragesToReplicationGroup request param
 type AddBackupStoragesToReplicationGroupParam struct {
 	BaseParam
-	Params AddBackupStoragesToReplicationGroupDetailParam `json:"params"` // 详细参数
+	Params AddBackupStoragesToReplicationGroupDetailParam `json:"params"`
 }
-

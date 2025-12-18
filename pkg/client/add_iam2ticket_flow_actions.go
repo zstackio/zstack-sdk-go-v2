@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddIAM2TicketFlow 操作AddIAM2TicketFlow
+// AddIAM2TicketFlow adds IAM2TicketFlow
 func (cli *ZSClient) AddIAM2TicketFlow(params param.AddIAM2TicketFlowParam) (*view.AddIAM2TicketFlowEventView, error) {
 	resp := view.AddIAM2TicketFlowEventView{}
 	if err := cli.Post("v1/tickets/flow", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddIAM2TicketFlow(params param.AddIAM2TicketFlowParam) (*vi
 	}
 	return &resp, nil
 }
-

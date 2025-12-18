@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ReloadExternalService 操作ReloadExternalService
+// ReloadExternalService operates on ReloadExternalService
 func (cli *ZSClient) ReloadExternalService(uuid string, params param.ReloadExternalServiceParam) (*view.ReloadExternalServiceEventView, error) {
 	resp := view.ReloadExternalServiceEventView{}
 	if err := cli.Put("v1/external/services", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ReloadExternalService(uuid string, params param.ReloadExter
 	}
 	return &resp, nil
 }
-

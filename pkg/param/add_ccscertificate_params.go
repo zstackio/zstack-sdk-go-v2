@@ -2,14 +2,13 @@
 
 package param
 
-// AddCCSCertificateDetailParam AddCCSCertificate详细参数
+// AddCCSCertificateDetailParam AddCCSCertificate detail param
 type AddCCSCertificateDetailParam struct {
-	rest string `json:"certificate" validate:"required"` // 必填
+	Certificate string `json:"certificate" validate:"required"`
 }
 
-// AddCCSCertificateParam AddCCSCertificate请求参数
+// AddCCSCertificateParam AddCCSCertificate request param
 type AddCCSCertificateParam struct {
 	BaseParam
-	Params AddCCSCertificateDetailParam `json:"params"` // 详细参数
+	Params AddCCSCertificateDetailParam `json:"params"`
 }
-

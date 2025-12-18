@@ -2,20 +2,19 @@
 
 package param
 
-// AddAliyunPanguPartitionDetailParam AddAliyunPanguPartition详细参数
+// AddAliyunPanguPartitionDetailParam AddAliyunPanguPartition detail param
 type AddAliyunPanguPartitionDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"identityZoneUuid" validate:"required"` // 必填
-	rest string `json:"appName" validate:"required"` // 必填
-	rest string `json:"partitionName" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	IdentityZoneUuid string `json:"identityZoneUuid" validate:"required"`
+	AppName string `json:"appName" validate:"required"`
+	PartitionName string `json:"partitionName" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAliyunPanguPartitionParam AddAliyunPanguPartition请求参数
+// AddAliyunPanguPartitionParam AddAliyunPanguPartition request param
 type AddAliyunPanguPartitionParam struct {
 	BaseParam
-	Params AddAliyunPanguPartitionDetailParam `json:"params"` // 详细参数
+	Params AddAliyunPanguPartitionDetailParam `json:"params"`
 }
-

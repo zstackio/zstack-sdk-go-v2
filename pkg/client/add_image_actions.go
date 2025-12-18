@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddImage 操作AddImage
+// AddImage adds Image
 func (cli *ZSClient) AddImage(params param.AddImageParam) (*view.AddImageEventView, error) {
 	resp := view.AddImageEventView{}
 	if err := cli.Post("v1/images", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddImage(params param.AddImageParam) (*view.AddImageEventVi
 	}
 	return &resp, nil
 }
-

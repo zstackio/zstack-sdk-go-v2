@@ -2,18 +2,17 @@
 
 package param
 
-// AckEventDataDetailParam AckEventData详细参数
+// AckEventDataDetailParam AckEventData detail param
 type AckEventDataDetailParam struct {
-	rest string `json:"eventSubscriptionUuid" validate:"required"` // 必填
-	rest string `json:"alertDataUuid" validate:"required"` // 必填
-	rest string `json:"dataType" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest int `json:"ackPeriodSec" validate:"required"` // 必填
+	EventSubscriptionUuid string `json:"eventSubscriptionUuid" validate:"required"`
+	AlertDataUuid string `json:"alertDataUuid" validate:"required"`
+	DataType string `json:"dataType" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	AckPeriodSec int `json:"ackPeriodSec" validate:"required"`
 }
 
-// AckEventDataParam AckEventData请求参数
+// AckEventDataParam AckEventData request param
 type AckEventDataParam struct {
 	BaseParam
-	Params AckEventDataDetailParam `json:"params"` // 详细参数
+	Params AckEventDataDetailParam `json:"params"`
 }
-

@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SNSEndpointThirdpartyAlertHistoryInventoryView SNSEndpointThirdpartyAlertHistory
 type SNSEndpointThirdpartyAlertHistoryInventoryView struct {
-	rest string `json:"alertUuid,omitempty"`
-	rest string `json:"endpointUuid,omitempty"`
-	rest string `json:"subscriptionUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
+	AlertUuid string `json:"alertUuid,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
+	SubscriptionUuid string `json:"subscriptionUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
 }
 

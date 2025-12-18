@@ -2,22 +2,21 @@
 
 package param
 
-// AddContainerManagementEndpointDetailParam AddContainerManagementEndpoint详细参数
+// AddContainerManagementEndpointDetailParam AddContainerManagementEndpoint detail param
 type AddContainerManagementEndpointDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"managementIp" validate:"required"` // 必填
-	rest string `json:"vendor" validate:"required"` // 必填
-	rest int `json:"managementPort" validate:"required"` // 必填
-	rest string `json:"containerAccessKeyId" validate:"required"` // 必填
-	rest string `json:"containerAccessKeySecret" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp" validate:"required"`
+	Vendor string `json:"vendor" validate:"required"`
+	ManagementPort int `json:"managementPort" validate:"required"`
+	ContainerAccessKeyId string `json:"containerAccessKeyId" validate:"required"`
+	ContainerAccessKeySecret string `json:"containerAccessKeySecret" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddContainerManagementEndpointParam AddContainerManagementEndpoint请求参数
+// AddContainerManagementEndpointParam AddContainerManagementEndpoint request param
 type AddContainerManagementEndpointParam struct {
 	BaseParam
-	Params AddContainerManagementEndpointDetailParam `json:"params"` // 详细参数
+	Params AddContainerManagementEndpointDetailParam `json:"params"`
 }
-

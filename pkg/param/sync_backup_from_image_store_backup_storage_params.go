@@ -2,16 +2,15 @@
 
 package param
 
-// SyncBackupFromImageStoreBackupStorageDetailParam SyncBackupFromImageStoreBackupStorage详细参数
+// SyncBackupFromImageStoreBackupStorageDetailParam SyncBackupFromImageStoreBackupStorage detail param
 type SyncBackupFromImageStoreBackupStorageDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"srcBackupStorageUuid" validate:"required"` // 必填
-	rest string `json:"dstBackupStorageUuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	SrcBackupStorageUuid string `json:"srcBackupStorageUuid" validate:"required"`
+	DstBackupStorageUuid string `json:"dstBackupStorageUuid" validate:"required"`
 }
 
-// SyncBackupFromImageStoreBackupStorageParam SyncBackupFromImageStoreBackupStorage请求参数
+// SyncBackupFromImageStoreBackupStorageParam SyncBackupFromImageStoreBackupStorage request param
 type SyncBackupFromImageStoreBackupStorageParam struct {
 	BaseParam
-	Params SyncBackupFromImageStoreBackupStorageDetailParam `json:"params"` // 详细参数
+	Params SyncBackupFromImageStoreBackupStorageDetailParam `json:"params"`
 }
-

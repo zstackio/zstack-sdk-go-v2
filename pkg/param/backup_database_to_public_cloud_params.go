@@ -2,16 +2,15 @@
 
 package param
 
-// BackupDatabaseToPublicCloudDetailParam BackupDatabaseToPublicCloud详细参数
+// BackupDatabaseToPublicCloudDetailParam BackupDatabaseToPublicCloud detail param
 type BackupDatabaseToPublicCloudDetailParam struct {
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"regionId" validate:"required"` // 必填
-	rest bool `json:"local,omitempty"`
+	Type string `json:"type" validate:"required"`
+	RegionId string `json:"regionId" validate:"required"`
+	Local bool `json:"local,omitempty"`
 }
 
-// BackupDatabaseToPublicCloudParam BackupDatabaseToPublicCloud请求参数
+// BackupDatabaseToPublicCloudParam BackupDatabaseToPublicCloud request param
 type BackupDatabaseToPublicCloudParam struct {
 	BaseParam
-	Params BackupDatabaseToPublicCloudDetailParam `json:"params"` // 详细参数
+	Params BackupDatabaseToPublicCloudDetailParam `json:"params"`
 }
-

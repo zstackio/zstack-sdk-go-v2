@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // NetworkRouterAreaRefInventoryView NetworkRouterAreaRef
 type NetworkRouterAreaRefInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vRouterUuid,omitempty"`
-	rest string `json:"applianceVmType,omitempty"`
-	rest string `json:"routerAreaUuid,omitempty"`
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VRouterUuid string `json:"vRouterUuid,omitempty"`
+	ApplianceVmType string `json:"applianceVmType,omitempty"`
+	RouterAreaUuid string `json:"routerAreaUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

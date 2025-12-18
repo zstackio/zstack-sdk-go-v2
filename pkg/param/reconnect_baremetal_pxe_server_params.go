@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectBaremetalPxeServerDetailParam ReconnectBaremetalPxeServer详细参数
+// ReconnectBaremetalPxeServerDetailParam ReconnectBaremetalPxeServer detail param
 type ReconnectBaremetalPxeServerDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectBaremetalPxeServerParam ReconnectBaremetalPxeServer请求参数
+// ReconnectBaremetalPxeServerParam ReconnectBaremetalPxeServer request param
 type ReconnectBaremetalPxeServerParam struct {
 	BaseParam
-	Params ReconnectBaremetalPxeServerDetailParam `json:"params"` // 详细参数
+	Params ReconnectBaremetalPxeServerDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveVRouterNetworksFromOspfAreaDetailParam RemoveVRouterNetworksFromOspfArea详细参数
+// RemoveVRouterNetworksFromOspfAreaDetailParam RemoveVRouterNetworksFromOspfArea detail param
 type RemoveVRouterNetworksFromOspfAreaDetailParam struct {
-	rest []string `json:"uuids" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	Uuids []string `json:"uuids" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveVRouterNetworksFromOspfAreaParam RemoveVRouterNetworksFromOspfArea请求参数
+// RemoveVRouterNetworksFromOspfAreaParam RemoveVRouterNetworksFromOspfArea request param
 type RemoveVRouterNetworksFromOspfAreaParam struct {
 	BaseParam
-	Params RemoveVRouterNetworksFromOspfAreaDetailParam `json:"params"` // 详细参数
+	Params RemoveVRouterNetworksFromOspfAreaDetailParam `json:"params"`
 }
-

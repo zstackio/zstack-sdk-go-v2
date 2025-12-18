@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveIAM2ProjectLoginExpiredDetailParam RemoveIAM2ProjectLoginExpired详细参数
+// RemoveIAM2ProjectLoginExpiredDetailParam RemoveIAM2ProjectLoginExpired detail param
 type RemoveIAM2ProjectLoginExpiredDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"attributeUuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	AttributeUuid string `json:"attributeUuid" validate:"required"`
 }
 
-// RemoveIAM2ProjectLoginExpiredParam RemoveIAM2ProjectLoginExpired请求参数
+// RemoveIAM2ProjectLoginExpiredParam RemoveIAM2ProjectLoginExpired request param
 type RemoveIAM2ProjectLoginExpiredParam struct {
 	BaseParam
-	Params RemoveIAM2ProjectLoginExpiredDetailParam `json:"params"` // 详细参数
+	Params RemoveIAM2ProjectLoginExpiredDetailParam `json:"params"`
 }
-

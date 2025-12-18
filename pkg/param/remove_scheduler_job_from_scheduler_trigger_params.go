@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveSchedulerJobFromSchedulerTriggerDetailParam RemoveSchedulerJobFromSchedulerTrigger详细参数
+// RemoveSchedulerJobFromSchedulerTriggerDetailParam RemoveSchedulerJobFromSchedulerTrigger detail param
 type RemoveSchedulerJobFromSchedulerTriggerDetailParam struct {
-	rest string `json:"schedulerJobUuid" validate:"required"` // 必填
-	rest string `json:"schedulerTriggerUuid" validate:"required"` // 必填
+	SchedulerJobUuid string `json:"schedulerJobUuid" validate:"required"`
+	SchedulerTriggerUuid string `json:"schedulerTriggerUuid" validate:"required"`
 }
 
-// RemoveSchedulerJobFromSchedulerTriggerParam RemoveSchedulerJobFromSchedulerTrigger请求参数
+// RemoveSchedulerJobFromSchedulerTriggerParam RemoveSchedulerJobFromSchedulerTrigger request param
 type RemoveSchedulerJobFromSchedulerTriggerParam struct {
 	BaseParam
-	Params RemoveSchedulerJobFromSchedulerTriggerDetailParam `json:"params"` // 详细参数
+	Params RemoveSchedulerJobFromSchedulerTriggerDetailParam `json:"params"`
 }
-

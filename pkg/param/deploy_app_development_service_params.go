@@ -2,37 +2,36 @@
 
 package param
 
-// DeployAppDevelopmentServiceDetailParam DeployAppDevelopmentService详细参数
+// DeployAppDevelopmentServiceDetailParam DeployAppDevelopmentService detail param
 type DeployAppDevelopmentServiceDetailParam struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"modelUuid,omitempty"`
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"vmImageUuid,omitempty"`
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest []string `json:"datasetUuids,omitempty"`
-	rest []string `json:"modelServiceGroupUuids,omitempty"`
-	rest string `json:"dockerImage,omitempty"`
-	rest int `json:"cpuNum,omitempty"`
-	rest string `json:"name" validate:"required"` // 必填
-	rest map[string]string `json:"environmentVariables,omitempty"`
-	rest map[string]string `json:"startupParameters,omitempty"`
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"clusterUuid,omitempty"`
-	rest int64 `json:"memorySize,omitempty"`
-	rest []string `json:"l3NetworkUuids,omitempty"`
-	rest int `json:"serviceBootUptime,omitempty"`
-	rest string `json:"serviceLivez,omitempty"`
-	rest string `json:"serviceReadyz,omitempty"`
-	rest string `json:"rootDiskOfferingUuid,omitempty"`
-	rest int64 `json:"rootDiskSize,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ModelUuid string `json:"modelUuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	VmImageUuid string `json:"vmImageUuid,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	DatasetUuids []string `json:"datasetUuids,omitempty"`
+	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
+	DockerImage string `json:"dockerImage,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	Name string `json:"name" validate:"required"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
+	StartupParameters map[string]string `json:"startupParameters,omitempty"`
+	Type string `json:"type" validate:"required"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty"`
+	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
+	ServiceBootUptime int `json:"serviceBootUptime,omitempty"`
+	ServiceLivez string `json:"serviceLivez,omitempty"`
+	ServiceReadyz string `json:"serviceReadyz,omitempty"`
+	RootDiskOfferingUuid string `json:"rootDiskOfferingUuid,omitempty"`
+	RootDiskSize int64 `json:"rootDiskSize,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// DeployAppDevelopmentServiceParam DeployAppDevelopmentService请求参数
+// DeployAppDevelopmentServiceParam DeployAppDevelopmentService request param
 type DeployAppDevelopmentServiceParam struct {
 	BaseParam
-	Params DeployAppDevelopmentServiceDetailParam `json:"params"` // 详细参数
+	Params DeployAppDevelopmentServiceDetailParam `json:"params"`
 }
-

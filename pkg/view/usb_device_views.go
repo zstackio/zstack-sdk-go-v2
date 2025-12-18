@@ -4,24 +4,26 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // UsbDeviceInventoryView UsbDevice
 type UsbDeviceInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"busNum,omitempty"`
-	rest string `json:"devNum,omitempty"`
-	rest string `json:"idVendor,omitempty"`
-	rest string `json:"idProduct,omitempty"`
-	rest string `json:"iManufacturer,omitempty"`
-	rest string `json:"iProduct,omitempty"`
-	rest string `json:"iSerial,omitempty"`
-	rest string `json:"usbVersion,omitempty"`
-	rest string `json:"attachType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	BusNum string `json:"busNum,omitempty"`
+	DevNum string `json:"devNum,omitempty"`
+	IdVendor string `json:"idVendor,omitempty"`
+	IdProduct string `json:"idProduct,omitempty"`
+	IManufacturer string `json:"iManufacturer,omitempty"`
+	IProduct string `json:"iProduct,omitempty"`
+	ISerial string `json:"iSerial,omitempty"`
+	UsbVersion string `json:"usbVersion,omitempty"`
+	AttachType string `json:"attachType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

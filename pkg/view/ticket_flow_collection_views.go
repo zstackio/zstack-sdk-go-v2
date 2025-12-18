@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // TicketFlowCollectionInventoryView TicketFlowCollection
 type TicketFlowCollectionInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest bool `json:"isDefault,omitempty"`
-	rest []TicketFlowInventoryView `json:"flows,omitempty"`
-	rest []string `json:"ticketTypeUuids,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	IsDefault bool `json:"isDefault,omitempty"`
+	Flows []TicketFlowInventoryView `json:"flows,omitempty"`
+	TicketTypeUuids []string `json:"ticketTypeUuids,omitempty"`
 }
 

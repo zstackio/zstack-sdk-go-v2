@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddSNSDingTalkAtPerson 操作AddSNSDingTalkAtPerson
+// AddSNSDingTalkAtPerson adds SNSDingTalkAtPerson
 func (cli *ZSClient) AddSNSDingTalkAtPerson(params param.AddSNSDingTalkAtPersonParam) (*view.AddSNSDingTalkAtPersonEventView, error) {
 	resp := view.AddSNSDingTalkAtPersonEventView{}
 	if err := cli.Post("v1/sns/application-endpoints/ding-talk/at-persons", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddSNSDingTalkAtPerson(params param.AddSNSDingTalkAtPersonP
 	}
 	return &resp, nil
 }
-

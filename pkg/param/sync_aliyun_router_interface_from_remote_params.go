@@ -2,16 +2,15 @@
 
 package param
 
-// SyncAliyunRouterInterfaceFromRemoteDetailParam SyncAliyunRouterInterfaceFromRemote详细参数
+// SyncAliyunRouterInterfaceFromRemoteDetailParam SyncAliyunRouterInterfaceFromRemote detail param
 type SyncAliyunRouterInterfaceFromRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncAliyunRouterInterfaceFromRemoteParam SyncAliyunRouterInterfaceFromRemote请求参数
+// SyncAliyunRouterInterfaceFromRemoteParam SyncAliyunRouterInterfaceFromRemote request param
 type SyncAliyunRouterInterfaceFromRemoteParam struct {
 	BaseParam
-	Params SyncAliyunRouterInterfaceFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncAliyunRouterInterfaceFromRemoteDetailParam `json:"params"`
 }
-

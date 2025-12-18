@@ -2,15 +2,14 @@
 
 package param
 
-// SetVpcVRouterDistributedRoutingEnabledDetailParam SetVpcVRouterDistributedRoutingEnabled详细参数
+// SetVpcVRouterDistributedRoutingEnabledDetailParam SetVpcVRouterDistributedRoutingEnabled detail param
 type SetVpcVRouterDistributedRoutingEnabledDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"stateEvent" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	StateEvent string `json:"stateEvent" validate:"required"`
 }
 
-// SetVpcVRouterDistributedRoutingEnabledParam SetVpcVRouterDistributedRoutingEnabled请求参数
+// SetVpcVRouterDistributedRoutingEnabledParam SetVpcVRouterDistributedRoutingEnabled request param
 type SetVpcVRouterDistributedRoutingEnabledParam struct {
 	BaseParam
-	Params SetVpcVRouterDistributedRoutingEnabledDetailParam `json:"params"` // 详细参数
+	Params SetVpcVRouterDistributedRoutingEnabledDetailParam `json:"params"`
 }
-

@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectBareMetal2InstanceDetailParam ReconnectBareMetal2Instance详细参数
+// ReconnectBareMetal2InstanceDetailParam ReconnectBareMetal2Instance detail param
 type ReconnectBareMetal2InstanceDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectBareMetal2InstanceParam ReconnectBareMetal2Instance请求参数
+// ReconnectBareMetal2InstanceParam ReconnectBareMetal2Instance request param
 type ReconnectBareMetal2InstanceParam struct {
 	BaseParam
-	Params ReconnectBareMetal2InstanceDetailParam `json:"params"` // 详细参数
+	Params ReconnectBareMetal2InstanceDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// WithdrawLicenseCapacityApplicationDetailParam WithdrawLicenseCapacityApplication详细参数
+// WithdrawLicenseCapacityApplicationDetailParam WithdrawLicenseCapacityApplication detail param
 type WithdrawLicenseCapacityApplicationDetailParam struct {
-	rest []string `json:"resourceUuidList" validate:"required"` // 必填
-	rest string `json:"clientAuthorizedNodeUuid" validate:"required"` // 必填
-	rest string `json:"licenseType" validate:"required"` // 必填
+	ResourceUuidList []string `json:"resourceUuidList" validate:"required"`
+	ClientAuthorizedNodeUuid string `json:"clientAuthorizedNodeUuid" validate:"required"`
+	LicenseType string `json:"licenseType" validate:"required"`
 }
 
-// WithdrawLicenseCapacityApplicationParam WithdrawLicenseCapacityApplication请求参数
+// WithdrawLicenseCapacityApplicationParam WithdrawLicenseCapacityApplication request param
 type WithdrawLicenseCapacityApplicationParam struct {
 	BaseParam
-	Params WithdrawLicenseCapacityApplicationDetailParam `json:"params"` // 详细参数
+	Params WithdrawLicenseCapacityApplicationDetailParam `json:"params"`
 }
-

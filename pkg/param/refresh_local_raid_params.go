@@ -2,14 +2,13 @@
 
 package param
 
-// RefreshLocalRaidDetailParam RefreshLocalRaid详细参数
+// RefreshLocalRaidDetailParam RefreshLocalRaid detail param
 type RefreshLocalRaidDetailParam struct {
-	rest string `json:"hostUuid" validate:"required"` // 必填
+	HostUuid string `json:"hostUuid" validate:"required"`
 }
 
-// RefreshLocalRaidParam RefreshLocalRaid请求参数
+// RefreshLocalRaidParam RefreshLocalRaid request param
 type RefreshLocalRaidParam struct {
 	BaseParam
-	Params RefreshLocalRaidDetailParam `json:"params"` // 详细参数
+	Params RefreshLocalRaidDetailParam `json:"params"`
 }
-

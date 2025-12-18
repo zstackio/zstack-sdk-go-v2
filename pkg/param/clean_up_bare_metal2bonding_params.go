@@ -2,14 +2,13 @@
 
 package param
 
-// CleanUpBareMetal2BondingDetailParam CleanUpBareMetal2Bonding详细参数
+// CleanUpBareMetal2BondingDetailParam CleanUpBareMetal2Bonding detail param
 type CleanUpBareMetal2BondingDetailParam struct {
-	rest string `json:"chassisUuid" validate:"required"` // 必填
+	ChassisUuid string `json:"chassisUuid" validate:"required"`
 }
 
-// CleanUpBareMetal2BondingParam CleanUpBareMetal2Bonding请求参数
+// CleanUpBareMetal2BondingParam CleanUpBareMetal2Bonding request param
 type CleanUpBareMetal2BondingParam struct {
 	BaseParam
-	Params CleanUpBareMetal2BondingDetailParam `json:"params"` // 详细参数
+	Params CleanUpBareMetal2BondingDetailParam `json:"params"`
 }
-

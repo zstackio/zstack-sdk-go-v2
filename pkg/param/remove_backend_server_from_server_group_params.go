@@ -2,16 +2,15 @@
 
 package param
 
-// RemoveBackendServerFromServerGroupDetailParam RemoveBackendServerFromServerGroup详细参数
+// RemoveBackendServerFromServerGroupDetailParam RemoveBackendServerFromServerGroup detail param
 type RemoveBackendServerFromServerGroupDetailParam struct {
-	rest string `json:"serverGroupUuid" validate:"required"` // 必填
-	rest []string `json:"vmNicUuids,omitempty"`
-	rest []string `json:"serverIps,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid" validate:"required"`
+	VmNicUuids []string `json:"vmNicUuids,omitempty"`
+	ServerIps []string `json:"serverIps,omitempty"`
 }
 
-// RemoveBackendServerFromServerGroupParam RemoveBackendServerFromServerGroup请求参数
+// RemoveBackendServerFromServerGroupParam RemoveBackendServerFromServerGroup request param
 type RemoveBackendServerFromServerGroupParam struct {
 	BaseParam
-	Params RemoveBackendServerFromServerGroupDetailParam `json:"params"` // 详细参数
+	Params RemoveBackendServerFromServerGroupDetailParam `json:"params"`
 }
-

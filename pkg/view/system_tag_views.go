@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SystemTagInventoryView SystemTag
 type SystemTagInventoryView struct {
-	rest bool `json:"inherent,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"resourceType,omitempty"`
-	rest string `json:"tag,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Inherent bool `json:"inherent,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	Tag string `json:"tag,omitempty"`
+	Type string `json:"type,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

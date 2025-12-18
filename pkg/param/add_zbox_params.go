@@ -2,16 +2,15 @@
 
 package param
 
-// AddZBoxDetailParam AddZBox详细参数
+// AddZBoxDetailParam AddZBox detail param
 type AddZBoxDetailParam struct {
-	rest string `json:"usbDeviceUuid" validate:"required"` // 必填
-	rest string `json:"name,omitempty"`
-	rest bool `json:"skipFormat,omitempty"`
+	UsbDeviceUuid string `json:"usbDeviceUuid" validate:"required"`
+	Name string `json:"name,omitempty"`
+	SkipFormat bool `json:"skipFormat,omitempty"`
 }
 
-// AddZBoxParam AddZBox请求参数
+// AddZBoxParam AddZBox request param
 type AddZBoxParam struct {
 	BaseParam
-	Params AddZBoxDetailParam `json:"params"` // 详细参数
+	Params AddZBoxDetailParam `json:"params"`
 }
-

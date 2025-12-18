@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// UploadFileToVm 操作UploadFileToVm
+// UploadFileToVm operates on UploadFileToVm
 func (cli *ZSClient) UploadFileToVm(params param.UploadFileToVmParam) (*view.UploadFileToVmEventView, error) {
 	resp := view.UploadFileToVmEventView{}
 	if err := cli.Post("v1/upload-file", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) UploadFileToVm(params param.UploadFileToVmParam) (*view.Upl
 	}
 	return &resp, nil
 }
-

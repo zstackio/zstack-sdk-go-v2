@@ -2,13 +2,12 @@
 
 package param
 
-// DegradeFromLicenseServerDetailParam DegradeFromLicenseServer详细参数
+// DegradeFromLicenseServerDetailParam DegradeFromLicenseServer detail param
 type DegradeFromLicenseServerDetailParam struct {
 }
 
-// DegradeFromLicenseServerParam DegradeFromLicenseServer请求参数
+// DegradeFromLicenseServerParam DegradeFromLicenseServer request param
 type DegradeFromLicenseServerParam struct {
 	BaseParam
-	Params DegradeFromLicenseServerDetailParam `json:"params"` // 详细参数
+	Params DegradeFromLicenseServerDetailParam `json:"params"`
 }
-

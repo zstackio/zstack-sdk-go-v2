@@ -4,23 +4,25 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ApplicationDevelopmentServiceInventoryView ApplicationDevelopmentService
 type ApplicationDevelopmentServiceInventoryView struct {
-	rest string `json:"deploymentStatus,omitempty"`
-	rest ModelServiceInventoryView `json:"service,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"modelServiceUuid,omitempty"`
-	rest string `json:"modelUuid,omitempty"`
-	rest []ModelServiceInstanceInventoryView `json:"instances,omitempty"`
-	rest []ModelServiceGroupDatasetRefInventoryView `json:"datasetRefInventories,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"modelServiceType,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"yaml,omitempty"`
-	rest []string `json:"supportMetrics,omitempty"`
+	DeploymentStatus string `json:"deploymentStatus,omitempty"`
+	Service ModelServiceInventoryView `json:"service,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ModelServiceUuid string `json:"modelServiceUuid,omitempty"`
+	ModelUuid string `json:"modelUuid,omitempty"`
+	Instances []ModelServiceInstanceInventoryView `json:"instances,omitempty"`
+	DatasetRefInventories []ModelServiceGroupDatasetRefInventoryView `json:"datasetRefInventories,omitempty"`
+	Status string `json:"status,omitempty"`
+	ModelServiceType string `json:"modelServiceType,omitempty"`
+	Type string `json:"type,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Yaml string `json:"yaml,omitempty"`
+	SupportMetrics []string `json:"supportMetrics,omitempty"`
 }
 

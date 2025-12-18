@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddOssBucketFromRemote 操作AddOssBucketFromRemote
+// AddOssBucketFromRemote adds OssBucketFromRemote
 func (cli *ZSClient) AddOssBucketFromRemote(params param.AddOssBucketFromRemoteParam) (*view.AddOssBucketFromRemoteEventView, error) {
 	resp := view.AddOssBucketFromRemoteEventView{}
 	if err := cli.Post("v1/hybrid/aliyun/oss-bucket", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddOssBucketFromRemote(params param.AddOssBucketFromRemoteP
 	}
 	return &resp, nil
 }
-

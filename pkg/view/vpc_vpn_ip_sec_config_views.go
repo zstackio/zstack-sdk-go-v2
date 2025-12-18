@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcVpnIpSecConfigInventoryView VpcVpnIpSecConfig
 type VpcVpnIpSecConfigInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"accountName,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"encodeAlgorithm,omitempty"`
-	rest string `json:"authAlgorithm,omitempty"`
-	rest string `json:"pfs,omitempty"`
-	rest int `json:"lifetime,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AccountName string `json:"accountName,omitempty"`
+	Name string `json:"name,omitempty"`
+	EncodeAlgorithm string `json:"encodeAlgorithm,omitempty"`
+	AuthAlgorithm string `json:"authAlgorithm,omitempty"`
+	Pfs string `json:"pfs,omitempty"`
+	Lifetime int `json:"lifetime,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

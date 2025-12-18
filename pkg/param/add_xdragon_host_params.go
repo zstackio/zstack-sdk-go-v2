@@ -2,25 +2,24 @@
 
 package param
 
-// AddXDragonHostDetailParam AddXDragonHost详细参数
+// AddXDragonHostDetailParam AddXDragonHost detail param
 type AddXDragonHostDetailParam struct {
-	rest string `json:"username" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest int `json:"cpuNum,omitempty"`
-	rest int `json:"cpuSockets,omitempty"`
-	rest int64 `json:"totalPhysicalMemory,omitempty"`
-	rest int `json:"sshPort,omitempty"`
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"managementIp" validate:"required"` // 必填
-	rest string `json:"clusterUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	CpuSockets int `json:"cpuSockets,omitempty"`
+	TotalPhysicalMemory int64 `json:"totalPhysicalMemory,omitempty"`
+	SshPort int `json:"sshPort,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp" validate:"required"`
+	ClusterUuid string `json:"clusterUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddXDragonHostParam AddXDragonHost请求参数
+// AddXDragonHostParam AddXDragonHost request param
 type AddXDragonHostParam struct {
 	BaseParam
-	Params AddXDragonHostDetailParam `json:"params"` // 详细参数
+	Params AddXDragonHostDetailParam `json:"params"`
 }
-

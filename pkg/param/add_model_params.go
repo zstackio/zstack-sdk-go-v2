@@ -2,29 +2,28 @@
 
 package param
 
-// AddModelDetailParam AddModel详细参数
+// AddModelDetailParam AddModel detail param
 type AddModelDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"installPath" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"parameters,omitempty"`
-	rest string `json:"token,omitempty"`
-	rest string `json:"modelCenterUuid" validate:"required"` // 必填
-	rest string `json:"logo,omitempty"`
-	rest string `json:"vendor,omitempty"`
-	rest string `json:"introduction,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest []string `json:"modelServiceUuids,omitempty"`
-	rest string `json:"recommendedGpuNum,omitempty"`
-	rest string `json:"gpuConstraintDescription,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	InstallPath string `json:"installPath" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Parameters string `json:"parameters,omitempty"`
+	Token string `json:"token,omitempty"`
+	ModelCenterUuid string `json:"modelCenterUuid" validate:"required"`
+	Logo string `json:"logo,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	Introduction string `json:"introduction,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	Version string `json:"version,omitempty"`
+	ModelServiceUuids []string `json:"modelServiceUuids,omitempty"`
+	RecommendedGpuNum string `json:"recommendedGpuNum,omitempty"`
+	GpuConstraintDescription string `json:"gpuConstraintDescription,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddModelParam AddModel请求参数
+// AddModelParam AddModel request param
 type AddModelParam struct {
 	BaseParam
-	Params AddModelDetailParam `json:"params"` // 详细参数
+	Params AddModelDetailParam `json:"params"`
 }
-

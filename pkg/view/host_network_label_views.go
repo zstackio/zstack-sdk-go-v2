@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // HostNetworkLabelInventoryView HostNetworkLabel
 type HostNetworkLabelInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"serviceType,omitempty"`
-	rest bool `json:"system,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ServiceType string `json:"serviceType,omitempty"`
+	System bool `json:"system,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

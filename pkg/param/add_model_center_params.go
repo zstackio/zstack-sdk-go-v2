@@ -2,27 +2,26 @@
 
 package param
 
-// AddModelCenterDetailParam AddModelCenter详细参数
+// AddModelCenterDetailParam AddModelCenter detail param
 type AddModelCenterDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"managementIp" validate:"required"` // 必填
-	rest int `json:"managementPort" validate:"required"` // 必填
-	rest string `json:"parameters,omitempty"`
-	rest string `json:"storageNetworkUuid,omitempty"`
-	rest string `json:"serviceNetworkUuid,omitempty"`
-	rest string `json:"containerRegistry,omitempty"`
-	rest string `json:"containerNetwork,omitempty"`
-	rest string `json:"containerStorageNetwork,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Url string `json:"url" validate:"required"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp" validate:"required"`
+	ManagementPort int `json:"managementPort" validate:"required"`
+	Parameters string `json:"parameters,omitempty"`
+	StorageNetworkUuid string `json:"storageNetworkUuid,omitempty"`
+	ServiceNetworkUuid string `json:"serviceNetworkUuid,omitempty"`
+	ContainerRegistry string `json:"containerRegistry,omitempty"`
+	ContainerNetwork string `json:"containerNetwork,omitempty"`
+	ContainerStorageNetwork string `json:"containerStorageNetwork,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddModelCenterParam AddModelCenter请求参数
+// AddModelCenterParam AddModelCenter request param
 type AddModelCenterParam struct {
 	BaseParam
-	Params AddModelCenterDetailParam `json:"params"` // 详细参数
+	Params AddModelCenterDetailParam `json:"params"`
 }
-

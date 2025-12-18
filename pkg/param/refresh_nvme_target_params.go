@@ -2,15 +2,14 @@
 
 package param
 
-// RefreshNvmeTargetDetailParam RefreshNvmeTarget详细参数
+// RefreshNvmeTargetDetailParam RefreshNvmeTarget detail param
 type RefreshNvmeTargetDetailParam struct {
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest []string `json:"nvmeLunUuids,omitempty"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	NvmeLunUuids []string `json:"nvmeLunUuids,omitempty"`
 }
 
-// RefreshNvmeTargetParam RefreshNvmeTarget请求参数
+// RefreshNvmeTargetParam RefreshNvmeTarget request param
 type RefreshNvmeTargetParam struct {
 	BaseParam
-	Params RefreshNvmeTargetDetailParam `json:"params"` // 详细参数
+	Params RefreshNvmeTargetDetailParam `json:"params"`
 }
-

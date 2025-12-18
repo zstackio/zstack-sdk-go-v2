@@ -2,16 +2,15 @@
 
 package param
 
-// PowerResetHostDetailParam PowerResetHost详细参数
+// PowerResetHostDetailParam PowerResetHost detail param
 type PowerResetHostDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"returnEarly,omitempty"`
-	rest string `json:"method,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	ReturnEarly bool `json:"returnEarly,omitempty"`
+	Method string `json:"method,omitempty"`
 }
 
-// PowerResetHostParam PowerResetHost请求参数
+// PowerResetHostParam PowerResetHost request param
 type PowerResetHostParam struct {
 	BaseParam
-	Params PowerResetHostDetailParam `json:"params"` // 详细参数
+	Params PowerResetHostDetailParam `json:"params"`
 }
-

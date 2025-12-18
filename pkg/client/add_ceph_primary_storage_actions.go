@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddCephPrimaryStorage 操作AddCephPrimaryStorage
+// AddCephPrimaryStorage adds CephPrimaryStorage
 func (cli *ZSClient) AddCephPrimaryStorage(params param.AddCephPrimaryStorageParam) (*view.AddPrimaryStorageEventView, error) {
 	resp := view.AddPrimaryStorageEventView{}
 	if err := cli.Post("v1/primary-storage/ceph", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddCephPrimaryStorage(params param.AddCephPrimaryStoragePar
 	}
 	return &resp, nil
 }
-

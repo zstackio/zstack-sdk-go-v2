@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddProxyToResource 操作AddProxyToResource
+// AddProxyToResource adds ProxyToResource
 func (cli *ZSClient) AddProxyToResource(params param.AddProxyToResourceParam) (*view.AddProxyToResourceEventView, error) {
 	resp := view.AddProxyToResourceEventView{}
 	if err := cli.Post("v1/proxy/{proxyUuid}/resource/{resourceUuid}", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddProxyToResource(params param.AddProxyToResourceParam) (*
 	}
 	return &resp, nil
 }
-

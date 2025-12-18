@@ -2,13 +2,12 @@
 
 package param
 
-// ResetGlobalConfigDetailParam ResetGlobalConfig详细参数
+// ResetGlobalConfigDetailParam ResetGlobalConfig detail param
 type ResetGlobalConfigDetailParam struct {
 }
 
-// ResetGlobalConfigParam ResetGlobalConfig请求参数
+// ResetGlobalConfigParam ResetGlobalConfig request param
 type ResetGlobalConfigParam struct {
 	BaseParam
-	Params ResetGlobalConfigDetailParam `json:"params"` // 详细参数
+	Params ResetGlobalConfigDetailParam `json:"params"`
 }
-

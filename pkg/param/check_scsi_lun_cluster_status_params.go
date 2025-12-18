@@ -2,15 +2,14 @@
 
 package param
 
-// CheckScsiLunClusterStatusDetailParam CheckScsiLunClusterStatus详细参数
+// CheckScsiLunClusterStatusDetailParam CheckScsiLunClusterStatus detail param
 type CheckScsiLunClusterStatusDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"clusterUuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	ClusterUuid string `json:"clusterUuid" validate:"required"`
 }
 
-// CheckScsiLunClusterStatusParam CheckScsiLunClusterStatus请求参数
+// CheckScsiLunClusterStatusParam CheckScsiLunClusterStatus request param
 type CheckScsiLunClusterStatusParam struct {
 	BaseParam
-	Params CheckScsiLunClusterStatusDetailParam `json:"params"` // 详细参数
+	Params CheckScsiLunClusterStatusDetailParam `json:"params"`
 }
-

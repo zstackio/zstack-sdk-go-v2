@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddLabelToEventSubscription 操作AddLabelToEventSubscription
+// AddLabelToEventSubscription adds LabelToEventSubscription
 func (cli *ZSClient) AddLabelToEventSubscription(params param.AddLabelToEventSubscriptionParam) (*view.AddLabelToEventSubscriptionEventView, error) {
 	resp := view.AddLabelToEventSubscriptionEventView{}
 	if err := cli.Post("v1/zwatch/events/subscriptions/{subscriptionUuid}/labels", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddLabelToEventSubscription(params param.AddLabelToEventSub
 	}
 	return &resp, nil
 }
-

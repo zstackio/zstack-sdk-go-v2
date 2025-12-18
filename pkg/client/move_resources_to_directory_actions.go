@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// MoveResourcesToDirectory 操作MoveResourcesToDirectory
+// MoveResourcesToDirectory operates on MoveResourcesToDirectory
 func (cli *ZSClient) MoveResourcesToDirectory(uuid string, params param.MoveResourcesToDirectoryParam) (*view.MoveResourcesToDirectoryEventView, error) {
 	resp := view.MoveResourcesToDirectoryEventView{}
 	if err := cli.Put("v1/move/resources/directory", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) MoveResourcesToDirectory(uuid string, params param.MoveReso
 	}
 	return &resp, nil
 }
-

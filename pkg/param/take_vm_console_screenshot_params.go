@@ -2,14 +2,13 @@
 
 package param
 
-// TakeVmConsoleScreenshotDetailParam TakeVmConsoleScreenshot详细参数
+// TakeVmConsoleScreenshotDetailParam TakeVmConsoleScreenshot detail param
 type TakeVmConsoleScreenshotDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// TakeVmConsoleScreenshotParam TakeVmConsoleScreenshot请求参数
+// TakeVmConsoleScreenshotParam TakeVmConsoleScreenshot request param
 type TakeVmConsoleScreenshotParam struct {
 	BaseParam
-	Params TakeVmConsoleScreenshotDetailParam `json:"params"` // 详细参数
+	Params TakeVmConsoleScreenshotDetailParam `json:"params"`
 }
-

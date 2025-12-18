@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ManagementNodeInventoryView ManagementNode
 type ManagementNodeInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"hostName,omitempty"`
-	rest time.Time `json:"joinDate,omitempty"`
-	rest time.Time `json:"heartBeat,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	HostName string `json:"hostName,omitempty"`
+	JoinDate time.Time `json:"joinDate,omitempty"`
+	HeartBeat time.Time `json:"heartBeat,omitempty"`
 }
 

@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveVmFromAffinityGroupDetailParam RemoveVmFromAffinityGroup详细参数
+// RemoveVmFromAffinityGroupDetailParam RemoveVmFromAffinityGroup detail param
 type RemoveVmFromAffinityGroupDetailParam struct {
-	rest string `json:"affinityGroupUuid" validate:"required"` // 必填
-	rest string `json:"uuid" validate:"required"` // 必填
+	AffinityGroupUuid string `json:"affinityGroupUuid" validate:"required"`
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RemoveVmFromAffinityGroupParam RemoveVmFromAffinityGroup请求参数
+// RemoveVmFromAffinityGroupParam RemoveVmFromAffinityGroup request param
 type RemoveVmFromAffinityGroupParam struct {
 	BaseParam
-	Params RemoveVmFromAffinityGroupDetailParam `json:"params"` // 详细参数
+	Params RemoveVmFromAffinityGroupDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// RemoveActionFromAlarmDetailParam RemoveActionFromAlarm详细参数
+// RemoveActionFromAlarmDetailParam RemoveActionFromAlarm detail param
 type RemoveActionFromAlarmDetailParam struct {
-	rest string `json:"alarmUuid" validate:"required"` // 必填
-	rest string `json:"actionUuid" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	AlarmUuid string `json:"alarmUuid" validate:"required"`
+	ActionUuid string `json:"actionUuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveActionFromAlarmParam RemoveActionFromAlarm请求参数
+// RemoveActionFromAlarmParam RemoveActionFromAlarm request param
 type RemoveActionFromAlarmParam struct {
 	BaseParam
-	Params RemoveActionFromAlarmDetailParam `json:"params"` // 详细参数
+	Params RemoveActionFromAlarmDetailParam `json:"params"`
 }
-

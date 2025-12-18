@@ -2,14 +2,13 @@
 
 package param
 
-// RequestConsoleAccessDetailParam RequestConsoleAccess详细参数
+// RequestConsoleAccessDetailParam RequestConsoleAccess detail param
 type RequestConsoleAccessDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
 }
 
-// RequestConsoleAccessParam RequestConsoleAccess请求参数
+// RequestConsoleAccessParam RequestConsoleAccess request param
 type RequestConsoleAccessParam struct {
 	BaseParam
-	Params RequestConsoleAccessDetailParam `json:"params"` // 详细参数
+	Params RequestConsoleAccessDetailParam `json:"params"`
 }
-

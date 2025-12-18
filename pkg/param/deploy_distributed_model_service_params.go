@@ -2,19 +2,18 @@
 
 package param
 
-// DeployDistributedModelServiceDetailParam DeployDistributedModelService详细参数
+// DeployDistributedModelServiceDetailParam DeployDistributedModelService detail param
 type DeployDistributedModelServiceDetailParam struct {
-	rest []interface{} `json:"modelServices" validate:"required"` // 必填
-	rest string `json:"serviceCreationStrategy" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	ModelServices []interface{} `json:"modelServices" validate:"required"`
+	ServiceCreationStrategy string `json:"serviceCreationStrategy" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// DeployDistributedModelServiceParam DeployDistributedModelService请求参数
+// DeployDistributedModelServiceParam DeployDistributedModelService request param
 type DeployDistributedModelServiceParam struct {
 	BaseParam
-	Params DeployDistributedModelServiceDetailParam `json:"params"` // 详细参数
+	Params DeployDistributedModelServiceDetailParam `json:"params"`
 }
-

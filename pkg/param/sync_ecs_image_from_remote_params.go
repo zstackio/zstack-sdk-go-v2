@@ -2,17 +2,16 @@
 
 package param
 
-// SyncEcsImageFromRemoteDetailParam SyncEcsImageFromRemote详细参数
+// SyncEcsImageFromRemoteDetailParam SyncEcsImageFromRemote detail param
 type SyncEcsImageFromRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"type,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	Type string `json:"type,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncEcsImageFromRemoteParam SyncEcsImageFromRemote请求参数
+// SyncEcsImageFromRemoteParam SyncEcsImageFromRemote request param
 type SyncEcsImageFromRemoteParam struct {
 	BaseParam
-	Params SyncEcsImageFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncEcsImageFromRemoteDetailParam `json:"params"`
 }
-

@@ -2,14 +2,13 @@
 
 package param
 
-// SyncVmBackupDetailParam SyncVmBackup详细参数
+// SyncVmBackupDetailParam SyncVmBackup detail param
 type SyncVmBackupDetailParam struct {
-	rest string `json:"imageStoreUuid" validate:"required"` // 必填
+	ImageStoreUuid string `json:"imageStoreUuid" validate:"required"`
 }
 
-// SyncVmBackupParam SyncVmBackup请求参数
+// SyncVmBackupParam SyncVmBackup request param
 type SyncVmBackupParam struct {
 	BaseParam
-	Params SyncVmBackupDetailParam `json:"params"` // 详细参数
+	Params SyncVmBackupDetailParam `json:"params"`
 }
-

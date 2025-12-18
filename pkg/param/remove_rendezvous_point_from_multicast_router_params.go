@@ -2,17 +2,16 @@
 
 package param
 
-// RemoveRendezvousPointFromMulticastRouterDetailParam RemoveRendezvousPointFromMulticastRouter详细参数
+// RemoveRendezvousPointFromMulticastRouterDetailParam RemoveRendezvousPointFromMulticastRouter detail param
 type RemoveRendezvousPointFromMulticastRouterDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"rpAddress" validate:"required"` // 必填
-	rest string `json:"groupAddress" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	RpAddress string `json:"rpAddress" validate:"required"`
+	GroupAddress string `json:"groupAddress" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveRendezvousPointFromMulticastRouterParam RemoveRendezvousPointFromMulticastRouter请求参数
+// RemoveRendezvousPointFromMulticastRouterParam RemoveRendezvousPointFromMulticastRouter request param
 type RemoveRendezvousPointFromMulticastRouterParam struct {
 	BaseParam
-	Params RemoveRendezvousPointFromMulticastRouterDetailParam `json:"params"` // 详细参数
+	Params RemoveRendezvousPointFromMulticastRouterDetailParam `json:"params"`
 }
-

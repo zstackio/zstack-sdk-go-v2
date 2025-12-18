@@ -2,17 +2,16 @@
 
 package param
 
-// SetVmUserDefinedXmlHookScriptDetailParam SetVmUserDefinedXmlHookScript详细参数
+// SetVmUserDefinedXmlHookScriptDetailParam SetVmUserDefinedXmlHookScript detail param
 type SetVmUserDefinedXmlHookScriptDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
-	rest string `json:"xmlHookScriptBase64" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
+	XmlHookScriptBase64 string `json:"xmlHookScriptBase64" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SetVmUserDefinedXmlHookScriptParam SetVmUserDefinedXmlHookScript请求参数
+// SetVmUserDefinedXmlHookScriptParam SetVmUserDefinedXmlHookScript request param
 type SetVmUserDefinedXmlHookScriptParam struct {
 	BaseParam
-	Params SetVmUserDefinedXmlHookScriptDetailParam `json:"params"` // 详细参数
+	Params SetVmUserDefinedXmlHookScriptDetailParam `json:"params"`
 }
-

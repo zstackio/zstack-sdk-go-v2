@@ -2,15 +2,14 @@
 
 package param
 
-// CheckElaborationContentDetailParam CheckElaborationContent详细参数
+// CheckElaborationContentDetailParam CheckElaborationContent detail param
 type CheckElaborationContentDetailParam struct {
-	rest string `json:"elaborateFile,omitempty"`
-	rest string `json:"elaborateContent,omitempty"`
+	ElaborateFile string `json:"elaborateFile,omitempty"`
+	ElaborateContent string `json:"elaborateContent,omitempty"`
 }
 
-// CheckElaborationContentParam CheckElaborationContent请求参数
+// CheckElaborationContentParam CheckElaborationContent request param
 type CheckElaborationContentParam struct {
 	BaseParam
-	Params CheckElaborationContentDetailParam `json:"params"` // 详细参数
+	Params CheckElaborationContentDetailParam `json:"params"`
 }
-

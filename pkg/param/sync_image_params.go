@@ -2,14 +2,13 @@
 
 package param
 
-// SyncImageDetailParam SyncImage详细参数
+// SyncImageDetailParam SyncImage detail param
 type SyncImageDetailParam struct {
-	rest string `json:"imageStoreUuid" validate:"required"` // 必填
+	ImageStoreUuid string `json:"imageStoreUuid" validate:"required"`
 }
 
-// SyncImageParam SyncImage请求参数
+// SyncImageParam SyncImage request param
 type SyncImageParam struct {
 	BaseParam
-	Params SyncImageDetailParam `json:"params"` // 详细参数
+	Params SyncImageDetailParam `json:"params"`
 }
-

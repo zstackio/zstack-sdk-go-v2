@@ -2,20 +2,19 @@
 
 package param
 
-// AddPreconfigurationTemplateDetailParam AddPreconfigurationTemplate详细参数
+// AddPreconfigurationTemplateDetailParam AddPreconfigurationTemplate detail param
 type AddPreconfigurationTemplateDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"distribution" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"content" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Distribution string `json:"distribution" validate:"required"`
+	Type string `json:"type" validate:"required"`
+	Content string `json:"content" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddPreconfigurationTemplateParam AddPreconfigurationTemplate请求参数
+// AddPreconfigurationTemplateParam AddPreconfigurationTemplate request param
 type AddPreconfigurationTemplateParam struct {
 	BaseParam
-	Params AddPreconfigurationTemplateDetailParam `json:"params"` // 详细参数
+	Params AddPreconfigurationTemplateDetailParam `json:"params"`
 }
-

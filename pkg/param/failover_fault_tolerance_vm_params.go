@@ -2,14 +2,13 @@
 
 package param
 
-// FailoverFaultToleranceVmDetailParam FailoverFaultToleranceVm详细参数
+// FailoverFaultToleranceVmDetailParam FailoverFaultToleranceVm detail param
 type FailoverFaultToleranceVmDetailParam struct {
-	rest string `json:"faultToleranceVmUuid" validate:"required"` // 必填
+	FaultToleranceVmUuid string `json:"faultToleranceVmUuid" validate:"required"`
 }
 
-// FailoverFaultToleranceVmParam FailoverFaultToleranceVm请求参数
+// FailoverFaultToleranceVmParam FailoverFaultToleranceVm request param
 type FailoverFaultToleranceVmParam struct {
 	BaseParam
-	Params FailoverFaultToleranceVmDetailParam `json:"params"` // 详细参数
+	Params FailoverFaultToleranceVmDetailParam `json:"params"`
 }
-

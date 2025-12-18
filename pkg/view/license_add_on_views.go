@@ -4,30 +4,32 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LicenseAddOnInventoryView LicenseAddOn
 type LicenseAddOnInventoryView struct {
-	rest string `json:"name,omitempty"`
-	rest []string `json:"modules,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"user,omitempty"`
-	rest string `json:"prodInfo,omitempty"`
-	rest int `json:"cpuNum,omitempty"`
-	rest int `json:"hostNum,omitempty"`
-	rest int `json:"vmNum,omitempty"`
-	rest int `json:"capacity,omitempty"`
-	rest string `json:"licenseType,omitempty"`
-	rest string `json:"quotaType,omitempty"`
-	rest string `json:"expiredDate,omitempty"`
-	rest string `json:"issuedDate,omitempty"`
-	rest string `json:"uploadDate,omitempty"`
-	rest string `json:"managementNodeUuid,omitempty"`
-	rest bool `json:"expired,omitempty"`
-	rest string `json:"source,omitempty"`
-	rest string `json:"platformId,omitempty"`
-	rest string `json:"licenseRequest,omitempty"`
-	rest int `json:"availableHostNum,omitempty"`
-	rest int `json:"availableCpuNum,omitempty"`
-	rest int `json:"availableVmNum,omitempty"`
-	rest interface{} `json:"usage,omitempty"`
+	Name string `json:"name,omitempty"`
+	Modules []string `json:"modules,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	User string `json:"user,omitempty"`
+	ProdInfo string `json:"prodInfo,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	HostNum int `json:"hostNum,omitempty"`
+	VmNum int `json:"vmNum,omitempty"`
+	Capacity int `json:"capacity,omitempty"`
+	LicenseType string `json:"licenseType,omitempty"`
+	QuotaType string `json:"quotaType,omitempty"`
+	ExpiredDate string `json:"expiredDate,omitempty"`
+	IssuedDate string `json:"issuedDate,omitempty"`
+	UploadDate string `json:"uploadDate,omitempty"`
+	ManagementNodeUuid string `json:"managementNodeUuid,omitempty"`
+	Expired bool `json:"expired,omitempty"`
+	Source string `json:"source,omitempty"`
+	PlatformId string `json:"platformId,omitempty"`
+	LicenseRequest string `json:"licenseRequest,omitempty"`
+	AvailableHostNum int `json:"availableHostNum,omitempty"`
+	AvailableCpuNum int `json:"availableCpuNum,omitempty"`
+	AvailableVmNum int `json:"availableVmNum,omitempty"`
+	Usage interface{} `json:"usage,omitempty"`
 }
 

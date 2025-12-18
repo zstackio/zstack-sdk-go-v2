@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// RevertVolumeFromVolumeBackup 操作RevertVolumeFromVolumeBackup
+// RevertVolumeFromVolumeBackup operates on RevertVolumeFromVolumeBackup
 func (cli *ZSClient) RevertVolumeFromVolumeBackup(uuid string, params param.RevertVolumeFromVolumeBackupParam) (*view.RevertVolumeFromVolumeBackupEventView, error) {
 	resp := view.RevertVolumeFromVolumeBackupEventView{}
 	if err := cli.Put("v1/volume-backups/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) RevertVolumeFromVolumeBackup(uuid string, params param.Reve
 	}
 	return &resp, nil
 }
-

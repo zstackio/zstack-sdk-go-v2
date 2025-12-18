@@ -2,20 +2,19 @@
 
 package param
 
-// AddDataCenterFromRemoteDetailParam AddDataCenterFromRemote详细参数
+// AddDataCenterFromRemoteDetailParam AddDataCenterFromRemote detail param
 type AddDataCenterFromRemoteDetailParam struct {
-	rest string `json:"regionId" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
-	rest bool `json:"syncZones,omitempty"`
-	rest string `json:"endpoint,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	RegionId string `json:"regionId" validate:"required"`
+	Type string `json:"type" validate:"required"`
+	SyncZones bool `json:"syncZones,omitempty"`
+	Endpoint string `json:"endpoint,omitempty"`
+	Description string `json:"description,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddDataCenterFromRemoteParam AddDataCenterFromRemote请求参数
+// AddDataCenterFromRemoteParam AddDataCenterFromRemote request param
 type AddDataCenterFromRemoteParam struct {
 	BaseParam
-	Params AddDataCenterFromRemoteDetailParam `json:"params"` // 详细参数
+	Params AddDataCenterFromRemoteDetailParam `json:"params"`
 }
-

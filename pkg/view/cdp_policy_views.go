@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // CdpPolicyInventoryView CdpPolicy
 type CdpPolicyInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest int `json:"retentionTimePerDay,omitempty"`
-	rest int `json:"hourlyRpSinceDay,omitempty"`
-	rest int `json:"dailyRpSinceDay,omitempty"`
-	rest int `json:"expireTimeInDay,omitempty"`
-	rest int `json:"fullBackupIntervalInDay,omitempty"`
-	rest int `json:"recoveryPointPerSecond,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	State string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	RetentionTimePerDay int `json:"retentionTimePerDay,omitempty"`
+	HourlyRpSinceDay int `json:"hourlyRpSinceDay,omitempty"`
+	DailyRpSinceDay int `json:"dailyRpSinceDay,omitempty"`
+	ExpireTimeInDay int `json:"expireTimeInDay,omitempty"`
+	FullBackupIntervalInDay int `json:"fullBackupIntervalInDay,omitempty"`
+	RecoveryPointPerSecond int `json:"recoveryPointPerSecond,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

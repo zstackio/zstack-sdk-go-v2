@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CheckVipPortAvailability 操作CheckVipPortAvailability
+// CheckVipPortAvailability operates on CheckVipPortAvailability
 func (cli *ZSClient) CheckVipPortAvailability(params param.CheckVipPortAvailabilityParam) (*view.CheckVipPortAvailabilityView, error) {
 	var resp view.CheckVipPortAvailabilityView
 	if err := cli.Get("v1/vips/{vipUuid}/check-port-availability", "", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CheckVipPortAvailability(params param.CheckVipPortAvailabil
 	}
 	return &resp, nil
 }
-

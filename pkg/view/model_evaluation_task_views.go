@@ -4,35 +4,37 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ModelEvaluationTaskInventoryView ModelEvaluationTask
 type ModelEvaluationTaskInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest int `json:"percentage,omitempty"`
-	rest string `json:"opaque,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"modelServiceGroupUuid,omitempty"`
-	rest string `json:"evaluatedServiceGroupUuid,omitempty"`
-	rest string `json:"datasetUuid,omitempty"`
-	rest int `json:"limits,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest int `json:"maxNewTokens,omitempty"`
-	rest int `json:"topK,omitempty"`
-	rest float32 `json:"temperature,omitempty"`
-	rest float32 `json:"topP,omitempty"`
-	rest string `json:"prompt,omitempty"`
-	rest float32 `json:"repetitionPenalty,omitempty"`
-	rest int `json:"maxLength,omitempty"`
-	rest string `json:"model,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest int `json:"parallel,omitempty"`
-	rest int `json:"logEveryQuery,omitempty"`
-	rest string `json:"api,omitempty"`
-	rest map[string]string `json:"requestHeaders,omitempty"`
-	rest int `json:"connectTimeout,omitempty"`
-	rest int `json:"readTimeout,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	Percentage int `json:"percentage,omitempty"`
+	Opaque string `json:"opaque,omitempty"`
+	Status string `json:"status,omitempty"`
+	ModelServiceGroupUuid string `json:"modelServiceGroupUuid,omitempty"`
+	EvaluatedServiceGroupUuid string `json:"evaluatedServiceGroupUuid,omitempty"`
+	DatasetUuid string `json:"datasetUuid,omitempty"`
+	Limits int `json:"limits,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	MaxNewTokens int `json:"maxNewTokens,omitempty"`
+	TopK int `json:"topK,omitempty"`
+	Temperature float32 `json:"temperature,omitempty"`
+	TopP float32 `json:"topP,omitempty"`
+	Prompt string `json:"prompt,omitempty"`
+	RepetitionPenalty float32 `json:"repetitionPenalty,omitempty"`
+	MaxLength int `json:"maxLength,omitempty"`
+	Model string `json:"model,omitempty"`
+	Url string `json:"url,omitempty"`
+	Parallel int `json:"parallel,omitempty"`
+	LogEveryQuery int `json:"logEveryQuery,omitempty"`
+	Api string `json:"api,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty"`
+	ConnectTimeout int `json:"connectTimeout,omitempty"`
+	ReadTimeout int `json:"readTimeout,omitempty"`
 }
 

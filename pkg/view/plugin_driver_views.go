@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PluginDriverInventoryView PluginDriver
 type PluginDriverInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"vendor,omitempty"`
-	rest string `json:"features,omitempty"`
-	rest []interface{} `json:"optionTypes,omitempty"`
-	rest bool `json:"deleted,omitempty"`
-	rest string `json:"license,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Type string `json:"type,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	Features string `json:"features,omitempty"`
+	OptionTypes []interface{} `json:"optionTypes,omitempty"`
+	Deleted bool `json:"deleted,omitempty"`
+	License string `json:"license,omitempty"`
+	Version string `json:"version,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

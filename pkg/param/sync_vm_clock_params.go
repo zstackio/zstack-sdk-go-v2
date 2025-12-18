@@ -2,14 +2,13 @@
 
 package param
 
-// SyncVmClockDetailParam SyncVmClock详细参数
+// SyncVmClockDetailParam SyncVmClock detail param
 type SyncVmClockDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// SyncVmClockParam SyncVmClock请求参数
+// SyncVmClockParam SyncVmClock request param
 type SyncVmClockParam struct {
 	BaseParam
-	Params SyncVmClockDetailParam `json:"params"` // 详细参数
+	Params SyncVmClockDetailParam `json:"params"`
 }
-

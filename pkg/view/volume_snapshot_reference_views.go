@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VolumeSnapshotReferenceInventoryView VolumeSnapshotReference
 type VolumeSnapshotReferenceInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest int64 `json:"parentId,omitempty"`
-	rest string `json:"volumeUuid,omitempty"`
-	rest string `json:"volumeSnapshotUuid,omitempty"`
-	rest string `json:"volumeSnapshotInstallUrl,omitempty"`
-	rest string `json:"directSnapshotUuid,omitempty"`
-	rest string `json:"directSnapshotInstallUrl,omitempty"`
-	rest string `json:"referenceUuid,omitempty"`
-	rest string `json:"referenceType,omitempty"`
-	rest string `json:"referenceInstallUrl,omitempty"`
-	rest string `json:"referenceVolumeUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	ParentId int64 `json:"parentId,omitempty"`
+	VolumeUuid string `json:"volumeUuid,omitempty"`
+	VolumeSnapshotUuid string `json:"volumeSnapshotUuid,omitempty"`
+	VolumeSnapshotInstallUrl string `json:"volumeSnapshotInstallUrl,omitempty"`
+	DirectSnapshotUuid string `json:"directSnapshotUuid,omitempty"`
+	DirectSnapshotInstallUrl string `json:"directSnapshotInstallUrl,omitempty"`
+	ReferenceUuid string `json:"referenceUuid,omitempty"`
+	ReferenceType string `json:"referenceType,omitempty"`
+	ReferenceInstallUrl string `json:"referenceInstallUrl,omitempty"`
+	ReferenceVolumeUuid string `json:"referenceVolumeUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

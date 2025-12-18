@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetVmUsbRedirect 操作SetVmUsbRedirect
+// SetVmUsbRedirect operates on SetVmUsbRedirect
 func (cli *ZSClient) SetVmUsbRedirect(uuid string, params param.SetVmUsbRedirectParam) (*view.SetVmUsbRedirectEventView, error) {
 	resp := view.SetVmUsbRedirectEventView{}
 	if err := cli.Put("v1/vm-instances/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetVmUsbRedirect(uuid string, params param.SetVmUsbRedirect
 	}
 	return &resp, nil
 }
-

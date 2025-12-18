@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // EventLogInventoryView EventLog
 type EventLogInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"content,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"resourceType,omitempty"`
-	rest string `json:"category,omitempty"`
-	rest string `json:"trackingId,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest int64 `json:"time,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	Content string `json:"content,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	Category string `json:"category,omitempty"`
+	TrackingId string `json:"trackingId,omitempty"`
+	Type string `json:"type,omitempty"`
+	Time int64 `json:"time,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
 }
 

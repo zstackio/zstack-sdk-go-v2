@@ -2,14 +2,13 @@
 
 package param
 
-// UngroupVolumeSnapshotGroupDetailParam UngroupVolumeSnapshotGroup详细参数
+// UngroupVolumeSnapshotGroupDetailParam UngroupVolumeSnapshotGroup detail param
 type UngroupVolumeSnapshotGroupDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// UngroupVolumeSnapshotGroupParam UngroupVolumeSnapshotGroup请求参数
+// UngroupVolumeSnapshotGroupParam UngroupVolumeSnapshotGroup request param
 type UngroupVolumeSnapshotGroupParam struct {
 	BaseParam
-	Params UngroupVolumeSnapshotGroupDetailParam `json:"params"` // 详细参数
+	Params UngroupVolumeSnapshotGroupDetailParam `json:"params"`
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// DiscoverExternalPrimaryStorage 操作DiscoverExternalPrimaryStorage
+// DiscoverExternalPrimaryStorage operates on DiscoverExternalPrimaryStorage
 func (cli *ZSClient) DiscoverExternalPrimaryStorage(params param.DiscoverExternalPrimaryStorageParam) (*view.DiscoverExternalPrimaryStorageEventView, error) {
 	resp := view.DiscoverExternalPrimaryStorageEventView{}
 	if err := cli.Post("v1/primary-storage/addon/discover", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) DiscoverExternalPrimaryStorage(params param.DiscoverExterna
 	}
 	return &resp, nil
 }
-

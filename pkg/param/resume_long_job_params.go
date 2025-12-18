@@ -2,14 +2,13 @@
 
 package param
 
-// ResumeLongJobDetailParam ResumeLongJob详细参数
+// ResumeLongJobDetailParam ResumeLongJob detail param
 type ResumeLongJobDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ResumeLongJobParam ResumeLongJob请求参数
+// ResumeLongJobParam ResumeLongJob request param
 type ResumeLongJobParam struct {
 	BaseParam
-	Params ResumeLongJobDetailParam `json:"params"` // 详细参数
+	Params ResumeLongJobDetailParam `json:"params"`
 }
-

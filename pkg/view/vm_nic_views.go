@@ -4,25 +4,27 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmNicInventoryView VmNic
 type VmNicInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest string `json:"ip,omitempty"`
-	rest string `json:"mac,omitempty"`
-	rest string `json:"hypervisorType,omitempty"`
-	rest string `json:"netmask,omitempty"`
-	rest string `json:"gateway,omitempty"`
-	rest string `json:"metaData,omitempty"`
-	rest int `json:"ipVersion,omitempty"`
-	rest string `json:"driverType,omitempty"`
-	rest []UsedIpInventoryView `json:"usedIps,omitempty"`
-	rest string `json:"internalName,omitempty"`
-	rest int `json:"deviceId,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Mac string `json:"mac,omitempty"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
+	Gateway string `json:"gateway,omitempty"`
+	MetaData string `json:"metaData,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	DriverType string `json:"driverType,omitempty"`
+	UsedIps []UsedIpInventoryView `json:"usedIps,omitempty"`
+	InternalName string `json:"internalName,omitempty"`
+	DeviceId int `json:"deviceId,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // HostNetworkInterfaceLldpInventoryView HostNetworkInterfaceLldp
 type HostNetworkInterfaceLldpInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"interfaceUuid,omitempty"`
-	rest string `json:"mode,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest HostNetworkInterfaceLldpRefInventoryView `json:"neighborDevice,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	InterfaceUuid string `json:"interfaceUuid,omitempty"`
+	Mode string `json:"mode,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	NeighborDevice HostNetworkInterfaceLldpRefInventoryView `json:"neighborDevice,omitempty"`
 }
 

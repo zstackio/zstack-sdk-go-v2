@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SharedBlockGroupPrimaryStorageHostRefInventoryView SharedBlockGroupPrimaryStorageHostRef
 type SharedBlockGroupPrimaryStorageHostRefInventoryView struct {
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest int `json:"hostId,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	HostId int `json:"hostId,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

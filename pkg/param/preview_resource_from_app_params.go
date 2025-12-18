@@ -2,15 +2,14 @@
 
 package param
 
-// PreviewResourceFromAppDetailParam PreviewResourceFromApp详细参数
+// PreviewResourceFromAppDetailParam PreviewResourceFromApp detail param
 type PreviewResourceFromAppDetailParam struct {
-	rest string `json:"appUuid" validate:"required"` // 必填
-	rest string `json:"parameters,omitempty"`
+	AppUuid string `json:"appUuid" validate:"required"`
+	Parameters string `json:"parameters,omitempty"`
 }
 
-// PreviewResourceFromAppParam PreviewResourceFromApp请求参数
+// PreviewResourceFromAppParam PreviewResourceFromApp request param
 type PreviewResourceFromAppParam struct {
 	BaseParam
-	Params PreviewResourceFromAppDetailParam `json:"params"` // 详细参数
+	Params PreviewResourceFromAppDetailParam `json:"params"`
 }
-

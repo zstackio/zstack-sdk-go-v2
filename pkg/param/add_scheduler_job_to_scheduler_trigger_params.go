@@ -2,16 +2,15 @@
 
 package param
 
-// AddSchedulerJobToSchedulerTriggerDetailParam AddSchedulerJobToSchedulerTrigger详细参数
+// AddSchedulerJobToSchedulerTriggerDetailParam AddSchedulerJobToSchedulerTrigger detail param
 type AddSchedulerJobToSchedulerTriggerDetailParam struct {
-	rest string `json:"schedulerJobUuid" validate:"required"` // 必填
-	rest string `json:"schedulerTriggerUuid" validate:"required"` // 必填
-	rest bool `json:"triggerNow,omitempty"`
+	SchedulerJobUuid string `json:"schedulerJobUuid" validate:"required"`
+	SchedulerTriggerUuid string `json:"schedulerTriggerUuid" validate:"required"`
+	TriggerNow bool `json:"triggerNow,omitempty"`
 }
 
-// AddSchedulerJobToSchedulerTriggerParam AddSchedulerJobToSchedulerTrigger请求参数
+// AddSchedulerJobToSchedulerTriggerParam AddSchedulerJobToSchedulerTrigger request param
 type AddSchedulerJobToSchedulerTriggerParam struct {
 	BaseParam
-	Params AddSchedulerJobToSchedulerTriggerDetailParam `json:"params"` // 详细参数
+	Params AddSchedulerJobToSchedulerTriggerDetailParam `json:"params"`
 }
-

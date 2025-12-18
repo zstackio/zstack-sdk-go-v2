@@ -2,14 +2,13 @@
 
 package param
 
-// TerminateVirtualBorderRouterRemoteDetailParam TerminateVirtualBorderRouterRemote详细参数
+// TerminateVirtualBorderRouterRemoteDetailParam TerminateVirtualBorderRouterRemote detail param
 type TerminateVirtualBorderRouterRemoteDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// TerminateVirtualBorderRouterRemoteParam TerminateVirtualBorderRouterRemote请求参数
+// TerminateVirtualBorderRouterRemoteParam TerminateVirtualBorderRouterRemote request param
 type TerminateVirtualBorderRouterRemoteParam struct {
 	BaseParam
-	Params TerminateVirtualBorderRouterRemoteDetailParam `json:"params"` // 详细参数
+	Params TerminateVirtualBorderRouterRemoteDetailParam `json:"params"`
 }
-

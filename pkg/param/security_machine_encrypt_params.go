@@ -2,15 +2,14 @@
 
 package param
 
-// SecurityMachineEncryptDetailParam SecurityMachineEncrypt详细参数
+// SecurityMachineEncryptDetailParam SecurityMachineEncrypt detail param
 type SecurityMachineEncryptDetailParam struct {
-	rest string `json:"text" validate:"required"` // 必填
-	rest string `json:"algType" validate:"required"` // 必填
+	Text string `json:"text" validate:"required"`
+	AlgType string `json:"algType" validate:"required"`
 }
 
-// SecurityMachineEncryptParam SecurityMachineEncrypt请求参数
+// SecurityMachineEncryptParam SecurityMachineEncrypt request param
 type SecurityMachineEncryptParam struct {
 	BaseParam
-	Params SecurityMachineEncryptDetailParam `json:"params"` // 详细参数
+	Params SecurityMachineEncryptDetailParam `json:"params"`
 }
-

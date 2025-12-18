@@ -2,16 +2,15 @@
 
 package param
 
-// SyncDataCenterFromRemoteDetailParam SyncDataCenterFromRemote详细参数
+// SyncDataCenterFromRemoteDetailParam SyncDataCenterFromRemote detail param
 type SyncDataCenterFromRemoteDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncDataCenterFromRemoteParam SyncDataCenterFromRemote请求参数
+// SyncDataCenterFromRemoteParam SyncDataCenterFromRemote request param
 type SyncDataCenterFromRemoteParam struct {
 	BaseParam
-	Params SyncDataCenterFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncDataCenterFromRemoteDetailParam `json:"params"`
 }
-

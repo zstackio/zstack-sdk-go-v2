@@ -2,19 +2,18 @@
 
 package param
 
-// AddIdentityZoneFromRemoteDetailParam AddIdentityZoneFromRemote详细参数
+// AddIdentityZoneFromRemoteDetailParam AddIdentityZoneFromRemote detail param
 type AddIdentityZoneFromRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"zoneId,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	ZoneId string `json:"zoneId,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddIdentityZoneFromRemoteParam AddIdentityZoneFromRemote请求参数
+// AddIdentityZoneFromRemoteParam AddIdentityZoneFromRemote request param
 type AddIdentityZoneFromRemoteParam struct {
 	BaseParam
-	Params AddIdentityZoneFromRemoteDetailParam `json:"params"` // 详细参数
+	Params AddIdentityZoneFromRemoteDetailParam `json:"params"`
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddAccessControlRule 操作AddAccessControlRule
+// AddAccessControlRule adds AccessControlRule
 func (cli *ZSClient) AddAccessControlRule(params param.AddAccessControlRuleParam) (*view.AddAccessControlRuleEventView, error) {
 	resp := view.AddAccessControlRuleEventView{}
 	if err := cli.Post("v1/login-control/access-control/rules", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddAccessControlRule(params param.AddAccessControlRuleParam
 	}
 	return &resp, nil
 }
-

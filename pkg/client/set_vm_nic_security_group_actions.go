@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetVmNicSecurityGroup 操作SetVmNicSecurityGroup
+// SetVmNicSecurityGroup operates on SetVmNicSecurityGroup
 func (cli *ZSClient) SetVmNicSecurityGroup(uuid string, params param.SetVmNicSecurityGroupParam) (*view.SetVmNicSecurityGroupEventView, error) {
 	resp := view.SetVmNicSecurityGroupEventView{}
 	if err := cli.Put("v1/security-groups/nics/{vmNicUuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetVmNicSecurityGroup(uuid string, params param.SetVmNicSec
 	}
 	return &resp, nil
 }
-

@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LdapAccountRefInventoryView LdapAccountRef
 type LdapAccountRefInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"ldapUid,omitempty"`
-	rest string `json:"ldapServerUuid,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	LdapUid string `json:"ldapUid,omitempty"`
+	LdapServerUuid string `json:"ldapServerUuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

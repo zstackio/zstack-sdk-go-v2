@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PolicyRouteTableInventoryView PolicyRouteTable
 type PolicyRouteTableInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest int `json:"tableNumber,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []PolicyRouteTableRouteEntryInventoryView `json:"routes,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	TableNumber int `json:"tableNumber,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Routes []PolicyRouteTableRouteEntryInventoryView `json:"routes,omitempty"`
 }
 

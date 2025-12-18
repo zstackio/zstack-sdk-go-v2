@@ -2,17 +2,16 @@
 
 package param
 
-// SetVmUserDefinedXmlDetailParam SetVmUserDefinedXml详细参数
+// SetVmUserDefinedXmlDetailParam SetVmUserDefinedXml detail param
 type SetVmUserDefinedXmlDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
-	rest string `json:"xmlBase64" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
+	XmlBase64 string `json:"xmlBase64" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SetVmUserDefinedXmlParam SetVmUserDefinedXml请求参数
+// SetVmUserDefinedXmlParam SetVmUserDefinedXml request param
 type SetVmUserDefinedXmlParam struct {
 	BaseParam
-	Params SetVmUserDefinedXmlDetailParam `json:"params"` // 详细参数
+	Params SetVmUserDefinedXmlDetailParam `json:"params"`
 }
-

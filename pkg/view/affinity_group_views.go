@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AffinityGroupInventoryView AffinityGroup
 type AffinityGroupInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"policy,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"appliance,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []AffinityGroupUsageInventoryView `json:"usages,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Policy string `json:"policy,omitempty"`
+	Version string `json:"version,omitempty"`
+	Type string `json:"type,omitempty"`
+	Appliance string `json:"appliance,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Usages []AffinityGroupUsageInventoryView `json:"usages,omitempty"`
 }
 

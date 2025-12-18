@@ -2,15 +2,14 @@
 
 package param
 
-// CheckBatchDataIntegrityDetailParam CheckBatchDataIntegrity详细参数
+// CheckBatchDataIntegrityDetailParam CheckBatchDataIntegrity detail param
 type CheckBatchDataIntegrityDetailParam struct {
-	rest []string `json:"resourceUuids,omitempty"`
-	rest string `json:"resourceType" validate:"required"` // 必填
+	ResourceUuids []string `json:"resourceUuids,omitempty"`
+	ResourceType string `json:"resourceType" validate:"required"`
 }
 
-// CheckBatchDataIntegrityParam CheckBatchDataIntegrity请求参数
+// CheckBatchDataIntegrityParam CheckBatchDataIntegrity request param
 type CheckBatchDataIntegrityParam struct {
 	BaseParam
-	Params CheckBatchDataIntegrityDetailParam `json:"params"` // 详细参数
+	Params CheckBatchDataIntegrityDetailParam `json:"params"`
 }
-

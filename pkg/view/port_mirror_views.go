@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PortMirrorInventoryView PortMirror
 type PortMirrorInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"mirrorNetworkUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []PortMirrorSessionInventoryView `json:"sessions,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	MirrorNetworkUuid string `json:"mirrorNetworkUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Sessions []PortMirrorSessionInventoryView `json:"sessions,omitempty"`
 }
 

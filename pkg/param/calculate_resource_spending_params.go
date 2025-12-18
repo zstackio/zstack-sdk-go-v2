@@ -2,19 +2,18 @@
 
 package param
 
-// CalculateResourceSpendingDetailParam CalculateResourceSpending详细参数
+// CalculateResourceSpendingDetailParam CalculateResourceSpending detail param
 type CalculateResourceSpendingDetailParam struct {
-	rest string `json:"resourceType,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"dateStart,omitempty"`
-	rest string `json:"dateEnd,omitempty"`
-	rest int `json:"start,omitempty"`
-	rest int `json:"limit,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	DateStart string `json:"dateStart,omitempty"`
+	DateEnd string `json:"dateEnd,omitempty"`
+	Start int `json:"start,omitempty"`
+	Limit int `json:"limit,omitempty"`
 }
 
-// CalculateResourceSpendingParam CalculateResourceSpending请求参数
+// CalculateResourceSpendingParam CalculateResourceSpending request param
 type CalculateResourceSpendingParam struct {
 	BaseParam
-	Params CalculateResourceSpendingDetailParam `json:"params"` // 详细参数
+	Params CalculateResourceSpendingDetailParam `json:"params"`
 }
-

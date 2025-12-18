@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BareMetal2InstanceProvisionNicInventoryView BareMetal2InstanceProvisionNic
 type BareMetal2InstanceProvisionNicInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"networkUuid,omitempty"`
-	rest string `json:"mac,omitempty"`
-	rest string `json:"ip,omitempty"`
-	rest string `json:"netmask,omitempty"`
-	rest string `json:"gateway,omitempty"`
-	rest string `json:"metadata,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	NetworkUuid string `json:"networkUuid,omitempty"`
+	Mac string `json:"mac,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
+	Gateway string `json:"gateway,omitempty"`
+	Metadata string `json:"metadata,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

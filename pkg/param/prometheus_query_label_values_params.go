@@ -2,14 +2,13 @@
 
 package param
 
-// PrometheusQueryLabelValuesDetailParam PrometheusQueryLabelValues详细参数
+// PrometheusQueryLabelValuesDetailParam PrometheusQueryLabelValues detail param
 type PrometheusQueryLabelValuesDetailParam struct {
-	rest []string `json:"labels" validate:"required"` // 必填
+	Labels []string `json:"labels" validate:"required"`
 }
 
-// PrometheusQueryLabelValuesParam PrometheusQueryLabelValues请求参数
+// PrometheusQueryLabelValuesParam PrometheusQueryLabelValues request param
 type PrometheusQueryLabelValuesParam struct {
 	BaseParam
-	Params PrometheusQueryLabelValuesDetailParam `json:"params"` // 详细参数
+	Params PrometheusQueryLabelValuesDetailParam `json:"params"`
 }
-

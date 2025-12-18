@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetServiceTypeOnHostNetworkInterface 操作SetServiceTypeOnHostNetworkInterface
+// SetServiceTypeOnHostNetworkInterface operates on SetServiceTypeOnHostNetworkInterface
 func (cli *ZSClient) SetServiceTypeOnHostNetworkInterface(params param.SetServiceTypeOnHostNetworkInterfaceParam) (*view.SetServiceTypeOnHostNetworkInterfaceEventView, error) {
 	resp := view.SetServiceTypeOnHostNetworkInterfaceEventView{}
 	if err := cli.Post("v1/hosts/nics/service-types", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetServiceTypeOnHostNetworkInterface(params param.SetServic
 	}
 	return &resp, nil
 }
-

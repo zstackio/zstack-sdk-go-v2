@@ -2,16 +2,15 @@
 
 package param
 
-// RemoveSNSWeComAtPersonDetailParam RemoveSNSWeComAtPerson详细参数
+// RemoveSNSWeComAtPersonDetailParam RemoveSNSWeComAtPerson detail param
 type RemoveSNSWeComAtPersonDetailParam struct {
-	rest string `json:"endpointUuid" validate:"required"` // 必填
-	rest string `json:"userId" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	EndpointUuid string `json:"endpointUuid" validate:"required"`
+	UserId string `json:"userId" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveSNSWeComAtPersonParam RemoveSNSWeComAtPerson请求参数
+// RemoveSNSWeComAtPersonParam RemoveSNSWeComAtPerson request param
 type RemoveSNSWeComAtPersonParam struct {
 	BaseParam
-	Params RemoveSNSWeComAtPersonDetailParam `json:"params"` // 详细参数
+	Params RemoveSNSWeComAtPersonDetailParam `json:"params"`
 }
-

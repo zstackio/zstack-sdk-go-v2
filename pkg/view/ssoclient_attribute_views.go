@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SSOClientAttributeInventoryView SSOClientAttribute
 type SSOClientAttributeInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"value,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"purpose,omitempty"`
-	rest string `json:"ssoClientUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Value string `json:"value,omitempty"`
+	Type string `json:"type,omitempty"`
+	Purpose string `json:"purpose,omitempty"`
+	SsoClientUuid string `json:"ssoClientUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

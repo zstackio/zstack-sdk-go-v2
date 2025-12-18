@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CheckBuildAppParameters 操作CheckBuildAppParameters
+// CheckBuildAppParameters operates on CheckBuildAppParameters
 func (cli *ZSClient) CheckBuildAppParameters(params param.CheckBuildAppParametersParam) (*view.CheckBuildAppParametersView, error) {
 	resp := view.CheckBuildAppParametersView{}
 	if err := cli.Post("v1/appcenter/buildapp/check", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CheckBuildAppParameters(params param.CheckBuildAppParameter
 	}
 	return &resp, nil
 }
-

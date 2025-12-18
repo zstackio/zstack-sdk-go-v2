@@ -2,21 +2,20 @@
 
 package param
 
-// AddSharedBlockGroupPrimaryStorageDetailParam AddSharedBlockGroupPrimaryStorage详细参数
+// AddSharedBlockGroupPrimaryStorageDetailParam AddSharedBlockGroupPrimaryStorage detail param
 type AddSharedBlockGroupPrimaryStorageDetailParam struct {
-	rest []string `json:"diskUuids" validate:"required"` // 必填
-	rest string `json:"url,omitempty"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DiskUuids []string `json:"diskUuids" validate:"required"`
+	Url string `json:"url,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddSharedBlockGroupPrimaryStorageParam AddSharedBlockGroupPrimaryStorage请求参数
+// AddSharedBlockGroupPrimaryStorageParam AddSharedBlockGroupPrimaryStorage request param
 type AddSharedBlockGroupPrimaryStorageParam struct {
 	BaseParam
-	Params AddSharedBlockGroupPrimaryStorageDetailParam `json:"params"` // 详细参数
+	Params AddSharedBlockGroupPrimaryStorageDetailParam `json:"params"`
 }
-

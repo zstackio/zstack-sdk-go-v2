@@ -2,16 +2,15 @@
 
 package param
 
-// SNSMicrosoftTeamsTestConnectionDetailParam SNSMicrosoftTeamsTestConnection详细参数
+// SNSMicrosoftTeamsTestConnectionDetailParam SNSMicrosoftTeamsTestConnection detail param
 type SNSMicrosoftTeamsTestConnectionDetailParam struct {
-	rest string `json:"url,omitempty"`
-	rest string `json:"testMsg" validate:"required"` // 必填
-	rest string `json:"endpointUuid,omitempty"`
+	Url string `json:"url,omitempty"`
+	TestMsg string `json:"testMsg" validate:"required"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
 }
 
-// SNSMicrosoftTeamsTestConnectionParam SNSMicrosoftTeamsTestConnection请求参数
+// SNSMicrosoftTeamsTestConnectionParam SNSMicrosoftTeamsTestConnection request param
 type SNSMicrosoftTeamsTestConnectionParam struct {
 	BaseParam
-	Params SNSMicrosoftTeamsTestConnectionDetailParam `json:"params"` // 详细参数
+	Params SNSMicrosoftTeamsTestConnectionDetailParam `json:"params"`
 }
-

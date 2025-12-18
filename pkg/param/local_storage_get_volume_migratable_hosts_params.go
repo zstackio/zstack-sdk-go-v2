@@ -2,14 +2,13 @@
 
 package param
 
-// LocalStorageGetVolumeMigratableHostsDetailParam LocalStorageGetVolumeMigratableHosts详细参数
+// LocalStorageGetVolumeMigratableHostsDetailParam LocalStorageGetVolumeMigratableHosts detail param
 type LocalStorageGetVolumeMigratableHostsDetailParam struct {
-	rest string `json:"volumeUuid" validate:"required"` // 必填
+	VolumeUuid string `json:"volumeUuid" validate:"required"`
 }
 
-// LocalStorageGetVolumeMigratableHostsParam LocalStorageGetVolumeMigratableHosts请求参数
+// LocalStorageGetVolumeMigratableHostsParam LocalStorageGetVolumeMigratableHosts request param
 type LocalStorageGetVolumeMigratableHostsParam struct {
 	BaseParam
-	Params LocalStorageGetVolumeMigratableHostsDetailParam `json:"params"` // 详细参数
+	Params LocalStorageGetVolumeMigratableHostsDetailParam `json:"params"`
 }
-

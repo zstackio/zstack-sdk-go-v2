@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SanSecSecurityMachineInventoryView SanSecSecurityMachine
 type SanSecSecurityMachineInventoryView struct {
-	rest int `json:"port,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"secretResourcePoolUuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"managementIp,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"model,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Port int `json:"port,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	SecretResourcePoolUuid string `json:"secretResourcePoolUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp,omitempty"`
+	Type string `json:"type,omitempty"`
+	Model string `json:"model,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

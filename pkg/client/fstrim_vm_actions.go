@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// FstrimVm 操作FstrimVm
+// FstrimVm operates on FstrimVm
 func (cli *ZSClient) FstrimVm(params param.FstrimVmParam) (*view.FstrimVmEventView, error) {
 	resp := view.FstrimVmEventView{}
 	if err := cli.Post("v1/vm-instances/{uuid}/actions", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) FstrimVm(params param.FstrimVmParam) (*view.FstrimVmEventVi
 	}
 	return &resp, nil
 }
-

@@ -2,18 +2,17 @@
 
 package param
 
-// AddSNSDingTalkAtPersonDetailParam AddSNSDingTalkAtPerson详细参数
+// AddSNSDingTalkAtPersonDetailParam AddSNSDingTalkAtPerson detail param
 type AddSNSDingTalkAtPersonDetailParam struct {
-	rest string `json:"phoneNumber" validate:"required"` // 必填
-	rest string `json:"endpointUuid" validate:"required"` // 必填
-	rest string `json:"remark,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	PhoneNumber string `json:"phoneNumber" validate:"required"`
+	EndpointUuid string `json:"endpointUuid" validate:"required"`
+	Remark string `json:"remark,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddSNSDingTalkAtPersonParam AddSNSDingTalkAtPerson请求参数
+// AddSNSDingTalkAtPersonParam AddSNSDingTalkAtPerson request param
 type AddSNSDingTalkAtPersonParam struct {
 	BaseParam
-	Params AddSNSDingTalkAtPersonDetailParam `json:"params"` // 详细参数
+	Params AddSNSDingTalkAtPersonDetailParam `json:"params"`
 }
-

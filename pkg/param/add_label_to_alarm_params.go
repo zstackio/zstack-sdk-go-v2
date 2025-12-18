@@ -2,19 +2,18 @@
 
 package param
 
-// AddLabelToAlarmDetailParam AddLabelToAlarm详细参数
+// AddLabelToAlarmDetailParam AddLabelToAlarm detail param
 type AddLabelToAlarmDetailParam struct {
-	rest string `json:"alarmUuid" validate:"required"` // 必填
-	rest string `json:"key" validate:"required"` // 必填
-	rest string `json:"value" validate:"required"` // 必填
-	rest string `json:"operator" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	AlarmUuid string `json:"alarmUuid" validate:"required"`
+	Key string `json:"key" validate:"required"`
+	Value string `json:"value" validate:"required"`
+	Operator string `json:"operator" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddLabelToAlarmParam AddLabelToAlarm请求参数
+// AddLabelToAlarmParam AddLabelToAlarm request param
 type AddLabelToAlarmParam struct {
 	BaseParam
-	Params AddLabelToAlarmDetailParam `json:"params"` // 详细参数
+	Params AddLabelToAlarmDetailParam `json:"params"`
 }
-

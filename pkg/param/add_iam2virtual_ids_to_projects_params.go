@@ -2,16 +2,15 @@
 
 package param
 
-// AddIAM2VirtualIDsToProjectsDetailParam AddIAM2VirtualIDsToProjects详细参数
+// AddIAM2VirtualIDsToProjectsDetailParam AddIAM2VirtualIDsToProjects detail param
 type AddIAM2VirtualIDsToProjectsDetailParam struct {
-	rest []string `json:"projectUuids" validate:"required"` // 必填
-	rest []string `json:"virtualIDUuids" validate:"required"` // 必填
-	rest []string `json:"roleUuids,omitempty"`
+	ProjectUuids []string `json:"projectUuids" validate:"required"`
+	VirtualIDUuids []string `json:"virtualIDUuids" validate:"required"`
+	RoleUuids []string `json:"roleUuids,omitempty"`
 }
 
-// AddIAM2VirtualIDsToProjectsParam AddIAM2VirtualIDsToProjects请求参数
+// AddIAM2VirtualIDsToProjectsParam AddIAM2VirtualIDsToProjects request param
 type AddIAM2VirtualIDsToProjectsParam struct {
 	BaseParam
-	Params AddIAM2VirtualIDsToProjectsDetailParam `json:"params"` // 详细参数
+	Params AddIAM2VirtualIDsToProjectsDetailParam `json:"params"`
 }
-

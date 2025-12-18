@@ -2,14 +2,13 @@
 
 package param
 
-// PullSdnControllerTenantDetailParam PullSdnControllerTenant详细参数
+// PullSdnControllerTenantDetailParam PullSdnControllerTenant detail param
 type PullSdnControllerTenantDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// PullSdnControllerTenantParam PullSdnControllerTenant请求参数
+// PullSdnControllerTenantParam PullSdnControllerTenant request param
 type PullSdnControllerTenantParam struct {
 	BaseParam
-	Params PullSdnControllerTenantDetailParam `json:"params"` // 详细参数
+	Params PullSdnControllerTenantDetailParam `json:"params"`
 }
-

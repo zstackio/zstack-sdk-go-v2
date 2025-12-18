@@ -2,17 +2,16 @@
 
 package param
 
-// DescribeVmInstanceRecoveryPointDetailParam DescribeVmInstanceRecoveryPoint详细参数
+// DescribeVmInstanceRecoveryPointDetailParam DescribeVmInstanceRecoveryPoint detail param
 type DescribeVmInstanceRecoveryPointDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
-	rest int64 `json:"groupId" validate:"required"` // 必填
-	rest int `json:"limit,omitempty"`
-	rest int `json:"start,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
+	GroupId int64 `json:"groupId" validate:"required"`
+	Limit int `json:"limit,omitempty"`
+	Start int `json:"start,omitempty"`
 }
 
-// DescribeVmInstanceRecoveryPointParam DescribeVmInstanceRecoveryPoint请求参数
+// DescribeVmInstanceRecoveryPointParam DescribeVmInstanceRecoveryPoint request param
 type DescribeVmInstanceRecoveryPointParam struct {
 	BaseParam
-	Params DescribeVmInstanceRecoveryPointDetailParam `json:"params"` // 详细参数
+	Params DescribeVmInstanceRecoveryPointDetailParam `json:"params"`
 }
-

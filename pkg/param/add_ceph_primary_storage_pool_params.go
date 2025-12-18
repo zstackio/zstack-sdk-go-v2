@@ -2,21 +2,20 @@
 
 package param
 
-// AddCephPrimaryStoragePoolDetailParam AddCephPrimaryStoragePool详细参数
+// AddCephPrimaryStoragePoolDetailParam AddCephPrimaryStoragePool detail param
 type AddCephPrimaryStoragePoolDetailParam struct {
-	rest string `json:"primaryStorageUuid" validate:"required"` // 必填
-	rest string `json:"poolName" validate:"required"` // 必填
-	rest string `json:"aliasName,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type" validate:"required"` // 必填
-	rest bool `json:"isCreate,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid" validate:"required"`
+	PoolName string `json:"poolName" validate:"required"`
+	AliasName string `json:"aliasName,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type" validate:"required"`
+	IsCreate bool `json:"isCreate,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddCephPrimaryStoragePoolParam AddCephPrimaryStoragePool请求参数
+// AddCephPrimaryStoragePoolParam AddCephPrimaryStoragePool request param
 type AddCephPrimaryStoragePoolParam struct {
 	BaseParam
-	Params AddCephPrimaryStoragePoolDetailParam `json:"params"` // 详细参数
+	Params AddCephPrimaryStoragePoolDetailParam `json:"params"`
 }
-

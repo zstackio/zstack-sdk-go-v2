@@ -2,14 +2,13 @@
 
 package param
 
-// SyncDatabaseBackupDetailParam SyncDatabaseBackup详细参数
+// SyncDatabaseBackupDetailParam SyncDatabaseBackup detail param
 type SyncDatabaseBackupDetailParam struct {
-	rest string `json:"imageStoreUuid" validate:"required"` // 必填
+	ImageStoreUuid string `json:"imageStoreUuid" validate:"required"`
 }
 
-// SyncDatabaseBackupParam SyncDatabaseBackup请求参数
+// SyncDatabaseBackupParam SyncDatabaseBackup request param
 type SyncDatabaseBackupParam struct {
 	BaseParam
-	Params SyncDatabaseBackupDetailParam `json:"params"` // 详细参数
+	Params SyncDatabaseBackupDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// SetIAM2ProjectLoginExpiredDetailParam SetIAM2ProjectLoginExpired详细参数
+// SetIAM2ProjectLoginExpiredDetailParam SetIAM2ProjectLoginExpired detail param
 type SetIAM2ProjectLoginExpiredDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"loginExpired" validate:"required"` // 必填
-	rest string `json:"loginExpiredAttributeUuid,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	LoginExpired string `json:"loginExpired" validate:"required"`
+	LoginExpiredAttributeUuid string `json:"loginExpiredAttributeUuid,omitempty"`
 }
 
-// SetIAM2ProjectLoginExpiredParam SetIAM2ProjectLoginExpired请求参数
+// SetIAM2ProjectLoginExpiredParam SetIAM2ProjectLoginExpired request param
 type SetIAM2ProjectLoginExpiredParam struct {
 	BaseParam
-	Params SetIAM2ProjectLoginExpiredDetailParam `json:"params"` // 详细参数
+	Params SetIAM2ProjectLoginExpiredDetailParam `json:"params"`
 }
-

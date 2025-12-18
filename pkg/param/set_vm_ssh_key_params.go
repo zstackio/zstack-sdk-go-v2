@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmSshKeyDetailParam SetVmSshKey详细参数
+// SetVmSshKeyDetailParam SetVmSshKey detail param
 type SetVmSshKeyDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"SshKey" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	SshKey string `json:"SshKey" validate:"required"`
 }
 
-// SetVmSshKeyParam SetVmSshKey请求参数
+// SetVmSshKeyParam SetVmSshKey request param
 type SetVmSshKeyParam struct {
 	BaseParam
-	Params SetVmSshKeyDetailParam `json:"params"` // 详细参数
+	Params SetVmSshKeyDetailParam `json:"params"`
 }
-

@@ -4,45 +4,47 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BareMetal2GatewayInventoryView BareMetal2Gateway
 type BareMetal2GatewayInventoryView struct {
-	rest []string `json:"attachedClusterUuids,omitempty"`
-	rest BareMetal2GatewayProvisionNicInventoryView `json:"provisionNic,omitempty"`
-	rest string `json:"username,omitempty"`
-	rest int `json:"sshPort,omitempty"`
-	rest string `json:"osDistribution,omitempty"`
-	rest string `json:"osRelease,omitempty"`
-	rest string `json:"osVersion,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"clusterUuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"managementIp,omitempty"`
-	rest string `json:"hypervisorType,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest int64 `json:"totalCpuCapacity,omitempty"`
-	rest int64 `json:"availableCpuCapacity,omitempty"`
-	rest int `json:"cpuSockets,omitempty"`
-	rest int64 `json:"totalMemoryCapacity,omitempty"`
-	rest int64 `json:"availableMemoryCapacity,omitempty"`
-	rest int `json:"cpuNum,omitempty"`
-	rest string `json:"ipmiAddress,omitempty"`
-	rest string `json:"ipmiUsername,omitempty"`
-	rest int `json:"ipmiPort,omitempty"`
-	rest string `json:"ipmiPowerStatus,omitempty"`
-	rest string `json:"cpuStatus,omitempty"`
-	rest string `json:"memoryStatus,omitempty"`
-	rest string `json:"diskStatus,omitempty"`
-	rest string `json:"nicStatus,omitempty"`
-	rest string `json:"gpuStatus,omitempty"`
-	rest string `json:"powerSupplyStatus,omitempty"`
-	rest string `json:"fanStatus,omitempty"`
-	rest string `json:"raidStatus,omitempty"`
-	rest string `json:"temperatureStatus,omitempty"`
-	rest string `json:"architecture,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+	ProvisionNic BareMetal2GatewayProvisionNicInventoryView `json:"provisionNic,omitempty"`
+	Username string `json:"username,omitempty"`
+	SshPort int `json:"sshPort,omitempty"`
+	OsDistribution string `json:"osDistribution,omitempty"`
+	OsRelease string `json:"osRelease,omitempty"`
+	OsVersion string `json:"osVersion,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp,omitempty"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	TotalCpuCapacity int64 `json:"totalCpuCapacity,omitempty"`
+	AvailableCpuCapacity int64 `json:"availableCpuCapacity,omitempty"`
+	CpuSockets int `json:"cpuSockets,omitempty"`
+	TotalMemoryCapacity int64 `json:"totalMemoryCapacity,omitempty"`
+	AvailableMemoryCapacity int64 `json:"availableMemoryCapacity,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	IpmiAddress string `json:"ipmiAddress,omitempty"`
+	IpmiUsername string `json:"ipmiUsername,omitempty"`
+	IpmiPort int `json:"ipmiPort,omitempty"`
+	IpmiPowerStatus string `json:"ipmiPowerStatus,omitempty"`
+	CpuStatus string `json:"cpuStatus,omitempty"`
+	MemoryStatus string `json:"memoryStatus,omitempty"`
+	DiskStatus string `json:"diskStatus,omitempty"`
+	NicStatus string `json:"nicStatus,omitempty"`
+	GpuStatus string `json:"gpuStatus,omitempty"`
+	PowerSupplyStatus string `json:"powerSupplyStatus,omitempty"`
+	FanStatus string `json:"fanStatus,omitempty"`
+	RaidStatus string `json:"raidStatus,omitempty"`
+	TemperatureStatus string `json:"temperatureStatus,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

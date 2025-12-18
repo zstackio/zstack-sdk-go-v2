@@ -2,16 +2,15 @@
 
 package param
 
-// AddKVMHostFromConfigFileDetailParam AddKVMHostFromConfigFile详细参数
+// AddKVMHostFromConfigFileDetailParam AddKVMHostFromConfigFile detail param
 type AddKVMHostFromConfigFileDetailParam struct {
-	rest string `json:"hostInfo" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	HostInfo string `json:"hostInfo" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddKVMHostFromConfigFileParam AddKVMHostFromConfigFile请求参数
+// AddKVMHostFromConfigFileParam AddKVMHostFromConfigFile request param
 type AddKVMHostFromConfigFileParam struct {
 	BaseParam
-	Params AddKVMHostFromConfigFileDetailParam `json:"params"` // 详细参数
+	Params AddKVMHostFromConfigFileDetailParam `json:"params"`
 }
-

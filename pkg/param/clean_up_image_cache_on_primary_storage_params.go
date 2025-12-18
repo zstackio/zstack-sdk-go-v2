@@ -2,15 +2,14 @@
 
 package param
 
-// CleanUpImageCacheOnPrimaryStorageDetailParam CleanUpImageCacheOnPrimaryStorage详细参数
+// CleanUpImageCacheOnPrimaryStorageDetailParam CleanUpImageCacheOnPrimaryStorage detail param
 type CleanUpImageCacheOnPrimaryStorageDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"force,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Force bool `json:"force,omitempty"`
 }
 
-// CleanUpImageCacheOnPrimaryStorageParam CleanUpImageCacheOnPrimaryStorage请求参数
+// CleanUpImageCacheOnPrimaryStorageParam CleanUpImageCacheOnPrimaryStorage request param
 type CleanUpImageCacheOnPrimaryStorageParam struct {
 	BaseParam
-	Params CleanUpImageCacheOnPrimaryStorageDetailParam `json:"params"` // 详细参数
+	Params CleanUpImageCacheOnPrimaryStorageDetailParam `json:"params"`
 }
-

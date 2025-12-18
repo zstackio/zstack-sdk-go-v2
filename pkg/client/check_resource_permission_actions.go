@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CheckResourcePermission 操作CheckResourcePermission
+// CheckResourcePermission operates on CheckResourcePermission
 func (cli *ZSClient) CheckResourcePermission(params param.CheckResourcePermissionParam) (*view.CheckResourcePermissionView, error) {
 	var resp view.CheckResourcePermissionView
 	if err := cli.Get("v1/accounts/resource/api-permissions", "", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CheckResourcePermission(params param.CheckResourcePermissio
 	}
 	return &resp, nil
 }
-

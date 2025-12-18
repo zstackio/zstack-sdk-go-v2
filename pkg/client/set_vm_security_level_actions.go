@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetVmSecurityLevel 操作SetVmSecurityLevel
+// SetVmSecurityLevel operates on SetVmSecurityLevel
 func (cli *ZSClient) SetVmSecurityLevel(uuid string, params param.SetVmSecurityLevelParam) (*view.SetVmSecurityLevelEventView, error) {
 	resp := view.SetVmSecurityLevelEventView{}
 	if err := cli.Put("v1/vm-instances/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetVmSecurityLevel(uuid string, params param.SetVmSecurityL
 	}
 	return &resp, nil
 }
-

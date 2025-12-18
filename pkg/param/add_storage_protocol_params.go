@@ -2,15 +2,14 @@
 
 package param
 
-// AddStorageProtocolDetailParam AddStorageProtocol详细参数
+// AddStorageProtocolDetailParam AddStorageProtocol detail param
 type AddStorageProtocolDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"outputProtocol" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	OutputProtocol string `json:"outputProtocol" validate:"required"`
 }
 
-// AddStorageProtocolParam AddStorageProtocol请求参数
+// AddStorageProtocolParam AddStorageProtocol request param
 type AddStorageProtocolParam struct {
 	BaseParam
-	Params AddStorageProtocolDetailParam `json:"params"` // 详细参数
+	Params AddStorageProtocolDetailParam `json:"params"`
 }
-

@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ResourceStackInventoryView ResourceStack
 type ResourceStackInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"templateContent,omitempty"`
-	rest string `json:"paramContent,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"reason,omitempty"`
-	rest string `json:"outputs,omitempty"`
-	rest bool `json:"enableRollback,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Version string `json:"version,omitempty"`
+	Type string `json:"type,omitempty"`
+	TemplateContent string `json:"templateContent,omitempty"`
+	ParamContent string `json:"paramContent,omitempty"`
+	Status string `json:"status,omitempty"`
+	Reason string `json:"reason,omitempty"`
+	Outputs string `json:"outputs,omitempty"`
+	EnableRollback bool `json:"enableRollback,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

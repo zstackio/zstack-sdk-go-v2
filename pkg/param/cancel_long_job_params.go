@@ -2,14 +2,13 @@
 
 package param
 
-// CancelLongJobDetailParam CancelLongJob详细参数
+// CancelLongJobDetailParam CancelLongJob detail param
 type CancelLongJobDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// CancelLongJobParam CancelLongJob请求参数
+// CancelLongJobParam CancelLongJob request param
 type CancelLongJobParam struct {
 	BaseParam
-	Params CancelLongJobDetailParam `json:"params"` // 详细参数
+	Params CancelLongJobDetailParam `json:"params"`
 }
-

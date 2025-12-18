@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CalculateImageHash 操作CalculateImageHash
+// CalculateImageHash operates on CalculateImageHash
 func (cli *ZSClient) CalculateImageHash(uuid string, params param.CalculateImageHashParam) (*view.CalculateImageHashEventView, error) {
 	resp := view.CalculateImageHashEventView{}
 	if err := cli.Put("v1/images/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CalculateImageHash(uuid string, params param.CalculateImage
 	}
 	return &resp, nil
 }
-

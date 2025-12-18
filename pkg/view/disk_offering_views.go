@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // DiskOfferingInventoryView DiskOffering
 type DiskOfferingInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest int64 `json:"diskSize,omitempty"`
-	rest int `json:"sortKey,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"allocatorStrategy,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	DiskSize int64 `json:"diskSize,omitempty"`
+	SortKey int `json:"sortKey,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 }
 

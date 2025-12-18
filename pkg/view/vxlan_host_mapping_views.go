@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VxlanHostMappingInventoryView VxlanHostMapping
 type VxlanHostMappingInventoryView struct {
-	rest string `json:"vxlanUuid,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest int `json:"vlanId,omitempty"`
-	rest string `json:"physicalInterface,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VxlanUuid string `json:"vxlanUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	VlanId int `json:"vlanId,omitempty"`
+	PhysicalInterface string `json:"physicalInterface,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,18 +2,17 @@
 
 package param
 
-// AddRendezvousPointToMulticastRouterDetailParam AddRendezvousPointToMulticastRouter详细参数
+// AddRendezvousPointToMulticastRouterDetailParam AddRendezvousPointToMulticastRouter detail param
 type AddRendezvousPointToMulticastRouterDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"rpAddress" validate:"required"` // 必填
-	rest string `json:"groupAddress" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	RpAddress string `json:"rpAddress" validate:"required"`
+	GroupAddress string `json:"groupAddress" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddRendezvousPointToMulticastRouterParam AddRendezvousPointToMulticastRouter请求参数
+// AddRendezvousPointToMulticastRouterParam AddRendezvousPointToMulticastRouter request param
 type AddRendezvousPointToMulticastRouterParam struct {
 	BaseParam
-	Params AddRendezvousPointToMulticastRouterDetailParam `json:"params"` // 详细参数
+	Params AddRendezvousPointToMulticastRouterDetailParam `json:"params"`
 }
-

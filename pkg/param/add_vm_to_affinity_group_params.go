@@ -2,15 +2,14 @@
 
 package param
 
-// AddVmToAffinityGroupDetailParam AddVmToAffinityGroup详细参数
+// AddVmToAffinityGroupDetailParam AddVmToAffinityGroup detail param
 type AddVmToAffinityGroupDetailParam struct {
-	rest string `json:"affinityGroupUuid" validate:"required"` // 必填
-	rest string `json:"uuid" validate:"required"` // 必填
+	AffinityGroupUuid string `json:"affinityGroupUuid" validate:"required"`
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// AddVmToAffinityGroupParam AddVmToAffinityGroup请求参数
+// AddVmToAffinityGroupParam AddVmToAffinityGroup request param
 type AddVmToAffinityGroupParam struct {
 	BaseParam
-	Params AddVmToAffinityGroupDetailParam `json:"params"` // 详细参数
+	Params AddVmToAffinityGroupDetailParam `json:"params"`
 }
-

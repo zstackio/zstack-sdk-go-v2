@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SlbGroupMonitorIpInventoryView SlbGroupMonitorIp
 type SlbGroupMonitorIpInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"slbGroupUuid,omitempty"`
-	rest string `json:"monitorIp,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	SlbGroupUuid string `json:"slbGroupUuid,omitempty"`
+	MonitorIp string `json:"monitorIp,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,15 +2,14 @@
 
 package param
 
-// AddPolicyStatementsToRoleDetailParam AddPolicyStatementsToRole详细参数
+// AddPolicyStatementsToRoleDetailParam AddPolicyStatementsToRole detail param
 type AddPolicyStatementsToRoleDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []interface{} `json:"statements" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Statements []interface{} `json:"statements" validate:"required"`
 }
 
-// AddPolicyStatementsToRoleParam AddPolicyStatementsToRole请求参数
+// AddPolicyStatementsToRoleParam AddPolicyStatementsToRole request param
 type AddPolicyStatementsToRoleParam struct {
 	BaseParam
-	Params AddPolicyStatementsToRoleDetailParam `json:"params"` // 详细参数
+	Params AddPolicyStatementsToRoleDetailParam `json:"params"`
 }
-

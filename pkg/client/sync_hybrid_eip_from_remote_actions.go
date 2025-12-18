@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncHybridEipFromRemote 操作SyncHybridEipFromRemote
+// SyncHybridEipFromRemote operates on SyncHybridEipFromRemote
 func (cli *ZSClient) SyncHybridEipFromRemote(uuid string, params param.SyncHybridEipFromRemoteParam) (*view.SyncHybridEipFromRemoteEventView, error) {
 	resp := view.SyncHybridEipFromRemoteEventView{}
 	if err := cli.Put("v1/hybrid/eip/{dataCenterUuid}/sync", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncHybridEipFromRemote(uuid string, params param.SyncHybri
 	}
 	return &resp, nil
 }
-

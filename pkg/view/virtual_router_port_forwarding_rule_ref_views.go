@@ -4,10 +4,12 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VirtualRouterPortForwardingRuleRefInventoryView VirtualRouterPortForwardingRuleRef
 type VirtualRouterPortForwardingRuleRefInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vipUuid,omitempty"`
-	rest string `json:"virtualRouterVmUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	VirtualRouterVmUuid string `json:"virtualRouterVmUuid,omitempty"`
 }
 

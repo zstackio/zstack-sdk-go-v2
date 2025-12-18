@@ -4,18 +4,20 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ZBoxBackupInventoryView ZBoxBackup
 type ZBoxBackupInventoryView struct {
-	rest string `json:"zBoxUuid,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"installPath,omitempty"`
-	rest int64 `json:"totalSize,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ZBoxUuid string `json:"zBoxUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	InstallPath string `json:"installPath,omitempty"`
+	TotalSize int64 `json:"totalSize,omitempty"`
+	Version string `json:"version,omitempty"`
+	Type string `json:"type,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

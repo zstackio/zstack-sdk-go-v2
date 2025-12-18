@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddBackupStoragesToReplicationGroup 操作AddBackupStoragesToReplicationGroup
+// AddBackupStoragesToReplicationGroup adds BackupStoragesToReplicationGroup
 func (cli *ZSClient) AddBackupStoragesToReplicationGroup(params param.AddBackupStoragesToReplicationGroupParam) (*view.AddBackupStoragesToReplicationGroupEventView, error) {
 	resp := view.AddBackupStoragesToReplicationGroupEventView{}
 	if err := cli.Post("v1/image-replication-groups/{replicationGroupUuid}", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddBackupStoragesToReplicationGroup(params param.AddBackupS
 	}
 	return &resp, nil
 }
-

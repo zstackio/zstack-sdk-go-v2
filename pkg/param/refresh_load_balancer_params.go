@@ -2,14 +2,13 @@
 
 package param
 
-// RefreshLoadBalancerDetailParam RefreshLoadBalancer详细参数
+// RefreshLoadBalancerDetailParam RefreshLoadBalancer detail param
 type RefreshLoadBalancerDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RefreshLoadBalancerParam RefreshLoadBalancer请求参数
+// RefreshLoadBalancerParam RefreshLoadBalancer request param
 type RefreshLoadBalancerParam struct {
 	BaseParam
-	Params RefreshLoadBalancerDetailParam `json:"params"` // 详细参数
+	Params RefreshLoadBalancerDetailParam `json:"params"`
 }
-

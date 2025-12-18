@@ -4,21 +4,23 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BareMetal2ProvisionNetworkInventoryView BareMetal2ProvisionNetwork
 type BareMetal2ProvisionNetworkInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"dhcpInterface,omitempty"`
-	rest string `json:"dhcpRangeStartIp,omitempty"`
-	rest string `json:"dhcpRangeEndIp,omitempty"`
-	rest string `json:"dhcpRangeNetmask,omitempty"`
-	rest string `json:"dhcpRangeGateway,omitempty"`
-	rest string `json:"dhcpRangeNetworkCidr,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []string `json:"attachedClusterUuids,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	DhcpInterface string `json:"dhcpInterface,omitempty"`
+	DhcpRangeStartIp string `json:"dhcpRangeStartIp,omitempty"`
+	DhcpRangeEndIp string `json:"dhcpRangeEndIp,omitempty"`
+	DhcpRangeNetmask string `json:"dhcpRangeNetmask,omitempty"`
+	DhcpRangeGateway string `json:"dhcpRangeGateway,omitempty"`
+	DhcpRangeNetworkCidr string `json:"dhcpRangeNetworkCidr,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

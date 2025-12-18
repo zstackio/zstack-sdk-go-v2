@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ClusterInventoryView Cluster
 type ClusterInventoryView struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"hypervisorType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"architecture,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
 }
 

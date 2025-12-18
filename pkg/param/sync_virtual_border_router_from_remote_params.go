@@ -2,16 +2,15 @@
 
 package param
 
-// SyncVirtualBorderRouterFromRemoteDetailParam SyncVirtualBorderRouterFromRemote详细参数
+// SyncVirtualBorderRouterFromRemoteDetailParam SyncVirtualBorderRouterFromRemote detail param
 type SyncVirtualBorderRouterFromRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncVirtualBorderRouterFromRemoteParam SyncVirtualBorderRouterFromRemote请求参数
+// SyncVirtualBorderRouterFromRemoteParam SyncVirtualBorderRouterFromRemote request param
 type SyncVirtualBorderRouterFromRemoteParam struct {
 	BaseParam
-	Params SyncVirtualBorderRouterFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncVirtualBorderRouterFromRemoteDetailParam `json:"params"`
 }
-

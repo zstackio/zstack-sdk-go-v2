@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // TicketOperatorInventoryView TicketOperator
 type TicketOperatorInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"operatorAccountUuid,omitempty"`
-	rest string `json:"operatorType,omitempty"`
-	rest string `json:"operatorContext,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	OperatorAccountUuid string `json:"operatorAccountUuid,omitempty"`
+	OperatorType string `json:"operatorType,omitempty"`
+	OperatorContext string `json:"operatorContext,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

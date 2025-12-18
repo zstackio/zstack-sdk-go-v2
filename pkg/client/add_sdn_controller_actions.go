@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddSdnController 操作AddSdnController
+// AddSdnController adds SdnController
 func (cli *ZSClient) AddSdnController(params param.AddSdnControllerParam) (*view.AddSdnControllerEventView, error) {
 	resp := view.AddSdnControllerEventView{}
 	if err := cli.Post("v1/sdn-controllers", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddSdnController(params param.AddSdnControllerParam) (*view
 	}
 	return &resp, nil
 }
-

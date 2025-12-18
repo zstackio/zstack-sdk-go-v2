@@ -2,37 +2,36 @@
 
 package param
 
-// AddModelServiceDetailParam AddModelService详细参数
+// AddModelServiceDetailParam AddModelService detail param
 type AddModelServiceDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"yaml" validate:"required"` // 必填
-	rest string `json:"modelCenterUuid" validate:"required"` // 必填
-	rest int `json:"requestCpu" validate:"required"` // 必填
-	rest int64 `json:"requestMemory" validate:"required"` // 必填
-	rest string `json:"gpuComputeCapability,omitempty"`
-	rest string `json:"installPath" validate:"required"` // 必填
-	rest bool `json:"system,omitempty"`
-	rest string `json:"startCommand" validate:"required"` // 必填
-	rest string `json:"containerCommand,omitempty"`
-	rest string `json:"containerArgs,omitempty"`
-	rest string `json:"pythonVersion,omitempty"`
-	rest string `json:"condaVersion,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"source,omitempty"`
-	rest string `json:"framework,omitempty"`
-	rest []string `json:"modelUuids,omitempty"`
-	rest []interface{} `json:"architectureImages,omitempty"`
-	rest bool `json:"supportDistributed,omitempty"`
-	rest map[string]interface{} `json:"vendorToSpecUuidsMap,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Yaml string `json:"yaml" validate:"required"`
+	ModelCenterUuid string `json:"modelCenterUuid" validate:"required"`
+	RequestCpu int `json:"requestCpu" validate:"required"`
+	RequestMemory int64 `json:"requestMemory" validate:"required"`
+	GpuComputeCapability string `json:"gpuComputeCapability,omitempty"`
+	InstallPath string `json:"installPath" validate:"required"`
+	System bool `json:"system,omitempty"`
+	StartCommand string `json:"startCommand" validate:"required"`
+	ContainerCommand string `json:"containerCommand,omitempty"`
+	ContainerArgs string `json:"containerArgs,omitempty"`
+	PythonVersion string `json:"pythonVersion,omitempty"`
+	CondaVersion string `json:"condaVersion,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	Source string `json:"source,omitempty"`
+	Framework string `json:"framework,omitempty"`
+	ModelUuids []string `json:"modelUuids,omitempty"`
+	ArchitectureImages []interface{} `json:"architectureImages,omitempty"`
+	SupportDistributed bool `json:"supportDistributed,omitempty"`
+	VendorToSpecUuidsMap map[string]interface{} `json:"vendorToSpecUuidsMap,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddModelServiceParam AddModelService请求参数
+// AddModelServiceParam AddModelService request param
 type AddModelServiceParam struct {
 	BaseParam
-	Params AddModelServiceDetailParam `json:"params"` // 详细参数
+	Params AddModelServiceDetailParam `json:"params"`
 }
-

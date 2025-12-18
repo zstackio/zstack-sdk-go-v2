@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmNicSecurityPolicyInventoryView VmNicSecurityPolicy
 type VmNicSecurityPolicyInventoryView struct {
-	rest string `json:"vmNicUuid,omitempty"`
-	rest string `json:"ingressPolicy,omitempty"`
-	rest string `json:"egressPolicy,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VmNicUuid string `json:"vmNicUuid,omitempty"`
+	IngressPolicy string `json:"ingressPolicy,omitempty"`
+	EgressPolicy string `json:"egressPolicy,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

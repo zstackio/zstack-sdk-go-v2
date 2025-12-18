@@ -2,16 +2,15 @@
 
 package param
 
-// ValidateSNSUniversalSmsEndpointDetailParam ValidateSNSUniversalSmsEndpoint详细参数
+// ValidateSNSUniversalSmsEndpointDetailParam ValidateSNSUniversalSmsEndpoint detail param
 type ValidateSNSUniversalSmsEndpointDetailParam struct {
-	rest string `json:"testMsg" validate:"required"` // 必填
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"phoneNumbers" validate:"required"` // 必填
+	TestMsg string `json:"testMsg" validate:"required"`
+	Uuid string `json:"uuid" validate:"required"`
+	PhoneNumbers []string `json:"phoneNumbers" validate:"required"`
 }
 
-// ValidateSNSUniversalSmsEndpointParam ValidateSNSUniversalSmsEndpoint请求参数
+// ValidateSNSUniversalSmsEndpointParam ValidateSNSUniversalSmsEndpoint request param
 type ValidateSNSUniversalSmsEndpointParam struct {
 	BaseParam
-	Params ValidateSNSUniversalSmsEndpointDetailParam `json:"params"` // 详细参数
+	Params ValidateSNSUniversalSmsEndpointDetailParam `json:"params"`
 }
-

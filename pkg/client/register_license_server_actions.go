@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// RegisterLicenseServer 操作RegisterLicenseServer
+// RegisterLicenseServer operates on RegisterLicenseServer
 func (cli *ZSClient) RegisterLicenseServer(params param.RegisterLicenseServerParam) (*view.RegisterLicenseServerEventView, error) {
 	resp := view.RegisterLicenseServerEventView{}
 	if err := cli.Post("v1/license-server/client", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) RegisterLicenseServer(params param.RegisterLicenseServerPar
 	}
 	return &resp, nil
 }
-

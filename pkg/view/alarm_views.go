@@ -4,25 +4,27 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AlarmInventoryView Alarm
 type AlarmInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"comparisonOperator,omitempty"`
-	rest int `json:"period,omitempty"`
-	rest string `json:"namespace,omitempty"`
-	rest string `json:"metricName,omitempty"`
-	rest float64 `json:"threshold,omitempty"`
-	rest int `json:"repeatInterval,omitempty"`
-	rest int `json:"repeatCount,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest bool `json:"enableRecovery,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []AlarmLabelInventoryView `json:"labels,omitempty"`
-	rest []AlarmActionInventoryView `json:"actions,omitempty"`
-	rest string `json:"emergencyLevel,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ComparisonOperator string `json:"comparisonOperator,omitempty"`
+	Period int `json:"period,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	MetricName string `json:"metricName,omitempty"`
+	Threshold float64 `json:"threshold,omitempty"`
+	RepeatInterval int `json:"repeatInterval,omitempty"`
+	RepeatCount int `json:"repeatCount,omitempty"`
+	Status string `json:"status,omitempty"`
+	State string `json:"state,omitempty"`
+	EnableRecovery bool `json:"enableRecovery,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Labels []AlarmLabelInventoryView `json:"labels,omitempty"`
+	Actions []AlarmActionInventoryView `json:"actions,omitempty"`
+	EmergencyLevel string `json:"emergencyLevel,omitempty"`
 }
 

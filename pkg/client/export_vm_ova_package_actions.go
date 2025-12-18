@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ExportVmOvaPackage 操作ExportVmOvaPackage
+// ExportVmOvaPackage operates on ExportVmOvaPackage
 func (cli *ZSClient) ExportVmOvaPackage(params param.ExportVmOvaPackageParam) (*view.ExportVmOvaPackageEventView, error) {
 	resp := view.ExportVmOvaPackageEventView{}
 	if err := cli.Post("v1/ovf/ova-packages", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ExportVmOvaPackage(params param.ExportVmOvaPackageParam) (*
 	}
 	return &resp, nil
 }
-

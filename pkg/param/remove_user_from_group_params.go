@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveUserFromGroupDetailParam RemoveUserFromGroup详细参数
+// RemoveUserFromGroupDetailParam RemoveUserFromGroup detail param
 type RemoveUserFromGroupDetailParam struct {
-	rest string `json:"userUuid" validate:"required"` // 必填
-	rest string `json:"groupUuid" validate:"required"` // 必填
+	UserUuid string `json:"userUuid" validate:"required"`
+	GroupUuid string `json:"groupUuid" validate:"required"`
 }
 
-// RemoveUserFromGroupParam RemoveUserFromGroup请求参数
+// RemoveUserFromGroupParam RemoveUserFromGroup request param
 type RemoveUserFromGroupParam struct {
 	BaseParam
-	Params RemoveUserFromGroupDetailParam `json:"params"` // 详细参数
+	Params RemoveUserFromGroupDetailParam `json:"params"`
 }
-

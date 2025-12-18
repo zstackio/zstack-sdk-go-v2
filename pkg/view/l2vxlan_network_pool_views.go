@@ -4,25 +4,27 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // L2VxlanNetworkPoolInventoryView L2VxlanNetworkPool
 type L2VxlanNetworkPoolInventoryView struct {
-	rest []VtepInventoryView `json:"attachedVtepRefs,omitempty"`
-	rest []RemoteVtepInventoryView `json:"remoteVteps,omitempty"`
-	rest []L2VxlanNetworkInventoryView `json:"attachedVxlanNetworkRefs,omitempty"`
-	rest []VniRangeInventoryView `json:"attachedVniRanges,omitempty"`
-	rest map[string]string `json:"attachedCidrs,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"physicalInterface,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"vSwitchType,omitempty"`
-	rest int `json:"virtualNetworkId,omitempty"`
-	rest bool `json:"isolated,omitempty"`
-	rest string `json:"pvlan,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []string `json:"attachedClusterUuids,omitempty"`
+	AttachedVtepRefs []VtepInventoryView `json:"attachedVtepRefs,omitempty"`
+	RemoteVteps []RemoteVtepInventoryView `json:"remoteVteps,omitempty"`
+	AttachedVxlanNetworkRefs []L2VxlanNetworkInventoryView `json:"attachedVxlanNetworkRefs,omitempty"`
+	AttachedVniRanges []VniRangeInventoryView `json:"attachedVniRanges,omitempty"`
+	AttachedCidrs map[string]string `json:"attachedCidrs,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	PhysicalInterface string `json:"physicalInterface,omitempty"`
+	Type string `json:"type,omitempty"`
+	VSwitchType string `json:"vSwitchType,omitempty"`
+	VirtualNetworkId int `json:"virtualNetworkId,omitempty"`
+	Isolated bool `json:"isolated,omitempty"`
+	Pvlan string `json:"pvlan,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

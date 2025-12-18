@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectZdfsDetailParam ReconnectZdfs详细参数
+// ReconnectZdfsDetailParam ReconnectZdfs detail param
 type ReconnectZdfsDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectZdfsParam ReconnectZdfs请求参数
+// ReconnectZdfsParam ReconnectZdfs request param
 type ReconnectZdfsParam struct {
 	BaseParam
-	Params ReconnectZdfsDetailParam `json:"params"` // 详细参数
+	Params ReconnectZdfsDetailParam `json:"params"`
 }
-

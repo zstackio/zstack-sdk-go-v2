@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ModelServiceTemplateInventoryView ModelServiceTemplate
 type ModelServiceTemplateInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"modelServiceUuid,omitempty"`
-	rest string `json:"cpuArchitecture,omitempty"`
-	rest string `json:"vmImageUuid,omitempty"`
-	rest string `json:"dockerImage,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ModelServiceUuid string `json:"modelServiceUuid,omitempty"`
+	CpuArchitecture string `json:"cpuArchitecture,omitempty"`
+	VmImageUuid string `json:"vmImageUuid,omitempty"`
+	DockerImage string `json:"dockerImage,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

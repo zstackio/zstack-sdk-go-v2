@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetVmConsolePassword 操作SetVmConsolePassword
+// SetVmConsolePassword operates on SetVmConsolePassword
 func (cli *ZSClient) SetVmConsolePassword(uuid string, params param.SetVmConsolePasswordParam) (*view.SetVmConsolePasswordEventView, error) {
 	resp := view.SetVmConsolePasswordEventView{}
 	if err := cli.Put("v1/vm-instances/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetVmConsolePassword(uuid string, params param.SetVmConsole
 	}
 	return &resp, nil
 }
-

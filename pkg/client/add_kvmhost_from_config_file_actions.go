@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddKVMHostFromConfigFile 操作AddKVMHostFromConfigFile
+// AddKVMHostFromConfigFile adds KVMHostFromConfigFile
 func (cli *ZSClient) AddKVMHostFromConfigFile(params param.AddKVMHostFromConfigFileParam) (*view.AddHostFromConfigFileEventView, error) {
 	resp := view.AddHostFromConfigFileEventView{}
 	if err := cli.Post("v1/hosts/kvm/from-file", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddKVMHostFromConfigFile(params param.AddKVMHostFromConfigF
 	}
 	return &resp, nil
 }
-

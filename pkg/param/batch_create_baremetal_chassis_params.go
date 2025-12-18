@@ -2,18 +2,17 @@
 
 package param
 
-// BatchCreateBaremetalChassisDetailParam BatchCreateBaremetalChassis详细参数
+// BatchCreateBaremetalChassisDetailParam BatchCreateBaremetalChassis detail param
 type BatchCreateBaremetalChassisDetailParam struct {
-	rest string `json:"baremetalChassisInfo" validate:"required"` // 必填
-	rest string `json:"longJobName,omitempty"`
-	rest string `json:"longJobDescription,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	BaremetalChassisInfo string `json:"baremetalChassisInfo" validate:"required"`
+	LongJobName string `json:"longJobName,omitempty"`
+	LongJobDescription string `json:"longJobDescription,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// BatchCreateBaremetalChassisParam BatchCreateBaremetalChassis请求参数
+// BatchCreateBaremetalChassisParam BatchCreateBaremetalChassis request param
 type BatchCreateBaremetalChassisParam struct {
 	BaseParam
-	Params BatchCreateBaremetalChassisDetailParam `json:"params"` // 详细参数
+	Params BatchCreateBaremetalChassisDetailParam `json:"params"`
 }
-

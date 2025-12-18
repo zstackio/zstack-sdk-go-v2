@@ -2,14 +2,13 @@
 
 package param
 
-// SyncZBoxCapacityDetailParam SyncZBoxCapacity详细参数
+// SyncZBoxCapacityDetailParam SyncZBoxCapacity detail param
 type SyncZBoxCapacityDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// SyncZBoxCapacityParam SyncZBoxCapacity请求参数
+// SyncZBoxCapacityParam SyncZBoxCapacity request param
 type SyncZBoxCapacityParam struct {
 	BaseParam
-	Params SyncZBoxCapacityDetailParam `json:"params"` // 详细参数
+	Params SyncZBoxCapacityDetailParam `json:"params"`
 }
-

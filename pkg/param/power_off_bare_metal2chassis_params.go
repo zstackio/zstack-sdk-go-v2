@@ -2,14 +2,13 @@
 
 package param
 
-// PowerOffBareMetal2ChassisDetailParam PowerOffBareMetal2Chassis详细参数
+// PowerOffBareMetal2ChassisDetailParam PowerOffBareMetal2Chassis detail param
 type PowerOffBareMetal2ChassisDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// PowerOffBareMetal2ChassisParam PowerOffBareMetal2Chassis请求参数
+// PowerOffBareMetal2ChassisParam PowerOffBareMetal2Chassis request param
 type PowerOffBareMetal2ChassisParam struct {
 	BaseParam
-	Params PowerOffBareMetal2ChassisDetailParam `json:"params"` // 详细参数
+	Params PowerOffBareMetal2ChassisDetailParam `json:"params"`
 }
-

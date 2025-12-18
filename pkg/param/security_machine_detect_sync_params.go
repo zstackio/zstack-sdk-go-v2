@@ -2,14 +2,13 @@
 
 package param
 
-// SecurityMachineDetectSyncDetailParam SecurityMachineDetectSync详细参数
+// SecurityMachineDetectSyncDetailParam SecurityMachineDetectSync detail param
 type SecurityMachineDetectSyncDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// SecurityMachineDetectSyncParam SecurityMachineDetectSync请求参数
+// SecurityMachineDetectSyncParam SecurityMachineDetectSync request param
 type SecurityMachineDetectSyncParam struct {
 	BaseParam
-	Params SecurityMachineDetectSyncDetailParam `json:"params"` // 详细参数
+	Params SecurityMachineDetectSyncDetailParam `json:"params"`
 }
-

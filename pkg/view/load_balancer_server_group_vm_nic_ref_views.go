@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LoadBalancerServerGroupVmNicRefInventoryView LoadBalancerServerGroupVmNicRef
 type LoadBalancerServerGroupVmNicRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"serverGroupUuid,omitempty"`
-	rest string `json:"vmNicUuid,omitempty"`
-	rest int64 `json:"weight,omitempty"`
-	rest int `json:"ipVersion,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
+	VmNicUuid string `json:"vmNicUuid,omitempty"`
+	Weight int64 `json:"weight,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

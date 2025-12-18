@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncAINginxConfiguration 操作SyncAINginxConfiguration
+// SyncAINginxConfiguration operates on SyncAINginxConfiguration
 func (cli *ZSClient) SyncAINginxConfiguration(params param.SyncAINginxConfigurationParam) (*view.SyncAINginxConfigurationView, error) {
 	resp := view.SyncAINginxConfigurationView{}
 	if err := cli.Post("v1/ai/nginx/sync", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncAINginxConfiguration(params param.SyncAINginxConfigurat
 	}
 	return &resp, nil
 }
-

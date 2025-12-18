@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ResetTwoFactorAuthenticationSecret 操作ResetTwoFactorAuthenticationSecret
+// ResetTwoFactorAuthenticationSecret operates on ResetTwoFactorAuthenticationSecret
 func (cli *ZSClient) ResetTwoFactorAuthenticationSecret(uuid string, params param.ResetTwoFactorAuthenticationSecretParam) (*view.ResetTwoFactorAuthenticationSecretEventView, error) {
 	resp := view.ResetTwoFactorAuthenticationSecretEventView{}
 	if err := cli.Put("v1/twofactorauthentication/secrets", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ResetTwoFactorAuthenticationSecret(uuid string, params para
 	}
 	return &resp, nil
 }
-

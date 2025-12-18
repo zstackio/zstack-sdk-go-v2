@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetVmInstanceDefaultCdRom 操作SetVmInstanceDefaultCdRom
+// SetVmInstanceDefaultCdRom operates on SetVmInstanceDefaultCdRom
 func (cli *ZSClient) SetVmInstanceDefaultCdRom(uuid string, params param.SetVmInstanceDefaultCdRomParam) (*view.SetVmInstanceDefaultCdRomEventView, error) {
 	resp := view.SetVmInstanceDefaultCdRomEventView{}
 	if err := cli.Put("v1/vm-instances/{vmInstanceUuid}/cdroms/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetVmInstanceDefaultCdRom(uuid string, params param.SetVmIn
 	}
 	return &resp, nil
 }
-

@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MetricRuleTemplateInventoryView MetricRuleTemplate
 type MetricRuleTemplateInventoryView struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"monitorTemplateUuid,omitempty"`
-	rest string `json:"comparisonOperator,omitempty"`
-	rest int `json:"period,omitempty"`
-	rest int `json:"repeatInterval,omitempty"`
-	rest int `json:"repeatCount,omitempty"`
-	rest string `json:"namespace,omitempty"`
-	rest string `json:"metricName,omitempty"`
-	rest float64 `json:"threshold,omitempty"`
-	rest string `json:"emergencyLevel,omitempty"`
-	rest string `json:"labels,omitempty"`
-	rest bool `json:"enableRecovery,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	MonitorTemplateUuid string `json:"monitorTemplateUuid,omitempty"`
+	ComparisonOperator string `json:"comparisonOperator,omitempty"`
+	Period int `json:"period,omitempty"`
+	RepeatInterval int `json:"repeatInterval,omitempty"`
+	RepeatCount int `json:"repeatCount,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	MetricName string `json:"metricName,omitempty"`
+	Threshold float64 `json:"threshold,omitempty"`
+	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+	Labels string `json:"labels,omitempty"`
+	EnableRecovery bool `json:"enableRecovery,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 }
 

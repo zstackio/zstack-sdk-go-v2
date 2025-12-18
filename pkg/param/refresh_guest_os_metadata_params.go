@@ -2,13 +2,12 @@
 
 package param
 
-// RefreshGuestOsMetadataDetailParam RefreshGuestOsMetadata详细参数
+// RefreshGuestOsMetadataDetailParam RefreshGuestOsMetadata detail param
 type RefreshGuestOsMetadataDetailParam struct {
 }
 
-// RefreshGuestOsMetadataParam RefreshGuestOsMetadata请求参数
+// RefreshGuestOsMetadataParam RefreshGuestOsMetadata request param
 type RefreshGuestOsMetadataParam struct {
 	BaseParam
-	Params RefreshGuestOsMetadataDetailParam `json:"params"` // 详细参数
+	Params RefreshGuestOsMetadataDetailParam `json:"params"`
 }
-

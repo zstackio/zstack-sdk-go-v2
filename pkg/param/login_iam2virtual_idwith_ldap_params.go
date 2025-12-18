@@ -2,18 +2,17 @@
 
 package param
 
-// LoginIAM2VirtualIDWithLdapDetailParam LoginIAM2VirtualIDWithLdap详细参数
+// LoginIAM2VirtualIDWithLdapDetailParam LoginIAM2VirtualIDWithLdap detail param
 type LoginIAM2VirtualIDWithLdapDetailParam struct {
-	rest string `json:"uid" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest string `json:"verifyCode,omitempty"`
-	rest string `json:"captchaUuid,omitempty"`
-	rest map[string]string `json:"clientInfo,omitempty"`
+	Uid string `json:"uid" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	VerifyCode string `json:"verifyCode,omitempty"`
+	CaptchaUuid string `json:"captchaUuid,omitempty"`
+	ClientInfo map[string]string `json:"clientInfo,omitempty"`
 }
 
-// LoginIAM2VirtualIDWithLdapParam LoginIAM2VirtualIDWithLdap请求参数
+// LoginIAM2VirtualIDWithLdapParam LoginIAM2VirtualIDWithLdap request param
 type LoginIAM2VirtualIDWithLdapParam struct {
 	BaseParam
-	Params LoginIAM2VirtualIDWithLdapDetailParam `json:"params"` // 详细参数
+	Params LoginIAM2VirtualIDWithLdapDetailParam `json:"params"`
 }
-

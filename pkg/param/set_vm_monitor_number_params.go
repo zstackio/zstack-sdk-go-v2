@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmMonitorNumberDetailParam SetVmMonitorNumber详细参数
+// SetVmMonitorNumberDetailParam SetVmMonitorNumber detail param
 type SetVmMonitorNumberDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest int `json:"monitorNumber" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	MonitorNumber int `json:"monitorNumber" validate:"required"`
 }
 
-// SetVmMonitorNumberParam SetVmMonitorNumber请求参数
+// SetVmMonitorNumberParam SetVmMonitorNumber request param
 type SetVmMonitorNumberParam struct {
 	BaseParam
-	Params SetVmMonitorNumberDetailParam `json:"params"` // 详细参数
+	Params SetVmMonitorNumberDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// UnsubscribeEventDetailParam UnsubscribeEvent详细参数
+// UnsubscribeEventDetailParam UnsubscribeEvent detail param
 type UnsubscribeEventDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// UnsubscribeEventParam UnsubscribeEvent请求参数
+// UnsubscribeEventParam UnsubscribeEvent request param
 type UnsubscribeEventParam struct {
 	BaseParam
-	Params UnsubscribeEventDetailParam `json:"params"` // 详细参数
+	Params UnsubscribeEventDetailParam `json:"params"`
 }
-

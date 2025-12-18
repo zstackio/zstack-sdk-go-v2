@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddResourcesToDirectory 操作AddResourcesToDirectory
+// AddResourcesToDirectory adds ResourcesToDirectory
 func (cli *ZSClient) AddResourcesToDirectory(params param.AddResourcesToDirectoryParam) (*view.AddResourcesToDirectoryEventView, error) {
 	resp := view.AddResourcesToDirectoryEventView{}
 	if err := cli.Post("v1/add/resources/directory", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddResourcesToDirectory(params param.AddResourcesToDirector
 	}
 	return &resp, nil
 }
-

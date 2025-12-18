@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // HostHaStateInventoryView HostHaState
 type HostHaStateInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

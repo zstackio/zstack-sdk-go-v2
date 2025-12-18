@@ -2,15 +2,14 @@
 
 package param
 
-// SNSSnmpTestConnectionDetailParam SNSSnmpTestConnection详细参数
+// SNSSnmpTestConnectionDetailParam SNSSnmpTestConnection detail param
 type SNSSnmpTestConnectionDetailParam struct {
-	rest string `json:"platformUuid,omitempty"`
-	rest string `json:"endpointUuid,omitempty"`
+	PlatformUuid string `json:"platformUuid,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
 }
 
-// SNSSnmpTestConnectionParam SNSSnmpTestConnection请求参数
+// SNSSnmpTestConnectionParam SNSSnmpTestConnection request param
 type SNSSnmpTestConnectionParam struct {
 	BaseParam
-	Params SNSSnmpTestConnectionDetailParam `json:"params"` // 详细参数
+	Params SNSSnmpTestConnectionDetailParam `json:"params"`
 }
-

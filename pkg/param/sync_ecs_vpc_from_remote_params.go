@@ -2,17 +2,16 @@
 
 package param
 
-// SyncEcsVpcFromRemoteDetailParam SyncEcsVpcFromRemote详细参数
+// SyncEcsVpcFromRemoteDetailParam SyncEcsVpcFromRemote detail param
 type SyncEcsVpcFromRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"ecsVpcId,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	EcsVpcId string `json:"ecsVpcId,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncEcsVpcFromRemoteParam SyncEcsVpcFromRemote请求参数
+// SyncEcsVpcFromRemoteParam SyncEcsVpcFromRemote request param
 type SyncEcsVpcFromRemoteParam struct {
 	BaseParam
-	Params SyncEcsVpcFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncEcsVpcFromRemoteDetailParam `json:"params"`
 }
-

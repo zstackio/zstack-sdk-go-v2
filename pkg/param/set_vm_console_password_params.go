@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmConsolePasswordDetailParam SetVmConsolePassword详细参数
+// SetVmConsolePasswordDetailParam SetVmConsolePassword detail param
 type SetVmConsolePasswordDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"consolePassword" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	ConsolePassword string `json:"consolePassword" validate:"required"`
 }
 
-// SetVmConsolePasswordParam SetVmConsolePassword请求参数
+// SetVmConsolePasswordParam SetVmConsolePassword request param
 type SetVmConsolePasswordParam struct {
 	BaseParam
-	Params SetVmConsolePasswordDetailParam `json:"params"` // 详细参数
+	Params SetVmConsolePasswordDetailParam `json:"params"`
 }
-

@@ -2,14 +2,13 @@
 
 package param
 
-// PauseVmInstanceDetailParam PauseVmInstance详细参数
+// PauseVmInstanceDetailParam PauseVmInstance detail param
 type PauseVmInstanceDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// PauseVmInstanceParam PauseVmInstance请求参数
+// PauseVmInstanceParam PauseVmInstance request param
 type PauseVmInstanceParam struct {
 	BaseParam
-	Params PauseVmInstanceDetailParam `json:"params"` // 详细参数
+	Params PauseVmInstanceDetailParam `json:"params"`
 }
-

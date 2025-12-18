@@ -2,16 +2,15 @@
 
 package param
 
-// BackupStorageMigrateImageDetailParam BackupStorageMigrateImage详细参数
+// BackupStorageMigrateImageDetailParam BackupStorageMigrateImage detail param
 type BackupStorageMigrateImageDetailParam struct {
-	rest string `json:"imageUuid" validate:"required"` // 必填
-	rest string `json:"srcBackupStorageUuid" validate:"required"` // 必填
-	rest string `json:"dstBackupStorageUuid" validate:"required"` // 必填
+	ImageUuid string `json:"imageUuid" validate:"required"`
+	SrcBackupStorageUuid string `json:"srcBackupStorageUuid" validate:"required"`
+	DstBackupStorageUuid string `json:"dstBackupStorageUuid" validate:"required"`
 }
 
-// BackupStorageMigrateImageParam BackupStorageMigrateImage请求参数
+// BackupStorageMigrateImageParam BackupStorageMigrateImage request param
 type BackupStorageMigrateImageParam struct {
 	BaseParam
-	Params BackupStorageMigrateImageDetailParam `json:"params"` // 详细参数
+	Params BackupStorageMigrateImageDetailParam `json:"params"`
 }
-

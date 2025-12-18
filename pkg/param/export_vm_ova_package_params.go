@@ -2,19 +2,18 @@
 
 package param
 
-// ExportVmOvaPackageDetailParam ExportVmOvaPackage详细参数
+// ExportVmOvaPackageDetailParam ExportVmOvaPackage detail param
 type ExportVmOvaPackageDetailParam struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"vmUuid" validate:"required"` // 必填
-	rest string `json:"backupStorageUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	VmUuid string `json:"vmUuid" validate:"required"`
+	BackupStorageUuid string `json:"backupStorageUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// ExportVmOvaPackageParam ExportVmOvaPackage请求参数
+// ExportVmOvaPackageParam ExportVmOvaPackage request param
 type ExportVmOvaPackageParam struct {
 	BaseParam
-	Params ExportVmOvaPackageDetailParam `json:"params"` // 详细参数
+	Params ExportVmOvaPackageDetailParam `json:"params"`
 }
-

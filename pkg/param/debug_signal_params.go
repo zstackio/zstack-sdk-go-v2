@@ -2,14 +2,13 @@
 
 package param
 
-// DebugSignalDetailParam DebugSignal详细参数
+// DebugSignalDetailParam DebugSignal detail param
 type DebugSignalDetailParam struct {
-	rest []string `json:"signals" validate:"required"` // 必填
+	Signals []string `json:"signals" validate:"required"`
 }
 
-// DebugSignalParam DebugSignal请求参数
+// DebugSignalParam DebugSignal request param
 type DebugSignalParam struct {
 	BaseParam
-	Params DebugSignalDetailParam `json:"params"` // 详细参数
+	Params DebugSignalDetailParam `json:"params"`
 }
-

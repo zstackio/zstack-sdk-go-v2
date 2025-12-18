@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// EnableCdpTask 操作EnableCdpTask
+// EnableCdpTask operates on EnableCdpTask
 func (cli *ZSClient) EnableCdpTask(params param.EnableCdpTaskParam) (*view.EnableCdpTaskEventView, error) {
 	resp := view.EnableCdpTaskEventView{}
 	if err := cli.Post("v1/cdp-task/enable/{uuid}", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) EnableCdpTask(params param.EnableCdpTaskParam) (*view.Enabl
 	}
 	return &resp, nil
 }
-

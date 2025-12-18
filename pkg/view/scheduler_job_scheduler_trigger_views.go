@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SchedulerJobSchedulerTriggerInventoryView SchedulerJobSchedulerTrigger
 type SchedulerJobSchedulerTriggerInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"schedulerJobUuid,omitempty"`
-	rest string `json:"schedulerTriggerUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	SchedulerJobUuid string `json:"schedulerJobUuid,omitempty"`
+	SchedulerTriggerUuid string `json:"schedulerTriggerUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

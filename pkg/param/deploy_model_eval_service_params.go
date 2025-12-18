@@ -2,54 +2,53 @@
 
 package param
 
-// DeployModelEvalServiceDetailParam DeployModelEvalService详细参数
+// DeployModelEvalServiceDetailParam DeployModelEvalService detail param
 type DeployModelEvalServiceDetailParam struct {
-	rest string `json:"taskType" validate:"required"` // 必填
-	rest int `json:"limits" validate:"required"` // 必填
-	rest float32 `json:"temperature,omitempty"`
-	rest int `json:"topK,omitempty"`
-	rest float32 `json:"topP,omitempty"`
-	rest int `json:"maxNewTokens,omitempty"`
-	rest float32 `json:"repetitionPenalty,omitempty"`
-	rest int `json:"maxLength,omitempty"`
-	rest string `json:"prompt,omitempty"`
-	rest string `json:"model,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest int `json:"parallel,omitempty"`
-	rest int `json:"logEveryQuery,omitempty"`
-	rest string `json:"api,omitempty"`
-	rest map[string]string `json:"requestHeaders,omitempty"`
-	rest int `json:"connectTimeout,omitempty"`
-	rest int `json:"readTimeout,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"modelUuid,omitempty"`
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"vmImageUuid,omitempty"`
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest []string `json:"datasetUuids,omitempty"`
-	rest []string `json:"modelServiceGroupUuids,omitempty"`
-	rest string `json:"dockerImage,omitempty"`
-	rest int `json:"cpuNum,omitempty"`
-	rest string `json:"name" validate:"required"` // 必填
-	rest map[string]string `json:"environmentVariables,omitempty"`
-	rest map[string]string `json:"startupParameters,omitempty"`
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"clusterUuid,omitempty"`
-	rest int64 `json:"memorySize,omitempty"`
-	rest []string `json:"l3NetworkUuids,omitempty"`
-	rest int `json:"serviceBootUptime,omitempty"`
-	rest string `json:"serviceLivez,omitempty"`
-	rest string `json:"serviceReadyz,omitempty"`
-	rest string `json:"rootDiskOfferingUuid,omitempty"`
-	rest int64 `json:"rootDiskSize,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	TaskType string `json:"taskType" validate:"required"`
+	Limits int `json:"limits" validate:"required"`
+	Temperature float32 `json:"temperature,omitempty"`
+	TopK int `json:"topK,omitempty"`
+	TopP float32 `json:"topP,omitempty"`
+	MaxNewTokens int `json:"maxNewTokens,omitempty"`
+	RepetitionPenalty float32 `json:"repetitionPenalty,omitempty"`
+	MaxLength int `json:"maxLength,omitempty"`
+	Prompt string `json:"prompt,omitempty"`
+	Model string `json:"model,omitempty"`
+	Url string `json:"url,omitempty"`
+	Parallel int `json:"parallel,omitempty"`
+	LogEveryQuery int `json:"logEveryQuery,omitempty"`
+	Api string `json:"api,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty"`
+	ConnectTimeout int `json:"connectTimeout,omitempty"`
+	ReadTimeout int `json:"readTimeout,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ModelUuid string `json:"modelUuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	VmImageUuid string `json:"vmImageUuid,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	DatasetUuids []string `json:"datasetUuids,omitempty"`
+	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
+	DockerImage string `json:"dockerImage,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	Name string `json:"name" validate:"required"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
+	StartupParameters map[string]string `json:"startupParameters,omitempty"`
+	Type string `json:"type" validate:"required"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty"`
+	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
+	ServiceBootUptime int `json:"serviceBootUptime,omitempty"`
+	ServiceLivez string `json:"serviceLivez,omitempty"`
+	ServiceReadyz string `json:"serviceReadyz,omitempty"`
+	RootDiskOfferingUuid string `json:"rootDiskOfferingUuid,omitempty"`
+	RootDiskSize int64 `json:"rootDiskSize,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// DeployModelEvalServiceParam DeployModelEvalService请求参数
+// DeployModelEvalServiceParam DeployModelEvalService request param
 type DeployModelEvalServiceParam struct {
 	BaseParam
-	Params DeployModelEvalServiceDetailParam `json:"params"` // 详细参数
+	Params DeployModelEvalServiceDetailParam `json:"params"`
 }
-

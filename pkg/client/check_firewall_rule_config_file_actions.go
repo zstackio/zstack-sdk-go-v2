@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CheckFirewallRuleConfigFile 操作CheckFirewallRuleConfigFile
+// CheckFirewallRuleConfigFile operates on CheckFirewallRuleConfigFile
 func (cli *ZSClient) CheckFirewallRuleConfigFile(params param.CheckFirewallRuleConfigFileParam) (*view.CheckFirewallRuleConfigFileView, error) {
 	resp := view.CheckFirewallRuleConfigFileView{}
 	if err := cli.Post("v1/vpcfirewalls/rules/from-file/check", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CheckFirewallRuleConfigFile(params param.CheckFirewallRuleC
 	}
 	return &resp, nil
 }
-

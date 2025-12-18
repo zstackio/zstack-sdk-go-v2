@@ -2,14 +2,13 @@
 
 package param
 
-// RestartResourceStackDetailParam RestartResourceStack详细参数
+// RestartResourceStackDetailParam RestartResourceStack detail param
 type RestartResourceStackDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RestartResourceStackParam RestartResourceStack请求参数
+// RestartResourceStackParam RestartResourceStack request param
 type RestartResourceStackParam struct {
 	BaseParam
-	Params RestartResourceStackDetailParam `json:"params"` // 详细参数
+	Params RestartResourceStackDetailParam `json:"params"`
 }
-

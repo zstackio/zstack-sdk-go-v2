@@ -2,15 +2,14 @@
 
 package param
 
-// GenerateSeMdevDevicesDetailParam GenerateSeMdevDevices详细参数
+// GenerateSeMdevDevicesDetailParam GenerateSeMdevDevices detail param
 type GenerateSeMdevDevicesDetailParam struct {
-	rest string `json:"mttyDeviceUuid" validate:"required"` // 必填
-	rest int `json:"virtPartNum" validate:"required"` // 必填
+	MttyDeviceUuid string `json:"mttyDeviceUuid" validate:"required"`
+	VirtPartNum int `json:"virtPartNum" validate:"required"`
 }
 
-// GenerateSeMdevDevicesParam GenerateSeMdevDevices请求参数
+// GenerateSeMdevDevicesParam GenerateSeMdevDevices request param
 type GenerateSeMdevDevicesParam struct {
 	BaseParam
-	Params GenerateSeMdevDevicesDetailParam `json:"params"` // 详细参数
+	Params GenerateSeMdevDevicesDetailParam `json:"params"`
 }
-

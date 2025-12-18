@@ -2,18 +2,17 @@
 
 package param
 
-// RequestLicenseCapacityDetailParam RequestLicenseCapacity详细参数
+// RequestLicenseCapacityDetailParam RequestLicenseCapacity detail param
 type RequestLicenseCapacityDetailParam struct {
-	rest string `json:"resourceUuid" validate:"required"` // 必填
-	rest string `json:"quotaType" validate:"required"` // 必填
-	rest int64 `json:"quota" validate:"required"` // 必填
-	rest string `json:"clientAuthorizedNodeUuid" validate:"required"` // 必填
-	rest string `json:"licenseType" validate:"required"` // 必填
+	ResourceUuid string `json:"resourceUuid" validate:"required"`
+	QuotaType string `json:"quotaType" validate:"required"`
+	Quota int64 `json:"quota" validate:"required"`
+	ClientAuthorizedNodeUuid string `json:"clientAuthorizedNodeUuid" validate:"required"`
+	LicenseType string `json:"licenseType" validate:"required"`
 }
 
-// RequestLicenseCapacityParam RequestLicenseCapacity请求参数
+// RequestLicenseCapacityParam RequestLicenseCapacity request param
 type RequestLicenseCapacityParam struct {
 	BaseParam
-	Params RequestLicenseCapacityDetailParam `json:"params"` // 详细参数
+	Params RequestLicenseCapacityDetailParam `json:"params"`
 }
-

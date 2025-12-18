@@ -4,10 +4,12 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // NetworkServiceL3NetworkRefInventoryView NetworkServiceL3NetworkRef
 type NetworkServiceL3NetworkRefInventoryView struct {
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest string `json:"networkServiceProviderUuid,omitempty"`
-	rest string `json:"networkServiceType,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	NetworkServiceProviderUuid string `json:"networkServiceProviderUuid,omitempty"`
+	NetworkServiceType string `json:"networkServiceType,omitempty"`
 }
 

@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // DirectoryInventoryView Directory
 type DirectoryInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"groupName,omitempty"`
-	rest string `json:"parentUuid,omitempty"`
-	rest string `json:"rootDirectoryUuid,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	GroupName string `json:"groupName,omitempty"`
+	ParentUuid string `json:"parentUuid,omitempty"`
+	RootDirectoryUuid string `json:"rootDirectoryUuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

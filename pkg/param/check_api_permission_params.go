@@ -2,15 +2,14 @@
 
 package param
 
-// CheckApiPermissionDetailParam CheckApiPermission详细参数
+// CheckApiPermissionDetailParam CheckApiPermission detail param
 type CheckApiPermissionDetailParam struct {
-	rest string `json:"userUuid,omitempty"`
-	rest []string `json:"apiNames" validate:"required"` // 必填
+	UserUuid string `json:"userUuid,omitempty"`
+	ApiNames []string `json:"apiNames" validate:"required"`
 }
 
-// CheckApiPermissionParam CheckApiPermission请求参数
+// CheckApiPermissionParam CheckApiPermission request param
 type CheckApiPermissionParam struct {
 	BaseParam
-	Params CheckApiPermissionDetailParam `json:"params"` // 详细参数
+	Params CheckApiPermissionDetailParam `json:"params"`
 }
-

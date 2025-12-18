@@ -2,17 +2,16 @@
 
 package param
 
-// AddEmailAddressToSNSEmailEndpointDetailParam AddEmailAddressToSNSEmailEndpoint详细参数
+// AddEmailAddressToSNSEmailEndpointDetailParam AddEmailAddressToSNSEmailEndpoint detail param
 type AddEmailAddressToSNSEmailEndpointDetailParam struct {
-	rest string `json:"emailAddress" validate:"required"` // 必填
-	rest string `json:"endpointUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	EmailAddress string `json:"emailAddress" validate:"required"`
+	EndpointUuid string `json:"endpointUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddEmailAddressToSNSEmailEndpointParam AddEmailAddressToSNSEmailEndpoint请求参数
+// AddEmailAddressToSNSEmailEndpointParam AddEmailAddressToSNSEmailEndpoint request param
 type AddEmailAddressToSNSEmailEndpointParam struct {
 	BaseParam
-	Params AddEmailAddressToSNSEmailEndpointDetailParam `json:"params"` // 详细参数
+	Params AddEmailAddressToSNSEmailEndpointDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// RunIAM2ScriptDetailParam RunIAM2Script详细参数
+// RunIAM2ScriptDetailParam RunIAM2Script detail param
 type RunIAM2ScriptDetailParam struct {
-	rest string `json:"scriptContent" validate:"required"` // 必填
-	rest string `json:"scriptExecutor,omitempty"`
-	rest []string `json:"scriptParams,omitempty"`
+	ScriptContent string `json:"scriptContent" validate:"required"`
+	ScriptExecutor string `json:"scriptExecutor,omitempty"`
+	ScriptParams []string `json:"scriptParams,omitempty"`
 }
 
-// RunIAM2ScriptParam RunIAM2Script请求参数
+// RunIAM2ScriptParam RunIAM2Script request param
 type RunIAM2ScriptParam struct {
 	BaseParam
-	Params RunIAM2ScriptDetailParam `json:"params"` // 详细参数
+	Params RunIAM2ScriptDetailParam `json:"params"`
 }
-

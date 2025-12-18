@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncZBoxCapacity 操作SyncZBoxCapacity
+// SyncZBoxCapacity operates on SyncZBoxCapacity
 func (cli *ZSClient) SyncZBoxCapacity(uuid string, params param.SyncZBoxCapacityParam) (*view.SyncZBoxCapacityEventView, error) {
 	resp := view.SyncZBoxCapacityEventView{}
 	if err := cli.Put("v1/zbox/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncZBoxCapacity(uuid string, params param.SyncZBoxCapacity
 	}
 	return &resp, nil
 }
-

@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // IAM2VirtualIDRoleRefInventoryView IAM2VirtualIDRoleRef
 type IAM2VirtualIDRoleRefInventoryView struct {
-	rest string `json:"virtualIDUuid,omitempty"`
-	rest string `json:"roleUuid,omitempty"`
-	rest string `json:"targetAccountUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VirtualIDUuid string `json:"virtualIDUuid,omitempty"`
+	RoleUuid string `json:"roleUuid,omitempty"`
+	TargetAccountUuid string `json:"targetAccountUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ReloadLicense 操作ReloadLicense
+// ReloadLicense operates on ReloadLicense
 func (cli *ZSClient) ReloadLicense(uuid string, params param.ReloadLicenseParam) (*view.ReloadLicenseView, error) {
 	resp := view.ReloadLicenseView{}
 	if err := cli.Put("v1/licenses/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ReloadLicense(uuid string, params param.ReloadLicenseParam)
 	}
 	return &resp, nil
 }
-

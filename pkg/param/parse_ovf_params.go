@@ -2,14 +2,13 @@
 
 package param
 
-// ParseOvfDetailParam ParseOvf详细参数
+// ParseOvfDetailParam ParseOvf detail param
 type ParseOvfDetailParam struct {
-	rest string `json:"xmlBase64" validate:"required"` // 必填
+	XmlBase64 string `json:"xmlBase64" validate:"required"`
 }
 
-// ParseOvfParam ParseOvf请求参数
+// ParseOvfParam ParseOvf request param
 type ParseOvfParam struct {
 	BaseParam
-	Params ParseOvfDetailParam `json:"params"` // 详细参数
+	Params ParseOvfDetailParam `json:"params"`
 }
-

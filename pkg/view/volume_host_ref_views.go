@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VolumeHostRefInventoryView VolumeHostRef
 type VolumeHostRefInventoryView struct {
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"volumeUuid,omitempty"`
-	rest string `json:"mountPath,omitempty"`
-	rest string `json:"device,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	VolumeUuid string `json:"volumeUuid,omitempty"`
+	MountPath string `json:"mountPath,omitempty"`
+	Device string `json:"device,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

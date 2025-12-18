@@ -4,31 +4,33 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ContainerImageInventoryView ContainerImage
 type ContainerImageInventoryView struct {
-	rest string `json:"endpointUuid,omitempty"`
-	rest string `json:"imageTag,omitempty"`
-	rest string `json:"registryUrl,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest int64 `json:"actualSize,omitempty"`
-	rest string `json:"md5Sum,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest string `json:"mediaType,omitempty"`
-	rest string `json:"guestOsType,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"platform,omitempty"`
-	rest string `json:"architecture,omitempty"`
-	rest string `json:"format,omitempty"`
-	rest bool `json:"system,omitempty"`
-	rest bool `json:"virtio,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
-	rest []SystemTagInventoryView `json:"systemTags,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
+	ImageTag string `json:"imageTag,omitempty"`
+	RegistryUrl string `json:"registryUrl,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	ActualSize int64 `json:"actualSize,omitempty"`
+	Md5Sum string `json:"md5Sum,omitempty"`
+	Url string `json:"url,omitempty"`
+	MediaType string `json:"mediaType,omitempty"`
+	GuestOsType string `json:"guestOsType,omitempty"`
+	Type string `json:"type,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	Format string `json:"format,omitempty"`
+	System bool `json:"system,omitempty"`
+	Virtio bool `json:"virtio,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	BackupStorageRefs []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
+	SystemTags []SystemTagInventoryView `json:"systemTags,omitempty"`
 }
 

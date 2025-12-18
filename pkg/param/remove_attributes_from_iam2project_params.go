@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveAttributesFromIAM2ProjectDetailParam RemoveAttributesFromIAM2Project详细参数
+// RemoveAttributesFromIAM2ProjectDetailParam RemoveAttributesFromIAM2Project detail param
 type RemoveAttributesFromIAM2ProjectDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"attributeUuids" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	AttributeUuids []string `json:"attributeUuids" validate:"required"`
 }
 
-// RemoveAttributesFromIAM2ProjectParam RemoveAttributesFromIAM2Project请求参数
+// RemoveAttributesFromIAM2ProjectParam RemoveAttributesFromIAM2Project request param
 type RemoveAttributesFromIAM2ProjectParam struct {
 	BaseParam
-	Params RemoveAttributesFromIAM2ProjectDetailParam `json:"params"` // 详细参数
+	Params RemoveAttributesFromIAM2ProjectDetailParam `json:"params"`
 }
-

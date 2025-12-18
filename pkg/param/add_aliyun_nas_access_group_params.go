@@ -2,17 +2,16 @@
 
 package param
 
-// AddAliyunNasAccessGroupDetailParam AddAliyunNasAccessGroup详细参数
+// AddAliyunNasAccessGroupDetailParam AddAliyunNasAccessGroup detail param
 type AddAliyunNasAccessGroupDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"groupName" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	GroupName string `json:"groupName" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAliyunNasAccessGroupParam AddAliyunNasAccessGroup请求参数
+// AddAliyunNasAccessGroupParam AddAliyunNasAccessGroup request param
 type AddAliyunNasAccessGroupParam struct {
 	BaseParam
-	Params AddAliyunNasAccessGroupDetailParam `json:"params"` // 详细参数
+	Params AddAliyunNasAccessGroupDetailParam `json:"params"`
 }
-

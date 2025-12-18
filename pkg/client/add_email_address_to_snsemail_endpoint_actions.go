@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddEmailAddressToSNSEmailEndpoint 操作AddEmailAddressToSNSEmailEndpoint
+// AddEmailAddressToSNSEmailEndpoint adds EmailAddressToSNSEmailEndpoint
 func (cli *ZSClient) AddEmailAddressToSNSEmailEndpoint(params param.AddEmailAddressToSNSEmailEndpointParam) (*view.AddEmailAddressToSNSEmailEndpointEventView, error) {
 	resp := view.AddEmailAddressToSNSEmailEndpointEventView{}
 	if err := cli.Post("v1/sns/application-endpoints/emails/email-addresses", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddEmailAddressToSNSEmailEndpoint(params param.AddEmailAddr
 	}
 	return &resp, nil
 }
-

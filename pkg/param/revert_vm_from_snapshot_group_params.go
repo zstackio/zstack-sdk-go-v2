@@ -2,14 +2,13 @@
 
 package param
 
-// RevertVmFromSnapshotGroupDetailParam RevertVmFromSnapshotGroup详细参数
+// RevertVmFromSnapshotGroupDetailParam RevertVmFromSnapshotGroup detail param
 type RevertVmFromSnapshotGroupDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RevertVmFromSnapshotGroupParam RevertVmFromSnapshotGroup请求参数
+// RevertVmFromSnapshotGroupParam RevertVmFromSnapshotGroup request param
 type RevertVmFromSnapshotGroupParam struct {
 	BaseParam
-	Params RevertVmFromSnapshotGroupDetailParam `json:"params"` // 详细参数
+	Params RevertVmFromSnapshotGroupDetailParam `json:"params"`
 }
-

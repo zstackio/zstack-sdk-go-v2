@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveSdnControllerDetailParam RemoveSdnController详细参数
+// RemoveSdnControllerDetailParam RemoveSdnController detail param
 type RemoveSdnControllerDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveSdnControllerParam RemoveSdnController请求参数
+// RemoveSdnControllerParam RemoveSdnController request param
 type RemoveSdnControllerParam struct {
 	BaseParam
-	Params RemoveSdnControllerDetailParam `json:"params"` // 详细参数
+	Params RemoveSdnControllerDetailParam `json:"params"`
 }
-

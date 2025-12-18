@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddVmToAffinityGroup 操作AddVmToAffinityGroup
+// AddVmToAffinityGroup adds VmToAffinityGroup
 func (cli *ZSClient) AddVmToAffinityGroup(params param.AddVmToAffinityGroupParam) (*view.AddVmToAffinityGroupEventView, error) {
 	resp := view.AddVmToAffinityGroupEventView{}
 	if err := cli.Post("v1/affinity-groups/{affinityGroupUuid}/vm-instances/{uuid}", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddVmToAffinityGroup(params param.AddVmToAffinityGroupParam
 	}
 	return &resp, nil
 }
-

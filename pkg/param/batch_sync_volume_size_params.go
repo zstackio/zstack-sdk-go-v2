@@ -2,14 +2,13 @@
 
 package param
 
-// BatchSyncVolumeSizeDetailParam BatchSyncVolumeSize详细参数
+// BatchSyncVolumeSizeDetailParam BatchSyncVolumeSize detail param
 type BatchSyncVolumeSizeDetailParam struct {
-	rest string `json:"clusterUuid" validate:"required"` // 必填
+	ClusterUuid string `json:"clusterUuid" validate:"required"`
 }
 
-// BatchSyncVolumeSizeParam BatchSyncVolumeSize请求参数
+// BatchSyncVolumeSizeParam BatchSyncVolumeSize request param
 type BatchSyncVolumeSizeParam struct {
 	BaseParam
-	Params BatchSyncVolumeSizeDetailParam `json:"params"` // 详细参数
+	Params BatchSyncVolumeSizeDetailParam `json:"params"`
 }
-

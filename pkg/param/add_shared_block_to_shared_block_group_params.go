@@ -2,15 +2,14 @@
 
 package param
 
-// AddSharedBlockToSharedBlockGroupDetailParam AddSharedBlockToSharedBlockGroup详细参数
+// AddSharedBlockToSharedBlockGroupDetailParam AddSharedBlockToSharedBlockGroup detail param
 type AddSharedBlockToSharedBlockGroupDetailParam struct {
-	rest string `json:"diskUuid" validate:"required"` // 必填
-	rest string `json:"uuid" validate:"required"` // 必填
+	DiskUuid string `json:"diskUuid" validate:"required"`
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// AddSharedBlockToSharedBlockGroupParam AddSharedBlockToSharedBlockGroup请求参数
+// AddSharedBlockToSharedBlockGroupParam AddSharedBlockToSharedBlockGroup request param
 type AddSharedBlockToSharedBlockGroupParam struct {
 	BaseParam
-	Params AddSharedBlockToSharedBlockGroupDetailParam `json:"params"` // 详细参数
+	Params AddSharedBlockToSharedBlockGroupDetailParam `json:"params"`
 }
-

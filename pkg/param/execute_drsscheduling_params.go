@@ -2,14 +2,13 @@
 
 package param
 
-// ExecuteDRSSchedulingDetailParam ExecuteDRSScheduling详细参数
+// ExecuteDRSSchedulingDetailParam ExecuteDRSScheduling detail param
 type ExecuteDRSSchedulingDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ExecuteDRSSchedulingParam ExecuteDRSScheduling请求参数
+// ExecuteDRSSchedulingParam ExecuteDRSScheduling request param
 type ExecuteDRSSchedulingParam struct {
 	BaseParam
-	Params ExecuteDRSSchedulingDetailParam `json:"params"` // 详细参数
+	Params ExecuteDRSSchedulingDetailParam `json:"params"`
 }
-

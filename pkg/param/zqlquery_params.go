@@ -2,14 +2,13 @@
 
 package param
 
-// ZQLQueryDetailParam ZQLQuery详细参数
+// ZQLQueryDetailParam ZQLQuery detail param
 type ZQLQueryDetailParam struct {
-	rest string `json:"zql,omitempty"`
+	Zql string `json:"zql,omitempty"`
 }
 
-// ZQLQueryParam ZQLQuery请求参数
+// ZQLQueryParam ZQLQuery request param
 type ZQLQueryParam struct {
 	BaseParam
-	Params ZQLQueryDetailParam `json:"params"` // 详细参数
+	Params ZQLQueryDetailParam `json:"params"`
 }
-

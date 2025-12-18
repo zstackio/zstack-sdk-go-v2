@@ -4,21 +4,23 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcVpnGatewayInventoryView VpcVpnGateway
 type VpcVpnGatewayInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"accountName,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"gatewayId,omitempty"`
-	rest string `json:"vSwitchUuid,omitempty"`
-	rest string `json:"publicIp,omitempty"`
-	rest string `json:"spec,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"businessStatus,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"endDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AccountName string `json:"accountName,omitempty"`
+	Type string `json:"type,omitempty"`
+	GatewayId string `json:"gatewayId,omitempty"`
+	VSwitchUuid string `json:"vSwitchUuid,omitempty"`
+	PublicIp string `json:"publicIp,omitempty"`
+	Spec string `json:"spec,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Status string `json:"status,omitempty"`
+	BusinessStatus string `json:"businessStatus,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	EndDate time.Time `json:"endDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,18 +2,17 @@
 
 package param
 
-// ValidateVmSchedulingRuleDetailParam ValidateVmSchedulingRule详细参数
+// ValidateVmSchedulingRuleDetailParam ValidateVmSchedulingRule detail param
 type ValidateVmSchedulingRuleDetailParam struct {
-	rest string `json:"vmGroupUuid" validate:"required"` // 必填
-	rest string `json:"hostGroupUuid,omitempty"`
-	rest string `json:"rule" validate:"required"` // 必填
-	rest string `json:"mode" validate:"required"` // 必填
-	rest string `json:"zoneUuid,omitempty"`
+	VmGroupUuid string `json:"vmGroupUuid" validate:"required"`
+	HostGroupUuid string `json:"hostGroupUuid,omitempty"`
+	Rule string `json:"rule" validate:"required"`
+	Mode string `json:"mode" validate:"required"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
 }
 
-// ValidateVmSchedulingRuleParam ValidateVmSchedulingRule请求参数
+// ValidateVmSchedulingRuleParam ValidateVmSchedulingRule request param
 type ValidateVmSchedulingRuleParam struct {
 	BaseParam
-	Params ValidateVmSchedulingRuleDetailParam `json:"params"` // 详细参数
+	Params ValidateVmSchedulingRuleDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// SetImageQgaDetailParam SetImageQga详细参数
+// SetImageQgaDetailParam SetImageQga detail param
 type SetImageQgaDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"enable" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Enable bool `json:"enable" validate:"required"`
 }
 
-// SetImageQgaParam SetImageQga请求参数
+// SetImageQgaParam SetImageQga request param
 type SetImageQgaParam struct {
 	BaseParam
-	Params SetImageQgaDetailParam `json:"params"` // 详细参数
+	Params SetImageQgaDetailParam `json:"params"`
 }
-

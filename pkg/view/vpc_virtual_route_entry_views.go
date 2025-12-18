@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcVirtualRouteEntryInventoryView VpcVirtualRouteEntry
 type VpcVirtualRouteEntryInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"vRouterType,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"destinationCidrBlock,omitempty"`
-	rest string `json:"nextHopId,omitempty"`
-	rest string `json:"virtualRouterUuid,omitempty"`
-	rest string `json:"nextHopType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	VRouterType string `json:"vRouterType,omitempty"`
+	Status string `json:"status,omitempty"`
+	DestinationCidrBlock string `json:"destinationCidrBlock,omitempty"`
+	NextHopId string `json:"nextHopId,omitempty"`
+	VirtualRouterUuid string `json:"virtualRouterUuid,omitempty"`
+	NextHopType string `json:"nextHopType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

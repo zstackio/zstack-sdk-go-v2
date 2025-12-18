@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ArchiveTicketStatusHistoryInventoryView ArchiveTicketStatusHistory
 type ArchiveTicketStatusHistoryInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest int `json:"sequence,omitempty"`
-	rest string `json:"ticketUuid,omitempty"`
-	rest string `json:"historyUuid,omitempty"`
-	rest string `json:"fromStatus,omitempty"`
-	rest string `json:"toStatus,omitempty"`
-	rest string `json:"comment,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"operationContextType,omitempty"`
-	rest interface{} `json:"operationContext,omitempty"`
-	rest string `json:"operatorType,omitempty"`
-	rest string `json:"operatorUuid,omitempty"`
-	rest string `json:"flowName,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Sequence int `json:"sequence,omitempty"`
+	TicketUuid string `json:"ticketUuid,omitempty"`
+	HistoryUuid string `json:"historyUuid,omitempty"`
+	FromStatus string `json:"fromStatus,omitempty"`
+	ToStatus string `json:"toStatus,omitempty"`
+	Comment string `json:"comment,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	OperationContextType string `json:"operationContextType,omitempty"`
+	OperationContext interface{} `json:"operationContext,omitempty"`
+	OperatorType string `json:"operatorType,omitempty"`
+	OperatorUuid string `json:"operatorUuid,omitempty"`
+	FlowName string `json:"flowName,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

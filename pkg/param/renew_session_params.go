@@ -2,15 +2,14 @@
 
 package param
 
-// RenewSessionDetailParam RenewSession详细参数
+// RenewSessionDetailParam RenewSession detail param
 type RenewSessionDetailParam struct {
-	rest string `json:"sessionUuid" validate:"required"` // 必填
-	rest int64 `json:"duration,omitempty"`
+	SessionUuid string `json:"sessionUuid" validate:"required"`
+	Duration int64 `json:"duration,omitempty"`
 }
 
-// RenewSessionParam RenewSession请求参数
+// RenewSessionParam RenewSession request param
 type RenewSessionParam struct {
 	BaseParam
-	Params RenewSessionDetailParam `json:"params"` // 详细参数
+	Params RenewSessionDetailParam `json:"params"`
 }
-

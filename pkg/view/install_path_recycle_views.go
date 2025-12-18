@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // InstallPathRecycleInventoryView InstallPathRecycle
 type InstallPathRecycleInventoryView struct {
-	rest int64 `json:"trashId,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"storageUuid,omitempty"`
-	rest string `json:"storageType,omitempty"`
-	rest string `json:"resourceType,omitempty"`
-	rest string `json:"installPath,omitempty"`
-	rest bool `json:"isFolder,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"hypervisorType,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest string `json:"trashType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
+	TrashId int64 `json:"trashId,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	StorageUuid string `json:"storageUuid,omitempty"`
+	StorageType string `json:"storageType,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	InstallPath string `json:"installPath,omitempty"`
+	IsFolder bool `json:"isFolder,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	TrashType string `json:"trashType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
 }
 

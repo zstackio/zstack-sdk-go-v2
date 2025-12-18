@@ -2,15 +2,14 @@
 
 package param
 
-// IsVfNicAvailableInL3NetworkDetailParam IsVfNicAvailableInL3Network详细参数
+// IsVfNicAvailableInL3NetworkDetailParam IsVfNicAvailableInL3Network detail param
 type IsVfNicAvailableInL3NetworkDetailParam struct {
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest string `json:"hostUuid" validate:"required"` // 必填
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	HostUuid string `json:"hostUuid" validate:"required"`
 }
 
-// IsVfNicAvailableInL3NetworkParam IsVfNicAvailableInL3Network请求参数
+// IsVfNicAvailableInL3NetworkParam IsVfNicAvailableInL3Network request param
 type IsVfNicAvailableInL3NetworkParam struct {
 	BaseParam
-	Params IsVfNicAvailableInL3NetworkDetailParam `json:"params"` // 详细参数
+	Params IsVfNicAvailableInL3NetworkDetailParam `json:"params"`
 }
-

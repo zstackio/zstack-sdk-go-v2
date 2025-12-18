@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// RevertTemplateConfig 操作RevertTemplateConfig
+// RevertTemplateConfig operates on RevertTemplateConfig
 func (cli *ZSClient) RevertTemplateConfig(uuid string, params param.RevertTemplateConfigParam) (*view.RevertTemplateConfigEventView, error) {
 	resp := view.RevertTemplateConfigEventView{}
 	if err := cli.Put("v1/template-configurations/{templateUuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) RevertTemplateConfig(uuid string, params param.RevertTempla
 	}
 	return &resp, nil
 }
-

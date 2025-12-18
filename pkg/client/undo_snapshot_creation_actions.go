@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// UndoSnapshotCreation 操作UndoSnapshotCreation
+// UndoSnapshotCreation operates on UndoSnapshotCreation
 func (cli *ZSClient) UndoSnapshotCreation(uuid string, params param.UndoSnapshotCreationParam) (*view.UndoSnapshotCreationEventView, error) {
 	resp := view.UndoSnapshotCreationEventView{}
 	if err := cli.Put("v1/volumes/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) UndoSnapshotCreation(uuid string, params param.UndoSnapshot
 	}
 	return &resp, nil
 }
-

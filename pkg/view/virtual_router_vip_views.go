@@ -4,9 +4,11 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VirtualRouterVipInventoryView VirtualRouterVip
 type VirtualRouterVipInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"virtualRouterVmUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VirtualRouterVmUuid string `json:"virtualRouterVmUuid,omitempty"`
 }
 

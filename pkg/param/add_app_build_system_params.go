@@ -2,23 +2,22 @@
 
 package param
 
-// AddAppBuildSystemDetailParam AddAppBuildSystem详细参数
+// AddAppBuildSystemDetailParam AddAppBuildSystem detail param
 type AddAppBuildSystemDetailParam struct {
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"storageType,omitempty"`
-	rest string `json:"username" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest string `json:"hostname" validate:"required"` // 必填
-	rest int `json:"sshPort,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Url string `json:"url" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	StorageType string `json:"storageType,omitempty"`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	Hostname string `json:"hostname" validate:"required"`
+	SshPort int `json:"sshPort,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAppBuildSystemParam AddAppBuildSystem请求参数
+// AddAppBuildSystemParam AddAppBuildSystem request param
 type AddAppBuildSystemParam struct {
 	BaseParam
-	Params AddAppBuildSystemDetailParam `json:"params"` // 详细参数
+	Params AddAppBuildSystemDetailParam `json:"params"`
 }
-

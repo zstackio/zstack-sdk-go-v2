@@ -2,18 +2,17 @@
 
 package param
 
-// AddAccessControlListEntryDetailParam AddAccessControlListEntry详细参数
+// AddAccessControlListEntryDetailParam AddAccessControlListEntry detail param
 type AddAccessControlListEntryDetailParam struct {
-	rest string `json:"aclUuid" validate:"required"` // 必填
-	rest string `json:"entries" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	AclUuid string `json:"aclUuid" validate:"required"`
+	Entries string `json:"entries" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAccessControlListEntryParam AddAccessControlListEntry请求参数
+// AddAccessControlListEntryParam AddAccessControlListEntry request param
 type AddAccessControlListEntryParam struct {
 	BaseParam
-	Params AddAccessControlListEntryDetailParam `json:"params"` // 详细参数
+	Params AddAccessControlListEntryDetailParam `json:"params"`
 }
-

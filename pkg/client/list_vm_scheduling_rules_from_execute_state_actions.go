@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ListVmSchedulingRulesFromExecuteState 操作ListVmSchedulingRulesFromExecuteState
+// ListVmSchedulingRulesFromExecuteState operates on ListVmSchedulingRulesFromExecuteState
 func (cli *ZSClient) ListVmSchedulingRulesFromExecuteState(params param.ListVmSchedulingRulesFromExecuteStateParam) (*view.ListVmSchedulingRulesFromExecuteStateView, error) {
 	resp := view.ListVmSchedulingRulesFromExecuteStateView{}
 	if err := cli.Post("v1/list/vmSchedulingRules/from/conflict/state", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ListVmSchedulingRulesFromExecuteState(params param.ListVmSc
 	}
 	return &resp, nil
 }
-

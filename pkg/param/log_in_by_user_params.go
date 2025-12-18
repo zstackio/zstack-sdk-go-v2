@@ -2,18 +2,17 @@
 
 package param
 
-// LogInByUserDetailParam LogInByUser详细参数
+// LogInByUserDetailParam LogInByUser detail param
 type LogInByUserDetailParam struct {
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"accountName,omitempty"`
-	rest string `json:"userName" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest map[string]string `json:"clientInfo,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	AccountName string `json:"accountName,omitempty"`
+	UserName string `json:"userName" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	ClientInfo map[string]string `json:"clientInfo,omitempty"`
 }
 
-// LogInByUserParam LogInByUser请求参数
+// LogInByUserParam LogInByUser request param
 type LogInByUserParam struct {
 	BaseParam
-	Params LogInByUserDetailParam `json:"params"` // 详细参数
+	Params LogInByUserDetailParam `json:"params"`
 }
-

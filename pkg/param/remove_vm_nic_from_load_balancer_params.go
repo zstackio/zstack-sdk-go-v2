@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveVmNicFromLoadBalancerDetailParam RemoveVmNicFromLoadBalancer详细参数
+// RemoveVmNicFromLoadBalancerDetailParam RemoveVmNicFromLoadBalancer detail param
 type RemoveVmNicFromLoadBalancerDetailParam struct {
-	rest []string `json:"vmNicUuids" validate:"required"` // 必填
-	rest string `json:"listenerUuid" validate:"required"` // 必填
+	VmNicUuids []string `json:"vmNicUuids" validate:"required"`
+	ListenerUuid string `json:"listenerUuid" validate:"required"`
 }
 
-// RemoveVmNicFromLoadBalancerParam RemoveVmNicFromLoadBalancer请求参数
+// RemoveVmNicFromLoadBalancerParam RemoveVmNicFromLoadBalancer request param
 type RemoveVmNicFromLoadBalancerParam struct {
 	BaseParam
-	Params RemoveVmNicFromLoadBalancerDetailParam `json:"params"` // 详细参数
+	Params RemoveVmNicFromLoadBalancerDetailParam `json:"params"`
 }
-

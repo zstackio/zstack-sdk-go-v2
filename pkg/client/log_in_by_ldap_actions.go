@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// LogInByLdap 操作LogInByLdap
+// LogInByLdap operates on LogInByLdap
 func (cli *ZSClient) LogInByLdap(uuid string, params param.LogInByLdapParam) (*view.LogInByLdapView, error) {
 	resp := view.LogInByLdapView{}
 	if err := cli.Put("v1/ldap/login", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) LogInByLdap(uuid string, params param.LogInByLdapParam) (*v
 	}
 	return &resp, nil
 }
-

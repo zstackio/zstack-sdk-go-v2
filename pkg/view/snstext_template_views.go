@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SNSTextTemplateInventoryView SNSTextTemplate
 type SNSTextTemplateInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"applicationPlatformType,omitempty"`
-	rest string `json:"subject,omitempty"`
-	rest string `json:"recoverySubject,omitempty"`
-	rest string `json:"template,omitempty"`
-	rest string `json:"recoveryTemplate,omitempty"`
-	rest bool `json:"defaultTemplate,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"type,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ApplicationPlatformType string `json:"applicationPlatformType,omitempty"`
+	Subject string `json:"subject,omitempty"`
+	RecoverySubject string `json:"recoverySubject,omitempty"`
+	Template string `json:"template,omitempty"`
+	RecoveryTemplate string `json:"recoveryTemplate,omitempty"`
+	DefaultTemplate bool `json:"defaultTemplate,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 

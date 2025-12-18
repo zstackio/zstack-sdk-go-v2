@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// DeployModelService 操作DeployModelService
+// DeployModelService operates on DeployModelService
 func (cli *ZSClient) DeployModelService(uuid string, params param.DeployModelServiceParam) (*view.DeployModelServiceEventView, error) {
 	resp := view.DeployModelServiceEventView{}
 	if err := cli.Put("v1/ai/model-services/{uuid}", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) DeployModelService(uuid string, params param.DeployModelSer
 	}
 	return &resp, nil
 }
-

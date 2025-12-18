@@ -2,15 +2,14 @@
 
 package param
 
-// SetOrganizationOperationDetailParam SetOrganizationOperation详细参数
+// SetOrganizationOperationDetailParam SetOrganizationOperation detail param
 type SetOrganizationOperationDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"virtualIDUuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	VirtualIDUuid string `json:"virtualIDUuid" validate:"required"`
 }
 
-// SetOrganizationOperationParam SetOrganizationOperation请求参数
+// SetOrganizationOperationParam SetOrganizationOperation request param
 type SetOrganizationOperationParam struct {
 	BaseParam
-	Params SetOrganizationOperationDetailParam `json:"params"` // 详细参数
+	Params SetOrganizationOperationDetailParam `json:"params"`
 }
-

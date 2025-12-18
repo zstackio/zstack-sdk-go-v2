@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncChronyServers 操作SyncChronyServers
+// SyncChronyServers operates on SyncChronyServers
 func (cli *ZSClient) SyncChronyServers(uuid string, params param.SyncChronyServersParam) (*view.SyncChronyServersEventView, error) {
 	resp := view.SyncChronyServersEventView{}
 	if err := cli.Put("v1/zops/chrony/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncChronyServers(uuid string, params param.SyncChronyServe
 	}
 	return &resp, nil
 }
-

@@ -2,20 +2,19 @@
 
 package param
 
-// AddAccessControlListRedirectRuleDetailParam AddAccessControlListRedirectRule详细参数
+// AddAccessControlListRedirectRuleDetailParam AddAccessControlListRedirectRule detail param
 type AddAccessControlListRedirectRuleDetailParam struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"domain,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest string `json:"aclUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Domain string `json:"domain,omitempty"`
+	Url string `json:"url,omitempty"`
+	AclUuid string `json:"aclUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAccessControlListRedirectRuleParam AddAccessControlListRedirectRule请求参数
+// AddAccessControlListRedirectRuleParam AddAccessControlListRedirectRule request param
 type AddAccessControlListRedirectRuleParam struct {
 	BaseParam
-	Params AddAccessControlListRedirectRuleDetailParam `json:"params"` // 详细参数
+	Params AddAccessControlListRedirectRuleDetailParam `json:"params"`
 }
-

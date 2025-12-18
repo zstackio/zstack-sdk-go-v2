@@ -2,17 +2,16 @@
 
 package param
 
-// AddDnsToVpcRouterDetailParam AddDnsToVpcRouter详细参数
+// AddDnsToVpcRouterDetailParam AddDnsToVpcRouter detail param
 type AddDnsToVpcRouterDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"dns" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Dns string `json:"dns" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddDnsToVpcRouterParam AddDnsToVpcRouter请求参数
+// AddDnsToVpcRouterParam AddDnsToVpcRouter request param
 type AddDnsToVpcRouterParam struct {
 	BaseParam
-	Params AddDnsToVpcRouterDetailParam `json:"params"` // 详细参数
+	Params AddDnsToVpcRouterDetailParam `json:"params"`
 }
-

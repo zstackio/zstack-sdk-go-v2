@@ -2,21 +2,20 @@
 
 package param
 
-// AddEventRuleTemplateDetailParam AddEventRuleTemplate详细参数
+// AddEventRuleTemplateDetailParam AddEventRuleTemplate detail param
 type AddEventRuleTemplateDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"monitorTemplateUuid" validate:"required"` // 必填
-	rest string `json:"namespace" validate:"required"` // 必填
-	rest string `json:"eventName" validate:"required"` // 必填
-	rest string `json:"emergencyLevel,omitempty"`
-	rest []interface{} `json:"labels,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	MonitorTemplateUuid string `json:"monitorTemplateUuid" validate:"required"`
+	Namespace string `json:"namespace" validate:"required"`
+	EventName string `json:"eventName" validate:"required"`
+	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+	Labels []interface{} `json:"labels,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddEventRuleTemplateParam AddEventRuleTemplate请求参数
+// AddEventRuleTemplateParam AddEventRuleTemplate request param
 type AddEventRuleTemplateParam struct {
 	BaseParam
-	Params AddEventRuleTemplateDetailParam `json:"params"` // 详细参数
+	Params AddEventRuleTemplateDetailParam `json:"params"`
 }
-

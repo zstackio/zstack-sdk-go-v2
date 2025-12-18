@@ -2,16 +2,15 @@
 
 package param
 
-// SetIpOnHostNetworkBondingDetailParam SetIpOnHostNetworkBonding详细参数
+// SetIpOnHostNetworkBondingDetailParam SetIpOnHostNetworkBonding detail param
 type SetIpOnHostNetworkBondingDetailParam struct {
-	rest string `json:"bondingUuid" validate:"required"` // 必填
-	rest string `json:"ipAddress,omitempty"`
-	rest string `json:"netmask,omitempty"`
+	BondingUuid string `json:"bondingUuid" validate:"required"`
+	IpAddress string `json:"ipAddress,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
 }
 
-// SetIpOnHostNetworkBondingParam SetIpOnHostNetworkBonding请求参数
+// SetIpOnHostNetworkBondingParam SetIpOnHostNetworkBonding request param
 type SetIpOnHostNetworkBondingParam struct {
 	BaseParam
-	Params SetIpOnHostNetworkBondingDetailParam `json:"params"` // 详细参数
+	Params SetIpOnHostNetworkBondingDetailParam `json:"params"`
 }
-

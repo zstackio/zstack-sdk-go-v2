@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveVRouterNetworksFromFlowMeterDetailParam RemoveVRouterNetworksFromFlowMeter详细参数
+// RemoveVRouterNetworksFromFlowMeterDetailParam RemoveVRouterNetworksFromFlowMeter detail param
 type RemoveVRouterNetworksFromFlowMeterDetailParam struct {
-	rest []string `json:"uuids" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	Uuids []string `json:"uuids" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveVRouterNetworksFromFlowMeterParam RemoveVRouterNetworksFromFlowMeter请求参数
+// RemoveVRouterNetworksFromFlowMeterParam RemoveVRouterNetworksFromFlowMeter request param
 type RemoveVRouterNetworksFromFlowMeterParam struct {
 	BaseParam
-	Params RemoveVRouterNetworksFromFlowMeterDetailParam `json:"params"` // 详细参数
+	Params RemoveVRouterNetworksFromFlowMeterDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// SetImageStoreBackupStorageQuotaDetailParam SetImageStoreBackupStorageQuota详细参数
+// SetImageStoreBackupStorageQuotaDetailParam SetImageStoreBackupStorageQuota detail param
 type SetImageStoreBackupStorageQuotaDetailParam struct {
-	rest []string `json:"uuids,omitempty"`
-	rest int64 `json:"maxCapacity" validate:"required"` // 必填
+	Uuids []string `json:"uuids,omitempty"`
+	MaxCapacity int64 `json:"maxCapacity" validate:"required"`
 }
 
-// SetImageStoreBackupStorageQuotaParam SetImageStoreBackupStorageQuota请求参数
+// SetImageStoreBackupStorageQuotaParam SetImageStoreBackupStorageQuota request param
 type SetImageStoreBackupStorageQuotaParam struct {
 	BaseParam
-	Params SetImageStoreBackupStorageQuotaDetailParam `json:"params"` // 详细参数
+	Params SetImageStoreBackupStorageQuotaDetailParam `json:"params"`
 }
-

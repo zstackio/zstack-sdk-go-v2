@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmInstanceDefaultCdRomDetailParam SetVmInstanceDefaultCdRom详细参数
+// SetVmInstanceDefaultCdRomDetailParam SetVmInstanceDefaultCdRom detail param
 type SetVmInstanceDefaultCdRomDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
 }
 
-// SetVmInstanceDefaultCdRomParam SetVmInstanceDefaultCdRom请求参数
+// SetVmInstanceDefaultCdRomParam SetVmInstanceDefaultCdRom request param
 type SetVmInstanceDefaultCdRomParam struct {
 	BaseParam
-	Params SetVmInstanceDefaultCdRomDetailParam `json:"params"` // 详细参数
+	Params SetVmInstanceDefaultCdRomDetailParam `json:"params"`
 }
-

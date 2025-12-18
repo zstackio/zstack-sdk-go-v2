@@ -2,17 +2,16 @@
 
 package param
 
-// SyncConnectionAccessPointFromRemoteDetailParam SyncConnectionAccessPointFromRemote详细参数
+// SyncConnectionAccessPointFromRemoteDetailParam SyncConnectionAccessPointFromRemote detail param
 type SyncConnectionAccessPointFromRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"accessPointId,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	AccessPointId string `json:"accessPointId,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncConnectionAccessPointFromRemoteParam SyncConnectionAccessPointFromRemote请求参数
+// SyncConnectionAccessPointFromRemoteParam SyncConnectionAccessPointFromRemote request param
 type SyncConnectionAccessPointFromRemoteParam struct {
 	BaseParam
-	Params SyncConnectionAccessPointFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncConnectionAccessPointFromRemoteDetailParam `json:"params"`
 }
-

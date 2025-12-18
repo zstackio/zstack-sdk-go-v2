@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // CustomPreconfigurationInventoryView CustomPreconfiguration
 type CustomPreconfigurationInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"baremetalInstanceUuid,omitempty"`
-	rest string `json:"param,omitempty"`
-	rest string `json:"value,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	BaremetalInstanceUuid string `json:"baremetalInstanceUuid,omitempty"`
+	Param string `json:"param,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 

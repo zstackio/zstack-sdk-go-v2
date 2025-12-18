@@ -2,14 +2,13 @@
 
 package param
 
-// UpgradeBackupStorageCdpTasksDetailParam UpgradeBackupStorageCdpTasks详细参数
+// UpgradeBackupStorageCdpTasksDetailParam UpgradeBackupStorageCdpTasks detail param
 type UpgradeBackupStorageCdpTasksDetailParam struct {
-	rest string `json:"backupStorageUuid" validate:"required"` // 必填
+	BackupStorageUuid string `json:"backupStorageUuid" validate:"required"`
 }
 
-// UpgradeBackupStorageCdpTasksParam UpgradeBackupStorageCdpTasks请求参数
+// UpgradeBackupStorageCdpTasksParam UpgradeBackupStorageCdpTasks request param
 type UpgradeBackupStorageCdpTasksParam struct {
 	BaseParam
-	Params UpgradeBackupStorageCdpTasksDetailParam `json:"params"` // 详细参数
+	Params UpgradeBackupStorageCdpTasksDetailParam `json:"params"`
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CleanQueue 操作CleanQueue
+// CleanQueue operates on CleanQueue
 func (cli *ZSClient) CleanQueue(uuid string, params param.CleanQueueParam) (*view.CleanQueueEventView, error) {
 	resp := view.CleanQueueEventView{}
 	if err := cli.Put("v1/clean/queue", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CleanQueue(uuid string, params param.CleanQueueParam) (*vie
 	}
 	return &resp, nil
 }
-

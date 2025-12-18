@@ -4,10 +4,12 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ModelServiceGpuSpecRefInventoryView ModelServiceGpuSpecRef
 type ModelServiceGpuSpecRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest int64 `json:"refUuid,omitempty"`
-	rest string `json:"specUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	RefUuid int64 `json:"refUuid,omitempty"`
+	SpecUuid string `json:"specUuid,omitempty"`
 }
 

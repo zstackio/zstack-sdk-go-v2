@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ReconnectHost 操作ReconnectHost
+// ReconnectHost operates on ReconnectHost
 func (cli *ZSClient) ReconnectHost(uuid string, params param.ReconnectHostParam) (*view.ReconnectHostEventView, error) {
 	resp := view.ReconnectHostEventView{}
 	if err := cli.Put("v1/hosts/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ReconnectHost(uuid string, params param.ReconnectHostParam)
 	}
 	return &resp, nil
 }
-

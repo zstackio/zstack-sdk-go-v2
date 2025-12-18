@@ -2,14 +2,13 @@
 
 package param
 
-// CheckBaremetalChassisConfigFileDetailParam CheckBaremetalChassisConfigFile详细参数
+// CheckBaremetalChassisConfigFileDetailParam CheckBaremetalChassisConfigFile detail param
 type CheckBaremetalChassisConfigFileDetailParam struct {
-	rest string `json:"baremetalChassisInfo" validate:"required"` // 必填
+	BaremetalChassisInfo string `json:"baremetalChassisInfo" validate:"required"`
 }
 
-// CheckBaremetalChassisConfigFileParam CheckBaremetalChassisConfigFile请求参数
+// CheckBaremetalChassisConfigFileParam CheckBaremetalChassisConfigFile request param
 type CheckBaremetalChassisConfigFileParam struct {
 	BaseParam
-	Params CheckBaremetalChassisConfigFileDetailParam `json:"params"` // 详细参数
+	Params CheckBaremetalChassisConfigFileDetailParam `json:"params"`
 }
-

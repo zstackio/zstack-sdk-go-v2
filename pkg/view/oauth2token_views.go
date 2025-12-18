@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // OAuth2TokenInventoryView OAuth2Token
 type OAuth2TokenInventoryView struct {
-	rest string `json:"accessToken,omitempty"`
-	rest string `json:"idToken,omitempty"`
-	rest string `json:"refreshToken,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"clientUuid,omitempty"`
-	rest string `json:"userUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	AccessToken string `json:"accessToken,omitempty"`
+	IdToken string `json:"idToken,omitempty"`
+	RefreshToken string `json:"refreshToken,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ClientUuid string `json:"clientUuid,omitempty"`
+	UserUuid string `json:"userUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

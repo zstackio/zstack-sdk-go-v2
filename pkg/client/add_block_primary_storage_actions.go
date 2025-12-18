@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddBlockPrimaryStorage 操作AddBlockPrimaryStorage
+// AddBlockPrimaryStorage adds BlockPrimaryStorage
 func (cli *ZSClient) AddBlockPrimaryStorage(params param.AddBlockPrimaryStorageParam) (*view.AddPrimaryStorageEventView, error) {
 	resp := view.AddPrimaryStorageEventView{}
 	if err := cli.Post("v1/primary-storage/block", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddBlockPrimaryStorage(params param.AddBlockPrimaryStorageP
 	}
 	return &resp, nil
 }
-

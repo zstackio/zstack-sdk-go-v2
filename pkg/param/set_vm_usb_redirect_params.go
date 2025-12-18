@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmUsbRedirectDetailParam SetVmUsbRedirect详细参数
+// SetVmUsbRedirectDetailParam SetVmUsbRedirect detail param
 type SetVmUsbRedirectDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"enable" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Enable bool `json:"enable" validate:"required"`
 }
 
-// SetVmUsbRedirectParam SetVmUsbRedirect请求参数
+// SetVmUsbRedirectParam SetVmUsbRedirect request param
 type SetVmUsbRedirectParam struct {
 	BaseParam
-	Params SetVmUsbRedirectDetailParam `json:"params"` // 详细参数
+	Params SetVmUsbRedirectDetailParam `json:"params"`
 }
-

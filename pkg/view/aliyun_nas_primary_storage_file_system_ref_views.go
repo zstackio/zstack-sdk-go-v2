@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AliyunNasPrimaryStorageFileSystemRefInventoryView AliyunNasPrimaryStorageFileSystemRef
 type AliyunNasPrimaryStorageFileSystemRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"nasFileSystemUuid,omitempty"`
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	NasFileSystemUuid string `json:"nasFileSystemUuid,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

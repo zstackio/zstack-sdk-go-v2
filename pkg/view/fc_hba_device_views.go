@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // FcHbaDeviceInventoryView FcHbaDevice
 type FcHbaDeviceInventoryView struct {
-	rest string `json:"portName,omitempty"`
-	rest string `json:"portState,omitempty"`
-	rest string `json:"speed,omitempty"`
-	rest string `json:"supportedSpeeds,omitempty"`
-	rest string `json:"symbolicName,omitempty"`
-	rest string `json:"supportedClasses,omitempty"`
-	rest string `json:"nodeName,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"hbaType,omitempty"`
-	rest string `json:"createDate,omitempty"`
-	rest string `json:"lastOpDate,omitempty"`
+	PortName string `json:"portName,omitempty"`
+	PortState string `json:"portState,omitempty"`
+	Speed string `json:"speed,omitempty"`
+	SupportedSpeeds string `json:"supportedSpeeds,omitempty"`
+	SymbolicName string `json:"symbolicName,omitempty"`
+	SupportedClasses string `json:"supportedClasses,omitempty"`
+	NodeName string `json:"nodeName,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	HbaType string `json:"hbaType,omitempty"`
+	CreateDate string `json:"createDate,omitempty"`
+	LastOpDate string `json:"lastOpDate,omitempty"`
 }
 

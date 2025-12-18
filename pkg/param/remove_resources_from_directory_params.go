@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveResourcesFromDirectoryDetailParam RemoveResourcesFromDirectory详细参数
+// RemoveResourcesFromDirectoryDetailParam RemoveResourcesFromDirectory detail param
 type RemoveResourcesFromDirectoryDetailParam struct {
-	rest []string `json:"resourceUuids" validate:"required"` // 必填
-	rest string `json:"directoryUuid" validate:"required"` // 必填
+	ResourceUuids []string `json:"resourceUuids" validate:"required"`
+	DirectoryUuid string `json:"directoryUuid" validate:"required"`
 }
 
-// RemoveResourcesFromDirectoryParam RemoveResourcesFromDirectory请求参数
+// RemoveResourcesFromDirectoryParam RemoveResourcesFromDirectory request param
 type RemoveResourcesFromDirectoryParam struct {
 	BaseParam
-	Params RemoveResourcesFromDirectoryDetailParam `json:"params"` // 详细参数
+	Params RemoveResourcesFromDirectoryDetailParam `json:"params"`
 }
-

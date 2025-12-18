@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectBackupStorageDetailParam ReconnectBackupStorage详细参数
+// ReconnectBackupStorageDetailParam ReconnectBackupStorage detail param
 type ReconnectBackupStorageDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectBackupStorageParam ReconnectBackupStorage请求参数
+// ReconnectBackupStorageParam ReconnectBackupStorage request param
 type ReconnectBackupStorageParam struct {
 	BaseParam
-	Params ReconnectBackupStorageDetailParam `json:"params"` // 详细参数
+	Params ReconnectBackupStorageDetailParam `json:"params"`
 }
-

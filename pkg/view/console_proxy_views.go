@@ -4,24 +4,26 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ConsoleProxyInventoryView ConsoleProxy
 type ConsoleProxyInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest string `json:"agentIp,omitempty"`
-	rest string `json:"token,omitempty"`
-	rest string `json:"agentType,omitempty"`
-	rest string `json:"proxyHostname,omitempty"`
-	rest int `json:"proxyPort,omitempty"`
-	rest string `json:"targetSchema,omitempty"`
-	rest string `json:"targetHostname,omitempty"`
-	rest int `json:"targetPort,omitempty"`
-	rest string `json:"scheme,omitempty"`
-	rest string `json:"proxyIdentity,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest time.Time `json:"expiredDate,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	AgentIp string `json:"agentIp,omitempty"`
+	Token string `json:"token,omitempty"`
+	AgentType string `json:"agentType,omitempty"`
+	ProxyHostname string `json:"proxyHostname,omitempty"`
+	ProxyPort int `json:"proxyPort,omitempty"`
+	TargetSchema string `json:"targetSchema,omitempty"`
+	TargetHostname string `json:"targetHostname,omitempty"`
+	TargetPort int `json:"targetPort,omitempty"`
+	Scheme string `json:"scheme,omitempty"`
+	ProxyIdentity string `json:"proxyIdentity,omitempty"`
+	Status string `json:"status,omitempty"`
+	Version string `json:"version,omitempty"`
+	ExpiredDate time.Time `json:"expiredDate,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

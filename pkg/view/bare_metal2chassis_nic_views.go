@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BareMetal2ChassisNicInventoryView BareMetal2ChassisNic
 type BareMetal2ChassisNicInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"chassisUuid,omitempty"`
-	rest string `json:"mac,omitempty"`
-	rest string `json:"nicName,omitempty"`
-	rest string `json:"speed,omitempty"`
-	rest bool `json:"isProvisionNic,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ChassisUuid string `json:"chassisUuid,omitempty"`
+	Mac string `json:"mac,omitempty"`
+	NicName string `json:"nicName,omitempty"`
+	Speed string `json:"speed,omitempty"`
+	IsProvisionNic bool `json:"isProvisionNic,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

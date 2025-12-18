@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LoadBalancerListenerInventoryView LoadBalancerListener
 type LoadBalancerListenerInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"loadBalancerUuid,omitempty"`
-	rest int `json:"instancePort,omitempty"`
-	rest int `json:"loadBalancerPort,omitempty"`
-	rest string `json:"securityPolicyType,omitempty"`
-	rest string `json:"protocol,omitempty"`
-	rest string `json:"serverGroupUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []LoadBalancerListenerVmNicRefInventoryView `json:"vmNicRefs,omitempty"`
-	rest []LoadBalancerListenerACLRefInventoryView `json:"aclRefs,omitempty"`
-	rest []LoadBalancerListenerCertificateRefInventoryView `json:"certificateRefs,omitempty"`
-	rest []LoadBalancerListenerServerGroupRefInventoryView `json:"serverGroupRefs,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	LoadBalancerUuid string `json:"loadBalancerUuid,omitempty"`
+	InstancePort int `json:"instancePort,omitempty"`
+	LoadBalancerPort int `json:"loadBalancerPort,omitempty"`
+	SecurityPolicyType string `json:"securityPolicyType,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	VmNicRefs []LoadBalancerListenerVmNicRefInventoryView `json:"vmNicRefs,omitempty"`
+	AclRefs []LoadBalancerListenerACLRefInventoryView `json:"aclRefs,omitempty"`
+	CertificateRefs []LoadBalancerListenerCertificateRefInventoryView `json:"certificateRefs,omitempty"`
+	ServerGroupRefs []LoadBalancerListenerServerGroupRefInventoryView `json:"serverGroupRefs,omitempty"`
 }
 

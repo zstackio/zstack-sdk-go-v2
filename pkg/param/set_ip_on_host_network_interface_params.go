@@ -2,16 +2,15 @@
 
 package param
 
-// SetIpOnHostNetworkInterfaceDetailParam SetIpOnHostNetworkInterface详细参数
+// SetIpOnHostNetworkInterfaceDetailParam SetIpOnHostNetworkInterface detail param
 type SetIpOnHostNetworkInterfaceDetailParam struct {
-	rest string `json:"interfaceUuid" validate:"required"` // 必填
-	rest string `json:"ipAddress,omitempty"`
-	rest string `json:"netmask,omitempty"`
+	InterfaceUuid string `json:"interfaceUuid" validate:"required"`
+	IpAddress string `json:"ipAddress,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
 }
 
-// SetIpOnHostNetworkInterfaceParam SetIpOnHostNetworkInterface请求参数
+// SetIpOnHostNetworkInterfaceParam SetIpOnHostNetworkInterface request param
 type SetIpOnHostNetworkInterfaceParam struct {
 	BaseParam
-	Params SetIpOnHostNetworkInterfaceDetailParam `json:"params"` // 详细参数
+	Params SetIpOnHostNetworkInterfaceDetailParam `json:"params"`
 }
-

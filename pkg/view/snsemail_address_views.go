@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SNSEmailAddressInventoryView SNSEmailAddress
 type SNSEmailAddressInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"emailAddress,omitempty"`
-	rest string `json:"endpointUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	EmailAddress string `json:"emailAddress,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MonitorGroupEventSubscriptionInventoryView MonitorGroupEventSubscription
 type MonitorGroupEventSubscriptionInventoryView struct {
-	rest string `json:"groupUuid,omitempty"`
-	rest string `json:"eventSubscriptionUuid,omitempty"`
-	rest string `json:"eventRuleTemplateUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest string `json:"uuid,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
+	EventSubscriptionUuid string `json:"eventSubscriptionUuid,omitempty"`
+	EventRuleTemplateUuid string `json:"eventRuleTemplateUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 }
 

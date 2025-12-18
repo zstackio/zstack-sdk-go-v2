@@ -2,15 +2,14 @@
 
 package param
 
-// RevertVolumeFromVolumeBackupDetailParam RevertVolumeFromVolumeBackup详细参数
+// RevertVolumeFromVolumeBackupDetailParam RevertVolumeFromVolumeBackup detail param
 type RevertVolumeFromVolumeBackupDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"backupStorageUuid,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
 }
 
-// RevertVolumeFromVolumeBackupParam RevertVolumeFromVolumeBackup请求参数
+// RevertVolumeFromVolumeBackupParam RevertVolumeFromVolumeBackup request param
 type RevertVolumeFromVolumeBackupParam struct {
 	BaseParam
-	Params RevertVolumeFromVolumeBackupDetailParam `json:"params"` // 详细参数
+	Params RevertVolumeFromVolumeBackupDetailParam `json:"params"`
 }
-

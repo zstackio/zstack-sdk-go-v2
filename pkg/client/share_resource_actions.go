@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ShareResource 操作ShareResource
+// ShareResource operates on ShareResource
 func (cli *ZSClient) ShareResource(uuid string, params param.ShareResourceParam) (*view.ShareResourceEventView, error) {
 	resp := view.ShareResourceEventView{}
 	if err := cli.Put("v1/accounts/resources/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ShareResource(uuid string, params param.ShareResourceParam)
 	}
 	return &resp, nil
 }
-

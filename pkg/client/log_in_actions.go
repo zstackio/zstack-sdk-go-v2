@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// LogIn 操作LogIn
+// LogIn operates on LogIn
 func (cli *ZSClient) LogIn(uuid string, params param.LogInParam) (*view.LogInView, error) {
 	resp := view.LogInView{}
 	if err := cli.Put("v1/login", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) LogIn(uuid string, params param.LogInParam) (*view.LogInVie
 	}
 	return &resp, nil
 }
-

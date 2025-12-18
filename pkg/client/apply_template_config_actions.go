@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ApplyTemplateConfig 操作ApplyTemplateConfig
+// ApplyTemplateConfig operates on ApplyTemplateConfig
 func (cli *ZSClient) ApplyTemplateConfig(uuid string, params param.ApplyTemplateConfigParam) (*view.ApplyTemplateConfigEventView, error) {
 	resp := view.ApplyTemplateConfigEventView{}
 	if err := cli.Put("v1/template-configurations/{templateUuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ApplyTemplateConfig(uuid string, params param.ApplyTemplate
 	}
 	return &resp, nil
 }
-

@@ -4,21 +4,23 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AliyunRouterInterfaceInventoryView AliyunRouterInterface
 type AliyunRouterInterfaceInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"dataCenterUuid,omitempty"`
-	rest string `json:"routerInterfaceId,omitempty"`
-	rest string `json:"virtualRouterUuid,omitempty"`
-	rest string `json:"accessPointUuid,omitempty"`
-	rest string `json:"role,omitempty"`
-	rest string `json:"vRouterType,omitempty"`
-	rest string `json:"spec,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"oppositeInterfaceUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	RouterInterfaceId string `json:"routerInterfaceId,omitempty"`
+	VirtualRouterUuid string `json:"virtualRouterUuid,omitempty"`
+	AccessPointUuid string `json:"accessPointUuid,omitempty"`
+	Role string `json:"role,omitempty"`
+	VRouterType string `json:"vRouterType,omitempty"`
+	Spec string `json:"spec,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Status string `json:"status,omitempty"`
+	OppositeInterfaceUuid string `json:"oppositeInterfaceUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

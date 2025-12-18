@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectAppBuildSystemDetailParam ReconnectAppBuildSystem详细参数
+// ReconnectAppBuildSystemDetailParam ReconnectAppBuildSystem detail param
 type ReconnectAppBuildSystemDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectAppBuildSystemParam ReconnectAppBuildSystem请求参数
+// ReconnectAppBuildSystemParam ReconnectAppBuildSystem request param
 type ReconnectAppBuildSystemParam struct {
 	BaseParam
-	Params ReconnectAppBuildSystemDetailParam `json:"params"` // 详细参数
+	Params ReconnectAppBuildSystemDetailParam `json:"params"`
 }
-

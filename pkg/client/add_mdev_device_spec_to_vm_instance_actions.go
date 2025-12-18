@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddMdevDeviceSpecToVmInstance 操作AddMdevDeviceSpecToVmInstance
+// AddMdevDeviceSpecToVmInstance adds MdevDeviceSpecToVmInstance
 func (cli *ZSClient) AddMdevDeviceSpecToVmInstance(params param.AddMdevDeviceSpecToVmInstanceParam) (*view.AddMdevDeviceSpecToVmInstanceEventView, error) {
 	resp := view.AddMdevDeviceSpecToVmInstanceEventView{}
 	if err := cli.Post("v1/mdev-device-specs/{mdevSpecUuid}/vm-instances/{vmInstanceUuid}", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddMdevDeviceSpecToVmInstance(params param.AddMdevDeviceSpe
 	}
 	return &resp, nil
 }
-

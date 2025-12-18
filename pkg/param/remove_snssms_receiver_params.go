@@ -2,17 +2,16 @@
 
 package param
 
-// RemoveSNSSmsReceiverDetailParam RemoveSNSSmsReceiver详细参数
+// RemoveSNSSmsReceiverDetailParam RemoveSNSSmsReceiver detail param
 type RemoveSNSSmsReceiverDetailParam struct {
-	rest string `json:"endpointUuid" validate:"required"` // 必填
-	rest string `json:"phoneNumber,omitempty"`
-	rest []string `json:"phoneNumberList,omitempty"`
-	rest string `json:"deleteMode,omitempty"`
+	EndpointUuid string `json:"endpointUuid" validate:"required"`
+	PhoneNumber string `json:"phoneNumber,omitempty"`
+	PhoneNumberList []string `json:"phoneNumberList,omitempty"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveSNSSmsReceiverParam RemoveSNSSmsReceiver请求参数
+// RemoveSNSSmsReceiverParam RemoveSNSSmsReceiver request param
 type RemoveSNSSmsReceiverParam struct {
 	BaseParam
-	Params RemoveSNSSmsReceiverDetailParam `json:"params"` // 详细参数
+	Params RemoveSNSSmsReceiverDetailParam `json:"params"`
 }
-

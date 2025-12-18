@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BuildApplicationInventoryView BuildApplication
 type BuildApplicationInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"buildSystemUuid,omitempty"`
-	rest string `json:"templateContent,omitempty"`
-	rest string `json:"installPath,omitempty"`
-	rest string `json:"appMetaData,omitempty"`
-	rest string `json:"appId,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	BuildSystemUuid string `json:"buildSystemUuid,omitempty"`
+	TemplateContent string `json:"templateContent,omitempty"`
+	InstallPath string `json:"installPath,omitempty"`
+	AppMetaData string `json:"appMetaData,omitempty"`
+	AppId string `json:"appId,omitempty"`
+	Version string `json:"version,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

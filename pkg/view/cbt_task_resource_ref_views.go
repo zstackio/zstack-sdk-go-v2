@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // CbtTaskResourceRefInventoryView CbtTaskResourceRef
 type CbtTaskResourceRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"taskUuid,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"resourceType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	TaskUuid string `json:"taskUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

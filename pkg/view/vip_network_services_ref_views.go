@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VipNetworkServicesRefInventoryView VipNetworkServicesRef
 type VipNetworkServicesRefInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"serviceType,omitempty"`
-	rest string `json:"vipUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ServiceType string `json:"serviceType,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

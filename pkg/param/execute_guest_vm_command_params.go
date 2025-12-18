@@ -2,17 +2,16 @@
 
 package param
 
-// ExecuteGuestVmCommandDetailParam ExecuteGuestVmCommand详细参数
+// ExecuteGuestVmCommandDetailParam ExecuteGuestVmCommand detail param
 type ExecuteGuestVmCommandDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
-	rest string `json:"platform" validate:"required"` // 必填
-	rest string `json:"command" validate:"required"` // 必填
-	rest int `json:"commandTimeout,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
+	Platform string `json:"platform" validate:"required"`
+	Command string `json:"command" validate:"required"`
+	CommandTimeout int `json:"commandTimeout,omitempty"`
 }
 
-// ExecuteGuestVmCommandParam ExecuteGuestVmCommand请求参数
+// ExecuteGuestVmCommandParam ExecuteGuestVmCommand request param
 type ExecuteGuestVmCommandParam struct {
 	BaseParam
-	Params ExecuteGuestVmCommandDetailParam `json:"params"` // 详细参数
+	Params ExecuteGuestVmCommandDetailParam `json:"params"`
 }
-

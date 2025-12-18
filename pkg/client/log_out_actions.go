@@ -3,14 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// LogOut 操作LogOut
+// LogOut operates on LogOut
 func (cli *ZSClient) LogOut(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/accounts/sessions/{sessionUuid}", uuid, string(deleteMode))
 }
-

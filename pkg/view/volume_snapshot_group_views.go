@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VolumeSnapshotGroupInventoryView VolumeSnapshotGroup
 type VolumeSnapshotGroupInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest int `json:"snapshotCount,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []VolumeSnapshotGroupRefInventoryView `json:"volumeSnapshotRefs,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	SnapshotCount int `json:"snapshotCount,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	VolumeSnapshotRefs []VolumeSnapshotGroupRefInventoryView `json:"volumeSnapshotRefs,omitempty"`
 }
 

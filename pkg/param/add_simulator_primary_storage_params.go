@@ -2,24 +2,23 @@
 
 package param
 
-// AddSimulatorPrimaryStorageDetailParam AddSimulatorPrimaryStorage详细参数
+// AddSimulatorPrimaryStorageDetailParam AddSimulatorPrimaryStorage detail param
 type AddSimulatorPrimaryStorageDetailParam struct {
-	rest int64 `json:"totalCapacity,omitempty"`
-	rest int64 `json:"availableCapacity,omitempty"`
-	rest int64 `json:"availablePhysicalCapacity,omitempty"`
-	rest int64 `json:"totalPhysicalCapacity,omitempty"`
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
+	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
+	Url string `json:"url" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddSimulatorPrimaryStorageParam AddSimulatorPrimaryStorage请求参数
+// AddSimulatorPrimaryStorageParam AddSimulatorPrimaryStorage request param
 type AddSimulatorPrimaryStorageParam struct {
 	BaseParam
-	Params AddSimulatorPrimaryStorageDetailParam `json:"params"` // 详细参数
+	Params AddSimulatorPrimaryStorageDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// SubscribeSNSTopicDetailParam SubscribeSNSTopic详细参数
+// SubscribeSNSTopicDetailParam SubscribeSNSTopic detail param
 type SubscribeSNSTopicDetailParam struct {
-	rest string `json:"topicUuid" validate:"required"` // 必填
-	rest string `json:"endpointUuid" validate:"required"` // 必填
+	TopicUuid string `json:"topicUuid" validate:"required"`
+	EndpointUuid string `json:"endpointUuid" validate:"required"`
 }
 
-// SubscribeSNSTopicParam SubscribeSNSTopic请求参数
+// SubscribeSNSTopicParam SubscribeSNSTopic request param
 type SubscribeSNSTopicParam struct {
 	BaseParam
-	Params SubscribeSNSTopicDetailParam `json:"params"` // 详细参数
+	Params SubscribeSNSTopicDetailParam `json:"params"`
 }
-

@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MdevDeviceInventoryView MdevDevice
 type MdevDeviceInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"parentUuid,omitempty"`
-	rest string `json:"mttyUuid,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest string `json:"mdevSpecUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"chooser,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"vendor,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ParentUuid string `json:"parentUuid,omitempty"`
+	MttyUuid string `json:"mttyUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	MdevSpecUuid string `json:"mdevSpecUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	Chooser string `json:"chooser,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
 }
 

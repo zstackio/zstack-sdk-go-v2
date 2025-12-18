@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // RouterAreaInventoryView RouterArea
 type RouterAreaInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"areaId,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"authentication,omitempty"`
-	rest string `json:"password,omitempty"`
-	rest int `json:"keyId,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AreaId string `json:"areaId,omitempty"`
+	Type string `json:"type,omitempty"`
+	Authentication string `json:"authentication,omitempty"`
+	Password string `json:"password,omitempty"`
+	KeyId int `json:"keyId,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

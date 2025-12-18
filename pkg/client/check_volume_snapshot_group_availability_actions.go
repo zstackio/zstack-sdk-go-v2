@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CheckVolumeSnapshotGroupAvailability 操作CheckVolumeSnapshotGroupAvailability
+// CheckVolumeSnapshotGroupAvailability operates on CheckVolumeSnapshotGroupAvailability
 func (cli *ZSClient) CheckVolumeSnapshotGroupAvailability(params param.CheckVolumeSnapshotGroupAvailabilityParam) (*view.CheckVolumeSnapshotGroupAvailabilityView, error) {
 	var resp view.CheckVolumeSnapshotGroupAvailabilityView
 	if err := cli.Get("v1/volume-snapshots/groups/availabilities", "", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CheckVolumeSnapshotGroupAvailability(params param.CheckVolu
 	}
 	return &resp, nil
 }
-

@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmNicSecurityGroupRefInventoryView VmNicSecurityGroupRef
 type VmNicSecurityGroupRefInventoryView struct {
-	rest int `json:"priority,omitempty"`
-	rest string `json:"vmNicUuid,omitempty"`
-	rest string `json:"securityGroupUuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Priority int `json:"priority,omitempty"`
+	VmNicUuid string `json:"vmNicUuid,omitempty"`
+	SecurityGroupUuid string `json:"securityGroupUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddZBox 操作AddZBox
+// AddZBox adds ZBox
 func (cli *ZSClient) AddZBox(params param.AddZBoxParam) (*view.AddZBoxEventView, error) {
 	resp := view.AddZBoxEventView{}
 	if err := cli.Post("v1/zbox", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddZBox(params param.AddZBoxParam) (*view.AddZBoxEventView,
 	}
 	return &resp, nil
 }
-

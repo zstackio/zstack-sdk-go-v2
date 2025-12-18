@@ -2,15 +2,14 @@
 
 package param
 
-// GCAliyunSnapshotRemoteDetailParam GCAliyunSnapshotRemote详细参数
+// GCAliyunSnapshotRemoteDetailParam GCAliyunSnapshotRemote detail param
 type GCAliyunSnapshotRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// GCAliyunSnapshotRemoteParam GCAliyunSnapshotRemote请求参数
+// GCAliyunSnapshotRemoteParam GCAliyunSnapshotRemote request param
 type GCAliyunSnapshotRemoteParam struct {
 	BaseParam
-	Params GCAliyunSnapshotRemoteDetailParam `json:"params"` // 详细参数
+	Params GCAliyunSnapshotRemoteDetailParam `json:"params"`
 }
-

@@ -4,9 +4,11 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // TemplateCustomParamInventoryView TemplateCustomParam
 type TemplateCustomParamInventoryView struct {
-	rest string `json:"templateUuid,omitempty"`
-	rest string `json:"param,omitempty"`
+	TemplateUuid string `json:"templateUuid,omitempty"`
+	Param string `json:"param,omitempty"`
 }
 

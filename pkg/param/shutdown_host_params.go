@@ -2,17 +2,16 @@
 
 package param
 
-// ShutdownHostDetailParam ShutdownHost详细参数
+// ShutdownHostDetailParam ShutdownHost detail param
 type ShutdownHostDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"returnEarly,omitempty"`
-	rest bool `json:"force,omitempty"`
-	rest string `json:"method,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	ReturnEarly bool `json:"returnEarly,omitempty"`
+	Force bool `json:"force,omitempty"`
+	Method string `json:"method,omitempty"`
 }
 
-// ShutdownHostParam ShutdownHost请求参数
+// ShutdownHostParam ShutdownHost request param
 type ShutdownHostParam struct {
 	BaseParam
-	Params ShutdownHostDetailParam `json:"params"` // 详细参数
+	Params ShutdownHostDetailParam `json:"params"`
 }
-

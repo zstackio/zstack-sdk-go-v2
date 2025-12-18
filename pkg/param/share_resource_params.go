@@ -2,16 +2,15 @@
 
 package param
 
-// ShareResourceDetailParam ShareResource详细参数
+// ShareResourceDetailParam ShareResource detail param
 type ShareResourceDetailParam struct {
-	rest []string `json:"resourceUuids" validate:"required"` // 必填
-	rest []string `json:"accountUuids,omitempty"`
-	rest bool `json:"toPublic,omitempty"`
+	ResourceUuids []string `json:"resourceUuids" validate:"required"`
+	AccountUuids []string `json:"accountUuids,omitempty"`
+	ToPublic bool `json:"toPublic,omitempty"`
 }
 
-// ShareResourceParam ShareResource请求参数
+// ShareResourceParam ShareResource request param
 type ShareResourceParam struct {
 	BaseParam
-	Params ShareResourceDetailParam `json:"params"` // 详细参数
+	Params ShareResourceDetailParam `json:"params"`
 }
-

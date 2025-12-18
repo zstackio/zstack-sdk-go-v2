@@ -2,15 +2,14 @@
 
 package param
 
-// AddVmToVmSchedulingRuleGroupDetailParam AddVmToVmSchedulingRuleGroup详细参数
+// AddVmToVmSchedulingRuleGroupDetailParam AddVmToVmSchedulingRuleGroup detail param
 type AddVmToVmSchedulingRuleGroupDetailParam struct {
-	rest string `json:"vmGroupUuid" validate:"required"` // 必填
-	rest string `json:"vmUuid" validate:"required"` // 必填
+	VmGroupUuid string `json:"vmGroupUuid" validate:"required"`
+	VmUuid string `json:"vmUuid" validate:"required"`
 }
 
-// AddVmToVmSchedulingRuleGroupParam AddVmToVmSchedulingRuleGroup请求参数
+// AddVmToVmSchedulingRuleGroupParam AddVmToVmSchedulingRuleGroup request param
 type AddVmToVmSchedulingRuleGroupParam struct {
 	BaseParam
-	Params AddVmToVmSchedulingRuleGroupDetailParam `json:"params"` // 详细参数
+	Params AddVmToVmSchedulingRuleGroupDetailParam `json:"params"`
 }
-

@@ -2,17 +2,16 @@
 
 package param
 
-// SyncDiskFromAliyunFromRemoteDetailParam SyncDiskFromAliyunFromRemote详细参数
+// SyncDiskFromAliyunFromRemoteDetailParam SyncDiskFromAliyunFromRemote detail param
 type SyncDiskFromAliyunFromRemoteDetailParam struct {
-	rest string `json:"identityUuid" validate:"required"` // 必填
-	rest string `json:"diskId,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	IdentityUuid string `json:"identityUuid" validate:"required"`
+	DiskId string `json:"diskId,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncDiskFromAliyunFromRemoteParam SyncDiskFromAliyunFromRemote请求参数
+// SyncDiskFromAliyunFromRemoteParam SyncDiskFromAliyunFromRemote request param
 type SyncDiskFromAliyunFromRemoteParam struct {
 	BaseParam
-	Params SyncDiskFromAliyunFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncDiskFromAliyunFromRemoteDetailParam `json:"params"`
 }
-

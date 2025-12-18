@@ -2,13 +2,12 @@
 
 package param
 
-// IsOpensourceVersionDetailParam IsOpensourceVersion详细参数
+// IsOpensourceVersionDetailParam IsOpensourceVersion detail param
 type IsOpensourceVersionDetailParam struct {
 }
 
-// IsOpensourceVersionParam IsOpensourceVersion请求参数
+// IsOpensourceVersionParam IsOpensourceVersion request param
 type IsOpensourceVersionParam struct {
 	BaseParam
-	Params IsOpensourceVersionDetailParam `json:"params"` // 详细参数
+	Params IsOpensourceVersionDetailParam `json:"params"`
 }
-

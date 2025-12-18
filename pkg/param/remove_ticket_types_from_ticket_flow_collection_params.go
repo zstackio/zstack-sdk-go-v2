@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveTicketTypesFromTicketFlowCollectionDetailParam RemoveTicketTypesFromTicketFlowCollection详细参数
+// RemoveTicketTypesFromTicketFlowCollectionDetailParam RemoveTicketTypesFromTicketFlowCollection detail param
 type RemoveTicketTypesFromTicketFlowCollectionDetailParam struct {
-	rest string `json:"ticketFlowCollectionUuid" validate:"required"` // 必填
-	rest []string `json:"ticketTypeUuids" validate:"required"` // 必填
+	TicketFlowCollectionUuid string `json:"ticketFlowCollectionUuid" validate:"required"`
+	TicketTypeUuids []string `json:"ticketTypeUuids" validate:"required"`
 }
 
-// RemoveTicketTypesFromTicketFlowCollectionParam RemoveTicketTypesFromTicketFlowCollection请求参数
+// RemoveTicketTypesFromTicketFlowCollectionParam RemoveTicketTypesFromTicketFlowCollection request param
 type RemoveTicketTypesFromTicketFlowCollectionParam struct {
 	BaseParam
-	Params RemoveTicketTypesFromTicketFlowCollectionDetailParam `json:"params"` // 详细参数
+	Params RemoveTicketTypesFromTicketFlowCollectionDetailParam `json:"params"`
 }
-

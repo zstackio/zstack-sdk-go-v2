@@ -2,13 +2,12 @@
 
 package param
 
-// IsLicenseServerDetailParam IsLicenseServer详细参数
+// IsLicenseServerDetailParam IsLicenseServer detail param
 type IsLicenseServerDetailParam struct {
 }
 
-// IsLicenseServerParam IsLicenseServer请求参数
+// IsLicenseServerParam IsLicenseServer request param
 type IsLicenseServerParam struct {
 	BaseParam
-	Params IsLicenseServerDetailParam `json:"params"` // 详细参数
+	Params IsLicenseServerDetailParam `json:"params"`
 }
-

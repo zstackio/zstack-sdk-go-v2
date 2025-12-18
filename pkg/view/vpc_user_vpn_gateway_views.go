@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcUserVpnGatewayInventoryView VpcUserVpnGateway
 type VpcUserVpnGatewayInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"accountName,omitempty"`
-	rest string `json:"dataCenterUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"gatewayId,omitempty"`
-	rest string `json:"ip,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AccountName string `json:"accountName,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	GatewayId string `json:"gatewayId,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,19 +2,18 @@
 
 package param
 
-// AddStackTemplateDetailParam AddStackTemplate详细参数
+// AddStackTemplateDetailParam AddStackTemplate detail param
 type AddStackTemplateDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"templateContent,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	TemplateContent string `json:"templateContent,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddStackTemplateParam AddStackTemplate请求参数
+// AddStackTemplateParam AddStackTemplate request param
 type AddStackTemplateParam struct {
 	BaseParam
-	Params AddStackTemplateDetailParam `json:"params"` // 详细参数
+	Params AddStackTemplateDetailParam `json:"params"`
 }
-

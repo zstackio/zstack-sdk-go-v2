@@ -2,15 +2,14 @@
 
 package param
 
-// AddMonToCephBackupStorageDetailParam AddMonToCephBackupStorage详细参数
+// AddMonToCephBackupStorageDetailParam AddMonToCephBackupStorage detail param
 type AddMonToCephBackupStorageDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"monUrls" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	MonUrls []string `json:"monUrls" validate:"required"`
 }
 
-// AddMonToCephBackupStorageParam AddMonToCephBackupStorage请求参数
+// AddMonToCephBackupStorageParam AddMonToCephBackupStorage request param
 type AddMonToCephBackupStorageParam struct {
 	BaseParam
-	Params AddMonToCephBackupStorageDetailParam `json:"params"` // 详细参数
+	Params AddMonToCephBackupStorageDetailParam `json:"params"`
 }
-

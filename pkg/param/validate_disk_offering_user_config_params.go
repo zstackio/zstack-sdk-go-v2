@@ -2,14 +2,13 @@
 
 package param
 
-// ValidateDiskOfferingUserConfigDetailParam ValidateDiskOfferingUserConfig详细参数
+// ValidateDiskOfferingUserConfigDetailParam ValidateDiskOfferingUserConfig detail param
 type ValidateDiskOfferingUserConfigDetailParam struct {
-	rest string `json:"config" validate:"required"` // 必填
+	Config string `json:"config" validate:"required"`
 }
 
-// ValidateDiskOfferingUserConfigParam ValidateDiskOfferingUserConfig请求参数
+// ValidateDiskOfferingUserConfigParam ValidateDiskOfferingUserConfig request param
 type ValidateDiskOfferingUserConfigParam struct {
 	BaseParam
-	Params ValidateDiskOfferingUserConfigDetailParam `json:"params"` // 详细参数
+	Params ValidateDiskOfferingUserConfigDetailParam `json:"params"`
 }
-

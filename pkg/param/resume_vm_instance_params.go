@@ -2,14 +2,13 @@
 
 package param
 
-// ResumeVmInstanceDetailParam ResumeVmInstance详细参数
+// ResumeVmInstanceDetailParam ResumeVmInstance detail param
 type ResumeVmInstanceDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ResumeVmInstanceParam ResumeVmInstance请求参数
+// ResumeVmInstanceParam ResumeVmInstance request param
 type ResumeVmInstanceParam struct {
 	BaseParam
-	Params ResumeVmInstanceDetailParam `json:"params"` // 详细参数
+	Params ResumeVmInstanceDetailParam `json:"params"`
 }
-

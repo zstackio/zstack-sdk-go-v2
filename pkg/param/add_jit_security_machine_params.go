@@ -2,23 +2,22 @@
 
 package param
 
-// AddJitSecurityMachineDetailParam AddJitSecurityMachine详细参数
+// AddJitSecurityMachineDetailParam AddJitSecurityMachine detail param
 type AddJitSecurityMachineDetailParam struct {
-	rest int `json:"port" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"managementIp" validate:"required"` // 必填
-	rest string `json:"model" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"secretResourcePoolUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Port int `json:"port" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp" validate:"required"`
+	Model string `json:"model" validate:"required"`
+	Type string `json:"type" validate:"required"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	SecretResourcePoolUuid string `json:"secretResourcePoolUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddJitSecurityMachineParam AddJitSecurityMachine请求参数
+// AddJitSecurityMachineParam AddJitSecurityMachine request param
 type AddJitSecurityMachineParam struct {
 	BaseParam
-	Params AddJitSecurityMachineDetailParam `json:"params"` // 详细参数
+	Params AddJitSecurityMachineDetailParam `json:"params"`
 }
-

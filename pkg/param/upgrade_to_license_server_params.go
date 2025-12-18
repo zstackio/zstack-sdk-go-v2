@@ -2,13 +2,12 @@
 
 package param
 
-// UpgradeToLicenseServerDetailParam UpgradeToLicenseServer详细参数
+// UpgradeToLicenseServerDetailParam UpgradeToLicenseServer detail param
 type UpgradeToLicenseServerDetailParam struct {
 }
 
-// UpgradeToLicenseServerParam UpgradeToLicenseServer请求参数
+// UpgradeToLicenseServerParam UpgradeToLicenseServer request param
 type UpgradeToLicenseServerParam struct {
 	BaseParam
-	Params UpgradeToLicenseServerDetailParam `json:"params"` // 详细参数
+	Params UpgradeToLicenseServerDetailParam `json:"params"`
 }
-

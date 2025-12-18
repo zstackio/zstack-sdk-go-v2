@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ReloadElaboration 操作ReloadElaboration
+// ReloadElaboration operates on ReloadElaboration
 func (cli *ZSClient) ReloadElaboration(uuid string, params param.ReloadElaborationParam) (*view.ReloadElaborationEventView, error) {
 	resp := view.ReloadElaborationEventView{}
 	if err := cli.Put("v1/errorcode/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ReloadElaboration(uuid string, params param.ReloadElaborati
 	}
 	return &resp, nil
 }
-

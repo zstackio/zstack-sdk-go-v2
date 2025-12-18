@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LicenseAuthorizedNodeInventoryView LicenseAuthorizedNode
 type LicenseAuthorizedNodeInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"appId,omitempty"`
-	rest string `json:"ip,omitempty"`
-	rest time.Time `json:"lastSyncDate,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AppId string `json:"appId,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	LastSyncDate time.Time `json:"lastSyncDate,omitempty"`
+	Status string `json:"status,omitempty"`
+	Type string `json:"type,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

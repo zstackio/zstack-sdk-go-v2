@@ -2,15 +2,14 @@
 
 package param
 
-// AddResourcesToDirectoryDetailParam AddResourcesToDirectory详细参数
+// AddResourcesToDirectoryDetailParam AddResourcesToDirectory detail param
 type AddResourcesToDirectoryDetailParam struct {
-	rest []string `json:"resourceUuids" validate:"required"` // 必填
-	rest string `json:"directoryUuid" validate:"required"` // 必填
+	ResourceUuids []string `json:"resourceUuids" validate:"required"`
+	DirectoryUuid string `json:"directoryUuid" validate:"required"`
 }
 
-// AddResourcesToDirectoryParam AddResourcesToDirectory请求参数
+// AddResourcesToDirectoryParam AddResourcesToDirectory request param
 type AddResourcesToDirectoryParam struct {
 	BaseParam
-	Params AddResourcesToDirectoryDetailParam `json:"params"` // 详细参数
+	Params AddResourcesToDirectoryDetailParam `json:"params"`
 }
-

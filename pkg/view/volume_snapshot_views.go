@@ -4,27 +4,29 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VolumeSnapshotInventoryView VolumeSnapshot
 type VolumeSnapshotInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"volumeUuid,omitempty"`
-	rest string `json:"treeUuid,omitempty"`
-	rest string `json:"parentUuid,omitempty"`
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest string `json:"primaryStorageInstallPath,omitempty"`
-	rest string `json:"volumeType,omitempty"`
-	rest string `json:"format,omitempty"`
-	rest bool `json:"latest,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest int `json:"distance,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []VolumeSnapshotBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
-	rest string `json:"groupUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	VolumeUuid string `json:"volumeUuid,omitempty"`
+	TreeUuid string `json:"treeUuid,omitempty"`
+	ParentUuid string `json:"parentUuid,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	PrimaryStorageInstallPath string `json:"primaryStorageInstallPath,omitempty"`
+	VolumeType string `json:"volumeType,omitempty"`
+	Format string `json:"format,omitempty"`
+	Latest bool `json:"latest,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	Distance int `json:"distance,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	BackupStorageRefs []VolumeSnapshotBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
 }
 

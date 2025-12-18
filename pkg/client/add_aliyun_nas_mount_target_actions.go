@@ -3,18 +3,15 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddAliyunNasMountTarget 操作AddAliyunNasMountTarget
-func (cli *ZSClient) AddAliyunNasMountTarget(uuid string, params param.AddAliyunNasMountTargetParam) (*view.AddAliyunNasMountTargetEventView, error) {
+// AddAliyunNasMountTarget adds AliyunNasMountTarget
+func (cli *ZSClient) AddAliyunNasMountTarget(params param.AddAliyunNasMountTargetParam) (*view.AddAliyunNasMountTargetEventView, error) {
 	resp := view.AddAliyunNasMountTargetEventView{}
-	if err := cli.Put("v1/nas/aliyun/mount", uuid, params, &resp); err != nil {
+	if err := cli.Post("v1/nas/aliyun/mount", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-

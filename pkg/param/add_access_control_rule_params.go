@@ -2,19 +2,18 @@
 
 package param
 
-// AddAccessControlRuleDetailParam AddAccessControlRule详细参数
+// AddAccessControlRuleDetailParam AddAccessControlRule detail param
 type AddAccessControlRuleDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"rule" validate:"required"` // 必填
-	rest string `json:"controlStrategy" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Rule string `json:"rule" validate:"required"`
+	ControlStrategy string `json:"controlStrategy" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAccessControlRuleParam AddAccessControlRule请求参数
+// AddAccessControlRuleParam AddAccessControlRule request param
 type AddAccessControlRuleParam struct {
 	BaseParam
-	Params AddAccessControlRuleDetailParam `json:"params"` // 详细参数
+	Params AddAccessControlRuleDetailParam `json:"params"`
 }
-

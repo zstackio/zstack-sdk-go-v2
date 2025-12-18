@@ -2,15 +2,14 @@
 
 package param
 
-// AddCertificateToLoadBalancerListenerDetailParam AddCertificateToLoadBalancerListener详细参数
+// AddCertificateToLoadBalancerListenerDetailParam AddCertificateToLoadBalancerListener detail param
 type AddCertificateToLoadBalancerListenerDetailParam struct {
-	rest string `json:"certificateUuid" validate:"required"` // 必填
-	rest string `json:"listenerUuid" validate:"required"` // 必填
+	CertificateUuid string `json:"certificateUuid" validate:"required"`
+	ListenerUuid string `json:"listenerUuid" validate:"required"`
 }
 
-// AddCertificateToLoadBalancerListenerParam AddCertificateToLoadBalancerListener请求参数
+// AddCertificateToLoadBalancerListenerParam AddCertificateToLoadBalancerListener request param
 type AddCertificateToLoadBalancerListenerParam struct {
 	BaseParam
-	Params AddCertificateToLoadBalancerListenerDetailParam `json:"params"` // 详细参数
+	Params AddCertificateToLoadBalancerListenerDetailParam `json:"params"`
 }
-

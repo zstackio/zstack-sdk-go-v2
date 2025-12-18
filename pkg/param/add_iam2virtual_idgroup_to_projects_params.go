@@ -2,14 +2,13 @@
 
 package param
 
-// AddIAM2VirtualIDGroupToProjectsDetailParam AddIAM2VirtualIDGroupToProjects详细参数
+// AddIAM2VirtualIDGroupToProjectsDetailParam AddIAM2VirtualIDGroupToProjects detail param
 type AddIAM2VirtualIDGroupToProjectsDetailParam struct {
-	rest []interface{} `json:"structs,omitempty"`
+	Structs []interface{} `json:"structs,omitempty"`
 }
 
-// AddIAM2VirtualIDGroupToProjectsParam AddIAM2VirtualIDGroupToProjects请求参数
+// AddIAM2VirtualIDGroupToProjectsParam AddIAM2VirtualIDGroupToProjects request param
 type AddIAM2VirtualIDGroupToProjectsParam struct {
 	BaseParam
-	Params AddIAM2VirtualIDGroupToProjectsDetailParam `json:"params"` // 详细参数
+	Params AddIAM2VirtualIDGroupToProjectsDetailParam `json:"params"`
 }
-

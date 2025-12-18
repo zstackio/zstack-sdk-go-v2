@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ImagePackageInventoryView ImagePackage
 type ImagePackageInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"vmUuid,omitempty"`
-	rest string `json:"backupStorageUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"exportUrl,omitempty"`
-	rest string `json:"md5Sum,omitempty"`
-	rest string `json:"format,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	VmUuid string `json:"vmUuid,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	ExportUrl string `json:"exportUrl,omitempty"`
+	Md5Sum string `json:"md5Sum,omitempty"`
+	Format string `json:"format,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

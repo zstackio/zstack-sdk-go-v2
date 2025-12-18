@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetSecurityMachineKey 操作SetSecurityMachineKey
+// SetSecurityMachineKey operates on SetSecurityMachineKey
 func (cli *ZSClient) SetSecurityMachineKey(params param.SetSecurityMachineKeyParam) (*view.SetSecurityMachineKeyEventView, error) {
 	resp := view.SetSecurityMachineKeyEventView{}
 	if err := cli.Post("v1/secret-resource-pool-token/set/{uuid}/actions", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetSecurityMachineKey(params param.SetSecurityMachineKeyPar
 	}
 	return &resp, nil
 }
-

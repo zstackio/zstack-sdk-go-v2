@@ -2,16 +2,15 @@
 
 package param
 
-// RefreshFiberChannelStorageDetailParam RefreshFiberChannelStorage详细参数
+// RefreshFiberChannelStorageDetailParam RefreshFiberChannelStorage detail param
 type RefreshFiberChannelStorageDetailParam struct {
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"clusterUuid,omitempty"`
-	rest []string `json:"scsiLunUuids,omitempty"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	ScsiLunUuids []string `json:"scsiLunUuids,omitempty"`
 }
 
-// RefreshFiberChannelStorageParam RefreshFiberChannelStorage请求参数
+// RefreshFiberChannelStorageParam RefreshFiberChannelStorage request param
 type RefreshFiberChannelStorageParam struct {
 	BaseParam
-	Params RefreshFiberChannelStorageDetailParam `json:"params"` // 详细参数
+	Params RefreshFiberChannelStorageDetailParam `json:"params"`
 }
-

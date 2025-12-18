@@ -2,15 +2,14 @@
 
 package param
 
-// SetL3NetworkRouterInterfaceIpDetailParam SetL3NetworkRouterInterfaceIp详细参数
+// SetL3NetworkRouterInterfaceIpDetailParam SetL3NetworkRouterInterfaceIp detail param
 type SetL3NetworkRouterInterfaceIpDetailParam struct {
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest string `json:"routerInterfaceIp" validate:"required"` // 必填
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	RouterInterfaceIp string `json:"routerInterfaceIp" validate:"required"`
 }
 
-// SetL3NetworkRouterInterfaceIpParam SetL3NetworkRouterInterfaceIp请求参数
+// SetL3NetworkRouterInterfaceIpParam SetL3NetworkRouterInterfaceIp request param
 type SetL3NetworkRouterInterfaceIpParam struct {
 	BaseParam
-	Params SetL3NetworkRouterInterfaceIpDetailParam `json:"params"` // 详细参数
+	Params SetL3NetworkRouterInterfaceIpDetailParam `json:"params"`
 }
-

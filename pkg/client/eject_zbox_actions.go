@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// EjectZBox 操作EjectZBox
+// EjectZBox operates on EjectZBox
 func (cli *ZSClient) EjectZBox(uuid string, params param.EjectZBoxParam) (*view.EjectZBoxEventView, error) {
 	resp := view.EjectZBoxEventView{}
 	if err := cli.Put("v1/zbox/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) EjectZBox(uuid string, params param.EjectZBoxParam) (*view.
 	}
 	return &resp, nil
 }
-

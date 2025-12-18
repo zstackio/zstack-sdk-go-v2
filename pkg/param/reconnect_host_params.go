@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectHostDetailParam ReconnectHost详细参数
+// ReconnectHostDetailParam ReconnectHost detail param
 type ReconnectHostDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectHostParam ReconnectHost请求参数
+// ReconnectHostParam ReconnectHost request param
 type ReconnectHostParam struct {
 	BaseParam
-	Params ReconnectHostDetailParam `json:"params"` // 详细参数
+	Params ReconnectHostDetailParam `json:"params"`
 }
-

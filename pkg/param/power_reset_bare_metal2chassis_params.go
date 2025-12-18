@@ -2,15 +2,14 @@
 
 package param
 
-// PowerResetBareMetal2ChassisDetailParam PowerResetBareMetal2Chassis详细参数
+// PowerResetBareMetal2ChassisDetailParam PowerResetBareMetal2Chassis detail param
 type PowerResetBareMetal2ChassisDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"bootDev,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	BootDev string `json:"bootDev,omitempty"`
 }
 
-// PowerResetBareMetal2ChassisParam PowerResetBareMetal2Chassis请求参数
+// PowerResetBareMetal2ChassisParam PowerResetBareMetal2Chassis request param
 type PowerResetBareMetal2ChassisParam struct {
 	BaseParam
-	Params PowerResetBareMetal2ChassisDetailParam `json:"params"` // 详细参数
+	Params PowerResetBareMetal2ChassisDetailParam `json:"params"`
 }
-

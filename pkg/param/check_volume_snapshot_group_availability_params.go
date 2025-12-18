@@ -2,14 +2,13 @@
 
 package param
 
-// CheckVolumeSnapshotGroupAvailabilityDetailParam CheckVolumeSnapshotGroupAvailability详细参数
+// CheckVolumeSnapshotGroupAvailabilityDetailParam CheckVolumeSnapshotGroupAvailability detail param
 type CheckVolumeSnapshotGroupAvailabilityDetailParam struct {
-	rest []string `json:"uuids" validate:"required"` // 必填
+	Uuids []string `json:"uuids" validate:"required"`
 }
 
-// CheckVolumeSnapshotGroupAvailabilityParam CheckVolumeSnapshotGroupAvailability请求参数
+// CheckVolumeSnapshotGroupAvailabilityParam CheckVolumeSnapshotGroupAvailability request param
 type CheckVolumeSnapshotGroupAvailabilityParam struct {
 	BaseParam
-	Params CheckVolumeSnapshotGroupAvailabilityDetailParam `json:"params"` // 详细参数
+	Params CheckVolumeSnapshotGroupAvailabilityDetailParam `json:"params"`
 }
-

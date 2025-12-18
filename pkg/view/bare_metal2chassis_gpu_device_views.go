@@ -4,26 +4,28 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BareMetal2ChassisGpuDeviceInventoryView BareMetal2ChassisGpuDevice
 type BareMetal2ChassisGpuDeviceInventoryView struct {
-	rest string `json:"serialNumber,omitempty"`
-	rest int64 `json:"memory,omitempty"`
-	rest int64 `json:"power,omitempty"`
-	rest bool `json:"isDriverLoaded,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"chassisUuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"pciDeviceAddress,omitempty"`
-	rest string `json:"vendorId,omitempty"`
-	rest string `json:"deviceId,omitempty"`
-	rest string `json:"subvendorId,omitempty"`
-	rest string `json:"subdeviceId,omitempty"`
-	rest string `json:"iommuGroup,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"vendor,omitempty"`
-	rest string `json:"device,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	SerialNumber string `json:"serialNumber,omitempty"`
+	Memory int64 `json:"memory,omitempty"`
+	Power int64 `json:"power,omitempty"`
+	IsDriverLoaded bool `json:"isDriverLoaded,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ChassisUuid string `json:"chassisUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	PciDeviceAddress string `json:"pciDeviceAddress,omitempty"`
+	VendorId string `json:"vendorId,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	SubvendorId string `json:"subvendorId,omitempty"`
+	SubdeviceId string `json:"subdeviceId,omitempty"`
+	IommuGroup string `json:"iommuGroup,omitempty"`
+	Name string `json:"name,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	Device string `json:"device,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

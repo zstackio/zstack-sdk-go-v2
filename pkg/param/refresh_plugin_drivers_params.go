@@ -2,14 +2,13 @@
 
 package param
 
-// RefreshPluginDriversDetailParam RefreshPluginDrivers详细参数
+// RefreshPluginDriversDetailParam RefreshPluginDrivers detail param
 type RefreshPluginDriversDetailParam struct {
-	rest string `json:"name,omitempty"`
+	Name string `json:"name,omitempty"`
 }
 
-// RefreshPluginDriversParam RefreshPluginDrivers请求参数
+// RefreshPluginDriversParam RefreshPluginDrivers request param
 type RefreshPluginDriversParam struct {
 	BaseParam
-	Params RefreshPluginDriversDetailParam `json:"params"` // 详细参数
+	Params RefreshPluginDriversDetailParam `json:"params"`
 }
-

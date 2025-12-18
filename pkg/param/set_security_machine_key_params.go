@@ -2,17 +2,16 @@
 
 package param
 
-// SetSecurityMachineKeyDetailParam SetSecurityMachineKey详细参数
+// SetSecurityMachineKeyDetailParam SetSecurityMachineKey detail param
 type SetSecurityMachineKeyDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"tokenName" validate:"required"` // 必填
-	rest bool `json:"dryRun,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Type string `json:"type" validate:"required"`
+	TokenName string `json:"tokenName" validate:"required"`
+	DryRun bool `json:"dryRun,omitempty"`
 }
 
-// SetSecurityMachineKeyParam SetSecurityMachineKey请求参数
+// SetSecurityMachineKeyParam SetSecurityMachineKey request param
 type SetSecurityMachineKeyParam struct {
 	BaseParam
-	Params SetSecurityMachineKeyDetailParam `json:"params"` // 详细参数
+	Params SetSecurityMachineKeyDetailParam `json:"params"`
 }
-

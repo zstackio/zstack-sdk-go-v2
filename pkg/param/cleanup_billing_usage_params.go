@@ -2,14 +2,13 @@
 
 package param
 
-// CleanupBillingUsageDetailParam CleanupBillingUsage详细参数
+// CleanupBillingUsageDetailParam CleanupBillingUsage detail param
 type CleanupBillingUsageDetailParam struct {
-	rest string `json:"deleteMode,omitempty"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// CleanupBillingUsageParam CleanupBillingUsage请求参数
+// CleanupBillingUsageParam CleanupBillingUsage request param
 type CleanupBillingUsageParam struct {
 	BaseParam
-	Params CleanupBillingUsageDetailParam `json:"params"` // 详细参数
+	Params CleanupBillingUsageDetailParam `json:"params"`
 }
-

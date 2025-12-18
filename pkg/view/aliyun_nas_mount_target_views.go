@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AliyunNasMountTargetInventoryView AliyunNasMountTarget
 type AliyunNasMountTargetInventoryView struct {
-	rest string `json:"accessGroupUuid,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"mountDomain,omitempty"`
-	rest string `json:"nasFileSystemUuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	AccessGroupUuid string `json:"accessGroupUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	MountDomain string `json:"mountDomain,omitempty"`
+	NasFileSystemUuid string `json:"nasFileSystemUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

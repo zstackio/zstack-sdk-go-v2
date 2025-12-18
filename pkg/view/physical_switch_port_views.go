@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PhysicalSwitchPortInventoryView PhysicalSwitchPort
 type PhysicalSwitchPortInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"ethTrunkName,omitempty"`
-	rest string `json:"portType,omitempty"`
-	rest string `json:"peerInterfaceUuid,omitempty"`
-	rest string `json:"switchUuid,omitempty"`
-	rest string `json:"sdnControllerUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	EthTrunkName string `json:"ethTrunkName,omitempty"`
+	PortType string `json:"portType,omitempty"`
+	PeerInterfaceUuid string `json:"peerInterfaceUuid,omitempty"`
+	SwitchUuid string `json:"switchUuid,omitempty"`
+	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

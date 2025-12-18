@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncLicenseCapacity 操作SyncLicenseCapacity
+// SyncLicenseCapacity operates on SyncLicenseCapacity
 func (cli *ZSClient) SyncLicenseCapacity(uuid string, params param.SyncLicenseCapacityParam) (*view.SyncLicenseCapacityEventView, error) {
 	resp := view.SyncLicenseCapacityEventView{}
 	if err := cli.Put("v1/license-server/authorized-capacity/sync", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncLicenseCapacity(uuid string, params param.SyncLicenseCa
 	}
 	return &resp, nil
 }
-

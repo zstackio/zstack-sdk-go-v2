@@ -2,15 +2,14 @@
 
 package param
 
-// CheckStaticProvisionIpDetailParam CheckStaticProvisionIp详细参数
+// CheckStaticProvisionIpDetailParam CheckStaticProvisionIp detail param
 type CheckStaticProvisionIpDetailParam struct {
-	rest string `json:"clusterUuid" validate:"required"` // 必填
-	rest string `json:"provisionIp" validate:"required"` // 必填
+	ClusterUuid string `json:"clusterUuid" validate:"required"`
+	ProvisionIp string `json:"provisionIp" validate:"required"`
 }
 
-// CheckStaticProvisionIpParam CheckStaticProvisionIp请求参数
+// CheckStaticProvisionIpParam CheckStaticProvisionIp request param
 type CheckStaticProvisionIpParam struct {
 	BaseParam
-	Params CheckStaticProvisionIpDetailParam `json:"params"` // 详细参数
+	Params CheckStaticProvisionIpDetailParam `json:"params"`
 }
-

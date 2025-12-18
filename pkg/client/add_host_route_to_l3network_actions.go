@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddHostRouteToL3Network 操作AddHostRouteToL3Network
+// AddHostRouteToL3Network adds HostRouteToL3Network
 func (cli *ZSClient) AddHostRouteToL3Network(params param.AddHostRouteToL3NetworkParam) (*view.AddHostRouteToL3NetworkEventView, error) {
 	resp := view.AddHostRouteToL3NetworkEventView{}
 	if err := cli.Post("v1/l3-networks/{l3NetworkUuid}/hostroute", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddHostRouteToL3Network(params param.AddHostRouteToL3Networ
 	}
 	return &resp, nil
 }
-

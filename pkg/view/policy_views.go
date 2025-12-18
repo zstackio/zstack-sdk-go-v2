@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PolicyView Policy
 type PolicyView struct {
-	rest interface{} `json:"metaClass,omitempty"`
-	rest []interface{} `json:"statements,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
+	MetaClass interface{} `json:"metaClass,omitempty"`
+	Statements []interface{} `json:"statements,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
 }
 
 // PolicyInventoryView Policy
 type PolicyInventoryView struct {
-	rest []interface{} `json:"statements,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
+	Statements []interface{} `json:"statements,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
 }
 

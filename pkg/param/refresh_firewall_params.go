@@ -2,14 +2,13 @@
 
 package param
 
-// RefreshFirewallDetailParam RefreshFirewall详细参数
+// RefreshFirewallDetailParam RefreshFirewall detail param
 type RefreshFirewallDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RefreshFirewallParam RefreshFirewall请求参数
+// RefreshFirewallParam RefreshFirewall request param
 type RefreshFirewallParam struct {
 	BaseParam
-	Params RefreshFirewallDetailParam `json:"params"` // 详细参数
+	Params RefreshFirewallDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// AddAttributesToIAM2VirtualIDDetailParam AddAttributesToIAM2VirtualID详细参数
+// AddAttributesToIAM2VirtualIDDetailParam AddAttributesToIAM2VirtualID detail param
 type AddAttributesToIAM2VirtualIDDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []interface{} `json:"attributes" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Attributes []interface{} `json:"attributes" validate:"required"`
 }
 
-// AddAttributesToIAM2VirtualIDParam AddAttributesToIAM2VirtualID请求参数
+// AddAttributesToIAM2VirtualIDParam AddAttributesToIAM2VirtualID request param
 type AddAttributesToIAM2VirtualIDParam struct {
 	BaseParam
-	Params AddAttributesToIAM2VirtualIDDetailParam `json:"params"` // 详细参数
+	Params AddAttributesToIAM2VirtualIDDetailParam `json:"params"`
 }
-

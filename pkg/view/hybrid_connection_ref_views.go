@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // HybridConnectionRefInventoryView HybridConnectionRef
 type HybridConnectionRefInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"resourceType,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"connectionType,omitempty"`
-	rest string `json:"connectionUuid,omitempty"`
-	rest string `json:"direction,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	ConnectionType string `json:"connectionType,omitempty"`
+	ConnectionUuid string `json:"connectionUuid,omitempty"`
+	Direction string `json:"direction,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PciDeviceOfferingInventoryView PciDeviceOffering
 type PciDeviceOfferingInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"vendorId,omitempty"`
-	rest string `json:"deviceId,omitempty"`
-	rest string `json:"subvendorId,omitempty"`
-	rest string `json:"subdeviceId,omitempty"`
-	rest string `json:"ramSize,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []PciDeviceOfferingInstanceOfferingRefInventoryView `json:"attachedInstanceOfferings,omitempty"`
-	rest []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDevices,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	VendorId string `json:"vendorId,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	SubvendorId string `json:"subvendorId,omitempty"`
+	SubdeviceId string `json:"subdeviceId,omitempty"`
+	RamSize string `json:"ramSize,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AttachedInstanceOfferings []PciDeviceOfferingInstanceOfferingRefInventoryView `json:"attachedInstanceOfferings,omitempty"`
+	MatchedPciDevices []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDevices,omitempty"`
 }
 

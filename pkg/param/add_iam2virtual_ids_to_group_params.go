@@ -2,15 +2,14 @@
 
 package param
 
-// AddIAM2VirtualIDsToGroupDetailParam AddIAM2VirtualIDsToGroup详细参数
+// AddIAM2VirtualIDsToGroupDetailParam AddIAM2VirtualIDsToGroup detail param
 type AddIAM2VirtualIDsToGroupDetailParam struct {
-	rest []string `json:"virtualIDUuids" validate:"required"` // 必填
-	rest string `json:"groupUuid" validate:"required"` // 必填
+	VirtualIDUuids []string `json:"virtualIDUuids" validate:"required"`
+	GroupUuid string `json:"groupUuid" validate:"required"`
 }
 
-// AddIAM2VirtualIDsToGroupParam AddIAM2VirtualIDsToGroup请求参数
+// AddIAM2VirtualIDsToGroupParam AddIAM2VirtualIDsToGroup request param
 type AddIAM2VirtualIDsToGroupParam struct {
 	BaseParam
-	Params AddIAM2VirtualIDsToGroupDetailParam `json:"params"` // 详细参数
+	Params AddIAM2VirtualIDsToGroupDetailParam `json:"params"`
 }
-

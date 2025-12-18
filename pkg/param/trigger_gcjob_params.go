@@ -2,14 +2,13 @@
 
 package param
 
-// TriggerGCJobDetailParam TriggerGCJob详细参数
+// TriggerGCJobDetailParam TriggerGCJob detail param
 type TriggerGCJobDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// TriggerGCJobParam TriggerGCJob请求参数
+// TriggerGCJobParam TriggerGCJob request param
 type TriggerGCJobParam struct {
 	BaseParam
-	Params TriggerGCJobDetailParam `json:"params"` // 详细参数
+	Params TriggerGCJobDetailParam `json:"params"`
 }
-

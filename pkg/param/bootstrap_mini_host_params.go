@@ -2,17 +2,16 @@
 
 package param
 
-// BootstrapMiniHostDetailParam BootstrapMiniHost详细参数
+// BootstrapMiniHostDetailParam BootstrapMiniHost detail param
 type BootstrapMiniHostDetailParam struct {
-	rest interface{} `json:"local" validate:"required"` // 必填
-	rest interface{} `json:"peer" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Local interface{} `json:"local" validate:"required"`
+	Peer interface{} `json:"peer" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// BootstrapMiniHostParam BootstrapMiniHost请求参数
+// BootstrapMiniHostParam BootstrapMiniHost request param
 type BootstrapMiniHostParam struct {
 	BaseParam
-	Params BootstrapMiniHostDetailParam `json:"params"` // 详细参数
+	Params BootstrapMiniHostDetailParam `json:"params"`
 }
-

@@ -2,17 +2,16 @@
 
 package param
 
-// SetVipQosDetailParam SetVipQos详细参数
+// SetVipQosDetailParam SetVipQos detail param
 type SetVipQosDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest int `json:"port,omitempty"`
-	rest int64 `json:"outboundBandwidth,omitempty"`
-	rest int64 `json:"inboundBandwidth,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Port int `json:"port,omitempty"`
+	OutboundBandwidth int64 `json:"outboundBandwidth,omitempty"`
+	InboundBandwidth int64 `json:"inboundBandwidth,omitempty"`
 }
 
-// SetVipQosParam SetVipQos请求参数
+// SetVipQosParam SetVipQos request param
 type SetVipQosParam struct {
 	BaseParam
-	Params SetVipQosDetailParam `json:"params"` // 详细参数
+	Params SetVipQosDetailParam `json:"params"`
 }
-

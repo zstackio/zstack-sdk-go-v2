@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LdapServerInventoryView LdapServer
 type LdapServerInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest string `json:"base,omitempty"`
-	rest string `json:"username,omitempty"`
-	rest string `json:"scope,omitempty"`
-	rest string `json:"encryption,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Url string `json:"url,omitempty"`
+	Base string `json:"base,omitempty"`
+	Username string `json:"username,omitempty"`
+	Scope string `json:"scope,omitempty"`
+	Encryption string `json:"encryption,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

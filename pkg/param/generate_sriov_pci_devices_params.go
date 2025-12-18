@@ -2,15 +2,14 @@
 
 package param
 
-// GenerateSriovPciDevicesDetailParam GenerateSriovPciDevices详细参数
+// GenerateSriovPciDevicesDetailParam GenerateSriovPciDevices detail param
 type GenerateSriovPciDevicesDetailParam struct {
-	rest string `json:"pciDeviceUuid" validate:"required"` // 必填
-	rest int `json:"virtPartNum" validate:"required"` // 必填
+	PciDeviceUuid string `json:"pciDeviceUuid" validate:"required"`
+	VirtPartNum int `json:"virtPartNum" validate:"required"`
 }
 
-// GenerateSriovPciDevicesParam GenerateSriovPciDevices请求参数
+// GenerateSriovPciDevicesParam GenerateSriovPciDevices request param
 type GenerateSriovPciDevicesParam struct {
 	BaseParam
-	Params GenerateSriovPciDevicesDetailParam `json:"params"` // 详细参数
+	Params GenerateSriovPciDevicesDetailParam `json:"params"`
 }
-

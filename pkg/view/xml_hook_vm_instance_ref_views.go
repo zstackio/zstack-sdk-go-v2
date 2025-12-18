@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // XmlHookVmInstanceRefInventoryView XmlHookVmInstanceRef
 type XmlHookVmInstanceRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"xmlHookUuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	XmlHookUuid string `json:"xmlHookUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

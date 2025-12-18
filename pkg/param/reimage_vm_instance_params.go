@@ -2,14 +2,13 @@
 
 package param
 
-// ReimageVmInstanceDetailParam ReimageVmInstance详细参数
+// ReimageVmInstanceDetailParam ReimageVmInstance detail param
 type ReimageVmInstanceDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
 }
 
-// ReimageVmInstanceParam ReimageVmInstance请求参数
+// ReimageVmInstanceParam ReimageVmInstance request param
 type ReimageVmInstanceParam struct {
 	BaseParam
-	Params ReimageVmInstanceDetailParam `json:"params"` // 详细参数
+	Params ReimageVmInstanceDetailParam `json:"params"`
 }
-

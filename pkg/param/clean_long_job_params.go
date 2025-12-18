@@ -2,14 +2,13 @@
 
 package param
 
-// CleanLongJobDetailParam CleanLongJob详细参数
+// CleanLongJobDetailParam CleanLongJob detail param
 type CleanLongJobDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// CleanLongJobParam CleanLongJob请求参数
+// CleanLongJobParam CleanLongJob request param
 type CleanLongJobParam struct {
 	BaseParam
-	Params CleanLongJobDetailParam `json:"params"` // 详细参数
+	Params CleanLongJobDetailParam `json:"params"`
 }
-

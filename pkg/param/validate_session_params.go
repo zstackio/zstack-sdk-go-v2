@@ -2,14 +2,13 @@
 
 package param
 
-// ValidateSessionDetailParam ValidateSession详细参数
+// ValidateSessionDetailParam ValidateSession detail param
 type ValidateSessionDetailParam struct {
-	rest string `json:"sessionUuid" validate:"required"` // 必填
+	SessionUuid string `json:"sessionUuid" validate:"required"`
 }
 
-// ValidateSessionParam ValidateSession请求参数
+// ValidateSessionParam ValidateSession request param
 type ValidateSessionParam struct {
 	BaseParam
-	Params ValidateSessionDetailParam `json:"params"` // 详细参数
+	Params ValidateSessionDetailParam `json:"params"`
 }
-

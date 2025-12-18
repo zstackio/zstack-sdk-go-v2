@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PolicyRouteRuleInventoryView PolicyRouteRule
 type PolicyRouteRuleInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest int `json:"ruleNumber,omitempty"`
-	rest string `json:"ruleSetUuid,omitempty"`
-	rest string `json:"tableUuid,omitempty"`
-	rest string `json:"destIp,omitempty"`
-	rest string `json:"sourceIp,omitempty"`
-	rest string `json:"destPort,omitempty"`
-	rest string `json:"sourcePort,omitempty"`
-	rest string `json:"protocol,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	RuleNumber int `json:"ruleNumber,omitempty"`
+	RuleSetUuid string `json:"ruleSetUuid,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
+	DestIp string `json:"destIp,omitempty"`
+	SourceIp string `json:"sourceIp,omitempty"`
+	DestPort string `json:"destPort,omitempty"`
+	SourcePort string `json:"sourcePort,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

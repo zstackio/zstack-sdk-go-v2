@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // GuestOsCategoryInventoryView GuestOsCategory
 type GuestOsCategoryInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"platform,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"osRelease,omitempty"`
-	rest string `json:"version,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	Name string `json:"name,omitempty"`
+	OsRelease string `json:"osRelease,omitempty"`
+	Version string `json:"version,omitempty"`
 }
 

@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveRemoteCidrsFromIPsecConnectionDetailParam RemoveRemoteCidrsFromIPsecConnection详细参数
+// RemoveRemoteCidrsFromIPsecConnectionDetailParam RemoveRemoteCidrsFromIPsecConnection detail param
 type RemoveRemoteCidrsFromIPsecConnectionDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"peerCidrs" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	PeerCidrs []string `json:"peerCidrs" validate:"required"`
 }
 
-// RemoveRemoteCidrsFromIPsecConnectionParam RemoveRemoteCidrsFromIPsecConnection请求参数
+// RemoveRemoteCidrsFromIPsecConnectionParam RemoveRemoteCidrsFromIPsecConnection request param
 type RemoveRemoteCidrsFromIPsecConnectionParam struct {
 	BaseParam
-	Params RemoveRemoteCidrsFromIPsecConnectionDetailParam `json:"params"` // 详细参数
+	Params RemoveRemoteCidrsFromIPsecConnectionDetailParam `json:"params"`
 }
-

@@ -2,23 +2,22 @@
 
 package param
 
-// AddExternalPrimaryStorageDetailParam AddExternalPrimaryStorage详细参数
+// AddExternalPrimaryStorageDetailParam AddExternalPrimaryStorage detail param
 type AddExternalPrimaryStorageDetailParam struct {
-	rest string `json:"identity" validate:"required"` // 必填
-	rest string `json:"defaultOutputProtocol" validate:"required"` // 必填
-	rest string `json:"config,omitempty"`
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Identity string `json:"identity" validate:"required"`
+	DefaultOutputProtocol string `json:"defaultOutputProtocol" validate:"required"`
+	Config string `json:"config,omitempty"`
+	Url string `json:"url" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddExternalPrimaryStorageParam AddExternalPrimaryStorage请求参数
+// AddExternalPrimaryStorageParam AddExternalPrimaryStorage request param
 type AddExternalPrimaryStorageParam struct {
 	BaseParam
-	Params AddExternalPrimaryStorageDetailParam `json:"params"` // 详细参数
+	Params AddExternalPrimaryStorageDetailParam `json:"params"`
 }
-

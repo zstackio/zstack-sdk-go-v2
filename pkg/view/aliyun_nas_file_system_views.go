@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AliyunNasFileSystemInventoryView AliyunNasFileSystem
 type AliyunNasFileSystemInventoryView struct {
-	rest string `json:"dataCenterUuid,omitempty"`
-	rest string `json:"storageType,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"protocol,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"fileSystemId,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	StorageType string `json:"storageType,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	Type string `json:"type,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	FileSystemId string `json:"fileSystemId,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

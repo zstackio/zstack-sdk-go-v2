@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddAccessControlListToLoadBalancer 操作AddAccessControlListToLoadBalancer
+// AddAccessControlListToLoadBalancer adds AccessControlListToLoadBalancer
 func (cli *ZSClient) AddAccessControlListToLoadBalancer(params param.AddAccessControlListToLoadBalancerParam) (*view.AddAccessControlListToLoadBalancerEventView, error) {
 	resp := view.AddAccessControlListToLoadBalancerEventView{}
 	if err := cli.Post("v1/load-balancers/listeners/{listenerUuid}/access-control-lists", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddAccessControlListToLoadBalancer(params param.AddAccessCo
 	}
 	return &resp, nil
 }
-

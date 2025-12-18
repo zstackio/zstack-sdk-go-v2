@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddNvmeServer 操作AddNvmeServer
+// AddNvmeServer adds NvmeServer
 func (cli *ZSClient) AddNvmeServer(params param.AddNvmeServerParam) (*view.AddNvmeServerEventView, error) {
 	resp := view.AddNvmeServerEventView{}
 	if err := cli.Post("v1/storage-devices/nvme/servers", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddNvmeServer(params param.AddNvmeServerParam) (*view.AddNv
 	}
 	return &resp, nil
 }
-

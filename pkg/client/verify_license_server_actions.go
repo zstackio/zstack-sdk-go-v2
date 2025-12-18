@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// VerifyLicenseServer 操作VerifyLicenseServer
+// VerifyLicenseServer operates on VerifyLicenseServer
 func (cli *ZSClient) VerifyLicenseServer(params param.VerifyLicenseServerParam) (*view.VerifyLicenseServerEventView, error) {
 	resp := view.VerifyLicenseServerEventView{}
 	if err := cli.Post("v1/license-server/register-verify", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) VerifyLicenseServer(params param.VerifyLicenseServerParam) 
 	}
 	return &resp, nil
 }
-

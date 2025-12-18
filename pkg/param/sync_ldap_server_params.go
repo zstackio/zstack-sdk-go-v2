@@ -2,14 +2,13 @@
 
 package param
 
-// SyncLdapServerDetailParam SyncLdapServer详细参数
+// SyncLdapServerDetailParam SyncLdapServer detail param
 type SyncLdapServerDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// SyncLdapServerParam SyncLdapServer请求参数
+// SyncLdapServerParam SyncLdapServer request param
 type SyncLdapServerParam struct {
 	BaseParam
-	Params SyncLdapServerDetailParam `json:"params"` // 详细参数
+	Params SyncLdapServerDetailParam `json:"params"`
 }
-

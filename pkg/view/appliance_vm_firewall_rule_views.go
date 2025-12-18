@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ApplianceVmFirewallRuleInventoryView ApplianceVmFirewallRule
 type ApplianceVmFirewallRuleInventoryView struct {
-	rest string `json:"applianceVmUuid,omitempty"`
-	rest string `json:"protocol,omitempty"`
-	rest int `json:"startPort,omitempty"`
-	rest int `json:"endPort,omitempty"`
-	rest string `json:"allowCidr,omitempty"`
-	rest string `json:"sourceIp,omitempty"`
-	rest string `json:"destIp,omitempty"`
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ApplianceVmUuid string `json:"applianceVmUuid,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	StartPort int `json:"startPort,omitempty"`
+	EndPort int `json:"endPort,omitempty"`
+	AllowCidr string `json:"allowCidr,omitempty"`
+	SourceIp string `json:"sourceIp,omitempty"`
+	DestIp string `json:"destIp,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

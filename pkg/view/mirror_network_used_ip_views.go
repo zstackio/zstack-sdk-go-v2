@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MirrorNetworkUsedIpInventoryView MirrorNetworkUsedIp
 type MirrorNetworkUsedIpInventoryView struct {
-	rest UsedIpInventoryView `json:"usedIpInventory,omitempty"`
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"clusterUuid,omitempty"`
-	rest string `json:"uuid,omitempty"`
+	UsedIpInventory UsedIpInventoryView `json:"usedIpInventory,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 }
 

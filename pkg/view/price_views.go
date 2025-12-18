@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PriceInventoryView Price
 type PriceInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"resourceName,omitempty"`
-	rest string `json:"resourceUnit,omitempty"`
-	rest string `json:"timeUnit,omitempty"`
-	rest float64 `json:"price,omitempty"`
-	rest int64 `json:"dateInLong,omitempty"`
-	rest int64 `json:"endDateInLong,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"tableUuid,omitempty"`
-	rest []PricePciDeviceOfferingRefInventoryView `json:"pciDeviceOfferings,omitempty"`
-	rest []PriceBareMetal2ChassisOfferingRefInventoryView `json:"bareMetal2VmOfferings,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ResourceName string `json:"resourceName,omitempty"`
+	ResourceUnit string `json:"resourceUnit,omitempty"`
+	TimeUnit string `json:"timeUnit,omitempty"`
+	Price float64 `json:"price,omitempty"`
+	DateInLong int64 `json:"dateInLong,omitempty"`
+	EndDateInLong int64 `json:"endDateInLong,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
+	PciDeviceOfferings []PricePciDeviceOfferingRefInventoryView `json:"pciDeviceOfferings,omitempty"`
+	BareMetal2VmOfferings []PriceBareMetal2ChassisOfferingRefInventoryView `json:"bareMetal2VmOfferings,omitempty"`
 }
 

@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // RemovalInstanceRuleInventoryView RemovalInstanceRule
 type RemovalInstanceRuleInventoryView struct {
-	rest string `json:"removalPolicy,omitempty"`
-	rest string `json:"adjustmentType,omitempty"`
-	rest int `json:"adjustmentValue,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest int64 `json:"cooldown,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest []string `json:"systemTags,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"scalingGroupUuid,omitempty"`
-	rest []AutoScalingRuleTriggerInventoryView `json:"ruleTriggers,omitempty"`
+	RemovalPolicy string `json:"removalPolicy,omitempty"`
+	AdjustmentType string `json:"adjustmentType,omitempty"`
+	AdjustmentValue int `json:"adjustmentValue,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	Cooldown int64 `json:"cooldown,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	SystemTags []string `json:"systemTags,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ScalingGroupUuid string `json:"scalingGroupUuid,omitempty"`
+	RuleTriggers []AutoScalingRuleTriggerInventoryView `json:"ruleTriggers,omitempty"`
 }
 

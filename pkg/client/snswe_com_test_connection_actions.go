@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SNSWeComTestConnection 操作SNSWeComTestConnection
+// SNSWeComTestConnection operates on SNSWeComTestConnection
 func (cli *ZSClient) SNSWeComTestConnection(params param.SNSWeComTestConnectionParam) (*view.SNSWeComTestConnectionEventView, error) {
 	resp := view.SNSWeComTestConnectionEventView{}
 	if err := cli.Post("v1/sns/application-endpoints/we-com/test-connection", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SNSWeComTestConnection(params param.SNSWeComTestConnectionP
 	}
 	return &resp, nil
 }
-

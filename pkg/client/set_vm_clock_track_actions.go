@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetVmClockTrack 操作SetVmClockTrack
+// SetVmClockTrack operates on SetVmClockTrack
 func (cli *ZSClient) SetVmClockTrack(uuid string, params param.SetVmClockTrackParam) (*view.SetVmClockTrackEventView, error) {
 	resp := view.SetVmClockTrackEventView{}
 	if err := cli.Put("v1/vm-instances/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetVmClockTrack(uuid string, params param.SetVmClockTrackPa
 	}
 	return &resp, nil
 }
-

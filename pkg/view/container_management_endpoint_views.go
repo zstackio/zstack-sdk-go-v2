@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ContainerManagementEndpointInventoryView ContainerManagementEndpoint
 type ContainerManagementEndpointInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"accessKeyId,omitempty"`
-	rest string `json:"managementIp,omitempty"`
-	rest int `json:"managementPort,omitempty"`
-	rest string `json:"vendor,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	AccessKeyId string `json:"accessKeyId,omitempty"`
+	ManagementIp string `json:"managementIp,omitempty"`
+	ManagementPort int `json:"managementPort,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

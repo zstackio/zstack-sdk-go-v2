@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // KvmHostHypervisorMetadataInventoryView KvmHostHypervisorMetadata
 type KvmHostHypervisorMetadataInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"categoryUuid,omitempty"`
-	rest string `json:"managementNodeUuid,omitempty"`
-	rest string `json:"hypervisor,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	CategoryUuid string `json:"categoryUuid,omitempty"`
+	ManagementNodeUuid string `json:"managementNodeUuid,omitempty"`
+	Hypervisor string `json:"hypervisor,omitempty"`
+	Version string `json:"version,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

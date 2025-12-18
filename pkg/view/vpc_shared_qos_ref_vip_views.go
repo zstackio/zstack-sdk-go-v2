@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcSharedQosRefVipInventoryView VpcSharedQosRefVip
 type VpcSharedQosRefVipInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"sharedQosUuid,omitempty"`
-	rest string `json:"vipUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	SharedQosUuid string `json:"sharedQosUuid,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

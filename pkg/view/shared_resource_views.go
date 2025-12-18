@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SharedResourceInventoryView SharedResource
 type SharedResourceInventoryView struct {
-	rest string `json:"ownerAccountUuid,omitempty"`
-	rest string `json:"receiverAccountUuid,omitempty"`
-	rest bool `json:"toPublic,omitempty"`
-	rest string `json:"resourceType,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
+	OwnerAccountUuid string `json:"ownerAccountUuid,omitempty"`
+	ReceiverAccountUuid string `json:"receiverAccountUuid,omitempty"`
+	ToPublic bool `json:"toPublic,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
 }
 

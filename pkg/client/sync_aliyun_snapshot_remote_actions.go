@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncAliyunSnapshotRemote 操作SyncAliyunSnapshotRemote
+// SyncAliyunSnapshotRemote operates on SyncAliyunSnapshotRemote
 func (cli *ZSClient) SyncAliyunSnapshotRemote(params param.SyncAliyunSnapshotRemoteParam) (*view.SyncAliyunSnapshotRemoteEventView, error) {
 	resp := view.SyncAliyunSnapshotRemoteEventView{}
 	if err := cli.Post("v1/hybrid/aliyun/snapshot/{dataCenterUuid}/sync", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncAliyunSnapshotRemote(params param.SyncAliyunSnapshotRem
 	}
 	return &resp, nil
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ReconnectSftpBackupStorage 操作ReconnectSftpBackupStorage
+// ReconnectSftpBackupStorage operates on ReconnectSftpBackupStorage
 func (cli *ZSClient) ReconnectSftpBackupStorage(uuid string, params param.ReconnectSftpBackupStorageParam) (*view.ReconnectSftpBackupStorageEventView, error) {
 	resp := view.ReconnectSftpBackupStorageEventView{}
 	if err := cli.Put("v1/backup-storage/sftp/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ReconnectSftpBackupStorage(uuid string, params param.Reconn
 	}
 	return &resp, nil
 }
-

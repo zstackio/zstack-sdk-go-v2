@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncImageFromImageStoreBackupStorage 操作SyncImageFromImageStoreBackupStorage
+// SyncImageFromImageStoreBackupStorage operates on SyncImageFromImageStoreBackupStorage
 func (cli *ZSClient) SyncImageFromImageStoreBackupStorage(uuid string, params param.SyncImageFromImageStoreBackupStorageParam) (*view.SyncImageFromImageStoreBackupStorageEventView, error) {
 	resp := view.SyncImageFromImageStoreBackupStorageEventView{}
 	if err := cli.Put("v1/images/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncImageFromImageStoreBackupStorage(uuid string, params pa
 	}
 	return &resp, nil
 }
-

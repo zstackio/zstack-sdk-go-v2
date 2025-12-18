@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SelfTestLocalRaid 操作SelfTestLocalRaid
+// SelfTestLocalRaid operates on SelfTestLocalRaid
 func (cli *ZSClient) SelfTestLocalRaid(uuid string, params param.SelfTestLocalRaidParam) (*view.SelfTestLocalRaidEventView, error) {
 	resp := view.SelfTestLocalRaidEventView{}
 	if err := cli.Put("v1/storage-devices/local-raid/physical-drives/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SelfTestLocalRaid(uuid string, params param.SelfTestLocalRa
 	}
 	return &resp, nil
 }
-

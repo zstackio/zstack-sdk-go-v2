@@ -2,17 +2,16 @@
 
 package param
 
-// ListVMsFromKVMHostDetailParam ListVMsFromKVMHost详细参数
+// ListVMsFromKVMHostDetailParam ListVMsFromKVMHost detail param
 type ListVMsFromKVMHostDetailParam struct {
-	rest string `json:"libvirtURI" validate:"required"` // 必填
-	rest string `json:"conversionHostUuid" validate:"required"` // 必填
-	rest string `json:"sshPrivKey,omitempty"`
-	rest string `json:"v2vType,omitempty"`
+	LibvirtURI string `json:"libvirtURI" validate:"required"`
+	ConversionHostUuid string `json:"conversionHostUuid" validate:"required"`
+	SshPrivKey string `json:"sshPrivKey,omitempty"`
+	V2vType string `json:"v2vType,omitempty"`
 }
 
-// ListVMsFromKVMHostParam ListVMsFromKVMHost请求参数
+// ListVMsFromKVMHostParam ListVMsFromKVMHost request param
 type ListVMsFromKVMHostParam struct {
 	BaseParam
-	Params ListVMsFromKVMHostDetailParam `json:"params"` // 详细参数
+	Params ListVMsFromKVMHostDetailParam `json:"params"`
 }
-

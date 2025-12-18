@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // NvmeTargetInventoryView NvmeTarget
 type NvmeTargetInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"nqn,omitempty"`
-	rest string `json:"nvmeServerUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest []NvmeLunInventoryView `json:"nvmeLuns,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Nqn string `json:"nqn,omitempty"`
+	NvmeServerUuid string `json:"nvmeServerUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	NvmeLuns []NvmeLunInventoryView `json:"nvmeLuns,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

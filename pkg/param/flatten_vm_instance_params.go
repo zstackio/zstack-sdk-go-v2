@@ -2,16 +2,15 @@
 
 package param
 
-// FlattenVmInstanceDetailParam FlattenVmInstance详细参数
+// FlattenVmInstanceDetailParam FlattenVmInstance detail param
 type FlattenVmInstanceDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"full,omitempty"`
-	rest bool `json:"dryRun,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Full bool `json:"full,omitempty"`
+	DryRun bool `json:"dryRun,omitempty"`
 }
 
-// FlattenVmInstanceParam FlattenVmInstance请求参数
+// FlattenVmInstanceParam FlattenVmInstance request param
 type FlattenVmInstanceParam struct {
 	BaseParam
-	Params FlattenVmInstanceDetailParam `json:"params"` // 详细参数
+	Params FlattenVmInstanceDetailParam `json:"params"`
 }
-

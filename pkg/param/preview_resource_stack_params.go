@@ -2,18 +2,17 @@
 
 package param
 
-// PreviewResourceStackDetailParam PreviewResourceStack详细参数
+// PreviewResourceStackDetailParam PreviewResourceStack detail param
 type PreviewResourceStackDetailParam struct {
-	rest string `json:"type,omitempty"`
-	rest string `json:"templateContent,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"parameters,omitempty"`
-	rest string `json:"preParameters,omitempty"`
+	Type string `json:"type,omitempty"`
+	TemplateContent string `json:"templateContent,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Parameters string `json:"parameters,omitempty"`
+	PreParameters string `json:"preParameters,omitempty"`
 }
 
-// PreviewResourceStackParam PreviewResourceStack请求参数
+// PreviewResourceStackParam PreviewResourceStack request param
 type PreviewResourceStackParam struct {
 	BaseParam
-	Params PreviewResourceStackDetailParam `json:"params"` // 详细参数
+	Params PreviewResourceStackDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// SyncAINginxConfigurationDetailParam SyncAINginxConfiguration详细参数
+// SyncAINginxConfigurationDetailParam SyncAINginxConfiguration detail param
 type SyncAINginxConfigurationDetailParam struct {
-	rest []string `json:"groupUuids,omitempty"`
-	rest bool `json:"dryRun,omitempty"`
-	rest bool `json:"syncAll,omitempty"`
+	GroupUuids []string `json:"groupUuids,omitempty"`
+	DryRun bool `json:"dryRun,omitempty"`
+	SyncAll bool `json:"syncAll,omitempty"`
 }
 
-// SyncAINginxConfigurationParam SyncAINginxConfiguration请求参数
+// SyncAINginxConfigurationParam SyncAINginxConfiguration request param
 type SyncAINginxConfigurationParam struct {
 	BaseParam
-	Params SyncAINginxConfigurationDetailParam `json:"params"` // 详细参数
+	Params SyncAINginxConfigurationDetailParam `json:"params"`
 }
-

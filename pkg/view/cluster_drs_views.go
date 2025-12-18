@@ -4,18 +4,20 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ClusterDRSInventoryView ClusterDRS
 type ClusterDRSInventoryView struct {
-	rest string `json:"clusterUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"balancedState,omitempty"`
-	rest string `json:"automationLevel,omitempty"`
-	rest []interface{} `json:"thresholds,omitempty"`
-	rest int `json:"thresholdDuration,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	BalancedState string `json:"balancedState,omitempty"`
+	AutomationLevel string `json:"automationLevel,omitempty"`
+	Thresholds []interface{} `json:"thresholds,omitempty"`
+	ThresholdDuration int `json:"thresholdDuration,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
 }
 

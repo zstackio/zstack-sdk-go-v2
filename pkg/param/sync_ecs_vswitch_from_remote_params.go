@@ -2,17 +2,16 @@
 
 package param
 
-// SyncEcsVSwitchFromRemoteDetailParam SyncEcsVSwitchFromRemote详细参数
+// SyncEcsVSwitchFromRemoteDetailParam SyncEcsVSwitchFromRemote detail param
 type SyncEcsVSwitchFromRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"vSwitchId,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	VSwitchId string `json:"vSwitchId,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncEcsVSwitchFromRemoteParam SyncEcsVSwitchFromRemote请求参数
+// SyncEcsVSwitchFromRemoteParam SyncEcsVSwitchFromRemote request param
 type SyncEcsVSwitchFromRemoteParam struct {
 	BaseParam
-	Params SyncEcsVSwitchFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncEcsVSwitchFromRemoteDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// AddUserToGroupDetailParam AddUserToGroup详细参数
+// AddUserToGroupDetailParam AddUserToGroup detail param
 type AddUserToGroupDetailParam struct {
-	rest string `json:"userUuid" validate:"required"` // 必填
-	rest string `json:"groupUuid" validate:"required"` // 必填
+	UserUuid string `json:"userUuid" validate:"required"`
+	GroupUuid string `json:"groupUuid" validate:"required"`
 }
 
-// AddUserToGroupParam AddUserToGroup请求参数
+// AddUserToGroupParam AddUserToGroup request param
 type AddUserToGroupParam struct {
 	BaseParam
-	Params AddUserToGroupDetailParam `json:"params"` // 详细参数
+	Params AddUserToGroupDetailParam `json:"params"`
 }
-

@@ -2,21 +2,20 @@
 
 package param
 
-// AddOssBucketFromRemoteDetailParam AddOssBucketFromRemote详细参数
+// AddOssBucketFromRemoteDetailParam AddOssBucketFromRemote detail param
 type AddOssBucketFromRemoteDetailParam struct {
-	rest string `json:"bucketName" validate:"required"` // 必填
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"ossDomain,omitempty"`
-	rest string `json:"ossKey,omitempty"`
-	rest string `json:"ossSecret,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	BucketName string `json:"bucketName" validate:"required"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	Description string `json:"description,omitempty"`
+	OssDomain string `json:"ossDomain,omitempty"`
+	OssKey string `json:"ossKey,omitempty"`
+	OssSecret string `json:"ossSecret,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddOssBucketFromRemoteParam AddOssBucketFromRemote请求参数
+// AddOssBucketFromRemoteParam AddOssBucketFromRemote request param
 type AddOssBucketFromRemoteParam struct {
 	BaseParam
-	Params AddOssBucketFromRemoteDetailParam `json:"params"` // 详细参数
+	Params AddOssBucketFromRemoteDetailParam `json:"params"`
 }
-

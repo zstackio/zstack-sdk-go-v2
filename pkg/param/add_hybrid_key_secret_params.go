@@ -2,22 +2,21 @@
 
 package param
 
-// AddHybridKeySecretDetailParam AddHybridKeySecret详细参数
+// AddHybridKeySecretDetailParam AddHybridKeySecret detail param
 type AddHybridKeySecretDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"key" validate:"required"` // 必填
-	rest string `json:"secret" validate:"required"` // 必填
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type" validate:"required"` // 必填
-	rest bool `json:"sync,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Key string `json:"key" validate:"required"`
+	Secret string `json:"secret" validate:"required"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type" validate:"required"`
+	Sync bool `json:"sync,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddHybridKeySecretParam AddHybridKeySecret请求参数
+// AddHybridKeySecretParam AddHybridKeySecret request param
 type AddHybridKeySecretParam struct {
 	BaseParam
-	Params AddHybridKeySecretDetailParam `json:"params"` // 详细参数
+	Params AddHybridKeySecretDetailParam `json:"params"`
 }
-

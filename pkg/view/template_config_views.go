@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // TemplateConfigInventoryView TemplateConfig
 type TemplateConfigInventoryView struct {
-	rest string `json:"templateUuid,omitempty"`
-	rest string `json:"category,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"defaultValue,omitempty"`
-	rest string `json:"value,omitempty"`
+	TemplateUuid string `json:"templateUuid,omitempty"`
+	Category string `json:"category,omitempty"`
+	Name string `json:"name,omitempty"`
+	DefaultValue string `json:"defaultValue,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 

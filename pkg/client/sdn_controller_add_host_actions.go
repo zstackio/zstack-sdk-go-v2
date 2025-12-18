@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SdnControllerAddHost 操作SdnControllerAddHost
+// SdnControllerAddHost operates on SdnControllerAddHost
 func (cli *ZSClient) SdnControllerAddHost(params param.SdnControllerAddHostParam) (*view.SdnControllerAddHostEventView, error) {
 	resp := view.SdnControllerAddHostEventView{}
 	if err := cli.Post("v1/sdn-controllers/{sdnControllerUuid}/hosts/{hostUuid}", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SdnControllerAddHost(params param.SdnControllerAddHostParam
 	}
 	return &resp, nil
 }
-

@@ -2,14 +2,13 @@
 
 package param
 
-// EjectZBoxDetailParam EjectZBox详细参数
+// EjectZBoxDetailParam EjectZBox detail param
 type EjectZBoxDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// EjectZBoxParam EjectZBox请求参数
+// EjectZBoxParam EjectZBox request param
 type EjectZBoxParam struct {
 	BaseParam
-	Params EjectZBoxDetailParam `json:"params"` // 详细参数
+	Params EjectZBoxDetailParam `json:"params"`
 }
-

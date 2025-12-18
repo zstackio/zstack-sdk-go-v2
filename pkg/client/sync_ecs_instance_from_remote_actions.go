@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncEcsInstanceFromRemote 操作SyncEcsInstanceFromRemote
+// SyncEcsInstanceFromRemote operates on SyncEcsInstanceFromRemote
 func (cli *ZSClient) SyncEcsInstanceFromRemote(params param.SyncEcsInstanceFromRemoteParam) (*view.SyncEcsInstanceFromRemoteEventView, error) {
 	resp := view.SyncEcsInstanceFromRemoteEventView{}
 	if err := cli.Post("v1/hybrid/aliyun/ecs/{dataCenterUuid}/sync", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncEcsInstanceFromRemote(params param.SyncEcsInstanceFromR
 	}
 	return &resp, nil
 }
-

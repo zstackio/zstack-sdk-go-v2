@@ -2,19 +2,18 @@
 
 package param
 
-// SNSFeiShuTestConnectionDetailParam SNSFeiShuTestConnection详细参数
+// SNSFeiShuTestConnectionDetailParam SNSFeiShuTestConnection detail param
 type SNSFeiShuTestConnectionDetailParam struct {
-	rest string `json:"url,omitempty"`
-	rest bool `json:"atAll,omitempty"`
-	rest []string `json:"atPersonUserIds,omitempty"`
-	rest string `json:"secret,omitempty"`
-	rest string `json:"testMsg" validate:"required"` // 必填
-	rest string `json:"endpointUuid,omitempty"`
+	Url string `json:"url,omitempty"`
+	AtAll bool `json:"atAll,omitempty"`
+	AtPersonUserIds []string `json:"atPersonUserIds,omitempty"`
+	Secret string `json:"secret,omitempty"`
+	TestMsg string `json:"testMsg" validate:"required"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
 }
 
-// SNSFeiShuTestConnectionParam SNSFeiShuTestConnection请求参数
+// SNSFeiShuTestConnectionParam SNSFeiShuTestConnection request param
 type SNSFeiShuTestConnectionParam struct {
 	BaseParam
-	Params SNSFeiShuTestConnectionDetailParam `json:"params"` // 详细参数
+	Params SNSFeiShuTestConnectionDetailParam `json:"params"`
 }
-

@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MonitorGroupInventoryView MonitorGroup
 type MonitorGroupInventoryView struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"actions,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest []interface{} `json:"monitorGroupTemplateRefs,omitempty"`
+	Name string `json:"name,omitempty"`
+	State string `json:"state,omitempty"`
+	Actions string `json:"actions,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	MonitorGroupTemplateRefs []interface{} `json:"monitorGroupTemplateRefs,omitempty"`
 }
 

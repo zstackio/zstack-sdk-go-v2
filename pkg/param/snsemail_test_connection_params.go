@@ -2,18 +2,17 @@
 
 package param
 
-// SNSEmailTestConnectionDetailParam SNSEmailTestConnection详细参数
+// SNSEmailTestConnectionDetailParam SNSEmailTestConnection detail param
 type SNSEmailTestConnectionDetailParam struct {
-	rest []string `json:"emails,omitempty"`
-	rest string `json:"platformUuid,omitempty"`
-	rest string `json:"endpointUuid,omitempty"`
-	rest string `json:"subject,omitempty"`
-	rest string `json:"text,omitempty"`
+	Emails []string `json:"emails,omitempty"`
+	PlatformUuid string `json:"platformUuid,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
+	Subject string `json:"subject,omitempty"`
+	Text string `json:"text,omitempty"`
 }
 
-// SNSEmailTestConnectionParam SNSEmailTestConnection请求参数
+// SNSEmailTestConnectionParam SNSEmailTestConnection request param
 type SNSEmailTestConnectionParam struct {
 	BaseParam
-	Params SNSEmailTestConnectionDetailParam `json:"params"` // 详细参数
+	Params SNSEmailTestConnectionDetailParam `json:"params"`
 }
-

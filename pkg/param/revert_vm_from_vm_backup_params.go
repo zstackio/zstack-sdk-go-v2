@@ -2,15 +2,14 @@
 
 package param
 
-// RevertVmFromVmBackupDetailParam RevertVmFromVmBackup详细参数
+// RevertVmFromVmBackupDetailParam RevertVmFromVmBackup detail param
 type RevertVmFromVmBackupDetailParam struct {
-	rest string `json:"groupUuid" validate:"required"` // 必填
-	rest string `json:"backupStorageUuid,omitempty"`
+	GroupUuid string `json:"groupUuid" validate:"required"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
 }
 
-// RevertVmFromVmBackupParam RevertVmFromVmBackup请求参数
+// RevertVmFromVmBackupParam RevertVmFromVmBackup request param
 type RevertVmFromVmBackupParam struct {
 	BaseParam
-	Params RevertVmFromVmBackupDetailParam `json:"params"` // 详细参数
+	Params RevertVmFromVmBackupDetailParam `json:"params"`
 }
-

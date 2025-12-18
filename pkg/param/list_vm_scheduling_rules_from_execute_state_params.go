@@ -2,14 +2,13 @@
 
 package param
 
-// ListVmSchedulingRulesFromExecuteStateDetailParam ListVmSchedulingRulesFromExecuteState详细参数
+// ListVmSchedulingRulesFromExecuteStateDetailParam ListVmSchedulingRulesFromExecuteState detail param
 type ListVmSchedulingRulesFromExecuteStateDetailParam struct {
-	rest []string `json:"executeStates" validate:"required"` // 必填
+	ExecuteStates []string `json:"executeStates" validate:"required"`
 }
 
-// ListVmSchedulingRulesFromExecuteStateParam ListVmSchedulingRulesFromExecuteState请求参数
+// ListVmSchedulingRulesFromExecuteStateParam ListVmSchedulingRulesFromExecuteState request param
 type ListVmSchedulingRulesFromExecuteStateParam struct {
 	BaseParam
-	Params ListVmSchedulingRulesFromExecuteStateDetailParam `json:"params"` // 详细参数
+	Params ListVmSchedulingRulesFromExecuteStateDetailParam `json:"params"`
 }
-

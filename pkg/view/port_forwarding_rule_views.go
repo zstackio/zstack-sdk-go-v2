@@ -4,23 +4,25 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PortForwardingRuleInventoryView PortForwardingRule
 type PortForwardingRuleInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"vipIp,omitempty"`
-	rest string `json:"guestIp,omitempty"`
-	rest string `json:"vipUuid,omitempty"`
-	rest int `json:"vipPortStart,omitempty"`
-	rest int `json:"vipPortEnd,omitempty"`
-	rest int `json:"privatePortStart,omitempty"`
-	rest int `json:"privatePortEnd,omitempty"`
-	rest string `json:"vmNicUuid,omitempty"`
-	rest string `json:"protocolType,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"allowedCidr,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	VipIp string `json:"vipIp,omitempty"`
+	GuestIp string `json:"guestIp,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	VipPortStart int `json:"vipPortStart,omitempty"`
+	VipPortEnd int `json:"vipPortEnd,omitempty"`
+	PrivatePortStart int `json:"privatePortStart,omitempty"`
+	PrivatePortEnd int `json:"privatePortEnd,omitempty"`
+	VmNicUuid string `json:"vmNicUuid,omitempty"`
+	ProtocolType string `json:"protocolType,omitempty"`
+	State string `json:"state,omitempty"`
+	AllowedCidr string `json:"allowedCidr,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

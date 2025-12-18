@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectVirtualRouterDetailParam ReconnectVirtualRouter详细参数
+// ReconnectVirtualRouterDetailParam ReconnectVirtualRouter detail param
 type ReconnectVirtualRouterDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
 }
 
-// ReconnectVirtualRouterParam ReconnectVirtualRouter请求参数
+// ReconnectVirtualRouterParam ReconnectVirtualRouter request param
 type ReconnectVirtualRouterParam struct {
 	BaseParam
-	Params ReconnectVirtualRouterDetailParam `json:"params"` // 详细参数
+	Params ReconnectVirtualRouterDetailParam `json:"params"`
 }
-

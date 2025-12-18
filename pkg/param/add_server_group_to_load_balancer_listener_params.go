@@ -2,15 +2,14 @@
 
 package param
 
-// AddServerGroupToLoadBalancerListenerDetailParam AddServerGroupToLoadBalancerListener详细参数
+// AddServerGroupToLoadBalancerListenerDetailParam AddServerGroupToLoadBalancerListener detail param
 type AddServerGroupToLoadBalancerListenerDetailParam struct {
-	rest string `json:"serverGroupUuid" validate:"required"` // 必填
-	rest string `json:"listenerUuid" validate:"required"` // 必填
+	ServerGroupUuid string `json:"serverGroupUuid" validate:"required"`
+	ListenerUuid string `json:"listenerUuid" validate:"required"`
 }
 
-// AddServerGroupToLoadBalancerListenerParam AddServerGroupToLoadBalancerListener请求参数
+// AddServerGroupToLoadBalancerListenerParam AddServerGroupToLoadBalancerListener request param
 type AddServerGroupToLoadBalancerListenerParam struct {
 	BaseParam
-	Params AddServerGroupToLoadBalancerListenerDetailParam `json:"params"` // 详细参数
+	Params AddServerGroupToLoadBalancerListenerDetailParam `json:"params"`
 }
-

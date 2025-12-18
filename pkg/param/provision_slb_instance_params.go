@@ -2,14 +2,13 @@
 
 package param
 
-// ProvisionSlbInstanceDetailParam ProvisionSlbInstance详细参数
+// ProvisionSlbInstanceDetailParam ProvisionSlbInstance detail param
 type ProvisionSlbInstanceDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ProvisionSlbInstanceParam ProvisionSlbInstance请求参数
+// ProvisionSlbInstanceParam ProvisionSlbInstance request param
 type ProvisionSlbInstanceParam struct {
 	BaseParam
-	Params ProvisionSlbInstanceDetailParam `json:"params"` // 详细参数
+	Params ProvisionSlbInstanceDetailParam `json:"params"`
 }
-

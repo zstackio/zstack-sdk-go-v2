@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmSecurityLevelDetailParam SetVmSecurityLevel详细参数
+// SetVmSecurityLevelDetailParam SetVmSecurityLevel detail param
 type SetVmSecurityLevelDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"securityLevel,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	SecurityLevel string `json:"securityLevel,omitempty"`
 }
 
-// SetVmSecurityLevelParam SetVmSecurityLevel请求参数
+// SetVmSecurityLevelParam SetVmSecurityLevel request param
 type SetVmSecurityLevelParam struct {
 	BaseParam
-	Params SetVmSecurityLevelDetailParam `json:"params"` // 详细参数
+	Params SetVmSecurityLevelDetailParam `json:"params"`
 }
-

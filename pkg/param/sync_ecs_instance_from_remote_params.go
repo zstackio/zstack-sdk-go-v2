@@ -2,17 +2,16 @@
 
 package param
 
-// SyncEcsInstanceFromRemoteDetailParam SyncEcsInstanceFromRemote详细参数
+// SyncEcsInstanceFromRemoteDetailParam SyncEcsInstanceFromRemote detail param
 type SyncEcsInstanceFromRemoteDetailParam struct {
-	rest string `json:"dataCenterUuid" validate:"required"` // 必填
-	rest bool `json:"onlyZstack,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	OnlyZstack bool `json:"onlyZstack,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncEcsInstanceFromRemoteParam SyncEcsInstanceFromRemote请求参数
+// SyncEcsInstanceFromRemoteParam SyncEcsInstanceFromRemote request param
 type SyncEcsInstanceFromRemoteParam struct {
 	BaseParam
-	Params SyncEcsInstanceFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncEcsInstanceFromRemoteDetailParam `json:"params"`
 }
-

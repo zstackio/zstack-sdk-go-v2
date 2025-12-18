@@ -2,15 +2,14 @@
 
 package param
 
-// AddHostToHostSchedulingRuleGroupDetailParam AddHostToHostSchedulingRuleGroup详细参数
+// AddHostToHostSchedulingRuleGroupDetailParam AddHostToHostSchedulingRuleGroup detail param
 type AddHostToHostSchedulingRuleGroupDetailParam struct {
-	rest string `json:"hostGroupUuid" validate:"required"` // 必填
-	rest string `json:"hostUuid" validate:"required"` // 必填
+	HostGroupUuid string `json:"hostGroupUuid" validate:"required"`
+	HostUuid string `json:"hostUuid" validate:"required"`
 }
 
-// AddHostToHostSchedulingRuleGroupParam AddHostToHostSchedulingRuleGroup请求参数
+// AddHostToHostSchedulingRuleGroupParam AddHostToHostSchedulingRuleGroup request param
 type AddHostToHostSchedulingRuleGroupParam struct {
 	BaseParam
-	Params AddHostToHostSchedulingRuleGroupDetailParam `json:"params"` // 详细参数
+	Params AddHostToHostSchedulingRuleGroupDetailParam `json:"params"`
 }
-

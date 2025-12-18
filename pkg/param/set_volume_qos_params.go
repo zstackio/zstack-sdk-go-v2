@@ -2,22 +2,21 @@
 
 package param
 
-// SetVolumeQosDetailParam SetVolumeQos详细参数
+// SetVolumeQosDetailParam SetVolumeQos detail param
 type SetVolumeQosDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"mode,omitempty"`
-	rest int64 `json:"volumeBandwidth,omitempty"`
-	rest int64 `json:"readBandwidth,omitempty"`
-	rest int64 `json:"writeBandwidth,omitempty"`
-	rest int64 `json:"totalBandwidth,omitempty"`
-	rest int64 `json:"readIOPS,omitempty"`
-	rest int64 `json:"writeIOPS,omitempty"`
-	rest int64 `json:"totalIOPS,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Mode string `json:"mode,omitempty"`
+	VolumeBandwidth int64 `json:"volumeBandwidth,omitempty"`
+	ReadBandwidth int64 `json:"readBandwidth,omitempty"`
+	WriteBandwidth int64 `json:"writeBandwidth,omitempty"`
+	TotalBandwidth int64 `json:"totalBandwidth,omitempty"`
+	ReadIOPS int64 `json:"readIOPS,omitempty"`
+	WriteIOPS int64 `json:"writeIOPS,omitempty"`
+	TotalIOPS int64 `json:"totalIOPS,omitempty"`
 }
 
-// SetVolumeQosParam SetVolumeQos请求参数
+// SetVolumeQosParam SetVolumeQos request param
 type SetVolumeQosParam struct {
 	BaseParam
-	Params SetVolumeQosDetailParam `json:"params"` // 详细参数
+	Params SetVolumeQosDetailParam `json:"params"`
 }
-

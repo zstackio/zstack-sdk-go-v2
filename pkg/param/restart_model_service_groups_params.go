@@ -2,14 +2,13 @@
 
 package param
 
-// RestartModelServiceGroupsDetailParam RestartModelServiceGroups详细参数
+// RestartModelServiceGroupsDetailParam RestartModelServiceGroups detail param
 type RestartModelServiceGroupsDetailParam struct {
-	rest []string `json:"uuids" validate:"required"` // 必填
+	Uuids []string `json:"uuids" validate:"required"`
 }
 
-// RestartModelServiceGroupsParam RestartModelServiceGroups请求参数
+// RestartModelServiceGroupsParam RestartModelServiceGroups request param
 type RestartModelServiceGroupsParam struct {
 	BaseParam
-	Params RestartModelServiceGroupsDetailParam `json:"params"` // 详细参数
+	Params RestartModelServiceGroupsDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// PowerOnHostDetailParam PowerOnHost详细参数
+// PowerOnHostDetailParam PowerOnHost detail param
 type PowerOnHostDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"returnEarly,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	ReturnEarly bool `json:"returnEarly,omitempty"`
 }
 
-// PowerOnHostParam PowerOnHost请求参数
+// PowerOnHostParam PowerOnHost request param
 type PowerOnHostParam struct {
 	BaseParam
-	Params PowerOnHostDetailParam `json:"params"` // 详细参数
+	Params PowerOnHostDetailParam `json:"params"`
 }
-

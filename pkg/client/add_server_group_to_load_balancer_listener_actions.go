@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddServerGroupToLoadBalancerListener 操作AddServerGroupToLoadBalancerListener
+// AddServerGroupToLoadBalancerListener adds ServerGroupToLoadBalancerListener
 func (cli *ZSClient) AddServerGroupToLoadBalancerListener(params param.AddServerGroupToLoadBalancerListenerParam) (*view.AddServerGroupToLoadBalancerListenerEventView, error) {
 	resp := view.AddServerGroupToLoadBalancerListenerEventView{}
 	if err := cli.Post("v1/load-balancers/listeners/{listenerUuid}/servergroups", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddServerGroupToLoadBalancerListener(params param.AddServer
 	}
 	return &resp, nil
 }
-

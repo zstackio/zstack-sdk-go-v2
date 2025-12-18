@@ -2,21 +2,20 @@
 
 package param
 
-// AddIpRangeByNetworkCidrDetailParam AddIpRangeByNetworkCidr详细参数
+// AddIpRangeByNetworkCidrDetailParam AddIpRangeByNetworkCidr detail param
 type AddIpRangeByNetworkCidrDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest string `json:"networkCidr" validate:"required"` // 必填
-	rest string `json:"gateway,omitempty"`
-	rest string `json:"ipRangeType,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	NetworkCidr string `json:"networkCidr" validate:"required"`
+	Gateway string `json:"gateway,omitempty"`
+	IpRangeType string `json:"ipRangeType,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddIpRangeByNetworkCidrParam AddIpRangeByNetworkCidr请求参数
+// AddIpRangeByNetworkCidrParam AddIpRangeByNetworkCidr request param
 type AddIpRangeByNetworkCidrParam struct {
 	BaseParam
-	Params AddIpRangeByNetworkCidrDetailParam `json:"params"` // 详细参数
+	Params AddIpRangeByNetworkCidrDetailParam `json:"params"`
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CheckScsiLunClusterStatus 操作CheckScsiLunClusterStatus
+// CheckScsiLunClusterStatus operates on CheckScsiLunClusterStatus
 func (cli *ZSClient) CheckScsiLunClusterStatus(uuid string, params param.CheckScsiLunClusterStatusParam) (*view.CheckScsiLunClusterStatusView, error) {
 	resp := view.CheckScsiLunClusterStatusView{}
 	if err := cli.Put("v1/storage-devices/scsi-lun/{uuid}/cluster/{clusterUuid}", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CheckScsiLunClusterStatus(uuid string, params param.CheckSc
 	}
 	return &resp, nil
 }
-

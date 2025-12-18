@@ -2,14 +2,13 @@
 
 package param
 
-// ReclaimSpaceFromImageStoreDetailParam ReclaimSpaceFromImageStore详细参数
+// ReclaimSpaceFromImageStoreDetailParam ReclaimSpaceFromImageStore detail param
 type ReclaimSpaceFromImageStoreDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReclaimSpaceFromImageStoreParam ReclaimSpaceFromImageStore请求参数
+// ReclaimSpaceFromImageStoreParam ReclaimSpaceFromImageStore request param
 type ReclaimSpaceFromImageStoreParam struct {
 	BaseParam
-	Params ReclaimSpaceFromImageStoreDetailParam `json:"params"` // 详细参数
+	Params ReclaimSpaceFromImageStoreDetailParam `json:"params"`
 }
-

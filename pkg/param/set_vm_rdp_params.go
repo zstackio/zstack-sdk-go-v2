@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmRDPDetailParam SetVmRDP详细参数
+// SetVmRDPDetailParam SetVmRDP detail param
 type SetVmRDPDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"enable" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Enable bool `json:"enable" validate:"required"`
 }
 
-// SetVmRDPParam SetVmRDP请求参数
+// SetVmRDPParam SetVmRDP request param
 type SetVmRDPParam struct {
 	BaseParam
-	Params SetVmRDPDetailParam `json:"params"` // 详细参数
+	Params SetVmRDPDetailParam `json:"params"`
 }
-

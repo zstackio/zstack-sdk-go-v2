@@ -2,17 +2,16 @@
 
 package param
 
-// PowerOffHostDetailParam PowerOffHost详细参数
+// PowerOffHostDetailParam PowerOffHost detail param
 type PowerOffHostDetailParam struct {
-	rest string `json:"adminPassword" validate:"required"` // 必填
-	rest []string `json:"hostUuids" validate:"required"` // 必填
-	rest bool `json:"waitTaskCompleted,omitempty"`
-	rest int64 `json:"maxWaitTime,omitempty"`
+	AdminPassword string `json:"adminPassword" validate:"required"`
+	HostUuids []string `json:"hostUuids" validate:"required"`
+	WaitTaskCompleted bool `json:"waitTaskCompleted,omitempty"`
+	MaxWaitTime int64 `json:"maxWaitTime,omitempty"`
 }
 
-// PowerOffHostParam PowerOffHost请求参数
+// PowerOffHostParam PowerOffHost request param
 type PowerOffHostParam struct {
 	BaseParam
-	Params PowerOffHostDetailParam `json:"params"` // 详细参数
+	Params PowerOffHostDetailParam `json:"params"`
 }
-

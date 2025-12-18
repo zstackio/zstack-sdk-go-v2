@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // IscsiTargetInventoryView IscsiTarget
 type IscsiTargetInventoryView struct {
-	rest string `json:"iscsiServerUuid,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"iqn,omitempty"`
-	rest []IscsiLunInventoryView `json:"iscsiLuns,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	IscsiServerUuid string `json:"iscsiServerUuid,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Iqn string `json:"iqn,omitempty"`
+	IscsiLuns []IscsiLunInventoryView `json:"iscsiLuns,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

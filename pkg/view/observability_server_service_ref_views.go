@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ObservabilityServerServiceRefInventoryView ObservabilityServerServiceRef
 type ObservabilityServerServiceRefInventoryView struct {
-	rest string `json:"observabilityServerOfferingUuid,omitempty"`
-	rest string `json:"observabilityServerUuid,omitempty"`
-	rest string `json:"serviceUuid,omitempty"`
-	rest string `json:"serviceType,omitempty"`
-	rest string `json:"observabilityServerPublicIp,omitempty"`
-	rest string `json:"servicePublicIp,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ObservabilityServerOfferingUuid string `json:"observabilityServerOfferingUuid,omitempty"`
+	ObservabilityServerUuid string `json:"observabilityServerUuid,omitempty"`
+	ServiceUuid string `json:"serviceUuid,omitempty"`
+	ServiceType string `json:"serviceType,omitempty"`
+	ObservabilityServerPublicIp string `json:"observabilityServerPublicIp,omitempty"`
+	ServicePublicIp string `json:"servicePublicIp,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

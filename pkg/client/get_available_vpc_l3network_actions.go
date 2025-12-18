@@ -1,0 +1,17 @@
+// Copyright (c) ZStack.io, Inc.
+
+package client
+
+import (
+	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
+	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+)
+
+// GetAvailableVpcL3Network gets AvailableVpcL3Network by uuid
+func (cli *ZSClient) GetAvailableVpcL3Network(uuid string) (*view.GetAvailableVpcL3NetworkView, error) {
+	var resp view.GetAvailableVpcL3NetworkView
+	if err := cli.Get("v1/vpc/virtual-routers/available-vpc-l3s", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

@@ -2,24 +2,23 @@
 
 package param
 
-// AddInfoSecSecurityMachineDetailParam AddInfoSecSecurityMachine详细参数
+// AddInfoSecSecurityMachineDetailParam AddInfoSecSecurityMachine detail param
 type AddInfoSecSecurityMachineDetailParam struct {
-	rest string `json:"password" validate:"required"` // 必填
-	rest int `json:"port" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"managementIp" validate:"required"` // 必填
-	rest string `json:"model" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
-	rest string `json:"zoneUuid" validate:"required"` // 必填
-	rest string `json:"secretResourcePoolUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Password string `json:"password" validate:"required"`
+	Port int `json:"port" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp" validate:"required"`
+	Model string `json:"model" validate:"required"`
+	Type string `json:"type" validate:"required"`
+	ZoneUuid string `json:"zoneUuid" validate:"required"`
+	SecretResourcePoolUuid string `json:"secretResourcePoolUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddInfoSecSecurityMachineParam AddInfoSecSecurityMachine请求参数
+// AddInfoSecSecurityMachineParam AddInfoSecSecurityMachine request param
 type AddInfoSecSecurityMachineParam struct {
 	BaseParam
-	Params AddInfoSecSecurityMachineDetailParam `json:"params"` // 详细参数
+	Params AddInfoSecSecurityMachineDetailParam `json:"params"`
 }
-

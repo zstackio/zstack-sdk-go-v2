@@ -2,23 +2,22 @@
 
 package param
 
-// AddIpRangeDetailParam AddIpRange详细参数
+// AddIpRangeDetailParam AddIpRange detail param
 type AddIpRangeDetailParam struct {
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"startIp" validate:"required"` // 必填
-	rest string `json:"endIp" validate:"required"` // 必填
-	rest string `json:"netmask" validate:"required"` // 必填
-	rest string `json:"gateway,omitempty"`
-	rest string `json:"ipRangeType,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	StartIp string `json:"startIp" validate:"required"`
+	EndIp string `json:"endIp" validate:"required"`
+	Netmask string `json:"netmask" validate:"required"`
+	Gateway string `json:"gateway,omitempty"`
+	IpRangeType string `json:"ipRangeType,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddIpRangeParam AddIpRange请求参数
+// AddIpRangeParam AddIpRange request param
 type AddIpRangeParam struct {
 	BaseParam
-	Params AddIpRangeDetailParam `json:"params"` // 详细参数
+	Params AddIpRangeDetailParam `json:"params"`
 }
-

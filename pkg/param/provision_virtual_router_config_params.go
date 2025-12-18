@@ -2,14 +2,13 @@
 
 package param
 
-// ProvisionVirtualRouterConfigDetailParam ProvisionVirtualRouterConfig详细参数
+// ProvisionVirtualRouterConfigDetailParam ProvisionVirtualRouterConfig detail param
 type ProvisionVirtualRouterConfigDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
 }
 
-// ProvisionVirtualRouterConfigParam ProvisionVirtualRouterConfig请求参数
+// ProvisionVirtualRouterConfigParam ProvisionVirtualRouterConfig request param
 type ProvisionVirtualRouterConfigParam struct {
 	BaseParam
-	Params ProvisionVirtualRouterConfigDetailParam `json:"params"` // 详细参数
+	Params ProvisionVirtualRouterConfigDetailParam `json:"params"`
 }
-

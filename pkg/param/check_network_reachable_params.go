@@ -2,15 +2,14 @@
 
 package param
 
-// CheckNetworkReachableDetailParam CheckNetworkReachable详细参数
+// CheckNetworkReachableDetailParam CheckNetworkReachable detail param
 type CheckNetworkReachableDetailParam struct {
-	rest []string `json:"sourceHostnames,omitempty"`
-	rest []string `json:"targetHostnames" validate:"required"` // 必填
+	SourceHostnames []string `json:"sourceHostnames,omitempty"`
+	TargetHostnames []string `json:"targetHostnames" validate:"required"`
 }
 
-// CheckNetworkReachableParam CheckNetworkReachable请求参数
+// CheckNetworkReachableParam CheckNetworkReachable request param
 type CheckNetworkReachableParam struct {
 	BaseParam
-	Params CheckNetworkReachableDetailParam `json:"params"` // 详细参数
+	Params CheckNetworkReachableDetailParam `json:"params"`
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// PrometheusQueryVmMonitoringData 操作PrometheusQueryVmMonitoringData
+// PrometheusQueryVmMonitoringData operates on PrometheusQueryVmMonitoringData
 func (cli *ZSClient) PrometheusQueryVmMonitoringData(params param.PrometheusQueryVmMonitoringDataParam) (*view.PrometheusQueryVmMonitoringDataView, error) {
 	var resp view.PrometheusQueryVmMonitoringDataView
 	if err := cli.Get("v1/prometheus/vm-instances", "", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) PrometheusQueryVmMonitoringData(params param.PrometheusQuer
 	}
 	return &resp, nil
 }
-

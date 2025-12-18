@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectSftpBackupStorageDetailParam ReconnectSftpBackupStorage详细参数
+// ReconnectSftpBackupStorageDetailParam ReconnectSftpBackupStorage detail param
 type ReconnectSftpBackupStorageDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectSftpBackupStorageParam ReconnectSftpBackupStorage请求参数
+// ReconnectSftpBackupStorageParam ReconnectSftpBackupStorage request param
 type ReconnectSftpBackupStorageParam struct {
 	BaseParam
-	Params ReconnectSftpBackupStorageDetailParam `json:"params"` // 详细参数
+	Params ReconnectSftpBackupStorageDetailParam `json:"params"`
 }
-

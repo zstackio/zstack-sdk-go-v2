@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ThirdpartyPlatformInventoryView ThirdpartyPlatform
 type ThirdpartyPlatformInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest string `json:"template,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"lastSyncDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Type string `json:"type,omitempty"`
+	Url string `json:"url,omitempty"`
+	Template string `json:"template,omitempty"`
+	State string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	LastSyncDate time.Time `json:"lastSyncDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
 }
 

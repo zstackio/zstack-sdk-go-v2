@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // L3NetworkHostRouteInventoryView L3NetworkHostRoute
 type L3NetworkHostRouteInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest string `json:"prefix,omitempty"`
-	rest string `json:"nexthop,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Prefix string `json:"prefix,omitempty"`
+	Nexthop string `json:"nexthop,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

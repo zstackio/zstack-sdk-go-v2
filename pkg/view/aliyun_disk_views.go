@@ -4,21 +4,23 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AliyunDiskInventoryView AliyunDisk
 type AliyunDiskInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"diskId,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"identityZoneUuid,omitempty"`
-	rest string `json:"ecsInstanceUuid,omitempty"`
-	rest string `json:"diskCategory,omitempty"`
-	rest string `json:"diskType,omitempty"`
-	rest string `json:"diskChargeType,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest int `json:"sizeWithGB,omitempty"`
-	rest string `json:"deviceInfo,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	DiskId string `json:"diskId,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	IdentityZoneUuid string `json:"identityZoneUuid,omitempty"`
+	EcsInstanceUuid string `json:"ecsInstanceUuid,omitempty"`
+	DiskCategory string `json:"diskCategory,omitempty"`
+	DiskType string `json:"diskType,omitempty"`
+	DiskChargeType string `json:"diskChargeType,omitempty"`
+	Status string `json:"status,omitempty"`
+	SizeWithGB int `json:"sizeWithGB,omitempty"`
+	DeviceInfo string `json:"deviceInfo,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddResourceStackVmPortMonitor 操作AddResourceStackVmPortMonitor
+// AddResourceStackVmPortMonitor adds ResourceStackVmPortMonitor
 func (cli *ZSClient) AddResourceStackVmPortMonitor(params param.AddResourceStackVmPortMonitorParam) (*view.AddResourceStackVmPortMonitorEventView, error) {
 	resp := view.AddResourceStackVmPortMonitorEventView{}
 	if err := cli.Post("v1/cloudformation/stack/monitor/addvm", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddResourceStackVmPortMonitor(params param.AddResourceStack
 	}
 	return &resp, nil
 }
-

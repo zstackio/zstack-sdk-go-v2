@@ -4,18 +4,20 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SNSMicrosoftTeamsEndpointInventoryView SNSMicrosoftTeamsEndpoint
 type SNSMicrosoftTeamsEndpointInventoryView struct {
-	rest string `json:"url,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"platformUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"connectionStatus,omitempty"`
-	rest SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
+	Url string `json:"url,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	PlatformUuid string `json:"platformUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	ConnectionStatus string `json:"connectionStatus,omitempty"`
+	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
 

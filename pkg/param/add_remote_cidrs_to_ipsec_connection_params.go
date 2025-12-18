@@ -2,17 +2,16 @@
 
 package param
 
-// AddRemoteCidrsToIPsecConnectionDetailParam AddRemoteCidrsToIPsecConnection详细参数
+// AddRemoteCidrsToIPsecConnectionDetailParam AddRemoteCidrsToIPsecConnection detail param
 type AddRemoteCidrsToIPsecConnectionDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"peerCidrs" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	PeerCidrs []string `json:"peerCidrs" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddRemoteCidrsToIPsecConnectionParam AddRemoteCidrsToIPsecConnection请求参数
+// AddRemoteCidrsToIPsecConnectionParam AddRemoteCidrsToIPsecConnection request param
 type AddRemoteCidrsToIPsecConnectionParam struct {
 	BaseParam
-	Params AddRemoteCidrsToIPsecConnectionDetailParam `json:"params"` // 详细参数
+	Params AddRemoteCidrsToIPsecConnectionDetailParam `json:"params"`
 }
-

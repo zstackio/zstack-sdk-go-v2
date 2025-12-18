@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddInfoSecSecurityMachine 操作AddInfoSecSecurityMachine
+// AddInfoSecSecurityMachine adds InfoSecSecurityMachine
 func (cli *ZSClient) AddInfoSecSecurityMachine(params param.AddInfoSecSecurityMachineParam) (*view.AddSecurityMachineEventView, error) {
 	resp := view.AddSecurityMachineEventView{}
 	if err := cli.Post("v1/security-machine/infoSec", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddInfoSecSecurityMachine(params param.AddInfoSecSecurityMa
 	}
 	return &resp, nil
 }
-

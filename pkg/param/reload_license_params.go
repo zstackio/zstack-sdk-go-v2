@@ -2,15 +2,14 @@
 
 package param
 
-// ReloadLicenseDetailParam ReloadLicense详细参数
+// ReloadLicenseDetailParam ReloadLicense detail param
 type ReloadLicenseDetailParam struct {
-	rest []string `json:"managementNodeUuids,omitempty"`
-	rest string `json:"additionSession,omitempty"`
+	ManagementNodeUuids []string `json:"managementNodeUuids,omitempty"`
+	AdditionSession string `json:"additionSession,omitempty"`
 }
 
-// ReloadLicenseParam ReloadLicense请求参数
+// ReloadLicenseParam ReloadLicense request param
 type ReloadLicenseParam struct {
 	BaseParam
-	Params ReloadLicenseDetailParam `json:"params"` // 详细参数
+	Params ReloadLicenseDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// SetVRouterRouterIdDetailParam SetVRouterRouterId详细参数
+// SetVRouterRouterIdDetailParam SetVRouterRouterId detail param
 type SetVRouterRouterIdDetailParam struct {
-	rest string `json:"vRouterUuid" validate:"required"` // 必填
-	rest string `json:"routerId" validate:"required"` // 必填
+	VRouterUuid string `json:"vRouterUuid" validate:"required"`
+	RouterId string `json:"routerId" validate:"required"`
 }
 
-// SetVRouterRouterIdParam SetVRouterRouterId请求参数
+// SetVRouterRouterIdParam SetVRouterRouterId request param
 type SetVRouterRouterIdParam struct {
 	BaseParam
-	Params SetVRouterRouterIdDetailParam `json:"params"` // 详细参数
+	Params SetVRouterRouterIdDetailParam `json:"params"`
 }
-

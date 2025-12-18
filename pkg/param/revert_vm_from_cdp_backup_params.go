@@ -2,21 +2,20 @@
 
 package param
 
-// RevertVmFromCdpBackupDetailParam RevertVmFromCdpBackup详细参数
+// RevertVmFromCdpBackupDetailParam RevertVmFromCdpBackup detail param
 type RevertVmFromCdpBackupDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
-	rest string `json:"backupStorageUuid" validate:"required"` // 必填
-	rest int64 `json:"groupId" validate:"required"` // 必填
-	rest string `json:"primaryStorageUuidForRootVolume,omitempty"`
-	rest string `json:"primaryStorageUuidForDataVolume,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest bool `json:"useExistingVolume,omitempty"`
-	rest int64 `json:"recoverBandwidth,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
+	BackupStorageUuid string `json:"backupStorageUuid" validate:"required"`
+	GroupId int64 `json:"groupId" validate:"required"`
+	PrimaryStorageUuidForRootVolume string `json:"primaryStorageUuidForRootVolume,omitempty"`
+	PrimaryStorageUuidForDataVolume string `json:"primaryStorageUuidForDataVolume,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	UseExistingVolume bool `json:"useExistingVolume,omitempty"`
+	RecoverBandwidth int64 `json:"recoverBandwidth,omitempty"`
 }
 
-// RevertVmFromCdpBackupParam RevertVmFromCdpBackup请求参数
+// RevertVmFromCdpBackupParam RevertVmFromCdpBackup request param
 type RevertVmFromCdpBackupParam struct {
 	BaseParam
-	Params RevertVmFromCdpBackupDetailParam `json:"params"` // 详细参数
+	Params RevertVmFromCdpBackupDetailParam `json:"params"`
 }
-

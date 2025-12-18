@@ -4,33 +4,35 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ExponBlockVolumeInventoryView ExponBlockVolume
 type ExponBlockVolumeInventoryView struct {
-	rest string `json:"exponStatus,omitempty"`
-	rest string `json:"iscsiPath,omitempty"`
-	rest string `json:"vendor,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest string `json:"diskOfferingUuid,omitempty"`
-	rest string `json:"rootImageUuid,omitempty"`
-	rest string `json:"installPath,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"format,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest int64 `json:"actualSize,omitempty"`
-	rest int `json:"deviceId,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest bool `json:"isShareable,omitempty"`
-	rest string `json:"volumeQos,omitempty"`
-	rest time.Time `json:"lastDetachDate,omitempty"`
-	rest string `json:"lastVmInstanceUuid,omitempty"`
-	rest time.Time `json:"lastAttachDate,omitempty"`
-	rest string `json:"protocol,omitempty"`
+	ExponStatus string `json:"exponStatus,omitempty"`
+	IscsiPath string `json:"iscsiPath,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	DiskOfferingUuid string `json:"diskOfferingUuid,omitempty"`
+	RootImageUuid string `json:"rootImageUuid,omitempty"`
+	InstallPath string `json:"installPath,omitempty"`
+	Type string `json:"type,omitempty"`
+	Format string `json:"format,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	ActualSize int64 `json:"actualSize,omitempty"`
+	DeviceId int `json:"deviceId,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	IsShareable bool `json:"isShareable,omitempty"`
+	VolumeQos string `json:"volumeQos,omitempty"`
+	LastDetachDate time.Time `json:"lastDetachDate,omitempty"`
+	LastVmInstanceUuid string `json:"lastVmInstanceUuid,omitempty"`
+	LastAttachDate time.Time `json:"lastAttachDate,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
 }
 

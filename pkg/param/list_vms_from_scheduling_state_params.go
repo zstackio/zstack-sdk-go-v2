@@ -2,15 +2,14 @@
 
 package param
 
-// ListVmsFromSchedulingStateDetailParam ListVmsFromSchedulingState详细参数
+// ListVmsFromSchedulingStateDetailParam ListVmsFromSchedulingState detail param
 type ListVmsFromSchedulingStateDetailParam struct {
-	rest string `json:"ruleUuid" validate:"required"` // 必填
-	rest []string `json:"executeStates" validate:"required"` // 必填
+	RuleUuid string `json:"ruleUuid" validate:"required"`
+	ExecuteStates []string `json:"executeStates" validate:"required"`
 }
 
-// ListVmsFromSchedulingStateParam ListVmsFromSchedulingState请求参数
+// ListVmsFromSchedulingStateParam ListVmsFromSchedulingState request param
 type ListVmsFromSchedulingStateParam struct {
 	BaseParam
-	Params ListVmsFromSchedulingStateDetailParam `json:"params"` // 详细参数
+	Params ListVmsFromSchedulingStateDetailParam `json:"params"`
 }
-

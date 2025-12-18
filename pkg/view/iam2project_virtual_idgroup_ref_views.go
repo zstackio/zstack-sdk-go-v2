@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // IAM2ProjectVirtualIDGroupRefInventoryView IAM2ProjectVirtualIDGroupRef
 type IAM2ProjectVirtualIDGroupRefInventoryView struct {
-	rest string `json:"projectUuid,omitempty"`
-	rest string `json:"groupUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ProjectUuid string `json:"projectUuid,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

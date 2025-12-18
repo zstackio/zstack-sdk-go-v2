@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// MatchModelServiceTemplateWithModel 操作MatchModelServiceTemplateWithModel
+// MatchModelServiceTemplateWithModel operates on MatchModelServiceTemplateWithModel
 func (cli *ZSClient) MatchModelServiceTemplateWithModel(params param.MatchModelServiceTemplateWithModelParam) (*view.MatchModelServiceTemplateWithModelEventView, error) {
 	resp := view.MatchModelServiceTemplateWithModelEventView{}
 	if err := cli.Post("v1/ai/model-services/templates", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) MatchModelServiceTemplateWithModel(params param.MatchModelS
 	}
 	return &resp, nil
 }
-

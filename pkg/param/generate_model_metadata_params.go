@@ -2,15 +2,14 @@
 
 package param
 
-// GenerateModelMetadataDetailParam GenerateModelMetadata详细参数
+// GenerateModelMetadataDetailParam GenerateModelMetadata detail param
 type GenerateModelMetadataDetailParam struct {
-	rest string `json:"modelCenterUuid" validate:"required"` // 必填
-	rest []string `json:"modelUuids,omitempty"`
+	ModelCenterUuid string `json:"modelCenterUuid" validate:"required"`
+	ModelUuids []string `json:"modelUuids,omitempty"`
 }
 
-// GenerateModelMetadataParam GenerateModelMetadata请求参数
+// GenerateModelMetadataParam GenerateModelMetadata request param
 type GenerateModelMetadataParam struct {
 	BaseParam
-	Params GenerateModelMetadataDetailParam `json:"params"` // 详细参数
+	Params GenerateModelMetadataDetailParam `json:"params"`
 }
-

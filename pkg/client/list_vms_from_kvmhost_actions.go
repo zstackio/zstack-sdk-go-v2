@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ListVMsFromKVMHost 操作ListVMsFromKVMHost
+// ListVMsFromKVMHost operates on ListVMsFromKVMHost
 func (cli *ZSClient) ListVMsFromKVMHost(params param.ListVMsFromKVMHostParam) (*view.ListVMsFromKVMHostEventView, error) {
 	resp := view.ListVMsFromKVMHostEventView{}
 	if err := cli.Post("v1/v2v", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ListVMsFromKVMHost(params param.ListVMsFromKVMHostParam) (*
 	}
 	return &resp, nil
 }
-

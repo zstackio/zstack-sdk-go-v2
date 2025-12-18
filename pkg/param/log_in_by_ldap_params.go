@@ -2,18 +2,17 @@
 
 package param
 
-// LogInByLdapDetailParam LogInByLdap详细参数
+// LogInByLdapDetailParam LogInByLdap detail param
 type LogInByLdapDetailParam struct {
-	rest string `json:"uid" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest string `json:"verifyCode,omitempty"`
-	rest string `json:"captchaUuid,omitempty"`
-	rest map[string]string `json:"clientInfo,omitempty"`
+	Uid string `json:"uid" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	VerifyCode string `json:"verifyCode,omitempty"`
+	CaptchaUuid string `json:"captchaUuid,omitempty"`
+	ClientInfo map[string]string `json:"clientInfo,omitempty"`
 }
 
-// LogInByLdapParam LogInByLdap请求参数
+// LogInByLdapParam LogInByLdap request param
 type LogInByLdapParam struct {
 	BaseParam
-	Params LogInByLdapDetailParam `json:"params"` // 详细参数
+	Params LogInByLdapDetailParam `json:"params"`
 }
-

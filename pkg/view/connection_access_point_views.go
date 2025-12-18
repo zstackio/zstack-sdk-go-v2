@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ConnectionAccessPointInventoryView ConnectionAccessPoint
 type ConnectionAccessPointInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"accessPointId,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"dataCenterUuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"hostOperator,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	AccessPointId string `json:"accessPointId,omitempty"`
+	Type string `json:"type,omitempty"`
+	Name string `json:"name,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Status string `json:"status,omitempty"`
+	HostOperator string `json:"hostOperator,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

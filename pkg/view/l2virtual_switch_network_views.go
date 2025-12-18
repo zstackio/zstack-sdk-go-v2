@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // L2VirtualSwitchNetworkInventoryView L2VirtualSwitchNetwork
 type L2VirtualSwitchNetworkInventoryView struct {
-	rest bool `json:"isDistributed,omitempty"`
-	rest []L2PortGroupNetworkInventoryView `json:"portGroups,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"physicalInterface,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"vSwitchType,omitempty"`
-	rest int `json:"virtualNetworkId,omitempty"`
-	rest bool `json:"isolated,omitempty"`
-	rest string `json:"pvlan,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []string `json:"attachedClusterUuids,omitempty"`
+	IsDistributed bool `json:"isDistributed,omitempty"`
+	PortGroups []L2PortGroupNetworkInventoryView `json:"portGroups,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	PhysicalInterface string `json:"physicalInterface,omitempty"`
+	Type string `json:"type,omitempty"`
+	VSwitchType string `json:"vSwitchType,omitempty"`
+	VirtualNetworkId int `json:"virtualNetworkId,omitempty"`
+	Isolated bool `json:"isolated,omitempty"`
+	Pvlan string `json:"pvlan,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

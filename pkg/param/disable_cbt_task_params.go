@@ -2,15 +2,14 @@
 
 package param
 
-// DisableCbtTaskDetailParam DisableCbtTask详细参数
+// DisableCbtTaskDetailParam DisableCbtTask detail param
 type DisableCbtTaskDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"force,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Force bool `json:"force,omitempty"`
 }
 
-// DisableCbtTaskParam DisableCbtTask请求参数
+// DisableCbtTaskParam DisableCbtTask request param
 type DisableCbtTaskParam struct {
 	BaseParam
-	Params DisableCbtTaskDetailParam `json:"params"` // 详细参数
+	Params DisableCbtTaskDetailParam `json:"params"`
 }
-

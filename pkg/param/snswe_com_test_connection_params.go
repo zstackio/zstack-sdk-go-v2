@@ -2,18 +2,17 @@
 
 package param
 
-// SNSWeComTestConnectionDetailParam SNSWeComTestConnection详细参数
+// SNSWeComTestConnectionDetailParam SNSWeComTestConnection detail param
 type SNSWeComTestConnectionDetailParam struct {
-	rest string `json:"url,omitempty"`
-	rest bool `json:"atAll,omitempty"`
-	rest []string `json:"atPersonUserIds,omitempty"`
-	rest string `json:"testMsg" validate:"required"` // 必填
-	rest string `json:"endpointUuid,omitempty"`
+	Url string `json:"url,omitempty"`
+	AtAll bool `json:"atAll,omitempty"`
+	AtPersonUserIds []string `json:"atPersonUserIds,omitempty"`
+	TestMsg string `json:"testMsg" validate:"required"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
 }
 
-// SNSWeComTestConnectionParam SNSWeComTestConnection请求参数
+// SNSWeComTestConnectionParam SNSWeComTestConnection request param
 type SNSWeComTestConnectionParam struct {
 	BaseParam
-	Params SNSWeComTestConnectionDetailParam `json:"params"` // 详细参数
+	Params SNSWeComTestConnectionDetailParam `json:"params"`
 }
-

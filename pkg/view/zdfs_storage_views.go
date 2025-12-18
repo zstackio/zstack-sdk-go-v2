@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ZdfsStorageInventoryView ZdfsStorage
 type ZdfsStorageInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"endPoint,omitempty"`
-	rest string `json:"accessKey,omitempty"`
-	rest string `json:"secretKey,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest int64 `json:"usedCapacity,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	EndPoint string `json:"endPoint,omitempty"`
+	AccessKey string `json:"accessKey,omitempty"`
+	SecretKey string `json:"secretKey,omitempty"`
+	Type string `json:"type,omitempty"`
+	UsedCapacity int64 `json:"usedCapacity,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LicenseAppIdRefInventoryView LicenseAppIdRef
 type LicenseAppIdRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"licenseId,omitempty"`
-	rest string `json:"appId,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	LicenseId string `json:"licenseId,omitempty"`
+	AppId string `json:"appId,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

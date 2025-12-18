@@ -2,15 +2,14 @@
 
 package param
 
-// SetImageBootModeDetailParam SetImageBootMode详细参数
+// SetImageBootModeDetailParam SetImageBootMode detail param
 type SetImageBootModeDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"bootMode" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	BootMode string `json:"bootMode" validate:"required"`
 }
 
-// SetImageBootModeParam SetImageBootMode请求参数
+// SetImageBootModeParam SetImageBootMode request param
 type SetImageBootModeParam struct {
 	BaseParam
-	Params SetImageBootModeDetailParam `json:"params"` // 详细参数
+	Params SetImageBootModeDetailParam `json:"params"`
 }
-

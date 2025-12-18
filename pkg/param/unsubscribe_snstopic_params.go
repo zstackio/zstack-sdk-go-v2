@@ -2,15 +2,14 @@
 
 package param
 
-// UnsubscribeSNSTopicDetailParam UnsubscribeSNSTopic详细参数
+// UnsubscribeSNSTopicDetailParam UnsubscribeSNSTopic detail param
 type UnsubscribeSNSTopicDetailParam struct {
-	rest string `json:"topicUuid" validate:"required"` // 必填
-	rest string `json:"endpointUuid" validate:"required"` // 必填
+	TopicUuid string `json:"topicUuid" validate:"required"`
+	EndpointUuid string `json:"endpointUuid" validate:"required"`
 }
 
-// UnsubscribeSNSTopicParam UnsubscribeSNSTopic请求参数
+// UnsubscribeSNSTopicParam UnsubscribeSNSTopic request param
 type UnsubscribeSNSTopicParam struct {
 	BaseParam
-	Params UnsubscribeSNSTopicDetailParam `json:"params"` // 详细参数
+	Params UnsubscribeSNSTopicDetailParam `json:"params"`
 }
-

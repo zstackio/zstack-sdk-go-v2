@@ -4,18 +4,20 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // GuestVmScriptInventoryView GuestVmScript
 type GuestVmScriptInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"encodingType,omitempty"`
-	rest string `json:"scriptContent,omitempty"`
-	rest string `json:"renderParams,omitempty"`
-	rest string `json:"platform,omitempty"`
-	rest string `json:"scriptType,omitempty"`
-	rest int `json:"scriptTimeout,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	EncodingType string `json:"encodingType,omitempty"`
+	ScriptContent string `json:"scriptContent,omitempty"`
+	RenderParams string `json:"renderParams,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	ScriptType string `json:"scriptType,omitempty"`
+	ScriptTimeout int `json:"scriptTimeout,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

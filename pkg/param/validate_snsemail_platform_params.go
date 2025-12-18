@@ -2,19 +2,18 @@
 
 package param
 
-// ValidateSNSEmailPlatformDetailParam ValidateSNSEmailPlatform详细参数
+// ValidateSNSEmailPlatformDetailParam ValidateSNSEmailPlatform detail param
 type ValidateSNSEmailPlatformDetailParam struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"smtpServer,omitempty"`
-	rest int `json:"smtpPort,omitempty"`
-	rest string `json:"username,omitempty"`
-	rest string `json:"password,omitempty"`
-	rest string `json:"encryptType,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	SmtpServer string `json:"smtpServer,omitempty"`
+	SmtpPort int `json:"smtpPort,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	EncryptType string `json:"encryptType,omitempty"`
 }
 
-// ValidateSNSEmailPlatformParam ValidateSNSEmailPlatform请求参数
+// ValidateSNSEmailPlatformParam ValidateSNSEmailPlatform request param
 type ValidateSNSEmailPlatformParam struct {
 	BaseParam
-	Params ValidateSNSEmailPlatformDetailParam `json:"params"` // 详细参数
+	Params ValidateSNSEmailPlatformDetailParam `json:"params"`
 }
-

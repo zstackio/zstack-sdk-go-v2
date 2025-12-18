@@ -2,16 +2,15 @@
 
 package param
 
-// DownloadBackupFileFromPublicCloudDetailParam DownloadBackupFileFromPublicCloud详细参数
+// DownloadBackupFileFromPublicCloudDetailParam DownloadBackupFileFromPublicCloud detail param
 type DownloadBackupFileFromPublicCloudDetailParam struct {
-	rest string `json:"regionId" validate:"required"` // 必填
-	rest string `json:"file" validate:"required"` // 必填
-	rest string `json:"type" validate:"required"` // 必填
+	RegionId string `json:"regionId" validate:"required"`
+	File string `json:"file" validate:"required"`
+	Type string `json:"type" validate:"required"`
 }
 
-// DownloadBackupFileFromPublicCloudParam DownloadBackupFileFromPublicCloud请求参数
+// DownloadBackupFileFromPublicCloudParam DownloadBackupFileFromPublicCloud request param
 type DownloadBackupFileFromPublicCloudParam struct {
 	BaseParam
-	Params DownloadBackupFileFromPublicCloudDetailParam `json:"params"` // 详细参数
+	Params DownloadBackupFileFromPublicCloudDetailParam `json:"params"`
 }
-

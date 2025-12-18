@@ -2,14 +2,13 @@
 
 package param
 
-// EnableCdpTaskDetailParam EnableCdpTask详细参数
+// EnableCdpTaskDetailParam EnableCdpTask detail param
 type EnableCdpTaskDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// EnableCdpTaskParam EnableCdpTask请求参数
+// EnableCdpTaskParam EnableCdpTask request param
 type EnableCdpTaskParam struct {
 	BaseParam
-	Params EnableCdpTaskDetailParam `json:"params"` // 详细参数
+	Params EnableCdpTaskDetailParam `json:"params"`
 }
-

@@ -2,21 +2,20 @@
 
 package param
 
-// AddSimulatorHostDetailParam AddSimulatorHost详细参数
+// AddSimulatorHostDetailParam AddSimulatorHost detail param
 type AddSimulatorHostDetailParam struct {
-	rest int64 `json:"memoryCapacity" validate:"required"` // 必填
-	rest int64 `json:"cpuCapacity" validate:"required"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"managementIp" validate:"required"` // 必填
-	rest string `json:"clusterUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	MemoryCapacity int64 `json:"memoryCapacity" validate:"required"`
+	CpuCapacity int64 `json:"cpuCapacity" validate:"required"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp" validate:"required"`
+	ClusterUuid string `json:"clusterUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddSimulatorHostParam AddSimulatorHost请求参数
+// AddSimulatorHostParam AddSimulatorHost request param
 type AddSimulatorHostParam struct {
 	BaseParam
-	Params AddSimulatorHostDetailParam `json:"params"` // 详细参数
+	Params AddSimulatorHostDetailParam `json:"params"`
 }
-

@@ -2,20 +2,19 @@
 
 package param
 
-// LogInDetailParam LogIn详细参数
+// LogInDetailParam LogIn detail param
 type LogInDetailParam struct {
-	rest string `json:"username" validate:"required"` // 必填
-	rest string `json:"password" validate:"required"` // 必填
-	rest string `json:"loginType" validate:"required"` // 必填
-	rest string `json:"captchaUuid,omitempty"`
-	rest string `json:"verifyCode,omitempty"`
-	rest map[string]string `json:"clientInfo,omitempty"`
-	rest map[string]string `json:"properties,omitempty"`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	LoginType string `json:"loginType" validate:"required"`
+	CaptchaUuid string `json:"captchaUuid,omitempty"`
+	VerifyCode string `json:"verifyCode,omitempty"`
+	ClientInfo map[string]string `json:"clientInfo,omitempty"`
+	Properties map[string]string `json:"properties,omitempty"`
 }
 
-// LogInParam LogIn请求参数
+// LogInParam LogIn request param
 type LogInParam struct {
 	BaseParam
-	Params LogInDetailParam `json:"params"` // 详细参数
+	Params LogInDetailParam `json:"params"`
 }
-

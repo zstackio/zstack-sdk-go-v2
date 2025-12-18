@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveServerGroupFromLoadBalancerListenerDetailParam RemoveServerGroupFromLoadBalancerListener详细参数
+// RemoveServerGroupFromLoadBalancerListenerDetailParam RemoveServerGroupFromLoadBalancerListener detail param
 type RemoveServerGroupFromLoadBalancerListenerDetailParam struct {
-	rest string `json:"serverGroupUuid" validate:"required"` // 必填
-	rest string `json:"listenerUuid" validate:"required"` // 必填
+	ServerGroupUuid string `json:"serverGroupUuid" validate:"required"`
+	ListenerUuid string `json:"listenerUuid" validate:"required"`
 }
 
-// RemoveServerGroupFromLoadBalancerListenerParam RemoveServerGroupFromLoadBalancerListener请求参数
+// RemoveServerGroupFromLoadBalancerListenerParam RemoveServerGroupFromLoadBalancerListener request param
 type RemoveServerGroupFromLoadBalancerListenerParam struct {
 	BaseParam
-	Params RemoveServerGroupFromLoadBalancerListenerDetailParam `json:"params"` // 详细参数
+	Params RemoveServerGroupFromLoadBalancerListenerDetailParam `json:"params"`
 }
-

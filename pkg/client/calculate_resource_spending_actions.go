@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// CalculateResourceSpending 操作CalculateResourceSpending
+// CalculateResourceSpending operates on CalculateResourceSpending
 func (cli *ZSClient) CalculateResourceSpending(uuid string, params param.CalculateResourceSpendingParam) (*view.CalculateResourceSpendingView, error) {
 	resp := view.CalculateResourceSpendingView{}
 	if err := cli.Put("v1/billings/resources/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) CalculateResourceSpending(uuid string, params param.Calcula
 	}
 	return &resp, nil
 }
-

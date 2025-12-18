@@ -2,15 +2,14 @@
 
 package param
 
-// IdentifyHostDetailParam IdentifyHost详细参数
+// IdentifyHostDetailParam IdentifyHost detail param
 type IdentifyHostDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest int64 `json:"interval,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Interval int64 `json:"interval,omitempty"`
 }
 
-// IdentifyHostParam IdentifyHost请求参数
+// IdentifyHostParam IdentifyHost request param
 type IdentifyHostParam struct {
 	BaseParam
-	Params IdentifyHostDetailParam `json:"params"` // 详细参数
+	Params IdentifyHostDetailParam `json:"params"`
 }
-

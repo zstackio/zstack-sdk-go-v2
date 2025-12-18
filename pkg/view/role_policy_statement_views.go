@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // RolePolicyStatementInventoryView RolePolicyStatement
 type RolePolicyStatementInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest interface{} `json:"statement,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Statement interface{} `json:"statement,omitempty"`
 }
 

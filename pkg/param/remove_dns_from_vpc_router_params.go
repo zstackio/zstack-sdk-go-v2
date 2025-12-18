@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveDnsFromVpcRouterDetailParam RemoveDnsFromVpcRouter详细参数
+// RemoveDnsFromVpcRouterDetailParam RemoveDnsFromVpcRouter detail param
 type RemoveDnsFromVpcRouterDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"dns" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Dns string `json:"dns" validate:"required"`
 }
 
-// RemoveDnsFromVpcRouterParam RemoveDnsFromVpcRouter请求参数
+// RemoveDnsFromVpcRouterParam RemoveDnsFromVpcRouter request param
 type RemoveDnsFromVpcRouterParam struct {
 	BaseParam
-	Params RemoveDnsFromVpcRouterDetailParam `json:"params"` // 详细参数
+	Params RemoveDnsFromVpcRouterDetailParam `json:"params"`
 }
-

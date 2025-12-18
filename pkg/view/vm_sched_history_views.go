@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmSchedHistoryInventoryView VmSchedHistory
 type VmSchedHistoryInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"schedType,omitempty"`
-	rest string `json:"schedReason,omitempty"`
-	rest string `json:"failReason,omitempty"`
-	rest bool `json:"success,omitempty"`
-	rest string `json:"lastHostUuid,omitempty"`
-	rest string `json:"destHostUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	SchedType string `json:"schedType,omitempty"`
+	SchedReason string `json:"schedReason,omitempty"`
+	FailReason string `json:"failReason,omitempty"`
+	Success bool `json:"success,omitempty"`
+	LastHostUuid string `json:"lastHostUuid,omitempty"`
+	DestHostUuid string `json:"destHostUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
 }
 

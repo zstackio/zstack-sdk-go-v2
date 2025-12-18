@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddIpv6RangeByNetworkCidr 操作AddIpv6RangeByNetworkCidr
+// AddIpv6RangeByNetworkCidr adds Ipv6RangeByNetworkCidr
 func (cli *ZSClient) AddIpv6RangeByNetworkCidr(params param.AddIpv6RangeByNetworkCidrParam) (*view.AddIpRangeByNetworkCidrEventView, error) {
 	resp := view.AddIpRangeByNetworkCidrEventView{}
 	if err := cli.Post("v1/l3-networks/{l3NetworkUuid}/ipv6-ranges/by-cidr", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddIpv6RangeByNetworkCidr(params param.AddIpv6RangeByNetwor
 	}
 	return &resp, nil
 }
-

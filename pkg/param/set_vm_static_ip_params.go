@@ -2,21 +2,20 @@
 
 package param
 
-// SetVmStaticIpDetailParam SetVmStaticIp详细参数
+// SetVmStaticIpDetailParam SetVmStaticIp detail param
 type SetVmStaticIpDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
-	rest string `json:"l3NetworkUuid" validate:"required"` // 必填
-	rest string `json:"ip,omitempty"`
-	rest string `json:"ip6,omitempty"`
-	rest string `json:"netmask,omitempty"`
-	rest string `json:"gateway,omitempty"`
-	rest string `json:"ipv6Gateway,omitempty"`
-	rest string `json:"ipv6Prefix,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
+	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
+	Ip string `json:"ip,omitempty"`
+	Ip6 string `json:"ip6,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
+	Gateway string `json:"gateway,omitempty"`
+	Ipv6Gateway string `json:"ipv6Gateway,omitempty"`
+	Ipv6Prefix string `json:"ipv6Prefix,omitempty"`
 }
 
-// SetVmStaticIpParam SetVmStaticIp请求参数
+// SetVmStaticIpParam SetVmStaticIp request param
 type SetVmStaticIpParam struct {
 	BaseParam
-	Params SetVmStaticIpDetailParam `json:"params"` // 详细参数
+	Params SetVmStaticIpDetailParam `json:"params"`
 }
-

@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // EventDataAckInventoryView EventDataAck
 type EventDataAckInventoryView struct {
-	rest string `json:"eventSubscriptionUuid,omitempty"`
-	rest string `json:"alertDataUuid,omitempty"`
-	rest string `json:"alertType,omitempty"`
-	rest int64 `json:"ackPeriod,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest time.Time `json:"ackDate,omitempty"`
-	rest bool `json:"resumeAlert,omitempty"`
-	rest string `json:"operatorAccountUuid,omitempty"`
+	EventSubscriptionUuid string `json:"eventSubscriptionUuid,omitempty"`
+	AlertDataUuid string `json:"alertDataUuid,omitempty"`
+	AlertType string `json:"alertType,omitempty"`
+	AckPeriod int64 `json:"ackPeriod,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	AckDate time.Time `json:"ackDate,omitempty"`
+	ResumeAlert bool `json:"resumeAlert,omitempty"`
+	OperatorAccountUuid string `json:"operatorAccountUuid,omitempty"`
 }
 

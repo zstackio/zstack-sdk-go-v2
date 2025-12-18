@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmConsoleModeDetailParam SetVmConsoleMode详细参数
+// SetVmConsoleModeDetailParam SetVmConsoleMode detail param
 type SetVmConsoleModeDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"mode" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Mode string `json:"mode" validate:"required"`
 }
 
-// SetVmConsoleModeParam SetVmConsoleMode请求参数
+// SetVmConsoleModeParam SetVmConsoleMode request param
 type SetVmConsoleModeParam struct {
 	BaseParam
-	Params SetVmConsoleModeDetailParam `json:"params"` // 详细参数
+	Params SetVmConsoleModeDetailParam `json:"params"`
 }
-

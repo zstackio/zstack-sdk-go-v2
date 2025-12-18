@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VpcFirewallRuleSetInventoryView VpcFirewallRuleSet
 type VpcFirewallRuleSetInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"actionType,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest bool `json:"isDefault,omitempty"`
-	rest bool `json:"isApplied,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []VpcFirewallRuleInventoryView `json:"rules,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	ActionType string `json:"actionType,omitempty"`
+	Description string `json:"description,omitempty"`
+	IsDefault bool `json:"isDefault,omitempty"`
+	IsApplied bool `json:"isApplied,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Rules []VpcFirewallRuleInventoryView `json:"rules,omitempty"`
 }
 

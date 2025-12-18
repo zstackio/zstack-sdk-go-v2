@@ -2,18 +2,17 @@
 
 package param
 
-// CalculateAccountSpendingDetailParam CalculateAccountSpending详细参数
+// CalculateAccountSpendingDetailParam CalculateAccountSpending detail param
 type CalculateAccountSpendingDetailParam struct {
-	rest string `json:"accountUuid" validate:"required"` // 必填
-	rest string `json:"hypervisorType,omitempty"`
-	rest int64 `json:"dateStart,omitempty"`
-	rest int64 `json:"dateEnd,omitempty"`
-	rest bool `json:"simple,omitempty"`
+	AccountUuid string `json:"accountUuid" validate:"required"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
+	DateStart int64 `json:"dateStart,omitempty"`
+	DateEnd int64 `json:"dateEnd,omitempty"`
+	Simple bool `json:"simple,omitempty"`
 }
 
-// CalculateAccountSpendingParam CalculateAccountSpending请求参数
+// CalculateAccountSpendingParam CalculateAccountSpending request param
 type CalculateAccountSpendingParam struct {
 	BaseParam
-	Params CalculateAccountSpendingDetailParam `json:"params"` // 详细参数
+	Params CalculateAccountSpendingDetailParam `json:"params"`
 }
-

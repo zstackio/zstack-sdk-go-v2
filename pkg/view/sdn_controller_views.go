@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SdnControllerInventoryView SdnController
 type SdnControllerInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vendorType,omitempty"`
-	rest string `json:"vendorVersion,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"ip,omitempty"`
-	rest string `json:"username,omitempty"`
-	rest string `json:"password,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest []SdnControllerHostRefInventoryView `json:"hostRefs,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VendorType string `json:"vendorType,omitempty"`
+	VendorVersion string `json:"vendorVersion,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Status string `json:"status,omitempty"`
+	HostRefs []SdnControllerHostRefInventoryView `json:"hostRefs,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

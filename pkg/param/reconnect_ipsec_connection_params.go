@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectIPsecConnectionDetailParam ReconnectIPsecConnection详细参数
+// ReconnectIPsecConnectionDetailParam ReconnectIPsecConnection detail param
 type ReconnectIPsecConnectionDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectIPsecConnectionParam ReconnectIPsecConnection请求参数
+// ReconnectIPsecConnectionParam ReconnectIPsecConnection request param
 type ReconnectIPsecConnectionParam struct {
 	BaseParam
-	Params ReconnectIPsecConnectionDetailParam `json:"params"` // 详细参数
+	Params ReconnectIPsecConnectionDetailParam `json:"params"`
 }
-

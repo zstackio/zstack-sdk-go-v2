@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ValidateVmSchedulingRule 操作ValidateVmSchedulingRule
+// ValidateVmSchedulingRule operates on ValidateVmSchedulingRule
 func (cli *ZSClient) ValidateVmSchedulingRule(uuid string, params param.ValidateVmSchedulingRuleParam) (*view.ValidateVmSchedulingRuleView, error) {
 	resp := view.ValidateVmSchedulingRuleView{}
 	if err := cli.Put("v1/validate/vmSchedulingRule", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ValidateVmSchedulingRule(uuid string, params param.Validate
 	}
 	return &resp, nil
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddVRouterNetworksToOspfArea 操作AddVRouterNetworksToOspfArea
+// AddVRouterNetworksToOspfArea adds VRouterNetworksToOspfArea
 func (cli *ZSClient) AddVRouterNetworksToOspfArea(params param.AddVRouterNetworksToOspfAreaParam) (*view.AddVRouterNetworksToOspfAreaEventView, error) {
 	resp := view.AddVRouterNetworksToOspfAreaEventView{}
 	if err := cli.Post("v1/routerArea/{routerAreaUuid}/router/{vRouterUuid}/addnetworks", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddVRouterNetworksToOspfArea(params param.AddVRouterNetwork
 	}
 	return &resp, nil
 }
-

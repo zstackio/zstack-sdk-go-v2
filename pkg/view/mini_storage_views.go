@@ -4,26 +4,28 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // MiniStorageInventoryView MiniStorage
 type MiniStorageInventoryView struct {
-	rest string `json:"miniStorageType,omitempty"`
-	rest string `json:"diskIdentifier,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest int64 `json:"totalCapacity,omitempty"`
-	rest int64 `json:"availableCapacity,omitempty"`
-	rest int64 `json:"totalPhysicalCapacity,omitempty"`
-	rest int64 `json:"availablePhysicalCapacity,omitempty"`
-	rest int64 `json:"systemUsedCapacity,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"mountPath,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []string `json:"attachedClusterUuids,omitempty"`
+	MiniStorageType string `json:"miniStorageType,omitempty"`
+	DiskIdentifier string `json:"diskIdentifier,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Url string `json:"url,omitempty"`
+	Description string `json:"description,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
+	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
+	SystemUsedCapacity int64 `json:"systemUsedCapacity,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	MountPath string `json:"mountPath,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

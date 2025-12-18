@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectPrimaryStorageDetailParam ReconnectPrimaryStorage详细参数
+// ReconnectPrimaryStorageDetailParam ReconnectPrimaryStorage detail param
 type ReconnectPrimaryStorageDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectPrimaryStorageParam ReconnectPrimaryStorage请求参数
+// ReconnectPrimaryStorageParam ReconnectPrimaryStorage request param
 type ReconnectPrimaryStorageParam struct {
 	BaseParam
-	Params ReconnectPrimaryStorageDetailParam `json:"params"` // 详细参数
+	Params ReconnectPrimaryStorageDetailParam `json:"params"`
 }
-

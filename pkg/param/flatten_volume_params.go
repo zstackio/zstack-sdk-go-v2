@@ -2,15 +2,14 @@
 
 package param
 
-// FlattenVolumeDetailParam FlattenVolume详细参数
+// FlattenVolumeDetailParam FlattenVolume detail param
 type FlattenVolumeDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"dryRun,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	DryRun bool `json:"dryRun,omitempty"`
 }
 
-// FlattenVolumeParam FlattenVolume请求参数
+// FlattenVolumeParam FlattenVolume request param
 type FlattenVolumeParam struct {
 	BaseParam
-	Params FlattenVolumeDetailParam `json:"params"` // 详细参数
+	Params FlattenVolumeDetailParam `json:"params"`
 }
-

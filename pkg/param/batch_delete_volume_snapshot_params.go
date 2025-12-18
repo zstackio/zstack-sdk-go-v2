@@ -2,15 +2,14 @@
 
 package param
 
-// BatchDeleteVolumeSnapshotDetailParam BatchDeleteVolumeSnapshot详细参数
+// BatchDeleteVolumeSnapshotDetailParam BatchDeleteVolumeSnapshot detail param
 type BatchDeleteVolumeSnapshotDetailParam struct {
-	rest []string `json:"uuids" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	Uuids []string `json:"uuids" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// BatchDeleteVolumeSnapshotParam BatchDeleteVolumeSnapshot请求参数
+// BatchDeleteVolumeSnapshotParam BatchDeleteVolumeSnapshot request param
 type BatchDeleteVolumeSnapshotParam struct {
 	BaseParam
-	Params BatchDeleteVolumeSnapshotDetailParam `json:"params"` // 详细参数
+	Params BatchDeleteVolumeSnapshotDetailParam `json:"params"`
 }
-

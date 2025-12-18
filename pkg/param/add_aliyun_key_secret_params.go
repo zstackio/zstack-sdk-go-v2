@@ -2,21 +2,20 @@
 
 package param
 
-// AddAliyunKeySecretDetailParam AddAliyunKeySecret详细参数
+// AddAliyunKeySecretDetailParam AddAliyunKeySecret detail param
 type AddAliyunKeySecretDetailParam struct {
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"key" validate:"required"` // 必填
-	rest string `json:"secret" validate:"required"` // 必填
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest bool `json:"sync,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Key string `json:"key" validate:"required"`
+	Secret string `json:"secret" validate:"required"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Sync bool `json:"sync,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddAliyunKeySecretParam AddAliyunKeySecret请求参数
+// AddAliyunKeySecretParam AddAliyunKeySecret request param
 type AddAliyunKeySecretParam struct {
 	BaseParam
-	Params AddAliyunKeySecretDetailParam `json:"params"` // 详细参数
+	Params AddAliyunKeySecretDetailParam `json:"params"`
 }
-

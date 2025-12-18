@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VolumeBackupInventoryView VolumeBackup
 type VolumeBackupInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"volumeUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest string `json:"metadata,omitempty"`
-	rest string `json:"groupUuid,omitempty"`
-	rest string `json:"mode,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []VolumeBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VolumeUuid string `json:"volumeUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	Metadata string `json:"metadata,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
+	Mode string `json:"mode,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	BackupStorageRefs []VolumeBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
 }
 

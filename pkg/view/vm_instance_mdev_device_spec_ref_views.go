@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmInstanceMdevDeviceSpecRefInventoryView VmInstanceMdevDeviceSpecRef
 type VmInstanceMdevDeviceSpecRefInventoryView struct {
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest string `json:"mdevSpecUuid,omitempty"`
-	rest int `json:"mdevDeviceNumber,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	MdevSpecUuid string `json:"mdevSpecUuid,omitempty"`
+	MdevDeviceNumber int `json:"mdevDeviceNumber,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

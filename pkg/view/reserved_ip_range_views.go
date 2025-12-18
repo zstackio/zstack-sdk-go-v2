@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ReservedIpRangeInventoryView ReservedIpRange
 type ReservedIpRangeInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"l3NetworkUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"startIp,omitempty"`
-	rest string `json:"endIp,omitempty"`
-	rest int `json:"ipVersion,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	StartIp string `json:"startIp,omitempty"`
+	EndIp string `json:"endIp,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,17 +2,16 @@
 
 package param
 
-// SNSHttpTestConnectionDetailParam SNSHttpTestConnection详细参数
+// SNSHttpTestConnectionDetailParam SNSHttpTestConnection detail param
 type SNSHttpTestConnectionDetailParam struct {
-	rest string `json:"url,omitempty"`
-	rest string `json:"username,omitempty"`
-	rest string `json:"password,omitempty"`
-	rest string `json:"endpointUuid,omitempty"`
+	Url string `json:"url,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
 }
 
-// SNSHttpTestConnectionParam SNSHttpTestConnection请求参数
+// SNSHttpTestConnectionParam SNSHttpTestConnection request param
 type SNSHttpTestConnectionParam struct {
 	BaseParam
-	Params SNSHttpTestConnectionDetailParam `json:"params"` // 详细参数
+	Params SNSHttpTestConnectionDetailParam `json:"params"`
 }
-

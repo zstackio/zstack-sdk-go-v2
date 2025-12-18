@@ -2,17 +2,16 @@
 
 package param
 
-// SyncEcsSecurityGroupFromRemoteDetailParam SyncEcsSecurityGroupFromRemote详细参数
+// SyncEcsSecurityGroupFromRemoteDetailParam SyncEcsSecurityGroupFromRemote detail param
 type SyncEcsSecurityGroupFromRemoteDetailParam struct {
-	rest string `json:"ecsVpcUuid" validate:"required"` // 必填
-	rest string `json:"securityGroupId,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	EcsVpcUuid string `json:"ecsVpcUuid" validate:"required"`
+	SecurityGroupId string `json:"securityGroupId,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncEcsSecurityGroupFromRemoteParam SyncEcsSecurityGroupFromRemote请求参数
+// SyncEcsSecurityGroupFromRemoteParam SyncEcsSecurityGroupFromRemote request param
 type SyncEcsSecurityGroupFromRemoteParam struct {
 	BaseParam
-	Params SyncEcsSecurityGroupFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncEcsSecurityGroupFromRemoteDetailParam `json:"params"`
 }
-

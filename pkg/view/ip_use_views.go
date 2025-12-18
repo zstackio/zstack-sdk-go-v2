@@ -4,14 +4,16 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // IpUseInventoryView IpUse
 type IpUseInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"usedIpUuid,omitempty"`
-	rest string `json:"serviceId,omitempty"`
-	rest string `json:"use,omitempty"`
-	rest string `json:"details,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	UsedIpUuid string `json:"usedIpUuid,omitempty"`
+	ServiceId string `json:"serviceId,omitempty"`
+	Use string `json:"use,omitempty"`
+	Details string `json:"details,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

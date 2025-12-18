@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmInstanceDeviceAddressGroupInventoryView VmInstanceDeviceAddressGroup
 type VmInstanceDeviceAddressGroupInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []VmInstanceDeviceAddressArchiveInventoryView `json:"addressList,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AddressList []VmInstanceDeviceAddressArchiveInventoryView `json:"addressList,omitempty"`
 }
 

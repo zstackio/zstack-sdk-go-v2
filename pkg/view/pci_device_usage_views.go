@@ -4,22 +4,24 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // PciDeviceUsageInventoryView PciDeviceUsage
 type PciDeviceUsageInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest int64 `json:"dateInLong,omitempty"`
-	rest string `json:"pciDeviceUuid,omitempty"`
-	rest string `json:"vendorId,omitempty"`
-	rest string `json:"deviceId,omitempty"`
-	rest string `json:"subvendorId,omitempty"`
-	rest string `json:"subdeviceId,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"vmUuid,omitempty"`
-	rest string `json:"vmName,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"inventory,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	DateInLong int64 `json:"dateInLong,omitempty"`
+	PciDeviceUuid string `json:"pciDeviceUuid,omitempty"`
+	VendorId string `json:"vendorId,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	SubvendorId string `json:"subvendorId,omitempty"`
+	SubdeviceId string `json:"subdeviceId,omitempty"`
+	Description string `json:"description,omitempty"`
+	VmUuid string `json:"vmUuid,omitempty"`
+	VmName string `json:"vmName,omitempty"`
+	Status string `json:"status,omitempty"`
+	Inventory string `json:"inventory,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmSchedulingRuleRefInventoryView VmSchedulingRuleRef
 type VmSchedulingRuleRefInventoryView struct {
-	rest string `json:"vmGroupUuid,omitempty"`
-	rest string `json:"hostGroupUuid,omitempty"`
-	rest string `json:"vmSchedulingRuleUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VmGroupUuid string `json:"vmGroupUuid,omitempty"`
+	HostGroupUuid string `json:"hostGroupUuid,omitempty"`
+	VmSchedulingRuleUuid string `json:"vmSchedulingRuleUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ReconnectBareMetal2Gateway 操作ReconnectBareMetal2Gateway
+// ReconnectBareMetal2Gateway operates on ReconnectBareMetal2Gateway
 func (cli *ZSClient) ReconnectBareMetal2Gateway(uuid string, params param.ReconnectBareMetal2GatewayParam) (*view.ReconnectBareMetal2GatewayEventView, error) {
 	resp := view.ReconnectBareMetal2GatewayEventView{}
 	if err := cli.Put("v1/baremetal2/gateways/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ReconnectBareMetal2Gateway(uuid string, params param.Reconn
 	}
 	return &resp, nil
 }
-

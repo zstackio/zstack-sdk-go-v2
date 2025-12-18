@@ -4,27 +4,29 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // CephBackupStorageInventoryView CephBackupStorage
 type CephBackupStorageInventoryView struct {
-	rest []CephBackupStorageMonInventoryView `json:"mons,omitempty"`
-	rest string `json:"fsid,omitempty"`
-	rest string `json:"poolName,omitempty"`
-	rest int64 `json:"poolAvailableCapacity,omitempty"`
-	rest int64 `json:"poolUsedCapacity,omitempty"`
-	rest int `json:"poolReplicatedSize,omitempty"`
-	rest float32 `json:"poolDiskUtilization,omitempty"`
-	rest string `json:"poolSecurityPolicy,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest int64 `json:"totalCapacity,omitempty"`
-	rest int64 `json:"availableCapacity,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []string `json:"attachedZoneUuids,omitempty"`
+	Mons []CephBackupStorageMonInventoryView `json:"mons,omitempty"`
+	Fsid string `json:"fsid,omitempty"`
+	PoolName string `json:"poolName,omitempty"`
+	PoolAvailableCapacity int64 `json:"poolAvailableCapacity,omitempty"`
+	PoolUsedCapacity int64 `json:"poolUsedCapacity,omitempty"`
+	PoolReplicatedSize int `json:"poolReplicatedSize,omitempty"`
+	PoolDiskUtilization float32 `json:"poolDiskUtilization,omitempty"`
+	PoolSecurityPolicy string `json:"poolSecurityPolicy,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Url string `json:"url,omitempty"`
+	Description string `json:"description,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 

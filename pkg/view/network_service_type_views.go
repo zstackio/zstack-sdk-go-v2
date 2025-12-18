@@ -4,9 +4,11 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // NetworkServiceTypeInventoryView NetworkServiceType
 type NetworkServiceTypeInventoryView struct {
-	rest string `json:"networkServiceProviderUuid,omitempty"`
-	rest string `json:"type,omitempty"`
+	NetworkServiceProviderUuid string `json:"networkServiceProviderUuid,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 

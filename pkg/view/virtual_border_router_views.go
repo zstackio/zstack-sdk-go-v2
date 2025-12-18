@@ -4,24 +4,26 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VirtualBorderRouterInventoryView VirtualBorderRouter
 type VirtualBorderRouterInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vbrId,omitempty"`
-	rest string `json:"vlanInterfaceId,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"dataCenterUuid,omitempty"`
-	rest string `json:"vlanId,omitempty"`
-	rest string `json:"physicalConnectionStatus,omitempty"`
-	rest string `json:"circuitCode,omitempty"`
-	rest string `json:"localGatewayIp,omitempty"`
-	rest string `json:"peerGatewayIp,omitempty"`
-	rest string `json:"peeringSubnetMask,omitempty"`
-	rest string `json:"physicalConnectionId,omitempty"`
-	rest string `json:"accessPointUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VbrId string `json:"vbrId,omitempty"`
+	VlanInterfaceId string `json:"vlanInterfaceId,omitempty"`
+	Status string `json:"status,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	VlanId string `json:"vlanId,omitempty"`
+	PhysicalConnectionStatus string `json:"physicalConnectionStatus,omitempty"`
+	CircuitCode string `json:"circuitCode,omitempty"`
+	LocalGatewayIp string `json:"localGatewayIp,omitempty"`
+	PeerGatewayIp string `json:"peerGatewayIp,omitempty"`
+	PeeringSubnetMask string `json:"peeringSubnetMask,omitempty"`
+	PhysicalConnectionId string `json:"physicalConnectionId,omitempty"`
+	AccessPointUuid string `json:"accessPointUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

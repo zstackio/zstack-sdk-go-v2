@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // HbaDeviceInventoryView HbaDevice
 type HbaDeviceInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"hbaType,omitempty"`
-	rest string `json:"createDate,omitempty"`
-	rest string `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	HbaType string `json:"hbaType,omitempty"`
+	CreateDate string `json:"createDate,omitempty"`
+	LastOpDate string `json:"lastOpDate,omitempty"`
 }
 

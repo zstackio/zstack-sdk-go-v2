@@ -2,14 +2,13 @@
 
 package param
 
-// UngenerateMdevDevicesDetailParam UngenerateMdevDevices详细参数
+// UngenerateMdevDevicesDetailParam UngenerateMdevDevices detail param
 type UngenerateMdevDevicesDetailParam struct {
-	rest string `json:"pciDeviceUuid" validate:"required"` // 必填
+	PciDeviceUuid string `json:"pciDeviceUuid" validate:"required"`
 }
 
-// UngenerateMdevDevicesParam UngenerateMdevDevices请求参数
+// UngenerateMdevDevicesParam UngenerateMdevDevices request param
 type UngenerateMdevDevicesParam struct {
 	BaseParam
-	Params UngenerateMdevDevicesDetailParam `json:"params"` // 详细参数
+	Params UngenerateMdevDevicesDetailParam `json:"params"`
 }
-

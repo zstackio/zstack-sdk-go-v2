@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddSNSSmsReceiver 操作AddSNSSmsReceiver
+// AddSNSSmsReceiver adds SNSSmsReceiver
 func (cli *ZSClient) AddSNSSmsReceiver(params param.AddSNSSmsReceiverParam) (*view.AddSNSSmsReceiverEventView, error) {
 	resp := view.AddSNSSmsReceiverEventView{}
 	if err := cli.Post("v1/sns/sms-endpoints/receivers", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddSNSSmsReceiver(params param.AddSNSSmsReceiverParam) (*vi
 	}
 	return &resp, nil
 }
-

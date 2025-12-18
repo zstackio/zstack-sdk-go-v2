@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SNSDingTalkAtPersonInventoryView SNSDingTalkAtPerson
 type SNSDingTalkAtPersonInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"phoneNumber,omitempty"`
-	rest string `json:"endpointUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"remark,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	PhoneNumber string `json:"phoneNumber,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Remark string `json:"remark,omitempty"`
 }
 

@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ImageCacheInventoryView ImageCache
 type ImageCacheInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest string `json:"imageUuid,omitempty"`
-	rest string `json:"installUrl,omitempty"`
-	rest string `json:"mediaType,omitempty"`
-	rest int64 `json:"size,omitempty"`
-	rest string `json:"md5sum,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	ImageUuid string `json:"imageUuid,omitempty"`
+	InstallUrl string `json:"installUrl,omitempty"`
+	MediaType string `json:"mediaType,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	Md5sum string `json:"md5sum,omitempty"`
+	State string `json:"state,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

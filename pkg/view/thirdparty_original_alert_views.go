@@ -4,20 +4,22 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // ThirdpartyOriginalAlertInventoryView ThirdpartyOriginalAlert
 type ThirdpartyOriginalAlertInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"thirdpartyPlatformUuid,omitempty"`
-	rest string `json:"product,omitempty"`
-	rest string `json:"service,omitempty"`
-	rest string `json:"metric,omitempty"`
-	rest string `json:"alertLevel,omitempty"`
-	rest time.Time `json:"alertTime,omitempty"`
-	rest string `json:"dimensions,omitempty"`
-	rest string `json:"message,omitempty"`
-	rest string `json:"dataSource,omitempty"`
-	rest string `json:"sourceText,omitempty"`
-	rest string `json:"readStatus,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ThirdpartyPlatformUuid string `json:"thirdpartyPlatformUuid,omitempty"`
+	Product string `json:"product,omitempty"`
+	Service string `json:"service,omitempty"`
+	Metric string `json:"metric,omitempty"`
+	AlertLevel string `json:"alertLevel,omitempty"`
+	AlertTime time.Time `json:"alertTime,omitempty"`
+	Dimensions string `json:"dimensions,omitempty"`
+	Message string `json:"message,omitempty"`
+	DataSource string `json:"dataSource,omitempty"`
+	SourceText string `json:"sourceText,omitempty"`
+	ReadStatus string `json:"readStatus,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
 }
 

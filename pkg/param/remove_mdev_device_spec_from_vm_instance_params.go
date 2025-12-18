@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveMdevDeviceSpecFromVmInstanceDetailParam RemoveMdevDeviceSpecFromVmInstance详细参数
+// RemoveMdevDeviceSpecFromVmInstanceDetailParam RemoveMdevDeviceSpecFromVmInstance detail param
 type RemoveMdevDeviceSpecFromVmInstanceDetailParam struct {
-	rest string `json:"mdevSpecUuid" validate:"required"` // 必填
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
+	MdevSpecUuid string `json:"mdevSpecUuid" validate:"required"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
 }
 
-// RemoveMdevDeviceSpecFromVmInstanceParam RemoveMdevDeviceSpecFromVmInstance请求参数
+// RemoveMdevDeviceSpecFromVmInstanceParam RemoveMdevDeviceSpecFromVmInstance request param
 type RemoveMdevDeviceSpecFromVmInstanceParam struct {
 	BaseParam
-	Params RemoveMdevDeviceSpecFromVmInstanceDetailParam `json:"params"` // 详细参数
+	Params RemoveMdevDeviceSpecFromVmInstanceDetailParam `json:"params"`
 }
-

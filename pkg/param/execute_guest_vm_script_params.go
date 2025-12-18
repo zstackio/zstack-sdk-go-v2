@@ -2,18 +2,17 @@
 
 package param
 
-// ExecuteGuestVmScriptDetailParam ExecuteGuestVmScript详细参数
+// ExecuteGuestVmScriptDetailParam ExecuteGuestVmScript detail param
 type ExecuteGuestVmScriptDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"vmInstanceUuids" validate:"required"` // 必填
-	rest int `json:"scriptTimeout,omitempty"`
-	rest string `json:"logPath,omitempty"`
-	rest string `json:"recordUuid,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	VmInstanceUuids []string `json:"vmInstanceUuids" validate:"required"`
+	ScriptTimeout int `json:"scriptTimeout,omitempty"`
+	LogPath string `json:"logPath,omitempty"`
+	RecordUuid string `json:"recordUuid,omitempty"`
 }
 
-// ExecuteGuestVmScriptParam ExecuteGuestVmScript请求参数
+// ExecuteGuestVmScriptParam ExecuteGuestVmScript request param
 type ExecuteGuestVmScriptParam struct {
 	BaseParam
-	Params ExecuteGuestVmScriptDetailParam `json:"params"` // 详细参数
+	Params ExecuteGuestVmScriptDetailParam `json:"params"`
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// KvmRunShellDetailParam KvmRunShell详细参数
+// KvmRunShellDetailParam KvmRunShell detail param
 type KvmRunShellDetailParam struct {
-	rest []string `json:"hostUuids" validate:"required"` // 必填
-	rest string `json:"script" validate:"required"` // 必填
+	HostUuids []string `json:"hostUuids" validate:"required"`
+	Script string `json:"script" validate:"required"`
 }
 
-// KvmRunShellParam KvmRunShell请求参数
+// KvmRunShellParam KvmRunShell request param
 type KvmRunShellParam struct {
 	BaseParam
-	Params KvmRunShellDetailParam `json:"params"` // 详细参数
+	Params KvmRunShellDetailParam `json:"params"`
 }
-

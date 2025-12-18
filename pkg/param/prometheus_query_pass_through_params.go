@@ -2,19 +2,18 @@
 
 package param
 
-// PrometheusQueryPassThroughDetailParam PrometheusQueryPassThrough详细参数
+// PrometheusQueryPassThroughDetailParam PrometheusQueryPassThrough detail param
 type PrometheusQueryPassThroughDetailParam struct {
-	rest bool `json:"instant,omitempty"`
-	rest int64 `json:"startTime,omitempty"`
-	rest int64 `json:"endTime,omitempty"`
-	rest string `json:"step,omitempty"`
-	rest string `json:"expression" validate:"required"` // 必填
-	rest string `json:"relativeTime,omitempty"`
+	Instant bool `json:"instant,omitempty"`
+	StartTime int64 `json:"startTime,omitempty"`
+	EndTime int64 `json:"endTime,omitempty"`
+	Step string `json:"step,omitempty"`
+	Expression string `json:"expression" validate:"required"`
+	RelativeTime string `json:"relativeTime,omitempty"`
 }
 
-// PrometheusQueryPassThroughParam PrometheusQueryPassThrough请求参数
+// PrometheusQueryPassThroughParam PrometheusQueryPassThrough request param
 type PrometheusQueryPassThroughParam struct {
 	BaseParam
-	Params PrometheusQueryPassThroughDetailParam `json:"params"` // 详细参数
+	Params PrometheusQueryPassThroughDetailParam `json:"params"`
 }
-

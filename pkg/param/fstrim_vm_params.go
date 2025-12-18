@@ -2,14 +2,13 @@
 
 package param
 
-// FstrimVmDetailParam FstrimVm详细参数
+// FstrimVmDetailParam FstrimVm detail param
 type FstrimVmDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// FstrimVmParam FstrimVm请求参数
+// FstrimVmParam FstrimVm request param
 type FstrimVmParam struct {
 	BaseParam
-	Params FstrimVmDetailParam `json:"params"` // 详细参数
+	Params FstrimVmDetailParam `json:"params"`
 }
-

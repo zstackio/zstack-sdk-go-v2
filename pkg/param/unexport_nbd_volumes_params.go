@@ -2,15 +2,14 @@
 
 package param
 
-// UnexportNbdVolumesDetailParam UnexportNbdVolumes详细参数
+// UnexportNbdVolumesDetailParam UnexportNbdVolumes detail param
 type UnexportNbdVolumesDetailParam struct {
-	rest []string `json:"volumeUuids" validate:"required"` // 必填
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
+	VolumeUuids []string `json:"volumeUuids" validate:"required"`
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
 }
 
-// UnexportNbdVolumesParam UnexportNbdVolumes请求参数
+// UnexportNbdVolumesParam UnexportNbdVolumes request param
 type UnexportNbdVolumesParam struct {
 	BaseParam
-	Params UnexportNbdVolumesDetailParam `json:"params"` // 详细参数
+	Params UnexportNbdVolumesDetailParam `json:"params"`
 }
-

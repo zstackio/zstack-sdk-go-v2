@@ -2,14 +2,13 @@
 
 package param
 
-// LoginIAM2PlatformDetailParam LoginIAM2Platform详细参数
+// LoginIAM2PlatformDetailParam LoginIAM2Platform detail param
 type LoginIAM2PlatformDetailParam struct {
-	rest map[string]string `json:"clientInfo,omitempty"`
+	ClientInfo map[string]string `json:"clientInfo,omitempty"`
 }
 
-// LoginIAM2PlatformParam LoginIAM2Platform请求参数
+// LoginIAM2PlatformParam LoginIAM2Platform request param
 type LoginIAM2PlatformParam struct {
 	BaseParam
-	Params LoginIAM2PlatformDetailParam `json:"params"` // 详细参数
+	Params LoginIAM2PlatformDetailParam `json:"params"`
 }
-

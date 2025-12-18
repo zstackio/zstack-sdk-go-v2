@@ -2,14 +2,13 @@
 
 package param
 
-// RevertVolumeFromSnapshotDetailParam RevertVolumeFromSnapshot详细参数
+// RevertVolumeFromSnapshotDetailParam RevertVolumeFromSnapshot detail param
 type RevertVolumeFromSnapshotDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// RevertVolumeFromSnapshotParam RevertVolumeFromSnapshot请求参数
+// RevertVolumeFromSnapshotParam RevertVolumeFromSnapshot request param
 type RevertVolumeFromSnapshotParam struct {
 	BaseParam
-	Params RevertVolumeFromSnapshotDetailParam `json:"params"` // 详细参数
+	Params RevertVolumeFromSnapshotDetailParam `json:"params"`
 }
-

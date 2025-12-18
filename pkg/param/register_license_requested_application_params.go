@@ -2,16 +2,15 @@
 
 package param
 
-// RegisterLicenseRequestedApplicationDetailParam RegisterLicenseRequestedApplication详细参数
+// RegisterLicenseRequestedApplicationDetailParam RegisterLicenseRequestedApplication detail param
 type RegisterLicenseRequestedApplicationDetailParam struct {
-	rest string `json:"licenseRequestCode" validate:"required"` // 必填
-	rest string `json:"clientPubKey,omitempty"`
-	rest int64 `json:"currentTimeMillis,omitempty"`
+	LicenseRequestCode string `json:"licenseRequestCode" validate:"required"`
+	ClientPubKey string `json:"clientPubKey,omitempty"`
+	CurrentTimeMillis int64 `json:"currentTimeMillis,omitempty"`
 }
 
-// RegisterLicenseRequestedApplicationParam RegisterLicenseRequestedApplication请求参数
+// RegisterLicenseRequestedApplicationParam RegisterLicenseRequestedApplication request param
 type RegisterLicenseRequestedApplicationParam struct {
 	BaseParam
-	Params RegisterLicenseRequestedApplicationDetailParam `json:"params"` // 详细参数
+	Params RegisterLicenseRequestedApplicationDetailParam `json:"params"`
 }
-

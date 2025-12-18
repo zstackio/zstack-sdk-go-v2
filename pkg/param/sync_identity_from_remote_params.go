@@ -2,16 +2,15 @@
 
 package param
 
-// SyncIdentityFromRemoteDetailParam SyncIdentityFromRemote详细参数
+// SyncIdentityFromRemoteDetailParam SyncIdentityFromRemote detail param
 type SyncIdentityFromRemoteDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncIdentityFromRemoteParam SyncIdentityFromRemote请求参数
+// SyncIdentityFromRemoteParam SyncIdentityFromRemote request param
 type SyncIdentityFromRemoteParam struct {
 	BaseParam
-	Params SyncIdentityFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncIdentityFromRemoteDetailParam `json:"params"`
 }
-

@@ -4,18 +4,20 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VolumeSnapshotReferenceTreeInventoryView VolumeSnapshotReferenceTree
 type VolumeSnapshotReferenceTreeInventoryView struct {
-	rest string `json:"primaryStorageUuid,omitempty"`
-	rest string `json:"hostUuid,omitempty"`
-	rest string `json:"rootImageUuid,omitempty"`
-	rest string `json:"rootVolumeUuid,omitempty"`
-	rest string `json:"rootVolumeSnapshotUuid,omitempty"`
-	rest string `json:"rootVolumeSnapshotTreeUuid,omitempty"`
-	rest string `json:"rootInstallUrl,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"resourceName,omitempty"`
-	rest string `json:"resourceType,omitempty"`
-	rest string `json:"concreteResourceType,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	RootImageUuid string `json:"rootImageUuid,omitempty"`
+	RootVolumeUuid string `json:"rootVolumeUuid,omitempty"`
+	RootVolumeSnapshotUuid string `json:"rootVolumeSnapshotUuid,omitempty"`
+	RootVolumeSnapshotTreeUuid string `json:"rootVolumeSnapshotTreeUuid,omitempty"`
+	RootInstallUrl string `json:"rootInstallUrl,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ResourceName string `json:"resourceName,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	ConcreteResourceType string `json:"concreteResourceType,omitempty"`
 }
 

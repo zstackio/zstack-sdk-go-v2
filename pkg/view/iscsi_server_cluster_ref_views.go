@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // IscsiServerClusterRefInventoryView IscsiServerClusterRef
 type IscsiServerClusterRefInventoryView struct {
-	rest string `json:"iscsiServerUuid,omitempty"`
-	rest string `json:"clusterUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	IscsiServerUuid string `json:"iscsiServerUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

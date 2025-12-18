@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// RequestConsoleAccess 操作RequestConsoleAccess
+// RequestConsoleAccess operates on RequestConsoleAccess
 func (cli *ZSClient) RequestConsoleAccess(params param.RequestConsoleAccessParam) (*view.RequestConsoleAccessEventView, error) {
 	resp := view.RequestConsoleAccessEventView{}
 	if err := cli.Post("v1/consoles", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) RequestConsoleAccess(params param.RequestConsoleAccessParam
 	}
 	return &resp, nil
 }
-

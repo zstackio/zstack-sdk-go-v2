@@ -2,14 +2,13 @@
 
 package param
 
-// ReconnectBareMetal2GatewayDetailParam ReconnectBareMetal2Gateway详细参数
+// ReconnectBareMetal2GatewayDetailParam ReconnectBareMetal2Gateway detail param
 type ReconnectBareMetal2GatewayDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ReconnectBareMetal2GatewayParam ReconnectBareMetal2Gateway请求参数
+// ReconnectBareMetal2GatewayParam ReconnectBareMetal2Gateway request param
 type ReconnectBareMetal2GatewayParam struct {
 	BaseParam
-	Params ReconnectBareMetal2GatewayDetailParam `json:"params"` // 详细参数
+	Params ReconnectBareMetal2GatewayDetailParam `json:"params"`
 }
-

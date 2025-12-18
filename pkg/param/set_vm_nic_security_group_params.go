@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmNicSecurityGroupDetailParam SetVmNicSecurityGroup详细参数
+// SetVmNicSecurityGroupDetailParam SetVmNicSecurityGroup detail param
 type SetVmNicSecurityGroupDetailParam struct {
-	rest string `json:"vmNicUuid" validate:"required"` // 必填
-	rest []interface{} `json:"refs" validate:"required"` // 必填
+	VmNicUuid string `json:"vmNicUuid" validate:"required"`
+	Refs []interface{} `json:"refs" validate:"required"`
 }
 
-// SetVmNicSecurityGroupParam SetVmNicSecurityGroup请求参数
+// SetVmNicSecurityGroupParam SetVmNicSecurityGroup request param
 type SetVmNicSecurityGroupParam struct {
 	BaseParam
-	Params SetVmNicSecurityGroupDetailParam `json:"params"` // 详细参数
+	Params SetVmNicSecurityGroupDetailParam `json:"params"`
 }
-

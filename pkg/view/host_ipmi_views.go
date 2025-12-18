@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // HostIpmiInventoryView HostIpmi
 type HostIpmiInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"ipmiAddress,omitempty"`
-	rest string `json:"ipmiUsername,omitempty"`
-	rest int `json:"ipmiPort,omitempty"`
-	rest string `json:"ipmiPowerStatus,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	IpmiAddress string `json:"ipmiAddress,omitempty"`
+	IpmiUsername string `json:"ipmiUsername,omitempty"`
+	IpmiPort int `json:"ipmiPort,omitempty"`
+	IpmiPowerStatus string `json:"ipmiPowerStatus,omitempty"`
 }
 

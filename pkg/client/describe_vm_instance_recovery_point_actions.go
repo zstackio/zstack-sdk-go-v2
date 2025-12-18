@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// DescribeVmInstanceRecoveryPoint 操作DescribeVmInstanceRecoveryPoint
+// DescribeVmInstanceRecoveryPoint operates on DescribeVmInstanceRecoveryPoint
 func (cli *ZSClient) DescribeVmInstanceRecoveryPoint(params param.DescribeVmInstanceRecoveryPointParam) (*view.DescribeVmInstanceRecoveryPointView, error) {
 	var resp view.DescribeVmInstanceRecoveryPointView
 	if err := cli.Get("v1/vm-instances/{vmInstanceUuid}/recovery-point", "", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) DescribeVmInstanceRecoveryPoint(params param.DescribeVmInst
 	}
 	return &resp, nil
 }
-

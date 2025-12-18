@@ -2,19 +2,18 @@
 
 package param
 
-// AddLabelToEventSubscriptionDetailParam AddLabelToEventSubscription详细参数
+// AddLabelToEventSubscriptionDetailParam AddLabelToEventSubscription detail param
 type AddLabelToEventSubscriptionDetailParam struct {
-	rest string `json:"subscriptionUuid" validate:"required"` // 必填
-	rest string `json:"key" validate:"required"` // 必填
-	rest string `json:"value" validate:"required"` // 必填
-	rest string `json:"operator" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	SubscriptionUuid string `json:"subscriptionUuid" validate:"required"`
+	Key string `json:"key" validate:"required"`
+	Value string `json:"value" validate:"required"`
+	Operator string `json:"operator" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddLabelToEventSubscriptionParam AddLabelToEventSubscription请求参数
+// AddLabelToEventSubscriptionParam AddLabelToEventSubscription request param
 type AddLabelToEventSubscriptionParam struct {
 	BaseParam
-	Params AddLabelToEventSubscriptionDetailParam `json:"params"` // 详细参数
+	Params AddLabelToEventSubscriptionDetailParam `json:"params"`
 }
-

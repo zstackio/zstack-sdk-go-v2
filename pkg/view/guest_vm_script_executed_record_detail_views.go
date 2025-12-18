@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // GuestVmScriptExecutedRecordDetailInventoryView GuestVmScriptExecutedRecordDetail
 type GuestVmScriptExecutedRecordDetailInventoryView struct {
-	rest string `json:"recordUuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest string `json:"vmName,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest int `json:"exitCode,omitempty"`
-	rest string `json:"stdout,omitempty"`
-	rest string `json:"errCause,omitempty"`
-	rest string `json:"stderr,omitempty"`
-	rest time.Time `json:"startTime,omitempty"`
-	rest time.Time `json:"endTime,omitempty"`
+	RecordUuid string `json:"recordUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	VmName string `json:"vmName,omitempty"`
+	Status string `json:"status,omitempty"`
+	ExitCode int `json:"exitCode,omitempty"`
+	Stdout string `json:"stdout,omitempty"`
+	ErrCause string `json:"errCause,omitempty"`
+	Stderr string `json:"stderr,omitempty"`
+	StartTime time.Time `json:"startTime,omitempty"`
+	EndTime time.Time `json:"endTime,omitempty"`
 }
 

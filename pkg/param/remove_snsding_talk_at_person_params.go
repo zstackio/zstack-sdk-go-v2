@@ -2,16 +2,15 @@
 
 package param
 
-// RemoveSNSDingTalkAtPersonDetailParam RemoveSNSDingTalkAtPerson详细参数
+// RemoveSNSDingTalkAtPersonDetailParam RemoveSNSDingTalkAtPerson detail param
 type RemoveSNSDingTalkAtPersonDetailParam struct {
-	rest string `json:"endpointUuid" validate:"required"` // 必填
-	rest string `json:"phoneNumber" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	EndpointUuid string `json:"endpointUuid" validate:"required"`
+	PhoneNumber string `json:"phoneNumber" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveSNSDingTalkAtPersonParam RemoveSNSDingTalkAtPerson请求参数
+// RemoveSNSDingTalkAtPersonParam RemoveSNSDingTalkAtPerson request param
 type RemoveSNSDingTalkAtPersonParam struct {
 	BaseParam
-	Params RemoveSNSDingTalkAtPersonDetailParam `json:"params"` // 详细参数
+	Params RemoveSNSDingTalkAtPersonDetailParam `json:"params"`
 }
-

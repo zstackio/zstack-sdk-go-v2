@@ -2,19 +2,18 @@
 
 package param
 
-// AddNvmeServerDetailParam AddNvmeServer详细参数
+// AddNvmeServerDetailParam AddNvmeServer detail param
 type AddNvmeServerDetailParam struct {
-	rest string `json:"name,omitempty"`
-	rest string `json:"ip" validate:"required"` // 必填
-	rest int `json:"port,omitempty"`
-	rest string `json:"transport" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	Name string `json:"name,omitempty"`
+	Ip string `json:"ip" validate:"required"`
+	Port int `json:"port,omitempty"`
+	Transport string `json:"transport" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddNvmeServerParam AddNvmeServer请求参数
+// AddNvmeServerParam AddNvmeServer request param
 type AddNvmeServerParam struct {
 	BaseParam
-	Params AddNvmeServerDetailParam `json:"params"` // 详细参数
+	Params AddNvmeServerDetailParam `json:"params"`
 }
-

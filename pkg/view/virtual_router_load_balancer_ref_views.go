@@ -4,12 +4,14 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VirtualRouterLoadBalancerRefInventoryView VirtualRouterLoadBalancerRef
 type VirtualRouterLoadBalancerRefInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"virtualRouterVmUuid,omitempty"`
-	rest string `json:"loadBalancerUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	VirtualRouterVmUuid string `json:"virtualRouterVmUuid,omitempty"`
+	LoadBalancerUuid string `json:"loadBalancerUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

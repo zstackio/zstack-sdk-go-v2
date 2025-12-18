@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddPolicyStatementsToRole 操作AddPolicyStatementsToRole
+// AddPolicyStatementsToRole adds PolicyStatementsToRole
 func (cli *ZSClient) AddPolicyStatementsToRole(params param.AddPolicyStatementsToRoleParam) (*view.AddPolicyStatementsToRoleEventView, error) {
 	resp := view.AddPolicyStatementsToRoleEventView{}
 	if err := cli.Post("v1/identities/roles/{uuid}/policy-statements", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddPolicyStatementsToRole(params param.AddPolicyStatementsT
 	}
 	return &resp, nil
 }
-

@@ -4,23 +4,25 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // CdpTaskInventoryView CdpTask
 type CdpTaskInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"policyUuid,omitempty"`
-	rest string `json:"backupStorageUuid,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"taskType,omitempty"`
-	rest int64 `json:"backupBandwidth,omitempty"`
-	rest int64 `json:"maxCapacity,omitempty"`
-	rest int64 `json:"usedCapacity,omitempty"`
-	rest int64 `json:"maxLatency,omitempty"`
-	rest int64 `json:"lastLatency,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest []CdpTaskResourceRefInventoryView `json:"resourceRefs,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	PolicyUuid string `json:"policyUuid,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	State string `json:"state,omitempty"`
+	TaskType string `json:"taskType,omitempty"`
+	BackupBandwidth int64 `json:"backupBandwidth,omitempty"`
+	MaxCapacity int64 `json:"maxCapacity,omitempty"`
+	UsedCapacity int64 `json:"usedCapacity,omitempty"`
+	MaxLatency int64 `json:"maxLatency,omitempty"`
+	LastLatency int64 `json:"lastLatency,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	ResourceRefs []CdpTaskResourceRefInventoryView `json:"resourceRefs,omitempty"`
 }
 

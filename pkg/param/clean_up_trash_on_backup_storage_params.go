@@ -2,15 +2,14 @@
 
 package param
 
-// CleanUpTrashOnBackupStorageDetailParam CleanUpTrashOnBackupStorage详细参数
+// CleanUpTrashOnBackupStorageDetailParam CleanUpTrashOnBackupStorage detail param
 type CleanUpTrashOnBackupStorageDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest int64 `json:"trashId,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	TrashId int64 `json:"trashId,omitempty"`
 }
 
-// CleanUpTrashOnBackupStorageParam CleanUpTrashOnBackupStorage请求参数
+// CleanUpTrashOnBackupStorageParam CleanUpTrashOnBackupStorage request param
 type CleanUpTrashOnBackupStorageParam struct {
 	BaseParam
-	Params CleanUpTrashOnBackupStorageDetailParam `json:"params"` // 详细参数
+	Params CleanUpTrashOnBackupStorageDetailParam `json:"params"`
 }
-

@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmCdRomInventoryView VmCdRom
 type VmCdRomInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest int `json:"deviceId,omitempty"`
-	rest string `json:"isoUuid,omitempty"`
-	rest string `json:"isoInstallPath,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"protocol,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	DeviceId int `json:"deviceId,omitempty"`
+	IsoUuid string `json:"isoUuid,omitempty"`
+	IsoInstallPath string `json:"isoInstallPath,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

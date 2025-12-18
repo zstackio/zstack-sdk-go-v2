@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// ReconnectZdfs 操作ReconnectZdfs
+// ReconnectZdfs operates on ReconnectZdfs
 func (cli *ZSClient) ReconnectZdfs(uuid string, params param.ReconnectZdfsParam) (*view.ReconnectZdfsEventView, error) {
 	resp := view.ReconnectZdfsEventView{}
 	if err := cli.Put("v1/zdfs/{uuid}/actions", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) ReconnectZdfs(uuid string, params param.ReconnectZdfsParam)
 	}
 	return &resp, nil
 }
-

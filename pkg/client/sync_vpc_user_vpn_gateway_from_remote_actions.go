@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SyncVpcUserVpnGatewayFromRemote 操作SyncVpcUserVpnGatewayFromRemote
+// SyncVpcUserVpnGatewayFromRemote operates on SyncVpcUserVpnGatewayFromRemote
 func (cli *ZSClient) SyncVpcUserVpnGatewayFromRemote(uuid string, params param.SyncVpcUserVpnGatewayFromRemoteParam) (*view.SyncVpcUserVpnGatewayFromRemoteEventView, error) {
 	resp := view.SyncVpcUserVpnGatewayFromRemoteEventView{}
 	if err := cli.Put("v1/hybrid/user-vpn/{dataCenterUuid}/sync", uuid, params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SyncVpcUserVpnGatewayFromRemote(uuid string, params param.S
 	}
 	return &resp, nil
 }
-

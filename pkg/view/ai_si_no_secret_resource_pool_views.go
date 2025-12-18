@@ -4,27 +4,29 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AiSiNoSecretResourcePoolInventoryView AiSiNoSecretResourcePool
 type AiSiNoSecretResourcePoolInventoryView struct {
-	rest string `json:"managementIp,omitempty"`
-	rest int `json:"port,omitempty"`
-	rest string `json:"route,omitempty"`
-	rest string `json:"clientID,omitempty"`
-	rest string `json:"clientSecrete,omitempty"`
-	rest string `json:"appId,omitempty"`
-	rest string `json:"keyNumSM2,omitempty"`
-	rest string `json:"keyNumSM4,omitempty"`
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"zoneUuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"model,omitempty"`
-	rest int `json:"heartbeatInterval,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"ability,omitempty"`
+	ManagementIp string `json:"managementIp,omitempty"`
+	Port int `json:"port,omitempty"`
+	Route string `json:"route,omitempty"`
+	ClientID string `json:"clientID,omitempty"`
+	ClientSecrete string `json:"clientSecrete,omitempty"`
+	AppId string `json:"appId,omitempty"`
+	KeyNumSM2 string `json:"keyNumSM2,omitempty"`
+	KeyNumSM4 string `json:"keyNumSM4,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	Model string `json:"model,omitempty"`
+	HeartbeatInterval int `json:"heartbeatInterval,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	Ability string `json:"ability,omitempty"`
 }
 

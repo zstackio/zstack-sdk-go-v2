@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddAliyunEbsBackupStorage 操作AddAliyunEbsBackupStorage
+// AddAliyunEbsBackupStorage adds AliyunEbsBackupStorage
 func (cli *ZSClient) AddAliyunEbsBackupStorage(params param.AddAliyunEbsBackupStorageParam) (*view.AddBackupStorageEventView, error) {
 	resp := view.AddBackupStorageEventView{}
 	if err := cli.Post("v1/backup-storage/aliyun/ebs", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddAliyunEbsBackupStorage(params param.AddAliyunEbsBackupSt
 	}
 	return &resp, nil
 }
-

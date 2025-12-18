@@ -4,21 +4,23 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // AppBuildSystemInventoryView AppBuildSystem
 type AppBuildSystemInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"storageType,omitempty"`
-	rest string `json:"url,omitempty"`
-	rest string `json:"hostname,omitempty"`
-	rest string `json:"username,omitempty"`
-	rest int `json:"sshPort,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest int64 `json:"totalCapacity,omitempty"`
-	rest int64 `json:"availableCapacity,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	StorageType string `json:"storageType,omitempty"`
+	Url string `json:"url,omitempty"`
+	Hostname string `json:"hostname,omitempty"`
+	Username string `json:"username,omitempty"`
+	SshPort int `json:"sshPort,omitempty"`
+	Status string `json:"status,omitempty"`
+	State string `json:"state,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

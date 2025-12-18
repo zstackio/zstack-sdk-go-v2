@@ -2,14 +2,13 @@
 
 package param
 
-// ValidateInstanceOfferingUserConfigDetailParam ValidateInstanceOfferingUserConfig详细参数
+// ValidateInstanceOfferingUserConfigDetailParam ValidateInstanceOfferingUserConfig detail param
 type ValidateInstanceOfferingUserConfigDetailParam struct {
-	rest string `json:"config" validate:"required"` // 必填
+	Config string `json:"config" validate:"required"`
 }
 
-// ValidateInstanceOfferingUserConfigParam ValidateInstanceOfferingUserConfig请求参数
+// ValidateInstanceOfferingUserConfigParam ValidateInstanceOfferingUserConfig request param
 type ValidateInstanceOfferingUserConfigParam struct {
 	BaseParam
-	Params ValidateInstanceOfferingUserConfigDetailParam `json:"params"` // 详细参数
+	Params ValidateInstanceOfferingUserConfigDetailParam `json:"params"`
 }
-

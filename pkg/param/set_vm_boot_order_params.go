@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmBootOrderDetailParam SetVmBootOrder详细参数
+// SetVmBootOrderDetailParam SetVmBootOrder detail param
 type SetVmBootOrderDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []string `json:"bootOrder,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	BootOrder []string `json:"bootOrder,omitempty"`
 }
 
-// SetVmBootOrderParam SetVmBootOrder请求参数
+// SetVmBootOrderParam SetVmBootOrder request param
 type SetVmBootOrderParam struct {
 	BaseParam
-	Params SetVmBootOrderDetailParam `json:"params"` // 详细参数
+	Params SetVmBootOrderDetailParam `json:"params"`
 }
-

@@ -1,0 +1,9 @@
+// Copyright (c) ZStack.io, Inc.
+
+package view
+
+// GetResourceBindableConfigView GetResourceBindableConfig
+type GetResourceBindableConfigView struct {
+	BindableConfigs []interface{} `json:"bindableConfigs,omitempty"`
+}
+

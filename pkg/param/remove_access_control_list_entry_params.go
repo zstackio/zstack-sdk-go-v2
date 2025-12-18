@@ -2,16 +2,15 @@
 
 package param
 
-// RemoveAccessControlListEntryDetailParam RemoveAccessControlListEntry详细参数
+// RemoveAccessControlListEntryDetailParam RemoveAccessControlListEntry detail param
 type RemoveAccessControlListEntryDetailParam struct {
-	rest string `json:"aclUuid" validate:"required"` // 必填
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"deleteMode,omitempty"`
+	AclUuid string `json:"aclUuid" validate:"required"`
+	Uuid string `json:"uuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
 }
 
-// RemoveAccessControlListEntryParam RemoveAccessControlListEntry请求参数
+// RemoveAccessControlListEntryParam RemoveAccessControlListEntry request param
 type RemoveAccessControlListEntryParam struct {
 	BaseParam
-	Params RemoveAccessControlListEntryDetailParam `json:"params"` // 详细参数
+	Params RemoveAccessControlListEntryDetailParam `json:"params"`
 }
-

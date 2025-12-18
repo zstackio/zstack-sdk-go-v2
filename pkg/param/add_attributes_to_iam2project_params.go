@@ -2,15 +2,14 @@
 
 package param
 
-// AddAttributesToIAM2ProjectDetailParam AddAttributesToIAM2Project详细参数
+// AddAttributesToIAM2ProjectDetailParam AddAttributesToIAM2Project detail param
 type AddAttributesToIAM2ProjectDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest []interface{} `json:"attributes" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Attributes []interface{} `json:"attributes" validate:"required"`
 }
 
-// AddAttributesToIAM2ProjectParam AddAttributesToIAM2Project请求参数
+// AddAttributesToIAM2ProjectParam AddAttributesToIAM2Project request param
 type AddAttributesToIAM2ProjectParam struct {
 	BaseParam
-	Params AddAttributesToIAM2ProjectDetailParam `json:"params"` // 详细参数
+	Params AddAttributesToIAM2ProjectDetailParam `json:"params"`
 }
-

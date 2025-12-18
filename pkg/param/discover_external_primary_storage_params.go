@@ -2,16 +2,15 @@
 
 package param
 
-// DiscoverExternalPrimaryStorageDetailParam DiscoverExternalPrimaryStorage详细参数
+// DiscoverExternalPrimaryStorageDetailParam DiscoverExternalPrimaryStorage detail param
 type DiscoverExternalPrimaryStorageDetailParam struct {
-	rest string `json:"url" validate:"required"` // 必填
-	rest string `json:"identity,omitempty"`
-	rest string `json:"config,omitempty"`
+	Url string `json:"url" validate:"required"`
+	Identity string `json:"identity,omitempty"`
+	Config string `json:"config,omitempty"`
 }
 
-// DiscoverExternalPrimaryStorageParam DiscoverExternalPrimaryStorage请求参数
+// DiscoverExternalPrimaryStorageParam DiscoverExternalPrimaryStorage request param
 type DiscoverExternalPrimaryStorageParam struct {
 	BaseParam
-	Params DiscoverExternalPrimaryStorageDetailParam `json:"params"` // 详细参数
+	Params DiscoverExternalPrimaryStorageDetailParam `json:"params"`
 }
-

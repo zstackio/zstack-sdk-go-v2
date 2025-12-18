@@ -2,14 +2,13 @@
 
 package param
 
-// ShrinkVolumeSnapshotDetailParam ShrinkVolumeSnapshot详细参数
+// ShrinkVolumeSnapshotDetailParam ShrinkVolumeSnapshot detail param
 type ShrinkVolumeSnapshotDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
 }
 
-// ShrinkVolumeSnapshotParam ShrinkVolumeSnapshot请求参数
+// ShrinkVolumeSnapshotParam ShrinkVolumeSnapshot request param
 type ShrinkVolumeSnapshotParam struct {
 	BaseParam
-	Params ShrinkVolumeSnapshotDetailParam `json:"params"` // 详细参数
+	Params ShrinkVolumeSnapshotDetailParam `json:"params"`
 }
-

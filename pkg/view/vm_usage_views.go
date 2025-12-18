@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmUsageInventoryView VmUsage
 type VmUsageInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest int64 `json:"dateInLong,omitempty"`
-	rest string `json:"vmUuid,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest int `json:"cpuNum,omitempty"`
-	rest int64 `json:"memorySize,omitempty"`
-	rest int64 `json:"rootVolumeSize,omitempty"`
-	rest string `json:"inventory,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	DateInLong int64 `json:"dateInLong,omitempty"`
+	VmUuid string `json:"vmUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	Name string `json:"name,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty"`
+	RootVolumeSize int64 `json:"rootVolumeSize,omitempty"`
+	Inventory string `json:"inventory,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

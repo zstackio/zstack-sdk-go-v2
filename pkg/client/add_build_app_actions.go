@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddBuildApp 操作AddBuildApp
+// AddBuildApp adds BuildApp
 func (cli *ZSClient) AddBuildApp(params param.AddBuildAppParam) (*view.AddBuildAppEventView, error) {
 	resp := view.AddBuildAppEventView{}
 	if err := cli.Post("v1/appcenter/buildapp/add", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddBuildApp(params param.AddBuildAppParam) (*view.AddBuildA
 	}
 	return &resp, nil
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddLabelToAlarm 操作AddLabelToAlarm
+// AddLabelToAlarm adds LabelToAlarm
 func (cli *ZSClient) AddLabelToAlarm(params param.AddLabelToAlarmParam) (*view.AddLabelToAlarmEventView, error) {
 	resp := view.AddLabelToAlarmEventView{}
 	if err := cli.Post("v1/zwatch/alarms/{alarmUuid}/labels", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddLabelToAlarm(params param.AddLabelToAlarmParam) (*view.A
 	}
 	return &resp, nil
 }
-

@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmHostnameDetailParam SetVmHostname详细参数
+// SetVmHostnameDetailParam SetVmHostname detail param
 type SetVmHostnameDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest string `json:"hostname" validate:"required"` // 必填
+	Uuid string `json:"uuid" validate:"required"`
+	Hostname string `json:"hostname" validate:"required"`
 }
 
-// SetVmHostnameParam SetVmHostname请求参数
+// SetVmHostnameParam SetVmHostname request param
 type SetVmHostnameParam struct {
 	BaseParam
-	Params SetVmHostnameDetailParam `json:"params"` // 详细参数
+	Params SetVmHostnameDetailParam `json:"params"`
 }
-

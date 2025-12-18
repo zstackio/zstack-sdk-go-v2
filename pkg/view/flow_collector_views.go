@@ -4,15 +4,17 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // FlowCollectorInventoryView FlowCollector
 type FlowCollectorInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"flowMeterUuid,omitempty"`
-	rest string `json:"server,omitempty"`
-	rest int64 `json:"port,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	FlowMeterUuid string `json:"flowMeterUuid,omitempty"`
+	Server string `json:"server,omitempty"`
+	Port int64 `json:"port,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

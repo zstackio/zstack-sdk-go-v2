@@ -4,16 +4,18 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // SlbVmInstanceConfigTaskInventoryView SlbVmInstanceConfigTask
 type SlbVmInstanceConfigTaskInventoryView struct {
-	rest string `json:"vmInstanceUuid,omitempty"`
-	rest int64 `json:"configVersion,omitempty"`
-	rest string `json:"taskName,omitempty"`
-	rest string `json:"taskData,omitempty"`
-	rest int64 `json:"retryNumber,omitempty"`
-	rest string `json:"lastFailedReason,omitempty"`
-	rest string `json:"status,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	ConfigVersion int64 `json:"configVersion,omitempty"`
+	TaskName string `json:"taskName,omitempty"`
+	TaskData string `json:"taskData,omitempty"`
+	RetryNumber int64 `json:"retryNumber,omitempty"`
+	LastFailedReason string `json:"lastFailedReason,omitempty"`
+	Status string `json:"status,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

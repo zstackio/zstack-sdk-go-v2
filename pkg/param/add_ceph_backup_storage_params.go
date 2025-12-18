@@ -2,22 +2,21 @@
 
 package param
 
-// AddCephBackupStorageDetailParam AddCephBackupStorage详细参数
+// AddCephBackupStorageDetailParam AddCephBackupStorage detail param
 type AddCephBackupStorageDetailParam struct {
-	rest []string `json:"monUrls" validate:"required"` // 必填
-	rest string `json:"poolName,omitempty"`
-	rest string `json:"url,omitempty"` // 必填
-	rest string `json:"name" validate:"required"` // 必填
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest bool `json:"importImages,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	MonUrls []string `json:"monUrls" validate:"required"`
+	PoolName string `json:"poolName,omitempty"`
+	Url string `json:"url,omitempty"`
+	Name string `json:"name" validate:"required"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ImportImages bool `json:"importImages,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// AddCephBackupStorageParam AddCephBackupStorage请求参数
+// AddCephBackupStorageParam AddCephBackupStorage request param
 type AddCephBackupStorageParam struct {
 	BaseParam
-	Params AddCephBackupStorageDetailParam `json:"params"` // 详细参数
+	Params AddCephBackupStorageDetailParam `json:"params"`
 }
-

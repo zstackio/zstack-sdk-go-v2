@@ -4,13 +4,15 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // GlobalConfigInventoryView GlobalConfig
 type GlobalConfigInventoryView struct {
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"category,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"defaultValue,omitempty"`
-	rest string `json:"value,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	Name string `json:"name,omitempty"`
+	Category string `json:"category,omitempty"`
+	Description string `json:"description,omitempty"`
+	DefaultValue string `json:"defaultValue,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 

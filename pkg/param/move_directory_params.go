@@ -2,15 +2,14 @@
 
 package param
 
-// MoveDirectoryDetailParam MoveDirectory详细参数
+// MoveDirectoryDetailParam MoveDirectory detail param
 type MoveDirectoryDetailParam struct {
-	rest string `json:"targetParentUuid" validate:"required"` // 必填
-	rest string `json:"directoryUuid" validate:"required"` // 必填
+	TargetParentUuid string `json:"targetParentUuid" validate:"required"`
+	DirectoryUuid string `json:"directoryUuid" validate:"required"`
 }
 
-// MoveDirectoryParam MoveDirectory请求参数
+// MoveDirectoryParam MoveDirectory request param
 type MoveDirectoryParam struct {
 	BaseParam
-	Params MoveDirectoryDetailParam `json:"params"` // 详细参数
+	Params MoveDirectoryDetailParam `json:"params"`
 }
-

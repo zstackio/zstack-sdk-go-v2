@@ -4,19 +4,21 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // VmMemoryBillingInventoryView VmMemoryBilling
 type VmMemoryBillingInventoryView struct {
-	rest int64 `json:"memorySize,omitempty"`
-	rest int64 `json:"id,omitempty"`
-	rest string `json:"billingType,omitempty"`
-	rest string `json:"accountUuid,omitempty"`
-	rest string `json:"resourceUuid,omitempty"`
-	rest string `json:"resourceName,omitempty"`
-	rest float64 `json:"spending,omitempty"`
-	rest int64 `json:"startTime,omitempty"`
-	rest int64 `json:"endTime,omitempty"`
-	rest string `json:"hypervisorType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	BillingType string `json:"billingType,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceName string `json:"resourceName,omitempty"`
+	Spending float64 `json:"spending,omitempty"`
+	StartTime int64 `json:"startTime,omitempty"`
+	EndTime int64 `json:"endTime,omitempty"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

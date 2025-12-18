@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// AddExternalPrimaryStorage 操作AddExternalPrimaryStorage
+// AddExternalPrimaryStorage adds ExternalPrimaryStorage
 func (cli *ZSClient) AddExternalPrimaryStorage(params param.AddExternalPrimaryStorageParam) (*view.AddPrimaryStorageEventView, error) {
 	resp := view.AddPrimaryStorageEventView{}
 	if err := cli.Post("v1/primary-storage/addon", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) AddExternalPrimaryStorage(params param.AddExternalPrimarySt
 	}
 	return &resp, nil
 }
-

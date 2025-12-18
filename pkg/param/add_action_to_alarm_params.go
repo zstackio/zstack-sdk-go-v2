@@ -2,16 +2,15 @@
 
 package param
 
-// AddActionToAlarmDetailParam AddActionToAlarm详细参数
+// AddActionToAlarmDetailParam AddActionToAlarm detail param
 type AddActionToAlarmDetailParam struct {
-	rest string `json:"alarmUuid" validate:"required"` // 必填
-	rest string `json:"actionUuid" validate:"required"` // 必填
-	rest string `json:"actionType" validate:"required"` // 必填
+	AlarmUuid string `json:"alarmUuid" validate:"required"`
+	ActionUuid string `json:"actionUuid" validate:"required"`
+	ActionType string `json:"actionType" validate:"required"`
 }
 
-// AddActionToAlarmParam AddActionToAlarm请求参数
+// AddActionToAlarmParam AddActionToAlarm request param
 type AddActionToAlarmParam struct {
 	BaseParam
-	Params AddActionToAlarmDetailParam `json:"params"` // 详细参数
+	Params AddActionToAlarmDetailParam `json:"params"`
 }
-

@@ -2,16 +2,15 @@
 
 package param
 
-// SyncAliyunVirtualRouterFromRemoteDetailParam SyncAliyunVirtualRouterFromRemote详细参数
+// SyncAliyunVirtualRouterFromRemoteDetailParam SyncAliyunVirtualRouterFromRemote detail param
 type SyncAliyunVirtualRouterFromRemoteDetailParam struct {
-	rest string `json:"vpcUuid" validate:"required"` // 必填
-	rest string `json:"resourceUuid,omitempty"`
-	rest []string `json:"tagUuids,omitempty"`
+	VpcUuid string `json:"vpcUuid" validate:"required"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
-// SyncAliyunVirtualRouterFromRemoteParam SyncAliyunVirtualRouterFromRemote请求参数
+// SyncAliyunVirtualRouterFromRemoteParam SyncAliyunVirtualRouterFromRemote request param
 type SyncAliyunVirtualRouterFromRemoteParam struct {
 	BaseParam
-	Params SyncAliyunVirtualRouterFromRemoteDetailParam `json:"params"` // 详细参数
+	Params SyncAliyunVirtualRouterFromRemoteDetailParam `json:"params"`
 }
-

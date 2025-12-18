@@ -2,16 +2,15 @@
 
 package param
 
-// AddRolesToIAM2VirtualIDGroupDetailParam AddRolesToIAM2VirtualIDGroup详细参数
+// AddRolesToIAM2VirtualIDGroupDetailParam AddRolesToIAM2VirtualIDGroup detail param
 type AddRolesToIAM2VirtualIDGroupDetailParam struct {
-	rest []string `json:"roleUuids" validate:"required"` // 必填
-	rest string `json:"groupUuid" validate:"required"` // 必填
-	rest string `json:"projectUuid,omitempty"`
+	RoleUuids []string `json:"roleUuids" validate:"required"`
+	GroupUuid string `json:"groupUuid" validate:"required"`
+	ProjectUuid string `json:"projectUuid,omitempty"`
 }
 
-// AddRolesToIAM2VirtualIDGroupParam AddRolesToIAM2VirtualIDGroup请求参数
+// AddRolesToIAM2VirtualIDGroupParam AddRolesToIAM2VirtualIDGroup request param
 type AddRolesToIAM2VirtualIDGroupParam struct {
 	BaseParam
-	Params AddRolesToIAM2VirtualIDGroupDetailParam `json:"params"` // 详细参数
+	Params AddRolesToIAM2VirtualIDGroupDetailParam `json:"params"`
 }
-

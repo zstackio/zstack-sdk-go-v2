@@ -2,15 +2,14 @@
 
 package param
 
-// LocateLocalRaidPhysicalDriveDetailParam LocateLocalRaidPhysicalDrive详细参数
+// LocateLocalRaidPhysicalDriveDetailParam LocateLocalRaidPhysicalDrive detail param
 type LocateLocalRaidPhysicalDriveDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"locate,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Locate bool `json:"locate,omitempty"`
 }
 
-// LocateLocalRaidPhysicalDriveParam LocateLocalRaidPhysicalDrive请求参数
+// LocateLocalRaidPhysicalDriveParam LocateLocalRaidPhysicalDrive request param
 type LocateLocalRaidPhysicalDriveParam struct {
 	BaseParam
-	Params LocateLocalRaidPhysicalDriveDetailParam `json:"params"` // 详细参数
+	Params LocateLocalRaidPhysicalDriveDetailParam `json:"params"`
 }
-

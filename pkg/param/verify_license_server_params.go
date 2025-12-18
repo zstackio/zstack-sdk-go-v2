@@ -2,16 +2,15 @@
 
 package param
 
-// VerifyLicenseServerDetailParam VerifyLicenseServer详细参数
+// VerifyLicenseServerDetailParam VerifyLicenseServer detail param
 type VerifyLicenseServerDetailParam struct {
-	rest string `json:"appId" validate:"required"` // 必填
-	rest string `json:"clientAccessKeyId" validate:"required"` // 必填
-	rest string `json:"clientAccessKeySecret" validate:"required"` // 必填
+	AppId string `json:"appId" validate:"required"`
+	ClientAccessKeyId string `json:"clientAccessKeyId" validate:"required"`
+	ClientAccessKeySecret string `json:"clientAccessKeySecret" validate:"required"`
 }
 
-// VerifyLicenseServerParam VerifyLicenseServer请求参数
+// VerifyLicenseServerParam VerifyLicenseServer request param
 type VerifyLicenseServerParam struct {
 	BaseParam
-	Params VerifyLicenseServerDetailParam `json:"params"` // 详细参数
+	Params VerifyLicenseServerDetailParam `json:"params"`
 }
-

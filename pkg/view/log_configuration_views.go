@@ -4,10 +4,12 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // LogConfigurationInventoryView LogConfiguration
 type LogConfigurationInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest []string `json:"managementNodeUuids,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	ManagementNodeUuids []string `json:"managementNodeUuids,omitempty"`
 }
 

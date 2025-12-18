@@ -2,18 +2,17 @@
 
 package param
 
-// CleanQueueDetailParam CleanQueue详细参数
+// CleanQueueDetailParam CleanQueue detail param
 type CleanQueueDetailParam struct {
-	rest string `json:"signatureName" validate:"required"` // 必填
-	rest int `json:"taskIndex,omitempty"`
-	rest bool `json:"isCleanUp,omitempty"`
-	rest bool `json:"isRunningTask,omitempty"`
-	rest string `json:"managementiUuid,omitempty"`
+	SignatureName string `json:"signatureName" validate:"required"`
+	TaskIndex int `json:"taskIndex,omitempty"`
+	IsCleanUp bool `json:"isCleanUp,omitempty"`
+	IsRunningTask bool `json:"isRunningTask,omitempty"`
+	ManagementiUuid string `json:"managementiUuid,omitempty"`
 }
 
-// CleanQueueParam CleanQueue请求参数
+// CleanQueueParam CleanQueue request param
 type CleanQueueParam struct {
 	BaseParam
-	Params CleanQueueDetailParam `json:"params"` // 详细参数
+	Params CleanQueueDetailParam `json:"params"`
 }
-

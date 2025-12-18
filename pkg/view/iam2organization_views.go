@@ -4,18 +4,20 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // IAM2OrganizationInventoryView IAM2Organization
 type IAM2OrganizationInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"state,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"srcType,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
-	rest string `json:"parentUuid,omitempty"`
-	rest string `json:"rootOrganizationUuid,omitempty"`
-	rest []IAM2AttributeInventoryView `json:"attributes,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
+	SrcType string `json:"srcType,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	ParentUuid string `json:"parentUuid,omitempty"`
+	RootOrganizationUuid string `json:"rootOrganizationUuid,omitempty"`
+	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
 }
 

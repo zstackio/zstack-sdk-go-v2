@@ -2,15 +2,14 @@
 
 package param
 
-// DisableCdpTaskDetailParam DisableCdpTask详细参数
+// DisableCdpTaskDetailParam DisableCdpTask detail param
 type DisableCdpTaskDetailParam struct {
-	rest string `json:"uuid" validate:"required"` // 必填
-	rest bool `json:"force,omitempty"`
+	Uuid string `json:"uuid" validate:"required"`
+	Force bool `json:"force,omitempty"`
 }
 
-// DisableCdpTaskParam DisableCdpTask请求参数
+// DisableCdpTaskParam DisableCdpTask request param
 type DisableCdpTaskParam struct {
 	BaseParam
-	Params DisableCdpTaskDetailParam `json:"params"` // 详细参数
+	Params DisableCdpTaskDetailParam `json:"params"`
 }
-

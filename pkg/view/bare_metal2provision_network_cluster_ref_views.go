@@ -4,11 +4,13 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // BareMetal2ProvisionNetworkClusterRefInventoryView BareMetal2ProvisionNetworkClusterRef
 type BareMetal2ProvisionNetworkClusterRefInventoryView struct {
-	rest string `json:"clusterUuid,omitempty"`
-	rest string `json:"networkUuid,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	NetworkUuid string `json:"networkUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -2,15 +2,14 @@
 
 package param
 
-// SetVmBootVolumeDetailParam SetVmBootVolume详细参数
+// SetVmBootVolumeDetailParam SetVmBootVolume detail param
 type SetVmBootVolumeDetailParam struct {
-	rest string `json:"vmInstanceUuid" validate:"required"` // 必填
-	rest string `json:"volumeUuid" validate:"required"` // 必填
+	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
+	VolumeUuid string `json:"volumeUuid" validate:"required"`
 }
 
-// SetVmBootVolumeParam SetVmBootVolume请求参数
+// SetVmBootVolumeParam SetVmBootVolume request param
 type SetVmBootVolumeParam struct {
 	BaseParam
-	Params SetVmBootVolumeDetailParam `json:"params"` // 详细参数
+	Params SetVmBootVolumeDetailParam `json:"params"`
 }
-

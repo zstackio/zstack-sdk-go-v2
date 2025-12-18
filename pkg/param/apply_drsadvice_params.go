@@ -2,14 +2,13 @@
 
 package param
 
-// ApplyDRSAdviceDetailParam ApplyDRSAdvice详细参数
+// ApplyDRSAdviceDetailParam ApplyDRSAdvice detail param
 type ApplyDRSAdviceDetailParam struct {
-	rest string `json:"adviceUuid" validate:"required"` // 必填
+	AdviceUuid string `json:"adviceUuid" validate:"required"`
 }
 
-// ApplyDRSAdviceParam ApplyDRSAdvice请求参数
+// ApplyDRSAdviceParam ApplyDRSAdvice request param
 type ApplyDRSAdviceParam struct {
 	BaseParam
-	Params ApplyDRSAdviceDetailParam `json:"params"` // 详细参数
+	Params ApplyDRSAdviceDetailParam `json:"params"`
 }
-

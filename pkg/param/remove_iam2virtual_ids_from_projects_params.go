@@ -2,15 +2,14 @@
 
 package param
 
-// RemoveIAM2VirtualIDsFromProjectsDetailParam RemoveIAM2VirtualIDsFromProjects详细参数
+// RemoveIAM2VirtualIDsFromProjectsDetailParam RemoveIAM2VirtualIDsFromProjects detail param
 type RemoveIAM2VirtualIDsFromProjectsDetailParam struct {
-	rest []string `json:"projectUuids" validate:"required"` // 必填
-	rest []string `json:"virtualIDUuids" validate:"required"` // 必填
+	ProjectUuids []string `json:"projectUuids" validate:"required"`
+	VirtualIDUuids []string `json:"virtualIDUuids" validate:"required"`
 }
 
-// RemoveIAM2VirtualIDsFromProjectsParam RemoveIAM2VirtualIDsFromProjects请求参数
+// RemoveIAM2VirtualIDsFromProjectsParam RemoveIAM2VirtualIDsFromProjects request param
 type RemoveIAM2VirtualIDsFromProjectsParam struct {
 	BaseParam
-	Params RemoveIAM2VirtualIDsFromProjectsDetailParam `json:"params"` // 详细参数
+	Params RemoveIAM2VirtualIDsFromProjectsDetailParam `json:"params"`
 }
-

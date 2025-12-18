@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// DecodeStackTemplate 操作DecodeStackTemplate
+// DecodeStackTemplate operates on DecodeStackTemplate
 func (cli *ZSClient) DecodeStackTemplate(params param.DecodeStackTemplateParam) (*view.DecodeStackTemplateView, error) {
 	resp := view.DecodeStackTemplateView{}
 	if err := cli.Post("v1/cloudformation/stack/preview/resource", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) DecodeStackTemplate(params param.DecodeStackTemplateParam) 
 	}
 	return &resp, nil
 }
-

@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// SetFlowMeterRouterId 操作SetFlowMeterRouterId
+// SetFlowMeterRouterId operates on SetFlowMeterRouterId
 func (cli *ZSClient) SetFlowMeterRouterId(params param.SetFlowMeterRouterIdParam) (*view.SetFlowMeterRouterIdEventView, error) {
 	resp := view.SetFlowMeterRouterIdEventView{}
 	if err := cli.Post("v1/flowmeters/{vRouterUuid}/routerid", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) SetFlowMeterRouterId(params param.SetFlowMeterRouterIdParam
 	}
 	return &resp, nil
 }
-

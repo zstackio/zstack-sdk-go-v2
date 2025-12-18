@@ -4,17 +4,19 @@ package view
 
 import "time"
 
+var _ = time.Now // avoid unused import
+
 // StackTemplateInventoryView StackTemplate
 type StackTemplateInventoryView struct {
-	rest string `json:"uuid,omitempty"`
-	rest string `json:"name,omitempty"`
-	rest string `json:"description,omitempty"`
-	rest string `json:"type,omitempty"`
-	rest string `json:"version,omitempty"`
-	rest bool `json:"state,omitempty"`
-	rest string `json:"content,omitempty"`
-	rest string `json:"md5sum,omitempty"`
-	rest time.Time `json:"createDate,omitempty"`
-	rest time.Time `json:"lastOpDate,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	Version string `json:"version,omitempty"`
+	State bool `json:"state,omitempty"`
+	Content string `json:"content,omitempty"`
+	Md5sum string `json:"md5sum,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
 

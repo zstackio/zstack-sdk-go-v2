@@ -3,13 +3,11 @@
 package client
 
 import (
-	"github.com/kataras/golog"
-
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
 	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
 )
 
-// BatchSyncVolumeSize 操作BatchSyncVolumeSize
+// BatchSyncVolumeSize operates on BatchSyncVolumeSize
 func (cli *ZSClient) BatchSyncVolumeSize(params param.BatchSyncVolumeSizeParam) (*view.BatchSyncVolumeSizeView, error) {
 	resp := view.BatchSyncVolumeSizeView{}
 	if err := cli.Post("v1/volumes/batch-sync-volumes", params, &resp); err != nil {
@@ -17,4 +15,3 @@ func (cli *ZSClient) BatchSyncVolumeSize(params param.BatchSyncVolumeSizeParam) 
 	}
 	return &resp, nil
 }
-
