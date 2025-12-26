@@ -4,6 +4,6 @@ package view
 
 // GetCreateEcsImageProgressView GetCreateEcsImageProgress
 type GetCreateEcsImageProgressView struct {
-	Progress interface{} `json:"progress,omitempty"`
+	Progress ProgressPropertyView `json:"progress,omitempty"`
 }
 

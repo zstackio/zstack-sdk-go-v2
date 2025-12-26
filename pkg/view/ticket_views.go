@@ -12,7 +12,7 @@ type TicketInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
 	Status string `json:"status,omitempty"`
-	Request []interface{} `json:"request,omitempty"`
+	Request []TicketRequestView `json:"request,omitempty"`
 	AccountSystemType string `json:"accountSystemType,omitempty"`
 	TicketTypeUuid string `json:"ticketTypeUuid,omitempty"`
 	AccountSystemContext interface{} `json:"accountSystemContext,omitempty"`

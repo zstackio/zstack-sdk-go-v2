@@ -5,7 +5,7 @@ package param
 // PutMetricDataDetailParam PutMetricData detail param
 type PutMetricDataDetailParam struct {
 	Namespace string `json:"namespace" validate:"required"`
-	Data []interface{} `json:"data" validate:"required"`
+	Data []MetricDatumParam `json:"data" validate:"required"`
 }
 
 // PutMetricDataParam PutMetricData request param

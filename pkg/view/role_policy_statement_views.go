@@ -11,6 +11,6 @@ type RolePolicyStatementInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	CreateDate time.Time `json:"createDate,omitempty"`
 	LastOpDate time.Time `json:"lastOpDate,omitempty"`
-	Statement interface{} `json:"statement,omitempty"`
+	Statement PolicyStatementView `json:"statement,omitempty"`
 }
 

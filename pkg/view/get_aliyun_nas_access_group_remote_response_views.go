@@ -4,6 +4,6 @@ package view
 
 // GetAliyunNasAccessGroupRemoteView GetAliyunNasAccessGroupRemote
 type GetAliyunNasAccessGroupRemoteView struct {
-	Inventories []interface{} `json:"inventories,omitempty"`
+	Inventories []AliyunNasAccessGroupPropertyView `json:"inventories,omitempty"`
 }
 

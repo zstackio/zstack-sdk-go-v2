@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryCdpPolicy queries CdpPolicy list
-func (cli *ZSClient) QueryCdpPolicy(params param.QueryParam) ([]view.CdpPolicyInventoryView, error) {
+func (cli *ZSClient) QueryCdpPolicy(params *param.QueryParam) ([]view.CdpPolicyInventoryView, error) {
 	var resp []view.CdpPolicyInventoryView
-	return resp, cli.List("v1/cdp-backup-storage/policy", &params, &resp)
+	return resp, cli.List("v1/cdp-backup-storage/policy", params, &resp)
 }

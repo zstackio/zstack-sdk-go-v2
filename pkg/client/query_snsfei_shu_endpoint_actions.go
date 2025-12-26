@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QuerySNSFeiShuEndpoint queries SNSFeiShuEndpoint list
-func (cli *ZSClient) QuerySNSFeiShuEndpoint(params param.QueryParam) ([]view.SNSFeiShuEndpointInventoryView, error) {
+func (cli *ZSClient) QuerySNSFeiShuEndpoint(params *param.QueryParam) ([]view.SNSFeiShuEndpointInventoryView, error) {
 	var resp []view.SNSFeiShuEndpointInventoryView
-	return resp, cli.List("v1/sns/application-endpoints/feishu", &params, &resp)
+	return resp, cli.List("v1/sns/application-endpoints/feishu", params, &resp)
 }

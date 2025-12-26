@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryThirdpartyAlert queries ThirdpartyAlert list
-func (cli *ZSClient) QueryThirdpartyAlert(params param.QueryParam) ([]view.ThirdpartyOriginalAlertInventoryView, error) {
+func (cli *ZSClient) QueryThirdpartyAlert(params *param.QueryParam) ([]view.ThirdpartyOriginalAlertInventoryView, error) {
 	var resp []view.ThirdpartyOriginalAlertInventoryView
-	return resp, cli.List("v1/zwatch/third-party/alerts", &params, &resp)
+	return resp, cli.List("v1/zwatch/third-party/alerts", params, &resp)
 }

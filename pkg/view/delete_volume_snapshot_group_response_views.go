@@ -4,6 +4,6 @@ package view
 
 // DeleteVolumeSnapshotGroupEventView DeleteVolumeSnapshotGroupEvent
 type DeleteVolumeSnapshotGroupEventView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []DeleteSnapshotGroupResultView `json:"results,omitempty"`
 }
 

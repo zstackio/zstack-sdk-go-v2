@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryMetricRuleTemplate queries MetricRuleTemplate list
-func (cli *ZSClient) QueryMetricRuleTemplate(params param.QueryParam) ([]view.MetricRuleTemplateInventoryView, error) {
+func (cli *ZSClient) QueryMetricRuleTemplate(params *param.QueryParam) ([]view.MetricRuleTemplateInventoryView, error) {
 	var resp []view.MetricRuleTemplateInventoryView
-	return resp, cli.List("v1/zwatch/monitortemplates/metricrules", &params, &resp)
+	return resp, cli.List("v1/zwatch/monitortemplates/metricrules", params, &resp)
 }

@@ -12,8 +12,8 @@ type CreateAlarmDetailParam struct {
 	MetricName string `json:"metricName" validate:"required"`
 	Threshold float64 `json:"threshold" validate:"required"`
 	RepeatInterval int `json:"repeatInterval,omitempty"`
-	Labels []interface{} `json:"labels,omitempty"`
-	Actions []interface{} `json:"actions,omitempty"`
+	Labels []LabelParam `json:"labels,omitempty"`
+	Actions []ActionParamParam `json:"actions,omitempty"`
 	RepeatCount int `json:"repeatCount,omitempty"`
 	Type string `json:"type,omitempty"`
 	EnableRecovery bool `json:"enableRecovery,omitempty"`

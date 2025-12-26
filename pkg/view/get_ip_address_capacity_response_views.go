@@ -13,7 +13,7 @@ type GetIpAddressCapacityView struct {
 	Ipv6TotalCapacity int64 `json:"ipv6TotalCapacity,omitempty"`
 	Ipv6AvailableCapacity int64 `json:"ipv6AvailableCapacity,omitempty"`
 	Ipv6UsedIpAddressNumber int64 `json:"ipv6UsedIpAddressNumber,omitempty"`
-	CapacityData []interface{} `json:"capacityData,omitempty"`
+	CapacityData []IpCapacityDataView `json:"capacityData,omitempty"`
 	ResourceType string `json:"resourceType,omitempty"`
 	Success bool `json:"success,omitempty"`
 }

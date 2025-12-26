@@ -4,6 +4,6 @@ package view
 
 // GetVmsCapabilitiesView GetVmsCapabilities
 type GetVmsCapabilitiesView struct {
-	VmsCaps map[string]interface{} `json:"vmsCaps,omitempty"`
+	VmsCaps map[string]VmCapabilitiesView `json:"vmsCaps,omitempty"`
 }
 

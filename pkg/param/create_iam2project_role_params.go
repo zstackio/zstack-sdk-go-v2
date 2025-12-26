@@ -6,7 +6,7 @@ package param
 type CreateIAM2ProjectRoleDetailParam struct {
 	Name string `json:"name" validate:"required"`
 	Description string `json:"description,omitempty"`
-	Statements []interface{} `json:"statements,omitempty"`
+	Statements []PolicyStatementParam `json:"statements,omitempty"`
 	PolicyUuids []string `json:"policyUuids,omitempty"`
 	Identity string `json:"identity,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`

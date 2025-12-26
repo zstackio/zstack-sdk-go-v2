@@ -4,6 +4,6 @@ package view
 
 // ZQLQueryView ZQLQuery
 type ZQLQueryView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []ZQLQueryReturnView `json:"results,omitempty"`
 }
 

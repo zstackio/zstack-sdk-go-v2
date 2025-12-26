@@ -4,6 +4,6 @@ package view
 
 // ParseOvfView ParseOvf
 type ParseOvfView struct {
-	OvfInfo interface{} `json:"ovfInfo,omitempty"`
+	OvfInfo OvfInfoView `json:"ovfInfo,omitempty"`
 }
 

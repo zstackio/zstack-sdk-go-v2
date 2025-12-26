@@ -22,7 +22,7 @@ type ConvertVmFromForeignHypervisorDetailParam struct {
 	Strategy string `json:"strategy,omitempty"`
 	ConvertStrategy string `json:"convertStrategy,omitempty"`
 	PauseVm bool `json:"pauseVm,omitempty"`
-	VolumeFilters []interface{} `json:"volumeFilters,omitempty"`
+	VolumeFilters []VolumeFilterInfoParam `json:"volumeFilters,omitempty"`
 	RootFileSystem string `json:"rootFileSystem,omitempty"`
 	LongJobName string `json:"longJobName,omitempty"`
 	LongJobDescription string `json:"longJobDescription,omitempty"`

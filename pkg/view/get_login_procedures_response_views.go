@@ -4,6 +4,6 @@ package view
 
 // GetLoginProceduresView GetLoginProcedures
 type GetLoginProceduresView struct {
-	Procedures []interface{} `json:"procedures,omitempty"`
+	Procedures []LoginAuthenticationProcedureDescView `json:"procedures,omitempty"`
 }
 

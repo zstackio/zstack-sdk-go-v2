@@ -4,8 +4,8 @@ package param
 
 // BootstrapMiniHostDetailParam BootstrapMiniHost detail param
 type BootstrapMiniHostDetailParam struct {
-	Local interface{} `json:"local" validate:"required"`
-	Peer interface{} `json:"peer" validate:"required"`
+	Local MiniHostInfoParam `json:"local" validate:"required"`
+	Peer MiniHostInfoParam `json:"peer" validate:"required"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

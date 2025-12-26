@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryContainerManagementEndpoint queries ContainerManagementEndpoint list
-func (cli *ZSClient) QueryContainerManagementEndpoint(params param.QueryParam) ([]view.ContainerManagementEndpointInventoryView, error) {
+func (cli *ZSClient) QueryContainerManagementEndpoint(params *param.QueryParam) ([]view.ContainerManagementEndpointInventoryView, error) {
 	var resp []view.ContainerManagementEndpointInventoryView
-	return resp, cli.List("v1/container/management/endpoint", &params, &resp)
+	return resp, cli.List("v1/container/management/endpoint", params, &resp)
 }

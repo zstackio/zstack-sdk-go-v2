@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryGlobalConfig queries GlobalConfig list
-func (cli *ZSClient) QueryGlobalConfig(params param.QueryParam) ([]view.GlobalConfigInventoryView, error) {
+func (cli *ZSClient) QueryGlobalConfig(params *param.QueryParam) ([]view.GlobalConfigInventoryView, error) {
 	var resp []view.GlobalConfigInventoryView
-	return resp, cli.List("v1/global-configurations", &params, &resp)
+	return resp, cli.List("v1/global-configurations", params, &resp)
 }

@@ -4,6 +4,6 @@ package view
 
 // GetResourceConfigsView GetResourceConfigs
 type GetResourceConfigsView struct {
-	Configs []interface{} `json:"configs,omitempty"`
+	Configs []ResourceConfigStructView `json:"configs,omitempty"`
 }
 

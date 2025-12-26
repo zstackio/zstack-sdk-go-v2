@@ -4,7 +4,7 @@ package view
 
 // GetDatabaseBackupFromImageStoreView GetDatabaseBackupFromImageStore
 type GetDatabaseBackupFromImageStoreView struct {
-	Backups []interface{} `json:"backups,omitempty"`
+	Backups []DatabaseBackupStructView `json:"backups,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

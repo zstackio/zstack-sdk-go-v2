@@ -5,7 +5,7 @@ package param
 // UpdateTicketRequestDetailParam UpdateTicketRequest detail param
 type UpdateTicketRequestDetailParam struct {
 	Uuid string `json:"uuid" validate:"required"`
-	Requests []interface{} `json:"requests" validate:"required"`
+	Requests []TicketRequestParam `json:"requests" validate:"required"`
 	Description string `json:"description,omitempty"`
 }
 

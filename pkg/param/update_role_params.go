@@ -7,7 +7,7 @@ type UpdateRoleDetailParam struct {
 	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
-	Statements []interface{} `json:"statements,omitempty"`
+	Statements []PolicyStatementParam `json:"statements,omitempty"`
 	PolicyUuids []string `json:"policyUuids,omitempty"`
 }
 

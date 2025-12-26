@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryZone queries Zone list
-func (cli *ZSClient) QueryZone(params param.QueryParam) ([]view.ZoneInventoryView, error) {
+func (cli *ZSClient) QueryZone(params *param.QueryParam) ([]view.ZoneInventoryView, error) {
 	var resp []view.ZoneInventoryView
-	return resp, cli.List("v1/zones", &params, &resp)
+	return resp, cli.List("v1/zones", params, &resp)
 }

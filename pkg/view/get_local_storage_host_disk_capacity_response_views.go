@@ -4,6 +4,6 @@ package view
 
 // GetLocalStorageHostDiskCapacityView GetLocalStorageHostDiskCapacity
 type GetLocalStorageHostDiskCapacityView struct {
-	Inventories []interface{} `json:"inventories,omitempty"`
+	Inventories []HostDiskCapacityView `json:"inventories,omitempty"`
 }
 

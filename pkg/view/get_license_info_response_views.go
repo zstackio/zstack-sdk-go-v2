@@ -5,6 +5,6 @@ package view
 // GetLicenseInfoView GetLicenseInfo
 type GetLicenseInfoView struct {
 	Inventory LicenseInventoryView `json:"inventory,omitempty"`
-	Additions []interface{} `json:"additions,omitempty"`
+	Additions []AdditionalLicenseInfoView `json:"additions,omitempty"`
 }
 

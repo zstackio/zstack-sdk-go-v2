@@ -15,6 +15,6 @@ type MonitorGroupInventoryView struct {
 	CreateDate time.Time `json:"createDate,omitempty"`
 	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
-	MonitorGroupTemplateRefs []interface{} `json:"monitorGroupTemplateRefs,omitempty"`
+	MonitorGroupTemplateRefs []MonitorGroupTemplateRefVOView `json:"monitorGroupTemplateRefs,omitempty"`
 }
 

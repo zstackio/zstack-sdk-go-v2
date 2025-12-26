@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryUserProxyConfig queries UserProxyConfig list
-func (cli *ZSClient) QueryUserProxyConfig(params param.QueryParam) ([]view.UserProxyConfigInventoryView, error) {
+func (cli *ZSClient) QueryUserProxyConfig(params *param.QueryParam) ([]view.UserProxyConfigInventoryView, error) {
 	var resp []view.UserProxyConfigInventoryView
-	return resp, cli.List("v1/user-proxy-configs", &params, &resp)
+	return resp, cli.List("v1/user-proxy-configs", params, &resp)
 }

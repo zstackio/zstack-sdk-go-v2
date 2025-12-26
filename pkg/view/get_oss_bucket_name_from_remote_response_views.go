@@ -4,6 +4,6 @@ package view
 
 // GetOssBucketNameFromRemoteView GetOssBucketNameFromRemote
 type GetOssBucketNameFromRemoteView struct {
-	Inventories []interface{} `json:"inventories,omitempty"`
+	Inventories []OssBucketPropertyView `json:"inventories,omitempty"`
 }
 

@@ -11,7 +11,7 @@ type PciDeviceOfferingInstanceOfferingRefInventoryView struct {
 	Id int64 `json:"id,omitempty"`
 	InstanceOfferingUuid string `json:"instanceOfferingUuid,omitempty"`
 	PciDeviceOfferingUuid string `json:"pciDeviceOfferingUuid,omitempty"`
-	Metadata interface{} `json:"metadata,omitempty"`
+	Metadata PciDeviceMetaDataView `json:"metadata,omitempty"`
 	PciDeviceCount int `json:"pciDeviceCount,omitempty"`
 }
 

@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryAutoScalingVmTemplate queries AutoScalingVmTemplate list
-func (cli *ZSClient) QueryAutoScalingVmTemplate(params param.QueryParam) ([]view.AutoScalingVmTemplateInventoryView, error) {
+func (cli *ZSClient) QueryAutoScalingVmTemplate(params *param.QueryParam) ([]view.AutoScalingVmTemplateInventoryView, error) {
 	var resp []view.AutoScalingVmTemplateInventoryView
-	return resp, cli.List("v1/autoscaling/vmtemplate", &params, &resp)
+	return resp, cli.List("v1/autoscaling/vmtemplate", params, &resp)
 }

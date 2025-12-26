@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryTicketFlow queries TicketFlow list
-func (cli *ZSClient) QueryTicketFlow(params param.QueryParam) ([]view.TicketFlowInventoryView, error) {
+func (cli *ZSClient) QueryTicketFlow(params *param.QueryParam) ([]view.TicketFlowInventoryView, error) {
 	var resp []view.TicketFlowInventoryView
-	return resp, cli.List("v1/tickets/flow", &params, &resp)
+	return resp, cli.List("v1/tickets/flow", params, &resp)
 }

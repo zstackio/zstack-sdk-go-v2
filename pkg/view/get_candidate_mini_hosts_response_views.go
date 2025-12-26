@@ -4,6 +4,6 @@ package view
 
 // GetCandidateMiniHostsView GetCandidateMiniHosts
 type GetCandidateMiniHostsView struct {
-	Hosts []interface{} `json:"hosts,omitempty"`
+	Hosts []MiniCandidateHostStructView `json:"hosts,omitempty"`
 }
 

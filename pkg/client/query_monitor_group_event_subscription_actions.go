@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryMonitorGroupEventSubscription queries MonitorGroupEventSubscription list
-func (cli *ZSClient) QueryMonitorGroupEventSubscription(params param.QueryParam) ([]view.MonitorGroupEventSubscriptionInventoryView, error) {
+func (cli *ZSClient) QueryMonitorGroupEventSubscription(params *param.QueryParam) ([]view.MonitorGroupEventSubscriptionInventoryView, error) {
 	var resp []view.MonitorGroupEventSubscriptionInventoryView
-	return resp, cli.List("v1/zwatch/monitorgroups/subscriptions", &params, &resp)
+	return resp, cli.List("v1/zwatch/monitorgroups/subscriptions", params, &resp)
 }

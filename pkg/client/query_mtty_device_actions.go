@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryMttyDevice queries MttyDevice list
-func (cli *ZSClient) QueryMttyDevice(params param.QueryParam) ([]view.MttyDeviceInventoryView, error) {
+func (cli *ZSClient) QueryMttyDevice(params *param.QueryParam) ([]view.MttyDeviceInventoryView, error) {
 	var resp []view.MttyDeviceInventoryView
-	return resp, cli.List("v1/mtty-devices", &params, &resp)
+	return resp, cli.List("v1/mtty-devices", params, &resp)
 }

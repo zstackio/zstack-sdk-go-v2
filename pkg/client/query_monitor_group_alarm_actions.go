@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryMonitorGroupAlarm queries MonitorGroupAlarm list
-func (cli *ZSClient) QueryMonitorGroupAlarm(params param.QueryParam) ([]view.MonitorGroupAlarmInventoryView, error) {
+func (cli *ZSClient) QueryMonitorGroupAlarm(params *param.QueryParam) ([]view.MonitorGroupAlarmInventoryView, error) {
 	var resp []view.MonitorGroupAlarmInventoryView
-	return resp, cli.List("v1/zwatch/monitorgroups/alarms", &params, &resp)
+	return resp, cli.List("v1/zwatch/monitorgroups/alarms", params, &resp)
 }

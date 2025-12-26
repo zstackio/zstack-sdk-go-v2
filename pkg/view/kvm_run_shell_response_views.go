@@ -4,6 +4,6 @@ package view
 
 // KvmRunShellEventView KvmRunShellEvent
 type KvmRunShellEventView struct {
-	Inventory map[string]interface{} `json:"inventory,omitempty"`
+	Inventory map[string]ShellResultView `json:"inventory,omitempty"`
 }
 

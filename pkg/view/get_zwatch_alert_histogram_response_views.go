@@ -4,7 +4,7 @@ package view
 
 // GetZWatchAlertHistogramView GetZWatchAlertHistogram
 type GetZWatchAlertHistogramView struct {
-	Histograms []interface{} `json:"histograms,omitempty"`
+	Histograms []HistogramView `json:"histograms,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

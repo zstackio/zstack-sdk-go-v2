@@ -7,7 +7,7 @@ type UpdateIAM2ProjectTemplateDetailParam struct {
 	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
-	Attributes []interface{} `json:"attributes,omitempty"`
+	Attributes []AttributeParam `json:"attributes,omitempty"`
 	Quota map[string]int64 `json:"quota,omitempty"`
 }
 

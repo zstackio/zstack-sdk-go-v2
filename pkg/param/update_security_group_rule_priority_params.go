@@ -6,7 +6,7 @@ package param
 type UpdateSecurityGroupRulePriorityDetailParam struct {
 	SecurityGroupUuid string `json:"securityGroupUuid" validate:"required"`
 	Type string `json:"type" validate:"required"`
-	Rules []interface{} `json:"rules" validate:"required"`
+	Rules []SecurityGroupRulePriorityAOParam `json:"rules" validate:"required"`
 }
 
 // UpdateSecurityGroupRulePriorityParam UpdateSecurityGroupRulePriority request param

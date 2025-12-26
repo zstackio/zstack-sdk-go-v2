@@ -4,6 +4,6 @@ package view
 
 // UpdateDatasetsEventView UpdateDatasetsEvent
 type UpdateDatasetsEventView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []BatchOperationResultView `json:"results,omitempty"`
 }
 

@@ -18,7 +18,7 @@ type UpdateModelServiceDetailParam struct {
 	Type string `json:"type,omitempty"`
 	Source string `json:"source,omitempty"`
 	Framework string `json:"framework,omitempty"`
-	ArchitectureImages []interface{} `json:"architectureImages,omitempty"`
+	ArchitectureImages []ArchitectureImageMappingParam `json:"architectureImages,omitempty"`
 	SupportDistributed bool `json:"supportDistributed,omitempty"`
 	EnvironmentParameters map[string]string `json:"environmentParameters,omitempty"`
 	StartupParameters map[string]string `json:"startupParameters,omitempty"`

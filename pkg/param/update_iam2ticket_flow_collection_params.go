@@ -4,7 +4,7 @@ package param
 
 // UpdateIAM2TicketFlowCollectionDetailParam UpdateIAM2TicketFlowCollection detail param
 type UpdateIAM2TicketFlowCollectionDetailParam struct {
-	Flows []interface{} `json:"flows,omitempty"`
+	Flows []IAM2FlowStructParam `json:"flows,omitempty"`
 	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`

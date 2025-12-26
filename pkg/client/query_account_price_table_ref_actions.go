@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryAccountPriceTableRef queries AccountPriceTableRef list
-func (cli *ZSClient) QueryAccountPriceTableRef(params param.QueryParam) ([]view.AccountPriceTableRefInventoryView, error) {
+func (cli *ZSClient) QueryAccountPriceTableRef(params *param.QueryParam) ([]view.AccountPriceTableRefInventoryView, error) {
 	var resp []view.AccountPriceTableRefInventoryView
-	return resp, cli.List("v1/accounts/price-tables/refs", &params, &resp)
+	return resp, cli.List("v1/accounts/price-tables/refs", params, &resp)
 }

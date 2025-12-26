@@ -4,6 +4,6 @@ package view
 
 // RestartModelServiceGroupsEventView RestartModelServiceGroupsEvent
 type RestartModelServiceGroupsEventView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []BatchOperationResultView `json:"results,omitempty"`
 }
 

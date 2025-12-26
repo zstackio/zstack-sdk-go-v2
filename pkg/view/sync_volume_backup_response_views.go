@@ -4,6 +4,6 @@ package view
 
 // SyncVolumeBackupEventView SyncVolumeBackupEvent
 type SyncVolumeBackupEventView struct {
-	Result interface{} `json:"result,omitempty"`
+	Result SyncBackupResultView `json:"result,omitempty"`
 }
 

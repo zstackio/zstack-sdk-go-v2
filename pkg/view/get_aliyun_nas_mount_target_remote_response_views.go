@@ -4,6 +4,6 @@ package view
 
 // GetAliyunNasMountTargetRemoteView GetAliyunNasMountTargetRemote
 type GetAliyunNasMountTargetRemoteView struct {
-	Inventories []interface{} `json:"inventories,omitempty"`
+	Inventories []AliyunNasMountTargetPropertyView `json:"inventories,omitempty"`
 }
 

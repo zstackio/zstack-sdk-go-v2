@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QuerySchedulerJobHistory queries SchedulerJobHistory list
-func (cli *ZSClient) QuerySchedulerJobHistory(params param.QueryParam) ([]view.SchedulerJobHistoryInventoryView, error) {
+func (cli *ZSClient) QuerySchedulerJobHistory(params *param.QueryParam) ([]view.SchedulerJobHistoryInventoryView, error) {
 	var resp []view.SchedulerJobHistoryInventoryView
-	return resp, cli.List("v1/scheduler/job/history", &params, &resp)
+	return resp, cli.List("v1/scheduler/job/history", params, &resp)
 }

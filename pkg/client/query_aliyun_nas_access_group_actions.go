@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryAliyunNasAccessGroup queries AliyunNasAccessGroup list
-func (cli *ZSClient) QueryAliyunNasAccessGroup(params param.QueryParam) ([]view.AliyunNasAccessGroupInventoryView, error) {
+func (cli *ZSClient) QueryAliyunNasAccessGroup(params *param.QueryParam) ([]view.AliyunNasAccessGroupInventoryView, error) {
 	var resp []view.AliyunNasAccessGroupInventoryView
-	return resp, cli.List("v1/nas/aliyun/access", &params, &resp)
+	return resp, cli.List("v1/nas/aliyun/access", params, &resp)
 }

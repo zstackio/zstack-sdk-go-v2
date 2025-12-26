@@ -4,8 +4,8 @@ package view
 
 // CleanUpTrashOnBackupStorageEventView CleanUpTrashOnBackupStorageEvent
 type CleanUpTrashOnBackupStorageEventView struct {
-	Result interface{} `json:"result,omitempty"`
-	Results []interface{} `json:"results,omitempty"`
+	Result CleanTrashResultView `json:"result,omitempty"`
+	Results []TrashCleanupResultView `json:"results,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

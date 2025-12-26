@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryPortMirrorNetworkUsedIp queries PortMirrorNetworkUsedIp list
-func (cli *ZSClient) QueryPortMirrorNetworkUsedIp(params param.QueryParam) ([]view.MirrorNetworkUsedIpInventoryView, error) {
+func (cli *ZSClient) QueryPortMirrorNetworkUsedIp(params *param.QueryParam) ([]view.MirrorNetworkUsedIpInventoryView, error) {
 	var resp []view.MirrorNetworkUsedIpInventoryView
-	return resp, cli.List("v1/port-mirrors/networks/usedIps", &params, &resp)
+	return resp, cli.List("v1/port-mirrors/networks/usedIps", params, &resp)
 }

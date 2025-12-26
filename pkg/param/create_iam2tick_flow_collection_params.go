@@ -4,7 +4,7 @@ package param
 
 // CreateIAM2TickFlowCollectionDetailParam CreateIAM2TickFlowCollection detail param
 type CreateIAM2TickFlowCollectionDetailParam struct {
-	Flows []interface{} `json:"flows,omitempty"`
+	Flows []IAM2FlowStructParam `json:"flows,omitempty"`
 	ProjectUuid string `json:"projectUuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
 	Description string `json:"description,omitempty"`

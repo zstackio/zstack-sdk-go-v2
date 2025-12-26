@@ -4,6 +4,6 @@ package view
 
 // GetSupportedCloudFormationResourcesView GetSupportedCloudFormationResources
 type GetSupportedCloudFormationResourcesView struct {
-	Resources []interface{} `json:"resources,omitempty"`
+	Resources []SupportedResourceStructView `json:"resources,omitempty"`
 }
 

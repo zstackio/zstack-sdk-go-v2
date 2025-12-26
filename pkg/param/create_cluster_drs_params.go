@@ -8,7 +8,7 @@ type CreateClusterDRSDetailParam struct {
 	Description string `json:"description,omitempty"`
 	ClusterUuid string `json:"clusterUuid" validate:"required"`
 	AutomationLevel string `json:"automationLevel" validate:"required"`
-	Thresholds []interface{} `json:"thresholds" validate:"required"`
+	Thresholds []ThresholdParam `json:"thresholds" validate:"required"`
 	ThresholdDuration int `json:"thresholdDuration" validate:"required"`
 	DefaultEnable bool `json:"defaultEnable,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`

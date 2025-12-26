@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QuerySharedBlockGroupPrimaryStorage queries SharedBlockGroupPrimaryStorage list
-func (cli *ZSClient) QuerySharedBlockGroupPrimaryStorage(params param.QueryParam) ([]view.SharedBlockGroupPrimaryStorageInventoryView, error) {
+func (cli *ZSClient) QuerySharedBlockGroupPrimaryStorage(params *param.QueryParam) ([]view.SharedBlockGroupPrimaryStorageInventoryView, error) {
 	var resp []view.SharedBlockGroupPrimaryStorageInventoryView
-	return resp, cli.List("v1/primary-storage/sharedblockgroup", &params, &resp)
+	return resp, cli.List("v1/primary-storage/sharedblockgroup", params, &resp)
 }

@@ -4,6 +4,6 @@ package view
 
 // GetLocalRaidPhysicalDriveSmartView GetLocalRaidPhysicalDriveSmart
 type GetLocalRaidPhysicalDriveSmartView struct {
-	Result []interface{} `json:"result,omitempty"`
+	Result []SmartDataStructView `json:"result,omitempty"`
 }
 

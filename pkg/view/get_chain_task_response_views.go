@@ -4,7 +4,7 @@ package view
 
 // GetChainTaskView GetChainTask
 type GetChainTaskView struct {
-	Results map[string]interface{} `json:"results,omitempty"`
+	Results map[string]ChainInfoView `json:"results,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

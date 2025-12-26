@@ -4,7 +4,7 @@ package view
 
 // GetVpcVpnConfigurationFromRemoteView GetVpcVpnConfigurationFromRemote
 type GetVpcVpnConfigurationFromRemoteView struct {
-	IkeConf interface{} `json:"ikeConf,omitempty"`
-	IpSecConf interface{} `json:"ipSecConf,omitempty"`
+	IkeConf VpcVpnIkeConfigStructView `json:"ikeConf,omitempty"`
+	IpSecConf VpcVpnIpSecConfigStructView `json:"ipSecConf,omitempty"`
 }
 

@@ -7,7 +7,7 @@ type CreateIAM2VirtualIDGroupDetailParam struct {
 	ProjectUuid string `json:"projectUuid,omitempty"`
 	Name string `json:"name" validate:"required"`
 	Description string `json:"description,omitempty"`
-	Attributes []interface{} `json:"attributes,omitempty"`
+	Attributes []AttributeParam `json:"attributes,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

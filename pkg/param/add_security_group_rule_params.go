@@ -5,7 +5,7 @@ package param
 // AddSecurityGroupRuleDetailParam AddSecurityGroupRule detail param
 type AddSecurityGroupRuleDetailParam struct {
 	SecurityGroupUuid string `json:"securityGroupUuid" validate:"required"`
-	Rules []interface{} `json:"rules" validate:"required"`
+	Rules []SecurityGroupRuleAOParam `json:"rules" validate:"required"`
 	RemoteSecurityGroupUuids []string `json:"remoteSecurityGroupUuids,omitempty"`
 	Priority int `json:"priority,omitempty"`
 }

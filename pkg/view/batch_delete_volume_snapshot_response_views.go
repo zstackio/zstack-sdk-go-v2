@@ -4,7 +4,7 @@ package view
 
 // BatchDeleteVolumeSnapshotEventView BatchDeleteVolumeSnapshotEvent
 type BatchDeleteVolumeSnapshotEventView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []BatchDeleteVolumeSnapshotStructView `json:"results,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

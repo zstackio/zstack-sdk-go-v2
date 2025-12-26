@@ -24,7 +24,7 @@ type CloneModelServiceDetailParam struct {
 	RequestCpu int `json:"requestCpu,omitempty"`
 	RequestMemory int64 `json:"requestMemory,omitempty"`
 	CpuArchitectures []string `json:"cpuArchitectures,omitempty"`
-	ArchitectureImages []interface{} `json:"architectureImages,omitempty"`
+	ArchitectureImages []ArchitectureImageMappingParam `json:"architectureImages,omitempty"`
 	SupportDistributed bool `json:"supportDistributed,omitempty"`
 	VendorToSpecUuidsMap map[string]interface{} `json:"vendorToSpecUuidsMap,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`

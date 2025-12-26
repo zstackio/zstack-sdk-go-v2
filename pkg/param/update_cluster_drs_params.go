@@ -8,7 +8,7 @@ type UpdateClusterDRSDetailParam struct {
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
 	AutomationLevel string `json:"automationLevel,omitempty"`
-	Thresholds []interface{} `json:"thresholds,omitempty"`
+	Thresholds []ThresholdParam `json:"thresholds,omitempty"`
 	ThresholdDuration int `json:"thresholdDuration,omitempty"`
 	State string `json:"state,omitempty"`
 }

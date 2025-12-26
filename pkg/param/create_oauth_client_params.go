@@ -20,7 +20,7 @@ type CreateOAuthClientDetailParam struct {
 	UrlTemplate string `json:"urlTemplate" validate:"required"`
 	ClientType string `json:"clientType" validate:"required"`
 	ScopeList []string `json:"scopeList,omitempty"`
-	Attributes []interface{} `json:"attributes,omitempty"`
+	Attributes []ExtendedAttributeParam `json:"attributes,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

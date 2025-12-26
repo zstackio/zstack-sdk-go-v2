@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryMonitorTrigger queries MonitorTrigger list
-func (cli *ZSClient) QueryMonitorTrigger(params param.QueryParam) ([]view.MonitorTriggerInventoryView, error) {
+func (cli *ZSClient) QueryMonitorTrigger(params *param.QueryParam) ([]view.MonitorTriggerInventoryView, error) {
 	var resp []view.MonitorTriggerInventoryView
-	return resp, cli.List("v1/monitoring/triggers", &params, &resp)
+	return resp, cli.List("v1/monitoring/triggers", params, &resp)
 }

@@ -4,6 +4,6 @@ package view
 
 // GetMetricDataView GetMetricData
 type GetMetricDataView struct {
-	Data []interface{} `json:"data,omitempty"`
+	Data []DatapointView `json:"data,omitempty"`
 }
 

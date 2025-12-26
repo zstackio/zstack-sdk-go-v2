@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryAccessKey queries AccessKey list
-func (cli *ZSClient) QueryAccessKey(params param.QueryParam) ([]view.AccessKeyInventoryView, error) {
+func (cli *ZSClient) QueryAccessKey(params *param.QueryParam) ([]view.AccessKeyInventoryView, error) {
 	var resp []view.AccessKeyInventoryView
-	return resp, cli.List("v1/accesskeys", &params, &resp)
+	return resp, cli.List("v1/accesskeys", params, &resp)
 }

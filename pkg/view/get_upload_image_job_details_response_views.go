@@ -4,7 +4,7 @@ package view
 
 // GetUploadImageJobDetailsView GetUploadImageJobDetails
 type GetUploadImageJobDetailsView struct {
-	ExistingJobDetails []interface{} `json:"existingJobDetails,omitempty"`
+	ExistingJobDetails []JobDetailsView `json:"existingJobDetails,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

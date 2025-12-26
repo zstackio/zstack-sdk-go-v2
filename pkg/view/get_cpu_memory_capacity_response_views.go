@@ -9,7 +9,7 @@ type GetCpuMemoryCapacityView struct {
 	TotalMemory int64 `json:"totalMemory,omitempty"`
 	AvailableMemory int64 `json:"availableMemory,omitempty"`
 	ManagedCpuNum int64 `json:"managedCpuNum,omitempty"`
-	CapacityData []interface{} `json:"capacityData,omitempty"`
+	CapacityData []CpuMemoryCapacityDataView `json:"capacityData,omitempty"`
 	ResourceType string `json:"resourceType,omitempty"`
 	Success bool `json:"success,omitempty"`
 }

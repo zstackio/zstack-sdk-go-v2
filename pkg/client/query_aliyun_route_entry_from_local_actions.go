@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryAliyunRouteEntryFromLocal queries AliyunRouteEntryFromLocal list
-func (cli *ZSClient) QueryAliyunRouteEntryFromLocal(params param.QueryParam) ([]view.VpcVirtualRouteEntryInventoryView, error) {
+func (cli *ZSClient) QueryAliyunRouteEntryFromLocal(params *param.QueryParam) ([]view.VpcVirtualRouteEntryInventoryView, error) {
 	var resp []view.VpcVirtualRouteEntryInventoryView
-	return resp, cli.List("v1/hybrid/aliyun/route-entry", &params, &resp)
+	return resp, cli.List("v1/hybrid/aliyun/route-entry", params, &resp)
 }

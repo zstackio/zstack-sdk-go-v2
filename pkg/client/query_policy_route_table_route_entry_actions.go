@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryPolicyRouteTableRouteEntry queries PolicyRouteTableRouteEntry list
-func (cli *ZSClient) QueryPolicyRouteTableRouteEntry(params param.QueryParam) ([]view.PolicyRouteTableRouteEntryInventoryView, error) {
+func (cli *ZSClient) QueryPolicyRouteTableRouteEntry(params *param.QueryParam) ([]view.PolicyRouteTableRouteEntryInventoryView, error) {
 	var resp []view.PolicyRouteTableRouteEntryInventoryView
-	return resp, cli.List("v1/policy-routes/routes", &params, &resp)
+	return resp, cli.List("v1/policy-routes/routes", params, &resp)
 }

@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryLdapBinding queries LdapBinding list
-func (cli *ZSClient) QueryLdapBinding(params param.QueryParam) ([]view.LdapAccountRefInventoryView, error) {
+func (cli *ZSClient) QueryLdapBinding(params *param.QueryParam) ([]view.LdapAccountRefInventoryView, error) {
 	var resp []view.LdapAccountRefInventoryView
-	return resp, cli.List("v1/ldap/bindings", &params, &resp)
+	return resp, cli.List("v1/ldap/bindings", params, &resp)
 }

@@ -4,6 +4,6 @@ package view
 
 // DecodeStackTemplateView DecodeStackTemplate
 type DecodeStackTemplateView struct {
-	Resources []interface{} `json:"resources,omitempty"`
+	Resources []ResourceStructView `json:"resources,omitempty"`
 }
 

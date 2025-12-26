@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryRole queries Role list
-func (cli *ZSClient) QueryRole(params param.QueryParam) ([]view.RoleInventoryView, error) {
+func (cli *ZSClient) QueryRole(params *param.QueryParam) ([]view.RoleInventoryView, error) {
 	var resp []view.RoleInventoryView
-	return resp, cli.List("v1/identities/roles", &params, &resp)
+	return resp, cli.List("v1/identities/roles", params, &resp)
 }

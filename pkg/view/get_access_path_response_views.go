@@ -4,7 +4,7 @@ package view
 
 // GetAccessPathView GetAccessPath
 type GetAccessPathView struct {
-	PathInfos []interface{} `json:"pathInfos,omitempty"`
+	PathInfos []AccessPathInfoView `json:"pathInfos,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

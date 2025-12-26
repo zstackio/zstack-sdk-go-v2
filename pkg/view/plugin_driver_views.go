@@ -13,7 +13,7 @@ type PluginDriverInventoryView struct {
 	Type string `json:"type,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
 	Features string `json:"features,omitempty"`
-	OptionTypes []interface{} `json:"optionTypes,omitempty"`
+	OptionTypes []OptionTypeView `json:"optionTypes,omitempty"`
 	Deleted bool `json:"deleted,omitempty"`
 	License string `json:"license,omitempty"`
 	Version string `json:"version,omitempty"`

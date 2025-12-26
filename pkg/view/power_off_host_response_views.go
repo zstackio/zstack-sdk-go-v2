@@ -4,7 +4,7 @@ package view
 
 // PowerOffHostEventView PowerOffHostEvent
 type PowerOffHostEventView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []PowerOffHardwareResultView `json:"results,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

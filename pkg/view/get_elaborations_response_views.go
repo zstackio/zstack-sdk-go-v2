@@ -4,6 +4,6 @@ package view
 
 // GetElaborationsView GetElaborations
 type GetElaborationsView struct {
-	Contents []interface{} `json:"contents,omitempty"`
+	Contents []ElaborationContentView `json:"contents,omitempty"`
 }
 

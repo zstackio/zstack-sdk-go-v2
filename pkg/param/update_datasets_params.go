@@ -4,7 +4,7 @@ package param
 
 // UpdateDatasetsDetailParam UpdateDatasets detail param
 type UpdateDatasetsDetailParam struct {
-	UpdateDatasetStructs []interface{} `json:"updateDatasetStructs" validate:"required"`
+	UpdateDatasetStructs []UpdateDatasetStructParam `json:"updateDatasetStructs" validate:"required"`
 }
 
 // UpdateDatasetsParam UpdateDatasets request param

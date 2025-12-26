@@ -30,6 +30,6 @@ type LicenseAddOnInventoryView struct {
 	AvailableHostNum int `json:"availableHostNum,omitempty"`
 	AvailableCpuNum int `json:"availableCpuNum,omitempty"`
 	AvailableVmNum int `json:"availableVmNum,omitempty"`
-	Usage interface{} `json:"usage,omitempty"`
+	Usage LicenseUsageViewView `json:"usage,omitempty"`
 }
 

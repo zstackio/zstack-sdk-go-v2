@@ -9,7 +9,7 @@ type AddEventRuleTemplateDetailParam struct {
 	Namespace string `json:"namespace" validate:"required"`
 	EventName string `json:"eventName" validate:"required"`
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
-	Labels []interface{} `json:"labels,omitempty"`
+	Labels []LabelParam `json:"labels,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

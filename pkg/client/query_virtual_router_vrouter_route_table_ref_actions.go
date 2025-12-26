@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryVirtualRouterVRouterRouteTableRef queries VirtualRouterVRouterRouteTableRef list
-func (cli *ZSClient) QueryVirtualRouterVRouterRouteTableRef(params param.QueryParam) ([]view.VirtualRouterVRouterRouteTableRefInventoryView, error) {
+func (cli *ZSClient) QueryVirtualRouterVRouterRouteTableRef(params *param.QueryParam) ([]view.VirtualRouterVRouterRouteTableRefInventoryView, error) {
 	var resp []view.VirtualRouterVRouterRouteTableRefInventoryView
-	return resp, cli.List("v1/vrouter-route-tables/virtual-router-refs", &params, &resp)
+	return resp, cli.List("v1/vrouter-route-tables/virtual-router-refs", params, &resp)
 }

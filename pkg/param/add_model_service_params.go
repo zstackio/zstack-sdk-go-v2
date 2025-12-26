@@ -23,7 +23,7 @@ type AddModelServiceDetailParam struct {
 	Source string `json:"source,omitempty"`
 	Framework string `json:"framework,omitempty"`
 	ModelUuids []string `json:"modelUuids,omitempty"`
-	ArchitectureImages []interface{} `json:"architectureImages,omitempty"`
+	ArchitectureImages []ArchitectureImageMappingParam `json:"architectureImages,omitempty"`
 	SupportDistributed bool `json:"supportDistributed,omitempty"`
 	VendorToSpecUuidsMap map[string]interface{} `json:"vendorToSpecUuidsMap,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`

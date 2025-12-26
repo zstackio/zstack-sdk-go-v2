@@ -6,7 +6,7 @@ package param
 type CreateIAM2ProjectTemplateDetailParam struct {
 	Name string `json:"name" validate:"required"`
 	Description string `json:"description,omitempty"`
-	Attributes []interface{} `json:"attributes,omitempty"`
+	Attributes []AttributeParam `json:"attributes,omitempty"`
 	Quota map[string]int64 `json:"quota,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`

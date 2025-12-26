@@ -4,6 +4,6 @@ package view
 
 // GetVolumeFormatView GetVolumeFormat
 type GetVolumeFormatView struct {
-	Formats []interface{} `json:"formats,omitempty"`
+	Formats []VolumeFormatReplyStructView `json:"formats,omitempty"`
 }
 

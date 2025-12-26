@@ -12,7 +12,7 @@ type HuaweiIMasterSdnControllerInventoryView struct {
 	Tenants []HuaweiIMasterTenantInventoryView `json:"tenants,omitempty"`
 	Vpcs []HuaweiIMasterVpcInventoryView `json:"vpcs,omitempty"`
 	Vrouters []HuaweiIMasterVRouterInventoryView `json:"vrouters,omitempty"`
-	VlanRanges []interface{} `json:"vlanRanges,omitempty"`
+	VlanRanges []SdnVlanRangeView `json:"vlanRanges,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 	VendorType string `json:"vendorType,omitempty"`
 	VendorVersion string `json:"vendorVersion,omitempty"`

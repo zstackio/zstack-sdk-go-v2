@@ -6,7 +6,7 @@ package param
 type CloneVmInstanceDetailParam struct {
 	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
 	Strategy string `json:"strategy,omitempty"`
-	VmNicParams []interface{} `json:"vmNicParams,omitempty"`
+	VmNicParams []VmNicParamParam `json:"vmNicParams,omitempty"`
 	Names []string `json:"names" validate:"required"`
 	PrimaryStorageUuidForRootVolume string `json:"primaryStorageUuidForRootVolume,omitempty"`
 	PrimaryStorageUuidForDataVolume string `json:"primaryStorageUuidForDataVolume,omitempty"`

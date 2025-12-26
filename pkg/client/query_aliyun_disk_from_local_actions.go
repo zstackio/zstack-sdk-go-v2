@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryAliyunDiskFromLocal queries AliyunDiskFromLocal list
-func (cli *ZSClient) QueryAliyunDiskFromLocal(params param.QueryParam) ([]view.AliyunDiskInventoryView, error) {
+func (cli *ZSClient) QueryAliyunDiskFromLocal(params *param.QueryParam) ([]view.AliyunDiskInventoryView, error) {
 	var resp []view.AliyunDiskInventoryView
-	return resp, cli.List("v1/hybrid/aliyun/disk", &params, &resp)
+	return resp, cli.List("v1/hybrid/aliyun/disk", params, &resp)
 }

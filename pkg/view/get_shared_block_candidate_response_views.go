@@ -4,6 +4,6 @@ package view
 
 // GetSharedBlockCandidateView GetSharedBlockCandidate
 type GetSharedBlockCandidateView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []SharedBlockCandidateStructView `json:"results,omitempty"`
 }
 

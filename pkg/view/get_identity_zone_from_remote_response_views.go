@@ -4,6 +4,6 @@ package view
 
 // GetIdentityZoneFromRemoteView GetIdentityZoneFromRemote
 type GetIdentityZoneFromRemoteView struct {
-	Inventories []interface{} `json:"inventories,omitempty"`
+	Inventories []IdentityZonePropertyView `json:"inventories,omitempty"`
 }
 

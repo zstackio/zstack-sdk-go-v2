@@ -4,6 +4,6 @@ package view
 
 // GetHostMultipathTopologyView GetHostMultipathTopology
 type GetHostMultipathTopologyView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []MultipathTopologyStructView `json:"results,omitempty"`
 }
 

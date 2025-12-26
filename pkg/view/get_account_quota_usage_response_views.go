@@ -4,6 +4,6 @@ package view
 
 // GetAccountQuotaUsageView GetAccountQuotaUsage
 type GetAccountQuotaUsageView struct {
-	Usages []interface{} `json:"usages,omitempty"`
+	Usages []QuotaUsageView `json:"usages,omitempty"`
 }
 

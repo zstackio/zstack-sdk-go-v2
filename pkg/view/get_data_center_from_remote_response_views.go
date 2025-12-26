@@ -4,6 +4,6 @@ package view
 
 // GetDataCenterFromRemoteView GetDataCenterFromRemote
 type GetDataCenterFromRemoteView struct {
-	Inventories []interface{} `json:"inventories,omitempty"`
+	Inventories []DataCenterPropertyView `json:"inventories,omitempty"`
 }
 

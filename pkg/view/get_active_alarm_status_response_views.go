@@ -4,7 +4,7 @@ package view
 
 // GetActiveAlarmStatusView GetActiveAlarmStatus
 type GetActiveAlarmStatusView struct {
-	Statuses []interface{} `json:"statuses,omitempty"`
+	Statuses []ActiveAlarmStatusView `json:"statuses,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

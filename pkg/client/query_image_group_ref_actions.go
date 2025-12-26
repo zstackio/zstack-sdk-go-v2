@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryImageGroupRef queries ImageGroupRef list
-func (cli *ZSClient) QueryImageGroupRef(params param.QueryParam) ([]view.ImageGroupRefInventoryView, error) {
+func (cli *ZSClient) QueryImageGroupRef(params *param.QueryParam) ([]view.ImageGroupRefInventoryView, error) {
 	var resp []view.ImageGroupRefInventoryView
-	return resp, cli.List("v1/imagegrouprefs", &params, &resp)
+	return resp, cli.List("v1/imagegrouprefs", params, &resp)
 }

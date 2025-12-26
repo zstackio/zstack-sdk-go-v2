@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryPciDevicePciDeviceOffering queries PciDevicePciDeviceOffering list
-func (cli *ZSClient) QueryPciDevicePciDeviceOffering(params param.QueryParam) ([]view.PciDevicePciDeviceOfferingRefInventoryView, error) {
+func (cli *ZSClient) QueryPciDevicePciDeviceOffering(params *param.QueryParam) ([]view.PciDevicePciDeviceOfferingRefInventoryView, error) {
 	var resp []view.PciDevicePciDeviceOfferingRefInventoryView
-	return resp, cli.List("v1/pci-devices/pci-devices/pci-device-offerings", &params, &resp)
+	return resp, cli.List("v1/pci-devices/pci-devices/pci-device-offerings", params, &resp)
 }

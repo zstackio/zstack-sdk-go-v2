@@ -32,7 +32,7 @@ type CreateOvnControllerVmDetailParam struct {
 	GuestOsType string `json:"guestOsType,omitempty"`
 	Architecture string `json:"architecture,omitempty"`
 	Virtio bool `json:"virtio,omitempty"`
-	DiskAOs []interface{} `json:"diskAOs,omitempty"`
+	DiskAOs []DiskAOParam `json:"diskAOs,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

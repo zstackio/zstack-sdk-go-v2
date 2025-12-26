@@ -4,6 +4,6 @@ package view
 
 // GetVRouterOspfNeighborView GetVRouterOspfNeighbor
 type GetVRouterOspfNeighborView struct {
-	Neighbors []interface{} `json:"neighbors,omitempty"`
+	Neighbors []NeighborView `json:"neighbors,omitempty"`
 }
 

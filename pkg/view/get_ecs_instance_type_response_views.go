@@ -4,6 +4,6 @@ package view
 
 // GetEcsInstanceTypeView GetEcsInstanceType
 type GetEcsInstanceTypeView struct {
-	Types []interface{} `json:"types,omitempty"`
+	Types []EcsInstanceTypeView `json:"types,omitempty"`
 }
 

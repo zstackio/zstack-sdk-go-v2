@@ -4,6 +4,6 @@ package view
 
 // ChangeAccessControlListServerGroupEventView ChangeAccessControlListServerGroupEvent
 type ChangeAccessControlListServerGroupEventView struct {
-	Inventory interface{} `json:"inventory,omitempty"`
+	Inventory LoadBalancerListerAclView `json:"inventory,omitempty"`
 }
 

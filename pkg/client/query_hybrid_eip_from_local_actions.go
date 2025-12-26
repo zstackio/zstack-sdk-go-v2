@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryHybridEipFromLocal queries HybridEipFromLocal list
-func (cli *ZSClient) QueryHybridEipFromLocal(params param.QueryParam) ([]view.HybridEipAddressInventoryView, error) {
+func (cli *ZSClient) QueryHybridEipFromLocal(params *param.QueryParam) ([]view.HybridEipAddressInventoryView, error) {
 	var resp []view.HybridEipAddressInventoryView
-	return resp, cli.List("v1/hybrid/eip", &params, &resp)
+	return resp, cli.List("v1/hybrid/eip", params, &resp)
 }

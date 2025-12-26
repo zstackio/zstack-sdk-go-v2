@@ -3,8 +3,7 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
 )
 
 // DetachIAM2ProjectFromIAM2Organization operates on IAM2ProjectFromIAM2Organization

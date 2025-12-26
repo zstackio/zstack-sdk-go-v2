@@ -4,7 +4,7 @@ package param
 
 // AddIAM2VirtualIDGroupToProjectsDetailParam AddIAM2VirtualIDGroupToProjects detail param
 type AddIAM2VirtualIDGroupToProjectsDetailParam struct {
-	Structs []interface{} `json:"structs,omitempty"`
+	Structs []IAM2ProjectRoleRefStructParam `json:"structs,omitempty"`
 }
 
 // AddIAM2VirtualIDGroupToProjectsParam AddIAM2VirtualIDGroupToProjects request param

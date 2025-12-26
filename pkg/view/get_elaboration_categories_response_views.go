@@ -4,6 +4,6 @@ package view
 
 // GetElaborationCategoriesView GetElaborationCategories
 type GetElaborationCategoriesView struct {
-	Categories []interface{} `json:"categories,omitempty"`
+	Categories []ElaborationCategoryView `json:"categories,omitempty"`
 }
 

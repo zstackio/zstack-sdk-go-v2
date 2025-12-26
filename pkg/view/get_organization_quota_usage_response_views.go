@@ -4,6 +4,6 @@ package view
 
 // GetOrganizationQuotaUsageView GetOrganizationQuotaUsage
 type GetOrganizationQuotaUsageView struct {
-	Usages []interface{} `json:"usages,omitempty"`
+	Usages []QuotaUsageView `json:"usages,omitempty"`
 }
 

@@ -6,7 +6,7 @@ package param
 type CreateTicketDetailParam struct {
 	Name string `json:"name" validate:"required"`
 	Description string `json:"description,omitempty"`
-	Requests []interface{} `json:"requests" validate:"required"`
+	Requests []TicketRequestParam `json:"requests" validate:"required"`
 	FlowCollectionUuid string `json:"flowCollectionUuid,omitempty"`
 	AccountSystemType string `json:"accountSystemType" validate:"required"`
 	AccountSystemContext interface{} `json:"accountSystemContext" validate:"required"`

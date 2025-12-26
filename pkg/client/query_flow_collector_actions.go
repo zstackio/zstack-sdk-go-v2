@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryFlowCollector queries FlowCollector list
-func (cli *ZSClient) QueryFlowCollector(params param.QueryParam) ([]view.FlowCollectorInventoryView, error) {
+func (cli *ZSClient) QueryFlowCollector(params *param.QueryParam) ([]view.FlowCollectorInventoryView, error) {
 	var resp []view.FlowCollectorInventoryView
-	return resp, cli.List("v1/flowmeters/collectors", &params, &resp)
+	return resp, cli.List("v1/flowmeters/collectors", params, &resp)
 }

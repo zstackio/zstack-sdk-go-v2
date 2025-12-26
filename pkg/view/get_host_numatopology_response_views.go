@@ -6,6 +6,6 @@ package view
 type GetHostNUMATopologyEventView struct {
 	Name string `json:"name,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
-	Topology map[string]interface{} `json:"topology,omitempty"`
+	Topology map[string]HostNUMANodeView `json:"topology,omitempty"`
 }
 

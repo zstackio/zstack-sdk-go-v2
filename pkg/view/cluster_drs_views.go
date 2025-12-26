@@ -12,7 +12,7 @@ type ClusterDRSInventoryView struct {
 	State string `json:"state,omitempty"`
 	BalancedState string `json:"balancedState,omitempty"`
 	AutomationLevel string `json:"automationLevel,omitempty"`
-	Thresholds []interface{} `json:"thresholds,omitempty"`
+	Thresholds []ThresholdView `json:"thresholds,omitempty"`
 	ThresholdDuration int `json:"thresholdDuration,omitempty"`
 	Description string `json:"description,omitempty"`
 	CreateDate time.Time `json:"createDate,omitempty"`

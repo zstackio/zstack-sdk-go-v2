@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryResourcePrice queries ResourcePrice list
-func (cli *ZSClient) QueryResourcePrice(params param.QueryParam) ([]view.PriceInventoryView, error) {
+func (cli *ZSClient) QueryResourcePrice(params *param.QueryParam) ([]view.PriceInventoryView, error) {
 	var resp []view.PriceInventoryView
-	return resp, cli.List("v1/billings/prices", &params, &resp)
+	return resp, cli.List("v1/billings/prices", params, &resp)
 }

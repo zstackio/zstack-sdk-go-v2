@@ -4,6 +4,6 @@ package view
 
 // CheckElaborationContentView CheckElaborationContent
 type CheckElaborationContentView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []ElaborationCheckResultView `json:"results,omitempty"`
 }
 

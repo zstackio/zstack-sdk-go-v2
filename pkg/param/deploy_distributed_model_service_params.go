@@ -4,7 +4,7 @@ package param
 
 // DeployDistributedModelServiceDetailParam DeployDistributedModelService detail param
 type DeployDistributedModelServiceDetailParam struct {
-	ModelServices []interface{} `json:"modelServices" validate:"required"`
+	ModelServices []ModelServiceParam `json:"modelServices" validate:"required"`
 	ServiceCreationStrategy string `json:"serviceCreationStrategy" validate:"required"`
 	Name string `json:"name" validate:"required"`
 	Description string `json:"description,omitempty"`

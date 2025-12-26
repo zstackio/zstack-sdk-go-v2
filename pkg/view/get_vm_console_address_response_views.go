@@ -8,7 +8,7 @@ type GetVmConsoleAddressView struct {
 	Port int `json:"port,omitempty"`
 	Path string `json:"path,omitempty"`
 	Protocol string `json:"protocol,omitempty"`
-	VdiPortInfo interface{} `json:"vdiPortInfo,omitempty"`
+	VdiPortInfo VdiPortInfoView `json:"vdiPortInfo,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

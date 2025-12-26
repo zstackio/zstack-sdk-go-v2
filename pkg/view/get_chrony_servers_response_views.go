@@ -4,7 +4,7 @@ package view
 
 // GetChronyServersView GetChronyServers
 type GetChronyServersView struct {
-	Servers []interface{} `json:"servers,omitempty"`
+	Servers []ChronyServerInfoPairView `json:"servers,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

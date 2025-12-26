@@ -4,6 +4,6 @@ package view
 
 // GetVRouterFlowCounterView GetVRouterFlowCounter
 type GetVRouterFlowCounterView struct {
-	Counters []interface{} `json:"counters,omitempty"`
+	Counters []FlowCounterView `json:"counters,omitempty"`
 }
 

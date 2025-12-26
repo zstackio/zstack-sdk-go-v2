@@ -6,7 +6,7 @@ package param
 type CreateMonitorGroupDetailParam struct {
 	Name string `json:"name" validate:"required"`
 	Description string `json:"description,omitempty"`
-	Actions []interface{} `json:"actions,omitempty"`
+	Actions []ActionParamParam `json:"actions,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

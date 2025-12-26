@@ -4,7 +4,7 @@ package view
 
 // CloneVmInstanceEventView CloneVmInstanceEvent
 type CloneVmInstanceEventView struct {
-	Result interface{} `json:"result,omitempty"`
+	Result CloneVmInstanceResultsView `json:"result,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

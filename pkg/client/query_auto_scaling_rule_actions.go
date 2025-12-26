@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryAutoScalingRule queries AutoScalingRule list
-func (cli *ZSClient) QueryAutoScalingRule(params param.QueryParam) ([]view.AutoScalingRuleInventoryView, error) {
+func (cli *ZSClient) QueryAutoScalingRule(params *param.QueryParam) ([]view.AutoScalingRuleInventoryView, error) {
 	var resp []view.AutoScalingRuleInventoryView
-	return resp, cli.List("v1/autoscaling/groups/rules", &params, &resp)
+	return resp, cli.List("v1/autoscaling/groups/rules", params, &resp)
 }

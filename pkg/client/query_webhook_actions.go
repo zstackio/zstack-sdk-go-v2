@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryWebhook queries Webhook list
-func (cli *ZSClient) QueryWebhook(params param.QueryParam) ([]view.WebhookInventoryView, error) {
+func (cli *ZSClient) QueryWebhook(params *param.QueryParam) ([]view.WebhookInventoryView, error) {
 	var resp []view.WebhookInventoryView
-	return resp, cli.List("v1/web-hooks", &params, &resp)
+	return resp, cli.List("v1/web-hooks", params, &resp)
 }

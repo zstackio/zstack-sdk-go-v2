@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QuerySecretResourcePool queries SecretResourcePool list
-func (cli *ZSClient) QuerySecretResourcePool(params param.QueryParam) ([]view.SecretResourcePoolInventoryView, error) {
+func (cli *ZSClient) QuerySecretResourcePool(params *param.QueryParam) ([]view.SecretResourcePoolInventoryView, error) {
 	var resp []view.SecretResourcePoolInventoryView
-	return resp, cli.List("v1/secret-resource-pools", &params, &resp)
+	return resp, cli.List("v1/secret-resource-pools", params, &resp)
 }

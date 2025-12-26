@@ -28,7 +28,7 @@ type PciDeviceInventoryView struct {
 	SubdeviceId string `json:"subdeviceId,omitempty"`
 	PciDeviceAddress string `json:"pciDeviceAddress,omitempty"`
 	IommuGroup string `json:"iommuGroup,omitempty"`
-	MetaData interface{} `json:"metaData,omitempty"`
+	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
 	Rev string `json:"rev,omitempty"`
 	DependentDevices string `json:"dependentDevices,omitempty"`
 	CreateDate time.Time `json:"createDate,omitempty"`

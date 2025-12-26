@@ -4,7 +4,7 @@ package view
 
 // GetEventDataView GetEventData
 type GetEventDataView struct {
-	Events []interface{} `json:"events,omitempty"`
+	Events []EventDataView `json:"events,omitempty"`
 	Total int64 `json:"total,omitempty"`
 	Success bool `json:"success,omitempty"`
 }

@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryExponBlockVolume queries ExponBlockVolume list
-func (cli *ZSClient) QueryExponBlockVolume(params param.QueryParam) ([]view.ExponBlockVolumeInventoryView, error) {
+func (cli *ZSClient) QueryExponBlockVolume(params *param.QueryParam) ([]view.ExponBlockVolumeInventoryView, error) {
 	var resp []view.ExponBlockVolumeInventoryView
-	return resp, cli.List("v1/expon/block-volumes", &params, &resp)
+	return resp, cli.List("v1/expon/block-volumes", params, &resp)
 }

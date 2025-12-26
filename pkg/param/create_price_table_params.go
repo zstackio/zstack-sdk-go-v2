@@ -6,7 +6,7 @@ package param
 type CreatePriceTableDetailParam struct {
 	Name string `json:"name" validate:"required"`
 	Description string `json:"description,omitempty"`
-	Prices []interface{} `json:"prices" validate:"required"`
+	Prices []PriceParam `json:"prices" validate:"required"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

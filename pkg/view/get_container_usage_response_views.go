@@ -4,7 +4,7 @@ package view
 
 // GetContainerUsageView GetContainerUsage
 type GetContainerUsageView struct {
-	Usages []interface{} `json:"usages,omitempty"`
+	Usages []ContainerUsageView `json:"usages,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

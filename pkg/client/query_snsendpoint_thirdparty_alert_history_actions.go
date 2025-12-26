@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QuerySNSEndpointThirdpartyAlertHistory queries SNSEndpointThirdpartyAlertHistory list
-func (cli *ZSClient) QuerySNSEndpointThirdpartyAlertHistory(params param.QueryParam) ([]view.SNSEndpointThirdpartyAlertHistoryInventoryView, error) {
+func (cli *ZSClient) QuerySNSEndpointThirdpartyAlertHistory(params *param.QueryParam) ([]view.SNSEndpointThirdpartyAlertHistoryInventoryView, error) {
 	var resp []view.SNSEndpointThirdpartyAlertHistoryInventoryView
-	return resp, cli.List("v1/zwatch/third-party/alert-publish-histories", &params, &resp)
+	return resp, cli.List("v1/zwatch/third-party/alert-publish-histories", params, &resp)
 }

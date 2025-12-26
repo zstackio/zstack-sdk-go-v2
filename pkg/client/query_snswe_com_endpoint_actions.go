@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QuerySNSWeComEndpoint queries SNSWeComEndpoint list
-func (cli *ZSClient) QuerySNSWeComEndpoint(params param.QueryParam) ([]view.SNSWeComEndpointInventoryView, error) {
+func (cli *ZSClient) QuerySNSWeComEndpoint(params *param.QueryParam) ([]view.SNSWeComEndpointInventoryView, error) {
 	var resp []view.SNSWeComEndpointInventoryView
-	return resp, cli.List("v1/sns/application-endpoints/we-com", &params, &resp)
+	return resp, cli.List("v1/sns/application-endpoints/we-com", params, &resp)
 }

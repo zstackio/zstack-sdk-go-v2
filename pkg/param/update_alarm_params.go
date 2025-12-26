@@ -14,7 +14,7 @@ type UpdateAlarmDetailParam struct {
 	RepeatCount int `json:"repeatCount,omitempty"`
 	EnableRecovery bool `json:"enableRecovery,omitempty"`
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
-	Actions []interface{} `json:"actions,omitempty"`
+	Actions []ActionParamParam `json:"actions,omitempty"`
 }
 
 // UpdateAlarmParam UpdateAlarm request param

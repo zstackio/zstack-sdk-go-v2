@@ -4,6 +4,6 @@ package view
 
 // GetAllEventMetadataView GetAllEventMetadata
 type GetAllEventMetadataView struct {
-	Events []interface{} `json:"events,omitempty"`
+	Events []EventStructView `json:"events,omitempty"`
 }
 

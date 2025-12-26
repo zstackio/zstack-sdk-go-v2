@@ -4,6 +4,6 @@ package view
 
 // GetResourceBindableConfigView GetResourceBindableConfig
 type GetResourceBindableConfigView struct {
-	BindableConfigs []interface{} `json:"bindableConfigs,omitempty"`
+	BindableConfigs []ResourceBindableConfigStructView `json:"bindableConfigs,omitempty"`
 }
 

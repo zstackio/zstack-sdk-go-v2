@@ -10,7 +10,7 @@ type UpdateMetricRuleTemplateDetailParam struct {
 	Period int `json:"period,omitempty"`
 	Threshold float64 `json:"threshold,omitempty"`
 	RepeatInterval int `json:"repeatInterval,omitempty"`
-	Labels []interface{} `json:"labels,omitempty"`
+	Labels []LabelParam `json:"labels,omitempty"`
 	RepeatCount int `json:"repeatCount,omitempty"`
 	EnableRecovery bool `json:"enableRecovery,omitempty"`
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`

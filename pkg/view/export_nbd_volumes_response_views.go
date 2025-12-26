@@ -4,7 +4,7 @@ package view
 
 // ExportNbdVolumesEventView ExportNbdVolumesEvent
 type ExportNbdVolumesEventView struct {
-	VolumeInfos []interface{} `json:"volumeInfos,omitempty"`
+	VolumeInfos []VolumeCbtBackupInfoView `json:"volumeInfos,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

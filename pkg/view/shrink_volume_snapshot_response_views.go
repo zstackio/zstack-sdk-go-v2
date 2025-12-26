@@ -4,6 +4,6 @@ package view
 
 // ShrinkVolumeSnapshotEventView ShrinkVolumeSnapshotEvent
 type ShrinkVolumeSnapshotEventView struct {
-	ShrinkResult interface{} `json:"shrinkResult,omitempty"`
+	ShrinkResult ShrinkResultView `json:"shrinkResult,omitempty"`
 }
 

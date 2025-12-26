@@ -17,7 +17,7 @@ type UsedIpInventoryView struct {
 	Gateway string `json:"gateway,omitempty"`
 	UsedFor string `json:"usedFor,omitempty"`
 	IpInLong int64 `json:"ipInLong,omitempty"`
-	IpInBinary interface{} `json:"ipInBinary,omitempty"`
+	IpInBinary []byte `json:"ipInBinary,omitempty"`
 	VmNicUuid string `json:"vmNicUuid,omitempty"`
 	CreateDate time.Time `json:"createDate,omitempty"`
 	LastOpDate time.Time `json:"lastOpDate,omitempty"`

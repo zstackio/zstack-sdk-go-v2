@@ -11,7 +11,7 @@ type CreateCasClientDetailParam struct {
 	ServerName string `json:"serverName" validate:"required"`
 	LoginType string `json:"loginType" validate:"required"`
 	UrlTemplate string `json:"urlTemplate" validate:"required"`
-	Attributes []interface{} `json:"attributes,omitempty"`
+	Attributes []ExtendedAttributeParam `json:"attributes,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

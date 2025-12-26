@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QuerySftpBackupStorage queries SftpBackupStorage list
-func (cli *ZSClient) QuerySftpBackupStorage(params param.QueryParam) ([]view.SftpBackupStorageInventoryView, error) {
+func (cli *ZSClient) QuerySftpBackupStorage(params *param.QueryParam) ([]view.SftpBackupStorageInventoryView, error) {
 	var resp []view.SftpBackupStorageInventoryView
-	return resp, cli.List("v1/backup-storage/sftp", &params, &resp)
+	return resp, cli.List("v1/backup-storage/sftp", params, &resp)
 }

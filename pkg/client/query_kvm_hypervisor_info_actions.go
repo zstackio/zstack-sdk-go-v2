@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryKvmHypervisorInfo queries KvmHypervisorInfo list
-func (cli *ZSClient) QueryKvmHypervisorInfo(params param.QueryParam) ([]view.KvmHypervisorInfoInventoryView, error) {
+func (cli *ZSClient) QueryKvmHypervisorInfo(params *param.QueryParam) ([]view.KvmHypervisorInfoInventoryView, error) {
 	var resp []view.KvmHypervisorInfoInventoryView
-	return resp, cli.List("v1/hosts/kvm/hypervisor/info", &params, &resp)
+	return resp, cli.List("v1/hosts/kvm/hypervisor/info", params, &resp)
 }

@@ -4,6 +4,6 @@ package view
 
 // GetAliyunNasFileSystemRemoteView GetAliyunNasFileSystemRemote
 type GetAliyunNasFileSystemRemoteView struct {
-	Inventories []interface{} `json:"inventories,omitempty"`
+	Inventories []AliyunNasFileSystemPropertyView `json:"inventories,omitempty"`
 }
 

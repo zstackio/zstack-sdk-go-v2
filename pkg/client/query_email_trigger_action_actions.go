@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryEmailTriggerAction queries EmailTriggerAction list
-func (cli *ZSClient) QueryEmailTriggerAction(params param.QueryParam) ([]view.MonitorTriggerActionInventoryView, error) {
+func (cli *ZSClient) QueryEmailTriggerAction(params *param.QueryParam) ([]view.MonitorTriggerActionInventoryView, error) {
 	var resp []view.MonitorTriggerActionInventoryView
-	return resp, cli.List("v1/monitoring/trigger-actions/emails", &params, &resp)
+	return resp, cli.List("v1/monitoring/trigger-actions/emails", params, &resp)
 }

@@ -4,6 +4,6 @@ package view
 
 // CheckVolumeSnapshotGroupAvailabilityView CheckVolumeSnapshotGroupAvailability
 type CheckVolumeSnapshotGroupAvailabilityView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []VolumeSnapshotGroupAvailabilityView `json:"results,omitempty"`
 }
 

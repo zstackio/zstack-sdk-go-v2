@@ -4,7 +4,7 @@ package view
 
 // CheckStackTemplateParametersView CheckStackTemplateParameters
 type CheckStackTemplateParametersView struct {
-	Parameters []interface{} `json:"parameters,omitempty"`
-	Preparameters []interface{} `json:"preparameters,omitempty"`
+	Parameters []StackParametersView `json:"parameters,omitempty"`
+	Preparameters []StackParametersView `json:"preparameters,omitempty"`
 }
 

@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryImageStoreBackupStorage queries ImageStoreBackupStorage list
-func (cli *ZSClient) QueryImageStoreBackupStorage(params param.QueryParam) ([]view.ImageStoreBackupStorageInventoryView, error) {
+func (cli *ZSClient) QueryImageStoreBackupStorage(params *param.QueryParam) ([]view.ImageStoreBackupStorageInventoryView, error) {
 	var resp []view.ImageStoreBackupStorageInventoryView
-	return resp, cli.List("v1/backup-storage/image-store", &params, &resp)
+	return resp, cli.List("v1/backup-storage/image-store", params, &resp)
 }

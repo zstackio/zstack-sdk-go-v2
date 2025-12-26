@@ -4,6 +4,6 @@ package view
 
 // GetAllMetricMetadataView GetAllMetricMetadata
 type GetAllMetricMetadataView struct {
-	Metrics []interface{} `json:"metrics,omitempty"`
+	Metrics []MetricStructView `json:"metrics,omitempty"`
 }
 

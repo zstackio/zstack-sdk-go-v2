@@ -4,7 +4,7 @@ package view
 
 // DeleteModelServiceInstanceGroupsEventView DeleteModelServiceInstanceGroupsEvent
 type DeleteModelServiceInstanceGroupsEventView struct {
-	Results []interface{} `json:"results,omitempty"`
+	Results []BatchOperationResultView `json:"results,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

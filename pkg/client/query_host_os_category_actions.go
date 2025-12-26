@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryHostOsCategory queries HostOsCategory list
-func (cli *ZSClient) QueryHostOsCategory(params param.QueryParam) ([]view.HostOsCategoryInventoryView, error) {
+func (cli *ZSClient) QueryHostOsCategory(params *param.QueryParam) ([]view.HostOsCategoryInventoryView, error) {
 	var resp []view.HostOsCategoryInventoryView
-	return resp, cli.List("v1/hosts/os/category", &params, &resp)
+	return resp, cli.List("v1/hosts/os/category", params, &resp)
 }

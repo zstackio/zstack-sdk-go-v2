@@ -7,7 +7,7 @@ type CreateIAM2VirtualIDDetailParam struct {
 	Name string `json:"name" validate:"required"`
 	Password string `json:"password" validate:"required"`
 	Description string `json:"description,omitempty"`
-	Attributes []interface{} `json:"attributes,omitempty"`
+	Attributes []AttributeParam `json:"attributes,omitempty"`
 	ProjectUuid string `json:"projectUuid,omitempty"`
 	OrganizationUuid string `json:"organizationUuid,omitempty"`
 	WithoutDefaultRole bool `json:"withoutDefaultRole,omitempty"`

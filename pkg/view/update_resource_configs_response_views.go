@@ -4,6 +4,6 @@ package view
 
 // UpdateResourceConfigsEventView UpdateResourceConfigsEvent
 type UpdateResourceConfigsEventView struct {
-	Inventories []interface{} `json:"inventories,omitempty"`
+	Inventories []ResourceConfigStructView `json:"inventories,omitempty"`
 }
 

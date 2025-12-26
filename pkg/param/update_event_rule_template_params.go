@@ -7,7 +7,7 @@ type UpdateEventRuleTemplateDetailParam struct {
 	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
-	Labels []interface{} `json:"labels,omitempty"`
+	Labels []LabelParam `json:"labels,omitempty"`
 }
 
 // UpdateEventRuleTemplateParam UpdateEventRuleTemplate request param

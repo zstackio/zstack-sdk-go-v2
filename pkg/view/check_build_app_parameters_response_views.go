@@ -4,6 +4,6 @@ package view
 
 // CheckBuildAppParametersView CheckBuildAppParameters
 type CheckBuildAppParametersView struct {
-	Parameters []interface{} `json:"parameters,omitempty"`
+	Parameters []StackParametersView `json:"parameters,omitempty"`
 }
 

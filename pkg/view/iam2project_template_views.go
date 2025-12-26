@@ -11,7 +11,7 @@ type IAM2ProjectTemplateInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
-	Template interface{} `json:"template,omitempty"`
+	Template TemplateView `json:"template,omitempty"`
 	CreateDate time.Time `json:"createDate,omitempty"`
 	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }

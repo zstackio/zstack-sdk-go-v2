@@ -5,7 +5,7 @@ package param
 // AddAttributesToIAM2OrganizationDetailParam AddAttributesToIAM2Organization detail param
 type AddAttributesToIAM2OrganizationDetailParam struct {
 	Uuid string `json:"uuid" validate:"required"`
-	Attributes []interface{} `json:"attributes" validate:"required"`
+	Attributes []AttributeParam `json:"attributes" validate:"required"`
 }
 
 // AddAttributesToIAM2OrganizationParam AddAttributesToIAM2Organization request param

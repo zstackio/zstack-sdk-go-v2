@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QuerySecurityGroup queries SecurityGroup list
-func (cli *ZSClient) QuerySecurityGroup(params param.QueryParam) ([]view.SecurityGroupInventoryView, error) {
+func (cli *ZSClient) QuerySecurityGroup(params *param.QueryParam) ([]view.SecurityGroupInventoryView, error) {
 	var resp []view.SecurityGroupInventoryView
-	return resp, cli.List("v1/security-groups", &params, &resp)
+	return resp, cli.List("v1/security-groups", params, &resp)
 }

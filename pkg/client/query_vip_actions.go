@@ -3,12 +3,12 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 )
 
 // QueryVip queries Vip list
-func (cli *ZSClient) QueryVip(params param.QueryParam) ([]view.VipInventoryView, error) {
+func (cli *ZSClient) QueryVip(params *param.QueryParam) ([]view.VipInventoryView, error) {
 	var resp []view.VipInventoryView
-	return resp, cli.List("v1/vips", &params, &resp)
+	return resp, cli.List("v1/vips", params, &resp)
 }

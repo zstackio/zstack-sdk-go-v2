@@ -3,8 +3,7 @@
 package client
 
 import (
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-	"github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
 )
 
 // RemoveIAM2ProjectLoginExpired removes IAM2ProjectLoginExpired

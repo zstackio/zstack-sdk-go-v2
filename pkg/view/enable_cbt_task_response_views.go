@@ -4,7 +4,7 @@ package view
 
 // EnableCbtTaskEventView EnableCbtTaskEvent
 type EnableCbtTaskEventView struct {
-	VolumeCbtBackupInfos []interface{} `json:"volumeCbtBackupInfos,omitempty"`
+	VolumeCbtBackupInfos []VolumeCbtBackupInfoView `json:"volumeCbtBackupInfos,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 
