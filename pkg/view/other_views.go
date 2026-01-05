@@ -2,6 +2,10 @@
 
 package view
 
+import "time"
+
+var _ = time.Now // avoid unused import
+
 // AckAlertDataEventView AckAlertDataEvent
 type AckAlertDataEventView struct {
 	Inventory AlertDataAckInventoryView `json:"inventory,omitempty"`

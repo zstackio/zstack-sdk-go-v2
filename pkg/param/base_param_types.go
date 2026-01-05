@@ -8,12 +8,41 @@ var _ = time.Now // avoid unused import
 
 // This file contains nested types used in API request params
 
+// AttributeParam Attribute param struct
+type AttributeParam struct {
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Value string `json:"value,omitempty"`
+}
+
 // IAM2FlowStructParam IAM2FlowStruct param struct
 type IAM2FlowStructParam struct {
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
 	ApproverUuid string `json:"approverUuid,omitempty"`
 	ApproverTitle string `json:"approverTitle,omitempty"`
+}
+
+// ArchitectureImageMappingParam ArchitectureImageMapping param struct
+type ArchitectureImageMappingParam struct {
+	CpuArchitecture string `json:"cpuArchitecture,omitempty"`
+	VmImageUuid string `json:"vmImageUuid,omitempty"`
+	DockerImage string `json:"dockerImage,omitempty"`
+}
+
+// UpdateDatasetStructParam UpdateDatasetStruct param struct
+type UpdateDatasetStructParam struct {
+	Uuid string `json:"uuid,omitempty"`
+	UsageScenarios []string `json:"usageScenarios,omitempty"`
+	DataType string `json:"dataType,omitempty"`
+}
+
+// TicketRequestParam TicketRequest param struct
+type TicketRequestParam struct {
+	RequestName string `json:"requestName,omitempty"`
+	ApiName string `json:"apiName,omitempty"`
+	ExecuteTimes int `json:"executeTimes,omitempty"`
+	ApiBody interface{} `json:"apiBody,omitempty"`
 }
 
 // LabelParam Label param struct
@@ -24,10 +53,13 @@ type LabelParam struct {
 	Compatible bool `json:"compatible,omitempty"`
 }
 
-// SecurityGroupRulePriorityAOParam SecurityGroupRulePriorityAO param struct
-type SecurityGroupRulePriorityAOParam struct {
-	RuleUuid string `json:"ruleUuid,omitempty"`
-	Priority int `json:"priority,omitempty"`
+// PolicyStatementParam PolicyStatement param struct
+type PolicyStatementParam struct {
+	Name string `json:"name,omitempty"`
+	Effect string `json:"effect,omitempty"`
+	Principals []string `json:"principals,omitempty"`
+	Actions []string `json:"actions,omitempty"`
+	Resources []string `json:"resources,omitempty"`
 }
 
 // SecurityGroupRuleAOParam SecurityGroupRuleAO param struct
@@ -47,34 +79,10 @@ type SecurityGroupRuleAOParam struct {
 	AllowedCidr string `json:"allowedCidr,omitempty"`
 }
 
-// ResourceConfigAOParam ResourceConfigAO param struct
-type ResourceConfigAOParam struct {
-	Category string `json:"category,omitempty"`
-	Name string `json:"name,omitempty"`
-	Value string `json:"value,omitempty"`
-}
-
-// PolicyStatementParam PolicyStatement param struct
-type PolicyStatementParam struct {
-	Name string `json:"name,omitempty"`
-	Effect string `json:"effect,omitempty"`
-	Principals []string `json:"principals,omitempty"`
-	Actions []string `json:"actions,omitempty"`
-	Resources []string `json:"resources,omitempty"`
-}
-
-// AttributeParam Attribute param struct
-type AttributeParam struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Value string `json:"value,omitempty"`
-}
-
-// UpdateDatasetStructParam UpdateDatasetStruct param struct
-type UpdateDatasetStructParam struct {
-	Uuid string `json:"uuid,omitempty"`
-	UsageScenarios []string `json:"usageScenarios,omitempty"`
-	DataType string `json:"dataType,omitempty"`
+// SecurityGroupRulePriorityAOParam SecurityGroupRulePriorityAO param struct
+type SecurityGroupRulePriorityAOParam struct {
+	RuleUuid string `json:"ruleUuid,omitempty"`
+	Priority int `json:"priority,omitempty"`
 }
 
 // VmNicParamParam VmNicParam param struct
@@ -98,6 +106,20 @@ type VmNicParamParam struct {
 	SgUuids []string `json:"sgUuids,omitempty"`
 }
 
+// ThresholdParam Threshold param struct
+type ThresholdParam struct {
+	ThresholdName string `json:"thresholdName,omitempty"`
+	ThresholdValue string `json:"thresholdValue,omitempty"`
+	Operator string `json:"operator,omitempty"`
+}
+
+// ResourceConfigAOParam ResourceConfigAO param struct
+type ResourceConfigAOParam struct {
+	Category string `json:"category,omitempty"`
+	Name string `json:"name,omitempty"`
+	Value string `json:"value,omitempty"`
+}
+
 // DiskAOParam DiskAO param struct
 type DiskAOParam struct {
 	Boot bool `json:"boot,omitempty"`
@@ -114,34 +136,10 @@ type DiskAOParam struct {
 	Name string `json:"name,omitempty"`
 }
 
-// TicketRequestParam TicketRequest param struct
-type TicketRequestParam struct {
-	RequestName string `json:"requestName,omitempty"`
-	ApiName string `json:"apiName,omitempty"`
-	ExecuteTimes int `json:"executeTimes,omitempty"`
-	ApiBody interface{} `json:"apiBody,omitempty"`
-}
-
 // ActionParamParam ActionParam param struct
 type ActionParamParam struct {
 	ActionUuid string `json:"actionUuid,omitempty"`
 	ActionType string `json:"actionType,omitempty"`
-}
-
-// ArchitectureImageMappingParam ArchitectureImageMapping param struct
-type ArchitectureImageMappingParam struct {
-	CpuArchitecture string `json:"cpuArchitecture,omitempty"`
-	VmImageUuid string `json:"vmImageUuid,omitempty"`
-	DockerImage string `json:"dockerImage,omitempty"`
-}
-
-// ExtendedAttributeParam ExtendedAttribute param struct
-type ExtendedAttributeParam struct {
-	Type string `json:"type,omitempty"`
-	Purpose string `json:"purpose,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Value string `json:"value,omitempty"`
 }
 
 // IAM2ProjectRoleRefStructParam IAM2ProjectRoleRefStruct param struct
@@ -151,11 +149,13 @@ type IAM2ProjectRoleRefStructParam struct {
 	RoleUuids []string `json:"roleUuids,omitempty"`
 }
 
-// ThresholdParam Threshold param struct
-type ThresholdParam struct {
-	ThresholdName string `json:"thresholdName,omitempty"`
-	ThresholdValue string `json:"thresholdValue,omitempty"`
-	Operator string `json:"operator,omitempty"`
+// ExtendedAttributeParam ExtendedAttribute param struct
+type ExtendedAttributeParam struct {
+	Type string `json:"type,omitempty"`
+	Purpose string `json:"purpose,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 
 // PriceParam Price param struct
