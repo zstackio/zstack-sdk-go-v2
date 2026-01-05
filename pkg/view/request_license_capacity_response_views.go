@@ -5,5 +5,6 @@ package view
 // RequestLicenseCapacityEventView RequestLicenseCapacityEvent
 type RequestLicenseCapacityEventView struct {
 	Inventory LicenseAuthorizedCapacityInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 

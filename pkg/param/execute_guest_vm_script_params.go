@@ -9,6 +9,7 @@ type ExecuteGuestVmScriptDetailParam struct {
 	ScriptTimeout int `json:"scriptTimeout,omitempty"`
 	LogPath string `json:"logPath,omitempty"`
 	RecordUuid string `json:"recordUuid,omitempty"`
+	RuntimeParams string `json:"runtimeParams,omitempty"`
 }
 
 // ExecuteGuestVmScriptParam ExecuteGuestVmScript request param

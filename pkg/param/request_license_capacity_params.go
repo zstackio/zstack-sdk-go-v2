@@ -9,6 +9,7 @@ type RequestLicenseCapacityDetailParam struct {
 	Quota int64 `json:"quota" validate:"required"`
 	ClientAuthorizedNodeUuid string `json:"clientAuthorizedNodeUuid" validate:"required"`
 	LicenseType string `json:"licenseType" validate:"required"`
+	ResourceInfo string `json:"resourceInfo,omitempty"`
 }
 
 // RequestLicenseCapacityParam RequestLicenseCapacity request param

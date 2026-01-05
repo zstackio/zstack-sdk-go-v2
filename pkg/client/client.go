@@ -21,7 +21,6 @@ const (
 
 const (
 	defaultZStackPort        = 8080
-	defaultZStackContextPath = "/zstack"
 )
 
 // ZSConfig client configuration
@@ -49,8 +48,8 @@ func NewZSConfig(hostname string, port int, contextPath string) *ZSConfig {
 }
 
 // DefaultZSConfig creates a default configuration
-func DefaultZSConfig(hostname string) *ZSConfig {
-	return NewZSConfig(hostname, defaultZStackPort, defaultZStackContextPath)
+func DefaultZSConfig(hostname, contextPath string) *ZSConfig {
+	return NewZSConfig(hostname, defaultZStackPort, contextPath)
 }
 
 // AccessKey sets access key authentication

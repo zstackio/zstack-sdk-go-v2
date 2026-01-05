@@ -8,11 +8,43 @@ var _ = time.Now // avoid unused import
 
 // This file contains nested types used in API request params
 
-// ArchitectureImageMappingParam ArchitectureImageMapping param struct
-type ArchitectureImageMappingParam struct {
-	CpuArchitecture string `json:"cpuArchitecture,omitempty"`
-	VmImageUuid string `json:"vmImageUuid,omitempty"`
-	DockerImage string `json:"dockerImage,omitempty"`
+// MiniHostInfoParam MiniHostInfo param struct
+type MiniHostInfoParam struct {
+	Sn string `json:"sn,omitempty"`
+	DnsAddresses []string `json:"dnsAddresses,omitempty"`
+	Ipmi MiniNetworkConfigStructParam `json:"ipmi,omitempty"`
+	Mgmt MiniNetworkConfigStructParam `json:"mgmt,omitempty"`
+}
+
+// AttributeParam Attribute param struct
+type AttributeParam struct {
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Value string `json:"value,omitempty"`
+}
+
+// MetricDatumParam MetricDatum param struct
+type MetricDatumParam struct {
+	MetricName string `json:"metricName,omitempty"`
+	Value float64 `json:"value,omitempty"`
+	Time int64 `json:"time,omitempty"`
+	Labels map[string]string `json:"labels,omitempty"`
+}
+
+// VolumeFilterInfoParam VolumeFilterInfo param struct
+type VolumeFilterInfoParam struct {
+	DeviceId string `json:"deviceId,omitempty"`
+	DisplayName string `json:"displayName,omitempty"`
+	Skip bool `json:"skip,omitempty"`
+}
+
+// ExtendedAttributeParam ExtendedAttribute param struct
+type ExtendedAttributeParam struct {
+	Type string `json:"type,omitempty"`
+	Purpose string `json:"purpose,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 
 // VmNicParamParam VmNicParam param struct
@@ -46,19 +78,12 @@ type PriceParam struct {
 	SystemTags []string `json:"systemTags,omitempty"`
 }
 
-// MetricDatumParam MetricDatum param struct
-type MetricDatumParam struct {
-	MetricName string `json:"metricName,omitempty"`
-	Value float64 `json:"value,omitempty"`
-	Time int64 `json:"time,omitempty"`
-	Labels map[string]string `json:"labels,omitempty"`
-}
-
-// IAM2ProjectRoleRefStructParam IAM2ProjectRoleRefStruct param struct
-type IAM2ProjectRoleRefStructParam struct {
-	ProjectUuid string `json:"projectUuid,omitempty"`
-	GroupUuids []string `json:"groupUuids,omitempty"`
-	RoleUuids []string `json:"roleUuids,omitempty"`
+// LabelParam Label param struct
+type LabelParam struct {
+	Key string `json:"key,omitempty"`
+	Value string `json:"value,omitempty"`
+	Op string `json:"op,omitempty"`
+	Compatible bool `json:"compatible,omitempty"`
 }
 
 // ThresholdParam Threshold param struct
@@ -68,32 +93,9 @@ type ThresholdParam struct {
 	Operator string `json:"operator,omitempty"`
 }
 
-// VolumeFilterInfoParam VolumeFilterInfo param struct
-type VolumeFilterInfoParam struct {
-	DeviceId string `json:"deviceId,omitempty"`
-	DisplayName string `json:"displayName,omitempty"`
-	Skip bool `json:"skip,omitempty"`
-}
-
-// DiskAOParam DiskAO param struct
-type DiskAOParam struct {
-	Boot bool `json:"boot,omitempty"`
-	Platform string `json:"platform,omitempty"`
-	GuestOsType string `json:"guestOsType,omitempty"`
-	Architecture string `json:"architecture,omitempty"`
-	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
-	Size int64 `json:"size,omitempty"`
-	TemplateUuid string `json:"templateUuid,omitempty"`
-	DiskOfferingUuid string `json:"diskOfferingUuid,omitempty"`
-	SourceType string `json:"sourceType,omitempty"`
-	SourceUuid string `json:"sourceUuid,omitempty"`
-	SystemTags []string `json:"systemTags,omitempty"`
-	Name string `json:"name,omitempty"`
-}
-
-// SecurityGroupRulePriorityAOParam SecurityGroupRulePriorityAO param struct
-type SecurityGroupRulePriorityAOParam struct {
-	RuleUuid string `json:"ruleUuid,omitempty"`
+// VmNicSecurityGroupRefAOParam VmNicSecurityGroupRefAO param struct
+type VmNicSecurityGroupRefAOParam struct {
+	SecurityGroupUuid string `json:"securityGroupUuid,omitempty"`
 	Priority int `json:"priority,omitempty"`
 }
 
@@ -114,13 +116,6 @@ type SecurityGroupRuleAOParam struct {
 	AllowedCidr string `json:"allowedCidr,omitempty"`
 }
 
-// ResourceConfigAOParam ResourceConfigAO param struct
-type ResourceConfigAOParam struct {
-	Category string `json:"category,omitempty"`
-	Name string `json:"name,omitempty"`
-	Value string `json:"value,omitempty"`
-}
-
 // IAM2FlowStructParam IAM2FlowStruct param struct
 type IAM2FlowStructParam struct {
 	Name string `json:"name,omitempty"`
@@ -129,17 +124,27 @@ type IAM2FlowStructParam struct {
 	ApproverTitle string `json:"approverTitle,omitempty"`
 }
 
-// ActionParamParam ActionParam param struct
-type ActionParamParam struct {
-	ActionUuid string `json:"actionUuid,omitempty"`
-	ActionType string `json:"actionType,omitempty"`
+// DiskAOParam DiskAO param struct
+type DiskAOParam struct {
+	Boot bool `json:"boot,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	GuestOsType string `json:"guestOsType,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	TemplateUuid string `json:"templateUuid,omitempty"`
+	DiskOfferingUuid string `json:"diskOfferingUuid,omitempty"`
+	SourceType string `json:"sourceType,omitempty"`
+	SourceUuid string `json:"sourceUuid,omitempty"`
+	SystemTags []string `json:"systemTags,omitempty"`
+	Name string `json:"name,omitempty"`
 }
 
-// UpdateDatasetStructParam UpdateDatasetStruct param struct
-type UpdateDatasetStructParam struct {
-	Uuid string `json:"uuid,omitempty"`
-	UsageScenarios []string `json:"usageScenarios,omitempty"`
-	DataType string `json:"dataType,omitempty"`
+// ArchitectureImageMappingParam ArchitectureImageMapping param struct
+type ArchitectureImageMappingParam struct {
+	CpuArchitecture string `json:"cpuArchitecture,omitempty"`
+	VmImageUuid string `json:"vmImageUuid,omitempty"`
+	DockerImage string `json:"dockerImage,omitempty"`
 }
 
 // ModelServiceParam ModelService param struct
@@ -174,33 +179,17 @@ type ModelServiceParam struct {
 	Timeout int64 `json:"timeout,omitempty"`
 }
 
-// LabelParam Label param struct
-type LabelParam struct {
-	Key string `json:"key,omitempty"`
-	Value string `json:"value,omitempty"`
-	Op string `json:"op,omitempty"`
-	Compatible bool `json:"compatible,omitempty"`
-}
-
-// AttributeParam Attribute param struct
-type AttributeParam struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Value string `json:"value,omitempty"`
-}
-
-// VmNicSecurityGroupRefAOParam VmNicSecurityGroupRefAO param struct
-type VmNicSecurityGroupRefAOParam struct {
-	SecurityGroupUuid string `json:"securityGroupUuid,omitempty"`
+// SecurityGroupRulePriorityAOParam SecurityGroupRulePriorityAO param struct
+type SecurityGroupRulePriorityAOParam struct {
+	RuleUuid string `json:"ruleUuid,omitempty"`
 	Priority int `json:"priority,omitempty"`
 }
 
-// MiniHostInfoParam MiniHostInfo param struct
-type MiniHostInfoParam struct {
-	Sn string `json:"sn,omitempty"`
-	DnsAddresses []string `json:"dnsAddresses,omitempty"`
-	Ipmi MiniNetworkConfigStructParam `json:"ipmi,omitempty"`
-	Mgmt MiniNetworkConfigStructParam `json:"mgmt,omitempty"`
+// IAM2ProjectRoleRefStructParam IAM2ProjectRoleRefStruct param struct
+type IAM2ProjectRoleRefStructParam struct {
+	ProjectUuid string `json:"projectUuid,omitempty"`
+	GroupUuids []string `json:"groupUuids,omitempty"`
+	RoleUuids []string `json:"roleUuids,omitempty"`
 }
 
 // TicketRequestParam TicketRequest param struct
@@ -211,13 +200,24 @@ type TicketRequestParam struct {
 	ApiBody interface{} `json:"apiBody,omitempty"`
 }
 
-// ExtendedAttributeParam ExtendedAttribute param struct
-type ExtendedAttributeParam struct {
-	Type string `json:"type,omitempty"`
-	Purpose string `json:"purpose,omitempty"`
+// UpdateDatasetStructParam UpdateDatasetStruct param struct
+type UpdateDatasetStructParam struct {
 	Uuid string `json:"uuid,omitempty"`
+	UsageScenarios []string `json:"usageScenarios,omitempty"`
+	DataType string `json:"dataType,omitempty"`
+}
+
+// ResourceConfigAOParam ResourceConfigAO param struct
+type ResourceConfigAOParam struct {
+	Category string `json:"category,omitempty"`
 	Name string `json:"name,omitempty"`
 	Value string `json:"value,omitempty"`
+}
+
+// ActionParamParam ActionParam param struct
+type ActionParamParam struct {
+	ActionUuid string `json:"actionUuid,omitempty"`
+	ActionType string `json:"actionType,omitempty"`
 }
 
 // PolicyStatementParam PolicyStatement param struct
@@ -229,6 +229,14 @@ type PolicyStatementParam struct {
 	Resources []string `json:"resources,omitempty"`
 }
 
+// MiniNetworkConfigStructParam MiniNetworkConfigStruct param struct
+type MiniNetworkConfigStructParam struct {
+	Gw string `json:"gw,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Vlan string `json:"vlan,omitempty"`
+	Bond string `json:"bond,omitempty"`
+}
+
 // SessionParam SessionInventory param struct
 type SessionParam struct {
 	Uuid string `json:"uuid,omitempty"`
@@ -237,13 +245,5 @@ type SessionParam struct {
 	UserType string `json:"userType,omitempty"`
 	ExpiredDate time.Time `json:"expiredDate,omitempty"`
 	CreateDate time.Time `json:"createDate,omitempty"`
-}
-
-// MiniNetworkConfigStructParam MiniNetworkConfigStruct param struct
-type MiniNetworkConfigStructParam struct {
-	Gw string `json:"gw,omitempty"`
-	Ip string `json:"ip,omitempty"`
-	Vlan string `json:"vlan,omitempty"`
-	Bond string `json:"bond,omitempty"`
 }
 

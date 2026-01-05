@@ -6,10 +6,8 @@ import "time"
 
 var _ = time.Now // avoid unused import
 
-// OvnControllerVmInstanceInventoryView OvnControllerVmInstance
-type OvnControllerVmInstanceInventoryView struct {
-	NbClusterStatus string `json:"nbClusterStatus,omitempty"`
-	SbClusterStatus string `json:"sbClusterStatus,omitempty"`
+// NfvInstInventoryView NfvInst
+type NfvInstInventoryView struct {
 	ConfigVersion int `json:"configVersion,omitempty"`
 	NfvInstGroupUuid string `json:"nfvInstGroupUuid,omitempty"`
 	NetOsDistro string `json:"netOsDistro,omitempty"`
