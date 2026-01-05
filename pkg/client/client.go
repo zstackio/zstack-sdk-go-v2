@@ -8,6 +8,9 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
+	"strconv"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
 	"time"
 )
 
@@ -81,6 +84,21 @@ type ZSClient struct {
 	sessionId  string
 }
 
+// JobView job inventory view
+type JobView struct {
+	UUID       string      `json:"uuid"`
+	State      string      `json:"state"`
+	Result     interface{} `json:"result,omitempty"`
+	Error      interface{} `json:"error,omitempty"`
+	CreateDate string      `json:"createDate"`
+}
+
+const (
+	JobStateProcessing = "Processing"
+	JobStateSucceeded  = "Succeeded"
+	JobStateFailed     = "Failed"
+)
+
 // NewZSClient creates a new ZStack client
 func NewZSClient(config *ZSConfig) *ZSClient {
 	return &ZSClient{
@@ -104,10 +122,28 @@ func (cli *ZSClient) Get(path string, uuid string, params interface{}, result in
 	return cli.doRequest("GET", url, nil, result)
 }
 
+func (cli *ZSClient) QueryJob(uuid string) (*JobView, error) {
+	var resp JobView
+	url := fmt.Sprintf("%s/v1/api-jobs/%s", cli.baseURL(), uuid)
+	err := cli.doRequest("GET", url, nil, &resp)
+	return &resp, err
+}
+
 // List performs a list query
 func (cli *ZSClient) List(path string, params interface{}, result interface{}) error {
-	url := fmt.Sprintf("%s/%s", cli.baseURL(), path)
-	return cli.doRequest("GET", url, params, result)
+	baseURL := cli.baseURL()
+	requestURL := fmt.Sprintf("%s/%s", baseURL, path)
+
+	if params != nil {
+		if queryParam, ok := params.(*param.QueryParam); ok {
+			queryString := cli.buildQueryString(queryParam)
+			if queryString != "" {
+				requestURL = fmt.Sprintf("%s?%s", requestURL, queryString)
+			}
+		}
+	}
+
+	return cli.doRequest("GET", requestURL, nil, result)
 }
 
 // Post performs a POST request
@@ -152,14 +188,108 @@ func (cli *ZSClient) doRequest(method, url string, body interface{}, result inte
 	}
 	defer resp.Body.Close()
 
+	if resp.StatusCode == 202 {
+		var location struct {
+			Location string `json:"location"`
+			Uuid     string `json:"org.zstack.header.rest.APIEvent/uuid"`
+		}
+		if err := json.NewDecoder(resp.Body).Decode(&location); err != nil {
+			return fmt.Errorf("failed to decode 202 response: %v", err)
+		}
+		jobUUID := location.Uuid
+		if jobUUID == "" {
+			parts := bytes.Split([]byte(location.Location), []byte("/"))
+			if len(parts) > 0 {
+				jobUUID = string(parts[len(parts)-1])
+			}
+		}
+
+		if jobUUID == "" {
+			return fmt.Errorf("failed to extract job uuid from 202 response")
+		}
+
+		return cli.waitForJob(jobUUID, result)
+	}
+
 	if resp.StatusCode >= 400 {
-		return fmt.Errorf("API error: status code %d", resp.StatusCode)
+		return fmt.Errorf("API error: %s %s returned status code %d", method, url, resp.StatusCode)
 	}
 
 	if result != nil {
 		return json.NewDecoder(resp.Body).Decode(result)
 	}
 	return nil
+}
+
+func (cli *ZSClient) waitForJob(jobUUID string, result interface{}) error {
+	ticker := time.NewTicker(500 * time.Millisecond)
+	defer ticker.Stop()
+
+	timeout := time.After(30 * time.Minute)
+
+	for {
+		select {
+		case <-timeout:
+			return fmt.Errorf("job %s timeout", jobUUID)
+		case <-ticker.C:
+			job, err := cli.QueryJob(jobUUID)
+			if err != nil {
+				continue
+			}
+
+			if job.State == JobStateSucceeded {
+				if result != nil && job.Result != nil {
+					data, err := json.Marshal(job.Result)
+					if err != nil {
+						return fmt.Errorf("failed to marshal job result: %v", err)
+					}
+					return json.Unmarshal(data, result)
+				}
+				return nil
+			}
+
+			if job.State == JobStateFailed {
+				return fmt.Errorf("job failed: %v", job.Error)
+			}
+		}
+	}
+}
+
+func (cli *ZSClient) buildQueryString(params *param.QueryParam) string {
+	u := url.Values{}
+
+	for _, q := range params.Conditions {
+		if q.Value != "" {
+			u.Add("q", q.Value)
+		}
+	}
+
+	if params.LimitNum != nil {
+		u.Set("limit", strconv.Itoa(*params.LimitNum))
+	}
+	if params.StartNum != nil {
+		u.Set("start", strconv.Itoa(*params.StartNum))
+	}
+	if params.Count {
+		u.Set("count", "true")
+	}
+	if params.ReplyWithCount {
+		u.Set("replyWithCount", "true")
+	}
+	if params.GroupBy != "" {
+		u.Set("groupBy", params.GroupBy)
+	}
+	if params.SortBy != "" {
+		u.Set("sortBy", params.SortBy)
+	}
+	if params.SortDirection != "" {
+		u.Set("sortDirection", params.SortDirection)
+	}
+	for _, f := range params.Fields {
+		u.Add("fields", f)
+	}
+
+	return u.Encode()
 }
 
 func (cli *ZSClient) addAuthHeaders(req *http.Request) {
