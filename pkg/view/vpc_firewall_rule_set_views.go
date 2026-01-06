@@ -14,8 +14,33 @@ type VpcFirewallRuleSetInventoryView struct {
 	Description string `json:"description,omitempty"`
 	IsDefault bool `json:"isDefault,omitempty"`
 	IsApplied bool `json:"isApplied,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Rules []VpcFirewallRuleInventoryView `json:"rules,omitempty"`
+}
+
+// CreateFirewallRuleFromConfigFileEventView CreateFirewallRuleFromConfigFileEvent
+type CreateFirewallRuleFromConfigFileEventView struct {
+	Inventory []VpcFirewallRuleSetInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryFirewallRuleSetView QueryFirewallRuleSet
+type QueryFirewallRuleSetView struct {
+	Inventories []VpcFirewallRuleSetInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateFirewallRuleSetEventView CreateFirewallRuleSetEvent
+type CreateFirewallRuleSetEventView struct {
+	Inventory VpcFirewallRuleSetInventoryView `json:"inventory,omitempty"`
+}
+
+// ApplyRuleSetChangesEventView ApplyRuleSetChangesEvent
+type ApplyRuleSetChangesEventView struct {
+	Inventory VpcFirewallRuleSetInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateFirewallRuleSetEventView UpdateFirewallRuleSetEvent
+type UpdateFirewallRuleSetEventView struct {
+	Inventory VpcFirewallRuleSetInventoryView `json:"inventory,omitempty"`
 }
 

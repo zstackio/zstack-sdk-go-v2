@@ -25,7 +25,12 @@ type BareMetal2ChassisGpuDeviceInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
 	Device string `json:"device,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryBareMetal2ChassisGpuDeviceView QueryBareMetal2ChassisGpuDevice
+type QueryBareMetal2ChassisGpuDeviceView struct {
+	Inventories []BareMetal2ChassisGpuDeviceInventoryView `json:"inventories,omitempty"`
 }
 

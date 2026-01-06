@@ -13,7 +13,17 @@ type HuaweiIMasterFabricInventoryView struct {
 	Description string `json:"description,omitempty"`
 	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteHuaweiIMasterFabricEventView DeleteHuaweiIMasterFabricEvent
+type DeleteHuaweiIMasterFabricEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryHuaweiIMasterFabricView QueryHuaweiIMasterFabric
+type QueryHuaweiIMasterFabricView struct {
+	Inventories []HuaweiIMasterFabricInventoryView `json:"inventories,omitempty"`
 }
 

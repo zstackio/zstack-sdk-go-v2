@@ -16,7 +16,12 @@ type SNSEmailPlatformInventoryView struct {
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// ValidateSNSEmailPlatformEventView ValidateSNSEmailPlatformEvent
+type ValidateSNSEmailPlatformEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

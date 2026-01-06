@@ -15,7 +15,17 @@ type ReservedIpRangeInventoryView struct {
 	StartIp string `json:"startIp,omitempty"`
 	EndIp string `json:"endIp,omitempty"`
 	IpVersion int `json:"ipVersion,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteReservedIpRangeEventView DeleteReservedIpRangeEvent
+type DeleteReservedIpRangeEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// AddReservedIpRangeEventView AddReservedIpRangeEvent
+type AddReservedIpRangeEventView struct {
+	Inventory ReservedIpRangeInventoryView `json:"inventory,omitempty"`
 }
 

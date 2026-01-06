@@ -13,7 +13,17 @@ type IAM2VirtualIDAttributeInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Value string `json:"value,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateIAM2VirtualIDAttributeEventView UpdateIAM2VirtualIDAttributeEvent
+type UpdateIAM2VirtualIDAttributeEventView struct {
+	Inventory IAM2VirtualIDAttributeInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryIAM2VirtualIDAttributeView QueryIAM2VirtualIDAttribute
+type QueryIAM2VirtualIDAttributeView struct {
+	Inventories []IAM2VirtualIDAttributeInventoryView `json:"inventories,omitempty"`
 }
 

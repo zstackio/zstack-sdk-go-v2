@@ -33,7 +33,27 @@ type ModelInventoryView struct {
 	FrameworkVersion string `json:"frameworkVersion,omitempty"`
 	RequiredAccelerator string `json:"requiredAccelerator,omitempty"`
 	ModelServiceRefs []ModelServiceRefInventoryView `json:"modelServiceRefs,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryModelView QueryModel
+type QueryModelView struct {
+	Inventories []ModelInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteModelEventView DeleteModelEvent
+type DeleteModelEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateModelEventView UpdateModelEvent
+type UpdateModelEventView struct {
+	Inventory ModelInventoryView `json:"inventory,omitempty"`
+}
+
+// AddModelEventView AddModelEvent
+type AddModelEventView struct {
+	Inventory ModelInventoryView `json:"inventory,omitempty"`
 }
 

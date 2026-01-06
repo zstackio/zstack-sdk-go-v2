@@ -12,7 +12,17 @@ type AlertInventoryView struct {
 	TriggerUuid string `json:"triggerUuid,omitempty"`
 	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
 	Content string `json:"content,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryAlertView QueryAlert
+type QueryAlertView struct {
+	Inventories []AlertInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteAlertEventView DeleteAlertEvent
+type DeleteAlertEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

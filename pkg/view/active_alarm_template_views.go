@@ -19,7 +19,17 @@ type ActiveAlarmTemplateInventoryView struct {
 	Threshold float64 `json:"threshold,omitempty"`
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
 	Labels string `json:"labels,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryActiveAlarmTemplateView QueryActiveAlarmTemplate
+type QueryActiveAlarmTemplateView struct {
+	Inventories []ActiveAlarmTemplateInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateActiveAlarmTemplateEventView UpdateActiveAlarmTemplateEvent
+type UpdateActiveAlarmTemplateEventView struct {
+	Inventory ActiveAlarmTemplateInventoryView `json:"inventory,omitempty"`
 }
 

@@ -14,7 +14,22 @@ type XmlHookInventoryView struct {
 	Type string `json:"type,omitempty"`
 	HookScript string `json:"hookScript,omitempty"`
 	LibvirtVersion string `json:"libvirtVersion,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateVmUserDefinedXmlHookScriptEventView UpdateVmUserDefinedXmlHookScriptEvent
+type UpdateVmUserDefinedXmlHookScriptEventView struct {
+	Inventory XmlHookInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVmUserDefinedXmlHookScriptView QueryVmUserDefinedXmlHookScript
+type QueryVmUserDefinedXmlHookScriptView struct {
+	Inventories []XmlHookInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateVmUserDefinedXmlHookScriptEventView CreateVmUserDefinedXmlHookScriptEvent
+type CreateVmUserDefinedXmlHookScriptEventView struct {
+	Inventory XmlHookInventoryView `json:"inventory,omitempty"`
 }
 

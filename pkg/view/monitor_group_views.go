@@ -12,9 +12,29 @@ type MonitorGroupInventoryView struct {
 	State string `json:"state,omitempty"`
 	Actions string `json:"actions,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 	MonitorGroupTemplateRefs []MonitorGroupTemplateRefVOView `json:"monitorGroupTemplateRefs,omitempty"`
+}
+
+// CreateMonitorGroupEventView CreateMonitorGroupEvent
+type CreateMonitorGroupEventView struct {
+	Inventory MonitorGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteMonitorGroupEventView DeleteMonitorGroupEvent
+type DeleteMonitorGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryMonitorGroupView QueryMonitorGroup
+type QueryMonitorGroupView struct {
+	Inventories []MonitorGroupInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateMonitorGroupEventView UpdateMonitorGroupEvent
+type UpdateMonitorGroupEventView struct {
+	Inventory MonitorGroupInventoryView `json:"inventory,omitempty"`
 }
 

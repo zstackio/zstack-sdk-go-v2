@@ -13,7 +13,27 @@ type VmSchedulingRuleGroupInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Appliance string `json:"appliance,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteVmSchedulingRuleGroupEventView DeleteVmSchedulingRuleGroupEvent
+type DeleteVmSchedulingRuleGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryVmSchedulingRuleGroupView QueryVmSchedulingRuleGroup
+type QueryVmSchedulingRuleGroupView struct {
+	Inventories []VmSchedulingRuleGroupInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateVmSchedulingRuleGroupEventView UpdateVmSchedulingRuleGroupEvent
+type UpdateVmSchedulingRuleGroupEventView struct {
+	Inventory VmSchedulingRuleGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateVmSchedulingRuleGroupEventView CreateVmSchedulingRuleGroupEvent
+type CreateVmSchedulingRuleGroupEventView struct {
+	Inventory VmSchedulingRuleGroupInventoryView `json:"inventory,omitempty"`
 }
 

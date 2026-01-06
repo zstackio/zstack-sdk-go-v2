@@ -13,7 +13,12 @@ type VolumeSnapshotTreeInventoryView struct {
 	Current bool `json:"current,omitempty"`
 	Status string `json:"status,omitempty"`
 	Tree SnapshotLeafInventoryView `json:"tree,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryVolumeSnapshotTreeView QueryVolumeSnapshotTree
+type QueryVolumeSnapshotTreeView struct {
+	Inventories []VolumeSnapshotTreeInventoryView `json:"inventories,omitempty"`
 }
 

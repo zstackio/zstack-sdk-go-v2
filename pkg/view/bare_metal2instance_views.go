@@ -39,12 +39,52 @@ type BareMetal2InstanceInventoryView struct {
 	CpuNum int `json:"cpuNum,omitempty"`
 	CpuSpeed int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	State string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
 	VmCdRoms []VmCdRomInventoryView `json:"vmCdRoms,omitempty"`
 	GuestOsType string `json:"guestOsType,omitempty"`
+}
+
+// AttachProvisionNicToBondingEventView AttachProvisionNicToBondingEvent
+type AttachProvisionNicToBondingEventView struct {
+	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachProvisionNicFromBondingEventView DetachProvisionNicFromBondingEvent
+type DetachProvisionNicFromBondingEventView struct {
+	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBareMetal2InstanceView QueryBareMetal2Instance
+type QueryBareMetal2InstanceView struct {
+	Inventories []BareMetal2InstanceInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateBareMetal2InstanceEventView CreateBareMetal2InstanceEvent
+type CreateBareMetal2InstanceEventView struct {
+	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeBareMetal2InstancePasswordEventView ChangeBareMetal2InstancePasswordEvent
+type ChangeBareMetal2InstancePasswordEventView struct {
+	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// ReconnectBareMetal2InstanceEventView ReconnectBareMetal2InstanceEvent
+type ReconnectBareMetal2InstanceEventView struct {
+	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// StartBareMetal2InstanceEventView StartBareMetal2InstanceEvent
+type StartBareMetal2InstanceEventView struct {
+	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateBareMetal2InstanceEventView UpdateBareMetal2InstanceEvent
+type UpdateBareMetal2InstanceEventView struct {
+	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
 }
 

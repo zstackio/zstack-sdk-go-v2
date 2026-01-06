@@ -16,3 +16,8 @@ type MirrorNetworkUsedIpInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 }
 
+// QueryPortMirrorNetworkUsedIpView QueryPortMirrorNetworkUsedIp
+type QueryPortMirrorNetworkUsedIpView struct {
+	Inventories []MirrorNetworkUsedIpInventoryView `json:"inventories,omitempty"`
+}
+

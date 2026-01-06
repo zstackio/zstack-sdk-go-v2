@@ -23,7 +23,22 @@ type VirtualBorderRouterInventoryView struct {
 	AccessPointUuid string `json:"accessPointUuid,omitempty"`
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryVirtualBorderRouterFromLocalView QueryVirtualBorderRouterFromLocal
+type QueryVirtualBorderRouterFromLocalView struct {
+	Inventories []VirtualBorderRouterInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateVirtualBorderRouterRemoteEventView UpdateVirtualBorderRouterRemoteEvent
+type UpdateVirtualBorderRouterRemoteEventView struct {
+	Inventory VirtualBorderRouterInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncVirtualBorderRouterFromRemoteEventView SyncVirtualBorderRouterFromRemoteEvent
+type SyncVirtualBorderRouterFromRemoteEventView struct {
+	Inventories []VirtualBorderRouterInventoryView `json:"inventories,omitempty"`
 }
 

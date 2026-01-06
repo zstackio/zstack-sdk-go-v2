@@ -13,7 +13,7 @@ type IpUseInventoryView struct {
 	ServiceId string `json:"serviceId,omitempty"`
 	Use string `json:"use,omitempty"`
 	Details string `json:"details,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

@@ -19,9 +19,19 @@ type CasClientInventoryView struct {
 	LoginType string `json:"loginType,omitempty"`
 	LoginMNUrl string `json:"loginMNUrl,omitempty"`
 	RedirectUrl string `json:"redirectUrl,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
 	Attributes []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
+}
+
+// CreateCasClientEventView CreateCasClientEvent
+type CreateCasClientEventView struct {
+	Inventory CasClientInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateCasClientEventView UpdateCasClientEvent
+type UpdateCasClientEventView struct {
+	Inventory CasClientInventoryView `json:"inventory,omitempty"`
 }
 

@@ -19,7 +19,32 @@ type HybridAccountInventoryView struct {
 	HybridUserName string `json:"hybridUserName,omitempty"`
 	Current string `json:"current,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryHybridKeySecretView QueryHybridKeySecret
+type QueryHybridKeySecretView struct {
+	Inventories []HybridAccountInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateAliyunKeySecretEventView UpdateAliyunKeySecretEvent
+type UpdateAliyunKeySecretEventView struct {
+	Inventory HybridAccountInventoryView `json:"inventory,omitempty"`
+}
+
+// AddHybridKeySecretEventView AddHybridKeySecretEvent
+type AddHybridKeySecretEventView struct {
+	Inventory HybridAccountInventoryView `json:"inventory,omitempty"`
+}
+
+// AddAliyunKeySecretEventView AddAliyunKeySecretEvent
+type AddAliyunKeySecretEventView struct {
+	Inventory HybridAccountInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateHybridKeySecretEventView UpdateHybridKeySecretEvent
+type UpdateHybridKeySecretEventView struct {
+	Inventory HybridAccountInventoryView `json:"inventory,omitempty"`
 }
 

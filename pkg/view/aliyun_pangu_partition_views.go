@@ -15,7 +15,27 @@ type AliyunPanguPartitionInventoryView struct {
 	Description string `json:"description,omitempty"`
 	AppName string `json:"appName,omitempty"`
 	PartitionName string `json:"partitionName,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// AddAliyunPanguPartitionEventView AddAliyunPanguPartitionEvent
+type AddAliyunPanguPartitionEventView struct {
+	Inventory AliyunPanguPartitionInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteAliyunPanguPartitionEventView DeleteAliyunPanguPartitionEvent
+type DeleteAliyunPanguPartitionEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryAliyunPanguPartitionView QueryAliyunPanguPartition
+type QueryAliyunPanguPartitionView struct {
+	Inventories []AliyunPanguPartitionInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateAliyunPanguPartitionEventView UpdateAliyunPanguPartitionEvent
+type UpdateAliyunPanguPartitionEventView struct {
+	Inventory AliyunPanguPartitionInventoryView `json:"inventory,omitempty"`
 }
 

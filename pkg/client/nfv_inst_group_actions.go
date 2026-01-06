@@ -1,0 +1,45 @@
+// Copyright (c) ZStack.io, Inc.
+
+package client
+
+import (
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+)
+
+var _ = param.BaseParam{} // avoid unused import
+var _ = view.MapView{} // avoid unused import
+
+// CreateNfvInstGroup creates NfvInstGroup
+func (cli *ZSClient) CreateNfvInstGroup(params param.CreateNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
+	var resp view.CreateNfvInstGroupEventView
+	if err := cli.Post("v1/nfvinstgroup/group", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}
+// SyncNfvInstGroup operates on NfvInstGroup
+func (cli *ZSClient) SyncNfvInstGroup(uuid string, params param.SyncNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
+	var resp view.SyncNfvInstGroupEventView
+	if err := cli.Put("v1/nfvinstgroup/group/{uuid}/actions", uuid, params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}
+// UpdateNfvInstGroup updates NfvInstGroup
+func (cli *ZSClient) UpdateNfvInstGroup(uuid string, params param.UpdateNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
+	var resp view.UpdateNfvInstGroupEventView
+	if err := cli.Put("v1/nfvinstgroup/group/{uuid}/actions", uuid, params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}
+// DeleteNfvInstGroup deletes NfvInstGroup
+func (cli *ZSClient) DeleteNfvInstGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/nfvinstgroup/group/{uuid}", uuid, string(deleteMode))
+}
+// QueryNfvInstGroup queries NfvInstGroup list
+func (cli *ZSClient) QueryNfvInstGroup(params *param.QueryParam) ([]view.NfvInstGroupInventoryView, error) {
+	var resp []view.NfvInstGroupInventoryView
+	return resp, cli.List("v1/nfvinstgroup/group", params, &resp)
+}

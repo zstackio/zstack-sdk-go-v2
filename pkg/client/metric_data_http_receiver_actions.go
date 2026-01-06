@@ -1,0 +1,29 @@
+// Copyright (c) ZStack.io, Inc.
+
+package client
+
+import (
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+)
+
+var _ = param.BaseParam{} // avoid unused import
+var _ = view.MapView{} // avoid unused import
+
+// QueryMetricDataHttpReceiver queries MetricDataHttpReceiver list
+func (cli *ZSClient) QueryMetricDataHttpReceiver(params *param.QueryParam) ([]view.MetricDataHttpReceiverInventoryView, error) {
+	var resp []view.MetricDataHttpReceiverInventoryView
+	return resp, cli.List("v1/zwatch/metrics/httpreceivers", params, &resp)
+}
+// DeleteMetricDataHttpReceiver deletes MetricDataHttpReceiver
+func (cli *ZSClient) DeleteMetricDataHttpReceiver(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/zwatch/metrics/httpreceivers/{uuid}", uuid, string(deleteMode))
+}
+// CreateMetricDataHttpReceiver creates MetricDataHttpReceiver
+func (cli *ZSClient) CreateMetricDataHttpReceiver(params param.CreateMetricDataHttpReceiverParam) (*view.MetricDataHttpReceiverInventoryView, error) {
+	var resp view.CreateMetricDataHttpReceiverEventView
+	if err := cli.Post("v1/zwatch/metrics/httpreceivers", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}

@@ -31,9 +31,69 @@ type IPsecConnectionInventoryView struct {
 	Status string `json:"status,omitempty"`
 	IkeLifeTime int `json:"ikeLifeTime,omitempty"`
 	LifeTime int `json:"lifeTime,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	PeerCidrs []IPsecPeerCidrInventoryView `json:"peerCidrs,omitempty"`
 	L3NetworkRefs []IPsecL3NetworkRefInventoryView `json:"l3NetworkRefs,omitempty"`
+}
+
+// ReconnectIPsecConnectionEventView ReconnectIPsecConnectionEvent
+type ReconnectIPsecConnectionEventView struct {
+	Inventory IPsecConnectionInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryIPSecConnectionView QueryIPSecConnection
+type QueryIPSecConnectionView struct {
+	Inventories []IPsecConnectionInventoryView `json:"inventories,omitempty"`
+}
+
+// ChangeIPSecConnectionStateEventView ChangeIPSecConnectionStateEvent
+type ChangeIPSecConnectionStateEventView struct {
+	Inventory IPsecConnectionInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachL3NetworksToIPsecConnectionEventView AttachL3NetworksToIPsecConnectionEvent
+type AttachL3NetworksToIPsecConnectionEventView struct {
+	Inventory IPsecConnectionInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateIPsecConnectionEventView UpdateIPsecConnectionEvent
+type UpdateIPsecConnectionEventView struct {
+	Inventory IPsecConnectionInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteIPsecConnectionEventView DeleteIPsecConnectionEvent
+type DeleteIPsecConnectionEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// GetVpcAttachedIpsecView GetVpcAttachedIpsec
+type GetVpcAttachedIpsecView struct {
+	Inventories []IPsecConnectionInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateIPsecConnectionEventView CreateIPsecConnectionEvent
+type CreateIPsecConnectionEventView struct {
+	Inventory IPsecConnectionInventoryView `json:"inventory,omitempty"`
+}
+
+// AddRemoteCidrsToIPsecConnectionEventView AddRemoteCidrsToIPsecConnectionEvent
+type AddRemoteCidrsToIPsecConnectionEventView struct {
+	Inventory IPsecConnectionInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeIPsecConnectionEventView ChangeIPsecConnectionEvent
+type ChangeIPsecConnectionEventView struct {
+	Inventory IPsecConnectionInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachL3NetworksFromIPsecConnectionEventView DetachL3NetworksFromIPsecConnectionEvent
+type DetachL3NetworksFromIPsecConnectionEventView struct {
+	Inventory IPsecConnectionInventoryView `json:"inventory,omitempty"`
+}
+
+// RemoveRemoteCidrsFromIPsecConnectionEventView RemoveRemoteCidrsFromIPsecConnectionEvent
+type RemoveRemoteCidrsFromIPsecConnectionEventView struct {
+	Inventory IPsecConnectionInventoryView `json:"inventory,omitempty"`
 }
 

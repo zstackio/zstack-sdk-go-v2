@@ -22,8 +22,8 @@ type ConsoleProxyInventoryView struct {
 	ProxyIdentity string `json:"proxyIdentity,omitempty"`
 	Status string `json:"status,omitempty"`
 	Version string `json:"version,omitempty"`
-	ExpiredDate time.Time `json:"expiredDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	ExpiredDate ZStackTime `json:"expiredDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

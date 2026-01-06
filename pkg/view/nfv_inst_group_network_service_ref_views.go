@@ -12,7 +12,7 @@ type NfvInstGroupNetworkServiceRefInventoryView struct {
 	NfvInstGroupUuid string `json:"nfvInstGroupUuid,omitempty"`
 	NetworkServiceName string `json:"networkServiceName,omitempty"`
 	NetworkServiceUuid string `json:"networkServiceUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

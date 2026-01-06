@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // InvocationRecordView InvocationRecord
 type InvocationRecordView struct {
-	StartTime time.Time `json:"startTime,omitempty"`
+	StartTime ZStackTime `json:"startTime,omitempty"`
 	Status string `json:"status,omitempty"`
 	ScriptUuid string `json:"scriptUuid,omitempty"`
 	ScriptType string `json:"scriptType,omitempty"`

@@ -14,7 +14,17 @@ type BaremetalBondingInventoryView struct {
 	Mode int `json:"mode,omitempty"`
 	Slaves string `json:"slaves,omitempty"`
 	Opts string `json:"opts,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateBaremetalBondingEventView CreateBaremetalBondingEvent
+type CreateBaremetalBondingEventView struct {
+	Inventory BaremetalBondingInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBaremetalBondingView QueryBaremetalBonding
+type QueryBaremetalBondingView struct {
+	Inventories []BaremetalBondingInventoryView `json:"inventories,omitempty"`
 }
 

@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // ZQLQueryReturnView ZQLQueryReturn
 type ZQLQueryReturnView struct {
-	Inventories interface{} `json:"inventories,omitempty"`
+	Inventories ListView `json:"inventories,omitempty"`
 	InventoryCounts map[string]int64 `json:"inventoryCounts,omitempty"`
 	InventoryAggregateFunctions map[string]interface{} `json:"inventoryAggregateFunctions,omitempty"`
 	Total int64 `json:"total,omitempty"`

@@ -11,7 +11,7 @@ type CdpTaskResourceRefInventoryView struct {
 	TaskUuid string `json:"taskUuid,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	ResourceType string `json:"resourceType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

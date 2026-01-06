@@ -19,7 +19,7 @@ type VolumeSnapshotReferenceInventoryView struct {
 	ReferenceType string `json:"referenceType,omitempty"`
 	ReferenceInstallUrl string `json:"referenceInstallUrl,omitempty"`
 	ReferenceVolumeUuid string `json:"referenceVolumeUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

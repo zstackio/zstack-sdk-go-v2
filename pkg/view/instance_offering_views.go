@@ -18,8 +18,23 @@ type InstanceOfferingInventoryView struct {
 	Type string `json:"type,omitempty"`
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 	SortKey int `json:"sortKey,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	State string `json:"state,omitempty"`
+}
+
+// ChangeInstanceOfferingStateEventView ChangeInstanceOfferingStateEvent
+type ChangeInstanceOfferingStateEventView struct {
+	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryInstanceOfferingView QueryInstanceOffering
+type QueryInstanceOfferingView struct {
+	Inventories []InstanceOfferingInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteInstanceOfferingEventView DeleteInstanceOfferingEvent
+type DeleteInstanceOfferingEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

@@ -22,7 +22,7 @@ type LunInventoryView struct {
 	Size int64 `json:"size,omitempty"`
 	MultipathDeviceUuid string `json:"multipathDeviceUuid,omitempty"`
 	Source string `json:"source,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

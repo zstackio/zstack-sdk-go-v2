@@ -21,10 +21,15 @@ type NativeClusterInventoryView struct {
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
 	HypervisorType string `json:"hypervisorType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
 	Type string `json:"type,omitempty"`
 	Architecture string `json:"architecture,omitempty"`
+}
+
+// QueryNativeClusterView QueryNativeCluster
+type QueryNativeClusterView struct {
+	Inventories []NativeClusterInventoryView `json:"inventories,omitempty"`
 }
 

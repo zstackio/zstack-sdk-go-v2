@@ -19,8 +19,8 @@ type ModelEvaluationTaskInventoryView struct {
 	EvaluatedServiceGroupUuid string `json:"evaluatedServiceGroupUuid,omitempty"`
 	DatasetUuid string `json:"datasetUuid,omitempty"`
 	Limits int `json:"limits,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	MaxNewTokens int `json:"maxNewTokens,omitempty"`
 	TopK int `json:"topK,omitempty"`
 	Temperature float32 `json:"temperature,omitempty"`
@@ -36,5 +36,20 @@ type ModelEvaluationTaskInventoryView struct {
 	RequestHeaders map[string]string `json:"requestHeaders,omitempty"`
 	ConnectTimeout int `json:"connectTimeout,omitempty"`
 	ReadTimeout int `json:"readTimeout,omitempty"`
+}
+
+// DeleteModelEvaluationTaskEventView DeleteModelEvaluationTaskEvent
+type DeleteModelEvaluationTaskEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryModelEvaluationTaskView QueryModelEvaluationTask
+type QueryModelEvaluationTaskView struct {
+	Inventories []ModelEvaluationTaskInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateModelEvaluationTaskEventView UpdateModelEvaluationTaskEvent
+type UpdateModelEvaluationTaskEventView struct {
+	Inventory ModelEvaluationTaskInventoryView `json:"inventory,omitempty"`
 }
 

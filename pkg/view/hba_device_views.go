@@ -16,3 +16,8 @@ type HbaDeviceInventoryView struct {
 	LastOpDate string `json:"lastOpDate,omitempty"`
 }
 
+// QueryFcHbaDeviceView QueryFcHbaDevice
+type QueryFcHbaDeviceView struct {
+	Inventories []HbaDeviceInventoryView `json:"inventories,omitempty"`
+}
+

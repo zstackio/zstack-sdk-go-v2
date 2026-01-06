@@ -16,9 +16,14 @@ type SharedBlockInventoryView struct {
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+}
+
+// QuerySharedBlockView QuerySharedBlock
+type QuerySharedBlockView struct {
+	Inventories []SharedBlockInventoryView `json:"inventories,omitempty"`
 }
 

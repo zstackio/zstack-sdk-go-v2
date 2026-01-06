@@ -4,12 +4,15 @@ package client
 
 import (
 	"bytes"
+	"crypto/sha512"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"net/url"
 	"strconv"
+	"strings"
 	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
 	"time"
 )
@@ -101,12 +104,25 @@ const (
 
 // NewZSClient creates a new ZStack client
 func NewZSClient(config *ZSConfig) *ZSClient {
+	// Auto-encrypt password for login authentication
+	if config.authType == AuthTypeLogin && config.password != "" {
+		config.password = hashPasswordSHA512(config.password)
+		if config.debug {
+			fmt.Printf("[DEBUG] Password hashed: %s...\n", config.password[:16])
+		}
+	}
 	return &ZSClient{
 		config: config,
 		httpClient: &http.Client{
 			Timeout: config.timeout,
 		},
 	}
+}
+
+// hashPasswordSHA512 encrypts password using SHA512
+func hashPasswordSHA512(password string) string {
+	hash := sha512.Sum512([]byte(password))
+	return hex.EncodeToString(hash[:])
 }
 
 func (cli *ZSClient) baseURL() string {
@@ -143,7 +159,43 @@ func (cli *ZSClient) List(path string, params interface{}, result interface{}) e
 		}
 	}
 
-	return cli.doRequest("GET", requestURL, nil, result)
+	// Unmarshal response into wrapper with inventories field
+	var wrapper struct {
+		Inventories interface{} `json:"inventories"`
+		Inventory   interface{} `json:"inventory"`
+	}
+
+	if err := cli.doRequest("GET", requestURL, nil, &wrapper); err != nil {
+		return err
+	}
+
+	// Try inventories first (plural), then inventory (singular)
+	var data interface{}
+	if wrapper.Inventories != nil {
+		data = wrapper.Inventories
+	} else if wrapper.Inventory != nil {
+		data = wrapper.Inventory
+	}
+
+	// Re-marshal and unmarshal into the actual result type
+	if data != nil {
+		dataBytes, err := json.Marshal(data)
+		if err != nil {
+			return fmt.Errorf("failed to marshal data: %v", err)
+		}
+		if cli.config.debug {
+			fmt.Printf("[DEBUG] Received %d bytes of inventory data\n", len(dataBytes))
+		}
+		err = json.Unmarshal(dataBytes, result)
+		if err != nil {
+			return fmt.Errorf("failed to unmarshal data into result: %v", err)
+		}
+		return nil
+	}
+	if cli.config.debug {
+		fmt.Println("[DEBUG] Both inventories and inventory are nil, returning empty result")
+	}
+	return nil
 }
 
 // Post performs a POST request
@@ -165,13 +217,23 @@ func (cli *ZSClient) Delete(path string, uuid string, deleteMode string) error {
 }
 
 func (cli *ZSClient) doRequest(method, url string, body interface{}, result interface{}) error {
+	// Auto-login if using login auth and no session yet
+	if cli.config.authType == AuthTypeLogin && cli.sessionId == "" && !strings.HasSuffix(url, "/accounts/login") {
+		err := cli.Login(cli.config.username, cli.config.password)
+		if err != nil {
+			return fmt.Errorf("auto-login failed: %v", err)
+		}
+	}
+
 	var bodyReader io.Reader
+	var bodyBytes []byte
 	if body != nil {
-		jsonBody, err := json.Marshal(body)
+		var err error
+		bodyBytes, err = json.Marshal(body)
 		if err != nil {
 			return err
 		}
-		bodyReader = bytes.NewBuffer(jsonBody)
+		bodyReader = bytes.NewBuffer(bodyBytes)
 	}
 
 	req, err := http.NewRequest(method, url, bodyReader)
@@ -181,6 +243,12 @@ func (cli *ZSClient) doRequest(method, url string, body interface{}, result inte
 
 	req.Header.Set("Content-Type", "application/json")
 	cli.addAuthHeaders(req)
+
+	if cli.config.debug && bodyBytes != nil {
+		fmt.Printf("[DEBUG] %s %s\n", method, url)
+		fmt.Printf("[DEBUG] Body: %s\n", string(bodyBytes))
+		fmt.Printf("[DEBUG] Headers: Authorization=%s\n", req.Header.Get("Authorization"))
+	}
 
 	resp, err := cli.httpClient.Do(req)
 	if err != nil {
@@ -212,7 +280,11 @@ func (cli *ZSClient) doRequest(method, url string, body interface{}, result inte
 	}
 
 	if resp.StatusCode >= 400 {
-		return fmt.Errorf("API error: %s %s returned status code %d", method, url, resp.StatusCode)
+		respBody, _ := io.ReadAll(resp.Body)
+		errMsg := fmt.Sprintf("API error: %s %s returned status code %d\n", method, url, resp.StatusCode)
+		errMsg += fmt.Sprintf("Authorization: %s\n", req.Header.Get("Authorization"))
+		errMsg += fmt.Sprintf("Response: %s", string(respBody))
+		return fmt.Errorf(errMsg)
 	}
 
 	if result != nil {
@@ -256,10 +328,15 @@ func (cli *ZSClient) waitForJob(jobUUID string, result interface{}) error {
 }
 
 func (cli *ZSClient) buildQueryString(params *param.QueryParam) string {
+	if params == nil {
+		return ""
+	}
 	u := url.Values{}
 
 	for _, q := range params.Conditions {
-		if q.Value != "" {
+		if q.Name != "" && q.Op != "" {
+			u.Add("q", fmt.Sprintf("%s%s%s", q.Name, q.Op, q.Value))
+		} else if q.Value != "" {
 			u.Add("q", q.Value)
 		}
 	}
@@ -299,4 +376,47 @@ func (cli *ZSClient) addAuthHeaders(req *http.Request) {
 	} else if cli.sessionId != "" {
 		req.Header.Set("Authorization", "OAuth "+cli.sessionId)
 	}
+}
+
+// Login authenticates with username and password
+func (cli *ZSClient) Login(username, password string) error {
+	if cli.config.authType != AuthTypeLogin {
+		return fmt.Errorf("client is not configured for login authentication")
+	}
+
+	var loginReq = map[string]map[string]string{
+		"logInByAccount": {
+			"accountName": username,
+			"password":    password, // Already hashed in NewZSClient
+		},
+	}
+
+	var loginResp struct {
+		Inventory struct {
+			UUID string `json:"uuid"`
+		} `json:"inventory"`
+	}
+
+	url := fmt.Sprintf("%s/v1/accounts/login", cli.baseURL())
+	err := cli.doRequest("PUT", url, loginReq, &loginResp)
+	if err != nil {
+		return fmt.Errorf("login failed: %v", err)
+	}
+
+	cli.sessionId = loginResp.Inventory.UUID
+	if cli.config.debug {
+		fmt.Printf("[DEBUG] Login successful, sessionId=%s\n", cli.sessionId)
+	}
+	return nil
+}
+
+func (cli *ZSClient) Logout() error {
+	if cli.sessionId == "" {
+		return nil
+	}
+
+	url := fmt.Sprintf("%s/v1/accounts/sessions/%s", cli.baseURL(), cli.sessionId)
+	err := cli.doRequest("DELETE", url, nil, nil)
+	cli.sessionId = ""
+	return err
 }

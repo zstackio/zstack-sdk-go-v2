@@ -25,8 +25,33 @@ type CephBackupStorageInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
+}
+
+// QueryBackupStorageView QueryBackupStorage
+type QueryBackupStorageView struct {
+	Inventories []BackupStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// AddBackupStorageEventView AddBackupStorageEvent
+type AddBackupStorageEventView struct {
+	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// AddMonToCephBackupStorageEventView AddMonToCephBackupStorageEvent
+type AddMonToCephBackupStorageEventView struct {
+	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// RemoveMonFromCephBackupStorageEventView RemoveMonFromCephBackupStorageEvent
+type RemoveMonFromCephBackupStorageEventView struct {
+	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateCephBackupStorageMonEventView UpdateCephBackupStorageMonEvent
+type UpdateCephBackupStorageMonEventView struct {
+	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
 }
 

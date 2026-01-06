@@ -17,7 +17,17 @@ type BillingInventoryView struct {
 	StartTime int64 `json:"startTime,omitempty"`
 	EndTime int64 `json:"endTime,omitempty"`
 	HypervisorType string `json:"hypervisorType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryAccountBillingView QueryAccountBilling
+type QueryAccountBillingView struct {
+	Inventories []BillingInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteBillingEventView DeleteBillingEvent
+type DeleteBillingEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

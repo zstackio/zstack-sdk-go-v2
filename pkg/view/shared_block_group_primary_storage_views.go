@@ -24,8 +24,28 @@ type SharedBlockGroupPrimaryStorageInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	MountPath string `json:"mountPath,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+}
+
+// AddSharedBlockToSharedBlockGroupEventView AddSharedBlockToSharedBlockGroupEvent
+type AddSharedBlockToSharedBlockGroupEventView struct {
+	Inventory SharedBlockGroupPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySharedBlockGroupPrimaryStorageView QuerySharedBlockGroupPrimaryStorage
+type QuerySharedBlockGroupPrimaryStorageView struct {
+	Inventories []SharedBlockGroupPrimaryStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// RefreshSharedBlockDeviceCapacityEventView RefreshSharedBlockDeviceCapacityEvent
+type RefreshSharedBlockDeviceCapacityEventView struct {
+	Inventory SharedBlockGroupPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateSharedBlockEventView UpdateSharedBlockEvent
+type UpdateSharedBlockEventView struct {
+	Inventory SharedBlockGroupPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 

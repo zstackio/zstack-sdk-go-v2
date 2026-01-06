@@ -28,3 +28,8 @@ type AlarmRecordsInventoryView struct {
 	Threshold float64 `json:"threshold,omitempty"`
 }
 
+// QueryAlarmRecordView QueryAlarmRecord
+type QueryAlarmRecordView struct {
+	Inventories []AlarmRecordsInventoryView `json:"inventories,omitempty"`
+}
+

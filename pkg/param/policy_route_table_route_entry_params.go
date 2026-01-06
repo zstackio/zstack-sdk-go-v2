@@ -1,0 +1,34 @@
+// Copyright (c) ZStack.io, Inc.
+
+package param
+
+import "time"
+
+var _ = time.Now // avoid unused import
+
+// CreatePolicyRouteTableRouteEntryParamDetail CreatePolicyRouteTableRouteEntry detail param
+type CreatePolicyRouteTableRouteEntryParamDetail struct {
+	TableUuid string `json:"tableUuid" validate:"required"`
+	DestinationCidr string `json:"destinationCidr" validate:"required"`
+	NextHopIp string `json:"nextHopIp" validate:"required"`
+	Distance int `json:"distance,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
+}
+
+// CreatePolicyRouteTableRouteEntryParam CreatePolicyRouteTableRouteEntry request param
+type CreatePolicyRouteTableRouteEntryParam struct {
+	BaseParam
+	Params CreatePolicyRouteTableRouteEntryParamDetail `json:"params"`
+}
+// DeletePolicyRouteTableRouteEntryParamDetail DeletePolicyRouteTableRouteEntry detail param
+type DeletePolicyRouteTableRouteEntryParamDetail struct {
+	Uuid string `json:"uuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
+}
+
+// DeletePolicyRouteTableRouteEntryParam DeletePolicyRouteTableRouteEntry request param
+type DeletePolicyRouteTableRouteEntryParam struct {
+	BaseParam
+	Params DeletePolicyRouteTableRouteEntryParamDetail `json:"params"`
+}

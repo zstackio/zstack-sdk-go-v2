@@ -14,7 +14,22 @@ type VipQosInventoryView struct {
 	InboundBandwidth int64 `json:"inboundBandwidth,omitempty"`
 	OutboundBandwidth int64 `json:"outboundBandwidth,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteVipQosEventView DeleteVipQosEvent
+type DeleteVipQosEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// SetVipQosEventView SetVipQosEvent
+type SetVipQosEventView struct {
+	Inventory VipQosInventoryView `json:"inventory,omitempty"`
+}
+
+// GetVipQosView GetVipQos
+type GetVipQosView struct {
+	Inventories []VipQosInventoryView `json:"inventories,omitempty"`
 }
 

@@ -12,7 +12,12 @@ type ShareableVolumeVmInstanceRefInventoryView struct {
 	VolumeUuid string `json:"volumeUuid,omitempty"`
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	DeviceId int `json:"deviceId,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryShareableVolumeVmInstanceRefView QueryShareableVolumeVmInstanceRef
+type QueryShareableVolumeVmInstanceRefView struct {
+	Inventories []ShareableVolumeVmInstanceRefInventoryView `json:"inventories,omitempty"`
 }
 

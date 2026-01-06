@@ -19,7 +19,18 @@ type JitSecurityMachineInventoryView struct {
 	Model string `json:"model,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateSecurityMachineEventView UpdateSecurityMachineEvent
+type UpdateSecurityMachineEventView struct {
+	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// AddSecurityMachineEventView AddSecurityMachineEvent
+type AddSecurityMachineEventView struct {
+	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
 }
 

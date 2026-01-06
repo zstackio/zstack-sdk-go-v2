@@ -13,7 +13,12 @@ type TrainedModelRecordInventoryView struct {
 	SourceModelUuid string `json:"sourceModelUuid,omitempty"`
 	ModelServiceInstanceGroupUuid string `json:"modelServiceInstanceGroupUuid,omitempty"`
 	DatasetUuid string `json:"datasetUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryTrainedModelRecordView QueryTrainedModelRecord
+type QueryTrainedModelRecordView struct {
+	Inventories []TrainedModelRecordInventoryView `json:"inventories,omitempty"`
 }
 

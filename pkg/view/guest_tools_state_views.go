@@ -14,7 +14,17 @@ type GuestToolsStateInventoryView struct {
 	Version string `json:"version,omitempty"`
 	Platform string `json:"platform,omitempty"`
 	OsType string `json:"osType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryGuestToolsStateView QueryGuestToolsState
+type QueryGuestToolsStateView struct {
+	Inventories []GuestToolsStateInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateGuestToolsStateView UpdateGuestToolsState
+type UpdateGuestToolsStateView struct {
+	Inventory GuestToolsStateInventoryView `json:"inventory,omitempty"`
 }
 

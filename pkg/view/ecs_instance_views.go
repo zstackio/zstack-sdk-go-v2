@@ -27,9 +27,49 @@ type EcsInstanceInventoryView struct {
 	EcsSecurityGroupUuid string `json:"ecsSecurityGroupUuid,omitempty"`
 	IdentityZoneUuid string `json:"identityZoneUuid,omitempty"`
 	ChargeType string `json:"chargeType,omitempty"`
-	ExpireDate time.Time `json:"expireDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	ExpireDate ZStackTime `json:"expireDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Description string `json:"description,omitempty"`
+}
+
+// StartEcsInstanceEventView StartEcsInstanceEvent
+type StartEcsInstanceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// DeleteEcsInstanceEventView DeleteEcsInstanceEvent
+type DeleteEcsInstanceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// StopEcsInstanceEventView StopEcsInstanceEvent
+type StopEcsInstanceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryEcsInstanceFromLocalView QueryEcsInstanceFromLocal
+type QueryEcsInstanceFromLocalView struct {
+	Inventories []EcsInstanceInventoryView `json:"inventories,omitempty"`
+}
+
+// RebootEcsInstanceEventView RebootEcsInstanceEvent
+type RebootEcsInstanceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateEcsInstanceEventView UpdateEcsInstanceEvent
+type UpdateEcsInstanceEventView struct {
+	Inventory EcsInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncEcsInstanceFromRemoteEventView SyncEcsInstanceFromRemoteEvent
+type SyncEcsInstanceFromRemoteEventView struct {
+	Inventories []EcsInstanceInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateEcsInstanceFromEcsImageEventView CreateEcsInstanceFromEcsImageEvent
+type CreateEcsInstanceFromEcsImageEventView struct {
+	Inventory EcsInstanceInventoryView `json:"inventory,omitempty"`
 }
 

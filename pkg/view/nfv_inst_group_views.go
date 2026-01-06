@@ -20,8 +20,8 @@ type NfvInstGroupInventoryView struct {
 	Status string `json:"status,omitempty"`
 	StatusDetail string `json:"statusDetail,omitempty"`
 	OperationMode string `json:"operationMode,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Instances []NfvInstInventoryView `json:"instances,omitempty"`
 	Monitors []NfvInstGroupMonitorIpInventoryView `json:"monitors,omitempty"`
 	Services []NfvInstGroupNetworkServiceRefInventoryView `json:"services,omitempty"`
@@ -33,5 +33,45 @@ type NfvInstGroupInventoryView struct {
 	PrimaryStoragePoolUuid string `json:"primaryStoragePoolUuid,omitempty"`
 	ClusterUuid string `json:"clusterUuid,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
+}
+
+// CreateNfvInstGroupEventView CreateNfvInstGroupEvent
+type CreateNfvInstGroupEventView struct {
+	Inventory NfvInstGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncNfvInstGroupEventView SyncNfvInstGroupEvent
+type SyncNfvInstGroupEventView struct {
+	Inventory NfvInstGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateNfvInstGroupEventView UpdateNfvInstGroupEvent
+type UpdateNfvInstGroupEventView struct {
+	Inventory NfvInstGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachNfvInstFromGroupEventView DetachNfvInstFromGroupEvent
+type DetachNfvInstFromGroupEventView struct {
+	Inventory NfvInstGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeNfvInstGroupOperationModeEventView ChangeNfvInstGroupOperationModeEvent
+type ChangeNfvInstGroupOperationModeEventView struct {
+	Inventory NfvInstGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachNfvInstToGroupEventView AttachNfvInstToGroupEvent
+type AttachNfvInstToGroupEventView struct {
+	Inventory NfvInstGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteNfvInstGroupEventView DeleteNfvInstGroupEvent
+type DeleteNfvInstGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryNfvInstGroupView QueryNfvInstGroup
+type QueryNfvInstGroupView struct {
+	Inventories []NfvInstGroupInventoryView `json:"inventories,omitempty"`
 }
 

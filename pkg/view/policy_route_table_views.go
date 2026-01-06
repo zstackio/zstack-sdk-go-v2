@@ -12,8 +12,23 @@ type PolicyRouteTableInventoryView struct {
 	TableNumber int `json:"tableNumber,omitempty"`
 	Description string `json:"description,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Routes []PolicyRouteTableRouteEntryInventoryView `json:"routes,omitempty"`
+}
+
+// CreatePolicyRouteTableEventView CreatePolicyRouteTableEvent
+type CreatePolicyRouteTableEventView struct {
+	Inventory PolicyRouteTableInventoryView `json:"inventory,omitempty"`
+}
+
+// DeletePolicyRouteTableEventView DeletePolicyRouteTableEvent
+type DeletePolicyRouteTableEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryPolicyRouteTableView QueryPolicyRouteTable
+type QueryPolicyRouteTableView struct {
+	Inventories []PolicyRouteTableInventoryView `json:"inventories,omitempty"`
 }
 

@@ -17,7 +17,32 @@ type FlowMeterInventoryView struct {
 	ExpireInterval int64 `json:"expireInterval,omitempty"`
 	Version string `json:"version,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryFlowMeterView QueryFlowMeter
+type QueryFlowMeterView struct {
+	Inventories []FlowMeterInventoryView `json:"inventories,omitempty"`
+}
+
+// GetVpcAttachedNetflowView GetVpcAttachedNetflow
+type GetVpcAttachedNetflowView struct {
+	Inventories []FlowMeterInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateFlowMeterEventView CreateFlowMeterEvent
+type CreateFlowMeterEventView struct {
+	Inventory FlowMeterInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteFlowMeterEventView DeleteFlowMeterEvent
+type DeleteFlowMeterEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateFlowMeterEventView UpdateFlowMeterEvent
+type UpdateFlowMeterEventView struct {
+	Inventory FlowMeterInventoryView `json:"inventory,omitempty"`
 }
 

@@ -22,7 +22,37 @@ type VipInventoryView struct {
 	ServicesRefs []VipNetworkServicesRefInventoryView `json:"servicesRefs,omitempty"`
 	UseFor string `json:"useFor,omitempty"`
 	System bool `json:"system,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// ChangeVipStateEventView ChangeVipStateEvent
+type ChangeVipStateEventView struct {
+	Inventory VipInventoryView `json:"inventory,omitempty"`
+}
+
+// GetVpcAttachedVipView GetVpcAttachedVip
+type GetVpcAttachedVipView struct {
+	Inventories []VipInventoryView `json:"inventories,omitempty"`
+}
+
+// QueryVipView QueryVip
+type QueryVipView struct {
+	Inventories []VipInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteVipEventView DeleteVipEvent
+type DeleteVipEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateVipEventView UpdateVipEvent
+type UpdateVipEventView struct {
+	Inventory VipInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateVipEventView CreateVipEvent
+type CreateVipEventView struct {
+	Inventory VipInventoryView `json:"inventory,omitempty"`
 }
 

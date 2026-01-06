@@ -18,7 +18,37 @@ type SdnControllerInventoryView struct {
 	Password string `json:"password,omitempty"`
 	Status string `json:"status,omitempty"`
 	HostRefs []SdnControllerHostRefInventoryView `json:"hostRefs,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// RemoveSdnControllerEventView RemoveSdnControllerEvent
+type RemoveSdnControllerEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// AddSdnControllerEventView AddSdnControllerEvent
+type AddSdnControllerEventView struct {
+	Inventory SdnControllerInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateSdnControllerEventView UpdateSdnControllerEvent
+type UpdateSdnControllerEventView struct {
+	Inventory SdnControllerInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeSdnControllerEventView ChangeSdnControllerEvent
+type ChangeSdnControllerEventView struct {
+	Inventory SdnControllerInventoryView `json:"inventory,omitempty"`
+}
+
+// ReconnectSdnControllerEventView ReconnectSdnControllerEvent
+type ReconnectSdnControllerEventView struct {
+	Inventory SdnControllerInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySdnControllerView QuerySdnController
+type QuerySdnControllerView struct {
+	Inventories []SdnControllerInventoryView `json:"inventories,omitempty"`
 }
 

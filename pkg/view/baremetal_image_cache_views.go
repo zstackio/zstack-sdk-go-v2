@@ -18,7 +18,7 @@ type BaremetalImageCacheInventoryView struct {
 	ActualSize int64 `json:"actualSize,omitempty"`
 	Md5sum string `json:"md5sum,omitempty"`
 	Utilization int64 `json:"utilization,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

@@ -19,7 +19,12 @@ type TicketStatusHistoryInventoryView struct {
 	OperatorType string `json:"operatorType,omitempty"`
 	OperatorUuid string `json:"operatorUuid,omitempty"`
 	FlowName string `json:"flowName,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryTicketHistoryView QueryTicketHistory
+type QueryTicketHistoryView struct {
+	Inventories []TicketStatusHistoryInventoryView `json:"inventories,omitempty"`
 }
 

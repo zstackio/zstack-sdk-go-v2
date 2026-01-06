@@ -15,8 +15,28 @@ type AliyunProxyVpcInventoryView struct {
 	Status string `json:"status,omitempty"`
 	AliyunProxyVSwitches []AliyunProxyVSwitchInventoryView `json:"aliyunProxyVSwitches,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	IsDefault bool `json:"isDefault,omitempty"`
+}
+
+// CreateAliyunProxyVpcEventView CreateAliyunProxyVpcEvent
+type CreateAliyunProxyVpcEventView struct {
+	Inventory AliyunProxyVpcInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateAliyunProxyVpcEventView UpdateAliyunProxyVpcEvent
+type UpdateAliyunProxyVpcEventView struct {
+	Inventory AliyunProxyVpcInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryAliyunProxyVpcView QueryAliyunProxyVpc
+type QueryAliyunProxyVpcView struct {
+	Inventories []AliyunProxyVpcInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteAliyunProxyVpcEventView DeleteAliyunProxyVpcEvent
+type DeleteAliyunProxyVpcEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

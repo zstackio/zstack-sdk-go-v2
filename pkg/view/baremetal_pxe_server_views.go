@@ -24,10 +24,55 @@ type BaremetalPxeServerInventoryView struct {
 	DhcpRangeNetmask string `json:"dhcpRangeNetmask,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+}
+
+// DeleteBaremetalPxeServerEventView DeleteBaremetalPxeServerEvent
+type DeleteBaremetalPxeServerEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// AttachBaremetalPxeServerToClusterEventView AttachBaremetalPxeServerToClusterEvent
+type AttachBaremetalPxeServerToClusterEventView struct {
+	Inventory BaremetalPxeServerInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateBaremetalPxeServerEventView UpdateBaremetalPxeServerEvent
+type UpdateBaremetalPxeServerEventView struct {
+	Inventory BaremetalPxeServerInventoryView `json:"inventory,omitempty"`
+}
+
+// StartBaremetalPxeServerEventView StartBaremetalPxeServerEvent
+type StartBaremetalPxeServerEventView struct {
+	Inventory BaremetalPxeServerInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachBaremetalPxeServerFromClusterEventView DetachBaremetalPxeServerFromClusterEvent
+type DetachBaremetalPxeServerFromClusterEventView struct {
+	Inventory BaremetalPxeServerInventoryView `json:"inventory,omitempty"`
+}
+
+// ReconnectBaremetalPxeServerEventView ReconnectBaremetalPxeServerEvent
+type ReconnectBaremetalPxeServerEventView struct {
+	Inventory BaremetalPxeServerInventoryView `json:"inventory,omitempty"`
+}
+
+// StopBaremetalPxeServerEventView StopBaremetalPxeServerEvent
+type StopBaremetalPxeServerEventView struct {
+	Inventory BaremetalPxeServerInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBaremetalPxeServerView QueryBaremetalPxeServer
+type QueryBaremetalPxeServerView struct {
+	Inventories []BaremetalPxeServerInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateBaremetalPxeServerEventView CreateBaremetalPxeServerEvent
+type CreateBaremetalPxeServerEventView struct {
+	Inventory BaremetalPxeServerInventoryView `json:"inventory,omitempty"`
 }
 

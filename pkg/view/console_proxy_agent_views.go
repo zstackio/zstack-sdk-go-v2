@@ -16,7 +16,22 @@ type ConsoleProxyAgentInventoryView struct {
 	Type string `json:"type,omitempty"`
 	Status string `json:"status,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// ReconnectConsoleProxyAgentEventView ReconnectConsoleProxyAgentEvent
+type ReconnectConsoleProxyAgentEventView struct {
+	Inventory map[string]interface{} `json:"inventory,omitempty"`
+}
+
+// QueryConsoleProxyAgentView QueryConsoleProxyAgent
+type QueryConsoleProxyAgentView struct {
+	Inventories []ConsoleProxyAgentInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateConsoleProxyAgentEventView UpdateConsoleProxyAgentEvent
+type UpdateConsoleProxyAgentEventView struct {
+	Inventory ConsoleProxyAgentInventoryView `json:"inventory,omitempty"`
 }
 

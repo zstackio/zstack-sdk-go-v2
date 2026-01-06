@@ -11,7 +11,7 @@ type AliyunNasPrimaryStorageFileSystemRefInventoryView struct {
 	Id int64 `json:"id,omitempty"`
 	NasFileSystemUuid string `json:"nasFileSystemUuid,omitempty"`
 	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

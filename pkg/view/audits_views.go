@@ -28,3 +28,8 @@ type AuditsInventoryView struct {
 	StartTime int64 `json:"startTime,omitempty"`
 }
 
+// QueryAuditView QueryAudit
+type QueryAuditView struct {
+	Inventories []AuditsInventoryView `json:"inventories,omitempty"`
+}
+

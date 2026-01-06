@@ -26,7 +26,17 @@ type RaidPhysicalDriveInventoryView struct {
 	DriveType string `json:"driveType,omitempty"`
 	MediaType string `json:"mediaType,omitempty"`
 	RotationRate int `json:"rotationRate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryLocalRaidPhysicalDriveView QueryLocalRaidPhysicalDrive
+type QueryLocalRaidPhysicalDriveView struct {
+	Inventories []RaidPhysicalDriveInventoryView `json:"inventories,omitempty"`
+}
+
+// LocateLocalRaidPhysicalDriveEventView LocateLocalRaidPhysicalDriveEvent
+type LocateLocalRaidPhysicalDriveEventView struct {
+	Inventory RaidPhysicalDriveInventoryView `json:"inventory,omitempty"`
 }
 

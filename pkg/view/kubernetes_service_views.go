@@ -18,7 +18,7 @@ type KubernetesServiceInventoryView struct {
 	Ports string `json:"ports,omitempty"`
 	EndpointUuid string `json:"endpointUuid,omitempty"`
 	ClusterId int64 `json:"clusterId,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

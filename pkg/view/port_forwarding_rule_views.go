@@ -22,7 +22,47 @@ type PortForwardingRuleInventoryView struct {
 	ProtocolType string `json:"protocolType,omitempty"`
 	State string `json:"state,omitempty"`
 	AllowedCidr string `json:"allowedCidr,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeletePortForwardingRuleEventView DeletePortForwardingRuleEvent
+type DeletePortForwardingRuleEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ChangePortForwardingRuleStateEventView ChangePortForwardingRuleStateEvent
+type ChangePortForwardingRuleStateEventView struct {
+	Inventory PortForwardingRuleInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryPortForwardingRuleView QueryPortForwardingRule
+type QueryPortForwardingRuleView struct {
+	Inventories []PortForwardingRuleInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdatePortForwardingRuleEventView UpdatePortForwardingRuleEvent
+type UpdatePortForwardingRuleEventView struct {
+	Inventory PortForwardingRuleInventoryView `json:"inventory,omitempty"`
+}
+
+// GetVpcAttachedPortForwardingRulesView GetVpcAttachedPortForwardingRules
+type GetVpcAttachedPortForwardingRulesView struct {
+	Inventories []PortForwardingRuleInventoryView `json:"inventories,omitempty"`
+}
+
+// DetachPortForwardingRuleEventView DetachPortForwardingRuleEvent
+type DetachPortForwardingRuleEventView struct {
+	Inventory PortForwardingRuleInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachPortForwardingRuleEventView AttachPortForwardingRuleEvent
+type AttachPortForwardingRuleEventView struct {
+	Inventory PortForwardingRuleInventoryView `json:"inventory,omitempty"`
+}
+
+// CreatePortForwardingRuleEventView CreatePortForwardingRuleEvent
+type CreatePortForwardingRuleEventView struct {
+	Inventory PortForwardingRuleInventoryView `json:"inventory,omitempty"`
 }
 

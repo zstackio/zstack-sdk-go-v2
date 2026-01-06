@@ -12,7 +12,17 @@ type VmNicSecurityGroupRefInventoryView struct {
 	VmNicUuid string `json:"vmNicUuid,omitempty"`
 	SecurityGroupUuid string `json:"securityGroupUuid,omitempty"`
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryVmNicInSecurityGroupView QueryVmNicInSecurityGroup
+type QueryVmNicInSecurityGroupView struct {
+	Inventories []VmNicSecurityGroupRefInventoryView `json:"inventories,omitempty"`
+}
+
+// SetVmNicSecurityGroupEventView SetVmNicSecurityGroupEvent
+type SetVmNicSecurityGroupEventView struct {
+	Inventory []VmNicSecurityGroupRefInventoryView `json:"inventory,omitempty"`
 }
 

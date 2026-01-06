@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type IscsiServerClusterRefInventoryView struct {
 	IscsiServerUuid string `json:"iscsiServerUuid,omitempty"`
 	ClusterUuid string `json:"clusterUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

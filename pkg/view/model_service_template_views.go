@@ -13,7 +13,7 @@ type ModelServiceTemplateInventoryView struct {
 	CpuArchitecture string `json:"cpuArchitecture,omitempty"`
 	VmImageUuid string `json:"vmImageUuid,omitempty"`
 	DockerImage string `json:"dockerImage,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

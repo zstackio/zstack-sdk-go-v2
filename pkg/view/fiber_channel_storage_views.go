@@ -13,7 +13,17 @@ type FiberChannelStorageInventoryView struct {
 	Wwnn string `json:"wwnn,omitempty"`
 	State string `json:"state,omitempty"`
 	FiberChannelLuns []FiberChannelLunInventoryView `json:"fiberChannelLuns,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// RefreshFiberChannelStorageEventView RefreshFiberChannelStorageEvent
+type RefreshFiberChannelStorageEventView struct {
+	Inventories []FiberChannelStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// QueryFiberChannelStorageView QueryFiberChannelStorage
+type QueryFiberChannelStorageView struct {
+	Inventories []FiberChannelStorageInventoryView `json:"inventories,omitempty"`
 }
 

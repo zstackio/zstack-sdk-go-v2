@@ -12,8 +12,28 @@ type AccessControlListInventoryView struct {
 	Name string `json:"name,omitempty"`
 	IpVersion int `json:"ipVersion,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Entries []AccessControlListEntryInventoryView `json:"entries,omitempty"`
+}
+
+// CreateAccessControlListEventView CreateAccessControlListEvent
+type CreateAccessControlListEventView struct {
+	Inventory AccessControlListInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateAccessControlListEventView UpdateAccessControlListEvent
+type UpdateAccessControlListEventView struct {
+	Inventory AccessControlListInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryAccessControlListView QueryAccessControlList
+type QueryAccessControlListView struct {
+	Inventories []AccessControlListInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteAccessControlListEventView DeleteAccessControlListEvent
+type DeleteAccessControlListEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

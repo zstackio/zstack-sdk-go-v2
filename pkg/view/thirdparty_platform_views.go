@@ -15,8 +15,28 @@ type ThirdpartyPlatformInventoryView struct {
 	Template string `json:"template,omitempty"`
 	State string `json:"state,omitempty"`
 	Description string `json:"description,omitempty"`
-	LastSyncDate time.Time `json:"lastSyncDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	LastSyncDate ZStackTime `json:"lastSyncDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+}
+
+// QueryThirdpartyPlatformView QueryThirdpartyPlatform
+type QueryThirdpartyPlatformView struct {
+	Inventories []ThirdpartyPlatformInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateThirdpartyPlatformEventView UpdateThirdpartyPlatformEvent
+type UpdateThirdpartyPlatformEventView struct {
+	Inventory ThirdpartyPlatformInventoryView `json:"inventory,omitempty"`
+}
+
+// AddThirdpartyPlatformEventView AddThirdpartyPlatformEvent
+type AddThirdpartyPlatformEventView struct {
+	Inventory ThirdpartyPlatformInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteThirdpartyPlatformEventView DeleteThirdpartyPlatformEvent
+type DeleteThirdpartyPlatformEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

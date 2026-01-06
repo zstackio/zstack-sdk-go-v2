@@ -15,7 +15,17 @@ type IdentityZoneInventoryView struct {
 	Type string `json:"type,omitempty"`
 	ZoneName string `json:"zoneName,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryIdentityZoneFromLocalView QueryIdentityZoneFromLocal
+type QueryIdentityZoneFromLocalView struct {
+	Inventories []IdentityZoneInventoryView `json:"inventories,omitempty"`
+}
+
+// AddIdentityZoneFromRemoteEventView AddIdentityZoneFromRemoteEvent
+type AddIdentityZoneFromRemoteEventView struct {
+	Inventory IdentityZoneInventoryView `json:"inventory,omitempty"`
 }
 

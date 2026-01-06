@@ -11,7 +11,12 @@ type HostNetworkInterfaceServiceRefInventoryView struct {
 	InterfaceUuid string `json:"interfaceUuid,omitempty"`
 	VlanId int `json:"vlanId,omitempty"`
 	ServiceType string `json:"serviceType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SetServiceTypeOnHostNetworkInterfaceEventView SetServiceTypeOnHostNetworkInterfaceEvent
+type SetServiceTypeOnHostNetworkInterfaceEventView struct {
+	Inventory []HostNetworkInterfaceServiceRefInventoryView `json:"inventory,omitempty"`
 }
 

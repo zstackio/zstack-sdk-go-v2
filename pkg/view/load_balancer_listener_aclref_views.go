@@ -13,7 +13,7 @@ type LoadBalancerListenerACLRefInventoryView struct {
 	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
 	AclUuid string `json:"aclUuid,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

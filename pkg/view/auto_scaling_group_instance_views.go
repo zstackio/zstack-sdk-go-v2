@@ -16,8 +16,23 @@ type AutoScalingGroupInstanceInventoryView struct {
 	Status string `json:"status,omitempty"`
 	HealthStatus string `json:"healthStatus,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ProtectionStrategy string `json:"protectionStrategy,omitempty"`
+}
+
+// UpdateAutoScalingGroupInstanceEventView UpdateAutoScalingGroupInstanceEvent
+type UpdateAutoScalingGroupInstanceEventView struct {
+	Inventory AutoScalingGroupInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteAutoScalingGroupInstanceEventView DeleteAutoScalingGroupInstanceEvent
+type DeleteAutoScalingGroupInstanceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryAutoScalingGroupInstanceView QueryAutoScalingGroupInstance
+type QueryAutoScalingGroupInstanceView struct {
+	Inventories []AutoScalingGroupInstanceInventoryView `json:"inventories,omitempty"`
 }
 

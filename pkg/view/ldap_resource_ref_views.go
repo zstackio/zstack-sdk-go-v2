@@ -13,7 +13,22 @@ type LdapResourceRefInventoryView struct {
 	LdapServerUuid string `json:"ldapServerUuid,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	ResourceType string `json:"resourceType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryIAM2LdapBindingView QueryIAM2LdapBinding
+type QueryIAM2LdapBindingView struct {
+	Inventories []LdapResourceRefInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateIAM2VirtualIDLdapBindingEventView CreateIAM2VirtualIDLdapBindingEvent
+type CreateIAM2VirtualIDLdapBindingEventView struct {
+	Inventory LdapResourceRefInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateIAM2VirtualIDFromLdapUidEventView CreateIAM2VirtualIDFromLdapUidEvent
+type CreateIAM2VirtualIDFromLdapUidEventView struct {
+	Inventory LdapResourceRefInventoryView `json:"inventory,omitempty"`
 }
 

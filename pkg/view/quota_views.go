@@ -13,7 +13,22 @@ type QuotaInventoryView struct {
 	IdentityUuid string `json:"identityUuid,omitempty"`
 	IdentityType string `json:"identityType,omitempty"`
 	Value int64 `json:"value,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+}
+
+// QueryQuotaView QueryQuota
+type QueryQuotaView struct {
+	Inventories []QuotaInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateOrganizationQuotaEventView UpdateOrganizationQuotaEvent
+type UpdateOrganizationQuotaEventView struct {
+	Inventory QuotaInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateQuotaEventView UpdateQuotaEvent
+type UpdateQuotaEventView struct {
+	Inventory QuotaInventoryView `json:"inventory,omitempty"`
 }
 

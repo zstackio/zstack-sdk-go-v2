@@ -11,7 +11,12 @@ type HostNetworkBondingServiceRefInventoryView struct {
 	BondingUuid string `json:"bondingUuid,omitempty"`
 	VlanId int `json:"vlanId,omitempty"`
 	ServiceType string `json:"serviceType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SetServiceTypeOnHostNetworkBondingEventView SetServiceTypeOnHostNetworkBondingEvent
+type SetServiceTypeOnHostNetworkBondingEventView struct {
+	Inventory []HostNetworkBondingServiceRefInventoryView `json:"inventory,omitempty"`
 }
 

@@ -22,10 +22,20 @@ type BareMetal2IpmiChassisInventoryView struct {
 	Status string `json:"status,omitempty"`
 	PowerStatus string `json:"powerStatus,omitempty"`
 	ProvisionType string `json:"provisionType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ChassisNics []BareMetal2ChassisNicInventoryView `json:"chassisNics,omitempty"`
 	ChassisDisks []BareMetal2ChassisDiskInventoryView `json:"chassisDisks,omitempty"`
 	ChassisOffering BareMetal2ChassisOfferingInventoryView `json:"chassisOffering,omitempty"`
+}
+
+// AddBareMetal2ChassisEventView AddBareMetal2ChassisEvent
+type AddBareMetal2ChassisEventView struct {
+	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateBareMetal2ChassisEventView UpdateBareMetal2ChassisEvent
+type UpdateBareMetal2ChassisEventView struct {
+	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
 }
 

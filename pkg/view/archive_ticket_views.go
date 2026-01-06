@@ -20,7 +20,12 @@ type ArchiveTicketInventoryView struct {
 	CurrentFlowUuid string `json:"currentFlowUuid,omitempty"`
 	FlowCollectionUuid string `json:"flowCollectionUuid,omitempty"`
 	TicketTypeUuid string `json:"ticketTypeUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryArchiveTicketView QueryArchiveTicket
+type QueryArchiveTicketView struct {
+	Inventories []ArchiveTicketInventoryView `json:"inventories,omitempty"`
 }
 

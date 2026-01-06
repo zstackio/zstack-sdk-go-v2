@@ -16,3 +16,18 @@ type GlobalConfigInventoryView struct {
 	Value string `json:"value,omitempty"`
 }
 
+// UpdateGlobalConfigEventView UpdateGlobalConfigEvent
+type UpdateGlobalConfigEventView struct {
+	Inventory GlobalConfigInventoryView `json:"inventory,omitempty"`
+}
+
+// ResetGlobalConfigEventView ResetGlobalConfigEvent
+type ResetGlobalConfigEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryGlobalConfigView QueryGlobalConfig
+type QueryGlobalConfigView struct {
+	Inventories []GlobalConfigInventoryView `json:"inventories,omitempty"`
+}
+

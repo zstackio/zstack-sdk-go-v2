@@ -14,7 +14,7 @@ type VpcHaGroupVipRefInventoryView struct {
 	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 	Ip string `json:"ip,omitempty"`
 	Netmask string `json:"netmask,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

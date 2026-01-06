@@ -30,7 +30,27 @@ type HostNetworkInterfaceInventoryView struct {
 	OffloadStatus string `json:"offloadStatus,omitempty"`
 	VirtStatus string `json:"virtStatus,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateHostNetworkInterfaceEventView UpdateHostNetworkInterfaceEvent
+type UpdateHostNetworkInterfaceEventView struct {
+	Inventory HostNetworkInterfaceInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryHostNetworkInterfaceView QueryHostNetworkInterface
+type QueryHostNetworkInterfaceView struct {
+	Inventories []HostNetworkInterfaceInventoryView `json:"inventories,omitempty"`
+}
+
+// LocateHostNetworkInterfaceEventView LocateHostNetworkInterfaceEvent
+type LocateHostNetworkInterfaceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// SetIpOnHostNetworkInterfaceEventView SetIpOnHostNetworkInterfaceEvent
+type SetIpOnHostNetworkInterfaceEventView struct {
+	Inventory HostNetworkInterfaceInventoryView `json:"inventory,omitempty"`
 }
 

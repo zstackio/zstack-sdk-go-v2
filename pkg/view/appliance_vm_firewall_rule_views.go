@@ -16,7 +16,7 @@ type ApplianceVmFirewallRuleInventoryView struct {
 	SourceIp string `json:"sourceIp,omitempty"`
 	DestIp string `json:"destIp,omitempty"`
 	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

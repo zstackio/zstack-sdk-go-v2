@@ -24,9 +24,34 @@ type VolumeSnapshotInventoryView struct {
 	Distance int `json:"distance,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	BackupStorageRefs []VolumeSnapshotBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
 	GroupUuid string `json:"groupUuid,omitempty"`
+}
+
+// UpdateVolumeSnapshotEventView UpdateVolumeSnapshotEvent
+type UpdateVolumeSnapshotEventView struct {
+	Inventory VolumeSnapshotInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVolumeSnapshotView QueryVolumeSnapshot
+type QueryVolumeSnapshotView struct {
+	Inventories []VolumeSnapshotInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteVolumeSnapshotEventView DeleteVolumeSnapshotEvent
+type DeleteVolumeSnapshotEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateVolumesSnapshotEventView CreateVolumesSnapshotEvent
+type CreateVolumesSnapshotEventView struct {
+	Inventories []VolumeSnapshotInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateVolumeSnapshotEventView CreateVolumeSnapshotEvent
+type CreateVolumeSnapshotEventView struct {
+	Inventory VolumeSnapshotInventoryView `json:"inventory,omitempty"`
 }
 

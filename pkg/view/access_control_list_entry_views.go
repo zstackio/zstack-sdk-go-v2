@@ -16,7 +16,22 @@ type AccessControlListEntryInventoryView struct {
 	Url string `json:"url,omitempty"`
 	IpEntries string `json:"ipEntries,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// RemoveAccessControlListEntryEventView RemoveAccessControlListEntryEvent
+type RemoveAccessControlListEntryEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ChangeAccessControlListRedirectRuleEventView ChangeAccessControlListRedirectRuleEvent
+type ChangeAccessControlListRedirectRuleEventView struct {
+	Inventory AccessControlListEntryInventoryView `json:"inventory,omitempty"`
+}
+
+// AddAccessControlListEntryEventView AddAccessControlListEntryEvent
+type AddAccessControlListEntryEventView struct {
+	Inventory AccessControlListEntryInventoryView `json:"inventory,omitempty"`
 }
 

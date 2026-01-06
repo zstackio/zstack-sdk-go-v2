@@ -25,8 +25,23 @@ type PciDeviceSpecInventoryView struct {
 	AllowResourceConfigWithMultipleDevices bool `json:"allowResourceConfigWithMultipleDevices,omitempty"`
 	RomVersion string `json:"romVersion,omitempty"`
 	RomMd5sum string `json:"romMd5sum,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
+}
+
+// QueryPciDeviceSpecView QueryPciDeviceSpec
+type QueryPciDeviceSpecView struct {
+	Inventories []PciDeviceSpecInventoryView `json:"inventories,omitempty"`
+}
+
+// GetPciDeviceSpecCandidatesView GetPciDeviceSpecCandidates
+type GetPciDeviceSpecCandidatesView struct {
+	Inventories []PciDeviceSpecInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdatePciDeviceSpecEventView UpdatePciDeviceSpecEvent
+type UpdatePciDeviceSpecEventView struct {
+	Inventory PciDeviceSpecInventoryView `json:"inventory,omitempty"`
 }
 

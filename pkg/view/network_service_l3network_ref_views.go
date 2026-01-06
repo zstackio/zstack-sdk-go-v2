@@ -13,3 +13,8 @@ type NetworkServiceL3NetworkRefInventoryView struct {
 	NetworkServiceType string `json:"networkServiceType,omitempty"`
 }
 
+// QueryNetworkServiceL3NetworkRefView QueryNetworkServiceL3NetworkRef
+type QueryNetworkServiceL3NetworkRefView struct {
+	Inventories []NetworkServiceL3NetworkRefInventoryView `json:"inventories,omitempty"`
+}
+

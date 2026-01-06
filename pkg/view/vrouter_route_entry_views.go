@@ -15,7 +15,22 @@ type VRouterRouteEntryInventoryView struct {
 	Destination string `json:"destination,omitempty"`
 	Target string `json:"target,omitempty"`
 	Distance int `json:"distance,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteVRouterRouteEntryEventView DeleteVRouterRouteEntryEvent
+type DeleteVRouterRouteEntryEventView struct {
+	Inventory VRouterRouteTableInventoryView `json:"inventory,omitempty"`
+}
+
+// AddVRouterRouteEntryEventView AddVRouterRouteEntryEvent
+type AddVRouterRouteEntryEventView struct {
+	Inventory VRouterRouteEntryInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVRouterRouteEntryView QueryVRouterRouteEntry
+type QueryVRouterRouteEntryView struct {
+	Inventories []VRouterRouteEntryInventoryView `json:"inventories,omitempty"`
 }
 

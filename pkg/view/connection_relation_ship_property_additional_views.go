@@ -16,6 +16,6 @@ type ConnectionRelationShipPropertyView struct {
 	RelationShips string `json:"relationShips,omitempty"`
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
 }
 

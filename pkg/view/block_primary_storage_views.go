@@ -24,8 +24,18 @@ type BlockPrimaryStorageInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	MountPath string `json:"mountPath,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+}
+
+// UpdateBlockPrimaryStorageEventView UpdateBlockPrimaryStorageEvent
+type UpdateBlockPrimaryStorageEventView struct {
+	Inventory BlockPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBlockPrimaryStorageView QueryBlockPrimaryStorage
+type QueryBlockPrimaryStorageView struct {
+	Inventories []BlockPrimaryStorageInventoryView `json:"inventories,omitempty"`
 }
 

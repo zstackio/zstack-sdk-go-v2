@@ -17,8 +17,33 @@ type PreconfigurationTemplateInventoryView struct {
 	Md5sum string `json:"md5sum,omitempty"`
 	IsPredefined bool `json:"isPredefined,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	CustomParams []string `json:"customParams,omitempty"`
+}
+
+// ChangePreconfigurationTemplateStateEventView ChangePreconfigurationTemplateStateEvent
+type ChangePreconfigurationTemplateStateEventView struct {
+	Inventory PreconfigurationTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// DeletePreconfigurationTemplateEventView DeletePreconfigurationTemplateEvent
+type DeletePreconfigurationTemplateEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// AddPreconfigurationTemplateEventView AddPreconfigurationTemplateEvent
+type AddPreconfigurationTemplateEventView struct {
+	Inventory PreconfigurationTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdatePreconfigurationTemplateEventView UpdatePreconfigurationTemplateEvent
+type UpdatePreconfigurationTemplateEventView struct {
+	Inventory PreconfigurationTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryPreconfigurationTemplatesView QueryPreconfigurationTemplates
+type QueryPreconfigurationTemplatesView struct {
+	Inventories []PreconfigurationTemplateInventoryView `json:"inventories,omitempty"`
 }
 

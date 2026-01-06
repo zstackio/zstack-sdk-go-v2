@@ -36,9 +36,14 @@ type EthernetVfPciDeviceInventoryView struct {
 	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
 	Rev string `json:"rev,omitempty"`
 	DependentDevices string `json:"dependentDevices,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	MatchedPciDeviceOfferingRef []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDeviceOfferingRef,omitempty"`
 	MdevSpecRefs []PciDeviceMdevSpecRefInventoryView `json:"mdevSpecRefs,omitempty"`
+}
+
+// QueryEthernetVFView QueryEthernetVF
+type QueryEthernetVFView struct {
+	Inventories []EthernetVfPciDeviceInventoryView `json:"inventories,omitempty"`
 }
 

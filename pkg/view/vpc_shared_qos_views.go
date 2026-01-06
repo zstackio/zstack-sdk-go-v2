@@ -15,7 +15,32 @@ type VpcSharedQosInventoryView struct {
 	VpcUuid string `json:"vpcUuid,omitempty"`
 	Bandwidth int64 `json:"bandwidth,omitempty"`
 	Vips []VpcSharedQosRefVipInventoryView `json:"vips,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateVpcSharedQosEventView CreateVpcSharedQosEvent
+type CreateVpcSharedQosEventView struct {
+	Inventory VpcSharedQosInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVpcSharedQosView QueryVpcSharedQos
+type QueryVpcSharedQosView struct {
+	Inventories []VpcSharedQosInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateVpcSharedQosEventView UpdateVpcSharedQosEvent
+type UpdateVpcSharedQosEventView struct {
+	Inventory VpcSharedQosInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeVpcSharedQosBandwidthEventView ChangeVpcSharedQosBandwidthEvent
+type ChangeVpcSharedQosBandwidthEventView struct {
+	Inventory VpcSharedQosInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteVpcSharedQosEventView DeleteVpcSharedQosEvent
+type DeleteVpcSharedQosEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

@@ -20,8 +20,28 @@ type MetricRuleTemplateInventoryView struct {
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
 	Labels string `json:"labels,omitempty"`
 	EnableRecovery bool `json:"enableRecovery,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
+}
+
+// QueryMetricRuleTemplateView QueryMetricRuleTemplate
+type QueryMetricRuleTemplateView struct {
+	Inventories []MetricRuleTemplateInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteMetricRuleTemplateEventView DeleteMetricRuleTemplateEvent
+type DeleteMetricRuleTemplateEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateMetricRuleTemplateEventView UpdateMetricRuleTemplateEvent
+type UpdateMetricRuleTemplateEventView struct {
+	Inventory MetricRuleTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// AddMetricRuleTemplateEventView AddMetricRuleTemplateEvent
+type AddMetricRuleTemplateEventView struct {
+	Inventory MetricRuleTemplateInventoryView `json:"inventory,omitempty"`
 }
 

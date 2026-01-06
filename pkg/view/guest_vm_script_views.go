@@ -17,7 +17,27 @@ type GuestVmScriptInventoryView struct {
 	Platform string `json:"platform,omitempty"`
 	ScriptType string `json:"scriptType,omitempty"`
 	ScriptTimeout int `json:"scriptTimeout,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryGuestVmScriptView QueryGuestVmScript
+type QueryGuestVmScriptView struct {
+	Inventories []GuestVmScriptInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteGuestVmScriptEventView DeleteGuestVmScriptEvent
+type DeleteGuestVmScriptEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateGuestVmScriptEventView CreateGuestVmScriptEvent
+type CreateGuestVmScriptEventView struct {
+	Inventory GuestVmScriptInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateGuestVmScriptEventView UpdateGuestVmScriptEvent
+type UpdateGuestVmScriptEventView struct {
+	Inventory GuestVmScriptInventoryView `json:"inventory,omitempty"`
 }
 

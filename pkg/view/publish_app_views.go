@@ -20,7 +20,22 @@ type PublishAppInventoryView struct {
 	AppId string `json:"appId,omitempty"`
 	Version string `json:"version,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryPublishAppView QueryPublishApp
+type QueryPublishAppView struct {
+	Inventories []PublishAppInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdatePublishAppEventView UpdatePublishAppEvent
+type UpdatePublishAppEventView struct {
+	Inventory PublishAppInventoryView `json:"inventory,omitempty"`
+}
+
+// DeletePublishAppEventView DeletePublishAppEvent
+type DeletePublishAppEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

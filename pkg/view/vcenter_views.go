@@ -19,7 +19,32 @@ type VCenterInventoryView struct {
 	Https bool `json:"https,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// AddVCenterEventView AddVCenterEvent
+type AddVCenterEventView struct {
+	Inventory VCenterInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncVCenterEventView SyncVCenterEvent
+type SyncVCenterEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryVCenterView QueryVCenter
+type QueryVCenterView struct {
+	Inventories []VCenterInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateVCenterEventView UpdateVCenterEvent
+type UpdateVCenterEventView struct {
+	Inventory VCenterInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteVCenterEventView DeleteVCenterEvent
+type DeleteVCenterEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

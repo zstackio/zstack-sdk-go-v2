@@ -14,3 +14,8 @@ type ResourceInventoryView struct {
 	ConcreteResourceType string `json:"concreteResourceType,omitempty"`
 }
 
+// GetResourceNamesView GetResourceNames
+type GetResourceNamesView struct {
+	Inventories []ResourceInventoryView `json:"inventories,omitempty"`
+}
+

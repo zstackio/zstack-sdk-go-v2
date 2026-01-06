@@ -17,8 +17,38 @@ type MonitorTriggerInventoryView struct {
 	State string `json:"state,omitempty"`
 	Duration int `json:"duration,omitempty"`
 	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
-	LastStatusChangeTime time.Time `json:"lastStatusChangeTime,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	LastStatusChangeTime ZStackTime `json:"lastStatusChangeTime,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryMonitorTriggerView QueryMonitorTrigger
+type QueryMonitorTriggerView struct {
+	Inventories []MonitorTriggerInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateMonitorTriggerEventView CreateMonitorTriggerEvent
+type CreateMonitorTriggerEventView struct {
+	Inventory MonitorTriggerInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteMonitorTriggerActionEventView DeleteMonitorTriggerActionEvent
+type DeleteMonitorTriggerActionEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ChangeMonitorTriggerStateEventView ChangeMonitorTriggerStateEvent
+type ChangeMonitorTriggerStateEventView struct {
+	Inventory MonitorTriggerInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteMonitorTriggerEventView DeleteMonitorTriggerEvent
+type DeleteMonitorTriggerEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateMonitorTriggerEventView UpdateMonitorTriggerEvent
+type UpdateMonitorTriggerEventView struct {
+	Inventory MonitorTriggerInventoryView `json:"inventory,omitempty"`
 }
 

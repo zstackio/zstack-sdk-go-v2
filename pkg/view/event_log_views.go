@@ -16,6 +16,11 @@ type EventLogInventoryView struct {
 	TrackingId string `json:"trackingId,omitempty"`
 	Type string `json:"type,omitempty"`
 	Time int64 `json:"time,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+}
+
+// QueryEventLogView QueryEventLog
+type QueryEventLogView struct {
+	Inventories []EventLogInventoryView `json:"inventories,omitempty"`
 }
 

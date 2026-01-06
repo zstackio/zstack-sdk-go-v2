@@ -19,7 +19,7 @@ type IpStatisticDataView struct {
 	ResourceTypes []string `json:"resourceTypes,omitempty"`
 	State string `json:"state,omitempty"`
 	UseFor string `json:"useFor,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
 	OwnerName string `json:"ownerName,omitempty"`
 }
 

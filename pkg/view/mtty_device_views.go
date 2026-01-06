@@ -15,7 +15,12 @@ type MttyDeviceInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	VirtStatus string `json:"virtStatus,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryMttyDeviceView QueryMttyDevice
+type QueryMttyDeviceView struct {
+	Inventories []MttyDeviceInventoryView `json:"inventories,omitempty"`
 }
 

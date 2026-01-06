@@ -25,9 +25,19 @@ type OAuth2ClientInventoryView struct {
 	LoginType string `json:"loginType,omitempty"`
 	LoginMNUrl string `json:"loginMNUrl,omitempty"`
 	RedirectUrl string `json:"redirectUrl,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
 	Attributes []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
+}
+
+// CreateOAuthClientEventView CreateOAuthClientEvent
+type CreateOAuthClientEventView struct {
+	Inventory OAuth2ClientInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateOAuthClientEventView UpdateOAuthClientEvent
+type UpdateOAuthClientEventView struct {
+	Inventory OAuth2ClientInventoryView `json:"inventory,omitempty"`
 }
 

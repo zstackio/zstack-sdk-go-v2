@@ -18,8 +18,53 @@ type LongJobInventoryView struct {
 	State string `json:"state,omitempty"`
 	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
 	ManagementNodeUuid string `json:"managementNodeUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ExecuteTime int64 `json:"executeTime,omitempty"`
+}
+
+// CleanLongJobEventView CleanLongJobEvent
+type CleanLongJobEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ResumeLongJobEventView ResumeLongJobEvent
+type ResumeLongJobEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteLongJobEventView DeleteLongJobEvent
+type DeleteLongJobEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateLongJobEventView UpdateLongJobEvent
+type UpdateLongJobEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateClusterOSEventView UpdateClusterOSEvent
+type UpdateClusterOSEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
+// BatchAddBareMetal2ChassisEventView BatchAddBareMetal2ChassisEvent
+type BatchAddBareMetal2ChassisEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
+// BatchCreateBaremetalChassisEventView BatchCreateBaremetalChassisEvent
+type BatchCreateBaremetalChassisEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncLdapServerEventView SyncLdapServerEvent
+type SyncLdapServerEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryLongJobView QueryLongJob
+type QueryLongJobView struct {
+	Inventories []LongJobInventoryView `json:"inventories,omitempty"`
 }
 

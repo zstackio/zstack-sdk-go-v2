@@ -13,7 +13,12 @@ type LocalStorageResourceRefInventoryView struct {
 	HostUuid string `json:"hostUuid,omitempty"`
 	Size int64 `json:"size,omitempty"`
 	ResourceType string `json:"resourceType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryLocalStorageResourceRefView QueryLocalStorageResourceRef
+type QueryLocalStorageResourceRefView struct {
+	Inventories []LocalStorageResourceRefInventoryView `json:"inventories,omitempty"`
 }
 

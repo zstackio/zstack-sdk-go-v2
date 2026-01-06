@@ -20,7 +20,27 @@ type AliyunRouterInterfaceInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Status string `json:"status,omitempty"`
 	OppositeInterfaceUuid string `json:"oppositeInterfaceUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SyncAliyunRouterInterfaceFromRemoteEventView SyncAliyunRouterInterfaceFromRemoteEvent
+type SyncAliyunRouterInterfaceFromRemoteEventView struct {
+	Inventories []AliyunRouterInterfaceInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateAliyunRouterInterfaceRemoteEventView CreateAliyunRouterInterfaceRemoteEvent
+type CreateAliyunRouterInterfaceRemoteEventView struct {
+	Inventory AliyunRouterInterfaceInventoryView `json:"inventory,omitempty"`
+}
+
+// StartConnectionBetweenAliyunRouterInterfaceEventView StartConnectionBetweenAliyunRouterInterfaceEvent
+type StartConnectionBetweenAliyunRouterInterfaceEventView struct {
+	Inventory AliyunRouterInterfaceInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryAliyunRouterInterfaceFromLocalView QueryAliyunRouterInterfaceFromLocal
+type QueryAliyunRouterInterfaceFromLocalView struct {
+	Inventories []AliyunRouterInterfaceInventoryView `json:"inventories,omitempty"`
 }
 

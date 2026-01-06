@@ -31,3 +31,26 @@ type LicenseInventoryView struct {
 	Usage LicenseUsageViewView `json:"usage,omitempty"`
 }
 
+// GetLicenseRecordsView GetLicenseRecords
+type GetLicenseRecordsView struct {
+	Inventories []LicenseInventoryView `json:"inventories,omitempty"`
+	Total int64 `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// DeleteLicenseEventView DeleteLicenseEvent
+type DeleteLicenseEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateLicenseEventView UpdateLicenseEvent
+type UpdateLicenseEventView struct {
+	Inventory LicenseInventoryView `json:"inventory,omitempty"`
+}
+
+// GetLicenseInfoView GetLicenseInfo
+type GetLicenseInfoView struct {
+	Inventory LicenseInventoryView `json:"inventory,omitempty"`
+	Additions []AdditionalLicenseInfoView `json:"additions,omitempty"`
+}
+

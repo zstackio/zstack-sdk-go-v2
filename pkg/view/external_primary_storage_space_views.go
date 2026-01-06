@@ -17,7 +17,7 @@ type ExternalPrimaryStorageSpaceInventoryView struct {
 	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
 	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

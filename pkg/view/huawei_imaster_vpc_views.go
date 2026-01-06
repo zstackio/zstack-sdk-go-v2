@@ -16,7 +16,17 @@ type HuaweiIMasterVpcInventoryView struct {
 	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
 	State string `json:"state,omitempty"`
 	IsVpcDeployed bool `json:"isVpcDeployed,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryHuaweiIMasterVpcView QueryHuaweiIMasterVpc
+type QueryHuaweiIMasterVpcView struct {
+	Inventories []HuaweiIMasterVpcInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteHuaweiIMasterVpcEventView DeleteHuaweiIMasterVpcEvent
+type DeleteHuaweiIMasterVpcEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

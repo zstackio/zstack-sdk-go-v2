@@ -14,7 +14,7 @@ type LoadBalancerServerGroupVmNicRefInventoryView struct {
 	Weight int64 `json:"weight,omitempty"`
 	IpVersion int `json:"ipVersion,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

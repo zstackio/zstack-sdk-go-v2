@@ -15,7 +15,12 @@ type AliyunNasAccessRuleInventoryView struct {
 	Priority int `json:"priority,omitempty"`
 	UserAccess string `json:"userAccess,omitempty"`
 	RuleId string `json:"ruleId,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateAliyunNasAccessGroupRuleEventView CreateAliyunNasAccessGroupRuleEvent
+type CreateAliyunNasAccessGroupRuleEventView struct {
+	Inventory AliyunNasAccessRuleInventoryView `json:"inventory,omitempty"`
 }
 

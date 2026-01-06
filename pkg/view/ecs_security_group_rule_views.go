@@ -18,7 +18,22 @@ type EcsSecurityGroupRuleInventoryView struct {
 	NicType string `json:"nicType,omitempty"`
 	Policy string `json:"policy,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SyncEcsSecurityGroupRuleFromRemoteEventView SyncEcsSecurityGroupRuleFromRemoteEvent
+type SyncEcsSecurityGroupRuleFromRemoteEventView struct {
+	Inventories []EcsSecurityGroupRuleInventoryView `json:"inventories,omitempty"`
+}
+
+// QueryEcsSecurityGroupRuleFromLocalView QueryEcsSecurityGroupRuleFromLocal
+type QueryEcsSecurityGroupRuleFromLocalView struct {
+	Inventories []EcsSecurityGroupRuleInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateEcsSecurityGroupRuleRemoteEventView CreateEcsSecurityGroupRuleRemoteEvent
+type CreateEcsSecurityGroupRuleRemoteEventView struct {
+	Inventory EcsSecurityGroupRuleInventoryView `json:"inventory,omitempty"`
 }
 

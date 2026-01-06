@@ -14,12 +14,17 @@ type ThirdpartyOriginalAlertInventoryView struct {
 	Service string `json:"service,omitempty"`
 	Metric string `json:"metric,omitempty"`
 	AlertLevel string `json:"alertLevel,omitempty"`
-	AlertTime time.Time `json:"alertTime,omitempty"`
+	AlertTime ZStackTime `json:"alertTime,omitempty"`
 	Dimensions string `json:"dimensions,omitempty"`
 	Message string `json:"message,omitempty"`
 	DataSource string `json:"dataSource,omitempty"`
 	SourceText string `json:"sourceText,omitempty"`
 	ReadStatus string `json:"readStatus,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+}
+
+// QueryThirdpartyAlertView QueryThirdpartyAlert
+type QueryThirdpartyAlertView struct {
+	Inventories []ThirdpartyOriginalAlertInventoryView `json:"inventories,omitempty"`
 }
 

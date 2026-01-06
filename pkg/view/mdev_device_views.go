@@ -20,8 +20,38 @@ type MdevDeviceInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	Chooser string `json:"chooser,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
+}
+
+// GetMdevDeviceCandidatesView GetMdevDeviceCandidates
+type GetMdevDeviceCandidatesView struct {
+	Inventories []MdevDeviceInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateMdevDeviceEventView UpdateMdevDeviceEvent
+type UpdateMdevDeviceEventView struct {
+	Inventory MdevDeviceInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteMdevDeviceEventView DeleteMdevDeviceEvent
+type DeleteMdevDeviceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// AttachMdevDeviceToVmEventView AttachMdevDeviceToVmEvent
+type AttachMdevDeviceToVmEventView struct {
+	Inventory MdevDeviceInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachMdevDeviceFromVmEventView DetachMdevDeviceFromVmEvent
+type DetachMdevDeviceFromVmEventView struct {
+	Inventory MdevDeviceInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryMdevDeviceView QueryMdevDevice
+type QueryMdevDeviceView struct {
+	Inventories []MdevDeviceInventoryView `json:"inventories,omitempty"`
 }
 

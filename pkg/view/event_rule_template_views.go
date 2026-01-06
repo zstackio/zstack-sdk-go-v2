@@ -14,8 +14,28 @@ type EventRuleTemplateInventoryView struct {
 	EventName string `json:"eventName,omitempty"`
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
 	Labels string `json:"labels,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
+}
+
+// AddEventRuleTemplateEventView AddEventRuleTemplateEvent
+type AddEventRuleTemplateEventView struct {
+	Inventory EventRuleTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteEventRuleTemplateEventView DeleteEventRuleTemplateEvent
+type DeleteEventRuleTemplateEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateEventRuleTemplateEventView UpdateEventRuleTemplateEvent
+type UpdateEventRuleTemplateEventView struct {
+	Inventory EventRuleTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryEventRuleTemplateView QueryEventRuleTemplate
+type QueryEventRuleTemplateView struct {
+	Inventories []EventRuleTemplateInventoryView `json:"inventories,omitempty"`
 }
 

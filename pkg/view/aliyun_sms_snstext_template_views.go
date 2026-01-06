@@ -21,8 +21,23 @@ type AliyunSmsSNSTextTemplateInventoryView struct {
 	Template string `json:"template,omitempty"`
 	RecoveryTemplate string `json:"recoveryTemplate,omitempty"`
 	DefaultTemplate bool `json:"defaultTemplate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Type string `json:"type,omitempty"`
+}
+
+// UpdateAliyunSmsSNSTextTemplateEventView UpdateAliyunSmsSNSTextTemplateEvent
+type UpdateAliyunSmsSNSTextTemplateEventView struct {
+	Inventory AliyunSmsSNSTextTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateSNSTextTemplateEventView CreateSNSTextTemplateEvent
+type CreateSNSTextTemplateEventView struct {
+	Inventory SNSTextTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryAliyunSmsSNSTextTemplateView QueryAliyunSmsSNSTextTemplate
+type QueryAliyunSmsSNSTextTemplateView struct {
+	Inventories []AliyunSmsSNSTextTemplateInventoryView `json:"inventories,omitempty"`
 }
 

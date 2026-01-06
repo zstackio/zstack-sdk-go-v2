@@ -28,8 +28,13 @@ type GpuDeviceSpecInventoryView struct {
 	AllowResourceConfigWithMultipleDevices bool `json:"allowResourceConfigWithMultipleDevices,omitempty"`
 	RomVersion string `json:"romVersion,omitempty"`
 	RomMd5sum string `json:"romMd5sum,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
+}
+
+// GetGpuDeviceSpecCandidatesView GetGpuDeviceSpecCandidates
+type GetGpuDeviceSpecCandidatesView struct {
+	Inventories []GpuDeviceSpecInventoryView `json:"inventories,omitempty"`
 }
 

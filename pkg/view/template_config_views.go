@@ -15,3 +15,28 @@ type TemplateConfigInventoryView struct {
 	Value string `json:"value,omitempty"`
 }
 
+// UpdateTemplateConfigEventView UpdateTemplateConfigEvent
+type UpdateTemplateConfigEventView struct {
+	Inventory TemplateConfigInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryTemplateConfigView QueryTemplateConfig
+type QueryTemplateConfigView struct {
+	Inventories []TemplateConfigInventoryView `json:"inventories,omitempty"`
+}
+
+// RevertTemplateConfigEventView RevertTemplateConfigEvent
+type RevertTemplateConfigEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ApplyTemplateConfigEventView ApplyTemplateConfigEvent
+type ApplyTemplateConfigEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ResetTemplateConfigEventView ResetTemplateConfigEvent
+type ResetTemplateConfigEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+

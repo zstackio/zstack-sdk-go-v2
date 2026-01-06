@@ -14,6 +14,6 @@ type DatabaseBackupStructView struct {
 	Type string `json:"type,omitempty"`
 	Size int64 `json:"size,omitempty"`
 	Md5 string `json:"md5,omitempty"`
-	CreatedTime time.Time `json:"createdTime,omitempty"`
+	CreatedTime ZStackTime `json:"createdTime,omitempty"`
 }
 

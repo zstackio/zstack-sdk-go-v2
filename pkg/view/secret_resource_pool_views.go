@@ -17,8 +17,28 @@ type SecretResourcePoolInventoryView struct {
 	Status string `json:"status,omitempty"`
 	Model string `json:"model,omitempty"`
 	HeartbeatInterval int `json:"heartbeatInterval,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Ability string `json:"ability,omitempty"`
+}
+
+// DeleteSecretResourcePoolEventView DeleteSecretResourcePoolEvent
+type DeleteSecretResourcePoolEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateSecretResourcePoolEventView UpdateSecretResourcePoolEvent
+type UpdateSecretResourcePoolEventView struct {
+	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeSecretResourcePoolStateEventView ChangeSecretResourcePoolStateEvent
+type ChangeSecretResourcePoolStateEventView struct {
+	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySecretResourcePoolView QuerySecretResourcePool
+type QuerySecretResourcePoolView struct {
+	Inventories []SecretResourcePoolInventoryView `json:"inventories,omitempty"`
 }
 

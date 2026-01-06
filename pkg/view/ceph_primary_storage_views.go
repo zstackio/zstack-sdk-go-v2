@@ -25,8 +25,33 @@ type CephPrimaryStorageInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	MountPath string `json:"mountPath,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+}
+
+// RemoveMonFromCephPrimaryStorageEventView RemoveMonFromCephPrimaryStorageEvent
+type RemoveMonFromCephPrimaryStorageEventView struct {
+	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateCephPrimaryStorageMonEventView UpdateCephPrimaryStorageMonEvent
+type UpdateCephPrimaryStorageMonEventView struct {
+	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// AddMonToCephPrimaryStorageEventView AddMonToCephPrimaryStorageEvent
+type AddMonToCephPrimaryStorageEventView struct {
+	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// AddPrimaryStorageEventView AddPrimaryStorageEvent
+type AddPrimaryStorageEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryPrimaryStorageView QueryPrimaryStorage
+type QueryPrimaryStorageView struct {
+	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
 }
 

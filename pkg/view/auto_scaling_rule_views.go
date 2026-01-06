@@ -14,11 +14,31 @@ type AutoScalingRuleInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	SystemTags []string `json:"systemTags,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Name string `json:"name,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 	ScalingGroupUuid string `json:"scalingGroupUuid,omitempty"`
 	RuleTriggers []AutoScalingRuleTriggerInventoryView `json:"ruleTriggers,omitempty"`
+}
+
+// CreateAutoScalingRuleEventView CreateAutoScalingRuleEvent
+type CreateAutoScalingRuleEventView struct {
+	Inventory AutoScalingRuleInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateAutoScalingRuleEventView UpdateAutoScalingRuleEvent
+type UpdateAutoScalingRuleEventView struct {
+	Inventory AutoScalingRuleInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteAutoScalingRuleEventView DeleteAutoScalingRuleEvent
+type DeleteAutoScalingRuleEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryAutoScalingRuleView QueryAutoScalingRule
+type QueryAutoScalingRuleView struct {
+	Inventories []AutoScalingRuleInventoryView `json:"inventories,omitempty"`
 }
 

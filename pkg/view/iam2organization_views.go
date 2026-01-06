@@ -14,10 +14,35 @@ type IAM2OrganizationInventoryView struct {
 	State string `json:"state,omitempty"`
 	Type string `json:"type,omitempty"`
 	SrcType string `json:"srcType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ParentUuid string `json:"parentUuid,omitempty"`
 	RootOrganizationUuid string `json:"rootOrganizationUuid,omitempty"`
 	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
+}
+
+// ChangeIAM2OrganizationStateEventView ChangeIAM2OrganizationStateEvent
+type ChangeIAM2OrganizationStateEventView struct {
+	Inventory IAM2OrganizationInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryIAM2OrganizationView QueryIAM2Organization
+type QueryIAM2OrganizationView struct {
+	Inventories []IAM2OrganizationInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteIAM2OrganizationEventView DeleteIAM2OrganizationEvent
+type DeleteIAM2OrganizationEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateIAM2OrganizationEventView UpdateIAM2OrganizationEvent
+type UpdateIAM2OrganizationEventView struct {
+	Inventory IAM2OrganizationInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateIAM2OrganizationEventView CreateIAM2OrganizationEvent
+type CreateIAM2OrganizationEventView struct {
+	Inventory IAM2OrganizationInventoryView `json:"inventory,omitempty"`
 }
 

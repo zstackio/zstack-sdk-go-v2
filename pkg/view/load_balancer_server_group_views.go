@@ -13,10 +13,45 @@ type LoadBalancerServerGroupInventoryView struct {
 	Description string `json:"description,omitempty"`
 	LoadBalancerUuid string `json:"loadBalancerUuid,omitempty"`
 	IpVersion int `json:"ipVersion,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ListenerServerGroupRefs []LoadBalancerListenerServerGroupRefInventoryView `json:"listenerServerGroupRefs,omitempty"`
 	ServerIps []LoadBalancerServerGroupServerIpInventoryView `json:"serverIps,omitempty"`
 	VmNicRefs []LoadBalancerServerGroupVmNicRefInventoryView `json:"vmNicRefs,omitempty"`
+}
+
+// CreateLoadBalancerServerGroupEventView CreateLoadBalancerServerGroupEvent
+type CreateLoadBalancerServerGroupEventView struct {
+	Inventory LoadBalancerServerGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// RemoveBackendServerFromServerGroupEventView RemoveBackendServerFromServerGroupEvent
+type RemoveBackendServerFromServerGroupEventView struct {
+	Inventory LoadBalancerServerGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryLoadBalancerServerGroupView QueryLoadBalancerServerGroup
+type QueryLoadBalancerServerGroupView struct {
+	Inventories []LoadBalancerServerGroupInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteLoadBalancerServerGroupEventView DeleteLoadBalancerServerGroupEvent
+type DeleteLoadBalancerServerGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateLoadBalancerServerGroupEventView UpdateLoadBalancerServerGroupEvent
+type UpdateLoadBalancerServerGroupEventView struct {
+	Inventory LoadBalancerServerGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeLoadBalancerBackendServerEventView ChangeLoadBalancerBackendServerEvent
+type ChangeLoadBalancerBackendServerEventView struct {
+	Inventory LoadBalancerServerGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// AddBackendServerToServerGroupEventView AddBackendServerToServerGroupEvent
+type AddBackendServerToServerGroupEventView struct {
+	Inventory LoadBalancerServerGroupInventoryView `json:"inventory,omitempty"`
 }
 

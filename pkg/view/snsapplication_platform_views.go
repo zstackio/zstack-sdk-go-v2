@@ -13,7 +13,22 @@ type SNSApplicationPlatformInventoryView struct {
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteSNSApplicationPlatformEventView DeleteSNSApplicationPlatformEvent
+type DeleteSNSApplicationPlatformEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ChangeSNSApplicationPlatformStateEventView ChangeSNSApplicationPlatformStateEvent
+type ChangeSNSApplicationPlatformStateEventView struct {
+	Inventory SNSApplicationPlatformInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySNSApplicationPlatformView QuerySNSApplicationPlatform
+type QuerySNSApplicationPlatformView struct {
+	Inventories []SNSApplicationPlatformInventoryView `json:"inventories,omitempty"`
 }
 

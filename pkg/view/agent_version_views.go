@@ -12,7 +12,12 @@ type AgentVersionInventoryView struct {
 	AgentType string `json:"agentType,omitempty"`
 	CurrentVersion string `json:"currentVersion,omitempty"`
 	ExpectVersion string `json:"expectVersion,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryAgentVersionView QueryAgentVersion
+type QueryAgentVersionView struct {
+	Inventories []AgentVersionInventoryView `json:"inventories,omitempty"`
 }
 

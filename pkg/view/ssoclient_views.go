@@ -15,9 +15,19 @@ type SSOClientInventoryView struct {
 	LoginType string `json:"loginType,omitempty"`
 	LoginMNUrl string `json:"loginMNUrl,omitempty"`
 	RedirectUrl string `json:"redirectUrl,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
 	Attributes []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
+}
+
+// DeleteSSOClientEventView DeleteSSOClientEvent
+type DeleteSSOClientEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// GetSSOClientView GetSSOClient
+type GetSSOClientView struct {
+	Inventories []SSOClientInventoryView `json:"inventories,omitempty"`
 }
 

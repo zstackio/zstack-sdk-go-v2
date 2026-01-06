@@ -17,7 +17,42 @@ type IscsiServerInventoryView struct {
 	State string `json:"state,omitempty"`
 	IscsiTargets []IscsiTargetInventoryView `json:"iscsiTargets,omitempty"`
 	IscsiClusterRefs []IscsiServerClusterRefInventoryView `json:"iscsiClusterRefs,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// AddIscsiServerEventView AddIscsiServerEvent
+type AddIscsiServerEventView struct {
+	Inventory IscsiServerInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachIscsiServerToClusterEventView AttachIscsiServerToClusterEvent
+type AttachIscsiServerToClusterEventView struct {
+	Inventory IscsiServerInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryIscsiServerView QueryIscsiServer
+type QueryIscsiServerView struct {
+	Inventories []IscsiServerInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteIscsiServerEventView DeleteIscsiServerEvent
+type DeleteIscsiServerEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// DetachIscsiServerFromClusterEventView DetachIscsiServerFromClusterEvent
+type DetachIscsiServerFromClusterEventView struct {
+	Inventory IscsiServerInventoryView `json:"inventory,omitempty"`
+}
+
+// RefreshIscsiServerEventView RefreshIscsiServerEvent
+type RefreshIscsiServerEventView struct {
+	Inventory IscsiServerInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateIscsiServerEventView UpdateIscsiServerEvent
+type UpdateIscsiServerEventView struct {
+	Inventory IscsiServerInventoryView `json:"inventory,omitempty"`
 }
 

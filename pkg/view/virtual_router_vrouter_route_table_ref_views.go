@@ -12,3 +12,8 @@ type VirtualRouterVRouterRouteTableRefInventoryView struct {
 	RouteTableUuid string `json:"routeTableUuid,omitempty"`
 }
 
+// QueryVirtualRouterVRouterRouteTableRefView QueryVirtualRouterVRouterRouteTableRef
+type QueryVirtualRouterVRouterRouteTableRefView struct {
+	Inventories []VirtualRouterVRouterRouteTableRefInventoryView `json:"inventories,omitempty"`
+}
+

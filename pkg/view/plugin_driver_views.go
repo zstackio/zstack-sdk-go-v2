@@ -18,7 +18,12 @@ type PluginDriverInventoryView struct {
 	License string `json:"license,omitempty"`
 	Version string `json:"version,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryPluginDriversView QueryPluginDrivers
+type QueryPluginDriversView struct {
+	Inventories []PluginDriverInventoryView `json:"inventories,omitempty"`
 }
 

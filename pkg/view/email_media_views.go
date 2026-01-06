@@ -16,7 +16,12 @@ type EmailMediaInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+}
+
+// UpdateEmailMediaEventView UpdateEmailMediaEvent
+type UpdateEmailMediaEventView struct {
+	Inventory EmailMediaInventoryView `json:"inventory,omitempty"`
 }
 

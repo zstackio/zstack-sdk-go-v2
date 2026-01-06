@@ -20,8 +20,18 @@ type L2VxlanNetworkInventoryView struct {
 	VirtualNetworkId int `json:"virtualNetworkId,omitempty"`
 	Isolated bool `json:"isolated,omitempty"`
 	Pvlan string `json:"pvlan,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+}
+
+// CreateL2VxlanNetworkEventView CreateL2VxlanNetworkEvent
+type CreateL2VxlanNetworkEventView struct {
+	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryL2VxlanNetworkView QueryL2VxlanNetwork
+type QueryL2VxlanNetworkView struct {
+	Inventories []L2VxlanNetworkInventoryView `json:"inventories,omitempty"`
 }
 

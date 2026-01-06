@@ -12,7 +12,12 @@ type HaStrategyConditionInventoryView struct {
 	Name string `json:"name,omitempty"`
 	FencerName string `json:"fencerName,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateHaStrategyConditionEventView UpdateHaStrategyConditionEvent
+type UpdateHaStrategyConditionEventView struct {
+	Inventory HaStrategyConditionInventoryView `json:"inventory,omitempty"`
 }
 

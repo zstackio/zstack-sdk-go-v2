@@ -16,7 +16,12 @@ type GuestVmScriptExecutedRecordDetailInventoryView struct {
 	Stdout string `json:"stdout,omitempty"`
 	ErrCause string `json:"errCause,omitempty"`
 	Stderr string `json:"stderr,omitempty"`
-	StartTime time.Time `json:"startTime,omitempty"`
-	EndTime time.Time `json:"endTime,omitempty"`
+	StartTime ZStackTime `json:"startTime,omitempty"`
+	EndTime ZStackTime `json:"endTime,omitempty"`
+}
+
+// QueryGuestVmScriptExecutedRecordDetailView QueryGuestVmScriptExecutedRecordDetail
+type QueryGuestVmScriptExecutedRecordDetailView struct {
+	Inventories []GuestVmScriptExecutedRecordDetailInventoryView `json:"inventories,omitempty"`
 }
 

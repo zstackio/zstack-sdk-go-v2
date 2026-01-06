@@ -21,7 +21,34 @@ type IpRangeInventoryView struct {
 	AddressMode string `json:"addressMode,omitempty"`
 	PrefixLen int `json:"prefixLen,omitempty"`
 	IpRangeType string `json:"ipRangeType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// AddIpRangeEventView AddIpRangeEvent
+type AddIpRangeEventView struct {
+	Inventory IpRangeInventoryView `json:"inventory,omitempty"`
+}
+
+// AddIpRangeByNetworkCidrEventView AddIpRangeByNetworkCidrEvent
+type AddIpRangeByNetworkCidrEventView struct {
+	Inventory IpRangeInventoryView `json:"inventory,omitempty"`
+	Inventories []IpRangeInventoryView `json:"inventories,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateIpRangeEventView UpdateIpRangeEvent
+type UpdateIpRangeEventView struct {
+	Inventory IpRangeInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryIpRangeView QueryIpRange
+type QueryIpRangeView struct {
+	Inventories []IpRangeInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteIpRangeEventView DeleteIpRangeEvent
+type DeleteIpRangeEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

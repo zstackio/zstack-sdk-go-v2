@@ -11,7 +11,7 @@ type EcsImageUsageInventoryView struct {
 	Id int `json:"id,omitempty"`
 	EcsImageUuid string `json:"ecsImageUuid,omitempty"`
 	SnapshotUuidOfCreatedImage string `json:"snapshotUuidOfCreatedImage,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

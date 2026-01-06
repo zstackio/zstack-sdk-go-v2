@@ -11,7 +11,7 @@ type SecurityGroupL3NetworkRefInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 	SecurityGroupUuid string `json:"securityGroupUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

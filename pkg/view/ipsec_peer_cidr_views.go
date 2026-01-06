@@ -11,7 +11,7 @@ type IPsecPeerCidrInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Cidr string `json:"cidr,omitempty"`
 	ConnectionUuid string `json:"connectionUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

@@ -24,8 +24,38 @@ type HostNetworkBondingInventoryView struct {
 	Type string `json:"type,omitempty"`
 	AllSlavesActive bool `json:"allSlavesActive,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Slaves []HostNetworkInterfaceInventoryView `json:"slaves,omitempty"`
+}
+
+// AttachNicToBondingEventView AttachNicToBondingEvent
+type AttachNicToBondingEventView struct {
+	Inventory HostNetworkBondingInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachNicFromBondingEventView DetachNicFromBondingEvent
+type DetachNicFromBondingEventView struct {
+	Inventory HostNetworkBondingInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateBondingEventView UpdateBondingEvent
+type UpdateBondingEventView struct {
+	Inventory HostNetworkBondingInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryHostNetworkBondingView QueryHostNetworkBonding
+type QueryHostNetworkBondingView struct {
+	Inventories []HostNetworkBondingInventoryView `json:"inventories,omitempty"`
+}
+
+// SetIpOnHostNetworkBondingEventView SetIpOnHostNetworkBondingEvent
+type SetIpOnHostNetworkBondingEventView struct {
+	Inventory HostNetworkBondingInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateBondingEventView CreateBondingEvent
+type CreateBondingEventView struct {
+	Inventory []HostNetworkBondingInventoryView `json:"inventory,omitempty"`
 }
 

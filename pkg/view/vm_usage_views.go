@@ -18,7 +18,7 @@ type VmUsageInventoryView struct {
 	MemorySize int64 `json:"memorySize,omitempty"`
 	RootVolumeSize int64 `json:"rootVolumeSize,omitempty"`
 	Inventory string `json:"inventory,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

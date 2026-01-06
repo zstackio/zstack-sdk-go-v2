@@ -17,7 +17,7 @@ type OssUploadPartsInventoryView struct {
 	PartCRC int64 `json:"partCRC,omitempty"`
 	OssBucketUuid string `json:"ossBucketUuid,omitempty"`
 	FileKey string `json:"fileKey,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

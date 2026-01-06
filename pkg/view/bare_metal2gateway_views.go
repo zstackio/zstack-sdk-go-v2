@@ -44,7 +44,47 @@ type BareMetal2GatewayInventoryView struct {
 	RaidStatus string `json:"raidStatus,omitempty"`
 	TemperatureStatus string `json:"temperatureStatus,omitempty"`
 	Architecture string `json:"architecture,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// ReconnectBareMetal2GatewayEventView ReconnectBareMetal2GatewayEvent
+type ReconnectBareMetal2GatewayEventView struct {
+	Inventory BareMetal2GatewayInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateBareMetal2GatewayEventView UpdateBareMetal2GatewayEvent
+type UpdateBareMetal2GatewayEventView struct {
+	Inventory BareMetal2GatewayInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachBareMetal2GatewayFromClusterEventView DetachBareMetal2GatewayFromClusterEvent
+type DetachBareMetal2GatewayFromClusterEventView struct {
+	Inventory BareMetal2GatewayInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeBareMetal2GatewayClusterEventView ChangeBareMetal2GatewayClusterEvent
+type ChangeBareMetal2GatewayClusterEventView struct {
+	Inventory BareMetal2GatewayInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBareMetal2GatewayView QueryBareMetal2Gateway
+type QueryBareMetal2GatewayView struct {
+	Inventories []BareMetal2GatewayInventoryView `json:"inventories,omitempty"`
+}
+
+// ChangeBareMetal2GatewayStateEventView ChangeBareMetal2GatewayStateEvent
+type ChangeBareMetal2GatewayStateEventView struct {
+	Inventory BareMetal2GatewayInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteBareMetal2GatewayEventView DeleteBareMetal2GatewayEvent
+type DeleteBareMetal2GatewayEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// AttachBareMetal2GatewayToClusterEventView AttachBareMetal2GatewayToClusterEvent
+type AttachBareMetal2GatewayToClusterEventView struct {
+	Inventory BareMetal2GatewayInventoryView `json:"inventory,omitempty"`
 }
 

@@ -19,10 +19,30 @@ type BareMetal2ChassisInventoryView struct {
 	Status string `json:"status,omitempty"`
 	PowerStatus string `json:"powerStatus,omitempty"`
 	ProvisionType string `json:"provisionType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ChassisNics []BareMetal2ChassisNicInventoryView `json:"chassisNics,omitempty"`
 	ChassisDisks []BareMetal2ChassisDiskInventoryView `json:"chassisDisks,omitempty"`
 	ChassisOffering BareMetal2ChassisOfferingInventoryView `json:"chassisOffering,omitempty"`
+}
+
+// InspectBareMetal2ChassisEventView InspectBareMetal2ChassisEvent
+type InspectBareMetal2ChassisEventView struct {
+	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeBareMetal2ChassisStateEventView ChangeBareMetal2ChassisStateEvent
+type ChangeBareMetal2ChassisStateEventView struct {
+	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteBareMetal2ChassisEventView DeleteBareMetal2ChassisEvent
+type DeleteBareMetal2ChassisEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// InspectBareMetal2ChassisByInstanceEventView InspectBareMetal2ChassisByInstanceEvent
+type InspectBareMetal2ChassisByInstanceEventView struct {
+	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
 }
 

@@ -16,7 +16,13 @@ type GuestToolsInventoryView struct {
 	HypervisorType string `json:"hypervisorType,omitempty"`
 	Version string `json:"version,omitempty"`
 	AgentType string `json:"agentType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// GetLatestGuestToolsForVmView GetLatestGuestToolsForVm
+type GetLatestGuestToolsForVmView struct {
+	Inventory GuestToolsInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 

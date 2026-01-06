@@ -13,7 +13,22 @@ type PolicyRouteTableRouteEntryInventoryView struct {
 	DestinationCidr string `json:"destinationCidr,omitempty"`
 	NextHopIp string `json:"nextHopIp,omitempty"`
 	Distance int `json:"distance,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreatePolicyRouteTableRouteEntryEventView CreatePolicyRouteTableRouteEntryEvent
+type CreatePolicyRouteTableRouteEntryEventView struct {
+	Inventory PolicyRouteTableRouteEntryInventoryView `json:"inventory,omitempty"`
+}
+
+// DeletePolicyRouteTableRouteEntryEventView DeletePolicyRouteTableRouteEntryEvent
+type DeletePolicyRouteTableRouteEntryEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryPolicyRouteTableRouteEntryView QueryPolicyRouteTableRouteEntry
+type QueryPolicyRouteTableRouteEntryView struct {
+	Inventories []PolicyRouteTableRouteEntryInventoryView `json:"inventories,omitempty"`
 }
 

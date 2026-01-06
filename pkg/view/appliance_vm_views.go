@@ -34,12 +34,27 @@ type ApplianceVmInventoryView struct {
 	CpuNum int `json:"cpuNum,omitempty"`
 	CpuSpeed int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	State string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
 	VmCdRoms []VmCdRomInventoryView `json:"vmCdRoms,omitempty"`
 	GuestOsType string `json:"guestOsType,omitempty"`
+}
+
+// ReconnectVirtualRouterEventView ReconnectVirtualRouterEvent
+type ReconnectVirtualRouterEventView struct {
+	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateNfvInstProvisionConfigEventView UpdateNfvInstProvisionConfigEvent
+type UpdateNfvInstProvisionConfigEventView struct {
+	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateOvnControllerVmEventView CreateOvnControllerVmEvent
+type CreateOvnControllerVmEventView struct {
+	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
 }
 

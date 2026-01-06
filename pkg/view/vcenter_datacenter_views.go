@@ -14,3 +14,8 @@ type VCenterDatacenterInventoryView struct {
 	Morval string `json:"morval,omitempty"`
 }
 
+// QueryVCenterDatacenterView QueryVCenterDatacenter
+type QueryVCenterDatacenterView struct {
+	Inventories []VCenterDatacenterInventoryView `json:"inventories,omitempty"`
+}
+

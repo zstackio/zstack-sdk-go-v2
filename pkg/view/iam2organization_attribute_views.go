@@ -13,7 +13,17 @@ type IAM2OrganizationAttributeInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Value string `json:"value,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateIAM2OrganizationAttributeEventView UpdateIAM2OrganizationAttributeEvent
+type UpdateIAM2OrganizationAttributeEventView struct {
+	Inventory IAM2OrganizationAttributeInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryIAM2OrganizationAttributeView QueryIAM2OrganizationAttribute
+type QueryIAM2OrganizationAttributeView struct {
+	Inventories []IAM2OrganizationAttributeInventoryView `json:"inventories,omitempty"`
 }
 

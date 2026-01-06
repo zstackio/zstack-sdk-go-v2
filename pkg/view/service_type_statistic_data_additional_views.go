@@ -18,6 +18,6 @@ type ServiceTypeStatisticDataView struct {
 	ClusterUuid string `json:"clusterUuid,omitempty"`
 	ClusterName string `json:"clusterName,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
 }
 

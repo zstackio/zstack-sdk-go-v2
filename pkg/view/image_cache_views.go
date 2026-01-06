@@ -16,7 +16,12 @@ type ImageCacheInventoryView struct {
 	Size int64 `json:"size,omitempty"`
 	Md5sum string `json:"md5sum,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryImageCacheView QueryImageCache
+type QueryImageCacheView struct {
+	Inventories []ImageCacheInventoryView `json:"inventories,omitempty"`
 }
 

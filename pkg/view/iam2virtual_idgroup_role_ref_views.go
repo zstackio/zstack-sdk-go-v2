@@ -11,7 +11,7 @@ type IAM2VirtualIDGroupRoleRefInventoryView struct {
 	GroupUuid string `json:"groupUuid,omitempty"`
 	RoleUuid string `json:"roleUuid,omitempty"`
 	TargetAccountUuid string `json:"targetAccountUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

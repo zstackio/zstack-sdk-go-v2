@@ -14,7 +14,12 @@ type TicketTypeInventoryView struct {
 	Type string `json:"type,omitempty"`
 	Requests string `json:"requests,omitempty"`
 	AdminOnly bool `json:"adminOnly,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryTicketTypeView QueryTicketType
+type QueryTicketTypeView struct {
+	Inventories []TicketTypeInventoryView `json:"inventories,omitempty"`
 }
 

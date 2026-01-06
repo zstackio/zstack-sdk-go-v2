@@ -14,7 +14,7 @@ type ZdfsStorageInventoryView struct {
 	SecretKey string `json:"secretKey,omitempty"`
 	Type string `json:"type,omitempty"`
 	UsedCapacity int64 `json:"usedCapacity,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

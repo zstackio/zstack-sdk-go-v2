@@ -1,0 +1,47 @@
+// Copyright (c) ZStack.io, Inc.
+
+package param
+
+import "time"
+
+var _ = time.Now // avoid unused import
+
+// UpdateCertificateParamDetail UpdateCertificate detail param
+type UpdateCertificateParamDetail struct {
+	Uuid string `json:"uuid" validate:"required"`
+	Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
+}
+
+// UpdateCertificateParam UpdateCertificate request param
+type UpdateCertificateParam struct {
+	BaseParam
+	Params UpdateCertificateParamDetail `json:"params"`
+}
+// CreateCertificateParamDetail CreateCertificate detail param
+type CreateCertificateParamDetail struct {
+	Name string `json:"name" validate:"required"`
+	Certificate string `json:"certificate" validate:"required"`
+	Description string `json:"description,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
+}
+
+// CreateCertificateParam CreateCertificate request param
+type CreateCertificateParam struct {
+	BaseParam
+	Params CreateCertificateParamDetail `json:"params"`
+}
+// DeleteCertificateParamDetail DeleteCertificate detail param
+type DeleteCertificateParamDetail struct {
+	Uuid string `json:"uuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
+}
+
+// DeleteCertificateParam DeleteCertificate request param
+type DeleteCertificateParam struct {
+	BaseParam
+	Params DeleteCertificateParamDetail `json:"params"`
+}

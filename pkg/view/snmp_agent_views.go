@@ -19,7 +19,32 @@ type SnmpAgentInventoryView struct {
 	Port int `json:"port,omitempty"`
 	Status string `json:"status,omitempty"`
 	SecurityLevel string `json:"securityLevel,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateSnmpAgentEventView CreateSnmpAgentEvent
+type CreateSnmpAgentEventView struct {
+	Inventory SnmpAgentInventoryView `json:"inventory,omitempty"`
+}
+
+// StartSnmpAgentEventView StartSnmpAgentEvent
+type StartSnmpAgentEventView struct {
+	Inventory SnmpAgentInventoryView `json:"inventory,omitempty"`
+}
+
+// StopSnmpAgentEventView StopSnmpAgentEvent
+type StopSnmpAgentEventView struct {
+	Inventory SnmpAgentInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateSnmpAgentEventView UpdateSnmpAgentEvent
+type UpdateSnmpAgentEventView struct {
+	Inventory SnmpAgentInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySnmpAgentView QuerySnmpAgent
+type QuerySnmpAgentView struct {
+	Inventories []SnmpAgentInventoryView `json:"inventories,omitempty"`
 }
 

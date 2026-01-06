@@ -21,7 +21,17 @@ type BareMetal2ChassisPciDeviceInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
 	Device string `json:"device,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryBareMetal2ChassisPciDeviceView QueryBareMetal2ChassisPciDevice
+type QueryBareMetal2ChassisPciDeviceView struct {
+	Inventories []BareMetal2ChassisPciDeviceInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateBareMetal2ChassisPciDeviceEventView UpdateBareMetal2ChassisPciDeviceEvent
+type UpdateBareMetal2ChassisPciDeviceEventView struct {
+	Inventory BareMetal2ChassisPciDeviceInventoryView `json:"inventory,omitempty"`
 }
 

@@ -1,0 +1,45 @@
+// Copyright (c) ZStack.io, Inc.
+
+package client
+
+import (
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+)
+
+var _ = param.BaseParam{} // avoid unused import
+var _ = view.MapView{} // avoid unused import
+
+// UpdateLoadBalancerListener updates LoadBalancerListener
+func (cli *ZSClient) UpdateLoadBalancerListener(uuid string, params param.UpdateLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
+	var resp view.UpdateLoadBalancerListenerEventView
+	if err := cli.Put("v1/load-balancers/listeners/{uuid}", uuid, params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}
+// CreateLoadBalancerListener creates LoadBalancerListener
+func (cli *ZSClient) CreateLoadBalancerListener(params param.CreateLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
+	var resp view.CreateLoadBalancerListenerEventView
+	if err := cli.Post("v1/load-balancers/{loadBalancerUuid}/listeners", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}
+// QueryLoadBalancerListener queries LoadBalancerListener list
+func (cli *ZSClient) QueryLoadBalancerListener(params *param.QueryParam) ([]view.LoadBalancerListenerInventoryView, error) {
+	var resp []view.LoadBalancerListenerInventoryView
+	return resp, cli.List("v1/load-balancers/listeners", params, &resp)
+}
+// ChangeLoadBalancerListener changes LoadBalancerListener
+func (cli *ZSClient) ChangeLoadBalancerListener(uuid string, params param.ChangeLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
+	var resp view.ChangeLoadBalancerListenerEventView
+	if err := cli.Put("v1/load-balancers/listeners/{uuid}/actions", uuid, params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}
+// DeleteLoadBalancerListener deletes LoadBalancerListener
+func (cli *ZSClient) DeleteLoadBalancerListener(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/load-balancers/listeners/{uuid}", uuid, string(deleteMode))
+}

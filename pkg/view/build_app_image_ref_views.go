@@ -13,7 +13,7 @@ type BuildAppImageRefInventoryView struct {
 	BuildAppUuid string `json:"buildAppUuid,omitempty"`
 	ImageName string `json:"imageName,omitempty"`
 	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

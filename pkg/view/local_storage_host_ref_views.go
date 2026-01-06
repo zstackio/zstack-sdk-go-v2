@@ -14,7 +14,7 @@ type LocalStorageHostRefInventoryView struct {
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
 	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
 	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

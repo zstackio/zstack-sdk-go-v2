@@ -14,7 +14,32 @@ type AliyunNasAccessGroupInventoryView struct {
 	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
 	Rules []AliyunNasAccessRuleInventoryView `json:"rules,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// AddAliyunNasAccessGroupEventView AddAliyunNasAccessGroupEvent
+type AddAliyunNasAccessGroupEventView struct {
+	Inventory AliyunNasAccessGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateAliyunNasAccessGroupEventView UpdateAliyunNasAccessGroupEvent
+type UpdateAliyunNasAccessGroupEventView struct {
+	Inventory AliyunNasAccessGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateAliyunNasAccessGroupEventView CreateAliyunNasAccessGroupEvent
+type CreateAliyunNasAccessGroupEventView struct {
+	Inventory AliyunNasAccessGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteAliyunNasAccessGroupEventView DeleteAliyunNasAccessGroupEvent
+type DeleteAliyunNasAccessGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryAliyunNasAccessGroupView QueryAliyunNasAccessGroup
+type QueryAliyunNasAccessGroupView struct {
+	Inventories []AliyunNasAccessGroupInventoryView `json:"inventories,omitempty"`
 }
 

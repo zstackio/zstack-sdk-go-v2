@@ -15,8 +15,33 @@ type DiskOfferingInventoryView struct {
 	SortKey int `json:"sortKey,omitempty"`
 	State string `json:"state,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
+}
+
+// DeleteDiskOfferingEventView DeleteDiskOfferingEvent
+type DeleteDiskOfferingEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ChangeDiskOfferingStateEventView ChangeDiskOfferingStateEvent
+type ChangeDiskOfferingStateEventView struct {
+	Inventory DiskOfferingInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateDiskOfferingEventView CreateDiskOfferingEvent
+type CreateDiskOfferingEventView struct {
+	Inventory DiskOfferingInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateDiskOfferingEventView UpdateDiskOfferingEvent
+type UpdateDiskOfferingEventView struct {
+	Inventory DiskOfferingInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryDiskOfferingView QueryDiskOffering
+type QueryDiskOfferingView struct {
+	Inventories []DiskOfferingInventoryView `json:"inventories,omitempty"`
 }
 

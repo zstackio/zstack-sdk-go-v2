@@ -16,7 +16,17 @@ type VpcVpnIpSecConfigInventoryView struct {
 	Pfs string `json:"pfs,omitempty"`
 	Lifetime int `json:"lifetime,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateVpnIpsecConfigEventView CreateVpnIpsecConfigEvent
+type CreateVpnIpsecConfigEventView struct {
+	Inventory VpcVpnIpSecConfigInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVpcIpSecConfigFromLocalView QueryVpcIpSecConfigFromLocal
+type QueryVpcIpSecConfigFromLocalView struct {
+	Inventories []VpcVpnIpSecConfigInventoryView `json:"inventories,omitempty"`
 }
 

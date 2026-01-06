@@ -21,7 +21,27 @@ type VpcVpnConnectionInventoryView struct {
 	RemoteSubnet string `json:"remoteSubnet,omitempty"`
 	IkeConfigUuid string `json:"ikeConfigUuid,omitempty"`
 	IpsecConfigUuid string `json:"ipsecConfigUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SyncVpcVpnConnectionFromRemoteEventView SyncVpcVpnConnectionFromRemoteEvent
+type SyncVpcVpnConnectionFromRemoteEventView struct {
+	Inventories []VpcVpnConnectionInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateVpcVpnConnectionRemoteEventView CreateVpcVpnConnectionRemoteEvent
+type CreateVpcVpnConnectionRemoteEventView struct {
+	Inventory VpcVpnConnectionInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVpcVpnConnectionFromLocalView QueryVpcVpnConnectionFromLocal
+type QueryVpcVpnConnectionFromLocalView struct {
+	Inventories []VpcVpnConnectionInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateVpcVpnConnectionRemoteEventView UpdateVpcVpnConnectionRemoteEvent
+type UpdateVpcVpnConnectionRemoteEventView struct {
+	Inventory VpcVpnConnectionInventoryView `json:"inventory,omitempty"`
 }
 

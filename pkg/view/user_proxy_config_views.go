@@ -18,7 +18,27 @@ type UserProxyConfigInventoryView struct {
 	ProxyProtocolVersion string `json:"proxyProtocolVersion,omitempty"`
 	UseSsl bool `json:"useSsl,omitempty"`
 	NoProxy string `json:"noProxy,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateUserProxyConfigEventView UpdateUserProxyConfigEvent
+type UpdateUserProxyConfigEventView struct {
+	Inventory UserProxyConfigInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteUserProxyConfigEventView DeleteUserProxyConfigEvent
+type DeleteUserProxyConfigEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryUserProxyConfigView QueryUserProxyConfig
+type QueryUserProxyConfigView struct {
+	Inventories []UserProxyConfigInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateUserProxyConfigEventView CreateUserProxyConfigEvent
+type CreateUserProxyConfigEventView struct {
+	Inventory UserProxyConfigInventoryView `json:"inventory,omitempty"`
 }
 

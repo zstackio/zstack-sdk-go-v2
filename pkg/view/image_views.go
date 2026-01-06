@@ -25,9 +25,121 @@ type ImageInventoryView struct {
 	Format string `json:"format,omitempty"`
 	System bool `json:"system,omitempty"`
 	Virtio bool `json:"virtio,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	BackupStorageRefs []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
 	SystemTags []SystemTagInventoryView `json:"systemTags,omitempty"`
+}
+
+// GetCandidateIsoForAttachingVmView GetCandidateIsoForAttachingVm
+type GetCandidateIsoForAttachingVmView struct {
+	Inventories []ImageInventoryView `json:"inventories,omitempty"`
+}
+
+// AddImageEventView AddImageEvent
+type AddImageEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryImageView QueryImage
+type QueryImageView struct {
+	Inventories []ImageInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateRootVolumeTemplateFromVolumeBackupEventView CreateRootVolumeTemplateFromVolumeBackupEvent
+type CreateRootVolumeTemplateFromVolumeBackupEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateRootVolumeTemplateFromVolumeSnapshotEventView CreateRootVolumeTemplateFromVolumeSnapshotEvent
+type CreateRootVolumeTemplateFromVolumeSnapshotEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+	Failures []FailureView `json:"failures,omitempty"`
+}
+
+// SyncImageEventView SyncImageEvent
+type SyncImageEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// RecoveryImageFromImageStoreBackupStorageEventView RecoveryImageFromImageStoreBackupStorageEvent
+type RecoveryImageFromImageStoreBackupStorageEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncImageFromImageStoreBackupStorageEventView SyncImageFromImageStoreBackupStorageEvent
+type SyncImageFromImageStoreBackupStorageEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// BackupStorageMigrateImageEventView BackupStorageMigrateImageEvent
+type BackupStorageMigrateImageEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// RecoverImageEventView RecoverImageEvent
+type RecoverImageEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// CloneImageEventView CloneImageEvent
+type CloneImageEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteImageEventView DeleteImageEvent
+type DeleteImageEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateDataVolumeTemplateFromVolumeBackupEventView CreateDataVolumeTemplateFromVolumeBackupEvent
+type CreateDataVolumeTemplateFromVolumeBackupEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncImageSizeEventView SyncImageSizeEvent
+type SyncImageSizeEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateImageEventView UpdateImageEvent
+type UpdateImageEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// GetImageCandidatesForVmToChangeView GetImageCandidatesForVmToChange
+type GetImageCandidatesForVmToChangeView struct {
+	Inventories []ImageInventoryView `json:"inventories,omitempty"`
+}
+
+// ChangeImageStateEventView ChangeImageStateEvent
+type ChangeImageStateEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateDataVolumeTemplateFromVolumeEventView CreateDataVolumeTemplateFromVolumeEvent
+type CreateDataVolumeTemplateFromVolumeEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// ExpungeImageEventView ExpungeImageEvent
+type ExpungeImageEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CalculateImageHashEventView CalculateImageHashEvent
+type CalculateImageHashEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateDataVolumeTemplateFromVolumeSnapshotEventView CreateDataVolumeTemplateFromVolumeSnapshotEvent
+type CreateDataVolumeTemplateFromVolumeSnapshotEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
+	Failures []FailureView `json:"failures,omitempty"`
+}
+
+// CreateRootVolumeTemplateFromRootVolumeEventView CreateRootVolumeTemplateFromRootVolumeEvent
+type CreateRootVolumeTemplateFromRootVolumeEventView struct {
+	Inventory ImageInventoryView `json:"inventory,omitempty"`
 }
 

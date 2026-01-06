@@ -13,8 +13,8 @@ type PubIpVmNicBandwidthUsageInventoryView struct {
 	DateInLong int64 `json:"dateInLong,omitempty"`
 	Name string `json:"name,omitempty"`
 	Inventory string `json:"inventory,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	VmNicUuid string `json:"vmNicUuid,omitempty"`
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	BandwidthOut int64 `json:"bandwidthOut,omitempty"`

@@ -16,7 +16,7 @@ type VolumeCbtBackupRecordInventoryView struct {
 	ScratchNodeName string `json:"scratchNodeName,omitempty"`
 	BitmapName string `json:"bitmapName,omitempty"`
 	LastBitmapName string `json:"lastBitmapName,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

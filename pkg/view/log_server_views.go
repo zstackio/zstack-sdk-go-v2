@@ -15,7 +15,27 @@ type LogServerInventoryView struct {
 	Type string `json:"type,omitempty"`
 	Level string `json:"level,omitempty"`
 	Configuration string `json:"configuration,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateLogServerEventView UpdateLogServerEvent
+type UpdateLogServerEventView struct {
+	Inventory LogServerInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteLogServerEventView DeleteLogServerEvent
+type DeleteLogServerEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryLogServerView QueryLogServer
+type QueryLogServerView struct {
+	Inventories []LogServerInventoryView `json:"inventories,omitempty"`
+}
+
+// AddLogServerEventView AddLogServerEvent
+type AddLogServerEventView struct {
+	Inventory LogServerInventoryView `json:"inventory,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type H3cSdnControllerTenantInventoryView struct {
 	VdsName string `json:"vdsName,omitempty"`
 	CloudDomainName string `json:"cloudDomainName,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

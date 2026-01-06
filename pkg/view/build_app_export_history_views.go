@@ -16,7 +16,22 @@ type BuildAppExportHistoryInventoryView struct {
 	Md5Sum string `json:"md5Sum,omitempty"`
 	Version string `json:"version,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// ExportBuildAppEventView ExportBuildAppEvent
+type ExportBuildAppEventView struct {
+	Inventory BuildAppExportHistoryInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteBuildAppExportHistoryEventView DeleteBuildAppExportHistoryEvent
+type DeleteBuildAppExportHistoryEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryBuildAppExportHistoryView QueryBuildAppExportHistory
+type QueryBuildAppExportHistoryView struct {
+	Inventories []BuildAppExportHistoryInventoryView `json:"inventories,omitempty"`
 }
 

@@ -13,7 +13,17 @@ type IAM2ProjectAttributeInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Value string `json:"value,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryIAM2ProjectAttributeView QueryIAM2ProjectAttribute
+type QueryIAM2ProjectAttributeView struct {
+	Inventories []IAM2ProjectAttributeInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateIAM2ProjectAttributeEventView UpdateIAM2ProjectAttributeEvent
+type UpdateIAM2ProjectAttributeEventView struct {
+	Inventory IAM2ProjectAttributeInventoryView `json:"inventory,omitempty"`
 }
 

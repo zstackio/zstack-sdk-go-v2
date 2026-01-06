@@ -19,7 +19,27 @@ type ResourceStackInventoryView struct {
 	Reason string `json:"reason,omitempty"`
 	Outputs string `json:"outputs,omitempty"`
 	EnableRollback bool `json:"enableRollback,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteResourceStackEventView DeleteResourceStackEvent
+type DeleteResourceStackEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryResourceStackView QueryResourceStack
+type QueryResourceStackView struct {
+	Inventories []ResourceStackInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateResourceStackEventView CreateResourceStackEvent
+type CreateResourceStackEventView struct {
+	Inventory ResourceStackInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateResourceStackEventView UpdateResourceStackEvent
+type UpdateResourceStackEventView struct {
+	Inventory ResourceStackInventoryView `json:"inventory,omitempty"`
 }
 

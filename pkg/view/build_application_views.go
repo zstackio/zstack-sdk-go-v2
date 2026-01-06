@@ -18,7 +18,27 @@ type BuildApplicationInventoryView struct {
 	AppId string `json:"appId,omitempty"`
 	Version string `json:"version,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateBuildAppEventView CreateBuildAppEvent
+type CreateBuildAppEventView struct {
+	Inventory BuildApplicationInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBuildAppView QueryBuildApp
+type QueryBuildAppView struct {
+	Inventories []BuildApplicationInventoryView `json:"inventories,omitempty"`
+}
+
+// AddBuildAppEventView AddBuildAppEvent
+type AddBuildAppEventView struct {
+	Inventory BuildApplicationInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateBuildAppEventView UpdateBuildAppEvent
+type UpdateBuildAppEventView struct {
+	Inventory BuildApplicationInventoryView `json:"inventory,omitempty"`
 }
 

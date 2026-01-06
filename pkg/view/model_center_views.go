@@ -23,7 +23,27 @@ type ModelCenterInventoryView struct {
 	ContainerNetwork string `json:"containerNetwork,omitempty"`
 	Capacity ModelCenterCapacityInventoryView `json:"capacity,omitempty"`
 	Zdfs ZdfsInventoryView `json:"zdfs,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteModelCenterEventView DeleteModelCenterEvent
+type DeleteModelCenterEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryModelCenterView QueryModelCenter
+type QueryModelCenterView struct {
+	Inventories []ModelCenterInventoryView `json:"inventories,omitempty"`
+}
+
+// AddModelCenterEventView AddModelCenterEvent
+type AddModelCenterEventView struct {
+	Inventory ModelCenterInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateModelCenterEventView UpdateModelCenterEvent
+type UpdateModelCenterEventView struct {
+	Inventory ModelCenterInventoryView `json:"inventory,omitempty"`
 }
 

@@ -12,7 +12,7 @@ type VolumeBackupStorageRefInventoryView struct {
 	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
 	InstallPath string `json:"installPath,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

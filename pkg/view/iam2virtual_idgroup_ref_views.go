@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type IAM2VirtualIDGroupRefInventoryView struct {
 	VirtualIDUuid string `json:"virtualIDUuid,omitempty"`
 	GroupUuid string `json:"groupUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

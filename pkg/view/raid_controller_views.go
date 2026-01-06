@@ -14,9 +14,14 @@ type RaidControllerInventoryView struct {
 	ProductName string `json:"productName,omitempty"`
 	SasAddress string `json:"sasAddress,omitempty"`
 	HostUuid string `json:"hostUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AdapterNumber int `json:"adapterNumber,omitempty"`
 	RaidPhysicalDrives []RaidPhysicalDriveInventoryView `json:"raidPhysicalDrives,omitempty"`
+}
+
+// RefreshLocalRaidEventView RefreshLocalRaidEvent
+type RefreshLocalRaidEventView struct {
+	Inventories []RaidControllerInventoryView `json:"inventories,omitempty"`
 }
 

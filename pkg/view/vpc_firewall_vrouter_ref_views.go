@@ -11,7 +11,12 @@ type VpcFirewallVRouterRefInventoryView struct {
 	Id int64 `json:"id,omitempty"`
 	VpcFirewallUuid string `json:"vpcFirewallUuid,omitempty"`
 	VRouterUuid string `json:"vRouterUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryVpcFirewallVRouterRefView QueryVpcFirewallVRouterRef
+type QueryVpcFirewallVRouterRefView struct {
+	Inventories []VpcFirewallVRouterRefInventoryView `json:"inventories,omitempty"`
 }
 

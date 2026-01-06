@@ -14,7 +14,12 @@ type SSOServerTokenInventoryView struct {
 	RefreshToken string `json:"refreshToken,omitempty"`
 	UserUuid string `json:"userUuid,omitempty"`
 	SessionUuid string `json:"sessionUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// RefreshSSOServerTokenEventView RefreshSSOServerTokenEvent
+type RefreshSSOServerTokenEventView struct {
+	Inventory SSOServerTokenInventoryView `json:"inventory,omitempty"`
 }
 

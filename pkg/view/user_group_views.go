@@ -12,7 +12,27 @@ type UserGroupInventoryView struct {
 	AccountUuid string `json:"accountUuid,omitempty"`
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteUserGroupEventView DeleteUserGroupEvent
+type DeleteUserGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateUserGroupEventView CreateUserGroupEvent
+type CreateUserGroupEventView struct {
+	Inventory UserGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryUserGroupView QueryUserGroup
+type QueryUserGroupView struct {
+	Inventories []UserGroupInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateUserGroupEventView UpdateUserGroupEvent
+type UpdateUserGroupEventView struct {
+	Inventory UserGroupInventoryView `json:"inventory,omitempty"`
 }
 

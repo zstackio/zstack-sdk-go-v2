@@ -28,7 +28,22 @@ type AutoScalingVmTemplateInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	SystemTags []string `json:"systemTags,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateAutoScalingTemplateEventView UpdateAutoScalingTemplateEvent
+type UpdateAutoScalingTemplateEventView struct {
+	Inventory AutoScalingTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryAutoScalingVmTemplateView QueryAutoScalingVmTemplate
+type QueryAutoScalingVmTemplateView struct {
+	Inventories []AutoScalingVmTemplateInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateAutoScalingTemplateEventView CreateAutoScalingTemplateEvent
+type CreateAutoScalingTemplateEventView struct {
+	Inventory AutoScalingTemplateInventoryView `json:"inventory,omitempty"`
 }
 

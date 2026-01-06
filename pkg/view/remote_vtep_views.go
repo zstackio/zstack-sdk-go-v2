@@ -13,8 +13,13 @@ type RemoteVtepInventoryView struct {
 	VtepIp string `json:"vtepIp,omitempty"`
 	Port int `json:"port,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	PoolUuid string `json:"poolUuid,omitempty"`
+}
+
+// CreateVxlanPoolRemoteVtepEventView CreateVxlanPoolRemoteVtepEvent
+type CreateVxlanPoolRemoteVtepEventView struct {
+	Inventory RemoteVtepInventoryView `json:"inventory,omitempty"`
 }
 

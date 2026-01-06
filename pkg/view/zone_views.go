@@ -14,7 +14,37 @@ type ZoneInventoryView struct {
 	State string `json:"state,omitempty"`
 	Type string `json:"type,omitempty"`
 	IsDefault bool `json:"isDefault,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryZoneView QueryZone
+type QueryZoneView struct {
+	Inventories []ZoneInventoryView `json:"inventories,omitempty"`
+}
+
+// GetZoneView GetZone
+type GetZoneView struct {
+	Inventories []ZoneInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateZoneEventView CreateZoneEvent
+type CreateZoneEventView struct {
+	Inventory ZoneInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteZoneEventView DeleteZoneEvent
+type DeleteZoneEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ChangeZoneStateEventView ChangeZoneStateEvent
+type ChangeZoneStateEventView struct {
+	Inventory ZoneInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateZoneEventView UpdateZoneEvent
+type UpdateZoneEventView struct {
+	Inventory ZoneInventoryView `json:"inventory,omitempty"`
 }
 

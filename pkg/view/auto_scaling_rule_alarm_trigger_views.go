@@ -15,7 +15,7 @@ type AutoScalingRuleAlarmTriggerInventoryView struct {
 	RuleUuid string `json:"ruleUuid,omitempty"`
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

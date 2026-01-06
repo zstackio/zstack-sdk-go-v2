@@ -17,7 +17,7 @@ type L2NetworkDataView struct {
 	Type string `json:"type,omitempty"`
 	Vni string `json:"vni,omitempty"`
 	Vlan int `json:"vlan,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

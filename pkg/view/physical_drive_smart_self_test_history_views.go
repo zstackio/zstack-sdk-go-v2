@@ -12,7 +12,12 @@ type PhysicalDriveSmartSelfTestHistoryInventoryView struct {
 	RaidPhysicalDriveUuid string `json:"raidPhysicalDriveUuid,omitempty"`
 	RunningState string `json:"runningState,omitempty"`
 	TestResult string `json:"testResult,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryPhysicalDriveSelfTestHistoryView QueryPhysicalDriveSelfTestHistory
+type QueryPhysicalDriveSelfTestHistoryView struct {
+	Inventories []PhysicalDriveSmartSelfTestHistoryInventoryView `json:"inventories,omitempty"`
 }
 

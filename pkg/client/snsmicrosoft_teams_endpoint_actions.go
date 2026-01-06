@@ -1,0 +1,33 @@
+// Copyright (c) ZStack.io, Inc.
+
+package client
+
+import (
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
+	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+)
+
+var _ = param.BaseParam{} // avoid unused import
+var _ = view.MapView{} // avoid unused import
+
+// UpdateSNSMicrosoftTeamsEndpoint updates SNSMicrosoftTeamsEndpoint
+func (cli *ZSClient) UpdateSNSMicrosoftTeamsEndpoint(uuid string, params param.UpdateSNSMicrosoftTeamsEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
+	var resp view.UpdateSNSApplicationEndpointEventView
+	if err := cli.Put("v1/sns/application-endpoints/microsoft-teams/{uuid}/actions", uuid, params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}
+// CreateSNSMicrosoftTeamsEndpoint creates SNSMicrosoftTeamsEndpoint
+func (cli *ZSClient) CreateSNSMicrosoftTeamsEndpoint(params param.CreateSNSMicrosoftTeamsEndpointParam) (*view.SNSMicrosoftTeamsEndpointInventoryView, error) {
+	var resp view.CreateSNSMicrosoftTeamsEndpointEventView
+	if err := cli.Post("v1/sns/application-endpoints/microsoft-teams", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}
+// QuerySNSMicrosoftTeamsEndpoint queries SNSMicrosoftTeamsEndpoint list
+func (cli *ZSClient) QuerySNSMicrosoftTeamsEndpoint(params *param.QueryParam) ([]view.SNSMicrosoftTeamsEndpointInventoryView, error) {
+	var resp []view.SNSMicrosoftTeamsEndpointInventoryView
+	return resp, cli.List("v1/sns/application-endpoints/microsoft-teams", params, &resp)
+}

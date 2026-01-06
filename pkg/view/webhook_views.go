@@ -14,7 +14,27 @@ type WebhookInventoryView struct {
 	Url string `json:"url,omitempty"`
 	Type string `json:"type,omitempty"`
 	Opaque string `json:"opaque,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryWebhookView QueryWebhook
+type QueryWebhookView struct {
+	Inventories []WebhookInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateWebhookEventView UpdateWebhookEvent
+type UpdateWebhookEventView struct {
+	Inventory WebhookInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteWebhookEventView DeleteWebhookEvent
+type DeleteWebhookEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateWebhookEventView CreateWebhookEvent
+type CreateWebhookEventView struct {
+	Inventory WebhookInventoryView `json:"inventory,omitempty"`
 }
 

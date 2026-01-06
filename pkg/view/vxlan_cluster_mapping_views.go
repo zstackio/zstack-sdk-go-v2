@@ -12,7 +12,7 @@ type VxlanClusterMappingInventoryView struct {
 	ClusterUuid string `json:"clusterUuid,omitempty"`
 	VlanId int `json:"vlanId,omitempty"`
 	PhysicalInterface string `json:"physicalInterface,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

@@ -20,7 +20,32 @@ type EcsImageInventoryView struct {
 	OssMd5Sum string `json:"ossMd5Sum,omitempty"`
 	Format string `json:"format,omitempty"`
 	OsName string `json:"osName,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SyncEcsImageFromRemoteEventView SyncEcsImageFromRemoteEvent
+type SyncEcsImageFromRemoteEventView struct {
+	Inventories []EcsImageInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateEcsImageFromEcsSnapshotEventView CreateEcsImageFromEcsSnapshotEvent
+type CreateEcsImageFromEcsSnapshotEventView struct {
+	Inventory EcsImageInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateEcsImageFromLocalImageEventView CreateEcsImageFromLocalImageEvent
+type CreateEcsImageFromLocalImageEventView struct {
+	Inventory EcsImageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateEcsImageEventView UpdateEcsImageEvent
+type UpdateEcsImageEventView struct {
+	Inventory EcsImageInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryEcsImageFromLocalView QueryEcsImageFromLocal
+type QueryEcsImageFromLocalView struct {
+	Inventories []EcsImageInventoryView `json:"inventories,omitempty"`
 }
 

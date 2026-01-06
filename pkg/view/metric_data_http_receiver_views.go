@@ -12,8 +12,18 @@ type MetricDataHttpReceiverInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Url string `json:"url,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	State string `json:"state,omitempty"`
+}
+
+// DeleteMetricDataHttpReceiverEventView DeleteMetricDataHttpReceiverEvent
+type DeleteMetricDataHttpReceiverEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateMetricDataHttpReceiverEventView CreateMetricDataHttpReceiverEvent
+type CreateMetricDataHttpReceiverEventView struct {
+	Inventory MetricDataHttpReceiverInventoryView `json:"inventory,omitempty"`
 }
 

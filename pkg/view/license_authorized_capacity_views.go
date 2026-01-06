@@ -16,7 +16,15 @@ type LicenseAuthorizedCapacityInventoryView struct {
 	Quota int64 `json:"quota,omitempty"`
 	LicenseType string `json:"licenseType,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// GetLicenseAuthorizedCapacityView GetLicenseAuthorizedCapacity
+type GetLicenseAuthorizedCapacityView struct {
+	Total TotalLicenseAuthorizedCapacityViewView `json:"total,omitempty"`
+	Clients []LicenseAuthorizedCapacityClientUsageViewView `json:"clients,omitempty"`
+	Server LicenseAuthorizedCapacityServerUsageViewView `json:"server,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 

@@ -19,8 +19,38 @@ type BaremetalChassisInventoryView struct {
 	IpmiUsername string `json:"ipmiUsername,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	HardwareInfos []BaremetalHardwareInfoInventoryView `json:"hardwareInfos,omitempty"`
+}
+
+// QueryBaremetalChassisView QueryBaremetalChassis
+type QueryBaremetalChassisView struct {
+	Inventories []BaremetalChassisInventoryView `json:"inventories,omitempty"`
+}
+
+// InspectBaremetalChassisEventView InspectBaremetalChassisEvent
+type InspectBaremetalChassisEventView struct {
+	Inventory BaremetalChassisInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateBaremetalChassisEventView UpdateBaremetalChassisEvent
+type UpdateBaremetalChassisEventView struct {
+	Inventory BaremetalChassisInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeBaremetalChassisStateEventView ChangeBaremetalChassisStateEvent
+type ChangeBaremetalChassisStateEventView struct {
+	Inventory BaremetalChassisInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteBaremetalChassisEventView DeleteBaremetalChassisEvent
+type DeleteBaremetalChassisEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateBaremetalChassisEventView CreateBaremetalChassisEvent
+type CreateBaremetalChassisEventView struct {
+	Inventory BaremetalChassisInventoryView `json:"inventory,omitempty"`
 }
 

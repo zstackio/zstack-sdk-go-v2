@@ -14,3 +14,8 @@ type GlobalConfigTemplateInventoryView struct {
 	Description string `json:"description,omitempty"`
 }
 
+// QueryGlobalConfigTemplateView QueryGlobalConfigTemplate
+type QueryGlobalConfigTemplateView struct {
+	Inventories []GlobalConfigTemplateInventoryView `json:"inventories,omitempty"`
+}
+

@@ -23,8 +23,53 @@ type BaremetalInstanceInventoryView struct {
 	Port int `json:"port,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	BmNics []BaremetalNicInventoryView `json:"bmNics,omitempty"`
+}
+
+// RebootBaremetalInstanceEventView RebootBaremetalInstanceEvent
+type RebootBaremetalInstanceEventView struct {
+	Inventory BaremetalInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// StartBaremetalInstanceEventView StartBaremetalInstanceEvent
+type StartBaremetalInstanceEventView struct {
+	Inventory BaremetalInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateBaremetalInstanceEventView CreateBaremetalInstanceEvent
+type CreateBaremetalInstanceEventView struct {
+	Inventory BaremetalInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// DestroyBaremetalInstanceEventView DestroyBaremetalInstanceEvent
+type DestroyBaremetalInstanceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ExpungeBaremetalInstanceEventView ExpungeBaremetalInstanceEvent
+type ExpungeBaremetalInstanceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateBaremetalInstanceEventView UpdateBaremetalInstanceEvent
+type UpdateBaremetalInstanceEventView struct {
+	Inventory BaremetalInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// StopBaremetalInstanceEventView StopBaremetalInstanceEvent
+type StopBaremetalInstanceEventView struct {
+	Inventory BaremetalInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBaremetalInstanceView QueryBaremetalInstance
+type QueryBaremetalInstanceView struct {
+	Inventories []BaremetalInstanceInventoryView `json:"inventories,omitempty"`
+}
+
+// RecoverBaremetalInstanceEventView RecoverBaremetalInstanceEvent
+type RecoverBaremetalInstanceEventView struct {
+	Inventory BaremetalInstanceInventoryView `json:"inventory,omitempty"`
 }
 

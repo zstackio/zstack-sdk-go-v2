@@ -14,7 +14,17 @@ type NvmeTargetInventoryView struct {
 	NvmeServerUuid string `json:"nvmeServerUuid,omitempty"`
 	State string `json:"state,omitempty"`
 	NvmeLuns []NvmeLunInventoryView `json:"nvmeLuns,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryNvmeTargetView QueryNvmeTarget
+type QueryNvmeTargetView struct {
+	Inventories []NvmeTargetInventoryView `json:"inventories,omitempty"`
+}
+
+// RefreshNvmeTargetEventView RefreshNvmeTargetEvent
+type RefreshNvmeTargetEventView struct {
+	Inventories []NvmeTargetInventoryView `json:"inventories,omitempty"`
 }
 

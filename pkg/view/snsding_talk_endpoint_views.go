@@ -19,9 +19,19 @@ type SNSDingTalkEndpointInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	PlatformUuid string `json:"platformUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ConnectionStatus string `json:"connectionStatus,omitempty"`
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
+}
+
+// CreateSNSDingTalkEndpointEventView CreateSNSDingTalkEndpointEvent
+type CreateSNSDingTalkEndpointEventView struct {
+	Inventory SNSDingTalkEndpointInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySNSDingTalkEndpointView QuerySNSDingTalkEndpoint
+type QuerySNSDingTalkEndpointView struct {
+	Inventories []SNSDingTalkEndpointInventoryView `json:"inventories,omitempty"`
 }
 

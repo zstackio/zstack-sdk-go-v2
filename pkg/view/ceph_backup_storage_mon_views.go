@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type CephBackupStorageMonInventoryView struct {
 	Hostname string `json:"hostname,omitempty"`
 	MonPort int `json:"monPort,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
 	MonAddr string `json:"monAddr,omitempty"`
 	SshPort int `json:"sshPort,omitempty"`

@@ -14,7 +14,12 @@ type SSOClientAttributeInventoryView struct {
 	Type string `json:"type,omitempty"`
 	Purpose string `json:"purpose,omitempty"`
 	SsoClientUuid string `json:"ssoClientUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateSSOClientAttributeEventView UpdateSSOClientAttributeEvent
+type UpdateSSOClientAttributeEventView struct {
+	Inventory SSOClientAttributeInventoryView `json:"inventory,omitempty"`
 }
 

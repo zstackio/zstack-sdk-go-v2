@@ -31,9 +31,46 @@ type PciDeviceInventoryView struct {
 	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
 	Rev string `json:"rev,omitempty"`
 	DependentDevices string `json:"dependentDevices,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	MatchedPciDeviceOfferingRef []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDeviceOfferingRef,omitempty"`
 	MdevSpecRefs []PciDeviceMdevSpecRefInventoryView `json:"mdevSpecRefs,omitempty"`
+}
+
+// UpdatePciDeviceEventView UpdatePciDeviceEvent
+type UpdatePciDeviceEventView struct {
+	Inventory PciDeviceInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachPciDeviceToVmEventView AttachPciDeviceToVmEvent
+type AttachPciDeviceToVmEventView struct {
+	Inventory PciDeviceInventoryView `json:"inventory,omitempty"`
+}
+
+// GetPciDeviceCandidatesForAttachingVmView GetPciDeviceCandidatesForAttachingVm
+type GetPciDeviceCandidatesForAttachingVmView struct {
+	Inventories []PciDeviceInventoryView `json:"inventories,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// DeletePciDeviceEventView DeletePciDeviceEvent
+type DeletePciDeviceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// DetachPciDeviceFromVmEventView DetachPciDeviceFromVmEvent
+type DetachPciDeviceFromVmEventView struct {
+	Inventory PciDeviceInventoryView `json:"inventory,omitempty"`
+}
+
+// GetPciDeviceCandidatesForNewCreateVmView GetPciDeviceCandidatesForNewCreateVm
+type GetPciDeviceCandidatesForNewCreateVmView struct {
+	Inventories []PciDeviceInventoryView `json:"inventories,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryPciDeviceView QueryPciDevice
+type QueryPciDeviceView struct {
+	Inventories []PciDeviceInventoryView `json:"inventories,omitempty"`
 }
 

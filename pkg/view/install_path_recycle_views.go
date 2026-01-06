@@ -19,6 +19,16 @@ type InstallPathRecycleInventoryView struct {
 	HypervisorType string `json:"hypervisorType,omitempty"`
 	Size int64 `json:"size,omitempty"`
 	TrashType string `json:"trashType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+}
+
+// GetTrashOnBackupStorageView GetTrashOnBackupStorage
+type GetTrashOnBackupStorageView struct {
+	Inventories []InstallPathRecycleInventoryView `json:"inventories,omitempty"`
+}
+
+// GetTrashOnPrimaryStorageView GetTrashOnPrimaryStorage
+type GetTrashOnPrimaryStorageView struct {
+	Inventories []InstallPathRecycleInventoryView `json:"inventories,omitempty"`
 }
 

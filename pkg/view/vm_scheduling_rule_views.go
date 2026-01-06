@@ -19,8 +19,38 @@ type VmSchedulingRuleInventoryView struct {
 	Appliance string `json:"appliance,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Usages []AffinityGroupUsageInventoryView `json:"usages,omitempty"`
+}
+
+// DeleteAffinityGroupEventView DeleteAffinityGroupEvent
+type DeleteAffinityGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ChangeVmSchedulingRuleStateEventView ChangeVmSchedulingRuleStateEvent
+type ChangeVmSchedulingRuleStateEventView struct {
+	Inventory VmSchedulingRuleInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateAffinityGroupEventView CreateAffinityGroupEvent
+type CreateAffinityGroupEventView struct {
+	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// ValidateVmSchedulingRuleView ValidateVmSchedulingRule
+type ValidateVmSchedulingRuleView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateVmSchedulingRuleEventView UpdateVmSchedulingRuleEvent
+type UpdateVmSchedulingRuleEventView struct {
+	Inventory VmSchedulingRuleInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVmSchedulingRuleView QueryVmSchedulingRule
+type QueryVmSchedulingRuleView struct {
+	Inventories []VmSchedulingRuleInventoryView `json:"inventories,omitempty"`
 }
 

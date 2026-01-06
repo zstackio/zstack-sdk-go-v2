@@ -26,7 +26,7 @@ type SecurityGroupIngressRuleTOView struct {
 	AllowedCidr string `json:"allowedCidr,omitempty"`
 	StartPort int `json:"startPort,omitempty"`
 	EndPort int `json:"endPort,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

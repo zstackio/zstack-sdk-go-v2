@@ -18,7 +18,12 @@ type MiniStorageResourceReplicationInventoryView struct {
 	NetworkStatus string `json:"networkStatus,omitempty"`
 	DiskStatus string `json:"diskStatus,omitempty"`
 	Size int64 `json:"size,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryMiniStorageResourceReplicationView QueryMiniStorageResourceReplication
+type QueryMiniStorageResourceReplicationView struct {
+	Inventories []MiniStorageResourceReplicationInventoryView `json:"inventories,omitempty"`
 }
 

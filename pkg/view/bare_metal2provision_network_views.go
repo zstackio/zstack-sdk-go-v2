@@ -19,8 +19,43 @@ type BareMetal2ProvisionNetworkInventoryView struct {
 	DhcpRangeGateway string `json:"dhcpRangeGateway,omitempty"`
 	DhcpRangeNetworkCidr string `json:"dhcpRangeNetworkCidr,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+}
+
+// UpdateBareMetal2ProvisionNetworkEventView UpdateBareMetal2ProvisionNetworkEvent
+type UpdateBareMetal2ProvisionNetworkEventView struct {
+	Inventory BareMetal2ProvisionNetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBareMetal2ProvisionNetworkView QueryBareMetal2ProvisionNetwork
+type QueryBareMetal2ProvisionNetworkView struct {
+	Inventories []BareMetal2ProvisionNetworkInventoryView `json:"inventories,omitempty"`
+}
+
+// AttachBareMetal2ProvisionNetworkToClusterEventView AttachBareMetal2ProvisionNetworkToClusterEvent
+type AttachBareMetal2ProvisionNetworkToClusterEventView struct {
+	Inventory BareMetal2ProvisionNetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateBareMetal2ProvisionNetworkEventView CreateBareMetal2ProvisionNetworkEvent
+type CreateBareMetal2ProvisionNetworkEventView struct {
+	Inventory BareMetal2ProvisionNetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteBareMetal2ProvisionNetworkEventView DeleteBareMetal2ProvisionNetworkEvent
+type DeleteBareMetal2ProvisionNetworkEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// DetachBareMetal2ProvisionNetworkFromClusterEventView DetachBareMetal2ProvisionNetworkFromClusterEvent
+type DetachBareMetal2ProvisionNetworkFromClusterEventView struct {
+	Inventory BareMetal2ProvisionNetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeBareMetal2ProvisionNetworkStateEventView ChangeBareMetal2ProvisionNetworkStateEvent
+type ChangeBareMetal2ProvisionNetworkStateEventView struct {
+	Inventory BareMetal2ProvisionNetworkInventoryView `json:"inventory,omitempty"`
 }
 

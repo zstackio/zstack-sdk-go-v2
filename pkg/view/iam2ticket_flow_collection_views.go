@@ -14,8 +14,8 @@ type IAM2TicketFlowCollectionInventoryView struct {
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	IsDefault bool `json:"isDefault,omitempty"`
 	Flows []TicketFlowInventoryView `json:"flows,omitempty"`
 	TicketTypeUuids []string `json:"ticketTypeUuids,omitempty"`

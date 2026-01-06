@@ -14,7 +14,37 @@ type OssBucketInventoryView struct {
 	Current string `json:"current,omitempty"`
 	RegionName string `json:"regionName,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateOssBucketRemoteEventView CreateOssBucketRemoteEvent
+type CreateOssBucketRemoteEventView struct {
+	Inventory OssBucketInventoryView `json:"inventory,omitempty"`
+}
+
+// AddOssBucketFromRemoteEventView AddOssBucketFromRemoteEvent
+type AddOssBucketFromRemoteEventView struct {
+	Inventory OssBucketInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachOssBucketToEcsDataCenterEventView AttachOssBucketToEcsDataCenterEvent
+type AttachOssBucketToEcsDataCenterEventView struct {
+	Inventory OssBucketInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateOssBucketEventView UpdateOssBucketEvent
+type UpdateOssBucketEventView struct {
+	Inventory OssBucketInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryOssBucketFileNameView QueryOssBucketFileName
+type QueryOssBucketFileNameView struct {
+	Inventories []OssBucketInventoryView `json:"inventories,omitempty"`
+}
+
+// DetachOssBucketFromEcsDataCenterEventView DetachOssBucketFromEcsDataCenterEvent
+type DetachOssBucketFromEcsDataCenterEventView struct {
+	Inventory OssBucketInventoryView `json:"inventory,omitempty"`
 }
 

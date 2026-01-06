@@ -28,9 +28,14 @@ type ContainerImageInventoryView struct {
 	Format string `json:"format,omitempty"`
 	System bool `json:"system,omitempty"`
 	Virtio bool `json:"virtio,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	BackupStorageRefs []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
 	SystemTags []SystemTagInventoryView `json:"systemTags,omitempty"`
+}
+
+// QueryContainerImageView QueryContainerImage
+type QueryContainerImageView struct {
+	Inventories []ContainerImageInventoryView `json:"inventories,omitempty"`
 }
 

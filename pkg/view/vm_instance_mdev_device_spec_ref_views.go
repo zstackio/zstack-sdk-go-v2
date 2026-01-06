@@ -11,7 +11,17 @@ type VmInstanceMdevDeviceSpecRefInventoryView struct {
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	MdevSpecUuid string `json:"mdevSpecUuid,omitempty"`
 	MdevDeviceNumber int `json:"mdevDeviceNumber,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryVmInstanceMdevDeviceSpecRefView QueryVmInstanceMdevDeviceSpecRef
+type QueryVmInstanceMdevDeviceSpecRefView struct {
+	Inventories []VmInstanceMdevDeviceSpecRefInventoryView `json:"inventories,omitempty"`
+}
+
+// AddMdevDeviceSpecToVmInstanceEventView AddMdevDeviceSpecToVmInstanceEvent
+type AddMdevDeviceSpecToVmInstanceEventView struct {
+	Inventory VmInstanceMdevDeviceSpecRefInventoryView `json:"inventory,omitempty"`
 }
 

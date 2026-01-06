@@ -13,8 +13,8 @@ type BareMetal2UsageInventoryView struct {
 	VmUuid string `json:"vmUuid,omitempty"`
 	VmName string `json:"vmName,omitempty"`
 	State string `json:"state,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
 	DateInLong int64 `json:"dateInLong,omitempty"`
 }

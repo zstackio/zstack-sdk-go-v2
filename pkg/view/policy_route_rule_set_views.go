@@ -12,9 +12,34 @@ type PolicyRouteRuleSetInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Rules []PolicyRouteRuleInventoryView `json:"rules,omitempty"`
 	L3Refs []PolicyRouteRuleSetL3RefInventoryView `json:"l3Refs,omitempty"`
+}
+
+// GetPolicyRouteRuleSetFromVirtualRouterView GetPolicyRouteRuleSetFromVirtualRouter
+type GetPolicyRouteRuleSetFromVirtualRouterView struct {
+	Inventories []PolicyRouteRuleSetInventoryView `json:"inventories,omitempty"`
+}
+
+// CreatePolicyRouteRuleSetEventView CreatePolicyRouteRuleSetEvent
+type CreatePolicyRouteRuleSetEventView struct {
+	Inventory PolicyRouteRuleSetInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdatePolicyRouteRuleSetEventView UpdatePolicyRouteRuleSetEvent
+type UpdatePolicyRouteRuleSetEventView struct {
+	Inventory PolicyRouteRuleSetInventoryView `json:"inventory,omitempty"`
+}
+
+// DeletePolicyRouteRuleSetEventView DeletePolicyRouteRuleSetEvent
+type DeletePolicyRouteRuleSetEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryPolicyRouteRuleSetView QueryPolicyRouteRuleSet
+type QueryPolicyRouteRuleSetView struct {
+	Inventories []PolicyRouteRuleSetInventoryView `json:"inventories,omitempty"`
 }
 

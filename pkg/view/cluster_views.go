@@ -13,10 +13,46 @@ type ClusterInventoryView struct {
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
 	HypervisorType string `json:"hypervisorType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
 	Type string `json:"type,omitempty"`
 	Architecture string `json:"architecture,omitempty"`
+}
+
+// ChangeClusterStateEventView ChangeClusterStateEvent
+type ChangeClusterStateEventView struct {
+	Inventory ClusterInventoryView `json:"inventory,omitempty"`
+}
+
+// GetCandidateClustersForAttachingL2NetworkView GetCandidateClustersForAttachingL2Network
+type GetCandidateClustersForAttachingL2NetworkView struct {
+	Inventories []ClusterInventoryView `json:"inventories,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateMiniClusterEventView CreateMiniClusterEvent
+type CreateMiniClusterEventView struct {
+	Inventory ClusterInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteClusterEventView DeleteClusterEvent
+type DeleteClusterEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateClusterEventView UpdateClusterEvent
+type UpdateClusterEventView struct {
+	Inventory ClusterInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateClusterEventView CreateClusterEvent
+type CreateClusterEventView struct {
+	Inventory ClusterInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryClusterView QueryCluster
+type QueryClusterView struct {
+	Inventories []ClusterInventoryView `json:"inventories,omitempty"`
 }
 

@@ -17,7 +17,27 @@ type EcsVpcInventoryView struct {
 	CidrBlock string `json:"cidrBlock,omitempty"`
 	VRouterId string `json:"vRouterId,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryEcsVpcFromLocalView QueryEcsVpcFromLocal
+type QueryEcsVpcFromLocalView struct {
+	Inventories []EcsVpcInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateEcsVpcRemoteEventView CreateEcsVpcRemoteEvent
+type CreateEcsVpcRemoteEventView struct {
+	Inventory EcsVpcInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateEcsVpcEventView UpdateEcsVpcEvent
+type UpdateEcsVpcEventView struct {
+	Inventory EcsVpcInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncEcsVpcFromRemoteEventView SyncEcsVpcFromRemoteEvent
+type SyncEcsVpcFromRemoteEventView struct {
+	Inventories []EcsVpcInventoryView `json:"inventories,omitempty"`
 }
 

@@ -14,3 +14,13 @@ type EventSubscriptionLabelInventoryView struct {
 	Value string `json:"value,omitempty"`
 }
 
+// AddLabelToEventSubscriptionEventView AddLabelToEventSubscriptionEvent
+type AddLabelToEventSubscriptionEventView struct {
+	Inventory EventSubscriptionLabelInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateEventSubscriptionLabelEventView UpdateEventSubscriptionLabelEvent
+type UpdateEventSubscriptionLabelEventView struct {
+	Inventory EventSubscriptionLabelInventoryView `json:"inventory,omitempty"`
+}
+

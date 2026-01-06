@@ -23,8 +23,13 @@ type VCenterResourcePoolInventoryView struct {
 	MemoryReservation int64 `json:"memoryReservation,omitempty"`
 	MemoryShares int64 `json:"memoryShares,omitempty"`
 	MemoryLevel string `json:"memoryLevel,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	SubResources []VCenterResourcePoolUsageInventoryView `json:"subResources,omitempty"`
+}
+
+// QueryVCenterResourcePoolView QueryVCenterResourcePool
+type QueryVCenterResourcePoolView struct {
+	Inventories []VCenterResourcePoolInventoryView `json:"inventories,omitempty"`
 }
 

@@ -11,7 +11,7 @@ type LoadBalancerListenerCertificateRefInventoryView struct {
 	Id int64 `json:"id,omitempty"`
 	ListenerUuid string `json:"listenerUuid,omitempty"`
 	CertificateUuid string `json:"certificateUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

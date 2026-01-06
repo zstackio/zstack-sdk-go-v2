@@ -23,7 +23,7 @@ type HuaweiIMasterSdnControllerInventoryView struct {
 	Password string `json:"password,omitempty"`
 	Status string `json:"status,omitempty"`
 	HostRefs []SdnControllerHostRefInventoryView `json:"hostRefs,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

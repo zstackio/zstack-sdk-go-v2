@@ -14,3 +14,13 @@ type AlarmLabelInventoryView struct {
 	Value string `json:"value,omitempty"`
 }
 
+// AddLabelToAlarmEventView AddLabelToAlarmEvent
+type AddLabelToAlarmEventView struct {
+	Inventory AlarmLabelInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateAlarmLabelEventView UpdateAlarmLabelEvent
+type UpdateAlarmLabelEventView struct {
+	Inventory AlarmLabelInventoryView `json:"inventory,omitempty"`
+}
+

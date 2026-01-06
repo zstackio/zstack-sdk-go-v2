@@ -17,8 +17,45 @@ type AffinityGroupInventoryView struct {
 	Appliance string `json:"appliance,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Usages []AffinityGroupUsageInventoryView `json:"usages,omitempty"`
+}
+
+// UpdateAffinityGroupEventView UpdateAffinityGroupEvent
+type UpdateAffinityGroupEventView struct {
+	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// RemoveVmFromAffinityGroupEventView RemoveVmFromAffinityGroupEvent
+type RemoveVmFromAffinityGroupEventView struct {
+	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// GetCandidateAffinityGroupForCreatingVmView GetCandidateAffinityGroupForCreatingVm
+type GetCandidateAffinityGroupForCreatingVmView struct {
+	Inventories []AffinityGroupInventoryView `json:"inventories,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// ChangeAffinityGroupStateEventView ChangeAffinityGroupStateEvent
+type ChangeAffinityGroupStateEventView struct {
+	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// GetCandidateAffinityGroupForAttachingVmView GetCandidateAffinityGroupForAttachingVm
+type GetCandidateAffinityGroupForAttachingVmView struct {
+	Inventories []AffinityGroupInventoryView `json:"inventories,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// AddVmToAffinityGroupEventView AddVmToAffinityGroupEvent
+type AddVmToAffinityGroupEventView struct {
+	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryAffinityGroupView QueryAffinityGroup
+type QueryAffinityGroupView struct {
+	Inventories []AffinityGroupInventoryView `json:"inventories,omitempty"`
 }
 

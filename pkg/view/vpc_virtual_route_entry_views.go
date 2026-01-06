@@ -16,7 +16,22 @@ type VpcVirtualRouteEntryInventoryView struct {
 	NextHopId string `json:"nextHopId,omitempty"`
 	VirtualRouterUuid string `json:"virtualRouterUuid,omitempty"`
 	NextHopType string `json:"nextHopType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateAliyunVpcVirtualRouterEntryRemoteEventView CreateAliyunVpcVirtualRouterEntryRemoteEvent
+type CreateAliyunVpcVirtualRouterEntryRemoteEventView struct {
+	Inventory VpcVirtualRouteEntryInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryAliyunRouteEntryFromLocalView QueryAliyunRouteEntryFromLocal
+type QueryAliyunRouteEntryFromLocalView struct {
+	Inventories []VpcVirtualRouteEntryInventoryView `json:"inventories,omitempty"`
+}
+
+// SyncAliyunRouteEntryFromRemoteEventView SyncAliyunRouteEntryFromRemoteEvent
+type SyncAliyunRouteEntryFromRemoteEventView struct {
+	Inventories []VpcVirtualRouteEntryInventoryView `json:"inventories,omitempty"`
 }
 

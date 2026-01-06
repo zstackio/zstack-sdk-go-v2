@@ -13,7 +13,27 @@ type MediaInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+}
+
+// ChangeMediaStateEventView ChangeMediaStateEvent
+type ChangeMediaStateEventView struct {
+	Inventory MediaInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteMediaEventView DeleteMediaEvent
+type DeleteMediaEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryMediaView QueryMedia
+type QueryMediaView struct {
+	Inventories []MediaInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateMediaEventView CreateMediaEvent
+type CreateMediaEventView struct {
+	Inventory MediaInventoryView `json:"inventory,omitempty"`
 }
 

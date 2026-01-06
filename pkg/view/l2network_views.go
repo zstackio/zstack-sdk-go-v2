@@ -18,8 +18,43 @@ type L2NetworkInventoryView struct {
 	VirtualNetworkId int `json:"virtualNetworkId,omitempty"`
 	Isolated bool `json:"isolated,omitempty"`
 	Pvlan string `json:"pvlan,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+}
+
+// AttachL2NetworkToClusterEventView AttachL2NetworkToClusterEvent
+type AttachL2NetworkToClusterEventView struct {
+	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteL2NetworkEventView DeleteL2NetworkEvent
+type DeleteL2NetworkEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// ChangeL2NetworkVlanIdEventView ChangeL2NetworkVlanIdEvent
+type ChangeL2NetworkVlanIdEventView struct {
+	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateL2NetworkEventView CreateL2NetworkEvent
+type CreateL2NetworkEventView struct {
+	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateL2NetworkEventView UpdateL2NetworkEvent
+type UpdateL2NetworkEventView struct {
+	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachL2NetworkFromClusterEventView DetachL2NetworkFromClusterEvent
+type DetachL2NetworkFromClusterEventView struct {
+	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryL2NetworkView QueryL2Network
+type QueryL2NetworkView struct {
+	Inventories []L2NetworkInventoryView `json:"inventories,omitempty"`
 }
 

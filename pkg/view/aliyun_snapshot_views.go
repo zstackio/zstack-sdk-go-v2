@@ -16,7 +16,27 @@ type AliyunSnapshotInventoryView struct {
 	DiskUuid string `json:"diskUuid,omitempty"`
 	Status string `json:"status,omitempty"`
 	AliyunSnapshotUsage string `json:"aliyunSnapshotUsage,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateAliyunSnapshotEventView UpdateAliyunSnapshotEvent
+type UpdateAliyunSnapshotEventView struct {
+	Inventory AliyunSnapshotInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncAliyunSnapshotRemoteEventView SyncAliyunSnapshotRemoteEvent
+type SyncAliyunSnapshotRemoteEventView struct {
+	Inventories []AliyunSnapshotInventoryView `json:"inventories,omitempty"`
+}
+
+// QueryAliyunSnapshotFromLocalView QueryAliyunSnapshotFromLocal
+type QueryAliyunSnapshotFromLocalView struct {
+	Inventories []AliyunSnapshotInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateAliyunSnapshotRemoteEventView CreateAliyunSnapshotRemoteEvent
+type CreateAliyunSnapshotRemoteEventView struct {
+	Inventory AliyunSnapshotInventoryView `json:"inventory,omitempty"`
 }
 

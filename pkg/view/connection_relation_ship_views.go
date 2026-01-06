@@ -12,7 +12,22 @@ type ConnectionRelationShipInventoryView struct {
 	RelationShips string `json:"relationShips,omitempty"`
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchEventView UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchEvent
+type UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchEventView struct {
+	Inventory ConnectionRelationShipInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateConnectionBetweenL3NetworkAndAliyunVSwitchEventView CreateConnectionBetweenL3NetworkAndAliyunVSwitchEvent
+type CreateConnectionBetweenL3NetworkAndAliyunVSwitchEventView struct {
+	Inventory ConnectionRelationShipInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryConnectionBetweenL3NetworkAndAliyunVSwitchView QueryConnectionBetweenL3NetworkAndAliyunVSwitch
+type QueryConnectionBetweenL3NetworkAndAliyunVSwitchView struct {
+	Inventories []ConnectionRelationShipInventoryView `json:"inventories,omitempty"`
 }
 

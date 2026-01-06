@@ -14,7 +14,22 @@ type NasFileSystemInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
 	FileSystemId string `json:"fileSystemId,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryNasFileSystemView QueryNasFileSystem
+type QueryNasFileSystemView struct {
+	Inventories []NasFileSystemInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateNasFileSystemEventView UpdateNasFileSystemEvent
+type UpdateNasFileSystemEventView struct {
+	Inventory NasFileSystemInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteNasFileSystemEventView DeleteNasFileSystemEvent
+type DeleteNasFileSystemEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

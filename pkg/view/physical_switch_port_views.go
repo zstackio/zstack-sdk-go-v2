@@ -16,7 +16,7 @@ type PhysicalSwitchPortInventoryView struct {
 	PeerInterfaceUuid string `json:"peerInterfaceUuid,omitempty"`
 	SwitchUuid string `json:"switchUuid,omitempty"`
 	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

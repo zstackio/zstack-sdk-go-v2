@@ -10,7 +10,12 @@ var _ = time.Now // avoid unused import
 type SchedulerJobGroupSchedulerTriggerRefInventoryView struct {
 	SchedulerJobGroupUuid string `json:"schedulerJobGroupUuid,omitempty"`
 	SchedulerTriggerUuid string `json:"schedulerTriggerUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// AddSchedulerJobGroupToSchedulerTriggerEventView AddSchedulerJobGroupToSchedulerTriggerEvent
+type AddSchedulerJobGroupToSchedulerTriggerEventView struct {
+	Inventory SchedulerJobGroupSchedulerTriggerRefInventoryView `json:"inventory,omitempty"`
 }
 

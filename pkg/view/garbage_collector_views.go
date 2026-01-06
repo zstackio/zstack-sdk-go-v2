@@ -15,7 +15,12 @@ type GarbageCollectorInventoryView struct {
 	Status string `json:"status,omitempty"`
 	ManagementNodeUuid string `json:"managementNodeUuid,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryGCJobView QueryGCJob
+type QueryGCJobView struct {
+	Inventories []GarbageCollectorInventoryView `json:"inventories,omitempty"`
 }
 

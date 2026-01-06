@@ -11,8 +11,28 @@ type SNSFeiShuAtPersonInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	UserId string `json:"userId,omitempty"`
 	EndpointUuid string `json:"endpointUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Remark string `json:"remark,omitempty"`
+}
+
+// QuerySNSFeiShuAtPersonView QuerySNSFeiShuAtPerson
+type QuerySNSFeiShuAtPersonView struct {
+	Inventories []SNSFeiShuAtPersonInventoryView `json:"inventories,omitempty"`
+}
+
+// RemoveSNSFeiShuAtPersonEventView RemoveSNSFeiShuAtPersonEvent
+type RemoveSNSFeiShuAtPersonEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateAtPersonOfFeiShuEndpointEventView UpdateAtPersonOfFeiShuEndpointEvent
+type UpdateAtPersonOfFeiShuEndpointEventView struct {
+	Inventory SNSFeiShuAtPersonInventoryView `json:"inventory,omitempty"`
+}
+
+// AddSNSFeiShuAtPersonEventView AddSNSFeiShuAtPersonEvent
+type AddSNSFeiShuAtPersonEventView struct {
+	Inventory SNSFeiShuAtPersonInventoryView `json:"inventory,omitempty"`
 }
 

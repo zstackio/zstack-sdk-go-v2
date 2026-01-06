@@ -12,7 +12,7 @@ type HostHaStateInventoryView struct {
 	HostUuid string `json:"hostUuid,omitempty"`
 	State string `json:"state,omitempty"`
 	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

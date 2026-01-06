@@ -11,7 +11,7 @@ type VirtualRouterLoadBalancerRefInventoryView struct {
 	Id int64 `json:"id,omitempty"`
 	VirtualRouterVmUuid string `json:"virtualRouterVmUuid,omitempty"`
 	LoadBalancerUuid string `json:"loadBalancerUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

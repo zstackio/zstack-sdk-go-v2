@@ -20,8 +20,33 @@ type HybridEipAddressInventoryView struct {
 	Name string `json:"name,omitempty"`
 	ChargeType string `json:"chargeType,omitempty"`
 	Description string `json:"description,omitempty"`
-	AllocateTime time.Time `json:"allocateTime,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	AllocateTime ZStackTime `json:"allocateTime,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SyncHybridEipFromRemoteEventView SyncHybridEipFromRemoteEvent
+type SyncHybridEipFromRemoteEventView struct {
+	Inventories []HybridEipAddressInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateHybridEipEventView UpdateHybridEipEvent
+type UpdateHybridEipEventView struct {
+	Inventory HybridEipAddressInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryHybridEipFromLocalView QueryHybridEipFromLocal
+type QueryHybridEipFromLocalView struct {
+	Inventories []HybridEipAddressInventoryView `json:"inventories,omitempty"`
+}
+
+// AttachHybridEipToEcsEventView AttachHybridEipToEcsEvent
+type AttachHybridEipToEcsEventView struct {
+	Inventory HybridEipAddressInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateHybridEipEventView CreateHybridEipEvent
+type CreateHybridEipEventView struct {
+	Inventory HybridEipAddressInventoryView `json:"inventory,omitempty"`
 }
 

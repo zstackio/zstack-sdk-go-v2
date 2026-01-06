@@ -14,7 +14,15 @@ type OAuth2TokenInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	ClientUuid string `json:"clientUuid,omitempty"`
 	UserUuid string `json:"userUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// GetOAuth2TokenView GetOAuth2Token
+type GetOAuth2TokenView struct {
+	Inventory OAuth2TokenInventoryView `json:"inventory,omitempty"`
+	ServerTokenInventory SSOServerTokenInventoryView `json:"serverTokenInventory,omitempty"`
+	AdditionalTokenInventory map[string]interface{} `json:"additionalTokenInventory,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 

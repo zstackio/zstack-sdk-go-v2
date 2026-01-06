@@ -14,7 +14,22 @@ type RouterAreaInventoryView struct {
 	Authentication string `json:"authentication,omitempty"`
 	Password string `json:"password,omitempty"`
 	KeyId int `json:"keyId,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateVRouterOspfAreaEventView UpdateVRouterOspfAreaEvent
+type UpdateVRouterOspfAreaEventView struct {
+	Inventory RouterAreaInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateVRouterOspfAreaEventView CreateVRouterOspfAreaEvent
+type CreateVRouterOspfAreaEventView struct {
+	Inventory RouterAreaInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVRouterOspfAreaView QueryVRouterOspfArea
+type QueryVRouterOspfAreaView struct {
+	Inventories []RouterAreaInventoryView `json:"inventories,omitempty"`
 }
 

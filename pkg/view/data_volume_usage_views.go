@@ -16,7 +16,7 @@ type DataVolumeUsageInventoryView struct {
 	VolumeName string `json:"volumeName,omitempty"`
 	VolumeSize int64 `json:"volumeSize,omitempty"`
 	Inventory string `json:"inventory,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

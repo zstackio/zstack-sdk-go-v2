@@ -17,7 +17,12 @@ type ZBoxBackupInventoryView struct {
 	TotalSize int64 `json:"totalSize,omitempty"`
 	Version string `json:"version,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryZBoxBackupView QueryZBoxBackup
+type QueryZBoxBackupView struct {
+	Inventories []ZBoxBackupInventoryView `json:"inventories,omitempty"`
 }
 

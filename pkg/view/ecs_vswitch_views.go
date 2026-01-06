@@ -17,7 +17,27 @@ type EcsVSwitchInventoryView struct {
 	Name string `json:"name,omitempty"`
 	EcsVpcUuid string `json:"ecsVpcUuid,omitempty"`
 	IdentityZoneUuid string `json:"identityZoneUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SyncEcsVSwitchFromRemoteEventView SyncEcsVSwitchFromRemoteEvent
+type SyncEcsVSwitchFromRemoteEventView struct {
+	Inventories []EcsVSwitchInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateEcsVSwitchEventView UpdateEcsVSwitchEvent
+type UpdateEcsVSwitchEventView struct {
+	Inventory EcsVSwitchInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateEcsVSwitchRemoteEventView CreateEcsVSwitchRemoteEvent
+type CreateEcsVSwitchRemoteEventView struct {
+	Inventory EcsVSwitchInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryEcsVSwitchFromLocalView QueryEcsVSwitchFromLocal
+type QueryEcsVSwitchFromLocalView struct {
+	Inventories []EcsVSwitchInventoryView `json:"inventories,omitempty"`
 }
 

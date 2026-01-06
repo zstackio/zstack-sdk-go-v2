@@ -39,12 +39,22 @@ type SlbVmInstanceInventoryView struct {
 	CpuNum int `json:"cpuNum,omitempty"`
 	CpuSpeed int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	State string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
 	VmCdRoms []VmCdRomInventoryView `json:"vmCdRoms,omitempty"`
 	GuestOsType string `json:"guestOsType,omitempty"`
+}
+
+// CreateSlbInstanceEventView CreateSlbInstanceEvent
+type CreateSlbInstanceEventView struct {
+	Inventory SlbVmInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySlbVmInstanceView QuerySlbVmInstance
+type QuerySlbVmInstanceView struct {
+	Inventories []SlbVmInstanceInventoryView `json:"inventories,omitempty"`
 }
 

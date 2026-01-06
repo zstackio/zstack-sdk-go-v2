@@ -17,8 +17,8 @@ type VolumeSnapshotGroupRefInventoryView struct {
 	VolumeType string `json:"volumeType,omitempty"`
 	VolumeSnapshotInstallPath string `json:"volumeSnapshotInstallPath,omitempty"`
 	VolumeSnapshotName string `json:"volumeSnapshotName,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
-	VolumeLastAttachDate time.Time `json:"volumeLastAttachDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	VolumeLastAttachDate ZStackTime `json:"volumeLastAttachDate,omitempty"`
 }
 

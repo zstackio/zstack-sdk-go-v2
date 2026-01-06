@@ -13,7 +13,22 @@ type NetworkRouterAreaRefInventoryView struct {
 	ApplianceVmType string `json:"applianceVmType,omitempty"`
 	RouterAreaUuid string `json:"routerAreaUuid,omitempty"`
 	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// GetVpcAttachedOspfView GetVpcAttachedOspf
+type GetVpcAttachedOspfView struct {
+	Inventories []NetworkRouterAreaRefInventoryView `json:"inventories,omitempty"`
+}
+
+// AddVRouterNetworksToOspfAreaEventView AddVRouterNetworksToOspfAreaEvent
+type AddVRouterNetworksToOspfAreaEventView struct {
+	Inventories []NetworkRouterAreaRefInventoryView `json:"inventories,omitempty"`
+}
+
+// QueryVRouterOspfNetworkView QueryVRouterOspfNetwork
+type QueryVRouterOspfNetworkView struct {
+	Inventories []NetworkRouterAreaRefInventoryView `json:"inventories,omitempty"`
 }
 

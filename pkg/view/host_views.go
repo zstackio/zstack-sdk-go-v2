@@ -37,7 +37,47 @@ type HostInventoryView struct {
 	RaidStatus string `json:"raidStatus,omitempty"`
 	TemperatureStatus string `json:"temperatureStatus,omitempty"`
 	Architecture string `json:"architecture,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// ChangeHostStateEventView ChangeHostStateEvent
+type ChangeHostStateEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
+}
+
+// AddHostEventView AddHostEvent
+type AddHostEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
+}
+
+// ReconnectHostEventView ReconnectHostEvent
+type ReconnectHostEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
+}
+
+// GetHostCandidatesForVmMigrationView GetHostCandidatesForVmMigration
+type GetHostCandidatesForVmMigrationView struct {
+	Inventories []HostInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateHostEventView UpdateHostEvent
+type UpdateHostEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteHostEventView DeleteHostEvent
+type DeleteHostEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryHostView QueryHost
+type QueryHostView struct {
+	Inventories []HostInventoryView `json:"inventories,omitempty"`
+}
+
+// GetVmMigrationCandidateHostsView GetVmMigrationCandidateHosts
+type GetVmMigrationCandidateHostsView struct {
+	Inventories []HostInventoryView `json:"inventories,omitempty"`
 }
 

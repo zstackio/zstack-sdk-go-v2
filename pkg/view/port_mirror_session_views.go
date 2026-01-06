@@ -17,7 +17,22 @@ type PortMirrorSessionInventoryView struct {
 	Type string `json:"type,omitempty"`
 	DstEndPoint string `json:"dstEndPoint,omitempty"`
 	PortMirrorUuid string `json:"portMirrorUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreatePortMirrorSessionEventView CreatePortMirrorSessionEvent
+type CreatePortMirrorSessionEventView struct {
+	Inventory PortMirrorSessionInventoryView `json:"inventory,omitempty"`
+}
+
+// DeletePortMirrorSessionEventView DeletePortMirrorSessionEvent
+type DeletePortMirrorSessionEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryPortMirrorSessionView QueryPortMirrorSession
+type QueryPortMirrorSessionView struct {
+	Inventories []PortMirrorSessionInventoryView `json:"inventories,omitempty"`
 }
 

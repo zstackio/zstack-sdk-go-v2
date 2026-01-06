@@ -24,7 +24,80 @@ type VmNicInventoryView struct {
 	DeviceId int `json:"deviceId,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// ChangeVmNicTypeEventView ChangeVmNicTypeEvent
+type ChangeVmNicTypeEventView struct {
+	Inventory VmNicInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateVmNicMacEventView UpdateVmNicMacEvent
+type UpdateVmNicMacEventView struct {
+	Inventory VmNicInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateVmNicEventView CreateVmNicEvent
+type CreateVmNicEventView struct {
+	Inventory VmNicInventoryView `json:"inventory,omitempty"`
+}
+
+// GetPortForwardingAttachableVmNicsView GetPortForwardingAttachableVmNics
+type GetPortForwardingAttachableVmNicsView struct {
+	Inventories []VmNicInventoryView `json:"inventories,omitempty"`
+}
+
+// GetCandidateVmNicsForLoadBalancerServerGroupView GetCandidateVmNicsForLoadBalancerServerGroup
+type GetCandidateVmNicsForLoadBalancerServerGroupView struct {
+	Inventories []VmNicInventoryView `json:"inventories,omitempty"`
+}
+
+// GetCandidateVmNicForSecurityGroupView GetCandidateVmNicForSecurityGroup
+type GetCandidateVmNicForSecurityGroupView struct {
+	Inventories []VmNicInventoryView `json:"inventories,omitempty"`
+}
+
+// GetCandidateVmNicsForPortMirrorView GetCandidateVmNicsForPortMirror
+type GetCandidateVmNicsForPortMirrorView struct {
+	Inventories []VmNicInventoryView `json:"inventories,omitempty"`
+}
+
+// GetCandidateVmNicsForLoadBalancerView GetCandidateVmNicsForLoadBalancer
+type GetCandidateVmNicsForLoadBalancerView struct {
+	Inventories []VmNicInventoryView `json:"inventories,omitempty"`
+}
+
+// GetEipAttachableVmNicsView GetEipAttachableVmNics
+type GetEipAttachableVmNicsView struct {
+	Inventories []VmNicInventoryView `json:"inventories,omitempty"`
+	Start int `json:"start,omitempty"`
+	More bool `json:"more,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// AttachL3NetworkToVmNicEventView AttachL3NetworkToVmNicEvent
+type AttachL3NetworkToVmNicEventView struct {
+	Inventory VmNicInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVmNicView QueryVmNic
+type QueryVmNicView struct {
+	Inventories []VmNicInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateVmNicDriverEventView UpdateVmNicDriverEvent
+type UpdateVmNicDriverEventView struct {
+	Inventory VmNicInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeVmNicNetworkEventView ChangeVmNicNetworkEvent
+type ChangeVmNicNetworkEventView struct {
+	Inventory VmNicInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteVmNicEventView DeleteVmNicEvent
+type DeleteVmNicEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

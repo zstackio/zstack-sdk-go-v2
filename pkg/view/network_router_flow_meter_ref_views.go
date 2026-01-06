@@ -12,7 +12,17 @@ type NetworkRouterFlowMeterRefInventoryView struct {
 	VRouterUuid string `json:"vRouterUuid,omitempty"`
 	FlowMeterUuid string `json:"flowMeterUuid,omitempty"`
 	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryVRouterFlowMeterNetworkView QueryVRouterFlowMeterNetwork
+type QueryVRouterFlowMeterNetworkView struct {
+	Inventories []NetworkRouterFlowMeterRefInventoryView `json:"inventories,omitempty"`
+}
+
+// AddVRouterNetworksToFlowMeterEventView AddVRouterNetworksToFlowMeterEvent
+type AddVRouterNetworksToFlowMeterEventView struct {
+	Inventories []NetworkRouterFlowMeterRefInventoryView `json:"inventories,omitempty"`
 }
 

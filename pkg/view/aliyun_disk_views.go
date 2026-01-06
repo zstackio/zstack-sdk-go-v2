@@ -20,7 +20,32 @@ type AliyunDiskInventoryView struct {
 	Status string `json:"status,omitempty"`
 	SizeWithGB int `json:"sizeWithGB,omitempty"`
 	DeviceInfo string `json:"deviceInfo,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryAliyunDiskFromLocalView QueryAliyunDiskFromLocal
+type QueryAliyunDiskFromLocalView struct {
+	Inventories []AliyunDiskInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateAliyunDiskEventView UpdateAliyunDiskEvent
+type UpdateAliyunDiskEventView struct {
+	Inventory AliyunDiskInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateAliyunDiskFromRemoteEventView CreateAliyunDiskFromRemoteEvent
+type CreateAliyunDiskFromRemoteEventView struct {
+	Inventory AliyunDiskInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachAliyunDiskToEcsEventView AttachAliyunDiskToEcsEvent
+type AttachAliyunDiskToEcsEventView struct {
+	Inventory AliyunDiskInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncDiskFromAliyunFromRemoteEventView SyncDiskFromAliyunFromRemoteEvent
+type SyncDiskFromAliyunFromRemoteEventView struct {
+	Inventories []AliyunDiskInventoryView `json:"inventories,omitempty"`
 }
 

@@ -21,7 +21,12 @@ type AddressPoolInventoryView struct {
 	AddressMode string `json:"addressMode,omitempty"`
 	PrefixLen int `json:"prefixLen,omitempty"`
 	IpRangeType string `json:"ipRangeType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryAddressPoolView QueryAddressPool
+type QueryAddressPoolView struct {
+	Inventories []AddressPoolInventoryView `json:"inventories,omitempty"`
 }
 

@@ -19,8 +19,8 @@ type PluginSecretResourcePoolInventoryView struct {
 	Status string `json:"status,omitempty"`
 	Model string `json:"model,omitempty"`
 	HeartbeatInterval int `json:"heartbeatInterval,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Ability string `json:"ability,omitempty"`
 }
 

@@ -21,7 +21,17 @@ type VpcVpnIkeConfigInventoryView struct {
 	LocalIp string `json:"localIp,omitempty"`
 	RemoteIp string `json:"remoteIp,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateVpnIkeConfigEventView CreateVpnIkeConfigEvent
+type CreateVpnIkeConfigEventView struct {
+	Inventory VpcVpnIkeConfigInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVpcIkeConfigFromLocalView QueryVpcIkeConfigFromLocal
+type QueryVpcIkeConfigFromLocalView struct {
+	Inventories []VpcVpnIkeConfigInventoryView `json:"inventories,omitempty"`
 }
 

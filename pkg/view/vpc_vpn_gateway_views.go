@@ -19,8 +19,23 @@ type VpcVpnGatewayInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Status string `json:"status,omitempty"`
 	BusinessStatus string `json:"businessStatus,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	EndDate time.Time `json:"endDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	EndDate ZStackTime `json:"endDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryVpcVpnGatewayFromLocalView QueryVpcVpnGatewayFromLocal
+type QueryVpcVpnGatewayFromLocalView struct {
+	Inventories []VpcVpnGatewayInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateVpcVpnGatewayEventView UpdateVpcVpnGatewayEvent
+type UpdateVpcVpnGatewayEventView struct {
+	Inventory VpcVpnGatewayInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncVpcVpnGatewayFromRemoteEventView SyncVpcVpnGatewayFromRemoteEvent
+type SyncVpcVpnGatewayFromRemoteEventView struct {
+	Inventories []VpcVpnGatewayInventoryView `json:"inventories,omitempty"`
 }
 

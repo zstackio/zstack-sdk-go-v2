@@ -13,8 +13,8 @@ type CephPrimaryStoragePoolInventoryView struct {
 	PoolName string `json:"poolName,omitempty"`
 	AliasName string `json:"aliasName,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Type string `json:"type,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
 	UsedCapacity int64 `json:"usedCapacity,omitempty"`
@@ -22,5 +22,25 @@ type CephPrimaryStoragePoolInventoryView struct {
 	SecurityPolicy string `json:"securityPolicy,omitempty"`
 	ReplicatedSize int `json:"replicatedSize,omitempty"`
 	DiskUtilization float32 `json:"diskUtilization,omitempty"`
+}
+
+// UpdateCephPrimaryStoragePoolEventView UpdateCephPrimaryStoragePoolEvent
+type UpdateCephPrimaryStoragePoolEventView struct {
+	Inventory CephPrimaryStoragePoolInventoryView `json:"inventory,omitempty"`
+}
+
+// AddCephPrimaryStoragePoolEventView AddCephPrimaryStoragePoolEvent
+type AddCephPrimaryStoragePoolEventView struct {
+	Inventory CephPrimaryStoragePoolInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryCephPrimaryStoragePoolView QueryCephPrimaryStoragePool
+type QueryCephPrimaryStoragePoolView struct {
+	Inventories []CephPrimaryStoragePoolInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteCephPrimaryStoragePoolEventView DeleteCephPrimaryStoragePoolEvent
+type DeleteCephPrimaryStoragePoolEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

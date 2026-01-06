@@ -14,7 +14,22 @@ type FlowCollectorInventoryView struct {
 	FlowMeterUuid string `json:"flowMeterUuid,omitempty"`
 	Server string `json:"server,omitempty"`
 	Port int64 `json:"port,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateFlowCollectorEventView CreateFlowCollectorEvent
+type CreateFlowCollectorEventView struct {
+	Inventory FlowCollectorInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryFlowCollectorView QueryFlowCollector
+type QueryFlowCollectorView struct {
+	Inventories []FlowCollectorInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteFlowCollectorEventView DeleteFlowCollectorEvent
+type DeleteFlowCollectorEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

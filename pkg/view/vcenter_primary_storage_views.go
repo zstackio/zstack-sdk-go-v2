@@ -24,8 +24,13 @@ type VCenterPrimaryStorageInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	MountPath string `json:"mountPath,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+}
+
+// QueryVCenterPrimaryStorageView QueryVCenterPrimaryStorage
+type QueryVCenterPrimaryStorageView struct {
+	Inventories []VCenterPrimaryStorageInventoryView `json:"inventories,omitempty"`
 }
 

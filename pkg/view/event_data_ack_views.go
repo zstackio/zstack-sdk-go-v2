@@ -13,7 +13,7 @@ type EventDataAckInventoryView struct {
 	AlertType string `json:"alertType,omitempty"`
 	AckPeriod int64 `json:"ackPeriod,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
-	AckDate time.Time `json:"ackDate,omitempty"`
+	AckDate ZStackTime `json:"ackDate,omitempty"`
 	ResumeAlert bool `json:"resumeAlert,omitempty"`
 	OperatorAccountUuid string `json:"operatorAccountUuid,omitempty"`
 }

@@ -18,7 +18,22 @@ type BareMetal2ChassisOfferingInventoryView struct {
 	BootMode string `json:"bootMode,omitempty"`
 	State string `json:"state,omitempty"`
 	ProvisionType string `json:"provisionType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateBareMetal2ChassisOfferingEventView UpdateBareMetal2ChassisOfferingEvent
+type UpdateBareMetal2ChassisOfferingEventView struct {
+	Inventory BareMetal2ChassisOfferingInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeBareMetal2ChassisOfferingStateEventView ChangeBareMetal2ChassisOfferingStateEvent
+type ChangeBareMetal2ChassisOfferingStateEventView struct {
+	Inventory BareMetal2ChassisOfferingInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBareMetal2ChassisOfferingView QueryBareMetal2ChassisOffering
+type QueryBareMetal2ChassisOfferingView struct {
+	Inventories []BareMetal2ChassisOfferingInventoryView `json:"inventories,omitempty"`
 }
 

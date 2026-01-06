@@ -11,7 +11,7 @@ type SSOTokenInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	ClientUuid string `json:"clientUuid,omitempty"`
 	UserUuid string `json:"userUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

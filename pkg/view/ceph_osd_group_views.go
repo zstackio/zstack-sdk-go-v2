@@ -13,8 +13,13 @@ type CephOsdGroupInventoryView struct {
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
 	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
 	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
+}
+
+// QueryCephOsdGroupView QueryCephOsdGroup
+type QueryCephOsdGroupView struct {
+	Inventories []CephOsdGroupInventoryView `json:"inventories,omitempty"`
 }
 

@@ -15,3 +15,23 @@ type AliyunProxyVSwitchInventoryView struct {
 	IsDefault bool `json:"isDefault,omitempty"`
 }
 
+// UpdateAliyunProxyVSwitchEventView UpdateAliyunProxyVSwitchEvent
+type UpdateAliyunProxyVSwitchEventView struct {
+	Inventory AliyunProxyVSwitchInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryAliyunProxyVSwitchView QueryAliyunProxyVSwitch
+type QueryAliyunProxyVSwitchView struct {
+	Inventories []AliyunProxyVSwitchInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateAliyunProxyVSwitchEventView CreateAliyunProxyVSwitchEvent
+type CreateAliyunProxyVSwitchEventView struct {
+	Inventory AliyunProxyVSwitchInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteAliyunProxyVSwitchEventView DeleteAliyunProxyVSwitchEvent
+type DeleteAliyunProxyVSwitchEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+

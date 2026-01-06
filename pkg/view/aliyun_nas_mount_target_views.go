@@ -16,7 +16,17 @@ type AliyunNasMountTargetInventoryView struct {
 	MountDomain string `json:"mountDomain,omitempty"`
 	NasFileSystemUuid string `json:"nasFileSystemUuid,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// AddAliyunNasMountTargetEventView AddAliyunNasMountTargetEvent
+type AddAliyunNasMountTargetEventView struct {
+	Inventory AliyunNasMountTargetInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateNasMountTargetEventView CreateNasMountTargetEvent
+type CreateNasMountTargetEventView struct {
+	Inventory NasMountTargetInventoryView `json:"inventory,omitempty"`
 }
 

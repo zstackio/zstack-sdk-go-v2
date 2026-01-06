@@ -12,7 +12,17 @@ type AccountResourceRefInventoryView struct {
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	ResourceType string `json:"resourceType,omitempty"`
 	ConcreteResourceType string `json:"concreteResourceType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryAccountResourceRefView QueryAccountResourceRef
+type QueryAccountResourceRefView struct {
+	Inventories []AccountResourceRefInventoryView `json:"inventories,omitempty"`
+}
+
+// ChangeResourceOwnerEventView ChangeResourceOwnerEvent
+type ChangeResourceOwnerEventView struct {
+	Inventory AccountResourceRefInventoryView `json:"inventory,omitempty"`
 }
 

@@ -14,8 +14,18 @@ type VtepInventoryView struct {
 	Port int `json:"port,omitempty"`
 	Type string `json:"type,omitempty"`
 	PhysicalInterface string `json:"physicalInterface,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	PoolUuid string `json:"poolUuid,omitempty"`
+}
+
+// QueryVtepView QueryVtep
+type QueryVtepView struct {
+	Inventories []VtepInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateVxlanVtepEventView CreateVxlanVtepEvent
+type CreateVxlanVtepEventView struct {
+	Inventory VtepInventoryView `json:"inventory,omitempty"`
 }
 

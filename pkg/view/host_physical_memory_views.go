@@ -19,7 +19,18 @@ type HostPhysicalMemoryInventoryView struct {
 	Rank string `json:"rank,omitempty"`
 	Voltage string `json:"voltage,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryHostPhysicalMemoryView QueryHostPhysicalMemory
+type QueryHostPhysicalMemoryView struct {
+	Inventories []HostPhysicalMemoryInventoryView `json:"inventories,omitempty"`
+}
+
+// GetHostPhysicalMemoryFactsView GetHostPhysicalMemoryFacts
+type GetHostPhysicalMemoryFactsView struct {
+	Inventories []HostPhysicalMemoryInventoryView `json:"inventories,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 

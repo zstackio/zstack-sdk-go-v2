@@ -13,7 +13,12 @@ type SharedResourceInventoryView struct {
 	ToPublic bool `json:"toPublic,omitempty"`
 	ResourceType string `json:"resourceType,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+}
+
+// QuerySharedResourceView QuerySharedResource
+type QuerySharedResourceView struct {
+	Inventories []SharedResourceInventoryView `json:"inventories,omitempty"`
 }
 

@@ -19,7 +19,7 @@ type BlockScsiLunInventoryView struct {
 	LunType string `json:"lunType,omitempty"`
 	LunInitSnapshotID int `json:"lunInitSnapshotID,omitempty"`
 	UsedSize int64 `json:"usedSize,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

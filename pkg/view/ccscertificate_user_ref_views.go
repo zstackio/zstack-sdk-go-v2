@@ -11,7 +11,7 @@ type CCSCertificateUserRefInventoryView struct {
 	UserUuid string `json:"userUuid,omitempty"`
 	CertificateUuid string `json:"certificateUuid,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

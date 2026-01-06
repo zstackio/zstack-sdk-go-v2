@@ -20,8 +20,28 @@ type ImageStoreBackupStorageInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
+}
+
+// AddImageStoreBackupStorageEventView AddImageStoreBackupStorageEvent
+type AddImageStoreBackupStorageEventView struct {
+	Inventory ImageStoreBackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateBackupStorageEventView UpdateBackupStorageEvent
+type UpdateBackupStorageEventView struct {
+	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryImageStoreBackupStorageView QueryImageStoreBackupStorage
+type QueryImageStoreBackupStorageView struct {
+	Inventories []ImageStoreBackupStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// ReconnectImageStoreBackupStorageEventView ReconnectImageStoreBackupStorageEvent
+type ReconnectImageStoreBackupStorageEventView struct {
+	Inventory ImageStoreBackupStorageInventoryView `json:"inventory,omitempty"`
 }
 

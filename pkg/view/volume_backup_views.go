@@ -20,8 +20,53 @@ type VolumeBackupInventoryView struct {
 	GroupUuid string `json:"groupUuid,omitempty"`
 	Mode string `json:"mode,omitempty"`
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	BackupStorageRefs []VolumeBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
+}
+
+// CreateVmBackupEventView CreateVmBackupEvent
+type CreateVmBackupEventView struct {
+	Inventories []VolumeBackupInventoryView `json:"inventories,omitempty"`
+}
+
+// RecoverVmBackupFromImageStoreBackupStorageEventView RecoverVmBackupFromImageStoreBackupStorageEvent
+type RecoverVmBackupFromImageStoreBackupStorageEventView struct {
+	Inventories []VolumeBackupInventoryView `json:"inventories,omitempty"`
+}
+
+// SyncVmBackupFromImageStoreBackupStorageEventView SyncVmBackupFromImageStoreBackupStorageEvent
+type SyncVmBackupFromImageStoreBackupStorageEventView struct {
+	Inventories []VolumeBackupInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateVolumeBackupEventView CreateVolumeBackupEvent
+type CreateVolumeBackupEventView struct {
+	Inventory VolumeBackupInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncVolumeBackupEventView SyncVolumeBackupEvent
+type SyncVolumeBackupEventView struct {
+	Result SyncBackupResultView `json:"result,omitempty"`
+}
+
+// RecoverBackupFromImageStoreBackupStorageEventView RecoverBackupFromImageStoreBackupStorageEvent
+type RecoverBackupFromImageStoreBackupStorageEventView struct {
+	Inventory VolumeBackupInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVolumeBackupView QueryVolumeBackup
+type QueryVolumeBackupView struct {
+	Inventories []VolumeBackupInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteVolumeBackupEventView DeleteVolumeBackupEvent
+type DeleteVolumeBackupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// SyncBackupFromImageStoreBackupStorageEventView SyncBackupFromImageStoreBackupStorageEvent
+type SyncBackupFromImageStoreBackupStorageEventView struct {
+	Inventory VolumeBackupInventoryView `json:"inventory,omitempty"`
 }
 

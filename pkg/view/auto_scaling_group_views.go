@@ -17,9 +17,44 @@ type AutoScalingGroupInventoryView struct {
 	MinResourceSize int `json:"minResourceSize,omitempty"`
 	MaxResourceSize int `json:"maxResourceSize,omitempty"`
 	RemovalPolicy string `json:"removalPolicy,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedTemplates []string `json:"attachedTemplates,omitempty"`
 	SystemTags []string `json:"systemTags,omitempty"`
+}
+
+// ChangeAutoScalingGroupStateEventView ChangeAutoScalingGroupStateEvent
+type ChangeAutoScalingGroupStateEventView struct {
+	Inventory AutoScalingGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachAutoScalingTemplateToGroupEventView AttachAutoScalingTemplateToGroupEvent
+type AttachAutoScalingTemplateToGroupEventView struct {
+	Inventory AutoScalingGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteAutoScalingGroupEventView DeleteAutoScalingGroupEvent
+type DeleteAutoScalingGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// DetachAutoScalingTemplateFromGroupEventView DetachAutoScalingTemplateFromGroupEvent
+type DetachAutoScalingTemplateFromGroupEventView struct {
+	Inventory AutoScalingGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateAutoScalingGroupEventView CreateAutoScalingGroupEvent
+type CreateAutoScalingGroupEventView struct {
+	Inventory AutoScalingGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateAutoScalingGroupEventView UpdateAutoScalingGroupEvent
+type UpdateAutoScalingGroupEventView struct {
+	Inventory AutoScalingGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryAutoScalingGroupView QueryAutoScalingGroup
+type QueryAutoScalingGroupView struct {
+	Inventories []AutoScalingGroupInventoryView `json:"inventories,omitempty"`
 }
 

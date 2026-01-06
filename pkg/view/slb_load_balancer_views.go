@@ -17,8 +17,8 @@ type SlbLoadBalancerInventoryView struct {
 	Type string `json:"type,omitempty"`
 	VipUuid string `json:"vipUuid,omitempty"`
 	Ipv6VipUuid string `json:"ipv6VipUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Listeners []LoadBalancerListenerInventoryView `json:"listeners,omitempty"`
 }
 

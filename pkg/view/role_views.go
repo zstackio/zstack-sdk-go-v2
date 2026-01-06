@@ -14,9 +14,29 @@ type RoleInventoryView struct {
 	Identity string `json:"identity,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Statements []RolePolicyStatementInventoryView `json:"statements,omitempty"`
 	Policies []RolePolicyRefInventoryView `json:"policies,omitempty"`
+}
+
+// ChangeRoleStateEventView ChangeRoleStateEvent
+type ChangeRoleStateEventView struct {
+	Inventory RoleInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryRoleView QueryRole
+type QueryRoleView struct {
+	Inventories []RoleInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteRoleEventView DeleteRoleEvent
+type DeleteRoleEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateRoleEventView UpdateRoleEvent
+type UpdateRoleEventView struct {
+	Inventory RoleInventoryView `json:"inventory,omitempty"`
 }
 

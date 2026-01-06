@@ -20,8 +20,23 @@ type SftpBackupStorageInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
+}
+
+// QuerySftpBackupStorageView QuerySftpBackupStorage
+type QuerySftpBackupStorageView struct {
+	Inventories []SftpBackupStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// ReconnectSftpBackupStorageEventView ReconnectSftpBackupStorageEvent
+type ReconnectSftpBackupStorageEventView struct {
+	Inventory SftpBackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// AddSftpBackupStorageEventView AddSftpBackupStorageEvent
+type AddSftpBackupStorageEventView struct {
+	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
 }
 

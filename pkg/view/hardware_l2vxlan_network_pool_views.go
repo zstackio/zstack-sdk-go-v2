@@ -26,8 +26,8 @@ type HardwareL2VxlanNetworkPoolInventoryView struct {
 	VirtualNetworkId int `json:"virtualNetworkId,omitempty"`
 	Isolated bool `json:"isolated,omitempty"`
 	Pvlan string `json:"pvlan,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

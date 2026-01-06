@@ -15,10 +15,25 @@ type PriceInventoryView struct {
 	Price float64 `json:"price,omitempty"`
 	DateInLong int64 `json:"dateInLong,omitempty"`
 	EndDateInLong int64 `json:"endDateInLong,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	TableUuid string `json:"tableUuid,omitempty"`
 	PciDeviceOfferings []PricePciDeviceOfferingRefInventoryView `json:"pciDeviceOfferings,omitempty"`
 	BareMetal2VmOfferings []PriceBareMetal2ChassisOfferingRefInventoryView `json:"bareMetal2VmOfferings,omitempty"`
+}
+
+// UpdateResourcePriceEventView UpdateResourcePriceEvent
+type UpdateResourcePriceEventView struct {
+	Inventory PriceInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryResourcePriceView QueryResourcePrice
+type QueryResourcePriceView struct {
+	Inventories []PriceInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateResourcePriceEventView CreateResourcePriceEvent
+type CreateResourcePriceEventView struct {
+	Inventory PriceInventoryView `json:"inventory,omitempty"`
 }
 

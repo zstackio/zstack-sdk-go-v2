@@ -18,7 +18,27 @@ type SecurityMachineInventoryView struct {
 	Model string `json:"model,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SetSecurityMachineKeyEventView SetSecurityMachineKeyEvent
+type SetSecurityMachineKeyEventView struct {
+	Inventories []SecurityMachineInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteSecurityMachineEventView DeleteSecurityMachineEvent
+type DeleteSecurityMachineEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QuerySecurityMachineView QuerySecurityMachine
+type QuerySecurityMachineView struct {
+	Inventories []SecurityMachineInventoryView `json:"inventories,omitempty"`
+}
+
+// ChangeSecurityMachineStateEventView ChangeSecurityMachineStateEvent
+type ChangeSecurityMachineStateEventView struct {
+	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
 }
 

@@ -13,7 +13,27 @@ type EcsSecurityGroupInventoryView struct {
 	SecurityGroupId string `json:"securityGroupId,omitempty"`
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// SyncEcsSecurityGroupFromRemoteEventView SyncEcsSecurityGroupFromRemoteEvent
+type SyncEcsSecurityGroupFromRemoteEventView struct {
+	Inventories []EcsSecurityGroupInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateEcsSecurityGroupEventView UpdateEcsSecurityGroupEvent
+type UpdateEcsSecurityGroupEventView struct {
+	Inventory EcsSecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryEcsSecurityGroupFromLocalView QueryEcsSecurityGroupFromLocal
+type QueryEcsSecurityGroupFromLocalView struct {
+	Inventories []EcsSecurityGroupInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateEcsSecurityGroupRemoteEventView CreateEcsSecurityGroupRemoteEvent
+type CreateEcsSecurityGroupRemoteEventView struct {
+	Inventory EcsSecurityGroupInventoryView `json:"inventory,omitempty"`
 }
 

@@ -15,8 +15,28 @@ type EventSubscriptionInventoryView struct {
 	State string `json:"state,omitempty"`
 	Actions []EventSubscriptionActionInventoryView `json:"actions,omitempty"`
 	Labels []EventSubscriptionLabelInventoryView `json:"labels,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+}
+
+// QueryEventSubscriptionView QueryEventSubscription
+type QueryEventSubscriptionView struct {
+	Inventories []EventSubscriptionInventoryView `json:"inventories,omitempty"`
+}
+
+// ChangeEventSubscriptionStateEventView ChangeEventSubscriptionStateEvent
+type ChangeEventSubscriptionStateEventView struct {
+	Inventory EventSubscriptionInventoryView `json:"inventory,omitempty"`
+}
+
+// AddActionToEventSubscriptionEventView AddActionToEventSubscriptionEvent
+type AddActionToEventSubscriptionEventView struct {
+	Inventory EventSubscriptionInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateSubscribeEventEventView UpdateSubscribeEventEvent
+type UpdateSubscribeEventEventView struct {
+	Inventory EventSubscriptionInventoryView `json:"inventory,omitempty"`
 }
 

@@ -19,7 +19,7 @@ type HygonCcpMdevInventoryView struct {
 	Status string `json:"status,omitempty"`
 	State string `json:"state,omitempty"`
 	HostUuid string `json:"hostUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

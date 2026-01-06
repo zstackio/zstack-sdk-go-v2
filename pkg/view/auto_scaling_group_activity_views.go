@@ -18,8 +18,13 @@ type AutoScalingGroupActivityInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Status string `json:"status,omitempty"`
 	ActivityActionResultMessage string `json:"activityActionResultMessage,omitempty"`
-	EndDate time.Time `json:"endDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	EndDate ZStackTime `json:"endDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryAutoScalingGroupActivityView QueryAutoScalingGroupActivity
+type QueryAutoScalingGroupActivityView struct {
+	Inventories []AutoScalingGroupActivityInventoryView `json:"inventories,omitempty"`
 }
 

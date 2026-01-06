@@ -12,7 +12,7 @@ type SessionInventoryView struct {
 	AccountUuid string `json:"accountUuid,omitempty"`
 	UserUuid string `json:"userUuid,omitempty"`
 	UserType string `json:"userType,omitempty"`
-	ExpiredDate time.Time `json:"expiredDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
+	ExpiredDate ZStackTime `json:"expiredDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
 }
 

@@ -17,9 +17,24 @@ type PciDeviceOfferingInventoryView struct {
 	SubvendorId string `json:"subvendorId,omitempty"`
 	SubdeviceId string `json:"subdeviceId,omitempty"`
 	RamSize string `json:"ramSize,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedInstanceOfferings []PciDeviceOfferingInstanceOfferingRefInventoryView `json:"attachedInstanceOfferings,omitempty"`
 	MatchedPciDevices []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDevices,omitempty"`
+}
+
+// DeletePciDeviceOfferingEventView DeletePciDeviceOfferingEvent
+type DeletePciDeviceOfferingEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreatePciDeviceOfferingEventView CreatePciDeviceOfferingEvent
+type CreatePciDeviceOfferingEventView struct {
+	Inventory PciDeviceOfferingInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryPciDeviceOfferingView QueryPciDeviceOffering
+type QueryPciDeviceOfferingView struct {
+	Inventories []PciDeviceOfferingInventoryView `json:"inventories,omitempty"`
 }
 

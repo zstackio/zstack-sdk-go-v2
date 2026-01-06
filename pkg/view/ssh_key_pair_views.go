@@ -12,7 +12,37 @@ type SshKeyPairInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
 	PublicKey string `json:"publicKey,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CreateSshKeyPairEventView CreateSshKeyPairEvent
+type CreateSshKeyPairEventView struct {
+	Inventory SshKeyPairInventoryView `json:"inventory,omitempty"`
+}
+
+// GenerateSshKeyPairView GenerateSshKeyPair
+type GenerateSshKeyPairView struct {
+	Inventory SshPrivateKeyPairInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateSshKeyPairEventView UpdateSshKeyPairEvent
+type UpdateSshKeyPairEventView struct {
+	Inventory SshKeyPairInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachSshKeyPairToVmInstanceEventView AttachSshKeyPairToVmInstanceEvent
+type AttachSshKeyPairToVmInstanceEventView struct {
+	Inventory SshKeyPairInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySshKeyPairView QuerySshKeyPair
+type QuerySshKeyPairView struct {
+	Inventories []SshKeyPairInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteSshKeyPairEventView DeleteSshKeyPairEvent
+type DeleteSshKeyPairEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

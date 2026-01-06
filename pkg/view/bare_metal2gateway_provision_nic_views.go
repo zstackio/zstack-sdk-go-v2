@@ -15,7 +15,7 @@ type BareMetal2GatewayProvisionNicInventoryView struct {
 	Netmask string `json:"netmask,omitempty"`
 	Gateway string `json:"gateway,omitempty"`
 	Metadata string `json:"metadata,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

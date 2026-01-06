@@ -16,7 +16,32 @@ type NvmeServerInventoryView struct {
 	Transport string `json:"transport,omitempty"`
 	NvmeTargets []NvmeTargetInventoryView `json:"nvmeTargets,omitempty"`
 	NvmeClusterRefs []NvmeServerClusterRefInventoryView `json:"nvmeClusterRefs,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryNvmeServerView QueryNvmeServer
+type QueryNvmeServerView struct {
+	Inventories []NvmeServerInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteNvmeServerEventView DeleteNvmeServerEvent
+type DeleteNvmeServerEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// AttachNvmeServerToClusterEventView AttachNvmeServerToClusterEvent
+type AttachNvmeServerToClusterEventView struct {
+	Inventory NvmeServerInventoryView `json:"inventory,omitempty"`
+}
+
+// AddNvmeServerEventView AddNvmeServerEvent
+type AddNvmeServerEventView struct {
+	Inventory NvmeServerInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachNvmeServerFromClusterEventView DetachNvmeServerFromClusterEvent
+type DetachNvmeServerFromClusterEventView struct {
+	Inventory NvmeServerInventoryView `json:"inventory,omitempty"`
 }
 

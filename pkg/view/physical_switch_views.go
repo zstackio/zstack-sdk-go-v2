@@ -16,8 +16,13 @@ type PhysicalSwitchInventoryView struct {
 	Mode string `json:"mode,omitempty"`
 	SoftwareVersion string `json:"softwareVersion,omitempty"`
 	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Ports []PhysicalSwitchPortInventoryView `json:"ports,omitempty"`
+}
+
+// QueryPhysicalSwitchView QueryPhysicalSwitch
+type QueryPhysicalSwitchView struct {
+	Inventories []PhysicalSwitchInventoryView `json:"inventories,omitempty"`
 }
 

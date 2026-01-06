@@ -17,9 +17,14 @@ type UsedIpInventoryView struct {
 	Gateway string `json:"gateway,omitempty"`
 	UsedFor string `json:"usedFor,omitempty"`
 	IpInLong int64 `json:"ipInLong,omitempty"`
-	IpInBinary []byte `json:"ipInBinary,omitempty"`
+	IpInBinary []int8 `json:"ipInBinary,omitempty"`
 	VmNicUuid string `json:"vmNicUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryIpAddressView QueryIpAddress
+type QueryIpAddressView struct {
+	Inventories []UsedIpInventoryView `json:"inventories,omitempty"`
 }
 

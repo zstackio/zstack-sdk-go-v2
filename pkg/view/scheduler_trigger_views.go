@@ -15,11 +15,36 @@ type SchedulerTriggerInventoryView struct {
 	SchedulerType string `json:"schedulerType,omitempty"`
 	SchedulerInterval int `json:"schedulerInterval,omitempty"`
 	RepeatCount int `json:"repeatCount,omitempty"`
-	StartTime time.Time `json:"startTime,omitempty"`
-	StopTime time.Time `json:"stopTime,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	StartTime ZStackTime `json:"startTime,omitempty"`
+	StopTime ZStackTime `json:"stopTime,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	JobsUuid []string `json:"jobsUuid,omitempty"`
 	JobGroupsUuid []string `json:"jobGroupsUuid,omitempty"`
+}
+
+// GetAvailableTriggersView GetAvailableTriggers
+type GetAvailableTriggersView struct {
+	Inventories []SchedulerTriggerInventoryView `json:"inventories,omitempty"`
+}
+
+// QuerySchedulerTriggerView QuerySchedulerTrigger
+type QuerySchedulerTriggerView struct {
+	Inventories []SchedulerTriggerInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateSchedulerTriggerEventView UpdateSchedulerTriggerEvent
+type UpdateSchedulerTriggerEventView struct {
+	Inventory SchedulerTriggerInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteSchedulerTriggerEventView DeleteSchedulerTriggerEvent
+type DeleteSchedulerTriggerEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateSchedulerTriggerEventView CreateSchedulerTriggerEvent
+type CreateSchedulerTriggerEventView struct {
+	Inventory SchedulerTriggerInventoryView `json:"inventory,omitempty"`
 }
 

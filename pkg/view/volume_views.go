@@ -23,13 +23,93 @@ type VolumeInventoryView struct {
 	DeviceId int `json:"deviceId,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	IsShareable bool `json:"isShareable,omitempty"`
 	VolumeQos string `json:"volumeQos,omitempty"`
-	LastDetachDate time.Time `json:"lastDetachDate,omitempty"`
+	LastDetachDate ZStackTime `json:"lastDetachDate,omitempty"`
 	LastVmInstanceUuid string `json:"lastVmInstanceUuid,omitempty"`
-	LastAttachDate time.Time `json:"lastAttachDate,omitempty"`
+	LastAttachDate ZStackTime `json:"lastAttachDate,omitempty"`
 	Protocol string `json:"protocol,omitempty"`
+}
+
+// RecoverDataVolumeEventView RecoverDataVolumeEvent
+type RecoverDataVolumeEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncVolumeSizeEventView SyncVolumeSizeEvent
+type SyncVolumeSizeEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateVolumeEventView UpdateVolumeEvent
+type UpdateVolumeEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// ResizeRootVolumeEventView ResizeRootVolumeEvent
+type ResizeRootVolumeEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateDataVolumeFromVolumeBackupEventView CreateDataVolumeFromVolumeBackupEvent
+type CreateDataVolumeFromVolumeBackupEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachDataVolumeToVmEventView AttachDataVolumeToVmEvent
+type AttachDataVolumeToVmEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// SetVolumeQosEventView SetVolumeQosEvent
+type SetVolumeQosEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVolumeView QueryVolume
+type QueryVolumeView struct {
+	Inventories []VolumeInventoryView `json:"inventories,omitempty"`
+}
+
+// ResizeDataVolumeEventView ResizeDataVolumeEvent
+type ResizeDataVolumeEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// GetVmAttachableDataVolumeView GetVmAttachableDataVolume
+type GetVmAttachableDataVolumeView struct {
+	Inventories []VolumeInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateDataVolumeFromVolumeSnapshotEventView CreateDataVolumeFromVolumeSnapshotEvent
+type CreateDataVolumeFromVolumeSnapshotEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateDataVolumeEventView CreateDataVolumeEvent
+type CreateDataVolumeEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteVolumeQosEventView DeleteVolumeQosEvent
+type DeleteVolumeQosEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachDataVolumeFromVmEventView DetachDataVolumeFromVmEvent
+type DetachDataVolumeFromVmEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateDataVolumeFromVolumeTemplateEventView CreateDataVolumeFromVolumeTemplateEvent
+type CreateDataVolumeFromVolumeTemplateEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeVolumeStateEventView ChangeVolumeStateEvent
+type ChangeVolumeStateEventView struct {
+	Inventory VolumeInventoryView `json:"inventory,omitempty"`
 }
 

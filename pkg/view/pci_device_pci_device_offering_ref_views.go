@@ -12,3 +12,8 @@ type PciDevicePciDeviceOfferingRefInventoryView struct {
 	PciDeviceOfferingUuid string `json:"pciDeviceOfferingUuid,omitempty"`
 }
 
+// QueryPciDevicePciDeviceOfferingView QueryPciDevicePciDeviceOffering
+type QueryPciDevicePciDeviceOfferingView struct {
+	Inventories []PciDevicePciDeviceOfferingRefInventoryView `json:"inventories,omitempty"`
+}
+

@@ -19,7 +19,12 @@ type GuestVmScriptExecutedRecordInventoryView struct {
 	EncodingType string `json:"encodingType,omitempty"`
 	ScriptContent string `json:"scriptContent,omitempty"`
 	RenderParams string `json:"renderParams,omitempty"`
-	StartTime time.Time `json:"startTime,omitempty"`
-	EndTime time.Time `json:"endTime,omitempty"`
+	StartTime ZStackTime `json:"startTime,omitempty"`
+	EndTime ZStackTime `json:"endTime,omitempty"`
+}
+
+// QueryGuestVmScriptExecutedRecordView QueryGuestVmScriptExecutedRecord
+type QueryGuestVmScriptExecutedRecordView struct {
+	Inventories []GuestVmScriptExecutedRecordInventoryView `json:"inventories,omitempty"`
 }
 

@@ -33,7 +33,32 @@ type ModelServiceInventoryView struct {
 	VendorToSpecUuidsMap map[string]interface{} `json:"vendorToSpecUuidsMap,omitempty"`
 	ModelServiceRefs []ModelServiceRefInventoryView `json:"modelServiceRefs,omitempty"`
 	ModelServiceImages []ModelServiceTemplateInventoryView `json:"modelServiceImages,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// CloneModelServiceEventView CloneModelServiceEvent
+type CloneModelServiceEventView struct {
+	Inventory ModelServiceInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateModelServiceEventView UpdateModelServiceEvent
+type UpdateModelServiceEventView struct {
+	Inventory ModelServiceInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteModelServiceEventView DeleteModelServiceEvent
+type DeleteModelServiceEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// AddModelServiceEventView AddModelServiceEvent
+type AddModelServiceEventView struct {
+	Inventory ModelServiceInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryModelServiceView QueryModelService
+type QueryModelServiceView struct {
+	Inventories []ModelServiceInventoryView `json:"inventories,omitempty"`
 }
 

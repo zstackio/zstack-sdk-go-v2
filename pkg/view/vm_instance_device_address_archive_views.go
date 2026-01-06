@@ -15,7 +15,12 @@ type VmInstanceDeviceAddressArchiveInventoryView struct {
 	AddressGroupUuid string `json:"addressGroupUuid,omitempty"`
 	Metadata string `json:"metadata,omitempty"`
 	MetadataClass string `json:"metadataClass,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryVmInstanceDeviceAddressArchiveView QueryVmInstanceDeviceAddressArchive
+type QueryVmInstanceDeviceAddressArchiveView struct {
+	Inventories []VmInstanceDeviceAddressArchiveInventoryView `json:"inventories,omitempty"`
 }
 

@@ -15,8 +15,23 @@ type MdevDeviceSpecInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
+}
+
+// UpdateMdevDeviceSpecEventView UpdateMdevDeviceSpecEvent
+type UpdateMdevDeviceSpecEventView struct {
+	Inventory MdevDeviceSpecInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryMdevDeviceSpecView QueryMdevDeviceSpec
+type QueryMdevDeviceSpecView struct {
+	Inventories []MdevDeviceSpecInventoryView `json:"inventories,omitempty"`
+}
+
+// GetMdevDeviceSpecCandidatesView GetMdevDeviceSpecCandidates
+type GetMdevDeviceSpecCandidatesView struct {
+	Inventories []MdevDeviceSpecInventoryView `json:"inventories,omitempty"`
 }
 

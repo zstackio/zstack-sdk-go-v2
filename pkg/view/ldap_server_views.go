@@ -16,7 +16,27 @@ type LdapServerInventoryView struct {
 	Username string `json:"username,omitempty"`
 	Scope string `json:"scope,omitempty"`
 	Encryption string `json:"encryption,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// AddLdapServerEventView AddLdapServerEvent
+type AddLdapServerEventView struct {
+	Inventory LdapServerInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryLdapServerView QueryLdapServer
+type QueryLdapServerView struct {
+	Inventories []LdapServerInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteLdapServerEventView DeleteLdapServerEvent
+type DeleteLdapServerEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateLdapServerEventView UpdateLdapServerEvent
+type UpdateLdapServerEventView struct {
+	Inventory LdapServerInventoryView `json:"inventory,omitempty"`
 }
 

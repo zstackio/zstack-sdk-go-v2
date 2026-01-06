@@ -13,9 +13,19 @@ type TwoFactorAuthenticationSecretInventoryView struct {
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	ResourceType string `json:"resourceType,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	UserUuid string `json:"userUuid,omitempty"`
 	UserType string `json:"userType,omitempty"`
+}
+
+// GetTwoFactorAuthenticationSecretView GetTwoFactorAuthenticationSecret
+type GetTwoFactorAuthenticationSecretView struct {
+	Inventory TwoFactorAuthenticationSecretInventoryView `json:"inventory,omitempty"`
+}
+
+// ResetTwoFactorAuthenticationSecretEventView ResetTwoFactorAuthenticationSecretEvent
+type ResetTwoFactorAuthenticationSecretEventView struct {
+	Inventory TwoFactorAuthenticationSecretInventoryView `json:"inventory,omitempty"`
 }
 

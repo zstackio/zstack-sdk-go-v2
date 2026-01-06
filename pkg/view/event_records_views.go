@@ -21,3 +21,8 @@ type EventRecordsInventoryView struct {
 	Labels string `json:"labels,omitempty"`
 }
 
+// QueryEventRecordView QueryEventRecord
+type QueryEventRecordView struct {
+	Inventories []EventRecordsInventoryView `json:"inventories,omitempty"`
+}
+

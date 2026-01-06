@@ -12,8 +12,23 @@ type ImageReplicationGroupInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	BackupStorageRefs []ImageReplicationGroupBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
+}
+
+// DeleteImageReplicationGroupEventView DeleteImageReplicationGroupEvent
+type DeleteImageReplicationGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// QueryImageReplicationGroupView QueryImageReplicationGroup
+type QueryImageReplicationGroupView struct {
+	Inventories []ImageReplicationGroupInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateImageReplicationGroupEventView CreateImageReplicationGroupEvent
+type CreateImageReplicationGroupEventView struct {
+	Inventory ImageReplicationGroupInventoryView `json:"inventory,omitempty"`
 }
 

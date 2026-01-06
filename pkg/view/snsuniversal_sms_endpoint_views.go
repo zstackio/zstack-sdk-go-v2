@@ -17,9 +17,24 @@ type SNSUniversalSmsEndpointInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	PlatformUuid string `json:"platformUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ConnectionStatus string `json:"connectionStatus,omitempty"`
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
+}
+
+// QuerySNSUniversalSmsEndpointView QuerySNSUniversalSmsEndpoint
+type QuerySNSUniversalSmsEndpointView struct {
+	Inventories []SNSUniversalSmsEndpointInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateSNSUniversalSmsEndpointEventView CreateSNSUniversalSmsEndpointEvent
+type CreateSNSUniversalSmsEndpointEventView struct {
+	Inventory SNSUniversalSmsEndpointInventoryView `json:"inventory,omitempty"`
+}
+
+// ValidateSNSApplicationEndpointEventView ValidateSNSApplicationEndpointEvent
+type ValidateSNSApplicationEndpointEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

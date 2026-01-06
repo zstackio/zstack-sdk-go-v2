@@ -11,10 +11,15 @@ type LicenseAuthorizedNodeInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	AppId string `json:"appId,omitempty"`
 	Ip string `json:"ip,omitempty"`
-	LastSyncDate time.Time `json:"lastSyncDate,omitempty"`
+	LastSyncDate ZStackTime `json:"lastSyncDate,omitempty"`
 	Status string `json:"status,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryLicenseAuthorizedNodeView QueryLicenseAuthorizedNode
+type QueryLicenseAuthorizedNodeView struct {
+	Inventories []LicenseAuthorizedNodeInventoryView `json:"inventories,omitempty"`
 }
 

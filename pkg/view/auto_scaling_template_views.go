@@ -14,7 +14,12 @@ type AutoScalingTemplateInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	SystemTags []string `json:"systemTags,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// DeleteAutoScalingTemplateEventView DeleteAutoScalingTemplateEvent
+type DeleteAutoScalingTemplateEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

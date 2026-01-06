@@ -1,9 +1,0 @@
-// Copyright (c) ZStack.io, Inc.
-
-package view
-
-// GetHostMultipathTopologyView GetHostMultipathTopology
-type GetHostMultipathTopologyView struct {
-	Results []MultipathTopologyStructView `json:"results,omitempty"`
-}
-

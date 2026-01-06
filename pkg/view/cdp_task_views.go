@@ -21,8 +21,28 @@ type CdpTaskInventoryView struct {
 	UsedCapacity int64 `json:"usedCapacity,omitempty"`
 	MaxLatency int64 `json:"maxLatency,omitempty"`
 	LastLatency int64 `json:"lastLatency,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	ResourceRefs []CdpTaskResourceRefInventoryView `json:"resourceRefs,omitempty"`
+}
+
+// CreateCdpTaskEventView CreateCdpTaskEvent
+type CreateCdpTaskEventView struct {
+	Inventory CdpTaskInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryCdpTaskView QueryCdpTask
+type QueryCdpTaskView struct {
+	Inventories []CdpTaskInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateCdpTaskEventView UpdateCdpTaskEvent
+type UpdateCdpTaskEventView struct {
+	Inventory CdpTaskInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteCdpTaskEventView DeleteCdpTaskEvent
+type DeleteCdpTaskEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

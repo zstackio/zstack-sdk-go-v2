@@ -21,8 +21,8 @@ type OvnControllerVmOfferingInventoryView struct {
 	Type string `json:"type,omitempty"`
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 	SortKey int `json:"sortKey,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	State string `json:"state,omitempty"`
 }
 

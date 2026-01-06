@@ -15,7 +15,27 @@ type DirectoryInventoryView struct {
 	RootDirectoryUuid string `json:"rootDirectoryUuid,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateDirectoryEventView UpdateDirectoryEvent
+type UpdateDirectoryEventView struct {
+	Inventory DirectoryInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateDirectoryEventView CreateDirectoryEvent
+type CreateDirectoryEventView struct {
+	Inventory DirectoryInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryDirectoryView QueryDirectory
+type QueryDirectoryView struct {
+	Inventories []DirectoryInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteDirectoryEventView DeleteDirectoryEvent
+type DeleteDirectoryEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

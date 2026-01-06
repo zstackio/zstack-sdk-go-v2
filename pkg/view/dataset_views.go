@@ -16,7 +16,27 @@ type DatasetInventoryView struct {
 	ModelCenterUuid string `json:"modelCenterUuid,omitempty"`
 	Size int64 `json:"size,omitempty"`
 	System bool `json:"system,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryDatasetView QueryDataset
+type QueryDatasetView struct {
+	Inventories []DatasetInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateDatasetEventView CreateDatasetEvent
+type CreateDatasetEventView struct {
+	Inventory DatasetInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteDatasetEventView DeleteDatasetEvent
+type DeleteDatasetEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateDatasetEventView UpdateDatasetEvent
+type UpdateDatasetEventView struct {
+	Inventory DatasetInventoryView `json:"inventory,omitempty"`
 }
 

@@ -16,7 +16,27 @@ type ConnectionAccessPointInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Status string `json:"status,omitempty"`
 	HostOperator string `json:"hostOperator,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryConnectionAccessPointFromLocalView QueryConnectionAccessPointFromLocal
+type QueryConnectionAccessPointFromLocalView struct {
+	Inventories []ConnectionAccessPointInventoryView `json:"inventories,omitempty"`
+}
+
+// GetConnectionAccessPointFromRemoteView GetConnectionAccessPointFromRemote
+type GetConnectionAccessPointFromRemoteView struct {
+	Inventories []ConnectionAccessPointInventoryView `json:"inventories,omitempty"`
+}
+
+// AddConnectionAccessPointFromRemoteEventView AddConnectionAccessPointFromRemoteEvent
+type AddConnectionAccessPointFromRemoteEventView struct {
+	Inventory ConnectionAccessPointInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncConnectionAccessPointFromRemoteEventView SyncConnectionAccessPointFromRemoteEvent
+type SyncConnectionAccessPointFromRemoteEventView struct {
+	Inventories []ConnectionAccessPointInventoryView `json:"inventories,omitempty"`
 }
 

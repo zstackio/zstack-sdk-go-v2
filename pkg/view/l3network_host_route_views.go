@@ -12,7 +12,7 @@ type L3NetworkHostRouteInventoryView struct {
 	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 	Prefix string `json:"prefix,omitempty"`
 	Nexthop string `json:"nexthop,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

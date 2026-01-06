@@ -18,7 +18,27 @@ type ImagePackageInventoryView struct {
 	Md5Sum string `json:"md5Sum,omitempty"`
 	Format string `json:"format,omitempty"`
 	Size int64 `json:"size,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// UpdateImagePackageEventView UpdateImagePackageEvent
+type UpdateImagePackageEventView struct {
+	Inventory ImagePackageInventoryView `json:"inventory,omitempty"`
+}
+
+// ExportVmOvaPackageEventView ExportVmOvaPackageEvent
+type ExportVmOvaPackageEventView struct {
+	Inventory ImagePackageInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryImagePackageView QueryImagePackage
+type QueryImagePackageView struct {
+	Inventories []ImagePackageInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteImagePackageEventView DeleteImagePackageEvent
+type DeleteImagePackageEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

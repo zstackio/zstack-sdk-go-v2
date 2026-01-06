@@ -15,9 +15,29 @@ type ClusterDRSInventoryView struct {
 	Thresholds []ThresholdView `json:"thresholds,omitempty"`
 	ThresholdDuration int `json:"thresholdDuration,omitempty"`
 	Description string `json:"description,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
+}
+
+// QueryClusterDRSView QueryClusterDRS
+type QueryClusterDRSView struct {
+	Inventories []ClusterDRSInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteClusterDRSEventView DeleteClusterDRSEvent
+type DeleteClusterDRSEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// CreateClusterDRSEventView CreateClusterDRSEvent
+type CreateClusterDRSEventView struct {
+	Inventory ClusterDRSInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateClusterDRSEventView UpdateClusterDRSEvent
+type UpdateClusterDRSEventView struct {
+	Inventory ClusterDRSInventoryView `json:"inventory,omitempty"`
 }
 

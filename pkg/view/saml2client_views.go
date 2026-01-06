@@ -19,9 +19,19 @@ type SAML2ClientInventoryView struct {
 	LoginType string `json:"loginType,omitempty"`
 	LoginMNUrl string `json:"loginMNUrl,omitempty"`
 	RedirectUrl string `json:"redirectUrl,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
 	Attributes []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
+}
+
+// UpdateSAML2ClientEventView UpdateSAML2ClientEvent
+type UpdateSAML2ClientEventView struct {
+	Inventory SAML2ClientInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateSAML2ClientEventView CreateSAML2ClientEvent
+type CreateSAML2ClientEventView struct {
+	Inventory SAML2ClientInventoryView `json:"inventory,omitempty"`
 }
 

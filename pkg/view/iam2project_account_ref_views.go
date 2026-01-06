@@ -10,7 +10,12 @@ var _ = time.Now // avoid unused import
 type IAM2ProjectAccountRefInventoryView struct {
 	ProjectUuid string `json:"projectUuid,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryIAM2ProjectAccountRefView QueryIAM2ProjectAccountRef
+type QueryIAM2ProjectAccountRefView struct {
+	Inventories []IAM2ProjectAccountRefInventoryView `json:"inventories,omitempty"`
 }
 

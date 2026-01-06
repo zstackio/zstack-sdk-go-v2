@@ -14,3 +14,13 @@ type VirtualRouterSoftwareVersionInventoryView struct {
 	LatestVersion string `json:"latestVersion,omitempty"`
 }
 
+// GetVirtualRouterSoftwareVersionView GetVirtualRouterSoftwareVersion
+type GetVirtualRouterSoftwareVersionView struct {
+	Inventories []VirtualRouterSoftwareVersionInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdateVirtualRouterSoftwareVersionEventView UpdateVirtualRouterSoftwareVersionEvent
+type UpdateVirtualRouterSoftwareVersionEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+

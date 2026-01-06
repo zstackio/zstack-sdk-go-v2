@@ -10,7 +10,19 @@ var _ = time.Now // avoid unused import
 type AccountPriceTableRefInventoryView struct {
 	AccountUuid string `json:"accountUuid,omitempty"`
 	TableUuid string `json:"tableUuid,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryAccountPriceTableRefView QueryAccountPriceTableRef
+type QueryAccountPriceTableRefView struct {
+	Inventories []AccountPriceTableRefInventoryView `json:"inventories,omitempty"`
+}
+
+// GetAccountPriceTableRefView GetAccountPriceTableRef
+type GetAccountPriceTableRefView struct {
+	AccountUuids []string `json:"accountUuids,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 

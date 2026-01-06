@@ -23,7 +23,33 @@ type UsbDeviceInventoryView struct {
 	ISerial string `json:"iSerial,omitempty"`
 	UsbVersion string `json:"usbVersion,omitempty"`
 	AttachType string `json:"attachType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryUsbDeviceView QueryUsbDevice
+type QueryUsbDeviceView struct {
+	Inventories []UsbDeviceInventoryView `json:"inventories,omitempty"`
+}
+
+// AttachUsbDeviceToVmEventView AttachUsbDeviceToVmEvent
+type AttachUsbDeviceToVmEventView struct {
+	Inventory UsbDeviceInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateUsbDeviceEventView UpdateUsbDeviceEvent
+type UpdateUsbDeviceEventView struct {
+	Inventory UsbDeviceInventoryView `json:"inventory,omitempty"`
+}
+
+// GetUsbDeviceCandidatesForAttachingVmView GetUsbDeviceCandidatesForAttachingVm
+type GetUsbDeviceCandidatesForAttachingVmView struct {
+	Inventories []UsbDeviceInventoryView `json:"inventories,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// DetachUsbDeviceFromVmEventView DetachUsbDeviceFromVmEvent
+type DetachUsbDeviceFromVmEventView struct {
+	Inventory UsbDeviceInventoryView `json:"inventory,omitempty"`
 }
 

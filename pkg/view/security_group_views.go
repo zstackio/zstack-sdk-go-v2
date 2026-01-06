@@ -14,10 +14,65 @@ type SecurityGroupInventoryView struct {
 	State string `json:"state,omitempty"`
 	IpVersion int `json:"ipVersion,omitempty"`
 	VSwitchType string `json:"vSwitchType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	InternalId int64 `json:"internalId,omitempty"`
 	Rules []SecurityGroupRuleInventoryView `json:"rules,omitempty"`
 	AttachedL3NetworkUuids []string `json:"attachedL3NetworkUuids,omitempty"`
+}
+
+// ChangeSecurityGroupStateEventView ChangeSecurityGroupStateEvent
+type ChangeSecurityGroupStateEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySecurityGroupView QuerySecurityGroup
+type QuerySecurityGroupView struct {
+	Inventories []SecurityGroupInventoryView `json:"inventories,omitempty"`
+}
+
+// AddSecurityGroupRuleEventView AddSecurityGroupRuleEvent
+type AddSecurityGroupRuleEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachSecurityGroupFromL3NetworkEventView DetachSecurityGroupFromL3NetworkEvent
+type DetachSecurityGroupFromL3NetworkEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// AttachSecurityGroupToL3NetworkEventView AttachSecurityGroupToL3NetworkEvent
+type AttachSecurityGroupToL3NetworkEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeSecurityGroupRuleStateEventView ChangeSecurityGroupRuleStateEvent
+type ChangeSecurityGroupRuleStateEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateSecurityGroupEventView CreateSecurityGroupEvent
+type CreateSecurityGroupEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteSecurityGroupEventView DeleteSecurityGroupEvent
+type DeleteSecurityGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateSecurityGroupRulePriorityEventView UpdateSecurityGroupRulePriorityEvent
+type UpdateSecurityGroupRulePriorityEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteSecurityGroupRuleEventView DeleteSecurityGroupRuleEvent
+type DeleteSecurityGroupRuleEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateSecurityGroupEventView UpdateSecurityGroupEvent
+type UpdateSecurityGroupEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
 }
 

@@ -12,7 +12,12 @@ type VpcSnatStateInventoryView struct {
 	VpcUuid string `json:"vpcUuid,omitempty"`
 	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryVpcSnatStateView QueryVpcSnatState
+type QueryVpcSnatStateView struct {
+	Inventories []VpcSnatStateInventoryView `json:"inventories,omitempty"`
 }
 

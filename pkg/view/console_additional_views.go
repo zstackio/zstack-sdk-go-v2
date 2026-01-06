@@ -14,6 +14,6 @@ type ConsoleInventoryView struct {
 	Port int `json:"port,omitempty"`
 	Token string `json:"token,omitempty"`
 	Version string `json:"version,omitempty"`
-	ExpiredDate time.Time `json:"expiredDate,omitempty"`
+	ExpiredDate ZStackTime `json:"expiredDate,omitempty"`
 }
 

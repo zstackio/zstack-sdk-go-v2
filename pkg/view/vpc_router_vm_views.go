@@ -38,12 +38,32 @@ type VpcRouterVmInventoryView struct {
 	CpuNum int `json:"cpuNum,omitempty"`
 	CpuSpeed int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	State string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
 	VmCdRoms []VmCdRomInventoryView `json:"vmCdRoms,omitempty"`
 	GuestOsType string `json:"guestOsType,omitempty"`
+}
+
+// RemoveDnsFromVpcRouterEventView RemoveDnsFromVpcRouterEvent
+type RemoveDnsFromVpcRouterEventView struct {
+	Inventory VpcRouterVmInventoryView `json:"inventory,omitempty"`
+}
+
+// GetRouteTableVpcVRouterCandidateView GetRouteTableVpcVRouterCandidate
+type GetRouteTableVpcVRouterCandidateView struct {
+	Inventories []VpcRouterVmInventoryView `json:"inventories,omitempty"`
+}
+
+// AddDnsToVpcRouterEventView AddDnsToVpcRouterEvent
+type AddDnsToVpcRouterEventView struct {
+	Inventory VpcRouterVmInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryVpcRouterView QueryVpcRouter
+type QueryVpcRouterView struct {
+	Inventories []VpcRouterVmInventoryView `json:"inventories,omitempty"`
 }
 

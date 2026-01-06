@@ -18,8 +18,13 @@ type DRSVmMigrationActivityInventoryView struct {
 	Reason string `json:"reason,omitempty"`
 	AdviceUuid string `json:"adviceUuid,omitempty"`
 	Cause string `json:"cause,omitempty"`
-	EndDate time.Time `json:"endDate,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	EndDate ZStackTime `json:"endDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+}
+
+// QueryDRSVmMigrationActivityView QueryDRSVmMigrationActivity
+type QueryDRSVmMigrationActivityView struct {
+	Inventories []DRSVmMigrationActivityInventoryView `json:"inventories,omitempty"`
 }
 

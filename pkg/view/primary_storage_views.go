@@ -22,8 +22,53 @@ type PrimaryStorageInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	MountPath string `json:"mountPath,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
+}
+
+// AttachPrimaryStorageToClusterEventView AttachPrimaryStorageToClusterEvent
+type AttachPrimaryStorageToClusterEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// GetPrimaryStorageCandidatesForVmMigrationView GetPrimaryStorageCandidatesForVmMigration
+type GetPrimaryStorageCandidatesForVmMigrationView struct {
+	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// UpdatePrimaryStorageEventView UpdatePrimaryStorageEvent
+type UpdatePrimaryStorageEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// GetPrimaryStorageCandidatesForVolumeMigrationView GetPrimaryStorageCandidatesForVolumeMigration
+type GetPrimaryStorageCandidatesForVolumeMigrationView struct {
+	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// SyncPrimaryStorageCapacityEventView SyncPrimaryStorageCapacityEvent
+type SyncPrimaryStorageCapacityEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangePrimaryStorageStateEventView ChangePrimaryStorageStateEvent
+type ChangePrimaryStorageStateEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// ReconnectPrimaryStorageEventView ReconnectPrimaryStorageEvent
+type ReconnectPrimaryStorageEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// DetachPrimaryStorageFromClusterEventView DetachPrimaryStorageFromClusterEvent
+type DetachPrimaryStorageFromClusterEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// DeletePrimaryStorageEventView DeletePrimaryStorageEvent
+type DeletePrimaryStorageEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 

@@ -13,7 +13,7 @@ type BareMetal2ChassisDiskInventoryView struct {
 	DiskSize int64 `json:"diskSize,omitempty"`
 	Type string `json:"type,omitempty"`
 	Wwn string `json:"wwn,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

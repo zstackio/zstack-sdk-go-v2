@@ -1,9 +1,0 @@
-// Copyright (c) ZStack.io, Inc.
-
-package view
-
-// ChangeAccessControlListServerGroupEventView ChangeAccessControlListServerGroupEvent
-type ChangeAccessControlListServerGroupEventView struct {
-	Inventory LoadBalancerListerAclView `json:"inventory,omitempty"`
-}
-

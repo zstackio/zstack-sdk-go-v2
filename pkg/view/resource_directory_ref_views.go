@@ -12,7 +12,7 @@ type ResourceDirectoryRefInventoryView struct {
 	ResourceUuid string `json:"resourceUuid,omitempty"`
 	DirectoryUuid string `json:"directoryUuid,omitempty"`
 	ResourceType string `json:"resourceType,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 

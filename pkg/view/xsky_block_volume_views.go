@@ -33,13 +33,18 @@ type XskyBlockVolumeInventoryView struct {
 	DeviceId int `json:"deviceId,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate time.Time `json:"createDate,omitempty"`
-	LastOpDate time.Time `json:"lastOpDate,omitempty"`
+	CreateDate ZStackTime `json:"createDate,omitempty"`
+	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 	IsShareable bool `json:"isShareable,omitempty"`
 	VolumeQos string `json:"volumeQos,omitempty"`
-	LastDetachDate time.Time `json:"lastDetachDate,omitempty"`
+	LastDetachDate ZStackTime `json:"lastDetachDate,omitempty"`
 	LastVmInstanceUuid string `json:"lastVmInstanceUuid,omitempty"`
-	LastAttachDate time.Time `json:"lastAttachDate,omitempty"`
+	LastAttachDate ZStackTime `json:"lastAttachDate,omitempty"`
 	Protocol string `json:"protocol,omitempty"`
+}
+
+// QueryXskyBlockVolumeView QueryXskyBlockVolume
+type QueryXskyBlockVolumeView struct {
+	Inventories []XskyBlockVolumeInventoryView `json:"inventories,omitempty"`
 }
 

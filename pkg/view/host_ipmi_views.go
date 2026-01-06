@@ -15,3 +15,15 @@ type HostIpmiInventoryView struct {
 	IpmiPowerStatus string `json:"ipmiPowerStatus,omitempty"`
 }
 
+// GetHostPowerStatusEventView GetHostPowerStatusEvent
+type GetHostPowerStatusEventView struct {
+	Inventory HostIpmiInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// UpdateHostIpmiEventView UpdateHostIpmiEvent
+type UpdateHostIpmiEventView struct {
+	HostIpmiInventory HostIpmiInventoryView `json:"hostIpmiInventory,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
