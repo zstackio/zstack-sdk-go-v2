@@ -8,7 +8,7 @@ import (
 )
 
 var _ = param.BaseParam{} // avoid unused import
-var _ = view.MapView{} // avoid unused import
+var _ = view.MapView{}    // avoid unused import
 
 // ChangeIAM2OrganizationState changes IAM2OrganizationState
 func (cli *ZSClient) ChangeIAM2OrganizationState(uuid string, params param.ChangeIAM2OrganizationStateParam) (*view.IAM2OrganizationInventoryView, error) {
@@ -4607,6 +4607,7 @@ func (cli *ZSClient) StartDataProtection(params param.StartDataProtectionParam) 
 }
 
 // ValidateSession operates on Session
+/*
 func (cli *ZSClient) ValidateSession(params param.ValidateSessionParam) (*view.ValidateSessionView, error) {
 	var resp view.ValidateSessionView
 	if err := cli.Get("v1/accounts/sessions/{sessionUuid}/valid", "", params, &resp); err != nil {
@@ -4614,6 +4615,7 @@ func (cli *ZSClient) ValidateSession(params param.ValidateSessionParam) (*view.V
 	}
 	return &resp, nil
 }
+*/
 
 // ChangeActiveAlarmState changes ActiveAlarmState
 func (cli *ZSClient) ChangeActiveAlarmState(uuid string, params param.ChangeActiveAlarmStateParam) (*view.ChangeActiveAlarmStateEventView, error) {
@@ -9258,4 +9260,3 @@ func (cli *ZSClient) SyncVpcVpnGatewayFromRemote(uuid string, params param.SyncV
 func (cli *ZSClient) DeleteEcsVpcInLocal(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/hybrid/aliyun/vpc/{uuid}", uuid, string(deleteMode))
 }
-

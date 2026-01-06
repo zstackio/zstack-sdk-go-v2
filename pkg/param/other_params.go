@@ -2791,10 +2791,13 @@ type LogInByUserParamDetail struct {
 }
 
 // LogInByUserParam LogInByUser request param
+/*
 type LogInByUserParam struct {
 	BaseParam
 	Params LogInByUserParamDetail `json:"params"`
 }
+	*/
+	
 // RevertVmFromSnapshotGroupParamDetail RevertVmFromSnapshotGroup detail param
 type RevertVmFromSnapshotGroupParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
