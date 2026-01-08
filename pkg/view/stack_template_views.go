@@ -8,16 +8,13 @@ var _ = time.Now // avoid unused import
 
 // StackTemplateInventoryView StackTemplate
 type StackTemplateInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Type    string `json:"type,omitempty"`
 	Version string `json:"version,omitempty"`
-	State bool `json:"state,omitempty"`
+	State   bool   `json:"state,omitempty"`
 	Content string `json:"content,omitempty"`
-	Md5sum string `json:"md5sum,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Md5sum  string `json:"md5sum,omitempty"`
 }
 
 // QueryStackTemplateView QueryStackTemplate
@@ -39,4 +36,3 @@ type UpdateStackTemplateEventView struct {
 type AddStackTemplateEventView struct {
 	Inventory StackTemplateInventoryView `json:"inventory,omitempty"`
 }
-

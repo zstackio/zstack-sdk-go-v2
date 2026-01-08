@@ -8,21 +8,18 @@ var _ = time.Now // avoid unused import
 
 // SNSFeiShuEndpointInventoryView SNSFeiShuEndpoint
 type SNSFeiShuEndpointInventoryView struct {
-	Url string `json:"url,omitempty"`
-	AtAll bool `json:"atAll,omitempty"`
-	AtPersonUserIds []string `json:"atPersonUserIds,omitempty"`
-	AtPersonList []SNSFeiShuAtPersonInventoryView `json:"atPersonList,omitempty"`
-	Secret string `json:"secret,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	PlatformUuid string `json:"platformUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	ConnectionStatus string `json:"connectionStatus,omitempty"`
-	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Url              string                              `json:"url,omitempty"`
+	AtAll            bool                                `json:"atAll,omitempty"`
+	AtPersonUserIds  []string                            `json:"atPersonUserIds,omitempty"`
+	AtPersonList     []SNSFeiShuAtPersonInventoryView    `json:"atPersonList,omitempty"`
+	Secret           string                              `json:"secret,omitempty"`
+	Type             string                              `json:"type,omitempty"`
+	State            string                              `json:"state,omitempty"`
+	PlatformUuid     string                              `json:"platformUuid,omitempty"`
+	ConnectionStatus string                              `json:"connectionStatus,omitempty"`
+	Platform         SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
 
 // CreateSNSFeiShuEndpointEventView CreateSNSFeiShuEndpointEvent
@@ -34,4 +31,3 @@ type CreateSNSFeiShuEndpointEventView struct {
 type QuerySNSFeiShuEndpointView struct {
 	Inventories []SNSFeiShuEndpointInventoryView `json:"inventories,omitempty"`
 }
-

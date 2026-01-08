@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // IAM2VirtualIDInventoryView IAM2VirtualID
 type IAM2VirtualIDInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Type       string                       `json:"type,omitempty"`
+	State      string                       `json:"state,omitempty"`
 	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
 }
 
@@ -41,8 +38,8 @@ type CleanInvalidLdapIAM2BindingEventView struct {
 // GetIAM2VirtualIDInGroupView GetIAM2VirtualIDInGroup
 type GetIAM2VirtualIDInGroupView struct {
 	Inventories []IAM2VirtualIDInventoryView `json:"inventories,omitempty"`
-	Total int64 `json:"total,omitempty"`
-	Success bool `json:"success,omitempty"`
+	Total       int64                        `json:"total,omitempty"`
+	Success     bool                         `json:"success,omitempty"`
 }
 
 // DeleteIAM2VirtualIDEventView DeleteIAM2VirtualIDEvent
@@ -64,4 +61,3 @@ type UpdateIAM2VirtualIDEventView struct {
 type ChangeIAM2VirtualIDStateEventView struct {
 	Inventory IAM2VirtualIDInventoryView `json:"inventory,omitempty"`
 }
-

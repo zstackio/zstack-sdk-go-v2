@@ -8,17 +8,14 @@ var _ = time.Now // avoid unused import
 
 // BackupStorageInventoryView BackupStorage
 type BackupStorageInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Url string `json:"url,omitempty"`
-	Description string `json:"description,omitempty"`
-	TotalCapacity int64 `json:"totalCapacity,omitempty"`
-	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Url               string   `json:"url,omitempty"`
+	TotalCapacity     int64    `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64    `json:"availableCapacity,omitempty"`
+	Type              string   `json:"type,omitempty"`
+	State             string   `json:"state,omitempty"`
+	Status            string   `json:"status,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 
@@ -56,4 +53,3 @@ type ReconnectBackupStorageEventView struct {
 type GetBackupStorageCandidatesForImageMigrationView struct {
 	Inventories []BackupStorageInventoryView `json:"inventories,omitempty"`
 }
-

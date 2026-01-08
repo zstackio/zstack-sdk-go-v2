@@ -8,16 +8,13 @@ var _ = time.Now // avoid unused import
 
 // ExternalBackupInventoryView ExternalBackup
 type ExternalBackupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	State       string `json:"state,omitempty"`
 	InstallPath string `json:"installPath,omitempty"`
-	TotalSize int64 `json:"totalSize,omitempty"`
-	Version string `json:"version,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	TotalSize   int64  `json:"totalSize,omitempty"`
+	Version     string `json:"version,omitempty"`
+	Type        string `json:"type,omitempty"`
 }
 
 // DeleteExternalBackupEventView DeleteExternalBackupEvent
@@ -34,4 +31,3 @@ type CreateExternalBackupEventView struct {
 type QueryExternalBackupView struct {
 	Inventories []ExternalBackupInventoryView `json:"inventories,omitempty"`
 }
-

@@ -8,19 +8,16 @@ var _ = time.Now // avoid unused import
 
 // HybridAccountInventoryView HybridAccount
 type HybridAccountInventoryView struct {
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	AccountUuid string `json:"accountUuid,omitempty"`
-	UserUuid string `json:"userUuid,omitempty"`
-	Type string `json:"type,omitempty"`
-	Akey string `json:"akey,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	AccountUuid     string `json:"accountUuid,omitempty"`
+	UserUuid        string `json:"userUuid,omitempty"`
+	Type            string `json:"type,omitempty"`
+	Akey            string `json:"akey,omitempty"`
 	HybridAccountId string `json:"hybridAccountId,omitempty"`
-	HybridUserId string `json:"hybridUserId,omitempty"`
-	HybridUserName string `json:"hybridUserName,omitempty"`
-	Current string `json:"current,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	HybridUserId    string `json:"hybridUserId,omitempty"`
+	HybridUserName  string `json:"hybridUserName,omitempty"`
+	Current         string `json:"current,omitempty"`
 }
 
 // QueryHybridKeySecretView QueryHybridKeySecret
@@ -47,4 +44,3 @@ type AddAliyunKeySecretEventView struct {
 type UpdateHybridKeySecretEventView struct {
 	Inventory HybridAccountInventoryView `json:"inventory,omitempty"`
 }
-

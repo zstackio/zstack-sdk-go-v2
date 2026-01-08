@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // MediaInventoryView Media
 type MediaInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Type  string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
 }
 
 // ChangeMediaStateEventView ChangeMediaStateEvent
@@ -36,4 +33,3 @@ type QueryMediaView struct {
 type CreateMediaEventView struct {
 	Inventory MediaInventoryView `json:"inventory,omitempty"`
 }
-

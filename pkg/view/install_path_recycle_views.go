@@ -8,18 +8,18 @@ var _ = time.Now // avoid unused import
 
 // InstallPathRecycleInventoryView InstallPathRecycle
 type InstallPathRecycleInventoryView struct {
-	TrashId int64 `json:"trashId,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
-	StorageUuid string `json:"storageUuid,omitempty"`
-	StorageType string `json:"storageType,omitempty"`
-	ResourceType string `json:"resourceType,omitempty"`
-	InstallPath string `json:"installPath,omitempty"`
-	IsFolder bool `json:"isFolder,omitempty"`
-	HostUuid string `json:"hostUuid,omitempty"`
-	HypervisorType string `json:"hypervisorType,omitempty"`
-	Size int64 `json:"size,omitempty"`
-	TrashType string `json:"trashType,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
+	TrashId        int64     `json:"trashId,omitempty"`
+	ResourceUuid   string    `json:"resourceUuid,omitempty"`
+	StorageUuid    string    `json:"storageUuid,omitempty"`
+	StorageType    string    `json:"storageType,omitempty"`
+	ResourceType   string    `json:"resourceType,omitempty"`
+	InstallPath    string    `json:"installPath,omitempty"`
+	IsFolder       bool      `json:"isFolder,omitempty"`
+	HostUuid       string    `json:"hostUuid,omitempty"`
+	HypervisorType string    `json:"hypervisorType,omitempty"`
+	Size           int64     `json:"size,omitempty"`
+	TrashType      string    `json:"trashType,omitempty"`
+	CreateDate     time.Time `json:"createDate,omitempty"`
 }
 
 // GetTrashOnBackupStorageView GetTrashOnBackupStorage
@@ -31,4 +31,3 @@ type GetTrashOnBackupStorageView struct {
 type GetTrashOnPrimaryStorageView struct {
 	Inventories []InstallPathRecycleInventoryView `json:"inventories,omitempty"`
 }
-

@@ -8,12 +8,9 @@ var _ = time.Now // avoid unused import
 
 // SshKeyPairInventoryView SshKeyPair
 type SshKeyPairInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	PublicKey string `json:"publicKey,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // CreateSshKeyPairEventView CreateSshKeyPairEvent
@@ -45,4 +42,3 @@ type QuerySshKeyPairView struct {
 type DeleteSshKeyPairEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

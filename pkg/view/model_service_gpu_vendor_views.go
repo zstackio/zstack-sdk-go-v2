@@ -8,9 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ModelServiceGpuVendorInventoryView ModelServiceGpuVendor
 type ModelServiceGpuVendorInventoryView struct {
-	Id int64 `json:"id,omitempty"`
-	ModelServiceUuid string `json:"modelServiceUuid,omitempty"`
-	GpuVendor string `json:"gpuVendor,omitempty"`
-	SpecRefs []ModelServiceGpuSpecRefInventoryView `json:"specRefs,omitempty"`
+	Id               int64                                 `json:"id,omitempty"`
+	ModelServiceUuid string                                `json:"modelServiceUuid,omitempty"`
+	GpuVendor        string                                `json:"gpuVendor,omitempty"`
+	SpecRefs         []ModelServiceGpuSpecRefInventoryView `json:"specRefs,omitempty"`
 }
-

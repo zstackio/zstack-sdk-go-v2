@@ -9,6 +9,5 @@ var _ = time.Now // avoid unused import
 // TemplateCustomParamInventoryView TemplateCustomParam
 type TemplateCustomParamInventoryView struct {
 	TemplateUuid string `json:"templateUuid,omitempty"`
-	Param string `json:"param,omitempty"`
+	Param        string `json:"param,omitempty"`
 }
-

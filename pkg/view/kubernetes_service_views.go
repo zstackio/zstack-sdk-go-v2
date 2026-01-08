@@ -8,17 +8,13 @@ var _ = time.Now // avoid unused import
 
 // KubernetesServiceInventoryView KubernetesService
 type KubernetesServiceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Namespace string `json:"namespace,omitempty"`
-	Type string `json:"type,omitempty"`
-	ClusterIp string `json:"clusterIp,omitempty"`
-	ExternalIp string `json:"externalIp,omitempty"`
-	Ports string `json:"ports,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Namespace    string `json:"namespace,omitempty"`
+	Type         string `json:"type,omitempty"`
+	ClusterIp    string `json:"clusterIp,omitempty"`
+	ExternalIp   string `json:"externalIp,omitempty"`
+	Ports        string `json:"ports,omitempty"`
 	EndpointUuid string `json:"endpointUuid,omitempty"`
-	ClusterId int64 `json:"clusterId,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	ClusterId    int64  `json:"clusterId,omitempty"`
 }
-

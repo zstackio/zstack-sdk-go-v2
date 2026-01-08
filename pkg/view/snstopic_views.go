@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // SNSTopicInventoryView SNSTopic
 type SNSTopicInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	State  string `json:"state,omitempty"`
 	Locale string `json:"locale,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // DeleteSNSTopicEventView DeleteSNSTopicEvent
@@ -41,4 +38,3 @@ type ChangeSNSTopicStateEventView struct {
 type CreateSNSTopicEventView struct {
 	Inventory SNSTopicInventoryView `json:"inventory,omitempty"`
 }
-

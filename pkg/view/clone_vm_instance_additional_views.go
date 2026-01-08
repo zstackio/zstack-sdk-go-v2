@@ -10,4 +10,3 @@ var _ = time.Now // avoid unused import
 type CloneVmInstanceInventoryView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
-

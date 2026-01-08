@@ -8,9 +8,8 @@ var _ = time.Now // avoid unused import
 
 // HuaweiIMasterTenantFabricRefInventoryView HuaweiIMasterTenantFabricRef
 type HuaweiIMasterTenantFabricRefInventoryView struct {
-	TenantUuid string `json:"tenantUuid,omitempty"`
-	FabricUuid string `json:"fabricUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	TenantUuid string    `json:"tenantUuid,omitempty"`
+	FabricUuid string    `json:"fabricUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
-

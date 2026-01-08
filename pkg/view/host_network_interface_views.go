@@ -8,30 +8,30 @@ var _ = time.Now // avoid unused import
 
 // HostNetworkInterfaceInventoryView HostNetworkInterface
 type HostNetworkInterfaceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	HostUuid string `json:"hostUuid,omitempty"`
-	BondingUuid string `json:"bondingUuid,omitempty"`
-	InterfaceModel string `json:"interfaceModel,omitempty"`
-	VendorId string `json:"vendorId,omitempty"`
-	DeviceId string `json:"deviceId,omitempty"`
-	SubvendorId string `json:"subvendorId,omitempty"`
-	SubdeviceId string `json:"subdeviceId,omitempty"`
-	InterfaceName string `json:"interfaceName,omitempty"`
-	InterfaceType string `json:"interfaceType,omitempty"`
-	Speed int64 `json:"speed,omitempty"`
-	SlaveActive bool `json:"slaveActive,omitempty"`
-	CarrierActive bool `json:"carrierActive,omitempty"`
-	IpAddresses []string `json:"ipAddresses,omitempty"`
-	Gateway string `json:"gateway,omitempty"`
-	Mac string `json:"mac,omitempty"`
-	CallBackIp string `json:"callBackIp,omitempty"`
-	PciDeviceAddress string `json:"pciDeviceAddress,omitempty"`
-	DriverType string `json:"driverType,omitempty"`
-	OffloadStatus string `json:"offloadStatus,omitempty"`
-	VirtStatus string `json:"virtStatus,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Uuid             string    `json:"uuid,omitempty"`
+	HostUuid         string    `json:"hostUuid,omitempty"`
+	BondingUuid      string    `json:"bondingUuid,omitempty"`
+	InterfaceModel   string    `json:"interfaceModel,omitempty"`
+	VendorId         string    `json:"vendorId,omitempty"`
+	DeviceId         string    `json:"deviceId,omitempty"`
+	SubvendorId      string    `json:"subvendorId,omitempty"`
+	SubdeviceId      string    `json:"subdeviceId,omitempty"`
+	InterfaceName    string    `json:"interfaceName,omitempty"`
+	InterfaceType    string    `json:"interfaceType,omitempty"`
+	Speed            int64     `json:"speed,omitempty"`
+	SlaveActive      bool      `json:"slaveActive,omitempty"`
+	CarrierActive    bool      `json:"carrierActive,omitempty"`
+	IpAddresses      []string  `json:"ipAddresses,omitempty"`
+	Gateway          string    `json:"gateway,omitempty"`
+	Mac              string    `json:"mac,omitempty"`
+	CallBackIp       string    `json:"callBackIp,omitempty"`
+	PciDeviceAddress string    `json:"pciDeviceAddress,omitempty"`
+	DriverType       string    `json:"driverType,omitempty"`
+	OffloadStatus    string    `json:"offloadStatus,omitempty"`
+	VirtStatus       string    `json:"virtStatus,omitempty"`
+	Description      string    `json:"description,omitempty"`
+	CreateDate       time.Time `json:"createDate,omitempty"`
+	LastOpDate       time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateHostNetworkInterfaceEventView UpdateHostNetworkInterfaceEvent
@@ -53,4 +53,3 @@ type LocateHostNetworkInterfaceEventView struct {
 type SetIpOnHostNetworkInterfaceEventView struct {
 	Inventory HostNetworkInterfaceInventoryView `json:"inventory,omitempty"`
 }
-

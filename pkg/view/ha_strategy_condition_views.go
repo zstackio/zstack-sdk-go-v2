@@ -8,16 +8,13 @@ var _ = time.Now // avoid unused import
 
 // HaStrategyConditionInventoryView HaStrategyCondition
 type HaStrategyConditionInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	FencerName string `json:"fencerName,omitempty"`
-	State string `json:"state,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	State      string `json:"state,omitempty"`
 }
 
 // UpdateHaStrategyConditionEventView UpdateHaStrategyConditionEvent
 type UpdateHaStrategyConditionEventView struct {
 	Inventory HaStrategyConditionInventoryView `json:"inventory,omitempty"`
 }
-

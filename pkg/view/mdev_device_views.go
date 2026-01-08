@@ -8,21 +8,18 @@ var _ = time.Now // avoid unused import
 
 // MdevDeviceInventoryView MdevDevice
 type MdevDeviceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	ParentUuid string `json:"parentUuid,omitempty"`
-	MttyUuid string `json:"mttyUuid,omitempty"`
-	HostUuid string `json:"hostUuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	ParentUuid     string `json:"parentUuid,omitempty"`
+	MttyUuid       string `json:"mttyUuid,omitempty"`
+	HostUuid       string `json:"hostUuid,omitempty"`
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	MdevSpecUuid string `json:"mdevSpecUuid,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	Status string `json:"status,omitempty"`
-	Chooser string `json:"chooser,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Vendor string `json:"vendor,omitempty"`
+	MdevSpecUuid   string `json:"mdevSpecUuid,omitempty"`
+	Type           string `json:"type,omitempty"`
+	State          string `json:"state,omitempty"`
+	Status         string `json:"status,omitempty"`
+	Chooser        string `json:"chooser,omitempty"`
+	Vendor         string `json:"vendor,omitempty"`
 }
 
 // GetMdevDeviceCandidatesView GetMdevDeviceCandidates
@@ -54,4 +51,3 @@ type DetachMdevDeviceFromVmEventView struct {
 type QueryMdevDeviceView struct {
 	Inventories []MdevDeviceInventoryView `json:"inventories,omitempty"`
 }
-

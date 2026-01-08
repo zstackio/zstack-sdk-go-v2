@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // VpcVirtualRouterInventoryView VpcVirtualRouter
 type VpcVirtualRouterInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	VrId string `json:"vrId,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	VrId    string `json:"vrId,omitempty"`
 	VpcUuid string `json:"vpcUuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // SyncAliyunVirtualRouterFromRemoteEventView SyncAliyunVirtualRouterFromRemoteEvent
@@ -31,4 +28,3 @@ type UpdateAliyunVirtualRouterEventView struct {
 type QueryAliyunVirtualRouterFromLocalView struct {
 	Inventories []VpcVirtualRouterInventoryView `json:"inventories,omitempty"`
 }
-

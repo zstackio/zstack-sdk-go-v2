@@ -8,18 +8,15 @@ var _ = time.Now // avoid unused import
 
 // ExternalBackupStorageInventoryView ExternalBackupStorage
 type ExternalBackupStorageInventoryView struct {
-	Identity string `json:"identity,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Url string `json:"url,omitempty"`
-	Description string `json:"description,omitempty"`
-	TotalCapacity int64 `json:"totalCapacity,omitempty"`
-	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Identity          string   `json:"identity,omitempty"`
+	Url               string   `json:"url,omitempty"`
+	TotalCapacity     int64    `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64    `json:"availableCapacity,omitempty"`
+	Type              string   `json:"type,omitempty"`
+	State             string   `json:"state,omitempty"`
+	Status            string   `json:"status,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 
@@ -27,4 +24,3 @@ type ExternalBackupStorageInventoryView struct {
 type AddExternalBackupStorageEventView struct {
 	Inventory ExternalBackupStorageInventoryView `json:"inventory,omitempty"`
 }
-

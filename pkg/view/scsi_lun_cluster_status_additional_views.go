@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // ScsiLunClusterStatusInventoryView ScsiLunClusterStatus
 type ScsiLunClusterStatusInventoryView struct {
-	AttachedHosts []HostInventoryView `json:"attachedHosts,omitempty"`
-	UnattachedHosts []HostInventoryView `json:"unattachedHosts,omitempty"`
-	IsAllHostsAttached bool `json:"isAllHostsAttached,omitempty"`
+	AttachedHosts      []HostInventoryView `json:"attachedHosts,omitempty"`
+	UnattachedHosts    []HostInventoryView `json:"unattachedHosts,omitempty"`
+	IsAllHostsAttached bool                `json:"isAllHostsAttached,omitempty"`
 }
-

@@ -8,14 +8,11 @@ var _ = time.Now // avoid unused import
 
 // IAM2ProjectInventoryView IAM2Project
 type IAM2ProjectInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
-	LinkedAccountUuid string `json:"linkedAccountUuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	State             string                       `json:"state,omitempty"`
+	Attributes        []IAM2AttributeInventoryView `json:"attributes,omitempty"`
+	LinkedAccountUuid string                       `json:"linkedAccountUuid,omitempty"`
 }
 
 // CreateIAM2ProjectEventView CreateIAM2ProjectEvent
@@ -77,4 +74,3 @@ type LoginIAM2ProjectView struct {
 type UpdateIAM2ProjectEventView struct {
 	Inventory IAM2ProjectInventoryView `json:"inventory,omitempty"`
 }
-

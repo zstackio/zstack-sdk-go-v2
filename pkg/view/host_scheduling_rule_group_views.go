@@ -8,12 +8,9 @@ var _ = time.Now // avoid unused import
 
 // HostSchedulingRuleGroupInventoryView HostSchedulingRuleGroup
 type HostSchedulingRuleGroupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ZoneUuid string `json:"zoneUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // UpdateHostSchedulingRuleGroupEventView UpdateHostSchedulingRuleGroupEvent
@@ -35,4 +32,3 @@ type CreateHostSchedulingRuleGroupEventView struct {
 type DeleteHostSchedulingRuleGroupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

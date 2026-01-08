@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // EcsSecurityGroupInventoryView EcsSecurityGroup
 type EcsSecurityGroupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	EcsVpcUuid string `json:"ecsVpcUuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	EcsVpcUuid      string `json:"ecsVpcUuid,omitempty"`
 	SecurityGroupId string `json:"securityGroupId,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // SyncEcsSecurityGroupFromRemoteEventView SyncEcsSecurityGroupFromRemoteEvent
@@ -36,4 +33,3 @@ type QueryEcsSecurityGroupFromLocalView struct {
 type CreateEcsSecurityGroupRemoteEventView struct {
 	Inventory EcsSecurityGroupInventoryView `json:"inventory,omitempty"`
 }
-

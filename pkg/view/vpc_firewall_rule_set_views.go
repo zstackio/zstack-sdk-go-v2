@@ -8,15 +8,12 @@ var _ = time.Now // avoid unused import
 
 // VpcFirewallRuleSetInventoryView VpcFirewallRuleSet
 type VpcFirewallRuleSetInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	ActionType string `json:"actionType,omitempty"`
-	Description string `json:"description,omitempty"`
-	IsDefault bool `json:"isDefault,omitempty"`
-	IsApplied bool `json:"isApplied,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Rules []VpcFirewallRuleInventoryView `json:"rules,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	ActionType string                         `json:"actionType,omitempty"`
+	IsDefault  bool                           `json:"isDefault,omitempty"`
+	IsApplied  bool                           `json:"isApplied,omitempty"`
+	Rules      []VpcFirewallRuleInventoryView `json:"rules,omitempty"`
 }
 
 // CreateFirewallRuleFromConfigFileEventView CreateFirewallRuleFromConfigFileEvent
@@ -43,4 +40,3 @@ type ApplyRuleSetChangesEventView struct {
 type UpdateFirewallRuleSetEventView struct {
 	Inventory VpcFirewallRuleSetInventoryView `json:"inventory,omitempty"`
 }
-

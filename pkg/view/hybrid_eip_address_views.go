@@ -8,21 +8,18 @@ var _ = time.Now // avoid unused import
 
 // HybridEipAddressInventoryView HybridEipAddress
 type HybridEipAddressInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	EipId string `json:"eipId,omitempty"`
-	BandWidth string `json:"bandWidth,omitempty"`
-	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
-	AllocateResourceUuid string `json:"allocateResourceUuid,omitempty"`
-	AllocateResourceType string `json:"allocateResourceType,omitempty"`
-	Status string `json:"status,omitempty"`
-	EipAddress string `json:"eipAddress,omitempty"`
-	EipType string `json:"eipType,omitempty"`
-	Name string `json:"name,omitempty"`
-	ChargeType string `json:"chargeType,omitempty"`
-	Description string `json:"description,omitempty"`
-	AllocateTime ZStackTime `json:"allocateTime,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	EipId                string    `json:"eipId,omitempty"`
+	BandWidth            string    `json:"bandWidth,omitempty"`
+	DataCenterUuid       string    `json:"dataCenterUuid,omitempty"`
+	AllocateResourceUuid string    `json:"allocateResourceUuid,omitempty"`
+	AllocateResourceType string    `json:"allocateResourceType,omitempty"`
+	Status               string    `json:"status,omitempty"`
+	EipAddress           string    `json:"eipAddress,omitempty"`
+	EipType              string    `json:"eipType,omitempty"`
+	ChargeType           string    `json:"chargeType,omitempty"`
+	AllocateTime         time.Time `json:"allocateTime,omitempty"`
 }
 
 // SyncHybridEipFromRemoteEventView SyncHybridEipFromRemoteEvent
@@ -49,4 +46,3 @@ type AttachHybridEipToEcsEventView struct {
 type CreateHybridEipEventView struct {
 	Inventory HybridEipAddressInventoryView `json:"inventory,omitempty"`
 }
-

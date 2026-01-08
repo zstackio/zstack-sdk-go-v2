@@ -8,17 +8,16 @@ var _ = time.Now // avoid unused import
 
 // BaremetalNicInventoryView BaremetalNic
 type BaremetalNicInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	BaremetalInstanceUuid string `json:"baremetalInstanceUuid,omitempty"`
-	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
-	BaremetalBondingUuid string `json:"baremetalBondingUuid,omitempty"`
-	Mac string `json:"mac,omitempty"`
-	Ip string `json:"ip,omitempty"`
-	Netmask string `json:"netmask,omitempty"`
-	Gateway string `json:"gateway,omitempty"`
-	Metadata string `json:"metadata,omitempty"`
-	Pxe bool `json:"pxe,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Uuid                  string    `json:"uuid,omitempty"`
+	BaremetalInstanceUuid string    `json:"baremetalInstanceUuid,omitempty"`
+	L3NetworkUuid         string    `json:"l3NetworkUuid,omitempty"`
+	BaremetalBondingUuid  string    `json:"baremetalBondingUuid,omitempty"`
+	Mac                   string    `json:"mac,omitempty"`
+	Ip                    string    `json:"ip,omitempty"`
+	Netmask               string    `json:"netmask,omitempty"`
+	Gateway               string    `json:"gateway,omitempty"`
+	Metadata              string    `json:"metadata,omitempty"`
+	Pxe                   bool      `json:"pxe,omitempty"`
+	CreateDate            time.Time `json:"createDate,omitempty"`
+	LastOpDate            time.Time `json:"lastOpDate,omitempty"`
 }
-

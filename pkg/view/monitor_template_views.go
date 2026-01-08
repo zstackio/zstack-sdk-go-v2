@@ -8,11 +8,8 @@ var _ = time.Now // avoid unused import
 
 // MonitorTemplateInventoryView MonitorTemplate
 type MonitorTemplateInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	MonitorGroupTemplateRefs []MonitorGroupTemplateRefVOView `json:"monitorGroupTemplateRefs,omitempty"`
 }
 
@@ -40,4 +37,3 @@ type CreateMonitorTemplateEventView struct {
 type DeleteMonitorTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

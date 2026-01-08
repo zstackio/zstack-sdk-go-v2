@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // SNSApplicationPlatformInventoryView SNSApplicationPlatform
 type SNSApplicationPlatformInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	State string `json:"state,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Type  string `json:"type,omitempty"`
 }
 
 // DeleteSNSApplicationPlatformEventView DeleteSNSApplicationPlatformEvent
@@ -31,4 +28,3 @@ type ChangeSNSApplicationPlatformStateEventView struct {
 type QuerySNSApplicationPlatformView struct {
 	Inventories []SNSApplicationPlatformInventoryView `json:"inventories,omitempty"`
 }
-

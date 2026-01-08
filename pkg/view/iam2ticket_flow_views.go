@@ -8,21 +8,17 @@ var _ = time.Now // avoid unused import
 
 // IAM2TicketFlowInventoryView IAM2TicketFlow
 type IAM2TicketFlowInventoryView struct {
-	ApproverUuid string `json:"approverUuid,omitempty"`
-	Valid bool `json:"valid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	ParentFlowUuid string `json:"parentFlowUuid,omitempty"`
-	FlowContext string `json:"flowContext,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	ApproverUuid    string `json:"approverUuid,omitempty"`
+	Valid           bool   `json:"valid,omitempty"`
+	ParentFlowUuid  string `json:"parentFlowUuid,omitempty"`
+	FlowContext     string `json:"flowContext,omitempty"`
 	FlowContextType string `json:"flowContextType,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	CollectionUuid string `json:"collectionUuid,omitempty"`
+	CollectionUuid  string `json:"collectionUuid,omitempty"`
 }
 
 // DeleteIAM2TicketFlowEventView DeleteIAM2TicketFlowEvent
 type DeleteIAM2TicketFlowEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

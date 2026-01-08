@@ -8,15 +8,13 @@ var _ = time.Now // avoid unused import
 
 // DirectoryInventoryView Directory
 type DirectoryInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	GroupName string `json:"groupName,omitempty"`
-	ParentUuid string `json:"parentUuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	GroupName         string `json:"groupName,omitempty"`
+	ParentUuid        string `json:"parentUuid,omitempty"`
 	RootDirectoryUuid string `json:"rootDirectoryUuid,omitempty"`
-	ZoneUuid string `json:"zoneUuid,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	ZoneUuid          string `json:"zoneUuid,omitempty"`
+	Type              string `json:"type,omitempty"`
 }
 
 // UpdateDirectoryEventView UpdateDirectoryEvent
@@ -38,4 +36,3 @@ type QueryDirectoryView struct {
 type DeleteDirectoryEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

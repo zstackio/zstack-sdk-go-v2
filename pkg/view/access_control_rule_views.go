@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // AccessControlRuleInventoryView AccessControlRule
 type AccessControlRuleInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Rule string `json:"rule,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Rule     string `json:"rule,omitempty"`
 	Strategy string `json:"strategy,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // AddAccessControlRuleEventView AddAccessControlRuleEvent
@@ -36,4 +33,3 @@ type DeleteAccessControlRuleEventView struct {
 type QueryAccessControlRuleView struct {
 	Inventories []AccessControlRuleInventoryView `json:"inventories,omitempty"`
 }
-

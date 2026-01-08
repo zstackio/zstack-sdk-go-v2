@@ -8,20 +8,19 @@ var _ = time.Now // avoid unused import
 
 // CloudFormationStackEventInventoryView CloudFormationStackEvent
 type CloudFormationStackEventInventoryView struct {
-	Id int64 `json:"id,omitempty"`
-	Description string `json:"description,omitempty"`
-	Action string `json:"action,omitempty"`
-	Content string `json:"content,omitempty"`
-	ResourceName string `json:"resourceName,omitempty"`
-	ActionStatus string `json:"actionStatus,omitempty"`
-	StackUuid string `json:"stackUuid,omitempty"`
-	Duration string `json:"duration,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Id           int64     `json:"id,omitempty"`
+	Description  string    `json:"description,omitempty"`
+	Action       string    `json:"action,omitempty"`
+	Content      string    `json:"content,omitempty"`
+	ResourceName string    `json:"resourceName,omitempty"`
+	ActionStatus string    `json:"actionStatus,omitempty"`
+	StackUuid    string    `json:"stackUuid,omitempty"`
+	Duration     string    `json:"duration,omitempty"`
+	CreateDate   time.Time `json:"createDate,omitempty"`
+	LastOpDate   time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryEventFromResourceStackView QueryEventFromResourceStack
 type QueryEventFromResourceStackView struct {
 	Inventories []CloudFormationStackEventInventoryView `json:"inventories,omitempty"`
 }
-

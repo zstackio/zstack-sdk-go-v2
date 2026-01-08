@@ -8,14 +8,11 @@ var _ = time.Now // avoid unused import
 
 // TagPatternInventoryView TagPattern
 type TagPatternInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Value string `json:"value,omitempty"`
-	Description string `json:"description,omitempty"`
 	Color string `json:"color,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Type  string `json:"type,omitempty"`
 }
 
 // QueryTagView QueryTag
@@ -32,4 +29,3 @@ type CreateTagEventView struct {
 type UpdateTagEventView struct {
 	Inventory TagPatternInventoryView `json:"inventory,omitempty"`
 }
-

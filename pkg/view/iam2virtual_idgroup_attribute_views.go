@@ -8,13 +8,11 @@ var _ = time.Now // avoid unused import
 
 // IAM2VirtualIDGroupAttributeInventoryView IAM2VirtualIDGroupAttribute
 type IAM2VirtualIDGroupAttributeInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	GroupUuid string `json:"groupUuid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Value string `json:"value,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Value     string `json:"value,omitempty"`
+	Type      string `json:"type,omitempty"`
 }
 
 // UpdateIAM2VirtualIDGroupAttributeEventView UpdateIAM2VirtualIDGroupAttributeEvent
@@ -26,4 +24,3 @@ type UpdateIAM2VirtualIDGroupAttributeEventView struct {
 type QueryIAM2VirtualIDGroupAttributeView struct {
 	Inventories []IAM2VirtualIDGroupAttributeInventoryView `json:"inventories,omitempty"`
 }
-

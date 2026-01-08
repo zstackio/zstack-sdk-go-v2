@@ -8,12 +8,9 @@ var _ = time.Now // avoid unused import
 
 // MetricDataHttpReceiverInventoryView MetricDataHttpReceiver
 type MetricDataHttpReceiverInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Url string `json:"url,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Url   string `json:"url,omitempty"`
 	State string `json:"state,omitempty"`
 }
 
@@ -26,4 +23,3 @@ type DeleteMetricDataHttpReceiverEventView struct {
 type CreateMetricDataHttpReceiverEventView struct {
 	Inventory MetricDataHttpReceiverInventoryView `json:"inventory,omitempty"`
 }
-

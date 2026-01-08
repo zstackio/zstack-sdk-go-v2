@@ -8,18 +8,15 @@ var _ = time.Now // avoid unused import
 
 // SNSHttpEndpointInventoryView SNSHttpEndpoint
 type SNSHttpEndpointInventoryView struct {
-	Url string `json:"url,omitempty"`
-	Username string `json:"username,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	PlatformUuid string `json:"platformUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	ConnectionStatus string `json:"connectionStatus,omitempty"`
-	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Url              string                              `json:"url,omitempty"`
+	Username         string                              `json:"username,omitempty"`
+	Type             string                              `json:"type,omitempty"`
+	State            string                              `json:"state,omitempty"`
+	PlatformUuid     string                              `json:"platformUuid,omitempty"`
+	ConnectionStatus string                              `json:"connectionStatus,omitempty"`
+	Platform         SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
 
 // CreateSNSHttpEndpointEventView CreateSNSHttpEndpointEvent
@@ -36,4 +33,3 @@ type UpdateSNSApplicationEndpointEventView struct {
 type QuerySNSHttpEndpointView struct {
 	Inventories []SNSHttpEndpointInventoryView `json:"inventories,omitempty"`
 }
-

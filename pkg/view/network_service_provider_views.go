@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // NetworkServiceProviderInventoryView NetworkServiceProvider
 type NetworkServiceProviderInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	NetworkServiceTypes []string `json:"networkServiceTypes,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Type                   string   `json:"type,omitempty"`
+	NetworkServiceTypes    []string `json:"networkServiceTypes,omitempty"`
 	AttachedL2NetworkUuids []string `json:"attachedL2NetworkUuids,omitempty"`
 }
 
@@ -22,4 +19,3 @@ type NetworkServiceProviderInventoryView struct {
 type QueryNetworkServiceProviderView struct {
 	Inventories []NetworkServiceProviderInventoryView `json:"inventories,omitempty"`
 }
-

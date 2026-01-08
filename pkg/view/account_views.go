@@ -8,12 +8,9 @@ var _ = time.Now // avoid unused import
 
 // AccountInventoryView Account
 type AccountInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // UpdateAccountEventView UpdateAccountEvent
@@ -40,4 +37,3 @@ type CreateAccountEventView struct {
 type QueryAccountView struct {
 	Inventories []AccountInventoryView `json:"inventories,omitempty"`
 }
-

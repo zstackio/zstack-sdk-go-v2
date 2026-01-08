@@ -8,16 +8,13 @@ var _ = time.Now // avoid unused import
 
 // AccessControlListEntryInventoryView AccessControlListEntry
 type AccessControlListEntryInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	AclUuid string `json:"aclUuid,omitempty"`
-	Type string `json:"type,omitempty"`
-	Name string `json:"name,omitempty"`
-	Domain string `json:"domain,omitempty"`
-	Url string `json:"url,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	AclUuid   string `json:"aclUuid,omitempty"`
+	Type      string `json:"type,omitempty"`
+	Domain    string `json:"domain,omitempty"`
+	Url       string `json:"url,omitempty"`
 	IpEntries string `json:"ipEntries,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // RemoveAccessControlListEntryEventView RemoveAccessControlListEntryEvent
@@ -34,4 +31,3 @@ type ChangeAccessControlListRedirectRuleEventView struct {
 type AddAccessControlListEntryEventView struct {
 	Inventory AccessControlListEntryInventoryView `json:"inventory,omitempty"`
 }
-

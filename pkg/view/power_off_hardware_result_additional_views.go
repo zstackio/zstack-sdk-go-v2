@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // PowerOffHardwareResultView PowerOffHardwareResult
 type PowerOffHardwareResultView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Success bool `json:"success,omitempty"`
+	Uuid    string `json:"uuid,omitempty"`
+	Success bool   `json:"success,omitempty"`
 }
-

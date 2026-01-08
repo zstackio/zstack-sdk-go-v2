@@ -8,15 +8,12 @@ var _ = time.Now // avoid unused import
 
 // DiskOfferingInventoryView DiskOffering
 type DiskOfferingInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	DiskSize int64 `json:"diskSize,omitempty"`
-	SortKey int `json:"sortKey,omitempty"`
-	State string `json:"state,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	DiskSize          int64  `json:"diskSize,omitempty"`
+	SortKey           int    `json:"sortKey,omitempty"`
+	State             string `json:"state,omitempty"`
+	Type              string `json:"type,omitempty"`
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 }
 
@@ -44,4 +41,3 @@ type UpdateDiskOfferingEventView struct {
 type QueryDiskOfferingView struct {
 	Inventories []DiskOfferingInventoryView `json:"inventories,omitempty"`
 }
-

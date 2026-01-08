@@ -8,12 +8,9 @@ var _ = time.Now // avoid unused import
 
 // VpcFirewallInventoryView VpcFirewall
 type VpcFirewallInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Refs []VpcFirewallRuleSetL3RefInventoryView `json:"refs,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Description string `json:"description,omitempty"`
 }
 
 // UpdateVpcFirewallEventView UpdateVpcFirewallEvent
@@ -35,4 +32,3 @@ type RefreshFirewallEventView struct {
 type QueryVpcFirewallView struct {
 	Inventories []VpcFirewallInventoryView `json:"inventories,omitempty"`
 }
-

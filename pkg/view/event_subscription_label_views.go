@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // EventSubscriptionLabelInventoryView EventSubscriptionLabel
 type EventSubscriptionLabelInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Key string `json:"key,omitempty"`
+	Uuid     string `json:"uuid,omitempty"`
+	Key      string `json:"key,omitempty"`
 	Operator string `json:"operator,omitempty"`
-	Value string `json:"value,omitempty"`
+	Value    string `json:"value,omitempty"`
 }
 
 // AddLabelToEventSubscriptionEventView AddLabelToEventSubscriptionEvent
@@ -23,4 +23,3 @@ type AddLabelToEventSubscriptionEventView struct {
 type UpdateEventSubscriptionLabelEventView struct {
 	Inventory EventSubscriptionLabelInventoryView `json:"inventory,omitempty"`
 }
-

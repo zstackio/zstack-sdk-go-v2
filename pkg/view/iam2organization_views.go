@@ -8,17 +8,14 @@ var _ = time.Now // avoid unused import
 
 // IAM2OrganizationInventoryView IAM2Organization
 type IAM2OrganizationInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
-	Type string `json:"type,omitempty"`
-	SrcType string `json:"srcType,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	ParentUuid string `json:"parentUuid,omitempty"`
-	RootOrganizationUuid string `json:"rootOrganizationUuid,omitempty"`
-	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	State                string                       `json:"state,omitempty"`
+	Type                 string                       `json:"type,omitempty"`
+	SrcType              string                       `json:"srcType,omitempty"`
+	ParentUuid           string                       `json:"parentUuid,omitempty"`
+	RootOrganizationUuid string                       `json:"rootOrganizationUuid,omitempty"`
+	Attributes           []IAM2AttributeInventoryView `json:"attributes,omitempty"`
 }
 
 // ChangeIAM2OrganizationStateEventView ChangeIAM2OrganizationStateEvent
@@ -45,4 +42,3 @@ type UpdateIAM2OrganizationEventView struct {
 type CreateIAM2OrganizationEventView struct {
 	Inventory IAM2OrganizationInventoryView `json:"inventory,omitempty"`
 }
-

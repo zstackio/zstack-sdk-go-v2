@@ -12,4 +12,3 @@ type PaginationView struct {
 	Limit int `json:"limit,omitempty"`
 	Total int `json:"total,omitempty"`
 }
-

@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // VRouterRouteTableInventoryView VRouterRouteTable
 type VRouterRouteTableInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	AttachedRouterRefs []VirtualRouterVRouterRouteTableRefInventoryView `json:"attachedRouterRefs,omitempty"`
-	RouteEntries []VRouterRouteEntryInventoryView `json:"routeEntries,omitempty"`
+	RouteEntries       []VRouterRouteEntryInventoryView                 `json:"routeEntries,omitempty"`
 }
 
 // QueryVRouterRouteTableView QueryVRouterRouteTable
@@ -51,4 +48,3 @@ type UpdateVRouterRouteTableEventView struct {
 type AttachVRouterRouteTableToVRouterEventView struct {
 	Inventory VRouterRouteTableInventoryView `json:"inventory,omitempty"`
 }
-

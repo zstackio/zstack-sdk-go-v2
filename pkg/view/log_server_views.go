@@ -8,15 +8,12 @@ var _ = time.Now // avoid unused import
 
 // LogServerInventoryView LogServer
 type LogServerInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Category string `json:"category,omitempty"`
-	Type string `json:"type,omitempty"`
-	Level string `json:"level,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Category      string `json:"category,omitempty"`
+	Type          string `json:"type,omitempty"`
+	Level         string `json:"level,omitempty"`
 	Configuration string `json:"configuration,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // UpdateLogServerEventView UpdateLogServerEvent
@@ -38,4 +35,3 @@ type QueryLogServerView struct {
 type AddLogServerEventView struct {
 	Inventory LogServerInventoryView `json:"inventory,omitempty"`
 }
-

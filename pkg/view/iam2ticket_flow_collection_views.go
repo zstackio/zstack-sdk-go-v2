@@ -8,16 +8,12 @@ var _ = time.Now // avoid unused import
 
 // IAM2TicketFlowCollectionInventoryView IAM2TicketFlowCollection
 type IAM2TicketFlowCollectionInventoryView struct {
-	ProjectUuid string `json:"projectUuid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	IsDefault bool `json:"isDefault,omitempty"`
-	Flows []TicketFlowInventoryView `json:"flows,omitempty"`
-	TicketTypeUuids []string `json:"ticketTypeUuids,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	ProjectUuid     string                    `json:"projectUuid,omitempty"`
+	State           string                    `json:"state,omitempty"`
+	Status          string                    `json:"status,omitempty"`
+	IsDefault       bool                      `json:"isDefault,omitempty"`
+	Flows           []TicketFlowInventoryView `json:"flows,omitempty"`
+	TicketTypeUuids []string                  `json:"ticketTypeUuids,omitempty"`
 }
-

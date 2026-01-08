@@ -8,16 +8,15 @@ var _ = time.Now // avoid unused import
 
 // VirtualizerInfoInventoryView VirtualizerInfo
 type VirtualizerInfoInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	ResourceType string `json:"resourceType,omitempty"`
-	InfoList []VirtualizerInfoView `json:"infoList,omitempty"`
+	Uuid         string                `json:"uuid,omitempty"`
+	ResourceType string                `json:"resourceType,omitempty"`
+	InfoList     []VirtualizerInfoView `json:"infoList,omitempty"`
 }
 
 // VirtualizerInfoView VirtualizerInfo
 type VirtualizerInfoView struct {
-	Hypervisor string `json:"hypervisor,omitempty"`
+	Hypervisor     string `json:"hypervisor,omitempty"`
 	CurrentVersion string `json:"currentVersion,omitempty"`
-	ExpectVersion string `json:"expectVersion,omitempty"`
-	MatchState string `json:"matchState,omitempty"`
+	ExpectVersion  string `json:"expectVersion,omitempty"`
+	MatchState     string `json:"matchState,omitempty"`
 }
-

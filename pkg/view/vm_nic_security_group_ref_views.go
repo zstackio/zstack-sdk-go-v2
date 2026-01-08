@@ -8,12 +8,12 @@ var _ = time.Now // avoid unused import
 
 // VmNicSecurityGroupRefInventoryView VmNicSecurityGroupRef
 type VmNicSecurityGroupRefInventoryView struct {
-	Priority int `json:"priority,omitempty"`
-	VmNicUuid string `json:"vmNicUuid,omitempty"`
-	SecurityGroupUuid string `json:"securityGroupUuid,omitempty"`
-	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Priority          int       `json:"priority,omitempty"`
+	VmNicUuid         string    `json:"vmNicUuid,omitempty"`
+	SecurityGroupUuid string    `json:"securityGroupUuid,omitempty"`
+	VmInstanceUuid    string    `json:"vmInstanceUuid,omitempty"`
+	CreateDate        time.Time `json:"createDate,omitempty"`
+	LastOpDate        time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryVmNicInSecurityGroupView QueryVmNicInSecurityGroup
@@ -25,4 +25,3 @@ type QueryVmNicInSecurityGroupView struct {
 type SetVmNicSecurityGroupEventView struct {
 	Inventory []VmNicSecurityGroupRefInventoryView `json:"inventory,omitempty"`
 }
-

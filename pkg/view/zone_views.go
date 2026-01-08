@@ -8,14 +8,11 @@ var _ = time.Now // avoid unused import
 
 // ZoneInventoryView Zone
 type ZoneInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
-	Type string `json:"type,omitempty"`
-	IsDefault bool `json:"isDefault,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	State     string `json:"state,omitempty"`
+	Type      string `json:"type,omitempty"`
+	IsDefault bool   `json:"isDefault,omitempty"`
 }
 
 // QueryZoneView QueryZone
@@ -47,4 +44,3 @@ type ChangeZoneStateEventView struct {
 type UpdateZoneEventView struct {
 	Inventory ZoneInventoryView `json:"inventory,omitempty"`
 }
-

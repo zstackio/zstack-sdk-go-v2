@@ -8,17 +8,14 @@ var _ = time.Now // avoid unused import
 
 // ClusterDRSInventoryView ClusterDRS
 type ClusterDRSInventoryView struct {
-	ClusterUuid string `json:"clusterUuid,omitempty"`
-	State string `json:"state,omitempty"`
-	BalancedState string `json:"balancedState,omitempty"`
-	AutomationLevel string `json:"automationLevel,omitempty"`
-	Thresholds []ThresholdView `json:"thresholds,omitempty"`
-	ThresholdDuration int `json:"thresholdDuration,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	ClusterUuid       string          `json:"clusterUuid,omitempty"`
+	State             string          `json:"state,omitempty"`
+	BalancedState     string          `json:"balancedState,omitempty"`
+	AutomationLevel   string          `json:"automationLevel,omitempty"`
+	Thresholds        []ThresholdView `json:"thresholds,omitempty"`
+	ThresholdDuration int             `json:"thresholdDuration,omitempty"`
 }
 
 // QueryClusterDRSView QueryClusterDRS
@@ -40,4 +37,3 @@ type CreateClusterDRSEventView struct {
 type UpdateClusterDRSEventView struct {
 	Inventory ClusterDRSInventoryView `json:"inventory,omitempty"`
 }
-

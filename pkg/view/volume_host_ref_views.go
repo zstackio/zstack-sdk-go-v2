@@ -8,11 +8,10 @@ var _ = time.Now // avoid unused import
 
 // VolumeHostRefInventoryView VolumeHostRef
 type VolumeHostRefInventoryView struct {
-	HostUuid string `json:"hostUuid,omitempty"`
-	VolumeUuid string `json:"volumeUuid,omitempty"`
-	MountPath string `json:"mountPath,omitempty"`
-	Device string `json:"device,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	HostUuid   string    `json:"hostUuid,omitempty"`
+	VolumeUuid string    `json:"volumeUuid,omitempty"`
+	MountPath  string    `json:"mountPath,omitempty"`
+	Device     string    `json:"device,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
-

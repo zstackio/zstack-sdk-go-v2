@@ -8,13 +8,13 @@ var _ = time.Now // avoid unused import
 
 // VpcFirewallRuleSetL3RefInventoryView VpcFirewallRuleSetL3Ref
 type VpcFirewallRuleSetL3RefInventoryView struct {
-	Id int64 `json:"id,omitempty"`
-	RuleSetUuid string `json:"ruleSetUuid,omitempty"`
-	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
-	VpcFirewallUuid string `json:"vpcFirewallUuid,omitempty"`
-	PacketsForwardType string `json:"packetsForwardType,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Id                 int64     `json:"id,omitempty"`
+	RuleSetUuid        string    `json:"ruleSetUuid,omitempty"`
+	L3NetworkUuid      string    `json:"l3NetworkUuid,omitempty"`
+	VpcFirewallUuid    string    `json:"vpcFirewallUuid,omitempty"`
+	PacketsForwardType string    `json:"packetsForwardType,omitempty"`
+	CreateDate         time.Time `json:"createDate,omitempty"`
+	LastOpDate         time.Time `json:"lastOpDate,omitempty"`
 }
 
 // AttachFirewallRuleSetToL3EventView AttachFirewallRuleSetToL3Event
@@ -26,4 +26,3 @@ type AttachFirewallRuleSetToL3EventView struct {
 type QueryFirewallRuleSetL3RefView struct {
 	Inventories []VpcFirewallRuleSetL3RefInventoryView `json:"inventories,omitempty"`
 }
-

@@ -8,11 +8,11 @@ var _ = time.Now // avoid unused import
 
 // VmInstanceMdevDeviceSpecRefInventoryView VmInstanceMdevDeviceSpecRef
 type VmInstanceMdevDeviceSpecRefInventoryView struct {
-	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	MdevSpecUuid string `json:"mdevSpecUuid,omitempty"`
-	MdevDeviceNumber int `json:"mdevDeviceNumber,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	VmInstanceUuid   string    `json:"vmInstanceUuid,omitempty"`
+	MdevSpecUuid     string    `json:"mdevSpecUuid,omitempty"`
+	MdevDeviceNumber int       `json:"mdevDeviceNumber,omitempty"`
+	CreateDate       time.Time `json:"createDate,omitempty"`
+	LastOpDate       time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryVmInstanceMdevDeviceSpecRefView QueryVmInstanceMdevDeviceSpecRef
@@ -24,4 +24,3 @@ type QueryVmInstanceMdevDeviceSpecRefView struct {
 type AddMdevDeviceSpecToVmInstanceEventView struct {
 	Inventory VmInstanceMdevDeviceSpecRefInventoryView `json:"inventory,omitempty"`
 }
-

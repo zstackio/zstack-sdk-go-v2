@@ -8,20 +8,17 @@ var _ = time.Now // avoid unused import
 
 // VmSchedulingRuleInventoryView VmSchedulingRule
 type VmSchedulingRuleInventoryView struct {
-	Rule string `json:"rule,omitempty"`
-	Mode string `json:"mode,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Policy string `json:"policy,omitempty"`
-	Version string `json:"version,omitempty"`
-	Type string `json:"type,omitempty"`
-	Appliance string `json:"appliance,omitempty"`
-	ZoneUuid string `json:"zoneUuid,omitempty"`
-	State string `json:"state,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Usages []AffinityGroupUsageInventoryView `json:"usages,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Rule      string                            `json:"rule,omitempty"`
+	Mode      string                            `json:"mode,omitempty"`
+	Policy    string                            `json:"policy,omitempty"`
+	Version   string                            `json:"version,omitempty"`
+	Type      string                            `json:"type,omitempty"`
+	Appliance string                            `json:"appliance,omitempty"`
+	ZoneUuid  string                            `json:"zoneUuid,omitempty"`
+	State     string                            `json:"state,omitempty"`
+	Usages    []AffinityGroupUsageInventoryView `json:"usages,omitempty"`
 }
 
 // DeleteAffinityGroupEventView DeleteAffinityGroupEvent
@@ -53,4 +50,3 @@ type UpdateVmSchedulingRuleEventView struct {
 type QueryVmSchedulingRuleView struct {
 	Inventories []VmSchedulingRuleInventoryView `json:"inventories,omitempty"`
 }
-

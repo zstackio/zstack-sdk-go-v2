@@ -8,17 +8,15 @@ var _ = time.Now // avoid unused import
 
 // IscsiServerInventoryView IscsiServer
 type IscsiServerInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Ip string `json:"ip,omitempty"`
-	Port int `json:"port,omitempty"`
-	ChapUserName string `json:"chapUserName,omitempty"`
-	ChapUserPassword string `json:"chapUserPassword,omitempty"`
-	State string `json:"state,omitempty"`
-	IscsiTargets []IscsiTargetInventoryView `json:"iscsiTargets,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Ip               string                               `json:"ip,omitempty"`
+	Port             int                                  `json:"port,omitempty"`
+	ChapUserName     string                               `json:"chapUserName,omitempty"`
+	ChapUserPassword string                               `json:"chapUserPassword,omitempty"`
+	State            string                               `json:"state,omitempty"`
+	IscsiTargets     []IscsiTargetInventoryView           `json:"iscsiTargets,omitempty"`
 	IscsiClusterRefs []IscsiServerClusterRefInventoryView `json:"iscsiClusterRefs,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // AddIscsiServerEventView AddIscsiServerEvent
@@ -55,4 +53,3 @@ type RefreshIscsiServerEventView struct {
 type UpdateIscsiServerEventView struct {
 	Inventory IscsiServerInventoryView `json:"inventory,omitempty"`
 }
-

@@ -8,15 +8,12 @@ var _ = time.Now // avoid unused import
 
 // DatabaseBackupInventoryView DatabaseBackup
 type DatabaseBackupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
-	Status string `json:"status,omitempty"`
-	Size int64 `json:"size,omitempty"`
-	Metadata string `json:"metadata,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	State             string                                  `json:"state,omitempty"`
+	Status            string                                  `json:"status,omitempty"`
+	Size              int64                                   `json:"size,omitempty"`
+	Metadata          string                                  `json:"metadata,omitempty"`
 	BackupStorageRefs []DatabaseBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
 }
 
@@ -44,4 +41,3 @@ type QueryDatabaseBackupView struct {
 type SyncDatabaseBackupEventView struct {
 	Result SyncBackupResultView `json:"result,omitempty"`
 }
-

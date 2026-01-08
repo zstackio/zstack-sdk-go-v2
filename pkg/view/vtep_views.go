@@ -8,15 +8,15 @@ var _ = time.Now // avoid unused import
 
 // VtepInventoryView Vtep
 type VtepInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	HostUuid string `json:"hostUuid,omitempty"`
-	VtepIp string `json:"vtepIp,omitempty"`
-	Port int `json:"port,omitempty"`
-	Type string `json:"type,omitempty"`
-	PhysicalInterface string `json:"physicalInterface,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	PoolUuid string `json:"poolUuid,omitempty"`
+	Uuid              string    `json:"uuid,omitempty"`
+	HostUuid          string    `json:"hostUuid,omitempty"`
+	VtepIp            string    `json:"vtepIp,omitempty"`
+	Port              int       `json:"port,omitempty"`
+	Type              string    `json:"type,omitempty"`
+	PhysicalInterface string    `json:"physicalInterface,omitempty"`
+	CreateDate        time.Time `json:"createDate,omitempty"`
+	LastOpDate        time.Time `json:"lastOpDate,omitempty"`
+	PoolUuid          string    `json:"poolUuid,omitempty"`
 }
 
 // QueryVtepView QueryVtep
@@ -28,4 +28,3 @@ type QueryVtepView struct {
 type CreateVxlanVtepEventView struct {
 	Inventory VtepInventoryView `json:"inventory,omitempty"`
 }
-

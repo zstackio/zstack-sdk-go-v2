@@ -8,14 +8,11 @@ var _ = time.Now // avoid unused import
 
 // AliyunNasAccessGroupInventoryView AliyunNasAccessGroup
 type AliyunNasAccessGroupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
-	Rules []AliyunNasAccessRuleInventoryView `json:"rules,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	DataCenterUuid string                             `json:"dataCenterUuid,omitempty"`
+	Rules          []AliyunNasAccessRuleInventoryView `json:"rules,omitempty"`
+	Type           string                             `json:"type,omitempty"`
 }
 
 // AddAliyunNasAccessGroupEventView AddAliyunNasAccessGroupEvent
@@ -42,4 +39,3 @@ type DeleteAliyunNasAccessGroupEventView struct {
 type QueryAliyunNasAccessGroupView struct {
 	Inventories []AliyunNasAccessGroupInventoryView `json:"inventories,omitempty"`
 }
-

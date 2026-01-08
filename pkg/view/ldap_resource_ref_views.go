@@ -8,13 +8,13 @@ var _ = time.Now // avoid unused import
 
 // LdapResourceRefInventoryView LdapResourceRef
 type LdapResourceRefInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	LdapUid string `json:"ldapUid,omitempty"`
-	LdapServerUuid string `json:"ldapServerUuid,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
-	ResourceType string `json:"resourceType,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Uuid           string    `json:"uuid,omitempty"`
+	LdapUid        string    `json:"ldapUid,omitempty"`
+	LdapServerUuid string    `json:"ldapServerUuid,omitempty"`
+	ResourceUuid   string    `json:"resourceUuid,omitempty"`
+	ResourceType   string    `json:"resourceType,omitempty"`
+	CreateDate     time.Time `json:"createDate,omitempty"`
+	LastOpDate     time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryIAM2LdapBindingView QueryIAM2LdapBinding
@@ -31,4 +31,3 @@ type CreateIAM2VirtualIDLdapBindingEventView struct {
 type CreateIAM2VirtualIDFromLdapUidEventView struct {
 	Inventory LdapResourceRefInventoryView `json:"inventory,omitempty"`
 }
-

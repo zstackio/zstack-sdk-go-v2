@@ -8,20 +8,17 @@ var _ = time.Now // avoid unused import
 
 // SftpBackupStorageInventoryView SftpBackupStorage
 type SftpBackupStorageInventoryView struct {
-	Hostname string `json:"hostname,omitempty"`
-	Username string `json:"username,omitempty"`
-	SshPort int `json:"sshPort,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Url string `json:"url,omitempty"`
-	Description string `json:"description,omitempty"`
-	TotalCapacity int64 `json:"totalCapacity,omitempty"`
-	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Hostname          string   `json:"hostname,omitempty"`
+	Username          string   `json:"username,omitempty"`
+	SshPort           int      `json:"sshPort,omitempty"`
+	Url               string   `json:"url,omitempty"`
+	TotalCapacity     int64    `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64    `json:"availableCapacity,omitempty"`
+	Type              string   `json:"type,omitempty"`
+	State             string   `json:"state,omitempty"`
+	Status            string   `json:"status,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 
@@ -39,4 +36,3 @@ type ReconnectSftpBackupStorageEventView struct {
 type AddSftpBackupStorageEventView struct {
 	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
 }
-

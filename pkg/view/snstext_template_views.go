@@ -8,18 +8,15 @@ var _ = time.Now // avoid unused import
 
 // SNSTextTemplateInventoryView SNSTextTemplate
 type SNSTextTemplateInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ApplicationPlatformType string `json:"applicationPlatformType,omitempty"`
-	Subject string `json:"subject,omitempty"`
-	RecoverySubject string `json:"recoverySubject,omitempty"`
-	Template string `json:"template,omitempty"`
-	RecoveryTemplate string `json:"recoveryTemplate,omitempty"`
-	DefaultTemplate bool `json:"defaultTemplate,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Type string `json:"type,omitempty"`
+	Subject                 string `json:"subject,omitempty"`
+	RecoverySubject         string `json:"recoverySubject,omitempty"`
+	Template                string `json:"template,omitempty"`
+	RecoveryTemplate        string `json:"recoveryTemplate,omitempty"`
+	DefaultTemplate         bool   `json:"defaultTemplate,omitempty"`
+	Type                    string `json:"type,omitempty"`
 }
 
 // UpdateSNSTextTemplateEventView UpdateSNSTextTemplateEvent
@@ -36,4 +33,3 @@ type DeleteSNSTextTemplateEventView struct {
 type QuerySNSTextTemplateView struct {
 	Inventories []SNSTextTemplateInventoryView `json:"inventories,omitempty"`
 }
-

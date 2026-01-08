@@ -9,10 +9,10 @@ var _ = time.Now // avoid unused import
 // TemplateConfigInventoryView TemplateConfig
 type TemplateConfigInventoryView struct {
 	TemplateUuid string `json:"templateUuid,omitempty"`
-	Category string `json:"category,omitempty"`
-	Name string `json:"name,omitempty"`
+	Category     string `json:"category,omitempty"`
+	Name         string `json:"name,omitempty"`
 	DefaultValue string `json:"defaultValue,omitempty"`
-	Value string `json:"value,omitempty"`
+	Value        string `json:"value,omitempty"`
 }
 
 // UpdateTemplateConfigEventView UpdateTemplateConfigEvent
@@ -39,4 +39,3 @@ type ApplyTemplateConfigEventView struct {
 type ResetTemplateConfigEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

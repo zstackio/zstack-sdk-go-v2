@@ -9,11 +9,10 @@ var _ = time.Now // avoid unused import
 // VirtualRouterVRouterRouteTableRefInventoryView VirtualRouterVRouterRouteTableRef
 type VirtualRouterVRouterRouteTableRefInventoryView struct {
 	VirtualRouterVmUuid string `json:"virtualRouterVmUuid,omitempty"`
-	RouteTableUuid string `json:"routeTableUuid,omitempty"`
+	RouteTableUuid      string `json:"routeTableUuid,omitempty"`
 }
 
 // QueryVirtualRouterVRouterRouteTableRefView QueryVirtualRouterVRouterRouteTableRef
 type QueryVirtualRouterVRouterRouteTableRefView struct {
 	Inventories []VirtualRouterVRouterRouteTableRefInventoryView `json:"inventories,omitempty"`
 }
-

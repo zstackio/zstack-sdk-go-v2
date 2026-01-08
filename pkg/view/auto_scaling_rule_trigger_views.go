@@ -8,14 +8,11 @@ var _ = time.Now // avoid unused import
 
 // AutoScalingRuleTriggerInventoryView AutoScalingRuleTrigger
 type AutoScalingRuleTriggerInventoryView struct {
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Type string `json:"type,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Type     string `json:"type,omitempty"`
 	RuleUuid string `json:"ruleUuid,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	State    string `json:"state,omitempty"`
 }
 
 // QueryAutoScalingRuleTriggerView QueryAutoScalingRuleTrigger
@@ -32,4 +29,3 @@ type DeleteAutoScalingRuleTriggerEventView struct {
 type CreateAutoScalingRuleTriggerEventView struct {
 	Inventory AutoScalingRuleTriggerInventoryView `json:"inventory,omitempty"`
 }
-

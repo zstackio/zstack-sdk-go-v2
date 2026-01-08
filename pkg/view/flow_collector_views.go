@@ -8,14 +8,11 @@ var _ = time.Now // avoid unused import
 
 // FlowCollectorInventoryView FlowCollector
 type FlowCollectorInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	FlowMeterUuid string `json:"flowMeterUuid,omitempty"`
-	Server string `json:"server,omitempty"`
-	Port int64 `json:"port,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Server        string `json:"server,omitempty"`
+	Port          int64  `json:"port,omitempty"`
 }
 
 // CreateFlowCollectorEventView CreateFlowCollectorEvent
@@ -32,4 +29,3 @@ type QueryFlowCollectorView struct {
 type DeleteFlowCollectorEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

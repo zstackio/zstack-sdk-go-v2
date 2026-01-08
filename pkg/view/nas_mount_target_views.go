@@ -8,14 +8,11 @@ var _ = time.Now // avoid unused import
 
 // NasMountTargetInventoryView NasMountTarget
 type NasMountTargetInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	MountDomain string `json:"mountDomain,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	MountDomain       string `json:"mountDomain,omitempty"`
 	NasFileSystemUuid string `json:"nasFileSystemUuid,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Type              string `json:"type,omitempty"`
 }
 
 // UpdateNasMountTargetEventView UpdateNasMountTargetEvent
@@ -32,4 +29,3 @@ type QueryNasMountTargetView struct {
 type DeleteNasMountTargetEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

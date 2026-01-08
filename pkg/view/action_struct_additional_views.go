@@ -8,10 +8,9 @@ var _ = time.Now // avoid unused import
 
 // ActionStructView ActionStruct
 type ActionStructView struct {
-	ResourceName string `json:"resourceName,omitempty"`
-	ActionName string `json:"actionName,omitempty"`
-	Round int `json:"round,omitempty"`
-	InDegree []string `json:"inDegree,omitempty"`
-	Actions interface{} `json:"actions,omitempty"`
+	ResourceName string      `json:"resourceName,omitempty"`
+	ActionName   string      `json:"actionName,omitempty"`
+	Round        int         `json:"round,omitempty"`
+	InDegree     []string    `json:"inDegree,omitempty"`
+	Actions      interface{} `json:"actions,omitempty"`
 }
-

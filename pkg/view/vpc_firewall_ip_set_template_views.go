@@ -8,14 +8,12 @@ var _ = time.Now // avoid unused import
 
 // VpcFirewallIpSetTemplateInventoryView VpcFirewallIpSetTemplate
 type VpcFirewallIpSetTemplateInventoryView struct {
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	SourceValue string `json:"sourceValue,omitempty"`
-	DestValue string `json:"destValue,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	DestValue   string `json:"destValue,omitempty"`
+	Type        string `json:"type,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 }
 
 // CreateFirewallIpSetTemplateEventView CreateFirewallIpSetTemplateEvent
@@ -32,4 +30,3 @@ type QueryFirewallIpSetTemplateView struct {
 type UpdateFirewallIpSetTemplateEventView struct {
 	Inventory VpcFirewallIpSetTemplateInventoryView `json:"inventory,omitempty"`
 }
-

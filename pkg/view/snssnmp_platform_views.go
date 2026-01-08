@@ -8,15 +8,12 @@ var _ = time.Now // avoid unused import
 
 // SNSSnmpPlatformInventoryView SNSSnmpPlatform
 type SNSSnmpPlatformInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	SnmpAddress string `json:"snmpAddress,omitempty"`
-	SnmpPort int `json:"snmpPort,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	SnmpPort    int    `json:"snmpPort,omitempty"`
+	State       string `json:"state,omitempty"`
+	Type        string `json:"type,omitempty"`
 }
 
 // QuerySNSEmailPlatformView QuerySNSEmailPlatform
@@ -33,4 +30,3 @@ type UpdateSNSApplicationPlatformEventView struct {
 type CreateSNSApplicationPlatformEventView struct {
 	Inventory SNSApplicationPlatformInventoryView `json:"inventory,omitempty"`
 }
-

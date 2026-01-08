@@ -8,15 +8,13 @@ var _ = time.Now // avoid unused import
 
 // EventRuleTemplateInventoryView EventRuleTemplate
 type EventRuleTemplateInventoryView struct {
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	MonitorTemplateUuid string `json:"monitorTemplateUuid,omitempty"`
-	Namespace string `json:"namespace,omitempty"`
-	EventName string `json:"eventName,omitempty"`
-	EmergencyLevel string `json:"emergencyLevel,omitempty"`
-	Labels string `json:"labels,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
+	Namespace           string `json:"namespace,omitempty"`
+	EventName           string `json:"eventName,omitempty"`
+	EmergencyLevel      string `json:"emergencyLevel,omitempty"`
+	Labels              string `json:"labels,omitempty"`
 }
 
 // AddEventRuleTemplateEventView AddEventRuleTemplateEvent
@@ -38,4 +36,3 @@ type UpdateEventRuleTemplateEventView struct {
 type QueryEventRuleTemplateView struct {
 	Inventories []EventRuleTemplateInventoryView `json:"inventories,omitempty"`
 }
-

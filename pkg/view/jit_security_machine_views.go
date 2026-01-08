@@ -8,29 +8,25 @@ var _ = time.Now // avoid unused import
 
 // JitSecurityMachineInventoryView JitSecurityMachine
 type JitSecurityMachineInventoryView struct {
-	Port int `json:"port,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	ZoneUuid string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Port                   int    `json:"port,omitempty"`
+	ZoneUuid               string `json:"zoneUuid,omitempty"`
 	SecretResourcePoolUuid string `json:"secretResourcePoolUuid,omitempty"`
-	Description string `json:"description,omitempty"`
-	ManagementIp string `json:"managementIp,omitempty"`
-	Type string `json:"type,omitempty"`
-	Model string `json:"model,omitempty"`
-	State string `json:"state,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	ManagementIp           string `json:"managementIp,omitempty"`
+	Type                   string `json:"type,omitempty"`
+	Model                  string `json:"model,omitempty"`
+	State                  string `json:"state,omitempty"`
+	Status                 string `json:"status,omitempty"`
 }
 
 // UpdateSecurityMachineEventView UpdateSecurityMachineEvent
 type UpdateSecurityMachineEventView struct {
 	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
-	Success bool `json:"success,omitempty"`
+	Success   bool                         `json:"success,omitempty"`
 }
 
 // AddSecurityMachineEventView AddSecurityMachineEvent
 type AddSecurityMachineEventView struct {
 	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
 }
-

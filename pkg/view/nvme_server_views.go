@@ -8,16 +8,14 @@ var _ = time.Now // avoid unused import
 
 // NvmeServerInventoryView NvmeServer
 type NvmeServerInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Ip string `json:"ip,omitempty"`
-	Port int `json:"port,omitempty"`
-	State string `json:"state,omitempty"`
-	Transport string `json:"transport,omitempty"`
-	NvmeTargets []NvmeTargetInventoryView `json:"nvmeTargets,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Ip              string                              `json:"ip,omitempty"`
+	Port            int                                 `json:"port,omitempty"`
+	State           string                              `json:"state,omitempty"`
+	Transport       string                              `json:"transport,omitempty"`
+	NvmeTargets     []NvmeTargetInventoryView           `json:"nvmeTargets,omitempty"`
 	NvmeClusterRefs []NvmeServerClusterRefInventoryView `json:"nvmeClusterRefs,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // QueryNvmeServerView QueryNvmeServer
@@ -44,4 +42,3 @@ type AddNvmeServerEventView struct {
 type DetachNvmeServerFromClusterEventView struct {
 	Inventory NvmeServerInventoryView `json:"inventory,omitempty"`
 }
-

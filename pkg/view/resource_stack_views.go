@@ -8,19 +8,16 @@ var _ = time.Now // avoid unused import
 
 // ResourceStackInventoryView ResourceStack
 type ResourceStackInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Version string `json:"version,omitempty"`
-	Type string `json:"type,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Version         string `json:"version,omitempty"`
+	Type            string `json:"type,omitempty"`
 	TemplateContent string `json:"templateContent,omitempty"`
-	ParamContent string `json:"paramContent,omitempty"`
-	Status string `json:"status,omitempty"`
-	Reason string `json:"reason,omitempty"`
-	Outputs string `json:"outputs,omitempty"`
-	EnableRollback bool `json:"enableRollback,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	ParamContent    string `json:"paramContent,omitempty"`
+	Status          string `json:"status,omitempty"`
+	Reason          string `json:"reason,omitempty"`
+	Outputs         string `json:"outputs,omitempty"`
+	EnableRollback  bool   `json:"enableRollback,omitempty"`
 }
 
 // DeleteResourceStackEventView DeleteResourceStackEvent
@@ -42,4 +39,3 @@ type CreateResourceStackEventView struct {
 type UpdateResourceStackEventView struct {
 	Inventory ResourceStackInventoryView `json:"inventory,omitempty"`
 }
-

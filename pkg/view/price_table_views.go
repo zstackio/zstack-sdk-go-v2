@@ -8,11 +8,8 @@ var _ = time.Now // avoid unused import
 
 // PriceTableInventoryView PriceTable
 type PriceTableInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
 }
 
 // CreatePriceTableEventView CreatePriceTableEvent
@@ -49,4 +46,3 @@ type QueryPriceTableRelyView struct {
 type AttachPriceTableToAccountEventView struct {
 	Inventory PriceTableInventoryView `json:"inventory,omitempty"`
 }
-

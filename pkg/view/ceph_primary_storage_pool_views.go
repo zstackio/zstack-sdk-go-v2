@@ -8,20 +8,20 @@ var _ = time.Now // avoid unused import
 
 // CephPrimaryStoragePoolInventoryView CephPrimaryStoragePool
 type CephPrimaryStoragePoolInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
-	PoolName string `json:"poolName,omitempty"`
-	AliasName string `json:"aliasName,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Type string `json:"type,omitempty"`
-	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
-	UsedCapacity int64 `json:"usedCapacity,omitempty"`
-	TotalCapacity int64 `json:"totalCapacity,omitempty"`
-	SecurityPolicy string `json:"securityPolicy,omitempty"`
-	ReplicatedSize int `json:"replicatedSize,omitempty"`
-	DiskUtilization float32 `json:"diskUtilization,omitempty"`
+	Uuid               string    `json:"uuid,omitempty"`
+	PrimaryStorageUuid string    `json:"primaryStorageUuid,omitempty"`
+	PoolName           string    `json:"poolName,omitempty"`
+	AliasName          string    `json:"aliasName,omitempty"`
+	Description        string    `json:"description,omitempty"`
+	CreateDate         time.Time `json:"createDate,omitempty"`
+	LastOpDate         time.Time `json:"lastOpDate,omitempty"`
+	Type               string    `json:"type,omitempty"`
+	AvailableCapacity  int64     `json:"availableCapacity,omitempty"`
+	UsedCapacity       int64     `json:"usedCapacity,omitempty"`
+	TotalCapacity      int64     `json:"totalCapacity,omitempty"`
+	SecurityPolicy     string    `json:"securityPolicy,omitempty"`
+	ReplicatedSize     int       `json:"replicatedSize,omitempty"`
+	DiskUtilization    float32   `json:"diskUtilization,omitempty"`
 }
 
 // UpdateCephPrimaryStoragePoolEventView UpdateCephPrimaryStoragePoolEvent
@@ -43,4 +43,3 @@ type QueryCephPrimaryStoragePoolView struct {
 type DeleteCephPrimaryStoragePoolEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

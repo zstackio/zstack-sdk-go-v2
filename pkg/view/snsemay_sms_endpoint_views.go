@@ -8,19 +8,15 @@ var _ = time.Now // avoid unused import
 
 // SNSEmaySmsEndpointInventoryView SNSEmaySmsEndpoint
 type SNSEmaySmsEndpointInventoryView struct {
-	RequestUrl string `json:"requestUrl,omitempty"`
-	SmsAccessKeyId string `json:"smsAccessKeyId,omitempty"`
-	SmsAccessKeySecret string `json:"smsAccessKeySecret,omitempty"`
-	Supplier string `json:"supplier,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	PlatformUuid string `json:"platformUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	ConnectionStatus string `json:"connectionStatus,omitempty"`
-	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	RequestUrl         string                              `json:"requestUrl,omitempty"`
+	SmsAccessKeyId     string                              `json:"smsAccessKeyId,omitempty"`
+	SmsAccessKeySecret string                              `json:"smsAccessKeySecret,omitempty"`
+	Supplier           string                              `json:"supplier,omitempty"`
+	Type               string                              `json:"type,omitempty"`
+	State              string                              `json:"state,omitempty"`
+	PlatformUuid       string                              `json:"platformUuid,omitempty"`
+	ConnectionStatus   string                              `json:"connectionStatus,omitempty"`
+	Platform           SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
-

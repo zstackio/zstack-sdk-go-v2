@@ -8,17 +8,13 @@ var _ = time.Now // avoid unused import
 
 // SlbLoadBalancerInventoryView SlbLoadBalancer
 type SlbLoadBalancerInventoryView struct {
-	SlbGroupUuid string `json:"slbGroupUuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Description string `json:"description,omitempty"`
-	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
-	State string `json:"state,omitempty"`
-	Type string `json:"type,omitempty"`
-	VipUuid string `json:"vipUuid,omitempty"`
-	Ipv6VipUuid string `json:"ipv6VipUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Listeners []LoadBalancerListenerInventoryView `json:"listeners,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	SlbGroupUuid    string                              `json:"slbGroupUuid,omitempty"`
+	ServerGroupUuid string                              `json:"serverGroupUuid,omitempty"`
+	State           string                              `json:"state,omitempty"`
+	Type            string                              `json:"type,omitempty"`
+	VipUuid         string                              `json:"vipUuid,omitempty"`
+	Ipv6VipUuid     string                              `json:"ipv6VipUuid,omitempty"`
+	Listeners       []LoadBalancerListenerInventoryView `json:"listeners,omitempty"`
 }
-

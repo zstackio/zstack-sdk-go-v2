@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // PolicyRouteRuleSetInventoryView PolicyRouteRuleSet
 type PolicyRouteRuleSetInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Rules []PolicyRouteRuleInventoryView `json:"rules,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Type   string                                 `json:"type,omitempty"`
+	Rules  []PolicyRouteRuleInventoryView         `json:"rules,omitempty"`
 	L3Refs []PolicyRouteRuleSetL3RefInventoryView `json:"l3Refs,omitempty"`
 }
 
@@ -42,4 +39,3 @@ type DeletePolicyRouteRuleSetEventView struct {
 type QueryPolicyRouteRuleSetView struct {
 	Inventories []PolicyRouteRuleSetInventoryView `json:"inventories,omitempty"`
 }
-

@@ -8,16 +8,13 @@ var _ = time.Now // avoid unused import
 
 // LoadBalancerServerGroupInventoryView LoadBalancerServerGroup
 type LoadBalancerServerGroupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	LoadBalancerUuid string `json:"loadBalancerUuid,omitempty"`
-	IpVersion int `json:"ipVersion,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	LoadBalancerUuid        string                                            `json:"loadBalancerUuid,omitempty"`
+	IpVersion               int                                               `json:"ipVersion,omitempty"`
 	ListenerServerGroupRefs []LoadBalancerListenerServerGroupRefInventoryView `json:"listenerServerGroupRefs,omitempty"`
-	ServerIps []LoadBalancerServerGroupServerIpInventoryView `json:"serverIps,omitempty"`
-	VmNicRefs []LoadBalancerServerGroupVmNicRefInventoryView `json:"vmNicRefs,omitempty"`
+	ServerIps               []LoadBalancerServerGroupServerIpInventoryView    `json:"serverIps,omitempty"`
+	VmNicRefs               []LoadBalancerServerGroupVmNicRefInventoryView    `json:"vmNicRefs,omitempty"`
 }
 
 // CreateLoadBalancerServerGroupEventView CreateLoadBalancerServerGroupEvent
@@ -54,4 +51,3 @@ type ChangeLoadBalancerBackendServerEventView struct {
 type AddBackendServerToServerGroupEventView struct {
 	Inventory LoadBalancerServerGroupInventoryView `json:"inventory,omitempty"`
 }
-

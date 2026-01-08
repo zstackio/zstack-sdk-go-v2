@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // CloneVmInstanceResultsView CloneVmInstanceResults
 type CloneVmInstanceResultsView struct {
-	NumberOfClonedVm int `json:"numberOfClonedVm,omitempty"`
-	Inventories []CloneVmInstanceInventoryView `json:"inventories,omitempty"`
+	NumberOfClonedVm int                            `json:"numberOfClonedVm,omitempty"`
+	Inventories      []CloneVmInstanceInventoryView `json:"inventories,omitempty"`
 }
-

@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // SSORedirectTemplateInventoryView SSORedirectTemplate
 type SSORedirectTemplateInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	ClientUuid string `json:"clientUuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	ClientUuid       string `json:"clientUuid,omitempty"`
 	RedirectTemplate string `json:"redirectTemplate,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // CreateSSORedirectTemplateEventView CreateSSORedirectTemplateEvent
@@ -31,4 +28,3 @@ type UpdateSSORedirectTemplateEventView struct {
 type DeleteSSORedirectTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

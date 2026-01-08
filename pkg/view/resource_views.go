@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // ResourceInventoryView Resource
 type ResourceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	ResourceName string `json:"resourceName,omitempty"`
-	ResourceType string `json:"resourceType,omitempty"`
+	Uuid                 string `json:"uuid,omitempty"`
+	ResourceName         string `json:"resourceName,omitempty"`
+	ResourceType         string `json:"resourceType,omitempty"`
 	ConcreteResourceType string `json:"concreteResourceType,omitempty"`
 }
 
@@ -18,4 +18,3 @@ type ResourceInventoryView struct {
 type GetResourceNamesView struct {
 	Inventories []ResourceInventoryView `json:"inventories,omitempty"`
 }
-

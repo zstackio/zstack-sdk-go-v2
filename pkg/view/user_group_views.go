@@ -8,12 +8,9 @@ var _ = time.Now // avoid unused import
 
 // UserGroupInventoryView UserGroup
 type UserGroupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	AccountUuid string `json:"accountUuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // DeleteUserGroupEventView DeleteUserGroupEvent
@@ -35,4 +32,3 @@ type QueryUserGroupView struct {
 type UpdateUserGroupEventView struct {
 	Inventory UserGroupInventoryView `json:"inventory,omitempty"`
 }
-

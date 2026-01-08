@@ -8,14 +8,12 @@ var _ = time.Now // avoid unused import
 
 // BaremetalBondingInventoryView BaremetalBonding
 type BaremetalBondingInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ChassisUuid string `json:"chassisUuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Mode int `json:"mode,omitempty"`
-	Slaves string `json:"slaves,omitempty"`
-	Opts string `json:"opts,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Mode        int    `json:"mode,omitempty"`
+	Slaves      string `json:"slaves,omitempty"`
+	Opts        string `json:"opts,omitempty"`
 }
 
 // CreateBaremetalBondingEventView CreateBaremetalBondingEvent
@@ -27,4 +25,3 @@ type CreateBaremetalBondingEventView struct {
 type QueryBaremetalBondingView struct {
 	Inventories []BaremetalBondingInventoryView `json:"inventories,omitempty"`
 }
-

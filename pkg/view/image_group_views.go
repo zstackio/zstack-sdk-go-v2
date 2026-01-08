@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // ImageGroupInventoryView ImageGroup
 type ImageGroupInventoryView struct {
-	ImageCount int `json:"imageCount,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	ImageCount int    `json:"imageCount,omitempty"`
+	Status     string `json:"status,omitempty"`
 }
 
 // CreateImageGroupFromVmInstanceEventView CreateImageGroupFromVmInstanceEvent
@@ -41,4 +38,3 @@ type QueryImageGroupView struct {
 type CreateImageGroupFromSnapshotEventView struct {
 	Inventory ImageGroupInventoryView `json:"inventory,omitempty"`
 }
-

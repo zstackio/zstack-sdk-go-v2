@@ -8,16 +8,15 @@ var _ = time.Now // avoid unused import
 
 // VpcHaGroupNetworkServiceRefInventoryView VpcHaGroupNetworkServiceRef
 type VpcHaGroupNetworkServiceRefInventoryView struct {
-	Id int64 `json:"id,omitempty"`
-	VpcHaRouterUuid string `json:"vpcHaRouterUuid,omitempty"`
-	NetworkServiceName string `json:"networkServiceName,omitempty"`
-	NetworkServiceUuid string `json:"networkServiceUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Id                 int64     `json:"id,omitempty"`
+	VpcHaRouterUuid    string    `json:"vpcHaRouterUuid,omitempty"`
+	NetworkServiceName string    `json:"networkServiceName,omitempty"`
+	NetworkServiceUuid string    `json:"networkServiceUuid,omitempty"`
+	CreateDate         time.Time `json:"createDate,omitempty"`
+	LastOpDate         time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryVpcHaGroupNetworkServiceRefView QueryVpcHaGroupNetworkServiceRef
 type QueryVpcHaGroupNetworkServiceRefView struct {
 	Inventories []VpcHaGroupNetworkServiceRefInventoryView `json:"inventories,omitempty"`
 }
-

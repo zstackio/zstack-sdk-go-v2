@@ -8,15 +8,15 @@ var _ = time.Now // avoid unused import
 
 // UserTagInventoryView UserTag
 type UserTagInventoryView struct {
-	TagPatternUuid string `json:"tagPatternUuid,omitempty"`
-	TagPattern TagPatternInventoryView `json:"tagPattern,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
-	ResourceType string `json:"resourceType,omitempty"`
-	Tag string `json:"tag,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	TagPatternUuid string                  `json:"tagPatternUuid,omitempty"`
+	TagPattern     TagPatternInventoryView `json:"tagPattern,omitempty"`
+	Uuid           string                  `json:"uuid,omitempty"`
+	ResourceUuid   string                  `json:"resourceUuid,omitempty"`
+	ResourceType   string                  `json:"resourceType,omitempty"`
+	Tag            string                  `json:"tag,omitempty"`
+	Type           string                  `json:"type,omitempty"`
+	CreateDate     time.Time               `json:"createDate,omitempty"`
+	LastOpDate     time.Time               `json:"lastOpDate,omitempty"`
 }
 
 // CreateUserTagEventView CreateUserTagEvent
@@ -28,4 +28,3 @@ type CreateUserTagEventView struct {
 type QueryUserTagView struct {
 	Inventories []UserTagInventoryView `json:"inventories,omitempty"`
 }
-

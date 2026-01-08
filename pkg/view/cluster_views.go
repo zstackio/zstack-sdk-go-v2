@@ -8,16 +8,13 @@ var _ = time.Now // avoid unused import
 
 // ClusterInventoryView Cluster
 type ClusterInventoryView struct {
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	State          string `json:"state,omitempty"`
 	HypervisorType string `json:"hypervisorType,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	ZoneUuid string `json:"zoneUuid,omitempty"`
-	Type string `json:"type,omitempty"`
-	Architecture string `json:"architecture,omitempty"`
+	ZoneUuid       string `json:"zoneUuid,omitempty"`
+	Type           string `json:"type,omitempty"`
+	Architecture   string `json:"architecture,omitempty"`
 }
 
 // ChangeClusterStateEventView ChangeClusterStateEvent
@@ -28,7 +25,7 @@ type ChangeClusterStateEventView struct {
 // GetCandidateClustersForAttachingL2NetworkView GetCandidateClustersForAttachingL2Network
 type GetCandidateClustersForAttachingL2NetworkView struct {
 	Inventories []ClusterInventoryView `json:"inventories,omitempty"`
-	Success bool `json:"success,omitempty"`
+	Success     bool                   `json:"success,omitempty"`
 }
 
 // CreateMiniClusterEventView CreateMiniClusterEvent
@@ -55,4 +52,3 @@ type CreateClusterEventView struct {
 type QueryClusterView struct {
 	Inventories []ClusterInventoryView `json:"inventories,omitempty"`
 }
-

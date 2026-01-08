@@ -8,18 +8,15 @@ var _ = time.Now // avoid unused import
 
 // TicketInventoryView Ticket
 type TicketInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Status string `json:"status,omitempty"`
-	Request []TicketRequestView `json:"request,omitempty"`
-	AccountSystemType string `json:"accountSystemType,omitempty"`
-	TicketTypeUuid string `json:"ticketTypeUuid,omitempty"`
-	AccountSystemContext interface{} `json:"accountSystemContext,omitempty"`
-	CurrentFlowUuid string `json:"currentFlowUuid,omitempty"`
-	FlowCollectionUuid string `json:"flowCollectionUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Status               string              `json:"status,omitempty"`
+	Request              []TicketRequestView `json:"request,omitempty"`
+	AccountSystemType    string              `json:"accountSystemType,omitempty"`
+	TicketTypeUuid       string              `json:"ticketTypeUuid,omitempty"`
+	AccountSystemContext interface{}         `json:"accountSystemContext,omitempty"`
+	CurrentFlowUuid      string              `json:"currentFlowUuid,omitempty"`
+	FlowCollectionUuid   string              `json:"flowCollectionUuid,omitempty"`
 }
 
 // CreateTicketEventView CreateTicketEvent
@@ -46,4 +43,3 @@ type QueryTicketView struct {
 type ChangeTicketStatusEventView struct {
 	Inventory TicketInventoryView `json:"inventory,omitempty"`
 }
-

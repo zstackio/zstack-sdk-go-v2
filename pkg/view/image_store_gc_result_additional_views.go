@@ -10,4 +10,3 @@ var _ = time.Now // avoid unused import
 type ImageStoreGcResultView struct {
 	FreedSpaceInBytes int64 `json:"freedSpaceInBytes,omitempty"`
 }
-

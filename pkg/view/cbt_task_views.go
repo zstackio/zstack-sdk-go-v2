@@ -8,12 +8,9 @@ var _ = time.Now // avoid unused import
 
 // CbtTaskInventoryView CbtTask
 type CbtTaskInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Status       string                            `json:"status,omitempty"`
 	ResourceRefs []CbtTaskResourceRefInventoryView `json:"resourceRefs,omitempty"`
 }
 
@@ -31,4 +28,3 @@ type DeleteCbtTaskEventView struct {
 type QueryCbtTaskView struct {
 	Inventories []CbtTaskInventoryView `json:"inventories,omitempty"`
 }
-

@@ -8,23 +8,20 @@ var _ = time.Now // avoid unused import
 
 // UsbDeviceInventoryView UsbDevice
 type UsbDeviceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	HostUuid string `json:"hostUuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	HostUuid       string `json:"hostUuid,omitempty"`
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	State string `json:"state,omitempty"`
-	BusNum string `json:"busNum,omitempty"`
-	DevNum string `json:"devNum,omitempty"`
-	IdVendor string `json:"idVendor,omitempty"`
-	IdProduct string `json:"idProduct,omitempty"`
-	IManufacturer string `json:"iManufacturer,omitempty"`
-	IProduct string `json:"iProduct,omitempty"`
-	ISerial string `json:"iSerial,omitempty"`
-	UsbVersion string `json:"usbVersion,omitempty"`
-	AttachType string `json:"attachType,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	State          string `json:"state,omitempty"`
+	BusNum         string `json:"busNum,omitempty"`
+	DevNum         string `json:"devNum,omitempty"`
+	IdVendor       string `json:"idVendor,omitempty"`
+	IdProduct      string `json:"idProduct,omitempty"`
+	IManufacturer  string `json:"iManufacturer,omitempty"`
+	IProduct       string `json:"iProduct,omitempty"`
+	ISerial        string `json:"iSerial,omitempty"`
+	UsbVersion     string `json:"usbVersion,omitempty"`
+	AttachType     string `json:"attachType,omitempty"`
 }
 
 // QueryUsbDeviceView QueryUsbDevice
@@ -45,11 +42,10 @@ type UpdateUsbDeviceEventView struct {
 // GetUsbDeviceCandidatesForAttachingVmView GetUsbDeviceCandidatesForAttachingVm
 type GetUsbDeviceCandidatesForAttachingVmView struct {
 	Inventories []UsbDeviceInventoryView `json:"inventories,omitempty"`
-	Success bool `json:"success,omitempty"`
+	Success     bool                     `json:"success,omitempty"`
 }
 
 // DetachUsbDeviceFromVmEventView DetachUsbDeviceFromVmEvent
 type DetachUsbDeviceFromVmEventView struct {
 	Inventory UsbDeviceInventoryView `json:"inventory,omitempty"`
 }
-

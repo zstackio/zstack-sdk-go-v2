@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // ContainerUsageView ContainerUsage
 type ContainerUsageView struct {
-	Name string `json:"name,omitempty"`
-	Value int64 `json:"value,omitempty"`
+	Name  string `json:"name,omitempty"`
+	Value int64  `json:"value,omitempty"`
 }
-

@@ -8,16 +8,13 @@ var _ = time.Now // avoid unused import
 
 // AliyunSnapshotInventoryView AliyunSnapshot
 type AliyunSnapshotInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	SnapshotId string `json:"snapshotId,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
-	DiskUuid string `json:"diskUuid,omitempty"`
-	Status string `json:"status,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	SnapshotId          string `json:"snapshotId,omitempty"`
+	DataCenterUuid      string `json:"dataCenterUuid,omitempty"`
+	DiskUuid            string `json:"diskUuid,omitempty"`
+	Status              string `json:"status,omitempty"`
 	AliyunSnapshotUsage string `json:"aliyunSnapshotUsage,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // UpdateAliyunSnapshotEventView UpdateAliyunSnapshotEvent
@@ -39,4 +36,3 @@ type QueryAliyunSnapshotFromLocalView struct {
 type CreateAliyunSnapshotRemoteEventView struct {
 	Inventory AliyunSnapshotInventoryView `json:"inventory,omitempty"`
 }
-

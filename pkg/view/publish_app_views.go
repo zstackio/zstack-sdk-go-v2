@@ -8,20 +8,17 @@ var _ = time.Now // avoid unused import
 
 // PublishAppInventoryView PublishApp
 type PublishAppInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	TemplateContent string `json:"templateContent,omitempty"`
-	AppMetaData string `json:"appMetaData,omitempty"`
-	PreParams string `json:"preParams,omitempty"`
-	VmRelationShip string `json:"vmRelationShip,omitempty"`
-	BuildAppUuid string `json:"buildAppUuid,omitempty"`
-	Type string `json:"type,omitempty"`
-	AppId string `json:"appId,omitempty"`
-	Version string `json:"version,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	AppMetaData     string `json:"appMetaData,omitempty"`
+	PreParams       string `json:"preParams,omitempty"`
+	VmRelationShip  string `json:"vmRelationShip,omitempty"`
+	BuildAppUuid    string `json:"buildAppUuid,omitempty"`
+	Type            string `json:"type,omitempty"`
+	AppId           string `json:"appId,omitempty"`
+	Version         string `json:"version,omitempty"`
+	Status          string `json:"status,omitempty"`
 }
 
 // QueryPublishAppView QueryPublishApp
@@ -38,4 +35,3 @@ type UpdatePublishAppEventView struct {
 type DeletePublishAppEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

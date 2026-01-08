@@ -8,21 +8,17 @@ var _ = time.Now // avoid unused import
 
 // HardwareL2VxlanNetworkInventoryView HardwareL2VxlanNetwork
 type HardwareL2VxlanNetworkInventoryView struct {
-	Vlan int `json:"vlan,omitempty"`
-	Vni int `json:"vni,omitempty"`
-	PoolUuid string `json:"poolUuid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	ZoneUuid string `json:"zoneUuid,omitempty"`
-	PhysicalInterface string `json:"physicalInterface,omitempty"`
-	Type string `json:"type,omitempty"`
-	VSwitchType string `json:"vSwitchType,omitempty"`
-	VirtualNetworkId int `json:"virtualNetworkId,omitempty"`
-	Isolated bool `json:"isolated,omitempty"`
-	Pvlan string `json:"pvlan,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Vlan                 int      `json:"vlan,omitempty"`
+	Vni                  int      `json:"vni,omitempty"`
+	PoolUuid             string   `json:"poolUuid,omitempty"`
+	ZoneUuid             string   `json:"zoneUuid,omitempty"`
+	PhysicalInterface    string   `json:"physicalInterface,omitempty"`
+	Type                 string   `json:"type,omitempty"`
+	VSwitchType          string   `json:"vSwitchType,omitempty"`
+	VirtualNetworkId     int      `json:"virtualNetworkId,omitempty"`
+	Isolated             bool     `json:"isolated,omitempty"`
+	Pvlan                string   `json:"pvlan,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
-

@@ -8,13 +8,10 @@ var _ = time.Now // avoid unused import
 
 // VmSchedulingRuleGroupInventoryView VmSchedulingRuleGroup
 type VmSchedulingRuleGroupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Appliance string `json:"appliance,omitempty"`
-	ZoneUuid string `json:"zoneUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	ZoneUuid  string `json:"zoneUuid,omitempty"`
 }
 
 // DeleteVmSchedulingRuleGroupEventView DeleteVmSchedulingRuleGroupEvent
@@ -36,4 +33,3 @@ type UpdateVmSchedulingRuleGroupEventView struct {
 type CreateVmSchedulingRuleGroupEventView struct {
 	Inventory VmSchedulingRuleGroupInventoryView `json:"inventory,omitempty"`
 }
-

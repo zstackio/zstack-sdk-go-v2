@@ -8,14 +8,11 @@ var _ = time.Now // avoid unused import
 
 // XmlHookInventoryView XmlHook
 type XmlHookInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	HookScript string `json:"hookScript,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Type           string `json:"type,omitempty"`
+	HookScript     string `json:"hookScript,omitempty"`
 	LibvirtVersion string `json:"libvirtVersion,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // UpdateVmUserDefinedXmlHookScriptEventView UpdateVmUserDefinedXmlHookScriptEvent
@@ -32,4 +29,3 @@ type QueryVmUserDefinedXmlHookScriptView struct {
 type CreateVmUserDefinedXmlHookScriptEventView struct {
 	Inventory XmlHookInventoryView `json:"inventory,omitempty"`
 }
-

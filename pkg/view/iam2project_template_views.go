@@ -8,12 +8,9 @@ var _ = time.Now // avoid unused import
 
 // IAM2ProjectTemplateInventoryView IAM2ProjectTemplate
 type IAM2ProjectTemplateInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Template TemplateView `json:"template,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // CreateIAM2ProjectTemplateEventView CreateIAM2ProjectTemplateEvent
@@ -40,4 +37,3 @@ type UpdateIAM2ProjectTemplateEventView struct {
 type DeleteIAM2ProjectTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
 }
-

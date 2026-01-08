@@ -8,13 +8,11 @@ var _ = time.Now // avoid unused import
 
 // QuotaInventoryView Quota
 type QuotaInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	IdentityUuid string `json:"identityUuid,omitempty"`
 	IdentityType string `json:"identityType,omitempty"`
-	Value int64 `json:"value,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
+	Value        int64  `json:"value,omitempty"`
 }
 
 // QueryQuotaView QueryQuota
@@ -31,4 +29,3 @@ type UpdateOrganizationQuotaEventView struct {
 type UpdateQuotaEventView struct {
 	Inventory QuotaInventoryView `json:"inventory,omitempty"`
 }
-

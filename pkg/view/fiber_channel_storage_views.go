@@ -8,13 +8,11 @@ var _ = time.Now // avoid unused import
 
 // FiberChannelStorageInventoryView FiberChannelStorage
 type FiberChannelStorageInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Wwnn string `json:"wwnn,omitempty"`
-	State string `json:"state,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Wwnn             string                         `json:"wwnn,omitempty"`
+	State            string                         `json:"state,omitempty"`
 	FiberChannelLuns []FiberChannelLunInventoryView `json:"fiberChannelLuns,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
 }
 
 // RefreshFiberChannelStorageEventView RefreshFiberChannelStorageEvent
@@ -26,4 +24,3 @@ type RefreshFiberChannelStorageEventView struct {
 type QueryFiberChannelStorageView struct {
 	Inventories []FiberChannelStorageInventoryView `json:"inventories,omitempty"`
 }
-

@@ -8,9 +8,8 @@ var _ = time.Now // avoid unused import
 
 // UserGroupPolicyRefInventoryView UserGroupPolicyRef
 type UserGroupPolicyRefInventoryView struct {
-	GroupUuid string `json:"groupUuid,omitempty"`
-	PolicyUuid string `json:"policyUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	GroupUuid  string    `json:"groupUuid,omitempty"`
+	PolicyUuid string    `json:"policyUuid,omitempty"`
+	CreateDate time.Time `json:"createDate,omitempty"`
+	LastOpDate time.Time `json:"lastOpDate,omitempty"`
 }
-
