@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,7 +20,7 @@ func (cli *ZSClient) CreateSchedulerJobGroup(params param.CreateSchedulerJobGrou
 }
 // DeleteSchedulerJobGroup deletes SchedulerJobGroup
 func (cli *ZSClient) DeleteSchedulerJobGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/scheduler/jobgroups/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/scheduler/jobgroups", uuid, string(deleteMode))
 }
 // UpdateSchedulerJobGroup updates SchedulerJobGroup
 func (cli *ZSClient) UpdateSchedulerJobGroup(uuid string, params param.UpdateSchedulerJobGroupParam) (*view.SchedulerJobGroupInventoryView, error) {
@@ -34,4 +34,12 @@ func (cli *ZSClient) UpdateSchedulerJobGroup(uuid string, params param.UpdateSch
 func (cli *ZSClient) QuerySchedulerJobGroup(params *param.QueryParam) ([]view.SchedulerJobGroupInventoryView, error) {
 	var resp []view.SchedulerJobGroupInventoryView
 	return resp, cli.List("v1/scheduler/jobgroups", params, &resp)
+}
+
+func (cli *ZSClient) GetSchedulerJobGroup(uuid string) (*view.SchedulerJobGroupInventoryView, error) {
+	var resp view.SchedulerJobGroupInventoryView
+	if err := cli.Get("v1/scheduler/jobgroups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

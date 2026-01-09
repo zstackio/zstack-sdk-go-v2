@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -26,4 +26,12 @@ func (cli *ZSClient) DeleteMdevDevice(uuid string, deleteMode param.DeleteMode) 
 func (cli *ZSClient) QueryMdevDevice(params *param.QueryParam) ([]view.MdevDeviceInventoryView, error) {
 	var resp []view.MdevDeviceInventoryView
 	return resp, cli.List("v1/mdev-devices", params, &resp)
+}
+
+func (cli *ZSClient) GetMdevDevice(uuid string) (*view.MdevDeviceInventoryView, error) {
+	var resp view.MdevDeviceInventoryView
+	if err := cli.Get("v1/mdev-devices", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

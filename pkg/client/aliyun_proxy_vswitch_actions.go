@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,6 +23,14 @@ func (cli *ZSClient) QueryAliyunProxyVSwitch(params *param.QueryParam) ([]view.A
 	var resp []view.AliyunProxyVSwitchInventoryView
 	return resp, cli.List("v1/aliyun-proxy/vpcs/vswitches", params, &resp)
 }
+
+func (cli *ZSClient) GetAliyunProxyVSwitch(uuid string) (*view.AliyunProxyVSwitchInventoryView, error) {
+	var resp view.AliyunProxyVSwitchInventoryView
+	if err := cli.Get("v1/aliyun-proxy/vpcs/vswitches", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // CreateAliyunProxyVSwitch creates AliyunProxyVSwitch
 func (cli *ZSClient) CreateAliyunProxyVSwitch(params param.CreateAliyunProxyVSwitchParam) (*view.AliyunProxyVSwitchInventoryView, error) {
 	var resp view.CreateAliyunProxyVSwitchEventView
@@ -33,5 +41,5 @@ func (cli *ZSClient) CreateAliyunProxyVSwitch(params param.CreateAliyunProxyVSwi
 }
 // DeleteAliyunProxyVSwitch deletes AliyunProxyVSwitch
 func (cli *ZSClient) DeleteAliyunProxyVSwitch(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/aliyun-proxy/vpcs/vswitches/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/aliyun-proxy/vpcs/vswitches", uuid, string(deleteMode))
 }

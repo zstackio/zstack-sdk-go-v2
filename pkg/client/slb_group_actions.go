@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QuerySlbGroup(params *param.QueryParam) ([]view.SlbGroupInventoryView, error) {
 	var resp []view.SlbGroupInventoryView
 	return resp, cli.List("v1/load-balancers/slb/groups", params, &resp)
+}
+
+func (cli *ZSClient) GetSlbGroup(uuid string) (*view.SlbGroupInventoryView, error) {
+	var resp view.SlbGroupInventoryView
+	if err := cli.Get("v1/load-balancers/slb/groups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // CreateSlbGroup creates SlbGroup
 func (cli *ZSClient) CreateSlbGroup(params param.CreateSlbGroupParam) (*view.SlbGroupInventoryView, error) {
@@ -25,7 +33,7 @@ func (cli *ZSClient) CreateSlbGroup(params param.CreateSlbGroupParam) (*view.Slb
 }
 // DeleteSlbGroup deletes SlbGroup
 func (cli *ZSClient) DeleteSlbGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/load-balancers/slb/group/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/load-balancers/slb/group", uuid, string(deleteMode))
 }
 // UpdateSlbGroup updates SlbGroup
 func (cli *ZSClient) UpdateSlbGroup(uuid string, params param.UpdateSlbGroupParam) (*view.SlbGroupInventoryView, error) {

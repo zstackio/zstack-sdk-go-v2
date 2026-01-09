@@ -9,15 +9,15 @@ var _ = time.Now // avoid unused import
 // PriceInventoryView Price
 type PriceInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	ResourceName string `json:"resourceName,omitempty"`
-	ResourceUnit string `json:"resourceUnit,omitempty"`
-	TimeUnit string `json:"timeUnit,omitempty"`
-	Price float64 `json:"price,omitempty"`
-	DateInLong int64 `json:"dateInLong,omitempty"`
-	EndDateInLong int64 `json:"endDateInLong,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	TableUuid string `json:"tableUuid,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	ResourceUnit *string `json:"resourceUnit,omitempty"`
+	TimeUnit *string `json:"timeUnit,omitempty"`
+	Price *float64 `json:"price,omitempty"`
+	DateInLong *int64 `json:"dateInLong,omitempty"`
+	EndDateInLong *int64 `json:"endDateInLong,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	TableUuid *string `json:"tableUuid,omitempty"`
 	PciDeviceOfferings []PricePciDeviceOfferingRefInventoryView `json:"pciDeviceOfferings,omitempty"`
 	BareMetal2VmOfferings []PriceBareMetal2ChassisOfferingRefInventoryView `json:"bareMetal2VmOfferings,omitempty"`
 }

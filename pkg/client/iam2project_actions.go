@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,7 +20,7 @@ func (cli *ZSClient) CreateIAM2Project(params param.CreateIAM2ProjectParam) (*vi
 }
 // DeleteIAM2Project deletes IAM2Project
 func (cli *ZSClient) DeleteIAM2Project(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
 }
 // RecoverIAM2Project operates on IAM2Project
 func (cli *ZSClient) RecoverIAM2Project(uuid string, params param.RecoverIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
@@ -35,9 +35,17 @@ func (cli *ZSClient) QueryIAM2Project(params *param.QueryParam) ([]view.IAM2Proj
 	var resp []view.IAM2ProjectInventoryView
 	return resp, cli.List("v1/iam2/projects", params, &resp)
 }
+
+func (cli *ZSClient) GetIAM2Project(uuid string) (*view.IAM2ProjectInventoryView, error) {
+	var resp view.IAM2ProjectInventoryView
+	if err := cli.Get("v1/iam2/projects", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // ExpungeIAM2Project operates on IAM2Project
 func (cli *ZSClient) ExpungeIAM2Project(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/{uuid}/actions", uuid, string(deleteMode))
+	return cli.Delete("v1/iam2/projects/actions", uuid, string(deleteMode))
 }
 // LoginIAM2Project operates on IAM2Project
 func (cli *ZSClient) LoginIAM2Project(uuid string, params param.LoginIAM2ProjectParam) (*view.SessionInventoryView, error) {

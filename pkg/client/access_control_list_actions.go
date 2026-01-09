@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -31,7 +31,15 @@ func (cli *ZSClient) QueryAccessControlList(params *param.QueryParam) ([]view.Ac
 	var resp []view.AccessControlListInventoryView
 	return resp, cli.List("v1/access-control-lists", params, &resp)
 }
+
+func (cli *ZSClient) GetAccessControlList(uuid string) (*view.AccessControlListInventoryView, error) {
+	var resp view.AccessControlListInventoryView
+	if err := cli.Get("v1/access-control-lists", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteAccessControlList deletes AccessControlList
 func (cli *ZSClient) DeleteAccessControlList(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/access-control-lists/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/access-control-lists", uuid, string(deleteMode))
 }

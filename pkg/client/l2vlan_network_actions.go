@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,12 @@ func (cli *ZSClient) CreateL2VlanNetwork(params param.CreateL2VlanNetworkParam) 
 func (cli *ZSClient) QueryL2VlanNetwork(params *param.QueryParam) ([]view.L2VlanNetworkInventoryView, error) {
 	var resp []view.L2VlanNetworkInventoryView
 	return resp, cli.List("v1/l2-networks/vlan", params, &resp)
+}
+
+func (cli *ZSClient) GetL2VlanNetwork(uuid string) (*view.L2VlanNetworkInventoryView, error) {
+	var resp view.L2VlanNetworkInventoryView
+	if err := cli.Get("v1/l2-networks/vlan", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

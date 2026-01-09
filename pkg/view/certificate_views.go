@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type CertificateInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
-	Certificate string `json:"certificate,omitempty"`
-	Description string `json:"description,omitempty"`
+	Certificate *string `json:"certificate,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Listeners []LoadBalancerListenerCertificateRefInventoryView `json:"listeners,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateCertificateEventView UpdateCertificateEvent

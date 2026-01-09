@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type MonitorGroupInventoryView struct {
 	Name string `json:"name,omitempty"`
 	State string `json:"state,omitempty"`
-	Actions string `json:"actions,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Actions *string `json:"actions,omitempty"`
+	Description *string `json:"description,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 	MonitorGroupTemplateRefs []MonitorGroupTemplateRefVOView `json:"monitorGroupTemplateRefs,omitempty"`
 }

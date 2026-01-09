@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type SSOClientInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	ClientType string `json:"clientType,omitempty"`
-	LoginType string `json:"loginType,omitempty"`
-	LoginMNUrl string `json:"loginMNUrl,omitempty"`
-	RedirectUrl string `json:"redirectUrl,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	AccountUuid string `json:"accountUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ClientType *string `json:"clientType,omitempty"`
+	LoginType *string `json:"loginType,omitempty"`
+	LoginMNUrl *string `json:"loginMNUrl,omitempty"`
+	RedirectUrl *string `json:"redirectUrl,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	AccountUuid *string `json:"accountUuid,omitempty"`
 	Attributes []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
 }
 

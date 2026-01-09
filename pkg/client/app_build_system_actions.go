@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,6 +22,14 @@ func (cli *ZSClient) AddAppBuildSystem(params param.AddAppBuildSystemParam) (*vi
 func (cli *ZSClient) QueryAppBuildSystem(params *param.QueryParam) ([]view.AppBuildSystemInventoryView, error) {
 	var resp []view.AppBuildSystemInventoryView
 	return resp, cli.List("v1/appcenter/buildsystem", params, &resp)
+}
+
+func (cli *ZSClient) GetAppBuildSystem(uuid string) (*view.AppBuildSystemInventoryView, error) {
+	var resp view.AppBuildSystemInventoryView
+	if err := cli.Get("v1/appcenter/buildsystem", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // ReconnectAppBuildSystem operates on AppBuildSystem
 func (cli *ZSClient) ReconnectAppBuildSystem(uuid string, params param.ReconnectAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
@@ -41,5 +49,5 @@ func (cli *ZSClient) UpdateAppBuildSystem(uuid string, params param.UpdateAppBui
 }
 // DeleteAppBuildSystem deletes AppBuildSystem
 func (cli *ZSClient) DeleteAppBuildSystem(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/appcenter/buildsystem/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/appcenter/buildsystem", uuid, string(deleteMode))
 }

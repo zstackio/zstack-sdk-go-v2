@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,12 +20,20 @@ func (cli *ZSClient) CreateVmCdRom(params param.CreateVmCdRomParam) (*view.VmCdR
 }
 // DeleteVmCdRom deletes VmCdRom
 func (cli *ZSClient) DeleteVmCdRom(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vm-instances/cdroms/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/vm-instances/cdroms", uuid, string(deleteMode))
 }
 // QueryVmCdRom queries VmCdRom list
 func (cli *ZSClient) QueryVmCdRom(params *param.QueryParam) ([]view.VmCdRomInventoryView, error) {
 	var resp []view.VmCdRomInventoryView
 	return resp, cli.List("v1/vm-instances/cdroms", params, &resp)
+}
+
+func (cli *ZSClient) GetVmCdRom(uuid string) (*view.VmCdRomInventoryView, error) {
+	var resp view.VmCdRomInventoryView
+	if err := cli.Get("v1/vm-instances/cdroms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // UpdateVmCdRom updates VmCdRom
 func (cli *ZSClient) UpdateVmCdRom(uuid string, params param.UpdateVmCdRomParam) (*view.VmCdRomInventoryView, error) {

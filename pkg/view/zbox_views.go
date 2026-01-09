@@ -13,11 +13,11 @@ type ZBoxInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	LocationRefs []ZBoxLocationRefInventoryView `json:"locationRefs,omitempty"`
-	MountPath string `json:"mountPath,omitempty"`
+	MountPath *string `json:"mountPath,omitempty"`
 	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // AddZBoxEventView AddZBoxEvent

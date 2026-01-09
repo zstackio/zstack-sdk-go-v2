@@ -12,13 +12,13 @@ type FlowMeterInventoryView struct {
 	NetworkRefs []NetworkRouterFlowMeterRefInventoryView `json:"networkRefs,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Sample int64 `json:"sample,omitempty"`
-	ExpireInterval int64 `json:"expireInterval,omitempty"`
-	Version string `json:"version,omitempty"`
-	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Sample *int64 `json:"sample,omitempty"`
+	ExpireInterval *int64 `json:"expireInterval,omitempty"`
+	Version *string `json:"version,omitempty"`
+	Type *string `json:"type,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryFlowMeterView QueryFlowMeter

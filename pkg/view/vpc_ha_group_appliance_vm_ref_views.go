@@ -9,6 +9,6 @@ var _ = time.Now // avoid unused import
 // VpcHaGroupApplianceVmRefInventoryView VpcHaGroupApplianceVmRef
 type VpcHaGroupApplianceVmRefInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	VpcHaRouterUuid string `json:"vpcHaRouterUuid,omitempty"`
+	VpcHaRouterUuid *string `json:"vpcHaRouterUuid,omitempty"`
 }
 

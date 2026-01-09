@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryMiniStorage(params *param.QueryParam) ([]view.MiniStorageInventoryView, error) {
 	var resp []view.MiniStorageInventoryView
 	return resp, cli.List("v1/primary-storage/mini", params, &resp)
+}
+
+func (cli *ZSClient) GetMiniStorage(uuid string) (*view.MiniStorageInventoryView, error) {
+	var resp view.MiniStorageInventoryView
+	if err := cli.Get("v1/primary-storage/mini", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // AddMiniStorage adds MiniStorage
 func (cli *ZSClient) AddMiniStorage(params param.AddMiniStorageParam) (*view.PrimaryStorageInventoryView, error) {

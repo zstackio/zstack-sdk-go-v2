@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,6 +23,14 @@ func (cli *ZSClient) QueryFlowCollector(params *param.QueryParam) ([]view.FlowCo
 	var resp []view.FlowCollectorInventoryView
 	return resp, cli.List("v1/flowmeters/collectors", params, &resp)
 }
+
+func (cli *ZSClient) GetFlowCollector(uuid string) (*view.FlowCollectorInventoryView, error) {
+	var resp view.FlowCollectorInventoryView
+	if err := cli.Get("v1/flowmeters/collectors", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // UpdateFlowCollector updates FlowCollector
 func (cli *ZSClient) UpdateFlowCollector(uuid string, params param.UpdateFlowCollectorParam) (*view.FlowCollectorInventoryView, error) {
 	var resp view.CreateFlowCollectorEventView
@@ -33,5 +41,5 @@ func (cli *ZSClient) UpdateFlowCollector(uuid string, params param.UpdateFlowCol
 }
 // DeleteFlowCollector deletes FlowCollector
 func (cli *ZSClient) DeleteFlowCollector(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/flowmeters/collectors/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/flowmeters/collectors", uuid, string(deleteMode))
 }

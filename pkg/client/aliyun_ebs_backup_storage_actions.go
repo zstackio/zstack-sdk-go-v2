@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryAliyunEbsBackupStorage(params *param.QueryParam) ([]view.BackupStorageInventoryView, error) {
 	var resp []view.BackupStorageInventoryView
 	return resp, cli.List("v1/backup-storage/aliyun/ebs", params, &resp)
+}
+
+func (cli *ZSClient) GetAliyunEbsBackupStorage(uuid string) (*view.BackupStorageInventoryView, error) {
+	var resp view.BackupStorageInventoryView
+	if err := cli.Get("v1/backup-storage/aliyun/ebs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // AddAliyunEbsBackupStorage adds AliyunEbsBackupStorage
 func (cli *ZSClient) AddAliyunEbsBackupStorage(params param.AddAliyunEbsBackupStorageParam) (*view.BackupStorageInventoryView, error) {

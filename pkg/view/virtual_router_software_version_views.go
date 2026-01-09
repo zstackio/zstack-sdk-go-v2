@@ -9,9 +9,9 @@ var _ = time.Now // avoid unused import
 // VirtualRouterSoftwareVersionInventoryView VirtualRouterSoftwareVersion
 type VirtualRouterSoftwareVersionInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	SoftwareName string `json:"softwareName,omitempty"`
-	CurrentVersion string `json:"currentVersion,omitempty"`
-	LatestVersion string `json:"latestVersion,omitempty"`
+	SoftwareName *string `json:"softwareName,omitempty"`
+	CurrentVersion *string `json:"currentVersion,omitempty"`
+	LatestVersion *string `json:"latestVersion,omitempty"`
 }
 
 // GetVirtualRouterSoftwareVersionView GetVirtualRouterSoftwareVersion

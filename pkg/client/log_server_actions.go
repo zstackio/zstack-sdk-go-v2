@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -26,6 +26,14 @@ func (cli *ZSClient) DeleteLogServer(uuid string, deleteMode param.DeleteMode) e
 func (cli *ZSClient) QueryLogServer(params *param.QueryParam) ([]view.LogServerInventoryView, error) {
 	var resp []view.LogServerInventoryView
 	return resp, cli.List("v1/log/servers", params, &resp)
+}
+
+func (cli *ZSClient) GetLogServer(uuid string) (*view.LogServerInventoryView, error) {
+	var resp view.LogServerInventoryView
+	if err := cli.Get("v1/log/servers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // AddLogServer adds LogServer
 func (cli *ZSClient) AddLogServer(params param.AddLogServerParam) (*view.LogServerInventoryView, error) {

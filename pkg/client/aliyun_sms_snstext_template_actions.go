@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -30,4 +30,12 @@ func (cli *ZSClient) CreateAliyunSmsSNSTextTemplate(params param.CreateAliyunSms
 func (cli *ZSClient) QueryAliyunSmsSNSTextTemplate(params *param.QueryParam) ([]view.AliyunSmsSNSTextTemplateInventoryView, error) {
 	var resp []view.AliyunSmsSNSTextTemplateInventoryView
 	return resp, cli.List("v1/zwatch/alarms/sns/text-templates/aliyun-sms", params, &resp)
+}
+
+func (cli *ZSClient) GetAliyunSmsSNSTextTemplate(uuid string) (*view.AliyunSmsSNSTextTemplateInventoryView, error) {
+	var resp view.AliyunSmsSNSTextTemplateInventoryView
+	if err := cli.Get("v1/zwatch/alarms/sns/text-templates/aliyun-sms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

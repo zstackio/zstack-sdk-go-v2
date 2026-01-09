@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,12 @@ func (cli *ZSClient) UpdateIAM2VirtualIDAttribute(uuid string, params param.Upda
 func (cli *ZSClient) QueryIAM2VirtualIDAttribute(params *param.QueryParam) ([]view.IAM2VirtualIDAttributeInventoryView, error) {
 	var resp []view.IAM2VirtualIDAttributeInventoryView
 	return resp, cli.List("v1/iam2/virtual-ids/attributes", params, &resp)
+}
+
+func (cli *ZSClient) GetIAM2VirtualIDAttribute(uuid string) (*view.IAM2VirtualIDAttributeInventoryView, error) {
+	var resp view.IAM2VirtualIDAttributeInventoryView
+	if err := cli.Get("v1/iam2/virtual-ids/attributes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

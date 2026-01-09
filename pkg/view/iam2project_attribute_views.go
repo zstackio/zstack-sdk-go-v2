@@ -8,13 +8,13 @@ var _ = time.Now // avoid unused import
 
 // IAM2ProjectAttributeInventoryView IAM2ProjectAttribute
 type IAM2ProjectAttributeInventoryView struct {
-	ProjectUuid string `json:"projectUuid,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Value string `json:"value,omitempty"`
+	Value *string `json:"value,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryIAM2ProjectAttributeView QueryIAM2ProjectAttribute

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,12 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryApplicationDevelopmentService(params *param.QueryParam) ([]view.ApplicationDevelopmentServiceInventoryView, error) {
 	var resp []view.ApplicationDevelopmentServiceInventoryView
 	return resp, cli.List("v1/ai/model-services/app/", params, &resp)
+}
+
+func (cli *ZSClient) GetApplicationDevelopmentService(uuid string) (*view.ApplicationDevelopmentServiceInventoryView, error) {
+	var resp view.ApplicationDevelopmentServiceInventoryView
+	if err := cli.Get("v1/ai/model-services/app/", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

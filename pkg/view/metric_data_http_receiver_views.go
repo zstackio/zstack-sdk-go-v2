@@ -10,11 +10,16 @@ var _ = time.Now // avoid unused import
 type MetricDataHttpReceiverInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Url string `json:"url,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Description *string `json:"description,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State string `json:"state,omitempty"`
+}
+
+// QueryMetricDataHttpReceiverView QueryMetricDataHttpReceiver
+type QueryMetricDataHttpReceiverView struct {
+	Inventories []MetricDataHttpReceiverInventoryView `json:"inventories,omitempty"`
 }
 
 // DeleteMetricDataHttpReceiverEventView DeleteMetricDataHttpReceiverEvent

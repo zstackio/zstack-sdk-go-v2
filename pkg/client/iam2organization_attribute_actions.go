@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,12 @@ func (cli *ZSClient) UpdateIAM2OrganizationAttribute(uuid string, params param.U
 func (cli *ZSClient) QueryIAM2OrganizationAttribute(params *param.QueryParam) ([]view.IAM2OrganizationAttributeInventoryView, error) {
 	var resp []view.IAM2OrganizationAttributeInventoryView
 	return resp, cli.List("v1/iam2/organizations/attributes", params, &resp)
+}
+
+func (cli *ZSClient) GetIAM2OrganizationAttribute(uuid string) (*view.IAM2OrganizationAttributeInventoryView, error) {
+	var resp view.IAM2OrganizationAttributeInventoryView
+	if err := cli.Get("v1/iam2/organizations/attributes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

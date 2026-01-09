@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // NetworkServiceTypeInventoryView NetworkServiceType
 type NetworkServiceTypeInventoryView struct {
-	NetworkServiceProviderUuid string `json:"networkServiceProviderUuid,omitempty"`
-	Type string `json:"type,omitempty"`
+	NetworkServiceProviderUuid *string `json:"networkServiceProviderUuid,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,6 +23,14 @@ func (cli *ZSClient) QueryLdapServer(params *param.QueryParam) ([]view.LdapServe
 	var resp []view.LdapServerInventoryView
 	return resp, cli.List("v1/ldap/servers", params, &resp)
 }
+
+func (cli *ZSClient) GetLdapServer(uuid string) (*view.LdapServerInventoryView, error) {
+	var resp view.LdapServerInventoryView
+	if err := cli.Get("v1/ldap/servers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // SyncLdapServer operates on LdapServer
 func (cli *ZSClient) SyncLdapServer(uuid string, params param.SyncLdapServerParam) (*view.LongJobInventoryView, error) {
 	var resp view.SyncLdapServerEventView
@@ -31,9 +39,24 @@ func (cli *ZSClient) SyncLdapServer(uuid string, params param.SyncLdapServerPara
 	}
 	return &resp.Inventory, nil
 }
+
+// SyncLdapServerAsync Async
+func (cli *ZSClient) SyncLdapServerAsync(params param.SyncLdapServerParam) (string, error) {
+
+	resource := "v1/ldap/servers/{uuid}/actions"
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
+}
 // DeleteLdapServer deletes LdapServer
 func (cli *ZSClient) DeleteLdapServer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ldap/servers/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/ldap/servers", uuid, string(deleteMode))
 }
 // UpdateLdapServer updates LdapServer
 func (cli *ZSClient) UpdateLdapServer(uuid string, params param.UpdateLdapServerParam) (*view.LdapServerInventoryView, error) {

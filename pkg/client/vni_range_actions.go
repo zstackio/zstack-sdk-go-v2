@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,6 +23,14 @@ func (cli *ZSClient) QueryVniRange(params *param.QueryParam) ([]view.VniRangeInv
 	var resp []view.VniRangeInventoryView
 	return resp, cli.List("v1/l2-networks/vxlan-pool/vni-range", params, &resp)
 }
+
+func (cli *ZSClient) GetVniRange(uuid string) (*view.VniRangeInventoryView, error) {
+	var resp view.VniRangeInventoryView
+	if err := cli.Get("v1/l2-networks/vxlan-pool/vni-range", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // CreateVniRange creates VniRange
 func (cli *ZSClient) CreateVniRange(params param.CreateVniRangeParam) (*view.VniRangeInventoryView, error) {
 	var resp view.CreateVniRangeEventView
@@ -33,5 +41,5 @@ func (cli *ZSClient) CreateVniRange(params param.CreateVniRangeParam) (*view.Vni
 }
 // DeleteVniRange deletes VniRange
 func (cli *ZSClient) DeleteVniRange(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/l2-networks/vxlan-pool/vni-ranges/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/l2-networks/vxlan-pool/vni-ranges", uuid, string(deleteMode))
 }

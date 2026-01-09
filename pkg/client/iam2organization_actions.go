@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,9 +15,17 @@ func (cli *ZSClient) QueryIAM2Organization(params *param.QueryParam) ([]view.IAM
 	var resp []view.IAM2OrganizationInventoryView
 	return resp, cli.List("v1/iam2/organizations", params, &resp)
 }
+
+func (cli *ZSClient) GetIAM2Organization(uuid string) (*view.IAM2OrganizationInventoryView, error) {
+	var resp view.IAM2OrganizationInventoryView
+	if err := cli.Get("v1/iam2/organizations", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteIAM2Organization deletes IAM2Organization
 func (cli *ZSClient) DeleteIAM2Organization(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/organizations/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/iam2/organizations", uuid, string(deleteMode))
 }
 // UpdateIAM2Organization updates IAM2Organization
 func (cli *ZSClient) UpdateIAM2Organization(uuid string, params param.UpdateIAM2OrganizationParam) (*view.IAM2OrganizationInventoryView, error) {

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,9 +23,17 @@ func (cli *ZSClient) QueryVolumeSnapshot(params *param.QueryParam) ([]view.Volum
 	var resp []view.VolumeSnapshotInventoryView
 	return resp, cli.List("v1/volume-snapshots", params, &resp)
 }
+
+func (cli *ZSClient) GetVolumeSnapshot(uuid string) (*view.VolumeSnapshotInventoryView, error) {
+	var resp view.VolumeSnapshotInventoryView
+	if err := cli.Get("v1/volume-snapshots", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteVolumeSnapshot deletes VolumeSnapshot
 func (cli *ZSClient) DeleteVolumeSnapshot(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volume-snapshots/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/volume-snapshots", uuid, string(deleteMode))
 }
 // CreateVolumeSnapshot creates VolumeSnapshot
 func (cli *ZSClient) CreateVolumeSnapshot(params param.CreateVolumeSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {

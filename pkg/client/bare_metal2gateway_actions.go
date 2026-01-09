@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -31,9 +31,17 @@ func (cli *ZSClient) QueryBareMetal2Gateway(params *param.QueryParam) ([]view.Ba
 	var resp []view.BareMetal2GatewayInventoryView
 	return resp, cli.List("v1/baremetal2/gateways", params, &resp)
 }
+
+func (cli *ZSClient) GetBareMetal2Gateway(uuid string) (*view.BareMetal2GatewayInventoryView, error) {
+	var resp view.BareMetal2GatewayInventoryView
+	if err := cli.Get("v1/baremetal2/gateways", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteBareMetal2Gateway deletes BareMetal2Gateway
 func (cli *ZSClient) DeleteBareMetal2Gateway(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/baremetal2/gateways/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/baremetal2/gateways", uuid, string(deleteMode))
 }
 // AddBareMetal2Gateway adds BareMetal2Gateway
 func (cli *ZSClient) AddBareMetal2Gateway(params param.AddBareMetal2GatewayParam) (*view.HostInventoryView, error) {

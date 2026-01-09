@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,6 +22,14 @@ func (cli *ZSClient) CreateNfvInst(params param.CreateNfvInstParam) (*view.NfvIn
 func (cli *ZSClient) QueryNfvInst(params *param.QueryParam) ([]view.NfvInstInventoryView, error) {
 	var resp []view.NfvInstInventoryView
 	return resp, cli.List("v1/vm-instances/appliances/nfvinst", params, &resp)
+}
+
+func (cli *ZSClient) GetNfvInst(uuid string) (*view.NfvInstInventoryView, error) {
+	var resp view.NfvInstInventoryView
+	if err := cli.Get("v1/vm-instances/appliances/nfvinst", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // ReconnectNfvInst operates on NfvInst
 func (cli *ZSClient) ReconnectNfvInst(uuid string, params param.ReconnectNfvInstParam) (*view.ApplianceVmInventoryView, error) {

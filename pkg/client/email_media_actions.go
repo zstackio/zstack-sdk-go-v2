@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryEmailMedia(params *param.QueryParam) ([]view.MediaInventoryView, error) {
 	var resp []view.MediaInventoryView
 	return resp, cli.List("v1/media/emails", params, &resp)
+}
+
+func (cli *ZSClient) GetEmailMedia(uuid string) (*view.MediaInventoryView, error) {
+	var resp view.MediaInventoryView
+	if err := cli.Get("v1/media/emails", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // CreateEmailMedia creates EmailMedia
 func (cli *ZSClient) CreateEmailMedia(params param.CreateEmailMediaParam) (*view.MediaInventoryView, error) {

@@ -9,12 +9,12 @@ var _ = time.Now // avoid unused import
 // IAM2VirtualIDGroupInventoryView IAM2VirtualIDGroup
 type IAM2VirtualIDGroupInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	ProjectUuid string `json:"projectUuid,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
 }
 

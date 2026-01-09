@@ -8,13 +8,13 @@ var _ = time.Now // avoid unused import
 
 // CreateAccessKeyParamDetail CreateAccessKey detail param
 type CreateAccessKeyParamDetail struct {
-	AccountUuid     string   `json:"accountUuid" validate:"required"`
-	UserUuid        string   `json:"userUuid" validate:"required"`
-	Description     *string  `json:"description,omitempty"`
-	AccessKeyID     *string  `json:"AccessKeyID,omitempty"`
-	AccessKeySecret *string  `json:"AccessKeySecret,omitempty"`
-	ResourceUuid    string   `json:"resourceUuid,omitempty"`
-	TagUuids        []string `json:"tagUuids,omitempty"`
+	AccountUuid string `json:"accountUuid" validate:"required"`
+	UserUuid string `json:"userUuid" validate:"required"`
+	Description string `json:"description,omitempty"`
+	AccessKeyID string `json:"AccessKeyID,omitempty"`
+	AccessKeySecret string `json:"AccessKeySecret,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateAccessKeyParam CreateAccessKey request param
@@ -22,10 +22,9 @@ type CreateAccessKeyParam struct {
 	BaseParam
 	Params CreateAccessKeyParamDetail `json:"params"`
 }
-
 // DeleteAccessKeyParamDetail DeleteAccessKey detail param
 type DeleteAccessKeyParamDetail struct {
-	Uuid       string `json:"uuid" validate:"required"`
+	Uuid string `json:"uuid" validate:"required"`
 	DeleteMode string `json:"deleteMode,omitempty"`
 }
 

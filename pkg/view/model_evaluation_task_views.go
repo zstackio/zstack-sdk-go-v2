@@ -10,32 +10,32 @@ var _ = time.Now // avoid unused import
 type ModelEvaluationTaskInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Type string `json:"type,omitempty"`
-	Description string `json:"description,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Percentage int `json:"percentage,omitempty"`
-	Opaque string `json:"opaque,omitempty"`
-	Status string `json:"status,omitempty"`
-	ModelServiceGroupUuid string `json:"modelServiceGroupUuid,omitempty"`
-	EvaluatedServiceGroupUuid string `json:"evaluatedServiceGroupUuid,omitempty"`
-	DatasetUuid string `json:"datasetUuid,omitempty"`
-	Limits int `json:"limits,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	MaxNewTokens int `json:"maxNewTokens,omitempty"`
-	TopK int `json:"topK,omitempty"`
-	Temperature float32 `json:"temperature,omitempty"`
-	TopP float32 `json:"topP,omitempty"`
-	Prompt string `json:"prompt,omitempty"`
-	RepetitionPenalty float32 `json:"repetitionPenalty,omitempty"`
-	MaxLength int `json:"maxLength,omitempty"`
-	Model string `json:"model,omitempty"`
-	Url string `json:"url,omitempty"`
-	Parallel int `json:"parallel,omitempty"`
-	LogEveryQuery int `json:"logEveryQuery,omitempty"`
-	Api string `json:"api,omitempty"`
+	Opaque *string `json:"opaque,omitempty"`
+	Status *string `json:"status,omitempty"`
+	ModelServiceGroupUuid *string `json:"modelServiceGroupUuid,omitempty"`
+	EvaluatedServiceGroupUuid *string `json:"evaluatedServiceGroupUuid,omitempty"`
+	DatasetUuid *string `json:"datasetUuid,omitempty"`
+	Limits *int `json:"limits,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	MaxNewTokens *int `json:"maxNewTokens,omitempty"`
+	TopK *int `json:"topK,omitempty"`
+	Temperature *float32 `json:"temperature,omitempty"`
+	TopP *float32 `json:"topP,omitempty"`
+	Prompt *string `json:"prompt,omitempty"`
+	RepetitionPenalty *float32 `json:"repetitionPenalty,omitempty"`
+	MaxLength *int `json:"maxLength,omitempty"`
+	Model *string `json:"model,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Parallel *int `json:"parallel,omitempty"`
+	LogEveryQuery *int `json:"logEveryQuery,omitempty"`
+	Api *string `json:"api,omitempty"`
 	RequestHeaders map[string]string `json:"requestHeaders,omitempty"`
-	ConnectTimeout int `json:"connectTimeout,omitempty"`
-	ReadTimeout int `json:"readTimeout,omitempty"`
+	ConnectTimeout *int `json:"connectTimeout,omitempty"`
+	ReadTimeout *int `json:"readTimeout,omitempty"`
 }
 
 // DeleteModelEvaluationTaskEventView DeleteModelEvaluationTaskEvent

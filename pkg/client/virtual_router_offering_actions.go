@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryVirtualRouterOffering(params *param.QueryParam) ([]view.VirtualRouterOfferingInventoryView, error) {
 	var resp []view.VirtualRouterOfferingInventoryView
 	return resp, cli.List("v1/instance-offerings/virtual-routers", params, &resp)
+}
+
+func (cli *ZSClient) GetVirtualRouterOffering(uuid string) (*view.VirtualRouterOfferingInventoryView, error) {
+	var resp view.VirtualRouterOfferingInventoryView
+	if err := cli.Get("v1/instance-offerings/virtual-routers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // CreateVirtualRouterOffering creates VirtualRouterOffering
 func (cli *ZSClient) CreateVirtualRouterOffering(params param.CreateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {

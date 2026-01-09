@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,7 +20,7 @@ func (cli *ZSClient) StartEcsInstance(uuid string, params param.StartEcsInstance
 }
 // DeleteEcsInstance deletes EcsInstance
 func (cli *ZSClient) DeleteEcsInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/hybrid/aliyun/ecs/{uuid}/remote", uuid, string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/ecs/remote", uuid, string(deleteMode))
 }
 // StopEcsInstance stops EcsInstance
 func (cli *ZSClient) StopEcsInstance(uuid string, params param.StopEcsInstanceParam) (*view.EcsInstanceInventoryView, error) {

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,6 +22,14 @@ func (cli *ZSClient) UpdateContainerManagementEndpoint(uuid string, params param
 func (cli *ZSClient) QueryContainerManagementEndpoint(params *param.QueryParam) ([]view.ContainerManagementEndpointInventoryView, error) {
 	var resp []view.ContainerManagementEndpointInventoryView
 	return resp, cli.List("v1/container/management/endpoint", params, &resp)
+}
+
+func (cli *ZSClient) GetContainerManagementEndpoint(uuid string) (*view.ContainerManagementEndpointInventoryView, error) {
+	var resp view.ContainerManagementEndpointInventoryView
+	if err := cli.Get("v1/container/management/endpoint", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // AddContainerManagementEndpoint adds ContainerManagementEndpoint
 func (cli *ZSClient) AddContainerManagementEndpoint(params param.AddContainerManagementEndpointParam) (*view.ContainerManagementEndpointInventoryView, error) {
@@ -41,5 +49,5 @@ func (cli *ZSClient) SyncContainerManagementEndpoint(uuid string, params param.S
 }
 // DeleteContainerManagementEndpoint deletes ContainerManagementEndpoint
 func (cli *ZSClient) DeleteContainerManagementEndpoint(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/container/management/endpoint/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/container/management/endpoint", uuid, string(deleteMode))
 }

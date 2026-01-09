@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type SecurityGroupInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
-	IpVersion int `json:"ipVersion,omitempty"`
-	VSwitchType string `json:"vSwitchType,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Description *string `json:"description,omitempty"`
+	State *string `json:"state,omitempty"`
+	IpVersion *int `json:"ipVersion,omitempty"`
+	VSwitchType *string `json:"vSwitchType,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	InternalId int64 `json:"internalId,omitempty"`
 	Rules []SecurityGroupRuleInventoryView `json:"rules,omitempty"`
 	AttachedL3NetworkUuids []string `json:"attachedL3NetworkUuids,omitempty"`
@@ -29,11 +29,6 @@ type ChangeSecurityGroupStateEventView struct {
 // QuerySecurityGroupView QuerySecurityGroup
 type QuerySecurityGroupView struct {
 	Inventories []SecurityGroupInventoryView `json:"inventories,omitempty"`
-}
-
-// AddSecurityGroupRuleEventView AddSecurityGroupRuleEvent
-type AddSecurityGroupRuleEventView struct {
-	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
 }
 
 // DetachSecurityGroupFromL3NetworkEventView DetachSecurityGroupFromL3NetworkEvent
@@ -63,11 +58,6 @@ type DeleteSecurityGroupEventView struct {
 
 // UpdateSecurityGroupRulePriorityEventView UpdateSecurityGroupRulePriorityEvent
 type UpdateSecurityGroupRulePriorityEventView struct {
-	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
-}
-
-// DeleteSecurityGroupRuleEventView DeleteSecurityGroupRuleEvent
-type DeleteSecurityGroupRuleEventView struct {
 	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
 }
 

@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // MultipathTopologyStructView MultipathTopologyStruct
 type MultipathTopologyStructView struct {
-	DiskUuid string `json:"diskUuid,omitempty"`
+	DiskUuid *string `json:"diskUuid,omitempty"`
 	Devices []DeviceTOView `json:"devices,omitempty"`
 }
 

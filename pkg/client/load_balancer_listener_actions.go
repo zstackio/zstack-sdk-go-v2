@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -31,6 +31,14 @@ func (cli *ZSClient) QueryLoadBalancerListener(params *param.QueryParam) ([]view
 	var resp []view.LoadBalancerListenerInventoryView
 	return resp, cli.List("v1/load-balancers/listeners", params, &resp)
 }
+
+func (cli *ZSClient) GetLoadBalancerListener(uuid string) (*view.LoadBalancerListenerInventoryView, error) {
+	var resp view.LoadBalancerListenerInventoryView
+	if err := cli.Get("v1/load-balancers/listeners", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // ChangeLoadBalancerListener changes LoadBalancerListener
 func (cli *ZSClient) ChangeLoadBalancerListener(uuid string, params param.ChangeLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	var resp view.ChangeLoadBalancerListenerEventView
@@ -41,5 +49,5 @@ func (cli *ZSClient) ChangeLoadBalancerListener(uuid string, params param.Change
 }
 // DeleteLoadBalancerListener deletes LoadBalancerListener
 func (cli *ZSClient) DeleteLoadBalancerListener(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/load-balancers/listeners/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
 }

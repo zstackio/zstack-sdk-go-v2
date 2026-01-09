@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,7 +20,7 @@ func (cli *ZSClient) AddEventRuleTemplate(params param.AddEventRuleTemplateParam
 }
 // DeleteEventRuleTemplate deletes EventRuleTemplate
 func (cli *ZSClient) DeleteEventRuleTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/monitortemplates/evenrules/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/zwatch/monitortemplates/evenrules", uuid, string(deleteMode))
 }
 // UpdateEventRuleTemplate updates EventRuleTemplate
 func (cli *ZSClient) UpdateEventRuleTemplate(uuid string, params param.UpdateEventRuleTemplateParam) (*view.EventRuleTemplateInventoryView, error) {
@@ -34,4 +34,12 @@ func (cli *ZSClient) UpdateEventRuleTemplate(uuid string, params param.UpdateEve
 func (cli *ZSClient) QueryEventRuleTemplate(params *param.QueryParam) ([]view.EventRuleTemplateInventoryView, error) {
 	var resp []view.EventRuleTemplateInventoryView
 	return resp, cli.List("v1/zwatch/monitortemplates/evenrules", params, &resp)
+}
+
+func (cli *ZSClient) GetEventRuleTemplate(uuid string) (*view.EventRuleTemplateInventoryView, error) {
+	var resp view.EventRuleTemplateInventoryView
+	if err := cli.Get("v1/zwatch/monitortemplates/evenrules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

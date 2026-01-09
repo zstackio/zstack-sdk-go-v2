@@ -8,19 +8,19 @@ var _ = time.Now // avoid unused import
 
 // DRSVmMigrationActivityInventoryView DRSVmMigrationActivity
 type DRSVmMigrationActivityInventoryView struct {
-	DrsUuid string `json:"drsUuid,omitempty"`
+	DrsUuid *string `json:"drsUuid,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
-	VmUuid string `json:"vmUuid,omitempty"`
-	VmSourceHostUuid string `json:"vmSourceHostUuid,omitempty"`
-	VmTargetHostUuid string `json:"vmTargetHostUuid,omitempty"`
-	Status string `json:"status,omitempty"`
-	Result string `json:"result,omitempty"`
-	Reason string `json:"reason,omitempty"`
-	AdviceUuid string `json:"adviceUuid,omitempty"`
-	Cause string `json:"cause,omitempty"`
-	EndDate ZStackTime `json:"endDate,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	VmUuid *string `json:"vmUuid,omitempty"`
+	VmSourceHostUuid *string `json:"vmSourceHostUuid,omitempty"`
+	VmTargetHostUuid *string `json:"vmTargetHostUuid,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Result *string `json:"result,omitempty"`
+	Reason *string `json:"reason,omitempty"`
+	AdviceUuid *string `json:"adviceUuid,omitempty"`
+	Cause *string `json:"cause,omitempty"`
+	EndDate *time.Time `json:"endDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryDRSVmMigrationActivityView QueryDRSVmMigrationActivity

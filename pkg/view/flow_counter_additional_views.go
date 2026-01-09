@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // FlowCounterView FlowCounter
 type FlowCounterView struct {
-	Device string `json:"device,omitempty"`
-	TotalEntries string `json:"totalEntries,omitempty"`
-	TotalPkts string `json:"totalPkts,omitempty"`
-	TotalBytes string `json:"totalBytes,omitempty"`
+	Device *string `json:"device,omitempty"`
+	TotalEntries *string `json:"totalEntries,omitempty"`
+	TotalPkts *string `json:"totalPkts,omitempty"`
+	TotalBytes *string `json:"totalBytes,omitempty"`
 }
 

@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // IpCapacityDataView IpCapacityData
 type IpCapacityDataView struct {
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
 	UsedIpAddressNumber int64 `json:"usedIpAddressNumber,omitempty"`

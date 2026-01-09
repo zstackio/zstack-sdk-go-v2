@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,10 +20,18 @@ func (cli *ZSClient) UpdatePciDevice(uuid string, params param.UpdatePciDevicePa
 }
 // DeletePciDevice deletes PciDevice
 func (cli *ZSClient) DeletePciDevice(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/pci-device/pci-devices/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/pci-device/pci-devices", uuid, string(deleteMode))
 }
 // QueryPciDevice queries PciDevice list
 func (cli *ZSClient) QueryPciDevice(params *param.QueryParam) ([]view.PciDeviceInventoryView, error) {
 	var resp []view.PciDeviceInventoryView
 	return resp, cli.List("v1/pci-device/pci-devices", params, &resp)
+}
+
+func (cli *ZSClient) GetPciDevice(uuid string) (*view.PciDeviceInventoryView, error) {
+	var resp view.PciDeviceInventoryView
+	if err := cli.Get("v1/pci-device/pci-devices", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

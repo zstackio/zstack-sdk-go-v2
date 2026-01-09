@@ -10,15 +10,15 @@ var _ = time.Now // avoid unused import
 type AffinityGroupInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Policy string `json:"policy,omitempty"`
-	Version string `json:"version,omitempty"`
-	Type string `json:"type,omitempty"`
-	Appliance string `json:"appliance,omitempty"`
-	ZoneUuid string `json:"zoneUuid,omitempty"`
-	State string `json:"state,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Policy *string `json:"policy,omitempty"`
+	Version *string `json:"version,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Appliance *string `json:"appliance,omitempty"`
+	ZoneUuid *string `json:"zoneUuid,omitempty"`
+	State *string `json:"state,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Usages []AffinityGroupUsageInventoryView `json:"usages,omitempty"`
 }
 

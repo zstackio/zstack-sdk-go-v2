@@ -9,10 +9,10 @@ var _ = time.Now // avoid unused import
 // HostNetworkInterfaceLldpInventoryView HostNetworkInterfaceLldp
 type HostNetworkInterfaceLldpInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	InterfaceUuid string `json:"interfaceUuid,omitempty"`
-	Mode string `json:"mode,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	InterfaceUuid *string `json:"interfaceUuid,omitempty"`
+	Mode *string `json:"mode,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	NeighborDevice HostNetworkInterfaceLldpRefInventoryView `json:"neighborDevice,omitempty"`
 }
 

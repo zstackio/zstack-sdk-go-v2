@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,9 +23,17 @@ func (cli *ZSClient) QueryIscsiServer(params *param.QueryParam) ([]view.IscsiSer
 	var resp []view.IscsiServerInventoryView
 	return resp, cli.List("v1/storage-devices/iscsi/servers", params, &resp)
 }
+
+func (cli *ZSClient) GetIscsiServer(uuid string) (*view.IscsiServerInventoryView, error) {
+	var resp view.IscsiServerInventoryView
+	if err := cli.Get("v1/storage-devices/iscsi/servers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteIscsiServer deletes IscsiServer
 func (cli *ZSClient) DeleteIscsiServer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/storage-devices/iscsi/servers/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/storage-devices/iscsi/servers", uuid, string(deleteMode))
 }
 // RefreshIscsiServer operates on IscsiServer
 func (cli *ZSClient) RefreshIscsiServer(params param.RefreshIscsiServerParam) (*view.IscsiServerInventoryView, error) {

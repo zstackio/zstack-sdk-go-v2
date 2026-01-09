@@ -10,17 +10,17 @@ var _ = time.Now // avoid unused import
 type V2VConversionHostInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	HostUuid string `json:"hostUuid,omitempty"`
-	StoragePath string `json:"storagePath,omitempty"`
-	State string `json:"state,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Type *string `json:"type,omitempty"`
+	HostUuid *string `json:"hostUuid,omitempty"`
+	StoragePath *string `json:"storagePath,omitempty"`
+	State *string `json:"state,omitempty"`
 	TotalSize int64 `json:"totalSize,omitempty"`
 	AvailableSize int64 `json:"availableSize,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	HostStatus string `json:"hostStatus,omitempty"`
-	HostState string `json:"hostState,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	HostStatus *string `json:"hostStatus,omitempty"`
+	HostState *string `json:"hostState,omitempty"`
 }
 
 // AddV2VConversionHostEventView AddV2VConversionHostEvent

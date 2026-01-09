@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,6 +22,14 @@ func (cli *ZSClient) UpdateHostNetworkInterface(uuid string, params param.Update
 func (cli *ZSClient) QueryHostNetworkInterface(params *param.QueryParam) ([]view.HostNetworkInterfaceInventoryView, error) {
 	var resp []view.HostNetworkInterfaceInventoryView
 	return resp, cli.List("v1/hosts/nics", params, &resp)
+}
+
+func (cli *ZSClient) GetHostNetworkInterface(uuid string) (*view.HostNetworkInterfaceInventoryView, error) {
+	var resp view.HostNetworkInterfaceInventoryView
+	if err := cli.Get("v1/hosts/nics", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // LocateHostNetworkInterface operates on HostNetworkInterface
 func (cli *ZSClient) LocateHostNetworkInterface(uuid string, params param.LocateHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {

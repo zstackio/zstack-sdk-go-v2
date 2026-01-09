@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,7 +20,7 @@ func (cli *ZSClient) UpdateIAM2TicketFlow(uuid string, params param.UpdateIAM2Ti
 }
 // DeleteIAM2TicketFlow deletes IAM2TicketFlow
 func (cli *ZSClient) DeleteIAM2TicketFlow(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/tickets/flow/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/tickets/flow", uuid, string(deleteMode))
 }
 // AddIAM2TicketFlow adds IAM2TicketFlow
 func (cli *ZSClient) AddIAM2TicketFlow(params param.AddIAM2TicketFlowParam) (*view.TicketFlowInventoryView, error) {

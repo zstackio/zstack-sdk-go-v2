@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryThirdpartyPlatform(params *param.QueryParam) ([]view.ThirdpartyPlatformInventoryView, error) {
 	var resp []view.ThirdpartyPlatformInventoryView
 	return resp, cli.List("v1/zwatch/third-party/platforms", params, &resp)
+}
+
+func (cli *ZSClient) GetThirdpartyPlatform(uuid string) (*view.ThirdpartyPlatformInventoryView, error) {
+	var resp view.ThirdpartyPlatformInventoryView
+	if err := cli.Get("v1/zwatch/third-party/platforms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // UpdateThirdpartyPlatform updates ThirdpartyPlatform
 func (cli *ZSClient) UpdateThirdpartyPlatform(uuid string, params param.UpdateThirdpartyPlatformParam) (*view.ThirdpartyPlatformInventoryView, error) {
@@ -33,5 +41,5 @@ func (cli *ZSClient) AddThirdpartyPlatform(params param.AddThirdpartyPlatformPar
 }
 // DeleteThirdpartyPlatform deletes ThirdpartyPlatform
 func (cli *ZSClient) DeleteThirdpartyPlatform(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/third-party/platforms/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/zwatch/third-party/platforms", uuid, string(deleteMode))
 }

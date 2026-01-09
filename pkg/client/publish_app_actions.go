@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryPublishApp(params *param.QueryParam) ([]view.PublishAppInventoryView, error) {
 	var resp []view.PublishAppInventoryView
 	return resp, cli.List("v1/appcenter/app", params, &resp)
+}
+
+func (cli *ZSClient) GetPublishApp(uuid string) (*view.PublishAppInventoryView, error) {
+	var resp view.PublishAppInventoryView
+	if err := cli.Get("v1/appcenter/app", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // PublishApp operates on PublishApp
 func (cli *ZSClient) PublishApp(params param.PublishAppParam) (*view.PublishAppInventoryView, error) {
@@ -33,5 +41,5 @@ func (cli *ZSClient) UpdatePublishApp(uuid string, params param.UpdatePublishApp
 }
 // DeletePublishApp deletes PublishApp
 func (cli *ZSClient) DeletePublishApp(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/appcenter/app/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/appcenter/app", uuid, string(deleteMode))
 }

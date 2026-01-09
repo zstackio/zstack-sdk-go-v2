@@ -10,15 +10,15 @@ var _ = time.Now // avoid unused import
 type BackupStorageInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Url string `json:"url,omitempty"`
-	Description string `json:"description,omitempty"`
-	TotalCapacity int64 `json:"totalCapacity,omitempty"`
-	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Description *string `json:"description,omitempty"`
+	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity *int64 `json:"availableCapacity,omitempty"`
+	Type *string `json:"type,omitempty"`
+	State *string `json:"state,omitempty"`
+	Status *string `json:"status,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 
@@ -27,9 +27,19 @@ type ChangeBackupStorageStateEventView struct {
 	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
 }
 
+// QueryBackupStorageView QueryBackupStorage
+type QueryBackupStorageView struct {
+	Inventories []BackupStorageInventoryView `json:"inventories,omitempty"`
+}
+
 // GetCandidateBackupStorageForCreatingImageView GetCandidateBackupStorageForCreatingImage
 type GetCandidateBackupStorageForCreatingImageView struct {
 	Inventories []BackupStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// AddBackupStorageEventView AddBackupStorageEvent
+type AddBackupStorageEventView struct {
+	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
 }
 
 // AttachBackupStorageToZoneEventView AttachBackupStorageToZoneEvent

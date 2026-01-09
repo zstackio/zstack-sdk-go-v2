@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // PodGpuStatsInventoryView PodGpuStats
 type PodGpuStatsInventoryView struct {
-	PodUuid string `json:"podUuid,omitempty"`
-	GpuCount int `json:"gpuCount,omitempty"`
-	AvgAllocatedMb int64 `json:"avgAllocatedMb,omitempty"`
-	TotalGpuMemMb int64 `json:"totalGpuMemMb,omitempty"`
+	PodUuid *string `json:"podUuid,omitempty"`
+	GpuCount *int `json:"gpuCount,omitempty"`
+	AvgAllocatedMb *int64 `json:"avgAllocatedMb,omitempty"`
+	TotalGpuMemMb *int64 `json:"totalGpuMemMb,omitempty"`
 }
 

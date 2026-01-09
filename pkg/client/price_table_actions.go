@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -28,10 +28,18 @@ func (cli *ZSClient) UpdatePriceTable(uuid string, params param.UpdatePriceTable
 }
 // DeletePriceTable deletes PriceTable
 func (cli *ZSClient) DeletePriceTable(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/billings/price-tables/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/billings/price-tables", uuid, string(deleteMode))
 }
 // QueryPriceTable queries PriceTable list
 func (cli *ZSClient) QueryPriceTable(params *param.QueryParam) ([]view.PriceTableInventoryView, error) {
 	var resp []view.PriceTableInventoryView
 	return resp, cli.List("v1/billings/price-tables", params, &resp)
+}
+
+func (cli *ZSClient) GetPriceTable(uuid string) (*view.PriceTableInventoryView, error) {
+	var resp view.PriceTableInventoryView
+	if err := cli.Get("v1/billings/price-tables", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

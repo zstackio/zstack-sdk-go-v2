@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,9 +15,17 @@ func (cli *ZSClient) QueryModel(params *param.QueryParam) ([]view.ModelInventory
 	var resp []view.ModelInventoryView
 	return resp, cli.List("v1/ai/models", params, &resp)
 }
+
+func (cli *ZSClient) GetModel(uuid string) (*view.ModelInventoryView, error) {
+	var resp view.ModelInventoryView
+	if err := cli.Get("v1/ai/models", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteModel deletes Model
 func (cli *ZSClient) DeleteModel(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/models/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/ai/models", uuid, string(deleteMode))
 }
 // UpdateModel updates Model
 func (cli *ZSClient) UpdateModel(uuid string, params param.UpdateModelParam) (*view.ModelInventoryView, error) {
@@ -34,4 +42,19 @@ func (cli *ZSClient) AddModel(params param.AddModelParam) (*view.ModelInventoryV
 		return nil, err
 	}
 	return &resp.Inventory, nil
+}
+
+// AddModelAsync Async
+func (cli *ZSClient) AddModelAsync(params param.AddModelParam) (string, error) {
+
+	resource := "v1/ai/models"
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
 }

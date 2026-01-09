@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,12 @@ func (cli *ZSClient) CreateBaremetalBonding(params param.CreateBaremetalBondingP
 func (cli *ZSClient) QueryBaremetalBonding(params *param.QueryParam) ([]view.BaremetalBondingInventoryView, error) {
 	var resp []view.BaremetalBondingInventoryView
 	return resp, cli.List("v1/baremetal/network/bondings", params, &resp)
+}
+
+func (cli *ZSClient) GetBaremetalBonding(uuid string) (*view.BaremetalBondingInventoryView, error) {
+	var resp view.BaremetalBondingInventoryView
+	if err := cli.Get("v1/baremetal/network/bondings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

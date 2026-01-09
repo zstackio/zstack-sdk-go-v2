@@ -9,12 +9,12 @@ var _ = time.Now // avoid unused import
 // PolicyRouteTableRouteEntryInventoryView PolicyRouteTableRouteEntry
 type PolicyRouteTableRouteEntryInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	TableUuid string `json:"tableUuid,omitempty"`
-	DestinationCidr string `json:"destinationCidr,omitempty"`
-	NextHopIp string `json:"nextHopIp,omitempty"`
+	TableUuid *string `json:"tableUuid,omitempty"`
+	DestinationCidr *string `json:"destinationCidr,omitempty"`
+	NextHopIp *string `json:"nextHopIp,omitempty"`
 	Distance int `json:"distance,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // CreatePolicyRouteTableRouteEntryEventView CreatePolicyRouteTableRouteEntryEvent

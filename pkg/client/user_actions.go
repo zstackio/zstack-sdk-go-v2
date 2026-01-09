@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,9 +15,17 @@ func (cli *ZSClient) QueryUser(params *param.QueryParam) ([]view.UserInventoryVi
 	var resp []view.UserInventoryView
 	return resp, cli.List("v1/accounts/users", params, &resp)
 }
+
+func (cli *ZSClient) GetUser(uuid string) (*view.UserInventoryView, error) {
+	var resp view.UserInventoryView
+	if err := cli.Get("v1/accounts/users", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteUser deletes User
 func (cli *ZSClient) DeleteUser(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/accounts/users/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/accounts/users", uuid, string(deleteMode))
 }
 // UpdateUser updates User
 func (cli *ZSClient) UpdateUser(uuid string, params param.UpdateUserParam) (*view.UserInventoryView, error) {

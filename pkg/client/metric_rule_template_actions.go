@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,9 +15,17 @@ func (cli *ZSClient) QueryMetricRuleTemplate(params *param.QueryParam) ([]view.M
 	var resp []view.MetricRuleTemplateInventoryView
 	return resp, cli.List("v1/zwatch/monitortemplates/metricrules", params, &resp)
 }
+
+func (cli *ZSClient) GetMetricRuleTemplate(uuid string) (*view.MetricRuleTemplateInventoryView, error) {
+	var resp view.MetricRuleTemplateInventoryView
+	if err := cli.Get("v1/zwatch/monitortemplates/metricrules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteMetricRuleTemplate deletes MetricRuleTemplate
 func (cli *ZSClient) DeleteMetricRuleTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/monitortemplates/metricrules/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/zwatch/monitortemplates/metricrules", uuid, string(deleteMode))
 }
 // UpdateMetricRuleTemplate updates MetricRuleTemplate
 func (cli *ZSClient) UpdateMetricRuleTemplate(uuid string, params param.UpdateMetricRuleTemplateParam) (*view.MetricRuleTemplateInventoryView, error) {

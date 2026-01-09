@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,12 @@ func (cli *ZSClient) CreateIAM2ProjectRole(params param.CreateIAM2ProjectRolePar
 func (cli *ZSClient) QueryIAM2ProjectRole(params *param.QueryParam) ([]view.IAM2ProjectRoleInventoryView, error) {
 	var resp []view.IAM2ProjectRoleInventoryView
 	return resp, cli.List("v1/iam2/project-roles", params, &resp)
+}
+
+func (cli *ZSClient) GetIAM2ProjectRole(uuid string) (*view.IAM2ProjectRoleInventoryView, error) {
+	var resp view.IAM2ProjectRoleInventoryView
+	if err := cli.Get("v1/iam2/project-roles", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

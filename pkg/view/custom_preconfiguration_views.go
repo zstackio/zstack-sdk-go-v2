@@ -9,8 +9,8 @@ var _ = time.Now // avoid unused import
 // CustomPreconfigurationInventoryView CustomPreconfiguration
 type CustomPreconfigurationInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	BaremetalInstanceUuid string `json:"baremetalInstanceUuid,omitempty"`
-	Param string `json:"param,omitempty"`
-	Value string `json:"value,omitempty"`
+	BaremetalInstanceUuid *string `json:"baremetalInstanceUuid,omitempty"`
+	Param *string `json:"param,omitempty"`
+	Value *string `json:"value,omitempty"`
 }
 

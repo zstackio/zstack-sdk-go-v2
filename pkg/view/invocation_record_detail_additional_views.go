@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // InvocationRecordDetailView InvocationRecordDetail
 type InvocationRecordDetailView struct {
-	InstanceId string `json:"instanceId,omitempty"`
-	InvocationStatus string `json:"invocationStatus,omitempty"`
-	CreationTime ZStackTime `json:"creationTime,omitempty"`
-	FinishTime ZStackTime `json:"finishTime,omitempty"`
-	Output string `json:"output,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty"`
+	InvocationStatus *string `json:"invocationStatus,omitempty"`
+	CreationTime *time.Time `json:"creationTime,omitempty"`
+	FinishTime *time.Time `json:"finishTime,omitempty"`
+	Output *string `json:"output,omitempty"`
 }
 

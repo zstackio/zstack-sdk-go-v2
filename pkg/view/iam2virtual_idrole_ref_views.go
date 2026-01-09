@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // IAM2VirtualIDRoleRefInventoryView IAM2VirtualIDRoleRef
 type IAM2VirtualIDRoleRefInventoryView struct {
-	VirtualIDUuid string `json:"virtualIDUuid,omitempty"`
-	RoleUuid string `json:"roleUuid,omitempty"`
-	TargetAccountUuid string `json:"targetAccountUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	VirtualIDUuid *string `json:"virtualIDUuid,omitempty"`
+	RoleUuid *string `json:"roleUuid,omitempty"`
+	TargetAccountUuid *string `json:"targetAccountUuid,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -8,36 +8,36 @@ var _ = time.Now // avoid unused import
 
 // EthernetVfPciDeviceInventoryView EthernetVfPciDevice
 type EthernetVfPciDeviceInventoryView struct {
-	HostDevUuid string `json:"hostDevUuid,omitempty"`
-	InterfaceName string `json:"interfaceName,omitempty"`
-	VmUuid string `json:"vmUuid,omitempty"`
-	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	HostDevUuid *string `json:"hostDevUuid,omitempty"`
+	InterfaceName *string `json:"interfaceName,omitempty"`
+	VmUuid *string `json:"vmUuid,omitempty"`
+	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
 	VfStatus string `json:"vfStatus,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	HostUuid string `json:"hostUuid,omitempty"`
-	ParentUuid string `json:"parentUuid,omitempty"`
-	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	PciSpecUuid string `json:"pciSpecUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	HostUuid *string `json:"hostUuid,omitempty"`
+	ParentUuid *string `json:"parentUuid,omitempty"`
+	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	PciSpecUuid *string `json:"pciSpecUuid,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	VirtStatus string `json:"virtStatus,omitempty"`
 	Chooser string `json:"chooser,omitempty"`
-	VendorId string `json:"vendorId,omitempty"`
-	Vendor string `json:"vendor,omitempty"`
-	DeviceId string `json:"deviceId,omitempty"`
-	Device string `json:"device,omitempty"`
-	SubvendorId string `json:"subvendorId,omitempty"`
-	SubdeviceId string `json:"subdeviceId,omitempty"`
-	PciDeviceAddress string `json:"pciDeviceAddress,omitempty"`
-	IommuGroup string `json:"iommuGroup,omitempty"`
+	VendorId *string `json:"vendorId,omitempty"`
+	Vendor *string `json:"vendor,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
+	Device *string `json:"device,omitempty"`
+	SubvendorId *string `json:"subvendorId,omitempty"`
+	SubdeviceId *string `json:"subdeviceId,omitempty"`
+	PciDeviceAddress *string `json:"pciDeviceAddress,omitempty"`
+	IommuGroup *string `json:"iommuGroup,omitempty"`
 	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
-	Rev string `json:"rev,omitempty"`
-	DependentDevices string `json:"dependentDevices,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Rev *string `json:"rev,omitempty"`
+	DependentDevices *string `json:"dependentDevices,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	MatchedPciDeviceOfferingRef []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDeviceOfferingRef,omitempty"`
 	MdevSpecRefs []PciDeviceMdevSpecRefInventoryView `json:"mdevSpecRefs,omitempty"`
 }

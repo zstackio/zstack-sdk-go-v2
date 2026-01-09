@@ -288,20 +288,6 @@ type UpdateAlarmDataParam struct {
 	BaseParam
 	Params UpdateAlarmDataParamDetail `json:"params"`
 }
-// LoginIAM2VirtualIDWithLdapParamDetail LoginIAM2VirtualIDWithLdap detail param
-type LoginIAM2VirtualIDWithLdapParamDetail struct {
-	Uid string `json:"uid" validate:"required"`
-	Password string `json:"password" validate:"required"`
-	VerifyCode string `json:"verifyCode,omitempty"`
-	CaptchaUuid string `json:"captchaUuid,omitempty"`
-	ClientInfo map[string]string `json:"clientInfo,omitempty"`
-}
-
-// LoginIAM2VirtualIDWithLdapParam LoginIAM2VirtualIDWithLdap request param
-type LoginIAM2VirtualIDWithLdapParam struct {
-	BaseParam
-	Params LoginIAM2VirtualIDWithLdapParamDetail `json:"params"`
-}
 // CreateVpnIpsecConfigParamDetail CreateVpnIpsecConfig detail param
 type CreateVpnIpsecConfigParamDetail struct {
 	Name string `json:"name" validate:"required"`
@@ -2226,16 +2212,6 @@ type DetachProvisionNicFromBondingParam struct {
 	BaseParam
 	Params DetachProvisionNicFromBondingParamDetail `json:"params"`
 }
-// LoginIAM2PlatformParamDetail LoginIAM2Platform detail param
-type LoginIAM2PlatformParamDetail struct {
-	ClientInfo map[string]string `json:"clientInfo,omitempty"`
-}
-
-// LoginIAM2PlatformParam LoginIAM2Platform request param
-type LoginIAM2PlatformParam struct {
-	BaseParam
-	Params LoginIAM2PlatformParamDetail `json:"params"`
-}
 // GetHostAllocatorStrategiesParamDetail GetHostAllocatorStrategies detail param
 type GetHostAllocatorStrategiesParamDetail struct {
 }
@@ -2404,17 +2380,6 @@ type GetEncryptedFieldParamDetail struct {
 type GetEncryptedFieldParam struct {
 	BaseParam
 	Params GetEncryptedFieldParamDetail `json:"params"`
-}
-// RemoveIAM2ProjectLoginExpiredParamDetail RemoveIAM2ProjectLoginExpired detail param
-type RemoveIAM2ProjectLoginExpiredParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	AttributeUuid string `json:"attributeUuid" validate:"required"`
-}
-
-// RemoveIAM2ProjectLoginExpiredParam RemoveIAM2ProjectLoginExpired request param
-type RemoveIAM2ProjectLoginExpiredParam struct {
-	BaseParam
-	Params RemoveIAM2ProjectLoginExpiredParamDetail `json:"params"`
 }
 // CleanInvalidLdapBindingParamDetail CleanInvalidLdapBinding detail param
 type CleanInvalidLdapBindingParamDetail struct {
@@ -2781,23 +2746,6 @@ type RecoveryImageFromImageStoreBackupStorageParam struct {
 	BaseParam
 	Params RecoveryImageFromImageStoreBackupStorageParamDetail `json:"params"`
 }
-// LogInByUserParamDetail LogInByUser detail param
-type LogInByUserParamDetail struct {
-	AccountUuid string `json:"accountUuid,omitempty"`
-	AccountName string `json:"accountName,omitempty"`
-	UserName string `json:"userName" validate:"required"`
-	Password string `json:"password" validate:"required"`
-	ClientInfo map[string]string `json:"clientInfo,omitempty"`
-}
-
-// LogInByUserParam LogInByUser request param
-/*
-type LogInByUserParam struct {
-	BaseParam
-	Params LogInByUserParamDetail `json:"params"`
-}
-	*/
-	
 // RevertVmFromSnapshotGroupParamDetail RevertVmFromSnapshotGroup detail param
 type RevertVmFromSnapshotGroupParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
@@ -2820,18 +2768,6 @@ type DetachFirewallRuleSetFromL3ParamDetail struct {
 type DetachFirewallRuleSetFromL3Param struct {
 	BaseParam
 	Params DetachFirewallRuleSetFromL3ParamDetail `json:"params"`
-}
-// GetLoginCaptchaParamDetail GetLoginCaptcha detail param
-type GetLoginCaptchaParamDetail struct {
-	ResourceName string `json:"resourceName" validate:"required"`
-	LoginType string `json:"loginType" validate:"required"`
-	CaptchaUuid string `json:"captchaUuid,omitempty"`
-}
-
-// GetLoginCaptchaParam GetLoginCaptcha request param
-type GetLoginCaptchaParam struct {
-	BaseParam
-	Params GetLoginCaptchaParamDetail `json:"params"`
 }
 // ListVmSchedulingRulesFromExecuteStateParamDetail ListVmSchedulingRulesFromExecuteState detail param
 type ListVmSchedulingRulesFromExecuteStateParamDetail struct {
@@ -3482,19 +3418,6 @@ type AttachIsoToVmInstanceParam struct {
 	BaseParam
 	Params AttachIsoToVmInstanceParamDetail `json:"params"`
 }
-// LoginByCasParamDetail LoginByCas detail param
-type LoginByCasParamDetail struct {
-	Name string `json:"name" validate:"required"`
-	Password string `json:"password" validate:"required"`
-	Type string `json:"type" validate:"required"`
-	ClientInfo map[string]string `json:"clientInfo,omitempty"`
-}
-
-// LoginByCasParam LoginByCas request param
-type LoginByCasParam struct {
-	BaseParam
-	Params LoginByCasParamDetail `json:"params"`
-}
 // SetVRouterRouterIdParamDetail SetVRouterRouterId detail param
 type SetVRouterRouterIdParamDetail struct {
 	VRouterUuid string `json:"vRouterUuid" validate:"required"`
@@ -3909,20 +3832,6 @@ type DeleteOssBucketRemoteParamDetail struct {
 type DeleteOssBucketRemoteParam struct {
 	BaseParam
 	Params DeleteOssBucketRemoteParamDetail `json:"params"`
-}
-// LogInByLdapParamDetail LogInByLdap detail param
-type LogInByLdapParamDetail struct {
-	Uid string `json:"uid" validate:"required"`
-	Password string `json:"password" validate:"required"`
-	VerifyCode string `json:"verifyCode,omitempty"`
-	CaptchaUuid string `json:"captchaUuid,omitempty"`
-	ClientInfo map[string]string `json:"clientInfo,omitempty"`
-}
-
-// LogInByLdapParam LogInByLdap request param
-type LogInByLdapParam struct {
-	BaseParam
-	Params LogInByLdapParamDetail `json:"params"`
 }
 // CreateL2PortGroupParamDetail CreateL2PortGroup detail param
 type CreateL2PortGroupParamDetail struct {
@@ -4962,18 +4871,6 @@ type CreateFirewallRuleParamDetail struct {
 type CreateFirewallRuleParam struct {
 	BaseParam
 	Params CreateFirewallRuleParamDetail `json:"params"`
-}
-// SetIAM2ProjectLoginExpiredParamDetail SetIAM2ProjectLoginExpired detail param
-type SetIAM2ProjectLoginExpiredParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	LoginExpired string `json:"loginExpired" validate:"required"`
-	LoginExpiredAttributeUuid string `json:"loginExpiredAttributeUuid,omitempty"`
-}
-
-// SetIAM2ProjectLoginExpiredParam SetIAM2ProjectLoginExpired request param
-type SetIAM2ProjectLoginExpiredParam struct {
-	BaseParam
-	Params SetIAM2ProjectLoginExpiredParamDetail `json:"params"`
 }
 // GetVmEmulatorPinningParamDetail GetVmEmulatorPinning detail param
 type GetVmEmulatorPinningParamDetail struct {
@@ -6462,16 +6359,6 @@ type StartDataProtectionParamDetail struct {
 type StartDataProtectionParam struct {
 	BaseParam
 	Params StartDataProtectionParamDetail `json:"params"`
-}
-// ValidateSessionParamDetail ValidateSession detail param
-type ValidateSessionParamDetail struct {
-	SessionUuid string `json:"sessionUuid" validate:"required"`
-}
-
-// ValidateSessionParam ValidateSession request param
-type ValidateSessionParam struct {
-	BaseParam
-	Params ValidateSessionParamDetail `json:"params"`
 }
 // ChangeActiveAlarmStateParamDetail ChangeActiveAlarmState detail param
 type ChangeActiveAlarmStateParamDetail struct {
@@ -9781,21 +9668,6 @@ type UpdateResourceConfigsParam struct {
 	BaseParam
 	Params UpdateResourceConfigsParamDetail `json:"params"`
 }
-// LogInByAccountParamDetail LogInByAccount detail param
-type LogInByAccountParamDetail struct {
-	AccountName string `json:"accountName" validate:"required"`
-	Password string `json:"password" validate:"required"`
-	AccountType string `json:"accountType,omitempty"`
-	CaptchaUuid string `json:"captchaUuid,omitempty"`
-	VerifyCode string `json:"verifyCode,omitempty"`
-	ClientInfo map[string]string `json:"clientInfo,omitempty"`
-}
-
-// LogInByAccountParam LogInByAccount request param
-type LogInByAccountParam struct {
-	BaseParam
-	Params LogInByAccountParamDetail `json:"params"`
-}
 // RevertVolumeFromSnapshotParamDetail RevertVolumeFromSnapshot detail param
 type RevertVolumeFromSnapshotParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
@@ -11736,22 +11608,6 @@ type SetVmNumaParam struct {
 	BaseParam
 	Params SetVmNumaParamDetail `json:"params"`
 }
-// LogInParamDetail LogIn detail param
-type LogInParamDetail struct {
-	Username string `json:"username" validate:"required"`
-	Password string `json:"password" validate:"required"`
-	LoginType string `json:"loginType" validate:"required"`
-	CaptchaUuid string `json:"captchaUuid,omitempty"`
-	VerifyCode string `json:"verifyCode,omitempty"`
-	ClientInfo map[string]string `json:"clientInfo,omitempty"`
-	Properties map[string]string `json:"properties,omitempty"`
-}
-
-// LogInParam LogIn request param
-type LogInParam struct {
-	BaseParam
-	Params LogInParamDetail `json:"params"`
-}
 // DeleteAliyunRouterInterfaceLocalParamDetail DeleteAliyunRouterInterfaceLocal detail param
 type DeleteAliyunRouterInterfaceLocalParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
@@ -12748,17 +12604,6 @@ type DeleteAliyunNasAccessGroupRuleParamDetail struct {
 type DeleteAliyunNasAccessGroupRuleParam struct {
 	BaseParam
 	Params DeleteAliyunNasAccessGroupRuleParamDetail `json:"params"`
-}
-// GetLoginProceduresParamDetail GetLoginProcedures detail param
-type GetLoginProceduresParamDetail struct {
-	Username string `json:"username" validate:"required"`
-	LoginType string `json:"loginType" validate:"required"`
-}
-
-// GetLoginProceduresParam GetLoginProcedures request param
-type GetLoginProceduresParam struct {
-	BaseParam
-	Params GetLoginProceduresParamDetail `json:"params"`
 }
 // DeleteBondingParamDetail DeleteBonding detail param
 type DeleteBondingParamDetail struct {

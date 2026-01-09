@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -46,4 +46,12 @@ func (cli *ZSClient) UpdateSnmpAgent(uuid string, params param.UpdateSnmpAgentPa
 func (cli *ZSClient) QuerySnmpAgent(params *param.QueryParam) ([]view.SnmpAgentInventoryView, error) {
 	var resp []view.SnmpAgentInventoryView
 	return resp, cli.List("v1/snmp/agent", params, &resp)
+}
+
+func (cli *ZSClient) GetSnmpAgent(uuid string) (*view.SnmpAgentInventoryView, error) {
+	var resp view.SnmpAgentInventoryView
+	if err := cli.Get("v1/snmp/agent", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

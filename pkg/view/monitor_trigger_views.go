@@ -10,16 +10,16 @@ var _ = time.Now // avoid unused import
 type MonitorTriggerInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
-	Expression string `json:"expression,omitempty"`
-	RecoveryExpression string `json:"recoveryExpression,omitempty"`
-	Description string `json:"description,omitempty"`
-	Status string `json:"status,omitempty"`
-	State string `json:"state,omitempty"`
-	Duration int `json:"duration,omitempty"`
-	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
-	LastStatusChangeTime ZStackTime `json:"lastStatusChangeTime,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Expression *string `json:"expression,omitempty"`
+	RecoveryExpression *string `json:"recoveryExpression,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Status *string `json:"status,omitempty"`
+	State *string `json:"state,omitempty"`
+	Duration *int `json:"duration,omitempty"`
+	TargetResourceUuid *string `json:"targetResourceUuid,omitempty"`
+	LastStatusChangeTime *time.Time `json:"lastStatusChangeTime,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryMonitorTriggerView QueryMonitorTrigger
@@ -40,6 +40,11 @@ type DeleteMonitorTriggerActionEventView struct {
 // ChangeMonitorTriggerStateEventView ChangeMonitorTriggerStateEvent
 type ChangeMonitorTriggerStateEventView struct {
 	Inventory MonitorTriggerInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryMonitorTriggerActionView QueryMonitorTriggerAction
+type QueryMonitorTriggerActionView struct {
+	Inventories []MonitorTriggerActionInventoryView `json:"inventories,omitempty"`
 }
 
 // DeleteMonitorTriggerEventView DeleteMonitorTriggerEvent

@@ -9,14 +9,14 @@ var _ = time.Now // avoid unused import
 // TwoFactorAuthenticationSecretInventoryView TwoFactorAuthenticationSecret
 type TwoFactorAuthenticationSecretInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	Secret string `json:"secret,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
-	ResourceType string `json:"resourceType,omitempty"`
+	Secret *string `json:"secret,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty"`
 	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	UserUuid string `json:"userUuid,omitempty"`
-	UserType string `json:"userType,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	UserUuid *string `json:"userUuid,omitempty"`
+	UserType *string `json:"userType,omitempty"`
 }
 
 // GetTwoFactorAuthenticationSecretView GetTwoFactorAuthenticationSecret

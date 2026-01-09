@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // LicenseAuthorizedCapacityClientAddOnUsageViewView LicenseAuthorizedCapacityClientAddOnUsageView
 type LicenseAuthorizedCapacityClientAddOnUsageViewView struct {
-	Module string `json:"module,omitempty"`
+	Module *string `json:"module,omitempty"`
 	Used int64 `json:"used,omitempty"`
 	UsageDetails []LicenseAuthorizedCapacityUsageDetailViewView `json:"usageDetails,omitempty"`
 }

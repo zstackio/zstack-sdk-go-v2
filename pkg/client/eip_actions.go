@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -39,11 +39,19 @@ func (cli *ZSClient) QueryEip(params *param.QueryParam) ([]view.EipInventoryView
 	var resp []view.EipInventoryView
 	return resp, cli.List("v1/eips", params, &resp)
 }
+
+func (cli *ZSClient) GetEip(uuid string) (*view.EipInventoryView, error) {
+	var resp view.EipInventoryView
+	if err := cli.Get("v1/eips", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteEip deletes Eip
 func (cli *ZSClient) DeleteEip(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/eips/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/eips", uuid, string(deleteMode))
 }
 // DetachEip operates on Eip
 func (cli *ZSClient) DetachEip(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/eips/{uuid}/vm-instances/nics", uuid, string(deleteMode))
+	return cli.Delete("v1/eips/vm-instances/nics", uuid, string(deleteMode))
 }

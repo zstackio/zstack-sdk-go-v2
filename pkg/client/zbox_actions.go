@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,12 @@ func (cli *ZSClient) AddZBox(params param.AddZBoxParam) (*view.ZBoxInventoryView
 func (cli *ZSClient) QueryZBox(params *param.QueryParam) ([]view.ZBoxInventoryView, error) {
 	var resp []view.ZBoxInventoryView
 	return resp, cli.List("v1/zbox", params, &resp)
+}
+
+func (cli *ZSClient) GetZBox(uuid string) (*view.ZBoxInventoryView, error) {
+	var resp view.ZBoxInventoryView
+	if err := cli.Get("v1/zbox", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

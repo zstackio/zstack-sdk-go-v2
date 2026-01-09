@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -31,6 +31,14 @@ func (cli *ZSClient) QueryMonitorTemplate(params *param.QueryParam) ([]view.Moni
 	var resp []view.MonitorTemplateInventoryView
 	return resp, cli.List("v1/zwatch/monitortemplates", params, &resp)
 }
+
+func (cli *ZSClient) GetMonitorTemplate(uuid string) (*view.MonitorTemplateInventoryView, error) {
+	var resp view.MonitorTemplateInventoryView
+	if err := cli.Get("v1/zwatch/monitortemplates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // CreateMonitorTemplate creates MonitorTemplate
 func (cli *ZSClient) CreateMonitorTemplate(params param.CreateMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	var resp view.CreateMonitorTemplateEventView
@@ -41,5 +49,5 @@ func (cli *ZSClient) CreateMonitorTemplate(params param.CreateMonitorTemplatePar
 }
 // DeleteMonitorTemplate deletes MonitorTemplate
 func (cli *ZSClient) DeleteMonitorTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/monitortemplates/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/zwatch/monitortemplates", uuid, string(deleteMode))
 }

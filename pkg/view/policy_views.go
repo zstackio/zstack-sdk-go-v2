@@ -6,12 +6,13 @@ import "time"
 
 var _ = time.Now // avoid unused import
 
-// PolicyInventoryView Policy
-type PolicyInventoryView struct {
+// PolicyView Policy
+type PolicyView struct {
+	MetaClass interface{} `json:"metaClass,omitempty"`
 	Statements []PolicyStatementView `json:"statements,omitempty"`
 	Name string `json:"name,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
-	AccountUuid string `json:"accountUuid,omitempty"`
+	AccountUuid *string `json:"accountUuid,omitempty"`
 }
 
 // DeletePolicyEventView DeletePolicyEvent
@@ -29,12 +30,11 @@ type CreatePolicyEventView struct {
 	Inventory PolicyInventoryView `json:"inventory,omitempty"`
 }
 
-// PolicyView Policy
-type PolicyView struct {
-	MetaClass interface{} `json:"metaClass,omitempty"`
+// PolicyInventoryView Policy
+type PolicyInventoryView struct {
 	Statements []PolicyStatementView `json:"statements,omitempty"`
 	Name string `json:"name,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
-	AccountUuid string `json:"accountUuid,omitempty"`
+	AccountUuid *string `json:"accountUuid,omitempty"`
 }
 

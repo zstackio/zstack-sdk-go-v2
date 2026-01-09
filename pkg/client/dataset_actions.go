@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,6 +15,14 @@ func (cli *ZSClient) QueryDataset(params *param.QueryParam) ([]view.DatasetInven
 	var resp []view.DatasetInventoryView
 	return resp, cli.List("v1/ai/datasets", params, &resp)
 }
+
+func (cli *ZSClient) GetDataset(uuid string) (*view.DatasetInventoryView, error) {
+	var resp view.DatasetInventoryView
+	if err := cli.Get("v1/ai/datasets", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // CreateDataset creates Dataset
 func (cli *ZSClient) CreateDataset(params param.CreateDatasetParam) (*view.DatasetInventoryView, error) {
 	var resp view.CreateDatasetEventView
@@ -23,9 +31,24 @@ func (cli *ZSClient) CreateDataset(params param.CreateDatasetParam) (*view.Datas
 	}
 	return &resp.Inventory, nil
 }
+
+// CreateDatasetAsync Async
+func (cli *ZSClient) CreateDatasetAsync(params param.CreateDatasetParam) (string, error) {
+
+	resource := "v1/ai/datasets"
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
+}
 // DeleteDataset deletes Dataset
 func (cli *ZSClient) DeleteDataset(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/datasets/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/ai/datasets", uuid, string(deleteMode))
 }
 // UpdateDataset updates Dataset
 func (cli *ZSClient) UpdateDataset(uuid string, params param.UpdateDatasetParam) (*view.DatasetInventoryView, error) {

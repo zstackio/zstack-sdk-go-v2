@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -47,9 +47,17 @@ func (cli *ZSClient) QueryVmInstance(params *param.QueryParam) ([]view.VmInstanc
 	var resp []view.VmInstanceInventoryView
 	return resp, cli.List("v1/vm-instances", params, &resp)
 }
+
+func (cli *ZSClient) GetVmInstance(uuid string) (*view.VmInstanceInventoryView, error) {
+	var resp view.VmInstanceInventoryView
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // ExpungeVmInstance operates on VmInstance
 func (cli *ZSClient) ExpungeVmInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vm-instances/{uuid}/actions", uuid, string(deleteMode))
+	return cli.Delete("v1/vm-instances/actions", uuid, string(deleteMode))
 }
 // RebootVmInstance operates on VmInstance
 func (cli *ZSClient) RebootVmInstance(uuid string, params param.RebootVmInstanceParam) (*view.VmInstanceInventoryView, error) {
@@ -69,7 +77,7 @@ func (cli *ZSClient) UpdateVmInstance(uuid string, params param.UpdateVmInstance
 }
 // DestroyVmInstance destroys VmInstance
 func (cli *ZSClient) DestroyVmInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vm-instances/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 // CreateVmInstance creates VmInstance
 func (cli *ZSClient) CreateVmInstance(params param.CreateVmInstanceParam) (*view.VmInstanceInventoryView, error) {

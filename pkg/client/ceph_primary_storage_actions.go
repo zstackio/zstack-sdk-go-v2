@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,12 @@ func (cli *ZSClient) AddCephPrimaryStorage(params param.AddCephPrimaryStoragePar
 func (cli *ZSClient) QueryCephPrimaryStorage(params *param.QueryParam) ([]view.PrimaryStorageInventoryView, error) {
 	var resp []view.PrimaryStorageInventoryView
 	return resp, cli.List("v1/primary-storage/ceph", params, &resp)
+}
+
+func (cli *ZSClient) GetCephPrimaryStorage(uuid string) (*view.PrimaryStorageInventoryView, error) {
+	var resp view.PrimaryStorageInventoryView
+	if err := cli.Get("v1/primary-storage/ceph", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

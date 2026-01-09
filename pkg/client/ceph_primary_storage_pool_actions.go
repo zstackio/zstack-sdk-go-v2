@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -31,7 +31,15 @@ func (cli *ZSClient) QueryCephPrimaryStoragePool(params *param.QueryParam) ([]vi
 	var resp []view.CephPrimaryStoragePoolInventoryView
 	return resp, cli.List("v1/primary-storage/ceph/pools", params, &resp)
 }
+
+func (cli *ZSClient) GetCephPrimaryStoragePool(uuid string) (*view.CephPrimaryStoragePoolInventoryView, error) {
+	var resp view.CephPrimaryStoragePoolInventoryView
+	if err := cli.Get("v1/primary-storage/ceph/pools", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteCephPrimaryStoragePool deletes CephPrimaryStoragePool
 func (cli *ZSClient) DeleteCephPrimaryStoragePool(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/primary-storage/ceph/pools/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/primary-storage/ceph/pools", uuid, string(deleteMode))
 }

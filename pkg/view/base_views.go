@@ -2,66 +2,10 @@
 
 package view
 
-import (
-	"encoding/json"
-	"fmt"
-	"time"
-)
-
-// ZStackTime custom time type for ZStack's time format
-type ZStackTime struct {
-	time.Time
-}
-
-// UnmarshalJSON implements json.Unmarshaler
-func (t *ZStackTime) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
-		return err
-	}
-	if s == "" {
-		return nil
-	}
-	// ZStack time format: "Oct 28, 2025 2:09:26 PM"
-	formats := []string{
-		"Jan 2, 2006 3:04:05 PM",
-		"Jan 2, 2006 15:04:05",
-		time.RFC3339,
-	}
-	for _, format := range formats {
-		if parsed, err := time.Parse(format, s); err == nil {
-			t.Time = parsed
-			return nil
-		}
-	}
-	return fmt.Errorf("cannot parse time: %s", s)
-}
-
-// MarshalJSON implements json.Marshaler
-func (t ZStackTime) MarshalJSON() ([]byte, error) {
-	if t.IsZero() {
-		return []byte(`""`), nil
-	}
-	return json.Marshal(t.Format("Jan 2, 2006 3:04:05 PM"))
-}
-
-// BaseInfoView base info view
+// BaseInfoView 基础信息视图（仅包含通用标识字段）
 type BaseInfoView struct {
-	UUID        string `json:"uuid"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
-}
-
-// BaseTimeView time info view
-type BaseTimeView struct {
-	CreateDate ZStackTime `json:"createDate"`
-	LastOpDate ZStackTime `json:"lastOpDate"`
-}
-
-// BaseResourceView resource base view
-type BaseResourceView struct {
-	BaseInfoView
-	BaseTimeView
+	UUID string `json:"uuid"`           // 资源唯一标识
+	Name string `json:"name,omitempty"` // 资源名称
 }
 
 // Generic wrapper types for APIs that return simple data types

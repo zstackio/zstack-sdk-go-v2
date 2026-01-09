@@ -12,7 +12,7 @@ type OvfInfoView struct {
 	Networks []OvfNetworkInfoView `json:"networks,omitempty"`
 	Cpu OvfCpuInfoView `json:"cpu,omitempty"`
 	Memory OvfMemoryInfoView `json:"memory,omitempty"`
-	VmName string `json:"vmName,omitempty"`
+	VmName *string `json:"vmName,omitempty"`
 	Os OvfOSInfoView `json:"os,omitempty"`
 	SystemInfo OvfSystemInfoView `json:"systemInfo,omitempty"`
 	Nics []OvfEthernetAdapterInfoView `json:"nics,omitempty"`

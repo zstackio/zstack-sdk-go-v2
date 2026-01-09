@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,12 @@ func (cli *ZSClient) CreateSNSEmailEndpoint(params param.CreateSNSEmailEndpointP
 func (cli *ZSClient) QuerySNSEmailEndpoint(params *param.QueryParam) ([]view.SNSEmailEndpointInventoryView, error) {
 	var resp []view.SNSEmailEndpointInventoryView
 	return resp, cli.List("v1/sns/application-endpoints/emails", params, &resp)
+}
+
+func (cli *ZSClient) GetSNSEmailEndpoint(uuid string) (*view.SNSEmailEndpointInventoryView, error) {
+	var resp view.SNSEmailEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/emails", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type WebhookInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Url string `json:"url,omitempty"`
-	Type string `json:"type,omitempty"`
-	Opaque string `json:"opaque,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Opaque *string `json:"opaque,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryWebhookView QueryWebhook

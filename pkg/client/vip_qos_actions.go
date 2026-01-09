@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteVipQos deletes VipQos
 func (cli *ZSClient) DeleteVipQos(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vips/{uuid}/vip-qos", uuid, string(deleteMode))
+	return cli.Delete("v1/vips/vip-qos", uuid, string(deleteMode))
 }
 // SetVipQos operates on VipQos
 func (cli *ZSClient) SetVipQos(uuid string, params param.SetVipQosParam) (*view.VipQosInventoryView, error) {

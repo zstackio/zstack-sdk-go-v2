@@ -9,10 +9,10 @@ var _ = time.Now // avoid unused import
 // CloudFormationStackResourceRefInventoryView CloudFormationStackResourceRef
 type CloudFormationStackResourceRefInventoryView struct {
 	Id int64 `json:"id,omitempty"`
-	StackUuid string `json:"stackUuid,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
-	ResourceName string `json:"resourceName,omitempty"`
-	ResourceType string `json:"resourceType,omitempty"`
+	StackUuid *string `json:"stackUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty"`
 	Reserve bool `json:"reserve,omitempty"`
 	Round int `json:"round,omitempty"`
 }

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,12 @@ func (cli *ZSClient) UpdateXskyBlockVolume(uuid string, params param.UpdateXskyB
 func (cli *ZSClient) QueryXskyBlockVolume(params *param.QueryParam) ([]view.XskyBlockVolumeInventoryView, error) {
 	var resp []view.XskyBlockVolumeInventoryView
 	return resp, cli.List("v1/xksy/block-volumes", params, &resp)
+}
+
+func (cli *ZSClient) GetXskyBlockVolume(uuid string) (*view.XskyBlockVolumeInventoryView, error) {
+	var resp view.XskyBlockVolumeInventoryView
+	if err := cli.Get("v1/xksy/block-volumes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

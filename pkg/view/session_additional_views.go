@@ -1,4 +1,4 @@
-﻿// Copyright (c) ZStack.io, Inc.
+// Copyright (c) ZStack.io, Inc.
 
 package view
 
@@ -6,7 +6,7 @@ import "time"
 
 // SessionInventoryView Session
 type SessionInventoryView struct {
-	Uuid        string    `json:"uuid,omitempty"`
+	Uuid        string    `json:"uuid"`
 	AccountUuid string    `json:"accountUuid,omitempty"`
 	UserUuid    string    `json:"userUuid,omitempty"`
 	UserType    string    `json:"userType,omitempty"`
@@ -14,12 +14,13 @@ type SessionInventoryView struct {
 	CreateDate  time.Time `json:"createDate,omitempty"`
 }
 
+// WebUISessionView Web UI Session
 type WebUISessionView struct {
-	SessionId       string `json:"sessionId"`   // Resource UUID
-	AccountUuid     string `json:"accountUuid"` // Account UUID
-	UserUuid        string `json:"userUuid"`    // User UUID
-	UserName        string `json:"username"`    // Username
-	LoginType       string `json:"loginType"`
-	CurrentIdentity string `json:"currentIdentity"`
-	ZSVersion       string `json:"zsVersion"` // ZStack Cloud detailed version
+	SessionId       string `json:"sessionId"`       // Session ID
+	AccountUuid     string `json:"accountUuid"`     // Account UUID
+	UserUuid        string `json:"userUuid"`        // User UUID
+	UserName        string `json:"username"`        // Username
+	LoginType       string `json:"loginType"`       // Login type
+	CurrentIdentity string `json:"currentIdentity"` // Current identity
+	ZSVersion       string `json:"zsVersion"`       // ZStack Cloud version
 }

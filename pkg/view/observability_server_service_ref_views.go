@@ -8,13 +8,13 @@ var _ = time.Now // avoid unused import
 
 // ObservabilityServerServiceRefInventoryView ObservabilityServerServiceRef
 type ObservabilityServerServiceRefInventoryView struct {
-	ObservabilityServerOfferingUuid string `json:"observabilityServerOfferingUuid,omitempty"`
-	ObservabilityServerUuid string `json:"observabilityServerUuid,omitempty"`
-	ServiceUuid string `json:"serviceUuid,omitempty"`
-	ServiceType string `json:"serviceType,omitempty"`
-	ObservabilityServerPublicIp string `json:"observabilityServerPublicIp,omitempty"`
-	ServicePublicIp string `json:"servicePublicIp,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	ObservabilityServerOfferingUuid *string `json:"observabilityServerOfferingUuid,omitempty"`
+	ObservabilityServerUuid *string `json:"observabilityServerUuid,omitempty"`
+	ServiceUuid *string `json:"serviceUuid,omitempty"`
+	ServiceType *string `json:"serviceType,omitempty"`
+	ObservabilityServerPublicIp *string `json:"observabilityServerPublicIp,omitempty"`
+	ServicePublicIp *string `json:"servicePublicIp,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

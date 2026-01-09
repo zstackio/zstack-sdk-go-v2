@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type NvmeTargetInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Nqn string `json:"nqn,omitempty"`
-	NvmeServerUuid string `json:"nvmeServerUuid,omitempty"`
-	State string `json:"state,omitempty"`
+	Nqn *string `json:"nqn,omitempty"`
+	NvmeServerUuid *string `json:"nvmeServerUuid,omitempty"`
+	State *string `json:"state,omitempty"`
 	NvmeLuns []NvmeLunInventoryView `json:"nvmeLuns,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryNvmeTargetView QueryNvmeTarget

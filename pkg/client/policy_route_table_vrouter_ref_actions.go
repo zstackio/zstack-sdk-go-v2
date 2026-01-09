@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,12 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryPolicyRouteTableVRouterRef(params *param.QueryParam) ([]view.PolicyRouteTableVRouterRefInventoryView, error) {
 	var resp []view.PolicyRouteTableVRouterRefInventoryView
 	return resp, cli.List("v1/policy-routes/tables/vrouters/refs", params, &resp)
+}
+
+func (cli *ZSClient) GetPolicyRouteTableVRouterRef(uuid string) (*view.PolicyRouteTableVRouterRefInventoryView, error) {
+	var resp view.PolicyRouteTableVRouterRefInventoryView
+	if err := cli.Get("v1/policy-routes/tables/vrouters/refs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

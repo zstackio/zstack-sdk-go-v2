@@ -9,20 +9,26 @@ var _ = time.Now // avoid unused import
 // VmCdRomInventoryView VmCdRom
 type VmCdRomInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	DeviceId int `json:"deviceId,omitempty"`
-	IsoUuid string `json:"isoUuid,omitempty"`
-	IsoInstallPath string `json:"isoInstallPath,omitempty"`
+	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	DeviceId *int `json:"deviceId,omitempty"`
+	IsoUuid *string `json:"isoUuid,omitempty"`
+	IsoInstallPath *string `json:"isoInstallPath,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Protocol string `json:"protocol,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Protocol *string `json:"protocol,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // CreateVmCdRomEventView CreateVmCdRomEvent
 type CreateVmCdRomEventView struct {
 	Inventory VmCdRomInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteVmCdRomEventView DeleteVmCdRomEvent
+type DeleteVmCdRomEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // QueryVmCdRomView QueryVmCdRom

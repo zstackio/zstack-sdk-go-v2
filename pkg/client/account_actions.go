@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,7 +20,7 @@ func (cli *ZSClient) UpdateAccount(uuid string, params param.UpdateAccountParam)
 }
 // DeleteAccount deletes Account
 func (cli *ZSClient) DeleteAccount(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/accounts/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/accounts", uuid, string(deleteMode))
 }
 // CreateAccount creates Account
 func (cli *ZSClient) CreateAccount(params param.CreateAccountParam) (*view.AccountInventoryView, error) {
@@ -34,4 +34,12 @@ func (cli *ZSClient) CreateAccount(params param.CreateAccountParam) (*view.Accou
 func (cli *ZSClient) QueryAccount(params *param.QueryParam) ([]view.AccountInventoryView, error) {
 	var resp []view.AccountInventoryView
 	return resp, cli.List("v1/accounts", params, &resp)
+}
+
+func (cli *ZSClient) GetAccount(uuid string) (*view.AccountInventoryView, error) {
+	var resp view.AccountInventoryView
+	if err := cli.Get("v1/accounts", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

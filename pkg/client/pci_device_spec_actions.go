@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryPciDeviceSpec(params *param.QueryParam) ([]view.PciDeviceSpecInventoryView, error) {
 	var resp []view.PciDeviceSpecInventoryView
 	return resp, cli.List("v1/pci-device-specs", params, &resp)
+}
+
+func (cli *ZSClient) GetPciDeviceSpec(uuid string) (*view.PciDeviceSpecInventoryView, error) {
+	var resp view.PciDeviceSpecInventoryView
+	if err := cli.Get("v1/pci-device-specs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // UpdatePciDeviceSpec updates PciDeviceSpec
 func (cli *ZSClient) UpdatePciDeviceSpec(uuid string, params param.UpdatePciDeviceSpecParam) (*view.PciDeviceSpecInventoryView, error) {

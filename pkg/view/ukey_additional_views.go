@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // UKeyInventoryView UKey
 type UKeyInventoryView struct {
-	ManagementNodeUuid string `json:"managementNodeUuid,omitempty"`
+	ManagementNodeUuid *string `json:"managementNodeUuid,omitempty"`
 	Status string `json:"status,omitempty"`
-	KeyId string `json:"keyId,omitempty"`
+	KeyId *string `json:"keyId,omitempty"`
 }
 

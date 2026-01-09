@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,12 +20,20 @@ func (cli *ZSClient) UpdateUserProxyConfig(uuid string, params param.UpdateUserP
 }
 // DeleteUserProxyConfig deletes UserProxyConfig
 func (cli *ZSClient) DeleteUserProxyConfig(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/user-proxy-configs/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/user-proxy-configs", uuid, string(deleteMode))
 }
 // QueryUserProxyConfig queries UserProxyConfig list
 func (cli *ZSClient) QueryUserProxyConfig(params *param.QueryParam) ([]view.UserProxyConfigInventoryView, error) {
 	var resp []view.UserProxyConfigInventoryView
 	return resp, cli.List("v1/user-proxy-configs", params, &resp)
+}
+
+func (cli *ZSClient) GetUserProxyConfig(uuid string) (*view.UserProxyConfigInventoryView, error) {
+	var resp view.UserProxyConfigInventoryView
+	if err := cli.Get("v1/user-proxy-configs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // CreateUserProxyConfig creates UserProxyConfig
 func (cli *ZSClient) CreateUserProxyConfig(params param.CreateUserProxyConfigParam) (*view.UserProxyConfigInventoryView, error) {

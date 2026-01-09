@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type HbaDeviceInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	HostUuid string `json:"hostUuid,omitempty"`
-	HbaType string `json:"hbaType,omitempty"`
-	CreateDate string `json:"createDate,omitempty"`
-	LastOpDate string `json:"lastOpDate,omitempty"`
+	HostUuid *string `json:"hostUuid,omitempty"`
+	HbaType *string `json:"hbaType,omitempty"`
+	CreateDate *string `json:"createDate,omitempty"`
+	LastOpDate *string `json:"lastOpDate,omitempty"`
 }
 
 // QueryFcHbaDeviceView QueryFcHbaDevice

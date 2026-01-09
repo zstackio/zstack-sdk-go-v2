@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,9 +23,17 @@ func (cli *ZSClient) QueryLoadBalancerServerGroup(params *param.QueryParam) ([]v
 	var resp []view.LoadBalancerServerGroupInventoryView
 	return resp, cli.List("v1/load-balancers/servergroups", params, &resp)
 }
+
+func (cli *ZSClient) GetLoadBalancerServerGroup(uuid string) (*view.LoadBalancerServerGroupInventoryView, error) {
+	var resp view.LoadBalancerServerGroupInventoryView
+	if err := cli.Get("v1/load-balancers/servergroups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteLoadBalancerServerGroup deletes LoadBalancerServerGroup
 func (cli *ZSClient) DeleteLoadBalancerServerGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/load-balancers/servergroups/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/load-balancers/servergroups", uuid, string(deleteMode))
 }
 // UpdateLoadBalancerServerGroup updates LoadBalancerServerGroup
 func (cli *ZSClient) UpdateLoadBalancerServerGroup(uuid string, params param.UpdateLoadBalancerServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {

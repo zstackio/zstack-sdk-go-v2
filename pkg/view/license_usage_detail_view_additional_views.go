@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // LicenseUsageDetailViewView LicenseUsageDetailView
 type LicenseUsageDetailViewView struct {
-	UsedBy string `json:"usedBy,omitempty"`
+	UsedBy *string `json:"usedBy,omitempty"`
 	Usage int64 `json:"usage,omitempty"`
-	ResourceInfo string `json:"resourceInfo,omitempty"`
+	ResourceInfo *string `json:"resourceInfo,omitempty"`
 }
 

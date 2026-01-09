@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ThresholdView Threshold
 type ThresholdView struct {
-	ThresholdName string `json:"thresholdName,omitempty"`
-	ThresholdValue string `json:"thresholdValue,omitempty"`
-	Operator string `json:"operator,omitempty"`
+	ThresholdName *string `json:"thresholdName,omitempty"`
+	ThresholdValue *string `json:"thresholdValue,omitempty"`
+	Operator *string `json:"operator,omitempty"`
 }
 

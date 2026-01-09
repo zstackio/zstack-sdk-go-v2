@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryModelServiceInstanceGroup(params *param.QueryParam) ([]view.ModelServiceInstanceGroupInventoryView, error) {
 	var resp []view.ModelServiceInstanceGroupInventoryView
 	return resp, cli.List("v1/ai/model-services/instances/groups/", params, &resp)
+}
+
+func (cli *ZSClient) GetModelServiceInstanceGroup(uuid string) (*view.ModelServiceInstanceGroupInventoryView, error) {
+	var resp view.ModelServiceInstanceGroupInventoryView
+	if err := cli.Get("v1/ai/model-services/instances/groups/", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // UpdateModelServiceInstanceGroup updates ModelServiceInstanceGroup
 func (cli *ZSClient) UpdateModelServiceInstanceGroup(uuid string, params param.UpdateModelServiceInstanceGroupParam) (*view.ModelServiceInstanceGroupInventoryView, error) {
@@ -25,5 +33,5 @@ func (cli *ZSClient) UpdateModelServiceInstanceGroup(uuid string, params param.U
 }
 // DeleteModelServiceInstanceGroup deletes ModelServiceInstanceGroup
 func (cli *ZSClient) DeleteModelServiceInstanceGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/model-services/instances/groups/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/ai/model-services/instances/groups", uuid, string(deleteMode))
 }

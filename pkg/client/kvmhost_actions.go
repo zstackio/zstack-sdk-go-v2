@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -17,6 +17,21 @@ func (cli *ZSClient) AddKVMHost(params param.AddKVMHostParam) (*view.HostInvento
 		return nil, err
 	}
 	return &resp.Inventory, nil
+}
+
+// AddKVMHostAsync Async
+func (cli *ZSClient) AddKVMHostAsync(params param.AddKVMHostParam) (string, error) {
+
+	resource := "v1/hosts/kvm"
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
 }
 // UpdateKVMHost updates KVMHost
 func (cli *ZSClient) UpdateKVMHost(uuid string, params param.UpdateKVMHostParam) (*view.HostInventoryView, error) {

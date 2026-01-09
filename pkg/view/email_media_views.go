@@ -8,16 +8,26 @@ var _ = time.Now // avoid unused import
 
 // EmailMediaInventoryView EmailMedia
 type EmailMediaInventoryView struct {
-	SmtpServer string `json:"smtpServer,omitempty"`
-	SmtpPort int `json:"smtpPort,omitempty"`
-	Username string `json:"username,omitempty"`
+	SmtpServer *string `json:"smtpServer,omitempty"`
+	SmtpPort *int `json:"smtpPort,omitempty"`
+	Username *string `json:"username,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	State string `json:"state,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Type *string `json:"type,omitempty"`
+	State *string `json:"state,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+}
+
+// QueryMediaView QueryMedia
+type QueryMediaView struct {
+	Inventories []MediaInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateMediaEventView CreateMediaEvent
+type CreateMediaEventView struct {
+	Inventory MediaInventoryView `json:"inventory,omitempty"`
 }
 
 // UpdateEmailMediaEventView UpdateEmailMediaEvent

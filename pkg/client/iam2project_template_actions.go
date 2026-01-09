@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,6 +23,14 @@ func (cli *ZSClient) QueryIAM2ProjectTemplate(params *param.QueryParam) ([]view.
 	var resp []view.IAM2ProjectTemplateInventoryView
 	return resp, cli.List("v1/iam2/projects/templates", params, &resp)
 }
+
+func (cli *ZSClient) GetIAM2ProjectTemplate(uuid string) (*view.IAM2ProjectTemplateInventoryView, error) {
+	var resp view.IAM2ProjectTemplateInventoryView
+	if err := cli.Get("v1/iam2/projects/templates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // UpdateIAM2ProjectTemplate updates IAM2ProjectTemplate
 func (cli *ZSClient) UpdateIAM2ProjectTemplate(uuid string, params param.UpdateIAM2ProjectTemplateParam) (*view.IAM2ProjectTemplateInventoryView, error) {
 	var resp view.UpdateIAM2ProjectTemplateEventView
@@ -33,5 +41,5 @@ func (cli *ZSClient) UpdateIAM2ProjectTemplate(uuid string, params param.UpdateI
 }
 // DeleteIAM2ProjectTemplate deletes IAM2ProjectTemplate
 func (cli *ZSClient) DeleteIAM2ProjectTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/templates/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/iam2/projects/templates", uuid, string(deleteMode))
 }

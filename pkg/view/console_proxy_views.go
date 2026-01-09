@@ -9,21 +9,21 @@ var _ = time.Now // avoid unused import
 // ConsoleProxyInventoryView ConsoleProxy
 type ConsoleProxyInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	AgentIp string `json:"agentIp,omitempty"`
-	Token string `json:"token,omitempty"`
-	AgentType string `json:"agentType,omitempty"`
-	ProxyHostname string `json:"proxyHostname,omitempty"`
-	ProxyPort int `json:"proxyPort,omitempty"`
-	TargetSchema string `json:"targetSchema,omitempty"`
-	TargetHostname string `json:"targetHostname,omitempty"`
-	TargetPort int `json:"targetPort,omitempty"`
-	Scheme string `json:"scheme,omitempty"`
-	ProxyIdentity string `json:"proxyIdentity,omitempty"`
-	Status string `json:"status,omitempty"`
-	Version string `json:"version,omitempty"`
-	ExpiredDate ZStackTime `json:"expiredDate,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	AgentIp *string `json:"agentIp,omitempty"`
+	Token *string `json:"token,omitempty"`
+	AgentType *string `json:"agentType,omitempty"`
+	ProxyHostname *string `json:"proxyHostname,omitempty"`
+	ProxyPort *int `json:"proxyPort,omitempty"`
+	TargetSchema *string `json:"targetSchema,omitempty"`
+	TargetHostname *string `json:"targetHostname,omitempty"`
+	TargetPort *int `json:"targetPort,omitempty"`
+	Scheme *string `json:"scheme,omitempty"`
+	ProxyIdentity *string `json:"proxyIdentity,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Version *string `json:"version,omitempty"`
+	ExpiredDate *time.Time `json:"expiredDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -9,12 +9,12 @@ var _ = time.Now // avoid unused import
 // VpcFirewallIpSetTemplateInventoryView VpcFirewallIpSetTemplate
 type VpcFirewallIpSetTemplateInventoryView struct {
 	Name string `json:"name,omitempty"`
-	SourceValue string `json:"sourceValue,omitempty"`
-	DestValue string `json:"destValue,omitempty"`
+	SourceValue *string `json:"sourceValue,omitempty"`
+	DestValue *string `json:"destValue,omitempty"`
 	Type string `json:"type,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	AccountUuid string `json:"accountUuid,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	AccountUuid *string `json:"accountUuid,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 }
 

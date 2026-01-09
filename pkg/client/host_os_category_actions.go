@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,12 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryHostOsCategory(params *param.QueryParam) ([]view.HostOsCategoryInventoryView, error) {
 	var resp []view.HostOsCategoryInventoryView
 	return resp, cli.List("v1/hosts/os/category", params, &resp)
+}
+
+func (cli *ZSClient) GetHostOsCategory(uuid string) (*view.HostOsCategoryInventoryView, error) {
+	var resp view.HostOsCategoryInventoryView
+	if err := cli.Get("v1/hosts/os/category", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

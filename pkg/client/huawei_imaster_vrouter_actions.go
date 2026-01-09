@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,7 +23,15 @@ func (cli *ZSClient) QueryHuaweiIMasterVRouter(params *param.QueryParam) ([]view
 	var resp []view.HuaweiIMasterVRouterInventoryView
 	return resp, cli.List("v1/sdn-controller/huawei-imaster/vrouters", params, &resp)
 }
+
+func (cli *ZSClient) GetHuaweiIMasterVRouter(uuid string) (*view.HuaweiIMasterVRouterInventoryView, error) {
+	var resp view.HuaweiIMasterVRouterInventoryView
+	if err := cli.Get("v1/sdn-controller/huawei-imaster/vrouters", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteHuaweiIMasterVRouter deletes HuaweiIMasterVRouter
 func (cli *ZSClient) DeleteHuaweiIMasterVRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sdn-controller/huawei-imaster/vrouters/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/sdn-controller/huawei-imaster/vrouters", uuid, string(deleteMode))
 }

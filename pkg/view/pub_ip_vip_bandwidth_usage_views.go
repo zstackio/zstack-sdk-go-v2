@@ -8,19 +8,19 @@ var _ = time.Now // avoid unused import
 
 // PubIpVipBandwidthUsageInventoryView PubIpVipBandwidthUsage
 type PubIpVipBandwidthUsageInventoryView struct {
-	Id int64 `json:"id,omitempty"`
-	AccountUuid string `json:"accountUuid,omitempty"`
-	DateInLong int64 `json:"dateInLong,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	AccountUuid *string `json:"accountUuid,omitempty"`
+	DateInLong *int64 `json:"dateInLong,omitempty"`
 	Name string `json:"name,omitempty"`
-	Inventory string `json:"inventory,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	VipUuid string `json:"vipUuid,omitempty"`
-	VipName string `json:"vipName,omitempty"`
-	VipIp string `json:"vipIp,omitempty"`
-	BandwidthIn int64 `json:"bandwidthIn,omitempty"`
-	BandwidthOut int64 `json:"bandwidthOut,omitempty"`
-	VipStatus string `json:"vipStatus,omitempty"`
-	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Inventory *string `json:"inventory,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	VipUuid *string `json:"vipUuid,omitempty"`
+	VipName *string `json:"vipName,omitempty"`
+	VipIp *string `json:"vipIp,omitempty"`
+	BandwidthIn *int64 `json:"bandwidthIn,omitempty"`
+	BandwidthOut *int64 `json:"bandwidthOut,omitempty"`
+	VipStatus *string `json:"vipStatus,omitempty"`
+	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
 }
 

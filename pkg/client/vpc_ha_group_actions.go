@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,7 +20,7 @@ func (cli *ZSClient) UpdateVpcHaGroup(uuid string, params param.UpdateVpcHaGroup
 }
 // DeleteVpcHaGroup deletes VpcHaGroup
 func (cli *ZSClient) DeleteVpcHaGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vpc/hagroups/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/vpc/hagroups", uuid, string(deleteMode))
 }
 // CreateVpcHaGroup creates VpcHaGroup
 func (cli *ZSClient) CreateVpcHaGroup(params param.CreateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
@@ -34,4 +34,12 @@ func (cli *ZSClient) CreateVpcHaGroup(params param.CreateVpcHaGroupParam) (*view
 func (cli *ZSClient) QueryVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGroupInventoryView, error) {
 	var resp []view.VpcHaGroupInventoryView
 	return resp, cli.List("v1/vpc/hagroups", params, &resp)
+}
+
+func (cli *ZSClient) GetVpcHaGroup(uuid string) (*view.VpcHaGroupInventoryView, error) {
+	var resp view.VpcHaGroupInventoryView
+	if err := cli.Get("v1/vpc/hagroups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

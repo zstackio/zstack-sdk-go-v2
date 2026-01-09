@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type XmlHookInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Type string `json:"type,omitempty"`
-	HookScript string `json:"hookScript,omitempty"`
-	LibvirtVersion string `json:"libvirtVersion,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	HookScript *string `json:"hookScript,omitempty"`
+	LibvirtVersion *string `json:"libvirtVersion,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateVmUserDefinedXmlHookScriptEventView UpdateVmUserDefinedXmlHookScriptEvent

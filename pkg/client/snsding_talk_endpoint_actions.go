@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,6 +22,14 @@ func (cli *ZSClient) CreateSNSDingTalkEndpoint(params param.CreateSNSDingTalkEnd
 func (cli *ZSClient) QuerySNSDingTalkEndpoint(params *param.QueryParam) ([]view.SNSDingTalkEndpointInventoryView, error) {
 	var resp []view.SNSDingTalkEndpointInventoryView
 	return resp, cli.List("v1/sns/application-endpoints/ding-talk", params, &resp)
+}
+
+func (cli *ZSClient) GetSNSDingTalkEndpoint(uuid string) (*view.SNSDingTalkEndpointInventoryView, error) {
+	var resp view.SNSDingTalkEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/ding-talk", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // UpdateSNSDingTalkEndpoint updates SNSDingTalkEndpoint
 func (cli *ZSClient) UpdateSNSDingTalkEndpoint(uuid string, params param.UpdateSNSDingTalkEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {

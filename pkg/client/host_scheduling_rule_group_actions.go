@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,6 +23,14 @@ func (cli *ZSClient) QueryHostSchedulingRuleGroup(params *param.QueryParam) ([]v
 	var resp []view.HostSchedulingRuleGroupInventoryView
 	return resp, cli.List("v1/query/host/schedulingRule/group", params, &resp)
 }
+
+func (cli *ZSClient) GetHostSchedulingRuleGroup(uuid string) (*view.HostSchedulingRuleGroupInventoryView, error) {
+	var resp view.HostSchedulingRuleGroupInventoryView
+	if err := cli.Get("v1/query/host/schedulingRule/group", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // CreateHostSchedulingRuleGroup creates HostSchedulingRuleGroup
 func (cli *ZSClient) CreateHostSchedulingRuleGroup(params param.CreateHostSchedulingRuleGroupParam) (*view.HostSchedulingRuleGroupInventoryView, error) {
 	var resp view.CreateHostSchedulingRuleGroupEventView
@@ -33,5 +41,5 @@ func (cli *ZSClient) CreateHostSchedulingRuleGroup(params param.CreateHostSchedu
 }
 // DeleteHostSchedulingRuleGroup deletes HostSchedulingRuleGroup
 func (cli *ZSClient) DeleteHostSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/hostSchedulingRuleGroup/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/hostSchedulingRuleGroup", uuid, string(deleteMode))
 }

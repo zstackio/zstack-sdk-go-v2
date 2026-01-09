@@ -11,9 +11,9 @@ type VpcFirewallInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
 	Refs []VpcFirewallRuleSetL3RefInventoryView `json:"refs,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	Description string `json:"description,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateVpcFirewallEventView UpdateVpcFirewallEvent

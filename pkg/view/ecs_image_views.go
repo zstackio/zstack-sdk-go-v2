@@ -9,19 +9,19 @@ var _ = time.Now // avoid unused import
 // EcsImageInventoryView EcsImage
 type EcsImageInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	LocalImageUuid string `json:"localImageUuid,omitempty"`
-	EcsImageId string `json:"ecsImageId,omitempty"`
+	LocalImageUuid *string `json:"localImageUuid,omitempty"`
+	EcsImageId *string `json:"ecsImageId,omitempty"`
 	Name string `json:"name,omitempty"`
-	EcsImageSize int64 `json:"ecsImageSize,omitempty"`
-	Description string `json:"description,omitempty"`
-	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
-	Platform string `json:"platform,omitempty"`
-	Type string `json:"type,omitempty"`
-	OssMd5Sum string `json:"ossMd5Sum,omitempty"`
-	Format string `json:"format,omitempty"`
-	OsName string `json:"osName,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	EcsImageSize *int64 `json:"ecsImageSize,omitempty"`
+	Description *string `json:"description,omitempty"`
+	DataCenterUuid *string `json:"dataCenterUuid,omitempty"`
+	Platform *string `json:"platform,omitempty"`
+	Type *string `json:"type,omitempty"`
+	OssMd5Sum *string `json:"ossMd5Sum,omitempty"`
+	Format *string `json:"format,omitempty"`
+	OsName *string `json:"osName,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // SyncEcsImageFromRemoteEventView SyncEcsImageFromRemoteEvent

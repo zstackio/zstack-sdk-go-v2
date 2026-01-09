@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type PortMirrorInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
-	MirrorNetworkUuid string `json:"mirrorNetworkUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	MirrorNetworkUuid *string `json:"mirrorNetworkUuid,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Sessions []PortMirrorSessionInventoryView `json:"sessions,omitempty"`
 }
 

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,12 +20,20 @@ func (cli *ZSClient) CreateCdpPolicy(params param.CreateCdpPolicyParam) (*view.C
 }
 // DeleteCdpPolicy deletes CdpPolicy
 func (cli *ZSClient) DeleteCdpPolicy(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/cdp-backup-storage/policy/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/cdp-backup-storage/policy", uuid, string(deleteMode))
 }
 // QueryCdpPolicy queries CdpPolicy list
 func (cli *ZSClient) QueryCdpPolicy(params *param.QueryParam) ([]view.CdpPolicyInventoryView, error) {
 	var resp []view.CdpPolicyInventoryView
 	return resp, cli.List("v1/cdp-backup-storage/policy", params, &resp)
+}
+
+func (cli *ZSClient) GetCdpPolicy(uuid string) (*view.CdpPolicyInventoryView, error) {
+	var resp view.CdpPolicyInventoryView
+	if err := cli.Get("v1/cdp-backup-storage/policy", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // UpdateCdpPolicy updates CdpPolicy
 func (cli *ZSClient) UpdateCdpPolicy(uuid string, params param.UpdateCdpPolicyParam) (*view.CdpPolicyInventoryView, error) {

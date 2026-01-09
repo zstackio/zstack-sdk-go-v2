@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,9 +23,17 @@ func (cli *ZSClient) QueryRole(params *param.QueryParam) ([]view.RoleInventoryVi
 	var resp []view.RoleInventoryView
 	return resp, cli.List("v1/identities/roles", params, &resp)
 }
+
+func (cli *ZSClient) GetRole(uuid string) (*view.RoleInventoryView, error) {
+	var resp view.RoleInventoryView
+	if err := cli.Get("v1/identities/roles", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteRole deletes Role
 func (cli *ZSClient) DeleteRole(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/identities/roles/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/identities/roles", uuid, string(deleteMode))
 }
 // UpdateRole updates Role
 func (cli *ZSClient) UpdateRole(uuid string, params param.UpdateRoleParam) (*view.RoleInventoryView, error) {

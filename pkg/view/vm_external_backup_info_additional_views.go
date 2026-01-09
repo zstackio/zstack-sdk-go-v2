@@ -14,7 +14,7 @@ type VmExternalBackupInfoView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
 	State string `json:"state,omitempty"`
-	InstallPath string `json:"installPath,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
+	InstallPath *string `json:"installPath,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
 }
 

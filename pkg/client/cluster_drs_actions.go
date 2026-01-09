@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,9 +15,17 @@ func (cli *ZSClient) QueryClusterDRS(params *param.QueryParam) ([]view.ClusterDR
 	var resp []view.ClusterDRSInventoryView
 	return resp, cli.List("v1/clusters/drs", params, &resp)
 }
+
+func (cli *ZSClient) GetClusterDRS(uuid string) (*view.ClusterDRSInventoryView, error) {
+	var resp view.ClusterDRSInventoryView
+	if err := cli.Get("v1/clusters/drs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteClusterDRS deletes ClusterDRS
 func (cli *ZSClient) DeleteClusterDRS(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/clusters/drs/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/clusters/drs", uuid, string(deleteMode))
 }
 // CreateClusterDRS creates ClusterDRS
 func (cli *ZSClient) CreateClusterDRS(params param.CreateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {

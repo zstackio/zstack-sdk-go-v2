@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryUsbDevice(params *param.QueryParam) ([]view.UsbDeviceInventoryView, error) {
 	var resp []view.UsbDeviceInventoryView
 	return resp, cli.List("v1/usb-device/usb-devices", params, &resp)
+}
+
+func (cli *ZSClient) GetUsbDevice(uuid string) (*view.UsbDeviceInventoryView, error) {
+	var resp view.UsbDeviceInventoryView
+	if err := cli.Get("v1/usb-device/usb-devices", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // UpdateUsbDevice updates UsbDevice
 func (cli *ZSClient) UpdateUsbDevice(uuid string, params param.UpdateUsbDeviceParam) (*view.UsbDeviceInventoryView, error) {

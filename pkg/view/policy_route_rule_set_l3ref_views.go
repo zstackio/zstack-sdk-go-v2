@@ -9,10 +9,10 @@ var _ = time.Now // avoid unused import
 // PolicyRouteRuleSetL3RefInventoryView PolicyRouteRuleSetL3Ref
 type PolicyRouteRuleSetL3RefInventoryView struct {
 	Id int64 `json:"id,omitempty"`
-	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
-	RuleSetUuid string `json:"ruleSetUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
+	RuleSetUuid *string `json:"ruleSetUuid,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryPolicyRouteRuleSetL3RefView QueryPolicyRouteRuleSetL3Ref

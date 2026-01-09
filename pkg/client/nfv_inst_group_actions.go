@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -36,10 +36,18 @@ func (cli *ZSClient) UpdateNfvInstGroup(uuid string, params param.UpdateNfvInstG
 }
 // DeleteNfvInstGroup deletes NfvInstGroup
 func (cli *ZSClient) DeleteNfvInstGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/nfvinstgroup/group/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/nfvinstgroup/group", uuid, string(deleteMode))
 }
 // QueryNfvInstGroup queries NfvInstGroup list
 func (cli *ZSClient) QueryNfvInstGroup(params *param.QueryParam) ([]view.NfvInstGroupInventoryView, error) {
 	var resp []view.NfvInstGroupInventoryView
 	return resp, cli.List("v1/nfvinstgroup/group", params, &resp)
+}
+
+func (cli *ZSClient) GetNfvInstGroup(uuid string) (*view.NfvInstGroupInventoryView, error) {
+	var resp view.NfvInstGroupInventoryView
+	if err := cli.Get("v1/nfvinstgroup/group", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

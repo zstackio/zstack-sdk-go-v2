@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type RaidControllerInventoryView struct {
 	Name string `json:"name,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
-	Description string `json:"description,omitempty"`
-	ProductName string `json:"productName,omitempty"`
-	SasAddress string `json:"sasAddress,omitempty"`
-	HostUuid string `json:"hostUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
-	AdapterNumber int `json:"adapterNumber,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ProductName *string `json:"productName,omitempty"`
+	SasAddress *string `json:"sasAddress,omitempty"`
+	HostUuid *string `json:"hostUuid,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	AdapterNumber *int `json:"adapterNumber,omitempty"`
 	RaidPhysicalDrives []RaidPhysicalDriveInventoryView `json:"raidPhysicalDrives,omitempty"`
 }
 

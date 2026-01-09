@@ -9,10 +9,10 @@ var _ = time.Now // avoid unused import
 // VmInstanceDeviceAddressGroupInventoryView VmInstanceDeviceAddressGroup
 type VmInstanceDeviceAddressGroupInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
-	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
+	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AddressList []VmInstanceDeviceAddressArchiveInventoryView `json:"addressList,omitempty"`
 }
 

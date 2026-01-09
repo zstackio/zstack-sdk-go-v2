@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type CdpTaskInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	PolicyUuid string `json:"policyUuid,omitempty"`
-	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	PolicyUuid *string `json:"policyUuid,omitempty"`
+	BackupStorageUuid *string `json:"backupStorageUuid,omitempty"`
 	Status string `json:"status,omitempty"`
 	State string `json:"state,omitempty"`
 	TaskType string `json:"taskType,omitempty"`
@@ -21,8 +21,8 @@ type CdpTaskInventoryView struct {
 	UsedCapacity int64 `json:"usedCapacity,omitempty"`
 	MaxLatency int64 `json:"maxLatency,omitempty"`
 	LastLatency int64 `json:"lastLatency,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	ResourceRefs []CdpTaskResourceRefInventoryView `json:"resourceRefs,omitempty"`
 }
 

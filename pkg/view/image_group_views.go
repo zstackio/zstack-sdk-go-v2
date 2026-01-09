@@ -8,12 +8,12 @@ var _ = time.Now // avoid unused import
 
 // ImageGroupInventoryView ImageGroup
 type ImageGroupInventoryView struct {
-	ImageCount int `json:"imageCount,omitempty"`
+	ImageCount *int `json:"imageCount,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Status string `json:"status,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Status *string `json:"status,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
 }
 

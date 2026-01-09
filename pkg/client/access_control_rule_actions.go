@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -28,10 +28,18 @@ func (cli *ZSClient) UpdateAccessControlRule(uuid string, params param.UpdateAcc
 }
 // DeleteAccessControlRule deletes AccessControlRule
 func (cli *ZSClient) DeleteAccessControlRule(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/login-control/access-control/rules/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/login-control/access-control/rules", uuid, string(deleteMode))
 }
 // QueryAccessControlRule queries AccessControlRule list
 func (cli *ZSClient) QueryAccessControlRule(params *param.QueryParam) ([]view.AccessControlRuleInventoryView, error) {
 	var resp []view.AccessControlRuleInventoryView
 	return resp, cli.List("v1/login-control/access-control/rules", params, &resp)
+}
+
+func (cli *ZSClient) GetAccessControlRule(uuid string) (*view.AccessControlRuleInventoryView, error) {
+	var resp view.AccessControlRuleInventoryView
+	if err := cli.Get("v1/login-control/access-control/rules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

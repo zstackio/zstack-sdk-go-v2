@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,12 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryDRSVmMigrationActivity(params *param.QueryParam) ([]view.DRSVmMigrationActivityInventoryView, error) {
 	var resp []view.DRSVmMigrationActivityInventoryView
 	return resp, cli.List("v1/clusters/drs/vm-migration-activities", params, &resp)
+}
+
+func (cli *ZSClient) GetDRSVmMigrationActivity(uuid string) (*view.DRSVmMigrationActivityInventoryView, error) {
+	var resp view.DRSVmMigrationActivityInventoryView
+	if err := cli.Get("v1/clusters/drs/vm-migration-activities", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

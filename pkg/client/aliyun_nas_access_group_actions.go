@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -36,10 +36,18 @@ func (cli *ZSClient) CreateAliyunNasAccessGroup(params param.CreateAliyunNasAcce
 }
 // DeleteAliyunNasAccessGroup deletes AliyunNasAccessGroup
 func (cli *ZSClient) DeleteAliyunNasAccessGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/nas/access/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/nas/access", uuid, string(deleteMode))
 }
 // QueryAliyunNasAccessGroup queries AliyunNasAccessGroup list
 func (cli *ZSClient) QueryAliyunNasAccessGroup(params *param.QueryParam) ([]view.AliyunNasAccessGroupInventoryView, error) {
 	var resp []view.AliyunNasAccessGroupInventoryView
 	return resp, cli.List("v1/nas/aliyun/access", params, &resp)
+}
+
+func (cli *ZSClient) GetAliyunNasAccessGroup(uuid string) (*view.AliyunNasAccessGroupInventoryView, error) {
+	var resp view.AliyunNasAccessGroupInventoryView
+	if err := cli.Get("v1/nas/aliyun/access", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

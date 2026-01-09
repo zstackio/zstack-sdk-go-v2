@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -23,6 +23,14 @@ func (cli *ZSClient) QueryVpcSharedQos(params *param.QueryParam) ([]view.VpcShar
 	var resp []view.VpcSharedQosInventoryView
 	return resp, cli.List("v1/vips/sharedqos", params, &resp)
 }
+
+func (cli *ZSClient) GetVpcSharedQos(uuid string) (*view.VpcSharedQosInventoryView, error) {
+	var resp view.VpcSharedQosInventoryView
+	if err := cli.Get("v1/vips/sharedqos", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // UpdateVpcSharedQos updates VpcSharedQos
 func (cli *ZSClient) UpdateVpcSharedQos(uuid string, params param.UpdateVpcSharedQosParam) (*view.VpcSharedQosInventoryView, error) {
 	var resp view.UpdateVpcSharedQosEventView
@@ -33,5 +41,5 @@ func (cli *ZSClient) UpdateVpcSharedQos(uuid string, params param.UpdateVpcShare
 }
 // DeleteVpcSharedQos deletes VpcSharedQos
 func (cli *ZSClient) DeleteVpcSharedQos(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vips/sharedqos/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/vips/sharedqos", uuid, string(deleteMode))
 }

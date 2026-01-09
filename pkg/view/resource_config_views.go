@@ -9,14 +9,14 @@ var _ = time.Now // avoid unused import
 // ResourceConfigInventoryView ResourceConfig
 type ResourceConfigInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
-	ResourceType string `json:"resourceType,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Category string `json:"category,omitempty"`
-	Value string `json:"value,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Category *string `json:"category,omitempty"`
+	Value *string `json:"value,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryResourceConfigView QueryResourceConfig
@@ -26,7 +26,7 @@ type QueryResourceConfigView struct {
 
 // GetResourceConfigView GetResourceConfig
 type GetResourceConfigView struct {
-	Value string `json:"value,omitempty"`
+	Value *string `json:"value,omitempty"`
 	EffectiveConfigs []ResourceConfigInventoryView `json:"effectiveConfigs,omitempty"`
 	Success bool `json:"success,omitempty"`
 }

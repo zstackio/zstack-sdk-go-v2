@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -31,7 +31,15 @@ func (cli *ZSClient) QueryAliyunProxyVpc(params *param.QueryParam) ([]view.Aliyu
 	var resp []view.AliyunProxyVpcInventoryView
 	return resp, cli.List("v1/aliyun-proxy/vpcs", params, &resp)
 }
+
+func (cli *ZSClient) GetAliyunProxyVpc(uuid string) (*view.AliyunProxyVpcInventoryView, error) {
+	var resp view.AliyunProxyVpcInventoryView
+	if err := cli.Get("v1/aliyun-proxy/vpcs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteAliyunProxyVpc deletes AliyunProxyVpc
 func (cli *ZSClient) DeleteAliyunProxyVpc(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/aliyun-proxy/vpcs/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/aliyun-proxy/vpcs", uuid, string(deleteMode))
 }

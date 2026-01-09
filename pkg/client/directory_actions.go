@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -30,6 +30,14 @@ func (cli *ZSClient) CreateDirectory(params param.CreateDirectoryParam) (*view.D
 func (cli *ZSClient) QueryDirectory(params *param.QueryParam) ([]view.DirectoryInventoryView, error) {
 	var resp []view.DirectoryInventoryView
 	return resp, cli.List("v1/directories", params, &resp)
+}
+
+func (cli *ZSClient) GetDirectory(uuid string) (*view.DirectoryInventoryView, error) {
+	var resp view.DirectoryInventoryView
+	if err := cli.Get("v1/directories", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // DeleteDirectory deletes Directory
 func (cli *ZSClient) DeleteDirectory(uuid string, deleteMode param.DeleteMode) error {

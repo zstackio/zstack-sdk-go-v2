@@ -10,16 +10,16 @@ var _ = time.Now // avoid unused import
 type PluginDriverInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	Type string `json:"type,omitempty"`
-	Vendor string `json:"vendor,omitempty"`
-	Features string `json:"features,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Vendor *string `json:"vendor,omitempty"`
+	Features *string `json:"features,omitempty"`
 	OptionTypes []OptionTypeView `json:"optionTypes,omitempty"`
 	Deleted bool `json:"deleted,omitempty"`
-	License string `json:"license,omitempty"`
-	Version string `json:"version,omitempty"`
-	Description string `json:"description,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	License *string `json:"license,omitempty"`
+	Version *string `json:"version,omitempty"`
+	Description *string `json:"description,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryPluginDriversView QueryPluginDrivers

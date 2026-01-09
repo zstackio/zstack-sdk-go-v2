@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,6 +14,14 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryIAM2VirtualID(params *param.QueryParam) ([]view.IAM2VirtualIDInventoryView, error) {
 	var resp []view.IAM2VirtualIDInventoryView
 	return resp, cli.List("v1/iam2/virtual-ids", params, &resp)
+}
+
+func (cli *ZSClient) GetIAM2VirtualID(uuid string) (*view.IAM2VirtualIDInventoryView, error) {
+	var resp view.IAM2VirtualIDInventoryView
+	if err := cli.Get("v1/iam2/virtual-ids", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // CreateIAM2VirtualID creates IAM2VirtualID
 func (cli *ZSClient) CreateIAM2VirtualID(params param.CreateIAM2VirtualIDParam) (*view.IAM2VirtualIDInventoryView, error) {
@@ -25,7 +33,7 @@ func (cli *ZSClient) CreateIAM2VirtualID(params param.CreateIAM2VirtualIDParam) 
 }
 // DeleteIAM2VirtualID deletes IAM2VirtualID
 func (cli *ZSClient) DeleteIAM2VirtualID(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/virtual-ids/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/iam2/virtual-ids", uuid, string(deleteMode))
 }
 // LoginIAM2VirtualID operates on IAM2VirtualID
 func (cli *ZSClient) LoginIAM2VirtualID(uuid string, params param.LoginIAM2VirtualIDParam) (*view.SessionInventoryView, error) {

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -30,4 +30,12 @@ func (cli *ZSClient) CreateSNSFeiShuEndpoint(params param.CreateSNSFeiShuEndpoin
 func (cli *ZSClient) QuerySNSFeiShuEndpoint(params *param.QueryParam) ([]view.SNSFeiShuEndpointInventoryView, error) {
 	var resp []view.SNSFeiShuEndpointInventoryView
 	return resp, cli.List("v1/sns/application-endpoints/feishu", params, &resp)
+}
+
+func (cli *ZSClient) GetSNSFeiShuEndpoint(uuid string) (*view.SNSFeiShuEndpointInventoryView, error) {
+	var resp view.SNSFeiShuEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/feishu", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

@@ -8,12 +8,12 @@ var _ = time.Now // avoid unused import
 
 // PhysicalDriveSmartSelfTestHistoryInventoryView PhysicalDriveSmartSelfTestHistory
 type PhysicalDriveSmartSelfTestHistoryInventoryView struct {
-	Id int64 `json:"id,omitempty"`
-	RaidPhysicalDriveUuid string `json:"raidPhysicalDriveUuid,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	RaidPhysicalDriveUuid *string `json:"raidPhysicalDriveUuid,omitempty"`
 	RunningState string `json:"runningState,omitempty"`
-	TestResult string `json:"testResult,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	TestResult *string `json:"testResult,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryPhysicalDriveSelfTestHistoryView QueryPhysicalDriveSelfTestHistory

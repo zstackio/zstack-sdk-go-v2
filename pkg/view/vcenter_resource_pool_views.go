@@ -9,22 +9,22 @@ var _ = time.Now // avoid unused import
 // VCenterResourcePoolInventoryView VCenterResourcePool
 type VCenterResourcePoolInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	VCenterClusterUuid string `json:"vCenterClusterUuid,omitempty"`
+	VCenterClusterUuid *string `json:"vCenterClusterUuid,omitempty"`
 	Name string `json:"name,omitempty"`
-	MorVal string `json:"morVal,omitempty"`
-	ParentUuid string `json:"parentUuid,omitempty"`
-	CPULimit int64 `json:"CPULimit,omitempty"`
-	CPUOverheadLimit int64 `json:"CPUOverheadLimit,omitempty"`
-	CPUReservation int64 `json:"CPUReservation,omitempty"`
-	CPUShares int64 `json:"CPUShares,omitempty"`
-	CPULevel string `json:"CPULevel,omitempty"`
-	MemoryLimit int64 `json:"memoryLimit,omitempty"`
-	MemoryOverheadLimit int64 `json:"memoryOverheadLimit,omitempty"`
-	MemoryReservation int64 `json:"memoryReservation,omitempty"`
-	MemoryShares int64 `json:"memoryShares,omitempty"`
-	MemoryLevel string `json:"memoryLevel,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	MorVal *string `json:"morVal,omitempty"`
+	ParentUuid *string `json:"parentUuid,omitempty"`
+	CPULimit *int64 `json:"CPULimit,omitempty"`
+	CPUOverheadLimit *int64 `json:"CPUOverheadLimit,omitempty"`
+	CPUReservation *int64 `json:"CPUReservation,omitempty"`
+	CPUShares *int64 `json:"CPUShares,omitempty"`
+	CPULevel *string `json:"CPULevel,omitempty"`
+	MemoryLimit *int64 `json:"memoryLimit,omitempty"`
+	MemoryOverheadLimit *int64 `json:"memoryOverheadLimit,omitempty"`
+	MemoryReservation *int64 `json:"memoryReservation,omitempty"`
+	MemoryShares *int64 `json:"memoryShares,omitempty"`
+	MemoryLevel *string `json:"memoryLevel,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	SubResources []VCenterResourcePoolUsageInventoryView `json:"subResources,omitempty"`
 }
 

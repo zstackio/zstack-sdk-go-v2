@@ -9,18 +9,18 @@ var _ = time.Now // avoid unused import
 // SnmpAgentInventoryView SnmpAgent
 type SnmpAgentInventoryView struct {
 	Uuid string `json:"uuid,omitempty"`
-	Version string `json:"version,omitempty"`
-	ReadCommunity string `json:"readCommunity,omitempty"`
-	UserName string `json:"userName,omitempty"`
-	AuthAlgorithm string `json:"authAlgorithm,omitempty"`
-	AuthPassword string `json:"authPassword,omitempty"`
-	PrivacyAlgorithm string `json:"privacyAlgorithm,omitempty"`
-	PrivacyPassword string `json:"privacyPassword,omitempty"`
-	Port int `json:"port,omitempty"`
-	Status string `json:"status,omitempty"`
-	SecurityLevel string `json:"securityLevel,omitempty"`
-	CreateDate ZStackTime `json:"createDate,omitempty"`
-	LastOpDate ZStackTime `json:"lastOpDate,omitempty"`
+	Version *string `json:"version,omitempty"`
+	ReadCommunity *string `json:"readCommunity,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	AuthAlgorithm *string `json:"authAlgorithm,omitempty"`
+	AuthPassword *string `json:"authPassword,omitempty"`
+	PrivacyAlgorithm *string `json:"privacyAlgorithm,omitempty"`
+	PrivacyPassword *string `json:"privacyPassword,omitempty"`
+	Port *int `json:"port,omitempty"`
+	Status *string `json:"status,omitempty"`
+	SecurityLevel *string `json:"securityLevel,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
+	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // CreateSnmpAgentEventView CreateSnmpAgentEvent

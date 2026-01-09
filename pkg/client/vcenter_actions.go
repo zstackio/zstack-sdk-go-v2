@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -31,6 +31,14 @@ func (cli *ZSClient) QueryVCenter(params *param.QueryParam) ([]view.VCenterInven
 	var resp []view.VCenterInventoryView
 	return resp, cli.List("v1/vcenters", params, &resp)
 }
+
+func (cli *ZSClient) GetVCenter(uuid string) (*view.VCenterInventoryView, error) {
+	var resp view.VCenterInventoryView
+	if err := cli.Get("v1/vcenters", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // UpdateVCenter updates VCenter
 func (cli *ZSClient) UpdateVCenter(uuid string, params param.UpdateVCenterParam) (*view.VCenterInventoryView, error) {
 	var resp view.UpdateVCenterEventView
@@ -41,5 +49,5 @@ func (cli *ZSClient) UpdateVCenter(uuid string, params param.UpdateVCenterParam)
 }
 // DeleteVCenter deletes VCenter
 func (cli *ZSClient) DeleteVCenter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vcenters/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/vcenters", uuid, string(deleteMode))
 }

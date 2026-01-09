@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,6 +22,14 @@ func (cli *ZSClient) UpdateAutoScalingVmTemplate(uuid string, params param.Updat
 func (cli *ZSClient) QueryAutoScalingVmTemplate(params *param.QueryParam) ([]view.AutoScalingVmTemplateInventoryView, error) {
 	var resp []view.AutoScalingVmTemplateInventoryView
 	return resp, cli.List("v1/autoscaling/vmtemplate", params, &resp)
+}
+
+func (cli *ZSClient) GetAutoScalingVmTemplate(uuid string) (*view.AutoScalingVmTemplateInventoryView, error) {
+	var resp view.AutoScalingVmTemplateInventoryView
+	if err := cli.Get("v1/autoscaling/vmtemplate", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // CreateAutoScalingVmTemplate creates AutoScalingVmTemplate
 func (cli *ZSClient) CreateAutoScalingVmTemplate(params param.CreateAutoScalingVmTemplateParam) (*view.AutoScalingTemplateInventoryView, error) {

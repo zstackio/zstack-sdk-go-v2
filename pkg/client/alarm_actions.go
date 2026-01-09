@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -20,12 +20,20 @@ func (cli *ZSClient) UpdateAlarm(uuid string, params param.UpdateAlarmParam) (*v
 }
 // DeleteAlarm deletes Alarm
 func (cli *ZSClient) DeleteAlarm(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/alarms/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/zwatch/alarms", uuid, string(deleteMode))
 }
 // QueryAlarm queries Alarm list
 func (cli *ZSClient) QueryAlarm(params *param.QueryParam) ([]view.AlarmInventoryView, error) {
 	var resp []view.AlarmInventoryView
 	return resp, cli.List("v1/zwatch/alarms", params, &resp)
+}
+
+func (cli *ZSClient) GetAlarm(uuid string) (*view.AlarmInventoryView, error) {
+	var resp view.AlarmInventoryView
+	if err := cli.Get("v1/zwatch/alarms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // CreateAlarm creates Alarm
 func (cli *ZSClient) CreateAlarm(params param.CreateAlarmParam) (*view.AlarmInventoryView, error) {

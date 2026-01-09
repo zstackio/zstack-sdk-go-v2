@@ -9,17 +9,17 @@ var _ = time.Now // avoid unused import
 // SchedulerJobHistoryInventoryView SchedulerJobHistory
 type SchedulerJobHistoryInventoryView struct {
 	Id int64 `json:"id,omitempty"`
-	TriggerUuid string `json:"triggerUuid,omitempty"`
-	SchedulerJobUuid string `json:"schedulerJobUuid,omitempty"`
-	SchedulerJobGroupUuid string `json:"schedulerJobGroupUuid,omitempty"`
-	JobType string `json:"jobType,omitempty"`
-	StartTime ZStackTime `json:"startTime,omitempty"`
+	TriggerUuid *string `json:"triggerUuid,omitempty"`
+	SchedulerJobUuid *string `json:"schedulerJobUuid,omitempty"`
+	SchedulerJobGroupUuid *string `json:"schedulerJobGroupUuid,omitempty"`
+	JobType *string `json:"jobType,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
 	ExecuteTime int64 `json:"executeTime,omitempty"`
-	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
-	RequestDump string `json:"requestDump,omitempty"`
-	ResultDump string `json:"resultDump,omitempty"`
+	TargetResourceUuid *string `json:"targetResourceUuid,omitempty"`
+	RequestDump *string `json:"requestDump,omitempty"`
+	ResultDump *string `json:"resultDump,omitempty"`
 	Success bool `json:"success,omitempty"`
-	FireInstanceId string `json:"fireInstanceId,omitempty"`
+	FireInstanceId *string `json:"fireInstanceId,omitempty"`
 }
 
 // QuerySchedulerJobHistoryView QuerySchedulerJobHistory

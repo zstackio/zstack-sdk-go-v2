@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -36,11 +36,11 @@ func (cli *ZSClient) CreateBaremetalInstance(params param.CreateBaremetalInstanc
 }
 // DestroyBaremetalInstance destroys BaremetalInstance
 func (cli *ZSClient) DestroyBaremetalInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/baremetal/instances/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/baremetal/instances", uuid, string(deleteMode))
 }
 // ExpungeBaremetalInstance operates on BaremetalInstance
 func (cli *ZSClient) ExpungeBaremetalInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/baremetal/instances/{uuid}/actions", uuid, string(deleteMode))
+	return cli.Delete("v1/baremetal/instances/actions", uuid, string(deleteMode))
 }
 // UpdateBaremetalInstance updates BaremetalInstance
 func (cli *ZSClient) UpdateBaremetalInstance(uuid string, params param.UpdateBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
@@ -62,6 +62,14 @@ func (cli *ZSClient) StopBaremetalInstance(uuid string, params param.StopBaremet
 func (cli *ZSClient) QueryBaremetalInstance(params *param.QueryParam) ([]view.BaremetalInstanceInventoryView, error) {
 	var resp []view.BaremetalInstanceInventoryView
 	return resp, cli.List("v1/baremetal/instances", params, &resp)
+}
+
+func (cli *ZSClient) GetBaremetalInstance(uuid string) (*view.BaremetalInstanceInventoryView, error) {
+	var resp view.BaremetalInstanceInventoryView
+	if err := cli.Get("v1/baremetal/instances", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // RecoverBaremetalInstance operates on BaremetalInstance
 func (cli *ZSClient) RecoverBaremetalInstance(uuid string, params param.RecoverBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {

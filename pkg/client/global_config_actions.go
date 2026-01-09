@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -30,4 +30,12 @@ func (cli *ZSClient) ResetGlobalConfig(uuid string, params param.ResetGlobalConf
 func (cli *ZSClient) QueryGlobalConfig(params *param.QueryParam) ([]view.GlobalConfigInventoryView, error) {
 	var resp []view.GlobalConfigInventoryView
 	return resp, cli.List("v1/global-configurations", params, &resp)
+}
+
+func (cli *ZSClient) GetGlobalConfig(uuid string) (*view.GlobalConfigInventoryView, error) {
+	var resp view.GlobalConfigInventoryView
+	if err := cli.Get("v1/global-configurations", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

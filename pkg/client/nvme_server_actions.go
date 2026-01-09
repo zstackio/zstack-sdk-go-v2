@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,9 +15,17 @@ func (cli *ZSClient) QueryNvmeServer(params *param.QueryParam) ([]view.NvmeServe
 	var resp []view.NvmeServerInventoryView
 	return resp, cli.List("v1/storage-devices/nvme/servers", params, &resp)
 }
+
+func (cli *ZSClient) GetNvmeServer(uuid string) (*view.NvmeServerInventoryView, error) {
+	var resp view.NvmeServerInventoryView
+	if err := cli.Get("v1/storage-devices/nvme/servers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
 // DeleteNvmeServer deletes NvmeServer
 func (cli *ZSClient) DeleteNvmeServer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/storage-devices/nvme/servers/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/storage-devices/nvme/servers", uuid, string(deleteMode))
 }
 // AddNvmeServer adds NvmeServer
 func (cli *ZSClient) AddNvmeServer(params param.AddNvmeServerParam) (*view.NvmeServerInventoryView, error) {
