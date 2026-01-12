@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -20,5 +21,5 @@ func (cli *ZSClient) AddSNSSmsReceiver(params param.AddSNSSmsReceiverParam) (*vi
 }
 // RemoveSNSSmsReceiver removes SNSSmsReceiver
 func (cli *ZSClient) RemoveSNSSmsReceiver(endpointUuid string, phoneNumber string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/sns/sms-endpoints", fmt.Sprintf("%s/receivers/%s", endpointUuid, phoneNumber), string(deleteMode))
+	return cli.DeleteWithSpec("v1/sns/sms-endpoints", endpointUuid, fmt.Sprintf("receivers/%s", phoneNumber), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 
 // RemoveAccessControlListEntry removes AccessControlListEntry
 func (cli *ZSClient) RemoveAccessControlListEntry(aclUuid string, uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/access-control-lists", fmt.Sprintf("%s/ipentries/%s", aclUuid, uuid), string(deleteMode))
+	return cli.DeleteWithSpec("v1/access-control-lists", aclUuid, fmt.Sprintf("ipentries/%s", uuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 // AddAccessControlListEntry adds AccessControlListEntry
 func (cli *ZSClient) AddAccessControlListEntry(params param.AddAccessControlListEntryParam) (*view.AccessControlListEntryInventoryView, error) {

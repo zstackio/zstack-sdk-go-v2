@@ -29,6 +29,11 @@ type QuerySecurityGroupView struct {
 	Inventories []SecurityGroupInventoryView `json:"inventories,omitempty"`
 }
 
+// AddSecurityGroupRuleEventView AddSecurityGroupRuleEvent
+type AddSecurityGroupRuleEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
 // DetachSecurityGroupFromL3NetworkEventView DetachSecurityGroupFromL3NetworkEvent
 type DetachSecurityGroupFromL3NetworkEventView struct {
 	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
@@ -56,6 +61,11 @@ type DeleteSecurityGroupEventView struct {
 
 // UpdateSecurityGroupRulePriorityEventView UpdateSecurityGroupRulePriorityEvent
 type UpdateSecurityGroupRulePriorityEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteSecurityGroupRuleEventView DeleteSecurityGroupRuleEvent
+type DeleteSecurityGroupRuleEventView struct {
 	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
 }
 

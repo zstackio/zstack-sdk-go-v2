@@ -56,6 +56,11 @@ type BatchCreateBaremetalChassisEventView struct {
 	Inventory LongJobInventoryView `json:"inventory,omitempty"`
 }
 
+// SyncLdapServerEventView SyncLdapServerEvent
+type SyncLdapServerEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
 // QueryLongJobView QueryLongJob
 type QueryLongJobView struct {
 	Inventories []LongJobInventoryView `json:"inventories,omitempty"`

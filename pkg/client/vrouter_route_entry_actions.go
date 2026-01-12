@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteVRouterRouteEntry deletes VRouterRouteEntry
 func (cli *ZSClient) DeleteVRouterRouteEntry(routeTableUuid string, uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vrouter-route-tables", fmt.Sprintf("%s/route-entries/%s", routeTableUuid, uuid), string(deleteMode))
+	return cli.DeleteWithSpec("v1/vrouter-route-tables", routeTableUuid, fmt.Sprintf("route-entries/%s", uuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 // AddVRouterRouteEntry adds VRouterRouteEntry
 func (cli *ZSClient) AddVRouterRouteEntry(params param.AddVRouterRouteEntryParam) (*view.VRouterRouteEntryInventoryView, error) {

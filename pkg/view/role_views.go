@@ -23,6 +23,11 @@ type ChangeRoleStateEventView struct {
 	Inventory RoleInventoryView `json:"inventory,omitempty"`
 }
 
+// CreateRoleEventView CreateRoleEvent
+type CreateRoleEventView struct {
+	Inventory RoleInventoryView `json:"inventory,omitempty"`
+}
+
 // QueryRoleView QueryRole
 type QueryRoleView struct {
 	Inventories []RoleInventoryView `json:"inventories,omitempty"`

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -26,7 +27,7 @@ func (cli *ZSClient) GetResourceConfig(uuid string) (*view.ResourceConfigInvento
 // UpdateResourceConfig updates ResourceConfig
 func (cli *ZSClient) UpdateResourceConfig(category string, name string, resourceUuid string, params param.UpdateResourceConfigParam) (*view.ResourceConfigInventoryView, error) {
 	var resp view.UpdateResourceConfigEventView
-	err := cli.PutWithSpec("v1/resource-configurations", fmt.Sprintf("%s/%s/%s/actions", category, name, resourceUuid), params, &resp)
+	err := cli.PutWithSpec("v1/resource-configurations", category, fmt.Sprintf("%s/%s/actions", name, resourceUuid), "", params, &resp)
 	if err != nil {
 		return nil, err
 	}
@@ -34,5 +35,5 @@ func (cli *ZSClient) UpdateResourceConfig(category string, name string, resource
 }
 // DeleteResourceConfig deletes ResourceConfig
 func (cli *ZSClient) DeleteResourceConfig(category string, name string, resourceUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/resource-configurations", fmt.Sprintf("%s/%s/%s", category, name, resourceUuid), string(deleteMode))
+	return cli.DeleteWithSpec("v1/resource-configurations", category, fmt.Sprintf("%s/%s", name, resourceUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -42,7 +43,7 @@ func (cli *ZSClient) DetachPortForwardingRule(uuid string, deleteMode param.Dele
 // AttachPortForwardingRule operates on PortForwardingRule
 func (cli *ZSClient) AttachPortForwardingRule(ruleUuid string, vmNicUuid string, params param.AttachPortForwardingRuleParam) (*view.PortForwardingRuleInventoryView, error) {
 	var resp view.AttachPortForwardingRuleEventView
-	err := cli.PostWithSpec("v1/port-forwarding", fmt.Sprintf("%s/vm-instances/nics/%s", ruleUuid, vmNicUuid), params, &resp)
+	err := cli.Post(fmt.Sprintf("v1/port-forwarding/%s/vm-instances/nics/%s", ruleUuid, vmNicUuid), params, &resp)
 	if err != nil {
 		return nil, err
 	}

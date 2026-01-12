@@ -86,8 +86,3 @@ type AttachBareMetal2GatewayToClusterEventView struct {
 	Inventory BareMetal2GatewayInventoryView `json:"inventory,omitempty"`
 }
 
-// AddHostEventView AddHostEvent
-type AddHostEventView struct {
-	Inventory HostInventoryView `json:"inventory,omitempty"`
-}
-

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -21,7 +22,7 @@ func (cli *ZSClient) CreateEip(params param.CreateEipParam) (*view.EipInventoryV
 // AttachEip operates on Eip
 func (cli *ZSClient) AttachEip(eipUuid string, vmNicUuid string, params param.AttachEipParam) (*view.EipInventoryView, error) {
 	var resp view.AttachEipEventView
-	err := cli.PostWithSpec("v1/eips", fmt.Sprintf("%s/vm-instances/nics/%s", eipUuid, vmNicUuid), params, &resp)
+	err := cli.Post(fmt.Sprintf("v1/eips/%s/vm-instances/nics/%s", eipUuid, vmNicUuid), params, &resp)
 	if err != nil {
 		return nil, err
 	}

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -26,7 +27,7 @@ func (cli *ZSClient) GetSharedBlock(uuid string) (*view.SharedBlockInventoryView
 // UpdateSharedBlock updates SharedBlock
 func (cli *ZSClient) UpdateSharedBlock(sharedBlockGroupUuid string, uuid string, params param.UpdateSharedBlockParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
 	var resp view.UpdateSharedBlockEventView
-	err := cli.PutWithSpec("v1/primary-storage/sharedblockgroup", fmt.Sprintf("%s/sharedblocks/%s/actions", sharedBlockGroupUuid, uuid), params, &resp)
+	err := cli.PutWithSpec("v1/primary-storage/sharedblockgroup", sharedBlockGroupUuid, fmt.Sprintf("sharedblocks/%s/actions", uuid), "", params, &resp)
 	if err != nil {
 		return nil, err
 	}

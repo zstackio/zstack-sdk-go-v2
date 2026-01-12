@@ -25,3 +25,13 @@ type DeleteMediaEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// QueryMediaView QueryMedia
+type QueryMediaView struct {
+	Inventories []MediaInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateMediaEventView CreateMediaEvent
+type CreateMediaEventView struct {
+	Inventory MediaInventoryView `json:"inventory,omitempty"`
+}
+
