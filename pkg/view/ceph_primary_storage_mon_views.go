@@ -21,3 +21,8 @@ type CephPrimaryStorageMonInventoryView struct {
 	MonUuid *string `json:"monUuid,omitempty"`
 }
 
+// UpdateCephPrimaryStorageMonEventView UpdateCephPrimaryStorageMonEvent
+type UpdateCephPrimaryStorageMonEventView struct {
+	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+

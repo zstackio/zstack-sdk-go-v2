@@ -18,11 +18,6 @@ type VRouterRouteEntryInventoryView struct {
 	Distance *int `json:"distance,omitempty"`
 }
 
-// DeleteVRouterRouteEntryEventView DeleteVRouterRouteEntryEvent
-type DeleteVRouterRouteEntryEventView struct {
-	Inventory VRouterRouteTableInventoryView `json:"inventory,omitempty"`
-}
-
 // AddVRouterRouteEntryEventView AddVRouterRouteEntryEvent
 type AddVRouterRouteEntryEventView struct {
 	Inventory VRouterRouteEntryInventoryView `json:"inventory,omitempty"`

@@ -17,6 +17,11 @@ type PrimaryStorageCapacityInventoryView struct {
 	SystemUsedCapacity *int64 `json:"systemUsedCapacity,omitempty"`
 }
 
+// SyncPrimaryStorageCapacityEventView SyncPrimaryStorageCapacityEvent
+type SyncPrimaryStorageCapacityEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
 // GetPrimaryStorageCapacityView GetPrimaryStorageCapacity
 type GetPrimaryStorageCapacityView struct {
 	TotalCapacity int64 `json:"totalCapacity,omitempty"`

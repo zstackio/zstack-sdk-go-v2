@@ -40,11 +40,6 @@ type ChangeMonitorTriggerStateEventView struct {
 	Inventory MonitorTriggerInventoryView `json:"inventory,omitempty"`
 }
 
-// QueryMonitorTriggerActionView QueryMonitorTriggerAction
-type QueryMonitorTriggerActionView struct {
-	Inventories []MonitorTriggerActionInventoryView `json:"inventories,omitempty"`
-}
-
 // DeleteMonitorTriggerEventView DeleteMonitorTriggerEvent
 type DeleteMonitorTriggerEventView struct {
 	Success bool `json:"success,omitempty"`

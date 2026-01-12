@@ -23,8 +23,3 @@ type AddAliyunNasMountTargetEventView struct {
 	Inventory AliyunNasMountTargetInventoryView `json:"inventory,omitempty"`
 }
 
-// CreateNasMountTargetEventView CreateNasMountTargetEvent
-type CreateNasMountTargetEventView struct {
-	Inventory NasMountTargetInventoryView `json:"inventory,omitempty"`
-}
-

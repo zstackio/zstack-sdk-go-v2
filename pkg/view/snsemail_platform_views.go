@@ -18,11 +18,6 @@ type SNSEmailPlatformInventoryView struct {
 	Type *string `json:"type,omitempty"`
 }
 
-// CreateSNSApplicationPlatformEventView CreateSNSApplicationPlatformEvent
-type CreateSNSApplicationPlatformEventView struct {
-	Inventory SNSApplicationPlatformInventoryView `json:"inventory,omitempty"`
-}
-
 // QuerySNSEmailPlatformView QuerySNSEmailPlatform
 type QuerySNSEmailPlatformView struct {
 	Inventories []SNSEmailPlatformInventoryView `json:"inventories,omitempty"`

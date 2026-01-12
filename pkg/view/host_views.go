@@ -54,6 +54,11 @@ type GetHostCandidatesForVmMigrationView struct {
 	Inventories []HostInventoryView `json:"inventories,omitempty"`
 }
 
+// UpdateHostEventView UpdateHostEvent
+type UpdateHostEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
+}
+
 // DeleteHostEventView DeleteHostEvent
 type DeleteHostEventView struct {
 	Success bool `json:"success,omitempty"`

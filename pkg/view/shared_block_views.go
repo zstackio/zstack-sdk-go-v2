@@ -25,8 +25,3 @@ type QuerySharedBlockView struct {
 	Inventories []SharedBlockInventoryView `json:"inventories,omitempty"`
 }
 
-// UpdateSharedBlockEventView UpdateSharedBlockEvent
-type UpdateSharedBlockEventView struct {
-	Inventory SharedBlockGroupPrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-

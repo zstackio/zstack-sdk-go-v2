@@ -3861,9 +3861,9 @@ func (cli *ZSClient) UnlockIdentity(params param.UnlockIdentityParam) (*view.Unl
 }
 
 // GetCandidateVmNicsForPortMirror gets CandidateVmNicsForPortMirror by uuid
-func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, type string) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, typeParam string) (*view.VmNicInventoryView, error) {
 	var resp view.VmNicInventoryView
-	err := cli.GetWithSpec("v1/port-mirrors", fmt.Sprintf("%s/vm-instances/candidate-nics/%s", portMirrorUuid, type), "", "", nil, &resp)
+	err := cli.GetWithSpec("v1/port-mirrors", fmt.Sprintf("%s/vm-instances/candidate-nics/%s", portMirrorUuid, typeParam), "", "", nil, &resp)
 	if err != nil {
 		return nil, err
 	}

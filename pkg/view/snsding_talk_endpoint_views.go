@@ -33,8 +33,3 @@ type QuerySNSDingTalkEndpointView struct {
 	Inventories []SNSDingTalkEndpointInventoryView `json:"inventories,omitempty"`
 }
 
-// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
-type UpdateSNSApplicationEndpointEventView struct {
-	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
-}
-

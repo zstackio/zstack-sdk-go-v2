@@ -21,3 +21,14 @@ type FiSecSecurityMachineInventoryView struct {
 	Status *string `json:"status,omitempty"`
 }
 
+// UpdateSecurityMachineEventView UpdateSecurityMachineEvent
+type UpdateSecurityMachineEventView struct {
+	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// AddSecurityMachineEventView AddSecurityMachineEvent
+type AddSecurityMachineEventView struct {
+	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
+}
+
