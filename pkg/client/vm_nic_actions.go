@@ -33,5 +33,5 @@ func (cli *ZSClient) GetVmNic(uuid string) (*view.VmNicInventoryView, error) {
 }
 // DeleteVmNic deletes VmNic
 func (cli *ZSClient) DeleteVmNic(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/nics", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/nics", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

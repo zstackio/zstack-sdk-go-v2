@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // HostNetworkBondingInventoryView HostNetworkBonding
 type HostNetworkBondingInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	HostUuid *string `json:"hostUuid,omitempty"`
 	BondingName *string `json:"bondingName,omitempty"`
 	BondingType *string `json:"bondingType,omitempty"`
@@ -24,8 +25,6 @@ type HostNetworkBondingInventoryView struct {
 	Type *string `json:"type,omitempty"`
 	AllSlavesActive *bool `json:"allSlavesActive,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Slaves []HostNetworkInterfaceInventoryView `json:"slaves,omitempty"`
 }
 

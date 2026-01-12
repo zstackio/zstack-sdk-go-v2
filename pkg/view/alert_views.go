@@ -8,12 +8,11 @@ var _ = time.Now // avoid unused import
 
 // AlertInventoryView Alert
 type AlertInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	TriggerUuid *string `json:"triggerUuid,omitempty"`
 	TargetResourceUuid *string `json:"targetResourceUuid,omitempty"`
 	Content *string `json:"content,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryAlertView QueryAlert

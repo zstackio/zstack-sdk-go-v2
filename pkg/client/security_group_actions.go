@@ -33,12 +33,13 @@ func (cli *ZSClient) CreateSecurityGroup(params param.CreateSecurityGroupParam) 
 }
 // DeleteSecurityGroup deletes SecurityGroup
 func (cli *ZSClient) DeleteSecurityGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/security-groups", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/security-groups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateSecurityGroup updates SecurityGroup
 func (cli *ZSClient) UpdateSecurityGroup(uuid string, params param.UpdateSecurityGroupParam) (*view.SecurityGroupInventoryView, error) {
 	var resp view.UpdateSecurityGroupEventView
-	if err := cli.Put("v1/security-groups/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/security-groups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

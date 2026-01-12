@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteVmSchedulingRuleGroup deletes VmSchedulingRuleGroup
 func (cli *ZSClient) DeleteVmSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vmSchedulingRuleGroup", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/vmSchedulingRuleGroup", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryVmSchedulingRuleGroup queries VmSchedulingRuleGroup list
 func (cli *ZSClient) QueryVmSchedulingRuleGroup(params *param.QueryParam) ([]view.VmSchedulingRuleGroupInventoryView, error) {
@@ -30,7 +30,8 @@ func (cli *ZSClient) GetVmSchedulingRuleGroup(uuid string) (*view.VmSchedulingRu
 // UpdateVmSchedulingRuleGroup updates VmSchedulingRuleGroup
 func (cli *ZSClient) UpdateVmSchedulingRuleGroup(uuid string, params param.UpdateVmSchedulingRuleGroupParam) (*view.VmSchedulingRuleGroupInventoryView, error) {
 	var resp view.UpdateVmSchedulingRuleGroupEventView
-	if err := cli.Put("v1/vmSchedulingRuleGroup/{uuid}/update", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/vmSchedulingRuleGroup", fmt.Sprintf(\"%s/update\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

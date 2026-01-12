@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BuildApplicationInventoryView BuildApplication
 type BuildApplicationInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	BuildSystemUuid *string `json:"buildSystemUuid,omitempty"`
 	TemplateContent *string `json:"templateContent,omitempty"`
@@ -18,8 +18,6 @@ type BuildApplicationInventoryView struct {
 	AppId *string `json:"appId,omitempty"`
 	Version *string `json:"version,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // CreateBuildAppEventView CreateBuildAppEvent

@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // ArchiveTicketInventoryView ArchiveTicket
 type ArchiveTicketInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	TicketUuid *string `json:"ticketUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`
 	Status string `json:"status,omitempty"`
@@ -20,8 +20,6 @@ type ArchiveTicketInventoryView struct {
 	CurrentFlowUuid *string `json:"currentFlowUuid,omitempty"`
 	FlowCollectionUuid *string `json:"flowCollectionUuid,omitempty"`
 	TicketTypeUuid *string `json:"ticketTypeUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryArchiveTicketView QueryArchiveTicket

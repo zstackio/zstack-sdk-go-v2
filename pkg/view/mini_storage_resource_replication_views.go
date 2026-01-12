@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // MiniStorageResourceReplicationInventoryView MiniStorageResourceReplication
 type MiniStorageResourceReplicationInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	HostUuid *string `json:"hostUuid,omitempty"`
 	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
@@ -18,8 +19,6 @@ type MiniStorageResourceReplicationInventoryView struct {
 	NetworkStatus string `json:"networkStatus,omitempty"`
 	DiskStatus string `json:"diskStatus,omitempty"`
 	Size int64 `json:"size,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryMiniStorageResourceReplicationView QueryMiniStorageResourceReplication

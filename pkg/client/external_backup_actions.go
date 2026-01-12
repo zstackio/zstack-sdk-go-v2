@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteExternalBackup deletes ExternalBackup
 func (cli *ZSClient) DeleteExternalBackup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/externalbackup", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/externalbackup", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryExternalBackup queries ExternalBackup list
 func (cli *ZSClient) QueryExternalBackup(params *param.QueryParam) ([]view.ExternalBackupInventoryView, error) {

@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // MetricRuleTemplateInventoryView MetricRuleTemplate
 type MetricRuleTemplateInventoryView struct {
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	MonitorTemplateUuid *string `json:"monitorTemplateUuid,omitempty"`
 	ComparisonOperator string `json:"comparisonOperator,omitempty"`
 	Period int `json:"period,omitempty"`
@@ -20,9 +21,6 @@ type MetricRuleTemplateInventoryView struct {
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
 	Labels *string `json:"labels,omitempty"`
 	EnableRecovery bool `json:"enableRecovery,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 }
 
 // QueryMetricRuleTemplateView QueryMetricRuleTemplate

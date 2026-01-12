@@ -25,7 +25,7 @@ func (cli *ZSClient) GetUser(uuid string) (*view.UserInventoryView, error) {
 }
 // DeleteUser deletes User
 func (cli *ZSClient) DeleteUser(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/accounts/users", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/accounts/users", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateUser updates User
 func (cli *ZSClient) UpdateUser(uuid string, params param.UpdateUserParam) (*view.UserInventoryView, error) {

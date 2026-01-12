@@ -8,11 +8,11 @@ var _ = time.Now // avoid unused import
 
 // VmInstanceMdevDeviceSpecRefInventoryView VmInstanceMdevDeviceSpecRef
 type VmInstanceMdevDeviceSpecRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	MdevSpecUuid *string `json:"mdevSpecUuid,omitempty"`
 	MdevDeviceNumber *int `json:"mdevDeviceNumber,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryVmInstanceMdevDeviceSpecRefView QueryVmInstanceMdevDeviceSpecRef

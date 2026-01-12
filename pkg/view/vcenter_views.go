@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VCenterInventoryView VCenter
 type VCenterInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	DomainName *string `json:"domainName,omitempty"`
 	Port *int `json:"port,omitempty"`
@@ -19,8 +19,6 @@ type VCenterInventoryView struct {
 	Https *bool `json:"https,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // AddVCenterEventView AddVCenterEvent

@@ -8,8 +8,9 @@ var _ = time.Now // avoid unused import
 
 // BaremetalVlanNicInventoryView BaremetalVlanNic
 type BaremetalVlanNicInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Vlan *int `json:"vlan,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	BaremetalInstanceUuid *string `json:"baremetalInstanceUuid,omitempty"`
 	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
 	BaremetalBondingUuid *string `json:"baremetalBondingUuid,omitempty"`
@@ -19,7 +20,5 @@ type BaremetalVlanNicInventoryView struct {
 	Gateway *string `json:"gateway,omitempty"`
 	Metadata *string `json:"metadata,omitempty"`
 	Pxe *bool `json:"pxe,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

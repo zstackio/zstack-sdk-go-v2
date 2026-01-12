@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateContainerManagementEndpoint updates ContainerManagementEndpoint
 func (cli *ZSClient) UpdateContainerManagementEndpoint(uuid string, params param.UpdateContainerManagementEndpointParam) (*view.ContainerManagementEndpointInventoryView, error) {
 	var resp view.UpdateContainerManagementEndpointEventView
-	if err := cli.Put("v1/container/management/endpoint/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/container/management/endpoint", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -42,12 +43,13 @@ func (cli *ZSClient) AddContainerManagementEndpoint(params param.AddContainerMan
 // SyncContainerManagementEndpoint operates on ContainerManagementEndpoint
 func (cli *ZSClient) SyncContainerManagementEndpoint(uuid string, params param.SyncContainerManagementEndpointParam) (*view.ContainerManagementEndpointInventoryView, error) {
 	var resp view.SyncContainerManagementEndpointEventView
-	if err := cli.Put("v1/container/management/endpoint/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/container/management/endpoint", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteContainerManagementEndpoint deletes ContainerManagementEndpoint
 func (cli *ZSClient) DeleteContainerManagementEndpoint(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/container/management/endpoint", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/container/management/endpoint", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

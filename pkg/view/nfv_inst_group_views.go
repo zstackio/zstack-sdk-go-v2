@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // NfvInstGroupInventoryView NfvInstGroup
 type NfvInstGroupInventoryView struct {
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	NfvInstOfferingUuid *string `json:"nfvInstOfferingUuid,omitempty"`
 	InstType string `json:"instType,omitempty"`
@@ -20,8 +20,6 @@ type NfvInstGroupInventoryView struct {
 	Status string `json:"status,omitempty"`
 	StatusDetail *string `json:"statusDetail,omitempty"`
 	OperationMode string `json:"operationMode,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Instances []NfvInstInventoryView `json:"instances,omitempty"`
 	Monitors []NfvInstGroupMonitorIpInventoryView `json:"monitors,omitempty"`
 	Services []NfvInstGroupNetworkServiceRefInventoryView `json:"services,omitempty"`

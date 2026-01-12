@@ -34,12 +34,13 @@ func (cli *ZSClient) PublishApp(params param.PublishAppParam) (*view.PublishAppI
 // UpdatePublishApp updates PublishApp
 func (cli *ZSClient) UpdatePublishApp(uuid string, params param.UpdatePublishAppParam) (*view.PublishAppInventoryView, error) {
 	var resp view.UpdatePublishAppEventView
-	if err := cli.Put("v1/appcenter/app/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/appcenter/app", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeletePublishApp deletes PublishApp
 func (cli *ZSClient) DeletePublishApp(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/appcenter/app", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/appcenter/app", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

@@ -34,7 +34,8 @@ func (cli *ZSClient) GetSNSDingTalkEndpoint(uuid string) (*view.SNSDingTalkEndpo
 // UpdateSNSDingTalkEndpoint updates SNSDingTalkEndpoint
 func (cli *ZSClient) UpdateSNSDingTalkEndpoint(uuid string, params param.UpdateSNSDingTalkEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	var resp view.UpdateSNSApplicationEndpointEventView
-	if err := cli.Put("v1/sns/application-endpoints/ding-talk/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/sns/application-endpoints/ding-talk", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

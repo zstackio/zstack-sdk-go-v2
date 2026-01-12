@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteMedia deletes Media
 func (cli *ZSClient) DeleteMedia(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/media", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/media", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryMedia queries Media list
 func (cli *ZSClient) QueryMedia(params *param.QueryParam) ([]view.MediaInventoryView, error) {

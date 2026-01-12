@@ -8,9 +8,10 @@ var _ = time.Now // avoid unused import
 
 // VpcFirewallRuleTemplateInventoryView VpcFirewallRuleTemplate
 type VpcFirewallRuleTemplateInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Action string `json:"action,omitempty"`
 	Protocol string `json:"protocol,omitempty"`
-	Name string `json:"name,omitempty"`
 	DestPort *string `json:"destPort,omitempty"`
 	SourcePort *string `json:"sourcePort,omitempty"`
 	SourceIp *string `json:"sourceIp,omitempty"`
@@ -23,10 +24,7 @@ type VpcFirewallRuleTemplateInventoryView struct {
 	State string `json:"state,omitempty"`
 	IsDefault bool `json:"isDefault,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 }
 
 // QueryFirewallRuleTemplateView QueryFirewallRuleTemplate

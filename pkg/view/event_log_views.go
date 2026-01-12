@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // EventLogInventoryView EventLog
 type EventLogInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	Content *string `json:"content,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
@@ -16,7 +18,6 @@ type EventLogInventoryView struct {
 	TrackingId *string `json:"trackingId,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Time int64 `json:"time,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
 }
 
 // QueryEventLogView QueryEventLog

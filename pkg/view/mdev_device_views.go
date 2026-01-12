@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // MdevDeviceInventoryView MdevDevice
 type MdevDeviceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	ParentUuid *string `json:"parentUuid,omitempty"`
 	MttyUuid *string `json:"mttyUuid,omitempty"`
@@ -20,8 +20,6 @@ type MdevDeviceInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	Chooser string `json:"chooser,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Vendor *string `json:"vendor,omitempty"`
 }
 

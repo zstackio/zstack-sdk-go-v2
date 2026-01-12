@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // HostCapacityInventoryView HostCapacity
 type HostCapacityInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	TotalMemory *int64 `json:"totalMemory,omitempty"`
 	TotalCpu *int64 `json:"totalCpu,omitempty"`
 	CpuNum *int `json:"cpuNum,omitempty"`

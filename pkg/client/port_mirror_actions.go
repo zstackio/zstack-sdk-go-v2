@@ -33,12 +33,13 @@ func (cli *ZSClient) GetPortMirror(uuid string) (*view.PortMirrorInventoryView, 
 }
 // DeletePortMirror deletes PortMirror
 func (cli *ZSClient) DeletePortMirror(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/port-mirrors", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/port-mirrors", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdatePortMirror updates PortMirror
 func (cli *ZSClient) UpdatePortMirror(uuid string, params param.UpdatePortMirrorParam) (*view.PortMirrorInventoryView, error) {
 	var resp view.UpdatePortMirrorEventView
-	if err := cli.Put("v1/port-mirrors/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/port-mirrors", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

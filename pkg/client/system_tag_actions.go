@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateSystemTag updates SystemTag
 func (cli *ZSClient) UpdateSystemTag(uuid string, params param.UpdateSystemTagParam) (*view.SystemTagInventoryView, error) {
 	var resp view.UpdateSystemTagEventView
-	if err := cli.Put("v1/system-tags/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/system-tags", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

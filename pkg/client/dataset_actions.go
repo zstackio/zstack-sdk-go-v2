@@ -48,12 +48,13 @@ func (cli *ZSClient) CreateDatasetAsync(params param.CreateDatasetParam) (string
 }
 // DeleteDataset deletes Dataset
 func (cli *ZSClient) DeleteDataset(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/datasets", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/ai/datasets", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateDataset updates Dataset
 func (cli *ZSClient) UpdateDataset(uuid string, params param.UpdateDatasetParam) (*view.DatasetInventoryView, error) {
 	var resp view.UpdateDatasetEventView
-	if err := cli.Put("v1/ai/datasets/{uuid}", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/ai/datasets", fmt.Sprintf(\"%s\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

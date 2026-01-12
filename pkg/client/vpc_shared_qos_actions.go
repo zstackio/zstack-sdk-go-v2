@@ -34,12 +34,13 @@ func (cli *ZSClient) GetVpcSharedQos(uuid string) (*view.VpcSharedQosInventoryVi
 // UpdateVpcSharedQos updates VpcSharedQos
 func (cli *ZSClient) UpdateVpcSharedQos(uuid string, params param.UpdateVpcSharedQosParam) (*view.VpcSharedQosInventoryView, error) {
 	var resp view.UpdateVpcSharedQosEventView
-	if err := cli.Put("v1/vips/sharedqos/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/vips/sharedqos", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteVpcSharedQos deletes VpcSharedQos
 func (cli *ZSClient) DeleteVpcSharedQos(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vips/sharedqos", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/vips/sharedqos", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

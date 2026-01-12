@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // UsbDeviceInventoryView UsbDevice
 type UsbDeviceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	HostUuid *string `json:"hostUuid,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
@@ -23,8 +23,6 @@ type UsbDeviceInventoryView struct {
 	ISerial *string `json:"iSerial,omitempty"`
 	UsbVersion *string `json:"usbVersion,omitempty"`
 	AttachType *string `json:"attachType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryUsbDeviceView QueryUsbDevice

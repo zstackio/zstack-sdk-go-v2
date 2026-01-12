@@ -32,9 +32,10 @@ func (cli *ZSClient) GetNfvInst(uuid string) (*view.NfvInstInventoryView, error)
 	return &resp, nil
 }
 // ReconnectNfvInst operates on NfvInst
-func (cli *ZSClient) ReconnectNfvInst(uuid string, params param.ReconnectNfvInstParam) (*view.ApplianceVmInventoryView, error) {
+func (cli *ZSClient) ReconnectNfvInst(vmInstanceUuid string, params param.ReconnectNfvInstParam) (*view.ApplianceVmInventoryView, error) {
 	var resp view.ReconnectNfvInstEventView
-	if err := cli.Put("v1/vm-instances/appliances/nfvinst/{vmInstanceUuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/vm-instances/appliances/nfvinst", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

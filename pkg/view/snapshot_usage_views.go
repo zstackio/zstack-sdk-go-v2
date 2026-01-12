@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // SnapshotUsageInventoryView SnapshotUsage
 type SnapshotUsageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	VolumeUuid *string `json:"volumeUuid,omitempty"`
 	SnapshotUuid *string `json:"SnapshotUuid,omitempty"`
@@ -15,7 +17,5 @@ type SnapshotUsageInventoryView struct {
 	SnapshotName *string `json:"SnapshotName,omitempty"`
 	SnapshotSize int64 `json:"SnapshotSize,omitempty"`
 	Inventory *string `json:"inventory,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

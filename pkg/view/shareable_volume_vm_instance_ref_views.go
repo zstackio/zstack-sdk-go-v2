@@ -8,12 +8,11 @@ var _ = time.Now // avoid unused import
 
 // ShareableVolumeVmInstanceRefInventoryView ShareableVolumeVmInstanceRef
 type ShareableVolumeVmInstanceRefInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	VolumeUuid *string `json:"volumeUuid,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	DeviceId *int `json:"deviceId,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryShareableVolumeVmInstanceRefView QueryShareableVolumeVmInstanceRef

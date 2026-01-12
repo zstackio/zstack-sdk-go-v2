@@ -21,14 +21,15 @@ func (cli *ZSClient) CreatePriceTable(params param.CreatePriceTableParam) (*view
 // UpdatePriceTable updates PriceTable
 func (cli *ZSClient) UpdatePriceTable(uuid string, params param.UpdatePriceTableParam) (*view.PriceTableInventoryView, error) {
 	var resp view.UpdatePriceTableEventView
-	if err := cli.Put("v1/billings/price-tables/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/billings/price-tables", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeletePriceTable deletes PriceTable
 func (cli *ZSClient) DeletePriceTable(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/billings/price-tables", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/billings/price-tables", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryPriceTable queries PriceTable list
 func (cli *ZSClient) QueryPriceTable(params *param.QueryParam) ([]view.PriceTableInventoryView, error) {

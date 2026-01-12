@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // UsedIpInventoryView UsedIp
 type UsedIpInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	IpRangeUuid *string `json:"ipRangeUuid,omitempty"`
 	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
 	IpVersion *int `json:"ipVersion,omitempty"`
@@ -19,8 +20,6 @@ type UsedIpInventoryView struct {
 	IpInLong int64 `json:"ipInLong,omitempty"`
 	IpInBinary []int8 `json:"ipInBinary,omitempty"`
 	VmNicUuid *string `json:"vmNicUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryIpAddressView QueryIpAddress

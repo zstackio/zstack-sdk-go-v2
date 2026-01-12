@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // LunInventoryView Lun
 type LunInventoryView struct {
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Wwid *string `json:"wwid,omitempty"`
 	Vendor *string `json:"vendor,omitempty"`
 	Model *string `json:"model,omitempty"`
@@ -22,7 +22,5 @@ type LunInventoryView struct {
 	Size *int64 `json:"size,omitempty"`
 	MultipathDeviceUuid *string `json:"multipathDeviceUuid,omitempty"`
 	Source *string `json:"source,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

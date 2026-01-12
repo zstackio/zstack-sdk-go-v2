@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // PciDeviceInventoryView PciDevice
 type PciDeviceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	HostUuid *string `json:"hostUuid,omitempty"`
 	ParentUuid *string `json:"parentUuid,omitempty"`
@@ -31,8 +31,6 @@ type PciDeviceInventoryView struct {
 	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
 	Rev *string `json:"rev,omitempty"`
 	DependentDevices *string `json:"dependentDevices,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	MatchedPciDeviceOfferingRef []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDeviceOfferingRef,omitempty"`
 	MdevSpecRefs []PciDeviceMdevSpecRefInventoryView `json:"mdevSpecRefs,omitempty"`
 }

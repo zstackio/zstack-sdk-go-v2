@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // TicketInventoryView Ticket
 type TicketInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	Status string `json:"status,omitempty"`
 	Request []TicketRequestView `json:"request,omitempty"`
@@ -18,8 +18,6 @@ type TicketInventoryView struct {
 	AccountSystemContext interface{} `json:"accountSystemContext,omitempty"`
 	CurrentFlowUuid *string `json:"currentFlowUuid,omitempty"`
 	FlowCollectionUuid *string `json:"flowCollectionUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // CreateTicketEventView CreateTicketEvent

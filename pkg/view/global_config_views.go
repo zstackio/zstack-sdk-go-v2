@@ -8,8 +8,9 @@ var _ = time.Now // avoid unused import
 
 // GlobalConfigInventoryView GlobalConfig
 type GlobalConfigInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id *int64 `json:"id,omitempty"`
-	Name string `json:"name,omitempty"`
 	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
 	DefaultValue *string `json:"defaultValue,omitempty"`

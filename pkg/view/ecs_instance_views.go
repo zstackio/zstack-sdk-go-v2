@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // EcsInstanceInventoryView EcsInstance
 type EcsInstanceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	LocalVmInstanceUuid *string `json:"localVmInstanceUuid,omitempty"`
 	EcsInstanceId *string `json:"ecsInstanceId,omitempty"`
-	Name string `json:"name,omitempty"`
 	EcsStatus *string `json:"ecsStatus,omitempty"`
 	CpuCores *int64 `json:"cpuCores,omitempty"`
 	MemorySize *int64 `json:"memorySize,omitempty"`
@@ -28,8 +28,6 @@ type EcsInstanceInventoryView struct {
 	IdentityZoneUuid *string `json:"identityZoneUuid,omitempty"`
 	ChargeType *string `json:"chargeType,omitempty"`
 	ExpireDate *time.Time `json:"expireDate,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Description *string `json:"description,omitempty"`
 }
 

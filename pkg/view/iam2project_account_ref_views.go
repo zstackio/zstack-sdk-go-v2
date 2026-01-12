@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // IAM2ProjectAccountRefInventoryView IAM2ProjectAccountRef
 type IAM2ProjectAccountRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ProjectUuid *string `json:"projectUuid,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryIAM2ProjectAccountRefView QueryIAM2ProjectAccountRef

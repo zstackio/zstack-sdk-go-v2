@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BackupStorageInventoryView BackupStorage
 type BackupStorageInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -17,8 +17,6 @@ type BackupStorageInventoryView struct {
 	Type *string `json:"type,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 
@@ -39,6 +37,11 @@ type GetCandidateBackupStorageForCreatingImageView struct {
 
 // AddBackupStorageEventView AddBackupStorageEvent
 type AddBackupStorageEventView struct {
+	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateBackupStorageEventView UpdateBackupStorageEvent
+type UpdateBackupStorageEventView struct {
 	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
 }
 

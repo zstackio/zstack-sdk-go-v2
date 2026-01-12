@@ -8,12 +8,10 @@ var _ = time.Now // avoid unused import
 
 // SshPrivateKeyPairInventoryView SshPrivateKeyPair
 type SshPrivateKeyPairInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	PublicKey *string `json:"publicKey,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	PrivateKey *string `json:"privateKey,omitempty"`
 }
 

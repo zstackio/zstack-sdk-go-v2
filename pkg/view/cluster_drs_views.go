@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ClusterDRSInventoryView ClusterDRS
 type ClusterDRSInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	State *string `json:"state,omitempty"`
 	BalancedState *string `json:"balancedState,omitempty"`
@@ -15,10 +17,6 @@ type ClusterDRSInventoryView struct {
 	Thresholds []ThresholdView `json:"thresholds,omitempty"`
 	ThresholdDuration *int `json:"thresholdDuration,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 }
 
 // QueryClusterDRSView QueryClusterDRS

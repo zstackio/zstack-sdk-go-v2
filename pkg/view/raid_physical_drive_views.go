@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // RaidPhysicalDriveInventoryView RaidPhysicalDrive
 type RaidPhysicalDriveInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	RaidLevel *string `json:"raidLevel,omitempty"`
 	RaidControllerUuid *string `json:"raidControllerUuid,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -26,8 +26,6 @@ type RaidPhysicalDriveInventoryView struct {
 	DriveType *string `json:"driveType,omitempty"`
 	MediaType *string `json:"mediaType,omitempty"`
 	RotationRate *int `json:"rotationRate,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryLocalRaidPhysicalDriveView QueryLocalRaidPhysicalDrive

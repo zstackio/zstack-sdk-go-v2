@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // AffinityGroupInventoryView AffinityGroup
 type AffinityGroupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	Policy *string `json:"policy,omitempty"`
 	Version *string `json:"version,omitempty"`
@@ -17,8 +17,6 @@ type AffinityGroupInventoryView struct {
 	Appliance *string `json:"appliance,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	State *string `json:"state,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Usages []AffinityGroupUsageInventoryView `json:"usages,omitempty"`
 }
 
@@ -27,8 +25,18 @@ type UpdateAffinityGroupEventView struct {
 	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
 }
 
+// DeleteAffinityGroupEventView DeleteAffinityGroupEvent
+type DeleteAffinityGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
 // RemoveVmFromAffinityGroupEventView RemoveVmFromAffinityGroupEvent
 type RemoveVmFromAffinityGroupEventView struct {
+	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateAffinityGroupEventView CreateAffinityGroupEvent
+type CreateAffinityGroupEventView struct {
 	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
 }
 

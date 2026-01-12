@@ -13,14 +13,15 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAlarm updates Alarm
 func (cli *ZSClient) UpdateAlarm(uuid string, params param.UpdateAlarmParam) (*view.AlarmInventoryView, error) {
 	var resp view.UpdateAlarmEventView
-	if err := cli.Put("v1/zwatch/alarms/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/zwatch/alarms", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteAlarm deletes Alarm
 func (cli *ZSClient) DeleteAlarm(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/alarms", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/zwatch/alarms", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryAlarm queries Alarm list
 func (cli *ZSClient) QueryAlarm(params *param.QueryParam) ([]view.AlarmInventoryView, error) {

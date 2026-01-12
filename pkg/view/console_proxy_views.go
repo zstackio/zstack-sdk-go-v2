@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ConsoleProxyInventoryView ConsoleProxy
 type ConsoleProxyInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	AgentIp *string `json:"agentIp,omitempty"`
 	Token *string `json:"token,omitempty"`
@@ -23,7 +24,5 @@ type ConsoleProxyInventoryView struct {
 	Status *string `json:"status,omitempty"`
 	Version *string `json:"version,omitempty"`
 	ExpiredDate *time.Time `json:"expiredDate,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

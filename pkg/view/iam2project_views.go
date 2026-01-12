@@ -8,12 +8,10 @@ var _ = time.Now // avoid unused import
 
 // IAM2ProjectInventoryView IAM2Project
 type IAM2ProjectInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
 	LinkedAccountUuid *string `json:"linkedAccountUuid,omitempty"`
 }

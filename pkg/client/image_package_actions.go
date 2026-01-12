@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateImagePackage updates ImagePackage
 func (cli *ZSClient) UpdateImagePackage(uuid string, params param.UpdateImagePackageParam) (*view.ImagePackageInventoryView, error) {
 	var resp view.UpdateImagePackageEventView
-	if err := cli.Put("v1/image-packages/{uuid}", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/image-packages", fmt.Sprintf(\"%s\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -33,5 +34,5 @@ func (cli *ZSClient) GetImagePackage(uuid string) (*view.ImagePackageInventoryVi
 }
 // DeleteImagePackage deletes ImagePackage
 func (cli *ZSClient) DeleteImagePackage(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/image-packages", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/image-packages", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

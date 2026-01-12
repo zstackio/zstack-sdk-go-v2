@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // PrimaryStorageInventoryView PrimaryStorage
 type PrimaryStorageInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -22,8 +22,6 @@ type PrimaryStorageInventoryView struct {
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
 	MountPath *string `json:"mountPath,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 
@@ -37,9 +35,29 @@ type GetPrimaryStorageCandidatesForVmMigrationView struct {
 	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
 }
 
+// UpdatePrimaryStorageEventView UpdatePrimaryStorageEvent
+type UpdatePrimaryStorageEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryPrimaryStorageView QueryPrimaryStorage
+type QueryPrimaryStorageView struct {
+	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
+}
+
 // GetPrimaryStorageCandidatesForVolumeMigrationView GetPrimaryStorageCandidatesForVolumeMigration
 type GetPrimaryStorageCandidatesForVolumeMigrationView struct {
 	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// SyncPrimaryStorageCapacityEventView SyncPrimaryStorageCapacityEvent
+type SyncPrimaryStorageCapacityEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// AddPrimaryStorageEventView AddPrimaryStorageEvent
+type AddPrimaryStorageEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
 // ChangePrimaryStorageStateEventView ChangePrimaryStorageStateEvent

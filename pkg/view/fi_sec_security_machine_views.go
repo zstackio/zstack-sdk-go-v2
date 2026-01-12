@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // FiSecSecurityMachineInventoryView FiSecSecurityMachine
 type FiSecSecurityMachineInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Port *int `json:"port,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	SecretResourcePoolUuid *string `json:"secretResourcePoolUuid,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ManagementIp *string `json:"managementIp,omitempty"`
@@ -19,7 +19,5 @@ type FiSecSecurityMachineInventoryView struct {
 	Model *string `json:"model,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // BlockVolumeInventoryView BlockVolume
 type BlockVolumeInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	IscsiPath *string `json:"iscsiPath,omitempty"`
 	Vendor *string `json:"vendor,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
@@ -25,8 +25,6 @@ type BlockVolumeInventoryView struct {
 	DeviceId *int `json:"deviceId,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	IsShareable *bool `json:"isShareable,omitempty"`
 	VolumeQos *string `json:"volumeQos,omitempty"`
 	LastDetachDate *time.Time `json:"lastDetachDate,omitempty"`

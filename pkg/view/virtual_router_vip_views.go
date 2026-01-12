@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VirtualRouterVipInventoryView VirtualRouterVip
 type VirtualRouterVipInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	VirtualRouterVmUuid *string `json:"virtualRouterVmUuid,omitempty"`
 }
 

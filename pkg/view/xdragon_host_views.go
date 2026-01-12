@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // XDragonHostInventoryView XDragonHost
 type XDragonHostInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	TotalPhysicalMemory *int64 `json:"totalPhysicalMemory,omitempty"`
 	Username *string `json:"username,omitempty"`
 	SshPort *int `json:"sshPort,omitempty"`
@@ -15,8 +17,6 @@ type XDragonHostInventoryView struct {
 	OsRelease *string `json:"osRelease,omitempty"`
 	OsVersion *string `json:"osVersion,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ManagementIp *string `json:"managementIp,omitempty"`
@@ -43,12 +43,5 @@ type XDragonHostInventoryView struct {
 	RaidStatus string `json:"raidStatus,omitempty"`
 	TemperatureStatus string `json:"temperatureStatus,omitempty"`
 	Architecture *string `json:"architecture,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
-}
-
-// AddHostEventView AddHostEvent
-type AddHostEventView struct {
-	Inventory HostInventoryView `json:"inventory,omitempty"`
 }
 

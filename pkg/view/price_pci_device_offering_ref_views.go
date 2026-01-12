@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // PricePciDeviceOfferingRefInventoryView PricePciDeviceOfferingRef
 type PricePciDeviceOfferingRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	PriceUuid *string `json:"priceUuid,omitempty"`
 	PciDeviceOfferingUuid *string `json:"pciDeviceOfferingUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

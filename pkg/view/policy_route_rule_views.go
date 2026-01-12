@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // PolicyRouteRuleInventoryView PolicyRouteRule
 type PolicyRouteRuleInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	RuleNumber int `json:"ruleNumber,omitempty"`
 	RuleSetUuid *string `json:"ruleSetUuid,omitempty"`
 	TableUuid *string `json:"tableUuid,omitempty"`
@@ -18,8 +19,6 @@ type PolicyRouteRuleInventoryView struct {
 	SourcePort *string `json:"sourcePort,omitempty"`
 	Protocol string `json:"protocol,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryPolicyRouteRuleView QueryPolicyRouteRule

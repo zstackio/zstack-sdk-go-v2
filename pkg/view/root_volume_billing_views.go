@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // RootVolumeBillingInventoryView RootVolumeBilling
 type RootVolumeBillingInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	VolumeSize int64 `json:"volumeSize,omitempty"`
 	Id int64 `json:"id,omitempty"`
@@ -19,7 +21,5 @@ type RootVolumeBillingInventoryView struct {
 	StartTime int64 `json:"startTime,omitempty"`
 	EndTime int64 `json:"endTime,omitempty"`
 	HypervisorType *string `json:"hypervisorType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

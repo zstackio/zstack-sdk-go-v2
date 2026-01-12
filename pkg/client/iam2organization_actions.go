@@ -25,12 +25,13 @@ func (cli *ZSClient) GetIAM2Organization(uuid string) (*view.IAM2OrganizationInv
 }
 // DeleteIAM2Organization deletes IAM2Organization
 func (cli *ZSClient) DeleteIAM2Organization(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/organizations", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/iam2/organizations", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateIAM2Organization updates IAM2Organization
 func (cli *ZSClient) UpdateIAM2Organization(uuid string, params param.UpdateIAM2OrganizationParam) (*view.IAM2OrganizationInventoryView, error) {
 	var resp view.UpdateIAM2OrganizationEventView
-	if err := cli.Put("v1/iam2/organizations/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/iam2/organizations", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

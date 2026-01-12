@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // L3NetworkInventoryView L3Network
 type L3NetworkInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	InternalId *int `json:"internalId,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -22,8 +22,6 @@ type L3NetworkInventoryView struct {
 	IpVersion *int `json:"ipVersion,omitempty"`
 	EnableIPAM *bool `json:"enableIPAM,omitempty"`
 	Isolated *bool `json:"isolated,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Dns []string `json:"dns,omitempty"`
 	IpRanges []IpRangeInventoryView `json:"ipRanges,omitempty"`
 	NetworkServices []NetworkServiceL3NetworkRefInventoryView `json:"networkServices,omitempty"`

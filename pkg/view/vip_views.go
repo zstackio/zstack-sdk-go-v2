@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VipInventoryView Vip
 type VipInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
 	Ip *string `json:"ip,omitempty"`
@@ -22,8 +22,6 @@ type VipInventoryView struct {
 	ServicesRefs []VipNetworkServicesRefInventoryView `json:"servicesRefs,omitempty"`
 	UseFor *string `json:"useFor,omitempty"`
 	System bool `json:"system,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // ChangeVipStateEventView ChangeVipStateEvent

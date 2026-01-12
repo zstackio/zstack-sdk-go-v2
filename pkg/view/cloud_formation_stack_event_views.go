@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // CloudFormationStackEventInventoryView CloudFormationStackEvent
 type CloudFormationStackEventInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Action *string `json:"action,omitempty"`
@@ -16,8 +18,6 @@ type CloudFormationStackEventInventoryView struct {
 	ActionStatus *string `json:"actionStatus,omitempty"`
 	StackUuid *string `json:"stackUuid,omitempty"`
 	Duration *string `json:"duration,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryEventFromResourceStackView QueryEventFromResourceStack

@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // CloudFormationStackResourceRefInventoryView CloudFormationStackResourceRef
 type CloudFormationStackResourceRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	StackUuid *string `json:"stackUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`

@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ManagementNodeInventoryView ManagementNode
 type ManagementNodeInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	HostName *string `json:"hostName,omitempty"`
 	JoinDate *time.Time `json:"joinDate,omitempty"`
 	HeartBeat *time.Time `json:"heartBeat,omitempty"`

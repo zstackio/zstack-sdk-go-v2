@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // PluginDriverInventoryView PluginDriver
 type PluginDriverInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Type *string `json:"type,omitempty"`
 	Vendor *string `json:"vendor,omitempty"`
 	Features *string `json:"features,omitempty"`
@@ -18,8 +18,6 @@ type PluginDriverInventoryView struct {
 	License *string `json:"license,omitempty"`
 	Version *string `json:"version,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryPluginDriversView QueryPluginDrivers

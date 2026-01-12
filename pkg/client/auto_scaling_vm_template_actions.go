@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAutoScalingVmTemplate updates AutoScalingVmTemplate
 func (cli *ZSClient) UpdateAutoScalingVmTemplate(uuid string, params param.UpdateAutoScalingVmTemplateParam) (*view.AutoScalingTemplateInventoryView, error) {
 	var resp view.UpdateAutoScalingTemplateEventView
-	if err := cli.Put("v1/autoscaling/vmtemplate/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/autoscaling/vmtemplate", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

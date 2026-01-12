@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // SdnControllerHostRefInventoryView SdnControllerHostRef
 type SdnControllerHostRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	SdnControllerUuid *string `json:"sdnControllerUuid,omitempty"`
 	HostUuid *string `json:"hostUuid,omitempty"`
 	VSwitchType *string `json:"vSwitchType,omitempty"`

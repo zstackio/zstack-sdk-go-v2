@@ -24,9 +24,10 @@ func (cli *ZSClient) GetSharedBlock(uuid string) (*view.SharedBlockInventoryView
 	return &resp, nil
 }
 // UpdateSharedBlock updates SharedBlock
-func (cli *ZSClient) UpdateSharedBlock(uuid string, params param.UpdateSharedBlockParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
+func (cli *ZSClient) UpdateSharedBlock(sharedBlockGroupUuid string, uuid string, params param.UpdateSharedBlockParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
 	var resp view.UpdateSharedBlockEventView
-	if err := cli.Put("v1/primary-storage/sharedblockgroup/{sharedBlockGroupUuid}/sharedblocks/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/primary-storage/sharedblockgroup", fmt.Sprintf(\"%s/sharedblocks/%s/actions\", sharedBlockGroupUuid, uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

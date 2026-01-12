@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // ImageGroupRefInventoryView ImageGroupRef
 type ImageGroupRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ImageUuid *string `json:"imageUuid,omitempty"`
 	ImageGroupUuid *string `json:"imageGroupUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryImageGroupRefView QueryImageGroupRef

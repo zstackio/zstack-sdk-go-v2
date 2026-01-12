@@ -29,7 +29,8 @@ func (cli *ZSClient) GenerateSshKeyPair(params param.GenerateSshKeyPairParam) (*
 // UpdateSshKeyPair updates SshKeyPair
 func (cli *ZSClient) UpdateSshKeyPair(uuid string, params param.UpdateSshKeyPairParam) (*view.SshKeyPairInventoryView, error) {
 	var resp view.UpdateSshKeyPairEventView
-	if err := cli.Put("v1/ssh-key-pair/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/ssh-key-pair", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -49,5 +50,5 @@ func (cli *ZSClient) GetSshKeyPair(uuid string) (*view.SshKeyPairInventoryView, 
 }
 // DeleteSshKeyPair deletes SshKeyPair
 func (cli *ZSClient) DeleteSshKeyPair(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ssh-key-pair", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/ssh-key-pair", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

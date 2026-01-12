@@ -8,11 +8,11 @@ var _ = time.Now // avoid unused import
 
 // NfvInstOfferingInventoryView NfvInstOffering
 type NfvInstOfferingInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ManagementNetworkUuid *string `json:"managementNetworkUuid,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ImageUuid *string `json:"imageUuid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int `json:"cpuSpeed,omitempty"`
@@ -21,18 +21,11 @@ type NfvInstOfferingInventoryView struct {
 	Type *string `json:"type,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
 	SortKey *int `json:"sortKey,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 }
 
 // QueryNfvInstOfferingView QueryNfvInstOffering
 type QueryNfvInstOfferingView struct {
 	Inventories []NfvInstOfferingInventoryView `json:"inventories,omitempty"`
-}
-
-// CreateInstanceOfferingEventView CreateInstanceOfferingEvent
-type CreateInstanceOfferingEventView struct {
-	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
 }
 

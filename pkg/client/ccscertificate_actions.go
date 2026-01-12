@@ -20,7 +20,7 @@ func (cli *ZSClient) AddCCSCertificate(params param.AddCCSCertificateParam) (*vi
 }
 // DeleteCCSCertificate deletes CCSCertificate
 func (cli *ZSClient) DeleteCCSCertificate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/crypto/ccs-certificate/delete", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/crypto/ccs-certificate/delete", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryCCSCertificate queries CCSCertificate list
 func (cli *ZSClient) QueryCCSCertificate(params *param.QueryParam) ([]view.CCSCertificateInventoryView, error) {

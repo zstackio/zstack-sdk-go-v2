@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // TaskProgressInventoryView TaskProgress
 type TaskProgressInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	TaskUuid *string `json:"taskUuid,omitempty"`
 	TaskName *string `json:"taskName,omitempty"`
 	ParentUuid *string `json:"parentUuid,omitempty"`

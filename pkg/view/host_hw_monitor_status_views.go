@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // HostHwMonitorStatusInventoryView HostHwMonitorStatus
 type HostHwMonitorStatusInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	CpuStatus string `json:"cpuStatus,omitempty"`
 	MemoryStatus string `json:"memoryStatus,omitempty"`
 	DiskStatus string `json:"diskStatus,omitempty"`

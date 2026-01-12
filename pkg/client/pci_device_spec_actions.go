@@ -26,7 +26,8 @@ func (cli *ZSClient) GetPciDeviceSpec(uuid string) (*view.PciDeviceSpecInventory
 // UpdatePciDeviceSpec updates PciDeviceSpec
 func (cli *ZSClient) UpdatePciDeviceSpec(uuid string, params param.UpdatePciDeviceSpecParam) (*view.PciDeviceSpecInventoryView, error) {
 	var resp view.UpdatePciDeviceSpecEventView
-	if err := cli.Put("v1/pci-device-specs/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/pci-device-specs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

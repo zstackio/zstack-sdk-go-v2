@@ -20,12 +20,13 @@ func (cli *ZSClient) CreateSchedulerJobGroup(params param.CreateSchedulerJobGrou
 }
 // DeleteSchedulerJobGroup deletes SchedulerJobGroup
 func (cli *ZSClient) DeleteSchedulerJobGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/scheduler/jobgroups", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/scheduler/jobgroups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateSchedulerJobGroup updates SchedulerJobGroup
 func (cli *ZSClient) UpdateSchedulerJobGroup(uuid string, params param.UpdateSchedulerJobGroupParam) (*view.SchedulerJobGroupInventoryView, error) {
 	var resp view.UpdateSchedulerJobGroupEventView
-	if err := cli.Put("v1/scheduler/jobgroups/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/scheduler/jobgroups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

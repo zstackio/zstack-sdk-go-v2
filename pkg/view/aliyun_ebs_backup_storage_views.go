@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // AliyunEbsBackupStorageInventoryView AliyunEbsBackupStorage
 type AliyunEbsBackupStorageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	OssBucketUuid *string `json:"ossBucketUuid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -18,8 +18,6 @@ type AliyunEbsBackupStorageInventoryView struct {
 	Type *string `json:"type,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 

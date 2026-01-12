@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // NfvInstMetaDataInventoryView NfvInstMetaData
 type NfvInstMetaDataInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	AgentVersion *string `json:"agentVersion,omitempty"`
 	NetOsVersion *string `json:"netOsVersion,omitempty"`
 	BaseOsVersion *string `json:"baseOsVersion,omitempty"`

@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VirtualBorderRouterInventoryView VirtualBorderRouter
 type VirtualBorderRouterInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	VbrId *string `json:"vbrId,omitempty"`
 	VlanInterfaceId *string `json:"vlanInterfaceId,omitempty"`
 	Status *string `json:"status,omitempty"`
@@ -21,10 +22,7 @@ type VirtualBorderRouterInventoryView struct {
 	PeeringSubnetMask *string `json:"peeringSubnetMask,omitempty"`
 	PhysicalConnectionId *string `json:"physicalConnectionId,omitempty"`
 	AccessPointUuid *string `json:"accessPointUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryVirtualBorderRouterFromLocalView QueryVirtualBorderRouterFromLocal

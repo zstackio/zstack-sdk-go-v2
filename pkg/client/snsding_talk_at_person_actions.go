@@ -11,8 +11,8 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // RemoveSNSDingTalkAtPerson removes SNSDingTalkAtPerson
-func (cli *ZSClient) RemoveSNSDingTalkAtPerson(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sns/application-endpoints/ding-talk/{endpointUuid}/at-persons/{phoneNumber}", uuid, string(deleteMode))
+func (cli *ZSClient) RemoveSNSDingTalkAtPerson(endpointUuid string, phoneNumber string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/sns/application-endpoints/ding-talk", fmt.Sprintf(\"%s/at-persons/%s\", endpointUuid, phoneNumber), string(deleteMode))
 }
 // QuerySNSDingTalkAtPerson queries SNSDingTalkAtPerson list
 func (cli *ZSClient) QuerySNSDingTalkAtPerson(params *param.QueryParam) ([]view.SNSDingTalkAtPersonInventoryView, error) {

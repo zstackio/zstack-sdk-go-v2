@@ -8,16 +8,14 @@ var _ = time.Now // avoid unused import
 
 // ZdfsInventoryView Zdfs
 type ZdfsInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Status *string `json:"status,omitempty"`
 	HostName *string `json:"hostName,omitempty"`
 	SshPort int `json:"sshPort,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Storage ZdfsStorageInventoryView `json:"storage,omitempty"`
 }
 

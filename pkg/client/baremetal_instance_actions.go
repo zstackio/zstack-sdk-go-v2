@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // RebootBaremetalInstance operates on BaremetalInstance
 func (cli *ZSClient) RebootBaremetalInstance(uuid string, params param.RebootBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	var resp view.RebootBaremetalInstanceEventView
-	if err := cli.Put("v1/baremetal/instances/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal/instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -21,7 +22,8 @@ func (cli *ZSClient) RebootBaremetalInstance(uuid string, params param.RebootBar
 // StartBaremetalInstance starts BaremetalInstance
 func (cli *ZSClient) StartBaremetalInstance(uuid string, params param.StartBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	var resp view.StartBaremetalInstanceEventView
-	if err := cli.Put("v1/baremetal/instances/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal/instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -36,16 +38,17 @@ func (cli *ZSClient) CreateBaremetalInstance(params param.CreateBaremetalInstanc
 }
 // DestroyBaremetalInstance destroys BaremetalInstance
 func (cli *ZSClient) DestroyBaremetalInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/baremetal/instances", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/baremetal/instances", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // ExpungeBaremetalInstance operates on BaremetalInstance
 func (cli *ZSClient) ExpungeBaremetalInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/baremetal/instances/actions", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/baremetal/instances", fmt.Sprintf(\"%s/actions\", uuid), string(deleteMode))
 }
 // UpdateBaremetalInstance updates BaremetalInstance
 func (cli *ZSClient) UpdateBaremetalInstance(uuid string, params param.UpdateBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	var resp view.UpdateBaremetalInstanceEventView
-	if err := cli.Put("v1/baremetal/instances/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal/instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -53,7 +56,8 @@ func (cli *ZSClient) UpdateBaremetalInstance(uuid string, params param.UpdateBar
 // StopBaremetalInstance stops BaremetalInstance
 func (cli *ZSClient) StopBaremetalInstance(uuid string, params param.StopBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	var resp view.StopBaremetalInstanceEventView
-	if err := cli.Put("v1/baremetal/instances/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal/instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -74,7 +78,8 @@ func (cli *ZSClient) GetBaremetalInstance(uuid string) (*view.BaremetalInstanceI
 // RecoverBaremetalInstance operates on BaremetalInstance
 func (cli *ZSClient) RecoverBaremetalInstance(uuid string, params param.RecoverBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	var resp view.RecoverBaremetalInstanceEventView
-	if err := cli.Put("v1/baremetal/instances/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal/instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

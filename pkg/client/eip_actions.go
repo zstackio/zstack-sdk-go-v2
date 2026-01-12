@@ -19,9 +19,10 @@ func (cli *ZSClient) CreateEip(params param.CreateEipParam) (*view.EipInventoryV
 	return &resp.Inventory, nil
 }
 // AttachEip operates on Eip
-func (cli *ZSClient) AttachEip(params param.AttachEipParam) (*view.EipInventoryView, error) {
+func (cli *ZSClient) AttachEip(eipUuid string, vmNicUuid string, params param.AttachEipParam) (*view.EipInventoryView, error) {
 	var resp view.AttachEipEventView
-	if err := cli.Post("v1/eips/{eipUuid}/vm-instances/nics/{vmNicUuid}", params, &resp); err != nil {
+	err := cli.PostWithSpec("v1/eips", fmt.Sprintf(\"%s/vm-instances/nics/%s\", eipUuid, vmNicUuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -29,7 +30,8 @@ func (cli *ZSClient) AttachEip(params param.AttachEipParam) (*view.EipInventoryV
 // UpdateEip updates Eip
 func (cli *ZSClient) UpdateEip(uuid string, params param.UpdateEipParam) (*view.EipInventoryView, error) {
 	var resp view.UpdateEipEventView
-	if err := cli.Put("v1/eips/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/eips", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -49,9 +51,9 @@ func (cli *ZSClient) GetEip(uuid string) (*view.EipInventoryView, error) {
 }
 // DeleteEip deletes Eip
 func (cli *ZSClient) DeleteEip(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/eips", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/eips", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // DetachEip operates on Eip
 func (cli *ZSClient) DetachEip(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/eips/vm-instances/nics", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/eips", fmt.Sprintf(\"%s/vm-instances/nics\", uuid), string(deleteMode))
 }

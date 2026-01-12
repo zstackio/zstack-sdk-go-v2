@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // AccountPriceTableRefInventoryView AccountPriceTableRef
 type AccountPriceTableRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	AccountUuid *string `json:"accountUuid,omitempty"`
 	TableUuid *string `json:"tableUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryAccountPriceTableRefView QueryAccountPriceTableRef

@@ -8,10 +8,11 @@ var _ = time.Now // avoid unused import
 
 // SNSEndpointThirdpartyAlertHistoryInventoryView SNSEndpointThirdpartyAlertHistory
 type SNSEndpointThirdpartyAlertHistoryInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	AlertUuid *string `json:"alertUuid,omitempty"`
 	EndpointUuid *string `json:"endpointUuid,omitempty"`
 	SubscriptionUuid *string `json:"subscriptionUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
 }
 
 // QuerySNSEndpointThirdpartyAlertHistoryView QuerySNSEndpointThirdpartyAlertHistory

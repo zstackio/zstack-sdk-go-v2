@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // AlarmRecordsInventoryView AlarmRecords
 type AlarmRecordsInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	CreateTime int64 `json:"createTime,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`

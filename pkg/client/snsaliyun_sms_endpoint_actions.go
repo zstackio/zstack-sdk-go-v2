@@ -21,7 +21,8 @@ func (cli *ZSClient) CreateSNSAliyunSmsEndpoint(params param.CreateSNSAliyunSmsE
 // ValidateSNSAliyunSmsEndpoint operates on SNSAliyunSmsEndpoint
 func (cli *ZSClient) ValidateSNSAliyunSmsEndpoint(uuid string, params param.ValidateSNSAliyunSmsEndpointParam) (*view.SNSAliyunSmsEndpointInventoryView, error) {
 	resp := view.SNSAliyunSmsEndpointInventoryView{}
-	if err := cli.Put("v1/sns/sms-endpoints/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/sns/sms-endpoints", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil

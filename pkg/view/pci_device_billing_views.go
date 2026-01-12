@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // PciDeviceBillingInventoryView PciDeviceBilling
 type PciDeviceBillingInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	VmName *string `json:"vmName,omitempty"`
 	Id int64 `json:"id,omitempty"`
 	BillingType *string `json:"billingType,omitempty"`
@@ -18,7 +20,5 @@ type PciDeviceBillingInventoryView struct {
 	StartTime int64 `json:"startTime,omitempty"`
 	EndTime int64 `json:"endTime,omitempty"`
 	HypervisorType *string `json:"hypervisorType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -33,12 +33,13 @@ func (cli *ZSClient) CreateSlbGroup(params param.CreateSlbGroupParam) (*view.Slb
 }
 // DeleteSlbGroup deletes SlbGroup
 func (cli *ZSClient) DeleteSlbGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/load-balancers/slb/group", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/load-balancers/slb/group", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateSlbGroup updates SlbGroup
 func (cli *ZSClient) UpdateSlbGroup(uuid string, params param.UpdateSlbGroupParam) (*view.SlbGroupInventoryView, error) {
 	var resp view.UpdateSlbGroupEventView
-	if err := cli.Put("v1/load-balancers/slb/group/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/load-balancers/slb/group", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

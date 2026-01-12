@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteDatabaseBackup deletes DatabaseBackup
 func (cli *ZSClient) DeleteDatabaseBackup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/database-backups", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/database-backups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // CreateDatabaseBackup creates DatabaseBackup
 func (cli *ZSClient) CreateDatabaseBackup(params param.CreateDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
@@ -51,9 +51,10 @@ func (cli *ZSClient) GetDatabaseBackup(uuid string) (*view.DatabaseBackupInvento
 	return &resp, nil
 }
 // SyncDatabaseBackup operates on DatabaseBackup
-func (cli *ZSClient) SyncDatabaseBackup(uuid string, params param.SyncDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
+func (cli *ZSClient) SyncDatabaseBackup(imageStoreUuid string, params param.SyncDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
 	resp := view.DatabaseBackupInventoryView{}
-	if err := cli.Put("v1/database-backups/imageStore/{imageStoreUuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/database-backups/imageStore", fmt.Sprintf(\"%s/actions\", imageStoreUuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil

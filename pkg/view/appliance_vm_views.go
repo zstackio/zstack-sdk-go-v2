@@ -8,14 +8,14 @@ var _ = time.Now // avoid unused import
 
 // ApplianceVmInventoryView ApplianceVm
 type ApplianceVmInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ApplianceVmType *string `json:"applianceVmType,omitempty"`
 	ManagementNetworkUuid *string `json:"managementNetworkUuid,omitempty"`
 	DefaultRouteL3NetworkUuid *string `json:"defaultRouteL3NetworkUuid,omitempty"`
 	Status *string `json:"status,omitempty"`
 	AgentPort *int `json:"agentPort,omitempty"`
 	HaStatus *string `json:"haStatus,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -34,8 +34,6 @@ type ApplianceVmInventoryView struct {
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
@@ -55,16 +53,6 @@ type UpdateNfvInstProvisionConfigEventView struct {
 
 // CreateOvnControllerVmEventView CreateOvnControllerVmEvent
 type CreateOvnControllerVmEventView struct {
-	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
-}
-
-// QueryApplianceVmView QueryApplianceVm
-type QueryApplianceVmView struct {
-	Inventories []ApplianceVmInventoryView `json:"inventories,omitempty"`
-}
-
-// ReconnectNfvInstEventView ReconnectNfvInstEvent
-type ReconnectNfvInstEventView struct {
 	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
 }
 

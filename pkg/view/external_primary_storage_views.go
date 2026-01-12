@@ -8,14 +8,14 @@ var _ = time.Now // avoid unused import
 
 // ExternalPrimaryStorageInventoryView ExternalPrimaryStorage
 type ExternalPrimaryStorageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Identity *string `json:"identity,omitempty"`
 	Config interface{} `json:"config,omitempty"`
 	AddonInfo interface{} `json:"addonInfo,omitempty"`
 	OutputProtocols []string `json:"outputProtocols,omitempty"`
 	DefaultProtocol *string `json:"defaultProtocol,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -27,8 +27,6 @@ type ExternalPrimaryStorageInventoryView struct {
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
 	MountPath *string `json:"mountPath,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

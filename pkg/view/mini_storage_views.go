@@ -8,11 +8,11 @@ var _ = time.Now // avoid unused import
 
 // MiniStorageInventoryView MiniStorage
 type MiniStorageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	MiniStorageType string `json:"miniStorageType,omitempty"`
 	DiskIdentifier *string `json:"diskIdentifier,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -24,8 +24,6 @@ type MiniStorageInventoryView struct {
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
 	MountPath *string `json:"mountPath,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

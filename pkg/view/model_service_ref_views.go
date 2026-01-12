@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ModelServiceRefInventoryView ModelServiceRef
 type ModelServiceRefInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ModelUuid *string `json:"modelUuid,omitempty"`
 	ModelServiceUuid *string `json:"modelServiceUuid,omitempty"`
 }

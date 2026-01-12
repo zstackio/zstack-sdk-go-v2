@@ -34,12 +34,13 @@ func (cli *ZSClient) GetIAM2ProjectTemplate(uuid string) (*view.IAM2ProjectTempl
 // UpdateIAM2ProjectTemplate updates IAM2ProjectTemplate
 func (cli *ZSClient) UpdateIAM2ProjectTemplate(uuid string, params param.UpdateIAM2ProjectTemplateParam) (*view.IAM2ProjectTemplateInventoryView, error) {
 	var resp view.UpdateIAM2ProjectTemplateEventView
-	if err := cli.Put("v1/iam2/projects/templates/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/iam2/projects/templates", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteIAM2ProjectTemplate deletes IAM2ProjectTemplate
 func (cli *ZSClient) DeleteIAM2ProjectTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/templates", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/iam2/projects/templates", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

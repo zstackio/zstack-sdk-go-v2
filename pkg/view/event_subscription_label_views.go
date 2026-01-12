@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // EventSubscriptionLabelInventoryView EventSubscriptionLabel
 type EventSubscriptionLabelInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Key *string `json:"key,omitempty"`
 	Operator string `json:"operator,omitempty"`
 	Value *string `json:"value,omitempty"`

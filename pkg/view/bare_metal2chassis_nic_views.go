@@ -8,13 +8,12 @@ var _ = time.Now // avoid unused import
 
 // BareMetal2ChassisNicInventoryView BareMetal2ChassisNic
 type BareMetal2ChassisNicInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ChassisUuid *string `json:"chassisUuid,omitempty"`
 	Mac *string `json:"mac,omitempty"`
 	NicName *string `json:"nicName,omitempty"`
 	Speed *string `json:"speed,omitempty"`
 	IsProvisionNic *bool `json:"isProvisionNic,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BareMetal2ChassisOfferingInventoryView BareMetal2ChassisOffering
 type BareMetal2ChassisOfferingInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	Architecture *string `json:"architecture,omitempty"`
 	CpuModelName *string `json:"cpuModelName,omitempty"`
@@ -18,8 +18,6 @@ type BareMetal2ChassisOfferingInventoryView struct {
 	BootMode *string `json:"bootMode,omitempty"`
 	State *string `json:"state,omitempty"`
 	ProvisionType *string `json:"provisionType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateBareMetal2ChassisOfferingEventView UpdateBareMetal2ChassisOfferingEvent

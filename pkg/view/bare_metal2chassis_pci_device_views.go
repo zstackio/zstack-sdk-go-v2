@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BareMetal2ChassisPciDeviceInventoryView BareMetal2ChassisPciDevice
 type BareMetal2ChassisPciDeviceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ChassisUuid *string `json:"chassisUuid,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -18,11 +19,8 @@ type BareMetal2ChassisPciDeviceInventoryView struct {
 	SubvendorId *string `json:"subvendorId,omitempty"`
 	SubdeviceId *string `json:"subdeviceId,omitempty"`
 	IommuGroup *string `json:"iommuGroup,omitempty"`
-	Name string `json:"name,omitempty"`
 	Vendor *string `json:"vendor,omitempty"`
 	Device *string `json:"device,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryBareMetal2ChassisPciDeviceView QueryBareMetal2ChassisPciDevice

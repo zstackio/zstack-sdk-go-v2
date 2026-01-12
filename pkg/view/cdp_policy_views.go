@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // CdpPolicyInventoryView CdpPolicy
 type CdpPolicyInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	State string `json:"state,omitempty"`
 	Description *string `json:"description,omitempty"`
 	RetentionTimePerDay *int `json:"retentionTimePerDay,omitempty"`
@@ -18,8 +18,6 @@ type CdpPolicyInventoryView struct {
 	ExpireTimeInDay *int `json:"expireTimeInDay,omitempty"`
 	FullBackupIntervalInDay *int `json:"fullBackupIntervalInDay,omitempty"`
 	RecoveryPointPerSecond *int `json:"recoveryPointPerSecond,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // CreateCdpPolicyEventView CreateCdpPolicyEvent

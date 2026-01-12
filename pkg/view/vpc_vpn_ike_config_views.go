@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // VpcVpnIkeConfigInventoryView VpcVpnIkeConfig
 type VpcVpnIkeConfigInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	AccountName *string `json:"accountName,omitempty"`
-	Name string `json:"name,omitempty"`
 	Psk *string `json:"psk,omitempty"`
 	Version *string `json:"version,omitempty"`
 	Mode *string `json:"mode,omitempty"`
@@ -21,8 +21,6 @@ type VpcVpnIkeConfigInventoryView struct {
 	LocalIp *string `json:"localIp,omitempty"`
 	RemoteIp *string `json:"remoteIp,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // CreateVpnIkeConfigEventView CreateVpnIkeConfigEvent

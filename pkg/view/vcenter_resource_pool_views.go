@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // VCenterResourcePoolInventoryView VCenterResourcePool
 type VCenterResourcePoolInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	VCenterClusterUuid *string `json:"vCenterClusterUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	MorVal *string `json:"morVal,omitempty"`
 	ParentUuid *string `json:"parentUuid,omitempty"`
 	CPULimit *int64 `json:"CPULimit,omitempty"`
@@ -23,8 +23,6 @@ type VCenterResourcePoolInventoryView struct {
 	MemoryReservation *int64 `json:"memoryReservation,omitempty"`
 	MemoryShares *int64 `json:"memoryShares,omitempty"`
 	MemoryLevel *string `json:"memoryLevel,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	SubResources []VCenterResourcePoolUsageInventoryView `json:"subResources,omitempty"`
 }
 

@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // PubIpVipBandwidthInBillingInventoryView PubIpVipBandwidthInBilling
 type PubIpVipBandwidthInBillingInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	VipIp *string `json:"vipIp,omitempty"`
 	BandwidthSize int64 `json:"bandwidthSize,omitempty"`
 	Id int64 `json:"id,omitempty"`
@@ -19,7 +21,5 @@ type PubIpVipBandwidthInBillingInventoryView struct {
 	StartTime int64 `json:"startTime,omitempty"`
 	EndTime int64 `json:"endTime,omitempty"`
 	HypervisorType *string `json:"hypervisorType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

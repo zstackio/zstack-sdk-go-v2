@@ -8,11 +8,10 @@ var _ = time.Now // avoid unused import
 
 // SNSWeComAtPersonInventoryView SNSWeComAtPerson
 type SNSWeComAtPersonInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	UserId *string `json:"userId,omitempty"`
 	EndpointUuid *string `json:"endpointUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Remark *string `json:"remark,omitempty"`
 }
 

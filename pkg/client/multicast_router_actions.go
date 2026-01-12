@@ -33,5 +33,5 @@ func (cli *ZSClient) GetMulticastRouter(uuid string) (*view.MulticastRouterInven
 }
 // DeleteMulticastRouter deletes MulticastRouter
 func (cli *ZSClient) DeleteMulticastRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/multicast/virtual-routers", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/multicast/virtual-routers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

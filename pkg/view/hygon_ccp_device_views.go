@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // HygonCcpDeviceInventoryView HygonCcpDevice
 type HygonCcpDeviceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	HostUuid *string `json:"hostUuid,omitempty"`
 	PciBdf *string `json:"pciBdf,omitempty"`
@@ -19,8 +19,6 @@ type HygonCcpDeviceInventoryView struct {
 	IsMasterPsp *bool `json:"isMasterPsp,omitempty"`
 	VendorIdx *int `json:"vendorIdx,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryHygonDeviceView QueryHygonDevice

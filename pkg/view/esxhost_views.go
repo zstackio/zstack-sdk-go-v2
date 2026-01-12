@@ -8,12 +8,12 @@ var _ = time.Now // avoid unused import
 
 // ESXHostInventoryView ESXHost
 type ESXHostInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	VCenterUuid *string `json:"vCenterUuid,omitempty"`
 	Morval *string `json:"morval,omitempty"`
 	EsxiVersion *string `json:"esxiVersion,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ManagementIp *string `json:"managementIp,omitempty"`
@@ -40,7 +40,5 @@ type ESXHostInventoryView struct {
 	RaidStatus string `json:"raidStatus,omitempty"`
 	TemperatureStatus string `json:"temperatureStatus,omitempty"`
 	Architecture *string `json:"architecture,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

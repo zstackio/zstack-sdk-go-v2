@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateEcsVpc updates EcsVpc
 func (cli *ZSClient) UpdateEcsVpc(uuid string, params param.UpdateEcsVpcParam) (*view.EcsVpcInventoryView, error) {
 	var resp view.UpdateEcsVpcEventView
-	if err := cli.Put("v1/hybrid/aliyun/vpc/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/hybrid/aliyun/vpc", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

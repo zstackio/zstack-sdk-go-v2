@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BareMetal2BillingInventoryView BareMetal2Billing
 type BareMetal2BillingInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	BareMetal2ChassisOfferingUUid *string `json:"bareMetal2ChassisOfferingUUid,omitempty"`
 	Id int64 `json:"id,omitempty"`
 	BillingType *string `json:"billingType,omitempty"`
@@ -18,7 +20,5 @@ type BareMetal2BillingInventoryView struct {
 	StartTime int64 `json:"startTime,omitempty"`
 	EndTime int64 `json:"endTime,omitempty"`
 	HypervisorType *string `json:"hypervisorType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // OssUploadPartsInventoryView OssUploadParts
 type OssUploadPartsInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	UploadId *string `json:"uploadId,omitempty"`
 	PartNumber int `json:"partNumber,omitempty"`
@@ -17,7 +19,5 @@ type OssUploadPartsInventoryView struct {
 	PartCRC int64 `json:"partCRC,omitempty"`
 	OssBucketUuid *string `json:"ossBucketUuid,omitempty"`
 	FileKey *string `json:"fileKey,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // SecurityGroupRuleInventoryView SecurityGroupRule
 type SecurityGroupRuleInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	SecurityGroupUuid *string `json:"securityGroupUuid,omitempty"`
 	Type *string `json:"type,omitempty"`
 	IpVersion *int `json:"ipVersion,omitempty"`
@@ -25,8 +26,6 @@ type SecurityGroupRuleInventoryView struct {
 	AllowedCidr *string `json:"allowedCidr,omitempty"`
 	StartPort *int `json:"startPort,omitempty"`
 	EndPort *int `json:"endPort,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // ChangeSecurityGroupRuleEventView ChangeSecurityGroupRuleEvent
@@ -42,18 +41,8 @@ type ValidateSecurityGroupRuleView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// AddSecurityGroupRuleEventView AddSecurityGroupRuleEvent
-type AddSecurityGroupRuleEventView struct {
-	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
-}
-
 // QuerySecurityGroupRuleView QuerySecurityGroupRule
 type QuerySecurityGroupRuleView struct {
 	Inventories []SecurityGroupRuleInventoryView `json:"inventories,omitempty"`
-}
-
-// DeleteSecurityGroupRuleEventView DeleteSecurityGroupRuleEvent
-type DeleteSecurityGroupRuleEventView struct {
-	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
 }
 

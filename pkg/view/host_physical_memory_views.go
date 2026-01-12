@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // HostPhysicalMemoryInventoryView HostPhysicalMemory
 type HostPhysicalMemoryInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	HostUuid *string `json:"hostUuid,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	Size *string `json:"size,omitempty"`
@@ -19,8 +20,6 @@ type HostPhysicalMemoryInventoryView struct {
 	Rank *string `json:"rank,omitempty"`
 	Voltage *string `json:"voltage,omitempty"`
 	Type *string `json:"type,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryHostPhysicalMemoryView QueryHostPhysicalMemory

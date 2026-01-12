@@ -8,10 +8,11 @@ var _ = time.Now // avoid unused import
 
 // VmVdpaNicInventoryView VmVdpaNic
 type VmVdpaNicInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	PciDeviceUuid *string `json:"pciDeviceUuid,omitempty"`
 	LastPciDeviceUuid *string `json:"lastPciDeviceUuid,omitempty"`
 	SrcPath *string `json:"srcPath,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
 	Ip *string `json:"ip,omitempty"`
@@ -27,7 +28,5 @@ type VmVdpaNicInventoryView struct {
 	DeviceId *int `json:"deviceId,omitempty"`
 	Type *string `json:"type,omitempty"`
 	State *string `json:"state,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

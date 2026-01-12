@@ -8,13 +8,12 @@ var _ = time.Now // avoid unused import
 
 // CephPrimaryStoragePoolInventoryView CephPrimaryStoragePool
 type CephPrimaryStoragePoolInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
 	PoolName *string `json:"poolName,omitempty"`
 	AliasName *string `json:"aliasName,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Type *string `json:"type,omitempty"`
 	AvailableCapacity *int64 `json:"availableCapacity,omitempty"`
 	UsedCapacity *int64 `json:"usedCapacity,omitempty"`

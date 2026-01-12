@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateIAM2VirtualIDAttribute updates IAM2VirtualIDAttribute
 func (cli *ZSClient) UpdateIAM2VirtualIDAttribute(uuid string, params param.UpdateIAM2VirtualIDAttributeParam) (*view.IAM2VirtualIDAttributeInventoryView, error) {
 	var resp view.UpdateIAM2VirtualIDAttributeEventView
-	if err := cli.Put("v1/iam2/virtual-ids/attributes/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/iam2/virtual-ids/attributes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

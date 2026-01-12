@@ -26,7 +26,8 @@ func (cli *ZSClient) GetSNSSnmpPlatform(uuid string) (*view.SNSEmailPlatformInve
 // UpdateSNSSnmpPlatform updates SNSSnmpPlatform
 func (cli *ZSClient) UpdateSNSSnmpPlatform(uuid string, params param.UpdateSNSSnmpPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
 	var resp view.UpdateSNSApplicationPlatformEventView
-	if err := cli.Put("v1/sns/application-platforms/snmp/{uuid}", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/sns/application-platforms/snmp", fmt.Sprintf(\"%s\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

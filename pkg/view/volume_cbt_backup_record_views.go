@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VolumeCbtBackupRecordInventoryView VolumeCbtBackupRecord
 type VolumeCbtBackupRecordInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	TaskUuid *string `json:"taskUuid,omitempty"`
 	VolumeUuid *string `json:"volumeUuid,omitempty"`
@@ -16,7 +18,5 @@ type VolumeCbtBackupRecordInventoryView struct {
 	ScratchNodeName *string `json:"scratchNodeName,omitempty"`
 	BitmapName *string `json:"bitmapName,omitempty"`
 	LastBitmapName *string `json:"lastBitmapName,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

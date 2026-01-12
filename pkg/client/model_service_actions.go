@@ -11,9 +11,10 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CloneModelService operates on ModelService
-func (cli *ZSClient) CloneModelService(params param.CloneModelServiceParam) (*view.ModelServiceInventoryView, error) {
+func (cli *ZSClient) CloneModelService(uuid string, params param.CloneModelServiceParam) (*view.ModelServiceInventoryView, error) {
 	var resp view.CloneModelServiceEventView
-	if err := cli.Post("v1/ai/model-services/{uuid}", params, &resp); err != nil {
+	err := cli.PostWithSpec("v1/ai/model-services", fmt.Sprintf(\"%s\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -21,14 +22,15 @@ func (cli *ZSClient) CloneModelService(params param.CloneModelServiceParam) (*vi
 // UpdateModelService updates ModelService
 func (cli *ZSClient) UpdateModelService(uuid string, params param.UpdateModelServiceParam) (*view.ModelServiceInventoryView, error) {
 	var resp view.UpdateModelServiceEventView
-	if err := cli.Put("v1/ai/model-services/{uuid}", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/ai/model-services", fmt.Sprintf(\"%s\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteModelService deletes ModelService
 func (cli *ZSClient) DeleteModelService(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/model-services", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/ai/model-services", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // AddModelService adds ModelService
 func (cli *ZSClient) AddModelService(params param.AddModelServiceParam) (*view.ModelServiceInventoryView, error) {

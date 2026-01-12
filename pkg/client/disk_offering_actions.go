@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteDiskOffering deletes DiskOffering
 func (cli *ZSClient) DeleteDiskOffering(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/disk-offerings", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/disk-offerings", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // CreateDiskOffering creates DiskOffering
 func (cli *ZSClient) CreateDiskOffering(params param.CreateDiskOfferingParam) (*view.DiskOfferingInventoryView, error) {
@@ -25,7 +25,8 @@ func (cli *ZSClient) CreateDiskOffering(params param.CreateDiskOfferingParam) (*
 // UpdateDiskOffering updates DiskOffering
 func (cli *ZSClient) UpdateDiskOffering(uuid string, params param.UpdateDiskOfferingParam) (*view.DiskOfferingInventoryView, error) {
 	var resp view.UpdateDiskOfferingEventView
-	if err := cli.Put("v1/disk-offerings/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/disk-offerings", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

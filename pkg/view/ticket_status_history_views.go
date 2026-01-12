@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // TicketStatusHistoryInventoryView TicketStatusHistory
 type TicketStatusHistoryInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Sequence int `json:"sequence,omitempty"`
 	TicketUuid *string `json:"ticketUuid,omitempty"`
 	FromStatus string `json:"fromStatus,omitempty"`
@@ -19,8 +20,6 @@ type TicketStatusHistoryInventoryView struct {
 	OperatorType *string `json:"operatorType,omitempty"`
 	OperatorUuid *string `json:"operatorUuid,omitempty"`
 	FlowName *string `json:"flowName,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryTicketHistoryView QueryTicketHistory

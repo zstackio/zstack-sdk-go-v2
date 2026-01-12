@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // GuestOsCharacterInventoryView GuestOsCharacter
 type GuestOsCharacterInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Architecture *string `json:"architecture,omitempty"`
 	Platform *string `json:"platform,omitempty"`
 	OsRelease *string `json:"osRelease,omitempty"`

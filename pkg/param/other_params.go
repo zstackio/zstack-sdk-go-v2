@@ -43,17 +43,6 @@ type SetServiceTypeOnHostNetworkBondingParam struct {
 	BaseParam
 	Params SetServiceTypeOnHostNetworkBondingParamDetail `json:"params"`
 }
-// AddAttributesToIAM2OrganizationParamDetail AddAttributesToIAM2Organization detail param
-type AddAttributesToIAM2OrganizationParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	Attributes []AttributeParam `json:"attributes" validate:"required"`
-}
-
-// AddAttributesToIAM2OrganizationParam AddAttributesToIAM2Organization request param
-type AddAttributesToIAM2OrganizationParam struct {
-	BaseParam
-	Params AddAttributesToIAM2OrganizationParamDetail `json:"params"`
-}
 // GetCreateEcsImageProgressParamDetail GetCreateEcsImageProgress detail param
 type GetCreateEcsImageProgressParamDetail struct {
 	ImageUuid string `json:"imageUuid" validate:"required"`
@@ -64,6 +53,17 @@ type GetCreateEcsImageProgressParamDetail struct {
 type GetCreateEcsImageProgressParam struct {
 	BaseParam
 	Params GetCreateEcsImageProgressParamDetail `json:"params"`
+}
+// AddAttributesToIAM2OrganizationParamDetail AddAttributesToIAM2Organization detail param
+type AddAttributesToIAM2OrganizationParamDetail struct {
+	Uuid string `json:"uuid" validate:"required"`
+	Attributes []AttributeParam `json:"attributes" validate:"required"`
+}
+
+// AddAttributesToIAM2OrganizationParam AddAttributesToIAM2Organization request param
+type AddAttributesToIAM2OrganizationParam struct {
+	BaseParam
+	Params AddAttributesToIAM2OrganizationParamDetail `json:"params"`
 }
 // AddAccessControlListToLoadBalancerParamDetail AddAccessControlListToLoadBalancer detail param
 type AddAccessControlListToLoadBalancerParamDetail struct {
@@ -3034,6 +3034,17 @@ type AttachMonitorTriggerActionToTriggerParam struct {
 	BaseParam
 	Params AttachMonitorTriggerActionToTriggerParamDetail `json:"params"`
 }
+// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
+type GetAliyunNasFileSystemRemoteParamDetail struct {
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	FileSystemId string `json:"fileSystemId,omitempty"`
+}
+
+// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
+type GetAliyunNasFileSystemRemoteParam struct {
+	BaseParam
+	Params GetAliyunNasFileSystemRemoteParamDetail `json:"params"`
+}
 // UpdateOrganizationQuotaParamDetail UpdateOrganizationQuota detail param
 type UpdateOrganizationQuotaParamDetail struct {
 	IdentityUuid string `json:"identityUuid" validate:"required"`
@@ -3045,17 +3056,6 @@ type UpdateOrganizationQuotaParamDetail struct {
 type UpdateOrganizationQuotaParam struct {
 	BaseParam
 	Params UpdateOrganizationQuotaParamDetail `json:"params"`
-}
-// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
-type GetAliyunNasFileSystemRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	FileSystemId string `json:"fileSystemId,omitempty"`
-}
-
-// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
-type GetAliyunNasFileSystemRemoteParam struct {
-	BaseParam
-	Params GetAliyunNasFileSystemRemoteParamDetail `json:"params"`
 }
 // ChangePreconfigurationTemplateStateParamDetail ChangePreconfigurationTemplateState detail param
 type ChangePreconfigurationTemplateStateParamDetail struct {
@@ -9906,6 +9906,16 @@ type DeleteEcsSecurityGroupRuleRemoteParam struct {
 	BaseParam
 	Params DeleteEcsSecurityGroupRuleRemoteParamDetail `json:"params"`
 }
+// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
+type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
+	VmUuid string `json:"vmUuid" validate:"required"`
+}
+
+// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
+type GetCandidateAffinityGroupForAttachingVmParam struct {
+	BaseParam
+	Params GetCandidateAffinityGroupForAttachingVmParamDetail `json:"params"`
+}
 // DetachAliyunDiskFromEcsParamDetail DetachAliyunDiskFromEcs detail param
 type DetachAliyunDiskFromEcsParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
@@ -9917,16 +9927,6 @@ type DetachAliyunDiskFromEcsParamDetail struct {
 type DetachAliyunDiskFromEcsParam struct {
 	BaseParam
 	Params DetachAliyunDiskFromEcsParamDetail `json:"params"`
-}
-// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
-type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
-	VmUuid string `json:"vmUuid" validate:"required"`
-}
-
-// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
-type GetCandidateAffinityGroupForAttachingVmParam struct {
-	BaseParam
-	Params GetCandidateAffinityGroupForAttachingVmParamDetail `json:"params"`
 }
 // UpdateFirewallIpSetTemplateParamDetail UpdateFirewallIpSetTemplate detail param
 type UpdateFirewallIpSetTemplateParamDetail struct {

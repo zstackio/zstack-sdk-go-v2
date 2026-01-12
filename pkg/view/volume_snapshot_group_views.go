@@ -8,13 +8,11 @@ var _ = time.Now // avoid unused import
 
 // VolumeSnapshotGroupInventoryView VolumeSnapshotGroup
 type VolumeSnapshotGroupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	SnapshotCount *int `json:"snapshotCount,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	VolumeSnapshotRefs []VolumeSnapshotGroupRefInventoryView `json:"volumeSnapshotRefs,omitempty"`
 }
 

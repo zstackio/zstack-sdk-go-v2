@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ModelCenterCapacityInventoryView ModelCenterCapacity
 type ModelCenterCapacityInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ModelUsedCapacity int64 `json:"modelUsedCapacity,omitempty"`
 	ModelServiceUsedCapacity int64 `json:"modelServiceUsedCapacity,omitempty"`
 	DatasetUsedCapacity int64 `json:"datasetUsedCapacity,omitempty"`

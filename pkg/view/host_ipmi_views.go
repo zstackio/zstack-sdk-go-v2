@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // HostIpmiInventoryView HostIpmi
 type HostIpmiInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	IpmiAddress *string `json:"ipmiAddress,omitempty"`
 	IpmiUsername *string `json:"ipmiUsername,omitempty"`
 	IpmiPort int `json:"ipmiPort,omitempty"`

@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // AlarmDataAckInventoryView AlarmDataAck
 type AlarmDataAckInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	AlarmUuid *string `json:"alarmUuid,omitempty"`
 	AlertDataUuid *string `json:"alertDataUuid,omitempty"`
 	AlertType *string `json:"alertType,omitempty"`

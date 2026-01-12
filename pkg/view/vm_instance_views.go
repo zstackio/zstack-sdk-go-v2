@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VmInstanceInventoryView VmInstance
 type VmInstanceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -28,8 +28,6 @@ type VmInstanceInventoryView struct {
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
@@ -60,6 +58,11 @@ type ResumeVmInstanceEventView struct {
 
 // SetVmBootOrderEventView SetVmBootOrderEvent
 type SetVmBootOrderEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// ChangeInstanceOfferingEventView ChangeInstanceOfferingEvent
+type ChangeInstanceOfferingEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
 
@@ -104,6 +107,12 @@ type AttachIsoToVmInstanceEventView struct {
 // CreateVmFromVolumeBackupEventView CreateVmFromVolumeBackupEvent
 type CreateVmFromVolumeBackupEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteVmCdRomEventView DeleteVmCdRomEvent
+type DeleteVmCdRomEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SetVmConsolePasswordEventView SetVmConsolePasswordEvent

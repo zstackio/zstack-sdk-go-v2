@@ -8,12 +8,11 @@ var _ = time.Now // avoid unused import
 
 // KvmHypervisorInfoInventoryView KvmHypervisorInfo
 type KvmHypervisorInfoInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Hypervisor *string `json:"hypervisor,omitempty"`
 	Version *string `json:"version,omitempty"`
 	MatchState string `json:"matchState,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryKvmHypervisorInfoView QueryKvmHypervisorInfo

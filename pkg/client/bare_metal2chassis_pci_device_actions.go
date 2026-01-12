@@ -26,7 +26,8 @@ func (cli *ZSClient) GetBareMetal2ChassisPciDevice(uuid string) (*view.BareMetal
 // UpdateBareMetal2ChassisPciDevice updates BareMetal2ChassisPciDevice
 func (cli *ZSClient) UpdateBareMetal2ChassisPciDevice(uuid string, params param.UpdateBareMetal2ChassisPciDeviceParam) (*view.BareMetal2ChassisPciDeviceInventoryView, error) {
 	var resp view.UpdateBareMetal2ChassisPciDeviceEventView
-	if err := cli.Put("v1/baremetal2/chassis/pci-devices/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal2/chassis/pci-devices", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

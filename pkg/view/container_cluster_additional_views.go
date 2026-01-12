@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ContainerClusterInventoryView ContainerCluster
 type ContainerClusterInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ContainerUuid *string `json:"containerUuid,omitempty"`
 	ClusterId int64 `json:"clusterId,omitempty"`
 	ClusterName *string `json:"clusterName,omitempty"`

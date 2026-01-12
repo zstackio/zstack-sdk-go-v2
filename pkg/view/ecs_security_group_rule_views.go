@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // EcsSecurityGroupRuleInventoryView EcsSecurityGroupRule
 type EcsSecurityGroupRuleInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	EcsSecurityGroupUuid *string `json:"ecsSecurityGroupUuid,omitempty"`
 	Protocol *string `json:"protocol,omitempty"`
 	PortRange *string `json:"portRange,omitempty"`
@@ -18,8 +19,6 @@ type EcsSecurityGroupRuleInventoryView struct {
 	NicType *string `json:"nicType,omitempty"`
 	Policy *string `json:"policy,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // SyncEcsSecurityGroupRuleFromRemoteEventView SyncEcsSecurityGroupRuleFromRemoteEvent

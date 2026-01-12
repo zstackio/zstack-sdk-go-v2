@@ -8,12 +8,10 @@ var _ = time.Now // avoid unused import
 
 // HostSchedulingRuleGroupInventoryView HostSchedulingRuleGroup
 type HostSchedulingRuleGroupInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateHostSchedulingRuleGroupEventView UpdateHostSchedulingRuleGroupEvent

@@ -33,12 +33,13 @@ func (cli *ZSClient) CreateIAM2VirtualIDGroup(params param.CreateIAM2VirtualIDGr
 }
 // DeleteIAM2VirtualIDGroup deletes IAM2VirtualIDGroup
 func (cli *ZSClient) DeleteIAM2VirtualIDGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/iam2/projects/groups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateIAM2VirtualIDGroup updates IAM2VirtualIDGroup
 func (cli *ZSClient) UpdateIAM2VirtualIDGroup(uuid string, params param.UpdateIAM2VirtualIDGroupParam) (*view.IAM2VirtualIDGroupInventoryView, error) {
 	var resp view.UpdateIAM2VirtualIDGroupEventView
-	if err := cli.Put("v1/iam2/projects/groups/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/iam2/projects/groups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

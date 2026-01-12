@@ -25,7 +25,7 @@ func (cli *ZSClient) GetNvmeServer(uuid string) (*view.NvmeServerInventoryView, 
 }
 // DeleteNvmeServer deletes NvmeServer
 func (cli *ZSClient) DeleteNvmeServer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/storage-devices/nvme/servers", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/storage-devices/nvme/servers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // AddNvmeServer adds NvmeServer
 func (cli *ZSClient) AddNvmeServer(params param.AddNvmeServerParam) (*view.NvmeServerInventoryView, error) {

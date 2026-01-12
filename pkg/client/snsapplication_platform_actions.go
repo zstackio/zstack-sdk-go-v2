@@ -12,12 +12,13 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteSNSApplicationPlatform deletes SNSApplicationPlatform
 func (cli *ZSClient) DeleteSNSApplicationPlatform(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sns/application-platforms", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/sns/application-platforms", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateSNSApplicationPlatform updates SNSApplicationPlatform
 func (cli *ZSClient) UpdateSNSApplicationPlatform(uuid string, params param.UpdateSNSApplicationPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
 	var resp view.UpdateSNSApplicationPlatformEventView
-	if err := cli.Put("v1/sns/application-platforms/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/sns/application-platforms", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

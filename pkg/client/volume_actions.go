@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateVolume updates Volume
 func (cli *ZSClient) UpdateVolume(uuid string, params param.UpdateVolumeParam) (*view.VolumeInventoryView, error) {
 	var resp view.UpdateVolumeEventView
-	if err := cli.Put("v1/volumes/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

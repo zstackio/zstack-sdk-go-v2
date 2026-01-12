@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // IPsecConnectionInventoryView IPsecConnection
 type IPsecConnectionInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	PeerAddress *string `json:"peerAddress,omitempty"`
 	AuthMode *string `json:"authMode,omitempty"`
@@ -31,8 +31,6 @@ type IPsecConnectionInventoryView struct {
 	Status *string `json:"status,omitempty"`
 	IkeLifeTime int `json:"ikeLifeTime,omitempty"`
 	LifeTime int `json:"lifeTime,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	PeerCidrs []IPsecPeerCidrInventoryView `json:"peerCidrs,omitempty"`
 	L3NetworkRefs []IPsecL3NetworkRefInventoryView `json:"l3NetworkRefs,omitempty"`
 }

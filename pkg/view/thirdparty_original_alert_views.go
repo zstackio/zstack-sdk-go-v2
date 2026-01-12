@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ThirdpartyOriginalAlertInventoryView ThirdpartyOriginalAlert
 type ThirdpartyOriginalAlertInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ThirdpartyPlatformUuid *string `json:"thirdpartyPlatformUuid,omitempty"`
 	Product *string `json:"product,omitempty"`
 	Service *string `json:"service,omitempty"`
@@ -20,7 +21,6 @@ type ThirdpartyOriginalAlertInventoryView struct {
 	DataSource *string `json:"dataSource,omitempty"`
 	SourceText *string `json:"sourceText,omitempty"`
 	ReadStatus *string `json:"readStatus,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
 }
 
 // QueryThirdpartyAlertView QueryThirdpartyAlert

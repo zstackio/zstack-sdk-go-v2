@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // AddressPoolInventoryView AddressPool
 type AddressPoolInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	StartIp *string `json:"startIp,omitempty"`
 	EndIp *string `json:"endIp,omitempty"`
@@ -21,8 +21,6 @@ type AddressPoolInventoryView struct {
 	AddressMode *string `json:"addressMode,omitempty"`
 	PrefixLen *int `json:"prefixLen,omitempty"`
 	IpRangeType string `json:"ipRangeType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryAddressPoolView QueryAddressPool

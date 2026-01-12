@@ -8,11 +8,11 @@ var _ = time.Now // avoid unused import
 
 // ContainerImageInventoryView ContainerImage
 type ContainerImageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	EndpointUuid *string `json:"endpointUuid,omitempty"`
 	ImageTag *string `json:"imageTag,omitempty"`
 	RegistryUrl *string `json:"registryUrl,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
@@ -28,8 +28,6 @@ type ContainerImageInventoryView struct {
 	Format *string `json:"format,omitempty"`
 	System *bool `json:"system,omitempty"`
 	Virtio *bool `json:"virtio,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	BackupStorageRefs []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
 	SystemTags []SystemTagInventoryView `json:"systemTags,omitempty"`
 }

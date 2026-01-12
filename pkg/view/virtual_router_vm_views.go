@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VirtualRouterVmInventoryView VirtualRouterVm
 type VirtualRouterVmInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	PublicNetworkUuid *string `json:"publicNetworkUuid,omitempty"`
 	VirtualRouterVips []string `json:"virtualRouterVips,omitempty"`
 	ApplianceVmType *string `json:"applianceVmType,omitempty"`
@@ -16,8 +18,6 @@ type VirtualRouterVmInventoryView struct {
 	Status *string `json:"status,omitempty"`
 	AgentPort *int `json:"agentPort,omitempty"`
 	HaStatus *string `json:"haStatus,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -36,8 +36,6 @@ type VirtualRouterVmInventoryView struct {
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
@@ -48,5 +46,10 @@ type VirtualRouterVmInventoryView struct {
 // UpdateVirtualRouterEventView UpdateVirtualRouterEvent
 type UpdateVirtualRouterEventView struct {
 	Inventory VirtualRouterVmInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryApplianceVmView QueryApplianceVm
+type QueryApplianceVmView struct {
+	Inventories []ApplianceVmInventoryView `json:"inventories,omitempty"`
 }
 

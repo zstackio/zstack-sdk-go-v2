@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VolumeSnapshotReferenceInventoryView VolumeSnapshotReference
 type VolumeSnapshotReferenceInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	ParentId *int64 `json:"parentId,omitempty"`
 	VolumeUuid *string `json:"volumeUuid,omitempty"`
@@ -19,7 +21,5 @@ type VolumeSnapshotReferenceInventoryView struct {
 	ReferenceType *string `json:"referenceType,omitempty"`
 	ReferenceInstallUrl *string `json:"referenceInstallUrl,omitempty"`
 	ReferenceVolumeUuid *string `json:"referenceVolumeUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

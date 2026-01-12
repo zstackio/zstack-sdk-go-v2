@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // AutoScalingGroupActivityInventoryView AutoScalingGroupActivity
 type AutoScalingGroupActivityInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ScalingGroupUuid *string `json:"scalingGroupUuid,omitempty"`
 	ActivityAction *string `json:"activityAction,omitempty"`
 	InstanceUuids *string `json:"instanceUuids,omitempty"`
@@ -19,8 +19,6 @@ type AutoScalingGroupActivityInventoryView struct {
 	Status *string `json:"status,omitempty"`
 	ActivityActionResultMessage *string `json:"activityActionResultMessage,omitempty"`
 	EndDate *time.Time `json:"endDate,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryAutoScalingGroupActivityView QueryAutoScalingGroupActivity

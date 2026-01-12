@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // LicenseAuthorizedCapacityInventoryView LicenseAuthorizedCapacity
 type LicenseAuthorizedCapacityInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id *int64 `json:"id,omitempty"`
 	NodeUuid *string `json:"nodeUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
@@ -16,8 +18,6 @@ type LicenseAuthorizedCapacityInventoryView struct {
 	Quota *int64 `json:"quota,omitempty"`
 	LicenseType *string `json:"licenseType,omitempty"`
 	Type *string `json:"type,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // GetLicenseAuthorizedCapacityView GetLicenseAuthorizedCapacity

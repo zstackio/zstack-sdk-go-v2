@@ -8,9 +8,10 @@ var _ = time.Now // avoid unused import
 
 // ApplicationDevelopmentServiceInventoryView ApplicationDevelopmentService
 type ApplicationDevelopmentServiceInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	DeploymentStatus *string `json:"deploymentStatus,omitempty"`
 	Service ModelServiceInventoryView `json:"service,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ModelServiceUuid *string `json:"modelServiceUuid,omitempty"`
 	ModelUuid *string `json:"modelUuid,omitempty"`
 	Instances []ModelServiceInstanceInventoryView `json:"instances,omitempty"`
@@ -18,10 +19,7 @@ type ApplicationDevelopmentServiceInventoryView struct {
 	Status *string `json:"status,omitempty"`
 	ModelServiceType *string `json:"modelServiceType,omitempty"`
 	Type *string `json:"type,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Yaml *string `json:"yaml,omitempty"`
 	SupportMetrics []string `json:"supportMetrics,omitempty"`
 }

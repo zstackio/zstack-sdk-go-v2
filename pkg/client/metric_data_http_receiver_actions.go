@@ -25,7 +25,7 @@ func (cli *ZSClient) GetMetricDataHttpReceiver(uuid string) (*view.MetricDataHtt
 }
 // DeleteMetricDataHttpReceiver deletes MetricDataHttpReceiver
 func (cli *ZSClient) DeleteMetricDataHttpReceiver(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/metrics/httpreceivers", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/zwatch/metrics/httpreceivers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // CreateMetricDataHttpReceiver creates MetricDataHttpReceiver
 func (cli *ZSClient) CreateMetricDataHttpReceiver(params param.CreateMetricDataHttpReceiverParam) (*view.MetricDataHttpReceiverInventoryView, error) {

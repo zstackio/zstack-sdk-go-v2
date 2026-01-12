@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateVpcFirewall updates VpcFirewall
 func (cli *ZSClient) UpdateVpcFirewall(uuid string, params param.UpdateVpcFirewallParam) (*view.VpcFirewallInventoryView, error) {
 	var resp view.UpdateVpcFirewallEventView
-	if err := cli.Put("v1/vpcfirewalls/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/vpcfirewalls", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

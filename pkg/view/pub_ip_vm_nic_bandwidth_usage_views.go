@@ -8,13 +8,12 @@ var _ = time.Now // avoid unused import
 
 // PubIpVmNicBandwidthUsageInventoryView PubIpVmNicBandwidthUsage
 type PubIpVmNicBandwidthUsageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id *int64 `json:"id,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`
 	DateInLong *int64 `json:"dateInLong,omitempty"`
-	Name string `json:"name,omitempty"`
 	Inventory *string `json:"inventory,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	VmNicUuid *string `json:"vmNicUuid,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	BandwidthOut *int64 `json:"bandwidthOut,omitempty"`

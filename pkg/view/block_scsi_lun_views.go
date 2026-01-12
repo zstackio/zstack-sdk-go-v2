@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BlockScsiLunInventoryView BlockScsiLun
 type BlockScsiLunInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Wwn *string `json:"wwn,omitempty"`
 	Size *int64 `json:"size,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -19,7 +19,5 @@ type BlockScsiLunInventoryView struct {
 	LunType *string `json:"lunType,omitempty"`
 	LunInitSnapshotID *int `json:"lunInitSnapshotID,omitempty"`
 	UsedSize int64 `json:"usedSize,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

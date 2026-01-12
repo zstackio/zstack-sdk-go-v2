@@ -36,7 +36,7 @@ func (cli *ZSClient) CreateAliyunNasAccessGroup(params param.CreateAliyunNasAcce
 }
 // DeleteAliyunNasAccessGroup deletes AliyunNasAccessGroup
 func (cli *ZSClient) DeleteAliyunNasAccessGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/nas/access", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/nas/access", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryAliyunNasAccessGroup queries AliyunNasAccessGroup list
 func (cli *ZSClient) QueryAliyunNasAccessGroup(params *param.QueryParam) ([]view.AliyunNasAccessGroupInventoryView, error) {

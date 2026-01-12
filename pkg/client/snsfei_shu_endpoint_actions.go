@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateSNSFeiShuEndpoint updates SNSFeiShuEndpoint
 func (cli *ZSClient) UpdateSNSFeiShuEndpoint(uuid string, params param.UpdateSNSFeiShuEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	var resp view.UpdateSNSApplicationEndpointEventView
-	if err := cli.Put("v1/sns/application-endpoints/feishu/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/sns/application-endpoints/feishu", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

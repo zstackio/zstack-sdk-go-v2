@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // CleanLongJob operates on LongJob
 func (cli *ZSClient) CleanLongJob(uuid string, params param.CleanLongJobParam) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Put("v1/longjobs/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/longjobs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -21,19 +22,21 @@ func (cli *ZSClient) CleanLongJob(uuid string, params param.CleanLongJobParam) (
 // ResumeLongJob operates on LongJob
 func (cli *ZSClient) ResumeLongJob(uuid string, params param.ResumeLongJobParam) (*view.LongJobInventoryView, error) {
 	var resp view.ResumeLongJobEventView
-	if err := cli.Put("v1/longjobs/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/longjobs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteLongJob deletes LongJob
 func (cli *ZSClient) DeleteLongJob(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/longjobs", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/longjobs", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateLongJob updates LongJob
 func (cli *ZSClient) UpdateLongJob(uuid string, params param.UpdateLongJobParam) (*view.LongJobInventoryView, error) {
 	var resp view.UpdateLongJobEventView
-	if err := cli.Put("v1/longjobs/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/longjobs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

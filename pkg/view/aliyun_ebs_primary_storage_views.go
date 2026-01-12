@@ -8,13 +8,13 @@ var _ = time.Now // avoid unused import
 
 // AliyunEbsPrimaryStorageInventoryView AliyunEbsPrimaryStorage
 type AliyunEbsPrimaryStorageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	PanguAppName *string `json:"panguAppName,omitempty"`
 	PanguPartitionName *string `json:"panguPartitionName,omitempty"`
 	IdentityZoneUuid *string `json:"identityZoneUuid,omitempty"`
 	DefaultIoType *string `json:"defaultIoType,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -26,13 +26,6 @@ type AliyunEbsPrimaryStorageInventoryView struct {
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
 	MountPath *string `json:"mountPath,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
-}
-
-// UpdatePrimaryStorageEventView UpdatePrimaryStorageEvent
-type UpdatePrimaryStorageEventView struct {
-	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 

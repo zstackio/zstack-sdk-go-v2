@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // GuestVmScriptExecutedRecordInventoryView GuestVmScriptExecutedRecord
 type GuestVmScriptExecutedRecordInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ScriptUuid *string `json:"scriptUuid,omitempty"`
 	RecordName *string `json:"recordName,omitempty"`
 	ScriptTimeout *int `json:"scriptTimeout,omitempty"`

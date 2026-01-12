@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // ContainerBackupStorageInventoryView ContainerBackupStorage
 type ContainerBackupStorageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	EndpointUuid *string `json:"endpointUuid,omitempty"`
 	Id *int64 `json:"id,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -19,8 +19,6 @@ type ContainerBackupStorageInventoryView struct {
 	Type *string `json:"type,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 

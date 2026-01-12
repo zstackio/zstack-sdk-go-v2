@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // NativeHostInventoryView NativeHost
 type NativeHostInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	EndpointUuid *string `json:"endpointUuid,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ManagementIp *string `json:"managementIp,omitempty"`
@@ -38,8 +38,6 @@ type NativeHostInventoryView struct {
 	RaidStatus string `json:"raidStatus,omitempty"`
 	TemperatureStatus string `json:"temperatureStatus,omitempty"`
 	Architecture *string `json:"architecture,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryNativeHostView QueryNativeHost

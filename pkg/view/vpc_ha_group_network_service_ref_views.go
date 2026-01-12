@@ -8,12 +8,12 @@ var _ = time.Now // avoid unused import
 
 // VpcHaGroupNetworkServiceRefInventoryView VpcHaGroupNetworkServiceRef
 type VpcHaGroupNetworkServiceRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id *int64 `json:"id,omitempty"`
 	VpcHaRouterUuid *string `json:"vpcHaRouterUuid,omitempty"`
 	NetworkServiceName *string `json:"networkServiceName,omitempty"`
 	NetworkServiceUuid *string `json:"networkServiceUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryVpcHaGroupNetworkServiceRefView QueryVpcHaGroupNetworkServiceRef

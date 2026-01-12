@@ -25,5 +25,5 @@ func (cli *ZSClient) GetTicketFlowCollection(uuid string) (*view.TicketFlowColle
 }
 // DeleteTicketFlowCollection deletes TicketFlowCollection
 func (cli *ZSClient) DeleteTicketFlowCollection(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/tickets/flow-collections", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/tickets/flow-collections", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

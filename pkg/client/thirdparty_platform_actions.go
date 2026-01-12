@@ -26,7 +26,8 @@ func (cli *ZSClient) GetThirdpartyPlatform(uuid string) (*view.ThirdpartyPlatfor
 // UpdateThirdpartyPlatform updates ThirdpartyPlatform
 func (cli *ZSClient) UpdateThirdpartyPlatform(uuid string, params param.UpdateThirdpartyPlatformParam) (*view.ThirdpartyPlatformInventoryView, error) {
 	var resp view.UpdateThirdpartyPlatformEventView
-	if err := cli.Put("v1/zwatch/third-party/platforms/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/zwatch/third-party/platforms", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -41,5 +42,5 @@ func (cli *ZSClient) AddThirdpartyPlatform(params param.AddThirdpartyPlatformPar
 }
 // DeleteThirdpartyPlatform deletes ThirdpartyPlatform
 func (cli *ZSClient) DeleteThirdpartyPlatform(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/third-party/platforms", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/zwatch/third-party/platforms", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

@@ -34,7 +34,8 @@ func (cli *ZSClient) GetSNSWeComEndpoint(uuid string) (*view.SNSWeComEndpointInv
 // UpdateSNSWeComEndpoint updates SNSWeComEndpoint
 func (cli *ZSClient) UpdateSNSWeComEndpoint(uuid string, params param.UpdateSNSWeComEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	var resp view.UpdateSNSApplicationEndpointEventView
-	if err := cli.Put("v1/sns/application-endpoints/we-com/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/sns/application-endpoints/we-com", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

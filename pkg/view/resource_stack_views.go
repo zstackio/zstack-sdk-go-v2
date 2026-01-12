@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ResourceStackInventoryView ResourceStack
 type ResourceStackInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	Version *string `json:"version,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -19,8 +19,6 @@ type ResourceStackInventoryView struct {
 	Reason *string `json:"reason,omitempty"`
 	Outputs *string `json:"outputs,omitempty"`
 	EnableRollback *bool `json:"enableRollback,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // DeleteResourceStackEventView DeleteResourceStackEvent

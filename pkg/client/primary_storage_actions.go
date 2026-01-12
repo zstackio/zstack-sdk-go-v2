@@ -26,7 +26,8 @@ func (cli *ZSClient) GetPrimaryStorage(uuid string) (*view.PrimaryStorageInvento
 // ReconnectPrimaryStorage operates on PrimaryStorage
 func (cli *ZSClient) ReconnectPrimaryStorage(uuid string, params param.ReconnectPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	var resp view.ReconnectPrimaryStorageEventView
-	if err := cli.Put("v1/primary-storage/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/primary-storage", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -34,12 +35,13 @@ func (cli *ZSClient) ReconnectPrimaryStorage(uuid string, params param.Reconnect
 // UpdatePrimaryStorage updates PrimaryStorage
 func (cli *ZSClient) UpdatePrimaryStorage(uuid string, params param.UpdatePrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	var resp view.UpdatePrimaryStorageEventView
-	if err := cli.Put("v1/primary-storage/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/primary-storage", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeletePrimaryStorage deletes PrimaryStorage
 func (cli *ZSClient) DeletePrimaryStorage(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/primary-storage", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/primary-storage", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

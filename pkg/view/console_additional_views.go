@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ConsoleInventoryView Console
 type ConsoleInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Scheme *string `json:"scheme,omitempty"`
 	TargetScheme *string `json:"targetScheme,omitempty"`
 	Hostname *string `json:"hostname,omitempty"`

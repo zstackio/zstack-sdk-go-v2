@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ActiveAlarmTemplateInventoryView ActiveAlarmTemplate
 type ActiveAlarmTemplateInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	AlarmName *string `json:"alarmName,omitempty"`
 	ComparisonOperator string `json:"comparisonOperator,omitempty"`
 	Period int `json:"period,omitempty"`
@@ -19,8 +20,6 @@ type ActiveAlarmTemplateInventoryView struct {
 	Threshold float64 `json:"threshold,omitempty"`
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
 	Labels *string `json:"labels,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryActiveAlarmTemplateView QueryActiveAlarmTemplate

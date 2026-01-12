@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // InstallPathRecycleInventoryView InstallPathRecycle
 type InstallPathRecycleInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	TrashId int64 `json:"trashId,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	StorageUuid *string `json:"storageUuid,omitempty"`
@@ -19,7 +21,6 @@ type InstallPathRecycleInventoryView struct {
 	HypervisorType *string `json:"hypervisorType,omitempty"`
 	Size *int64 `json:"size,omitempty"`
 	TrashType *string `json:"trashType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
 }
 
 // GetTrashOnBackupStorageView GetTrashOnBackupStorage

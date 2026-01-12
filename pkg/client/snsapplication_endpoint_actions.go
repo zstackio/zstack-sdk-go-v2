@@ -26,12 +26,13 @@ func (cli *ZSClient) GetSNSApplicationEndpoint(uuid string) (*view.SNSApplicatio
 // UpdateSNSApplicationEndpoint updates SNSApplicationEndpoint
 func (cli *ZSClient) UpdateSNSApplicationEndpoint(uuid string, params param.UpdateSNSApplicationEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	var resp view.UpdateSNSApplicationEndpointEventView
-	if err := cli.Put("v1/sns/application-endpoints/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/sns/application-endpoints", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteSNSApplicationEndpoint deletes SNSApplicationEndpoint
 func (cli *ZSClient) DeleteSNSApplicationEndpoint(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sns/application-endpoints", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/sns/application-endpoints", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

@@ -20,7 +20,7 @@ func (cli *ZSClient) AddAliyunPanguPartition(params param.AddAliyunPanguPartitio
 }
 // DeleteAliyunPanguPartition deletes AliyunPanguPartition
 func (cli *ZSClient) DeleteAliyunPanguPartition(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/aliyun/pangu", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/aliyun/pangu", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryAliyunPanguPartition queries AliyunPanguPartition list
 func (cli *ZSClient) QueryAliyunPanguPartition(params *param.QueryParam) ([]view.AliyunPanguPartitionInventoryView, error) {
@@ -38,7 +38,8 @@ func (cli *ZSClient) GetAliyunPanguPartition(uuid string) (*view.AliyunPanguPart
 // UpdateAliyunPanguPartition updates AliyunPanguPartition
 func (cli *ZSClient) UpdateAliyunPanguPartition(uuid string, params param.UpdateAliyunPanguPartitionParam) (*view.AliyunPanguPartitionInventoryView, error) {
 	var resp view.UpdateAliyunPanguPartitionEventView
-	if err := cli.Put("v1/aliyun/pangu/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/aliyun/pangu", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // UserProxyConfigInventoryView UserProxyConfig
 type UserProxyConfigInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ProxyType *string `json:"proxyType,omitempty"`
 	ProxyHost *string `json:"proxyHost,omitempty"`
 	ProxyPort *int `json:"proxyPort,omitempty"`
@@ -18,8 +19,6 @@ type UserProxyConfigInventoryView struct {
 	ProxyProtocolVersion *string `json:"proxyProtocolVersion,omitempty"`
 	UseSsl *bool `json:"useSsl,omitempty"`
 	NoProxy *string `json:"noProxy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateUserProxyConfigEventView UpdateUserProxyConfigEvent

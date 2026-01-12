@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // CephBackupStorageInventoryView CephBackupStorage
 type CephBackupStorageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Mons []CephBackupStorageMonInventoryView `json:"mons,omitempty"`
 	Fsid *string `json:"fsid,omitempty"`
 	PoolName *string `json:"poolName,omitempty"`
@@ -16,8 +18,6 @@ type CephBackupStorageInventoryView struct {
 	PoolReplicatedSize *int `json:"poolReplicatedSize,omitempty"`
 	PoolDiskUtilization *float32 `json:"poolDiskUtilization,omitempty"`
 	PoolSecurityPolicy *string `json:"poolSecurityPolicy,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -25,8 +25,6 @@ type CephBackupStorageInventoryView struct {
 	Type *string `json:"type,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 
@@ -37,6 +35,11 @@ type AddMonToCephBackupStorageEventView struct {
 
 // RemoveMonFromCephBackupStorageEventView RemoveMonFromCephBackupStorageEvent
 type RemoveMonFromCephBackupStorageEventView struct {
+	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateCephBackupStorageMonEventView UpdateCephBackupStorageMonEvent
+type UpdateCephBackupStorageMonEventView struct {
 	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
 }
 

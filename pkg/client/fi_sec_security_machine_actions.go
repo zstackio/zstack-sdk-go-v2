@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateFiSecSecurityMachine updates FiSecSecurityMachine
 func (cli *ZSClient) UpdateFiSecSecurityMachine(uuid string, params param.UpdateFiSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	var resp view.UpdateSecurityMachineEventView
-	if err := cli.Put("v1/security-machines/fiSec/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/security-machines/fiSec", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

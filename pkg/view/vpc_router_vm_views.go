@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VpcRouterVmInventoryView VpcRouterVm
 type VpcRouterVmInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Dns []VpcRouterDnsInventoryView `json:"dns,omitempty"`
 	HaRef []VpcHaGroupApplianceVmRefInventoryView `json:"haRef,omitempty"`
 	PublicNetworkUuid *string `json:"publicNetworkUuid,omitempty"`
@@ -18,8 +20,6 @@ type VpcRouterVmInventoryView struct {
 	Status *string `json:"status,omitempty"`
 	AgentPort *int `json:"agentPort,omitempty"`
 	HaStatus *string `json:"haStatus,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -38,8 +38,6 @@ type VpcRouterVmInventoryView struct {
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`

@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteImageReplicationGroup deletes ImageReplicationGroup
 func (cli *ZSClient) DeleteImageReplicationGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/image-replication-groups", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/image-replication-groups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryImageReplicationGroup queries ImageReplicationGroup list
 func (cli *ZSClient) QueryImageReplicationGroup(params *param.QueryParam) ([]view.ImageReplicationGroupInventoryView, error) {

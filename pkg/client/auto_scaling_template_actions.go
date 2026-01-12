@@ -12,5 +12,5 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteAutoScalingTemplate deletes AutoScalingTemplate
 func (cli *ZSClient) DeleteAutoScalingTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/autoscaling/template", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/autoscaling/template", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

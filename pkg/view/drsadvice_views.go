@@ -8,15 +8,14 @@ var _ = time.Now // avoid unused import
 
 // DRSAdviceInventoryView DRSAdvice
 type DRSAdviceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	DrsUuid *string `json:"drsUuid,omitempty"`
 	AdviceGroupUuid *string `json:"adviceGroupUuid,omitempty"`
 	VmUuid *string `json:"vmUuid,omitempty"`
 	VmSourceHostUuid *string `json:"vmSourceHostUuid,omitempty"`
 	VmTargetHostUuid *string `json:"vmTargetHostUuid,omitempty"`
 	Reason *string `json:"reason,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // ApplyDRSAdviceEventView ApplyDRSAdviceEvent

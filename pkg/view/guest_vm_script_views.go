@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // GuestVmScriptInventoryView GuestVmScript
 type GuestVmScriptInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	EncodingType *string `json:"encodingType,omitempty"`
 	ScriptContent *string `json:"scriptContent,omitempty"`
@@ -17,8 +17,6 @@ type GuestVmScriptInventoryView struct {
 	Platform *string `json:"platform,omitempty"`
 	ScriptType *string `json:"scriptType,omitempty"`
 	ScriptTimeout *int `json:"scriptTimeout,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryGuestVmScriptView QueryGuestVmScript

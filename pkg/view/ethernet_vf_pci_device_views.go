@@ -8,13 +8,13 @@ var _ = time.Now // avoid unused import
 
 // EthernetVfPciDeviceInventoryView EthernetVfPciDevice
 type EthernetVfPciDeviceInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	HostDevUuid *string `json:"hostDevUuid,omitempty"`
 	InterfaceName *string `json:"interfaceName,omitempty"`
 	VmUuid *string `json:"vmUuid,omitempty"`
 	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
 	VfStatus string `json:"vfStatus,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	HostUuid *string `json:"hostUuid,omitempty"`
 	ParentUuid *string `json:"parentUuid,omitempty"`
@@ -36,8 +36,6 @@ type EthernetVfPciDeviceInventoryView struct {
 	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
 	Rev *string `json:"rev,omitempty"`
 	DependentDevices *string `json:"dependentDevices,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	MatchedPciDeviceOfferingRef []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDeviceOfferingRef,omitempty"`
 	MdevSpecRefs []PciDeviceMdevSpecRefInventoryView `json:"mdevSpecRefs,omitempty"`
 }

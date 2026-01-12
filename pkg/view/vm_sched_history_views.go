@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VmSchedHistoryInventoryView VmSchedHistory
 type VmSchedHistoryInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`
@@ -17,8 +19,6 @@ type VmSchedHistoryInventoryView struct {
 	Success *bool `json:"success,omitempty"`
 	LastHostUuid *string `json:"lastHostUuid,omitempty"`
 	DestHostUuid *string `json:"destHostUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 }
 

@@ -13,14 +13,15 @@ var _ = view.MapView{} // avoid unused import
 // UpdateUserProxyConfig updates UserProxyConfig
 func (cli *ZSClient) UpdateUserProxyConfig(uuid string, params param.UpdateUserProxyConfigParam) (*view.UserProxyConfigInventoryView, error) {
 	var resp view.UpdateUserProxyConfigEventView
-	if err := cli.Put("v1/user-proxy-configs/{uuid}", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/user-proxy-configs", fmt.Sprintf(\"%s\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteUserProxyConfig deletes UserProxyConfig
 func (cli *ZSClient) DeleteUserProxyConfig(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/user-proxy-configs", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/user-proxy-configs", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryUserProxyConfig queries UserProxyConfig list
 func (cli *ZSClient) QueryUserProxyConfig(params *param.QueryParam) ([]view.UserProxyConfigInventoryView, error) {

@@ -8,12 +8,11 @@ var _ = time.Now // avoid unused import
 
 // LdapAccountRefInventoryView LdapAccountRef
 type LdapAccountRefInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	LdapUid *string `json:"ldapUid,omitempty"`
 	LdapServerUuid *string `json:"ldapServerUuid,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryLdapBindingView QueryLdapBinding

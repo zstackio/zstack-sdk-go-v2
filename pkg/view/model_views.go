@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ModelInventoryView Model
 type ModelInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	InstallPath *string `json:"installPath,omitempty"`
 	Parameters *string `json:"parameters,omitempty"`
@@ -33,8 +33,6 @@ type ModelInventoryView struct {
 	FrameworkVersion *string `json:"frameworkVersion,omitempty"`
 	RequiredAccelerator *string `json:"requiredAccelerator,omitempty"`
 	ModelServiceRefs []ModelServiceRefInventoryView `json:"modelServiceRefs,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryModelView QueryModel

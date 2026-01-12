@@ -26,7 +26,8 @@ func (cli *ZSClient) GetActiveAlarmTemplate(uuid string) (*view.ActiveAlarmTempl
 // UpdateActiveAlarmTemplate updates ActiveAlarmTemplate
 func (cli *ZSClient) UpdateActiveAlarmTemplate(uuid string, params param.UpdateActiveAlarmTemplateParam) (*view.ActiveAlarmTemplateInventoryView, error) {
 	var resp view.UpdateActiveAlarmTemplateEventView
-	if err := cli.Put("v1/zwatch/activealarms/templates/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/zwatch/activealarms/templates", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

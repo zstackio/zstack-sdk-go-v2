@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateBareMetal2ProvisionNetwork updates BareMetal2ProvisionNetwork
 func (cli *ZSClient) UpdateBareMetal2ProvisionNetwork(uuid string, params param.UpdateBareMetal2ProvisionNetworkParam) (*view.BareMetal2ProvisionNetworkInventoryView, error) {
 	var resp view.UpdateBareMetal2ProvisionNetworkEventView
-	if err := cli.Put("v1/baremetal2/provision-networks/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal2/provision-networks", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -41,5 +42,5 @@ func (cli *ZSClient) CreateBareMetal2ProvisionNetwork(params param.CreateBareMet
 }
 // DeleteBareMetal2ProvisionNetwork deletes BareMetal2ProvisionNetwork
 func (cli *ZSClient) DeleteBareMetal2ProvisionNetwork(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/baremetal2/provision-networks", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/baremetal2/provision-networks", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

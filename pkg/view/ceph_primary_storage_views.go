@@ -8,12 +8,12 @@ var _ = time.Now // avoid unused import
 
 // CephPrimaryStorageInventoryView CephPrimaryStorage
 type CephPrimaryStorageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Mons []CephPrimaryStorageMonInventoryView `json:"mons,omitempty"`
 	Pools []CephPrimaryStoragePoolInventoryView `json:"pools,omitempty"`
 	Fsid *string `json:"fsid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -25,8 +25,6 @@ type CephPrimaryStorageInventoryView struct {
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
 	MountPath *string `json:"mountPath,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 
@@ -35,23 +33,8 @@ type RemoveMonFromCephPrimaryStorageEventView struct {
 	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
-// UpdateCephPrimaryStorageMonEventView UpdateCephPrimaryStorageMonEvent
-type UpdateCephPrimaryStorageMonEventView struct {
-	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-
 // AddMonToCephPrimaryStorageEventView AddMonToCephPrimaryStorageEvent
 type AddMonToCephPrimaryStorageEventView struct {
 	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-
-// AddPrimaryStorageEventView AddPrimaryStorageEvent
-type AddPrimaryStorageEventView struct {
-	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-
-// QueryPrimaryStorageView QueryPrimaryStorage
-type QueryPrimaryStorageView struct {
-	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
 }
 

@@ -8,10 +8,11 @@ var _ = time.Now // avoid unused import
 
 // EventRecordsInventoryView EventRecords
 type EventRecordsInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	CreateTime int64 `json:"createTime,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
-	Name string `json:"name,omitempty"`
 	EmergencyLevel *string `json:"emergencyLevel,omitempty"`
 	ResourceId *string `json:"resourceId,omitempty"`
 	DataUuid *string `json:"dataUuid,omitempty"`

@@ -25,7 +25,7 @@ func (cli *ZSClient) GetVRouterRouteTable(uuid string) (*view.VRouterRouteTableI
 }
 // DeleteVRouterRouteTable deletes VRouterRouteTable
 func (cli *ZSClient) DeleteVRouterRouteTable(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vrouter-route-tables", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/vrouter-route-tables", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // CreateVRouterRouteTable creates VRouterRouteTable
 func (cli *ZSClient) CreateVRouterRouteTable(params param.CreateVRouterRouteTableParam) (*view.VRouterRouteTableInventoryView, error) {
@@ -38,7 +38,8 @@ func (cli *ZSClient) CreateVRouterRouteTable(params param.CreateVRouterRouteTabl
 // UpdateVRouterRouteTable updates VRouterRouteTable
 func (cli *ZSClient) UpdateVRouterRouteTable(uuid string, params param.UpdateVRouterRouteTableParam) (*view.VRouterRouteTableInventoryView, error) {
 	var resp view.UpdateVRouterRouteTableEventView
-	if err := cli.Put("v1/vrouter-route-tables/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/vrouter-route-tables", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

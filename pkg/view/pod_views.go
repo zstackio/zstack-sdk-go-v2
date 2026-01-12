@@ -8,11 +8,11 @@ var _ = time.Now // avoid unused import
 
 // PodInventoryView Pod
 type PodInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Status *string `json:"status,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
 	ClusterId *int64 `json:"clusterId,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -31,8 +31,6 @@ type PodInventoryView struct {
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`

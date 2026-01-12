@@ -8,19 +8,13 @@ var _ = time.Now // avoid unused import
 
 // PrimaryStorageCapacityInventoryView PrimaryStorageCapacity
 type PrimaryStorageCapacityInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity *int64 `json:"availableCapacity,omitempty"`
 	TotalPhysicalCapacity *int64 `json:"totalPhysicalCapacity,omitempty"`
 	AvailablePhysicalCapacity *int64 `json:"availablePhysicalCapacity,omitempty"`
 	SystemUsedCapacity *int64 `json:"systemUsedCapacity,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
-}
-
-// SyncPrimaryStorageCapacityEventView SyncPrimaryStorageCapacityEvent
-type SyncPrimaryStorageCapacityEventView struct {
-	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
 // GetPrimaryStorageCapacityView GetPrimaryStorageCapacity

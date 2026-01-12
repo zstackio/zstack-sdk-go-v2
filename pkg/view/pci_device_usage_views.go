@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // PciDeviceUsageInventoryView PciDeviceUsage
 type PciDeviceUsageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id *int64 `json:"id,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`
 	DateInLong *int64 `json:"dateInLong,omitempty"`
@@ -21,7 +23,5 @@ type PciDeviceUsageInventoryView struct {
 	VmName *string `json:"vmName,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Inventory *string `json:"inventory,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // NfvInstGroupConfigTaskInventoryView NfvInstGroupConfigTask
 type NfvInstGroupConfigTaskInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	NfvInstGroupUuid *string `json:"nfvInstGroupUuid,omitempty"`
 	ConfigVersion int `json:"configVersion,omitempty"`

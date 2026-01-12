@@ -24,14 +24,15 @@ func (cli *ZSClient) GetResourceConfig(uuid string) (*view.ResourceConfigInvento
 	return &resp, nil
 }
 // UpdateResourceConfig updates ResourceConfig
-func (cli *ZSClient) UpdateResourceConfig(uuid string, params param.UpdateResourceConfigParam) (*view.ResourceConfigInventoryView, error) {
+func (cli *ZSClient) UpdateResourceConfig(category string, name string, resourceUuid string, params param.UpdateResourceConfigParam) (*view.ResourceConfigInventoryView, error) {
 	var resp view.UpdateResourceConfigEventView
-	if err := cli.Put("v1/resource-configurations/{category}/{name}/{resourceUuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/resource-configurations", fmt.Sprintf(\"%s/%s/%s/actions\", category, name, resourceUuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteResourceConfig deletes ResourceConfig
-func (cli *ZSClient) DeleteResourceConfig(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/resource-configurations/{category}/{name}/{resourceUuid}", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteResourceConfig(category string, name string, resourceUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/resource-configurations", fmt.Sprintf(\"%s/%s/%s\", category, name, resourceUuid), string(deleteMode))
 }

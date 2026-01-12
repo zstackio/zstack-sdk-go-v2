@@ -8,11 +8,11 @@ var _ = time.Now // avoid unused import
 
 // UserProxyConfigResourceRefInventoryView UserProxyConfigResourceRef
 type UserProxyConfigResourceRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id *int64 `json:"id,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	ProxyUuid *string `json:"proxyUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // AddProxyToResourceEventView AddProxyToResourceEvent

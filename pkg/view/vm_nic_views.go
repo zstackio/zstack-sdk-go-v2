@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VmNicInventoryView VmNic
 type VmNicInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
 	Ip *string `json:"ip,omitempty"`
@@ -24,8 +25,6 @@ type VmNicInventoryView struct {
 	DeviceId *int `json:"deviceId,omitempty"`
 	Type *string `json:"type,omitempty"`
 	State *string `json:"state,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // ChangeVmNicTypeEventView ChangeVmNicTypeEvent

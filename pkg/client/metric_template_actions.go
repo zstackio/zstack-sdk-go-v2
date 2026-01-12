@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteMetricTemplate deletes MetricTemplate
 func (cli *ZSClient) DeleteMetricTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/metrics/httpreceivers/templates", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/zwatch/metrics/httpreceivers/templates", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryMetricTemplate queries MetricTemplate list
 func (cli *ZSClient) QueryMetricTemplate(params *param.QueryParam) ([]view.MetricDataHttpReceiverInventoryView, error) {

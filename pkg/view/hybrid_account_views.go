@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // HybridAccountInventoryView HybridAccount
 type HybridAccountInventoryView struct {
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	AccountUuid *string `json:"accountUuid,omitempty"`
 	UserUuid *string `json:"userUuid,omitempty"`
 	Type string `json:"type,omitempty"`
@@ -19,8 +19,6 @@ type HybridAccountInventoryView struct {
 	HybridUserName *string `json:"hybridUserName,omitempty"`
 	Current *string `json:"current,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryHybridKeySecretView QueryHybridKeySecret

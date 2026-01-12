@@ -8,9 +8,8 @@ var _ = time.Now // avoid unused import
 
 // RolePolicyStatementInventoryView RolePolicyStatement
 type RolePolicyStatementInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Statement PolicyStatementView `json:"statement,omitempty"`
 }
 

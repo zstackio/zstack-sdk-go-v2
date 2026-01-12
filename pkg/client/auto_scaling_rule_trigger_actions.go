@@ -25,5 +25,5 @@ func (cli *ZSClient) GetAutoScalingRuleTrigger(uuid string) (*view.AutoScalingRu
 }
 // DeleteAutoScalingRuleTrigger deletes AutoScalingRuleTrigger
 func (cli *ZSClient) DeleteAutoScalingRuleTrigger(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/autoscaling/groups/rules/triggers", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/autoscaling/groups/rules/triggers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

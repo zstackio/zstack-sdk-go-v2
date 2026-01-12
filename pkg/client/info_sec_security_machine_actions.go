@@ -21,7 +21,8 @@ func (cli *ZSClient) AddInfoSecSecurityMachine(params param.AddInfoSecSecurityMa
 // UpdateInfoSecSecurityMachine updates InfoSecSecurityMachine
 func (cli *ZSClient) UpdateInfoSecSecurityMachine(uuid string, params param.UpdateInfoSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	var resp view.UpdateSecurityMachineEventView
-	if err := cli.Put("v1/security-machines/infoSec/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/security-machines/infoSec", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

@@ -21,7 +21,8 @@ func (cli *ZSClient) AddIpRange(params param.AddIpRangeParam) (*view.IpRangeInve
 // UpdateIpRange updates IpRange
 func (cli *ZSClient) UpdateIpRange(uuid string, params param.UpdateIpRangeParam) (*view.IpRangeInventoryView, error) {
 	var resp view.UpdateIpRangeEventView
-	if err := cli.Put("v1/l3-networks/ip-ranges/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/l3-networks/ip-ranges", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -41,5 +42,5 @@ func (cli *ZSClient) GetIpRange(uuid string) (*view.IpRangeInventoryView, error)
 }
 // DeleteIpRange deletes IpRange
 func (cli *ZSClient) DeleteIpRange(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/l3-networks/ip-ranges", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/l3-networks/ip-ranges", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

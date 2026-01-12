@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BillingInventoryView Billing
 type BillingInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	BillingType *string `json:"billingType,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`
@@ -17,8 +19,6 @@ type BillingInventoryView struct {
 	StartTime int64 `json:"startTime,omitempty"`
 	EndTime int64 `json:"endTime,omitempty"`
 	HypervisorType *string `json:"hypervisorType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryAccountBillingView QueryAccountBilling

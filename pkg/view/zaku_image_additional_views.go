@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ZakuImageInventoryView ZakuImage
 type ZakuImageInventoryView struct {
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	TagCount *int `json:"tagCount,omitempty"`
 	PullCount *int `json:"pullCount,omitempty"`
 	CreateTime *string `json:"createTime,omitempty"`

@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteReservedIpRange deletes ReservedIpRange
 func (cli *ZSClient) DeleteReservedIpRange(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/l3-networks/reserved-ip-ranges", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/l3-networks/reserved-ip-ranges", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // AddReservedIpRange adds ReservedIpRange
 func (cli *ZSClient) AddReservedIpRange(params param.AddReservedIpRangeParam) (*view.ReservedIpRangeInventoryView, error) {

@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ModelServiceInstanceInventoryView ModelServiceInstance
 type ModelServiceInstanceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ModelServiceGroupUuid *string `json:"modelServiceGroupUuid,omitempty"`
 	Yaml *string `json:"yaml,omitempty"`
 	K8sResourceYaml *string `json:"k8sResourceYaml,omitempty"`
@@ -24,7 +24,5 @@ type ModelServiceInstanceInventoryView struct {
 	Architecture *string `json:"architecture,omitempty"`
 	GpuVendor *string `json:"gpuVendor,omitempty"`
 	Vm VmInstanceInventoryView `json:"vm,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

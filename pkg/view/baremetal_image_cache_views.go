@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BaremetalImageCacheInventoryView BaremetalImageCache
 type BaremetalImageCacheInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	PxeServerUuid *string `json:"pxeServerUuid,omitempty"`
 	ImageUuid *string `json:"imageUuid,omitempty"`
@@ -18,7 +20,5 @@ type BaremetalImageCacheInventoryView struct {
 	ActualSize int64 `json:"actualSize,omitempty"`
 	Md5sum *string `json:"md5sum,omitempty"`
 	Utilization int64 `json:"utilization,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 

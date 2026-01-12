@@ -8,11 +8,11 @@ var _ = time.Now // avoid unused import
 
 // GpuDeviceSpecInventoryView GpuDeviceSpec
 type GpuDeviceSpecInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Memory *int64 `json:"memory,omitempty"`
 	GpuType *string `json:"gpuType,omitempty"`
 	Isolated *bool `json:"isolated,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	VendorId *string `json:"vendorId,omitempty"`
 	Vendor *string `json:"vendor,omitempty"`
@@ -28,8 +28,6 @@ type GpuDeviceSpecInventoryView struct {
 	AllowResourceConfigWithMultipleDevices bool `json:"allowResourceConfigWithMultipleDevices,omitempty"`
 	RomVersion *string `json:"romVersion,omitempty"`
 	RomMd5sum *string `json:"romMd5sum,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	MaxAvailableDevicesPerHost *int `json:"maxAvailableDevicesPerHost,omitempty"`
 }
 

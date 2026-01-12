@@ -26,14 +26,15 @@ func (cli *ZSClient) GetWebhook(uuid string) (*view.WebhookInventoryView, error)
 // UpdateWebhook updates Webhook
 func (cli *ZSClient) UpdateWebhook(uuid string, params param.UpdateWebhookParam) (*view.WebhookInventoryView, error) {
 	var resp view.UpdateWebhookEventView
-	if err := cli.Put("v1/web-hooks/{uuid}", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/web-hooks", fmt.Sprintf(\"%s\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteWebhook deletes Webhook
 func (cli *ZSClient) DeleteWebhook(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/web-hooks", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/web-hooks", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // CreateWebhook creates Webhook
 func (cli *ZSClient) CreateWebhook(params param.CreateWebhookParam) (*view.WebhookInventoryView, error) {

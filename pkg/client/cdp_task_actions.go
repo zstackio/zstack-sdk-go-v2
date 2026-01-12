@@ -34,12 +34,13 @@ func (cli *ZSClient) GetCdpTask(uuid string) (*view.CdpTaskInventoryView, error)
 // UpdateCdpTask updates CdpTask
 func (cli *ZSClient) UpdateCdpTask(uuid string, params param.UpdateCdpTaskParam) (*view.CdpTaskInventoryView, error) {
 	var resp view.UpdateCdpTaskEventView
-	if err := cli.Put("v1/cdp-backup-storage/task/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/cdp-backup-storage/task", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteCdpTask deletes CdpTask
 func (cli *ZSClient) DeleteCdpTask(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/cdp-task", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/cdp-task", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

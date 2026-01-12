@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // AuditsInventoryView Audits
 type AuditsInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	CreateTime int64 `json:"createTime,omitempty"`
 	ApiName *string `json:"apiName,omitempty"`

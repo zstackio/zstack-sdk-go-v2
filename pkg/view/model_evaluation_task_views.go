@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ModelEvaluationTaskInventoryView ModelEvaluationTask
 type ModelEvaluationTaskInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Type *string `json:"type,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Percentage int `json:"percentage,omitempty"`
@@ -19,8 +19,6 @@ type ModelEvaluationTaskInventoryView struct {
 	EvaluatedServiceGroupUuid *string `json:"evaluatedServiceGroupUuid,omitempty"`
 	DatasetUuid *string `json:"datasetUuid,omitempty"`
 	Limits *int `json:"limits,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	MaxNewTokens *int `json:"maxNewTokens,omitempty"`
 	TopK *int `json:"topK,omitempty"`
 	Temperature *float32 `json:"temperature,omitempty"`

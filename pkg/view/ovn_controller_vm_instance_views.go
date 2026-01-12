@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // OvnControllerVmInstanceInventoryView OvnControllerVmInstance
 type OvnControllerVmInstanceInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	NbClusterStatus string `json:"nbClusterStatus,omitempty"`
 	SbClusterStatus string `json:"sbClusterStatus,omitempty"`
 	ConfigVersion int `json:"configVersion,omitempty"`
@@ -22,8 +24,6 @@ type OvnControllerVmInstanceInventoryView struct {
 	Status *string `json:"status,omitempty"`
 	AgentPort *int `json:"agentPort,omitempty"`
 	HaStatus *string `json:"haStatus,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -42,8 +42,6 @@ type OvnControllerVmInstanceInventoryView struct {
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`

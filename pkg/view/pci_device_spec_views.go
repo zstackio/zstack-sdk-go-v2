@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // PciDeviceSpecInventoryView PciDeviceSpec
 type PciDeviceSpecInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	VendorId *string `json:"vendorId,omitempty"`
 	Vendor *string `json:"vendor,omitempty"`
@@ -25,8 +25,6 @@ type PciDeviceSpecInventoryView struct {
 	AllowResourceConfigWithMultipleDevices bool `json:"allowResourceConfigWithMultipleDevices,omitempty"`
 	RomVersion *string `json:"romVersion,omitempty"`
 	RomMd5sum *string `json:"romMd5sum,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	MaxAvailableDevicesPerHost *int `json:"maxAvailableDevicesPerHost,omitempty"`
 }
 

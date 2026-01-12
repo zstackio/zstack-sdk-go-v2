@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // SnmpAgentInventoryView SnmpAgent
 type SnmpAgentInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Version *string `json:"version,omitempty"`
 	ReadCommunity *string `json:"readCommunity,omitempty"`
 	UserName *string `json:"userName,omitempty"`
@@ -19,8 +20,6 @@ type SnmpAgentInventoryView struct {
 	Port *int `json:"port,omitempty"`
 	Status *string `json:"status,omitempty"`
 	SecurityLevel *string `json:"securityLevel,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // CreateSnmpAgentEventView CreateSnmpAgentEvent

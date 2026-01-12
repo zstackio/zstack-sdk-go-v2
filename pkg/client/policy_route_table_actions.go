@@ -20,7 +20,7 @@ func (cli *ZSClient) CreatePolicyRouteTable(params param.CreatePolicyRouteTableP
 }
 // DeletePolicyRouteTable deletes PolicyRouteTable
 func (cli *ZSClient) DeletePolicyRouteTable(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/policy-routes/tables", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/policy-routes/tables", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryPolicyRouteTable queries PolicyRouteTable list
 func (cli *ZSClient) QueryPolicyRouteTable(params *param.QueryParam) ([]view.PolicyRouteTableInventoryView, error) {

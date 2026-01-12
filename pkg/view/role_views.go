@@ -8,20 +8,23 @@ var _ = time.Now // avoid unused import
 
 // RoleInventoryView Role
 type RoleInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	Identity *string `json:"identity,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	Statements []RolePolicyStatementInventoryView `json:"statements,omitempty"`
 	Policies []RolePolicyRefInventoryView `json:"policies,omitempty"`
 }
 
 // ChangeRoleStateEventView ChangeRoleStateEvent
 type ChangeRoleStateEventView struct {
+	Inventory RoleInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateRoleEventView CreateRoleEvent
+type CreateRoleEventView struct {
 	Inventory RoleInventoryView `json:"inventory,omitempty"`
 }
 

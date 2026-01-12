@@ -21,7 +21,8 @@ func (cli *ZSClient) AddV2VConversionHost(params param.AddV2VConversionHostParam
 // UpdateV2VConversionHost updates V2VConversionHost
 func (cli *ZSClient) UpdateV2VConversionHost(uuid string, params param.UpdateV2VConversionHostParam) (*view.V2VConversionHostInventoryView, error) {
 	var resp view.UpdateV2VConversionHostEventView
-	if err := cli.Put("v1/v2v-conversion-hosts/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/v2v-conversion-hosts", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -41,5 +42,5 @@ func (cli *ZSClient) GetV2VConversionHost(uuid string) (*view.V2VConversionHostI
 }
 // DeleteV2VConversionHost deletes V2VConversionHost
 func (cli *ZSClient) DeleteV2VConversionHost(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/v2v-conversion-hosts", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/v2v-conversion-hosts", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

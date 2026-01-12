@@ -21,7 +21,8 @@ func (cli *ZSClient) CreateSNSHttpEndpoint(params param.CreateSNSHttpEndpointPar
 // UpdateSNSHttpEndpoint updates SNSHttpEndpoint
 func (cli *ZSClient) UpdateSNSHttpEndpoint(uuid string, params param.UpdateSNSHttpEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	var resp view.UpdateSNSApplicationEndpointEventView
-	if err := cli.Put("v1/sns/application-endpoints/http/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/sns/application-endpoints/http", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

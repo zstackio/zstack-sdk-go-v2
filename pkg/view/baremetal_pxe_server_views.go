@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // BaremetalPxeServerInventoryView BaremetalPxeServer
 type BaremetalPxeServerInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Hostname *string `json:"hostname,omitempty"`
 	SshUsername *string `json:"sshUsername,omitempty"`
@@ -24,8 +24,6 @@ type BaremetalPxeServerInventoryView struct {
 	DhcpRangeNetmask *string `json:"dhcpRangeNetmask,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity *int64 `json:"availableCapacity,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`

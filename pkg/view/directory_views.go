@@ -8,15 +8,13 @@ var _ = time.Now // avoid unused import
 
 // DirectoryInventoryView Directory
 type DirectoryInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	GroupName *string `json:"groupName,omitempty"`
 	ParentUuid *string `json:"parentUuid,omitempty"`
 	RootDirectoryUuid *string `json:"rootDirectoryUuid,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	Type *string `json:"type,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateDirectoryEventView UpdateDirectoryEvent

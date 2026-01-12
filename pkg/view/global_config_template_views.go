@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // GlobalConfigTemplateInventoryView GlobalConfigTemplate
 type GlobalConfigTemplateInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Type *string `json:"type,omitempty"`
 	Description *string `json:"description,omitempty"`
 }

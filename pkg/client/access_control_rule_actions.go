@@ -21,14 +21,15 @@ func (cli *ZSClient) AddAccessControlRule(params param.AddAccessControlRuleParam
 // UpdateAccessControlRule updates AccessControlRule
 func (cli *ZSClient) UpdateAccessControlRule(uuid string, params param.UpdateAccessControlRuleParam) (*view.AccessControlRuleInventoryView, error) {
 	var resp view.UpdateAccessControlRuleEventView
-	if err := cli.Put("v1/login-control/access-control/rules/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/login-control/access-control/rules", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteAccessControlRule deletes AccessControlRule
 func (cli *ZSClient) DeleteAccessControlRule(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/login-control/access-control/rules", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/login-control/access-control/rules", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // QueryAccessControlRule queries AccessControlRule list
 func (cli *ZSClient) QueryAccessControlRule(params *param.QueryParam) ([]view.AccessControlRuleInventoryView, error) {

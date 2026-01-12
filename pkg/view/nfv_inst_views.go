@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // NfvInstInventoryView NfvInst
 type NfvInstInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ConfigVersion int `json:"configVersion,omitempty"`
 	NfvInstGroupUuid *string `json:"nfvInstGroupUuid,omitempty"`
 	NetOsDistro *string `json:"netOsDistro,omitempty"`
@@ -20,8 +22,6 @@ type NfvInstInventoryView struct {
 	Status *string `json:"status,omitempty"`
 	AgentPort *int `json:"agentPort,omitempty"`
 	HaStatus *string `json:"haStatus,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -40,8 +40,6 @@ type NfvInstInventoryView struct {
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
@@ -57,5 +55,10 @@ type CreateNfvInstEventView struct {
 // QueryNfvInstView QueryNfvInst
 type QueryNfvInstView struct {
 	Inventories []NfvInstInventoryView `json:"inventories,omitempty"`
+}
+
+// ReconnectNfvInstEventView ReconnectNfvInstEvent
+type ReconnectNfvInstEventView struct {
+	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
 }
 

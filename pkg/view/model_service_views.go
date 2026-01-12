@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ModelServiceInventoryView ModelService
 type ModelServiceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	Readme *string `json:"readme,omitempty"`
 	Yaml *string `json:"yaml,omitempty"`
@@ -33,8 +33,6 @@ type ModelServiceInventoryView struct {
 	VendorToSpecUuidsMap map[string]interface{} `json:"vendorToSpecUuidsMap,omitempty"`
 	ModelServiceRefs []ModelServiceRefInventoryView `json:"modelServiceRefs,omitempty"`
 	ModelServiceImages []ModelServiceTemplateInventoryView `json:"modelServiceImages,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // CloneModelServiceEventView CloneModelServiceEvent

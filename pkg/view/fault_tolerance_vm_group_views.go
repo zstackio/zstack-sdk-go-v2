@@ -8,11 +8,11 @@ var _ = time.Now // avoid unused import
 
 // FaultToleranceVmGroupInventoryView FaultToleranceVmGroup
 type FaultToleranceVmGroupInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	PrimaryVmInstanceUuid *string `json:"primaryVmInstanceUuid,omitempty"`
 	SecondaryVmInstanceUuid *string `json:"secondaryVmInstanceUuid,omitempty"`
 	Status *string `json:"status,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -31,8 +31,6 @@ type FaultToleranceVmGroupInventoryView struct {
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`

@@ -12,12 +12,13 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteSNSTopic deletes SNSTopic
 func (cli *ZSClient) DeleteSNSTopic(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sns/topics", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/sns/topics", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateSNSTopic updates SNSTopic
 func (cli *ZSClient) UpdateSNSTopic(uuid string, params param.UpdateSNSTopicParam) (*view.SNSTopicInventoryView, error) {
 	var resp view.UpdateSNSTopicEventView
-	if err := cli.Put("v1/sns/topics/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/sns/topics", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

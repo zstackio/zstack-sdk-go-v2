@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // AppBuildSystemInventoryView AppBuildSystem
 type AppBuildSystemInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	StorageType *string `json:"storageType,omitempty"`
 	Url *string `json:"url,omitempty"`
@@ -20,8 +20,6 @@ type AppBuildSystemInventoryView struct {
 	State *string `json:"state,omitempty"`
 	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // AddAppBuildSystemEventView AddAppBuildSystemEvent

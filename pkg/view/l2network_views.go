@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // L2NetworkInventoryView L2Network
 type L2NetworkInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	PhysicalInterface *string `json:"physicalInterface,omitempty"`
@@ -18,8 +18,6 @@ type L2NetworkInventoryView struct {
 	VirtualNetworkId *int `json:"virtualNetworkId,omitempty"`
 	Isolated *bool `json:"isolated,omitempty"`
 	Pvlan *string `json:"pvlan,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

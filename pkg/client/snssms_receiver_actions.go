@@ -19,6 +19,6 @@ func (cli *ZSClient) AddSNSSmsReceiver(params param.AddSNSSmsReceiverParam) (*vi
 	return &resp, nil
 }
 // RemoveSNSSmsReceiver removes SNSSmsReceiver
-func (cli *ZSClient) RemoveSNSSmsReceiver(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sns/sms-endpoints/{endpointUuid}/receivers/{phoneNumber}", uuid, string(deleteMode))
+func (cli *ZSClient) RemoveSNSSmsReceiver(endpointUuid string, phoneNumber string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/sns/sms-endpoints", fmt.Sprintf(\"%s/receivers/%s\", endpointUuid, phoneNumber), string(deleteMode))
 }

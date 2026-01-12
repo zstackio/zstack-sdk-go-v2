@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // InstanceOfferingInventoryView InstanceOffering
 type InstanceOfferingInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int `json:"cpuSpeed,omitempty"`
@@ -18,14 +18,7 @@ type InstanceOfferingInventoryView struct {
 	Type *string `json:"type,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
 	SortKey *int `json:"sortKey,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
-}
-
-// ChangeInstanceOfferingEventView ChangeInstanceOfferingEvent
-type ChangeInstanceOfferingEventView struct {
-	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
 
 // ChangeInstanceOfferingStateEventView ChangeInstanceOfferingStateEvent

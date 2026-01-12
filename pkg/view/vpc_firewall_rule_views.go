@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // VpcFirewallRuleInventoryView VpcFirewallRule
 type VpcFirewallRuleInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	RuleSetUuid *string `json:"ruleSetUuid,omitempty"`
 	Action *string `json:"action,omitempty"`
 	Protocol *string `json:"protocol,omitempty"`
@@ -25,8 +26,6 @@ type VpcFirewallRuleInventoryView struct {
 	State *string `json:"state,omitempty"`
 	IsDefault bool `json:"isDefault,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // ChangeFirewallRuleStateEventView ChangeFirewallRuleStateEvent

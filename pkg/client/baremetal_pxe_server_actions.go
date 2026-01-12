@@ -12,12 +12,13 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteBaremetalPxeServer deletes BaremetalPxeServer
 func (cli *ZSClient) DeleteBaremetalPxeServer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/baremetal/pxeservers", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/baremetal/pxeservers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateBaremetalPxeServer updates BaremetalPxeServer
 func (cli *ZSClient) UpdateBaremetalPxeServer(uuid string, params param.UpdateBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
 	var resp view.UpdateBaremetalPxeServerEventView
-	if err := cli.Put("v1/baremetal/pxeservers/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal/pxeservers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -25,7 +26,8 @@ func (cli *ZSClient) UpdateBaremetalPxeServer(uuid string, params param.UpdateBa
 // StartBaremetalPxeServer starts BaremetalPxeServer
 func (cli *ZSClient) StartBaremetalPxeServer(uuid string, params param.StartBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
 	var resp view.StartBaremetalPxeServerEventView
-	if err := cli.Put("v1/baremetal/pxeservers/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal/pxeservers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -33,7 +35,8 @@ func (cli *ZSClient) StartBaremetalPxeServer(uuid string, params param.StartBare
 // ReconnectBaremetalPxeServer operates on BaremetalPxeServer
 func (cli *ZSClient) ReconnectBaremetalPxeServer(uuid string, params param.ReconnectBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
 	var resp view.ReconnectBaremetalPxeServerEventView
-	if err := cli.Put("v1/baremetal/pxeservers/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal/pxeservers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -41,7 +44,8 @@ func (cli *ZSClient) ReconnectBaremetalPxeServer(uuid string, params param.Recon
 // StopBaremetalPxeServer stops BaremetalPxeServer
 func (cli *ZSClient) StopBaremetalPxeServer(uuid string, params param.StopBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
 	var resp view.StopBaremetalPxeServerEventView
-	if err := cli.Put("v1/baremetal/pxeservers/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/baremetal/pxeservers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

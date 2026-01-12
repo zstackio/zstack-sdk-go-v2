@@ -25,5 +25,5 @@ func (cli *ZSClient) GetHuaweiIMasterVpc(uuid string) (*view.HuaweiIMasterVpcInv
 }
 // DeleteHuaweiIMasterVpc deletes HuaweiIMasterVpc
 func (cli *ZSClient) DeleteHuaweiIMasterVpc(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sdn-controller/huawei-imaster/vpcs", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/sdn-controller/huawei-imaster/vpcs", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

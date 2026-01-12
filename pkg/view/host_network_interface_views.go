@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // HostNetworkInterfaceInventoryView HostNetworkInterface
 type HostNetworkInterfaceInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	HostUuid *string `json:"hostUuid,omitempty"`
 	BondingUuid *string `json:"bondingUuid,omitempty"`
 	InterfaceModel *string `json:"interfaceModel,omitempty"`
@@ -30,8 +31,6 @@ type HostNetworkInterfaceInventoryView struct {
 	OffloadStatus *string `json:"offloadStatus,omitempty"`
 	VirtStatus *string `json:"virtStatus,omitempty"`
 	Description *string `json:"description,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateHostNetworkInterfaceEventView UpdateHostNetworkInterfaceEvent

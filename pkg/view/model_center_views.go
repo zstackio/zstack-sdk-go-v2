@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ModelCenterInventoryView ModelCenter
 type ModelCenterInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Status *string `json:"status,omitempty"`
@@ -23,8 +23,6 @@ type ModelCenterInventoryView struct {
 	ContainerNetwork *string `json:"containerNetwork,omitempty"`
 	Capacity ModelCenterCapacityInventoryView `json:"capacity,omitempty"`
 	Zdfs ZdfsInventoryView `json:"zdfs,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // DeleteModelCenterEventView DeleteModelCenterEvent

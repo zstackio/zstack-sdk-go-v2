@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BareMetal2GatewayInventoryView BareMetal2Gateway
 type BareMetal2GatewayInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 	ProvisionNic BareMetal2GatewayProvisionNicInventoryView `json:"provisionNic,omitempty"`
 	Username *string `json:"username,omitempty"`
@@ -16,8 +18,6 @@ type BareMetal2GatewayInventoryView struct {
 	OsRelease *string `json:"osRelease,omitempty"`
 	OsVersion *string `json:"osVersion,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ManagementIp *string `json:"managementIp,omitempty"`
@@ -44,8 +44,6 @@ type BareMetal2GatewayInventoryView struct {
 	RaidStatus string `json:"raidStatus,omitempty"`
 	TemperatureStatus string `json:"temperatureStatus,omitempty"`
 	Architecture *string `json:"architecture,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // ReconnectBareMetal2GatewayEventView ReconnectBareMetal2GatewayEvent
@@ -86,5 +84,10 @@ type DeleteBareMetal2GatewayEventView struct {
 // AttachBareMetal2GatewayToClusterEventView AttachBareMetal2GatewayToClusterEvent
 type AttachBareMetal2GatewayToClusterEventView struct {
 	Inventory BareMetal2GatewayInventoryView `json:"inventory,omitempty"`
+}
+
+// AddHostEventView AddHostEvent
+type AddHostEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
 }
 

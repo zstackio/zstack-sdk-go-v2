@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BareMetal2ChassisInventoryView BareMetal2Chassis
 type BareMetal2ChassisInventoryView struct {
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -19,8 +19,6 @@ type BareMetal2ChassisInventoryView struct {
 	Status *string `json:"status,omitempty"`
 	PowerStatus *string `json:"powerStatus,omitempty"`
 	ProvisionType *string `json:"provisionType,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	ChassisNics []BareMetal2ChassisNicInventoryView `json:"chassisNics,omitempty"`
 	ChassisDisks []BareMetal2ChassisDiskInventoryView `json:"chassisDisks,omitempty"`
 	ChassisOffering BareMetal2ChassisOfferingInventoryView `json:"chassisOffering,omitempty"`
@@ -28,11 +26,6 @@ type BareMetal2ChassisInventoryView struct {
 
 // InspectBareMetal2ChassisEventView InspectBareMetal2ChassisEvent
 type InspectBareMetal2ChassisEventView struct {
-	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateBareMetal2ChassisEventView UpdateBareMetal2ChassisEvent
-type UpdateBareMetal2ChassisEventView struct {
 	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
 }
 
@@ -49,11 +42,6 @@ type ChangeBareMetal2ChassisStateEventView struct {
 // DeleteBareMetal2ChassisEventView DeleteBareMetal2ChassisEvent
 type DeleteBareMetal2ChassisEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// AddBareMetal2ChassisEventView AddBareMetal2ChassisEvent
-type AddBareMetal2ChassisEventView struct {
-	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
 }
 
 // InspectBareMetal2ChassisByInstanceEventView InspectBareMetal2ChassisByInstanceEvent

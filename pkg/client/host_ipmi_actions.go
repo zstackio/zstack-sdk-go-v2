@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateHostIpmi updates HostIpmi
 func (cli *ZSClient) UpdateHostIpmi(uuid string, params param.UpdateHostIpmiParam) (*view.HostIpmiInventoryView, error) {
 	resp := view.HostIpmiInventoryView{}
-	if err := cli.Put("v1/hosts/ipmi/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/hosts/ipmi", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil

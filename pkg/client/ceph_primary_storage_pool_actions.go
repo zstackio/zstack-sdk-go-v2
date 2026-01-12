@@ -13,7 +13,8 @@ var _ = view.MapView{} // avoid unused import
 // UpdateCephPrimaryStoragePool updates CephPrimaryStoragePool
 func (cli *ZSClient) UpdateCephPrimaryStoragePool(uuid string, params param.UpdateCephPrimaryStoragePoolParam) (*view.CephPrimaryStoragePoolInventoryView, error) {
 	var resp view.UpdateCephPrimaryStoragePoolEventView
-	if err := cli.Put("v1/primary-storage/ceph/pools/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/primary-storage/ceph/pools", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -41,5 +42,5 @@ func (cli *ZSClient) GetCephPrimaryStoragePool(uuid string) (*view.CephPrimarySt
 }
 // DeleteCephPrimaryStoragePool deletes CephPrimaryStoragePool
 func (cli *ZSClient) DeleteCephPrimaryStoragePool(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/primary-storage/ceph/pools", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/primary-storage/ceph/pools", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

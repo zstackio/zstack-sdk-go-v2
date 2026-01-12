@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // BareMetal2InstanceInventoryView BareMetal2Instance
 type BareMetal2InstanceInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ChassisUuid *string `json:"chassisUuid,omitempty"`
 	LastChassisUuid *string `json:"lastChassisUuid,omitempty"`
 	GatewayUuid *string `json:"gatewayUuid,omitempty"`
@@ -19,8 +21,6 @@ type BareMetal2InstanceInventoryView struct {
 	AgentVersion *string `json:"agentVersion,omitempty"`
 	IsLatestAgent bool `json:"isLatestAgent,omitempty"`
 	ProvisionNic BareMetal2InstanceProvisionNicInventoryView `json:"provisionNic,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
@@ -39,8 +39,6 @@ type BareMetal2InstanceInventoryView struct {
 	CpuNum *int `json:"cpuNum,omitempty"`
 	CpuSpeed *int64 `json:"cpuSpeed,omitempty"`
 	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	State *string `json:"state,omitempty"`
 	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`

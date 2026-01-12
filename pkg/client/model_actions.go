@@ -25,12 +25,13 @@ func (cli *ZSClient) GetModel(uuid string) (*view.ModelInventoryView, error) {
 }
 // DeleteModel deletes Model
 func (cli *ZSClient) DeleteModel(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/models", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/ai/models", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateModel updates Model
 func (cli *ZSClient) UpdateModel(uuid string, params param.UpdateModelParam) (*view.ModelInventoryView, error) {
 	var resp view.UpdateModelEventView
-	if err := cli.Put("v1/ai/models/{uuid}", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/ai/models", fmt.Sprintf(\"%s\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // VCenterBackupStorageInventoryView VCenterBackupStorage
 type VCenterBackupStorageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	VCenterUuid *string `json:"vCenterUuid,omitempty"`
 	Datastore *string `json:"datastore,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
@@ -19,8 +19,6 @@ type VCenterBackupStorageInventoryView struct {
 	Type *string `json:"type,omitempty"`
 	State *string `json:"state,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 

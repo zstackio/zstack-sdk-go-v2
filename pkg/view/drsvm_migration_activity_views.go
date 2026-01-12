@@ -8,8 +8,9 @@ var _ = time.Now // avoid unused import
 
 // DRSVmMigrationActivityInventoryView DRSVmMigrationActivity
 type DRSVmMigrationActivityInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	DrsUuid *string `json:"drsUuid,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	VmUuid *string `json:"vmUuid,omitempty"`
 	VmSourceHostUuid *string `json:"vmSourceHostUuid,omitempty"`
 	VmTargetHostUuid *string `json:"vmTargetHostUuid,omitempty"`
@@ -19,8 +20,6 @@ type DRSVmMigrationActivityInventoryView struct {
 	AdviceUuid *string `json:"adviceUuid,omitempty"`
 	Cause *string `json:"cause,omitempty"`
 	EndDate *time.Time `json:"endDate,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // QueryDRSVmMigrationActivityView QueryDRSVmMigrationActivity

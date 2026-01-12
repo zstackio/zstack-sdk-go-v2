@@ -8,16 +8,14 @@ var _ = time.Now // avoid unused import
 
 // AliyunNasMountTargetInventoryView AliyunNasMountTarget
 type AliyunNasMountTargetInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	AccessGroupUuid *string `json:"accessGroupUuid,omitempty"`
 	Status *string `json:"status,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	MountDomain *string `json:"mountDomain,omitempty"`
 	NasFileSystemUuid *string `json:"nasFileSystemUuid,omitempty"`
 	Type *string `json:"type,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // AddAliyunNasMountTargetEventView AddAliyunNasMountTargetEvent

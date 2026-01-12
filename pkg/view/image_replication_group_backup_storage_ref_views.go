@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // ImageReplicationGroupBackupStorageRefInventoryView ImageReplicationGroupBackupStorageRef
 type ImageReplicationGroupBackupStorageRefInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ReplicationGroupUuid *string `json:"replicationGroupUuid,omitempty"`
 	BackupStorageUuid *string `json:"backupStorageUuid,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // AddBackupStoragesToReplicationGroupEventView AddBackupStoragesToReplicationGroupEvent

@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // ScsiLunInventoryView ScsiLun
 type ScsiLunInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ScsiLunHostRefs []ScsiLunHostRefInventoryView `json:"scsiLunHostRefs,omitempty"`
 	ScsiLunVmInstanceRefs []ScsiLunVmInstanceRefInventoryView `json:"scsiLunVmInstanceRefs,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	Wwid *string `json:"wwid,omitempty"`
 	Vendor *string `json:"vendor,omitempty"`
 	Model *string `json:"model,omitempty"`
@@ -24,8 +24,6 @@ type ScsiLunInventoryView struct {
 	Size *int64 `json:"size,omitempty"`
 	MultipathDeviceUuid *string `json:"multipathDeviceUuid,omitempty"`
 	Source *string `json:"source,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateScsiLunEventView UpdateScsiLunEvent

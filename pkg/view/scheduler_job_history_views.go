@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // SchedulerJobHistoryInventoryView SchedulerJobHistory
 type SchedulerJobHistoryInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	TriggerUuid *string `json:"triggerUuid,omitempty"`
 	SchedulerJobUuid *string `json:"schedulerJobUuid,omitempty"`

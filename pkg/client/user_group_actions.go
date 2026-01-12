@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteUserGroup deletes UserGroup
 func (cli *ZSClient) DeleteUserGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/accounts/groups", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/accounts/groups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // CreateUserGroup creates UserGroup
 func (cli *ZSClient) CreateUserGroup(params param.CreateUserGroupParam) (*view.UserGroupInventoryView, error) {

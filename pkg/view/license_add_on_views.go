@@ -8,9 +8,9 @@ var _ = time.Now // avoid unused import
 
 // LicenseAddOnInventoryView LicenseAddOn
 type LicenseAddOnInventoryView struct {
-	Name string `json:"name,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	Modules []string `json:"modules,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	User *string `json:"user,omitempty"`
 	ProdInfo *string `json:"prodInfo,omitempty"`
 	CpuNum *int `json:"cpuNum,omitempty"`

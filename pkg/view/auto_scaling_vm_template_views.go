@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // AutoScalingVmTemplateInventoryView AutoScalingVmTemplate
 type AutoScalingVmTemplateInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	VmInstanceName *string `json:"vmInstanceName,omitempty"`
 	VmInstanceType *string `json:"vmInstanceType,omitempty"`
 	VmInstanceDescription *string `json:"vmInstanceDescription,omitempty"`
@@ -22,14 +24,10 @@ type AutoScalingVmTemplateInventoryView struct {
 	PrimaryStorageUuidForRootVolume *string `json:"primaryStorageUuidForRootVolume,omitempty"`
 	DefaultL3NetworkUuid *string `json:"defaultL3NetworkUuid,omitempty"`
 	Strategy *string `json:"strategy,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Type *string `json:"type,omitempty"`
 	State *string `json:"state,omitempty"`
 	SystemTags []string `json:"systemTags,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 }
 
 // UpdateAutoScalingTemplateEventView UpdateAutoScalingTemplateEvent

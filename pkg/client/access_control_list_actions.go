@@ -21,7 +21,8 @@ func (cli *ZSClient) CreateAccessControlList(params param.CreateAccessControlLis
 // UpdateAccessControlList updates AccessControlList
 func (cli *ZSClient) UpdateAccessControlList(uuid string, params param.UpdateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
 	var resp view.UpdateAccessControlListEventView
-	if err := cli.Put("v1/access-control-lists/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/access-control-lists", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -41,5 +42,5 @@ func (cli *ZSClient) GetAccessControlList(uuid string) (*view.AccessControlListI
 }
 // DeleteAccessControlList deletes AccessControlList
 func (cli *ZSClient) DeleteAccessControlList(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/access-control-lists", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/access-control-lists", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

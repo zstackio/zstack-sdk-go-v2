@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // OAuth2ClientInventoryView OAuth2Client
 type OAuth2ClientInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	ClientId *string `json:"clientId,omitempty"`
 	ClientSecret *string `json:"clientSecret,omitempty"`
 	AuthorizationUrl *string `json:"authorizationUrl,omitempty"`
@@ -18,15 +20,11 @@ type OAuth2ClientInventoryView struct {
 	PluginUuid *string `json:"pluginUuid,omitempty"`
 	LogoutUrl *string `json:"logoutUrl,omitempty"`
 	ScopeList []string `json:"scopeList,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ClientType *string `json:"clientType,omitempty"`
 	LoginType *string `json:"loginType,omitempty"`
 	LoginMNUrl *string `json:"loginMNUrl,omitempty"`
 	RedirectUrl *string `json:"redirectUrl,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	AccountUuid *string `json:"accountUuid,omitempty"`
 	Attributes []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
 }

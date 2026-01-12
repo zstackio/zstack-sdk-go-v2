@@ -33,12 +33,13 @@ func (cli *ZSClient) GetLoadBalancerServerGroup(uuid string) (*view.LoadBalancer
 }
 // DeleteLoadBalancerServerGroup deletes LoadBalancerServerGroup
 func (cli *ZSClient) DeleteLoadBalancerServerGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/load-balancers/servergroups", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/load-balancers/servergroups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }
 // UpdateLoadBalancerServerGroup updates LoadBalancerServerGroup
 func (cli *ZSClient) UpdateLoadBalancerServerGroup(uuid string, params param.UpdateLoadBalancerServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
 	var resp view.UpdateLoadBalancerServerGroupEventView
-	if err := cli.Put("v1/load-balancers/servergroups/{uuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/load-balancers/servergroups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

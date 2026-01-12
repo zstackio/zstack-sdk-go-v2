@@ -34,9 +34,10 @@ func (cli *ZSClient) CreateVolumeBackupAsync(params param.CreateVolumeBackupPara
 	return apiId, nil
 }
 // SyncVolumeBackup operates on VolumeBackup
-func (cli *ZSClient) SyncVolumeBackup(uuid string, params param.SyncVolumeBackupParam) (*view.VolumeBackupInventoryView, error) {
+func (cli *ZSClient) SyncVolumeBackup(imageStoreUuid string, params param.SyncVolumeBackupParam) (*view.VolumeBackupInventoryView, error) {
 	resp := view.VolumeBackupInventoryView{}
-	if err := cli.Put("v1/volume-backups/imageStore/{imageStoreUuid}/actions", uuid, params, &resp); err != nil {
+	err := cli.PutWithSpec("v1/volume-backups/imageStore", fmt.Sprintf(\"%s/actions\", imageStoreUuid), params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -56,5 +57,5 @@ func (cli *ZSClient) GetVolumeBackup(uuid string) (*view.VolumeBackupInventoryVi
 }
 // DeleteVolumeBackup deletes VolumeBackup
 func (cli *ZSClient) DeleteVolumeBackup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volume-backups", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/volume-backups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
 }

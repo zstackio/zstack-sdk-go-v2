@@ -8,6 +8,8 @@ var _ = time.Now // avoid unused import
 
 // GpuDeviceInventoryView GpuDevice
 type GpuDeviceInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	Memory *int64 `json:"memory,omitempty"`
 	Power *int64 `json:"power,omitempty"`
@@ -15,8 +17,6 @@ type GpuDeviceInventoryView struct {
 	GpuType *string `json:"gpuType,omitempty"`
 	GpuStatus *string `json:"gpuStatus,omitempty"`
 	AllocateStatus string `json:"allocateStatus,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	HostUuid *string `json:"hostUuid,omitempty"`
 	ParentUuid *string `json:"parentUuid,omitempty"`
@@ -38,8 +38,6 @@ type GpuDeviceInventoryView struct {
 	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
 	Rev *string `json:"rev,omitempty"`
 	DependentDevices *string `json:"dependentDevices,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"`
 	MatchedPciDeviceOfferingRef []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDeviceOfferingRef,omitempty"`
 	MdevSpecRefs []PciDeviceMdevSpecRefInventoryView `json:"mdevSpecRefs,omitempty"`
 }

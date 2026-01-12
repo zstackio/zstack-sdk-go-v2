@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // ExpungeImageGroup operates on ImageGroup
 func (cli *ZSClient) ExpungeImageGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/imagegroups/actions", uuid, string(deleteMode))
+	return cli.DeleteWithSpec("v1/imagegroups", fmt.Sprintf(\"%s/actions\", uuid), string(deleteMode))
 }
 // QueryImageGroup queries ImageGroup list
 func (cli *ZSClient) QueryImageGroup(params *param.QueryParam) ([]view.ImageGroupInventoryView, error) {
