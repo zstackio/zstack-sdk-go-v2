@@ -19,6 +19,28 @@ func TestQueryModelServiceInstanceGroup(t *testing.T) {
 	}
 	golog.Infof("QueryModelServiceInstanceGroup result count: %d", len(result))
 }
+func TestGetModelServiceInstanceGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryModelServiceInstanceGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetModelServiceInstanceGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ModelServiceInstanceGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetModelServiceInstanceGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetModelServiceInstanceGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetModelServiceInstanceGroup result: %s", result.UUID)
+}
 
 func TestUpdateModelServiceInstanceGroup(t *testing.T) {
 	// First query to get a valid UUID

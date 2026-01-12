@@ -19,6 +19,28 @@ func TestQueryPreconfigurationTemplate(t *testing.T) {
 	}
 	golog.Infof("QueryPreconfigurationTemplate result count: %d", len(result))
 }
+func TestGetPreconfigurationTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryPreconfigurationTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetPreconfigurationTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No PreconfigurationTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetPreconfigurationTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetPreconfigurationTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetPreconfigurationTemplate result: %s", result.UUID)
+}
 
 func TestUpdatePreconfigurationTemplate(t *testing.T) {
 	// First query to get a valid UUID

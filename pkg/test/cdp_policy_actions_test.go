@@ -19,6 +19,28 @@ func TestQueryCdpPolicy(t *testing.T) {
 	}
 	golog.Infof("QueryCdpPolicy result count: %d", len(result))
 }
+func TestGetCdpPolicy(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryCdpPolicy(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetCdpPolicy Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No CdpPolicy found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetCdpPolicy(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetCdpPolicy error: %v", err)
+		return
+	}
+	golog.Infof("GetCdpPolicy result: %s", result.UUID)
+}
 
 func TestUpdateCdpPolicy(t *testing.T) {
 	// First query to get a valid UUID

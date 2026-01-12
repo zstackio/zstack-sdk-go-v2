@@ -19,6 +19,28 @@ func TestQueryGlobalConfig(t *testing.T) {
 	}
 	golog.Infof("QueryGlobalConfig result count: %d", len(result))
 }
+func TestGetGlobalConfig(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryGlobalConfig(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetGlobalConfig Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No GlobalConfig found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetGlobalConfig(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetGlobalConfig error: %v", err)
+		return
+	}
+	golog.Infof("GetGlobalConfig result: %s", result.UUID)
+}
 
 func TestUpdateGlobalConfig(t *testing.T) {
 	// First query to get a valid UUID

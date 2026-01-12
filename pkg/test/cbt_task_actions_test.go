@@ -19,6 +19,28 @@ func TestQueryCbtTask(t *testing.T) {
 	}
 	golog.Infof("QueryCbtTask result count: %d", len(result))
 }
+func TestGetCbtTask(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryCbtTask(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetCbtTask Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No CbtTask found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetCbtTask(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetCbtTask error: %v", err)
+		return
+	}
+	golog.Infof("GetCbtTask result: %s", result.UUID)
+}
 
 func TestDeleteCbtTask(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

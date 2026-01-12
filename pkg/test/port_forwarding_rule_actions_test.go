@@ -19,6 +19,28 @@ func TestQueryPortForwardingRule(t *testing.T) {
 	}
 	golog.Infof("QueryPortForwardingRule result count: %d", len(result))
 }
+func TestGetPortForwardingRule(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryPortForwardingRule(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetPortForwardingRule Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No PortForwardingRule found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetPortForwardingRule(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetPortForwardingRule error: %v", err)
+		return
+	}
+	golog.Infof("GetPortForwardingRule result: %s", result.UUID)
+}
 
 func TestUpdatePortForwardingRule(t *testing.T) {
 	// First query to get a valid UUID

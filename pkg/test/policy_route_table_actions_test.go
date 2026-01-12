@@ -19,6 +19,28 @@ func TestQueryPolicyRouteTable(t *testing.T) {
 	}
 	golog.Infof("QueryPolicyRouteTable result count: %d", len(result))
 }
+func TestGetPolicyRouteTable(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryPolicyRouteTable(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetPolicyRouteTable Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No PolicyRouteTable found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetPolicyRouteTable(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetPolicyRouteTable error: %v", err)
+		return
+	}
+	golog.Infof("GetPolicyRouteTable result: %s", result.UUID)
+}
 
 func TestDeletePolicyRouteTable(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

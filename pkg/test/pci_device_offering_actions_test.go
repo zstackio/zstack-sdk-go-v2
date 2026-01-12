@@ -19,6 +19,28 @@ func TestQueryPciDeviceOffering(t *testing.T) {
 	}
 	golog.Infof("QueryPciDeviceOffering result count: %d", len(result))
 }
+func TestGetPciDeviceOffering(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryPciDeviceOffering(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetPciDeviceOffering Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No PciDeviceOffering found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetPciDeviceOffering(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetPciDeviceOffering error: %v", err)
+		return
+	}
+	golog.Infof("GetPciDeviceOffering result: %s", result.UUID)
+}
 
 func TestDeletePciDeviceOffering(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

@@ -19,6 +19,28 @@ func TestQueryVCenter(t *testing.T) {
 	}
 	golog.Infof("QueryVCenter result count: %d", len(result))
 }
+func TestGetVCenter(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVCenter(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVCenter Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VCenter found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVCenter(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVCenter error: %v", err)
+		return
+	}
+	golog.Infof("GetVCenter result: %s", result.UUID)
+}
 
 func TestUpdateVCenter(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateVCenter(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVCenter(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVCenter(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVCenter error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVCenter result: %s", result.Uuid)
+	golog.Infof("UpdateVCenter result: %s", result.UUID)
 }
 
 func TestDeleteVCenter(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteVCenter(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteVCenter(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteVCenter(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteVCenter error: %v", err)
 		return
 	}
-	golog.Infof("DeleteVCenter succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteVCenter succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestAddVCenter(t *testing.T) {

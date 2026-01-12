@@ -19,6 +19,28 @@ func TestQueryL3Network(t *testing.T) {
 	}
 	golog.Infof("QueryL3Network result count: %d", len(result))
 }
+func TestGetL3Network(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryL3Network(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetL3Network Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No L3Network found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetL3Network(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetL3Network error: %v", err)
+		return
+	}
+	golog.Infof("GetL3Network result: %s", result.UUID)
+}
 
 func TestUpdateL3Network(t *testing.T) {
 	// First query to get a valid UUID

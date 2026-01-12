@@ -19,6 +19,28 @@ func TestQueryTicket(t *testing.T) {
 	}
 	golog.Infof("QueryTicket result count: %d", len(result))
 }
+func TestGetTicket(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryTicket(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetTicket Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Ticket found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetTicket(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetTicket error: %v", err)
+		return
+	}
+	golog.Infof("GetTicket result: %s", result.UUID)
+}
 
 func TestDeleteTicket(t *testing.T) {
 	// WARNING: This test will actually delete a resource!
@@ -37,12 +59,12 @@ func TestDeleteTicket(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteTicket(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteTicket(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteTicket error: %v", err)
 		return
 	}
-	golog.Infof("DeleteTicket succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteTicket succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateTicket(t *testing.T) {
@@ -61,10 +83,10 @@ func TestCreateTicket(t *testing.T) {
 	// 	t.Errorf("TestCreateTicket error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateTicket result: %s", result.Uuid)
+	// golog.Infof("CreateTicket result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteTicket(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteTicket(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteTicket error: %v", err)
 	// }

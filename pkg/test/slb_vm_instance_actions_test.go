@@ -19,3 +19,25 @@ func TestQuerySlbVmInstance(t *testing.T) {
 	}
 	golog.Infof("QuerySlbVmInstance result count: %d", len(result))
 }
+func TestGetSlbVmInstance(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySlbVmInstance(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSlbVmInstance Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SlbVmInstance found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSlbVmInstance(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSlbVmInstance error: %v", err)
+		return
+	}
+	golog.Infof("GetSlbVmInstance result: %s", result.UUID)
+}

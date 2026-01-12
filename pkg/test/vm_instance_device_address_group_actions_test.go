@@ -19,3 +19,25 @@ func TestQueryVmInstanceDeviceAddressGroup(t *testing.T) {
 	}
 	golog.Infof("QueryVmInstanceDeviceAddressGroup result count: %d", len(result))
 }
+func TestGetVmInstanceDeviceAddressGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVmInstanceDeviceAddressGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVmInstanceDeviceAddressGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VmInstanceDeviceAddressGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVmInstanceDeviceAddressGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVmInstanceDeviceAddressGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetVmInstanceDeviceAddressGroup result: %s", result.UUID)
+}

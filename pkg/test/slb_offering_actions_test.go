@@ -19,6 +19,28 @@ func TestQuerySlbOffering(t *testing.T) {
 	}
 	golog.Infof("QuerySlbOffering result count: %d", len(result))
 }
+func TestGetSlbOffering(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySlbOffering(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSlbOffering Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SlbOffering found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSlbOffering(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSlbOffering error: %v", err)
+		return
+	}
+	golog.Infof("GetSlbOffering result: %s", result.UUID)
+}
 
 func TestCreateSlbOffering(t *testing.T) {
 	// WARNING: This test will create a real resource!

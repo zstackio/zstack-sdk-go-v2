@@ -19,6 +19,28 @@ func TestQueryMdevDevice(t *testing.T) {
 	}
 	golog.Infof("QueryMdevDevice result count: %d", len(result))
 }
+func TestGetMdevDevice(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMdevDevice(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMdevDevice Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No MdevDevice found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMdevDevice(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMdevDevice error: %v", err)
+		return
+	}
+	golog.Infof("GetMdevDevice result: %s", result.UUID)
+}
 
 func TestUpdateMdevDevice(t *testing.T) {
 	// First query to get a valid UUID

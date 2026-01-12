@@ -19,6 +19,28 @@ func TestQueryActiveAlarmTemplate(t *testing.T) {
 	}
 	golog.Infof("QueryActiveAlarmTemplate result count: %d", len(result))
 }
+func TestGetActiveAlarmTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryActiveAlarmTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetActiveAlarmTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ActiveAlarmTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetActiveAlarmTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetActiveAlarmTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetActiveAlarmTemplate result: %s", result.UUID)
+}
 
 func TestUpdateActiveAlarmTemplate(t *testing.T) {
 	// First query to get a valid UUID

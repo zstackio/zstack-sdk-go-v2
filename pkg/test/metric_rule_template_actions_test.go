@@ -19,6 +19,28 @@ func TestQueryMetricRuleTemplate(t *testing.T) {
 	}
 	golog.Infof("QueryMetricRuleTemplate result count: %d", len(result))
 }
+func TestGetMetricRuleTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMetricRuleTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMetricRuleTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No MetricRuleTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMetricRuleTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMetricRuleTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetMetricRuleTemplate result: %s", result.UUID)
+}
 
 func TestUpdateMetricRuleTemplate(t *testing.T) {
 	// First query to get a valid UUID

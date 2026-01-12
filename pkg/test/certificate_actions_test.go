@@ -19,6 +19,28 @@ func TestQueryCertificate(t *testing.T) {
 	}
 	golog.Infof("QueryCertificate result count: %d", len(result))
 }
+func TestGetCertificate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryCertificate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetCertificate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Certificate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetCertificate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetCertificate error: %v", err)
+		return
+	}
+	golog.Infof("GetCertificate result: %s", result.UUID)
+}
 
 func TestUpdateCertificate(t *testing.T) {
 	// First query to get a valid UUID

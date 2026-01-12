@@ -19,6 +19,28 @@ func TestQueryPolicy(t *testing.T) {
 	}
 	golog.Infof("QueryPolicy result count: %d", len(result))
 }
+func TestGetPolicy(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryPolicy(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetPolicy Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Policy found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetPolicy(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetPolicy error: %v", err)
+		return
+	}
+	golog.Infof("GetPolicy result: %s", result.UUID)
+}
 
 func TestDeletePolicy(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

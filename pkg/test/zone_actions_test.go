@@ -35,12 +35,12 @@ func TestGetZone(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetZone(list[0].Uuid)
+	result, err := accountLoginCli.GetZone(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetZone error: %v", err)
 		return
 	}
-	golog.Infof("GetZone result: %s", result.Uuid)
+	golog.Infof("GetZone result: %s", result.UUID)
 }
 
 func TestUpdateZone(t *testing.T) {
@@ -64,12 +64,12 @@ func TestUpdateZone(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateZone(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateZone(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateZone error: %v", err)
 		return
 	}
-	golog.Infof("UpdateZone result: %s", result.Uuid)
+	golog.Infof("UpdateZone result: %s", result.UUID)
 }
 
 func TestDeleteZone(t *testing.T) {
@@ -89,12 +89,12 @@ func TestDeleteZone(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteZone(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteZone(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteZone error: %v", err)
 		return
 	}
-	golog.Infof("DeleteZone succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteZone succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateZone(t *testing.T) {
@@ -113,10 +113,10 @@ func TestCreateZone(t *testing.T) {
 	// 	t.Errorf("TestCreateZone error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateZone result: %s", result.Uuid)
+	// golog.Infof("CreateZone result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteZone(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteZone(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteZone error: %v", err)
 	// }

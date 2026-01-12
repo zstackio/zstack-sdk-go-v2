@@ -19,6 +19,28 @@ func TestQueryRole(t *testing.T) {
 	}
 	golog.Infof("QueryRole result count: %d", len(result))
 }
+func TestGetRole(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryRole(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetRole Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Role found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetRole(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetRole error: %v", err)
+		return
+	}
+	golog.Infof("GetRole result: %s", result.UUID)
+}
 
 func TestUpdateRole(t *testing.T) {
 	// First query to get a valid UUID

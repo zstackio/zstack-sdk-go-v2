@@ -19,6 +19,28 @@ func TestQueryHuaweiIMasterVpc(t *testing.T) {
 	}
 	golog.Infof("QueryHuaweiIMasterVpc result count: %d", len(result))
 }
+func TestGetHuaweiIMasterVpc(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryHuaweiIMasterVpc(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetHuaweiIMasterVpc Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No HuaweiIMasterVpc found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetHuaweiIMasterVpc(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetHuaweiIMasterVpc error: %v", err)
+		return
+	}
+	golog.Infof("GetHuaweiIMasterVpc result: %s", result.UUID)
+}
 
 func TestDeleteHuaweiIMasterVpc(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

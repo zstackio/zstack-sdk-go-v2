@@ -19,6 +19,28 @@ func TestQuerySlbGroup(t *testing.T) {
 	}
 	golog.Infof("QuerySlbGroup result count: %d", len(result))
 }
+func TestGetSlbGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySlbGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSlbGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SlbGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSlbGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSlbGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetSlbGroup result: %s", result.UUID)
+}
 
 func TestUpdateSlbGroup(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSlbGroup(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSlbGroup(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSlbGroup(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSlbGroup error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSlbGroup result: %s", result.Uuid)
+	golog.Infof("UpdateSlbGroup result: %s", result.UUID)
 }
 
 func TestDeleteSlbGroup(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteSlbGroup(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteSlbGroup(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteSlbGroup(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteSlbGroup error: %v", err)
 		return
 	}
-	golog.Infof("DeleteSlbGroup succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteSlbGroup succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateSlbGroup(t *testing.T) {
@@ -90,10 +112,10 @@ func TestCreateSlbGroup(t *testing.T) {
 	// 	t.Errorf("TestCreateSlbGroup error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSlbGroup result: %s", result.Uuid)
+	// golog.Infof("CreateSlbGroup result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSlbGroup(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSlbGroup(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSlbGroup error: %v", err)
 	// }

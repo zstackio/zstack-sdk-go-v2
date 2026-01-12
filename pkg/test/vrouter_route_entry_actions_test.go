@@ -19,6 +19,28 @@ func TestQueryVRouterRouteEntry(t *testing.T) {
 	}
 	golog.Infof("QueryVRouterRouteEntry result count: %d", len(result))
 }
+func TestGetVRouterRouteEntry(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVRouterRouteEntry(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVRouterRouteEntry Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VRouterRouteEntry found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVRouterRouteEntry(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVRouterRouteEntry error: %v", err)
+		return
+	}
+	golog.Infof("GetVRouterRouteEntry result: %s", result.UUID)
+}
 
 func TestDeleteVRouterRouteEntry(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

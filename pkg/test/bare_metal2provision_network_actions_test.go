@@ -19,6 +19,28 @@ func TestQueryBareMetal2ProvisionNetwork(t *testing.T) {
 	}
 	golog.Infof("QueryBareMetal2ProvisionNetwork result count: %d", len(result))
 }
+func TestGetBareMetal2ProvisionNetwork(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBareMetal2ProvisionNetwork(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBareMetal2ProvisionNetwork Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BareMetal2ProvisionNetwork found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBareMetal2ProvisionNetwork(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBareMetal2ProvisionNetwork error: %v", err)
+		return
+	}
+	golog.Infof("GetBareMetal2ProvisionNetwork result: %s", result.UUID)
+}
 
 func TestUpdateBareMetal2ProvisionNetwork(t *testing.T) {
 	// First query to get a valid UUID

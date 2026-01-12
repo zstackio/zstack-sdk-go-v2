@@ -19,6 +19,28 @@ func TestQueryVmSchedulingRule(t *testing.T) {
 	}
 	golog.Infof("QueryVmSchedulingRule result count: %d", len(result))
 }
+func TestGetVmSchedulingRule(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVmSchedulingRule(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVmSchedulingRule Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VmSchedulingRule found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVmSchedulingRule(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVmSchedulingRule error: %v", err)
+		return
+	}
+	golog.Infof("GetVmSchedulingRule result: %s", result.UUID)
+}
 
 func TestUpdateVmSchedulingRule(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateVmSchedulingRule(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVmSchedulingRule(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVmSchedulingRule(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVmSchedulingRule error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVmSchedulingRule result: %s", result.Uuid)
+	golog.Infof("UpdateVmSchedulingRule result: %s", result.UUID)
 }
 
 func TestCreateVmSchedulingRule(t *testing.T) {
@@ -65,10 +87,10 @@ func TestCreateVmSchedulingRule(t *testing.T) {
 	// 	t.Errorf("TestCreateVmSchedulingRule error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateVmSchedulingRule result: %s", result.Uuid)
+	// golog.Infof("CreateVmSchedulingRule result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVmSchedulingRule(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteVmSchedulingRule(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteVmSchedulingRule error: %v", err)
 	// }

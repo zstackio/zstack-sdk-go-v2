@@ -19,6 +19,28 @@ func TestQueryHostNetworkInterface(t *testing.T) {
 	}
 	golog.Infof("QueryHostNetworkInterface result count: %d", len(result))
 }
+func TestGetHostNetworkInterface(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryHostNetworkInterface(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetHostNetworkInterface Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No HostNetworkInterface found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetHostNetworkInterface(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetHostNetworkInterface error: %v", err)
+		return
+	}
+	golog.Infof("GetHostNetworkInterface result: %s", result.UUID)
+}
 
 func TestUpdateHostNetworkInterface(t *testing.T) {
 	// First query to get a valid UUID

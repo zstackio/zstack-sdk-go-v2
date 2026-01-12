@@ -19,6 +19,28 @@ func TestQuerySchedulerTrigger(t *testing.T) {
 	}
 	golog.Infof("QuerySchedulerTrigger result count: %d", len(result))
 }
+func TestGetSchedulerTrigger(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySchedulerTrigger(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSchedulerTrigger Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SchedulerTrigger found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSchedulerTrigger(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSchedulerTrigger error: %v", err)
+		return
+	}
+	golog.Infof("GetSchedulerTrigger result: %s", result.UUID)
+}
 
 func TestUpdateSchedulerTrigger(t *testing.T) {
 	// First query to get a valid UUID

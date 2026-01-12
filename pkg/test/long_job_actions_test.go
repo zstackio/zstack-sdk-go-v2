@@ -19,6 +19,28 @@ func TestQueryLongJob(t *testing.T) {
 	}
 	golog.Infof("QueryLongJob result count: %d", len(result))
 }
+func TestGetLongJob(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryLongJob(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetLongJob Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No LongJob found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetLongJob(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetLongJob error: %v", err)
+		return
+	}
+	golog.Infof("GetLongJob result: %s", result.UUID)
+}
 
 func TestUpdateLongJob(t *testing.T) {
 	// First query to get a valid UUID

@@ -19,3 +19,25 @@ func TestQueryCephOsdGroup(t *testing.T) {
 	}
 	golog.Infof("QueryCephOsdGroup result count: %d", len(result))
 }
+func TestGetCephOsdGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryCephOsdGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetCephOsdGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No CephOsdGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetCephOsdGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetCephOsdGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetCephOsdGroup result: %s", result.UUID)
+}

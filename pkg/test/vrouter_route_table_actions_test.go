@@ -35,12 +35,12 @@ func TestGetVRouterRouteTable(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetVRouterRouteTable(list[0].Uuid)
+	result, err := accountLoginCli.GetVRouterRouteTable(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetVRouterRouteTable error: %v", err)
 		return
 	}
-	golog.Infof("GetVRouterRouteTable result: %s", result.Uuid)
+	golog.Infof("GetVRouterRouteTable result: %s", result.UUID)
 }
 
 func TestUpdateVRouterRouteTable(t *testing.T) {
@@ -64,12 +64,12 @@ func TestUpdateVRouterRouteTable(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVRouterRouteTable(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVRouterRouteTable(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVRouterRouteTable error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVRouterRouteTable result: %s", result.Uuid)
+	golog.Infof("UpdateVRouterRouteTable result: %s", result.UUID)
 }
 
 func TestDeleteVRouterRouteTable(t *testing.T) {
@@ -89,12 +89,12 @@ func TestDeleteVRouterRouteTable(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteVRouterRouteTable(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteVRouterRouteTable(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteVRouterRouteTable error: %v", err)
 		return
 	}
-	golog.Infof("DeleteVRouterRouteTable succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteVRouterRouteTable succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateVRouterRouteTable(t *testing.T) {
@@ -113,10 +113,10 @@ func TestCreateVRouterRouteTable(t *testing.T) {
 	// 	t.Errorf("TestCreateVRouterRouteTable error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateVRouterRouteTable result: %s", result.Uuid)
+	// golog.Infof("CreateVRouterRouteTable result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVRouterRouteTable(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteVRouterRouteTable(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteVRouterRouteTable error: %v", err)
 	// }

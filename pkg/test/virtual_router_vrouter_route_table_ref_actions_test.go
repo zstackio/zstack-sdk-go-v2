@@ -19,3 +19,25 @@ func TestQueryVirtualRouterVRouterRouteTableRef(t *testing.T) {
 	}
 	golog.Infof("QueryVirtualRouterVRouterRouteTableRef result count: %d", len(result))
 }
+func TestGetVirtualRouterVRouterRouteTableRef(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVirtualRouterVRouterRouteTableRef(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVirtualRouterVRouterRouteTableRef Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VirtualRouterVRouterRouteTableRef found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVirtualRouterVRouterRouteTableRef(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVirtualRouterVRouterRouteTableRef error: %v", err)
+		return
+	}
+	golog.Infof("GetVirtualRouterVRouterRouteTableRef result: %s", result.UUID)
+}

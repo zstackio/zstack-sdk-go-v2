@@ -19,6 +19,28 @@ func TestQueryEip(t *testing.T) {
 	}
 	golog.Infof("QueryEip result count: %d", len(result))
 }
+func TestGetEip(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryEip(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetEip Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Eip found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetEip(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetEip error: %v", err)
+		return
+	}
+	golog.Infof("GetEip result: %s", result.UUID)
+}
 
 func TestUpdateEip(t *testing.T) {
 	// First query to get a valid UUID

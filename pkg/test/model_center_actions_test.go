@@ -19,6 +19,28 @@ func TestQueryModelCenter(t *testing.T) {
 	}
 	golog.Infof("QueryModelCenter result count: %d", len(result))
 }
+func TestGetModelCenter(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryModelCenter(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetModelCenter Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ModelCenter found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetModelCenter(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetModelCenter error: %v", err)
+		return
+	}
+	golog.Infof("GetModelCenter result: %s", result.UUID)
+}
 
 func TestUpdateModelCenter(t *testing.T) {
 	// First query to get a valid UUID

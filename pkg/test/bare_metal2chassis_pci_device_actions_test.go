@@ -19,6 +19,28 @@ func TestQueryBareMetal2ChassisPciDevice(t *testing.T) {
 	}
 	golog.Infof("QueryBareMetal2ChassisPciDevice result count: %d", len(result))
 }
+func TestGetBareMetal2ChassisPciDevice(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBareMetal2ChassisPciDevice(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBareMetal2ChassisPciDevice Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BareMetal2ChassisPciDevice found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBareMetal2ChassisPciDevice(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBareMetal2ChassisPciDevice error: %v", err)
+		return
+	}
+	golog.Infof("GetBareMetal2ChassisPciDevice result: %s", result.UUID)
+}
 
 func TestUpdateBareMetal2ChassisPciDevice(t *testing.T) {
 	// First query to get a valid UUID

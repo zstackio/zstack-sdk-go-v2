@@ -19,6 +19,28 @@ func TestQueryAutoScalingRule(t *testing.T) {
 	}
 	golog.Infof("QueryAutoScalingRule result count: %d", len(result))
 }
+func TestGetAutoScalingRule(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAutoScalingRule(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAutoScalingRule Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No AutoScalingRule found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAutoScalingRule(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAutoScalingRule error: %v", err)
+		return
+	}
+	golog.Infof("GetAutoScalingRule result: %s", result.UUID)
+}
 
 func TestUpdateAutoScalingRule(t *testing.T) {
 	// First query to get a valid UUID

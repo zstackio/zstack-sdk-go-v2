@@ -19,6 +19,28 @@ func TestQueryMonitorGroup(t *testing.T) {
 	}
 	golog.Infof("QueryMonitorGroup result count: %d", len(result))
 }
+func TestGetMonitorGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMonitorGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMonitorGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No MonitorGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMonitorGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMonitorGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetMonitorGroup result: %s", result.UUID)
+}
 
 func TestUpdateMonitorGroup(t *testing.T) {
 	// First query to get a valid UUID

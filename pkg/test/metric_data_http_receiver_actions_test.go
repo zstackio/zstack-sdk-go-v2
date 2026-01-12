@@ -19,6 +19,28 @@ func TestQueryMetricDataHttpReceiver(t *testing.T) {
 	}
 	golog.Infof("QueryMetricDataHttpReceiver result count: %d", len(result))
 }
+func TestGetMetricDataHttpReceiver(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMetricDataHttpReceiver(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMetricDataHttpReceiver Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No MetricDataHttpReceiver found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMetricDataHttpReceiver(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMetricDataHttpReceiver error: %v", err)
+		return
+	}
+	golog.Infof("GetMetricDataHttpReceiver result: %s", result.UUID)
+}
 
 func TestDeleteMetricDataHttpReceiver(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

@@ -19,6 +19,28 @@ func TestQueryModel(t *testing.T) {
 	}
 	golog.Infof("QueryModel result count: %d", len(result))
 }
+func TestGetModel(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryModel(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetModel Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Model found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetModel(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetModel error: %v", err)
+		return
+	}
+	golog.Infof("GetModel result: %s", result.UUID)
+}
 
 func TestUpdateModel(t *testing.T) {
 	// First query to get a valid UUID

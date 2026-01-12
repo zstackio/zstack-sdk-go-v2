@@ -19,6 +19,28 @@ func TestQueryCdpTask(t *testing.T) {
 	}
 	golog.Infof("QueryCdpTask result count: %d", len(result))
 }
+func TestGetCdpTask(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryCdpTask(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetCdpTask Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No CdpTask found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetCdpTask(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetCdpTask error: %v", err)
+		return
+	}
+	golog.Infof("GetCdpTask result: %s", result.UUID)
+}
 
 func TestUpdateCdpTask(t *testing.T) {
 	// First query to get a valid UUID

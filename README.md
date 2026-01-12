@@ -18,7 +18,7 @@ This repository provides a Go SDK for interacting with the ZStack cloud platform
 ### Installation
 
 ```bash
-go get github.com/terraform-zstack-modules/zstack-sdk-go
+go get github.com/zstackio/zstack-sdk-go-v2
 ```
 
 ### Usage
@@ -27,8 +27,8 @@ go get github.com/terraform-zstack-modules/zstack-sdk-go
 
 ```go
 import (
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/client"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/client"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 )
 
 // Create a client with account login authentication
@@ -58,8 +58,8 @@ if err != nil {
 #### Initialize Client with Access Key
 ```go
 import (
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/client"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/client"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 )
 
 // Create a client with access key authentication
@@ -95,7 +95,23 @@ This SDK provides Go bindings for all major ZStack API operations, including but
 - Identity and access management
 - System management operations
 
+
+### Testing
+
+To run tests and generate an HTML report:
+
+**Windows (PowerShell):**
+```powershell
+./scripts/run_tests_with_report.ps1
+```
+
+**Linux (Bash):**
+```bash
+./scripts/run_tests_with_report.sh
+```
+
 ### Contributing
+
 
 Contributions to the ZStack Go SDK are welcome! Please feel free to submit a Pull Request.
 
@@ -116,5 +132,5 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 
 ### Support
 
-For issues, questions and discussions please use the [GitHub Issues](https://github.com/terraform-zstack-modules/zstack-sdk-go/issues).
+For issues, questions and discussions please use the [GitHub Issues](https://github.com/zstackio/zstack-sdk-go-v2/issues).
 

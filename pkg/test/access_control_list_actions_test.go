@@ -18,6 +18,28 @@ func TestQueryAccessControlList(t *testing.T) {
 	}
 	golog.Infof("QueryAccessControlList result count: %d", len(result))
 }
+func TestGetAccessControlList(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAccessControlList(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAccessControlList Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No AccessControlList found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAccessControlList(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAccessControlList error: %v", err)
+		return
+	}
+	golog.Infof("GetAccessControlList result: %s", result.UUID)
+}
 
 func TestUpdateAccessControlList(t *testing.T) {
 	// First query to get a valid UUID

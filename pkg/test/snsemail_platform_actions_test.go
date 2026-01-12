@@ -19,6 +19,28 @@ func TestQuerySNSEmailPlatform(t *testing.T) {
 	}
 	golog.Infof("QuerySNSEmailPlatform result count: %d", len(result))
 }
+func TestGetSNSEmailPlatform(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSEmailPlatform(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSEmailPlatform Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSEmailPlatform found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSEmailPlatform(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSEmailPlatform error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSEmailPlatform result: %s", result.UUID)
+}
 
 func TestCreateSNSEmailPlatform(t *testing.T) {
 	// WARNING: This test will create a real resource!

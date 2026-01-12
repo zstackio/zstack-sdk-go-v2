@@ -19,6 +19,28 @@ func TestQueryBaremetalBonding(t *testing.T) {
 	}
 	golog.Infof("QueryBaremetalBonding result count: %d", len(result))
 }
+func TestGetBaremetalBonding(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBaremetalBonding(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBaremetalBonding Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BaremetalBonding found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBaremetalBonding(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBaremetalBonding error: %v", err)
+		return
+	}
+	golog.Infof("GetBaremetalBonding result: %s", result.UUID)
+}
 
 func TestCreateBaremetalBonding(t *testing.T) {
 	// WARNING: This test will create a real resource!

@@ -19,6 +19,28 @@ func TestQueryResourceStack(t *testing.T) {
 	}
 	golog.Infof("QueryResourceStack result count: %d", len(result))
 }
+func TestGetResourceStack(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryResourceStack(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetResourceStack Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ResourceStack found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetResourceStack(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetResourceStack error: %v", err)
+		return
+	}
+	golog.Infof("GetResourceStack result: %s", result.UUID)
+}
 
 func TestUpdateResourceStack(t *testing.T) {
 	// First query to get a valid UUID

@@ -19,6 +19,28 @@ func TestQueryExternalBackup(t *testing.T) {
 	}
 	golog.Infof("QueryExternalBackup result count: %d", len(result))
 }
+func TestGetExternalBackup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryExternalBackup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetExternalBackup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ExternalBackup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetExternalBackup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetExternalBackup error: %v", err)
+		return
+	}
+	golog.Infof("GetExternalBackup result: %s", result.UUID)
+}
 
 func TestDeleteExternalBackup(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

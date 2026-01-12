@@ -19,6 +19,28 @@ func TestQuerySharedBlock(t *testing.T) {
 	}
 	golog.Infof("QuerySharedBlock result count: %d", len(result))
 }
+func TestGetSharedBlock(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySharedBlock(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSharedBlock Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SharedBlock found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSharedBlock(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSharedBlock error: %v", err)
+		return
+	}
+	golog.Infof("GetSharedBlock result: %s", result.UUID)
+}
 
 func TestUpdateSharedBlock(t *testing.T) {
 	// First query to get a valid UUID

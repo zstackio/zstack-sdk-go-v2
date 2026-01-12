@@ -19,6 +19,28 @@ func TestQueryPortMirror(t *testing.T) {
 	}
 	golog.Infof("QueryPortMirror result count: %d", len(result))
 }
+func TestGetPortMirror(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryPortMirror(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetPortMirror Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No PortMirror found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetPortMirror(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetPortMirror error: %v", err)
+		return
+	}
+	golog.Infof("GetPortMirror result: %s", result.UUID)
+}
 
 func TestUpdatePortMirror(t *testing.T) {
 	// First query to get a valid UUID

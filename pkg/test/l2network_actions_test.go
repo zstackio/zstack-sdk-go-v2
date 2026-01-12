@@ -19,6 +19,28 @@ func TestQueryL2Network(t *testing.T) {
 	}
 	golog.Infof("QueryL2Network result count: %d", len(result))
 }
+func TestGetL2Network(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryL2Network(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetL2Network Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No L2Network found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetL2Network(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetL2Network error: %v", err)
+		return
+	}
+	golog.Infof("GetL2Network result: %s", result.UUID)
+}
 
 func TestUpdateL2Network(t *testing.T) {
 	// First query to get a valid UUID

@@ -19,6 +19,28 @@ func TestQueryConsoleProxyAgent(t *testing.T) {
 	}
 	golog.Infof("QueryConsoleProxyAgent result count: %d", len(result))
 }
+func TestGetConsoleProxyAgent(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryConsoleProxyAgent(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetConsoleProxyAgent Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ConsoleProxyAgent found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetConsoleProxyAgent(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetConsoleProxyAgent error: %v", err)
+		return
+	}
+	golog.Infof("GetConsoleProxyAgent result: %s", result.UUID)
+}
 
 func TestUpdateConsoleProxyAgent(t *testing.T) {
 	// First query to get a valid UUID

@@ -19,6 +19,28 @@ func TestQueryIpRange(t *testing.T) {
 	}
 	golog.Infof("QueryIpRange result count: %d", len(result))
 }
+func TestGetIpRange(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryIpRange(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetIpRange Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No IpRange found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetIpRange(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetIpRange error: %v", err)
+		return
+	}
+	golog.Infof("GetIpRange result: %s", result.UUID)
+}
 
 func TestUpdateIpRange(t *testing.T) {
 	// First query to get a valid UUID

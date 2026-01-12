@@ -19,6 +19,28 @@ func TestQueryVpcHaGroup(t *testing.T) {
 	}
 	golog.Infof("QueryVpcHaGroup result count: %d", len(result))
 }
+func TestGetVpcHaGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVpcHaGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVpcHaGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VpcHaGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVpcHaGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVpcHaGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetVpcHaGroup result: %s", result.UUID)
+}
 
 func TestUpdateVpcHaGroup(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateVpcHaGroup(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVpcHaGroup(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVpcHaGroup(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVpcHaGroup error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVpcHaGroup result: %s", result.Uuid)
+	golog.Infof("UpdateVpcHaGroup result: %s", result.UUID)
 }
 
 func TestDeleteVpcHaGroup(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteVpcHaGroup(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteVpcHaGroup(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteVpcHaGroup(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteVpcHaGroup error: %v", err)
 		return
 	}
-	golog.Infof("DeleteVpcHaGroup succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteVpcHaGroup succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateVpcHaGroup(t *testing.T) {
@@ -90,10 +112,10 @@ func TestCreateVpcHaGroup(t *testing.T) {
 	// 	t.Errorf("TestCreateVpcHaGroup error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateVpcHaGroup result: %s", result.Uuid)
+	// golog.Infof("CreateVpcHaGroup result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVpcHaGroup(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteVpcHaGroup(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteVpcHaGroup error: %v", err)
 	// }

@@ -31,10 +31,10 @@ func TestUpdateVpcVpnGateway(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVpcVpnGateway(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVpcVpnGateway(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVpcVpnGateway error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVpcVpnGateway result: %s", result.Uuid)
+	golog.Infof("UpdateVpcVpnGateway result: %s", result.UUID)
 }

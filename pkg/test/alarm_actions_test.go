@@ -19,6 +19,28 @@ func TestQueryAlarm(t *testing.T) {
 	}
 	golog.Infof("QueryAlarm result count: %d", len(result))
 }
+func TestGetAlarm(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAlarm(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAlarm Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Alarm found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAlarm(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAlarm error: %v", err)
+		return
+	}
+	golog.Infof("GetAlarm result: %s", result.UUID)
+}
 
 func TestUpdateAlarm(t *testing.T) {
 	// First query to get a valid UUID

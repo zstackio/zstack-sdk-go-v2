@@ -19,6 +19,28 @@ func TestQueryMedia(t *testing.T) {
 	}
 	golog.Infof("QueryMedia result count: %d", len(result))
 }
+func TestGetMedia(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMedia(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMedia Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Media found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMedia(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMedia error: %v", err)
+		return
+	}
+	golog.Infof("GetMedia result: %s", result.UUID)
+}
 
 func TestDeleteMedia(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

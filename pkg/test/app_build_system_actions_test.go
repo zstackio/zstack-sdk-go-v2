@@ -19,6 +19,28 @@ func TestQueryAppBuildSystem(t *testing.T) {
 	}
 	golog.Infof("QueryAppBuildSystem result count: %d", len(result))
 }
+func TestGetAppBuildSystem(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAppBuildSystem(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAppBuildSystem Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No AppBuildSystem found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAppBuildSystem(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAppBuildSystem error: %v", err)
+		return
+	}
+	golog.Infof("GetAppBuildSystem result: %s", result.UUID)
+}
 
 func TestUpdateAppBuildSystem(t *testing.T) {
 	// First query to get a valid UUID

@@ -19,6 +19,28 @@ func TestQueryEmailMedia(t *testing.T) {
 	}
 	golog.Infof("QueryEmailMedia result count: %d", len(result))
 }
+func TestGetEmailMedia(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryEmailMedia(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetEmailMedia Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No EmailMedia found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetEmailMedia(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetEmailMedia error: %v", err)
+		return
+	}
+	golog.Infof("GetEmailMedia result: %s", result.UUID)
+}
 
 func TestUpdateEmailMedia(t *testing.T) {
 	// First query to get a valid UUID

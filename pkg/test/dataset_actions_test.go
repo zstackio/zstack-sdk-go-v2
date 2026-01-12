@@ -19,6 +19,28 @@ func TestQueryDataset(t *testing.T) {
 	}
 	golog.Infof("QueryDataset result count: %d", len(result))
 }
+func TestGetDataset(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryDataset(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetDataset Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Dataset found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetDataset(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetDataset error: %v", err)
+		return
+	}
+	golog.Infof("GetDataset result: %s", result.UUID)
+}
 
 func TestUpdateDataset(t *testing.T) {
 	// First query to get a valid UUID

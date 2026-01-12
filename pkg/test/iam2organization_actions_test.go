@@ -19,6 +19,28 @@ func TestQueryIAM2Organization(t *testing.T) {
 	}
 	golog.Infof("QueryIAM2Organization result count: %d", len(result))
 }
+func TestGetIAM2Organization(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryIAM2Organization(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetIAM2Organization Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No IAM2Organization found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetIAM2Organization(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetIAM2Organization error: %v", err)
+		return
+	}
+	golog.Infof("GetIAM2Organization result: %s", result.UUID)
+}
 
 func TestUpdateIAM2Organization(t *testing.T) {
 	// First query to get a valid UUID

@@ -19,6 +19,28 @@ func TestQueryTemplateConfig(t *testing.T) {
 	}
 	golog.Infof("QueryTemplateConfig result count: %d", len(result))
 }
+func TestGetTemplateConfig(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryTemplateConfig(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetTemplateConfig Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No TemplateConfig found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetTemplateConfig(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetTemplateConfig error: %v", err)
+		return
+	}
+	golog.Infof("GetTemplateConfig result: %s", result.UUID)
+}
 
 func TestUpdateTemplateConfig(t *testing.T) {
 	// First query to get a valid UUID

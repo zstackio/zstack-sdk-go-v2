@@ -19,6 +19,28 @@ func TestQuerySNSTextTemplate(t *testing.T) {
 	}
 	golog.Infof("QuerySNSTextTemplate result count: %d", len(result))
 }
+func TestGetSNSTextTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSTextTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSTextTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSTextTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSTextTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSTextTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSTextTemplate result: %s", result.UUID)
+}
 
 func TestUpdateSNSTextTemplate(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSNSTextTemplate(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSNSTextTemplate(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSNSTextTemplate(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSNSTextTemplate error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSNSTextTemplate result: %s", result.Uuid)
+	golog.Infof("UpdateSNSTextTemplate result: %s", result.UUID)
 }
 
 func TestDeleteSNSTextTemplate(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteSNSTextTemplate(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteSNSTextTemplate(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteSNSTextTemplate(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteSNSTextTemplate error: %v", err)
 		return
 	}
-	golog.Infof("DeleteSNSTextTemplate succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteSNSTextTemplate succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateSNSTextTemplate(t *testing.T) {
@@ -90,10 +112,10 @@ func TestCreateSNSTextTemplate(t *testing.T) {
 	// 	t.Errorf("TestCreateSNSTextTemplate error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSNSTextTemplate result: %s", result.Uuid)
+	// golog.Infof("CreateSNSTextTemplate result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSTextTemplate(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSNSTextTemplate(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSNSTextTemplate error: %v", err)
 	// }

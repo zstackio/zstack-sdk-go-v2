@@ -19,6 +19,28 @@ func TestQueryIscsiServer(t *testing.T) {
 	}
 	golog.Infof("QueryIscsiServer result count: %d", len(result))
 }
+func TestGetIscsiServer(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryIscsiServer(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetIscsiServer Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No IscsiServer found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetIscsiServer(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetIscsiServer error: %v", err)
+		return
+	}
+	golog.Infof("GetIscsiServer result: %s", result.UUID)
+}
 
 func TestUpdateIscsiServer(t *testing.T) {
 	// First query to get a valid UUID

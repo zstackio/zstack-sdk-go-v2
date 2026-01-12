@@ -19,6 +19,28 @@ func TestQueryAutoScalingGroup(t *testing.T) {
 	}
 	golog.Infof("QueryAutoScalingGroup result count: %d", len(result))
 }
+func TestGetAutoScalingGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAutoScalingGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAutoScalingGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No AutoScalingGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAutoScalingGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAutoScalingGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetAutoScalingGroup result: %s", result.UUID)
+}
 
 func TestUpdateAutoScalingGroup(t *testing.T) {
 	// First query to get a valid UUID

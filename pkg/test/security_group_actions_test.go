@@ -19,6 +19,28 @@ func TestQuerySecurityGroup(t *testing.T) {
 	}
 	golog.Infof("QuerySecurityGroup result count: %d", len(result))
 }
+func TestGetSecurityGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySecurityGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSecurityGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SecurityGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSecurityGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSecurityGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetSecurityGroup result: %s", result.UUID)
+}
 
 func TestUpdateSecurityGroup(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSecurityGroup(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSecurityGroup(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSecurityGroup(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSecurityGroup error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSecurityGroup result: %s", result.Uuid)
+	golog.Infof("UpdateSecurityGroup result: %s", result.UUID)
 }
 
 func TestDeleteSecurityGroup(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteSecurityGroup(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteSecurityGroup(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteSecurityGroup(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteSecurityGroup error: %v", err)
 		return
 	}
-	golog.Infof("DeleteSecurityGroup succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteSecurityGroup succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateSecurityGroup(t *testing.T) {
@@ -90,10 +112,10 @@ func TestCreateSecurityGroup(t *testing.T) {
 	// 	t.Errorf("TestCreateSecurityGroup error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSecurityGroup result: %s", result.Uuid)
+	// golog.Infof("CreateSecurityGroup result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSecurityGroup(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSecurityGroup(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSecurityGroup error: %v", err)
 	// }

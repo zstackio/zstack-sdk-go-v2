@@ -19,6 +19,28 @@ func TestQueryEventRuleTemplate(t *testing.T) {
 	}
 	golog.Infof("QueryEventRuleTemplate result count: %d", len(result))
 }
+func TestGetEventRuleTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryEventRuleTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetEventRuleTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No EventRuleTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetEventRuleTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetEventRuleTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetEventRuleTemplate result: %s", result.UUID)
+}
 
 func TestUpdateEventRuleTemplate(t *testing.T) {
 	// First query to get a valid UUID

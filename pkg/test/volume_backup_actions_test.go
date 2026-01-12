@@ -19,6 +19,28 @@ func TestQueryVolumeBackup(t *testing.T) {
 	}
 	golog.Infof("QueryVolumeBackup result count: %d", len(result))
 }
+func TestGetVolumeBackup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVolumeBackup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVolumeBackup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VolumeBackup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVolumeBackup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVolumeBackup error: %v", err)
+		return
+	}
+	golog.Infof("GetVolumeBackup result: %s", result.UUID)
+}
 
 func TestDeleteVolumeBackup(t *testing.T) {
 	// WARNING: This test will actually delete a resource!
@@ -37,12 +59,12 @@ func TestDeleteVolumeBackup(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteVolumeBackup(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteVolumeBackup(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteVolumeBackup error: %v", err)
 		return
 	}
-	golog.Infof("DeleteVolumeBackup succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteVolumeBackup succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateVolumeBackup(t *testing.T) {
@@ -61,10 +83,10 @@ func TestCreateVolumeBackup(t *testing.T) {
 	// 	t.Errorf("TestCreateVolumeBackup error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateVolumeBackup result: %s", result.Uuid)
+	// golog.Infof("CreateVolumeBackup result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVolumeBackup(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteVolumeBackup(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteVolumeBackup error: %v", err)
 	// }

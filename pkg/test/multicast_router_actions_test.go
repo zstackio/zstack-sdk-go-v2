@@ -19,6 +19,28 @@ func TestQueryMulticastRouter(t *testing.T) {
 	}
 	golog.Infof("QueryMulticastRouter result count: %d", len(result))
 }
+func TestGetMulticastRouter(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMulticastRouter(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMulticastRouter Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No MulticastRouter found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMulticastRouter(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMulticastRouter error: %v", err)
+		return
+	}
+	golog.Infof("GetMulticastRouter result: %s", result.UUID)
+}
 
 func TestDeleteMulticastRouter(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

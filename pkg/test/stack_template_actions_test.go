@@ -19,6 +19,28 @@ func TestQueryStackTemplate(t *testing.T) {
 	}
 	golog.Infof("QueryStackTemplate result count: %d", len(result))
 }
+func TestGetStackTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryStackTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetStackTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No StackTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetStackTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetStackTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetStackTemplate result: %s", result.UUID)
+}
 
 func TestUpdateStackTemplate(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateStackTemplate(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateStackTemplate(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateStackTemplate(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateStackTemplate error: %v", err)
 		return
 	}
-	golog.Infof("UpdateStackTemplate result: %s", result.Uuid)
+	golog.Infof("UpdateStackTemplate result: %s", result.UUID)
 }
 
 func TestDeleteStackTemplate(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteStackTemplate(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteStackTemplate(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteStackTemplate(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteStackTemplate error: %v", err)
 		return
 	}
-	golog.Infof("DeleteStackTemplate succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteStackTemplate succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestAddStackTemplate(t *testing.T) {

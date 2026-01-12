@@ -19,6 +19,28 @@ func TestQueryContainerManagementEndpoint(t *testing.T) {
 	}
 	golog.Infof("QueryContainerManagementEndpoint result count: %d", len(result))
 }
+func TestGetContainerManagementEndpoint(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryContainerManagementEndpoint(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetContainerManagementEndpoint Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ContainerManagementEndpoint found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetContainerManagementEndpoint(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetContainerManagementEndpoint error: %v", err)
+		return
+	}
+	golog.Infof("GetContainerManagementEndpoint result: %s", result.UUID)
+}
 
 func TestUpdateContainerManagementEndpoint(t *testing.T) {
 	// First query to get a valid UUID

@@ -17,7 +17,7 @@ zstack-sdk-go/
 │   │   ├── jsonutils/   # JSON utilities
 │   │   ├── httputils/   # HTTP utilities
 │   │   └── ...          # Other utilities
-│   └── test1/           # Integration tests
+│   └── test/            # Integration tests
 ├── go.mod
 ├── go.sum
 └── README.md
@@ -62,9 +62,9 @@ import (
     "github.com/kataras/golog"
 
     // 3. Internal project packages
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/errors"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 ```
 
@@ -279,7 +279,7 @@ const (
 ### 6.2 Error Wrapping
 
 ```go
-import "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/errors"
+import "github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
 
 // Use Wrap to add context
 if err != nil {
@@ -351,7 +351,7 @@ func (cli *ZSClient) DestroyVmInstance(uuid string, deleteMode param.DeleteMode)
 
 ### 8.1 Test File Location
 
-Test files are placed in the `pkg/test1/` directory with naming format: `{resource}_test.go`
+Test files are placed in the `pkg/test/` directory with naming format: `{resource}_test.go`
 
 ### 8.2 Test Function Naming
 
@@ -373,8 +373,8 @@ import (
 
     "github.com/kataras/golog"
 
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/util/jsonutils"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/util/jsonutils"
 )
 
 func TestQueryVmInstance(t *testing.T) {
@@ -394,9 +394,28 @@ func TestGetVmInstance(t *testing.T) {
 }
 ```
 
+
+### 8.4 Running Tests with Reports
+
+We provide scripts to run tests and generate HTML reports using `go-test-report`.
+
+**Windows (PowerShell):**
+```powershell
+./scripts/run_tests_with_report.ps1
+```
+
+**Linux (Bash):**
+```bash
+chmod +x scripts/run_tests_with_report.sh
+./scripts/run_tests_with_report.sh
+```
+
+The report will be generated as `test_report.html` in the root directory.
+
 ---
 
 ## 9. Adding New Resource Support
+
 
 When adding support for a new ZStack resource, follow these steps:
 
@@ -450,8 +469,8 @@ Create `pkg/client/{resource}_actions.go`:
 package client
 
 import (
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 // Create{Resource} creates a resource
@@ -486,7 +505,7 @@ func (cli *ZSClient) Destroy{Resource}(uuid string, deleteMode param.DeleteMode)
 
 ### Step 4: Write Tests
 
-Create integration tests in `pkg/test1/{resource}_test.go`.
+Create integration tests in `pkg/test/{resource}_test.go`.
 
 ---
 

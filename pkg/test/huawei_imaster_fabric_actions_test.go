@@ -19,6 +19,28 @@ func TestQueryHuaweiIMasterFabric(t *testing.T) {
 	}
 	golog.Infof("QueryHuaweiIMasterFabric result count: %d", len(result))
 }
+func TestGetHuaweiIMasterFabric(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryHuaweiIMasterFabric(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetHuaweiIMasterFabric Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No HuaweiIMasterFabric found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetHuaweiIMasterFabric(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetHuaweiIMasterFabric error: %v", err)
+		return
+	}
+	golog.Infof("GetHuaweiIMasterFabric result: %s", result.UUID)
+}
 
 func TestDeleteHuaweiIMasterFabric(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

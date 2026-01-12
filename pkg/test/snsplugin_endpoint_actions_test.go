@@ -19,6 +19,28 @@ func TestQuerySNSPluginEndpoint(t *testing.T) {
 	}
 	golog.Infof("QuerySNSPluginEndpoint result count: %d", len(result))
 }
+func TestGetSNSPluginEndpoint(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSPluginEndpoint(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSPluginEndpoint Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSPluginEndpoint found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSPluginEndpoint(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSPluginEndpoint error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSPluginEndpoint result: %s", result.UUID)
+}
 
 func TestCreateSNSPluginEndpoint(t *testing.T) {
 	// WARNING: This test will create a real resource!

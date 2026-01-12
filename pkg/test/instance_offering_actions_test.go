@@ -19,6 +19,28 @@ func TestQueryInstanceOffering(t *testing.T) {
 	}
 	golog.Infof("QueryInstanceOffering result count: %d", len(result))
 }
+func TestGetInstanceOffering(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryInstanceOffering(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetInstanceOffering Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No InstanceOffering found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetInstanceOffering(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetInstanceOffering error: %v", err)
+		return
+	}
+	golog.Infof("GetInstanceOffering result: %s", result.UUID)
+}
 
 func TestUpdateInstanceOffering(t *testing.T) {
 	// First query to get a valid UUID

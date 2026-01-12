@@ -19,6 +19,28 @@ func TestQueryIAM2ProjectTemplate(t *testing.T) {
 	}
 	golog.Infof("QueryIAM2ProjectTemplate result count: %d", len(result))
 }
+func TestGetIAM2ProjectTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryIAM2ProjectTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetIAM2ProjectTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No IAM2ProjectTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetIAM2ProjectTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetIAM2ProjectTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetIAM2ProjectTemplate result: %s", result.UUID)
+}
 
 func TestUpdateIAM2ProjectTemplate(t *testing.T) {
 	// First query to get a valid UUID

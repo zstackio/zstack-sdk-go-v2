@@ -19,6 +19,28 @@ func TestQueryV2VConversionHost(t *testing.T) {
 	}
 	golog.Infof("QueryV2VConversionHost result count: %d", len(result))
 }
+func TestGetV2VConversionHost(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryV2VConversionHost(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetV2VConversionHost Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No V2VConversionHost found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetV2VConversionHost(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetV2VConversionHost error: %v", err)
+		return
+	}
+	golog.Infof("GetV2VConversionHost result: %s", result.UUID)
+}
 
 func TestUpdateV2VConversionHost(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateV2VConversionHost(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateV2VConversionHost(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateV2VConversionHost(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateV2VConversionHost error: %v", err)
 		return
 	}
-	golog.Infof("UpdateV2VConversionHost result: %s", result.Uuid)
+	golog.Infof("UpdateV2VConversionHost result: %s", result.UUID)
 }
 
 func TestDeleteV2VConversionHost(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteV2VConversionHost(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteV2VConversionHost(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteV2VConversionHost(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteV2VConversionHost error: %v", err)
 		return
 	}
-	golog.Infof("DeleteV2VConversionHost succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteV2VConversionHost succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestAddV2VConversionHost(t *testing.T) {

@@ -19,6 +19,28 @@ func TestQueryNfvInst(t *testing.T) {
 	}
 	golog.Infof("QueryNfvInst result count: %d", len(result))
 }
+func TestGetNfvInst(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryNfvInst(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetNfvInst Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No NfvInst found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetNfvInst(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetNfvInst error: %v", err)
+		return
+	}
+	golog.Infof("GetNfvInst result: %s", result.UUID)
+}
 
 func TestCreateNfvInst(t *testing.T) {
 	// WARNING: This test will create a real resource!

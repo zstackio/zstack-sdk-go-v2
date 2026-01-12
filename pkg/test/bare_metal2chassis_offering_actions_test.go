@@ -19,6 +19,28 @@ func TestQueryBareMetal2ChassisOffering(t *testing.T) {
 	}
 	golog.Infof("QueryBareMetal2ChassisOffering result count: %d", len(result))
 }
+func TestGetBareMetal2ChassisOffering(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBareMetal2ChassisOffering(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBareMetal2ChassisOffering Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BareMetal2ChassisOffering found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBareMetal2ChassisOffering(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBareMetal2ChassisOffering error: %v", err)
+		return
+	}
+	golog.Infof("GetBareMetal2ChassisOffering result: %s", result.UUID)
+}
 
 func TestUpdateBareMetal2ChassisOffering(t *testing.T) {
 	// First query to get a valid UUID

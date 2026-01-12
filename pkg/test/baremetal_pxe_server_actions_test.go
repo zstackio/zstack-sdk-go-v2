@@ -19,6 +19,28 @@ func TestQueryBaremetalPxeServer(t *testing.T) {
 	}
 	golog.Infof("QueryBaremetalPxeServer result count: %d", len(result))
 }
+func TestGetBaremetalPxeServer(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBaremetalPxeServer(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBaremetalPxeServer Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BaremetalPxeServer found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBaremetalPxeServer(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBaremetalPxeServer error: %v", err)
+		return
+	}
+	golog.Infof("GetBaremetalPxeServer result: %s", result.UUID)
+}
 
 func TestUpdateBaremetalPxeServer(t *testing.T) {
 	// First query to get a valid UUID

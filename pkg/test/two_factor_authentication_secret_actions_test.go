@@ -25,12 +25,12 @@ func TestGetTwoFactorAuthenticationSecret(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetTwoFactorAuthenticationSecret(list[0].Uuid)
+	result, err := accountLoginCli.GetTwoFactorAuthenticationSecret(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetTwoFactorAuthenticationSecret error: %v", err)
 		return
 	}
-	golog.Infof("GetTwoFactorAuthenticationSecret result: %s", result.Uuid)
+	golog.Infof("GetTwoFactorAuthenticationSecret result: %s", result.UUID)
 }
 
 func TestResetTwoFactorAuthenticationSecret(t *testing.T) {

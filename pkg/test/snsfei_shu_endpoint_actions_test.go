@@ -19,6 +19,28 @@ func TestQuerySNSFeiShuEndpoint(t *testing.T) {
 	}
 	golog.Infof("QuerySNSFeiShuEndpoint result count: %d", len(result))
 }
+func TestGetSNSFeiShuEndpoint(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSFeiShuEndpoint(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSFeiShuEndpoint Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSFeiShuEndpoint found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSFeiShuEndpoint(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSFeiShuEndpoint error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSFeiShuEndpoint result: %s", result.UUID)
+}
 
 func TestUpdateSNSFeiShuEndpoint(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSNSFeiShuEndpoint(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSNSFeiShuEndpoint(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSNSFeiShuEndpoint(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSNSFeiShuEndpoint error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSNSFeiShuEndpoint result: %s", result.Uuid)
+	golog.Infof("UpdateSNSFeiShuEndpoint result: %s", result.UUID)
 }
 
 func TestCreateSNSFeiShuEndpoint(t *testing.T) {
@@ -65,10 +87,10 @@ func TestCreateSNSFeiShuEndpoint(t *testing.T) {
 	// 	t.Errorf("TestCreateSNSFeiShuEndpoint error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSNSFeiShuEndpoint result: %s", result.Uuid)
+	// golog.Infof("CreateSNSFeiShuEndpoint result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSFeiShuEndpoint(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSNSFeiShuEndpoint(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSNSFeiShuEndpoint error: %v", err)
 	// }

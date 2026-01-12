@@ -19,6 +19,28 @@ func TestQueryLogServer(t *testing.T) {
 	}
 	golog.Infof("QueryLogServer result count: %d", len(result))
 }
+func TestGetLogServer(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryLogServer(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetLogServer Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No LogServer found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetLogServer(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetLogServer error: %v", err)
+		return
+	}
+	golog.Infof("GetLogServer result: %s", result.UUID)
+}
 
 func TestUpdateLogServer(t *testing.T) {
 	// First query to get a valid UUID

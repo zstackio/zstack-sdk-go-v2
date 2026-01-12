@@ -19,6 +19,28 @@ func TestQueryHost(t *testing.T) {
 	}
 	golog.Infof("QueryHost result count: %d", len(result))
 }
+func TestGetHost(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryHost(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetHost Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Host found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetHost(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetHost error: %v", err)
+		return
+	}
+	golog.Infof("GetHost result: %s", result.UUID)
+}
 
 func TestUpdateHost(t *testing.T) {
 	// First query to get a valid UUID

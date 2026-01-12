@@ -19,6 +19,28 @@ func TestQueryPortMirrorSession(t *testing.T) {
 	}
 	golog.Infof("QueryPortMirrorSession result count: %d", len(result))
 }
+func TestGetPortMirrorSession(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryPortMirrorSession(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetPortMirrorSession Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No PortMirrorSession found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetPortMirrorSession(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetPortMirrorSession error: %v", err)
+		return
+	}
+	golog.Infof("GetPortMirrorSession result: %s", result.UUID)
+}
 
 func TestDeletePortMirrorSession(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

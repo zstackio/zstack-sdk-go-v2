@@ -19,6 +19,28 @@ func TestQuerySecurityGroupRule(t *testing.T) {
 	}
 	golog.Infof("QuerySecurityGroupRule result count: %d", len(result))
 }
+func TestGetSecurityGroupRule(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySecurityGroupRule(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSecurityGroupRule Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SecurityGroupRule found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSecurityGroupRule(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSecurityGroupRule error: %v", err)
+		return
+	}
+	golog.Infof("GetSecurityGroupRule result: %s", result.UUID)
+}
 
 func TestDeleteSecurityGroupRule(t *testing.T) {
 	// WARNING: This test will actually delete a resource!
@@ -37,12 +59,12 @@ func TestDeleteSecurityGroupRule(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteSecurityGroupRule(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteSecurityGroupRule(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteSecurityGroupRule error: %v", err)
 		return
 	}
-	golog.Infof("DeleteSecurityGroupRule succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteSecurityGroupRule succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestChangeSecurityGroupRule(t *testing.T) {

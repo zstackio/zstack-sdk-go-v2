@@ -19,6 +19,28 @@ func TestQueryLoadBalancerListener(t *testing.T) {
 	}
 	golog.Infof("QueryLoadBalancerListener result count: %d", len(result))
 }
+func TestGetLoadBalancerListener(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryLoadBalancerListener(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetLoadBalancerListener Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No LoadBalancerListener found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetLoadBalancerListener(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetLoadBalancerListener error: %v", err)
+		return
+	}
+	golog.Infof("GetLoadBalancerListener result: %s", result.UUID)
+}
 
 func TestUpdateLoadBalancerListener(t *testing.T) {
 	// First query to get a valid UUID

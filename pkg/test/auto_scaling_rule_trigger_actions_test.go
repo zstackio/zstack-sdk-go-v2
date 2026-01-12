@@ -19,6 +19,28 @@ func TestQueryAutoScalingRuleTrigger(t *testing.T) {
 	}
 	golog.Infof("QueryAutoScalingRuleTrigger result count: %d", len(result))
 }
+func TestGetAutoScalingRuleTrigger(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAutoScalingRuleTrigger(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAutoScalingRuleTrigger Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No AutoScalingRuleTrigger found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAutoScalingRuleTrigger(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAutoScalingRuleTrigger error: %v", err)
+		return
+	}
+	golog.Infof("GetAutoScalingRuleTrigger result: %s", result.UUID)
+}
 
 func TestDeleteAutoScalingRuleTrigger(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

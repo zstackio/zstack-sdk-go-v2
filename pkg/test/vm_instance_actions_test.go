@@ -19,6 +19,28 @@ func TestQueryVmInstance(t *testing.T) {
 	}
 	golog.Infof("QueryVmInstance result count: %d", len(result))
 }
+func TestGetVmInstance(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVmInstance(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVmInstance Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VmInstance found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVmInstance(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVmInstance error: %v", err)
+		return
+	}
+	golog.Infof("GetVmInstance result: %s", result.UUID)
+}
 
 func TestUpdateVmInstance(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateVmInstance(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVmInstance(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVmInstance(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVmInstance error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVmInstance result: %s", result.Uuid)
+	golog.Infof("UpdateVmInstance result: %s", result.UUID)
 }
 
 func TestCreateVmInstance(t *testing.T) {
@@ -65,10 +87,10 @@ func TestCreateVmInstance(t *testing.T) {
 	// 	t.Errorf("TestCreateVmInstance error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateVmInstance result: %s", result.Uuid)
+	// golog.Infof("CreateVmInstance result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVmInstance(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteVmInstance(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteVmInstance error: %v", err)
 	// }
@@ -98,7 +120,7 @@ func TestStartVmInstance(t *testing.T) {
 	// 	return
 	// }
 	// startParam := param.StartVmInstanceParam{}
-	// result, err := accountLoginCli.StartVmInstance(list[0].Uuid, startParam)
+	// result, err := accountLoginCli.StartVmInstance(list[0].UUID, startParam)
 	// if err != nil {
 	// 	t.Errorf("TestStartVmInstance error: %v", err)
 	// }
@@ -118,7 +140,7 @@ func TestStopVmInstance(t *testing.T) {
 	// 	return
 	// }
 	// stopParam := param.StopVmInstanceParam{}
-	// result, err := accountLoginCli.StopVmInstance(list[0].Uuid, stopParam)
+	// result, err := accountLoginCli.StopVmInstance(list[0].UUID, stopParam)
 	// if err != nil {
 	// 	t.Errorf("TestStopVmInstance error: %v", err)
 	// }

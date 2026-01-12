@@ -19,6 +19,28 @@ func TestQueryBuildAppExportHistory(t *testing.T) {
 	}
 	golog.Infof("QueryBuildAppExportHistory result count: %d", len(result))
 }
+func TestGetBuildAppExportHistory(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBuildAppExportHistory(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBuildAppExportHistory Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BuildAppExportHistory found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBuildAppExportHistory(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBuildAppExportHistory error: %v", err)
+		return
+	}
+	golog.Infof("GetBuildAppExportHistory result: %s", result.UUID)
+}
 
 func TestDeleteBuildAppExportHistory(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

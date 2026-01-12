@@ -19,6 +19,28 @@ func TestQueryPriceTable(t *testing.T) {
 	}
 	golog.Infof("QueryPriceTable result count: %d", len(result))
 }
+func TestGetPriceTable(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryPriceTable(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetPriceTable Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No PriceTable found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetPriceTable(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetPriceTable error: %v", err)
+		return
+	}
+	golog.Infof("GetPriceTable result: %s", result.UUID)
+}
 
 func TestUpdatePriceTable(t *testing.T) {
 	// First query to get a valid UUID

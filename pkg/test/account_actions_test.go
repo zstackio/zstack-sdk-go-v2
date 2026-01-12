@@ -19,6 +19,28 @@ func TestQueryAccount(t *testing.T) {
 	}
 	golog.Infof("QueryAccount result count: %d", len(result))
 }
+func TestGetAccount(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAccount(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAccount Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Account found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAccount(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAccount error: %v", err)
+		return
+	}
+	golog.Infof("GetAccount result: %s", result.UUID)
+}
 
 func TestUpdateAccount(t *testing.T) {
 	// First query to get a valid UUID

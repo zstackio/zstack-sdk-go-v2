@@ -19,6 +19,28 @@ func TestQueryVmSchedulingRuleGroup(t *testing.T) {
 	}
 	golog.Infof("QueryVmSchedulingRuleGroup result count: %d", len(result))
 }
+func TestGetVmSchedulingRuleGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVmSchedulingRuleGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVmSchedulingRuleGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VmSchedulingRuleGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVmSchedulingRuleGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVmSchedulingRuleGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetVmSchedulingRuleGroup result: %s", result.UUID)
+}
 
 func TestUpdateVmSchedulingRuleGroup(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateVmSchedulingRuleGroup(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVmSchedulingRuleGroup(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVmSchedulingRuleGroup(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVmSchedulingRuleGroup error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVmSchedulingRuleGroup result: %s", result.Uuid)
+	golog.Infof("UpdateVmSchedulingRuleGroup result: %s", result.UUID)
 }
 
 func TestDeleteVmSchedulingRuleGroup(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteVmSchedulingRuleGroup(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteVmSchedulingRuleGroup(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteVmSchedulingRuleGroup(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteVmSchedulingRuleGroup error: %v", err)
 		return
 	}
-	golog.Infof("DeleteVmSchedulingRuleGroup succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteVmSchedulingRuleGroup succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateVmSchedulingRuleGroup(t *testing.T) {
@@ -90,10 +112,10 @@ func TestCreateVmSchedulingRuleGroup(t *testing.T) {
 	// 	t.Errorf("TestCreateVmSchedulingRuleGroup error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateVmSchedulingRuleGroup result: %s", result.Uuid)
+	// golog.Infof("CreateVmSchedulingRuleGroup result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVmSchedulingRuleGroup(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteVmSchedulingRuleGroup(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteVmSchedulingRuleGroup error: %v", err)
 	// }

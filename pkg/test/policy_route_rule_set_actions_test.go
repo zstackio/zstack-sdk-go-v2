@@ -19,6 +19,28 @@ func TestQueryPolicyRouteRuleSet(t *testing.T) {
 	}
 	golog.Infof("QueryPolicyRouteRuleSet result count: %d", len(result))
 }
+func TestGetPolicyRouteRuleSet(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryPolicyRouteRuleSet(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetPolicyRouteRuleSet Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No PolicyRouteRuleSet found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetPolicyRouteRuleSet(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetPolicyRouteRuleSet error: %v", err)
+		return
+	}
+	golog.Infof("GetPolicyRouteRuleSet result: %s", result.UUID)
+}
 
 func TestUpdatePolicyRouteRuleSet(t *testing.T) {
 	// First query to get a valid UUID

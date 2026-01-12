@@ -19,6 +19,28 @@ func TestQueryDatabaseBackup(t *testing.T) {
 	}
 	golog.Infof("QueryDatabaseBackup result count: %d", len(result))
 }
+func TestGetDatabaseBackup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryDatabaseBackup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetDatabaseBackup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No DatabaseBackup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetDatabaseBackup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetDatabaseBackup error: %v", err)
+		return
+	}
+	golog.Infof("GetDatabaseBackup result: %s", result.UUID)
+}
 
 func TestDeleteDatabaseBackup(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

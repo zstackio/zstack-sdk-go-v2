@@ -19,6 +19,28 @@ func TestQueryHostSchedulingRuleGroup(t *testing.T) {
 	}
 	golog.Infof("QueryHostSchedulingRuleGroup result count: %d", len(result))
 }
+func TestGetHostSchedulingRuleGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryHostSchedulingRuleGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetHostSchedulingRuleGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No HostSchedulingRuleGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetHostSchedulingRuleGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetHostSchedulingRuleGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetHostSchedulingRuleGroup result: %s", result.UUID)
+}
 
 func TestUpdateHostSchedulingRuleGroup(t *testing.T) {
 	// First query to get a valid UUID

@@ -19,6 +19,28 @@ func TestQuerySNSFeiShuAtPerson(t *testing.T) {
 	}
 	golog.Infof("QuerySNSFeiShuAtPerson result count: %d", len(result))
 }
+func TestGetSNSFeiShuAtPerson(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSFeiShuAtPerson(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSFeiShuAtPerson Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSFeiShuAtPerson found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSFeiShuAtPerson(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSFeiShuAtPerson error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSFeiShuAtPerson result: %s", result.UUID)
+}
 
 func TestRemoveSNSFeiShuAtPerson(t *testing.T) {
 	// RemoveSNSFeiShuAtPerson operation

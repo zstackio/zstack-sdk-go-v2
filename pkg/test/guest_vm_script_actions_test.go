@@ -19,6 +19,28 @@ func TestQueryGuestVmScript(t *testing.T) {
 	}
 	golog.Infof("QueryGuestVmScript result count: %d", len(result))
 }
+func TestGetGuestVmScript(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryGuestVmScript(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetGuestVmScript Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No GuestVmScript found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetGuestVmScript(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetGuestVmScript error: %v", err)
+		return
+	}
+	golog.Infof("GetGuestVmScript result: %s", result.UUID)
+}
 
 func TestUpdateGuestVmScript(t *testing.T) {
 	// First query to get a valid UUID

@@ -19,6 +19,28 @@ func TestQueryIAM2VirtualIDGroup(t *testing.T) {
 	}
 	golog.Infof("QueryIAM2VirtualIDGroup result count: %d", len(result))
 }
+func TestGetIAM2VirtualIDGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryIAM2VirtualIDGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetIAM2VirtualIDGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No IAM2VirtualIDGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetIAM2VirtualIDGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetIAM2VirtualIDGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetIAM2VirtualIDGroup result: %s", result.UUID)
+}
 
 func TestUpdateIAM2VirtualIDGroup(t *testing.T) {
 	// First query to get a valid UUID

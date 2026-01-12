@@ -19,3 +19,25 @@ func TestQueryVolumeSnapshotTree(t *testing.T) {
 	}
 	golog.Infof("QueryVolumeSnapshotTree result count: %d", len(result))
 }
+func TestGetVolumeSnapshotTree(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVolumeSnapshotTree(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVolumeSnapshotTree Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VolumeSnapshotTree found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVolumeSnapshotTree(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVolumeSnapshotTree error: %v", err)
+		return
+	}
+	golog.Infof("GetVolumeSnapshotTree result: %s", result.UUID)
+}

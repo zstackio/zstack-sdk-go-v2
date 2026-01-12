@@ -19,6 +19,28 @@ func TestQuerySecurityMachine(t *testing.T) {
 	}
 	golog.Infof("QuerySecurityMachine result count: %d", len(result))
 }
+func TestGetSecurityMachine(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySecurityMachine(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSecurityMachine Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SecurityMachine found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSecurityMachine(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSecurityMachine error: %v", err)
+		return
+	}
+	golog.Infof("GetSecurityMachine result: %s", result.UUID)
+}
 
 func TestUpdateSecurityMachine(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSecurityMachine(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSecurityMachine(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSecurityMachine(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSecurityMachine error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSecurityMachine result: %s", result.Uuid)
+	golog.Infof("UpdateSecurityMachine result: %s", result.UUID)
 }
 
 func TestDeleteSecurityMachine(t *testing.T) {
@@ -66,10 +88,10 @@ func TestDeleteSecurityMachine(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteSecurityMachine(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteSecurityMachine(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteSecurityMachine error: %v", err)
 		return
 	}
-	golog.Infof("DeleteSecurityMachine succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteSecurityMachine succeeded for UUID: %s", list[0].UUID)
 }

@@ -19,6 +19,28 @@ func TestQuerySNSTopic(t *testing.T) {
 	}
 	golog.Infof("QuerySNSTopic result count: %d", len(result))
 }
+func TestGetSNSTopic(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSTopic(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSTopic Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSTopic found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSTopic(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSTopic error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSTopic result: %s", result.UUID)
+}
 
 func TestUpdateSNSTopic(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSNSTopic(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSNSTopic(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSNSTopic(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSNSTopic error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSNSTopic result: %s", result.Uuid)
+	golog.Infof("UpdateSNSTopic result: %s", result.UUID)
 }
 
 func TestDeleteSNSTopic(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteSNSTopic(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteSNSTopic(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteSNSTopic(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteSNSTopic error: %v", err)
 		return
 	}
-	golog.Infof("DeleteSNSTopic succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteSNSTopic succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateSNSTopic(t *testing.T) {
@@ -90,10 +112,10 @@ func TestCreateSNSTopic(t *testing.T) {
 	// 	t.Errorf("TestCreateSNSTopic error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSNSTopic result: %s", result.Uuid)
+	// golog.Infof("CreateSNSTopic result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSTopic(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSNSTopic(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSNSTopic error: %v", err)
 	// }

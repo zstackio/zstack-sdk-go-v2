@@ -19,6 +19,28 @@ func TestQuerySNSWeComEndpoint(t *testing.T) {
 	}
 	golog.Infof("QuerySNSWeComEndpoint result count: %d", len(result))
 }
+func TestGetSNSWeComEndpoint(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSWeComEndpoint(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSWeComEndpoint Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSWeComEndpoint found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSWeComEndpoint(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSWeComEndpoint error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSWeComEndpoint result: %s", result.UUID)
+}
 
 func TestUpdateSNSWeComEndpoint(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSNSWeComEndpoint(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSNSWeComEndpoint(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSNSWeComEndpoint(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSNSWeComEndpoint error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSNSWeComEndpoint result: %s", result.Uuid)
+	golog.Infof("UpdateSNSWeComEndpoint result: %s", result.UUID)
 }
 
 func TestCreateSNSWeComEndpoint(t *testing.T) {
@@ -65,10 +87,10 @@ func TestCreateSNSWeComEndpoint(t *testing.T) {
 	// 	t.Errorf("TestCreateSNSWeComEndpoint error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSNSWeComEndpoint result: %s", result.Uuid)
+	// golog.Infof("CreateSNSWeComEndpoint result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSWeComEndpoint(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSNSWeComEndpoint(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSNSWeComEndpoint error: %v", err)
 	// }

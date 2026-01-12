@@ -19,6 +19,28 @@ func TestQueryNasMountTarget(t *testing.T) {
 	}
 	golog.Infof("QueryNasMountTarget result count: %d", len(result))
 }
+func TestGetNasMountTarget(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryNasMountTarget(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetNasMountTarget Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No NasMountTarget found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetNasMountTarget(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetNasMountTarget error: %v", err)
+		return
+	}
+	golog.Infof("GetNasMountTarget result: %s", result.UUID)
+}
 
 func TestUpdateNasMountTarget(t *testing.T) {
 	// First query to get a valid UUID

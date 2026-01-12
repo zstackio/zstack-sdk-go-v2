@@ -19,6 +19,28 @@ func TestQueryVirtualRouterOffering(t *testing.T) {
 	}
 	golog.Infof("QueryVirtualRouterOffering result count: %d", len(result))
 }
+func TestGetVirtualRouterOffering(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVirtualRouterOffering(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVirtualRouterOffering Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VirtualRouterOffering found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVirtualRouterOffering(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVirtualRouterOffering error: %v", err)
+		return
+	}
+	golog.Infof("GetVirtualRouterOffering result: %s", result.UUID)
+}
 
 func TestUpdateVirtualRouterOffering(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateVirtualRouterOffering(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVirtualRouterOffering(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVirtualRouterOffering(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVirtualRouterOffering error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVirtualRouterOffering result: %s", result.Uuid)
+	golog.Infof("UpdateVirtualRouterOffering result: %s", result.UUID)
 }
 
 func TestCreateVirtualRouterOffering(t *testing.T) {
@@ -65,10 +87,10 @@ func TestCreateVirtualRouterOffering(t *testing.T) {
 	// 	t.Errorf("TestCreateVirtualRouterOffering error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateVirtualRouterOffering result: %s", result.Uuid)
+	// golog.Infof("CreateVirtualRouterOffering result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVirtualRouterOffering(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteVirtualRouterOffering(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteVirtualRouterOffering error: %v", err)
 	// }

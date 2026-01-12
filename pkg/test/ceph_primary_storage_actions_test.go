@@ -19,6 +19,28 @@ func TestQueryCephPrimaryStorage(t *testing.T) {
 	}
 	golog.Infof("QueryCephPrimaryStorage result count: %d", len(result))
 }
+func TestGetCephPrimaryStorage(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryCephPrimaryStorage(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetCephPrimaryStorage Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No CephPrimaryStorage found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetCephPrimaryStorage(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetCephPrimaryStorage error: %v", err)
+		return
+	}
+	golog.Infof("GetCephPrimaryStorage result: %s", result.UUID)
+}
 
 func TestAddCephPrimaryStorage(t *testing.T) {
 	// Add operation - similar to Create

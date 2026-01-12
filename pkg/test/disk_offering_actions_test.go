@@ -19,6 +19,28 @@ func TestQueryDiskOffering(t *testing.T) {
 	}
 	golog.Infof("QueryDiskOffering result count: %d", len(result))
 }
+func TestGetDiskOffering(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryDiskOffering(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetDiskOffering Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No DiskOffering found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetDiskOffering(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetDiskOffering error: %v", err)
+		return
+	}
+	golog.Infof("GetDiskOffering result: %s", result.UUID)
+}
 
 func TestUpdateDiskOffering(t *testing.T) {
 	// First query to get a valid UUID

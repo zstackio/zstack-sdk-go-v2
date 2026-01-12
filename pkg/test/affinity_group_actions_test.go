@@ -19,6 +19,28 @@ func TestQueryAffinityGroup(t *testing.T) {
 	}
 	golog.Infof("QueryAffinityGroup result count: %d", len(result))
 }
+func TestGetAffinityGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAffinityGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAffinityGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No AffinityGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAffinityGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAffinityGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetAffinityGroup result: %s", result.UUID)
+}
 
 func TestUpdateAffinityGroup(t *testing.T) {
 	// First query to get a valid UUID

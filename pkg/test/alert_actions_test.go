@@ -19,6 +19,28 @@ func TestQueryAlert(t *testing.T) {
 	}
 	golog.Infof("QueryAlert result count: %d", len(result))
 }
+func TestGetAlert(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAlert(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAlert Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Alert found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAlert(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAlert error: %v", err)
+		return
+	}
+	golog.Infof("GetAlert result: %s", result.UUID)
+}
 
 func TestDeleteAlert(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

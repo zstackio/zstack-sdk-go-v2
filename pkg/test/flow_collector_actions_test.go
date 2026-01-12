@@ -19,6 +19,28 @@ func TestQueryFlowCollector(t *testing.T) {
 	}
 	golog.Infof("QueryFlowCollector result count: %d", len(result))
 }
+func TestGetFlowCollector(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryFlowCollector(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetFlowCollector Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No FlowCollector found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetFlowCollector(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetFlowCollector error: %v", err)
+		return
+	}
+	golog.Infof("GetFlowCollector result: %s", result.UUID)
+}
 
 func TestUpdateFlowCollector(t *testing.T) {
 	// First query to get a valid UUID

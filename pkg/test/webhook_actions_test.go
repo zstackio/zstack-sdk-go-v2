@@ -19,6 +19,28 @@ func TestQueryWebhook(t *testing.T) {
 	}
 	golog.Infof("QueryWebhook result count: %d", len(result))
 }
+func TestGetWebhook(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryWebhook(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetWebhook Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Webhook found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetWebhook(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetWebhook error: %v", err)
+		return
+	}
+	golog.Infof("GetWebhook result: %s", result.UUID)
+}
 
 func TestUpdateWebhook(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateWebhook(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateWebhook(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateWebhook(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateWebhook error: %v", err)
 		return
 	}
-	golog.Infof("UpdateWebhook result: %s", result.Uuid)
+	golog.Infof("UpdateWebhook result: %s", result.UUID)
 }
 
 func TestDeleteWebhook(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteWebhook(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteWebhook(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteWebhook(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteWebhook error: %v", err)
 		return
 	}
-	golog.Infof("DeleteWebhook succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteWebhook succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateWebhook(t *testing.T) {
@@ -90,10 +112,10 @@ func TestCreateWebhook(t *testing.T) {
 	// 	t.Errorf("TestCreateWebhook error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateWebhook result: %s", result.Uuid)
+	// golog.Infof("CreateWebhook result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteWebhook(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteWebhook(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteWebhook error: %v", err)
 	// }

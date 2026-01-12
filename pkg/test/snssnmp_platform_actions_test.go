@@ -19,6 +19,28 @@ func TestQuerySNSSnmpPlatform(t *testing.T) {
 	}
 	golog.Infof("QuerySNSSnmpPlatform result count: %d", len(result))
 }
+func TestGetSNSSnmpPlatform(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSSnmpPlatform(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSSnmpPlatform Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSSnmpPlatform found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSSnmpPlatform(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSSnmpPlatform error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSSnmpPlatform result: %s", result.UUID)
+}
 
 func TestUpdateSNSSnmpPlatform(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSNSSnmpPlatform(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSNSSnmpPlatform(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSNSSnmpPlatform(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSNSSnmpPlatform error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSNSSnmpPlatform result: %s", result.Uuid)
+	golog.Infof("UpdateSNSSnmpPlatform result: %s", result.UUID)
 }
 
 func TestCreateSNSSnmpPlatform(t *testing.T) {
@@ -65,10 +87,10 @@ func TestCreateSNSSnmpPlatform(t *testing.T) {
 	// 	t.Errorf("TestCreateSNSSnmpPlatform error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSNSSnmpPlatform result: %s", result.Uuid)
+	// golog.Infof("CreateSNSSnmpPlatform result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSSnmpPlatform(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSNSSnmpPlatform(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSNSSnmpPlatform error: %v", err)
 	// }

@@ -19,6 +19,28 @@ func TestQueryFlowMeter(t *testing.T) {
 	}
 	golog.Infof("QueryFlowMeter result count: %d", len(result))
 }
+func TestGetFlowMeter(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryFlowMeter(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetFlowMeter Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No FlowMeter found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetFlowMeter(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetFlowMeter error: %v", err)
+		return
+	}
+	golog.Infof("GetFlowMeter result: %s", result.UUID)
+}
 
 func TestUpdateFlowMeter(t *testing.T) {
 	// First query to get a valid UUID

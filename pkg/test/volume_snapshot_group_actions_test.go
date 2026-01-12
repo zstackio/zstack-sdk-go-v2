@@ -19,6 +19,28 @@ func TestQueryVolumeSnapshotGroup(t *testing.T) {
 	}
 	golog.Infof("QueryVolumeSnapshotGroup result count: %d", len(result))
 }
+func TestGetVolumeSnapshotGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVolumeSnapshotGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVolumeSnapshotGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No VolumeSnapshotGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVolumeSnapshotGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVolumeSnapshotGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetVolumeSnapshotGroup result: %s", result.UUID)
+}
 
 func TestUpdateVolumeSnapshotGroup(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateVolumeSnapshotGroup(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVolumeSnapshotGroup(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVolumeSnapshotGroup(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVolumeSnapshotGroup error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVolumeSnapshotGroup result: %s", result.Uuid)
+	golog.Infof("UpdateVolumeSnapshotGroup result: %s", result.UUID)
 }
 
 func TestDeleteVolumeSnapshotGroup(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteVolumeSnapshotGroup(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteVolumeSnapshotGroup(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteVolumeSnapshotGroup(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteVolumeSnapshotGroup error: %v", err)
 		return
 	}
-	golog.Infof("DeleteVolumeSnapshotGroup succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteVolumeSnapshotGroup succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateVolumeSnapshotGroup(t *testing.T) {
@@ -90,10 +112,10 @@ func TestCreateVolumeSnapshotGroup(t *testing.T) {
 	// 	t.Errorf("TestCreateVolumeSnapshotGroup error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateVolumeSnapshotGroup result: %s", result.Uuid)
+	// golog.Infof("CreateVolumeSnapshotGroup result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVolumeSnapshotGroup(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteVolumeSnapshotGroup(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteVolumeSnapshotGroup error: %v", err)
 	// }

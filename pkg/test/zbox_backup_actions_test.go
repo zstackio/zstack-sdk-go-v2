@@ -19,6 +19,28 @@ func TestQueryZBoxBackup(t *testing.T) {
 	}
 	golog.Infof("QueryZBoxBackup result count: %d", len(result))
 }
+func TestGetZBoxBackup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryZBoxBackup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetZBoxBackup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ZBoxBackup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetZBoxBackup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetZBoxBackup error: %v", err)
+		return
+	}
+	golog.Infof("GetZBoxBackup result: %s", result.UUID)
+}
 
 func TestCreateZBoxBackup(t *testing.T) {
 	// WARNING: This test will create a real resource!

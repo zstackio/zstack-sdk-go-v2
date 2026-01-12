@@ -19,6 +19,28 @@ func TestQueryAutoScalingVmTemplate(t *testing.T) {
 	}
 	golog.Infof("QueryAutoScalingVmTemplate result count: %d", len(result))
 }
+func TestGetAutoScalingVmTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAutoScalingVmTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAutoScalingVmTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No AutoScalingVmTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAutoScalingVmTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAutoScalingVmTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetAutoScalingVmTemplate result: %s", result.UUID)
+}
 
 func TestUpdateAutoScalingVmTemplate(t *testing.T) {
 	// First query to get a valid UUID

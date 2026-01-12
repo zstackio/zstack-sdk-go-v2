@@ -19,6 +19,28 @@ func TestQueryIAM2VirtualIDAttribute(t *testing.T) {
 	}
 	golog.Infof("QueryIAM2VirtualIDAttribute result count: %d", len(result))
 }
+func TestGetIAM2VirtualIDAttribute(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryIAM2VirtualIDAttribute(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetIAM2VirtualIDAttribute Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No IAM2VirtualIDAttribute found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetIAM2VirtualIDAttribute(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetIAM2VirtualIDAttribute error: %v", err)
+		return
+	}
+	golog.Infof("GetIAM2VirtualIDAttribute result: %s", result.UUID)
+}
 
 func TestUpdateIAM2VirtualIDAttribute(t *testing.T) {
 	// First query to get a valid UUID

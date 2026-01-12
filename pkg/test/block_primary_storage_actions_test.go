@@ -19,6 +19,28 @@ func TestQueryBlockPrimaryStorage(t *testing.T) {
 	}
 	golog.Infof("QueryBlockPrimaryStorage result count: %d", len(result))
 }
+func TestGetBlockPrimaryStorage(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBlockPrimaryStorage(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBlockPrimaryStorage Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BlockPrimaryStorage found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBlockPrimaryStorage(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBlockPrimaryStorage error: %v", err)
+		return
+	}
+	golog.Infof("GetBlockPrimaryStorage result: %s", result.UUID)
+}
 
 func TestUpdateBlockPrimaryStorage(t *testing.T) {
 	// First query to get a valid UUID

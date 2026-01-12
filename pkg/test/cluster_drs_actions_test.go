@@ -19,6 +19,28 @@ func TestQueryClusterDRS(t *testing.T) {
 	}
 	golog.Infof("QueryClusterDRS result count: %d", len(result))
 }
+func TestGetClusterDRS(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryClusterDRS(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetClusterDRS Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ClusterDRS found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetClusterDRS(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetClusterDRS error: %v", err)
+		return
+	}
+	golog.Infof("GetClusterDRS result: %s", result.UUID)
+}
 
 func TestUpdateClusterDRS(t *testing.T) {
 	// First query to get a valid UUID

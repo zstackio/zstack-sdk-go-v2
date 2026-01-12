@@ -19,6 +19,28 @@ func TestQueryGuestToolsState(t *testing.T) {
 	}
 	golog.Infof("QueryGuestToolsState result count: %d", len(result))
 }
+func TestGetGuestToolsState(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryGuestToolsState(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetGuestToolsState Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No GuestToolsState found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetGuestToolsState(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetGuestToolsState error: %v", err)
+		return
+	}
+	golog.Infof("GetGuestToolsState result: %s", result.UUID)
+}
 
 func TestUpdateGuestToolsState(t *testing.T) {
 	// First query to get a valid UUID

@@ -19,6 +19,28 @@ func TestQueryMonitorTemplate(t *testing.T) {
 	}
 	golog.Infof("QueryMonitorTemplate result count: %d", len(result))
 }
+func TestGetMonitorTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMonitorTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMonitorTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No MonitorTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMonitorTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMonitorTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetMonitorTemplate result: %s", result.UUID)
+}
 
 func TestUpdateMonitorTemplate(t *testing.T) {
 	// First query to get a valid UUID

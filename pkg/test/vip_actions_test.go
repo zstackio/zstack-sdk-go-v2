@@ -19,6 +19,28 @@ func TestQueryVip(t *testing.T) {
 	}
 	golog.Infof("QueryVip result count: %d", len(result))
 }
+func TestGetVip(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryVip(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetVip Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Vip found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetVip(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetVip error: %v", err)
+		return
+	}
+	golog.Infof("GetVip result: %s", result.UUID)
+}
 
 func TestUpdateVip(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateVip(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVip(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateVip(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVip error: %v", err)
 		return
 	}
-	golog.Infof("UpdateVip result: %s", result.Uuid)
+	golog.Infof("UpdateVip result: %s", result.UUID)
 }
 
 func TestDeleteVip(t *testing.T) {
@@ -66,12 +88,12 @@ func TestDeleteVip(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteVip(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteVip(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteVip error: %v", err)
 		return
 	}
-	golog.Infof("DeleteVip succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteVip succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestCreateVip(t *testing.T) {
@@ -90,10 +112,10 @@ func TestCreateVip(t *testing.T) {
 	// 	t.Errorf("TestCreateVip error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateVip result: %s", result.Uuid)
+	// golog.Infof("CreateVip result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVip(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteVip(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteVip error: %v", err)
 	// }

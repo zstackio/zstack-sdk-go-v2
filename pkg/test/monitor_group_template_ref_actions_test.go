@@ -19,3 +19,25 @@ func TestQueryMonitorGroupTemplateRef(t *testing.T) {
 	}
 	golog.Infof("QueryMonitorGroupTemplateRef result count: %d", len(result))
 }
+func TestGetMonitorGroupTemplateRef(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMonitorGroupTemplateRef(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMonitorGroupTemplateRef Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No MonitorGroupTemplateRef found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMonitorGroupTemplateRef(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMonitorGroupTemplateRef error: %v", err)
+		return
+	}
+	golog.Infof("GetMonitorGroupTemplateRef result: %s", result.UUID)
+}

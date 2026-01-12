@@ -19,6 +19,28 @@ func TestQueryImageReplicationGroup(t *testing.T) {
 	}
 	golog.Infof("QueryImageReplicationGroup result count: %d", len(result))
 }
+func TestGetImageReplicationGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryImageReplicationGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetImageReplicationGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ImageReplicationGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetImageReplicationGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetImageReplicationGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetImageReplicationGroup result: %s", result.UUID)
+}
 
 func TestDeleteImageReplicationGroup(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

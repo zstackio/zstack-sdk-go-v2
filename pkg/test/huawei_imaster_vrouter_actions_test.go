@@ -19,6 +19,28 @@ func TestQueryHuaweiIMasterVRouter(t *testing.T) {
 	}
 	golog.Infof("QueryHuaweiIMasterVRouter result count: %d", len(result))
 }
+func TestGetHuaweiIMasterVRouter(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryHuaweiIMasterVRouter(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetHuaweiIMasterVRouter Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No HuaweiIMasterVRouter found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetHuaweiIMasterVRouter(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetHuaweiIMasterVRouter error: %v", err)
+		return
+	}
+	golog.Infof("GetHuaweiIMasterVRouter result: %s", result.UUID)
+}
 
 func TestDeleteHuaweiIMasterVRouter(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

@@ -19,6 +19,28 @@ func TestQueryUserTag(t *testing.T) {
 	}
 	golog.Infof("QueryUserTag result count: %d", len(result))
 }
+func TestGetUserTag(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryUserTag(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetUserTag Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No UserTag found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetUserTag(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetUserTag error: %v", err)
+		return
+	}
+	golog.Infof("GetUserTag result: %s", result.UUID)
+}
 
 func TestCreateUserTag(t *testing.T) {
 	// WARNING: This test will create a real resource!

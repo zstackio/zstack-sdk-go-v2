@@ -19,6 +19,28 @@ func TestQueryHuaweiIMasterTenant(t *testing.T) {
 	}
 	golog.Infof("QueryHuaweiIMasterTenant result count: %d", len(result))
 }
+func TestGetHuaweiIMasterTenant(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryHuaweiIMasterTenant(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetHuaweiIMasterTenant Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No HuaweiIMasterTenant found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetHuaweiIMasterTenant(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetHuaweiIMasterTenant error: %v", err)
+		return
+	}
+	golog.Infof("GetHuaweiIMasterTenant result: %s", result.UUID)
+}
 
 func TestDeleteHuaweiIMasterTenant(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

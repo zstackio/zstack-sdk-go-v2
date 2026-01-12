@@ -19,6 +19,28 @@ func TestQueryIAM2ProjectRole(t *testing.T) {
 	}
 	golog.Infof("QueryIAM2ProjectRole result count: %d", len(result))
 }
+func TestGetIAM2ProjectRole(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryIAM2ProjectRole(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetIAM2ProjectRole Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No IAM2ProjectRole found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetIAM2ProjectRole(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetIAM2ProjectRole error: %v", err)
+		return
+	}
+	golog.Infof("GetIAM2ProjectRole result: %s", result.UUID)
+}
 
 func TestCreateIAM2ProjectRole(t *testing.T) {
 	// WARNING: This test will create a real resource!

@@ -19,6 +19,28 @@ func TestQuerySdnController(t *testing.T) {
 	}
 	golog.Infof("QuerySdnController result count: %d", len(result))
 }
+func TestGetSdnController(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySdnController(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSdnController Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SdnController found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSdnController(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSdnController error: %v", err)
+		return
+	}
+	golog.Infof("GetSdnController result: %s", result.UUID)
+}
 
 func TestUpdateSdnController(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSdnController(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSdnController(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSdnController(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSdnController error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSdnController result: %s", result.Uuid)
+	golog.Infof("UpdateSdnController result: %s", result.UUID)
 }
 
 func TestRemoveSdnController(t *testing.T) {

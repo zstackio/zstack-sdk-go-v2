@@ -19,6 +19,28 @@ func TestQueryL2VxlanNetwork(t *testing.T) {
 	}
 	golog.Infof("QueryL2VxlanNetwork result count: %d", len(result))
 }
+func TestGetL2VxlanNetwork(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryL2VxlanNetwork(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetL2VxlanNetwork Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No L2VxlanNetwork found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetL2VxlanNetwork(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetL2VxlanNetwork error: %v", err)
+		return
+	}
+	golog.Infof("GetL2VxlanNetwork result: %s", result.UUID)
+}
 
 func TestCreateL2VxlanNetwork(t *testing.T) {
 	// WARNING: This test will create a real resource!

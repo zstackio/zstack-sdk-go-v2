@@ -19,6 +19,28 @@ func TestQuerySchedulerJob(t *testing.T) {
 	}
 	golog.Infof("QuerySchedulerJob result count: %d", len(result))
 }
+func TestGetSchedulerJob(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySchedulerJob(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSchedulerJob Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SchedulerJob found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSchedulerJob(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSchedulerJob error: %v", err)
+		return
+	}
+	golog.Infof("GetSchedulerJob result: %s", result.UUID)
+}
 
 func TestUpdateSchedulerJob(t *testing.T) {
 	// First query to get a valid UUID

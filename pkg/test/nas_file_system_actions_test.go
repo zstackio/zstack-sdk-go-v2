@@ -19,6 +19,28 @@ func TestQueryNasFileSystem(t *testing.T) {
 	}
 	golog.Infof("QueryNasFileSystem result count: %d", len(result))
 }
+func TestGetNasFileSystem(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryNasFileSystem(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetNasFileSystem Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No NasFileSystem found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetNasFileSystem(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetNasFileSystem error: %v", err)
+		return
+	}
+	golog.Infof("GetNasFileSystem result: %s", result.UUID)
+}
 
 func TestUpdateNasFileSystem(t *testing.T) {
 	// First query to get a valid UUID

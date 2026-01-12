@@ -19,6 +19,28 @@ func TestQueryAccessControlRule(t *testing.T) {
 	}
 	golog.Infof("QueryAccessControlRule result count: %d", len(result))
 }
+func TestGetAccessControlRule(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAccessControlRule(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAccessControlRule Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No AccessControlRule found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAccessControlRule(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAccessControlRule error: %v", err)
+		return
+	}
+	golog.Infof("GetAccessControlRule result: %s", result.UUID)
+}
 
 func TestUpdateAccessControlRule(t *testing.T) {
 	// First query to get a valid UUID

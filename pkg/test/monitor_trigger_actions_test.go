@@ -19,6 +19,28 @@ func TestQueryMonitorTrigger(t *testing.T) {
 	}
 	golog.Infof("QueryMonitorTrigger result count: %d", len(result))
 }
+func TestGetMonitorTrigger(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMonitorTrigger(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMonitorTrigger Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No MonitorTrigger found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMonitorTrigger(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMonitorTrigger error: %v", err)
+		return
+	}
+	golog.Infof("GetMonitorTrigger result: %s", result.UUID)
+}
 
 func TestUpdateMonitorTrigger(t *testing.T) {
 	// First query to get a valid UUID

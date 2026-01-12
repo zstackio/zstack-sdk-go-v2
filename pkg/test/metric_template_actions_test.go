@@ -19,6 +19,28 @@ func TestQueryMetricTemplate(t *testing.T) {
 	}
 	golog.Infof("QueryMetricTemplate result count: %d", len(result))
 }
+func TestGetMetricTemplate(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryMetricTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetMetricTemplate Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No MetricTemplate found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetMetricTemplate(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetMetricTemplate error: %v", err)
+		return
+	}
+	golog.Infof("GetMetricTemplate result: %s", result.UUID)
+}
 
 func TestDeleteMetricTemplate(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

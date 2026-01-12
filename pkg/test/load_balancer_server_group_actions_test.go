@@ -19,6 +19,28 @@ func TestQueryLoadBalancerServerGroup(t *testing.T) {
 	}
 	golog.Infof("QueryLoadBalancerServerGroup result count: %d", len(result))
 }
+func TestGetLoadBalancerServerGroup(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryLoadBalancerServerGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetLoadBalancerServerGroup Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No LoadBalancerServerGroup found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetLoadBalancerServerGroup(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetLoadBalancerServerGroup error: %v", err)
+		return
+	}
+	golog.Infof("GetLoadBalancerServerGroup result: %s", result.UUID)
+}
 
 func TestUpdateLoadBalancerServerGroup(t *testing.T) {
 	// First query to get a valid UUID

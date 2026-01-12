@@ -19,6 +19,28 @@ func TestQuerySNSApplicationEndpoint(t *testing.T) {
 	}
 	golog.Infof("QuerySNSApplicationEndpoint result count: %d", len(result))
 }
+func TestGetSNSApplicationEndpoint(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSApplicationEndpoint(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSApplicationEndpoint Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSApplicationEndpoint found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSApplicationEndpoint(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSApplicationEndpoint error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSApplicationEndpoint result: %s", result.UUID)
+}
 
 func TestUpdateSNSApplicationEndpoint(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSNSApplicationEndpoint(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSNSApplicationEndpoint(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSNSApplicationEndpoint(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSNSApplicationEndpoint error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSNSApplicationEndpoint result: %s", result.Uuid)
+	golog.Infof("UpdateSNSApplicationEndpoint result: %s", result.UUID)
 }
 
 func TestDeleteSNSApplicationEndpoint(t *testing.T) {
@@ -66,10 +88,10 @@ func TestDeleteSNSApplicationEndpoint(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteSNSApplicationEndpoint(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteSNSApplicationEndpoint(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteSNSApplicationEndpoint error: %v", err)
 		return
 	}
-	golog.Infof("DeleteSNSApplicationEndpoint succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteSNSApplicationEndpoint succeeded for UUID: %s", list[0].UUID)
 }

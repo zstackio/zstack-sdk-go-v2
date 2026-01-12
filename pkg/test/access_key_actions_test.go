@@ -19,6 +19,28 @@ func TestQueryAccessKey(t *testing.T) {
 	}
 	golog.Infof("QueryAccessKey result count: %d", len(result))
 }
+func TestGetAccessKey(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryAccessKey(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetAccessKey Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No AccessKey found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetAccessKey(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetAccessKey error: %v", err)
+		return
+	}
+	golog.Infof("GetAccessKey result: %s", result.UUID)
+}
 
 func TestDeleteAccessKey(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

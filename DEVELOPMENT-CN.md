@@ -62,9 +62,9 @@ import (
     "github.com/kataras/golog"
 
     // 3. 项目内部包
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/errors"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 ```
 
@@ -279,7 +279,7 @@ const (
 ### 6.2 错误包装
 
 ```go
-import "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/errors"
+import "github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
 
 // 使用 Wrap 添加上下文
 if err != nil {
@@ -373,8 +373,8 @@ import (
 
     "github.com/kataras/golog"
 
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/util/jsonutils"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/util/jsonutils"
 )
 
 func TestQueryVmInstance(t *testing.T) {
@@ -450,8 +450,8 @@ type Create{Resource}DetailParam struct {
 package client
 
 import (
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/param"
-    "github.com/terraform-zstack-modules/zstack-sdk-go/pkg/view"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+    "github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 // Create{Resource} 创建资源

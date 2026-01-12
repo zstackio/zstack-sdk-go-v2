@@ -19,6 +19,28 @@ func TestQueryBlockVolume(t *testing.T) {
 	}
 	golog.Infof("QueryBlockVolume result count: %d", len(result))
 }
+func TestGetBlockVolume(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBlockVolume(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBlockVolume Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BlockVolume found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBlockVolume(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBlockVolume error: %v", err)
+		return
+	}
+	golog.Infof("GetBlockVolume result: %s", result.UUID)
+}
 
 func TestUpdateBlockVolume(t *testing.T) {
 	// First query to get a valid UUID

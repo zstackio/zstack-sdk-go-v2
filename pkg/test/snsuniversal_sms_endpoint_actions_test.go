@@ -19,6 +19,28 @@ func TestQuerySNSUniversalSmsEndpoint(t *testing.T) {
 	}
 	golog.Infof("QuerySNSUniversalSmsEndpoint result count: %d", len(result))
 }
+func TestGetSNSUniversalSmsEndpoint(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSUniversalSmsEndpoint(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSUniversalSmsEndpoint Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSUniversalSmsEndpoint found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSUniversalSmsEndpoint(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSUniversalSmsEndpoint error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSUniversalSmsEndpoint result: %s", result.UUID)
+}
 
 func TestUpdateSNSUniversalSmsEndpoint(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSNSUniversalSmsEndpoint(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSNSUniversalSmsEndpoint(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSNSUniversalSmsEndpoint(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSNSUniversalSmsEndpoint error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSNSUniversalSmsEndpoint result: %s", result.Uuid)
+	golog.Infof("UpdateSNSUniversalSmsEndpoint result: %s", result.UUID)
 }
 
 func TestCreateSNSUniversalSmsEndpoint(t *testing.T) {
@@ -65,10 +87,10 @@ func TestCreateSNSUniversalSmsEndpoint(t *testing.T) {
 	// 	t.Errorf("TestCreateSNSUniversalSmsEndpoint error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSNSUniversalSmsEndpoint result: %s", result.Uuid)
+	// golog.Infof("CreateSNSUniversalSmsEndpoint result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSUniversalSmsEndpoint(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSNSUniversalSmsEndpoint(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSNSUniversalSmsEndpoint error: %v", err)
 	// }

@@ -19,6 +19,28 @@ func TestQueryBareMetal2Gateway(t *testing.T) {
 	}
 	golog.Infof("QueryBareMetal2Gateway result count: %d", len(result))
 }
+func TestGetBareMetal2Gateway(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBareMetal2Gateway(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBareMetal2Gateway Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BareMetal2Gateway found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBareMetal2Gateway(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBareMetal2Gateway error: %v", err)
+		return
+	}
+	golog.Infof("GetBareMetal2Gateway result: %s", result.UUID)
+}
 
 func TestUpdateBareMetal2Gateway(t *testing.T) {
 	// First query to get a valid UUID

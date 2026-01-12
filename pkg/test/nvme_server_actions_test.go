@@ -19,6 +19,28 @@ func TestQueryNvmeServer(t *testing.T) {
 	}
 	golog.Infof("QueryNvmeServer result count: %d", len(result))
 }
+func TestGetNvmeServer(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryNvmeServer(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetNvmeServer Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No NvmeServer found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetNvmeServer(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetNvmeServer error: %v", err)
+		return
+	}
+	golog.Infof("GetNvmeServer result: %s", result.UUID)
+}
 
 func TestDeleteNvmeServer(t *testing.T) {
 	// WARNING: This test will actually delete a resource!

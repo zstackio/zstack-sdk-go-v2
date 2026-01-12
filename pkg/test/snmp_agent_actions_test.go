@@ -19,6 +19,28 @@ func TestQuerySnmpAgent(t *testing.T) {
 	}
 	golog.Infof("QuerySnmpAgent result count: %d", len(result))
 }
+func TestGetSnmpAgent(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySnmpAgent(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSnmpAgent Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SnmpAgent found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSnmpAgent(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSnmpAgent error: %v", err)
+		return
+	}
+	golog.Infof("GetSnmpAgent result: %s", result.UUID)
+}
 
 func TestUpdateSnmpAgent(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSnmpAgent(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSnmpAgent(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSnmpAgent(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSnmpAgent error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSnmpAgent result: %s", result.Uuid)
+	golog.Infof("UpdateSnmpAgent result: %s", result.UUID)
 }
 
 func TestCreateSnmpAgent(t *testing.T) {
@@ -65,10 +87,10 @@ func TestCreateSnmpAgent(t *testing.T) {
 	// 	t.Errorf("TestCreateSnmpAgent error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSnmpAgent result: %s", result.Uuid)
+	// golog.Infof("CreateSnmpAgent result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSnmpAgent(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSnmpAgent(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSnmpAgent error: %v", err)
 	// }
@@ -86,7 +108,7 @@ func TestStartSnmpAgent(t *testing.T) {
 	// 	return
 	// }
 	// startParam := param.StartSnmpAgentParam{}
-	// result, err := accountLoginCli.StartSnmpAgent(list[0].Uuid, startParam)
+	// result, err := accountLoginCli.StartSnmpAgent(list[0].UUID, startParam)
 	// if err != nil {
 	// 	t.Errorf("TestStartSnmpAgent error: %v", err)
 	// }
@@ -106,7 +128,7 @@ func TestStopSnmpAgent(t *testing.T) {
 	// 	return
 	// }
 	// stopParam := param.StopSnmpAgentParam{}
-	// result, err := accountLoginCli.StopSnmpAgent(list[0].Uuid, stopParam)
+	// result, err := accountLoginCli.StopSnmpAgent(list[0].UUID, stopParam)
 	// if err != nil {
 	// 	t.Errorf("TestStopSnmpAgent error: %v", err)
 	// }

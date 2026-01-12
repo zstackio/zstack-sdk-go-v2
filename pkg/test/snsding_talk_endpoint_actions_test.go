@@ -19,6 +19,28 @@ func TestQuerySNSDingTalkEndpoint(t *testing.T) {
 	}
 	golog.Infof("QuerySNSDingTalkEndpoint result count: %d", len(result))
 }
+func TestGetSNSDingTalkEndpoint(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QuerySNSDingTalkEndpoint(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetSNSDingTalkEndpoint Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No SNSDingTalkEndpoint found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetSNSDingTalkEndpoint(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetSNSDingTalkEndpoint error: %v", err)
+		return
+	}
+	golog.Infof("GetSNSDingTalkEndpoint result: %s", result.UUID)
+}
 
 func TestUpdateSNSDingTalkEndpoint(t *testing.T) {
 	// First query to get a valid UUID
@@ -41,12 +63,12 @@ func TestUpdateSNSDingTalkEndpoint(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSNSDingTalkEndpoint(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSNSDingTalkEndpoint(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSNSDingTalkEndpoint error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSNSDingTalkEndpoint result: %s", result.Uuid)
+	golog.Infof("UpdateSNSDingTalkEndpoint result: %s", result.UUID)
 }
 
 func TestCreateSNSDingTalkEndpoint(t *testing.T) {
@@ -65,10 +87,10 @@ func TestCreateSNSDingTalkEndpoint(t *testing.T) {
 	// 	t.Errorf("TestCreateSNSDingTalkEndpoint error: %v", err)
 	// 	return
 	// }
-	// golog.Infof("CreateSNSDingTalkEndpoint result: %s", result.Uuid)
+	// golog.Infof("CreateSNSDingTalkEndpoint result: %s", result.UUID)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSDingTalkEndpoint(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSNSDingTalkEndpoint(result.UUID, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSNSDingTalkEndpoint error: %v", err)
 	// }

@@ -19,6 +19,28 @@ func TestQueryCluster(t *testing.T) {
 	}
 	golog.Infof("QueryCluster result count: %d", len(result))
 }
+func TestGetCluster(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryCluster(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetCluster Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Cluster found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetCluster(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetCluster error: %v", err)
+		return
+	}
+	golog.Infof("GetCluster result: %s", result.UUID)
+}
 
 func TestUpdateCluster(t *testing.T) {
 	// First query to get a valid UUID

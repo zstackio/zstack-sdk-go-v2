@@ -19,6 +19,28 @@ func TestQueryBackupStorage(t *testing.T) {
 	}
 	golog.Infof("QueryBackupStorage result count: %d", len(result))
 }
+func TestGetBackupStorage(t *testing.T) {
+	// First query to get a valid UUID
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryBackupStorage(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetBackupStorage Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No BackupStorage found to test Get")
+		return
+	}
+
+	// Get by UUID
+	result, err := accountLoginCli.GetBackupStorage(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetBackupStorage error: %v", err)
+		return
+	}
+	golog.Infof("GetBackupStorage result: %s", result.UUID)
+}
 
 func TestUpdateBackupStorage(t *testing.T) {
 	// First query to get a valid UUID
