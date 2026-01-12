@@ -29,3 +29,8 @@ type ModelEvalServiceInstanceGroupInventoryView struct {
 	SupportMetrics []string `json:"supportMetrics,omitempty"`
 }
 
+// QueryModelServiceInstanceGroupView QueryModelServiceInstanceGroup
+type QueryModelServiceInstanceGroupView struct {
+	Inventories []ModelServiceInstanceGroupInventoryView `json:"inventories,omitempty"`
+}
+

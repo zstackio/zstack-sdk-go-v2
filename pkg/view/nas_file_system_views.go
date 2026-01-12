@@ -26,6 +26,11 @@ type UpdateNasFileSystemEventView struct {
 	Inventory NasFileSystemInventoryView `json:"inventory,omitempty"`
 }
 
+// CreateNasFileSystemEventView CreateNasFileSystemEvent
+type CreateNasFileSystemEventView struct {
+	Inventory NasFileSystemInventoryView `json:"inventory,omitempty"`
+}
+
 // DeleteNasFileSystemEventView DeleteNasFileSystemEvent
 type DeleteNasFileSystemEventView struct {
 	Success bool `json:"success,omitempty"`

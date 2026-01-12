@@ -25,18 +25,8 @@ type UpdateAffinityGroupEventView struct {
 	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
 }
 
-// DeleteAffinityGroupEventView DeleteAffinityGroupEvent
-type DeleteAffinityGroupEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // RemoveVmFromAffinityGroupEventView RemoveVmFromAffinityGroupEvent
 type RemoveVmFromAffinityGroupEventView struct {
-	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
-}
-
-// CreateAffinityGroupEventView CreateAffinityGroupEvent
-type CreateAffinityGroupEventView struct {
 	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
 }
 

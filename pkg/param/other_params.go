@@ -43,17 +43,6 @@ type SetServiceTypeOnHostNetworkBondingParam struct {
 	BaseParam
 	Params SetServiceTypeOnHostNetworkBondingParamDetail `json:"params"`
 }
-// AddAttributesToIAM2OrganizationParamDetail AddAttributesToIAM2Organization detail param
-type AddAttributesToIAM2OrganizationParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	Attributes []AttributeParam `json:"attributes" validate:"required"`
-}
-
-// AddAttributesToIAM2OrganizationParam AddAttributesToIAM2Organization request param
-type AddAttributesToIAM2OrganizationParam struct {
-	BaseParam
-	Params AddAttributesToIAM2OrganizationParamDetail `json:"params"`
-}
 // GetCreateEcsImageProgressParamDetail GetCreateEcsImageProgress detail param
 type GetCreateEcsImageProgressParamDetail struct {
 	ImageUuid string `json:"imageUuid" validate:"required"`
@@ -64,6 +53,17 @@ type GetCreateEcsImageProgressParamDetail struct {
 type GetCreateEcsImageProgressParam struct {
 	BaseParam
 	Params GetCreateEcsImageProgressParamDetail `json:"params"`
+}
+// AddAttributesToIAM2OrganizationParamDetail AddAttributesToIAM2Organization detail param
+type AddAttributesToIAM2OrganizationParamDetail struct {
+	Uuid string `json:"uuid" validate:"required"`
+	Attributes []AttributeParam `json:"attributes" validate:"required"`
+}
+
+// AddAttributesToIAM2OrganizationParam AddAttributesToIAM2Organization request param
+type AddAttributesToIAM2OrganizationParam struct {
+	BaseParam
+	Params AddAttributesToIAM2OrganizationParamDetail `json:"params"`
 }
 // AddAccessControlListToLoadBalancerParamDetail AddAccessControlListToLoadBalancer detail param
 type AddAccessControlListToLoadBalancerParamDetail struct {

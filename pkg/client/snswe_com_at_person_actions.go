@@ -33,5 +33,5 @@ func (cli *ZSClient) GetSNSWeComAtPerson(uuid string) (*view.SNSWeComAtPersonInv
 }
 // RemoveSNSWeComAtPerson removes SNSWeComAtPerson
 func (cli *ZSClient) RemoveSNSWeComAtPerson(endpointUuid string, userId string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/sns/application-endpoints/we-com", fmt.Sprintf(\"%s/at-persons/%s\", endpointUuid, userId), string(deleteMode))
+	return cli.DeleteWithSpec("v1/sns/application-endpoints/we-com", fmt.Sprintf("%s/at-persons/%s", endpointUuid, userId), string(deleteMode))
 }

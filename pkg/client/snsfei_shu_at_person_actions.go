@@ -25,7 +25,7 @@ func (cli *ZSClient) GetSNSFeiShuAtPerson(uuid string) (*view.SNSFeiShuAtPersonI
 }
 // RemoveSNSFeiShuAtPerson removes SNSFeiShuAtPerson
 func (cli *ZSClient) RemoveSNSFeiShuAtPerson(endpointUuid string, userId string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/sns/application-endpoints/feishu", fmt.Sprintf(\"%s/at-persons/%s\", endpointUuid, userId), string(deleteMode))
+	return cli.DeleteWithSpec("v1/sns/application-endpoints/feishu", fmt.Sprintf("%s/at-persons/%s", endpointUuid, userId), string(deleteMode))
 }
 // AddSNSFeiShuAtPerson adds SNSFeiShuAtPerson
 func (cli *ZSClient) AddSNSFeiShuAtPerson(params param.AddSNSFeiShuAtPersonParam) (*view.SNSFeiShuAtPersonInventoryView, error) {
