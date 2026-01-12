@@ -17,8 +17,3 @@ type AutoScalingRuleAlarmTriggerInventoryView struct {
 	State *string `json:"state,omitempty"`
 }
 
-// CreateAutoScalingRuleTriggerEventView CreateAutoScalingRuleTriggerEvent
-type CreateAutoScalingRuleTriggerEventView struct {
-	Inventory AutoScalingRuleTriggerInventoryView `json:"inventory,omitempty"`
-}
-

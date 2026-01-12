@@ -9906,16 +9906,6 @@ type DeleteEcsSecurityGroupRuleRemoteParam struct {
 	BaseParam
 	Params DeleteEcsSecurityGroupRuleRemoteParamDetail `json:"params"`
 }
-// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
-type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
-	VmUuid string `json:"vmUuid" validate:"required"`
-}
-
-// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
-type GetCandidateAffinityGroupForAttachingVmParam struct {
-	BaseParam
-	Params GetCandidateAffinityGroupForAttachingVmParamDetail `json:"params"`
-}
 // DetachAliyunDiskFromEcsParamDetail DetachAliyunDiskFromEcs detail param
 type DetachAliyunDiskFromEcsParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
@@ -9927,6 +9917,16 @@ type DetachAliyunDiskFromEcsParamDetail struct {
 type DetachAliyunDiskFromEcsParam struct {
 	BaseParam
 	Params DetachAliyunDiskFromEcsParamDetail `json:"params"`
+}
+// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
+type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
+	VmUuid string `json:"vmUuid" validate:"required"`
+}
+
+// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
+type GetCandidateAffinityGroupForAttachingVmParam struct {
+	BaseParam
+	Params GetCandidateAffinityGroupForAttachingVmParamDetail `json:"params"`
 }
 // UpdateFirewallIpSetTemplateParamDetail UpdateFirewallIpSetTemplate detail param
 type UpdateFirewallIpSetTemplateParamDetail struct {
@@ -12188,17 +12188,6 @@ type GetCandidateVMForAttachingAffinityGroupParam struct {
 	BaseParam
 	Params GetCandidateVMForAttachingAffinityGroupParamDetail `json:"params"`
 }
-// DeleteVpcVpnConnectionLocalParamDetail DeleteVpcVpnConnectionLocal detail param
-type DeleteVpcVpnConnectionLocalParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVpcVpnConnectionLocalParam DeleteVpcVpnConnectionLocal request param
-type DeleteVpcVpnConnectionLocalParam struct {
-	BaseParam
-	Params DeleteVpcVpnConnectionLocalParamDetail `json:"params"`
-}
 // DetachPolicyFromUserGroupParamDetail DetachPolicyFromUserGroup detail param
 type DetachPolicyFromUserGroupParamDetail struct {
 	PolicyUuid string `json:"policyUuid" validate:"required"`
@@ -12209,6 +12198,17 @@ type DetachPolicyFromUserGroupParamDetail struct {
 type DetachPolicyFromUserGroupParam struct {
 	BaseParam
 	Params DetachPolicyFromUserGroupParamDetail `json:"params"`
+}
+// DeleteVpcVpnConnectionLocalParamDetail DeleteVpcVpnConnectionLocal detail param
+type DeleteVpcVpnConnectionLocalParamDetail struct {
+	Uuid string `json:"uuid" validate:"required"`
+	DeleteMode string `json:"deleteMode,omitempty"`
+}
+
+// DeleteVpcVpnConnectionLocalParam DeleteVpcVpnConnectionLocal request param
+type DeleteVpcVpnConnectionLocalParam struct {
+	BaseParam
+	Params DeleteVpcVpnConnectionLocalParamDetail `json:"params"`
 }
 // AddActionToAlarmParamDetail AddActionToAlarm detail param
 type AddActionToAlarmParamDetail struct {

@@ -22,13 +22,3 @@ type PluginSecretResourcePoolInventoryView struct {
 	Ability *string `json:"ability,omitempty"`
 }
 
-// CreateSecretResourcePoolEventView CreateSecretResourcePoolEvent
-type CreateSecretResourcePoolEventView struct {
-	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateSecretResourcePoolEventView UpdateSecretResourcePoolEvent
-type UpdateSecretResourcePoolEventView struct {
-	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
-}
-
