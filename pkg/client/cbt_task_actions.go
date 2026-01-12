@@ -20,7 +20,7 @@ func (cli *ZSClient) CreateCbtTask(params param.CreateCbtTaskParam) (*view.CbtTa
 }
 // DeleteCbtTask deletes CbtTask
 func (cli *ZSClient) DeleteCbtTask(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/cbt-task", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/cbt-task", uuid, string(deleteMode))
 }
 // QueryCbtTask queries CbtTask list
 func (cli *ZSClient) QueryCbtTask(params *param.QueryParam) ([]view.CbtTaskInventoryView, error) {

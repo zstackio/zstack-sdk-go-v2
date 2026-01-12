@@ -47,46 +47,42 @@ func (cli *ZSClient) GetImage(uuid string) (*view.ImageInventoryView, error) {
 	return &resp, nil
 }
 // SyncImage operates on Image
-func (cli *ZSClient) SyncImage(imageStoreUuid string, params param.SyncImageParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) SyncImage(uuid string, params param.SyncImageParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	err := cli.PutWithSpec("v1/backup-storage/image-store", fmt.Sprintf(\"%s/actions\", imageStoreUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/backup-storage/image-store", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // RecoverImage operates on Image
-func (cli *ZSClient) RecoverImage(imageUuid string, params param.RecoverImageParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) RecoverImage(uuid string, params param.RecoverImageParam) (*view.ImageInventoryView, error) {
 	var resp view.RecoverImageEventView
-	err := cli.PutWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", imageUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // CloneImage operates on Image
-func (cli *ZSClient) CloneImage(imageUuid string, params param.CloneImageParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) CloneImage(params param.CloneImageParam) (*view.ImageInventoryView, error) {
 	var resp view.CloneImageEventView
-	err := cli.PostWithSpec("v1/image/clone", fmt.Sprintf(\"%s\", imageUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/image/clone", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteImage deletes Image
 func (cli *ZSClient) DeleteImage(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/images", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/images", uuid, string(deleteMode))
 }
 // UpdateImage updates Image
 func (cli *ZSClient) UpdateImage(uuid string, params param.UpdateImageParam) (*view.ImageInventoryView, error) {
 	var resp view.UpdateImageEventView
-	err := cli.PutWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // ExpungeImage operates on Image
-func (cli *ZSClient) ExpungeImage(imageUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", imageUuid), string(deleteMode))
+func (cli *ZSClient) ExpungeImage(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/images", uuid, string(deleteMode))
 }

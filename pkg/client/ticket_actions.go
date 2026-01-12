@@ -20,7 +20,7 @@ func (cli *ZSClient) CreateTicket(params param.CreateTicketParam) (*view.TicketI
 }
 // DeleteTicket deletes Ticket
 func (cli *ZSClient) DeleteTicket(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/tickets", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/tickets", uuid, string(deleteMode))
 }
 // QueryTicket queries Ticket list
 func (cli *ZSClient) QueryTicket(params *param.QueryParam) ([]view.TicketInventoryView, error) {

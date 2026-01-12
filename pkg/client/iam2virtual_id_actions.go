@@ -33,7 +33,7 @@ func (cli *ZSClient) CreateIAM2VirtualID(params param.CreateIAM2VirtualIDParam) 
 }
 // DeleteIAM2VirtualID deletes IAM2VirtualID
 func (cli *ZSClient) DeleteIAM2VirtualID(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/virtual-ids", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/iam2/virtual-ids", uuid, string(deleteMode))
 }
 // LoginIAM2VirtualID operates on IAM2VirtualID
 func (cli *ZSClient) LoginIAM2VirtualID(uuid string, params param.LoginIAM2VirtualIDParam) (*view.SessionInventoryView, error) {
@@ -46,8 +46,7 @@ func (cli *ZSClient) LoginIAM2VirtualID(uuid string, params param.LoginIAM2Virtu
 // UpdateIAM2VirtualID updates IAM2VirtualID
 func (cli *ZSClient) UpdateIAM2VirtualID(uuid string, params param.UpdateIAM2VirtualIDParam) (*view.IAM2VirtualIDInventoryView, error) {
 	var resp view.UpdateIAM2VirtualIDEventView
-	err := cli.PutWithSpec("v1/iam2/virtual-ids", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/virtual-ids", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

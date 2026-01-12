@@ -26,8 +26,7 @@ func (cli *ZSClient) GetSNSUniversalSmsEndpoint(uuid string) (*view.SNSUniversal
 // UpdateSNSUniversalSmsEndpoint updates SNSUniversalSmsEndpoint
 func (cli *ZSClient) UpdateSNSUniversalSmsEndpoint(uuid string, params param.UpdateSNSUniversalSmsEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	var resp view.UpdateSNSApplicationEndpointEventView
-	err := cli.PutWithSpec("v1/sns/application-endpoints/universal-sms", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sns/application-endpoints/universal-sms", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -43,8 +42,7 @@ func (cli *ZSClient) CreateSNSUniversalSmsEndpoint(params param.CreateSNSUnivers
 // ValidateSNSUniversalSmsEndpoint operates on SNSUniversalSmsEndpoint
 func (cli *ZSClient) ValidateSNSUniversalSmsEndpoint(uuid string, params param.ValidateSNSUniversalSmsEndpointParam) (*view.SNSUniversalSmsEndpointInventoryView, error) {
 	resp := view.SNSUniversalSmsEndpointInventoryView{}
-	err := cli.PutWithSpec("v1/sns/application-endpoints/universal-sms", fmt.Sprintf(\"%s/validate\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sns/application-endpoints/universal-sms", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

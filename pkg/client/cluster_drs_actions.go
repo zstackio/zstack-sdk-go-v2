@@ -25,7 +25,7 @@ func (cli *ZSClient) GetClusterDRS(uuid string) (*view.ClusterDRSInventoryView, 
 }
 // DeleteClusterDRS deletes ClusterDRS
 func (cli *ZSClient) DeleteClusterDRS(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/clusters/drs", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/clusters/drs", uuid, string(deleteMode))
 }
 // CreateClusterDRS creates ClusterDRS
 func (cli *ZSClient) CreateClusterDRS(params param.CreateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
@@ -38,8 +38,7 @@ func (cli *ZSClient) CreateClusterDRS(params param.CreateClusterDRSParam) (*view
 // UpdateClusterDRS updates ClusterDRS
 func (cli *ZSClient) UpdateClusterDRS(uuid string, params param.UpdateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
 	var resp view.UpdateClusterDRSEventView
-	err := cli.PutWithSpec("v1/clusters/drs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/clusters/drs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

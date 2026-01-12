@@ -12,13 +12,12 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteVipQos deletes VipQos
 func (cli *ZSClient) DeleteVipQos(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vips", fmt.Sprintf(\"%s/vip-qos\", uuid), string(deleteMode))
+	return cli.Delete("v1/vips", uuid, string(deleteMode))
 }
 // SetVipQos operates on VipQos
 func (cli *ZSClient) SetVipQos(uuid string, params param.SetVipQosParam) (*view.VipQosInventoryView, error) {
 	var resp view.SetVipQosEventView
-	err := cli.PutWithSpec("v1/vips", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vips", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -26,8 +25,7 @@ func (cli *ZSClient) SetVipQos(uuid string, params param.SetVipQosParam) (*view.
 // GetVipQos gets VipQos by uuid
 func (cli *ZSClient) GetVipQos(uuid string) (*view.VipQosInventoryView, error) {
 	var resp view.VipQosInventoryView
-	err := cli.GetWithSpec("v1/vip", fmt.Sprintf(\"%s/vip-qos\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vip", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

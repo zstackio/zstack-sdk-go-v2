@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteAutoScalingGroup deletes AutoScalingGroup
 func (cli *ZSClient) DeleteAutoScalingGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/autoscaling/groups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/autoscaling/groups", uuid, string(deleteMode))
 }
 // CreateAutoScalingGroup creates AutoScalingGroup
 func (cli *ZSClient) CreateAutoScalingGroup(params param.CreateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
@@ -25,8 +25,7 @@ func (cli *ZSClient) CreateAutoScalingGroup(params param.CreateAutoScalingGroupP
 // UpdateAutoScalingGroup updates AutoScalingGroup
 func (cli *ZSClient) UpdateAutoScalingGroup(uuid string, params param.UpdateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
 	var resp view.UpdateAutoScalingGroupEventView
-	err := cli.PutWithSpec("v1/autoscaling/groups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/autoscaling/groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

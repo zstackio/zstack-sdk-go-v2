@@ -34,8 +34,7 @@ func (cli *ZSClient) GetAppBuildSystem(uuid string) (*view.AppBuildSystemInvento
 // ReconnectAppBuildSystem operates on AppBuildSystem
 func (cli *ZSClient) ReconnectAppBuildSystem(uuid string, params param.ReconnectAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
 	var resp view.ReconnectAppBuildSystemEventView
-	err := cli.PutWithSpec("v1/appcenter/buildsystem", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/appcenter/buildsystem", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -43,13 +42,12 @@ func (cli *ZSClient) ReconnectAppBuildSystem(uuid string, params param.Reconnect
 // UpdateAppBuildSystem updates AppBuildSystem
 func (cli *ZSClient) UpdateAppBuildSystem(uuid string, params param.UpdateAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
 	var resp view.UpdateAppBuildSystemEventView
-	err := cli.PutWithSpec("v1/appcenter/buildsystem", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/appcenter/buildsystem", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteAppBuildSystem deletes AppBuildSystem
 func (cli *ZSClient) DeleteAppBuildSystem(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/appcenter/buildsystem", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/appcenter/buildsystem", uuid, string(deleteMode))
 }

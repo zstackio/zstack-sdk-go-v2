@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateVniRange updates VniRange
 func (cli *ZSClient) UpdateVniRange(uuid string, params param.UpdateVniRangeParam) (*view.VniRangeInventoryView, error) {
 	var resp view.UpdateVniRangeEventView
-	err := cli.PutWithSpec("v1/l2-networks/vxlan-pool/vni-ranges", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/l2-networks/vxlan-pool/vni-ranges", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -42,5 +41,5 @@ func (cli *ZSClient) CreateVniRange(params param.CreateVniRangeParam) (*view.Vni
 }
 // DeleteVniRange deletes VniRange
 func (cli *ZSClient) DeleteVniRange(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/l2-networks/vxlan-pool/vni-ranges", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/l2-networks/vxlan-pool/vni-ranges", uuid, string(deleteMode))
 }

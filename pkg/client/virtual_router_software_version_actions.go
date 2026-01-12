@@ -21,8 +21,7 @@ func (cli *ZSClient) GetVirtualRouterSoftwareVersion(uuid string) (*view.Virtual
 // UpdateVirtualRouterSoftwareVersion updates VirtualRouterSoftwareVersion
 func (cli *ZSClient) UpdateVirtualRouterSoftwareVersion(uuid string, params param.UpdateVirtualRouterSoftwareVersionParam) (*view.VirtualRouterSoftwareVersionInventoryView, error) {
 	resp := view.VirtualRouterSoftwareVersionInventoryView{}
-	err := cli.PutWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/softwareversion\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpc/virtual-routers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

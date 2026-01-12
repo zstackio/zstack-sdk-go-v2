@@ -20,7 +20,7 @@ func (cli *ZSClient) CreatePortMirrorSession(params param.CreatePortMirrorSessio
 }
 // DeletePortMirrorSession deletes PortMirrorSession
 func (cli *ZSClient) DeletePortMirrorSession(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/port-mirrors/sessons", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/port-mirrors/sessons", uuid, string(deleteMode))
 }
 // QueryPortMirrorSession queries PortMirrorSession list
 func (cli *ZSClient) QueryPortMirrorSession(params *param.QueryParam) ([]view.PortMirrorSessionInventoryView, error) {

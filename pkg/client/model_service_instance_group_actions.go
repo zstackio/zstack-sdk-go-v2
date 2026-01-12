@@ -26,13 +26,12 @@ func (cli *ZSClient) GetModelServiceInstanceGroup(uuid string) (*view.ModelServi
 // UpdateModelServiceInstanceGroup updates ModelServiceInstanceGroup
 func (cli *ZSClient) UpdateModelServiceInstanceGroup(uuid string, params param.UpdateModelServiceInstanceGroupParam) (*view.ModelServiceInstanceGroupInventoryView, error) {
 	var resp view.UpdateModelServiceInstanceGroupEventView
-	err := cli.PutWithSpec("v1/model-service-instance-groups", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/model-service-instance-groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteModelServiceInstanceGroup deletes ModelServiceInstanceGroup
 func (cli *ZSClient) DeleteModelServiceInstanceGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/ai/model-services/instances/groups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/ai/model-services/instances/groups", uuid, string(deleteMode))
 }

@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // ChangeIAM2OrganizationState changes IAM2OrganizationState
 func (cli *ZSClient) ChangeIAM2OrganizationState(uuid string, params param.ChangeIAM2OrganizationStateParam) (*view.IAM2OrganizationInventoryView, error) {
 	var resp view.ChangeIAM2OrganizationStateEventView
-	err := cli.PutWithSpec("v1/iam2/organizations", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/organizations", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -52,20 +51,20 @@ func (cli *ZSClient) GetPciDevicePciDeviceOffering(uuid string) (*view.PciDevice
 	return &resp, nil
 }
 
-// GetCreateEcsImageProgress gets CreateEcsImageProgress by uuid
-func (cli *ZSClient) GetCreateEcsImageProgress(dataCenterUuid string, imageUuid string) (*view.GetCreateEcsImageProgressView, error) {
-	var resp view.GetCreateEcsImageProgressView
-	err := cli.GetWithSpec("v1/hybrid/aliyun/image", fmt.Sprintf(\"%s/%s/progress\", dataCenterUuid, imageUuid), "", "", nil, &resp)
-	if err != nil {
+// AddAttributesToIAM2Organization adds AttributesToIAM2Organization
+func (cli *ZSClient) AddAttributesToIAM2Organization(params param.AddAttributesToIAM2OrganizationParam) (*view.AddAttributesToIAM2OrganizationEventView, error) {
+	resp := view.AddAttributesToIAM2OrganizationEventView{}
+	if err := cli.Post("v1/iam2/organizations/{uuid}/attributes", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// AddAttributesToIAM2Organization adds AttributesToIAM2Organization
-func (cli *ZSClient) AddAttributesToIAM2Organization(params param.AddAttributesToIAM2OrganizationParam) (*view.AddAttributesToIAM2OrganizationEventView, error) {
-	resp := view.AddAttributesToIAM2OrganizationEventView{}
-	if err := cli.Post("v1/iam2/organizations/{uuid}/attributes", params, &resp); err != nil {
+// GetCreateEcsImageProgress gets CreateEcsImageProgress by uuid
+func (cli *ZSClient) GetCreateEcsImageProgress(dataCenterUuid string, imageUuid string) (*view.GetCreateEcsImageProgressView, error) {
+	var resp view.GetCreateEcsImageProgressView
+	err := cli.GetWithSpec("v1/hybrid/aliyun/image", fmt.Sprintf(\"%s/%s/progress\", dataCenterUuid, imageUuid), "", "", nil, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -81,15 +80,14 @@ func (cli *ZSClient) AddAccessControlListToLoadBalancer(params param.AddAccessCo
 }
 
 // LogOut operates on LogOut
-func (cli *ZSClient) LogOut(sessionUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/accounts/sessions", fmt.Sprintf(\"%s\", sessionUuid), string(deleteMode))
+func (cli *ZSClient) LogOut(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/accounts/sessions", uuid, string(deleteMode))
 }
 
 // GetVmXmlHookScript gets VmXmlHookScript by uuid
-func (cli *ZSClient) GetVmXmlHookScript(vmInstanceUuid string) (*view.GetVmXmlHookScriptView, error) {
+func (cli *ZSClient) GetVmXmlHookScript(uuid string) (*view.GetVmXmlHookScriptView, error) {
 	var resp view.GetVmXmlHookScriptView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/xml-hook-script\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -98,8 +96,7 @@ func (cli *ZSClient) GetVmXmlHookScript(vmInstanceUuid string) (*view.GetVmXmlHo
 // AttachHybridKey operates on HybridKey
 func (cli *ZSClient) AttachHybridKey(uuid string, params param.AttachHybridKeyParam) (*view.AttachHybridKeyEventView, error) {
 	resp := view.AttachHybridKeyEventView{}
-	err := cli.PutWithSpec("v1/hybrid/hybrid/key", fmt.Sprintf(\"%s/attach\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/hybrid/key", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -108,8 +105,7 @@ func (cli *ZSClient) AttachHybridKey(uuid string, params param.AttachHybridKeyPa
 // GetImageQga gets ImageQga by uuid
 func (cli *ZSClient) GetImageQga(uuid string) (*view.GetImageQgaView, error) {
 	var resp view.GetImageQgaView
-	err := cli.GetWithSpec("v1/images", fmt.Sprintf(\"%s/qga\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/images", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -141,8 +137,7 @@ func (cli *ZSClient) BatchCreateIAM2VirtualIDFromConfigFile(params param.BatchCr
 // SetVmClockTrack operates on VmClockTrack
 func (cli *ZSClient) SetVmClockTrack(uuid string, params param.SetVmClockTrackParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.SetVmClockTrackEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -151,8 +146,7 @@ func (cli *ZSClient) SetVmClockTrack(uuid string, params param.SetVmClockTrackPa
 // UpdateEmailMonitorTriggerAction updates EmailMonitorTrigger
 func (cli *ZSClient) UpdateEmailMonitorTriggerAction(uuid string, params param.UpdateEmailMonitorTriggerActionParam) (*view.MonitorTriggerActionInventoryView, error) {
 	var resp view.UpdateMonitorTriggerActionEventView
-	err := cli.PutWithSpec("v1/monitoring/trigger-actions/emails", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/monitoring/trigger-actions/emails", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -173,10 +167,9 @@ func (cli *ZSClient) GetLocalRaidController(uuid string) (*view.RaidPhysicalDriv
 }
 
 // SyncDataCenterFromRemote operates on DataCenterFromRemote
-func (cli *ZSClient) SyncDataCenterFromRemote(uuid string, params param.SyncDataCenterFromRemoteParam) (*view.SyncDataCenterFromRemoteEventView, error) {
+func (cli *ZSClient) SyncDataCenterFromRemote(params param.SyncDataCenterFromRemoteParam) (*view.SyncDataCenterFromRemoteEventView, error) {
 	var resp view.SyncDataCenterFromRemoteEventView
-	err := cli.GetWithSpec("v1/hybrid/data-center", fmt.Sprintf(\"%s/sync\", uuid), "", "", params, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hybrid/data-center", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -185,38 +178,34 @@ func (cli *ZSClient) SyncDataCenterFromRemote(uuid string, params param.SyncData
 // ChangeBackupStorageState changes BackupStorageState
 func (cli *ZSClient) ChangeBackupStorageState(uuid string, params param.ChangeBackupStorageStateParam) (*view.BackupStorageInventoryView, error) {
 	var resp view.ChangeBackupStorageStateEventView
-	err := cli.PutWithSpec("v1/backup-storage", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/backup-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // SetVmInstanceHygonMdev operates on VmInstanceHygonMdev
-func (cli *ZSClient) SetVmInstanceHygonMdev(uuid string, params param.SetVmInstanceHygonMdevParam) (*view.SetVmInstanceHygonMdevEventView, error) {
+func (cli *ZSClient) SetVmInstanceHygonMdev(params param.SetVmInstanceHygonMdevParam) (*view.SetVmInstanceHygonMdevEventView, error) {
 	resp := view.SetVmInstanceHygonMdevEventView{}
-	err := cli.PostWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/hygon-mdev\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/vm-instances", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetCandidateIsoForAttachingVm gets CandidateIsoForAttachingVm by uuid
-func (cli *ZSClient) GetCandidateIsoForAttachingVm(vmInstanceUuid string) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) GetCandidateIsoForAttachingVm(uuid string) (*view.ImageInventoryView, error) {
 	var resp view.ImageInventoryView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/iso-candidates\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SecurityMachineDetectSync operates on MachineDetectSync
-func (cli *ZSClient) SecurityMachineDetectSync(uuid string, params param.SecurityMachineDetectSyncParam) (*view.SecurityMachineDetectSyncEventView, error) {
+func (cli *ZSClient) SecurityMachineDetectSync(params param.SecurityMachineDetectSyncParam) (*view.SecurityMachineDetectSyncEventView, error) {
 	resp := view.SecurityMachineDetectSyncEventView{}
-	err := cli.PostWithSpec("v1/security-machine", fmt.Sprintf(\"%s/detect/sync/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/security-machine", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -225,8 +214,7 @@ func (cli *ZSClient) SecurityMachineDetectSync(uuid string, params param.Securit
 // ChangeSecurityGroupState changes SecurityGroupState
 func (cli *ZSClient) ChangeSecurityGroupState(uuid string, params param.ChangeSecurityGroupStateParam) (*view.SecurityGroupInventoryView, error) {
 	var resp view.ChangeSecurityGroupStateEventView
-	err := cli.PutWithSpec("v1/security-groups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/security-groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -235,8 +223,7 @@ func (cli *ZSClient) ChangeSecurityGroupState(uuid string, params param.ChangeSe
 // ChangeBareMetal2ChassisOfferingState changes BareMetal2ChassisOfferingState
 func (cli *ZSClient) ChangeBareMetal2ChassisOfferingState(uuid string, params param.ChangeBareMetal2ChassisOfferingStateParam) (*view.BareMetal2ChassisOfferingInventoryView, error) {
 	var resp view.ChangeBareMetal2ChassisOfferingStateEventView
-	err := cli.PutWithSpec("v1/baremetal2/chassis/offerings", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/chassis/offerings", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -304,8 +291,7 @@ func (cli *ZSClient) RegisterLicenseServer(params param.RegisterLicenseServerPar
 // ChangeAutoScalingGroupState changes AutoScalingGroupState
 func (cli *ZSClient) ChangeAutoScalingGroupState(uuid string, params param.ChangeAutoScalingGroupStateParam) (*view.AutoScalingGroupInventoryView, error) {
 	var resp view.ChangeAutoScalingGroupStateEventView
-	err := cli.PutWithSpec("v1/autoscaling/groups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/autoscaling/groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -321,10 +307,9 @@ func (cli *ZSClient) CreateAutoScalingGroupRemovalInstanceRule(params param.Crea
 }
 
 // ChangeSlbGroupMonitorIps changes SlbGroupMonitorIps
-func (cli *ZSClient) ChangeSlbGroupMonitorIps(slbGroupUuid string, params param.ChangeSlbGroupMonitorIpsParam) (*view.SlbGroupInventoryView, error) {
+func (cli *ZSClient) ChangeSlbGroupMonitorIps(uuid string, params param.ChangeSlbGroupMonitorIpsParam) (*view.SlbGroupInventoryView, error) {
 	var resp view.ChangeSlbGroupMonitorIpsEventView
-	err := cli.PutWithSpec("v1/load-balancers/slb/groups", fmt.Sprintf(\"%s/monitorIps\", slbGroupUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/load-balancers/slb/groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -366,10 +351,9 @@ func (cli *ZSClient) AttachL2NetworkToCluster(l2NetworkUuid string, clusterUuid 
 }
 
 // ChangeVmNicType changes VmNicType
-func (cli *ZSClient) ChangeVmNicType(vmNicUuid string, params param.ChangeVmNicTypeParam) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) ChangeVmNicType(uuid string, params param.ChangeVmNicTypeParam) (*view.VmNicInventoryView, error) {
 	var resp view.ChangeVmNicTypeEventView
-	err := cli.PutWithSpec("v1/vm-instances/nics", fmt.Sprintf(\"%s/actions\", vmNicUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/nics", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -378,8 +362,7 @@ func (cli *ZSClient) ChangeVmNicType(vmNicUuid string, params param.ChangeVmNicT
 // ChangeFirewallRuleState changes FirewallRuleState
 func (cli *ZSClient) ChangeFirewallRuleState(uuid string, params param.ChangeFirewallRuleStateParam) (*view.VpcFirewallRuleInventoryView, error) {
 	var resp view.ChangeFirewallRuleStateEventView
-	err := cli.PutWithSpec("v1/vpcfirewalls/rules", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpcfirewalls/rules", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -420,8 +403,7 @@ func (cli *ZSClient) RemoveActionFromAlarm(alarmUuid string, actionUuid string, 
 // ChangeEipState changes EipState
 func (cli *ZSClient) ChangeEipState(uuid string, params param.ChangeEipStateParam) (*view.EipInventoryView, error) {
 	var resp view.ChangeEipStateEventView
-	err := cli.PutWithSpec("v1/eips", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/eips", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -433,20 +415,18 @@ func (cli *ZSClient) DetachSshKeyPairFromVmInstance(sshKeyPairUuid string, vmIns
 }
 
 // GetPrimaryStorageCandidatesForVmMigration gets PrimaryStorageCandidatesForVmMigration by uuid
-func (cli *ZSClient) GetPrimaryStorageCandidatesForVmMigration(vmInstanceUuid string) (*view.PrimaryStorageInventoryView, error) {
+func (cli *ZSClient) GetPrimaryStorageCandidatesForVmMigration(uuid string) (*view.PrimaryStorageInventoryView, error) {
 	var resp view.PrimaryStorageInventoryView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/storage-migration-candidates\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PrimaryStorageMigrateVolume operates on PrimaryStorageMigrateVolume
-func (cli *ZSClient) PrimaryStorageMigrateVolume(volumeUuid string, params param.PrimaryStorageMigrateVolumeParam) (*view.VolumeInventoryView, error) {
+func (cli *ZSClient) PrimaryStorageMigrateVolume(uuid string, params param.PrimaryStorageMigrateVolumeParam) (*view.VolumeInventoryView, error) {
 	var resp view.PrimaryStorageMigrateVolumeEventView
-	err := cli.PutWithSpec("v1/primary-storage/volumes", fmt.Sprintf(\"%s/actions\", volumeUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -469,7 +449,7 @@ func (cli *ZSClient) PrimaryStorageMigrateVolumeAsync(params param.PrimaryStorag
 
 // DeleteHybridEipRemote deletes HybridEipRemote
 func (cli *ZSClient) DeleteHybridEipRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/eip", fmt.Sprintf(\"%s/remote\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/eip", uuid, string(deleteMode))
 }
 
 // DeleteModelServiceInstanceGroups deletes ModelServiceInstanceGroups
@@ -480,8 +460,7 @@ func (cli *ZSClient) DeleteModelServiceInstanceGroups(uuid string, deleteMode pa
 // GetVmBootOrder gets VmBootOrder by uuid
 func (cli *ZSClient) GetVmBootOrder(uuid string) (*view.GetVmBootOrderView, error) {
 	var resp view.GetVmBootOrderView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/boot-orders\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -490,8 +469,7 @@ func (cli *ZSClient) GetVmBootOrder(uuid string) (*view.GetVmBootOrderView, erro
 // SetVmBootOrder operates on VmBootOrder
 func (cli *ZSClient) SetVmBootOrder(uuid string, params param.SetVmBootOrderParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.SetVmBootOrderEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -521,10 +499,9 @@ func (cli *ZSClient) GetDatabaseBackupFromImageStore(uuid string) (*view.GetData
 }
 
 // SyncEcsVSwitchFromRemote operates on EcsVSwitchFromRemote
-func (cli *ZSClient) SyncEcsVSwitchFromRemote(dataCenterUuid string, params param.SyncEcsVSwitchFromRemoteParam) (*view.EcsVSwitchInventoryView, error) {
+func (cli *ZSClient) SyncEcsVSwitchFromRemote(params param.SyncEcsVSwitchFromRemoteParam) (*view.EcsVSwitchInventoryView, error) {
 	resp := view.EcsVSwitchInventoryView{}
-	err := cli.PostWithSpec("v1/hybrid/aliyun/vswitch", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/aliyun/vswitch", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -533,18 +510,16 @@ func (cli *ZSClient) SyncEcsVSwitchFromRemote(dataCenterUuid string, params para
 // LocateLocalRaidPhysicalDrive operates on LocalRaidPhysicalDrive
 func (cli *ZSClient) LocateLocalRaidPhysicalDrive(uuid string, params param.LocateLocalRaidPhysicalDriveParam) (*view.RaidPhysicalDriveInventoryView, error) {
 	var resp view.LocateLocalRaidPhysicalDriveEventView
-	err := cli.PutWithSpec("v1/storage-devices/local-raid/physical-drives", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/storage-devices/local-raid/physical-drives", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // CleanUpBaremetalChassisBonding operates on UpBaremetalChassisBonding
-func (cli *ZSClient) CleanUpBaremetalChassisBonding(chassisUuid string, params param.CleanUpBaremetalChassisBondingParam) (*view.CleanUpBaremetalChassisBondingEventView, error) {
+func (cli *ZSClient) CleanUpBaremetalChassisBonding(uuid string, params param.CleanUpBaremetalChassisBondingParam) (*view.CleanUpBaremetalChassisBondingEventView, error) {
 	resp := view.CleanUpBaremetalChassisBondingEventView{}
-	err := cli.PutWithSpec("v1/baremetal/chassis", fmt.Sprintf(\"%s/actions\", chassisUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -565,8 +540,8 @@ func (cli *ZSClient) AddIAM2VirtualIDGroupToProjects(params param.AddIAM2Virtual
 }
 
 // RemoveServerGroupFromLoadBalancerListener removes ServerGroupFromLoadBalancerListener
-func (cli *ZSClient) RemoveServerGroupFromLoadBalancerListener(listenerUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/load-balancers/listeners", fmt.Sprintf(\"%s/servergroups\", listenerUuid), string(deleteMode))
+func (cli *ZSClient) RemoveServerGroupFromLoadBalancerListener(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
 }
 
 // AddSharedBlockToSharedBlockGroup adds SharedBlockToSharedBlockGroup
@@ -589,12 +564,12 @@ func (cli *ZSClient) RefreshCaptcha(params param.RefreshCaptchaParam) (*view.Ref
 
 // DeleteEcsVSwitchInLocal deletes EcsVSwitchInLocal
 func (cli *ZSClient) DeleteEcsVSwitchInLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/vswitch", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/vswitch", uuid, string(deleteMode))
 }
 
 // DeleteTag deletes Tag
 func (cli *ZSClient) DeleteTag(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/tags", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/tags", uuid, string(deleteMode))
 }
 
 // AddIAM2VirtualIDsToOrganization adds IAM2VirtualIDsToOrganization
@@ -628,8 +603,7 @@ func (cli *ZSClient) ExportNbdVolumes(params param.ExportNbdVolumesParam) (*view
 // SelfTestLocalRaid operates on LocalRaid
 func (cli *ZSClient) SelfTestLocalRaid(uuid string, params param.SelfTestLocalRaidParam) (*view.SelfTestLocalRaidEventView, error) {
 	resp := view.SelfTestLocalRaidEventView{}
-	err := cli.PutWithSpec("v1/storage-devices/local-raid/physical-drives", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/storage-devices/local-raid/physical-drives", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -638,8 +612,7 @@ func (cli *ZSClient) SelfTestLocalRaid(uuid string, params param.SelfTestLocalRa
 // ChangeSNSApplicationPlatformState changes SNSApplicationPlatformState
 func (cli *ZSClient) ChangeSNSApplicationPlatformState(uuid string, params param.ChangeSNSApplicationPlatformStateParam) (*view.SNSApplicationPlatformInventoryView, error) {
 	var resp view.ChangeSNSApplicationPlatformStateEventView
-	err := cli.PutWithSpec("v1/sns/application-platforms", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sns/application-platforms", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -648,8 +621,7 @@ func (cli *ZSClient) ChangeSNSApplicationPlatformState(uuid string, params param
 // PowerOffBareMetal2Chassis operates on PowerOffBareMetal2Chassis
 func (cli *ZSClient) PowerOffBareMetal2Chassis(uuid string, params param.PowerOffBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	var resp view.PowerOffBareMetal2ChassisEventView
-	err := cli.PutWithSpec("v1/baremetal2/chassis", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -668,33 +640,30 @@ func (cli *ZSClient) SdnControllerChangeHost(sdnControllerUuid string, hostUuid 
 // UpdateResourcePrice updates ResourcePrice
 func (cli *ZSClient) UpdateResourcePrice(uuid string, params param.UpdateResourcePriceParam) (*view.PriceInventoryView, error) {
 	var resp view.UpdateResourcePriceEventView
-	err := cli.PutWithSpec("v1/billings/prices", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/billings/prices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // DetachTagFromResources operates on TagFromResources
-func (cli *ZSClient) DetachTagFromResources(tagUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/tags", fmt.Sprintf(\"%s/resources\", tagUuid), string(deleteMode))
+func (cli *ZSClient) DetachTagFromResources(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/tags", uuid, string(deleteMode))
 }
 
 // ChangeHostState changes HostState
 func (cli *ZSClient) ChangeHostState(uuid string, params param.ChangeHostStateParam) (*view.HostInventoryView, error) {
 	var resp view.ChangeHostStateEventView
-	err := cli.PutWithSpec("v1/hosts", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // UpdateVmNicMac updates VmNicMac
-func (cli *ZSClient) UpdateVmNicMac(vmNicUuid string, params param.UpdateVmNicMacParam) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) UpdateVmNicMac(uuid string, params param.UpdateVmNicMacParam) (*view.VmNicInventoryView, error) {
 	var resp view.UpdateVmNicMacEventView
-	err := cli.PutWithSpec("v1/vm-instances/nics", fmt.Sprintf(\"%s/actions\", vmNicUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/nics", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -702,19 +671,18 @@ func (cli *ZSClient) UpdateVmNicMac(vmNicUuid string, params param.UpdateVmNicMa
 
 // DeleteVmInstanceHaLevel deletes VmInstanceHaLevel
 func (cli *ZSClient) DeleteVmInstanceHaLevel(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/ha-levels\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // DeleteResourcePrice deletes ResourcePrice
 func (cli *ZSClient) DeleteResourcePrice(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/billings/prices", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/billings/prices", uuid, string(deleteMode))
 }
 
 // CleanUpBareMetal2Bonding operates on UpBareMetal2Bonding
-func (cli *ZSClient) CleanUpBareMetal2Bonding(chassisUuid string, params param.CleanUpBareMetal2BondingParam) (*view.CleanUpBaremetal2BondingEventView, error) {
+func (cli *ZSClient) CleanUpBareMetal2Bonding(uuid string, params param.CleanUpBareMetal2BondingParam) (*view.CleanUpBaremetal2BondingEventView, error) {
 	resp := view.CleanUpBaremetal2BondingEventView{}
-	err := cli.PutWithSpec("v1/baremetal2/chassis", fmt.Sprintf(\"%s/actions\", chassisUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -735,10 +703,9 @@ func (cli *ZSClient) AddLabelToAlarm(params param.AddLabelToAlarmParam) (*view.A
 }
 
 // SyncAliyunRouterInterfaceFromRemote operates on AliyunRouterInterfaceFromRemote
-func (cli *ZSClient) SyncAliyunRouterInterfaceFromRemote(dataCenterUuid string, params param.SyncAliyunRouterInterfaceFromRemoteParam) (*view.AliyunRouterInterfaceInventoryView, error) {
+func (cli *ZSClient) SyncAliyunRouterInterfaceFromRemote(uuid string, params param.SyncAliyunRouterInterfaceFromRemoteParam) (*view.AliyunRouterInterfaceInventoryView, error) {
 	resp := view.AliyunRouterInterfaceInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/router-interface", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/router-interface", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -769,10 +736,9 @@ func (cli *ZSClient) ExportVmOvaPackageAsync(params param.ExportVmOvaPackagePara
 }
 
 // RevertVmFromCdpBackup operates on VmFromCdpBackup
-func (cli *ZSClient) RevertVmFromCdpBackup(vmInstanceUuid string, params param.RevertVmFromCdpBackupParam) (*view.RevertVmFromCdpBackupEventView, error) {
+func (cli *ZSClient) RevertVmFromCdpBackup(uuid string, params param.RevertVmFromCdpBackupParam) (*view.RevertVmFromCdpBackupEventView, error) {
 	resp := view.RevertVmFromCdpBackupEventView{}
-	err := cli.PutWithSpec("v1/cdp-backups", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/cdp-backups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -841,8 +807,7 @@ func (cli *ZSClient) AddUserToGroup(params param.AddUserToGroupParam) (*view.Add
 // UpdateVRouterOspfArea updates VRouterOspfArea
 func (cli *ZSClient) UpdateVRouterOspfArea(uuid string, params param.UpdateVRouterOspfAreaParam) (*view.RouterAreaInventoryView, error) {
 	var resp view.UpdateVRouterOspfAreaEventView
-	err := cli.PutWithSpec("v1/routerArea", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/routerArea", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -891,14 +856,13 @@ func (cli *ZSClient) ReloadLicense(uuid string, params param.ReloadLicenseParam)
 
 // DeleteNicQos deletes NicQos
 func (cli *ZSClient) DeleteNicQos(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/nic-qos\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // ChangeL2NetworkVlanId changes L2NetworkVlanId
 func (cli *ZSClient) ChangeL2NetworkVlanId(uuid string, params param.ChangeL2NetworkVlanIdParam) (*view.L2NetworkInventoryView, error) {
 	var resp view.ChangeL2NetworkVlanIdEventView
-	err := cli.PutWithSpec("v1/l2-networks", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/l2-networks", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -916,8 +880,7 @@ func (cli *ZSClient) GetResourceStackVmStatus(uuid string) (*view.GetResourceSta
 // DetachHybridKey operates on HybridKey
 func (cli *ZSClient) DetachHybridKey(uuid string, params param.DetachHybridKeyParam) (*view.DetachHybridKeyEventView, error) {
 	resp := view.DetachHybridKeyEventView{}
-	err := cli.PutWithSpec("v1/hybrid/hybrid/key", fmt.Sprintf(\"%s/detach\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/hybrid/key", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -925,12 +888,12 @@ func (cli *ZSClient) DetachHybridKey(uuid string, params param.DetachHybridKeyPa
 
 // RemoveDnsFromVpcRouter removes DnsFromVpcRouter
 func (cli *ZSClient) RemoveDnsFromVpcRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/dns\", uuid), string(deleteMode))
+	return cli.Delete("v1/vpc/virtual-routers", uuid, string(deleteMode))
 }
 
 // DeleteHybridEipFromLocal deletes HybridEipFromLocal
 func (cli *ZSClient) DeleteHybridEipFromLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/eip", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/eip", uuid, string(deleteMode))
 }
 
 // GetAvailableTriggers gets AvailableTriggers by uuid
@@ -943,10 +906,9 @@ func (cli *ZSClient) GetAvailableTriggers(uuid string) (*view.SchedulerTriggerIn
 }
 
 // ReimageVmInstance operates on ReimageVmInstance
-func (cli *ZSClient) ReimageVmInstance(vmInstanceUuid string, params param.ReimageVmInstanceParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) ReimageVmInstance(uuid string, params param.ReimageVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.ReimageVmInstanceEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -964,8 +926,7 @@ func (cli *ZSClient) UpdateDatasets(uuid string, params param.UpdateDatasetsPara
 // SyncEcsSecurityGroupRuleFromRemote operates on EcsSecurityGroupRuleFromRemote
 func (cli *ZSClient) SyncEcsSecurityGroupRuleFromRemote(uuid string, params param.SyncEcsSecurityGroupRuleFromRemoteParam) (*view.EcsSecurityGroupRuleInventoryView, error) {
 	resp := view.EcsSecurityGroupRuleInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/security-group-rule", fmt.Sprintf(\"%s/sync\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/security-group-rule", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -986,10 +947,9 @@ func (cli *ZSClient) GetFirewallRuleTemplate(uuid string) (*view.VpcFirewallRule
 }
 
 // SyncIdentityFromRemote operates on IdentityFromRemote
-func (cli *ZSClient) SyncIdentityFromRemote(uuid string, params param.SyncIdentityFromRemoteParam) (*view.SyncIdentityFromRemoteEventView, error) {
+func (cli *ZSClient) SyncIdentityFromRemote(params param.SyncIdentityFromRemoteParam) (*view.SyncIdentityFromRemoteEventView, error) {
 	var resp view.SyncIdentityFromRemoteEventView
-	err := cli.GetWithSpec("v1/hybrid/identity-zone", fmt.Sprintf(\"%s/sync\", uuid), "", "", params, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hybrid/identity-zone", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1007,18 +967,16 @@ func (cli *ZSClient) SetImageStoreBackupStorageQuota(uuid string, params param.S
 // ChangeClusterState changes ClusterState
 func (cli *ZSClient) ChangeClusterState(uuid string, params param.ChangeClusterStateParam) (*view.ClusterInventoryView, error) {
 	var resp view.ChangeClusterStateEventView
-	err := cli.PutWithSpec("v1/clusters", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/clusters", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // ChangeVfNicHaState changes VfNicHaState
-func (cli *ZSClient) ChangeVfNicHaState(vfNicUuid string, params param.ChangeVfNicHaStateParam) (*view.VmVfNicInventoryView, error) {
+func (cli *ZSClient) ChangeVfNicHaState(uuid string, params param.ChangeVfNicHaStateParam) (*view.VmVfNicInventoryView, error) {
 	var resp view.ChangeVfNicHaStateEventView
-	err := cli.PutWithSpec("v1/vm-instances/nics", fmt.Sprintf(\"%s/actions\", vfNicUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/nics", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -1036,8 +994,7 @@ func (cli *ZSClient) CreateOvnControllerOffering(params param.CreateOvnControlle
 // GetIAM2OrganizationVirtualIDNumber gets IAM2OrganizationVirtualIDNumber by uuid
 func (cli *ZSClient) GetIAM2OrganizationVirtualIDNumber(uuid string) (*view.GetIAM2OrganizationVirtualIDNumberView, error) {
 	var resp view.GetIAM2OrganizationVirtualIDNumberView
-	err := cli.GetWithSpec("v1/iam2/organizations", fmt.Sprintf(\"%s/virtualIDNumber\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/iam2/organizations", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1045,14 +1002,13 @@ func (cli *ZSClient) GetIAM2OrganizationVirtualIDNumber(uuid string) (*view.GetI
 
 // DeleteEcsInstanceLocal deletes EcsInstanceLocal
 func (cli *ZSClient) DeleteEcsInstanceLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/ecs", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/ecs", uuid, string(deleteMode))
 }
 
 // ChangePortMirrorState changes PortMirrorState
 func (cli *ZSClient) ChangePortMirrorState(uuid string, params param.ChangePortMirrorStateParam) (*view.PortMirrorInventoryView, error) {
 	var resp view.ChangePortMirrorStateEventView
-	err := cli.PutWithSpec("v1/port-mirrors", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/port-mirrors", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -1066,8 +1022,7 @@ func (cli *ZSClient) UnsubscribeSNSTopic(topicUuid string, endpointUuid string, 
 // SetNicQos operates on NicQos
 func (cli *ZSClient) SetNicQos(uuid string, params param.SetNicQosParam) (*view.SetNicQosEventView, error) {
 	resp := view.SetNicQosEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1076,8 +1031,7 @@ func (cli *ZSClient) SetNicQos(uuid string, params param.SetNicQosParam) (*view.
 // CancelLongJob operates on CancelLongJob
 func (cli *ZSClient) CancelLongJob(uuid string, params param.CancelLongJobParam) (*view.CancelLongJobEventView, error) {
 	resp := view.CancelLongJobEventView{}
-	err := cli.PutWithSpec("v1/longjobs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/longjobs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1093,20 +1047,18 @@ func (cli *ZSClient) GetRouteTableVpcVRouterCandidate(uuid string) (*view.VpcRou
 }
 
 // GenerateAccountBilling operates on AccountBilling
-func (cli *ZSClient) GenerateAccountBilling(accountUuid string, params param.GenerateAccountBillingParam) (*view.GenerateAccountBillingEventView, error) {
+func (cli *ZSClient) GenerateAccountBilling(uuid string, params param.GenerateAccountBillingParam) (*view.GenerateAccountBillingEventView, error) {
 	resp := view.GenerateAccountBillingEventView{}
-	err := cli.PutWithSpec("v1/billings/accounts", fmt.Sprintf(\"%s/actions\", accountUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/billings/accounts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SyncAliyunVirtualRouterFromRemote operates on AliyunVirtualRouterFromRemote
-func (cli *ZSClient) SyncAliyunVirtualRouterFromRemote(vpcUuid string, params param.SyncAliyunVirtualRouterFromRemoteParam) (*view.VpcVirtualRouterInventoryView, error) {
+func (cli *ZSClient) SyncAliyunVirtualRouterFromRemote(uuid string, params param.SyncAliyunVirtualRouterFromRemoteParam) (*view.VpcVirtualRouterInventoryView, error) {
 	resp := view.VpcVirtualRouterInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/vrouter", fmt.Sprintf(\"%s/sync\", vpcUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/vrouter", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1138,18 +1090,16 @@ func (cli *ZSClient) GetInvocationRecords(uuid string) (*view.InvocationRecordVi
 // ChangeRoleState changes RoleState
 func (cli *ZSClient) ChangeRoleState(uuid string, params param.ChangeRoleStateParam) (*view.RoleInventoryView, error) {
 	var resp view.ChangeRoleStateEventView
-	err := cli.PutWithSpec("v1/identities/roles", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/identities/roles", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // GetVRouterFlowCounter gets VRouterFlowCounter by uuid
-func (cli *ZSClient) GetVRouterFlowCounter(vRouterUuid string) (*view.GetVRouterFlowCounterView, error) {
+func (cli *ZSClient) GetVRouterFlowCounter(uuid string) (*view.GetVRouterFlowCounterView, error) {
 	var resp view.GetVRouterFlowCounterView
-	err := cli.GetWithSpec("v1/flowmeters", fmt.Sprintf(\"%s/counter\", vRouterUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/flowmeters", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1176,8 +1126,7 @@ func (cli *ZSClient) GetBareMetal2SupportedBootMode(uuid string) (*view.GetBareM
 // GetHostPowerStatus gets HostPowerStatus by uuid
 func (cli *ZSClient) GetHostPowerStatus(uuid string) (*view.HostIpmiInventoryView, error) {
 	var resp view.GetHostPowerStatusEventView
-	err := cli.GetWithSpec("v1/hosts/power", fmt.Sprintf(\"%s/actions\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hosts/power", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -1195,18 +1144,16 @@ func (cli *ZSClient) GetChainTask(uuid string) (*view.GetChainTaskView, error) {
 // UpdateConnectionBetweenL3NetWorkAndAliyunVSwitch updates ConnectionBetweenL3NetWorkAndAliyunVSwitch
 func (cli *ZSClient) UpdateConnectionBetweenL3NetWorkAndAliyunVSwitch(uuid string, params param.UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParam) (*view.ConnectionRelationShipInventoryView, error) {
 	var resp view.UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchEventView
-	err := cli.PutWithSpec("v1/hybrid/aliyun/connections", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/connections", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // ChangeHostPassword changes HostPassword
-func (cli *ZSClient) ChangeHostPassword(hostUuid string, params param.ChangeHostPasswordParam) (*view.ChangeHostPasswordEventView, error) {
+func (cli *ZSClient) ChangeHostPassword(uuid string, params param.ChangeHostPasswordParam) (*view.ChangeHostPasswordEventView, error) {
 	resp := view.ChangeHostPasswordEventView{}
-	err := cli.PutWithSpec("v1/hosts/kvm", fmt.Sprintf(\"%s/actions\", hostUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/kvm", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1224,8 +1171,7 @@ func (cli *ZSClient) CreateSlbInstance(params param.CreateSlbInstanceParam) (*vi
 // ChangePortForwardingRuleState changes PortForwardingRuleState
 func (cli *ZSClient) ChangePortForwardingRuleState(uuid string, params param.ChangePortForwardingRuleStateParam) (*view.PortForwardingRuleInventoryView, error) {
 	var resp view.ChangePortForwardingRuleStateEventView
-	err := cli.PutWithSpec("v1/port-forwarding", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/port-forwarding", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -1250,10 +1196,9 @@ func (cli *ZSClient) PrometheusQueryLabelValues(params param.PrometheusQueryLabe
 }
 
 // ValidateClusterSupportDRS operates on ClusterSupportDRS
-func (cli *ZSClient) ValidateClusterSupportDRS(clusterUuid string, params param.ValidateClusterSupportDRSParam) (*view.ValidateClusterSupportDRSView, error) {
+func (cli *ZSClient) ValidateClusterSupportDRS(params param.ValidateClusterSupportDRSParam) (*view.ValidateClusterSupportDRSView, error) {
 	var resp view.ValidateClusterSupportDRSView
-	err := cli.GetWithSpec("v1/clusters", fmt.Sprintf(\"%s/drs/valid\", clusterUuid), "", "", params, &resp)
-	if err != nil {
+	if err := cli.Get("v1/clusters", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1262,8 +1207,7 @@ func (cli *ZSClient) ValidateClusterSupportDRS(clusterUuid string, params param.
 // ShrinkVolumeSnapshot operates on ShrinkVolumeSnapshot
 func (cli *ZSClient) ShrinkVolumeSnapshot(uuid string, params param.ShrinkVolumeSnapshotParam) (*view.ShrinkVolumeSnapshotEventView, error) {
 	resp := view.ShrinkVolumeSnapshotEventView{}
-	err := cli.PutWithSpec("v1/volume-snapshots/shrink", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volume-snapshots/shrink", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1302,10 +1246,9 @@ func (cli *ZSClient) GetIdentityZoneFromLocal(uuid string) (*view.IdentityZoneIn
 }
 
 // GetVmNicAttachedNetworkService gets VmNicAttachedNetworkService by uuid
-func (cli *ZSClient) GetVmNicAttachedNetworkService(vmNicUuid string) (*view.GetVmNicAttachedNetworkServiceView, error) {
+func (cli *ZSClient) GetVmNicAttachedNetworkService(uuid string) (*view.GetVmNicAttachedNetworkServiceView, error) {
 	var resp view.GetVmNicAttachedNetworkServiceView
-	err := cli.GetWithSpec("v1/vm-instances/nics", fmt.Sprintf(\"%s/attached-networkservices\", vmNicUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances/nics", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1314,8 +1257,7 @@ func (cli *ZSClient) GetVmNicAttachedNetworkService(vmNicUuid string) (*view.Get
 // GetVmHostname gets VmHostname by uuid
 func (cli *ZSClient) GetVmHostname(uuid string) (*view.GetVmHostnameView, error) {
 	var resp view.GetVmHostnameView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/hostnames\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1331,13 +1273,13 @@ func (cli *ZSClient) AddSchedulerJobsToSchedulerJobGroup(params param.AddSchedul
 }
 
 // DetachL3NetworkFromVm operates on L3NetworkFromVm
-func (cli *ZSClient) DetachL3NetworkFromVm(vmNicUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances/nics", fmt.Sprintf(\"%s\", vmNicUuid), string(deleteMode))
+func (cli *ZSClient) DetachL3NetworkFromVm(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vm-instances/nics", uuid, string(deleteMode))
 }
 
 // DeleteVpcUserVpnGatewayLocal deletes VpcUserVpnGatewayLocal
 func (cli *ZSClient) DeleteVpcUserVpnGatewayLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/user-gateway", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/user-gateway", uuid, string(deleteMode))
 }
 
 // CreateVRouterOspfArea creates VRouterOspfArea
@@ -1350,10 +1292,9 @@ func (cli *ZSClient) CreateVRouterOspfArea(params param.CreateVRouterOspfAreaPar
 }
 
 // SetSecurityMachineKey operates on SecurityMachineKey
-func (cli *ZSClient) SetSecurityMachineKey(uuid string, params param.SetSecurityMachineKeyParam) (*view.SecurityMachineInventoryView, error) {
+func (cli *ZSClient) SetSecurityMachineKey(params param.SetSecurityMachineKeyParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	err := cli.PostWithSpec("v1/secret-resource-pool-token/set", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/secret-resource-pool-token/set", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1371,8 +1312,7 @@ func (cli *ZSClient) CreateOAuthClient(params param.CreateOAuthClientParam) (*vi
 // GetVpcAttachedEip gets VpcAttachedEip by uuid
 func (cli *ZSClient) GetVpcAttachedEip(uuid string) (*view.EipInventoryView, error) {
 	var resp view.EipInventoryView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/attached-eip\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1386,8 +1326,7 @@ func (cli *ZSClient) RemoveSchedulerJobFromSchedulerTrigger(schedulerJobUuid str
 // ChangeMediaState changes MediaState
 func (cli *ZSClient) ChangeMediaState(uuid string, params param.ChangeMediaStateParam) (*view.MediaInventoryView, error) {
 	var resp view.ChangeMediaStateEventView
-	err := cli.PutWithSpec("v1/media", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/media", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -1396,8 +1335,7 @@ func (cli *ZSClient) ChangeMediaState(uuid string, params param.ChangeMediaState
 // ChangeIPSecConnectionState changes IPSecConnectionState
 func (cli *ZSClient) ChangeIPSecConnectionState(uuid string, params param.ChangeIPSecConnectionStateParam) (*view.IPsecConnectionInventoryView, error) {
 	var resp view.ChangeIPSecConnectionStateEventView
-	err := cli.PutWithSpec("v1/ipsec", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/ipsec", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -1434,38 +1372,35 @@ func (cli *ZSClient) GetEcsSecurityGroupRuleFromLocal(uuid string) (*view.EcsSec
 // StopAllResourcesInIAM2Project stops AllResourcesInIAM2Project
 func (cli *ZSClient) StopAllResourcesInIAM2Project(uuid string, params param.StopAllResourcesInIAM2ProjectParam) (*view.StopAllResourcesInIAM2ProjectEventView, error) {
 	resp := view.StopAllResourcesInIAM2ProjectEventView{}
-	err := cli.PutWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/projects", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // UpdateVmNetworkConfig updates VmNetworkConfig
-func (cli *ZSClient) UpdateVmNetworkConfig(vmInstanceUuid string, params param.UpdateVmNetworkConfigParam) (*view.UpdateVmNetworkConfigEventView, error) {
+func (cli *ZSClient) UpdateVmNetworkConfig(uuid string, params param.UpdateVmNetworkConfigParam) (*view.UpdateVmNetworkConfigEventView, error) {
 	resp := view.UpdateVmNetworkConfigEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/update-nic-config\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // RemoveTicketTypesFromTicketFlowCollection removes TicketTypesFromTicketFlowCollection
-func (cli *ZSClient) RemoveTicketTypesFromTicketFlowCollection(ticketFlowCollectionUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/tickets/flow-collections", fmt.Sprintf(\"%s/ticket-types\", ticketFlowCollectionUuid), string(deleteMode))
+func (cli *ZSClient) RemoveTicketTypesFromTicketFlowCollection(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/tickets/flow-collections", uuid, string(deleteMode))
 }
 
 // DeleteEcsVSwitchRemote deletes EcsVSwitchRemote
 func (cli *ZSClient) DeleteEcsVSwitchRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/vswitch/remote", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/vswitch/remote", uuid, string(deleteMode))
 }
 
 // SetVmStaticIp operates on VmStaticIp
-func (cli *ZSClient) SetVmStaticIp(vmInstanceUuid string, params param.SetVmStaticIpParam) (*view.SetVmStaticIpEventView, error) {
+func (cli *ZSClient) SetVmStaticIp(uuid string, params param.SetVmStaticIpParam) (*view.SetVmStaticIpEventView, error) {
 	resp := view.SetVmStaticIpEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1474,8 +1409,7 @@ func (cli *ZSClient) SetVmStaticIp(vmInstanceUuid string, params param.SetVmStat
 // GetVmSshKey gets VmSshKey by uuid
 func (cli *ZSClient) GetVmSshKey(uuid string) (*view.GetVmSshKeyView, error) {
 	var resp view.GetVmSshKeyView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/ssh-keys\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1484,8 +1418,7 @@ func (cli *ZSClient) GetVmSshKey(uuid string) (*view.GetVmSshKeyView, error) {
 // GetVmGuestToolsInfo gets VmGuestToolsInfo by uuid
 func (cli *ZSClient) GetVmGuestToolsInfo(uuid string) (*view.GetVmGuestToolsInfoView, error) {
 	var resp view.GetVmGuestToolsInfoView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/guest-tools-infos\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1502,14 +1435,13 @@ func (cli *ZSClient) ValidateDiskOfferingUserConfig(uuid string, params param.Va
 
 // DeleteVpcVpnGatewayLocal deletes VpcVpnGatewayLocal
 func (cli *ZSClient) DeleteVpcVpnGatewayLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/vpn-gateway", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/vpn-gateway", uuid, string(deleteMode))
 }
 
 // SetVmRDP operates on VmRDP
 func (cli *ZSClient) SetVmRDP(uuid string, params param.SetVmRDPParam) (*view.SetVmRDPEventView, error) {
 	resp := view.SetVmRDPEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1518,8 +1450,7 @@ func (cli *ZSClient) SetVmRDP(uuid string, params param.SetVmRDPParam) (*view.Se
 // RunSchedulerTrigger operates on RunSchedulerTrigger
 func (cli *ZSClient) RunSchedulerTrigger(uuid string, params param.RunSchedulerTriggerParam) (*view.RunSchedulerTriggerEventView, error) {
 	resp := view.RunSchedulerTriggerEventView{}
-	err := cli.PutWithSpec("v1/scheduler/triggers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/scheduler/triggers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1537,8 +1468,7 @@ func (cli *ZSClient) CreateAliyunVpcVirtualRouterEntryRemote(params param.Create
 // PowerOnHost operates on PowerOnHost
 func (cli *ZSClient) PowerOnHost(uuid string, params param.PowerOnHostParam) (*view.HostInventoryView, error) {
 	var resp view.PowerOnHostEventView
-	err := cli.PutWithSpec("v1/hosts/power", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/power", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -1546,19 +1476,18 @@ func (cli *ZSClient) PowerOnHost(uuid string, params param.PowerOnHostParam) (*v
 
 // DeleteAliyunSnapshotFromRemote deletes AliyunSnapshotFromRemote
 func (cli *ZSClient) DeleteAliyunSnapshotFromRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/snapshot", fmt.Sprintf(\"%s/remote\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/snapshot", uuid, string(deleteMode))
 }
 
 // RemoveCertificateFromLoadBalancerListener removes CertificateFromLoadBalancerListener
-func (cli *ZSClient) RemoveCertificateFromLoadBalancerListener(listenerUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/load-balancers/listeners", fmt.Sprintf(\"%s/certificate\", listenerUuid), string(deleteMode))
+func (cli *ZSClient) RemoveCertificateFromLoadBalancerListener(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
 }
 
 // GetPortForwardingAttachableVmNics gets PortForwardingAttachableVmNics by uuid
-func (cli *ZSClient) GetPortForwardingAttachableVmNics(ruleUuid string) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) GetPortForwardingAttachableVmNics(uuid string) (*view.VmNicInventoryView, error) {
 	var resp view.VmNicInventoryView
-	err := cli.GetWithSpec("v1/port-forwarding", fmt.Sprintf(\"%s/vm-instances/candidate-nics\", ruleUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/port-forwarding", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1566,7 +1495,7 @@ func (cli *ZSClient) GetPortForwardingAttachableVmNics(ruleUuid string) (*view.V
 
 // RemoveRendezvousPointFromMulticastRouter removes RendezvousPointFromMulticastRouter
 func (cli *ZSClient) RemoveRendezvousPointFromMulticastRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/multicast/virtual-routers", fmt.Sprintf(\"%s/RendezvousPoint\", uuid), string(deleteMode))
+	return cli.Delete("v1/multicast/virtual-routers", uuid, string(deleteMode))
 }
 
 // AddIAM2VirtualIDsToProject adds IAM2VirtualIDsToProject
@@ -1588,20 +1517,18 @@ func (cli *ZSClient) SubscribeEvent(params param.SubscribeEventParam) (*view.Eve
 }
 
 // GetPrimaryStorageCandidatesForVolumeMigration gets PrimaryStorageCandidatesForVolumeMigration by uuid
-func (cli *ZSClient) GetPrimaryStorageCandidatesForVolumeMigration(volumeUuid string) (*view.PrimaryStorageInventoryView, error) {
+func (cli *ZSClient) GetPrimaryStorageCandidatesForVolumeMigration(uuid string) (*view.PrimaryStorageInventoryView, error) {
 	var resp view.PrimaryStorageInventoryView
-	err := cli.GetWithSpec("v1/primary-storage/volumes", fmt.Sprintf(\"%s/migration-candidates\", volumeUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/primary-storage/volumes", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // UpgradeBackupStorageCdpTasks operates on UpgradeBackupStorageCdpTasks
-func (cli *ZSClient) UpgradeBackupStorageCdpTasks(backupStorageUuid string, params param.UpgradeBackupStorageCdpTasksParam) (*view.UpgradeBackupStorageCdpTasksEventView, error) {
+func (cli *ZSClient) UpgradeBackupStorageCdpTasks(uuid string, params param.UpgradeBackupStorageCdpTasksParam) (*view.UpgradeBackupStorageCdpTasksEventView, error) {
 	resp := view.UpgradeBackupStorageCdpTasksEventView{}
-	err := cli.PutWithSpec("v1/cdp-task/upgrade", fmt.Sprintf(\"%s/actions\", backupStorageUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/cdp-task/upgrade", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1609,19 +1536,18 @@ func (cli *ZSClient) UpgradeBackupStorageCdpTasks(backupStorageUuid string, para
 
 // DeleteVxlanL2Network deletes VxlanL2Network
 func (cli *ZSClient) DeleteVxlanL2Network(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/l2-networks/vxlan", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/l2-networks/vxlan", uuid, string(deleteMode))
 }
 
 // RemoveVmFromAffinityGroup removes VmFromAffinityGroup
-func (cli *ZSClient) RemoveVmFromAffinityGroup(affinityGroupUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/affinity-groups", fmt.Sprintf(\"%s/vm-instances\", affinityGroupUuid), string(deleteMode))
+func (cli *ZSClient) RemoveVmFromAffinityGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/affinity-groups", uuid, string(deleteMode))
 }
 
 // SetVolumeIoThreadPin operates on VolumeIoThreadPin
 func (cli *ZSClient) SetVolumeIoThreadPin(uuid string, params param.SetVolumeIoThreadPinParam) (*view.SetVolumeIoThreadPinEventView, error) {
 	resp := view.SetVolumeIoThreadPinEventView{}
-	err := cli.PutWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1630,8 +1556,7 @@ func (cli *ZSClient) SetVolumeIoThreadPin(uuid string, params param.SetVolumeIoT
 // UpdatePriorityConfig updates PriorityConfig
 func (cli *ZSClient) UpdatePriorityConfig(uuid string, params param.UpdatePriorityConfigParam) (*view.UpdatePriorityConfigEventView, error) {
 	resp := view.UpdatePriorityConfigEventView{}
-	err := cli.PutWithSpec("v1/vm-priority-config", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-priority-config", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1640,8 +1565,7 @@ func (cli *ZSClient) UpdatePriorityConfig(uuid string, params param.UpdatePriori
 // IdentifyHost operates on IdentifyHost
 func (cli *ZSClient) IdentifyHost(uuid string, params param.IdentifyHostParam) (*view.IdentifyHostEventView, error) {
 	resp := view.IdentifyHostEventView{}
-	err := cli.PutWithSpec("v1/hosts/kvm", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/kvm", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1668,8 +1592,7 @@ func (cli *ZSClient) CheckFirewallRuleConfigFile(params param.CheckFirewallRuleC
 // GetVmConsoleAddress gets VmConsoleAddress by uuid
 func (cli *ZSClient) GetVmConsoleAddress(uuid string) (*view.GetVmConsoleAddressView, error) {
 	var resp view.GetVmConsoleAddressView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/console-addresses\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1687,8 +1610,7 @@ func (cli *ZSClient) GetLoadBalancerListenerACLEntries(uuid string) (*view.Strin
 // UpdateHostIommuState updates HostIommuState
 func (cli *ZSClient) UpdateHostIommuState(uuid string, params param.UpdateHostIommuStateParam) (*view.UpdateHostIommuStateEventView, error) {
 	resp := view.UpdateHostIommuStateEventView{}
-	err := cli.PutWithSpec("v1/pci-device/hosts", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/pci-device/hosts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1696,7 +1618,7 @@ func (cli *ZSClient) UpdateHostIommuState(uuid string, params param.UpdateHostIo
 
 // UnsubscribeEvent operates on UnsubscribeEvent
 func (cli *ZSClient) UnsubscribeEvent(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/zwatch/events/subscriptions", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/zwatch/events/subscriptions", uuid, string(deleteMode))
 }
 
 // CreateObservabilityServer creates ObservabilityServer
@@ -1710,7 +1632,7 @@ func (cli *ZSClient) CreateObservabilityServer(params param.CreateObservabilityS
 
 // RemoveMonFromCephPrimaryStorage removes MonFromCephPrimaryStorage
 func (cli *ZSClient) RemoveMonFromCephPrimaryStorage(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/primary-storage/ceph", fmt.Sprintf(\"%s/mons\", uuid), string(deleteMode))
+	return cli.Delete("v1/primary-storage/ceph", uuid, string(deleteMode))
 }
 
 // GetVmsSchedulingStateFromSchedulingRule gets VmsSchedulingStateFromSchedulingRule by uuid
@@ -1725,18 +1647,16 @@ func (cli *ZSClient) GetVmsSchedulingStateFromSchedulingRule(uuid string) (*view
 // ChangeAlarmState changes AlarmState
 func (cli *ZSClient) ChangeAlarmState(uuid string, params param.ChangeAlarmStateParam) (*view.AlarmInventoryView, error) {
 	var resp view.ChangeAlarmStateEventView
-	err := cli.PutWithSpec("v1/zwatch/alarms", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/alarms", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // GetLocalStorageHostDiskCapacity gets LocalStorageHostDiskCapacity by uuid
-func (cli *ZSClient) GetLocalStorageHostDiskCapacity(primaryStorageUuid string) (*view.HostDiskCapacityView, error) {
+func (cli *ZSClient) GetLocalStorageHostDiskCapacity(uuid string) (*view.HostDiskCapacityView, error) {
 	var resp view.HostDiskCapacityView
-	err := cli.GetWithSpec("v1/primary-storage/local-storage", fmt.Sprintf(\"%s/capacities\", primaryStorageUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/primary-storage/local-storage", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1744,14 +1664,13 @@ func (cli *ZSClient) GetLocalStorageHostDiskCapacity(primaryStorageUuid string) 
 
 // DeleteVmSshKey deletes VmSshKey
 func (cli *ZSClient) DeleteVmSshKey(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/ssh-keys\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // GetPolicyRouteRuleSetFromVirtualRouter gets PolicyRouteRuleSetFromVirtualRouter by uuid
-func (cli *ZSClient) GetPolicyRouteRuleSetFromVirtualRouter(vmInstanceUuid string) (*view.PolicyRouteRuleSetInventoryView, error) {
+func (cli *ZSClient) GetPolicyRouteRuleSetFromVirtualRouter(uuid string) (*view.PolicyRouteRuleSetInventoryView, error) {
 	var resp view.PolicyRouteRuleSetInventoryView
-	err := cli.GetWithSpec("v1/policy-routes/rulesets/virtualrouter", fmt.Sprintf(\"%s\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/policy-routes/rulesets/virtualrouter", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1764,22 +1683,21 @@ func (cli *ZSClient) DeleteVxlanPoolRemoteVtep(l2NetworkUuid string, clusterUuid
 
 // RemoveAttributesFromIAM2Project removes AttributesFromIAM2Project
 func (cli *ZSClient) RemoveAttributesFromIAM2Project(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s/attributes\", uuid), string(deleteMode))
+	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
 }
 
 // RecoverDataVolume operates on DataVolume
 func (cli *ZSClient) RecoverDataVolume(uuid string, params param.RecoverDataVolumeParam) (*view.VolumeInventoryView, error) {
 	var resp view.RecoverDataVolumeEventView
-	err := cli.PutWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // RemoveIAM2VirtualIDsFromGroup removes IAM2VirtualIDsFromGroup
-func (cli *ZSClient) RemoveIAM2VirtualIDsFromGroup(groupUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/projects/groups", fmt.Sprintf(\"%s/virtual-ids\", groupUuid), string(deleteMode))
+func (cli *ZSClient) RemoveIAM2VirtualIDsFromGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
 }
 
 // QueryEventRecord queries EventRecord list
@@ -1823,18 +1741,16 @@ func (cli *ZSClient) GetIAM2LdapBinding(uuid string) (*view.LdapResourceRefInven
 // ProvisionSlbInstance operates on ProvisionSlbInstance
 func (cli *ZSClient) ProvisionSlbInstance(uuid string, params param.ProvisionSlbInstanceParam) (*view.SlbGroupInventoryView, error) {
 	var resp view.ProvisionSlbGroupInstanceEventView
-	err := cli.PutWithSpec("v1/load-balancers/slb/instances", fmt.Sprintf(\"%s/provision\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/load-balancers/slb/instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // SetVmUserDefinedXmlHookScript operates on VmUserDefinedXmlHookScript
-func (cli *ZSClient) SetVmUserDefinedXmlHookScript(vmInstanceUuid string, params param.SetVmUserDefinedXmlHookScriptParam) (*view.SetVmUserDefinedXmlHookScriptEventView, error) {
+func (cli *ZSClient) SetVmUserDefinedXmlHookScript(uuid string, params param.SetVmUserDefinedXmlHookScriptParam) (*view.SetVmUserDefinedXmlHookScriptEventView, error) {
 	resp := view.SetVmUserDefinedXmlHookScriptEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1842,7 +1758,7 @@ func (cli *ZSClient) SetVmUserDefinedXmlHookScript(vmInstanceUuid string, params
 
 // DetachProvisionNicFromBonding operates on ProvisionNicFromBonding
 func (cli *ZSClient) DetachProvisionNicFromBonding(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/baremetal2/bm-instances/bm2-bondings", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/baremetal2/bm-instances/bm2-bondings", uuid, string(deleteMode))
 }
 
 // GetHostAllocatorStrategies gets HostAllocatorStrategies by uuid
@@ -1864,10 +1780,9 @@ func (cli *ZSClient) GetInterfaceServiceTypeStatistic(uuid string) (*view.GetInt
 }
 
 // StartConnectionBetweenAliyunRouterInterface starts ConnectionBetweenAliyunRouterInterface
-func (cli *ZSClient) StartConnectionBetweenAliyunRouterInterface(vbrInterfaceUuid string, params param.StartConnectionBetweenAliyunRouterInterfaceParam) (*view.AliyunRouterInterfaceInventoryView, error) {
+func (cli *ZSClient) StartConnectionBetweenAliyunRouterInterface(uuid string, params param.StartConnectionBetweenAliyunRouterInterfaceParam) (*view.AliyunRouterInterfaceInventoryView, error) {
 	var resp view.StartConnectionBetweenAliyunRouterInterfaceEventView
-	err := cli.PutWithSpec("v1/hybrid/aliyun/router-interface", fmt.Sprintf(\"%s/actions\", vbrInterfaceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/router-interface", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -1897,10 +1812,9 @@ func (cli *ZSClient) CreateRootVolumeTemplateFromVolumeSnapshot(params param.Cre
 }
 
 // AllocateHostResource operates on HostResource
-func (cli *ZSClient) AllocateHostResource(uuid string, params param.AllocateHostResourceParam) (*view.AllocateHostResourceEventView, error) {
+func (cli *ZSClient) AllocateHostResource(params param.AllocateHostResourceParam) (*view.AllocateHostResourceEventView, error) {
 	resp := view.AllocateHostResourceEventView{}
-	err := cli.PostWithSpec("v1/hosts", fmt.Sprintf(\"%s/allocate-resource\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hosts", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1926,7 +1840,7 @@ func (cli *ZSClient) CheckElaborationContent(params param.CheckElaborationConten
 
 // DeleteVmConsolePassword deletes VmConsolePassword
 func (cli *ZSClient) DeleteVmConsolePassword(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/console-password\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // CreateVmBackup creates VmBackup
@@ -1956,8 +1870,7 @@ func (cli *ZSClient) CreateVmBackupAsync(params param.CreateVmBackupParam) (stri
 // GetPrimaryStorageLicenseInfo gets PrimaryStorageLicenseInfo by uuid
 func (cli *ZSClient) GetPrimaryStorageLicenseInfo(uuid string) (*view.GetPrimaryStorageLicenseInfoView, error) {
 	var resp view.GetPrimaryStorageLicenseInfoView
-	err := cli.GetWithSpec("v1/primary-storage", fmt.Sprintf(\"%s/license\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/primary-storage", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1994,26 +1907,24 @@ func (cli *ZSClient) AttachBaremetalPxeServerToCluster(clusterUuid string, pxeSe
 // GetVmStartingCandidateClustersHosts gets VmStartingCandidateClustersHosts by uuid
 func (cli *ZSClient) GetVmStartingCandidateClustersHosts(uuid string) (*view.GetVmStartingCandidateClustersHostsView, error) {
 	var resp view.GetVmStartingCandidateClustersHostsView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/starting-target-hosts\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // RecoverVmBackupFromImageStoreBackupStorage operates on VmBackupFromImageStoreBackupStorage
-func (cli *ZSClient) RecoverVmBackupFromImageStoreBackupStorage(groupUuid string, params param.RecoverVmBackupFromImageStoreBackupStorageParam) (*view.VolumeBackupInventoryView, error) {
+func (cli *ZSClient) RecoverVmBackupFromImageStoreBackupStorage(uuid string, params param.RecoverVmBackupFromImageStoreBackupStorageParam) (*view.VolumeBackupInventoryView, error) {
 	resp := view.VolumeBackupInventoryView{}
-	err := cli.PutWithSpec("v1/vm-backups", fmt.Sprintf(\"%s/actions\", groupUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-backups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DetachIAM2ProjectFromIAM2Organization operates on IAM2ProjectFromIAM2Organization
-func (cli *ZSClient) DetachIAM2ProjectFromIAM2Organization(projectUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s/iam2/organizations\", projectUuid), string(deleteMode))
+func (cli *ZSClient) DetachIAM2ProjectFromIAM2Organization(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
 }
 
 // DiscoverExternalPrimaryStorage operates on DiscoverExternalPrimaryStorage
@@ -2028,18 +1939,16 @@ func (cli *ZSClient) DiscoverExternalPrimaryStorage(params param.DiscoverExterna
 // GetVolumeIoThreadPin gets VolumeIoThreadPin by uuid
 func (cli *ZSClient) GetVolumeIoThreadPin(uuid string) (*view.GetVolumeIoThreadPinView, error) {
 	var resp view.GetVolumeIoThreadPinView
-	err := cli.GetWithSpec("v1/volumes", fmt.Sprintf(\"%s/io-thread-pin\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/volumes", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetConnectionAccessPointFromRemote gets ConnectionAccessPointFromRemote by uuid
-func (cli *ZSClient) GetConnectionAccessPointFromRemote(dataCenterUuid string) (*view.ConnectionAccessPointInventoryView, error) {
+func (cli *ZSClient) GetConnectionAccessPointFromRemote(uuid string) (*view.ConnectionAccessPointInventoryView, error) {
 	var resp view.ConnectionAccessPointInventoryView
-	err := cli.GetWithSpec("v1/hybrid/aliyun/access-point", fmt.Sprintf(\"%s/remote\", dataCenterUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hybrid/aliyun/access-point", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2048,8 +1957,7 @@ func (cli *ZSClient) GetConnectionAccessPointFromRemote(dataCenterUuid string) (
 // GetVpcAttachedOspf gets VpcAttachedOspf by uuid
 func (cli *ZSClient) GetVpcAttachedOspf(uuid string) (*view.NetworkRouterAreaRefInventoryView, error) {
 	var resp view.NetworkRouterAreaRefInventoryView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/attached-ospf\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2090,7 +1998,7 @@ func (cli *ZSClient) GetIAM2ProjectContainerImageTags(projectId string, reposito
 
 // DeleteAliyunDiskFromRemote deletes AliyunDiskFromRemote
 func (cli *ZSClient) DeleteAliyunDiskFromRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/disk", fmt.Sprintf(\"%s/remote\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/disk", uuid, string(deleteMode))
 }
 
 // GetVersion gets Version by uuid
@@ -2140,20 +2048,18 @@ func (cli *ZSClient) AddIntegrityResource(params param.AddIntegrityResourceParam
 }
 
 // CheckVipPortAvailability operates on VipPortAvailability
-func (cli *ZSClient) CheckVipPortAvailability(vipUuid string, params param.CheckVipPortAvailabilityParam) (*view.CheckVipPortAvailabilityView, error) {
+func (cli *ZSClient) CheckVipPortAvailability(params param.CheckVipPortAvailabilityParam) (*view.CheckVipPortAvailabilityView, error) {
 	var resp view.CheckVipPortAvailabilityView
-	err := cli.GetWithSpec("v1/vips", fmt.Sprintf(\"%s/check-port-availability\", vipUuid), "", "", params, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vips", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetCandidateClustersForAttachingL2Network gets CandidateClustersForAttachingL2Network by uuid
-func (cli *ZSClient) GetCandidateClustersForAttachingL2Network(l2NetworkUuid string) (*view.ClusterInventoryView, error) {
+func (cli *ZSClient) GetCandidateClustersForAttachingL2Network(uuid string) (*view.ClusterInventoryView, error) {
 	var resp view.ClusterInventoryView
-	err := cli.GetWithSpec("v1/l2-networks", fmt.Sprintf(\"%s/cluster-candidates\", l2NetworkUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/l2-networks", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2181,8 +2087,7 @@ func (cli *ZSClient) CheckBatchDataIntegrity(params param.CheckBatchDataIntegrit
 // UpdateAutoScalingGroupRemovalInstanceRule updates AutoScalingGroupRemovalInstanceRule
 func (cli *ZSClient) UpdateAutoScalingGroupRemovalInstanceRule(uuid string, params param.UpdateAutoScalingGroupRemovalInstanceRuleParam) (*view.AutoScalingRuleInventoryView, error) {
 	var resp view.UpdateAutoScalingRuleEventView
-	err := cli.PutWithSpec("v1/autoscaling/rules/removal-instance", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/autoscaling/rules/removal-instance", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2226,10 +2131,9 @@ func (cli *ZSClient) GetVpcVpnGatewayFromLocal(uuid string) (*view.VpcVpnGateway
 }
 
 // ChangeL3NetworkDhcpIpAddress changes L3NetworkDhcpIpAddress
-func (cli *ZSClient) ChangeL3NetworkDhcpIpAddress(l3NetworkUuid string, params param.ChangeL3NetworkDhcpIpAddressParam) (*view.ChangeL3NetworkDhcpIpAddressEventView, error) {
+func (cli *ZSClient) ChangeL3NetworkDhcpIpAddress(uuid string, params param.ChangeL3NetworkDhcpIpAddressParam) (*view.ChangeL3NetworkDhcpIpAddressEventView, error) {
 	resp := view.ChangeL3NetworkDhcpIpAddressEventView{}
-	err := cli.PutWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/dhcp-ip\", l3NetworkUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/l3-networks", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2288,8 +2192,7 @@ func (cli *ZSClient) BackupDatabaseToPublicCloud(params param.BackupDatabaseToPu
 // RecoveryImageFromImageStoreBackupStorage operates on yImageFromImageStoreBackupStorage
 func (cli *ZSClient) RecoveryImageFromImageStoreBackupStorage(uuid string, params param.RecoveryImageFromImageStoreBackupStorageParam) (*view.ImageInventoryView, error) {
 	var resp view.RecoveryImageFromImageStoreBackupStorageEventView
-	err := cli.PutWithSpec("v1/backup-storage", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/backup-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2312,8 +2215,7 @@ func (cli *ZSClient) GetEventFromResourceStack(uuid string) (*view.CloudFormatio
 // RevertVmFromSnapshotGroup operates on VmFromSnapshotGroup
 func (cli *ZSClient) RevertVmFromSnapshotGroup(uuid string, params param.RevertVmFromSnapshotGroupParam) (*view.RevertVmFromSnapshotGroupEventView, error) {
 	resp := view.RevertVmFromSnapshotGroupEventView{}
-	err := cli.PutWithSpec("v1/volume-snapshots/group", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volume-snapshots/group", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2339,10 +2241,9 @@ func (cli *ZSClient) ListVmSchedulingRulesFromExecuteState(params param.ListVmSc
 }
 
 // SetVmUserDefinedXml operates on VmUserDefinedXml
-func (cli *ZSClient) SetVmUserDefinedXml(vmInstanceUuid string, params param.SetVmUserDefinedXmlParam) (*view.SetVmUserDefinedXmlEventView, error) {
+func (cli *ZSClient) SetVmUserDefinedXml(uuid string, params param.SetVmUserDefinedXmlParam) (*view.SetVmUserDefinedXmlEventView, error) {
 	resp := view.SetVmUserDefinedXmlEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2351,8 +2252,7 @@ func (cli *ZSClient) SetVmUserDefinedXml(vmInstanceUuid string, params param.Set
 // SetImageQga operates on ImageQga
 func (cli *ZSClient) SetImageQga(uuid string, params param.SetImageQgaParam) (*view.SetImageQgaEventView, error) {
 	resp := view.SetImageQgaEventView{}
-	err := cli.PutWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2370,8 +2270,7 @@ func (cli *ZSClient) ListVMsFromKVMHost(params param.ListVMsFromKVMHostParam) (*
 // TakeVmConsoleScreenshot operates on TakeVmConsoleScreenshot
 func (cli *ZSClient) TakeVmConsoleScreenshot(uuid string, params param.TakeVmConsoleScreenshotParam) (*view.TakeVmConsoleScreenshotEventView, error) {
 	resp := view.TakeVmConsoleScreenshotEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2403,23 +2302,21 @@ func (cli *ZSClient) CreateImageGroupFromVmInstance(params param.CreateImageGrou
 // TerminateVirtualBorderRouterRemote operates on TerminateVirtualBorderRouterRemote
 func (cli *ZSClient) TerminateVirtualBorderRouterRemote(uuid string, params param.TerminateVirtualBorderRouterRemoteParam) (*view.TerminateVirtualBorderRouterRemoteEventView, error) {
 	resp := view.TerminateVirtualBorderRouterRemoteEventView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/border-router", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/border-router", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DeleteVmBackup deletes VmBackup
-func (cli *ZSClient) DeleteVmBackup(groupUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-backups", fmt.Sprintf(\"%s\", groupUuid), string(deleteMode))
+func (cli *ZSClient) DeleteVmBackup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vm-backups", uuid, string(deleteMode))
 }
 
 // SetVmSecurityLevel operates on VmSecurityLevel
 func (cli *ZSClient) SetVmSecurityLevel(uuid string, params param.SetVmSecurityLevelParam) (*view.SetVmSecurityLevelEventView, error) {
 	resp := view.SetVmSecurityLevelEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2433,8 +2330,7 @@ func (cli *ZSClient) RemoveMdevDeviceSpecFromVmInstance(mdevSpecUuid string, vmI
 // SyncVolumeSize operates on VolumeSize
 func (cli *ZSClient) SyncVolumeSize(uuid string, params param.SyncVolumeSizeParam) (*view.VolumeInventoryView, error) {
 	var resp view.SyncVolumeSizeEventView
-	err := cli.PutWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2452,8 +2348,7 @@ func (cli *ZSClient) GetTrashOnBackupStorage(uuid string) (*view.InstallPathRecy
 // ChangeDiskOfferingState changes DiskOfferingState
 func (cli *ZSClient) ChangeDiskOfferingState(uuid string, params param.ChangeDiskOfferingStateParam) (*view.DiskOfferingInventoryView, error) {
 	var resp view.ChangeDiskOfferingStateEventView
-	err := cli.PutWithSpec("v1/disk-offerings", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/disk-offerings", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2471,8 +2366,7 @@ func (cli *ZSClient) RequestConsoleAccess(params param.RequestConsoleAccessParam
 // ChangeIAM2VirtualIDGroupState changes IAM2VirtualIDGroupState
 func (cli *ZSClient) ChangeIAM2VirtualIDGroupState(uuid string, params param.ChangeIAM2VirtualIDGroupStateParam) (*view.IAM2VirtualIDGroupInventoryView, error) {
 	var resp view.ChangeIAM2VirtualIDGroupStateEventView
-	err := cli.PutWithSpec("v1/iam2/projects/groups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/projects/groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2488,10 +2382,9 @@ func (cli *ZSClient) UpdateEventData(uuid string, params param.UpdateEventDataPa
 }
 
 // SyncHybridEipFromRemote operates on HybridEipFromRemote
-func (cli *ZSClient) SyncHybridEipFromRemote(dataCenterUuid string, params param.SyncHybridEipFromRemoteParam) (*view.HybridEipAddressInventoryView, error) {
+func (cli *ZSClient) SyncHybridEipFromRemote(uuid string, params param.SyncHybridEipFromRemoteParam) (*view.HybridEipAddressInventoryView, error) {
 	resp := view.HybridEipAddressInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/eip", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/eip", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2499,22 +2392,21 @@ func (cli *ZSClient) SyncHybridEipFromRemote(dataCenterUuid string, params param
 
 // DeleteAliyunRouteEntryRemote deletes AliyunRouteEntryRemote
 func (cli *ZSClient) DeleteAliyunRouteEntryRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/route-entry", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/route-entry", uuid, string(deleteMode))
 }
 
 // UngenerateSriovPciDevices operates on UngenerateSriovPciDevices
-func (cli *ZSClient) UngenerateSriovPciDevices(pciDeviceUuid string, params param.UngenerateSriovPciDevicesParam) (*view.UngenerateVirtualPciDevicesEventView, error) {
+func (cli *ZSClient) UngenerateSriovPciDevices(uuid string, params param.UngenerateSriovPciDevicesParam) (*view.UngenerateVirtualPciDevicesEventView, error) {
 	resp := view.UngenerateVirtualPciDevicesEventView{}
-	err := cli.PutWithSpec("v1/pci-devices", fmt.Sprintf(\"%s/actions\", pciDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/pci-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DeleteVmStaticIp deletes VmStaticIp
-func (cli *ZSClient) DeleteVmStaticIp(vmInstanceUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/static-ips\", vmInstanceUuid), string(deleteMode))
+func (cli *ZSClient) DeleteVmStaticIp(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // AttachMonitorTriggerActionToTrigger operates on MonitorTriggerActionToTrigger
@@ -2548,8 +2440,7 @@ func (cli *ZSClient) UpdateOrganizationQuota(uuid string, params param.UpdateOrg
 // ChangePreconfigurationTemplateState changes PreconfigurationTemplateState
 func (cli *ZSClient) ChangePreconfigurationTemplateState(uuid string, params param.ChangePreconfigurationTemplateStateParam) (*view.PreconfigurationTemplateInventoryView, error) {
 	var resp view.ChangePreconfigurationTemplateStateEventView
-	err := cli.PutWithSpec("v1/baremetal/preconfigurations", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal/preconfigurations", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2558,18 +2449,16 @@ func (cli *ZSClient) ChangePreconfigurationTemplateState(uuid string, params par
 // SetOrganizationSupervisor operates on OrganizationSupervisor
 func (cli *ZSClient) SetOrganizationSupervisor(uuid string, params param.SetOrganizationSupervisorParam) (*view.SetOrganizationSupervisorEventView, error) {
 	resp := view.SetOrganizationSupervisorEventView{}
-	err := cli.PutWithSpec("v1/iam2/organizations", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/organizations", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachL3NetworksToIPsecConnection operates on L3NetworksToIPsecConnection
-func (cli *ZSClient) AttachL3NetworksToIPsecConnection(uuid string, params param.AttachL3NetworksToIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
+func (cli *ZSClient) AttachL3NetworksToIPsecConnection(params param.AttachL3NetworksToIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
 	var resp view.AttachL3NetworksToIPsecConnectionEventView
-	err := cli.PostWithSpec("v1/ipsec", fmt.Sprintf(\"%s/l3networks\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/ipsec", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2578,8 +2467,7 @@ func (cli *ZSClient) AttachL3NetworksToIPsecConnection(uuid string, params param
 // ExecuteGuestVmScript operates on ExecuteGuestVmScript
 func (cli *ZSClient) ExecuteGuestVmScript(uuid string, params param.ExecuteGuestVmScriptParam) (*view.GuestVmScriptExecutedRecordInventoryView, error) {
 	var resp view.ExecuteGuestVmScriptEventView
-	err := cli.PutWithSpec("v1/scripts", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/scripts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2604,10 +2492,9 @@ func (cli *ZSClient) GetIAM2ProjectContainerClusterCandidates(uuid string) (*vie
 }
 
 // AttachTagToResources operates on TagToResources
-func (cli *ZSClient) AttachTagToResources(tagUuid string, params param.AttachTagToResourcesParam) (*view.AttachTagToResourcesEventView, error) {
+func (cli *ZSClient) AttachTagToResources(params param.AttachTagToResourcesParam) (*view.AttachTagToResourcesEventView, error) {
 	resp := view.AttachTagToResourcesEventView{}
-	err := cli.PostWithSpec("v1/tags", fmt.Sprintf(\"%s/resources\", tagUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/tags", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2616,8 +2503,7 @@ func (cli *ZSClient) AttachTagToResources(tagUuid string, params param.AttachTag
 // ChangePrimaryStorageState changes PrimaryStorageState
 func (cli *ZSClient) ChangePrimaryStorageState(uuid string, params param.ChangePrimaryStorageStateParam) (*view.PrimaryStorageInventoryView, error) {
 	var resp view.ChangePrimaryStorageStateEventView
-	err := cli.PutWithSpec("v1/primary-storage", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2626,8 +2512,7 @@ func (cli *ZSClient) ChangePrimaryStorageState(uuid string, params param.ChangeP
 // GetVpcAttachedNetflow gets VpcAttachedNetflow by uuid
 func (cli *ZSClient) GetVpcAttachedNetflow(uuid string) (*view.FlowMeterInventoryView, error) {
 	var resp view.FlowMeterInventoryView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/attached-netflow\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2658,14 +2543,13 @@ func (cli *ZSClient) RemoveUserFromGroup(groupUuid string, userUuid string, dele
 
 // DeleteEcsVpcRemote deletes EcsVpcRemote
 func (cli *ZSClient) DeleteEcsVpcRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/vpc/remote", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/vpc/remote", uuid, string(deleteMode))
 }
 
 // SyncDatabaseBackupFromImageStoreBackupStorage operates on DatabaseBackupFromImageStoreBackupStorage
 func (cli *ZSClient) SyncDatabaseBackupFromImageStoreBackupStorage(uuid string, params param.SyncDatabaseBackupFromImageStoreBackupStorageParam) (*view.DatabaseBackupInventoryView, error) {
 	var resp view.SyncDatabaseBackupFromImageStoreBackupStorageEventView
-	err := cli.PutWithSpec("v1/database-backups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/database-backups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2673,7 +2557,7 @@ func (cli *ZSClient) SyncDatabaseBackupFromImageStoreBackupStorage(uuid string, 
 
 // DeleteFirewallIpSetTemplate deletes FirewallIpSetTemplate
 func (cli *ZSClient) DeleteFirewallIpSetTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vpcfirewalls/ipset/templates", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vpcfirewalls/ipset/templates", uuid, string(deleteMode))
 }
 
 // SNSDingTalkTestConnection operates on DingTalkTestConnection
@@ -2686,10 +2570,9 @@ func (cli *ZSClient) SNSDingTalkTestConnection(params param.SNSDingTalkTestConne
 }
 
 // ExportImageFromBackupStorage operates on ImageFromBackupStorage
-func (cli *ZSClient) ExportImageFromBackupStorage(backupStorageUuid string, params param.ExportImageFromBackupStorageParam) (*view.ExportImageFromBackupStorageEventView, error) {
+func (cli *ZSClient) ExportImageFromBackupStorage(uuid string, params param.ExportImageFromBackupStorageParam) (*view.ExportImageFromBackupStorageEventView, error) {
 	resp := view.ExportImageFromBackupStorageEventView{}
-	err := cli.PutWithSpec("v1/backup-storage", fmt.Sprintf(\"%s/actions\", backupStorageUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/backup-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2759,8 +2642,7 @@ func (cli *ZSClient) GetInterdependentL3NetworksImages(uuid string) (*view.GetIn
 // ValidateVolumeSnapshotChain operates on VolumeSnapshotChain
 func (cli *ZSClient) ValidateVolumeSnapshotChain(uuid string, params param.ValidateVolumeSnapshotChainParam) (*view.ValidateVolumeSnapshotChainEventView, error) {
 	resp := view.ValidateVolumeSnapshotChainEventView{}
-	err := cli.PutWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2838,10 +2720,9 @@ func (cli *ZSClient) AttachIsoToVmInstance(vmInstanceUuid string, isoUuid string
 }
 
 // SetVRouterRouterId operates on VRouterRouterId
-func (cli *ZSClient) SetVRouterRouterId(vRouterUuid string, params param.SetVRouterRouterIdParam) (*view.SetVRouterRouterIdEventView, error) {
+func (cli *ZSClient) SetVRouterRouterId(params param.SetVRouterRouterIdParam) (*view.SetVRouterRouterIdEventView, error) {
 	resp := view.SetVRouterRouterIdEventView{}
-	err := cli.PostWithSpec("v1/routerArea", fmt.Sprintf(\"%s/routerid\", vRouterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/routerArea", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2849,12 +2730,12 @@ func (cli *ZSClient) SetVRouterRouterId(vRouterUuid string, params param.SetVRou
 
 // ExpungeVmUserDefinedXmlHookScript operates on VmUserDefinedXmlHookScript
 func (cli *ZSClient) ExpungeVmUserDefinedXmlHookScript(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances/xml-hook-script", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances/xml-hook-script", uuid, string(deleteMode))
 }
 
 // DeleteCdpTaskData deletes CdpTaskData
 func (cli *ZSClient) DeleteCdpTaskData(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/cdp-task", fmt.Sprintf(\"%s/data\", uuid), string(deleteMode))
+	return cli.Delete("v1/cdp-task", uuid, string(deleteMode))
 }
 
 // CheckApiPermission operates on ApiPermission
@@ -2877,14 +2758,13 @@ func (cli *ZSClient) GetTextTemplateArg(uuid string) (*view.GetTextTemplateArgVi
 
 // DeleteFirewall deletes Firewall
 func (cli *ZSClient) DeleteFirewall(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vpcfirewalls", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vpcfirewalls", uuid, string(deleteMode))
 }
 
 // GetVmCapabilities gets VmCapabilities by uuid
 func (cli *ZSClient) GetVmCapabilities(uuid string) (*view.GetVmCapabilitiesView, error) {
 	var resp view.GetVmCapabilitiesView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/capabilities\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2893,8 +2773,7 @@ func (cli *ZSClient) GetVmCapabilities(uuid string) (*view.GetVmCapabilitiesView
 // ChangeAccessKeyState changes AccessKeyState
 func (cli *ZSClient) ChangeAccessKeyState(uuid string, params param.ChangeAccessKeyStateParam) (*view.AccessKeyInventoryView, error) {
 	var resp view.ChangeAccessKeyStateEventView
-	err := cli.PutWithSpec("v1/accesskeys", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/accesskeys", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2921,8 +2800,7 @@ func (cli *ZSClient) GetIAM2SystemAttributes(uuid string) (*view.IAM2AttributeIn
 // ChangeInstanceOfferingState changes InstanceOfferingState
 func (cli *ZSClient) ChangeInstanceOfferingState(uuid string, params param.ChangeInstanceOfferingStateParam) (*view.InstanceOfferingInventoryView, error) {
 	var resp view.ChangeInstanceOfferingStateEventView
-	err := cli.PutWithSpec("v1/instance-offerings", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/instance-offerings", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2952,10 +2830,9 @@ func (cli *ZSClient) GetBackupStorageCapacity(uuid string) (*view.GetBackupStora
 }
 
 // GenerateSeMdevDevices operates on SeMdevDevices
-func (cli *ZSClient) GenerateSeMdevDevices(mttyDeviceUuid string, params param.GenerateSeMdevDevicesParam) (*view.GenerateSeMdevDevicesEventView, error) {
+func (cli *ZSClient) GenerateSeMdevDevices(uuid string, params param.GenerateSeMdevDevicesParam) (*view.GenerateSeMdevDevicesEventView, error) {
 	resp := view.GenerateSeMdevDevicesEventView{}
-	err := cli.PutWithSpec("v1/mtty-devices", fmt.Sprintf(\"%s/actions\", mttyDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/mtty-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2973,8 +2850,7 @@ func (cli *ZSClient) CreateMiniCluster(params param.CreateMiniClusterParam) (*vi
 // SyncImageFromImageStoreBackupStorage operates on ImageFromImageStoreBackupStorage
 func (cli *ZSClient) SyncImageFromImageStoreBackupStorage(uuid string, params param.SyncImageFromImageStoreBackupStorageParam) (*view.ImageInventoryView, error) {
 	var resp view.SyncImageFromImageStoreBackupStorageEventView
-	err := cli.PutWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2983,8 +2859,7 @@ func (cli *ZSClient) SyncImageFromImageStoreBackupStorage(uuid string, params pa
 // ChangeVipState changes VipState
 func (cli *ZSClient) ChangeVipState(uuid string, params param.ChangeVipStateParam) (*view.VipInventoryView, error) {
 	var resp view.ChangeVipStateEventView
-	err := cli.PutWithSpec("v1/vips", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vips", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -2993,8 +2868,7 @@ func (cli *ZSClient) ChangeVipState(uuid string, params param.ChangeVipStatePara
 // UndoSnapshotCreation operates on UndoSnapshotCreation
 func (cli *ZSClient) UndoSnapshotCreation(uuid string, params param.UndoSnapshotCreationParam) (*view.VolumeInventoryView, error) {
 	var resp view.UndoSnapshotCreationEventView
-	err := cli.PutWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3030,8 +2904,7 @@ func (cli *ZSClient) GetIdentityZoneFromRemote(uuid string) (*view.IdentityZoneP
 // GetEcsInstanceVncUrl gets EcsInstanceVncUrl by uuid
 func (cli *ZSClient) GetEcsInstanceVncUrl(uuid string) (*view.GetEcsInstanceVncUrlView, error) {
 	var resp view.GetEcsInstanceVncUrlView
-	err := cli.GetWithSpec("v1/hybrid/aliyun/ecs-vnc", fmt.Sprintf(\"%s\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hybrid/aliyun/ecs-vnc", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3061,15 +2934,14 @@ func (cli *ZSClient) GetLocalRaidPhysicalDrive(uuid string) (*view.RaidPhysicalD
 }
 
 // RemoveHostRouteFromL3Network removes HostRouteFromL3Network
-func (cli *ZSClient) RemoveHostRouteFromL3Network(l3NetworkUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/hostroute\", l3NetworkUuid), string(deleteMode))
+func (cli *ZSClient) RemoveHostRouteFromL3Network(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/l3-networks", uuid, string(deleteMode))
 }
 
 // BackupStorageMigrateImage operates on StorageMigrateImage
-func (cli *ZSClient) BackupStorageMigrateImage(imageUuid string, params param.BackupStorageMigrateImageParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) BackupStorageMigrateImage(uuid string, params param.BackupStorageMigrateImageParam) (*view.ImageInventoryView, error) {
 	var resp view.BackupStorageMigrateImageEventView
-	err := cli.PutWithSpec("v1/backup-storage/images", fmt.Sprintf(\"%s/actions\", imageUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/backup-storage/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3107,23 +2979,21 @@ func (cli *ZSClient) GetArchiveTicketHistory(uuid string) (*view.ArchiveTicketSt
 // ChangeIAM2VirtualIDType changes IAM2VirtualIDType
 func (cli *ZSClient) ChangeIAM2VirtualIDType(uuid string, params param.ChangeIAM2VirtualIDTypeParam) (*view.IAM2VirtualIDInventoryView, error) {
 	var resp view.ChangeIAM2VirtualIDTypeEventView
-	err := cli.PutWithSpec("v1/iam2/virtual-ids", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/virtual-ids", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // RemoveBackendServerFromServerGroup removes BackendServerFromServerGroup
-func (cli *ZSClient) RemoveBackendServerFromServerGroup(serverGroupUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/load-balancers/servergroups", fmt.Sprintf(\"%s/backendservers/actions\", serverGroupUuid), string(deleteMode))
+func (cli *ZSClient) RemoveBackendServerFromServerGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/load-balancers/servergroups", uuid, string(deleteMode))
 }
 
 // GetVpcAttachedVip gets VpcAttachedVip by uuid
 func (cli *ZSClient) GetVpcAttachedVip(uuid string) (*view.VipInventoryView, error) {
 	var resp view.VipInventoryView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/attached-vip\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3149,14 +3019,13 @@ func (cli *ZSClient) CheckBaremetalChassisConfigFile(params param.CheckBaremetal
 
 // DeleteOssBucketFileRemote deletes OssBucketFileRemote
 func (cli *ZSClient) DeleteOssBucketFileRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/oss-bucket-file/remote", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/oss-bucket-file/remote", uuid, string(deleteMode))
 }
 
 // ChangeMulticastRouterState changes MulticastRouterState
 func (cli *ZSClient) ChangeMulticastRouterState(uuid string, params param.ChangeMulticastRouterStateParam) (*view.MulticastRouterInventoryView, error) {
 	var resp view.ChangeMulticastRouterStateEventView
-	err := cli.PutWithSpec("v1/multicast/virtual-routers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/multicast/virtual-routers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3182,7 +3051,7 @@ func (cli *ZSClient) GetFreeIp(uuid string) (*view.FreeIpInventoryView, error) {
 
 // DeleteOssBucketRemote deletes OssBucketRemote
 func (cli *ZSClient) DeleteOssBucketRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/oss-bucket/remote", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/oss-bucket/remote", uuid, string(deleteMode))
 }
 
 // CreateL2PortGroup creates L2PortGroup
@@ -3220,8 +3089,7 @@ func (cli *ZSClient) GetTag(uuid string) (*view.TagPatternInventoryView, error) 
 // SetVmHostname operates on VmHostname
 func (cli *ZSClient) SetVmHostname(uuid string, params param.SetVmHostnameParam) (*view.SetVmHostnameEventView, error) {
 	resp := view.SetVmHostnameEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3230,8 +3098,7 @@ func (cli *ZSClient) SetVmHostname(uuid string, params param.SetVmHostnameParam)
 // TriggerGCJob operates on TriggerGCJob
 func (cli *ZSClient) TriggerGCJob(uuid string, params param.TriggerGCJobParam) (*view.TriggerGCJobEventView, error) {
 	resp := view.TriggerGCJobEventView{}
-	err := cli.PutWithSpec("v1/gc-jobs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/gc-jobs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3248,12 +3115,12 @@ func (cli *ZSClient) CheckBareMetal2IpmiChassisConfigFile(params param.CheckBare
 
 // DeleteVirtualRouterLocal deletes VirtualRouterLocal
 func (cli *ZSClient) DeleteVirtualRouterLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/vrouter", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/vrouter", uuid, string(deleteMode))
 }
 
 // DeleteVpcIkeConfigLocal deletes VpcIkeConfigLocal
 func (cli *ZSClient) DeleteVpcIkeConfigLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/vpn-connection/ike", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/vpn-connection/ike", uuid, string(deleteMode))
 }
 
 // CreateOssBucketRemote creates OssBucketRemote
@@ -3282,8 +3149,7 @@ func (cli *ZSClient) DetachVRouterRouteTableFromVRouter(routeTableUuid string, v
 // GetVipUsedPorts gets VipUsedPorts by uuid
 func (cli *ZSClient) GetVipUsedPorts(uuid string) (*view.VipPortRangeInventoryView, error) {
 	var resp view.VipPortRangeInventoryView
-	err := cli.GetWithSpec("v1/vips", fmt.Sprintf(\"%s/usedports\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vips", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3292,8 +3158,7 @@ func (cli *ZSClient) GetVipUsedPorts(uuid string) (*view.VipPortRangeInventoryVi
 // SetVmConsolePassword operates on VmConsolePassword
 func (cli *ZSClient) SetVmConsolePassword(uuid string, params param.SetVmConsolePasswordParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.SetVmConsolePasswordEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3312,8 +3177,7 @@ func (cli *ZSClient) AttachFirewallRuleSetToL3(ruleSetUuid string, l3Uuid string
 // CleanUpStorageTrashOnPrimaryStorage operates on UpStorageTrashOnPrimaryStorage
 func (cli *ZSClient) CleanUpStorageTrashOnPrimaryStorage(uuid string, params param.CleanUpStorageTrashOnPrimaryStorageParam) (*view.CleanUpStorageTrashOnPrimaryStorageEventView, error) {
 	resp := view.CleanUpStorageTrashOnPrimaryStorageEventView{}
-	err := cli.PutWithSpec("v1/primary-storage", fmt.Sprintf(\"%s/storagetrash/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3367,7 +3231,7 @@ func (cli *ZSClient) GetFirewallRuleSetL3Ref(uuid string) (*view.VpcFirewallRule
 
 // UngroupVolumeSnapshotGroup operates on UngroupVolumeSnapshotGroup
 func (cli *ZSClient) UngroupVolumeSnapshotGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/volume-snapshots/ungroup", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/volume-snapshots/ungroup", uuid, string(deleteMode))
 }
 
 // SubscribeSNSTopic operates on SubscribeSNSTopic
@@ -3381,10 +3245,9 @@ func (cli *ZSClient) SubscribeSNSTopic(topicUuid string, endpointUuid string, pa
 }
 
 // GetCandidateVmNicForSecurityGroup gets CandidateVmNicForSecurityGroup by uuid
-func (cli *ZSClient) GetCandidateVmNicForSecurityGroup(securityGroupUuid string) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) GetCandidateVmNicForSecurityGroup(uuid string) (*view.VmNicInventoryView, error) {
 	var resp view.VmNicInventoryView
-	err := cli.GetWithSpec("v1/security-groups", fmt.Sprintf(\"%s/vm-instances/candidate-nics\", securityGroupUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/security-groups", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3393,18 +3256,16 @@ func (cli *ZSClient) GetCandidateVmNicForSecurityGroup(securityGroupUuid string)
 // GetVmRDP gets VmRDP by uuid
 func (cli *ZSClient) GetVmRDP(uuid string) (*view.GetVmRDPView, error) {
 	var resp view.GetVmRDPView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/rdp\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachPciDeviceToVm operates on PciDeviceToVm
-func (cli *ZSClient) AttachPciDeviceToVm(pciDeviceUuid string, params param.AttachPciDeviceToVmParam) (*view.PciDeviceInventoryView, error) {
+func (cli *ZSClient) AttachPciDeviceToVm(params param.AttachPciDeviceToVmParam) (*view.PciDeviceInventoryView, error) {
 	var resp view.AttachPciDeviceToVmEventView
-	err := cli.PostWithSpec("v1/pci-device/pci-devices", fmt.Sprintf(\"%s/attach\", pciDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/pci-device/pci-devices", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3425,10 +3286,9 @@ func (cli *ZSClient) GetLdapEntry(uuid string) (*view.GetLdapEntryView, error) {
 }
 
 // GetCandidateL2NetworksForAttachingCluster gets CandidateL2NetworksForAttachingCluster by uuid
-func (cli *ZSClient) GetCandidateL2NetworksForAttachingCluster(clusterUuid string) (*view.L2NetworkDataView, error) {
+func (cli *ZSClient) GetCandidateL2NetworksForAttachingCluster(uuid string) (*view.L2NetworkDataView, error) {
 	var resp view.L2NetworkDataView
-	err := cli.GetWithSpec("v1/cluster", fmt.Sprintf(\"%s/l2-candidates\", clusterUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/cluster", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3463,10 +3323,9 @@ func (cli *ZSClient) AddOssBucketFromRemote(params param.AddOssBucketFromRemoteP
 }
 
 // SyncVmBackup operates on VmBackup
-func (cli *ZSClient) SyncVmBackup(imageStoreUuid string, params param.SyncVmBackupParam) (*view.SyncVmBackupEventView, error) {
+func (cli *ZSClient) SyncVmBackup(uuid string, params param.SyncVmBackupParam) (*view.SyncVmBackupEventView, error) {
 	resp := view.SyncVmBackupEventView{}
-	err := cli.PutWithSpec("v1/vm-backups/imageStore", fmt.Sprintf(\"%s/actions\", imageStoreUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-backups/imageStore", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3482,10 +3341,9 @@ func (cli *ZSClient) RefreshGuestOsMetadata(uuid string, params param.RefreshGue
 }
 
 // GCAliyunSnapshotRemote operates on GCAliyunSnapshotRemote
-func (cli *ZSClient) GCAliyunSnapshotRemote(dataCenterUuid string, params param.GCAliyunSnapshotRemoteParam) (*view.GCAliyunSnapshotRemoteEventView, error) {
+func (cli *ZSClient) GCAliyunSnapshotRemote(params param.GCAliyunSnapshotRemoteParam) (*view.GCAliyunSnapshotRemoteEventView, error) {
 	resp := view.GCAliyunSnapshotRemoteEventView{}
-	err := cli.PostWithSpec("v1/hybrid/aliyun/snapshot", fmt.Sprintf(\"%s/gc\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/aliyun/snapshot", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3530,8 +3388,7 @@ func (cli *ZSClient) CreateTag(params param.CreateTagParam) (*view.TagPatternInv
 // UpdateConsolePassword updates ConsolePassword
 func (cli *ZSClient) UpdateConsolePassword(uuid string, params param.UpdateConsolePasswordParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.UpdateConsolePasswordEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3549,8 +3406,7 @@ func (cli *ZSClient) CreateVmInstanceFromVolumeSnapshotGroup(params param.Create
 // SetIAM2ProjectRetirePolicy operates on IAM2ProjectRetirePolicy
 func (cli *ZSClient) SetIAM2ProjectRetirePolicy(uuid string, params param.SetIAM2ProjectRetirePolicyParam) (*view.SetIAM2ProjectRetirePolicyEventView, error) {
 	resp := view.SetIAM2ProjectRetirePolicyEventView{}
-	err := cli.PutWithSpec("v1/iam2/projects/retire-policies", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/projects/retire-policies", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3581,10 +3437,9 @@ func (cli *ZSClient) RunIAM2ScriptAsync(params param.RunIAM2ScriptParam) (string
 }
 
 // AttachServiceToObservabilityServer operates on ServiceToObservabilityServer
-func (cli *ZSClient) AttachServiceToObservabilityServer(observabilityServerUuid string, params param.AttachServiceToObservabilityServerParam) (*view.ObservabilityServerVmInventoryView, error) {
+func (cli *ZSClient) AttachServiceToObservabilityServer(params param.AttachServiceToObservabilityServerParam) (*view.ObservabilityServerVmInventoryView, error) {
 	var resp view.AttachServiceToObservabilityServerEventView
-	err := cli.PostWithSpec("v1/observability-server", fmt.Sprintf(\"%s/service\", observabilityServerUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/observability-server", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3592,7 +3447,7 @@ func (cli *ZSClient) AttachServiceToObservabilityServer(observabilityServerUuid 
 
 // DeleteHostNetworkServiceType deletes HostNetworkServiceType
 func (cli *ZSClient) DeleteHostNetworkServiceType(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hosts/service-types", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hosts/service-types", uuid, string(deleteMode))
 }
 
 // CreateIAM2ProjectFromTemplate creates IAM2ProjectFromTemplate
@@ -3666,10 +3521,9 @@ func (cli *ZSClient) ReloadElaboration(uuid string, params param.ReloadElaborati
 }
 
 // ReconnectVirtualRouter operates on VirtualRouter
-func (cli *ZSClient) ReconnectVirtualRouter(vmInstanceUuid string, params param.ReconnectVirtualRouterParam) (*view.ApplianceVmInventoryView, error) {
+func (cli *ZSClient) ReconnectVirtualRouter(uuid string, params param.ReconnectVirtualRouterParam) (*view.ApplianceVmInventoryView, error) {
 	var resp view.ReconnectVirtualRouterEventView
-	err := cli.PutWithSpec("v1/vm-instances/appliances/virtual-routers", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/appliances/virtual-routers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3701,14 +3555,13 @@ func (cli *ZSClient) ConvertVmFromForeignHypervisorAsync(params param.ConvertVmF
 
 // DeleteConnectionBetweenL3NetWorkAndAliyunVSwitch deletes ConnectionBetweenL3NetWorkAndAliyunVSwitch
 func (cli *ZSClient) DeleteConnectionBetweenL3NetWorkAndAliyunVSwitch(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/connections", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/connections", uuid, string(deleteMode))
 }
 
 // RestartResourceStack operates on RestartResourceStack
 func (cli *ZSClient) RestartResourceStack(uuid string, params param.RestartResourceStackParam) (*view.ResourceStackInventoryView, error) {
 	var resp view.RestartResourceStackEventView
-	err := cli.PutWithSpec("v1/cloudformation/stack", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/cloudformation/stack", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3729,20 +3582,18 @@ func (cli *ZSClient) GetHygonDevice(uuid string) (*view.HygonCcpDeviceInventoryV
 }
 
 // SyncEcsImageFromRemote operates on EcsImageFromRemote
-func (cli *ZSClient) SyncEcsImageFromRemote(dataCenterUuid string, params param.SyncEcsImageFromRemoteParam) (*view.EcsImageInventoryView, error) {
+func (cli *ZSClient) SyncEcsImageFromRemote(params param.SyncEcsImageFromRemoteParam) (*view.EcsImageInventoryView, error) {
 	resp := view.EcsImageInventoryView{}
-	err := cli.PostWithSpec("v1/hybrid/aliyun/image", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/aliyun/image", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachPoliciesToUser operates on PoliciesToUser
-func (cli *ZSClient) AttachPoliciesToUser(userUuid string, params param.AttachPoliciesToUserParam) (*view.AttachPoliciesToUserEventView, error) {
+func (cli *ZSClient) AttachPoliciesToUser(params param.AttachPoliciesToUserParam) (*view.AttachPoliciesToUserEventView, error) {
 	resp := view.AttachPoliciesToUserEventView{}
-	err := cli.PostWithSpec("v1/accounts/users", fmt.Sprintf(\"%s/policy-collection\", userUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/accounts/users", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3770,8 +3621,7 @@ func (cli *ZSClient) AddPciDeviceSpecToVmInstance(params param.AddPciDeviceSpecT
 // ResizeRootVolume operates on RootVolume
 func (cli *ZSClient) ResizeRootVolume(uuid string, params param.ResizeRootVolumeParam) (*view.VolumeInventoryView, error) {
 	var resp view.ResizeRootVolumeEventView
-	err := cli.PutWithSpec("v1/volumes/resize", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes/resize", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3780,8 +3630,7 @@ func (cli *ZSClient) ResizeRootVolume(uuid string, params param.ResizeRootVolume
 // GetVpcVpnConfigurationFromRemote gets VpcVpnConfigurationFromRemote by uuid
 func (cli *ZSClient) GetVpcVpnConfigurationFromRemote(uuid string) (*view.GetVpcVpnConfigurationFromRemoteView, error) {
 	var resp view.GetVpcVpnConfigurationFromRemoteView
-	err := cli.GetWithSpec("v1/hybrid/vpn-conf", fmt.Sprintf(\"%s/remote\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hybrid/vpn-conf", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3806,10 +3655,9 @@ func (cli *ZSClient) TokenIntrospection(params param.TokenIntrospectionParam) (*
 }
 
 // SyncVmBackupFromImageStoreBackupStorage operates on VmBackupFromImageStoreBackupStorage
-func (cli *ZSClient) SyncVmBackupFromImageStoreBackupStorage(groupUuid string, params param.SyncVmBackupFromImageStoreBackupStorageParam) (*view.VolumeBackupInventoryView, error) {
+func (cli *ZSClient) SyncVmBackupFromImageStoreBackupStorage(uuid string, params param.SyncVmBackupFromImageStoreBackupStorageParam) (*view.VolumeBackupInventoryView, error) {
 	resp := view.VolumeBackupInventoryView{}
-	err := cli.PutWithSpec("v1/vm-backups", fmt.Sprintf(\"%s/actions\", groupUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-backups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3863,7 +3711,7 @@ func (cli *ZSClient) DeleteResourceStackVmPortMonitor(uuid string, deleteMode pa
 
 // DeleteGCJob deletes GCJob
 func (cli *ZSClient) DeleteGCJob(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/gc-jobs", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/gc-jobs", uuid, string(deleteMode))
 }
 
 // DeleteEmailAddressOfSNSEmailEndpoint deletes EmailAddressOfSNSEmailEndpoint
@@ -3883,8 +3731,7 @@ func (cli *ZSClient) CleanInvalidLdapIAM2Binding(uuid string, params param.Clean
 // UpdateHybridEip updates HybridEip
 func (cli *ZSClient) UpdateHybridEip(uuid string, params param.UpdateHybridEipParam) (*view.HybridEipAddressInventoryView, error) {
 	var resp view.UpdateHybridEipEventView
-	err := cli.PutWithSpec("v1/hybrid/eip", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/eip", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -3893,8 +3740,7 @@ func (cli *ZSClient) UpdateHybridEip(uuid string, params param.UpdateHybridEipPa
 // GetVpcAttachedIpsec gets VpcAttachedIpsec by uuid
 func (cli *ZSClient) GetVpcAttachedIpsec(uuid string) (*view.IPsecConnectionInventoryView, error) {
 	var resp view.IPsecConnectionInventoryView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/attached-ipsec\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3903,8 +3749,7 @@ func (cli *ZSClient) GetVpcAttachedIpsec(uuid string) (*view.IPsecConnectionInve
 // GetImagesFromImageStoreBackupStorage gets ImagesFromImageStoreBackupStorage by uuid
 func (cli *ZSClient) GetImagesFromImageStoreBackupStorage(uuid string) (*view.GetImagesFromImageStoreBackupStorageView, error) {
 	var resp view.GetImagesFromImageStoreBackupStorageView
-	err := cli.GetWithSpec("v1/backup-storage", fmt.Sprintf(\"%s/image-store\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/backup-storage", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3920,10 +3765,9 @@ func (cli *ZSClient) GetElaborationCategories(uuid string) (*view.GetElaboration
 }
 
 // GetScsiLunCandidatesForAttachingVm gets ScsiLunCandidatesForAttachingVm by uuid
-func (cli *ZSClient) GetScsiLunCandidatesForAttachingVm(vmInstanceUuid string) (*view.ScsiLunInventoryView, error) {
+func (cli *ZSClient) GetScsiLunCandidatesForAttachingVm(uuid string) (*view.ScsiLunInventoryView, error) {
 	var resp view.ScsiLunInventoryView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/candidate-storage-devices\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3954,14 +3798,13 @@ func (cli *ZSClient) GetFirewallIpSetTemplate(uuid string) (*view.VpcFirewallIpS
 
 // DeleteEcsImageRemote deletes EcsImageRemote
 func (cli *ZSClient) DeleteEcsImageRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/image/remote", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/image/remote", uuid, string(deleteMode))
 }
 
 // GetHostNetworkFacts gets HostNetworkFacts by uuid
-func (cli *ZSClient) GetHostNetworkFacts(hostUuid string) (*view.GetHostNetworkFactsView, error) {
+func (cli *ZSClient) GetHostNetworkFacts(uuid string) (*view.GetHostNetworkFactsView, error) {
 	var resp view.GetHostNetworkFactsView
-	err := cli.GetWithSpec("v1/hosts/network-facts", fmt.Sprintf(\"%s\", hostUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hosts/network-facts", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3970,8 +3813,7 @@ func (cli *ZSClient) GetHostNetworkFacts(hostUuid string) (*view.GetHostNetworkF
 // CleanUpTrashOnBackupStorage operates on UpTrashOnBackupStorage
 func (cli *ZSClient) CleanUpTrashOnBackupStorage(uuid string, params param.CleanUpTrashOnBackupStorageParam) (*view.CleanUpTrashOnBackupStorageEventView, error) {
 	resp := view.CleanUpTrashOnBackupStorageEventView{}
-	err := cli.PutWithSpec("v1/backup-storage", fmt.Sprintf(\"%s/trash/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/backup-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4018,16 +3860,6 @@ func (cli *ZSClient) UnlockIdentity(params param.UnlockIdentityParam) (*view.Unl
 	return &resp, nil
 }
 
-// ChangeVmSchedulingRuleState changes VmSchedulingRuleState
-func (cli *ZSClient) ChangeVmSchedulingRuleState(uuid string, params param.ChangeVmSchedulingRuleStateParam) (*view.VmSchedulingRuleInventoryView, error) {
-	var resp view.ChangeVmSchedulingRuleStateEventView
-	err := cli.PutWithSpec("v1/vmSchedulingRule", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
-
 // GetCandidateVmNicsForPortMirror gets CandidateVmNicsForPortMirror by uuid
 func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, type string) (*view.VmNicInventoryView, error) {
 	var resp view.VmNicInventoryView
@@ -4036,6 +3868,15 @@ func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, type
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// ChangeVmSchedulingRuleState changes VmSchedulingRuleState
+func (cli *ZSClient) ChangeVmSchedulingRuleState(uuid string, params param.ChangeVmSchedulingRuleStateParam) (*view.VmSchedulingRuleInventoryView, error) {
+	var resp view.ChangeVmSchedulingRuleStateEventView
+	if err := cli.Put("v1/vmSchedulingRule", uuid, params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
 }
 
 // CreateFirewallRule creates FirewallRule
@@ -4050,18 +3891,16 @@ func (cli *ZSClient) CreateFirewallRule(params param.CreateFirewallRuleParam) (*
 // GetVmEmulatorPinning gets VmEmulatorPinning by uuid
 func (cli *ZSClient) GetVmEmulatorPinning(uuid string) (*view.GetVmEmulatorPinningView, error) {
 	var resp view.GetVmEmulatorPinningView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/emulator-pinning\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetDataVolumeAttachableVm gets DataVolumeAttachableVm by uuid
-func (cli *ZSClient) GetDataVolumeAttachableVm(volumeUuid string) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) GetDataVolumeAttachableVm(uuid string) (*view.VmInstanceInventoryView, error) {
 	var resp view.VmInstanceInventoryView
-	err := cli.GetWithSpec("v1/volumes", fmt.Sprintf(\"%s/candidate-vm-instances\", volumeUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/volumes", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4101,7 +3940,7 @@ func (cli *ZSClient) DetachBareMetal2ProvisionNetworkFromCluster(clusterUuid str
 
 // DeleteAliyunDiskFromLocal deletes AliyunDiskFromLocal
 func (cli *ZSClient) DeleteAliyunDiskFromLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/disk", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/disk", uuid, string(deleteMode))
 }
 
 // GetResourceNames gets ResourceNames by uuid
@@ -4125,8 +3964,7 @@ func (cli *ZSClient) GetIAM2VirtualIDAPIPermission(uuid string) (*view.GetIAM2Vi
 // GetOrganizationQuotaUsage gets OrganizationQuotaUsage by uuid
 func (cli *ZSClient) GetOrganizationQuotaUsage(uuid string) (*view.GetOrganizationQuotaUsageView, error) {
 	var resp view.GetOrganizationQuotaUsageView
-	err := cli.GetWithSpec("v1/iam2/organizations/quota", fmt.Sprintf(\"%s/usages\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/iam2/organizations/quota", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4143,10 +3981,9 @@ func (cli *ZSClient) GetResourceConfigs(resourceUuid string, category string) (*
 }
 
 // SyncVpcUserVpnGatewayFromRemote operates on VpcUserVpnGatewayFromRemote
-func (cli *ZSClient) SyncVpcUserVpnGatewayFromRemote(dataCenterUuid string, params param.SyncVpcUserVpnGatewayFromRemoteParam) (*view.VpcUserVpnGatewayInventoryView, error) {
+func (cli *ZSClient) SyncVpcUserVpnGatewayFromRemote(uuid string, params param.SyncVpcUserVpnGatewayFromRemoteParam) (*view.VpcUserVpnGatewayInventoryView, error) {
 	resp := view.VpcUserVpnGatewayInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/user-vpn", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/user-vpn", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4196,8 +4033,7 @@ func (cli *ZSClient) GetActiveAlarmStatus(uuid string) (*view.GetActiveAlarmStat
 // DeployModelEvalService operates on DeployModelEvalService
 func (cli *ZSClient) DeployModelEvalService(uuid string, params param.DeployModelEvalServiceParam) (*view.ModelEvalServiceInstanceGroupInventoryView, error) {
 	var resp view.DeployModelEvalServiceEventView
-	err := cli.PutWithSpec("v1/ai/model-services/eval", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/ai/model-services/eval", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4216,18 +4052,16 @@ func (cli *ZSClient) AttachNvmeServerToCluster(clusterUuid string, uuid string, 
 // GetHostResourceAllocation gets HostResourceAllocation by uuid
 func (cli *ZSClient) GetHostResourceAllocation(uuid string) (*view.GetHostResourceAllocationEventView, error) {
 	var resp view.GetHostResourceAllocationEventView
-	err := cli.GetWithSpec("v1/hosts", fmt.Sprintf(\"%s/resource-allocation\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hosts", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachUsbDeviceToVm operates on UsbDeviceToVm
-func (cli *ZSClient) AttachUsbDeviceToVm(usbDeviceUuid string, params param.AttachUsbDeviceToVmParam) (*view.UsbDeviceInventoryView, error) {
+func (cli *ZSClient) AttachUsbDeviceToVm(params param.AttachUsbDeviceToVmParam) (*view.UsbDeviceInventoryView, error) {
 	var resp view.AttachUsbDeviceToVmEventView
-	err := cli.PostWithSpec("v1/usb-device/usb-devices", fmt.Sprintf(\"%s/attach\", usbDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/usb-device/usb-devices", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4243,10 +4077,9 @@ func (cli *ZSClient) GetLicenseAddOns(uuid string) (*view.GetLicenseAddOnsView, 
 }
 
 // SyncAliyunSnapshotRemote operates on AliyunSnapshotRemote
-func (cli *ZSClient) SyncAliyunSnapshotRemote(dataCenterUuid string, params param.SyncAliyunSnapshotRemoteParam) (*view.AliyunSnapshotInventoryView, error) {
+func (cli *ZSClient) SyncAliyunSnapshotRemote(params param.SyncAliyunSnapshotRemoteParam) (*view.AliyunSnapshotInventoryView, error) {
 	resp := view.AliyunSnapshotInventoryView{}
-	err := cli.PostWithSpec("v1/hybrid/aliyun/snapshot", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/aliyun/snapshot", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4269,8 +4102,7 @@ func (cli *ZSClient) GetAliyunRouterInterfaceFromLocal(uuid string) (*view.Aliyu
 // UpdateTicketRequest updates TicketRequest
 func (cli *ZSClient) UpdateTicketRequest(uuid string, params param.UpdateTicketRequestParam) (*view.TicketInventoryView, error) {
 	var resp view.UpdateTicketRequestEventView
-	err := cli.PutWithSpec("v1/tickets", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/tickets", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4324,10 +4156,9 @@ func (cli *ZSClient) GetLdapBinding(uuid string) (*view.LdapAccountRefInventoryV
 }
 
 // ChangeVmImage changes VmImage
-func (cli *ZSClient) ChangeVmImage(vmInstanceUuid string, params param.ChangeVmImageParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) ChangeVmImage(uuid string, params param.ChangeVmImageParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.ChangeVmImageEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4345,8 +4176,7 @@ func (cli *ZSClient) AddResourcesToDirectory(params param.AddResourcesToDirector
 // AttachGuestToolsIsoToVm operates on GuestToolsIsoToVm
 func (cli *ZSClient) AttachGuestToolsIsoToVm(uuid string, params param.AttachGuestToolsIsoToVmParam) (*view.AttachGuestToolsIsoToVmEventView, error) {
 	resp := view.AttachGuestToolsIsoToVmEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4355,8 +4185,7 @@ func (cli *ZSClient) AttachGuestToolsIsoToVm(uuid string, params param.AttachGue
 // DetachAliyunKey operates on AliyunKey
 func (cli *ZSClient) DetachAliyunKey(uuid string, params param.DetachAliyunKeyParam) (*view.DetachAliyunKeyEventView, error) {
 	resp := view.DetachAliyunKeyEventView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/key", fmt.Sprintf(\"%s/detach\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/key", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4364,14 +4193,13 @@ func (cli *ZSClient) DetachAliyunKey(uuid string, params param.DetachAliyunKeyPa
 
 // DeleteBuildApp deletes BuildApp
 func (cli *ZSClient) DeleteBuildApp(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/appcenter/buildapp", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/appcenter/buildapp", uuid, string(deleteMode))
 }
 
 // ChangeBareMetal2InstancePassword changes BareMetal2InstancePassword
 func (cli *ZSClient) ChangeBareMetal2InstancePassword(uuid string, params param.ChangeBareMetal2InstancePasswordParam) (*view.BareMetal2InstanceInventoryView, error) {
 	var resp view.ChangeBareMetal2InstancePasswordEventView
-	err := cli.PutWithSpec("v1/baremetal2/bm-instances", fmt.Sprintf(\"%s/action\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/bm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4387,10 +4215,9 @@ func (cli *ZSClient) GetResourceFromPublishApp(uuid string) (*view.GetResourceFr
 }
 
 // ChangeResourceOwner changes ResourceOwner
-func (cli *ZSClient) ChangeResourceOwner(accountUuid string, params param.ChangeResourceOwnerParam) (*view.AccountResourceRefInventoryView, error) {
+func (cli *ZSClient) ChangeResourceOwner(uuid string, params param.ChangeResourceOwnerParam) (*view.AccountResourceRefInventoryView, error) {
 	var resp view.ChangeResourceOwnerEventView
-	err := cli.PutWithSpec("v1/account", fmt.Sprintf(\"%s/resources\", accountUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/account", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4399,8 +4226,7 @@ func (cli *ZSClient) ChangeResourceOwner(accountUuid string, params param.Change
 // GetHostIommuState gets HostIommuState by uuid
 func (cli *ZSClient) GetHostIommuState(uuid string) (*view.GetHostIommuStateView, error) {
 	var resp view.GetHostIommuStateView
-	err := cli.GetWithSpec("v1/pci-device/hosts", fmt.Sprintf(\"%s/state\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/pci-device/hosts", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4408,7 +4234,7 @@ func (cli *ZSClient) GetHostIommuState(uuid string) (*view.GetHostIommuStateView
 
 // DeleteVirtualBorderRouterLocal deletes VirtualBorderRouterLocal
 func (cli *ZSClient) DeleteVirtualBorderRouterLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/border-router", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/border-router", uuid, string(deleteMode))
 }
 
 // GetMetricData gets MetricData by uuid
@@ -4435,10 +4261,9 @@ func (cli *ZSClient) GetAliyunSnapshotFromLocal(uuid string) (*view.AliyunSnapsh
 }
 
 // EnableCbtTask operates on EnableCbtTask
-func (cli *ZSClient) EnableCbtTask(uuid string, params param.EnableCbtTaskParam) (*view.EnableCbtTaskEventView, error) {
+func (cli *ZSClient) EnableCbtTask(params param.EnableCbtTaskParam) (*view.EnableCbtTaskEventView, error) {
 	resp := view.EnableCbtTaskEventView{}
-	err := cli.PostWithSpec("v1/cbt-task/enable", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/cbt-task/enable", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4474,8 +4299,7 @@ func (cli *ZSClient) AddLabelToEventSubscription(params param.AddLabelToEventSub
 // GetVpcVRouterDistributedRoutingConnections gets VpcVRouterDistributedRoutingConnections by uuid
 func (cli *ZSClient) GetVpcVRouterDistributedRoutingConnections(uuid string) (*view.StringView, error) {
 	var resp view.StringView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/tracked-connections\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4493,23 +4317,21 @@ func (cli *ZSClient) UpdateThirdpartyAlerts(uuid string, params param.UpdateThir
 // PullSdnControllerTenant operates on PullSdnControllerTenant
 func (cli *ZSClient) PullSdnControllerTenant(uuid string, params param.PullSdnControllerTenantParam) (*view.H3cSdnControllerTenantInventoryView, error) {
 	resp := view.H3cSdnControllerTenantInventoryView{}
-	err := cli.PutWithSpec("v1/sdn-controllers", fmt.Sprintf(\"%s/tenant/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sdn-controllers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DetachServiceFromObservabilityServer operates on ServiceFromObservabilityServer
-func (cli *ZSClient) DetachServiceFromObservabilityServer(observabilityServerUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/observability-server", fmt.Sprintf(\"%s/service\", observabilityServerUuid), string(deleteMode))
+func (cli *ZSClient) DetachServiceFromObservabilityServer(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/observability-server", uuid, string(deleteMode))
 }
 
 // GenerateHygonMdevDevices operates on HygonMdevDevices
-func (cli *ZSClient) GenerateHygonMdevDevices(hostUuid string, params param.GenerateHygonMdevDevicesParam) (*view.GenerateHygonMdevDevicesEventView, error) {
+func (cli *ZSClient) GenerateHygonMdevDevices(uuid string, params param.GenerateHygonMdevDevicesParam) (*view.GenerateHygonMdevDevicesEventView, error) {
 	resp := view.GenerateHygonMdevDevicesEventView{}
-	err := cli.PutWithSpec("v1/hygon-devices", fmt.Sprintf(\"%s/actions\", hostUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hygon-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4518,28 +4340,25 @@ func (cli *ZSClient) GenerateHygonMdevDevices(hostUuid string, params param.Gene
 // SetVmUsbRedirect operates on VmUsbRedirect
 func (cli *ZSClient) SetVmUsbRedirect(uuid string, params param.SetVmUsbRedirectParam) (*view.SetVmUsbRedirectEventView, error) {
 	resp := view.SetVmUsbRedirectEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetHostCandidatesForVmMigration gets HostCandidatesForVmMigration by uuid
-func (cli *ZSClient) GetHostCandidatesForVmMigration(vmInstanceUuid string) (*view.HostInventoryView, error) {
+func (cli *ZSClient) GetHostCandidatesForVmMigration(uuid string) (*view.HostInventoryView, error) {
 	var resp view.HostInventoryView
-	err := cli.GetWithSpec("v1/primary-storage/hosts", fmt.Sprintf(\"%s/migration-candidates\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/primary-storage/hosts", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetVmNicAttachableEips gets VmNicAttachableEips by uuid
-func (cli *ZSClient) GetVmNicAttachableEips(vmNicUuid string) (*view.EipInventoryView, error) {
+func (cli *ZSClient) GetVmNicAttachableEips(uuid string) (*view.EipInventoryView, error) {
 	var resp view.EipInventoryView
-	err := cli.GetWithSpec("v1/vm-instances/nics", fmt.Sprintf(\"%s/candidate-eips\", vmNicUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances/nics", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4593,14 +4412,13 @@ func (cli *ZSClient) GetZWatchAlertHistogram(uuid string) (*view.GetZWatchAlertH
 
 // DeleteAliyunRouterInterfaceRemote deletes AliyunRouterInterfaceRemote
 func (cli *ZSClient) DeleteAliyunRouterInterfaceRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/router-interface/remote", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/router-interface/remote", uuid, string(deleteMode))
 }
 
 // SetImageBootMode operates on ImageBootMode
 func (cli *ZSClient) SetImageBootMode(uuid string, params param.SetImageBootModeParam) (*view.SetImageBootModeEventView, error) {
 	resp := view.SetImageBootModeEventView{}
-	err := cli.PutWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4614,8 +4432,7 @@ func (cli *ZSClient) DetachAutoScalingTemplateFromGroup(templateUuid string, gro
 // UpdateVirtualBorderRouterRemote updates VirtualBorderRouterRemote
 func (cli *ZSClient) UpdateVirtualBorderRouterRemote(uuid string, params param.UpdateVirtualBorderRouterRemoteParam) (*view.VirtualBorderRouterInventoryView, error) {
 	var resp view.UpdateVirtualBorderRouterRemoteEventView
-	err := cli.PutWithSpec("v1/hybrid/aliyun/border-router", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/border-router", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4631,10 +4448,9 @@ func (cli *ZSClient) GetVmsCapabilities(uuid string) (*view.GetVmsCapabilitiesVi
 }
 
 // AttachPolicyToUserGroup operates on PolicyToUserGroup
-func (cli *ZSClient) AttachPolicyToUserGroup(groupUuid string, params param.AttachPolicyToUserGroupParam) (*view.AttachPolicyToUserGroupEventView, error) {
+func (cli *ZSClient) AttachPolicyToUserGroup(params param.AttachPolicyToUserGroupParam) (*view.AttachPolicyToUserGroupEventView, error) {
 	resp := view.AttachPolicyToUserGroupEventView{}
-	err := cli.PostWithSpec("v1/accounts/groups", fmt.Sprintf(\"%s/policies\", groupUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/accounts/groups", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4647,7 +4463,7 @@ func (cli *ZSClient) RevokeMonitorTemplateFromMonitorGroup(templateUuid string, 
 
 // DeleteFirewallRule deletes FirewallRule
 func (cli *ZSClient) DeleteFirewallRule(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vpcfirewalls/rules", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vpcfirewalls/rules", uuid, string(deleteMode))
 }
 
 // ShareResource operates on ShareResource
@@ -4671,8 +4487,7 @@ func (cli *ZSClient) CreateEcsVpcRemote(params param.CreateEcsVpcRemoteParam) (*
 // GetAccountQuotaUsage gets AccountQuotaUsage by uuid
 func (cli *ZSClient) GetAccountQuotaUsage(uuid string) (*view.GetAccountQuotaUsageView, error) {
 	var resp view.GetAccountQuotaUsageView
-	err := cli.GetWithSpec("v1/accounts/quota", fmt.Sprintf(\"%s/usages\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/accounts/quota", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4731,10 +4546,9 @@ func (cli *ZSClient) CreateVmFromCdpBackupAsync(params param.CreateVmFromCdpBack
 }
 
 // SyncVpcVpnConnectionFromRemote operates on VpcVpnConnectionFromRemote
-func (cli *ZSClient) SyncVpcVpnConnectionFromRemote(dataCenterUuid string, params param.SyncVpcVpnConnectionFromRemoteParam) (*view.VpcVpnConnectionInventoryView, error) {
+func (cli *ZSClient) SyncVpcVpnConnectionFromRemote(uuid string, params param.SyncVpcVpnConnectionFromRemoteParam) (*view.VpcVpnConnectionInventoryView, error) {
 	resp := view.VpcVpnConnectionInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/vpn-connection", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/vpn-connection", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4773,10 +4587,9 @@ func (cli *ZSClient) DegradeFromLicenseServer(uuid string, deleteMode param.Dele
 }
 
 // UpdateNfvInstProvisionConfig updates NfvInstProvisionConfig
-func (cli *ZSClient) UpdateNfvInstProvisionConfig(vmInstanceUuid string, params param.UpdateNfvInstProvisionConfigParam) (*view.ApplianceVmInventoryView, error) {
+func (cli *ZSClient) UpdateNfvInstProvisionConfig(uuid string, params param.UpdateNfvInstProvisionConfigParam) (*view.ApplianceVmInventoryView, error) {
 	var resp view.UpdateNfvInstProvisionConfigEventView
-	err := cli.PutWithSpec("v1/vm-instances/appliances/nfvinst", fmt.Sprintf(\"%s/provision/update\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/appliances/nfvinst", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4794,8 +4607,7 @@ func (cli *ZSClient) GetDebugSignal(uuid string) (*view.GetDebugSignalView, erro
 // UpdateAliyunKeySecret updates AliyunKeySecret
 func (cli *ZSClient) UpdateAliyunKeySecret(uuid string, params param.UpdateAliyunKeySecretParam) (*view.HybridAccountInventoryView, error) {
 	var resp view.UpdateAliyunKeySecretEventView
-	err := cli.PutWithSpec("v1/hybrid/aliyun", fmt.Sprintf(\"%s/key\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4832,8 +4644,7 @@ func (cli *ZSClient) SecurityMachineEncrypt(params param.SecurityMachineEncryptP
 // ChangeAppBuildSystemState changes AppBuildSystemState
 func (cli *ZSClient) ChangeAppBuildSystemState(uuid string, params param.ChangeAppBuildSystemStateParam) (*view.AppBuildSystemInventoryView, error) {
 	var resp view.ChangeAppBuildSystemStateEventView
-	err := cli.PutWithSpec("v1/appcenter/buildsystem", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/appcenter/buildsystem", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4851,16 +4662,15 @@ func (cli *ZSClient) GetMemorySnapshotGroupReference(uuid string) (*view.VolumeS
 // GetVpcVRouterNetworkServiceState gets VpcVRouterNetworkServiceState by uuid
 func (cli *ZSClient) GetVpcVRouterNetworkServiceState(uuid string) (*view.GetVpcVRouterNetworkServiceStateView, error) {
 	var resp view.GetVpcVRouterNetworkServiceStateView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/networkservicestate\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DetachNetworkServiceFromL3Network operates on NetworkServiceFromL3Network
-func (cli *ZSClient) DetachNetworkServiceFromL3Network(l3NetworkUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/network-services\", l3NetworkUuid), string(deleteMode))
+func (cli *ZSClient) DetachNetworkServiceFromL3Network(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/l3-networks", uuid, string(deleteMode))
 }
 
 // CreateDataVolumeFromVolumeBackup creates DataVolumeFromVolumeBackup
@@ -4874,7 +4684,7 @@ func (cli *ZSClient) CreateDataVolumeFromVolumeBackup(params param.CreateDataVol
 
 // DeleteContainerResourceFromEndpoint deletes ContainerResourceFromEndpoint
 func (cli *ZSClient) DeleteContainerResourceFromEndpoint(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/container/management/endpoint", fmt.Sprintf(\"%s/resources/delete\", uuid), string(deleteMode))
+	return cli.Delete("v1/container/management/endpoint", uuid, string(deleteMode))
 }
 
 // GetSupportAPIs gets SupportAPIs by uuid
@@ -4905,10 +4715,9 @@ func (cli *ZSClient) GetTrashOnPrimaryStorage(uuid string) (*view.InstallPathRec
 }
 
 // GetCandidateVmNicsForLoadBalancer gets CandidateVmNicsForLoadBalancer by uuid
-func (cli *ZSClient) GetCandidateVmNicsForLoadBalancer(listenerUuid string) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) GetCandidateVmNicsForLoadBalancer(uuid string) (*view.VmNicInventoryView, error) {
 	var resp view.VmNicInventoryView
-	err := cli.GetWithSpec("v1/load-balancers/listeners", fmt.Sprintf(\"%s/vm-instances/candidate-nics\", listenerUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/load-balancers/listeners", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4921,14 +4730,13 @@ func (cli *ZSClient) DetachBaremetalPxeServerFromCluster(clusterUuid string, pxe
 
 // DeleteVpcUserVpnGatewayRemote deletes VpcUserVpnGatewayRemote
 func (cli *ZSClient) DeleteVpcUserVpnGatewayRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/user-gateway", fmt.Sprintf(\"%s/remote\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/user-gateway", uuid, string(deleteMode))
 }
 
 // ChangeAccessControlListRedirectRule changes AccessControlListRedirectRule
 func (cli *ZSClient) ChangeAccessControlListRedirectRule(uuid string, params param.ChangeAccessControlListRedirectRuleParam) (*view.AccessControlListEntryInventoryView, error) {
 	var resp view.ChangeAccessControlListRedirectRuleEventView
-	err := cli.PutWithSpec("v1/access-control-lists/redirectRules", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/access-control-lists/redirectRules", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4946,8 +4754,7 @@ func (cli *ZSClient) AddResourceStackVmPortMonitor(params param.AddResourceStack
 // ChangeSNSApplicationEndpointState changes SNSApplicationEndpointState
 func (cli *ZSClient) ChangeSNSApplicationEndpointState(uuid string, params param.ChangeSNSApplicationEndpointStateParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	var resp view.ChangeSNSApplicationEndpointStateEventView
-	err := cli.PutWithSpec("v1/sns/application-endpoints", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sns/application-endpoints", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -4956,8 +4763,7 @@ func (cli *ZSClient) ChangeSNSApplicationEndpointState(uuid string, params param
 // GetVpcAttachedLoadBalancer gets VpcAttachedLoadBalancer by uuid
 func (cli *ZSClient) GetVpcAttachedLoadBalancer(uuid string) (*view.LoadBalancerInventoryView, error) {
 	var resp view.LoadBalancerInventoryView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/attached-lb\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4975,18 +4781,16 @@ func (cli *ZSClient) CreateVpcVpnConnectionRemote(params param.CreateVpcVpnConne
 // GetVpcAttachedPortForwardingRules gets VpcAttachedPortForwardingRules by uuid
 func (cli *ZSClient) GetVpcAttachedPortForwardingRules(uuid string) (*view.PortForwardingRuleInventoryView, error) {
 	var resp view.PortForwardingRuleInventoryView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/attached-pf\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SetVpcVRouterNetworkServiceState operates on VpcVRouterNetworkServiceState
-func (cli *ZSClient) SetVpcVRouterNetworkServiceState(uuid string, params param.SetVpcVRouterNetworkServiceStateParam) (*view.SetVpcVRouterNetworkServiceStateEventView, error) {
+func (cli *ZSClient) SetVpcVRouterNetworkServiceState(params param.SetVpcVRouterNetworkServiceStateParam) (*view.SetVpcVRouterNetworkServiceStateEventView, error) {
 	resp := view.SetVpcVRouterNetworkServiceStateEventView{}
-	err := cli.PostWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/networkservicestate\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/vpc/virtual-routers", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5026,10 +4830,9 @@ func (cli *ZSClient) GetAccountBilling(uuid string) (*view.BillingInventoryView,
 }
 
 // GetVmXml gets VmXml by uuid
-func (cli *ZSClient) GetVmXml(vmInstanceUuid string) (*view.GetVmXmlView, error) {
+func (cli *ZSClient) GetVmXml(uuid string) (*view.GetVmXmlView, error) {
 	var resp view.GetVmXmlView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/xml\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5038,8 +4841,7 @@ func (cli *ZSClient) GetVmXml(vmInstanceUuid string) (*view.GetVmXmlView, error)
 // GetVmInstanceFirstBootDevice gets VmInstanceFirstBootDevice by uuid
 func (cli *ZSClient) GetVmInstanceFirstBootDevice(uuid string) (*view.GetVmInstanceFirstBootDeviceView, error) {
 	var resp view.GetVmInstanceFirstBootDeviceView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/first-boot-device\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5055,20 +4857,19 @@ func (cli *ZSClient) CreateOvnControllerVm(params param.CreateOvnControllerVmPar
 }
 
 // DeleteIpAddress deletes IpAddress
-func (cli *ZSClient) DeleteIpAddress(l3NetworkUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/ip-address\", l3NetworkUuid), string(deleteMode))
+func (cli *ZSClient) DeleteIpAddress(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/l3-networks", uuid, string(deleteMode))
 }
 
 // DeleteVpcVpnConnectionRemote deletes VpcVpnConnectionRemote
 func (cli *ZSClient) DeleteVpcVpnConnectionRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/vpn-connection", fmt.Sprintf(\"%s/remote\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/vpn-connection", uuid, string(deleteMode))
 }
 
 // AttachOssBucketToEcsDataCenter operates on OssBucketToEcsDataCenter
-func (cli *ZSClient) AttachOssBucketToEcsDataCenter(ossBucketUuid string, params param.AttachOssBucketToEcsDataCenterParam) (*view.OssBucketInventoryView, error) {
+func (cli *ZSClient) AttachOssBucketToEcsDataCenter(uuid string, params param.AttachOssBucketToEcsDataCenterParam) (*view.OssBucketInventoryView, error) {
 	var resp view.AttachOssBucketToEcsDataCenterEventView
-	err := cli.PutWithSpec("v1/hybrid/aliyun/oss-bucket", fmt.Sprintf(\"%s/attach\", ossBucketUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/oss-bucket", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5094,7 +4895,7 @@ func (cli *ZSClient) UnmountVmInstanceRecoveryPoint(params param.UnmountVmInstan
 
 // RemovePolicyStatementsFromRole removes PolicyStatementsFromRole
 func (cli *ZSClient) RemovePolicyStatementsFromRole(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/identities/roles", fmt.Sprintf(\"%s/policy-statements\", uuid), string(deleteMode))
+	return cli.Delete("v1/identities/roles", uuid, string(deleteMode))
 }
 
 // GenerateModelMetadata operates on ModelMetadata
@@ -5118,28 +4919,25 @@ func (cli *ZSClient) IsReadyToGo(params param.IsReadyToGoParam) (*view.IsReadyTo
 // GetHostIommuStatus gets HostIommuStatus by uuid
 func (cli *ZSClient) GetHostIommuStatus(uuid string) (*view.GetHostIommuStatusView, error) {
 	var resp view.GetHostIommuStatusView
-	err := cli.GetWithSpec("v1/pci-device/hosts", fmt.Sprintf(\"%s/status\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/pci-device/hosts", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DescribeVmInstanceRecoveryPoint operates on DescribeVmInstanceRecoveryPoint
-func (cli *ZSClient) DescribeVmInstanceRecoveryPoint(vmInstanceUuid string, params param.DescribeVmInstanceRecoveryPointParam) (*view.DescribeVmInstanceRecoveryPointView, error) {
+func (cli *ZSClient) DescribeVmInstanceRecoveryPoint(params param.DescribeVmInstanceRecoveryPointParam) (*view.DescribeVmInstanceRecoveryPointView, error) {
 	var resp view.DescribeVmInstanceRecoveryPointView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/recovery-point\", vmInstanceUuid), "", "", params, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetPciDeviceCandidatesForAttachingVm gets PciDeviceCandidatesForAttachingVm by uuid
-func (cli *ZSClient) GetPciDeviceCandidatesForAttachingVm(vmInstanceUuid string) (*view.PciDeviceInventoryView, error) {
+func (cli *ZSClient) GetPciDeviceCandidatesForAttachingVm(uuid string) (*view.PciDeviceInventoryView, error) {
 	var resp view.PciDeviceInventoryView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/candidate-pci-devices\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5148,8 +4946,7 @@ func (cli *ZSClient) GetPciDeviceCandidatesForAttachingVm(vmInstanceUuid string)
 // ChangeMonitorTriggerState changes MonitorTriggerState
 func (cli *ZSClient) ChangeMonitorTriggerState(uuid string, params param.ChangeMonitorTriggerStateParam) (*view.MonitorTriggerInventoryView, error) {
 	var resp view.ChangeMonitorTriggerStateEventView
-	err := cli.PutWithSpec("v1/monitoring/triggers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/monitoring/triggers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5158,18 +4955,16 @@ func (cli *ZSClient) ChangeMonitorTriggerState(uuid string, params param.ChangeM
 // GetBareMetal2ChassisPowerStatus gets BareMetal2ChassisPowerStatus by uuid
 func (cli *ZSClient) GetBareMetal2ChassisPowerStatus(uuid string) (*view.GetBareMetal2ChassisPowerStatusView, error) {
 	var resp view.GetBareMetal2ChassisPowerStatusView
-	err := cli.GetWithSpec("v1/baremetal2/chassis", fmt.Sprintf(\"%s/powerstatus\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/baremetal2/chassis", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetTaskProgress gets TaskProgress by uuid
-func (cli *ZSClient) GetTaskProgress(apiId string) (*view.TaskProgressInventoryView, error) {
+func (cli *ZSClient) GetTaskProgress(uuid string) (*view.TaskProgressInventoryView, error) {
 	var resp view.TaskProgressInventoryView
-	err := cli.GetWithSpec("v1/task-progresses", fmt.Sprintf(\"%s\", apiId), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/task-progresses", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5211,8 +5006,7 @@ func (cli *ZSClient) ChangeActiveAlarmState(uuid string, params param.ChangeActi
 // SetVmCleanTraffic operates on VmCleanTraffic
 func (cli *ZSClient) SetVmCleanTraffic(uuid string, params param.SetVmCleanTrafficParam) (*view.SetVmCleanTrafficEventView, error) {
 	resp := view.SetVmCleanTrafficEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5221,8 +5015,7 @@ func (cli *ZSClient) SetVmCleanTraffic(uuid string, params param.SetVmCleanTraff
 // SetVmBootMode operates on VmBootMode
 func (cli *ZSClient) SetVmBootMode(uuid string, params param.SetVmBootModeParam) (*view.SetVmBootModeEventView, error) {
 	resp := view.SetVmBootModeEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5231,8 +5024,7 @@ func (cli *ZSClient) SetVmBootMode(uuid string, params param.SetVmBootModeParam)
 // SyncImageSize operates on ImageSize
 func (cli *ZSClient) SyncImageSize(uuid string, params param.SyncImageSizeParam) (*view.ImageInventoryView, error) {
 	var resp view.SyncImageSizeEventView
-	err := cli.PutWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5257,10 +5049,9 @@ func (cli *ZSClient) AddProxyToResource(params param.AddProxyToResourceParam) (*
 }
 
 // ProtectVmInstanceRecoveryPoint operates on ProtectVmInstanceRecoveryPoint
-func (cli *ZSClient) ProtectVmInstanceRecoveryPoint(vmInstanceUuid string, params param.ProtectVmInstanceRecoveryPointParam) (*view.ProtectVmInstanceRecoveryPointEventView, error) {
+func (cli *ZSClient) ProtectVmInstanceRecoveryPoint(uuid string, params param.ProtectVmInstanceRecoveryPointParam) (*view.ProtectVmInstanceRecoveryPointEventView, error) {
 	resp := view.ProtectVmInstanceRecoveryPointEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/protect-recovery-point\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5268,7 +5059,7 @@ func (cli *ZSClient) ProtectVmInstanceRecoveryPoint(vmInstanceUuid string, param
 
 // DeleteConnectionAccessPointLocal deletes ConnectionAccessPointLocal
 func (cli *ZSClient) DeleteConnectionAccessPointLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/access-point", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/access-point", uuid, string(deleteMode))
 }
 
 // QueryPhysicalDriveSelfTestHistory queries PhysicalDriveSelfTestHistory list
@@ -5286,8 +5077,8 @@ func (cli *ZSClient) GetPhysicalDriveSelfTestHistory(uuid string) (*view.Physica
 }
 
 // RemoveIAM2VirtualIDsFromProject removes IAM2VirtualIDsFromProject
-func (cli *ZSClient) RemoveIAM2VirtualIDsFromProject(projectUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s/virtual-ids\", projectUuid), string(deleteMode))
+func (cli *ZSClient) RemoveIAM2VirtualIDsFromProject(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
 }
 
 // CreateEcsImageFromEcsSnapshot creates EcsImageFromEcsSnapshot
@@ -5318,10 +5109,9 @@ func (cli *ZSClient) GetSharedBlockCandidate(uuid string) (*view.GetSharedBlockC
 }
 
 // SyncEcsSecurityGroupFromRemote operates on EcsSecurityGroupFromRemote
-func (cli *ZSClient) SyncEcsSecurityGroupFromRemote(ecsVpcUuid string, params param.SyncEcsSecurityGroupFromRemoteParam) (*view.EcsSecurityGroupInventoryView, error) {
+func (cli *ZSClient) SyncEcsSecurityGroupFromRemote(uuid string, params param.SyncEcsSecurityGroupFromRemoteParam) (*view.EcsSecurityGroupInventoryView, error) {
 	resp := view.EcsSecurityGroupInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/security-group", fmt.Sprintf(\"%s/sync\", ecsVpcUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/security-group", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5330,8 +5120,7 @@ func (cli *ZSClient) SyncEcsSecurityGroupFromRemote(ecsVpcUuid string, params pa
 // ExportBuildApp operates on BuildApp
 func (cli *ZSClient) ExportBuildApp(uuid string, params param.ExportBuildAppParam) (*view.BuildAppExportHistoryInventoryView, error) {
 	var resp view.ExportBuildAppEventView
-	err := cli.PutWithSpec("v1/appcenter/buildapp", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/appcenter/buildapp", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5340,8 +5129,7 @@ func (cli *ZSClient) ExportBuildApp(uuid string, params param.ExportBuildAppPara
 // ReclaimSpaceFromImageStore operates on ReclaimSpaceFromImageStore
 func (cli *ZSClient) ReclaimSpaceFromImageStore(uuid string, params param.ReclaimSpaceFromImageStoreParam) (*view.ReclaimSpaceFromImageStoreEventView, error) {
 	resp := view.ReclaimSpaceFromImageStoreEventView{}
-	err := cli.PutWithSpec("v1/backup-storage/image-store", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/backup-storage/image-store", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5372,10 +5160,9 @@ func (cli *ZSClient) GetAllEventMetadata(uuid string) (*view.GetAllEventMetadata
 }
 
 // GetCandidateVmForAttachingIso gets CandidateVmForAttachingIso by uuid
-func (cli *ZSClient) GetCandidateVmForAttachingIso(isoUuid string) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) GetCandidateVmForAttachingIso(uuid string) (*view.VmInstanceInventoryView, error) {
 	var resp view.VmInstanceInventoryView
-	err := cli.GetWithSpec("v1/images/iso", fmt.Sprintf(\"%s/vm-candidates\", isoUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/images/iso", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5394,8 +5181,7 @@ func (cli *ZSClient) AttachDataVolumeToVm(volumeUuid string, vmInstanceUuid stri
 // UpdateAliyunVirtualRouter updates AliyunVirtualRouter
 func (cli *ZSClient) UpdateAliyunVirtualRouter(uuid string, params param.UpdateAliyunVirtualRouterParam) (*view.VpcVirtualRouterInventoryView, error) {
 	var resp view.UpdateAliyunVirtualRouterEventView
-	err := cli.PutWithSpec("v1/hybrid/aliyun/vrouter", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/vrouter", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5403,14 +5189,13 @@ func (cli *ZSClient) UpdateAliyunVirtualRouter(uuid string, params param.UpdateA
 
 // DeleteDataVolume deletes DataVolume
 func (cli *ZSClient) DeleteDataVolume(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/volumes", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/volumes", uuid, string(deleteMode))
 }
 
 // GetUploadImageJobDetails gets UploadImageJobDetails by uuid
-func (cli *ZSClient) GetUploadImageJobDetails(imageId string) (*view.GetUploadImageJobDetailsView, error) {
+func (cli *ZSClient) GetUploadImageJobDetails(uuid string) (*view.GetUploadImageJobDetailsView, error) {
 	var resp view.GetUploadImageJobDetailsView
-	err := cli.GetWithSpec("v1/images/upload-job/details", fmt.Sprintf(\"%s\", imageId), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/images/upload-job/details", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5424,18 +5209,16 @@ func (cli *ZSClient) DetachIscsiServerFromCluster(clusterUuid string, uuid strin
 // SetVolumeQos operates on VolumeQos
 func (cli *ZSClient) SetVolumeQos(uuid string, params param.SetVolumeQosParam) (*view.VolumeInventoryView, error) {
 	var resp view.SetVolumeQosEventView
-	err := cli.PutWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // DetachHybridEipFromEcs operates on HybridEipFromEcs
-func (cli *ZSClient) DetachHybridEipFromEcs(eipUuid string, params param.DetachHybridEipFromEcsParam) (*view.DetachHybridEipFromEcsEventView, error) {
+func (cli *ZSClient) DetachHybridEipFromEcs(params param.DetachHybridEipFromEcsParam) (*view.DetachHybridEipFromEcsEventView, error) {
 	resp := view.DetachHybridEipFromEcsEventView{}
-	err := cli.PostWithSpec("v1/hybrid/eip", fmt.Sprintf(\"%s/detach\", eipUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/eip", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5444,18 +5227,16 @@ func (cli *ZSClient) DetachHybridEipFromEcs(eipUuid string, params param.DetachH
 // GetVolumeCapabilities gets VolumeCapabilities by uuid
 func (cli *ZSClient) GetVolumeCapabilities(uuid string) (*view.GetVolumeCapabilitiesView, error) {
 	var resp view.GetVolumeCapabilitiesView
-	err := cli.GetWithSpec("v1/volumes", fmt.Sprintf(\"%s/capabilities\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/volumes", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // ChangeBareMetal2GatewayCluster changes BareMetal2GatewayCluster
-func (cli *ZSClient) ChangeBareMetal2GatewayCluster(gatewayUuid string, params param.ChangeBareMetal2GatewayClusterParam) (*view.BareMetal2GatewayInventoryView, error) {
+func (cli *ZSClient) ChangeBareMetal2GatewayCluster(uuid string, params param.ChangeBareMetal2GatewayClusterParam) (*view.BareMetal2GatewayInventoryView, error) {
 	var resp view.ChangeBareMetal2GatewayClusterEventView
-	err := cli.PutWithSpec("v1/baremetal2/gateways", fmt.Sprintf(\"%s/actions\", gatewayUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/gateways", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5476,10 +5257,9 @@ func (cli *ZSClient) GetVpcIkeConfigFromLocal(uuid string) (*view.VpcVpnIkeConfi
 }
 
 // SetVmInstanceHaLevel operates on VmInstanceHaLevel
-func (cli *ZSClient) SetVmInstanceHaLevel(uuid string, params param.SetVmInstanceHaLevelParam) (*view.SetVmInstanceHaLevelEventView, error) {
+func (cli *ZSClient) SetVmInstanceHaLevel(params param.SetVmInstanceHaLevelParam) (*view.SetVmInstanceHaLevelEventView, error) {
 	resp := view.SetVmInstanceHaLevelEventView{}
-	err := cli.PostWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/ha-levels\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/vm-instances", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5491,10 +5271,9 @@ func (cli *ZSClient) RemoveVRouterNetworksFromFlowMeter(uuid string, deleteMode 
 }
 
 // GetCandidateL3NetworksForChangeVmNicNetwork gets CandidateL3NetworksForChangeVmNicNetwork by uuid
-func (cli *ZSClient) GetCandidateL3NetworksForChangeVmNicNetwork(vmNicUuid string) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) GetCandidateL3NetworksForChangeVmNicNetwork(uuid string) (*view.L3NetworkInventoryView, error) {
 	var resp view.L3NetworkInventoryView
-	err := cli.GetWithSpec("v1/vm-instances/nics", fmt.Sprintf(\"%s/l3-networks-candidates\", vmNicUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances/nics", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5502,7 +5281,7 @@ func (cli *ZSClient) GetCandidateL3NetworksForChangeVmNicNetwork(vmNicUuid strin
 
 // DeleteHybridKeySecret deletes HybridKeySecret
 func (cli *ZSClient) DeleteHybridKeySecret(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/hybrid/key", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/hybrid/key", uuid, string(deleteMode))
 }
 
 // GetCandidatePrimaryStoragesForCreatingVm gets CandidatePrimaryStoragesForCreatingVm by uuid
@@ -5517,8 +5296,7 @@ func (cli *ZSClient) GetCandidatePrimaryStoragesForCreatingVm(uuid string) (*vie
 // GetVmConsolePassword gets VmConsolePassword by uuid
 func (cli *ZSClient) GetVmConsolePassword(uuid string) (*view.GetVmConsolePasswordView, error) {
 	var resp view.GetVmConsolePasswordView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/console-passwords\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5536,8 +5314,7 @@ func (cli *ZSClient) GetResourceBindableConfig(uuid string) (*view.GetResourceBi
 // GetVmInstanceHaLevel gets VmInstanceHaLevel by uuid
 func (cli *ZSClient) GetVmInstanceHaLevel(uuid string) (*view.GetVmInstanceHaLevelView, error) {
 	var resp view.GetVmInstanceHaLevelView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/ha-levels\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5586,10 +5363,9 @@ func (cli *ZSClient) DeleteExportedDatabaseBackupFromBackupStorage(databaseBacku
 }
 
 // AttachNetworkServiceToL3Network operates on NetworkServiceToL3Network
-func (cli *ZSClient) AttachNetworkServiceToL3Network(l3NetworkUuid string, params param.AttachNetworkServiceToL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) AttachNetworkServiceToL3Network(params param.AttachNetworkServiceToL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	var resp view.AttachNetworkServiceToL3NetworkEventView
-	err := cli.PostWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/network-services\", l3NetworkUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/l3-networks", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5607,8 +5383,7 @@ func (cli *ZSClient) UnexportNbdVolumes(params param.UnexportNbdVolumesParam) (*
 // RecoveryVirtualBorderRouterRemote operates on yVirtualBorderRouterRemote
 func (cli *ZSClient) RecoveryVirtualBorderRouterRemote(uuid string, params param.RecoveryVirtualBorderRouterRemoteParam) (*view.RecoveryVirtualBorderRouterRemoteEventView, error) {
 	resp := view.RecoveryVirtualBorderRouterRemoteEventView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/border-router", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/border-router", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5631,8 +5406,7 @@ func (cli *ZSClient) GetVpcRouter(uuid string) (*view.VpcRouterVmInventoryView, 
 // ExecuteAutoScalingRule operates on ExecuteAutoScalingRule
 func (cli *ZSClient) ExecuteAutoScalingRule(uuid string, params param.ExecuteAutoScalingRuleParam) (*view.ExecuteAutoScalingRuleEventView, error) {
 	resp := view.ExecuteAutoScalingRuleEventView{}
-	err := cli.PutWithSpec("v1/autoscaling/rules", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/autoscaling/rules", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5650,8 +5424,7 @@ func (cli *ZSClient) SNSHttpTestConnection(params param.SNSHttpTestConnectionPar
 // SetImageSecurityLevel operates on ImageSecurityLevel
 func (cli *ZSClient) SetImageSecurityLevel(uuid string, params param.SetImageSecurityLevelParam) (*view.SetImageSecurityLevelEventView, error) {
 	resp := view.SetImageSecurityLevelEventView{}
-	err := cli.PutWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5660,8 +5433,7 @@ func (cli *ZSClient) SetImageSecurityLevel(uuid string, params param.SetImageSec
 // ChangeBareMetal2ChassisState changes BareMetal2ChassisState
 func (cli *ZSClient) ChangeBareMetal2ChassisState(uuid string, params param.ChangeBareMetal2ChassisStateParam) (*view.BareMetal2ChassisInventoryView, error) {
 	var resp view.ChangeBareMetal2ChassisStateEventView
-	err := cli.PutWithSpec("v1/baremetal2/chassis", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5705,8 +5477,8 @@ func (cli *ZSClient) GetAliyunRouteEntryFromLocal(uuid string) (*view.VpcVirtual
 }
 
 // DetachVmFromVmSchedulingRuleGroup operates on VmFromVmSchedulingRuleGroup
-func (cli *ZSClient) DetachVmFromVmSchedulingRuleGroup(vmGroupUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vmSchedulingRuleGroup", fmt.Sprintf(\"%s/vmInstance/\", vmGroupUuid), string(deleteMode))
+func (cli *ZSClient) DetachVmFromVmSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vmSchedulingRuleGroup", uuid, string(deleteMode))
 }
 
 // AddVRouterNetworksToOspfArea adds VRouterNetworksToOspfArea
@@ -5753,8 +5525,7 @@ func (cli *ZSClient) CheckStaticProvisionIp(params param.CheckStaticProvisionIpP
 // ChangeEventSubscriptionState changes EventSubscriptionState
 func (cli *ZSClient) ChangeEventSubscriptionState(uuid string, params param.ChangeEventSubscriptionStateParam) (*view.EventSubscriptionInventoryView, error) {
 	var resp view.ChangeEventSubscriptionStateEventView
-	err := cli.PutWithSpec("v1/zwatch/change/eventSubscription", fmt.Sprintf(\"%s/state\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/change/eventSubscription", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5770,10 +5541,9 @@ func (cli *ZSClient) PushLicenseAddOnsUsage(uuid string, params param.PushLicens
 }
 
 // AttachHybridEipToEcs operates on HybridEipToEcs
-func (cli *ZSClient) AttachHybridEipToEcs(eipUuid string, params param.AttachHybridEipToEcsParam) (*view.HybridEipAddressInventoryView, error) {
+func (cli *ZSClient) AttachHybridEipToEcs(params param.AttachHybridEipToEcsParam) (*view.HybridEipAddressInventoryView, error) {
 	var resp view.AttachHybridEipToEcsEventView
-	err := cli.PostWithSpec("v1/hybrid/eip", fmt.Sprintf(\"%s/attach\", eipUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/eip", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5835,10 +5605,9 @@ func (cli *ZSClient) DecodeStackTemplate(params param.DecodeStackTemplateParam) 
 }
 
 // UpdateVirtualRouter updates VirtualRouter
-func (cli *ZSClient) UpdateVirtualRouter(vmInstanceUuid string, params param.UpdateVirtualRouterParam) (*view.VirtualRouterVmInventoryView, error) {
+func (cli *ZSClient) UpdateVirtualRouter(uuid string, params param.UpdateVirtualRouterParam) (*view.VirtualRouterVmInventoryView, error) {
 	var resp view.UpdateVirtualRouterEventView
-	err := cli.PutWithSpec("v1/vm-instances/appliances/virtual-routers", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/appliances/virtual-routers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -5879,8 +5648,7 @@ func (cli *ZSClient) CreateL2HardwareVxlanNetworkPool(params param.CreateL2Hardw
 // GetLdapServerAvailableAttributes gets LdapServerAvailableAttributes by uuid
 func (cli *ZSClient) GetLdapServerAvailableAttributes(uuid string) (*view.GetLdapServerAvailableAttributesView, error) {
 	var resp view.GetLdapServerAvailableAttributesView
-	err := cli.GetWithSpec("v1/ldap/server/attributes", fmt.Sprintf(\"%s\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/ldap/server/attributes", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5889,18 +5657,16 @@ func (cli *ZSClient) GetLdapServerAvailableAttributes(uuid string) (*view.GetLda
 // ResizeDataVolume operates on DataVolume
 func (cli *ZSClient) ResizeDataVolume(uuid string, params param.ResizeDataVolumeParam) (*view.VolumeInventoryView, error) {
 	var resp view.ResizeDataVolumeEventView
-	err := cli.PutWithSpec("v1/volumes/data/resize", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes/data/resize", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // GetEipAttachableVmNics gets EipAttachableVmNics by uuid
-func (cli *ZSClient) GetEipAttachableVmNics(eipUuid string) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) GetEipAttachableVmNics(uuid string) (*view.VmNicInventoryView, error) {
 	var resp view.VmNicInventoryView
-	err := cli.GetWithSpec("v1/eips", fmt.Sprintf(\"%s/vm-instances/candidate-nics\", eipUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/eips", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5952,10 +5718,9 @@ func (cli *ZSClient) CreateIAM2VirtualIDLdapBinding(params param.CreateIAM2Virtu
 }
 
 // SetVmNicSecurityGroup operates on VmNicSecurityGroup
-func (cli *ZSClient) SetVmNicSecurityGroup(vmNicUuid string, params param.SetVmNicSecurityGroupParam) (*view.VmNicSecurityGroupRefInventoryView, error) {
+func (cli *ZSClient) SetVmNicSecurityGroup(uuid string, params param.SetVmNicSecurityGroupParam) (*view.VmNicSecurityGroupRefInventoryView, error) {
 	resp := view.VmNicSecurityGroupRefInventoryView{}
-	err := cli.PutWithSpec("v1/security-groups/nics", fmt.Sprintf(\"%s/actions\", vmNicUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/security-groups/nics", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5987,8 +5752,7 @@ func (cli *ZSClient) AddIdentityZoneFromRemote(params param.AddIdentityZoneFromR
 // GetVolumeSnapshotSize gets VolumeSnapshotSize by uuid
 func (cli *ZSClient) GetVolumeSnapshotSize(uuid string) (*view.GetVolumeSnapshotSizeEventView, error) {
 	var resp view.GetVolumeSnapshotSizeEventView
-	err := cli.GetWithSpec("v1/volume-snapshots", fmt.Sprintf(\"%s/actions\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/volume-snapshots", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6013,10 +5777,9 @@ func (cli *ZSClient) GetHypervisorTypes(uuid string) (*view.GetHypervisorTypesVi
 }
 
 // GetVmAttachableDataVolume gets VmAttachableDataVolume by uuid
-func (cli *ZSClient) GetVmAttachableDataVolume(vmInstanceUuid string) (*view.VolumeInventoryView, error) {
+func (cli *ZSClient) GetVmAttachableDataVolume(uuid string) (*view.VolumeInventoryView, error) {
 	var resp view.VolumeInventoryView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/data-volume-candidates\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6025,8 +5788,7 @@ func (cli *ZSClient) GetVmAttachableDataVolume(vmInstanceUuid string) (*view.Vol
 // GetVmMonitorNumber gets VmMonitorNumber by uuid
 func (cli *ZSClient) GetVmMonitorNumber(uuid string) (*view.GetVmMonitorNumberView, error) {
 	var resp view.GetVmMonitorNumberView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/monitorNumber\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6053,8 +5815,7 @@ func (cli *ZSClient) ValidatePriceUserConfig(uuid string, params param.ValidateP
 // ChangeBareMetal2GatewayState changes BareMetal2GatewayState
 func (cli *ZSClient) ChangeBareMetal2GatewayState(uuid string, params param.ChangeBareMetal2GatewayStateParam) (*view.BareMetal2GatewayInventoryView, error) {
 	var resp view.ChangeBareMetal2GatewayStateEventView
-	err := cli.PutWithSpec("v1/baremetal2/gateways", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/gateways", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6126,7 +5887,7 @@ func (cli *ZSClient) CreateHostNetworkServiceType(params param.CreateHostNetwork
 
 // DeleteEcsImageLocal deletes EcsImageLocal
 func (cli *ZSClient) DeleteEcsImageLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/image", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/image", uuid, string(deleteMode))
 }
 
 // DetachNvmeServerFromCluster operates on NvmeServerFromCluster
@@ -6146,8 +5907,7 @@ func (cli *ZSClient) GetBackupStorageTypes(uuid string) (*view.GetBackupStorageT
 // GetVolumeQos gets VolumeQos by uuid
 func (cli *ZSClient) GetVolumeQos(uuid string) (*view.GetVolumeQosView, error) {
 	var resp view.GetVolumeQosView
-	err := cli.GetWithSpec("v1/volumes", fmt.Sprintf(\"%s/qos\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/volumes", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6163,10 +5923,9 @@ func (cli *ZSClient) AddRemoteCidrsToIPsecConnection(params param.AddRemoteCidrs
 }
 
 // PowerOnBaremetalChassis operates on PowerOnBaremetalChassis
-func (cli *ZSClient) PowerOnBaremetalChassis(chassisUuid string, params param.PowerOnBaremetalChassisParam) (*view.PowerOnBaremetalChassisEventView, error) {
+func (cli *ZSClient) PowerOnBaremetalChassis(uuid string, params param.PowerOnBaremetalChassisParam) (*view.PowerOnBaremetalChassisEventView, error) {
 	resp := view.PowerOnBaremetalChassisEventView{}
-	err := cli.PutWithSpec("v1/baremetal/chassis", fmt.Sprintf(\"%s/actions\", chassisUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6191,8 +5950,8 @@ func (cli *ZSClient) CreateDataVolumeFromVolumeSnapshot(params param.CreateDataV
 }
 
 // DetachIsoFromVmInstance operates on IsoFromVmInstance
-func (cli *ZSClient) DetachIsoFromVmInstance(vmInstanceUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/iso\", vmInstanceUuid), string(deleteMode))
+func (cli *ZSClient) DetachIsoFromVmInstance(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // DetachSecurityGroupFromL3Network operates on SecurityGroupFromL3Network
@@ -6210,20 +5969,18 @@ func (cli *ZSClient) GetVirtualizerInfo(uuid string) (*view.VirtualizerInfoInven
 }
 
 // GetL3NetworkIpStatistic gets L3NetworkIpStatistic by uuid
-func (cli *ZSClient) GetL3NetworkIpStatistic(l3NetworkUuid string) (*view.GetL3NetworkIpStatisticView, error) {
+func (cli *ZSClient) GetL3NetworkIpStatistic(uuid string) (*view.GetL3NetworkIpStatisticView, error) {
 	var resp view.GetL3NetworkIpStatisticView
-	err := cli.GetWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/ip-statistic\", l3NetworkUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/l3-networks", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetImageCandidatesForVmToChange gets ImageCandidatesForVmToChange by uuid
-func (cli *ZSClient) GetImageCandidatesForVmToChange(vmInstanceUuid string) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) GetImageCandidatesForVmToChange(uuid string) (*view.ImageInventoryView, error) {
 	var resp view.ImageInventoryView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/image-candidates\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6232,8 +5989,7 @@ func (cli *ZSClient) GetImageCandidatesForVmToChange(vmInstanceUuid string) (*vi
 // ChangeImageState changes ImageState
 func (cli *ZSClient) ChangeImageState(uuid string, params param.ChangeImageStateParam) (*view.ImageInventoryView, error) {
 	var resp view.ChangeImageStateEventView
-	err := cli.PutWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6260,8 +6016,7 @@ func (cli *ZSClient) CreateAliyunNasAccessGroupRule(params param.CreateAliyunNas
 // RecoverBackupFromImageStoreBackupStorage operates on BackupFromImageStoreBackupStorage
 func (cli *ZSClient) RecoverBackupFromImageStoreBackupStorage(uuid string, params param.RecoverBackupFromImageStoreBackupStorageParam) (*view.VolumeBackupInventoryView, error) {
 	var resp view.RecoverBackupFromImageStoreBackupStorageEventView
-	err := cli.PutWithSpec("v1/volume-backups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volume-backups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6270,8 +6025,7 @@ func (cli *ZSClient) RecoverBackupFromImageStoreBackupStorage(uuid string, param
 // ChangeTicketFlowCollectionState changes TicketFlowCollectionState
 func (cli *ZSClient) ChangeTicketFlowCollectionState(uuid string, params param.ChangeTicketFlowCollectionStateParam) (*view.TicketFlowCollectionInventoryView, error) {
 	var resp view.ChangeTicketFlowCollectionStateEventView
-	err := cli.PutWithSpec("v1/tickets/flow-collections", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/tickets/flow-collections", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6279,7 +6033,7 @@ func (cli *ZSClient) ChangeTicketFlowCollectionState(uuid string, params param.C
 
 // ExpungeDataVolume operates on DataVolume
 func (cli *ZSClient) ExpungeDataVolume(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), string(deleteMode))
+	return cli.Delete("v1/volumes", uuid, string(deleteMode))
 }
 
 // AddActionToEventSubscription adds ActionToEventSubscription
@@ -6292,10 +6046,9 @@ func (cli *ZSClient) AddActionToEventSubscription(params param.AddActionToEventS
 }
 
 // GetVRouterRouterId gets VRouterRouterId by uuid
-func (cli *ZSClient) GetVRouterRouterId(vRouterUuid string) (*view.GetVRouterRouterIdView, error) {
+func (cli *ZSClient) GetVRouterRouterId(uuid string) (*view.GetVRouterRouterIdView, error) {
 	var resp view.GetVRouterRouterIdView
-	err := cli.GetWithSpec("v1/routerArea", fmt.Sprintf(\"%s/routerid\", vRouterUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/routerArea", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6304,8 +6057,7 @@ func (cli *ZSClient) GetVRouterRouterId(vRouterUuid string) (*view.GetVRouterRou
 // GetZBoxBackupDetails gets ZBoxBackupDetails by uuid
 func (cli *ZSClient) GetZBoxBackupDetails(uuid string) (*view.GetZBoxBackupDetailsView, error) {
 	var resp view.GetZBoxBackupDetailsView
-	err := cli.GetWithSpec("v1/externalbackup/zbox", fmt.Sprintf(\"%s/details\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/externalbackup/zbox", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6339,20 +6091,18 @@ func (cli *ZSClient) GetCandidateNetworkInterfaces(uuid string) (*view.GetCandid
 }
 
 // ChangeAccessControlListServerGroup changes AccessControlListServerGroup
-func (cli *ZSClient) ChangeAccessControlListServerGroup(aclUuid string, params param.ChangeAccessControlListServerGroupParam) (*view.LoadBalancerListerAclView, error) {
+func (cli *ZSClient) ChangeAccessControlListServerGroup(uuid string, params param.ChangeAccessControlListServerGroupParam) (*view.LoadBalancerListerAclView, error) {
 	var resp view.ChangeAccessControlListServerGroupEventView
-	err := cli.PutWithSpec("v1/load-balancers/listener/acl", fmt.Sprintf(\"%s/servergroup/actions\", aclUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/load-balancers/listener/acl", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // SyncVirtualBorderRouterFromRemote operates on VirtualBorderRouterFromRemote
-func (cli *ZSClient) SyncVirtualBorderRouterFromRemote(dataCenterUuid string, params param.SyncVirtualBorderRouterFromRemoteParam) (*view.VirtualBorderRouterInventoryView, error) {
+func (cli *ZSClient) SyncVirtualBorderRouterFromRemote(uuid string, params param.SyncVirtualBorderRouterFromRemoteParam) (*view.VirtualBorderRouterInventoryView, error) {
 	resp := view.VirtualBorderRouterInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/border-router", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/border-router", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6361,8 +6111,7 @@ func (cli *ZSClient) SyncVirtualBorderRouterFromRemote(dataCenterUuid string, pa
 // UpdateAtPersonOfAtFeiShuEndpoint updates AtPersonOfAtFeiShuEndpoint
 func (cli *ZSClient) UpdateAtPersonOfAtFeiShuEndpoint(uuid string, params param.UpdateAtPersonOfAtFeiShuEndpointParam) (*view.SNSFeiShuAtPersonInventoryView, error) {
 	var resp view.UpdateAtPersonOfFeiShuEndpointEventView
-	err := cli.PutWithSpec("v1/sns/application-endpoints/feishu/at-persons", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sns/application-endpoints/feishu/at-persons", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6416,10 +6165,9 @@ func (cli *ZSClient) PutMetricData(params param.PutMetricDataParam) (*view.PutMe
 }
 
 // GetAttachablePublicL3ForVRouter gets AttachablePublicL3ForVRouter by uuid
-func (cli *ZSClient) GetAttachablePublicL3ForVRouter(vmInstanceUuid string) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) GetAttachablePublicL3ForVRouter(uuid string) (*view.L3NetworkInventoryView, error) {
 	var resp view.L3NetworkInventoryView
-	err := cli.GetWithSpec("v1/vm-instances/appliances/virtual-routers", fmt.Sprintf(\"%s/attachable-public-l3s\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances/appliances/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6428,8 +6176,7 @@ func (cli *ZSClient) GetAttachablePublicL3ForVRouter(vmInstanceUuid string) (*vi
 // RerunLongJob operates on RerunLongJob
 func (cli *ZSClient) RerunLongJob(uuid string, params param.RerunLongJobParam) (*view.LongJobInventoryView, error) {
 	var resp view.RerunLongJobEventView
-	err := cli.PutWithSpec("v1/longjobs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/longjobs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6457,8 +6204,7 @@ func (cli *ZSClient) DeleteExportedImageFromBackupStorage(backupStorageUuid stri
 // UpdateClusterOS updates ClusterOS
 func (cli *ZSClient) UpdateClusterOS(uuid string, params param.UpdateClusterOSParam) (*view.LongJobInventoryView, error) {
 	var resp view.UpdateClusterOSEventView
-	err := cli.PutWithSpec("v1/clusters", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/clusters", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6482,8 +6228,7 @@ func (cli *ZSClient) UpdateClusterOSAsync(params param.UpdateClusterOSParam) (st
 // GetVmUsbRedirect gets VmUsbRedirect by uuid
 func (cli *ZSClient) GetVmUsbRedirect(uuid string) (*view.GetVmUsbRedirectView, error) {
 	var resp view.GetVmUsbRedirectView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/usbredirect\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6508,10 +6253,9 @@ func (cli *ZSClient) GetOssBucketFileFromRemote(uuid string) (*view.GetOssBucket
 }
 
 // AttachVipToVpcSharedQos operates on VipToVpcSharedQos
-func (cli *ZSClient) AttachVipToVpcSharedQos(sharedQosUuid string, params param.AttachVipToVpcSharedQosParam) (*view.AttachVipToVpcSharedQosEventView, error) {
+func (cli *ZSClient) AttachVipToVpcSharedQos(params param.AttachVipToVpcSharedQosParam) (*view.AttachVipToVpcSharedQosEventView, error) {
 	resp := view.AttachVipToVpcSharedQosEventView{}
-	err := cli.PostWithSpec("v1/vips/sharedqos", fmt.Sprintf(\"%s/vips\", sharedQosUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/vips/sharedqos", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6537,13 +6281,13 @@ func (cli *ZSClient) CheckIpAvailability(l3NetworkUuid string, ip string, params
 }
 
 // RemoveVmNicFromLoadBalancer removes VmNicFromLoadBalancer
-func (cli *ZSClient) RemoveVmNicFromLoadBalancer(listenerUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/load-balancers/listeners", fmt.Sprintf(\"%s/vm-instances/nics\", listenerUuid), string(deleteMode))
+func (cli *ZSClient) RemoveVmNicFromLoadBalancer(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
 }
 
 // RemoveRolesFromIAM2VirtualID removes RolesFromIAM2VirtualID
-func (cli *ZSClient) RemoveRolesFromIAM2VirtualID(virtualIDUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/projects/virtual-ids", fmt.Sprintf(\"%s/roles\", virtualIDUuid), string(deleteMode))
+func (cli *ZSClient) RemoveRolesFromIAM2VirtualID(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects/virtual-ids", uuid, string(deleteMode))
 }
 
 // CalculateResourceSpending operates on ResourceSpending
@@ -6575,20 +6319,18 @@ func (cli *ZSClient) DetachBackupStorageFromZone(zoneUuid string, backupStorageU
 }
 
 // UpdateCCSCertificateUserState updates CCSCertificateUserState
-func (cli *ZSClient) UpdateCCSCertificateUserState(userUuid string, params param.UpdateCCSCertificateUserStateParam) (*view.CCSCertificateInventoryView, error) {
+func (cli *ZSClient) UpdateCCSCertificateUserState(uuid string, params param.UpdateCCSCertificateUserStateParam) (*view.CCSCertificateInventoryView, error) {
 	var resp view.UpdateCCSCertificateUserStateEventView
-	err := cli.PutWithSpec("v1/crypto/ccs-certificate/update-state", fmt.Sprintf(\"%s\", userUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/crypto/ccs-certificate/update-state", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // PowerResetBaremetalChassis operates on PowerResetBaremetalChassis
-func (cli *ZSClient) PowerResetBaremetalChassis(chassisUuid string, params param.PowerResetBaremetalChassisParam) (*view.PowerResetBaremetalChassisEventView, error) {
+func (cli *ZSClient) PowerResetBaremetalChassis(uuid string, params param.PowerResetBaremetalChassisParam) (*view.PowerResetBaremetalChassisEventView, error) {
 	resp := view.PowerResetBaremetalChassisEventView{}
-	err := cli.PutWithSpec("v1/baremetal/chassis", fmt.Sprintf(\"%s/actions\", chassisUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6597,8 +6339,7 @@ func (cli *ZSClient) PowerResetBaremetalChassis(chassisUuid string, params param
 // CleanUpTrashOnPrimaryStorage operates on UpTrashOnPrimaryStorage
 func (cli *ZSClient) CleanUpTrashOnPrimaryStorage(uuid string, params param.CleanUpTrashOnPrimaryStorageParam) (*view.CleanUpTrashOnPrimaryStorageEventView, error) {
 	resp := view.CleanUpTrashOnPrimaryStorageEventView{}
-	err := cli.PutWithSpec("v1/primary-storage", fmt.Sprintf(\"%s/trash/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6643,8 +6384,7 @@ func (cli *ZSClient) GetIpAddressCapacity(uuid string) (*view.GetIpAddressCapaci
 // SetIAM2ProjectContainerCluster operates on IAM2ProjectContainerCluster
 func (cli *ZSClient) SetIAM2ProjectContainerCluster(uuid string, params param.SetIAM2ProjectContainerClusterParam) (*view.SetIAM2ProjectContainerClusterEventView, error) {
 	resp := view.SetIAM2ProjectContainerClusterEventView{}
-	err := cli.PutWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s/container/cluster/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/projects", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6671,16 +6411,15 @@ func (cli *ZSClient) RefreshPluginDrivers(uuid string, params param.RefreshPlugi
 // PauseVmInstance operates on PauseVmInstance
 func (cli *ZSClient) PauseVmInstance(uuid string, params param.PauseVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.PauseVmInstanceEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // DetachUserDefinedXmlHookScriptFromVm operates on UserDefinedXmlHookScriptFromVm
-func (cli *ZSClient) DetachUserDefinedXmlHookScriptFromVm(vmInstanceUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/xmlhook/vm-instances", fmt.Sprintf(\"%s/detach\", vmInstanceUuid), string(deleteMode))
+func (cli *ZSClient) DetachUserDefinedXmlHookScriptFromVm(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/xmlhook/vm-instances", uuid, string(deleteMode))
 }
 
 // GetSignatureServerEncryptPublicKey gets SignatureServerEncryptPublicKey by uuid
@@ -6721,7 +6460,7 @@ func (cli *ZSClient) AddDataCenterFromRemote(params param.AddDataCenterFromRemot
 
 // DeleteFirewallRuleSet deletes FirewallRuleSet
 func (cli *ZSClient) DeleteFirewallRuleSet(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vpcfirewalls/ruleSets", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vpcfirewalls/ruleSets", uuid, string(deleteMode))
 }
 
 // BatchAddBareMetal2IpmiChassis operates on AddBareMetal2IpmiChassis
@@ -6734,10 +6473,9 @@ func (cli *ZSClient) BatchAddBareMetal2IpmiChassis(params param.BatchAddBareMeta
 }
 
 // LocalStorageMigrateVolume operates on LocalStorageMigrateVolume
-func (cli *ZSClient) LocalStorageMigrateVolume(volumeUuid string, params param.LocalStorageMigrateVolumeParam) (*view.LocalStorageResourceRefInventoryView, error) {
+func (cli *ZSClient) LocalStorageMigrateVolume(uuid string, params param.LocalStorageMigrateVolumeParam) (*view.LocalStorageResourceRefInventoryView, error) {
 	var resp view.LocalStorageMigrateVolumeEventView
-	err := cli.PutWithSpec("v1/primary-storage/local-storage/volumes", fmt.Sprintf(\"%s/actions\", volumeUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage/local-storage/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6746,8 +6484,7 @@ func (cli *ZSClient) LocalStorageMigrateVolume(volumeUuid string, params param.L
 // AttachNicToBonding operates on NicToBonding
 func (cli *ZSClient) AttachNicToBonding(uuid string, params param.AttachNicToBondingParam) (*view.HostNetworkBondingInventoryView, error) {
 	var resp view.AttachNicToBondingEventView
-	err := cli.PutWithSpec("v1/hosts/bondings", fmt.Sprintf(\"%s/attach\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/bondings", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6756,8 +6493,7 @@ func (cli *ZSClient) AttachNicToBonding(uuid string, params param.AttachNicToBon
 // SetOrganizationOperation operates on OrganizationOperation
 func (cli *ZSClient) SetOrganizationOperation(uuid string, params param.SetOrganizationOperationParam) (*view.SetOrganizationOperationEventView, error) {
 	resp := view.SetOrganizationOperationEventView{}
-	err := cli.PutWithSpec("v1/iam2/organizations", fmt.Sprintf(\"%s/operation\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/organizations", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6788,8 +6524,8 @@ func (cli *ZSClient) CreateDataVolumeTemplateFromVolumeAsync(params param.Create
 }
 
 // RemoveIAM2VirtualIDsFromOrganization removes IAM2VirtualIDsFromOrganization
-func (cli *ZSClient) RemoveIAM2VirtualIDsFromOrganization(organizationUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/organizations", fmt.Sprintf(\"%s/virtual-ids\", organizationUuid), string(deleteMode))
+func (cli *ZSClient) RemoveIAM2VirtualIDsFromOrganization(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/organizations", uuid, string(deleteMode))
 }
 
 // ExportDatabaseBackupFromBackupStorage operates on DatabaseBackupFromBackupStorage
@@ -6822,10 +6558,9 @@ func (cli *ZSClient) CreateEmailMonitorTriggerAction(params param.CreateEmailMon
 }
 
 // SetVpcVRouterDistributedRoutingEnabled operates on VpcVRouterDistributedRoutingEnabled
-func (cli *ZSClient) SetVpcVRouterDistributedRoutingEnabled(uuid string, params param.SetVpcVRouterDistributedRoutingEnabledParam) (*view.SetVpcVRouterDistributedRoutingEnabledEventView, error) {
+func (cli *ZSClient) SetVpcVRouterDistributedRoutingEnabled(params param.SetVpcVRouterDistributedRoutingEnabledParam) (*view.SetVpcVRouterDistributedRoutingEnabledEventView, error) {
 	resp := view.SetVpcVRouterDistributedRoutingEnabledEventView{}
-	err := cli.PostWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/distributed-routing\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/vpc/virtual-routers", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6834,8 +6569,7 @@ func (cli *ZSClient) SetVpcVRouterDistributedRoutingEnabled(uuid string, params 
 // PowerOnBareMetal2Chassis operates on PowerOnBareMetal2Chassis
 func (cli *ZSClient) PowerOnBareMetal2Chassis(uuid string, params param.PowerOnBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	var resp view.PowerOnBareMetal2ChassisEventView
-	err := cli.PutWithSpec("v1/baremetal2/chassis", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6844,8 +6578,7 @@ func (cli *ZSClient) PowerOnBareMetal2Chassis(uuid string, params param.PowerOnB
 // GetLocalRaidPhysicalDriveSmart gets LocalRaidPhysicalDriveSmart by uuid
 func (cli *ZSClient) GetLocalRaidPhysicalDriveSmart(uuid string) (*view.GetLocalRaidPhysicalDriveSmartView, error) {
 	var resp view.GetLocalRaidPhysicalDriveSmartView
-	err := cli.GetWithSpec("v1/storage-devices/local-raid/physical-drives", fmt.Sprintf(\"%s/smart\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/storage-devices/local-raid/physical-drives", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6854,8 +6587,7 @@ func (cli *ZSClient) GetLocalRaidPhysicalDriveSmart(uuid string) (*view.GetLocal
 // UpdateHybridKeySecret updates HybridKeySecret
 func (cli *ZSClient) UpdateHybridKeySecret(uuid string, params param.UpdateHybridKeySecretParam) (*view.HybridAccountInventoryView, error) {
 	var resp view.UpdateHybridKeySecretEventView
-	err := cli.PutWithSpec("v1/hybrid/hybrid", fmt.Sprintf(\"%s/key\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/hybrid", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6864,16 +6596,15 @@ func (cli *ZSClient) UpdateHybridKeySecret(uuid string, params param.UpdateHybri
 // PullHuaweiIMasterController operates on PullHuaweiIMasterController
 func (cli *ZSClient) PullHuaweiIMasterController(uuid string, params param.PullHuaweiIMasterControllerParam) (*view.HuaweiIMasterSdnControllerInventoryView, error) {
 	resp := view.HuaweiIMasterSdnControllerInventoryView{}
-	err := cli.PutWithSpec("v1/sdn-controller/huawei-imaster", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sdn-controller/huawei-imaster", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // RemoveRolesFromIAM2VirtualIDGroup removes RolesFromIAM2VirtualIDGroup
-func (cli *ZSClient) RemoveRolesFromIAM2VirtualIDGroup(groupUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/projects/groups", fmt.Sprintf(\"%s/roles\", groupUuid), string(deleteMode))
+func (cli *ZSClient) RemoveRolesFromIAM2VirtualIDGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
 }
 
 // AckAlarmData operates on AlarmData
@@ -6891,10 +6622,9 @@ func (cli *ZSClient) RemoveDnsFromL3Network(l3NetworkUuid string, dns string, de
 }
 
 // ChangeIAM2OrganizationParent changes IAM2OrganizationParent
-func (cli *ZSClient) ChangeIAM2OrganizationParent(parentUuid string, params param.ChangeIAM2OrganizationParentParam) (*view.ChangeIAM2OrganizationParentEventView, error) {
+func (cli *ZSClient) ChangeIAM2OrganizationParent(uuid string, params param.ChangeIAM2OrganizationParentParam) (*view.ChangeIAM2OrganizationParentEventView, error) {
 	resp := view.ChangeIAM2OrganizationParentEventView{}
-	err := cli.PutWithSpec("v1/iam2/organizations", fmt.Sprintf(\"%s/actions\", parentUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/organizations", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6910,10 +6640,9 @@ func (cli *ZSClient) SNSWeComTestConnection(params param.SNSWeComTestConnectionP
 }
 
 // ProvisionVirtualRouterConfig operates on ProvisionVirtualRouterConfig
-func (cli *ZSClient) ProvisionVirtualRouterConfig(vmInstanceUuid string, params param.ProvisionVirtualRouterConfigParam) (*view.ApplianceVmInventoryView, error) {
+func (cli *ZSClient) ProvisionVirtualRouterConfig(uuid string, params param.ProvisionVirtualRouterConfigParam) (*view.ApplianceVmInventoryView, error) {
 	var resp view.ProvisionVirtualRouterConfigEventView
-	err := cli.PutWithSpec("v1/vm-instances/appliances/virtual-routers", fmt.Sprintf(\"%s/provision\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/appliances/virtual-routers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6922,8 +6651,7 @@ func (cli *ZSClient) ProvisionVirtualRouterConfig(vmInstanceUuid string, params 
 // SetVmQga operates on VmQga
 func (cli *ZSClient) SetVmQga(uuid string, params param.SetVmQgaParam) (*view.SetVmQgaEventView, error) {
 	resp := view.SetVmQgaEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6960,8 +6688,7 @@ func (cli *ZSClient) AttachL3NetworkToVmNic(vmNicUuid string, l3NetworkUuid stri
 // ChangeSecurityMachineState changes SecurityMachineState
 func (cli *ZSClient) ChangeSecurityMachineState(uuid string, params param.ChangeSecurityMachineStateParam) (*view.SecurityMachineInventoryView, error) {
 	var resp view.ChangeSecurityMachineStateEventView
-	err := cli.PutWithSpec("v1/security-machines", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/security-machines", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -6970,8 +6697,7 @@ func (cli *ZSClient) ChangeSecurityMachineState(uuid string, params param.Change
 // SetVmQxlMemory operates on VmQxlMemory
 func (cli *ZSClient) SetVmQxlMemory(uuid string, params param.SetVmQxlMemoryParam) (*view.SetVmQxlMemoryEventView, error) {
 	resp := view.SetVmQxlMemoryEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6998,8 +6724,7 @@ func (cli *ZSClient) GetVolumeFormat(uuid string) (*view.GetVolumeFormatView, er
 // UpdateAtPersonOfAtDingTalkEndpoint updates AtPersonOfAtDingTalkEndpoint
 func (cli *ZSClient) UpdateAtPersonOfAtDingTalkEndpoint(uuid string, params param.UpdateAtPersonOfAtDingTalkEndpointParam) (*view.SNSDingTalkAtPersonInventoryView, error) {
 	var resp view.UpdateAtPersonOfDingTalkEndpointEventView
-	err := cli.PutWithSpec("v1/sns/application-endpoints/ding-talk/at-persons", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sns/application-endpoints/ding-talk/at-persons", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7026,8 +6751,7 @@ func (cli *ZSClient) GetResourceAccount(uuid string) (*view.StringView, error) {
 // ChangeSecretResourcePoolState changes SecretResourcePoolState
 func (cli *ZSClient) ChangeSecretResourcePoolState(uuid string, params param.ChangeSecretResourcePoolStateParam) (*view.SecretResourcePoolInventoryView, error) {
 	var resp view.ChangeSecretResourcePoolStateEventView
-	err := cli.PutWithSpec("v1/secret-resource-pools", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/secret-resource-pools", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7071,10 +6795,9 @@ func (cli *ZSClient) CheckNetworkReachable(params param.CheckNetworkReachablePar
 }
 
 // SetFlowMeterRouterId operates on FlowMeterRouterId
-func (cli *ZSClient) SetFlowMeterRouterId(vRouterUuid string, params param.SetFlowMeterRouterIdParam) (*view.SetFlowMeterRouterIdEventView, error) {
+func (cli *ZSClient) SetFlowMeterRouterId(params param.SetFlowMeterRouterIdParam) (*view.SetFlowMeterRouterIdEventView, error) {
 	resp := view.SetFlowMeterRouterIdEventView{}
-	err := cli.PostWithSpec("v1/flowmeters", fmt.Sprintf(\"%s/routerid\", vRouterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/flowmeters", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7092,8 +6815,7 @@ func (cli *ZSClient) AddStorageProtocol(params param.AddStorageProtocolParam) (*
 // DeployModelService operates on DeployModelService
 func (cli *ZSClient) DeployModelService(uuid string, params param.DeployModelServiceParam) (*view.ModelServiceInstanceGroupInventoryView, error) {
 	var resp view.DeployModelServiceEventView
-	err := cli.PutWithSpec("v1/ai/model-services", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/ai/model-services", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7137,20 +6859,18 @@ func (cli *ZSClient) AttachSecurityGroupToL3Network(securityGroupUuid string, l3
 }
 
 // UpdateVmNicDriver updates VmNicDriver
-func (cli *ZSClient) UpdateVmNicDriver(vmInstanceUuid string, params param.UpdateVmNicDriverParam) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) UpdateVmNicDriver(uuid string, params param.UpdateVmNicDriverParam) (*view.VmNicInventoryView, error) {
 	var resp view.UpdateVmNicDriverEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // SetIpOnHostNetworkInterface operates on IpOnHostNetworkInterface
-func (cli *ZSClient) SetIpOnHostNetworkInterface(interfaceUuid string, params param.SetIpOnHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
+func (cli *ZSClient) SetIpOnHostNetworkInterface(params param.SetIpOnHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
 	var resp view.SetIpOnHostNetworkInterfaceEventView
-	err := cli.PostWithSpec("v1/hosts/nics", fmt.Sprintf(\"%s/ip\", interfaceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hosts/nics", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7159,8 +6879,7 @@ func (cli *ZSClient) SetIpOnHostNetworkInterface(interfaceUuid string, params pa
 // ProvisionNfvInstGroup operates on ProvisionNfvInstGroup
 func (cli *ZSClient) ProvisionNfvInstGroup(uuid string, params param.ProvisionNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
 	var resp view.ProvisionNfvInstGroupEventView
-	err := cli.PutWithSpec("v1/nfvinstgroup/group", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/nfvinstgroup/group", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7169,8 +6888,7 @@ func (cli *ZSClient) ProvisionNfvInstGroup(uuid string, params param.ProvisionNf
 // DetachNicFromBonding operates on NicFromBonding
 func (cli *ZSClient) DetachNicFromBonding(uuid string, params param.DetachNicFromBondingParam) (*view.HostNetworkBondingInventoryView, error) {
 	var resp view.DetachNicFromBondingEventView
-	err := cli.PutWithSpec("v1/hosts/bondings", fmt.Sprintf(\"%s/detach\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/bondings", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7179,18 +6897,16 @@ func (cli *ZSClient) DetachNicFromBonding(uuid string, params param.DetachNicFro
 // ChangeMonitorTriggerActionState changes MonitorTriggerActionState
 func (cli *ZSClient) ChangeMonitorTriggerActionState(uuid string, params param.ChangeMonitorTriggerActionStateParam) (*view.MonitorTriggerActionInventoryView, error) {
 	var resp view.ChangeMonitorTriggerActionStateEventView
-	err := cli.PutWithSpec("v1/monitoring/trigger-actions", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/monitoring/trigger-actions", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // MigrateVm operates on Vm
-func (cli *ZSClient) MigrateVm(vmInstanceUuid string, params param.MigrateVmParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) MigrateVm(uuid string, params param.MigrateVmParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.MigrateVmEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7214,8 +6930,7 @@ func (cli *ZSClient) MigrateVmAsync(params param.MigrateVmParam) (string, error)
 // ChangeVmPassword changes VmPassword
 func (cli *ZSClient) ChangeVmPassword(uuid string, params param.ChangeVmPasswordParam) (*view.ChangeVmPasswordEventView, error) {
 	resp := view.ChangeVmPasswordEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7224,8 +6939,7 @@ func (cli *ZSClient) ChangeVmPassword(uuid string, params param.ChangeVmPassword
 // FlattenVmInstance operates on FlattenVmInstance
 func (cli *ZSClient) FlattenVmInstance(uuid string, params param.FlattenVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.FlattenVmInstanceEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7248,22 +6962,21 @@ func (cli *ZSClient) FlattenVmInstanceAsync(params param.FlattenVmInstanceParam)
 
 // DeleteAllEcsInstancesFromDataCenter deletes AllEcsInstancesFromDataCenter
 func (cli *ZSClient) DeleteAllEcsInstancesFromDataCenter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/dc-ecs", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/dc-ecs", uuid, string(deleteMode))
 }
 
 // GetVpcMulticastRoute gets VpcMulticastRoute by uuid
 func (cli *ZSClient) GetVpcMulticastRoute(uuid string) (*view.MulticastRouteInventoryView, error) {
 	var resp view.MulticastRouteInventoryView
-	err := cli.GetWithSpec("v1/multicast/virtual-routers", fmt.Sprintf(\"%s/routes\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/multicast/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DeleteVmUserDefinedXmlHookScript deletes VmUserDefinedXmlHookScript
-func (cli *ZSClient) DeleteVmUserDefinedXmlHookScript(vmInstanceUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/xml-hook-script\", vmInstanceUuid), string(deleteMode))
+func (cli *ZSClient) DeleteVmUserDefinedXmlHookScript(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // AddL3NetworkToGroup adds L3NetworkToGroup
@@ -7278,8 +6991,7 @@ func (cli *ZSClient) AddL3NetworkToGroup(params param.AddL3NetworkToGroupParam) 
 // SyncZBoxCapacity operates on ZBoxCapacity
 func (cli *ZSClient) SyncZBoxCapacity(uuid string, params param.SyncZBoxCapacityParam) (*view.ZBoxInventoryView, error) {
 	var resp view.SyncZBoxCapacityEventView
-	err := cli.PutWithSpec("v1/zbox", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zbox", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7304,10 +7016,9 @@ func (cli *ZSClient) CheckResourcePermission(params param.CheckResourcePermissio
 }
 
 // ProvisionNfvInstConfig operates on ProvisionNfvInstConfig
-func (cli *ZSClient) ProvisionNfvInstConfig(vmInstanceUuid string, params param.ProvisionNfvInstConfigParam) (*view.ApplianceVmInventoryView, error) {
+func (cli *ZSClient) ProvisionNfvInstConfig(uuid string, params param.ProvisionNfvInstConfigParam) (*view.ApplianceVmInventoryView, error) {
 	var resp view.ProvisionNfvInstConfigEventView
-	err := cli.PutWithSpec("v1/vm-instances/appliances/nfvinst", fmt.Sprintf(\"%s/provision\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/appliances/nfvinst", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7344,8 +7055,7 @@ func (cli *ZSClient) DeleteModelServices(uuid string, deleteMode param.DeleteMod
 // ChangeL3NetworkState changes L3NetworkState
 func (cli *ZSClient) ChangeL3NetworkState(uuid string, params param.ChangeL3NetworkStateParam) (*view.L3NetworkInventoryView, error) {
 	var resp view.ChangeL3NetworkStateEventView
-	err := cli.PutWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/l3-networks", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7354,8 +7064,7 @@ func (cli *ZSClient) ChangeL3NetworkState(uuid string, params param.ChangeL3Netw
 // GetHostNUMATopology gets HostNUMATopology by uuid
 func (cli *ZSClient) GetHostNUMATopology(uuid string) (*view.GetHostNUMATopologyEventView, error) {
 	var resp view.GetHostNUMATopologyEventView
-	err := cli.GetWithSpec("v1/hosts", fmt.Sprintf(\"%s/numa\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hosts", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7382,8 +7091,7 @@ func (cli *ZSClient) AddVmNicToLoadBalancer(params param.AddVmNicToLoadBalancerP
 // UpdateBuildApp updates BuildApp
 func (cli *ZSClient) UpdateBuildApp(uuid string, params param.UpdateBuildAppParam) (*view.BuildApplicationInventoryView, error) {
 	var resp view.UpdateBuildAppEventView
-	err := cli.PutWithSpec("v1/appcenter/buildapp", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/appcenter/buildapp", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7410,8 +7118,7 @@ func (cli *ZSClient) AddAliyunNasPrimaryStorage(params param.AddAliyunNasPrimary
 // GetVmNuma gets VmNuma by uuid
 func (cli *ZSClient) GetVmNuma(uuid string) (*view.GetVmNumaView, error) {
 	var resp view.GetVmNumaView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/vnuma\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7420,8 +7127,7 @@ func (cli *ZSClient) GetVmNuma(uuid string) (*view.GetVmNumaView, error) {
 // ChangeZoneState changes ZoneState
 func (cli *ZSClient) ChangeZoneState(uuid string, params param.ChangeZoneStateParam) (*view.ZoneInventoryView, error) {
 	var resp view.ChangeZoneStateEventView
-	err := cli.PutWithSpec("v1/zones", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zones", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7447,10 +7153,9 @@ func (cli *ZSClient) CreateDataVolume(params param.CreateDataVolumeParam) (*view
 }
 
 // UngenerateHygonMdevDevices operates on UngenerateHygonMdevDevices
-func (cli *ZSClient) UngenerateHygonMdevDevices(hostUuid string, params param.UngenerateHygonMdevDevicesParam) (*view.UngenerateHygonMdevDevicesEventView, error) {
+func (cli *ZSClient) UngenerateHygonMdevDevices(uuid string, params param.UngenerateHygonMdevDevicesParam) (*view.UngenerateHygonMdevDevicesEventView, error) {
 	resp := view.UngenerateHygonMdevDevicesEventView{}
-	err := cli.PutWithSpec("v1/hygon-devices", fmt.Sprintf(\"%s/actions\", hostUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hygon-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7458,7 +7163,7 @@ func (cli *ZSClient) UngenerateHygonMdevDevices(hostUuid string, params param.Un
 
 // DeletePluginDrivers deletes PluginDrivers
 func (cli *ZSClient) DeletePluginDrivers(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/external/plugins", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/external/plugins", uuid, string(deleteMode))
 }
 
 // BatchCreateBaremetalChassis operates on CreateBaremetalChassis
@@ -7509,10 +7214,9 @@ func (cli *ZSClient) RestartModelServiceGroups(uuid string, params param.Restart
 }
 
 // GetLoadBalancerOwner gets LoadBalancerOwner by uuid
-func (cli *ZSClient) GetLoadBalancerOwner(loadBalancerUuid string) (*view.GetLoadBalancerOwnerView, error) {
+func (cli *ZSClient) GetLoadBalancerOwner(uuid string) (*view.GetLoadBalancerOwnerView, error) {
 	var resp view.GetLoadBalancerOwnerView
-	err := cli.GetWithSpec("v1/load-balancers", fmt.Sprintf(\"%s/owner\", loadBalancerUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/load-balancers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7521,8 +7225,7 @@ func (cli *ZSClient) GetLoadBalancerOwner(loadBalancerUuid string) (*view.GetLoa
 // GetNicQos gets NicQos by uuid
 func (cli *ZSClient) GetNicQos(uuid string) (*view.GetNicQosView, error) {
 	var resp view.GetNicQosView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/nic-qos\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7549,19 +7252,18 @@ func (cli *ZSClient) CreateBareMetal2IpmiChassisHardwareInfo(params param.Create
 
 // RemoveLabelFromAlarm removes LabelFromAlarm
 func (cli *ZSClient) RemoveLabelFromAlarm(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/zwatch/alarms/labels", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/zwatch/alarms/labels", uuid, string(deleteMode))
 }
 
 // DeleteIAM2VirtualIDLdapBinding deletes IAM2VirtualIDLdapBinding
 func (cli *ZSClient) DeleteIAM2VirtualIDLdapBinding(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/ldap/bindings", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/iam2/ldap/bindings", uuid, string(deleteMode))
 }
 
 // UpdateVmPriority updates VmPriority
 func (cli *ZSClient) UpdateVmPriority(uuid string, params param.UpdateVmPriorityParam) (*view.UpdateVmPriorityEventView, error) {
 	resp := view.UpdateVmPriorityEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7574,7 +7276,7 @@ func (cli *ZSClient) DetachMdevDeviceFromVm(mdevDeviceUuid string, vmInstanceUui
 
 // DeleteVmHostname deletes VmHostname
 func (cli *ZSClient) DeleteVmHostname(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/hostnames\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // GetLicenseCapabilities gets LicenseCapabilities by uuid
@@ -7598,8 +7300,7 @@ func (cli *ZSClient) CreateFirewallRuleTemplate(params param.CreateFirewallRuleT
 // ChangeIAM2ProjectState changes IAM2ProjectState
 func (cli *ZSClient) ChangeIAM2ProjectState(uuid string, params param.ChangeIAM2ProjectStateParam) (*view.IAM2ProjectInventoryView, error) {
 	var resp view.ChangeIAM2ProjectStateEventView
-	err := cli.PutWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/projects", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7608,28 +7309,25 @@ func (cli *ZSClient) ChangeIAM2ProjectState(uuid string, params param.ChangeIAM2
 // SetVmSoundType operates on VmSoundType
 func (cli *ZSClient) SetVmSoundType(uuid string, params param.SetVmSoundTypeParam) (*view.SetVmSoundTypeEventView, error) {
 	resp := view.SetVmSoundTypeEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // MergeDataOnBackupStorage operates on MergeDataOnBackupStorage
-func (cli *ZSClient) MergeDataOnBackupStorage(backupStorageUuid string, params param.MergeDataOnBackupStorageParam) (*view.MergeDataOnBackupStorageEventView, error) {
+func (cli *ZSClient) MergeDataOnBackupStorage(uuid string, params param.MergeDataOnBackupStorageParam) (*view.MergeDataOnBackupStorageEventView, error) {
 	resp := view.MergeDataOnBackupStorageEventView{}
-	err := cli.PutWithSpec("v1/cdp-task/mergedata", fmt.Sprintf(\"%s/actions\", backupStorageUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/cdp-task/mergedata", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetCdpBackupStorageRequirement gets CdpBackupStorageRequirement by uuid
-func (cli *ZSClient) GetCdpBackupStorageRequirement(backupStorageUuid string) (*view.GetCdpBackupStorageRequirementView, error) {
+func (cli *ZSClient) GetCdpBackupStorageRequirement(uuid string) (*view.GetCdpBackupStorageRequirementView, error) {
 	var resp view.GetCdpBackupStorageRequirementView
-	err := cli.GetWithSpec("v1/cdp-backup-storage", fmt.Sprintf(\"%s/requirement\", backupStorageUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/cdp-backup-storage", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7647,18 +7345,16 @@ func (cli *ZSClient) AddAttributesToIAM2VirtualIDGroup(params param.AddAttribute
 // ChangeAffinityGroupState changes AffinityGroupState
 func (cli *ZSClient) ChangeAffinityGroupState(uuid string, params param.ChangeAffinityGroupStateParam) (*view.AffinityGroupInventoryView, error) {
 	var resp view.ChangeAffinityGroupStateEventView
-	err := cli.PutWithSpec("v1/affinity-groups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/affinity-groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // ChangeSecurityGroupRuleState changes SecurityGroupRuleState
-func (cli *ZSClient) ChangeSecurityGroupRuleState(securityGroupUuid string, params param.ChangeSecurityGroupRuleStateParam) (*view.SecurityGroupInventoryView, error) {
+func (cli *ZSClient) ChangeSecurityGroupRuleState(uuid string, params param.ChangeSecurityGroupRuleStateParam) (*view.SecurityGroupInventoryView, error) {
 	var resp view.ChangeSecurityGroupRuleStateEventView
-	err := cli.PutWithSpec("v1/security-groups", fmt.Sprintf(\"%s/rules/state/actions\", securityGroupUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/security-groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7674,10 +7370,9 @@ func (cli *ZSClient) AddVmNicToSecurityGroup(params param.AddVmNicToSecurityGrou
 }
 
 // SyncAliyunRouteEntryFromRemote operates on AliyunRouteEntryFromRemote
-func (cli *ZSClient) SyncAliyunRouteEntryFromRemote(vRouterUuid string, params param.SyncAliyunRouteEntryFromRemoteParam) (*view.VpcVirtualRouteEntryInventoryView, error) {
+func (cli *ZSClient) SyncAliyunRouteEntryFromRemote(uuid string, params param.SyncAliyunRouteEntryFromRemoteParam) (*view.VpcVirtualRouteEntryInventoryView, error) {
 	resp := view.VpcVirtualRouteEntryInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/route-entry", fmt.Sprintf(\"%s/sync\", vRouterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/route-entry", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7736,14 +7431,13 @@ func (cli *ZSClient) ChangeAccountPriceTableBinding(tableUuid string, accountUui
 
 // DeleteVolumeQos deletes VolumeQos
 func (cli *ZSClient) DeleteVolumeQos(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/volumes", fmt.Sprintf(\"%s/qos\", uuid), string(deleteMode))
+	return cli.Delete("v1/volumes", uuid, string(deleteMode))
 }
 
 // GetL3NetworkDhcpIpAddress gets L3NetworkDhcpIpAddress by uuid
-func (cli *ZSClient) GetL3NetworkDhcpIpAddress(l3NetworkUuid string) (*view.GetL3NetworkDhcpIpAddressView, error) {
+func (cli *ZSClient) GetL3NetworkDhcpIpAddress(uuid string) (*view.GetL3NetworkDhcpIpAddressView, error) {
 	var resp view.GetL3NetworkDhcpIpAddressView
-	err := cli.GetWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/dhcp-ip\", l3NetworkUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/l3-networks", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7770,8 +7464,7 @@ func (cli *ZSClient) CreateJitSecretResourcePool(params param.CreateJitSecretRes
 // GetBaremetalChassisPowerStatus gets BaremetalChassisPowerStatus by uuid
 func (cli *ZSClient) GetBaremetalChassisPowerStatus(uuid string) (*view.GetBaremetalChassisPowerStatusView, error) {
 	var resp view.GetBaremetalChassisPowerStatusView
-	err := cli.GetWithSpec("v1/baremetal/chassis", fmt.Sprintf(\"%s/powerstatus\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/baremetal/chassis", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7794,8 +7487,7 @@ func (cli *ZSClient) GetVmUserDefinedXmlHookScript(uuid string) (*view.XmlHookIn
 // RefreshFirewall operates on Firewall
 func (cli *ZSClient) RefreshFirewall(uuid string, params param.RefreshFirewallParam) (*view.VpcFirewallInventoryView, error) {
 	var resp view.RefreshFirewallEventView
-	err := cli.PutWithSpec("v1/vpcfirewalls/refresh", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpcfirewalls/refresh", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7803,14 +7495,13 @@ func (cli *ZSClient) RefreshFirewall(uuid string, params param.RefreshFirewallPa
 
 // DetachL3NetworksFromIPsecConnection operates on L3NetworksFromIPsecConnection
 func (cli *ZSClient) DetachL3NetworksFromIPsecConnection(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/ipsec", fmt.Sprintf(\"%s/l3networks\", uuid), string(deleteMode))
+	return cli.Delete("v1/ipsec", uuid, string(deleteMode))
 }
 
 // UpdateAutoScalingGroupAddingNewInstanceRule updates AutoScalingGroupAddingNewInstanceRule
 func (cli *ZSClient) UpdateAutoScalingGroupAddingNewInstanceRule(uuid string, params param.UpdateAutoScalingGroupAddingNewInstanceRuleParam) (*view.AutoScalingRuleInventoryView, error) {
 	var resp view.UpdateAutoScalingRuleEventView
-	err := cli.PutWithSpec("v1/autoscaling/rules/adding-new-instance", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/autoscaling/rules/adding-new-instance", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7827,7 +7518,7 @@ func (cli *ZSClient) GetFaultToleranceVms(uuid string) (*view.GetFaultToleranceV
 
 // DeleteAliyunKeySecret deletes AliyunKeySecret
 func (cli *ZSClient) DeleteAliyunKeySecret(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/key", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/key", uuid, string(deleteMode))
 }
 
 // CreateVmInstanceFromVolumeSnapshot creates VmInstanceFromVolumeSnapshot
@@ -7842,8 +7533,7 @@ func (cli *ZSClient) CreateVmInstanceFromVolumeSnapshot(params param.CreateVmIns
 // PowerResetBareMetal2Chassis operates on PowerResetBareMetal2Chassis
 func (cli *ZSClient) PowerResetBareMetal2Chassis(uuid string, params param.PowerResetBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	var resp view.PowerResetBareMetal2ChassisEventView
-	err := cli.PutWithSpec("v1/baremetal2/chassis", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7859,10 +7549,9 @@ func (cli *ZSClient) PrometheusQueryVmMonitoringData(params param.PrometheusQuer
 }
 
 // UpdateResourceConfigs updates ResourceConfigs
-func (cli *ZSClient) UpdateResourceConfigs(resourceUuid string, params param.UpdateResourceConfigsParam) (*view.ResourceConfigStructView, error) {
+func (cli *ZSClient) UpdateResourceConfigs(uuid string, params param.UpdateResourceConfigsParam) (*view.ResourceConfigStructView, error) {
 	resp := view.ResourceConfigStructView{}
-	err := cli.PutWithSpec("v1/resource-configurations", fmt.Sprintf(\"%s/resource-configs/actions\", resourceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/resource-configurations", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7885,8 +7574,7 @@ func (cli *ZSClient) GetVpcUserVpnGatewayFromLocal(uuid string) (*view.VpcUserVp
 // RevertVolumeFromSnapshot operates on VolumeFromSnapshot
 func (cli *ZSClient) RevertVolumeFromSnapshot(uuid string, params param.RevertVolumeFromSnapshotParam) (*view.RevertVolumeFromSnapshotEventView, error) {
 	resp := view.RevertVolumeFromSnapshotEventView{}
-	err := cli.PutWithSpec("v1/volume-snapshots", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volume-snapshots", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7919,8 +7607,7 @@ func (cli *ZSClient) GetBlockPrimaryStorageMetadata(uuid string) (*view.BlockPri
 // UpdateBonding updates Bonding
 func (cli *ZSClient) UpdateBonding(uuid string, params param.UpdateBondingParam) (*view.HostNetworkBondingInventoryView, error) {
 	var resp view.UpdateBondingEventView
-	err := cli.PutWithSpec("v1/hosts/bondings", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/bondings", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7938,18 +7625,16 @@ func (cli *ZSClient) GetManagementNodeArch(uuid string) (*view.GetManagementNode
 // DetachScsiLunFromHost operates on ScsiLunFromHost
 func (cli *ZSClient) DetachScsiLunFromHost(uuid string, params param.DetachScsiLunFromHostParam) (*view.ScsiLunInventoryView, error) {
 	var resp view.DetachScsiLunFromHostEventView
-	err := cli.PutWithSpec("v1/storage-devices/scsi-lun", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/storage-devices/scsi-lun", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // DisableCbtTask operates on DisableCbtTask
-func (cli *ZSClient) DisableCbtTask(uuid string, params param.DisableCbtTaskParam) (*view.CbtTaskInventoryView, error) {
+func (cli *ZSClient) DisableCbtTask(params param.DisableCbtTaskParam) (*view.CbtTaskInventoryView, error) {
 	var resp view.DisableCbtTaskEventView
-	err := cli.PostWithSpec("v1/cbt-task/disable", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/cbt-task/disable", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7967,8 +7652,7 @@ func (cli *ZSClient) RefreshLocalRaid(uuid string, params param.RefreshLocalRaid
 // UpdateSubscribeEvent updates SubscribeEvent
 func (cli *ZSClient) UpdateSubscribeEvent(uuid string, params param.UpdateSubscribeEventParam) (*view.EventSubscriptionInventoryView, error) {
 	var resp view.UpdateSubscribeEventEventView
-	err := cli.PutWithSpec("v1/zwatch/events/subscriptions", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/events/subscriptions", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7977,8 +7661,7 @@ func (cli *ZSClient) UpdateSubscribeEvent(uuid string, params param.UpdateSubscr
 // SetVmSshKey operates on VmSshKey
 func (cli *ZSClient) SetVmSshKey(uuid string, params param.SetVmSshKeyParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.SetVmSshKeyEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -7996,8 +7679,7 @@ func (cli *ZSClient) FailoverFaultToleranceVm(uuid string, params param.Failover
 // EjectZBox operates on EjectZBox
 func (cli *ZSClient) EjectZBox(uuid string, params param.EjectZBoxParam) (*view.ZBoxInventoryView, error) {
 	var resp view.EjectZBoxEventView
-	err := cli.PutWithSpec("v1/zbox", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zbox", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8028,14 +7710,13 @@ func (cli *ZSClient) GetIpAddress(uuid string) (*view.UsedIpInventoryView, error
 
 // DeleteFirewallRuleTemplate deletes FirewallRuleTemplate
 func (cli *ZSClient) DeleteFirewallRuleTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vpcfirewalls/rules/templates", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vpcfirewalls/rules/templates", uuid, string(deleteMode))
 }
 
 // DetachPciDeviceFromVm operates on PciDeviceFromVm
-func (cli *ZSClient) DetachPciDeviceFromVm(pciDeviceUuid string, params param.DetachPciDeviceFromVmParam) (*view.PciDeviceInventoryView, error) {
+func (cli *ZSClient) DetachPciDeviceFromVm(params param.DetachPciDeviceFromVmParam) (*view.PciDeviceInventoryView, error) {
 	var resp view.DetachPciDeviceFromVmEventView
-	err := cli.PostWithSpec("v1/pci-device/pci-devices", fmt.Sprintf(\"%s/detach\", pciDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/pci-device/pci-devices", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8051,10 +7732,9 @@ func (cli *ZSClient) ExecuteGuestVmCommand(params param.ExecuteGuestVmCommandPar
 }
 
 // ChangeVpcSharedQosBandwidth changes VpcSharedQosBandwidth
-func (cli *ZSClient) ChangeVpcSharedQosBandwidth(sharedQosUuid string, params param.ChangeVpcSharedQosBandwidthParam) (*view.VpcSharedQosInventoryView, error) {
+func (cli *ZSClient) ChangeVpcSharedQosBandwidth(uuid string, params param.ChangeVpcSharedQosBandwidthParam) (*view.VpcSharedQosInventoryView, error) {
 	var resp view.ChangeVpcSharedQosBandwidthEventView
-	err := cli.PutWithSpec("v1/vips/sharedqos", fmt.Sprintf(\"%s/bandwidth/actions\", sharedQosUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vips/sharedqos", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8062,7 +7742,7 @@ func (cli *ZSClient) ChangeVpcSharedQosBandwidth(sharedQosUuid string, params pa
 
 // RemoveAttributesFromIAM2VirtualIDGroup removes AttributesFromIAM2VirtualIDGroup
 func (cli *ZSClient) RemoveAttributesFromIAM2VirtualIDGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/projects/groups", fmt.Sprintf(\"%s/attributes\", uuid), string(deleteMode))
+	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
 }
 
 // AddAttributesToIAM2VirtualID adds AttributesToIAM2VirtualID
@@ -8077,8 +7757,7 @@ func (cli *ZSClient) AddAttributesToIAM2VirtualID(params param.AddAttributesToIA
 // FlattenVolume operates on FlattenVolume
 func (cli *ZSClient) FlattenVolume(uuid string, params param.FlattenVolumeParam) (*view.VolumeInventoryView, error) {
 	var resp view.FlattenVolumeEventView
-	err := cli.PutWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8110,7 +7789,16 @@ func (cli *ZSClient) CreateAliyunDiskFromRemote(params param.CreateAliyunDiskFro
 
 // DeleteEcsSecurityGroupRuleRemote deletes EcsSecurityGroupRuleRemote
 func (cli *ZSClient) DeleteEcsSecurityGroupRuleRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/security-group-rule/remote", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/security-group-rule/remote", uuid, string(deleteMode))
+}
+
+// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
+func (cli *ZSClient) DetachAliyunDiskFromEcs(params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
+	resp := view.DetachAliyunDiskFromEcsEventView{}
+	if err := cli.Post("v1/hybrid/aliyun/disk", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
@@ -8122,21 +7810,10 @@ func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(uuid string) (*view
 	return &resp, nil
 }
 
-// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
-func (cli *ZSClient) DetachAliyunDiskFromEcs(uuid string, params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
-	resp := view.DetachAliyunDiskFromEcsEventView{}
-	err := cli.PostWithSpec("v1/hybrid/aliyun/disk", fmt.Sprintf(\"%s/detach\", uuid), params, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // UpdateFirewallIpSetTemplate updates FirewallIpSetTemplate
 func (cli *ZSClient) UpdateFirewallIpSetTemplate(uuid string, params param.UpdateFirewallIpSetTemplateParam) (*view.VpcFirewallIpSetTemplateInventoryView, error) {
 	var resp view.UpdateFirewallIpSetTemplateEventView
-	err := cli.PutWithSpec("v1/vpcfirewalls/ipset/templates", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpcfirewalls/ipset/templates", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8152,15 +7829,14 @@ func (cli *ZSClient) AddAccessControlListRedirectRule(params param.AddAccessCont
 }
 
 // DetachHostFromHostSchedulingRuleGroup operates on HostFromHostSchedulingRuleGroup
-func (cli *ZSClient) DetachHostFromHostSchedulingRuleGroup(hostGroupUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hostSchedulingRuleGroup", fmt.Sprintf(\"%s/host\", hostGroupUuid), string(deleteMode))
+func (cli *ZSClient) DetachHostFromHostSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/hostSchedulingRuleGroup", uuid, string(deleteMode))
 }
 
 // UpdateAliyunRouteInterfaceRemote updates AliyunRouteInterfaceRemote
 func (cli *ZSClient) UpdateAliyunRouteInterfaceRemote(uuid string, params param.UpdateAliyunRouteInterfaceRemoteParam) (*view.UpdateAliyunRouteInterfaceRemoteEventView, error) {
 	resp := view.UpdateAliyunRouteInterfaceRemoteEventView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/router-interface", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/router-interface", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8196,7 +7872,7 @@ func (cli *ZSClient) AttachVmNicToVm(vmInstanceUuid string, vmNicUuid string, pa
 
 // RemoveMonFromCephBackupStorage removes MonFromCephBackupStorage
 func (cli *ZSClient) RemoveMonFromCephBackupStorage(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/backup-storage/ceph", fmt.Sprintf(\"%s/mons\", uuid), string(deleteMode))
+	return cli.Delete("v1/backup-storage/ceph", uuid, string(deleteMode))
 }
 
 // GetVmDeviceAddress gets VmDeviceAddress by uuid
@@ -8223,13 +7899,13 @@ func (cli *ZSClient) CleanQueue(uuid string, params param.CleanQueueParam) (*vie
 }
 
 // RemoveAccessControlListFromLoadBalancer removes AccessControlListFromLoadBalancer
-func (cli *ZSClient) RemoveAccessControlListFromLoadBalancer(listenerUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/load-balancers/listeners", fmt.Sprintf(\"%s/access-control-lists\", listenerUuid), string(deleteMode))
+func (cli *ZSClient) RemoveAccessControlListFromLoadBalancer(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
 }
 
 // RemoveLabelFromEventSubscription removes LabelFromEventSubscription
 func (cli *ZSClient) RemoveLabelFromEventSubscription(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/zwatch/events/subscriptions/labels", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/zwatch/events/subscriptions/labels", uuid, string(deleteMode))
 }
 
 // SdnControllerRemoveHost operates on SdnControllerRemoveHost
@@ -8238,10 +7914,9 @@ func (cli *ZSClient) SdnControllerRemoveHost(sdnControllerUuid string, hostUuid 
 }
 
 // DetachCCSCertificateFromUser operates on CCSCertificateFromUser
-func (cli *ZSClient) DetachCCSCertificateFromUser(userUuid string, params param.DetachCCSCertificateFromUserParam) (*view.DetachCCSCertificateFromUserEventView, error) {
+func (cli *ZSClient) DetachCCSCertificateFromUser(params param.DetachCCSCertificateFromUserParam) (*view.DetachCCSCertificateFromUserEventView, error) {
 	resp := view.DetachCCSCertificateFromUserEventView{}
-	err := cli.PostWithSpec("v1/crypto/ccs-certificate/detach-user", fmt.Sprintf(\"%s\", userUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/crypto/ccs-certificate/detach-user", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8268,8 +7943,7 @@ func (cli *ZSClient) CreateLdapBinding(params param.CreateLdapBindingParam) (*vi
 // ExecuteDRSScheduling operates on ExecuteDRSScheduling
 func (cli *ZSClient) ExecuteDRSScheduling(uuid string, params param.ExecuteDRSSchedulingParam) (*view.ExecuteDRSSchedulingEventView, error) {
 	resp := view.ExecuteDRSSchedulingEventView{}
-	err := cli.PutWithSpec("v1/clusters/drs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/clusters/drs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8287,8 +7961,7 @@ func (cli *ZSClient) CreateEcsSecurityGroupRuleRemote(params param.CreateEcsSecu
 // GetVmQga gets VmQga by uuid
 func (cli *ZSClient) GetVmQga(uuid string) (*view.GetVmQgaView, error) {
 	var resp view.GetVmQgaView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/qga\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8306,33 +7979,30 @@ func (cli *ZSClient) PreviewResourceStack(params param.PreviewResourceStackParam
 // GetVmvNUMATopology gets VmvNUMATopology by uuid
 func (cli *ZSClient) GetVmvNUMATopology(uuid string) (*view.GetVmvNUMATopologyView, error) {
 	var resp view.GetVmvNUMATopologyView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/vnuma-topology\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // RemoveSchedulerJobsFromSchedulerJobGroup removes SchedulerJobsFromSchedulerJobGroup
-func (cli *ZSClient) RemoveSchedulerJobsFromSchedulerJobGroup(schedulerJobGroupUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/scheduler/jobgroups", fmt.Sprintf(\"%s/job\", schedulerJobGroupUuid), string(deleteMode))
+func (cli *ZSClient) RemoveSchedulerJobsFromSchedulerJobGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/scheduler/jobgroups", uuid, string(deleteMode))
 }
 
 // ChangeTicketStatus changes TicketStatus
 func (cli *ZSClient) ChangeTicketStatus(uuid string, params param.ChangeTicketStatusParam) (*view.TicketInventoryView, error) {
 	var resp view.ChangeTicketStatusEventView
-	err := cli.PutWithSpec("v1/tickets", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/tickets", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // GetHostPhysicalMemoryFacts gets HostPhysicalMemoryFacts by uuid
-func (cli *ZSClient) GetHostPhysicalMemoryFacts(hostUuid string) (*view.HostPhysicalMemoryInventoryView, error) {
+func (cli *ZSClient) GetHostPhysicalMemoryFacts(uuid string) (*view.HostPhysicalMemoryInventoryView, error) {
 	var resp view.HostPhysicalMemoryInventoryView
-	err := cli.GetWithSpec("v1/hosts/physical-memory-facts", fmt.Sprintf(\"%s\", hostUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hosts/physical-memory-facts", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8350,8 +8020,7 @@ func (cli *ZSClient) GetLicenseInfo(uuid string) (*view.LicenseInventoryView, er
 // ChangeSchedulerState changes SchedulerState
 func (cli *ZSClient) ChangeSchedulerState(uuid string, params param.ChangeSchedulerStateParam) (*view.SchedulerJobInventoryView, error) {
 	var resp view.ChangeSchedulerStateEventView
-	err := cli.PutWithSpec("v1/schedulers", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/schedulers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8368,10 +8037,9 @@ func (cli *ZSClient) AttachPriceTableToAccount(tableUuid string, accountUuid str
 }
 
 // GenerateMdevDevices operates on MdevDevices
-func (cli *ZSClient) GenerateMdevDevices(pciDeviceUuid string, params param.GenerateMdevDevicesParam) (*view.GenerateVirtualPciDevicesEventView, error) {
+func (cli *ZSClient) GenerateMdevDevices(uuid string, params param.GenerateMdevDevicesParam) (*view.GenerateVirtualPciDevicesEventView, error) {
 	resp := view.GenerateVirtualPciDevicesEventView{}
-	err := cli.PutWithSpec("v1/pci-devices", fmt.Sprintf(\"%s/actions\", pciDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/pci-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8389,8 +8057,7 @@ func (cli *ZSClient) PreviewResourceFromApp(params param.PreviewResourceFromAppP
 // ChangeSNSTopicState changes SNSTopicState
 func (cli *ZSClient) ChangeSNSTopicState(uuid string, params param.ChangeSNSTopicStateParam) (*view.SNSTopicInventoryView, error) {
 	var resp view.ChangeSNSTopicStateEventView
-	err := cli.PutWithSpec("v1/zwatch/topics", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/topics", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8408,7 +8075,7 @@ func (cli *ZSClient) AttachScsiLunToVmInstance(vmInstanceUuid string, uuid strin
 
 // RemoveRemoteCidrsFromIPsecConnection removes RemoteCidrsFromIPsecConnection
 func (cli *ZSClient) RemoveRemoteCidrsFromIPsecConnection(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/ipsec", fmt.Sprintf(\"%s/remote-cidrs\", uuid), string(deleteMode))
+	return cli.Delete("v1/ipsec", uuid, string(deleteMode))
 }
 
 // GetIAM2ProjectsOfVirtualID gets IAM2ProjectsOfVirtualID by uuid
@@ -8473,10 +8140,9 @@ func (cli *ZSClient) RefreshSharedblockDeviceCapacity(sharedBlockGroupUuid strin
 }
 
 // FstrimVm operates on FstrimVm
-func (cli *ZSClient) FstrimVm(uuid string, params param.FstrimVmParam) (*view.FstrimVmEventView, error) {
+func (cli *ZSClient) FstrimVm(params param.FstrimVmParam) (*view.FstrimVmEventView, error) {
 	resp := view.FstrimVmEventView{}
-	err := cli.PostWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/vm-instances", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8506,10 +8172,9 @@ func (cli *ZSClient) MatchModelServiceTemplateWithModel(params param.MatchModelS
 }
 
 // ChangeVmNicState changes VmNicState
-func (cli *ZSClient) ChangeVmNicState(vmNicUuid string, params param.ChangeVmNicStateParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) ChangeVmNicState(uuid string, params param.ChangeVmNicStateParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.ChangeVmNicStateEventView
-	err := cli.PutWithSpec("v1/vm-instances/nics", fmt.Sprintf(\"%s/actions\", vmNicUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/nics", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8525,35 +8190,32 @@ func (cli *ZSClient) AddPolicyStatementsToRole(params param.AddPolicyStatementsT
 }
 
 // UnprotectVmInstanceRecoveryPoint operates on UnprotectVmInstanceRecoveryPoint
-func (cli *ZSClient) UnprotectVmInstanceRecoveryPoint(vmInstanceUuid string, params param.UnprotectVmInstanceRecoveryPointParam) (*view.UnprotectVmInstanceRecoveryPointEventView, error) {
+func (cli *ZSClient) UnprotectVmInstanceRecoveryPoint(uuid string, params param.UnprotectVmInstanceRecoveryPointParam) (*view.UnprotectVmInstanceRecoveryPointEventView, error) {
 	resp := view.UnprotectVmInstanceRecoveryPointEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/unprotect-recovery-point\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DetachVipFromVpcSharedQos operates on VipFromVpcSharedQos
-func (cli *ZSClient) DetachVipFromVpcSharedQos(sharedQosUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vips/sharedqos", fmt.Sprintf(\"%s/vips\", sharedQosUuid), string(deleteMode))
+func (cli *ZSClient) DetachVipFromVpcSharedQos(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vips/sharedqos", uuid, string(deleteMode))
 }
 
 // ApplyRuleSetChanges operates on RuleSetChanges
 func (cli *ZSClient) ApplyRuleSetChanges(uuid string, params param.ApplyRuleSetChangesParam) (*view.VpcFirewallRuleSetInventoryView, error) {
 	var resp view.ApplyRuleSetChangesEventView
-	err := cli.PutWithSpec("v1/vpcfirewalls/ruleSets/apply", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpcfirewalls/ruleSets/apply", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // PrimaryStorageMigrateVm operates on PrimaryStorageMigrateVm
-func (cli *ZSClient) PrimaryStorageMigrateVm(vmInstanceUuid string, params param.PrimaryStorageMigrateVmParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) PrimaryStorageMigrateVm(uuid string, params param.PrimaryStorageMigrateVmParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.PrimaryStorageMigrateVmEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8593,10 +8255,9 @@ func (cli *ZSClient) CreateIAM2TickFlowCollection(params param.CreateIAM2TickFlo
 }
 
 // UngenerateMdevDevices operates on UngenerateMdevDevices
-func (cli *ZSClient) UngenerateMdevDevices(pciDeviceUuid string, params param.UngenerateMdevDevicesParam) (*view.UngenerateVirtualPciDevicesEventView, error) {
+func (cli *ZSClient) UngenerateMdevDevices(uuid string, params param.UngenerateMdevDevicesParam) (*view.UngenerateVirtualPciDevicesEventView, error) {
 	resp := view.UngenerateVirtualPciDevicesEventView{}
-	err := cli.PutWithSpec("v1/pci-devices", fmt.Sprintf(\"%s/actions\", pciDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/pci-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8612,10 +8273,9 @@ func (cli *ZSClient) MoveDirectory(uuid string, params param.MoveDirectoryParam)
 }
 
 // GetVRouterOspfNeighbor gets VRouterOspfNeighbor by uuid
-func (cli *ZSClient) GetVRouterOspfNeighbor(vRouterUuid string) (*view.GetVRouterOspfNeighborView, error) {
+func (cli *ZSClient) GetVRouterOspfNeighbor(uuid string) (*view.GetVRouterOspfNeighborView, error) {
 	var resp view.GetVRouterOspfNeighborView
-	err := cli.GetWithSpec("v1/routerArea", fmt.Sprintf(\"%s/neighbor\", vRouterUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/routerArea", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8631,10 +8291,9 @@ func (cli *ZSClient) CreateVpcVRouter(params param.CreateVpcVRouterParam) (*view
 }
 
 // SyncEcsInstanceFromRemote operates on EcsInstanceFromRemote
-func (cli *ZSClient) SyncEcsInstanceFromRemote(dataCenterUuid string, params param.SyncEcsInstanceFromRemoteParam) (*view.EcsInstanceInventoryView, error) {
+func (cli *ZSClient) SyncEcsInstanceFromRemote(params param.SyncEcsInstanceFromRemoteParam) (*view.EcsInstanceInventoryView, error) {
 	resp := view.EcsInstanceInventoryView{}
-	err := cli.PostWithSpec("v1/hybrid/aliyun/ecs", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/aliyun/ecs", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8650,10 +8309,9 @@ func (cli *ZSClient) GetMdevDeviceSpecCandidates(uuid string) (*view.MdevDeviceS
 }
 
 // GetFlowMeterRouterId gets FlowMeterRouterId by uuid
-func (cli *ZSClient) GetFlowMeterRouterId(vRouterUuid string) (*view.GetFlowMeterRouterIdView, error) {
+func (cli *ZSClient) GetFlowMeterRouterId(uuid string) (*view.GetFlowMeterRouterIdView, error) {
 	var resp view.GetFlowMeterRouterIdView
-	err := cli.GetWithSpec("v1/flowmeters", fmt.Sprintf(\"%s/routerid\", vRouterUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/flowmeters", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8712,18 +8370,16 @@ func (cli *ZSClient) GetAlarmData(uuid string) (*view.GetAlarmDataView, error) {
 // ChangeV2VConversionHostState changes V2VConversionHostState
 func (cli *ZSClient) ChangeV2VConversionHostState(uuid string, params param.ChangeV2VConversionHostStateParam) (*view.V2VConversionHostInventoryView, error) {
 	var resp view.ChangeV2VConversionHostStateEventView
-	err := cli.PutWithSpec("v1/v2v-conversion-hosts", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/v2v-conversion-hosts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // RecoverResourceSplitBrain operates on ResourceSplitBrain
-func (cli *ZSClient) RecoverResourceSplitBrain(resourceUuid string, params param.RecoverResourceSplitBrainParam) (*view.RecoverResourceSplitBrainEventView, error) {
+func (cli *ZSClient) RecoverResourceSplitBrain(uuid string, params param.RecoverResourceSplitBrainParam) (*view.RecoverResourceSplitBrainEventView, error) {
 	resp := view.RecoverResourceSplitBrainEventView{}
-	err := cli.PutWithSpec("v1/primary-storage/mini", fmt.Sprintf(\"%s/actions\", resourceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage/mini", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8776,7 +8432,7 @@ func (cli *ZSClient) GetSupportedCloudFormationResources(uuid string) (*view.Get
 
 // DeleteIdentityZoneInLocal deletes IdentityZoneInLocal
 func (cli *ZSClient) DeleteIdentityZoneInLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/identity-zone", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/identity-zone", uuid, string(deleteMode))
 }
 
 // QueryVRouterOspfNetwork queries VRouterOspfNetwork list
@@ -8796,8 +8452,7 @@ func (cli *ZSClient) GetVRouterOspfNetwork(uuid string) (*view.NetworkRouterArea
 // ChangeIAM2VirtualIDState changes IAM2VirtualIDState
 func (cli *ZSClient) ChangeIAM2VirtualIDState(uuid string, params param.ChangeIAM2VirtualIDStateParam) (*view.IAM2VirtualIDInventoryView, error) {
 	var resp view.ChangeIAM2VirtualIDStateEventView
-	err := cli.PutWithSpec("v1/iam2/virtual-ids", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/virtual-ids", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8843,8 +8498,7 @@ func (cli *ZSClient) GetAppBuildSystemCapacity(uuid string) (*view.GetAppBuildSy
 // GetAttachableVpcL3Network gets AttachableVpcL3Network by uuid
 func (cli *ZSClient) GetAttachableVpcL3Network(uuid string) (*view.L3NetworkInventoryView, error) {
 	var resp view.L3NetworkInventoryView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/attachable-vpc-l3s\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8853,8 +8507,7 @@ func (cli *ZSClient) GetAttachableVpcL3Network(uuid string) (*view.L3NetworkInve
 // ChangeBaremetalChassisState changes BaremetalChassisState
 func (cli *ZSClient) ChangeBaremetalChassisState(uuid string, params param.ChangeBaremetalChassisStateParam) (*view.BaremetalChassisInventoryView, error) {
 	var resp view.ChangeBaremetalChassisStateEventView
-	err := cli.PutWithSpec("v1/baremetal/chassis", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8863,18 +8516,16 @@ func (cli *ZSClient) ChangeBaremetalChassisState(uuid string, params param.Chang
 // ChangeNfvInstGroupOperationMode changes NfvInstGroupOperationMode
 func (cli *ZSClient) ChangeNfvInstGroupOperationMode(uuid string, params param.ChangeNfvInstGroupOperationModeParam) (*view.NfvInstGroupInventoryView, error) {
 	var resp view.ChangeNfvInstGroupOperationModeEventView
-	err := cli.PutWithSpec("v1/nfvinstgroup/group", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/nfvinstgroup/group", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // GetL3NetworkMtu gets L3NetworkMtu by uuid
-func (cli *ZSClient) GetL3NetworkMtu(l3NetworkUuid string) (*view.GetL3NetworkMtuView, error) {
+func (cli *ZSClient) GetL3NetworkMtu(uuid string) (*view.GetL3NetworkMtuView, error) {
 	var resp view.GetL3NetworkMtuView
-	err := cli.GetWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/mtu\", l3NetworkUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/l3-networks", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8891,10 +8542,9 @@ func (cli *ZSClient) AttachVipToLoadBalancer(loadBalancerUuid string, vipUuid st
 }
 
 // UpdateSecurityGroupRulePriority updates SecurityGroupRulePriority
-func (cli *ZSClient) UpdateSecurityGroupRulePriority(securityGroupUuid string, params param.UpdateSecurityGroupRulePriorityParam) (*view.SecurityGroupInventoryView, error) {
+func (cli *ZSClient) UpdateSecurityGroupRulePriority(uuid string, params param.UpdateSecurityGroupRulePriorityParam) (*view.SecurityGroupInventoryView, error) {
 	var resp view.UpdateSecurityGroupRulePriorityEventView
-	err := cli.PutWithSpec("v1/security-groups", fmt.Sprintf(\"%s/rules/priority/actions\", securityGroupUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/security-groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8940,18 +8590,16 @@ func (cli *ZSClient) GetPortMirrorNetworkUsedIp(uuid string) (*view.MirrorNetwor
 // SetVmMonitorNumber operates on VmMonitorNumber
 func (cli *ZSClient) SetVmMonitorNumber(uuid string, params param.SetVmMonitorNumberParam) (*view.SetVmMonitorNumberEventView, error) {
 	resp := view.SetVmMonitorNumberEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // ChangeLoadBalancerBackendServer changes LoadBalancerBackendServer
-func (cli *ZSClient) ChangeLoadBalancerBackendServer(serverGroupUuid string, params param.ChangeLoadBalancerBackendServerParam) (*view.LoadBalancerServerGroupInventoryView, error) {
+func (cli *ZSClient) ChangeLoadBalancerBackendServer(uuid string, params param.ChangeLoadBalancerBackendServerParam) (*view.LoadBalancerServerGroupInventoryView, error) {
 	var resp view.ChangeLoadBalancerBackendServerEventView
-	err := cli.PutWithSpec("v1/load-balancers/servergroups", fmt.Sprintf(\"%s/backendserver/actions\", serverGroupUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/load-balancers/servergroups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -8967,10 +8615,9 @@ func (cli *ZSClient) CreateEcsVSwitchRemote(params param.CreateEcsVSwitchRemoteP
 }
 
 // GetVmMigrationCandidateHosts gets VmMigrationCandidateHosts by uuid
-func (cli *ZSClient) GetVmMigrationCandidateHosts(vmInstanceUuid string) (*view.HostInventoryView, error) {
+func (cli *ZSClient) GetVmMigrationCandidateHosts(uuid string) (*view.HostInventoryView, error) {
 	var resp view.HostInventoryView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/migration-target-hosts\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8988,8 +8635,7 @@ func (cli *ZSClient) GetCandidateL3NetworksForIpSecConnection(uuid string) (*vie
 // UpdateHostNetworkServiceType updates HostNetworkServiceType
 func (cli *ZSClient) UpdateHostNetworkServiceType(uuid string, params param.UpdateHostNetworkServiceTypeParam) (*view.HostNetworkLabelInventoryView, error) {
 	var resp view.UpdateHostNetworkServiceTypeEventView
-	err := cli.PutWithSpec("v1/hosts/service-types", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/service-types", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9007,8 +8653,7 @@ func (cli *ZSClient) SNSMicrosoftTeamsTestConnection(params param.SNSMicrosoftTe
 // GetLatestGuestToolsForVm gets LatestGuestToolsForVm by uuid
 func (cli *ZSClient) GetLatestGuestToolsForVm(uuid string) (*view.GuestToolsInventoryView, error) {
 	var resp view.GetLatestGuestToolsForVmView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/latest-guest-tools\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9033,10 +8678,9 @@ func (cli *ZSClient) CreateOssBackupBucketRemote(params param.CreateOssBackupBuc
 }
 
 // PowerOffBaremetalChassis operates on PowerOffBaremetalChassis
-func (cli *ZSClient) PowerOffBaremetalChassis(chassisUuid string, params param.PowerOffBaremetalChassisParam) (*view.PowerOffBaremetalChassisEventView, error) {
+func (cli *ZSClient) PowerOffBaremetalChassis(uuid string, params param.PowerOffBaremetalChassisParam) (*view.PowerOffBaremetalChassisEventView, error) {
 	resp := view.PowerOffBaremetalChassisEventView{}
-	err := cli.PutWithSpec("v1/baremetal/chassis", fmt.Sprintf(\"%s/actions\", chassisUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9061,8 +8705,8 @@ func (cli *ZSClient) GetNetworkServiceTypes(uuid string) (*view.GetNetworkServic
 }
 
 // DeleteVmUserDefinedXml deletes VmUserDefinedXml
-func (cli *ZSClient) DeleteVmUserDefinedXml(vmInstanceUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/xml\", vmInstanceUuid), string(deleteMode))
+func (cli *ZSClient) DeleteVmUserDefinedXml(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // GetAvailableVpcL3Network gets AvailableVpcL3Network by uuid
@@ -9084,20 +8728,18 @@ func (cli *ZSClient) GetCurrentTime(uuid string) (*view.GetCurrentTimeView, erro
 }
 
 // CalculateAccountSpending operates on AccountSpending
-func (cli *ZSClient) CalculateAccountSpending(accountUuid string, params param.CalculateAccountSpendingParam) (*view.CalculateAccountSpendingView, error) {
+func (cli *ZSClient) CalculateAccountSpending(uuid string, params param.CalculateAccountSpendingParam) (*view.CalculateAccountSpendingView, error) {
 	resp := view.CalculateAccountSpendingView{}
-	err := cli.PutWithSpec("v1/billings/accounts", fmt.Sprintf(\"%s/actions\", accountUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/billings/accounts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetVmAttachableL3Network gets VmAttachableL3Network by uuid
-func (cli *ZSClient) GetVmAttachableL3Network(vmInstanceUuid string) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) GetVmAttachableL3Network(uuid string) (*view.L3NetworkInventoryView, error) {
 	var resp view.L3NetworkInventoryView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/l3-networks-candidates\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9106,8 +8748,7 @@ func (cli *ZSClient) GetVmAttachableL3Network(vmInstanceUuid string) (*view.L3Ne
 // UpdateEcsInstanceVncPassword updates EcsInstanceVncPassword
 func (cli *ZSClient) UpdateEcsInstanceVncPassword(uuid string, params param.UpdateEcsInstanceVncPasswordParam) (*view.UpdateEcsInstanceVncPasswordEventView, error) {
 	resp := view.UpdateEcsInstanceVncPasswordEventView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun", fmt.Sprintf(\"%s/ecs-vnc\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9125,8 +8766,7 @@ func (cli *ZSClient) SyncChronyServers(uuid string, params param.SyncChronyServe
 // GetVmInstanceProtectedRecoveryPoints gets VmInstanceProtectedRecoveryPoints by uuid
 func (cli *ZSClient) GetVmInstanceProtectedRecoveryPoints(uuid string) (*view.GetVmInstanceProtectedRecoveryPointsView, error) {
 	var resp view.GetVmInstanceProtectedRecoveryPointsView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/protected-recovery-points\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9144,8 +8784,7 @@ func (cli *ZSClient) AddVmToVmSchedulingRuleGroup(params param.AddVmToVmScheduli
 // SyncBackupFromImageStoreBackupStorage operates on BackupFromImageStoreBackupStorage
 func (cli *ZSClient) SyncBackupFromImageStoreBackupStorage(uuid string, params param.SyncBackupFromImageStoreBackupStorageParam) (*view.VolumeBackupInventoryView, error) {
 	var resp view.SyncBackupFromImageStoreBackupStorageEventView
-	err := cli.PutWithSpec("v1/volume-backups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volume-backups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9161,20 +8800,18 @@ func (cli *ZSClient) GetHostWebSshUrl(uuid string) (*view.GetHostWebSshUrlEventV
 }
 
 // SetL3NetworkMtu operates on L3NetworkMtu
-func (cli *ZSClient) SetL3NetworkMtu(l3NetworkUuid string, params param.SetL3NetworkMtuParam) (*view.SetL3NetworkMtuEventView, error) {
+func (cli *ZSClient) SetL3NetworkMtu(params param.SetL3NetworkMtuParam) (*view.SetL3NetworkMtuEventView, error) {
 	resp := view.SetL3NetworkMtuEventView{}
-	err := cli.PostWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/mtu\", l3NetworkUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/l3-networks", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetL3NetworkRouterInterfaceIp gets L3NetworkRouterInterfaceIp by uuid
-func (cli *ZSClient) GetL3NetworkRouterInterfaceIp(l3NetworkUuid string) (*view.GetL3NetworkRouterInterfaceIpView, error) {
+func (cli *ZSClient) GetL3NetworkRouterInterfaceIp(uuid string) (*view.GetL3NetworkRouterInterfaceIpView, error) {
 	var resp view.GetL3NetworkRouterInterfaceIpView
-	err := cli.GetWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/router-interface-ip\", l3NetworkUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/l3-networks", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9183,8 +8820,7 @@ func (cli *ZSClient) GetL3NetworkRouterInterfaceIp(l3NetworkUuid string) (*view.
 // SyncVmClock operates on VmClock
 func (cli *ZSClient) SyncVmClock(uuid string, params param.SyncVmClockParam) (*view.SyncVmClockEventView, error) {
 	resp := view.SyncVmClockEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9242,10 +8878,9 @@ func (cli *ZSClient) CreateAliyunSnapshotRemote(params param.CreateAliyunSnapsho
 }
 
 // SetVmBootVolume operates on VmBootVolume
-func (cli *ZSClient) SetVmBootVolume(vmInstanceUuid string, params param.SetVmBootVolumeParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) SetVmBootVolume(uuid string, params param.SetVmBootVolumeParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.SetVmBootVolumeEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9254,18 +8889,16 @@ func (cli *ZSClient) SetVmBootVolume(vmInstanceUuid string, params param.SetVmBo
 // ChangeVpcHaGroupMonitorIps changes VpcHaGroupMonitorIps
 func (cli *ZSClient) ChangeVpcHaGroupMonitorIps(uuid string, params param.ChangeVpcHaGroupMonitorIpsParam) (*view.VpcHaGroupInventoryView, error) {
 	var resp view.ChangeVpcHaGroupMonitorIpsEventView
-	err := cli.PutWithSpec("v1/vpc/hagroups", fmt.Sprintf(\"%s/monitorIps\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpc/hagroups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // RenewSession operates on RenewSession
-func (cli *ZSClient) RenewSession(sessionUuid string, params param.RenewSessionParam) (*view.SessionInventoryView, error) {
+func (cli *ZSClient) RenewSession(uuid string, params param.RenewSessionParam) (*view.SessionInventoryView, error) {
 	var resp view.RenewSessionEventView
-	err := cli.PutWithSpec("v1/accounts/sessions", fmt.Sprintf(\"%s/renew\", sessionUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/accounts/sessions", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9273,24 +8906,22 @@ func (cli *ZSClient) RenewSession(sessionUuid string, params param.RenewSessionP
 
 // DeleteDataCenterInLocal deletes DataCenterInLocal
 func (cli *ZSClient) DeleteDataCenterInLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/data-center", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/data-center", uuid, string(deleteMode))
 }
 
 // SetVmConsoleMode operates on VmConsoleMode
 func (cli *ZSClient) SetVmConsoleMode(uuid string, params param.SetVmConsoleModeParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.SetVmConsoleModeEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // AttachPolicyToUser operates on PolicyToUser
-func (cli *ZSClient) AttachPolicyToUser(userUuid string, params param.AttachPolicyToUserParam) (*view.AttachPolicyToUserEventView, error) {
+func (cli *ZSClient) AttachPolicyToUser(params param.AttachPolicyToUserParam) (*view.AttachPolicyToUserEventView, error) {
 	resp := view.AttachPolicyToUserEventView{}
-	err := cli.PostWithSpec("v1/accounts/users", fmt.Sprintf(\"%s/policies\", userUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/accounts/users", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9315,10 +8946,9 @@ func (cli *ZSClient) AddAttributesToIAM2Project(params param.AddAttributesToIAM2
 }
 
 // UngenerateSeMdevDevices operates on UngenerateSeMdevDevices
-func (cli *ZSClient) UngenerateSeMdevDevices(mttyDeviceUuid string, params param.UngenerateSeMdevDevicesParam) (*view.UngenerateSeMdevDevicesEventView, error) {
+func (cli *ZSClient) UngenerateSeMdevDevices(uuid string, params param.UngenerateSeMdevDevicesParam) (*view.UngenerateSeMdevDevicesEventView, error) {
 	resp := view.UngenerateSeMdevDevicesEventView{}
-	err := cli.PutWithSpec("v1/mtty-devices", fmt.Sprintf(\"%s/actions\", mttyDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/mtty-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9327,8 +8957,7 @@ func (cli *ZSClient) UngenerateSeMdevDevices(mttyDeviceUuid string, params param
 // SetVmEmulatorPinning operates on VmEmulatorPinning
 func (cli *ZSClient) SetVmEmulatorPinning(uuid string, params param.SetVmEmulatorPinningParam) (*view.SetVmEmulatorPinningEventView, error) {
 	resp := view.SetVmEmulatorPinningEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9337,8 +8966,7 @@ func (cli *ZSClient) SetVmEmulatorPinning(uuid string, params param.SetVmEmulato
 // CleanV2VConversionCache operates on V2VConversionCache
 func (cli *ZSClient) CleanV2VConversionCache(uuid string, params param.CleanV2VConversionCacheParam) (*view.CleanV2VConversionCacheEventView, error) {
 	resp := view.CleanV2VConversionCacheEventView{}
-	err := cli.PutWithSpec("v1/v2v/conversion/host", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/v2v/conversion/host", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9377,10 +9005,9 @@ func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(params param.AddTicket
 }
 
 // SetL3NetworkRouterInterfaceIp operates on L3NetworkRouterInterfaceIp
-func (cli *ZSClient) SetL3NetworkRouterInterfaceIp(l3NetworkUuid string, params param.SetL3NetworkRouterInterfaceIpParam) (*view.SetL3NetworkRouterInterfaceIpEventView, error) {
+func (cli *ZSClient) SetL3NetworkRouterInterfaceIp(params param.SetL3NetworkRouterInterfaceIpParam) (*view.SetL3NetworkRouterInterfaceIpEventView, error) {
 	resp := view.SetL3NetworkRouterInterfaceIpEventView{}
-	err := cli.PostWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/router-interface-ip\", l3NetworkUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/l3-networks", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9426,28 +9053,25 @@ func (cli *ZSClient) GetEcsSecurityGroupFromLocal(uuid string) (*view.EcsSecurit
 // UpdateFirewallRuleTemplate updates FirewallRuleTemplate
 func (cli *ZSClient) UpdateFirewallRuleTemplate(uuid string, params param.UpdateFirewallRuleTemplateParam) (*view.VpcFirewallRuleTemplateInventoryView, error) {
 	var resp view.UpdateFirewallRuleTemplateEventView
-	err := cli.PutWithSpec("v1/vpcfirewalls/rules/template", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpcfirewalls/rules/template", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // GetUsbDeviceCandidatesForAttachingVm gets UsbDeviceCandidatesForAttachingVm by uuid
-func (cli *ZSClient) GetUsbDeviceCandidatesForAttachingVm(vmInstanceUuid string) (*view.UsbDeviceInventoryView, error) {
+func (cli *ZSClient) GetUsbDeviceCandidatesForAttachingVm(uuid string) (*view.UsbDeviceInventoryView, error) {
 	var resp view.UsbDeviceInventoryView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/candidate-usb-devices\", vmInstanceUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetCandidateL3NetworksForLoadBalancer gets CandidateL3NetworksForLoadBalancer by uuid
-func (cli *ZSClient) GetCandidateL3NetworksForLoadBalancer(listenerUuid string) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) GetCandidateL3NetworksForLoadBalancer(uuid string) (*view.L3NetworkInventoryView, error) {
 	var resp view.L3NetworkInventoryView
-	err := cli.GetWithSpec("v1/load-balancers/listeners", fmt.Sprintf(\"%s/networks/candidates\", listenerUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/load-balancers/listeners", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9461,8 +9085,7 @@ func (cli *ZSClient) WithdrawLicenseCapacityApplication(uuid string, deleteMode 
 // PowerResetHost operates on PowerResetHost
 func (cli *ZSClient) PowerResetHost(uuid string, params param.PowerResetHostParam) (*view.HostInventoryView, error) {
 	var resp view.PowerResetHostEventView
-	err := cli.PutWithSpec("v1/hosts/power", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/power", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9483,20 +9106,18 @@ func (cli *ZSClient) GetFirewallRule(uuid string) (*view.VpcFirewallRuleInventor
 }
 
 // RevertVmFromVmBackup operates on VmFromVmBackup
-func (cli *ZSClient) RevertVmFromVmBackup(groupUuid string, params param.RevertVmFromVmBackupParam) (*view.RevertVmFromVmBackupEventView, error) {
+func (cli *ZSClient) RevertVmFromVmBackup(uuid string, params param.RevertVmFromVmBackupParam) (*view.RevertVmFromVmBackupEventView, error) {
 	resp := view.RevertVmFromVmBackupEventView{}
-	err := cli.PutWithSpec("v1/vm-backups", fmt.Sprintf(\"%s/actions\", groupUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-backups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachCCSCertificateToUser operates on CCSCertificateToUser
-func (cli *ZSClient) AttachCCSCertificateToUser(userUuid string, params param.AttachCCSCertificateToUserParam) (*view.CCSCertificateInventoryView, error) {
+func (cli *ZSClient) AttachCCSCertificateToUser(params param.AttachCCSCertificateToUserParam) (*view.CCSCertificateInventoryView, error) {
 	var resp view.AttachCCSCertificateToUserEventView
-	err := cli.PostWithSpec("v1/crypto/ccs-certificate/attach-user", fmt.Sprintf(\"%s\", userUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/crypto/ccs-certificate/attach-user", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9519,8 +9140,7 @@ func (cli *ZSClient) GetOssBucketFileName(uuid string) (*view.OssBucketInventory
 // SetVmNuma operates on VmNuma
 func (cli *ZSClient) SetVmNuma(uuid string, params param.SetVmNumaParam) (*view.SetVmNumaEventView, error) {
 	resp := view.SetVmNumaEventView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9542,14 +9162,13 @@ func (cli *ZSClient) GetVRouterOspfArea(uuid string) (*view.RouterAreaInventoryV
 
 // DeleteAliyunRouterInterfaceLocal deletes AliyunRouterInterfaceLocal
 func (cli *ZSClient) DeleteAliyunRouterInterfaceLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/router-interface", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/router-interface", uuid, string(deleteMode))
 }
 
 // UpdateFirewallRuleSet updates FirewallRuleSet
 func (cli *ZSClient) UpdateFirewallRuleSet(uuid string, params param.UpdateFirewallRuleSetParam) (*view.VpcFirewallRuleSetInventoryView, error) {
 	var resp view.UpdateFirewallRuleSetEventView
-	err := cli.PutWithSpec("v1/vpcfirewalls/ruleSets", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpcfirewalls/ruleSets", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9558,8 +9177,7 @@ func (cli *ZSClient) UpdateFirewallRuleSet(uuid string, params param.UpdateFirew
 // AttachAliyunKey operates on AliyunKey
 func (cli *ZSClient) AttachAliyunKey(uuid string, params param.AttachAliyunKeyParam) (*view.AttachAliyunKeyEventView, error) {
 	resp := view.AttachAliyunKeyEventView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/key", fmt.Sprintf(\"%s/attach\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/key", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9577,8 +9195,7 @@ func (cli *ZSClient) RefreshSearchIndexes(params param.RefreshSearchIndexesParam
 // CalculateImageHash operates on ImageHash
 func (cli *ZSClient) CalculateImageHash(uuid string, params param.CalculateImageHashParam) (*view.ImageInventoryView, error) {
 	var resp view.CalculateImageHashEventView
-	err := cli.PutWithSpec("v1/images", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9596,8 +9213,7 @@ func (cli *ZSClient) GetL2NetworkTypes(uuid string) (*view.GetL2NetworkTypesView
 // ShutdownHost operates on ShutdownHost
 func (cli *ZSClient) ShutdownHost(uuid string, params param.ShutdownHostParam) (*view.HostInventoryView, error) {
 	var resp view.ShutdownHostEventView
-	err := cli.PutWithSpec("v1/hosts/power", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/power", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9606,8 +9222,7 @@ func (cli *ZSClient) ShutdownHost(uuid string, params param.ShutdownHostParam) (
 // UpdateVpcVpnConnectionRemote updates VpcVpnConnectionRemote
 func (cli *ZSClient) UpdateVpcVpnConnectionRemote(uuid string, params param.UpdateVpcVpnConnectionRemoteParam) (*view.VpcVpnConnectionInventoryView, error) {
 	var resp view.UpdateVpcVpnConnectionRemoteEventView
-	err := cli.PutWithSpec("v1/hybrid/vpn-connection", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/vpn-connection", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9623,20 +9238,18 @@ func (cli *ZSClient) GetVmTask(uuid string) (*view.GetChainTaskView, error) {
 }
 
 // DisableCdpTask operates on DisableCdpTask
-func (cli *ZSClient) DisableCdpTask(uuid string, params param.DisableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
+func (cli *ZSClient) DisableCdpTask(params param.DisableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
 	var resp view.DisableCdpTaskEventView
-	err := cli.PostWithSpec("v1/cdp-task/disable", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/cdp-task/disable", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // SetIpOnHostNetworkBonding operates on IpOnHostNetworkBonding
-func (cli *ZSClient) SetIpOnHostNetworkBonding(bondingUuid string, params param.SetIpOnHostNetworkBondingParam) (*view.HostNetworkBondingInventoryView, error) {
+func (cli *ZSClient) SetIpOnHostNetworkBonding(params param.SetIpOnHostNetworkBondingParam) (*view.HostNetworkBondingInventoryView, error) {
 	var resp view.SetIpOnHostNetworkBondingEventView
-	err := cli.PostWithSpec("v1/hosts/bondings", fmt.Sprintf(\"%s/ip\", bondingUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hosts/bondings", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9644,7 +9257,7 @@ func (cli *ZSClient) SetIpOnHostNetworkBonding(bondingUuid string, params param.
 
 // RemoveAttributesFromIAM2VirtualID removes AttributesFromIAM2VirtualID
 func (cli *ZSClient) RemoveAttributesFromIAM2VirtualID(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/virtual-ids", fmt.Sprintf(\"%s/attributes\", uuid), string(deleteMode))
+	return cli.Delete("v1/iam2/virtual-ids", uuid, string(deleteMode))
 }
 
 // CreateBonding creates Bonding
@@ -9657,10 +9270,9 @@ func (cli *ZSClient) CreateBonding(params param.CreateBondingParam) (*view.HostN
 }
 
 // DetachUsbDeviceFromVm operates on UsbDeviceFromVm
-func (cli *ZSClient) DetachUsbDeviceFromVm(usbDeviceUuid string, params param.DetachUsbDeviceFromVmParam) (*view.UsbDeviceInventoryView, error) {
+func (cli *ZSClient) DetachUsbDeviceFromVm(params param.DetachUsbDeviceFromVmParam) (*view.UsbDeviceInventoryView, error) {
 	var resp view.DetachUsbDeviceFromVmEventView
-	err := cli.PostWithSpec("v1/usb-device/usb-devices", fmt.Sprintf(\"%s/detach\", usbDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/usb-device/usb-devices", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9705,7 +9317,7 @@ func (cli *ZSClient) GetSNSTopicSubscriber(uuid string) (*view.SNSSubscriberInve
 
 // DeleteLdapBinding deletes LdapBinding
 func (cli *ZSClient) DeleteLdapBinding(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/ldap/bindings", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/ldap/bindings", uuid, string(deleteMode))
 }
 
 // AttachNfvInstToGroup operates on NfvInstToGroup
@@ -9739,8 +9351,7 @@ func (cli *ZSClient) CreateVmInstanceFromVolume(params param.CreateVmInstanceFro
 // GetVpcVRouterDistributedRoutingEnabled gets VpcVRouterDistributedRoutingEnabled by uuid
 func (cli *ZSClient) GetVpcVRouterDistributedRoutingEnabled(uuid string) (*view.GetVpcVRouterDistributedRoutingEnabledView, error) {
 	var resp view.GetVpcVRouterDistributedRoutingEnabledView
-	err := cli.GetWithSpec("v1/vpc/virtual-routers", fmt.Sprintf(\"%s/distributed-routing\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9757,12 +9368,12 @@ func (cli *ZSClient) CreateEcsSecurityGroupRemote(params param.CreateEcsSecurity
 
 // RemoveAttributesFromIAM2Organization removes AttributesFromIAM2Organization
 func (cli *ZSClient) RemoveAttributesFromIAM2Organization(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/organizations", fmt.Sprintf(\"%s/attributes\", uuid), string(deleteMode))
+	return cli.Delete("v1/iam2/organizations", uuid, string(deleteMode))
 }
 
 // DeleteAliyunSnapshotFromLocal deletes AliyunSnapshotFromLocal
 func (cli *ZSClient) DeleteAliyunSnapshotFromLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/snapshot", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/snapshot", uuid, string(deleteMode))
 }
 
 // GetIAM2ProjectContainerImages gets IAM2ProjectContainerImages by uuid
@@ -9777,7 +9388,7 @@ func (cli *ZSClient) GetIAM2ProjectContainerImages(projectId string, repositoryI
 
 // DetachDataVolumeFromVm operates on DataVolumeFromVm
 func (cli *ZSClient) DetachDataVolumeFromVm(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/volumes", fmt.Sprintf(\"%s/vm-instances\", uuid), string(deleteMode))
+	return cli.Delete("v1/volumes", uuid, string(deleteMode))
 }
 
 // QueryEcsVSwitchFromLocal queries EcsVSwitchFromLocal list
@@ -9819,10 +9430,9 @@ func (cli *ZSClient) CreateRootVolumeTemplateFromRootVolumeAsync(params param.Cr
 }
 
 // AttachAliyunDiskToEcs operates on AliyunDiskToEcs
-func (cli *ZSClient) AttachAliyunDiskToEcs(diskUuid string, params param.AttachAliyunDiskToEcsParam) (*view.AliyunDiskInventoryView, error) {
+func (cli *ZSClient) AttachAliyunDiskToEcs(params param.AttachAliyunDiskToEcsParam) (*view.AliyunDiskInventoryView, error) {
 	var resp view.AttachAliyunDiskToEcsEventView
-	err := cli.PostWithSpec("v1/hybrid/aliyun/disk", fmt.Sprintf(\"%s/attach\", diskUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/aliyun/disk", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9830,7 +9440,7 @@ func (cli *ZSClient) AttachAliyunDiskToEcs(diskUuid string, params param.AttachA
 
 // DeleteOssBucketNameLocal deletes OssBucketNameLocal
 func (cli *ZSClient) DeleteOssBucketNameLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/oss-bucket", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/oss-bucket", uuid, string(deleteMode))
 }
 
 // QueryEcsImageFromLocal queries EcsImageFromLocal list
@@ -9848,10 +9458,9 @@ func (cli *ZSClient) GetEcsImageFromLocal(uuid string) (*view.EcsImageInventoryV
 }
 
 // GetObservabilityServerServiceData gets ObservabilityServerServiceData by uuid
-func (cli *ZSClient) GetObservabilityServerServiceData(observabilityServerUuid string) (*view.ObservabilityServerServiceDataInventoryView, error) {
+func (cli *ZSClient) GetObservabilityServerServiceData(uuid string) (*view.ObservabilityServerServiceDataInventoryView, error) {
 	var resp view.ObservabilityServerServiceDataInventoryView
-	err := cli.GetWithSpec("v1/observability-server", fmt.Sprintf(\"%s/service-data\", observabilityServerUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/observability-server", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9893,18 +9502,16 @@ func (cli *ZSClient) AttachBareMetal2GatewayToCluster(clusterUuid string, gatewa
 // UpdateAtPersonOfAtWeComEndpoint updates AtPersonOfAtWeComEndpoint
 func (cli *ZSClient) UpdateAtPersonOfAtWeComEndpoint(uuid string, params param.UpdateAtPersonOfAtWeComEndpointParam) (*view.SNSWeComAtPersonInventoryView, error) {
 	var resp view.UpdateAtPersonOfWeComEndpointEventView
-	err := cli.PutWithSpec("v1/sns/application-endpoints/we-com/at-persons", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sns/application-endpoints/we-com/at-persons", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // ChangeSlbGroupDeployType changes SlbGroupDeployType
-func (cli *ZSClient) ChangeSlbGroupDeployType(slbGroupUuid string, params param.ChangeSlbGroupDeployTypeParam) (*view.SlbGroupInventoryView, error) {
+func (cli *ZSClient) ChangeSlbGroupDeployType(uuid string, params param.ChangeSlbGroupDeployTypeParam) (*view.SlbGroupInventoryView, error) {
 	var resp view.ChangeSlbGroupDeployTypeEventView
-	err := cli.PutWithSpec("v1/load-balancers/slb/groups", fmt.Sprintf(\"%s/deployType\", slbGroupUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/load-balancers/slb/groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -9912,19 +9519,18 @@ func (cli *ZSClient) ChangeSlbGroupDeployType(slbGroupUuid string, params param.
 
 // DeleteEcsSecurityGroupInLocal deletes EcsSecurityGroupInLocal
 func (cli *ZSClient) DeleteEcsSecurityGroupInLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/security-group", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/security-group", uuid, string(deleteMode))
 }
 
 // DetachDataVolumeFromHost operates on DataVolumeFromHost
-func (cli *ZSClient) DetachDataVolumeFromHost(volumeUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/volumes", fmt.Sprintf(\"%s/hosts\", volumeUuid), string(deleteMode))
+func (cli *ZSClient) DetachDataVolumeFromHost(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/volumes", uuid, string(deleteMode))
 }
 
 // GetVmInstanceRecoveryPoints gets VmInstanceRecoveryPoints by uuid
 func (cli *ZSClient) GetVmInstanceRecoveryPoints(uuid string) (*view.GetVmInstanceRecoveryPointsView, error) {
 	var resp view.GetVmInstanceRecoveryPointsView
-	err := cli.GetWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/recovery-points\", uuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9958,15 +9564,14 @@ func (cli *ZSClient) GetL3NetworkTypes(uuid string) (*view.GetL3NetworkTypesView
 }
 
 // DetachPoliciesFromUser operates on PoliciesFromUser
-func (cli *ZSClient) DetachPoliciesFromUser(userUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/accounts/users", fmt.Sprintf(\"%s/policies\", userUuid), string(deleteMode))
+func (cli *ZSClient) DetachPoliciesFromUser(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/accounts/users", uuid, string(deleteMode))
 }
 
 // CleanUpImageCacheOnPrimaryStorage operates on UpImageCacheOnPrimaryStorage
 func (cli *ZSClient) CleanUpImageCacheOnPrimaryStorage(uuid string, params param.CleanUpImageCacheOnPrimaryStorageParam) (*view.CleanUpImageCacheOnPrimaryStorageEventView, error) {
 	resp := view.CleanUpImageCacheOnPrimaryStorageEventView{}
-	err := cli.PutWithSpec("v1/primary-storage", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9999,8 +9604,7 @@ func (cli *ZSClient) AddKVMHostFromConfigFileAsync(params param.AddKVMHostFromCo
 // InspectBareMetal2ChassisByInstance operates on BareMetal2ChassisByInstance
 func (cli *ZSClient) InspectBareMetal2ChassisByInstance(uuid string, params param.InspectBareMetal2ChassisByInstanceParam) (*view.BareMetal2ChassisInventoryView, error) {
 	var resp view.InspectBareMetal2ChassisByInstanceEventView
-	err := cli.PutWithSpec("v1/baremetal2/bm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/bm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -10008,7 +9612,7 @@ func (cli *ZSClient) InspectBareMetal2ChassisByInstance(uuid string, params para
 
 // DeleteVmBootMode deletes VmBootMode
 func (cli *ZSClient) DeleteVmBootMode(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/bootmode\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 
 // GetCandidateVMForAttachingAffinityGroup gets CandidateVMForAttachingAffinityGroup by uuid
@@ -10022,7 +9626,7 @@ func (cli *ZSClient) GetCandidateVMForAttachingAffinityGroup(uuid string) (*view
 
 // DeleteVpcVpnConnectionLocal deletes VpcVpnConnectionLocal
 func (cli *ZSClient) DeleteVpcVpnConnectionLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/vpn-connection", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/vpn-connection", uuid, string(deleteMode))
 }
 
 // DetachPolicyFromUserGroup operates on PolicyFromUserGroup
@@ -10042,8 +9646,7 @@ func (cli *ZSClient) AddActionToAlarm(params param.AddActionToAlarmParam) (*view
 // UpdateFirewallRule updates FirewallRule
 func (cli *ZSClient) UpdateFirewallRule(uuid string, params param.UpdateFirewallRuleParam) (*view.VpcFirewallRuleInventoryView, error) {
 	var resp view.UpdateFirewallRuleEventView
-	err := cli.PutWithSpec("v1/vpcfirewalls/rules", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpcfirewalls/rules", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -10077,10 +9680,9 @@ func (cli *ZSClient) GetAccessPath(uuid string) (*view.GetAccessPathView, error)
 }
 
 // GetPrimaryStorageUsageReport gets PrimaryStorageUsageReport by uuid
-func (cli *ZSClient) GetPrimaryStorageUsageReport(primaryStorageUuid string) (*view.GetPrimaryStorageUsageReportView, error) {
+func (cli *ZSClient) GetPrimaryStorageUsageReport(uuid string) (*view.GetPrimaryStorageUsageReportView, error) {
 	var resp view.GetPrimaryStorageUsageReportView
-	err := cli.GetWithSpec("v1/primary-storage", fmt.Sprintf(\"%s/usage/report\", primaryStorageUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/primary-storage", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10089,8 +9691,7 @@ func (cli *ZSClient) GetPrimaryStorageUsageReport(primaryStorageUuid string) (*v
 // RevertVolumeFromVolumeBackup operates on VolumeFromVolumeBackup
 func (cli *ZSClient) RevertVolumeFromVolumeBackup(uuid string, params param.RevertVolumeFromVolumeBackupParam) (*view.RevertVolumeFromVolumeBackupEventView, error) {
 	resp := view.RevertVolumeFromVolumeBackupEventView{}
-	err := cli.PutWithSpec("v1/volume-backups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volume-backups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10106,30 +9707,27 @@ func (cli *ZSClient) CreateDataVolumeFromVolumeTemplate(params param.CreateDataV
 }
 
 // LocalStorageGetVolumeMigratableHosts operates on LocalStorageGetVolumeMigratableHosts
-func (cli *ZSClient) LocalStorageGetVolumeMigratableHosts(volumeUuid string, params param.LocalStorageGetVolumeMigratableHostsParam) (*view.HostInventoryView, error) {
+func (cli *ZSClient) LocalStorageGetVolumeMigratableHosts(params param.LocalStorageGetVolumeMigratableHostsParam) (*view.HostInventoryView, error) {
 	var resp view.HostInventoryView
-	err := cli.GetWithSpec("v1/volumes", fmt.Sprintf(\"%s/migration-target-hosts\", volumeUuid), "", "", params, &resp)
-	if err != nil {
+	if err := cli.Get("v1/volumes", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetOssBucketNameFromRemote gets OssBucketNameFromRemote by uuid
-func (cli *ZSClient) GetOssBucketNameFromRemote(dataCenterUuid string) (*view.OssBucketPropertyView, error) {
+func (cli *ZSClient) GetOssBucketNameFromRemote(uuid string) (*view.OssBucketPropertyView, error) {
 	var resp view.OssBucketPropertyView
-	err := cli.GetWithSpec("v1/hybrid/oss", fmt.Sprintf(\"%s/remote\", dataCenterUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/hybrid/oss", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SyncEcsVpcFromRemote operates on EcsVpcFromRemote
-func (cli *ZSClient) SyncEcsVpcFromRemote(dataCenterUuid string, params param.SyncEcsVpcFromRemoteParam) (*view.EcsVpcInventoryView, error) {
+func (cli *ZSClient) SyncEcsVpcFromRemote(params param.SyncEcsVpcFromRemoteParam) (*view.EcsVpcInventoryView, error) {
 	resp := view.EcsVpcInventoryView{}
-	err := cli.PostWithSpec("v1/hybrid/aliyun/vpc", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/aliyun/vpc", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10176,18 +9774,16 @@ func (cli *ZSClient) AttachPolicyToRole(policyUuid string, roleUuid string, para
 // ChangeBareMetal2ProvisionNetworkState changes BareMetal2ProvisionNetworkState
 func (cli *ZSClient) ChangeBareMetal2ProvisionNetworkState(uuid string, params param.ChangeBareMetal2ProvisionNetworkStateParam) (*view.BareMetal2ProvisionNetworkInventoryView, error) {
 	var resp view.ChangeBareMetal2ProvisionNetworkStateEventView
-	err := cli.PutWithSpec("v1/baremetal2/provision-networks", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/provision-networks", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // GetBackupStorageCandidatesForImageMigration gets BackupStorageCandidatesForImageMigration by uuid
-func (cli *ZSClient) GetBackupStorageCandidatesForImageMigration(srcBackupStorageUuid string) (*view.BackupStorageInventoryView, error) {
+func (cli *ZSClient) GetBackupStorageCandidatesForImageMigration(uuid string) (*view.BackupStorageInventoryView, error) {
 	var resp view.BackupStorageInventoryView
-	err := cli.GetWithSpec("v1/backup-storage", fmt.Sprintf(\"%s/migration-candidates\", srcBackupStorageUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/backup-storage", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10195,24 +9791,22 @@ func (cli *ZSClient) GetBackupStorageCandidatesForImageMigration(srcBackupStorag
 
 // DeleteVpcIpSecConfigLocal deletes VpcIpSecConfigLocal
 func (cli *ZSClient) DeleteVpcIpSecConfigLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/vpn-connection/ipsec", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/vpn-connection/ipsec", uuid, string(deleteMode))
 }
 
 // GenerateSriovPciDevices operates on SriovPciDevices
-func (cli *ZSClient) GenerateSriovPciDevices(pciDeviceUuid string, params param.GenerateSriovPciDevicesParam) (*view.GenerateVirtualPciDevicesEventView, error) {
+func (cli *ZSClient) GenerateSriovPciDevices(uuid string, params param.GenerateSriovPciDevicesParam) (*view.GenerateVirtualPciDevicesEventView, error) {
 	resp := view.GenerateVirtualPciDevicesEventView{}
-	err := cli.PutWithSpec("v1/pci-devices", fmt.Sprintf(\"%s/actions\", pciDeviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/pci-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CalculateAccountBillingSpending operates on AccountBillingSpending
-func (cli *ZSClient) CalculateAccountBillingSpending(accountUuid string, params param.CalculateAccountBillingSpendingParam) (*view.CalculateAccountBillingSpendingView, error) {
+func (cli *ZSClient) CalculateAccountBillingSpending(uuid string, params param.CalculateAccountBillingSpendingParam) (*view.CalculateAccountBillingSpendingView, error) {
 	resp := view.CalculateAccountBillingSpendingView{}
-	err := cli.PutWithSpec("v1/billings/accounts", fmt.Sprintf(\"%s/actions\", accountUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/billings/accounts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10220,24 +9814,22 @@ func (cli *ZSClient) CalculateAccountBillingSpending(accountUuid string, params 
 
 // DeleteVRouterOspfArea deletes VRouterOspfArea
 func (cli *ZSClient) DeleteVRouterOspfArea(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/routerArea", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/routerArea", uuid, string(deleteMode))
 }
 
 // GetVipAvailablePort gets VipAvailablePort by uuid
-func (cli *ZSClient) GetVipAvailablePort(vipUuid string) (*view.GetVipAvailablePortView, error) {
+func (cli *ZSClient) GetVipAvailablePort(uuid string) (*view.GetVipAvailablePortView, error) {
 	var resp view.GetVipAvailablePortView
-	err := cli.GetWithSpec("v1/vips", fmt.Sprintf(\"%s/get-port-availability\", vipUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/vips", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SyncDiskFromAliyunFromRemote operates on DiskFromAliyunFromRemote
-func (cli *ZSClient) SyncDiskFromAliyunFromRemote(identityUuid string, params param.SyncDiskFromAliyunFromRemoteParam) (*view.AliyunDiskInventoryView, error) {
+func (cli *ZSClient) SyncDiskFromAliyunFromRemote(params param.SyncDiskFromAliyunFromRemoteParam) (*view.AliyunDiskInventoryView, error) {
 	resp := view.AliyunDiskInventoryView{}
-	err := cli.PostWithSpec("v1/hybrid/aliyun/disk", fmt.Sprintf(\"%s/sync\", identityUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/hybrid/aliyun/disk", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10246,8 +9838,7 @@ func (cli *ZSClient) SyncDiskFromAliyunFromRemote(identityUuid string, params pa
 // ChangeVolumeState changes VolumeState
 func (cli *ZSClient) ChangeVolumeState(uuid string, params param.ChangeVolumeStateParam) (*view.VolumeInventoryView, error) {
 	var resp view.ChangeVolumeStateEventView
-	err := cli.PutWithSpec("v1/volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -10290,20 +9881,18 @@ func (cli *ZSClient) CheckIAM2VirtualIDConfigFile(uuid string, params param.Chec
 }
 
 // GetClusterHostNetworkFacts gets ClusterHostNetworkFacts by uuid
-func (cli *ZSClient) GetClusterHostNetworkFacts(clusterUuid string) (*view.GetClusterHostNetworkFactsView, error) {
+func (cli *ZSClient) GetClusterHostNetworkFacts(uuid string) (*view.GetClusterHostNetworkFactsView, error) {
 	var resp view.GetClusterHostNetworkFactsView
-	err := cli.GetWithSpec("v1/cluster/hosts-network-facts", fmt.Sprintf(\"%s\", clusterUuid), "", "", nil, &resp)
-	if err != nil {
+	if err := cli.Get("v1/cluster/hosts-network-facts", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DetachOssBucketFromEcsDataCenter operates on OssBucketFromEcsDataCenter
-func (cli *ZSClient) DetachOssBucketFromEcsDataCenter(ossBucketUuid string, params param.DetachOssBucketFromEcsDataCenterParam) (*view.OssBucketInventoryView, error) {
+func (cli *ZSClient) DetachOssBucketFromEcsDataCenter(uuid string, params param.DetachOssBucketFromEcsDataCenterParam) (*view.OssBucketInventoryView, error) {
 	var resp view.DetachOssBucketFromEcsDataCenterEventView
-	err := cli.PutWithSpec("v1/hybrid/aliyun/oss-bucket", fmt.Sprintf(\"%s/detach\", ossBucketUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/oss-bucket", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -10343,39 +9932,37 @@ func (cli *ZSClient) AddSchedulerJobGroupToSchedulerTrigger(params param.AddSche
 
 // DeleteAliyunNasAccessGroupRule deletes AliyunNasAccessGroupRule
 func (cli *ZSClient) DeleteAliyunNasAccessGroupRule(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/nas/access/rule", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/nas/access/rule", uuid, string(deleteMode))
 }
 
 // DeleteBonding deletes Bonding
 func (cli *ZSClient) DeleteBonding(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hosts/bondings", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hosts/bondings", uuid, string(deleteMode))
 }
 
 // DeleteEcsSecurityGroupRemote deletes EcsSecurityGroupRemote
 func (cli *ZSClient) DeleteEcsSecurityGroupRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/security-group/remote", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/security-group/remote", uuid, string(deleteMode))
 }
 
 // DeleteVmNicFromSecurityGroup deletes VmNicFromSecurityGroup
-func (cli *ZSClient) DeleteVmNicFromSecurityGroup(securityGroupUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/security-groups", fmt.Sprintf(\"%s/vm-instances/nics\", securityGroupUuid), string(deleteMode))
+func (cli *ZSClient) DeleteVmNicFromSecurityGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/security-groups", uuid, string(deleteMode))
 }
 
 // UpdateTag updates Tag
 func (cli *ZSClient) UpdateTag(uuid string, params param.UpdateTagParam) (*view.TagPatternInventoryView, error) {
 	var resp view.UpdateTagEventView
-	err := cli.PutWithSpec("v1/tags", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/tags", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 
 // AttachVRouterRouteTableToVRouter operates on VRouterRouteTableToVRouter
-func (cli *ZSClient) AttachVRouterRouteTableToVRouter(routeTableUuid string, params param.AttachVRouterRouteTableToVRouterParam) (*view.VRouterRouteTableInventoryView, error) {
+func (cli *ZSClient) AttachVRouterRouteTableToVRouter(params param.AttachVRouterRouteTableToVRouterParam) (*view.VRouterRouteTableInventoryView, error) {
 	var resp view.AttachVRouterRouteTableToVRouterEventView
-	err := cli.PostWithSpec("v1/vrouter-route-tables", fmt.Sprintf(\"%s/attach\", routeTableUuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/vrouter-route-tables", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -10405,10 +9992,9 @@ func (cli *ZSClient) DetachScsiLunFromVmInstance(vmInstanceUuid string, uuid str
 }
 
 // EnableCdpTask operates on EnableCdpTask
-func (cli *ZSClient) EnableCdpTask(uuid string, params param.EnableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
+func (cli *ZSClient) EnableCdpTask(params param.EnableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
 	var resp view.EnableCdpTaskEventView
-	err := cli.PostWithSpec("v1/cdp-task/enable", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/cdp-task/enable", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -10430,10 +10016,9 @@ func (cli *ZSClient) EnableCdpTaskAsync(params param.EnableCdpTaskParam) (string
 }
 
 // SyncConnectionAccessPointFromRemote operates on ConnectionAccessPointFromRemote
-func (cli *ZSClient) SyncConnectionAccessPointFromRemote(dataCenterUuid string, params param.SyncConnectionAccessPointFromRemoteParam) (*view.ConnectionAccessPointInventoryView, error) {
+func (cli *ZSClient) SyncConnectionAccessPointFromRemote(uuid string, params param.SyncConnectionAccessPointFromRemoteParam) (*view.ConnectionAccessPointInventoryView, error) {
 	resp := view.ConnectionAccessPointInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/aliyun/access-point", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/access-point", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10449,10 +10034,9 @@ func (cli *ZSClient) RegisterLicenseRequestedApplication(params param.RegisterLi
 }
 
 // SyncVpcVpnGatewayFromRemote operates on VpcVpnGatewayFromRemote
-func (cli *ZSClient) SyncVpcVpnGatewayFromRemote(dataCenterUuid string, params param.SyncVpcVpnGatewayFromRemoteParam) (*view.VpcVpnGatewayInventoryView, error) {
+func (cli *ZSClient) SyncVpcVpnGatewayFromRemote(uuid string, params param.SyncVpcVpnGatewayFromRemoteParam) (*view.VpcVpnGatewayInventoryView, error) {
 	resp := view.VpcVpnGatewayInventoryView{}
-	err := cli.PutWithSpec("v1/hybrid/vpc-vpn", fmt.Sprintf(\"%s/sync\", dataCenterUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/vpc-vpn", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10460,6 +10044,6 @@ func (cli *ZSClient) SyncVpcVpnGatewayFromRemote(dataCenterUuid string, params p
 
 // DeleteEcsVpcInLocal deletes EcsVpcInLocal
 func (cli *ZSClient) DeleteEcsVpcInLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hybrid/aliyun/vpc", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hybrid/aliyun/vpc", uuid, string(deleteMode))
 }
 

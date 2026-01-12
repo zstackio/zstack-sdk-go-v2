@@ -42,3 +42,8 @@ type RefreshSharedBlockDeviceCapacityEventView struct {
 	Inventory SharedBlockGroupPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
+// UpdateSharedBlockEventView UpdateSharedBlockEvent
+type UpdateSharedBlockEventView struct {
+	Inventory SharedBlockGroupPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+

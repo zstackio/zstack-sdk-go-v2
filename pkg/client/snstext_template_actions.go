@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateSNSTextTemplate updates SNSTextTemplate
 func (cli *ZSClient) UpdateSNSTextTemplate(uuid string, params param.UpdateSNSTextTemplateParam) (*view.SNSTextTemplateInventoryView, error) {
 	var resp view.UpdateSNSTextTemplateEventView
-	err := cli.PutWithSpec("v1/zwatch/alarms/sns/text-templates", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/alarms/sns/text-templates", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -29,7 +28,7 @@ func (cli *ZSClient) CreateSNSTextTemplate(params param.CreateSNSTextTemplatePar
 }
 // DeleteSNSTextTemplate deletes SNSTextTemplate
 func (cli *ZSClient) DeleteSNSTextTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/zwatch/alarms/sns/text-templates", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/zwatch/alarms/sns/text-templates", uuid, string(deleteMode))
 }
 // QuerySNSTextTemplate queries SNSTextTemplate list
 func (cli *ZSClient) QuerySNSTextTemplate(params *param.QueryParam) ([]view.SNSTextTemplateInventoryView, error) {

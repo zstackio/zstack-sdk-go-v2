@@ -11,10 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateAlertDataAck updates AlertDataAck
-func (cli *ZSClient) UpdateAlertDataAck(alertDataUuid string, params param.UpdateAlertDataAckParam) (*view.AlertDataAckInventoryView, error) {
+func (cli *ZSClient) UpdateAlertDataAck(uuid string, params param.UpdateAlertDataAckParam) (*view.AlertDataAckInventoryView, error) {
 	var resp view.UpdateAlertDataAckEventView
-	err := cli.PutWithSpec("v1/zwatch/alert-histories/acknowledgments", fmt.Sprintf(\"%s/actions\", alertDataUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/alert-histories/acknowledgments", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

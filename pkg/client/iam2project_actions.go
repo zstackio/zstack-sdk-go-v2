@@ -20,13 +20,12 @@ func (cli *ZSClient) CreateIAM2Project(params param.CreateIAM2ProjectParam) (*vi
 }
 // DeleteIAM2Project deletes IAM2Project
 func (cli *ZSClient) DeleteIAM2Project(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
 }
 // RecoverIAM2Project operates on IAM2Project
 func (cli *ZSClient) RecoverIAM2Project(uuid string, params param.RecoverIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
 	var resp view.RecoverIAM2ProjectEventView
-	err := cli.PutWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/projects", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -46,7 +45,7 @@ func (cli *ZSClient) GetIAM2Project(uuid string) (*view.IAM2ProjectInventoryView
 }
 // ExpungeIAM2Project operates on IAM2Project
 func (cli *ZSClient) ExpungeIAM2Project(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s/actions\", uuid), string(deleteMode))
+	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
 }
 // LoginIAM2Project operates on IAM2Project
 func (cli *ZSClient) LoginIAM2Project(uuid string, params param.LoginIAM2ProjectParam) (*view.SessionInventoryView, error) {
@@ -59,8 +58,7 @@ func (cli *ZSClient) LoginIAM2Project(uuid string, params param.LoginIAM2Project
 // UpdateIAM2Project updates IAM2Project
 func (cli *ZSClient) UpdateIAM2Project(uuid string, params param.UpdateIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
 	var resp view.UpdateIAM2ProjectEventView
-	err := cli.PutWithSpec("v1/iam2/projects", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/projects", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

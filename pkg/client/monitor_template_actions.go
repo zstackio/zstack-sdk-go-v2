@@ -13,17 +13,15 @@ var _ = view.MapView{} // avoid unused import
 // UpdateMonitorTemplate updates MonitorTemplate
 func (cli *ZSClient) UpdateMonitorTemplate(uuid string, params param.UpdateMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	var resp view.UpdateMonitorTemplateEventView
-	err := cli.PutWithSpec("v1/zwatch/monitortemplates", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/monitortemplates", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // CloneMonitorTemplate operates on MonitorTemplate
-func (cli *ZSClient) CloneMonitorTemplate(uuid string, params param.CloneMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
+func (cli *ZSClient) CloneMonitorTemplate(params param.CloneMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	var resp view.CloneMonitorTemplateEventView
-	err := cli.PostWithSpec("v1/zwatch/monitortemplates", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/zwatch/monitortemplates", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -51,5 +49,5 @@ func (cli *ZSClient) CreateMonitorTemplate(params param.CreateMonitorTemplatePar
 }
 // DeleteMonitorTemplate deletes MonitorTemplate
 func (cli *ZSClient) DeleteMonitorTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/zwatch/monitortemplates", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/zwatch/monitortemplates", uuid, string(deleteMode))
 }

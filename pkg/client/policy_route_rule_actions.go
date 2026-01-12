@@ -33,5 +33,5 @@ func (cli *ZSClient) CreatePolicyRouteRule(params param.CreatePolicyRouteRulePar
 }
 // DeletePolicyRouteRule deletes PolicyRouteRule
 func (cli *ZSClient) DeletePolicyRouteRule(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/policy-routes/rules", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/policy-routes/rules", uuid, string(deleteMode))
 }

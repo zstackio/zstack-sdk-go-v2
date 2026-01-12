@@ -34,13 +34,12 @@ func (cli *ZSClient) GetFlowCollector(uuid string) (*view.FlowCollectorInventory
 // UpdateFlowCollector updates FlowCollector
 func (cli *ZSClient) UpdateFlowCollector(uuid string, params param.UpdateFlowCollectorParam) (*view.FlowCollectorInventoryView, error) {
 	var resp view.CreateFlowCollectorEventView
-	err := cli.PutWithSpec("v1/flowmeters/collectors", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/flowmeters/collectors", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteFlowCollector deletes FlowCollector
 func (cli *ZSClient) DeleteFlowCollector(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/flowmeters/collectors", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/flowmeters/collectors", uuid, string(deleteMode))
 }

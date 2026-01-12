@@ -26,8 +26,7 @@ func (cli *ZSClient) GetIAM2ProjectAttribute(uuid string) (*view.IAM2ProjectAttr
 // UpdateIAM2ProjectAttribute updates IAM2ProjectAttribute
 func (cli *ZSClient) UpdateIAM2ProjectAttribute(uuid string, params param.UpdateIAM2ProjectAttributeParam) (*view.IAM2ProjectAttributeInventoryView, error) {
 	var resp view.UpdateIAM2ProjectAttributeEventView
-	err := cli.PutWithSpec("v1/iam2/projects/attributes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/iam2/projects/attributes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

@@ -11,10 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // ApplyDRSAdvice operates on DRSAdvice
-func (cli *ZSClient) ApplyDRSAdvice(adviceUuid string, params param.ApplyDRSAdviceParam) (*view.DRSAdviceInventoryView, error) {
+func (cli *ZSClient) ApplyDRSAdvice(uuid string, params param.ApplyDRSAdviceParam) (*view.DRSAdviceInventoryView, error) {
 	resp := view.DRSAdviceInventoryView{}
-	err := cli.PutWithSpec("v1/clusters/drs/advice", fmt.Sprintf(\"%s/actions\", adviceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/clusters/drs/advice", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

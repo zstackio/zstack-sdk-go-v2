@@ -21,15 +21,14 @@ func (cli *ZSClient) CreatePolicyRouteRuleSet(params param.CreatePolicyRouteRule
 // UpdatePolicyRouteRuleSet updates PolicyRouteRuleSet
 func (cli *ZSClient) UpdatePolicyRouteRuleSet(uuid string, params param.UpdatePolicyRouteRuleSetParam) (*view.PolicyRouteRuleSetInventoryView, error) {
 	var resp view.UpdatePolicyRouteRuleSetEventView
-	err := cli.PutWithSpec("v1/policy-routes/ruleSets", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/policy-routes/ruleSets", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeletePolicyRouteRuleSet deletes PolicyRouteRuleSet
 func (cli *ZSClient) DeletePolicyRouteRuleSet(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/policy-routes/ruleSets", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/policy-routes/ruleSets", uuid, string(deleteMode))
 }
 // QueryPolicyRouteRuleSet queries PolicyRouteRuleSet list
 func (cli *ZSClient) QueryPolicyRouteRuleSet(params *param.QueryParam) ([]view.PolicyRouteRuleSetInventoryView, error) {

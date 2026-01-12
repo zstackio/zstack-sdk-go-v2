@@ -11,17 +11,16 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateAutoScalingGroupInstance updates AutoScalingGroupInstance
-func (cli *ZSClient) UpdateAutoScalingGroupInstance(instanceUuid string, params param.UpdateAutoScalingGroupInstanceParam) (*view.AutoScalingGroupInstanceInventoryView, error) {
+func (cli *ZSClient) UpdateAutoScalingGroupInstance(uuid string, params param.UpdateAutoScalingGroupInstanceParam) (*view.AutoScalingGroupInstanceInventoryView, error) {
 	var resp view.UpdateAutoScalingGroupInstanceEventView
-	err := cli.PutWithSpec("v1/autoscaling/groups/instances", fmt.Sprintf(\"%s/actions\", instanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/autoscaling/groups/instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteAutoScalingGroupInstance deletes AutoScalingGroupInstance
-func (cli *ZSClient) DeleteAutoScalingGroupInstance(instanceUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/autoscaling/groups/instances", fmt.Sprintf(\"%s\", instanceUuid), string(deleteMode))
+func (cli *ZSClient) DeleteAutoScalingGroupInstance(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/autoscaling/groups/instances", uuid, string(deleteMode))
 }
 // QueryAutoScalingGroupInstance queries AutoScalingGroupInstance list
 func (cli *ZSClient) QueryAutoScalingGroupInstance(params *param.QueryParam) ([]view.AutoScalingGroupInstanceInventoryView, error) {

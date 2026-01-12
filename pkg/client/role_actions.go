@@ -33,13 +33,12 @@ func (cli *ZSClient) GetRole(uuid string) (*view.RoleInventoryView, error) {
 }
 // DeleteRole deletes Role
 func (cli *ZSClient) DeleteRole(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/identities/roles", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/identities/roles", uuid, string(deleteMode))
 }
 // UpdateRole updates Role
 func (cli *ZSClient) UpdateRole(uuid string, params param.UpdateRoleParam) (*view.RoleInventoryView, error) {
 	var resp view.UpdateRoleEventView
-	err := cli.PutWithSpec("v1/identities/roles", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/identities/roles", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

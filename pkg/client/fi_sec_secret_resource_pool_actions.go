@@ -21,8 +21,7 @@ func (cli *ZSClient) CreateFiSecSecretResourcePool(params param.CreateFiSecSecre
 // UpdateFiSecSecretResourcePool updates FiSecSecretResourcePool
 func (cli *ZSClient) UpdateFiSecSecretResourcePool(uuid string, params param.UpdateFiSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	var resp view.UpdateSecretResourcePoolEventView
-	err := cli.PutWithSpec("v1/secret-resource-pools/fiSec", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/secret-resource-pools/fiSec", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

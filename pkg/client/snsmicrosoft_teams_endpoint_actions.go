@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateSNSMicrosoftTeamsEndpoint updates SNSMicrosoftTeamsEndpoint
 func (cli *ZSClient) UpdateSNSMicrosoftTeamsEndpoint(uuid string, params param.UpdateSNSMicrosoftTeamsEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	var resp view.UpdateSNSApplicationEndpointEventView
-	err := cli.PutWithSpec("v1/sns/application-endpoints/microsoft-teams", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/sns/application-endpoints/microsoft-teams", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

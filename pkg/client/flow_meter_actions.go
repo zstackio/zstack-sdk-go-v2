@@ -33,13 +33,12 @@ func (cli *ZSClient) CreateFlowMeter(params param.CreateFlowMeterParam) (*view.F
 }
 // DeleteFlowMeter deletes FlowMeter
 func (cli *ZSClient) DeleteFlowMeter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/flowmeters", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/flowmeters", uuid, string(deleteMode))
 }
 // UpdateFlowMeter updates FlowMeter
 func (cli *ZSClient) UpdateFlowMeter(uuid string, params param.UpdateFlowMeterParam) (*view.FlowMeterInventoryView, error) {
 	var resp view.UpdateFlowMeterEventView
-	err := cli.PutWithSpec("v1/flowmeters", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/flowmeters", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

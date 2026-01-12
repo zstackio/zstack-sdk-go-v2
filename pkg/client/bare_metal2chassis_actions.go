@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // InspectBareMetal2Chassis operates on BareMetal2Chassis
 func (cli *ZSClient) InspectBareMetal2Chassis(uuid string, params param.InspectBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	var resp view.InspectBareMetal2ChassisEventView
-	err := cli.PutWithSpec("v1/baremetal2/chassis", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -22,8 +21,7 @@ func (cli *ZSClient) InspectBareMetal2Chassis(uuid string, params param.InspectB
 // UpdateBareMetal2Chassis updates BareMetal2Chassis
 func (cli *ZSClient) UpdateBareMetal2Chassis(uuid string, params param.UpdateBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	var resp view.UpdateBareMetal2ChassisEventView
-	err := cli.PutWithSpec("v1/baremetal2/chassis", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal2/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -43,5 +41,5 @@ func (cli *ZSClient) GetBareMetal2Chassis(uuid string) (*view.BareMetal2ChassisI
 }
 // DeleteBareMetal2Chassis deletes BareMetal2Chassis
 func (cli *ZSClient) DeleteBareMetal2Chassis(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/baremetal2/chassis", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/baremetal2/chassis", uuid, string(deleteMode))
 }

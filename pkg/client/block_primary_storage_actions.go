@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateBlockPrimaryStorage updates BlockPrimaryStorage
 func (cli *ZSClient) UpdateBlockPrimaryStorage(uuid string, params param.UpdateBlockPrimaryStorageParam) (*view.BlockPrimaryStorageInventoryView, error) {
 	var resp view.UpdateBlockPrimaryStorageEventView
-	err := cli.PutWithSpec("v1/primary-storage/block", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage/block", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

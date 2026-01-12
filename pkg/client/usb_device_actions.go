@@ -26,8 +26,7 @@ func (cli *ZSClient) GetUsbDevice(uuid string) (*view.UsbDeviceInventoryView, er
 // UpdateUsbDevice updates UsbDevice
 func (cli *ZSClient) UpdateUsbDevice(uuid string, params param.UpdateUsbDeviceParam) (*view.UsbDeviceInventoryView, error) {
 	var resp view.UpdateUsbDeviceEventView
-	err := cli.PutWithSpec("v1/usb-device/usb-devices", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/usb-device/usb-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

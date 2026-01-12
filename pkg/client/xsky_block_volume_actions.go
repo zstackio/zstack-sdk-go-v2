@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateXskyBlockVolume updates XskyBlockVolume
 func (cli *ZSClient) UpdateXskyBlockVolume(uuid string, params param.UpdateXskyBlockVolumeParam) (*view.BlockVolumeInventoryView, error) {
 	var resp view.UpdateBlockVolumeEventView
-	err := cli.PutWithSpec("v1/xsky/block-volumes", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/xsky/block-volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

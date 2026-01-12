@@ -11,10 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // ChangeInstanceOffering changes InstanceOffering
-func (cli *ZSClient) ChangeInstanceOffering(vmInstanceUuid string, params param.ChangeInstanceOfferingParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) ChangeInstanceOffering(uuid string, params param.ChangeInstanceOfferingParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.ChangeInstanceOfferingEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -22,8 +21,7 @@ func (cli *ZSClient) ChangeInstanceOffering(vmInstanceUuid string, params param.
 // UpdateInstanceOffering updates InstanceOffering
 func (cli *ZSClient) UpdateInstanceOffering(uuid string, params param.UpdateInstanceOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	var resp view.UpdateInstanceOfferingEventView
-	err := cli.PutWithSpec("v1/instance-offerings", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/instance-offerings", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -51,5 +49,5 @@ func (cli *ZSClient) GetInstanceOffering(uuid string) (*view.InstanceOfferingInv
 }
 // DeleteInstanceOffering deletes InstanceOffering
 func (cli *ZSClient) DeleteInstanceOffering(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/instance-offerings", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/instance-offerings", uuid, string(deleteMode))
 }

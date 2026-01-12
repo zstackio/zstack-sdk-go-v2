@@ -11,10 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CloneVmInstance operates on VmInstance
-func (cli *ZSClient) CloneVmInstance(vmInstanceUuid string, params param.CloneVmInstanceParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) CloneVmInstance(uuid string, params param.CloneVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -22,8 +21,7 @@ func (cli *ZSClient) CloneVmInstance(vmInstanceUuid string, params param.CloneVm
 // ResumeVmInstance operates on VmInstance
 func (cli *ZSClient) ResumeVmInstance(uuid string, params param.ResumeVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.ResumeVmInstanceEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -31,8 +29,7 @@ func (cli *ZSClient) ResumeVmInstance(uuid string, params param.ResumeVmInstance
 // StartVmInstance starts VmInstance
 func (cli *ZSClient) StartVmInstance(uuid string, params param.StartVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.StartVmInstanceEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -40,8 +37,7 @@ func (cli *ZSClient) StartVmInstance(uuid string, params param.StartVmInstancePa
 // StopVmInstance stops VmInstance
 func (cli *ZSClient) StopVmInstance(uuid string, params param.StopVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.StopVmInstanceEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -61,13 +57,12 @@ func (cli *ZSClient) GetVmInstance(uuid string) (*view.VmInstanceInventoryView, 
 }
 // ExpungeVmInstance operates on VmInstance
 func (cli *ZSClient) ExpungeVmInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 // RebootVmInstance operates on VmInstance
 func (cli *ZSClient) RebootVmInstance(uuid string, params param.RebootVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.RebootVmInstanceEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -75,15 +70,14 @@ func (cli *ZSClient) RebootVmInstance(uuid string, params param.RebootVmInstance
 // UpdateVmInstance updates VmInstance
 func (cli *ZSClient) UpdateVmInstance(uuid string, params param.UpdateVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.UpdateVmInstanceEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DestroyVmInstance destroys VmInstance
 func (cli *ZSClient) DestroyVmInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
 }
 // CreateVmInstance creates VmInstance
 func (cli *ZSClient) CreateVmInstance(params param.CreateVmInstanceParam) (*view.VmInstanceInventoryView, error) {
@@ -96,8 +90,7 @@ func (cli *ZSClient) CreateVmInstance(params param.CreateVmInstanceParam) (*view
 // RecoverVmInstance operates on VmInstance
 func (cli *ZSClient) RecoverVmInstance(uuid string, params param.RecoverVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	var resp view.RecoverVmInstanceEventView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

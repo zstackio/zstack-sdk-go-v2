@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeletePreconfigurationTemplate deletes PreconfigurationTemplate
 func (cli *ZSClient) DeletePreconfigurationTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/baremetal/preconfigurations", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/baremetal/preconfigurations", uuid, string(deleteMode))
 }
 // AddPreconfigurationTemplate adds PreconfigurationTemplate
 func (cli *ZSClient) AddPreconfigurationTemplate(params param.AddPreconfigurationTemplateParam) (*view.PreconfigurationTemplateInventoryView, error) {
@@ -25,8 +25,7 @@ func (cli *ZSClient) AddPreconfigurationTemplate(params param.AddPreconfiguratio
 // UpdatePreconfigurationTemplate updates PreconfigurationTemplate
 func (cli *ZSClient) UpdatePreconfigurationTemplate(uuid string, params param.UpdatePreconfigurationTemplateParam) (*view.PreconfigurationTemplateInventoryView, error) {
 	var resp view.UpdatePreconfigurationTemplateEventView
-	err := cli.PutWithSpec("v1/baremetal/preconfigurations", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/baremetal/preconfigurations", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

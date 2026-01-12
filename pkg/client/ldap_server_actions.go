@@ -34,8 +34,7 @@ func (cli *ZSClient) GetLdapServer(uuid string) (*view.LdapServerInventoryView, 
 // SyncLdapServer operates on LdapServer
 func (cli *ZSClient) SyncLdapServer(uuid string, params param.SyncLdapServerParam) (*view.LongJobInventoryView, error) {
 	var resp view.SyncLdapServerEventView
-	err := cli.PutWithSpec("v1/ldap/servers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/ldap/servers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -57,13 +56,12 @@ func (cli *ZSClient) SyncLdapServerAsync(params param.SyncLdapServerParam) (stri
 }
 // DeleteLdapServer deletes LdapServer
 func (cli *ZSClient) DeleteLdapServer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/ldap/servers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/ldap/servers", uuid, string(deleteMode))
 }
 // UpdateLdapServer updates LdapServer
-func (cli *ZSClient) UpdateLdapServer(ldapServerUuid string, params param.UpdateLdapServerParam) (*view.LdapServerInventoryView, error) {
+func (cli *ZSClient) UpdateLdapServer(uuid string, params param.UpdateLdapServerParam) (*view.LdapServerInventoryView, error) {
 	var resp view.UpdateLdapServerEventView
-	err := cli.PutWithSpec("v1/ldap/servers", fmt.Sprintf(\"%s\", ldapServerUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/ldap/servers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

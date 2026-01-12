@@ -11,10 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateHostNetworkInterface updates HostNetworkInterface
-func (cli *ZSClient) UpdateHostNetworkInterface(interfaceUuid string, params param.UpdateHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
+func (cli *ZSClient) UpdateHostNetworkInterface(uuid string, params param.UpdateHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
 	var resp view.UpdateHostNetworkInterfaceEventView
-	err := cli.PutWithSpec("v1/hosts/nics", fmt.Sprintf(\"%s/actions\", interfaceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/nics", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -33,10 +32,9 @@ func (cli *ZSClient) GetHostNetworkInterface(uuid string) (*view.HostNetworkInte
 	return &resp, nil
 }
 // LocateHostNetworkInterface operates on HostNetworkInterface
-func (cli *ZSClient) LocateHostNetworkInterface(hostUuid string, params param.LocateHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
+func (cli *ZSClient) LocateHostNetworkInterface(uuid string, params param.LocateHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
 	resp := view.HostNetworkInterfaceInventoryView{}
-	err := cli.PutWithSpec("v1/hosts", fmt.Sprintf(\"%s/locate/network-interface\", hostUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

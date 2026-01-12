@@ -12,13 +12,12 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteSecurityMachine deletes SecurityMachine
 func (cli *ZSClient) DeleteSecurityMachine(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/security-machines", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/security-machines", uuid, string(deleteMode))
 }
 // UpdateSecurityMachine updates SecurityMachine
 func (cli *ZSClient) UpdateSecurityMachine(uuid string, params param.UpdateSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	var resp view.UpdateSecurityMachineEventView
-	err := cli.PutWithSpec("v1/security-machines", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/security-machines", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

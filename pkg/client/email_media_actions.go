@@ -34,8 +34,7 @@ func (cli *ZSClient) CreateEmailMedia(params param.CreateEmailMediaParam) (*view
 // UpdateEmailMedia updates EmailMedia
 func (cli *ZSClient) UpdateEmailMedia(uuid string, params param.UpdateEmailMediaParam) (*view.EmailMediaInventoryView, error) {
 	var resp view.UpdateEmailMediaEventView
-	err := cli.PutWithSpec("v1/media/emails", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/media/emails", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

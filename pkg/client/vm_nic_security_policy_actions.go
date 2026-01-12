@@ -11,10 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // ChangeVmNicSecurityPolicy changes VmNicSecurityPolicy
-func (cli *ZSClient) ChangeVmNicSecurityPolicy(vmNicUuid string, params param.ChangeVmNicSecurityPolicyParam) (*view.VmNicSecurityPolicyInventoryView, error) {
+func (cli *ZSClient) ChangeVmNicSecurityPolicy(uuid string, params param.ChangeVmNicSecurityPolicyParam) (*view.VmNicSecurityPolicyInventoryView, error) {
 	var resp view.ChangeVmNicSecurityPolicyEventView
-	err := cli.PutWithSpec("v1/security-groups/nics", fmt.Sprintf(\"%s/security-policy/actions\", vmNicUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/security-groups/nics", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

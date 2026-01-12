@@ -34,21 +34,19 @@ func (cli *ZSClient) CreateLoadBalancer(params param.CreateLoadBalancerParam) (*
 // UpdateLoadBalancer updates LoadBalancer
 func (cli *ZSClient) UpdateLoadBalancer(uuid string, params param.UpdateLoadBalancerParam) (*view.LoadBalancerInventoryView, error) {
 	var resp view.UpdateLoadBalancerEventView
-	err := cli.PutWithSpec("v1/load-balancers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/load-balancers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteLoadBalancer deletes LoadBalancer
 func (cli *ZSClient) DeleteLoadBalancer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/load-balancers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/load-balancers", uuid, string(deleteMode))
 }
 // RefreshLoadBalancer operates on LoadBalancer
 func (cli *ZSClient) RefreshLoadBalancer(uuid string, params param.RefreshLoadBalancerParam) (*view.LoadBalancerInventoryView, error) {
 	var resp view.RefreshLoadBalancerEventView
-	err := cli.PutWithSpec("v1/load-balancers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/load-balancers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteModelCenter deletes ModelCenter
 func (cli *ZSClient) DeleteModelCenter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/ai/model-centers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/ai/model-centers", uuid, string(deleteMode))
 }
 // QueryModelCenter queries ModelCenter list
 func (cli *ZSClient) QueryModelCenter(params *param.QueryParam) ([]view.ModelCenterInventoryView, error) {
@@ -38,8 +38,7 @@ func (cli *ZSClient) AddModelCenter(params param.AddModelCenterParam) (*view.Mod
 // UpdateModelCenter updates ModelCenter
 func (cli *ZSClient) UpdateModelCenter(uuid string, params param.UpdateModelCenterParam) (*view.ModelCenterInventoryView, error) {
 	var resp view.UpdateModelCenterEventView
-	err := cli.PutWithSpec("v1/ai/model-centers", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/ai/model-centers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

@@ -21,8 +21,7 @@ func (cli *ZSClient) AddVCenter(params param.AddVCenterParam) (*view.VCenterInve
 // SyncVCenter operates on VCenter
 func (cli *ZSClient) SyncVCenter(uuid string, params param.SyncVCenterParam) (*view.VCenterInventoryView, error) {
 	resp := view.VCenterInventoryView{}
-	err := cli.PutWithSpec("v1/vcenters", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vcenters", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -43,13 +42,12 @@ func (cli *ZSClient) GetVCenter(uuid string) (*view.VCenterInventoryView, error)
 // UpdateVCenter updates VCenter
 func (cli *ZSClient) UpdateVCenter(uuid string, params param.UpdateVCenterParam) (*view.VCenterInventoryView, error) {
 	var resp view.UpdateVCenterEventView
-	err := cli.PutWithSpec("v1/vcenters", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vcenters", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteVCenter deletes VCenter
 func (cli *ZSClient) DeleteVCenter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vcenters", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vcenters", uuid, string(deleteMode))
 }

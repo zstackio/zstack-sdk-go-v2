@@ -30,8 +30,7 @@ func (cli *ZSClient) AttachEip(eipUuid string, vmNicUuid string, params param.At
 // UpdateEip updates Eip
 func (cli *ZSClient) UpdateEip(uuid string, params param.UpdateEipParam) (*view.EipInventoryView, error) {
 	var resp view.UpdateEipEventView
-	err := cli.PutWithSpec("v1/eips", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/eips", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -51,9 +50,9 @@ func (cli *ZSClient) GetEip(uuid string) (*view.EipInventoryView, error) {
 }
 // DeleteEip deletes Eip
 func (cli *ZSClient) DeleteEip(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/eips", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/eips", uuid, string(deleteMode))
 }
 // DetachEip operates on Eip
 func (cli *ZSClient) DetachEip(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/eips", fmt.Sprintf(\"%s/vm-instances/nics\", uuid), string(deleteMode))
+	return cli.Delete("v1/eips", uuid, string(deleteMode))
 }

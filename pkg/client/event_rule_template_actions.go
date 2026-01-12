@@ -20,13 +20,12 @@ func (cli *ZSClient) AddEventRuleTemplate(params param.AddEventRuleTemplateParam
 }
 // DeleteEventRuleTemplate deletes EventRuleTemplate
 func (cli *ZSClient) DeleteEventRuleTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/zwatch/monitortemplates/evenrules", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/zwatch/monitortemplates/evenrules", uuid, string(deleteMode))
 }
 // UpdateEventRuleTemplate updates EventRuleTemplate
 func (cli *ZSClient) UpdateEventRuleTemplate(uuid string, params param.UpdateEventRuleTemplateParam) (*view.EventRuleTemplateInventoryView, error) {
 	var resp view.UpdateEventRuleTemplateEventView
-	err := cli.PutWithSpec("v1/zwatch/monitortemplates/evenrules", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/monitortemplates/evenrules", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

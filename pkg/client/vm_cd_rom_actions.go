@@ -20,7 +20,7 @@ func (cli *ZSClient) CreateVmCdRom(params param.CreateVmCdRomParam) (*view.VmCdR
 }
 // DeleteVmCdRom deletes VmCdRom
 func (cli *ZSClient) DeleteVmCdRom(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vm-instances/cdroms", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vm-instances/cdroms", uuid, string(deleteMode))
 }
 // QueryVmCdRom queries VmCdRom list
 func (cli *ZSClient) QueryVmCdRom(params *param.QueryParam) ([]view.VmCdRomInventoryView, error) {
@@ -38,8 +38,7 @@ func (cli *ZSClient) GetVmCdRom(uuid string) (*view.VmCdRomInventoryView, error)
 // UpdateVmCdRom updates VmCdRom
 func (cli *ZSClient) UpdateVmCdRom(uuid string, params param.UpdateVmCdRomParam) (*view.VmCdRomInventoryView, error) {
 	var resp view.UpdateVmCdRomEventView
-	err := cli.PutWithSpec("v1/vm-instances/cdroms", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances/cdroms", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

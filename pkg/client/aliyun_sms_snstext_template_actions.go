@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAliyunSmsSNSTextTemplate updates AliyunSmsSNSTextTemplate
 func (cli *ZSClient) UpdateAliyunSmsSNSTextTemplate(uuid string, params param.UpdateAliyunSmsSNSTextTemplateParam) (*view.AliyunSmsSNSTextTemplateInventoryView, error) {
 	var resp view.UpdateAliyunSmsSNSTextTemplateEventView
-	err := cli.PutWithSpec("v1/zwatch/alarms/sns/text-templates", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/alarms/sns/text-templates", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

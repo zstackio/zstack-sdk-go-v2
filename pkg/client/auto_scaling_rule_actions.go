@@ -13,15 +13,14 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAutoScalingRule updates AutoScalingRule
 func (cli *ZSClient) UpdateAutoScalingRule(uuid string, params param.UpdateAutoScalingRuleParam) (*view.AutoScalingRuleInventoryView, error) {
 	var resp view.UpdateAutoScalingRuleEventView
-	err := cli.PutWithSpec("v1/autoscaling/rules", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/autoscaling/rules", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteAutoScalingRule deletes AutoScalingRule
 func (cli *ZSClient) DeleteAutoScalingRule(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/autoscaling/rules", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/autoscaling/rules", uuid, string(deleteMode))
 }
 // QueryAutoScalingRule queries AutoScalingRule list
 func (cli *ZSClient) QueryAutoScalingRule(params *param.QueryParam) ([]view.AutoScalingRuleInventoryView, error) {

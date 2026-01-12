@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeletePolicy deletes Policy
 func (cli *ZSClient) DeletePolicy(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/accounts/policies", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/accounts/policies", uuid, string(deleteMode))
 }
 // QueryPolicy queries Policy list
 func (cli *ZSClient) QueryPolicy(params *param.QueryParam) ([]view.PolicyInventoryView, error) {

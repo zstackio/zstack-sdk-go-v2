@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateVpcVpnGateway updates VpcVpnGateway
 func (cli *ZSClient) UpdateVpcVpnGateway(uuid string, params param.UpdateVpcVpnGatewayParam) (*view.VpcVpnGatewayInventoryView, error) {
 	var resp view.UpdateVpcVpnGatewayEventView
-	err := cli.PutWithSpec("v1/hybrid/vpc-vpn", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hybrid/vpc-vpn", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

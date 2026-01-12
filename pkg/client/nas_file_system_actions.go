@@ -26,13 +26,12 @@ func (cli *ZSClient) GetNasFileSystem(uuid string) (*view.NasFileSystemInventory
 // UpdateNasFileSystem updates NasFileSystem
 func (cli *ZSClient) UpdateNasFileSystem(uuid string, params param.UpdateNasFileSystemParam) (*view.NasFileSystemInventoryView, error) {
 	var resp view.UpdateNasFileSystemEventView
-	err := cli.PutWithSpec("v1/primary-storage/nas", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage/nas", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteNasFileSystem deletes NasFileSystem
 func (cli *ZSClient) DeleteNasFileSystem(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/primary-storage/nas", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/primary-storage/nas", uuid, string(deleteMode))
 }

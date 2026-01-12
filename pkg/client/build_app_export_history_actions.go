@@ -11,8 +11,8 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteBuildAppExportHistory deletes BuildAppExportHistory
-func (cli *ZSClient) DeleteBuildAppExportHistory(buildAppUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/buildapp/exports", fmt.Sprintf(\"%s\", buildAppUuid), string(deleteMode))
+func (cli *ZSClient) DeleteBuildAppExportHistory(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/buildapp/exports", uuid, string(deleteMode))
 }
 // QueryBuildAppExportHistory queries BuildAppExportHistory list
 func (cli *ZSClient) QueryBuildAppExportHistory(params *param.QueryParam) ([]view.BuildAppExportHistoryInventoryView, error) {

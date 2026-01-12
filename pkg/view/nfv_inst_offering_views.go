@@ -29,3 +29,8 @@ type QueryNfvInstOfferingView struct {
 	Inventories []NfvInstOfferingInventoryView `json:"inventories,omitempty"`
 }
 
+// CreateInstanceOfferingEventView CreateInstanceOfferingEvent
+type CreateInstanceOfferingEventView struct {
+	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
+}
+

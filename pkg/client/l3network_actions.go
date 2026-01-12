@@ -26,8 +26,7 @@ func (cli *ZSClient) GetL3Network(uuid string) (*view.L3NetworkInventoryView, er
 // UpdateL3Network updates L3Network
 func (cli *ZSClient) UpdateL3Network(uuid string, params param.UpdateL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	var resp view.UpdateL3NetworkEventView
-	err := cli.PutWithSpec("v1/l3-networks", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/l3-networks", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -42,5 +41,5 @@ func (cli *ZSClient) CreateL3Network(params param.CreateL3NetworkParam) (*view.L
 }
 // DeleteL3Network deletes L3Network
 func (cli *ZSClient) DeleteL3Network(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/l3-networks", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/l3-networks", uuid, string(deleteMode))
 }

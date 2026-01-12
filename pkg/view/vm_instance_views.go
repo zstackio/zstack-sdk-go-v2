@@ -61,11 +61,6 @@ type SetVmBootOrderEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
 
-// ChangeInstanceOfferingEventView ChangeInstanceOfferingEvent
-type ChangeInstanceOfferingEventView struct {
-	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
-}
-
 // DetachL3NetworkFromVmEventView DetachL3NetworkFromVmEvent
 type DetachL3NetworkFromVmEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`

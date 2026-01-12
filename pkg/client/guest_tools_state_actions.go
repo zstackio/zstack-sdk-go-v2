@@ -24,10 +24,9 @@ func (cli *ZSClient) GetGuestToolsState(uuid string) (*view.GuestToolsStateInven
 	return &resp, nil
 }
 // UpdateGuestToolsState updates GuestToolsState
-func (cli *ZSClient) UpdateGuestToolsState(vmInstanceUuid string, params param.UpdateGuestToolsStateParam) (*view.GuestToolsStateInventoryView, error) {
+func (cli *ZSClient) UpdateGuestToolsState(uuid string, params param.UpdateGuestToolsStateParam) (*view.GuestToolsStateInventoryView, error) {
 	var resp view.UpdateGuestToolsStateView
-	err := cli.PutWithSpec("v1/vm-instances", fmt.Sprintf(\"%s/guesttools-state\", vmInstanceUuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

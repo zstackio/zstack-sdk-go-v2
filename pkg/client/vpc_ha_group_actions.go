@@ -13,15 +13,14 @@ var _ = view.MapView{} // avoid unused import
 // UpdateVpcHaGroup updates VpcHaGroup
 func (cli *ZSClient) UpdateVpcHaGroup(uuid string, params param.UpdateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
 	var resp view.UpdateVpcHaGroupEventView
-	err := cli.PutWithSpec("v1/vpc/hagroups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vpc/hagroups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteVpcHaGroup deletes VpcHaGroup
 func (cli *ZSClient) DeleteVpcHaGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vpc/hagroups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vpc/hagroups", uuid, string(deleteMode))
 }
 // CreateVpcHaGroup creates VpcHaGroup
 func (cli *ZSClient) CreateVpcHaGroup(params param.CreateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {

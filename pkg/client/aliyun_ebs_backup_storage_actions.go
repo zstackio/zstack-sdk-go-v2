@@ -34,8 +34,7 @@ func (cli *ZSClient) AddAliyunEbsBackupStorage(params param.AddAliyunEbsBackupSt
 // UpdateAliyunEbsBackupStorage updates AliyunEbsBackupStorage
 func (cli *ZSClient) UpdateAliyunEbsBackupStorage(uuid string, params param.UpdateAliyunEbsBackupStorageParam) (*view.BackupStorageInventoryView, error) {
 	var resp view.UpdateBackupStorageEventView
-	err := cli.PutWithSpec("v1/backup-storage/aliyun/ebs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/backup-storage/aliyun/ebs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

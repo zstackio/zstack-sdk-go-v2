@@ -25,13 +25,12 @@ func (cli *ZSClient) GetMetricRuleTemplate(uuid string) (*view.MetricRuleTemplat
 }
 // DeleteMetricRuleTemplate deletes MetricRuleTemplate
 func (cli *ZSClient) DeleteMetricRuleTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/zwatch/monitortemplates/metricrules", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/zwatch/monitortemplates/metricrules", uuid, string(deleteMode))
 }
 // UpdateMetricRuleTemplate updates MetricRuleTemplate
 func (cli *ZSClient) UpdateMetricRuleTemplate(uuid string, params param.UpdateMetricRuleTemplateParam) (*view.MetricRuleTemplateInventoryView, error) {
 	var resp view.UpdateMetricRuleTemplateEventView
-	err := cli.PutWithSpec("v1/zwatch/monitortemplates/metricrules", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/monitortemplates/metricrules", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

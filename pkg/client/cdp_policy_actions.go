@@ -20,7 +20,7 @@ func (cli *ZSClient) CreateCdpPolicy(params param.CreateCdpPolicyParam) (*view.C
 }
 // DeleteCdpPolicy deletes CdpPolicy
 func (cli *ZSClient) DeleteCdpPolicy(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/cdp-backup-storage/policy", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/cdp-backup-storage/policy", uuid, string(deleteMode))
 }
 // QueryCdpPolicy queries CdpPolicy list
 func (cli *ZSClient) QueryCdpPolicy(params *param.QueryParam) ([]view.CdpPolicyInventoryView, error) {
@@ -38,8 +38,7 @@ func (cli *ZSClient) GetCdpPolicy(uuid string) (*view.CdpPolicyInventoryView, er
 // UpdateCdpPolicy updates CdpPolicy
 func (cli *ZSClient) UpdateCdpPolicy(uuid string, params param.UpdateCdpPolicyParam) (*view.CdpPolicyInventoryView, error) {
 	var resp view.UpdateCdpPolicyEventView
-	err := cli.PutWithSpec("v1/cdp-backup-storage/policy", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/cdp-backup-storage/policy", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

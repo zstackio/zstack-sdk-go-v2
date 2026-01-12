@@ -25,7 +25,7 @@ func (cli *ZSClient) GetGuestVmScript(uuid string) (*view.GuestVmScriptInventory
 }
 // DeleteGuestVmScript deletes GuestVmScript
 func (cli *ZSClient) DeleteGuestVmScript(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/scripts", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/scripts", uuid, string(deleteMode))
 }
 // CreateGuestVmScript creates GuestVmScript
 func (cli *ZSClient) CreateGuestVmScript(params param.CreateGuestVmScriptParam) (*view.GuestVmScriptInventoryView, error) {
@@ -38,8 +38,7 @@ func (cli *ZSClient) CreateGuestVmScript(params param.CreateGuestVmScriptParam) 
 // UpdateGuestVmScript updates GuestVmScript
 func (cli *ZSClient) UpdateGuestVmScript(uuid string, params param.UpdateGuestVmScriptParam) (*view.GuestVmScriptInventoryView, error) {
 	var resp view.UpdateGuestVmScriptEventView
-	err := cli.PutWithSpec("v1/scripts", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/scripts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

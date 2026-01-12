@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateNasMountTarget updates NasMountTarget
 func (cli *ZSClient) UpdateNasMountTarget(uuid string, params param.UpdateNasMountTargetParam) (*view.NasMountTargetInventoryView, error) {
 	var resp view.UpdateNasMountTargetEventView
-	err := cli.PutWithSpec("v1/primary-storage/nas/mount", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/primary-storage/nas/mount", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -34,5 +33,5 @@ func (cli *ZSClient) GetNasMountTarget(uuid string) (*view.NasMountTargetInvento
 }
 // DeleteNasMountTarget deletes NasMountTarget
 func (cli *ZSClient) DeleteNasMountTarget(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/primary-storage/nas/mount", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/primary-storage/nas/mount", uuid, string(deleteMode))
 }

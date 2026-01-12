@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // ReconnectHost operates on Host
 func (cli *ZSClient) ReconnectHost(uuid string, params param.ReconnectHostParam) (*view.HostInventoryView, error) {
 	var resp view.ReconnectHostEventView
-	err := cli.PutWithSpec("v1/hosts", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -22,15 +21,14 @@ func (cli *ZSClient) ReconnectHost(uuid string, params param.ReconnectHostParam)
 // UpdateHost updates Host
 func (cli *ZSClient) UpdateHost(uuid string, params param.UpdateHostParam) (*view.HostInventoryView, error) {
 	var resp view.UpdateHostEventView
-	err := cli.PutWithSpec("v1/hosts", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteHost deletes Host
 func (cli *ZSClient) DeleteHost(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hosts", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hosts", uuid, string(deleteMode))
 }
 // QueryHost queries Host list
 func (cli *ZSClient) QueryHost(params *param.QueryParam) ([]view.HostInventoryView, error) {

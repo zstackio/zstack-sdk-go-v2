@@ -36,8 +36,7 @@ func (cli *ZSClient) AddKVMHostAsync(params param.AddKVMHostParam) (string, erro
 // UpdateKVMHost updates KVMHost
 func (cli *ZSClient) UpdateKVMHost(uuid string, params param.UpdateKVMHostParam) (*view.HostInventoryView, error) {
 	var resp view.UpdateHostEventView
-	err := cli.PutWithSpec("v1/hosts/kvm", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hosts/kvm", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

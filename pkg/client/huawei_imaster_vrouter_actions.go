@@ -33,5 +33,5 @@ func (cli *ZSClient) GetHuaweiIMasterVRouter(uuid string) (*view.HuaweiIMasterVR
 }
 // DeleteHuaweiIMasterVRouter deletes HuaweiIMasterVRouter
 func (cli *ZSClient) DeleteHuaweiIMasterVRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/sdn-controller/huawei-imaster/vrouters", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/sdn-controller/huawei-imaster/vrouters", uuid, string(deleteMode))
 }

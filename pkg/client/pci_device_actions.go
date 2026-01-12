@@ -13,15 +13,14 @@ var _ = view.MapView{} // avoid unused import
 // UpdatePciDevice updates PciDevice
 func (cli *ZSClient) UpdatePciDevice(uuid string, params param.UpdatePciDeviceParam) (*view.PciDeviceInventoryView, error) {
 	var resp view.UpdatePciDeviceEventView
-	err := cli.PutWithSpec("v1/pci-device/pci-devices", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/pci-device/pci-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeletePciDevice deletes PciDevice
 func (cli *ZSClient) DeletePciDevice(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/pci-device/pci-devices", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/pci-device/pci-devices", uuid, string(deleteMode))
 }
 // QueryPciDevice queries PciDevice list
 func (cli *ZSClient) QueryPciDevice(params *param.QueryParam) ([]view.PciDeviceInventoryView, error) {

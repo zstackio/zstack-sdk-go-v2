@@ -13,17 +13,15 @@ var _ = view.MapView{} // avoid unused import
 // ChangeSecurityGroupRule changes SecurityGroupRule
 func (cli *ZSClient) ChangeSecurityGroupRule(uuid string, params param.ChangeSecurityGroupRuleParam) (*view.SecurityGroupRuleInventoryView, error) {
 	var resp view.ChangeSecurityGroupRuleEventView
-	err := cli.PutWithSpec("v1/security-groups/rules", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/security-groups/rules", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // ValidateSecurityGroupRule operates on SecurityGroupRule
-func (cli *ZSClient) ValidateSecurityGroupRule(securityGroupUuid string, params param.ValidateSecurityGroupRuleParam) (*view.SecurityGroupRuleInventoryView, error) {
+func (cli *ZSClient) ValidateSecurityGroupRule(params param.ValidateSecurityGroupRuleParam) (*view.SecurityGroupRuleInventoryView, error) {
 	var resp view.SecurityGroupRuleInventoryView
-	err := cli.GetWithSpec("v1/security-groups", fmt.Sprintf(\"%s/rules/validation\", securityGroupUuid), "", "", params, &resp)
-	if err != nil {
+	if err := cli.Get("v1/security-groups", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -25,13 +25,12 @@ func (cli *ZSClient) GetVip(uuid string) (*view.VipInventoryView, error) {
 }
 // DeleteVip deletes Vip
 func (cli *ZSClient) DeleteVip(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/vips", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/vips", uuid, string(deleteMode))
 }
 // UpdateVip updates Vip
 func (cli *ZSClient) UpdateVip(uuid string, params param.UpdateVipParam) (*view.VipInventoryView, error) {
 	var resp view.UpdateVipEventView
-	err := cli.PutWithSpec("v1/vips", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/vips", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

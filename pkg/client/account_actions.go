@@ -13,15 +13,14 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAccount updates Account
 func (cli *ZSClient) UpdateAccount(uuid string, params param.UpdateAccountParam) (*view.AccountInventoryView, error) {
 	var resp view.UpdateAccountEventView
-	err := cli.PutWithSpec("v1/accounts", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/accounts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteAccount deletes Account
 func (cli *ZSClient) DeleteAccount(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/accounts", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/accounts", uuid, string(deleteMode))
 }
 // CreateAccount creates Account
 func (cli *ZSClient) CreateAccount(params param.CreateAccountParam) (*view.AccountInventoryView, error) {

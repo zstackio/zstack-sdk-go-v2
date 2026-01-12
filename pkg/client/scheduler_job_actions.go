@@ -21,15 +21,14 @@ func (cli *ZSClient) CreateSchedulerJob(params param.CreateSchedulerJobParam) (*
 // UpdateSchedulerJob updates SchedulerJob
 func (cli *ZSClient) UpdateSchedulerJob(uuid string, params param.UpdateSchedulerJobParam) (*view.SchedulerJobInventoryView, error) {
 	var resp view.UpdateSchedulerJobEventView
-	err := cli.PutWithSpec("v1/scheduler/jobs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/scheduler/jobs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteSchedulerJob deletes SchedulerJob
 func (cli *ZSClient) DeleteSchedulerJob(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/scheduler/jobs", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/scheduler/jobs", uuid, string(deleteMode))
 }
 // QuerySchedulerJob queries SchedulerJob list
 func (cli *ZSClient) QuerySchedulerJob(params *param.QueryParam) ([]view.SchedulerJobInventoryView, error) {

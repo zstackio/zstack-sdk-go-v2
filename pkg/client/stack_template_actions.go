@@ -25,13 +25,12 @@ func (cli *ZSClient) GetStackTemplate(uuid string) (*view.StackTemplateInventory
 }
 // DeleteStackTemplate deletes StackTemplate
 func (cli *ZSClient) DeleteStackTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/cloudformation/template", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/cloudformation/template", uuid, string(deleteMode))
 }
 // UpdateStackTemplate updates StackTemplate
 func (cli *ZSClient) UpdateStackTemplate(uuid string, params param.UpdateStackTemplateParam) (*view.StackTemplateInventoryView, error) {
 	var resp view.UpdateStackTemplateEventView
-	err := cli.PutWithSpec("v1/cloudformation/template", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/cloudformation/template", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

@@ -21,8 +21,7 @@ func (cli *ZSClient) CreateAliyunProxyVpc(params param.CreateAliyunProxyVpcParam
 // UpdateAliyunProxyVpc updates AliyunProxyVpc
 func (cli *ZSClient) UpdateAliyunProxyVpc(uuid string, params param.UpdateAliyunProxyVpcParam) (*view.AliyunProxyVpcInventoryView, error) {
 	var resp view.UpdateAliyunProxyVpcEventView
-	err := cli.PutWithSpec("v1/aliyun-proxy/vpcs", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/aliyun-proxy/vpcs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -42,5 +41,5 @@ func (cli *ZSClient) GetAliyunProxyVpc(uuid string) (*view.AliyunProxyVpcInvento
 }
 // DeleteAliyunProxyVpc deletes AliyunProxyVpc
 func (cli *ZSClient) DeleteAliyunProxyVpc(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/aliyun-proxy/vpcs", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/aliyun-proxy/vpcs", uuid, string(deleteMode))
 }

@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateHostSchedulingRuleGroup updates HostSchedulingRuleGroup
 func (cli *ZSClient) UpdateHostSchedulingRuleGroup(uuid string, params param.UpdateHostSchedulingRuleGroupParam) (*view.HostSchedulingRuleGroupInventoryView, error) {
 	var resp view.UpdateHostSchedulingRuleGroupEventView
-	err := cli.PutWithSpec("v1/hostSchedulingRuleGroup", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/hostSchedulingRuleGroup", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -42,5 +41,5 @@ func (cli *ZSClient) CreateHostSchedulingRuleGroup(params param.CreateHostSchedu
 }
 // DeleteHostSchedulingRuleGroup deletes HostSchedulingRuleGroup
 func (cli *ZSClient) DeleteHostSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/hostSchedulingRuleGroup", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/hostSchedulingRuleGroup", uuid, string(deleteMode))
 }

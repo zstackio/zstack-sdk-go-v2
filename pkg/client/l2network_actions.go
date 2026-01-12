@@ -12,13 +12,12 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteL2Network deletes L2Network
 func (cli *ZSClient) DeleteL2Network(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/l2-networks", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/l2-networks", uuid, string(deleteMode))
 }
 // UpdateL2Network updates L2Network
 func (cli *ZSClient) UpdateL2Network(uuid string, params param.UpdateL2NetworkParam) (*view.L2NetworkInventoryView, error) {
 	var resp view.UpdateL2NetworkEventView
-	err := cli.PutWithSpec("v1/l2-networks", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/l2-networks", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

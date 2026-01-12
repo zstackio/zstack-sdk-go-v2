@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateLoadBalancerListener updates LoadBalancerListener
 func (cli *ZSClient) UpdateLoadBalancerListener(uuid string, params param.UpdateLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	var resp view.UpdateLoadBalancerListenerEventView
-	err := cli.PutWithSpec("v1/load-balancers/listeners", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/load-balancers/listeners", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -43,13 +42,12 @@ func (cli *ZSClient) GetLoadBalancerListener(uuid string) (*view.LoadBalancerLis
 // ChangeLoadBalancerListener changes LoadBalancerListener
 func (cli *ZSClient) ChangeLoadBalancerListener(uuid string, params param.ChangeLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	var resp view.ChangeLoadBalancerListenerEventView
-	err := cli.PutWithSpec("v1/load-balancers/listeners", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/load-balancers/listeners", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteLoadBalancerListener deletes LoadBalancerListener
 func (cli *ZSClient) DeleteLoadBalancerListener(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/load-balancers/listeners", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
 }

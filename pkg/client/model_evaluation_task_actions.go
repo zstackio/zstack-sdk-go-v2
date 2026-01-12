@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteModelEvaluationTask deletes ModelEvaluationTask
 func (cli *ZSClient) DeleteModelEvaluationTask(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/model-evaluation-tasks", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/model-evaluation-tasks", uuid, string(deleteMode))
 }
 // QueryModelEvaluationTask queries ModelEvaluationTask list
 func (cli *ZSClient) QueryModelEvaluationTask(params *param.QueryParam) ([]view.ModelEvaluationTaskInventoryView, error) {
@@ -30,8 +30,7 @@ func (cli *ZSClient) GetModelEvaluationTask(uuid string) (*view.ModelEvaluationT
 // UpdateModelEvaluationTask updates ModelEvaluationTask
 func (cli *ZSClient) UpdateModelEvaluationTask(uuid string, params param.UpdateModelEvaluationTaskParam) (*view.ModelEvaluationTaskInventoryView, error) {
 	var resp view.UpdateModelEvaluationTaskEventView
-	err := cli.PutWithSpec("v1/model-evaluation-tasks", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/model-evaluation-tasks", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

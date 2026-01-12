@@ -13,8 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateCertificate updates Certificate
 func (cli *ZSClient) UpdateCertificate(uuid string, params param.UpdateCertificateParam) (*view.CertificateInventoryView, error) {
 	var resp view.UpdateCertificateEventView
-	err := cli.PutWithSpec("v1/certificates", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/certificates", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -29,7 +28,7 @@ func (cli *ZSClient) CreateCertificate(params param.CreateCertificateParam) (*vi
 }
 // DeleteCertificate deletes Certificate
 func (cli *ZSClient) DeleteCertificate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/certificates", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/certificates", uuid, string(deleteMode))
 }
 // QueryCertificate queries Certificate list
 func (cli *ZSClient) QueryCertificate(params *param.QueryParam) ([]view.CertificateInventoryView, error) {

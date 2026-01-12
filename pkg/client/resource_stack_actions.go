@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteResourceStack deletes ResourceStack
 func (cli *ZSClient) DeleteResourceStack(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/cloudformation/stack", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/cloudformation/stack", uuid, string(deleteMode))
 }
 // QueryResourceStack queries ResourceStack list
 func (cli *ZSClient) QueryResourceStack(params *param.QueryParam) ([]view.ResourceStackInventoryView, error) {
@@ -38,8 +38,7 @@ func (cli *ZSClient) CreateResourceStack(params param.CreateResourceStackParam) 
 // UpdateResourceStack updates ResourceStack
 func (cli *ZSClient) UpdateResourceStack(uuid string, params param.UpdateResourceStackParam) (*view.ResourceStackInventoryView, error) {
 	var resp view.UpdateResourceStackEventView
-	err := cli.PutWithSpec("v1/cloudformation/stack", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/cloudformation/stack", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

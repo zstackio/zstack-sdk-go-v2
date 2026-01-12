@@ -13,15 +13,14 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAffinityGroup updates AffinityGroup
 func (cli *ZSClient) UpdateAffinityGroup(uuid string, params param.UpdateAffinityGroupParam) (*view.AffinityGroupInventoryView, error) {
 	var resp view.UpdateAffinityGroupEventView
-	err := cli.PutWithSpec("v1/affinity-groups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/affinity-groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // DeleteAffinityGroup deletes AffinityGroup
 func (cli *ZSClient) DeleteAffinityGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/affinity-groups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/affinity-groups", uuid, string(deleteMode))
 }
 // CreateAffinityGroup creates AffinityGroup
 func (cli *ZSClient) CreateAffinityGroup(params param.CreateAffinityGroupParam) (*view.AffinityGroupInventoryView, error) {

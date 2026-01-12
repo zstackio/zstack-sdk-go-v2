@@ -33,13 +33,12 @@ func (cli *ZSClient) GetIscsiServer(uuid string) (*view.IscsiServerInventoryView
 }
 // DeleteIscsiServer deletes IscsiServer
 func (cli *ZSClient) DeleteIscsiServer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/storage-devices/iscsi/servers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/storage-devices/iscsi/servers", uuid, string(deleteMode))
 }
 // RefreshIscsiServer operates on IscsiServer
-func (cli *ZSClient) RefreshIscsiServer(uuid string, params param.RefreshIscsiServerParam) (*view.IscsiServerInventoryView, error) {
+func (cli *ZSClient) RefreshIscsiServer(params param.RefreshIscsiServerParam) (*view.IscsiServerInventoryView, error) {
 	var resp view.RefreshIscsiServerEventView
-	err := cli.PostWithSpec("v1/storage-devices/iscsi/servers", fmt.Sprintf(\"%s\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Post("v1/storage-devices/iscsi/servers", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -47,8 +46,7 @@ func (cli *ZSClient) RefreshIscsiServer(uuid string, params param.RefreshIscsiSe
 // UpdateIscsiServer updates IscsiServer
 func (cli *ZSClient) UpdateIscsiServer(uuid string, params param.UpdateIscsiServerParam) (*view.IscsiServerInventoryView, error) {
 	var resp view.UpdateIscsiServerEventView
-	err := cli.PutWithSpec("v1/storage-devices/iscsi/servers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/storage-devices/iscsi/servers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

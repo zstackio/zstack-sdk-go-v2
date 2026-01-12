@@ -12,13 +12,12 @@ var _ = view.MapView{} // avoid unused import
 
 // DeleteCluster deletes Cluster
 func (cli *ZSClient) DeleteCluster(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/clusters", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/clusters", uuid, string(deleteMode))
 }
 // UpdateCluster updates Cluster
 func (cli *ZSClient) UpdateCluster(uuid string, params param.UpdateClusterParam) (*view.ClusterInventoryView, error) {
 	var resp view.UpdateClusterEventView
-	err := cli.PutWithSpec("v1/clusters", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/clusters", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

@@ -12,7 +12,7 @@ var _ = view.MapView{} // avoid unused import
 
 // DeletePciDeviceOffering deletes PciDeviceOffering
 func (cli *ZSClient) DeletePciDeviceOffering(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/pci-device/pci-device-offerings", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/pci-device/pci-device-offerings", uuid, string(deleteMode))
 }
 // CreatePciDeviceOffering creates PciDeviceOffering
 func (cli *ZSClient) CreatePciDeviceOffering(params param.CreatePciDeviceOfferingParam) (*view.PciDeviceOfferingInventoryView, error) {

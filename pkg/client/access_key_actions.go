@@ -33,5 +33,5 @@ func (cli *ZSClient) GetAccessKey(uuid string) (*view.AccessKeyInventoryView, er
 }
 // DeleteAccessKey deletes AccessKey
 func (cli *ZSClient) DeleteAccessKey(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/accesskeys", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/accesskeys", uuid, string(deleteMode))
 }

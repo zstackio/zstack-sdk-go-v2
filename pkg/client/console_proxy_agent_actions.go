@@ -34,8 +34,7 @@ func (cli *ZSClient) GetConsoleProxyAgent(uuid string) (*view.ConsoleProxyAgentI
 // UpdateConsoleProxyAgent updates ConsoleProxyAgent
 func (cli *ZSClient) UpdateConsoleProxyAgent(uuid string, params param.UpdateConsoleProxyAgentParam) (*view.ConsoleProxyAgentInventoryView, error) {
 	var resp view.UpdateConsoleProxyAgentEventView
-	err := cli.PutWithSpec("v1/consoles/agents", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/consoles/agents", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

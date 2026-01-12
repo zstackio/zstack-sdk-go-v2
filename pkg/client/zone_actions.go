@@ -33,13 +33,12 @@ func (cli *ZSClient) CreateZone(params param.CreateZoneParam) (*view.ZoneInvento
 }
 // DeleteZone deletes Zone
 func (cli *ZSClient) DeleteZone(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/zones", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/zones", uuid, string(deleteMode))
 }
 // UpdateZone updates Zone
 func (cli *ZSClient) UpdateZone(uuid string, params param.UpdateZoneParam) (*view.ZoneInventoryView, error) {
 	var resp view.UpdateZoneEventView
-	err := cli.PutWithSpec("v1/zones", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zones", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

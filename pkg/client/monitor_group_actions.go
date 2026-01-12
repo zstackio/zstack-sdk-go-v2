@@ -20,7 +20,7 @@ func (cli *ZSClient) CreateMonitorGroup(params param.CreateMonitorGroupParam) (*
 }
 // DeleteMonitorGroup deletes MonitorGroup
 func (cli *ZSClient) DeleteMonitorGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/zwatch/monitorgroups", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/zwatch/monitorgroups", uuid, string(deleteMode))
 }
 // QueryMonitorGroup queries MonitorGroup list
 func (cli *ZSClient) QueryMonitorGroup(params *param.QueryParam) ([]view.MonitorGroupInventoryView, error) {
@@ -38,8 +38,7 @@ func (cli *ZSClient) GetMonitorGroup(uuid string) (*view.MonitorGroupInventoryVi
 // UpdateMonitorGroup updates MonitorGroup
 func (cli *ZSClient) UpdateMonitorGroup(uuid string, params param.UpdateMonitorGroupParam) (*view.MonitorGroupInventoryView, error) {
 	var resp view.UpdateMonitorGroupEventView
-	err := cli.PutWithSpec("v1/zwatch/monitorgroups", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/zwatch/monitorgroups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

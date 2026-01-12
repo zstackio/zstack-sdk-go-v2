@@ -33,7 +33,7 @@ func (cli *ZSClient) CreateMonitorTrigger(params param.CreateMonitorTriggerParam
 }
 // DeleteMonitorTriggerAction deletes MonitorTrigger
 func (cli *ZSClient) DeleteMonitorTriggerAction(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/monitoring/trigger-actions", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/monitoring/trigger-actions", uuid, string(deleteMode))
 }
 // QueryMonitorTriggerAction queries MonitorTrigger list
 func (cli *ZSClient) QueryMonitorTriggerAction(params *param.QueryParam) ([]view.MonitorTriggerActionInventoryView, error) {
@@ -50,13 +50,12 @@ func (cli *ZSClient) GetMonitorTriggerAction(uuid string) (*view.MonitorTriggerA
 }
 // DeleteMonitorTrigger deletes MonitorTrigger
 func (cli *ZSClient) DeleteMonitorTrigger(uuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/monitoring/triggers", fmt.Sprintf(\"%s\", uuid), string(deleteMode))
+	return cli.Delete("v1/monitoring/triggers", uuid, string(deleteMode))
 }
 // UpdateMonitorTrigger updates MonitorTrigger
 func (cli *ZSClient) UpdateMonitorTrigger(uuid string, params param.UpdateMonitorTriggerParam) (*view.MonitorTriggerInventoryView, error) {
 	var resp view.UpdateMonitorTriggerEventView
-	err := cli.PutWithSpec("v1/monitoring/triggers", fmt.Sprintf(\"%s/actions\", uuid), params, &resp)
-	if err != nil {
+	if err := cli.Put("v1/monitoring/triggers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
