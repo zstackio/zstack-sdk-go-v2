@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateGlobalConfig updates GlobalConfig
 func (cli *ZSClient) UpdateGlobalConfig(category string, name string, params param.UpdateGlobalConfigParam) (*view.GlobalConfigInventoryView, error) {
 	var resp view.UpdateGlobalConfigEventView
-	err := cli.PutWithSpec("v1/global-configurations", fmt.Sprintf("%s/%s/actions", category, name), params, &resp)
+	err := cli.PutWithSpec("v1/global-configurations", category, fmt.Sprintf("%s/actions", name), "", params, &resp)
 	if err != nil {
 		return nil, err
 	}

@@ -16,3 +16,18 @@ type JsonLabelInventoryView struct {
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 }
 
+// UpdateLogConfigurationEventView UpdateLogConfigurationEvent
+type UpdateLogConfigurationEventView struct {
+	Inventory JsonLabelInventoryView `json:"inventory,omitempty"`
+}
+
+// GetLogConfigurationView GetLogConfiguration
+type GetLogConfigurationView struct {
+	Inventories []JsonLabelInventoryView `json:"inventories,omitempty"`
+}
+
+// AddLogConfigurationEventView AddLogConfigurationEvent
+type AddLogConfigurationEventView struct {
+	Inventory JsonLabelInventoryView `json:"inventory,omitempty"`
+}
+
