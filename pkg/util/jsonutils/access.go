@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/sortedmap"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/timeutils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/sortedmap"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/timeutils"
 )
 
 type JSONPair struct {

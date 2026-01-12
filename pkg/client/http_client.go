@@ -14,11 +14,11 @@ import (
 	"strings"
 	"time"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/httputils"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/jsonutils"
 	"github.com/kataras/golog"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/httputils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/jsonutils"
 )
 
 const (

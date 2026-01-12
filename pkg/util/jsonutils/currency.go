@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/regutils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/regutils"
 )
 
 func normalizeUSCurrency(currency string) string {

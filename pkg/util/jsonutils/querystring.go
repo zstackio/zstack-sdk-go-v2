@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"strings"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/sortedmap"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/utils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/sortedmap"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/utils"
 )
 
 func addQueryStringSeg(body JSONObject, segs []TextNumber, val []string) (JSONObject, error) {

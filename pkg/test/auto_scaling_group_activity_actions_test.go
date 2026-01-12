@@ -1,0 +1,21 @@
+// Copyright (c) ZStack.io, Inc.
+
+package test
+
+import (
+	"testing"
+
+	"github.com/kataras/golog"
+
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+)
+
+func TestQueryAutoScalingGroupActivity(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	result, err := accountLoginCli.QueryAutoScalingGroupActivity(&queryParam)
+	if err != nil {
+		t.Errorf("TestQueryAutoScalingGroupActivity error: %v", err)
+		return
+	}
+	golog.Infof("QueryAutoScalingGroupActivity result count: %d", len(result))
+}

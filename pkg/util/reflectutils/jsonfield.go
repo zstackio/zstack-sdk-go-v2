@@ -7,8 +7,8 @@ import (
 	"strings"
 	"sync"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/gotypes"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/utils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/gotypes"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/utils"
 )
 
 // StructFieldInfo describes struct field, especially behavior for (json)

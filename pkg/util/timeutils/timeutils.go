@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/regutils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/regutils"
 )
 
 func UtcNow() time.Time {

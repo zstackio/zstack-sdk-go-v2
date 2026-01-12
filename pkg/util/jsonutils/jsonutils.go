@@ -10,9 +10,9 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/gotypes"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/sortedmap"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/gotypes"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/sortedmap"
 )
 
 type JSONObject interface {

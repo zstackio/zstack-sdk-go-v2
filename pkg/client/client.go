@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"net/url"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
 	"github.com/kataras/golog"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 type ZSClient struct {

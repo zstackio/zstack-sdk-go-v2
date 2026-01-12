@@ -5,7 +5,7 @@ package jsonutils
 import (
 	"strings"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/sortedmap"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/sortedmap"
 )
 
 type writeSource interface {

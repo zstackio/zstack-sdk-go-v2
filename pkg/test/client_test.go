@@ -6,9 +6,9 @@ import (
 	"reflect"
 	"testing"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/client"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/jsonutils"
 	"github.com/kataras/golog"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/client"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/jsonutils"
 )
 
 const accountLogin, accessKeyAuth = "accountLogin", "accessKeyAuth"

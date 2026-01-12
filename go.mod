@@ -1,4 +1,4 @@
-module dev.zstack.io/ye.zou/zstack-go-sdk
+module github.com/zstackio/zstack-sdk-go-v2
 
 go 1.25
 

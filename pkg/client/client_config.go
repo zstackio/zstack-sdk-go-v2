@@ -3,7 +3,7 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/httputils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/httputils"
 )
 
 type AuthType string

@@ -3,7 +3,7 @@
 package jsonutils
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/reflectutils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/reflectutils"
 )
 
 const (

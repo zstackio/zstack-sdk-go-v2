@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/timeutils"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/utils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/timeutils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/utils"
 )
 
 const (

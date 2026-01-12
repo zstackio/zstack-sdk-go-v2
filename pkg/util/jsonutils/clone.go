@@ -5,8 +5,8 @@ package jsonutils
 import (
 	"reflect"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/sortedmap"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/utils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/sortedmap"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/utils"
 )
 
 func (th *JSONDict) Copy(excludes ...string) *JSONDict {

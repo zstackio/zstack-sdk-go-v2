@@ -5,7 +5,7 @@ package jsonutils
 import (
 	"fmt"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
 )
 
 const (

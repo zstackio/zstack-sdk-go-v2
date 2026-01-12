@@ -9,14 +9,14 @@ import (
 	"strings"
 	"time"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/gotypes"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/reflectutils"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/sortedmap"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/timeutils"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/tristate"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/utils"
 	"github.com/kataras/golog"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/gotypes"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/reflectutils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/sortedmap"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/timeutils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/tristate"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/utils"
 )
 
 func (th *JSONValue) Unmarshal(obj interface{}, keys ...string) error {

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
 )
 
 func NewStringArray(arr []string) *JSONArray {

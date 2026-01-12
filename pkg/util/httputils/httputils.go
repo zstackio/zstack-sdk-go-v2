@@ -23,11 +23,11 @@ import (
 	"github.com/fatih/color"
 	"moul.io/http2curl/v2"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/errors"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/gotypes"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/gotypes"
 
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/jsonutils"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/util/utils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/jsonutils"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/utils"
 )
 
 type THttpMethod string
