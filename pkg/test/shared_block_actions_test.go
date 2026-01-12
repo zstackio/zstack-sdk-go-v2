@@ -41,10 +41,10 @@ func TestUpdateSharedBlock(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateSharedBlock(list[0].Uuid, updateParam)
+	result, err := accountLoginCli.UpdateSharedBlock("", list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateSharedBlock error: %v", err)
 		return
 	}
-	golog.Infof("UpdateSharedBlock result: %s", result.Uuid)
+	golog.Infof("UpdateSharedBlock result: %s", result.UUID)
 }

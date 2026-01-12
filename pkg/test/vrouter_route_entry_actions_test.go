@@ -37,12 +37,12 @@ func TestDeleteVRouterRouteEntry(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteVRouterRouteEntry(list[0].Uuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteVRouterRouteEntry(list[0].UUID, "uuid", param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteVRouterRouteEntry error: %v", err)
 		return
 	}
-	golog.Infof("DeleteVRouterRouteEntry succeeded for UUID: %s", list[0].Uuid)
+	golog.Infof("DeleteVRouterRouteEntry succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestAddVRouterRouteEntry(t *testing.T) {

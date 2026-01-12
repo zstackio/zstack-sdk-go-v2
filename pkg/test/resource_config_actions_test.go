@@ -41,7 +41,7 @@ func TestUpdateResourceConfig(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateResourceConfig(list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateResourceConfig("category", list[0].Name, list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateResourceConfig error: %v", err)
 		return
@@ -66,7 +66,7 @@ func TestDeleteResourceConfig(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteResourceConfig(list[0].UUID, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteResourceConfig("category", list[0].Name, list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteResourceConfig error: %v", err)
 		return

@@ -41,7 +41,7 @@ func TestUpdateGlobalConfig(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateGlobalConfig(list[0].Name, updateParam)
+	result, err := accountLoginCli.UpdateGlobalConfig("category", list[0].Name, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateGlobalConfig error: %v", err)
 		return
