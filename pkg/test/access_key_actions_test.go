@@ -3,7 +3,9 @@
 package test
 
 import (
+	"fmt"
 	"testing"
+	"time"
 
 	"github.com/kataras/golog"
 
@@ -45,7 +47,7 @@ func TestGetAccessKey(t *testing.T) {
 func TestDeleteAccessKey(t *testing.T) {
 	// WARNING: This test will actually delete a resource!
 	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteAccessKey is skipped by default to prevent accidental deletion. Remove this line to enable.")
+	//t.Skip("TestDeleteAccessKey is skipped by default to prevent accidental deletion. Remove this line to enable.")
 
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
@@ -69,25 +71,87 @@ func TestDeleteAccessKey(t *testing.T) {
 
 func TestCreateAccessKey(t *testing.T) {
 	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateAccessKey is skipped by default. Implement with valid params to test creation.")
+	//t.Skip("TestCreateAccessKey is skipped by default. Implement with valid params to test creation.")
 
-	// createParam := param.CreateAccessKeyParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateAccessKeyParamDetail{
-	// 		Name: "test-accesskey",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateAccessKey(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateAccessKey error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateAccessKey result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteAccessKey(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteAccessKey error: %v", err)
-	// }
+	sess, err := accountLoginCli.Login()
+	if err != nil {
+		t.Fatalf("Login error: %v", err)
+	}
+	defer accountLoginCli.Logout()
+	// sess contains AccountUuid and UserUuid for the currently logged-in session
+
+	// Build a unique AccessKeyID so that repeated test runs don't collide
+	// Max length 20 chars. Current: 4 + 10 = 14 chars
+	//accessKeyID := fmt.Sprintf("sdk-%d", time.Now().Unix())
+
+	createParam := param.CreateAccessKeyParam{
+		BaseParam: param.BaseParam{},
+		Params: param.CreateAccessKeyParamDetail{
+			AccountUuid: sess.AccountUuid,
+			UserUuid:    sess.UserUuid,
+			Description: "Chi-test",
+			//AccessKeyID: accessKeyID,
+		},
+	}
+	result, err := accountLoginCli.CreateAccessKey(createParam)
+	if err != nil {
+		t.Errorf("TestCreateAccessKey error: %v", err)
+		return
+	}
+	golog.Infof("CreateAccessKey result: %s", result.UUID)
+
+}
+
+func TestCreateGetDeleteAccessKeyFlow(t *testing.T) {
+	// Ensure we have a logged-in client and obtain account & user UUIDs
+	sess, err := accountLoginCli.Login()
+	if err != nil {
+		t.Fatalf("Login error: %v", err)
+	}
+	defer accountLoginCli.Logout()
+	// sess contains AccountUuid and UserUuid for the currently logged-in session
+
+	// Build a unique AccessKeyID so that repeated test runs don't collide
+	// Max length 20 chars. Current: 4 + 10 = 14 chars
+	// Build a unique AccessKeyID so that repeated test runs don't collide
+	// Max length 20 chars. Current: 4 + 10 = 14 chars
+	accessKeyID := fmt.Sprintf("sdk-%d", time.Now().Unix())
+	accessKeySecret := fmt.Sprintf("secret-%d", time.Now().Unix())
+
+	createParam := param.CreateAccessKeyParam{
+		BaseParam: param.BaseParam{},
+		Params: param.CreateAccessKeyParamDetail{
+			AccountUuid:     sess.AccountUuid,
+			UserUuid:        sess.UserUuid,
+			Description:     "Chi-test",
+			AccessKeyID:     accessKeyID,
+			AccessKeySecret: accessKeySecret,
+		},
+	}
+
+	// Create the access key
+	resp, err := accountLoginCli.CreateAccessKey(createParam)
+	if err != nil {
+		t.Fatalf("CreateAccessKey error: %v", err)
+	}
+	if resp == nil {
+		t.Fatalf("CreateAccessKey returned nil response")
+	}
+	golog.Infof("Created access key: %v", resp)
+
+	// Try to get the access key by UUID
+	getResp, err := accountLoginCli.GetAccessKey(resp.UUID)
+	if err != nil {
+		t.Fatalf("GetAccessKey error: %v", err)
+	}
+	golog.Infof("Get access key: %v", getResp)
+
+	// Delete the access key
+	err = accountLoginCli.DeleteAccessKey(resp.UUID, param.DeleteModePermissive)
+	if err != nil {
+		t.Errorf("DeleteAccessKey error: %v", err)
+		// don't return right away; we may still want to check deletion or proceed to cleanup in other tests
+	}
+
+	// Optionally verify that querying with the accessKeyID returns none or not; skipping strict assertion for environment variance
 }

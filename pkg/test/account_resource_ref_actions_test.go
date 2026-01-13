@@ -19,6 +19,7 @@ func TestQueryAccountResourceRef(t *testing.T) {
 	}
 	golog.Infof("QueryAccountResourceRef result count: %d", len(result))
 }
+
 func TestGetAccountResourceRef(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()

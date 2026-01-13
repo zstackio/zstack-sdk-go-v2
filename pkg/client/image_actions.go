@@ -8,15 +8,15 @@ import (
 )
 
 var _ = param.BaseParam{} // avoid unused import
-var _ = view.MapView{} // avoid unused import
+var _ = view.MapView{}    // avoid unused import
 
 // AddImage adds Image
 func (cli *ZSClient) AddImage(params param.AddImageParam) (*view.ImageInventoryView, error) {
-	var resp view.AddImageEventView
+	var resp view.ImageInventoryView
 	if err := cli.Post("v1/images", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 
 // AddImageAsync Async
@@ -33,6 +33,7 @@ func (cli *ZSClient) AddImageAsync(params param.AddImageParam) (string, error) {
 
 	return apiId, nil
 }
+
 // QueryImage queries Image list
 func (cli *ZSClient) QueryImage(params *param.QueryParam) ([]view.ImageInventoryView, error) {
 	var resp []view.ImageInventoryView
@@ -46,6 +47,7 @@ func (cli *ZSClient) GetImage(uuid string) (*view.ImageInventoryView, error) {
 	}
 	return &resp, nil
 }
+
 // SyncImage operates on Image
 func (cli *ZSClient) SyncImage(uuid string, params param.SyncImageParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
@@ -54,6 +56,7 @@ func (cli *ZSClient) SyncImage(uuid string, params param.SyncImageParam) (*view.
 	}
 	return &resp, nil
 }
+
 // RecoverImage operates on Image
 func (cli *ZSClient) RecoverImage(uuid string, params param.RecoverImageParam) (*view.ImageInventoryView, error) {
 	var resp view.RecoverImageEventView
@@ -62,6 +65,7 @@ func (cli *ZSClient) RecoverImage(uuid string, params param.RecoverImageParam) (
 	}
 	return &resp.Inventory, nil
 }
+
 // CloneImage operates on Image
 func (cli *ZSClient) CloneImage(params param.CloneImageParam) (*view.ImageInventoryView, error) {
 	var resp view.CloneImageEventView
@@ -70,18 +74,21 @@ func (cli *ZSClient) CloneImage(params param.CloneImageParam) (*view.ImageInvent
 	}
 	return &resp.Inventory, nil
 }
+
 // DeleteImage deletes Image
 func (cli *ZSClient) DeleteImage(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/images", uuid, string(deleteMode))
 }
+
 // UpdateImage updates Image
 func (cli *ZSClient) UpdateImage(uuid string, params param.UpdateImageParam) (*view.ImageInventoryView, error) {
-	var resp view.UpdateImageEventView
+	var resp view.ImageInventoryView
 	if err := cli.Put("v1/images", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
+
 // ExpungeImage operates on Image
 func (cli *ZSClient) ExpungeImage(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/images", uuid, string(deleteMode))
