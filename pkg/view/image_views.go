@@ -10,23 +10,23 @@ var _ = time.Now // avoid unused import
 type ImageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Size *int64 `json:"size,omitempty"`
-	ActualSize *int64 `json:"actualSize,omitempty"`
-	Md5Sum *string `json:"md5Sum,omitempty"`
-	Url *string `json:"url,omitempty"`
-	MediaType *string `json:"mediaType,omitempty"`
-	GuestOsType *string `json:"guestOsType,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Platform *string `json:"platform,omitempty"`
-	Architecture *string `json:"architecture,omitempty"`
-	Format *string `json:"format,omitempty"`
-	System *bool `json:"system,omitempty"`
-	Virtio *bool `json:"virtio,omitempty"`
+	Description       string                               `json:"description,omitempty"`
+	State             string                               `json:"state,omitempty"`
+	Status            string                               `json:"status,omitempty"`
+	Size              int64                                `json:"size,omitempty"`
+	ActualSize        int64                                `json:"actualSize,omitempty"`
+	Md5Sum            string                               `json:"md5Sum,omitempty"`
+	Url               string                               `json:"url,omitempty"`
+	MediaType         string                               `json:"mediaType,omitempty"`
+	GuestOsType       string                               `json:"guestOsType,omitempty"`
+	Type              string                               `json:"type,omitempty"`
+	Platform          string                               `json:"platform,omitempty"`
+	Architecture      string                               `json:"architecture,omitempty"`
+	Format            string                               `json:"format,omitempty"`
+	System            bool                                 `json:"system,omitempty"`
+	Virtio            bool                                 `json:"virtio,omitempty"`
 	BackupStorageRefs []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
-	SystemTags []SystemTagInventoryView `json:"systemTags,omitempty"`
+	SystemTags        []SystemTagInventoryView             `json:"systemTags,omitempty"`
 }
 
 // GetCandidateIsoForAttachingVmView GetCandidateIsoForAttachingVm
@@ -52,7 +52,7 @@ type CreateRootVolumeTemplateFromVolumeBackupEventView struct {
 // CreateRootVolumeTemplateFromVolumeSnapshotEventView CreateRootVolumeTemplateFromVolumeSnapshotEvent
 type CreateRootVolumeTemplateFromVolumeSnapshotEventView struct {
 	Inventory ImageInventoryView `json:"inventory,omitempty"`
-	Failures []FailureView `json:"failures,omitempty"`
+	Failures  []FailureView      `json:"failures,omitempty"`
 }
 
 // SyncImageEventView SyncImageEvent
@@ -133,11 +133,10 @@ type CalculateImageHashEventView struct {
 // CreateDataVolumeTemplateFromVolumeSnapshotEventView CreateDataVolumeTemplateFromVolumeSnapshotEvent
 type CreateDataVolumeTemplateFromVolumeSnapshotEventView struct {
 	Inventory ImageInventoryView `json:"inventory,omitempty"`
-	Failures []FailureView `json:"failures,omitempty"`
+	Failures  []FailureView      `json:"failures,omitempty"`
 }
 
 // CreateRootVolumeTemplateFromRootVolumeEventView CreateRootVolumeTemplateFromRootVolumeEvent
 type CreateRootVolumeTemplateFromRootVolumeEventView struct {
 	Inventory ImageInventoryView `json:"inventory,omitempty"`
 }
-

@@ -109,3 +109,90 @@ func (cli *ZSClient) ExpungeDataVolume(uuid string) error {
 	return cli.Put("v1/volumes", uuid, map[string]struct{}{"expungeDataVolume": {}}, nil)
 }
 ```
+
+4. 所有的View 无需使用指针
+例如
+```
+// ImageInventoryView Image
+type ImageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
+	Description *string `json:"description,omitempty"`
+	State *string `json:"state,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Size *int64 `json:"size,omitempty"`
+	ActualSize *int64 `json:"actualSize,omitempty"`
+	Md5Sum *string `json:"md5Sum,omitempty"`
+	Url *string `json:"url,omitempty"`
+	MediaType *string `json:"mediaType,omitempty"`
+	GuestOsType *string `json:"guestOsType,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Platform *string `json:"platform,omitempty"`
+	Architecture *string `json:"architecture,omitempty"`
+	Format *string `json:"format,omitempty"`
+	System *bool `json:"system,omitempty"`
+	Virtio *bool `json:"virtio,omitempty"`
+	BackupStorageRefs []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
+	SystemTags []SystemTagInventoryView `json:"systemTags,omitempty"`
+}
+```
+修改为
+```
+type ImageInventoryView struct {
+	BaseInfoView
+	BaseTimeView
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	ActualSize int64 `json:"actualSize,omitempty"`
+	Md5Sum string `json:"md5Sum,omitempty"`
+	Url string `json:"url,omitempty"`
+	MediaType string `json:"mediaType,omitempty"`
+	GuestOsType string `json:"guestOsType,omitempty"`
+	Type string `json:"type,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	Format string `json:"format,omitempty"`
+	System bool `json:"system,omitempty"`
+	Virtio bool `json:"virtio,omitempty"`
+	BackupStorageRefs []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
+	SystemTags []SystemTagInventoryView `json:"systemTags,omitempty"`
+}
+```
+
+5. param包下的UpdateXXXParam的UpdateXXXDetailParam 的json错误，不是params，而是updateXXX
+例如
+```
+type UpdateImageParam struct {
+	BaseParam
+	Params UpdateImageParamDetail `json:"updateImage"`
+}
+```
+```
+type UpdateVmInstanceParam struct {
+	BaseParam
+	UpdateVmInstance UpdateVmInstanceDetailParam `json:"updateVmInstance"`
+}
+```
+
+6. ChangeXXXStateParam的ChangeXXXStateDetailParam 的json错误，不是params，而是changeXXXState, 从image查知，可能其他资源类似，需检查
+例如
+```
+type ChangeImageStateParam struct {
+	BaseParam
+	Params ChangeImageStateParamDetail `json:"changeImageState"`
+}
+```
+
+7. ChangeXXXState函数的参数uuid不需要，和ChangeXXXStateDetailParam中的Uuid一致。
+例如
+```
+	state, err := accountLoginCli.ChangeImageState("304ff48eeed54f59802152f41a600bfb", param.ChangeImageStateParam{
+		BaseParam: param.BaseParam{},
+		Params: param.ChangeImageStateParamDetail{
+			Uuid:       "304ff48eeed54f59802152f41a600bfb",
+			StateEvent: "enable",
+		},
+	})
+```

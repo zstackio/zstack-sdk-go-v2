@@ -3,6 +3,7 @@
 package test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -10,24 +11,157 @@ import (
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 )
 
-func TestQueryImage(t *testing.T) {
+var (
+	volumeID = map[string]string{
+		accountLogin:  "6ca3f6e0b7af45e9bc6ad301b0e72042",
+		accessKeyAuth: "67d2c8fb2bac4736a49d102c1d725248",
+	}
+	imageID = map[string]string{
+		accountLogin:  "968e87334a12422fbe78c8b72bcfab68",
+		accessKeyAuth: "8d88bf390a3543efb11dfda6afebc655",
+	}
+	hostID = map[string]string{
+		accountLogin:  "43a562cb71744784b41d5d3663eb620f",
+		accessKeyAuth: "b0de6e34be6042faa34069babcb64878",
+	}
+	primaryStorageID = map[string]string{
+		accountLogin:  "ace08e7a30c14609b5a92e5114f19e82",
+		accessKeyAuth: "dd2ae6841a054ce2b582545db9e7f787",
+	}
+	vmID = map[string]string{
+		accountLogin:  "22f6836626bb4683b3d5ccf5bd9e0ae0",
+		accessKeyAuth: "69f1c9d494414042860d355d386d91ba",
+	}
+	rootVolumeID = map[string]string{
+		accountLogin:  "0eb9776b41184a108f53b4fd9b11acfa",
+		accessKeyAuth: "aba61ccd0ea5426188cc05a61ffe1581",
+	}
+)
+
+func TestQueryImage1(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accessKeyAuthCli.QueryImage(&queryParam)
+	result, err := accountLoginCli.QueryImage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryImage error: %v", err)
 		return
 	}
-	golog.Infof("QueryImage result count: %d", len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s\t%s\t%s\t%d\t%s", r.UUID, r.Name, r.Platform, r.GuestOsType, r.Format, r.Status, r.Size, r.Description)
+	}
+	golog.Infof("======================================")
+
+	queryParam.AddQ(fmt.Sprintf("platform=%s", "Linux"))
+	queryParam.Start(0).Limit(2).ReplyWithCount(true)
+	result, err = accountLoginCli.QueryImage(&queryParam)
+	if err != nil {
+		golog.Errorf("ZSClient.QueryImage error:%v", err)
+		return
+	}
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s\t%s\t%s\t%d\t%s", r.UUID, r.Name, r.Platform, r.GuestOsType, r.Format, r.Status, r.Size, r.Description)
+	}
+}
+
+func TestQueryImage2(t *testing.T) {
+	params := param.NewQueryParam()
+	//params.AddQ("state=Enabled")
+	//params.AddQ("type=zstack")
+	//params.AddQ("format!=vmtx")
+	//params.AddQ("status=Ready")
+	//params.AddQ("system=false")
+	params.AddQ("name=centos")
+	//params.AddQ("mediaType=DataVolumeTemplate")
+	//params.AddQ("backupStorage.zone.uuid=6e8191bfd57745f282f78cb013b732b6")
+	result, err := accountLoginCli.QueryImage(&params)
+	if err != nil {
+		golog.Errorf("ZSClient.QueryImage error:%v", err)
+		return
+	}
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s\t%s\t%s\t%d\t%s", r.UUID, r.Name, r.Platform, r.GuestOsType, r.Format, r.Status, r.Size, r.Description)
+	}
+	golog.Infof("======================================")
+}
+
+func TestQueryImage3(t *testing.T) {
+	params := param.NewQueryParam()
+	//params.AddQ("state=Enabled")
+	//params.AddQ("type=zstack")
+	//params.AddQ("format!=vmtx")
+	//params.AddQ("status=Ready")
+	//params.AddQ("system=false")
+	params.AddQ("format!=vmtx")
+	params.AddQ("system=true")
+	//params.AddQ("mediaType=DataVolumeTemplate")
+	//params.AddQ("backupStorage.zone.uuid=6e8191bfd57745f282f78cb013b732b6")
+	result, err := accountLoginCli.QueryImage(&params)
+	if err != nil {
+		golog.Errorf("ZSClient.QueryImage error:%v", err)
+		return
+	}
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s\t%s\t%s\t%d\t%s", r.UUID, r.Name, r.Platform, r.GuestOsType, r.Format, r.Status, r.Size, r.Description)
+	}
+	golog.Infof("======================================")
+}
+
+type Image struct {
+	Name        string `json:"name"`
+	UUID        string `json:"uuid"`
+	Format      string `json:"format"`
+	URL         string `json:"url"`
+	Description string `json:"description"`
+	Status      string `json:"status"`
+	State       string `json:"state"`
+}
+
+type QueryResult struct {
+	Results []struct {
+		Inventories []Image `json:"inventories"`
+	} `json:"results"`
+}
+
+func TestZSClient_QueryByZql(t *testing.T) {
+
+	//var reservedIpRanges []view.ReservedIpRangeInventoryView
+	var queryResult QueryResult
+	//	_, err := accountLoginCli.Zql(fmt.Sprintf("query Image "), &virtualRouterImages, "inventories")
+
+	_, err := accountLoginCli.Zql(
+		"query Image where system='true'",
+		&queryResult,
+	)
+	if err != nil {
+		golog.Errorf("failed to execute ZQL query: %v", err)
+	}
+
+	//_, err := accountLoginCli.Zql(fmt.Sprintf("query Image"), &virtualRouterImages, "inventories")
+	// 提取结果
+	if len(queryResult.Results) > 0 {
+		inventories := queryResult.Results[0].Inventories
+		fmt.Printf("Query Response: %+v\n", inventories)
+	} else {
+		fmt.Println("No inventories found.")
+	}
+
 }
 
 func TestPageImage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, total, err := accessKeyAuthCli.PageImage(&queryParam)
+	result, total, err := accountLoginCli.PageImage(&queryParam)
 	if err != nil {
 		t.Errorf("TestPageImage error: %v", err)
 		return
 	}
 	golog.Infof("PageImage result count: %d, total: %d", len(result), total)
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s\t%s\t%s\t%d\t%s %d", r.UUID, r.Name, r.Platform, r.GuestOsType, r.Format, r.Status, r.Size, r.Description, total)
+	}
 }
 
 func TestGetImage(t *testing.T) {
@@ -55,32 +189,24 @@ func TestGetImage(t *testing.T) {
 
 func TestUpdateImage(t *testing.T) {
 	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryImage(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateImage Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No Image found to test Update")
-		return
-	}
+	desc := "test from sdk"
 
 	// Update with minimal params
 	updateParam := param.UpdateImageParam{
-		BaseParam: param.BaseParam{},
 		Params: param.UpdateImageParamDetail{
-			Name: "centos-test",
+			Uuid:        "304ff48eeed54f59802152f41a600bfb",
+			Name:        "centos-test",
+			Description: desc,
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateImage(list[0].UUID, updateParam)
+
+	v, err := accountLoginCli.UpdateImage("304ff48eeed54f59802152f41a600bfb", updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateImage error: %v", err)
 		return
 	}
-	golog.Infof("UpdateImage result: %s", result.UUID)
+	golog.Infof("UpdateImage succeeded for UUID: %s", v.UUID)
 }
 
 func TestDeleteImage(t *testing.T) {
@@ -88,22 +214,22 @@ func TestDeleteImage(t *testing.T) {
 	// Query first to get UUID (but skip by default to avoid accidental deletion)
 	//t.Skip("TestDeleteImage is skipped by default to prevent accidental deletion. Remove this line to enable.")
 
-	err := accountLoginCli.DeleteImage("9f97e3228b3c41bda87b4f609a1795ba", param.DeleteModePermissive)
+	err := accountLoginCli.DeleteImage("a01d4fc8ad0443b4955eaf447aa3a4da", param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteImage error: %v", err)
 		return
 	}
-	golog.Infof("DeleteImage succeeded for UUID: %s", "9f97e3228b3c41bda87b4f609a1795ba")
+	golog.Infof("DeleteImage succeeded for UUID: %s", "a01d4fc8ad0443b4955eaf447aa3a4da")
 }
 
 func TestExpungeImageByUUID(t *testing.T) {
 
-	err := accountLoginCli.ExpungeImage("99c1b305e6874b7fb7308164adeb98b8")
+	err := accountLoginCli.ExpungeImage("a01d4fc8ad0443b4955eaf447aa3a4da")
 	if err != nil {
 		t.Errorf("TestExpungeImageByUUID error: %v", err)
 		return
 	}
-	golog.Infof("ExpungeImageByUUID succeeded for UUID: %s", "99c1b305e6874b7fb7308164adeb98b8")
+	golog.Infof("ExpungeImageByUUID succeeded for UUID: %s", "a01d4fc8ad0443b4955eaf447aa3a4da")
 
 }
 
@@ -124,13 +250,13 @@ func TestAddImage(t *testing.T) {
 			SystemTags: []string{"bootMode::Legacy"},
 		},
 		Params: param.AddImageParamDetail{
-			Name:               "CentOS-6.8-i386-LiveCD",
+			Name:               "esxi-6.7.0-ks.iso",
 			Description:        "接口image",
-			Url:                "http://172.20.15.213/rds/V3.14.1-p2/zstack-rds-3.14.1-p2_x86.qcow2",
+			Url:                "http://192.168.200.100/mirror/jiajian.chi/os/base/esxi-6.7.0-ks.iso",
 			MediaType:          "RootVolumeTemplate",
 			GuestOsType:        "Linux",
 			System:             false,
-			Format:             "qcow2",
+			Format:             "iso",
 			Platform:           "Linux",
 			BackupStorageUuids: []string{storage[0].UUID},
 			Type:               "",
@@ -188,6 +314,20 @@ func TestAddImage(t *testing.T) {
 			golog.Errorf("ZSClient.ExpungeImage error:%v", err)
 		}*/
 
+}
+
+func TestChangeImageState(t *testing.T) {
+	state, err := accountLoginCli.ChangeImageState("304ff48eeed54f59802152f41a600bfb", param.ChangeImageStateParam{
+		BaseParam: param.BaseParam{},
+		Params: param.ChangeImageStateParamDetail{
+			Uuid:       "304ff48eeed54f59802152f41a600bfb",
+			StateEvent: "enable",
+		},
+	})
+	if err != nil {
+		golog.Errorf("TestZSClient_UpdateVirtio error:%v", err)
+	}
+	fmt.Println(state)
 }
 
 func TestAddImageAsync(t *testing.T) {
