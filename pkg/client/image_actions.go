@@ -4,11 +4,19 @@ package client
 
 import (
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/jsonutils"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{}    // avoid unused import
+
+// PageImage Pagination
+func (cli *ZSClient) PageImage(params *param.QueryParam) ([]view.ImageInventoryView, int, error) {
+	var resp []view.ImageInventoryView
+	total, err := cli.Page("v1/images", params, &resp)
+	return resp, total, err
+}
 
 // AddImage adds Image
 func (cli *ZSClient) AddImage(params param.AddImageParam) (*view.ImageInventoryView, error) {
@@ -90,6 +98,9 @@ func (cli *ZSClient) UpdateImage(uuid string, params param.UpdateImageParam) (*v
 }
 
 // ExpungeImage operates on Image
-func (cli *ZSClient) ExpungeImage(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/images", uuid, string(deleteMode))
+func (cli *ZSClient) ExpungeImage(uuid string) error {
+	params := map[string]interface{}{
+		"expungeImage": jsonutils.NewDict(),
+	}
+	return cli.Put("v1/images", uuid, jsonutils.Marshal(params), nil)
 }

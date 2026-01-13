@@ -72,3 +72,40 @@ func (cli *ZSClient) AddImage(params param.AddImageParam) (*view.ImageInventoryV
 	return &resp, nil
 }
 ```
+
+3. ExpungeXXX 函数统一如下, 原接口时cli.Delete修改为Put
+```
+func (cli *ZSClient) ExpungeImage(uuid string) error {
+	params := map[string]interface{}{
+		"expungeImage": jsonutils.NewDict(),
+	}
+	return cli.Put("v1/images", uuid, jsonutils.Marshal(params), nil)
+}
+```
+NewDict定义如下
+```
+func NewDict(objs ...JSONPair) *JSONDict {
+	dict := JSONDict{data: sortedmap.NewSortedMapWithCapa(len(objs))}
+	for _, o := range objs {
+		dict.Set(o.key, o.val)
+	}
+	return &dict
+}
+```
+
+VmInstance
+```
+// ExpungeVmInstance Permanently delete a VM instance
+func (cli *ZSClient) ExpungeVmInstance(uuid string) error {
+	params := map[string]struct{}{
+		"expungeVmInstance": {},
+	}
+	return cli.Put("v1/vm-instances", uuid, params, nil)
+}
+```
+DataVolume
+```
+func (cli *ZSClient) ExpungeDataVolume(uuid string) error {
+	return cli.Put("v1/volumes", uuid, map[string]struct{}{"expungeDataVolume": {}}, nil)
+}
+```

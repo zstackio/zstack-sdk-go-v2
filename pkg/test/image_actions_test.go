@@ -12,12 +12,22 @@ import (
 
 func TestQueryImage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryImage(&queryParam)
+	result, err := accessKeyAuthCli.QueryImage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryImage error: %v", err)
 		return
 	}
 	golog.Infof("QueryImage result count: %d", len(result))
+}
+
+func TestPageImage(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	result, total, err := accessKeyAuthCli.PageImage(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageImage error: %v", err)
+		return
+	}
+	golog.Infof("PageImage result count: %d, total: %d", len(result), total)
 }
 
 func TestGetImage(t *testing.T) {
@@ -78,12 +88,23 @@ func TestDeleteImage(t *testing.T) {
 	// Query first to get UUID (but skip by default to avoid accidental deletion)
 	//t.Skip("TestDeleteImage is skipped by default to prevent accidental deletion. Remove this line to enable.")
 
-	err := accountLoginCli.DeleteImage("a2fe8439606847aeb0c0fde516e43654", param.DeleteModePermissive)
+	err := accountLoginCli.DeleteImage("9f97e3228b3c41bda87b4f609a1795ba", param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteImage error: %v", err)
 		return
 	}
-	golog.Infof("DeleteImage succeeded for UUID: %s", "a2fe8439606847aeb0c0fde516e43654")
+	golog.Infof("DeleteImage succeeded for UUID: %s", "9f97e3228b3c41bda87b4f609a1795ba")
+}
+
+func TestExpungeImageByUUID(t *testing.T) {
+
+	err := accountLoginCli.ExpungeImage("99c1b305e6874b7fb7308164adeb98b8")
+	if err != nil {
+		t.Errorf("TestExpungeImageByUUID error: %v", err)
+		return
+	}
+	golog.Infof("ExpungeImageByUUID succeeded for UUID: %s", "99c1b305e6874b7fb7308164adeb98b8")
+
 }
 
 func TestAddImage(t *testing.T) {
@@ -190,11 +211,5 @@ func TestRecoverImage(t *testing.T) {
 func TestCloneImage(t *testing.T) {
 	// Clone operation
 	t.Skip("TestCloneImage requires a valid resource to clone")
-
-}
-
-func TestExpungeImage(t *testing.T) {
-	// Expunge operation - permanently deletes
-	t.Skip("TestExpungeImage is dangerous - permanently deletes resource")
 
 }
