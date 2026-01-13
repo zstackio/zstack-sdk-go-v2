@@ -196,3 +196,51 @@ type ChangeImageStateParam struct {
 		},
 	})
 ```
+
+8. 参数问题可能还有
+CloneXXX, 不是params，是cloneXXX
+例如
+```
+type CloneVmInstanceParam struct {
+	BaseParam
+	CloneVmInstance CloneVmInstanceDetailParam `json:"cloneVmInstance"`
+}
+```
+StartXXX，不是params，是startXXX，StopXXX
+例如
+```
+type StartVmInstanceParam struct {
+	BaseParam
+	StartVmInstance StartVmInstanceDetailParam `json:"startVmInstance"`
+}
+```
+
+```
+type StopVmInstanceParam struct {
+	BaseParam
+	StopVmInstance StopVmInstanceDetailParam `json:"stopVmInstance"` // Requires uuid and type
+}
+```
+
+SetXXX, 不是params, 是setXXX
+例如
+```
+type SetVmBootModeParam struct {
+	BaseParam
+	SetVmBootMode SetVmBootModeDetailParam `json:"setVmBootMode"`
+}
+```
+```
+type SetVmSshKeyParam struct {
+	BaseParam
+	Params SetVmSshKeyParamDetail `json:"setVmSshKey"`
+}
+```
+
+ChangeXXX
+```
+type ChangeVmPasswordParam struct {
+	BaseParam
+	Params ChangeVmPasswordParamDetail `json:"changeVmPassword"`
+}
+```
