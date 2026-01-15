@@ -14,5 +14,5 @@ type UpdateGuestToolsStateParamDetail struct {
 // UpdateGuestToolsStateParam UpdateGuestToolsState request param
 type UpdateGuestToolsStateParam struct {
 	BaseParam
-	UpdateGuestToolsState UpdateGuestToolsStateParamDetail `json:"updateGuestToolsState"`
+	Params UpdateGuestToolsStateParamDetail `json:"updateGuestToolsState"`
 }

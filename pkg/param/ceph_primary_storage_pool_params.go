@@ -16,7 +16,7 @@ type UpdateCephPrimaryStoragePoolParamDetail struct {
 // UpdateCephPrimaryStoragePoolParam UpdateCephPrimaryStoragePool request param
 type UpdateCephPrimaryStoragePoolParam struct {
 	BaseParam
-	UpdateCephPrimaryStoragePool UpdateCephPrimaryStoragePoolParamDetail `json:"updateCephPrimaryStoragePool"`
+	Params UpdateCephPrimaryStoragePoolParamDetail `json:"updateCephPrimaryStoragePool"`
 }
 // AddCephPrimaryStoragePoolParamDetail AddCephPrimaryStoragePool detail param
 type AddCephPrimaryStoragePoolParamDetail struct {
@@ -33,7 +33,7 @@ type AddCephPrimaryStoragePoolParamDetail struct {
 // AddCephPrimaryStoragePoolParam AddCephPrimaryStoragePool request param
 type AddCephPrimaryStoragePoolParam struct {
 	BaseParam
-	AddCephPrimaryStoragePool AddCephPrimaryStoragePoolParamDetail `json:"addCephPrimaryStoragePool"`
+	Params AddCephPrimaryStoragePoolParamDetail `json:"addCephPrimaryStoragePool"`
 }
 // DeleteCephPrimaryStoragePoolParamDetail DeleteCephPrimaryStoragePool detail param
 type DeleteCephPrimaryStoragePoolParamDetail struct {
@@ -43,5 +43,5 @@ type DeleteCephPrimaryStoragePoolParamDetail struct {
 // DeleteCephPrimaryStoragePoolParam DeleteCephPrimaryStoragePool request param
 type DeleteCephPrimaryStoragePoolParam struct {
 	BaseParam
-	DeleteCephPrimaryStoragePool DeleteCephPrimaryStoragePoolParamDetail `json:"deleteCephPrimaryStoragePool"`
+	Params DeleteCephPrimaryStoragePoolParamDetail `json:"deleteCephPrimaryStoragePool"`
 }

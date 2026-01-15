@@ -16,7 +16,7 @@ type UpdateAliyunProxyVSwitchParamDetail struct {
 // UpdateAliyunProxyVSwitchParam UpdateAliyunProxyVSwitch request param
 type UpdateAliyunProxyVSwitchParam struct {
 	BaseParam
-	UpdateAliyunProxyVSwitch UpdateAliyunProxyVSwitchParamDetail `json:"updateAliyunProxyVSwitch"`
+	Params UpdateAliyunProxyVSwitchParamDetail `json:"updateAliyunProxyVSwitch"`
 }
 // CreateAliyunProxyVSwitchParamDetail CreateAliyunProxyVSwitch detail param
 type CreateAliyunProxyVSwitchParamDetail struct {
@@ -30,7 +30,7 @@ type CreateAliyunProxyVSwitchParamDetail struct {
 // CreateAliyunProxyVSwitchParam CreateAliyunProxyVSwitch request param
 type CreateAliyunProxyVSwitchParam struct {
 	BaseParam
-	CreateAliyunProxyVSwitch CreateAliyunProxyVSwitchParamDetail `json:"createAliyunProxyVSwitch"`
+	Params CreateAliyunProxyVSwitchParamDetail `json:"createAliyunProxyVSwitch"`
 }
 // DeleteAliyunProxyVSwitchParamDetail DeleteAliyunProxyVSwitch detail param
 type DeleteAliyunProxyVSwitchParamDetail struct {
@@ -41,5 +41,5 @@ type DeleteAliyunProxyVSwitchParamDetail struct {
 // DeleteAliyunProxyVSwitchParam DeleteAliyunProxyVSwitch request param
 type DeleteAliyunProxyVSwitchParam struct {
 	BaseParam
-	DeleteAliyunProxyVSwitch DeleteAliyunProxyVSwitchParamDetail `json:"deleteAliyunProxyVSwitch"`
+	Params DeleteAliyunProxyVSwitchParamDetail `json:"deleteAliyunProxyVSwitch"`
 }

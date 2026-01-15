@@ -17,7 +17,7 @@ type UpdateAutoScalingRuleParamDetail struct {
 // UpdateAutoScalingRuleParam UpdateAutoScalingRule request param
 type UpdateAutoScalingRuleParam struct {
 	BaseParam
-	UpdateAutoScalingRule UpdateAutoScalingRuleParamDetail `json:"updateAutoScalingRule"`
+	Params UpdateAutoScalingRuleParamDetail `json:"updateAutoScalingRule"`
 }
 // DeleteAutoScalingRuleParamDetail DeleteAutoScalingRule detail param
 type DeleteAutoScalingRuleParamDetail struct {
@@ -28,5 +28,5 @@ type DeleteAutoScalingRuleParamDetail struct {
 // DeleteAutoScalingRuleParam DeleteAutoScalingRule request param
 type DeleteAutoScalingRuleParam struct {
 	BaseParam
-	DeleteAutoScalingRule DeleteAutoScalingRuleParamDetail `json:"deleteAutoScalingRule"`
+	Params DeleteAutoScalingRuleParamDetail `json:"deleteAutoScalingRule"`
 }

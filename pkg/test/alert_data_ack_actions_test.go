@@ -63,7 +63,7 @@ func TestUpdateAlertDataAck(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateAlertDataAck(*list[0].AlertDataUuid, updateParam)
+	result, err := accountLoginCli.UpdateAlertDataAck(list[0].AlertDataUuid, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateAlertDataAck error: %v", err)
 		return

@@ -25,7 +25,7 @@ type UpdateCSPSecretResourcePoolParamDetail struct {
 // UpdateCSPSecretResourcePoolParam UpdateCSPSecretResourcePool request param
 type UpdateCSPSecretResourcePoolParam struct {
 	BaseParam
-	UpdateCSPSecretResourcePool UpdateCSPSecretResourcePoolParamDetail `json:"updateCSPSecretResourcePool"`
+	Params UpdateCSPSecretResourcePoolParamDetail `json:"updateCSPSecretResourcePool"`
 }
 // CreateCSPSecretResourcePoolParamDetail CreateCSPSecretResourcePool detail param
 type CreateCSPSecretResourcePoolParamDetail struct {
@@ -50,5 +50,5 @@ type CreateCSPSecretResourcePoolParamDetail struct {
 // CreateCSPSecretResourcePoolParam CreateCSPSecretResourcePool request param
 type CreateCSPSecretResourcePoolParam struct {
 	BaseParam
-	CreateCSPSecretResourcePool CreateCSPSecretResourcePoolParamDetail `json:"createCSPSecretResourcePool"`
+	Params CreateCSPSecretResourcePoolParamDetail `json:"createCSPSecretResourcePool"`
 }

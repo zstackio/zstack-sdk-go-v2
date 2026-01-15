@@ -18,7 +18,7 @@ type CreateCbtTaskParamDetail struct {
 // CreateCbtTaskParam CreateCbtTask request param
 type CreateCbtTaskParam struct {
 	BaseParam
-	CreateCbtTask CreateCbtTaskParamDetail `json:"createCbtTask"`
+	Params CreateCbtTaskParamDetail `json:"createCbtTask"`
 }
 // DeleteCbtTaskParamDetail DeleteCbtTask detail param
 type DeleteCbtTaskParamDetail struct {
@@ -30,5 +30,5 @@ type DeleteCbtTaskParamDetail struct {
 // DeleteCbtTaskParam DeleteCbtTask request param
 type DeleteCbtTaskParam struct {
 	BaseParam
-	DeleteCbtTask DeleteCbtTaskParamDetail `json:"deleteCbtTask"`
+	Params DeleteCbtTaskParamDetail `json:"deleteCbtTask"`
 }

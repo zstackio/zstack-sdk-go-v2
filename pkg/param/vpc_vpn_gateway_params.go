@@ -16,5 +16,5 @@ type UpdateVpcVpnGatewayParamDetail struct {
 // UpdateVpcVpnGatewayParam UpdateVpcVpnGateway request param
 type UpdateVpcVpnGatewayParam struct {
 	BaseParam
-	UpdateVpcVpnGateway UpdateVpcVpnGatewayParamDetail `json:"updateVpcVpnGateway"`
+	Params UpdateVpcVpnGatewayParamDetail `json:"updateVpcVpnGateway"`
 }

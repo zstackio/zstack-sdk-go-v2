@@ -18,5 +18,5 @@ type UpdateIAM2TicketFlowCollectionParamDetail struct {
 // UpdateIAM2TicketFlowCollectionParam UpdateIAM2TicketFlowCollection request param
 type UpdateIAM2TicketFlowCollectionParam struct {
 	BaseParam
-	UpdateIAM2TicketFlowCollection UpdateIAM2TicketFlowCollectionParamDetail `json:"updateIAM2TicketFlowCollection"`
+	Params UpdateIAM2TicketFlowCollectionParamDetail `json:"updateIAM2TicketFlowCollection"`
 }

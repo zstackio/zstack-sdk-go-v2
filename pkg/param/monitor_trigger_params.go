@@ -21,7 +21,7 @@ type CreateMonitorTriggerParamDetail struct {
 // CreateMonitorTriggerParam CreateMonitorTrigger request param
 type CreateMonitorTriggerParam struct {
 	BaseParam
-	CreateMonitorTrigger CreateMonitorTriggerParamDetail `json:"createMonitorTrigger"`
+	Params CreateMonitorTriggerParamDetail `json:"createMonitorTrigger"`
 }
 // DeleteMonitorTriggerActionParamDetail DeleteMonitorTriggerAction detail param
 type DeleteMonitorTriggerActionParamDetail struct {
@@ -32,7 +32,7 @@ type DeleteMonitorTriggerActionParamDetail struct {
 // DeleteMonitorTriggerActionParam DeleteMonitorTriggerAction request param
 type DeleteMonitorTriggerActionParam struct {
 	BaseParam
-	DeleteMonitorTriggerAction DeleteMonitorTriggerActionParamDetail `json:"deleteMonitorTriggerAction"`
+	Params DeleteMonitorTriggerActionParamDetail `json:"deleteMonitorTriggerAction"`
 }
 // DeleteMonitorTriggerParamDetail DeleteMonitorTrigger detail param
 type DeleteMonitorTriggerParamDetail struct {
@@ -43,7 +43,7 @@ type DeleteMonitorTriggerParamDetail struct {
 // DeleteMonitorTriggerParam DeleteMonitorTrigger request param
 type DeleteMonitorTriggerParam struct {
 	BaseParam
-	DeleteMonitorTrigger DeleteMonitorTriggerParamDetail `json:"deleteMonitorTrigger"`
+	Params DeleteMonitorTriggerParamDetail `json:"deleteMonitorTrigger"`
 }
 // UpdateMonitorTriggerParamDetail UpdateMonitorTrigger detail param
 type UpdateMonitorTriggerParamDetail struct {
@@ -57,5 +57,5 @@ type UpdateMonitorTriggerParamDetail struct {
 // UpdateMonitorTriggerParam UpdateMonitorTrigger request param
 type UpdateMonitorTriggerParam struct {
 	BaseParam
-	UpdateMonitorTrigger UpdateMonitorTriggerParamDetail `json:"updateMonitorTrigger"`
+	Params UpdateMonitorTriggerParamDetail `json:"updateMonitorTrigger"`
 }

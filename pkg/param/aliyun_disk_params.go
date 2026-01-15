@@ -19,5 +19,5 @@ type UpdateAliyunDiskParamDetail struct {
 // UpdateAliyunDiskParam UpdateAliyunDisk request param
 type UpdateAliyunDiskParam struct {
 	BaseParam
-	UpdateAliyunDisk UpdateAliyunDiskParamDetail `json:"updateAliyunDisk"`
+	Params UpdateAliyunDiskParamDetail `json:"updateAliyunDisk"`
 }

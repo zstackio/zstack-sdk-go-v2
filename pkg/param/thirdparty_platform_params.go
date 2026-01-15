@@ -20,7 +20,7 @@ type UpdateThirdpartyPlatformParamDetail struct {
 // UpdateThirdpartyPlatformParam UpdateThirdpartyPlatform request param
 type UpdateThirdpartyPlatformParam struct {
 	BaseParam
-	UpdateThirdpartyPlatform UpdateThirdpartyPlatformParamDetail `json:"updateThirdpartyPlatform"`
+	Params UpdateThirdpartyPlatformParamDetail `json:"updateThirdpartyPlatform"`
 }
 // AddThirdpartyPlatformParamDetail AddThirdpartyPlatform detail param
 type AddThirdpartyPlatformParamDetail struct {
@@ -36,7 +36,7 @@ type AddThirdpartyPlatformParamDetail struct {
 // AddThirdpartyPlatformParam AddThirdpartyPlatform request param
 type AddThirdpartyPlatformParam struct {
 	BaseParam
-	AddThirdpartyPlatform AddThirdpartyPlatformParamDetail `json:"addThirdpartyPlatform"`
+	Params AddThirdpartyPlatformParamDetail `json:"addThirdpartyPlatform"`
 }
 // DeleteThirdpartyPlatformParamDetail DeleteThirdpartyPlatform detail param
 type DeleteThirdpartyPlatformParamDetail struct {
@@ -47,5 +47,5 @@ type DeleteThirdpartyPlatformParamDetail struct {
 // DeleteThirdpartyPlatformParam DeleteThirdpartyPlatform request param
 type DeleteThirdpartyPlatformParam struct {
 	BaseParam
-	DeleteThirdpartyPlatform DeleteThirdpartyPlatformParamDetail `json:"deleteThirdpartyPlatform"`
+	Params DeleteThirdpartyPlatformParamDetail `json:"deleteThirdpartyPlatform"`
 }

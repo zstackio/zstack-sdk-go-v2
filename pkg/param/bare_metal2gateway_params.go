@@ -14,7 +14,7 @@ type ReconnectBareMetal2GatewayParamDetail struct {
 // ReconnectBareMetal2GatewayParam ReconnectBareMetal2Gateway request param
 type ReconnectBareMetal2GatewayParam struct {
 	BaseParam
-	ReconnectBareMetal2Gateway ReconnectBareMetal2GatewayParamDetail `json:"reconnectBareMetal2Gateway"`
+	Params ReconnectBareMetal2GatewayParamDetail `json:"reconnectBareMetal2Gateway"`
 }
 // UpdateBareMetal2GatewayParamDetail UpdateBareMetal2Gateway detail param
 type UpdateBareMetal2GatewayParamDetail struct {
@@ -30,7 +30,7 @@ type UpdateBareMetal2GatewayParamDetail struct {
 // UpdateBareMetal2GatewayParam UpdateBareMetal2Gateway request param
 type UpdateBareMetal2GatewayParam struct {
 	BaseParam
-	UpdateBareMetal2Gateway UpdateBareMetal2GatewayParamDetail `json:"updateBareMetal2Gateway"`
+	Params UpdateBareMetal2GatewayParamDetail `json:"updateBareMetal2Gateway"`
 }
 // DeleteBareMetal2GatewayParamDetail DeleteBareMetal2Gateway detail param
 type DeleteBareMetal2GatewayParamDetail struct {
@@ -41,7 +41,7 @@ type DeleteBareMetal2GatewayParamDetail struct {
 // DeleteBareMetal2GatewayParam DeleteBareMetal2Gateway request param
 type DeleteBareMetal2GatewayParam struct {
 	BaseParam
-	DeleteBareMetal2Gateway DeleteBareMetal2GatewayParamDetail `json:"deleteBareMetal2Gateway"`
+	Params DeleteBareMetal2GatewayParamDetail `json:"deleteBareMetal2Gateway"`
 }
 // AddBareMetal2GatewayParamDetail AddBareMetal2Gateway detail param
 type AddBareMetal2GatewayParamDetail struct {
@@ -59,5 +59,5 @@ type AddBareMetal2GatewayParamDetail struct {
 // AddBareMetal2GatewayParam AddBareMetal2Gateway request param
 type AddBareMetal2GatewayParam struct {
 	BaseParam
-	AddBareMetal2Gateway AddBareMetal2GatewayParamDetail `json:"addBareMetal2Gateway"`
+	Params AddBareMetal2GatewayParamDetail `json:"addBareMetal2Gateway"`
 }

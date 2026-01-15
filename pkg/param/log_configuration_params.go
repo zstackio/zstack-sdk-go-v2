@@ -16,7 +16,7 @@ type UpdateLogConfigurationParamDetail struct {
 // UpdateLogConfigurationParam UpdateLogConfiguration request param
 type UpdateLogConfigurationParam struct {
 	BaseParam
-	UpdateLogConfiguration UpdateLogConfigurationParamDetail `json:"updateLogConfiguration"`
+	Params UpdateLogConfigurationParamDetail `json:"updateLogConfiguration"`
 }
 // GetLogConfigurationParamDetail GetLogConfiguration detail param
 type GetLogConfigurationParamDetail struct {
@@ -25,7 +25,7 @@ type GetLogConfigurationParamDetail struct {
 // GetLogConfigurationParam GetLogConfiguration request param
 type GetLogConfigurationParam struct {
 	BaseParam
-	GetLogConfiguration GetLogConfigurationParamDetail `json:"getLogConfiguration"`
+	Params GetLogConfigurationParamDetail `json:"getLogConfiguration"`
 }
 // DeleteLogConfigurationParamDetail DeleteLogConfiguration detail param
 type DeleteLogConfigurationParamDetail struct {
@@ -36,7 +36,7 @@ type DeleteLogConfigurationParamDetail struct {
 // DeleteLogConfigurationParam DeleteLogConfiguration request param
 type DeleteLogConfigurationParam struct {
 	BaseParam
-	DeleteLogConfiguration DeleteLogConfigurationParamDetail `json:"deleteLogConfiguration"`
+	Params DeleteLogConfigurationParamDetail `json:"deleteLogConfiguration"`
 }
 // AddLogConfigurationParamDetail AddLogConfiguration detail param
 type AddLogConfigurationParamDetail struct {
@@ -52,5 +52,5 @@ type AddLogConfigurationParamDetail struct {
 // AddLogConfigurationParam AddLogConfiguration request param
 type AddLogConfigurationParam struct {
 	BaseParam
-	AddLogConfiguration AddLogConfigurationParamDetail `json:"addLogConfiguration"`
+	Params AddLogConfigurationParamDetail `json:"addLogConfiguration"`
 }

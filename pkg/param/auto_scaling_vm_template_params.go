@@ -22,7 +22,7 @@ type UpdateAutoScalingVmTemplateParamDetail struct {
 // UpdateAutoScalingVmTemplateParam UpdateAutoScalingVmTemplate request param
 type UpdateAutoScalingVmTemplateParam struct {
 	BaseParam
-	UpdateAutoScalingVmTemplate UpdateAutoScalingVmTemplateParamDetail `json:"updateAutoScalingVmTemplate"`
+	Params UpdateAutoScalingVmTemplateParamDetail `json:"updateAutoScalingVmTemplate"`
 }
 // CreateAutoScalingVmTemplateParamDetail CreateAutoScalingVmTemplate detail param
 type CreateAutoScalingVmTemplateParamDetail struct {
@@ -50,5 +50,5 @@ type CreateAutoScalingVmTemplateParamDetail struct {
 // CreateAutoScalingVmTemplateParam CreateAutoScalingVmTemplate request param
 type CreateAutoScalingVmTemplateParam struct {
 	BaseParam
-	CreateAutoScalingVmTemplate CreateAutoScalingVmTemplateParamDetail `json:"createAutoScalingVmTemplate"`
+	Params CreateAutoScalingVmTemplateParamDetail `json:"createAutoScalingVmTemplate"`
 }

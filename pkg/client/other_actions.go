@@ -4068,20 +4068,20 @@ func (cli *ZSClient) UnlockIdentity(params param.UnlockIdentityParam) (*view.Unl
 	return &resp, nil
 }
 
-// GetCandidateVmNicsForPortMirror gets CandidateVmNicsForPortMirror by uuid
-func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, typeParam string) (*view.VmNicInventoryView, error) {
-	var resp view.VmNicInventoryView
-	err := cli.GetWithSpec("v1/port-mirrors", portMirrorUuid, fmt.Sprintf("vm-instances/candidate-nics/%s", typeParam), "", nil, &resp)
-	if err != nil {
+// ChangeVmSchedulingRuleState changes VmSchedulingRuleState
+func (cli *ZSClient) ChangeVmSchedulingRuleState(uuid string, params param.ChangeVmSchedulingRuleStateParam) (*view.VmSchedulingRuleInventoryView, error) {
+	resp := view.VmSchedulingRuleInventoryView{}
+	if err := cli.Put("v1/vmSchedulingRule", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// ChangeVmSchedulingRuleState changes VmSchedulingRuleState
-func (cli *ZSClient) ChangeVmSchedulingRuleState(uuid string, params param.ChangeVmSchedulingRuleStateParam) (*view.VmSchedulingRuleInventoryView, error) {
-	resp := view.VmSchedulingRuleInventoryView{}
-	if err := cli.Put("v1/vmSchedulingRule", uuid, params, &resp); err != nil {
+// GetCandidateVmNicsForPortMirror gets CandidateVmNicsForPortMirror by uuid
+func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, typeParam string) (*view.VmNicInventoryView, error) {
+	var resp view.VmNicInventoryView
+	err := cli.GetWithSpec("v1/port-mirrors", portMirrorUuid, fmt.Sprintf("vm-instances/candidate-nics/%s", typeParam), "", nil, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8143,19 +8143,19 @@ func (cli *ZSClient) DeleteEcsSecurityGroupRuleRemote(uuid string, deleteMode pa
 	return cli.Delete("v1/hybrid/aliyun/security-group-rule/remote", uuid, string(deleteMode))
 }
 
-// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
-func (cli *ZSClient) DetachAliyunDiskFromEcs(params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
-	resp := view.DetachAliyunDiskFromEcsEventView{}
-	if err := cli.Post("v1/hybrid/aliyun/disk", params, &resp); err != nil {
+// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
+func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(uuid string) (*view.AffinityGroupInventoryView, error) {
+	var resp view.AffinityGroupInventoryView
+	if err := cli.Get("v1/affinityGroup/attachingVm", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
-func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(uuid string) (*view.AffinityGroupInventoryView, error) {
-	var resp view.AffinityGroupInventoryView
-	if err := cli.Get("v1/affinityGroup/attachingVm", uuid, nil, &resp); err != nil {
+// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
+func (cli *ZSClient) DetachAliyunDiskFromEcs(params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
+	resp := view.DetachAliyunDiskFromEcsEventView{}
+	if err := cli.Post("v1/hybrid/aliyun/disk", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

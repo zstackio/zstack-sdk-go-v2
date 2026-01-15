@@ -16,7 +16,7 @@ type UpdateBlockPrimaryStorageParamDetail struct {
 // UpdateBlockPrimaryStorageParam UpdateBlockPrimaryStorage request param
 type UpdateBlockPrimaryStorageParam struct {
 	BaseParam
-	UpdateBlockPrimaryStorage UpdateBlockPrimaryStorageParamDetail `json:"updateBlockPrimaryStorage"`
+	Params UpdateBlockPrimaryStorageParamDetail `json:"updateBlockPrimaryStorage"`
 }
 // AddBlockPrimaryStorageParamDetail AddBlockPrimaryStorage detail param
 type AddBlockPrimaryStorageParamDetail struct {
@@ -34,5 +34,5 @@ type AddBlockPrimaryStorageParamDetail struct {
 // AddBlockPrimaryStorageParam AddBlockPrimaryStorage request param
 type AddBlockPrimaryStorageParam struct {
 	BaseParam
-	AddBlockPrimaryStorage AddBlockPrimaryStorageParamDetail `json:"addBlockPrimaryStorage"`
+	Params AddBlockPrimaryStorageParamDetail `json:"addBlockPrimaryStorage"`
 }

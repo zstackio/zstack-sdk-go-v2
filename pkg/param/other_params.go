@@ -11,7 +11,7 @@ type ChangeIAM2OrganizationStateParamDetail struct {
 // ChangeIAM2OrganizationStateParam ChangeIAM2OrganizationState request param
 type ChangeIAM2OrganizationStateParam struct {
 	BaseParam
-	ChangeIAM2OrganizationState ChangeIAM2OrganizationStateParamDetail `json:"changeIAM2OrganizationState"`
+	Params ChangeIAM2OrganizationStateParamDetail `json:"changeIAM2OrganizationState"`
 }
 // CreateAutoScalingGroupAddingNewInstanceRuleParamDetail CreateAutoScalingGroupAddingNewInstanceRule detail param
 type CreateAutoScalingGroupAddingNewInstanceRuleParamDetail struct {
@@ -29,7 +29,7 @@ type CreateAutoScalingGroupAddingNewInstanceRuleParamDetail struct {
 // CreateAutoScalingGroupAddingNewInstanceRuleParam CreateAutoScalingGroupAddingNewInstanceRule request param
 type CreateAutoScalingGroupAddingNewInstanceRuleParam struct {
 	BaseParam
-	CreateAutoScalingGroupAddingNewInstanceRule CreateAutoScalingGroupAddingNewInstanceRuleParamDetail `json:"createAutoScalingGroupAddingNewInstanceRule"`
+	Params CreateAutoScalingGroupAddingNewInstanceRuleParamDetail `json:"createAutoScalingGroupAddingNewInstanceRule"`
 }
 // SetServiceTypeOnHostNetworkBondingParamDetail SetServiceTypeOnHostNetworkBonding detail param
 type SetServiceTypeOnHostNetworkBondingParamDetail struct {
@@ -41,7 +41,7 @@ type SetServiceTypeOnHostNetworkBondingParamDetail struct {
 // SetServiceTypeOnHostNetworkBondingParam SetServiceTypeOnHostNetworkBonding request param
 type SetServiceTypeOnHostNetworkBondingParam struct {
 	BaseParam
-	SetServiceTypeOnHostNetworkBonding SetServiceTypeOnHostNetworkBondingParamDetail `json:"setServiceTypeOnHostNetworkBonding"`
+	Params SetServiceTypeOnHostNetworkBondingParamDetail `json:"setServiceTypeOnHostNetworkBonding"`
 }
 // GetCreateEcsImageProgressParamDetail GetCreateEcsImageProgress detail param
 type GetCreateEcsImageProgressParamDetail struct {
@@ -52,7 +52,7 @@ type GetCreateEcsImageProgressParamDetail struct {
 // GetCreateEcsImageProgressParam GetCreateEcsImageProgress request param
 type GetCreateEcsImageProgressParam struct {
 	BaseParam
-	GetCreateEcsImageProgress GetCreateEcsImageProgressParamDetail `json:"getCreateEcsImageProgress"`
+	Params GetCreateEcsImageProgressParamDetail `json:"getCreateEcsImageProgress"`
 }
 // AddAttributesToIAM2OrganizationParamDetail AddAttributesToIAM2Organization detail param
 type AddAttributesToIAM2OrganizationParamDetail struct {
@@ -63,7 +63,7 @@ type AddAttributesToIAM2OrganizationParamDetail struct {
 // AddAttributesToIAM2OrganizationParam AddAttributesToIAM2Organization request param
 type AddAttributesToIAM2OrganizationParam struct {
 	BaseParam
-	AddAttributesToIAM2Organization AddAttributesToIAM2OrganizationParamDetail `json:"addAttributesToIAM2Organization"`
+	Params AddAttributesToIAM2OrganizationParamDetail `json:"addAttributesToIAM2Organization"`
 }
 // AddAccessControlListToLoadBalancerParamDetail AddAccessControlListToLoadBalancer detail param
 type AddAccessControlListToLoadBalancerParamDetail struct {
@@ -76,7 +76,7 @@ type AddAccessControlListToLoadBalancerParamDetail struct {
 // AddAccessControlListToLoadBalancerParam AddAccessControlListToLoadBalancer request param
 type AddAccessControlListToLoadBalancerParam struct {
 	BaseParam
-	AddAccessControlListToLoadBalancer AddAccessControlListToLoadBalancerParamDetail `json:"addAccessControlListToLoadBalancer"`
+	Params AddAccessControlListToLoadBalancerParamDetail `json:"addAccessControlListToLoadBalancer"`
 }
 // LogOutParamDetail LogOut detail param
 type LogOutParamDetail struct {
@@ -87,7 +87,7 @@ type LogOutParamDetail struct {
 // LogOutParam LogOut request param
 type LogOutParam struct {
 	BaseParam
-	LogOut LogOutParamDetail `json:"logOut"`
+	Params LogOutParamDetail `json:"logOut"`
 }
 // GetVmXmlHookScriptParamDetail GetVmXmlHookScript detail param
 type GetVmXmlHookScriptParamDetail struct {
@@ -97,7 +97,7 @@ type GetVmXmlHookScriptParamDetail struct {
 // GetVmXmlHookScriptParam GetVmXmlHookScript request param
 type GetVmXmlHookScriptParam struct {
 	BaseParam
-	GetVmXmlHookScript GetVmXmlHookScriptParamDetail `json:"getVmXmlHookScript"`
+	Params GetVmXmlHookScriptParamDetail `json:"getVmXmlHookScript"`
 }
 // AttachHybridKeyParamDetail AttachHybridKey detail param
 type AttachHybridKeyParamDetail struct {
@@ -107,7 +107,7 @@ type AttachHybridKeyParamDetail struct {
 // AttachHybridKeyParam AttachHybridKey request param
 type AttachHybridKeyParam struct {
 	BaseParam
-	AttachHybridKey AttachHybridKeyParamDetail `json:"attachHybridKey"`
+	Params AttachHybridKeyParamDetail `json:"attachHybridKey"`
 }
 // GetImageQgaParamDetail GetImageQga detail param
 type GetImageQgaParamDetail struct {
@@ -117,7 +117,7 @@ type GetImageQgaParamDetail struct {
 // GetImageQgaParam GetImageQga request param
 type GetImageQgaParam struct {
 	BaseParam
-	GetImageQga GetImageQgaParamDetail `json:"getImageQga"`
+	Params GetImageQgaParamDetail `json:"getImageQga"`
 }
 // GetInterdependentL3NetworksBackupStoragesParamDetail GetInterdependentL3NetworksBackupStorages detail param
 type GetInterdependentL3NetworksBackupStoragesParamDetail struct {
@@ -129,7 +129,7 @@ type GetInterdependentL3NetworksBackupStoragesParamDetail struct {
 // GetInterdependentL3NetworksBackupStoragesParam GetInterdependentL3NetworksBackupStorages request param
 type GetInterdependentL3NetworksBackupStoragesParam struct {
 	BaseParam
-	GetInterdependentL3NetworksBackupStorages GetInterdependentL3NetworksBackupStoragesParamDetail `json:"getInterdependentL3NetworksBackupStorages"`
+	Params GetInterdependentL3NetworksBackupStoragesParamDetail `json:"getInterdependentL3NetworksBackupStorages"`
 }
 // DeleteBackupFileInPublicParamDetail DeleteBackupFileInPublic detail param
 type DeleteBackupFileInPublicParamDetail struct {
@@ -142,7 +142,7 @@ type DeleteBackupFileInPublicParamDetail struct {
 // DeleteBackupFileInPublicParam DeleteBackupFileInPublic request param
 type DeleteBackupFileInPublicParam struct {
 	BaseParam
-	DeleteBackupFileInPublic DeleteBackupFileInPublicParamDetail `json:"deleteBackupFileInPublic"`
+	Params DeleteBackupFileInPublicParamDetail `json:"deleteBackupFileInPublic"`
 }
 // BatchCreateIAM2VirtualIDFromConfigFileParamDetail BatchCreateIAM2VirtualIDFromConfigFile detail param
 type BatchCreateIAM2VirtualIDFromConfigFileParamDetail struct {
@@ -154,7 +154,7 @@ type BatchCreateIAM2VirtualIDFromConfigFileParamDetail struct {
 // BatchCreateIAM2VirtualIDFromConfigFileParam BatchCreateIAM2VirtualIDFromConfigFile request param
 type BatchCreateIAM2VirtualIDFromConfigFileParam struct {
 	BaseParam
-	BatchCreateIAM2VirtualIDFromConfigFile BatchCreateIAM2VirtualIDFromConfigFileParamDetail `json:"batchCreateIAM2VirtualIDFromConfigFile"`
+	Params BatchCreateIAM2VirtualIDFromConfigFileParamDetail `json:"batchCreateIAM2VirtualIDFromConfigFile"`
 }
 // SetVmClockTrackParamDetail SetVmClockTrack detail param
 type SetVmClockTrackParamDetail struct {
@@ -167,7 +167,7 @@ type SetVmClockTrackParamDetail struct {
 // SetVmClockTrackParam SetVmClockTrack request param
 type SetVmClockTrackParam struct {
 	BaseParam
-	SetVmClockTrack SetVmClockTrackParamDetail `json:"setVmClockTrack"`
+	Params SetVmClockTrackParamDetail `json:"setVmClockTrack"`
 }
 // UpdateEmailMonitorTriggerActionParamDetail UpdateEmailMonitorTriggerAction detail param
 type UpdateEmailMonitorTriggerActionParamDetail struct {
@@ -181,7 +181,7 @@ type UpdateEmailMonitorTriggerActionParamDetail struct {
 // UpdateEmailMonitorTriggerActionParam UpdateEmailMonitorTriggerAction request param
 type UpdateEmailMonitorTriggerActionParam struct {
 	BaseParam
-	UpdateEmailMonitorTriggerAction UpdateEmailMonitorTriggerActionParamDetail `json:"updateEmailMonitorTriggerAction"`
+	Params UpdateEmailMonitorTriggerActionParamDetail `json:"updateEmailMonitorTriggerAction"`
 }
 // SyncDataCenterFromRemoteParamDetail SyncDataCenterFromRemote detail param
 type SyncDataCenterFromRemoteParamDetail struct {
@@ -193,7 +193,7 @@ type SyncDataCenterFromRemoteParamDetail struct {
 // SyncDataCenterFromRemoteParam SyncDataCenterFromRemote request param
 type SyncDataCenterFromRemoteParam struct {
 	BaseParam
-	SyncDataCenterFromRemote SyncDataCenterFromRemoteParamDetail `json:"syncDataCenterFromRemote"`
+	Params SyncDataCenterFromRemoteParamDetail `json:"syncDataCenterFromRemote"`
 }
 // ChangeBackupStorageStateParamDetail ChangeBackupStorageState detail param
 type ChangeBackupStorageStateParamDetail struct {
@@ -204,7 +204,7 @@ type ChangeBackupStorageStateParamDetail struct {
 // ChangeBackupStorageStateParam ChangeBackupStorageState request param
 type ChangeBackupStorageStateParam struct {
 	BaseParam
-	ChangeBackupStorageState ChangeBackupStorageStateParamDetail `json:"changeBackupStorageState"`
+	Params ChangeBackupStorageStateParamDetail `json:"changeBackupStorageState"`
 }
 // SetVmInstanceHygonMdevParamDetail SetVmInstanceHygonMdev detail param
 type SetVmInstanceHygonMdevParamDetail struct {
@@ -215,7 +215,7 @@ type SetVmInstanceHygonMdevParamDetail struct {
 // SetVmInstanceHygonMdevParam SetVmInstanceHygonMdev request param
 type SetVmInstanceHygonMdevParam struct {
 	BaseParam
-	SetVmInstanceHygonMdev SetVmInstanceHygonMdevParamDetail `json:"setVmInstanceHygonMdev"`
+	Params SetVmInstanceHygonMdevParamDetail `json:"setVmInstanceHygonMdev"`
 }
 // GetCandidateIsoForAttachingVmParamDetail GetCandidateIsoForAttachingVm detail param
 type GetCandidateIsoForAttachingVmParamDetail struct {
@@ -225,7 +225,7 @@ type GetCandidateIsoForAttachingVmParamDetail struct {
 // GetCandidateIsoForAttachingVmParam GetCandidateIsoForAttachingVm request param
 type GetCandidateIsoForAttachingVmParam struct {
 	BaseParam
-	GetCandidateIsoForAttachingVm GetCandidateIsoForAttachingVmParamDetail `json:"getCandidateIsoForAttachingVm"`
+	Params GetCandidateIsoForAttachingVmParamDetail `json:"getCandidateIsoForAttachingVm"`
 }
 // SecurityMachineDetectSyncParamDetail SecurityMachineDetectSync detail param
 type SecurityMachineDetectSyncParamDetail struct {
@@ -235,7 +235,7 @@ type SecurityMachineDetectSyncParamDetail struct {
 // SecurityMachineDetectSyncParam SecurityMachineDetectSync request param
 type SecurityMachineDetectSyncParam struct {
 	BaseParam
-	SecurityMachineDetectSync SecurityMachineDetectSyncParamDetail `json:"securityMachineDetectSync"`
+	Params SecurityMachineDetectSyncParamDetail `json:"securityMachineDetectSync"`
 }
 // ChangeSecurityGroupStateParamDetail ChangeSecurityGroupState detail param
 type ChangeSecurityGroupStateParamDetail struct {
@@ -246,7 +246,7 @@ type ChangeSecurityGroupStateParamDetail struct {
 // ChangeSecurityGroupStateParam ChangeSecurityGroupState request param
 type ChangeSecurityGroupStateParam struct {
 	BaseParam
-	ChangeSecurityGroupState ChangeSecurityGroupStateParamDetail `json:"changeSecurityGroupState"`
+	Params ChangeSecurityGroupStateParamDetail `json:"changeSecurityGroupState"`
 }
 // ChangeBareMetal2ChassisOfferingStateParamDetail ChangeBareMetal2ChassisOfferingState detail param
 type ChangeBareMetal2ChassisOfferingStateParamDetail struct {
@@ -257,7 +257,7 @@ type ChangeBareMetal2ChassisOfferingStateParamDetail struct {
 // ChangeBareMetal2ChassisOfferingStateParam ChangeBareMetal2ChassisOfferingState request param
 type ChangeBareMetal2ChassisOfferingStateParam struct {
 	BaseParam
-	ChangeBareMetal2ChassisOfferingState ChangeBareMetal2ChassisOfferingStateParamDetail `json:"changeBareMetal2ChassisOfferingState"`
+	Params ChangeBareMetal2ChassisOfferingStateParamDetail `json:"changeBareMetal2ChassisOfferingState"`
 }
 // GetPrometheusMetricLabelValueParamDetail GetPrometheusMetricLabelValue detail param
 type GetPrometheusMetricLabelValueParamDetail struct {
@@ -272,7 +272,7 @@ type GetPrometheusMetricLabelValueParamDetail struct {
 // GetPrometheusMetricLabelValueParam GetPrometheusMetricLabelValue request param
 type GetPrometheusMetricLabelValueParam struct {
 	BaseParam
-	GetPrometheusMetricLabelValue GetPrometheusMetricLabelValueParamDetail `json:"getPrometheusMetricLabelValue"`
+	Params GetPrometheusMetricLabelValueParamDetail `json:"getPrometheusMetricLabelValue"`
 }
 // UpdateAlarmDataParamDetail UpdateAlarmData detail param
 type UpdateAlarmDataParamDetail struct {
@@ -286,7 +286,7 @@ type UpdateAlarmDataParamDetail struct {
 // UpdateAlarmDataParam UpdateAlarmData request param
 type UpdateAlarmDataParam struct {
 	BaseParam
-	UpdateAlarmData UpdateAlarmDataParamDetail `json:"updateAlarmData"`
+	Params UpdateAlarmDataParamDetail `json:"updateAlarmData"`
 }
 // CreateVpnIpsecConfigParamDetail CreateVpnIpsecConfig detail param
 type CreateVpnIpsecConfigParamDetail struct {
@@ -303,7 +303,7 @@ type CreateVpnIpsecConfigParamDetail struct {
 // CreateVpnIpsecConfigParam CreateVpnIpsecConfig request param
 type CreateVpnIpsecConfigParam struct {
 	BaseParam
-	CreateVpnIpsecConfig CreateVpnIpsecConfigParamDetail `json:"createVpnIpsecConfig"`
+	Params CreateVpnIpsecConfigParamDetail `json:"createVpnIpsecConfig"`
 }
 // SNSEmailTestConnectionParamDetail SNSEmailTestConnection detail param
 type SNSEmailTestConnectionParamDetail struct {
@@ -317,7 +317,7 @@ type SNSEmailTestConnectionParamDetail struct {
 // SNSEmailTestConnectionParam SNSEmailTestConnection request param
 type SNSEmailTestConnectionParam struct {
 	BaseParam
-	SNSEmailTestConnection SNSEmailTestConnectionParamDetail `json:"sNSEmailTestConnection"`
+	Params SNSEmailTestConnectionParamDetail `json:"sNSEmailTestConnection"`
 }
 // RegisterLicenseServerParamDetail RegisterLicenseServer detail param
 type RegisterLicenseServerParamDetail struct {
@@ -328,7 +328,7 @@ type RegisterLicenseServerParamDetail struct {
 // RegisterLicenseServerParam RegisterLicenseServer request param
 type RegisterLicenseServerParam struct {
 	BaseParam
-	RegisterLicenseServer RegisterLicenseServerParamDetail `json:"registerLicenseServer"`
+	Params RegisterLicenseServerParamDetail `json:"registerLicenseServer"`
 }
 // ChangeAutoScalingGroupStateParamDetail ChangeAutoScalingGroupState detail param
 type ChangeAutoScalingGroupStateParamDetail struct {
@@ -339,7 +339,7 @@ type ChangeAutoScalingGroupStateParamDetail struct {
 // ChangeAutoScalingGroupStateParam ChangeAutoScalingGroupState request param
 type ChangeAutoScalingGroupStateParam struct {
 	BaseParam
-	ChangeAutoScalingGroupState ChangeAutoScalingGroupStateParamDetail `json:"changeAutoScalingGroupState"`
+	Params ChangeAutoScalingGroupStateParamDetail `json:"changeAutoScalingGroupState"`
 }
 // CreateAutoScalingGroupRemovalInstanceRuleParamDetail CreateAutoScalingGroupRemovalInstanceRule detail param
 type CreateAutoScalingGroupRemovalInstanceRuleParamDetail struct {
@@ -358,7 +358,7 @@ type CreateAutoScalingGroupRemovalInstanceRuleParamDetail struct {
 // CreateAutoScalingGroupRemovalInstanceRuleParam CreateAutoScalingGroupRemovalInstanceRule request param
 type CreateAutoScalingGroupRemovalInstanceRuleParam struct {
 	BaseParam
-	CreateAutoScalingGroupRemovalInstanceRule CreateAutoScalingGroupRemovalInstanceRuleParamDetail `json:"createAutoScalingGroupRemovalInstanceRule"`
+	Params CreateAutoScalingGroupRemovalInstanceRuleParamDetail `json:"createAutoScalingGroupRemovalInstanceRule"`
 }
 // ChangeSlbGroupMonitorIpsParamDetail ChangeSlbGroupMonitorIps detail param
 type ChangeSlbGroupMonitorIpsParamDetail struct {
@@ -369,7 +369,7 @@ type ChangeSlbGroupMonitorIpsParamDetail struct {
 // ChangeSlbGroupMonitorIpsParam ChangeSlbGroupMonitorIps request param
 type ChangeSlbGroupMonitorIpsParam struct {
 	BaseParam
-	ChangeSlbGroupMonitorIps ChangeSlbGroupMonitorIpsParamDetail `json:"changeSlbGroupMonitorIps"`
+	Params ChangeSlbGroupMonitorIpsParamDetail `json:"changeSlbGroupMonitorIps"`
 }
 // DeleteModelEvaluationTasksParamDetail DeleteModelEvaluationTasks detail param
 type DeleteModelEvaluationTasksParamDetail struct {
@@ -379,7 +379,7 @@ type DeleteModelEvaluationTasksParamDetail struct {
 // DeleteModelEvaluationTasksParam DeleteModelEvaluationTasks request param
 type DeleteModelEvaluationTasksParam struct {
 	BaseParam
-	DeleteModelEvaluationTasks DeleteModelEvaluationTasksParamDetail `json:"deleteModelEvaluationTasks"`
+	Params DeleteModelEvaluationTasksParamDetail `json:"deleteModelEvaluationTasks"`
 }
 // AttachL3NetworkToVmParamDetail AttachL3NetworkToVm detail param
 type AttachL3NetworkToVmParamDetail struct {
@@ -394,7 +394,7 @@ type AttachL3NetworkToVmParamDetail struct {
 // AttachL3NetworkToVmParam AttachL3NetworkToVm request param
 type AttachL3NetworkToVmParam struct {
 	BaseParam
-	AttachL3NetworkToVm AttachL3NetworkToVmParamDetail `json:"attachL3NetworkToVm"`
+	Params AttachL3NetworkToVmParamDetail `json:"attachL3NetworkToVm"`
 }
 // AttachPrimaryStorageToClusterParamDetail AttachPrimaryStorageToCluster detail param
 type AttachPrimaryStorageToClusterParamDetail struct {
@@ -405,7 +405,7 @@ type AttachPrimaryStorageToClusterParamDetail struct {
 // AttachPrimaryStorageToClusterParam AttachPrimaryStorageToCluster request param
 type AttachPrimaryStorageToClusterParam struct {
 	BaseParam
-	AttachPrimaryStorageToCluster AttachPrimaryStorageToClusterParamDetail `json:"attachPrimaryStorageToCluster"`
+	Params AttachPrimaryStorageToClusterParamDetail `json:"attachPrimaryStorageToCluster"`
 }
 // AttachL2NetworkToClusterParamDetail AttachL2NetworkToCluster detail param
 type AttachL2NetworkToClusterParamDetail struct {
@@ -417,7 +417,7 @@ type AttachL2NetworkToClusterParamDetail struct {
 // AttachL2NetworkToClusterParam AttachL2NetworkToCluster request param
 type AttachL2NetworkToClusterParam struct {
 	BaseParam
-	AttachL2NetworkToCluster AttachL2NetworkToClusterParamDetail `json:"attachL2NetworkToCluster"`
+	Params AttachL2NetworkToClusterParamDetail `json:"attachL2NetworkToCluster"`
 }
 // ChangeVmNicTypeParamDetail ChangeVmNicType detail param
 type ChangeVmNicTypeParamDetail struct {
@@ -428,7 +428,7 @@ type ChangeVmNicTypeParamDetail struct {
 // ChangeVmNicTypeParam ChangeVmNicType request param
 type ChangeVmNicTypeParam struct {
 	BaseParam
-	ChangeVmNicType ChangeVmNicTypeParamDetail `json:"changeVmNicType"`
+	Params ChangeVmNicTypeParamDetail `json:"changeVmNicType"`
 }
 // ChangeFirewallRuleStateParamDetail ChangeFirewallRuleState detail param
 type ChangeFirewallRuleStateParamDetail struct {
@@ -439,7 +439,7 @@ type ChangeFirewallRuleStateParamDetail struct {
 // ChangeFirewallRuleStateParam ChangeFirewallRuleState request param
 type ChangeFirewallRuleStateParam struct {
 	BaseParam
-	ChangeFirewallRuleState ChangeFirewallRuleStateParamDetail `json:"changeFirewallRuleState"`
+	Params ChangeFirewallRuleStateParamDetail `json:"changeFirewallRuleState"`
 }
 // GetMdevDeviceCandidatesParamDetail GetMdevDeviceCandidates detail param
 type GetMdevDeviceCandidatesParamDetail struct {
@@ -452,7 +452,7 @@ type GetMdevDeviceCandidatesParamDetail struct {
 // GetMdevDeviceCandidatesParam GetMdevDeviceCandidates request param
 type GetMdevDeviceCandidatesParam struct {
 	BaseParam
-	GetMdevDeviceCandidates GetMdevDeviceCandidatesParamDetail `json:"getMdevDeviceCandidates"`
+	Params GetMdevDeviceCandidatesParamDetail `json:"getMdevDeviceCandidates"`
 }
 // GetTwoFactorAuthenticationStateParamDetail GetTwoFactorAuthenticationState detail param
 type GetTwoFactorAuthenticationStateParamDetail struct {
@@ -461,7 +461,7 @@ type GetTwoFactorAuthenticationStateParamDetail struct {
 // GetTwoFactorAuthenticationStateParam GetTwoFactorAuthenticationState request param
 type GetTwoFactorAuthenticationStateParam struct {
 	BaseParam
-	GetTwoFactorAuthenticationState GetTwoFactorAuthenticationStateParamDetail `json:"getTwoFactorAuthenticationState"`
+	Params GetTwoFactorAuthenticationStateParamDetail `json:"getTwoFactorAuthenticationState"`
 }
 // BootstrapMiniHostParamDetail BootstrapMiniHost detail param
 type BootstrapMiniHostParamDetail struct {
@@ -474,7 +474,7 @@ type BootstrapMiniHostParamDetail struct {
 // BootstrapMiniHostParam BootstrapMiniHost request param
 type BootstrapMiniHostParam struct {
 	BaseParam
-	BootstrapMiniHost BootstrapMiniHostParamDetail `json:"bootstrapMiniHost"`
+	Params BootstrapMiniHostParamDetail `json:"bootstrapMiniHost"`
 }
 // RemoveActionFromAlarmParamDetail RemoveActionFromAlarm detail param
 type RemoveActionFromAlarmParamDetail struct {
@@ -486,7 +486,7 @@ type RemoveActionFromAlarmParamDetail struct {
 // RemoveActionFromAlarmParam RemoveActionFromAlarm request param
 type RemoveActionFromAlarmParam struct {
 	BaseParam
-	RemoveActionFromAlarm RemoveActionFromAlarmParamDetail `json:"removeActionFromAlarm"`
+	Params RemoveActionFromAlarmParamDetail `json:"removeActionFromAlarm"`
 }
 // ChangeEipStateParamDetail ChangeEipState detail param
 type ChangeEipStateParamDetail struct {
@@ -497,7 +497,7 @@ type ChangeEipStateParamDetail struct {
 // ChangeEipStateParam ChangeEipState request param
 type ChangeEipStateParam struct {
 	BaseParam
-	ChangeEipState ChangeEipStateParamDetail `json:"changeEipState"`
+	Params ChangeEipStateParamDetail `json:"changeEipState"`
 }
 // DetachSshKeyPairFromVmInstanceParamDetail DetachSshKeyPairFromVmInstance detail param
 type DetachSshKeyPairFromVmInstanceParamDetail struct {
@@ -508,7 +508,7 @@ type DetachSshKeyPairFromVmInstanceParamDetail struct {
 // DetachSshKeyPairFromVmInstanceParam DetachSshKeyPairFromVmInstance request param
 type DetachSshKeyPairFromVmInstanceParam struct {
 	BaseParam
-	DetachSshKeyPairFromVmInstance DetachSshKeyPairFromVmInstanceParamDetail `json:"detachSshKeyPairFromVmInstance"`
+	Params DetachSshKeyPairFromVmInstanceParamDetail `json:"detachSshKeyPairFromVmInstance"`
 }
 // GetPrimaryStorageCandidatesForVmMigrationParamDetail GetPrimaryStorageCandidatesForVmMigration detail param
 type GetPrimaryStorageCandidatesForVmMigrationParamDetail struct {
@@ -520,7 +520,7 @@ type GetPrimaryStorageCandidatesForVmMigrationParamDetail struct {
 // GetPrimaryStorageCandidatesForVmMigrationParam GetPrimaryStorageCandidatesForVmMigration request param
 type GetPrimaryStorageCandidatesForVmMigrationParam struct {
 	BaseParam
-	GetPrimaryStorageCandidatesForVmMigration GetPrimaryStorageCandidatesForVmMigrationParamDetail `json:"getPrimaryStorageCandidatesForVmMigration"`
+	Params GetPrimaryStorageCandidatesForVmMigrationParamDetail `json:"getPrimaryStorageCandidatesForVmMigration"`
 }
 // PrimaryStorageMigrateVolumeParamDetail PrimaryStorageMigrateVolume detail param
 type PrimaryStorageMigrateVolumeParamDetail struct {
@@ -532,7 +532,7 @@ type PrimaryStorageMigrateVolumeParamDetail struct {
 // PrimaryStorageMigrateVolumeParam PrimaryStorageMigrateVolume request param
 type PrimaryStorageMigrateVolumeParam struct {
 	BaseParam
-	PrimaryStorageMigrateVolume PrimaryStorageMigrateVolumeParamDetail `json:"primaryStorageMigrateVolume"`
+	Params PrimaryStorageMigrateVolumeParamDetail `json:"primaryStorageMigrateVolume"`
 }
 // DeleteHybridEipRemoteParamDetail DeleteHybridEipRemote detail param
 type DeleteHybridEipRemoteParamDetail struct {
@@ -544,7 +544,7 @@ type DeleteHybridEipRemoteParamDetail struct {
 // DeleteHybridEipRemoteParam DeleteHybridEipRemote request param
 type DeleteHybridEipRemoteParam struct {
 	BaseParam
-	DeleteHybridEipRemote DeleteHybridEipRemoteParamDetail `json:"deleteHybridEipRemote"`
+	Params DeleteHybridEipRemoteParamDetail `json:"deleteHybridEipRemote"`
 }
 // DeleteModelServiceInstanceGroupsParamDetail DeleteModelServiceInstanceGroups detail param
 type DeleteModelServiceInstanceGroupsParamDetail struct {
@@ -555,7 +555,7 @@ type DeleteModelServiceInstanceGroupsParamDetail struct {
 // DeleteModelServiceInstanceGroupsParam DeleteModelServiceInstanceGroups request param
 type DeleteModelServiceInstanceGroupsParam struct {
 	BaseParam
-	DeleteModelServiceInstanceGroups DeleteModelServiceInstanceGroupsParamDetail `json:"deleteModelServiceInstanceGroups"`
+	Params DeleteModelServiceInstanceGroupsParamDetail `json:"deleteModelServiceInstanceGroups"`
 }
 // GetVmBootOrderParamDetail GetVmBootOrder detail param
 type GetVmBootOrderParamDetail struct {
@@ -565,7 +565,7 @@ type GetVmBootOrderParamDetail struct {
 // GetVmBootOrderParam GetVmBootOrder request param
 type GetVmBootOrderParam struct {
 	BaseParam
-	GetVmBootOrder GetVmBootOrderParamDetail `json:"getVmBootOrder"`
+	Params GetVmBootOrderParamDetail `json:"getVmBootOrder"`
 }
 // SetVmBootOrderParamDetail SetVmBootOrder detail param
 type SetVmBootOrderParamDetail struct {
@@ -576,7 +576,7 @@ type SetVmBootOrderParamDetail struct {
 // SetVmBootOrderParam SetVmBootOrder request param
 type SetVmBootOrderParam struct {
 	BaseParam
-	SetVmBootOrder SetVmBootOrderParamDetail `json:"setVmBootOrder"`
+	Params SetVmBootOrderParamDetail `json:"setVmBootOrder"`
 }
 // GetDatabaseBackupFromImageStoreParamDetail GetDatabaseBackupFromImageStore detail param
 type GetDatabaseBackupFromImageStoreParamDetail struct {
@@ -587,7 +587,7 @@ type GetDatabaseBackupFromImageStoreParamDetail struct {
 // GetDatabaseBackupFromImageStoreParam GetDatabaseBackupFromImageStore request param
 type GetDatabaseBackupFromImageStoreParam struct {
 	BaseParam
-	GetDatabaseBackupFromImageStore GetDatabaseBackupFromImageStoreParamDetail `json:"getDatabaseBackupFromImageStore"`
+	Params GetDatabaseBackupFromImageStoreParamDetail `json:"getDatabaseBackupFromImageStore"`
 }
 // SyncEcsVSwitchFromRemoteParamDetail SyncEcsVSwitchFromRemote detail param
 type SyncEcsVSwitchFromRemoteParamDetail struct {
@@ -600,7 +600,7 @@ type SyncEcsVSwitchFromRemoteParamDetail struct {
 // SyncEcsVSwitchFromRemoteParam SyncEcsVSwitchFromRemote request param
 type SyncEcsVSwitchFromRemoteParam struct {
 	BaseParam
-	SyncEcsVSwitchFromRemote SyncEcsVSwitchFromRemoteParamDetail `json:"syncEcsVSwitchFromRemote"`
+	Params SyncEcsVSwitchFromRemoteParamDetail `json:"syncEcsVSwitchFromRemote"`
 }
 // LocateLocalRaidPhysicalDriveParamDetail LocateLocalRaidPhysicalDrive detail param
 type LocateLocalRaidPhysicalDriveParamDetail struct {
@@ -611,7 +611,7 @@ type LocateLocalRaidPhysicalDriveParamDetail struct {
 // LocateLocalRaidPhysicalDriveParam LocateLocalRaidPhysicalDrive request param
 type LocateLocalRaidPhysicalDriveParam struct {
 	BaseParam
-	LocateLocalRaidPhysicalDrive LocateLocalRaidPhysicalDriveParamDetail `json:"locateLocalRaidPhysicalDrive"`
+	Params LocateLocalRaidPhysicalDriveParamDetail `json:"locateLocalRaidPhysicalDrive"`
 }
 // CleanUpBaremetalChassisBondingParamDetail CleanUpBaremetalChassisBonding detail param
 type CleanUpBaremetalChassisBondingParamDetail struct {
@@ -621,7 +621,7 @@ type CleanUpBaremetalChassisBondingParamDetail struct {
 // CleanUpBaremetalChassisBondingParam CleanUpBaremetalChassisBonding request param
 type CleanUpBaremetalChassisBondingParam struct {
 	BaseParam
-	CleanUpBaremetalChassisBonding CleanUpBaremetalChassisBondingParamDetail `json:"cleanUpBaremetalChassisBonding"`
+	Params CleanUpBaremetalChassisBondingParamDetail `json:"cleanUpBaremetalChassisBonding"`
 }
 // RemovePciDeviceSpecFromVmInstanceParamDetail RemovePciDeviceSpecFromVmInstance detail param
 type RemovePciDeviceSpecFromVmInstanceParamDetail struct {
@@ -632,7 +632,7 @@ type RemovePciDeviceSpecFromVmInstanceParamDetail struct {
 // RemovePciDeviceSpecFromVmInstanceParam RemovePciDeviceSpecFromVmInstance request param
 type RemovePciDeviceSpecFromVmInstanceParam struct {
 	BaseParam
-	RemovePciDeviceSpecFromVmInstance RemovePciDeviceSpecFromVmInstanceParamDetail `json:"removePciDeviceSpecFromVmInstance"`
+	Params RemovePciDeviceSpecFromVmInstanceParamDetail `json:"removePciDeviceSpecFromVmInstance"`
 }
 // AddIAM2VirtualIDGroupToProjectsParamDetail AddIAM2VirtualIDGroupToProjects detail param
 type AddIAM2VirtualIDGroupToProjectsParamDetail struct {
@@ -642,7 +642,7 @@ type AddIAM2VirtualIDGroupToProjectsParamDetail struct {
 // AddIAM2VirtualIDGroupToProjectsParam AddIAM2VirtualIDGroupToProjects request param
 type AddIAM2VirtualIDGroupToProjectsParam struct {
 	BaseParam
-	AddIAM2VirtualIDGroupToProjects AddIAM2VirtualIDGroupToProjectsParamDetail `json:"addIAM2VirtualIDGroupToProjects"`
+	Params AddIAM2VirtualIDGroupToProjectsParamDetail `json:"addIAM2VirtualIDGroupToProjects"`
 }
 // RemoveServerGroupFromLoadBalancerListenerParamDetail RemoveServerGroupFromLoadBalancerListener detail param
 type RemoveServerGroupFromLoadBalancerListenerParamDetail struct {
@@ -653,7 +653,7 @@ type RemoveServerGroupFromLoadBalancerListenerParamDetail struct {
 // RemoveServerGroupFromLoadBalancerListenerParam RemoveServerGroupFromLoadBalancerListener request param
 type RemoveServerGroupFromLoadBalancerListenerParam struct {
 	BaseParam
-	RemoveServerGroupFromLoadBalancerListener RemoveServerGroupFromLoadBalancerListenerParamDetail `json:"removeServerGroupFromLoadBalancerListener"`
+	Params RemoveServerGroupFromLoadBalancerListenerParamDetail `json:"removeServerGroupFromLoadBalancerListener"`
 }
 // AddSharedBlockToSharedBlockGroupParamDetail AddSharedBlockToSharedBlockGroup detail param
 type AddSharedBlockToSharedBlockGroupParamDetail struct {
@@ -664,7 +664,7 @@ type AddSharedBlockToSharedBlockGroupParamDetail struct {
 // AddSharedBlockToSharedBlockGroupParam AddSharedBlockToSharedBlockGroup request param
 type AddSharedBlockToSharedBlockGroupParam struct {
 	BaseParam
-	AddSharedBlockToSharedBlockGroup AddSharedBlockToSharedBlockGroupParamDetail `json:"addSharedBlockToSharedBlockGroup"`
+	Params AddSharedBlockToSharedBlockGroupParamDetail `json:"addSharedBlockToSharedBlockGroup"`
 }
 // RefreshCaptchaParamDetail RefreshCaptcha detail param
 type RefreshCaptchaParamDetail struct {
@@ -674,7 +674,7 @@ type RefreshCaptchaParamDetail struct {
 // RefreshCaptchaParam RefreshCaptcha request param
 type RefreshCaptchaParam struct {
 	BaseParam
-	RefreshCaptcha RefreshCaptchaParamDetail `json:"refreshCaptcha"`
+	Params RefreshCaptchaParamDetail `json:"refreshCaptcha"`
 }
 // DeleteEcsVSwitchInLocalParamDetail DeleteEcsVSwitchInLocal detail param
 type DeleteEcsVSwitchInLocalParamDetail struct {
@@ -685,7 +685,7 @@ type DeleteEcsVSwitchInLocalParamDetail struct {
 // DeleteEcsVSwitchInLocalParam DeleteEcsVSwitchInLocal request param
 type DeleteEcsVSwitchInLocalParam struct {
 	BaseParam
-	DeleteEcsVSwitchInLocal DeleteEcsVSwitchInLocalParamDetail `json:"deleteEcsVSwitchInLocal"`
+	Params DeleteEcsVSwitchInLocalParamDetail `json:"deleteEcsVSwitchInLocal"`
 }
 // DeleteTagParamDetail DeleteTag detail param
 type DeleteTagParamDetail struct {
@@ -696,7 +696,7 @@ type DeleteTagParamDetail struct {
 // DeleteTagParam DeleteTag request param
 type DeleteTagParam struct {
 	BaseParam
-	DeleteTag DeleteTagParamDetail `json:"deleteTag"`
+	Params DeleteTagParamDetail `json:"deleteTag"`
 }
 // AddIAM2VirtualIDsToOrganizationParamDetail AddIAM2VirtualIDsToOrganization detail param
 type AddIAM2VirtualIDsToOrganizationParamDetail struct {
@@ -707,7 +707,7 @@ type AddIAM2VirtualIDsToOrganizationParamDetail struct {
 // AddIAM2VirtualIDsToOrganizationParam AddIAM2VirtualIDsToOrganization request param
 type AddIAM2VirtualIDsToOrganizationParam struct {
 	BaseParam
-	AddIAM2VirtualIDsToOrganization AddIAM2VirtualIDsToOrganizationParamDetail `json:"addIAM2VirtualIDsToOrganization"`
+	Params AddIAM2VirtualIDsToOrganizationParamDetail `json:"addIAM2VirtualIDsToOrganization"`
 }
 // AttachProvisionNicToBondingParamDetail AttachProvisionNicToBonding detail param
 type AttachProvisionNicToBondingParamDetail struct {
@@ -721,7 +721,7 @@ type AttachProvisionNicToBondingParamDetail struct {
 // AttachProvisionNicToBondingParam AttachProvisionNicToBonding request param
 type AttachProvisionNicToBondingParam struct {
 	BaseParam
-	AttachProvisionNicToBonding AttachProvisionNicToBondingParamDetail `json:"attachProvisionNicToBonding"`
+	Params AttachProvisionNicToBondingParamDetail `json:"attachProvisionNicToBonding"`
 }
 // ExportNbdVolumesParamDetail ExportNbdVolumes detail param
 type ExportNbdVolumesParamDetail struct {
@@ -733,7 +733,7 @@ type ExportNbdVolumesParamDetail struct {
 // ExportNbdVolumesParam ExportNbdVolumes request param
 type ExportNbdVolumesParam struct {
 	BaseParam
-	ExportNbdVolumes ExportNbdVolumesParamDetail `json:"exportNbdVolumes"`
+	Params ExportNbdVolumesParamDetail `json:"exportNbdVolumes"`
 }
 // SelfTestLocalRaidParamDetail SelfTestLocalRaid detail param
 type SelfTestLocalRaidParamDetail struct {
@@ -743,7 +743,7 @@ type SelfTestLocalRaidParamDetail struct {
 // SelfTestLocalRaidParam SelfTestLocalRaid request param
 type SelfTestLocalRaidParam struct {
 	BaseParam
-	SelfTestLocalRaid SelfTestLocalRaidParamDetail `json:"selfTestLocalRaid"`
+	Params SelfTestLocalRaidParamDetail `json:"selfTestLocalRaid"`
 }
 // ChangeSNSApplicationPlatformStateParamDetail ChangeSNSApplicationPlatformState detail param
 type ChangeSNSApplicationPlatformStateParamDetail struct {
@@ -754,7 +754,7 @@ type ChangeSNSApplicationPlatformStateParamDetail struct {
 // ChangeSNSApplicationPlatformStateParam ChangeSNSApplicationPlatformState request param
 type ChangeSNSApplicationPlatformStateParam struct {
 	BaseParam
-	ChangeSNSApplicationPlatformState ChangeSNSApplicationPlatformStateParamDetail `json:"changeSNSApplicationPlatformState"`
+	Params ChangeSNSApplicationPlatformStateParamDetail `json:"changeSNSApplicationPlatformState"`
 }
 // PowerOffBareMetal2ChassisParamDetail PowerOffBareMetal2Chassis detail param
 type PowerOffBareMetal2ChassisParamDetail struct {
@@ -764,7 +764,7 @@ type PowerOffBareMetal2ChassisParamDetail struct {
 // PowerOffBareMetal2ChassisParam PowerOffBareMetal2Chassis request param
 type PowerOffBareMetal2ChassisParam struct {
 	BaseParam
-	PowerOffBareMetal2Chassis PowerOffBareMetal2ChassisParamDetail `json:"powerOffBareMetal2Chassis"`
+	Params PowerOffBareMetal2ChassisParamDetail `json:"powerOffBareMetal2Chassis"`
 }
 // SdnControllerChangeHostParamDetail SdnControllerChangeHost detail param
 type SdnControllerChangeHostParamDetail struct {
@@ -781,7 +781,7 @@ type SdnControllerChangeHostParamDetail struct {
 // SdnControllerChangeHostParam SdnControllerChangeHost request param
 type SdnControllerChangeHostParam struct {
 	BaseParam
-	SdnControllerChangeHost SdnControllerChangeHostParamDetail `json:"sdnControllerChangeHost"`
+	Params SdnControllerChangeHostParamDetail `json:"sdnControllerChangeHost"`
 }
 // UpdateResourcePriceParamDetail UpdateResourcePrice detail param
 type UpdateResourcePriceParamDetail struct {
@@ -793,7 +793,7 @@ type UpdateResourcePriceParamDetail struct {
 // UpdateResourcePriceParam UpdateResourcePrice request param
 type UpdateResourcePriceParam struct {
 	BaseParam
-	UpdateResourcePrice UpdateResourcePriceParamDetail `json:"updateResourcePrice"`
+	Params UpdateResourcePriceParamDetail `json:"updateResourcePrice"`
 }
 // DetachTagFromResourcesParamDetail DetachTagFromResources detail param
 type DetachTagFromResourcesParamDetail struct {
@@ -804,7 +804,7 @@ type DetachTagFromResourcesParamDetail struct {
 // DetachTagFromResourcesParam DetachTagFromResources request param
 type DetachTagFromResourcesParam struct {
 	BaseParam
-	DetachTagFromResources DetachTagFromResourcesParamDetail `json:"detachTagFromResources"`
+	Params DetachTagFromResourcesParamDetail `json:"detachTagFromResources"`
 }
 // ChangeHostStateParamDetail ChangeHostState detail param
 type ChangeHostStateParamDetail struct {
@@ -815,7 +815,7 @@ type ChangeHostStateParamDetail struct {
 // ChangeHostStateParam ChangeHostState request param
 type ChangeHostStateParam struct {
 	BaseParam
-	ChangeHostState ChangeHostStateParamDetail `json:"changeHostState"`
+	Params ChangeHostStateParamDetail `json:"changeHostState"`
 }
 // UpdateVmNicMacParamDetail UpdateVmNicMac detail param
 type UpdateVmNicMacParamDetail struct {
@@ -826,7 +826,7 @@ type UpdateVmNicMacParamDetail struct {
 // UpdateVmNicMacParam UpdateVmNicMac request param
 type UpdateVmNicMacParam struct {
 	BaseParam
-	UpdateVmNicMac UpdateVmNicMacParamDetail `json:"updateVmNicMac"`
+	Params UpdateVmNicMacParamDetail `json:"updateVmNicMac"`
 }
 // DeleteVmInstanceHaLevelParamDetail DeleteVmInstanceHaLevel detail param
 type DeleteVmInstanceHaLevelParamDetail struct {
@@ -836,7 +836,7 @@ type DeleteVmInstanceHaLevelParamDetail struct {
 // DeleteVmInstanceHaLevelParam DeleteVmInstanceHaLevel request param
 type DeleteVmInstanceHaLevelParam struct {
 	BaseParam
-	DeleteVmInstanceHaLevel DeleteVmInstanceHaLevelParamDetail `json:"deleteVmInstanceHaLevel"`
+	Params DeleteVmInstanceHaLevelParamDetail `json:"deleteVmInstanceHaLevel"`
 }
 // DeleteResourcePriceParamDetail DeleteResourcePrice detail param
 type DeleteResourcePriceParamDetail struct {
@@ -848,7 +848,7 @@ type DeleteResourcePriceParamDetail struct {
 // DeleteResourcePriceParam DeleteResourcePrice request param
 type DeleteResourcePriceParam struct {
 	BaseParam
-	DeleteResourcePrice DeleteResourcePriceParamDetail `json:"deleteResourcePrice"`
+	Params DeleteResourcePriceParamDetail `json:"deleteResourcePrice"`
 }
 // CleanUpBareMetal2BondingParamDetail CleanUpBareMetal2Bonding detail param
 type CleanUpBareMetal2BondingParamDetail struct {
@@ -858,7 +858,7 @@ type CleanUpBareMetal2BondingParamDetail struct {
 // CleanUpBareMetal2BondingParam CleanUpBareMetal2Bonding request param
 type CleanUpBareMetal2BondingParam struct {
 	BaseParam
-	CleanUpBareMetal2Bonding CleanUpBareMetal2BondingParamDetail `json:"cleanUpBareMetal2Bonding"`
+	Params CleanUpBareMetal2BondingParamDetail `json:"cleanUpBareMetal2Bonding"`
 }
 // DeleteMetricDataParamDetail DeleteMetricData detail param
 type DeleteMetricDataParamDetail struct {
@@ -870,7 +870,7 @@ type DeleteMetricDataParamDetail struct {
 // DeleteMetricDataParam DeleteMetricData request param
 type DeleteMetricDataParam struct {
 	BaseParam
-	DeleteMetricData DeleteMetricDataParamDetail `json:"deleteMetricData"`
+	Params DeleteMetricDataParamDetail `json:"deleteMetricData"`
 }
 // AddLabelToAlarmParamDetail AddLabelToAlarm detail param
 type AddLabelToAlarmParamDetail struct {
@@ -885,7 +885,7 @@ type AddLabelToAlarmParamDetail struct {
 // AddLabelToAlarmParam AddLabelToAlarm request param
 type AddLabelToAlarmParam struct {
 	BaseParam
-	AddLabelToAlarm AddLabelToAlarmParamDetail `json:"addLabelToAlarm"`
+	Params AddLabelToAlarmParamDetail `json:"addLabelToAlarm"`
 }
 // SyncAliyunRouterInterfaceFromRemoteParamDetail SyncAliyunRouterInterfaceFromRemote detail param
 type SyncAliyunRouterInterfaceFromRemoteParamDetail struct {
@@ -897,7 +897,7 @@ type SyncAliyunRouterInterfaceFromRemoteParamDetail struct {
 // SyncAliyunRouterInterfaceFromRemoteParam SyncAliyunRouterInterfaceFromRemote request param
 type SyncAliyunRouterInterfaceFromRemoteParam struct {
 	BaseParam
-	SyncAliyunRouterInterfaceFromRemote SyncAliyunRouterInterfaceFromRemoteParamDetail `json:"syncAliyunRouterInterfaceFromRemote"`
+	Params SyncAliyunRouterInterfaceFromRemoteParamDetail `json:"syncAliyunRouterInterfaceFromRemote"`
 }
 // ExportVmOvaPackageParamDetail ExportVmOvaPackage detail param
 type ExportVmOvaPackageParamDetail struct {
@@ -912,7 +912,7 @@ type ExportVmOvaPackageParamDetail struct {
 // ExportVmOvaPackageParam ExportVmOvaPackage request param
 type ExportVmOvaPackageParam struct {
 	BaseParam
-	ExportVmOvaPackage ExportVmOvaPackageParamDetail `json:"exportVmOvaPackage"`
+	Params ExportVmOvaPackageParamDetail `json:"exportVmOvaPackage"`
 }
 // RevertVmFromCdpBackupParamDetail RevertVmFromCdpBackup detail param
 type RevertVmFromCdpBackupParamDetail struct {
@@ -929,7 +929,7 @@ type RevertVmFromCdpBackupParamDetail struct {
 // RevertVmFromCdpBackupParam RevertVmFromCdpBackup request param
 type RevertVmFromCdpBackupParam struct {
 	BaseParam
-	RevertVmFromCdpBackup RevertVmFromCdpBackupParamDetail `json:"revertVmFromCdpBackup"`
+	Params RevertVmFromCdpBackupParamDetail `json:"revertVmFromCdpBackup"`
 }
 // SNSFeiShuTestConnectionParamDetail SNSFeiShuTestConnection detail param
 type SNSFeiShuTestConnectionParamDetail struct {
@@ -944,7 +944,7 @@ type SNSFeiShuTestConnectionParamDetail struct {
 // SNSFeiShuTestConnectionParam SNSFeiShuTestConnection request param
 type SNSFeiShuTestConnectionParam struct {
 	BaseParam
-	SNSFeiShuTestConnection SNSFeiShuTestConnectionParamDetail `json:"sNSFeiShuTestConnection"`
+	Params SNSFeiShuTestConnectionParamDetail `json:"sNSFeiShuTestConnection"`
 }
 // GetSchedulerExecutionReportParamDetail GetSchedulerExecutionReport detail param
 type GetSchedulerExecutionReportParamDetail struct {
@@ -957,7 +957,7 @@ type GetSchedulerExecutionReportParamDetail struct {
 // GetSchedulerExecutionReportParam GetSchedulerExecutionReport request param
 type GetSchedulerExecutionReportParam struct {
 	BaseParam
-	GetSchedulerExecutionReport GetSchedulerExecutionReportParamDetail `json:"getSchedulerExecutionReport"`
+	Params GetSchedulerExecutionReportParamDetail `json:"getSchedulerExecutionReport"`
 }
 // CreateFirewallRuleFromConfigFileParamDetail CreateFirewallRuleFromConfigFile detail param
 type CreateFirewallRuleFromConfigFileParamDetail struct {
@@ -969,7 +969,7 @@ type CreateFirewallRuleFromConfigFileParamDetail struct {
 // CreateFirewallRuleFromConfigFileParam CreateFirewallRuleFromConfigFile request param
 type CreateFirewallRuleFromConfigFileParam struct {
 	BaseParam
-	CreateFirewallRuleFromConfigFile CreateFirewallRuleFromConfigFileParamDetail `json:"createFirewallRuleFromConfigFile"`
+	Params CreateFirewallRuleFromConfigFileParamDetail `json:"createFirewallRuleFromConfigFile"`
 }
 // GetSupportedIdentityModelsParamDetail GetSupportedIdentityModels detail param
 type GetSupportedIdentityModelsParamDetail struct {
@@ -978,7 +978,7 @@ type GetSupportedIdentityModelsParamDetail struct {
 // GetSupportedIdentityModelsParam GetSupportedIdentityModels request param
 type GetSupportedIdentityModelsParam struct {
 	BaseParam
-	GetSupportedIdentityModels GetSupportedIdentityModelsParamDetail `json:"getSupportedIdentityModels"`
+	Params GetSupportedIdentityModelsParamDetail `json:"getSupportedIdentityModels"`
 }
 // AddUserToGroupParamDetail AddUserToGroup detail param
 type AddUserToGroupParamDetail struct {
@@ -989,7 +989,7 @@ type AddUserToGroupParamDetail struct {
 // AddUserToGroupParam AddUserToGroup request param
 type AddUserToGroupParam struct {
 	BaseParam
-	AddUserToGroup AddUserToGroupParamDetail `json:"addUserToGroup"`
+	Params AddUserToGroupParamDetail `json:"addUserToGroup"`
 }
 // UpdateVRouterOspfAreaParamDetail UpdateVRouterOspfArea detail param
 type UpdateVRouterOspfAreaParamDetail struct {
@@ -1003,7 +1003,7 @@ type UpdateVRouterOspfAreaParamDetail struct {
 // UpdateVRouterOspfAreaParam UpdateVRouterOspfArea request param
 type UpdateVRouterOspfAreaParam struct {
 	BaseParam
-	UpdateVRouterOspfArea UpdateVRouterOspfAreaParamDetail `json:"updateVRouterOspfArea"`
+	Params UpdateVRouterOspfAreaParamDetail `json:"updateVRouterOspfArea"`
 }
 // GetPrimaryStorageTypesParamDetail GetPrimaryStorageTypes detail param
 type GetPrimaryStorageTypesParamDetail struct {
@@ -1012,7 +1012,7 @@ type GetPrimaryStorageTypesParamDetail struct {
 // GetPrimaryStorageTypesParam GetPrimaryStorageTypes request param
 type GetPrimaryStorageTypesParam struct {
 	BaseParam
-	GetPrimaryStorageTypes GetPrimaryStorageTypesParamDetail `json:"getPrimaryStorageTypes"`
+	Params GetPrimaryStorageTypesParamDetail `json:"getPrimaryStorageTypes"`
 }
 // BatchDeleteVolumeSnapshotParamDetail BatchDeleteVolumeSnapshot detail param
 type BatchDeleteVolumeSnapshotParamDetail struct {
@@ -1023,7 +1023,7 @@ type BatchDeleteVolumeSnapshotParamDetail struct {
 // BatchDeleteVolumeSnapshotParam BatchDeleteVolumeSnapshot request param
 type BatchDeleteVolumeSnapshotParam struct {
 	BaseParam
-	BatchDeleteVolumeSnapshot BatchDeleteVolumeSnapshotParamDetail `json:"batchDeleteVolumeSnapshot"`
+	Params BatchDeleteVolumeSnapshotParamDetail `json:"batchDeleteVolumeSnapshot"`
 }
 // ReloadLicenseParamDetail ReloadLicense detail param
 type ReloadLicenseParamDetail struct {
@@ -1034,7 +1034,7 @@ type ReloadLicenseParamDetail struct {
 // ReloadLicenseParam ReloadLicense request param
 type ReloadLicenseParam struct {
 	BaseParam
-	ReloadLicense ReloadLicenseParamDetail `json:"reloadLicense"`
+	Params ReloadLicenseParamDetail `json:"reloadLicense"`
 }
 // DeleteNicQosParamDetail DeleteNicQos detail param
 type DeleteNicQosParamDetail struct {
@@ -1045,7 +1045,7 @@ type DeleteNicQosParamDetail struct {
 // DeleteNicQosParam DeleteNicQos request param
 type DeleteNicQosParam struct {
 	BaseParam
-	DeleteNicQos DeleteNicQosParamDetail `json:"deleteNicQos"`
+	Params DeleteNicQosParamDetail `json:"deleteNicQos"`
 }
 // ChangeL2NetworkVlanIdParamDetail ChangeL2NetworkVlanId detail param
 type ChangeL2NetworkVlanIdParamDetail struct {
@@ -1057,7 +1057,7 @@ type ChangeL2NetworkVlanIdParamDetail struct {
 // ChangeL2NetworkVlanIdParam ChangeL2NetworkVlanId request param
 type ChangeL2NetworkVlanIdParam struct {
 	BaseParam
-	ChangeL2NetworkVlanId ChangeL2NetworkVlanIdParamDetail `json:"changeL2NetworkVlanId"`
+	Params ChangeL2NetworkVlanIdParamDetail `json:"changeL2NetworkVlanId"`
 }
 // GetResourceStackVmStatusParamDetail GetResourceStackVmStatus detail param
 type GetResourceStackVmStatusParamDetail struct {
@@ -1067,7 +1067,7 @@ type GetResourceStackVmStatusParamDetail struct {
 // GetResourceStackVmStatusParam GetResourceStackVmStatus request param
 type GetResourceStackVmStatusParam struct {
 	BaseParam
-	GetResourceStackVmStatus GetResourceStackVmStatusParamDetail `json:"getResourceStackVmStatus"`
+	Params GetResourceStackVmStatusParamDetail `json:"getResourceStackVmStatus"`
 }
 // DetachHybridKeyParamDetail DetachHybridKey detail param
 type DetachHybridKeyParamDetail struct {
@@ -1077,7 +1077,7 @@ type DetachHybridKeyParamDetail struct {
 // DetachHybridKeyParam DetachHybridKey request param
 type DetachHybridKeyParam struct {
 	BaseParam
-	DetachHybridKey DetachHybridKeyParamDetail `json:"detachHybridKey"`
+	Params DetachHybridKeyParamDetail `json:"detachHybridKey"`
 }
 // RemoveDnsFromVpcRouterParamDetail RemoveDnsFromVpcRouter detail param
 type RemoveDnsFromVpcRouterParamDetail struct {
@@ -1088,7 +1088,7 @@ type RemoveDnsFromVpcRouterParamDetail struct {
 // RemoveDnsFromVpcRouterParam RemoveDnsFromVpcRouter request param
 type RemoveDnsFromVpcRouterParam struct {
 	BaseParam
-	RemoveDnsFromVpcRouter RemoveDnsFromVpcRouterParamDetail `json:"removeDnsFromVpcRouter"`
+	Params RemoveDnsFromVpcRouterParamDetail `json:"removeDnsFromVpcRouter"`
 }
 // DeleteHybridEipFromLocalParamDetail DeleteHybridEipFromLocal detail param
 type DeleteHybridEipFromLocalParamDetail struct {
@@ -1100,7 +1100,7 @@ type DeleteHybridEipFromLocalParamDetail struct {
 // DeleteHybridEipFromLocalParam DeleteHybridEipFromLocal request param
 type DeleteHybridEipFromLocalParam struct {
 	BaseParam
-	DeleteHybridEipFromLocal DeleteHybridEipFromLocalParamDetail `json:"deleteHybridEipFromLocal"`
+	Params DeleteHybridEipFromLocalParamDetail `json:"deleteHybridEipFromLocal"`
 }
 // GetAvailableTriggersParamDetail GetAvailableTriggers detail param
 type GetAvailableTriggersParamDetail struct {
@@ -1109,7 +1109,7 @@ type GetAvailableTriggersParamDetail struct {
 // GetAvailableTriggersParam GetAvailableTriggers request param
 type GetAvailableTriggersParam struct {
 	BaseParam
-	GetAvailableTriggers GetAvailableTriggersParamDetail `json:"getAvailableTriggers"`
+	Params GetAvailableTriggersParamDetail `json:"getAvailableTriggers"`
 }
 // ReimageVmInstanceParamDetail ReimageVmInstance detail param
 type ReimageVmInstanceParamDetail struct {
@@ -1119,7 +1119,7 @@ type ReimageVmInstanceParamDetail struct {
 // ReimageVmInstanceParam ReimageVmInstance request param
 type ReimageVmInstanceParam struct {
 	BaseParam
-	ReimageVmInstance ReimageVmInstanceParamDetail `json:"reimageVmInstance"`
+	Params ReimageVmInstanceParamDetail `json:"reimageVmInstance"`
 }
 // UpdateDatasetsParamDetail UpdateDatasets detail param
 type UpdateDatasetsParamDetail struct {
@@ -1129,7 +1129,7 @@ type UpdateDatasetsParamDetail struct {
 // UpdateDatasetsParam UpdateDatasets request param
 type UpdateDatasetsParam struct {
 	BaseParam
-	UpdateDatasets UpdateDatasetsParamDetail `json:"updateDatasets"`
+	Params UpdateDatasetsParamDetail `json:"updateDatasets"`
 }
 // SyncEcsSecurityGroupRuleFromRemoteParamDetail SyncEcsSecurityGroupRuleFromRemote detail param
 type SyncEcsSecurityGroupRuleFromRemoteParamDetail struct {
@@ -1141,7 +1141,7 @@ type SyncEcsSecurityGroupRuleFromRemoteParamDetail struct {
 // SyncEcsSecurityGroupRuleFromRemoteParam SyncEcsSecurityGroupRuleFromRemote request param
 type SyncEcsSecurityGroupRuleFromRemoteParam struct {
 	BaseParam
-	SyncEcsSecurityGroupRuleFromRemote SyncEcsSecurityGroupRuleFromRemoteParamDetail `json:"syncEcsSecurityGroupRuleFromRemote"`
+	Params SyncEcsSecurityGroupRuleFromRemoteParamDetail `json:"syncEcsSecurityGroupRuleFromRemote"`
 }
 // SyncIdentityFromRemoteParamDetail SyncIdentityFromRemote detail param
 type SyncIdentityFromRemoteParamDetail struct {
@@ -1153,7 +1153,7 @@ type SyncIdentityFromRemoteParamDetail struct {
 // SyncIdentityFromRemoteParam SyncIdentityFromRemote request param
 type SyncIdentityFromRemoteParam struct {
 	BaseParam
-	SyncIdentityFromRemote SyncIdentityFromRemoteParamDetail `json:"syncIdentityFromRemote"`
+	Params SyncIdentityFromRemoteParamDetail `json:"syncIdentityFromRemote"`
 }
 // SetImageStoreBackupStorageQuotaParamDetail SetImageStoreBackupStorageQuota detail param
 type SetImageStoreBackupStorageQuotaParamDetail struct {
@@ -1164,7 +1164,7 @@ type SetImageStoreBackupStorageQuotaParamDetail struct {
 // SetImageStoreBackupStorageQuotaParam SetImageStoreBackupStorageQuota request param
 type SetImageStoreBackupStorageQuotaParam struct {
 	BaseParam
-	SetImageStoreBackupStorageQuota SetImageStoreBackupStorageQuotaParamDetail `json:"setImageStoreBackupStorageQuota"`
+	Params SetImageStoreBackupStorageQuotaParamDetail `json:"setImageStoreBackupStorageQuota"`
 }
 // ChangeClusterStateParamDetail ChangeClusterState detail param
 type ChangeClusterStateParamDetail struct {
@@ -1175,7 +1175,7 @@ type ChangeClusterStateParamDetail struct {
 // ChangeClusterStateParam ChangeClusterState request param
 type ChangeClusterStateParam struct {
 	BaseParam
-	ChangeClusterState ChangeClusterStateParamDetail `json:"changeClusterState"`
+	Params ChangeClusterStateParamDetail `json:"changeClusterState"`
 }
 // ChangeVfNicHaStateParamDetail ChangeVfNicHaState detail param
 type ChangeVfNicHaStateParamDetail struct {
@@ -1186,7 +1186,7 @@ type ChangeVfNicHaStateParamDetail struct {
 // ChangeVfNicHaStateParam ChangeVfNicHaState request param
 type ChangeVfNicHaStateParam struct {
 	BaseParam
-	ChangeVfNicHaState ChangeVfNicHaStateParamDetail `json:"changeVfNicHaState"`
+	Params ChangeVfNicHaStateParamDetail `json:"changeVfNicHaState"`
 }
 // CreateOvnControllerOfferingParamDetail CreateOvnControllerOffering detail param
 type CreateOvnControllerOfferingParamDetail struct {
@@ -1208,7 +1208,7 @@ type CreateOvnControllerOfferingParamDetail struct {
 // CreateOvnControllerOfferingParam CreateOvnControllerOffering request param
 type CreateOvnControllerOfferingParam struct {
 	BaseParam
-	CreateOvnControllerOffering CreateOvnControllerOfferingParamDetail `json:"createOvnControllerOffering"`
+	Params CreateOvnControllerOfferingParamDetail `json:"createOvnControllerOffering"`
 }
 // GetIAM2OrganizationVirtualIDNumberParamDetail GetIAM2OrganizationVirtualIDNumber detail param
 type GetIAM2OrganizationVirtualIDNumberParamDetail struct {
@@ -1218,7 +1218,7 @@ type GetIAM2OrganizationVirtualIDNumberParamDetail struct {
 // GetIAM2OrganizationVirtualIDNumberParam GetIAM2OrganizationVirtualIDNumber request param
 type GetIAM2OrganizationVirtualIDNumberParam struct {
 	BaseParam
-	GetIAM2OrganizationVirtualIDNumber GetIAM2OrganizationVirtualIDNumberParamDetail `json:"getIAM2OrganizationVirtualIDNumber"`
+	Params GetIAM2OrganizationVirtualIDNumberParamDetail `json:"getIAM2OrganizationVirtualIDNumber"`
 }
 // DeleteEcsInstanceLocalParamDetail DeleteEcsInstanceLocal detail param
 type DeleteEcsInstanceLocalParamDetail struct {
@@ -1229,7 +1229,7 @@ type DeleteEcsInstanceLocalParamDetail struct {
 // DeleteEcsInstanceLocalParam DeleteEcsInstanceLocal request param
 type DeleteEcsInstanceLocalParam struct {
 	BaseParam
-	DeleteEcsInstanceLocal DeleteEcsInstanceLocalParamDetail `json:"deleteEcsInstanceLocal"`
+	Params DeleteEcsInstanceLocalParamDetail `json:"deleteEcsInstanceLocal"`
 }
 // ChangePortMirrorStateParamDetail ChangePortMirrorState detail param
 type ChangePortMirrorStateParamDetail struct {
@@ -1240,7 +1240,7 @@ type ChangePortMirrorStateParamDetail struct {
 // ChangePortMirrorStateParam ChangePortMirrorState request param
 type ChangePortMirrorStateParam struct {
 	BaseParam
-	ChangePortMirrorState ChangePortMirrorStateParamDetail `json:"changePortMirrorState"`
+	Params ChangePortMirrorStateParamDetail `json:"changePortMirrorState"`
 }
 // UnsubscribeSNSTopicParamDetail UnsubscribeSNSTopic detail param
 type UnsubscribeSNSTopicParamDetail struct {
@@ -1251,7 +1251,7 @@ type UnsubscribeSNSTopicParamDetail struct {
 // UnsubscribeSNSTopicParam UnsubscribeSNSTopic request param
 type UnsubscribeSNSTopicParam struct {
 	BaseParam
-	UnsubscribeSNSTopic UnsubscribeSNSTopicParamDetail `json:"unsubscribeSNSTopic"`
+	Params UnsubscribeSNSTopicParamDetail `json:"unsubscribeSNSTopic"`
 }
 // SetNicQosParamDetail SetNicQos detail param
 type SetNicQosParamDetail struct {
@@ -1263,7 +1263,7 @@ type SetNicQosParamDetail struct {
 // SetNicQosParam SetNicQos request param
 type SetNicQosParam struct {
 	BaseParam
-	SetNicQos SetNicQosParamDetail `json:"setNicQos"`
+	Params SetNicQosParamDetail `json:"setNicQos"`
 }
 // CancelLongJobParamDetail CancelLongJob detail param
 type CancelLongJobParamDetail struct {
@@ -1273,7 +1273,7 @@ type CancelLongJobParamDetail struct {
 // CancelLongJobParam CancelLongJob request param
 type CancelLongJobParam struct {
 	BaseParam
-	CancelLongJob CancelLongJobParamDetail `json:"cancelLongJob"`
+	Params CancelLongJobParamDetail `json:"cancelLongJob"`
 }
 // GetRouteTableVpcVRouterCandidateParamDetail GetRouteTableVpcVRouterCandidate detail param
 type GetRouteTableVpcVRouterCandidateParamDetail struct {
@@ -1285,7 +1285,7 @@ type GetRouteTableVpcVRouterCandidateParamDetail struct {
 // GetRouteTableVpcVRouterCandidateParam GetRouteTableVpcVRouterCandidate request param
 type GetRouteTableVpcVRouterCandidateParam struct {
 	BaseParam
-	GetRouteTableVpcVRouterCandidate GetRouteTableVpcVRouterCandidateParamDetail `json:"getRouteTableVpcVRouterCandidate"`
+	Params GetRouteTableVpcVRouterCandidateParamDetail `json:"getRouteTableVpcVRouterCandidate"`
 }
 // GenerateAccountBillingParamDetail GenerateAccountBilling detail param
 type GenerateAccountBillingParamDetail struct {
@@ -1295,7 +1295,7 @@ type GenerateAccountBillingParamDetail struct {
 // GenerateAccountBillingParam GenerateAccountBilling request param
 type GenerateAccountBillingParam struct {
 	BaseParam
-	GenerateAccountBilling GenerateAccountBillingParamDetail `json:"generateAccountBilling"`
+	Params GenerateAccountBillingParamDetail `json:"generateAccountBilling"`
 }
 // SyncAliyunVirtualRouterFromRemoteParamDetail SyncAliyunVirtualRouterFromRemote detail param
 type SyncAliyunVirtualRouterFromRemoteParamDetail struct {
@@ -1307,7 +1307,7 @@ type SyncAliyunVirtualRouterFromRemoteParamDetail struct {
 // SyncAliyunVirtualRouterFromRemoteParam SyncAliyunVirtualRouterFromRemote request param
 type SyncAliyunVirtualRouterFromRemoteParam struct {
 	BaseParam
-	SyncAliyunVirtualRouterFromRemote SyncAliyunVirtualRouterFromRemoteParamDetail `json:"syncAliyunVirtualRouterFromRemote"`
+	Params SyncAliyunVirtualRouterFromRemoteParamDetail `json:"syncAliyunVirtualRouterFromRemote"`
 }
 // GetInvocationRecordsParamDetail GetInvocationRecords detail param
 type GetInvocationRecordsParamDetail struct {
@@ -1321,7 +1321,7 @@ type GetInvocationRecordsParamDetail struct {
 // GetInvocationRecordsParam GetInvocationRecords request param
 type GetInvocationRecordsParam struct {
 	BaseParam
-	GetInvocationRecords GetInvocationRecordsParamDetail `json:"getInvocationRecords"`
+	Params GetInvocationRecordsParamDetail `json:"getInvocationRecords"`
 }
 // ChangeRoleStateParamDetail ChangeRoleState detail param
 type ChangeRoleStateParamDetail struct {
@@ -1332,7 +1332,7 @@ type ChangeRoleStateParamDetail struct {
 // ChangeRoleStateParam ChangeRoleState request param
 type ChangeRoleStateParam struct {
 	BaseParam
-	ChangeRoleState ChangeRoleStateParamDetail `json:"changeRoleState"`
+	Params ChangeRoleStateParamDetail `json:"changeRoleState"`
 }
 // GetVRouterFlowCounterParamDetail GetVRouterFlowCounter detail param
 type GetVRouterFlowCounterParamDetail struct {
@@ -1342,7 +1342,7 @@ type GetVRouterFlowCounterParamDetail struct {
 // GetVRouterFlowCounterParam GetVRouterFlowCounter request param
 type GetVRouterFlowCounterParam struct {
 	BaseParam
-	GetVRouterFlowCounter GetVRouterFlowCounterParamDetail `json:"getVRouterFlowCounter"`
+	Params GetVRouterFlowCounterParamDetail `json:"getVRouterFlowCounter"`
 }
 // CreateAliyunRouterInterfaceRemoteParamDetail CreateAliyunRouterInterfaceRemote detail param
 type CreateAliyunRouterInterfaceRemoteParamDetail struct {
@@ -1360,7 +1360,7 @@ type CreateAliyunRouterInterfaceRemoteParamDetail struct {
 // CreateAliyunRouterInterfaceRemoteParam CreateAliyunRouterInterfaceRemote request param
 type CreateAliyunRouterInterfaceRemoteParam struct {
 	BaseParam
-	CreateAliyunRouterInterfaceRemote CreateAliyunRouterInterfaceRemoteParamDetail `json:"createAliyunRouterInterfaceRemote"`
+	Params CreateAliyunRouterInterfaceRemoteParamDetail `json:"createAliyunRouterInterfaceRemote"`
 }
 // GetBareMetal2SupportedBootModeParamDetail GetBareMetal2SupportedBootMode detail param
 type GetBareMetal2SupportedBootModeParamDetail struct {
@@ -1369,7 +1369,7 @@ type GetBareMetal2SupportedBootModeParamDetail struct {
 // GetBareMetal2SupportedBootModeParam GetBareMetal2SupportedBootMode request param
 type GetBareMetal2SupportedBootModeParam struct {
 	BaseParam
-	GetBareMetal2SupportedBootMode GetBareMetal2SupportedBootModeParamDetail `json:"getBareMetal2SupportedBootMode"`
+	Params GetBareMetal2SupportedBootModeParamDetail `json:"getBareMetal2SupportedBootMode"`
 }
 // GetHostPowerStatusParamDetail GetHostPowerStatus detail param
 type GetHostPowerStatusParamDetail struct {
@@ -1380,7 +1380,7 @@ type GetHostPowerStatusParamDetail struct {
 // GetHostPowerStatusParam GetHostPowerStatus request param
 type GetHostPowerStatusParam struct {
 	BaseParam
-	GetHostPowerStatus GetHostPowerStatusParamDetail `json:"getHostPowerStatus"`
+	Params GetHostPowerStatusParamDetail `json:"getHostPowerStatus"`
 }
 // GetChainTaskParamDetail GetChainTask detail param
 type GetChainTaskParamDetail struct {
@@ -1390,7 +1390,7 @@ type GetChainTaskParamDetail struct {
 // GetChainTaskParam GetChainTask request param
 type GetChainTaskParam struct {
 	BaseParam
-	GetChainTask GetChainTaskParamDetail `json:"getChainTask"`
+	Params GetChainTaskParamDetail `json:"getChainTask"`
 }
 // UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail UpdateConnectionBetweenL3NetWorkAndAliyunVSwitch detail param
 type UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail struct {
@@ -1402,7 +1402,7 @@ type UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail struct {
 // UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParam UpdateConnectionBetweenL3NetWorkAndAliyunVSwitch request param
 type UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParam struct {
 	BaseParam
-	UpdateConnectionBetweenL3NetWorkAndAliyunVSwitch UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail `json:"updateConnectionBetweenL3NetWorkAndAliyunVSwitch"`
+	Params UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail `json:"updateConnectionBetweenL3NetWorkAndAliyunVSwitch"`
 }
 // ChangeHostPasswordParamDetail ChangeHostPassword detail param
 type ChangeHostPasswordParamDetail struct {
@@ -1413,7 +1413,7 @@ type ChangeHostPasswordParamDetail struct {
 // ChangeHostPasswordParam ChangeHostPassword request param
 type ChangeHostPasswordParam struct {
 	BaseParam
-	ChangeHostPassword ChangeHostPasswordParamDetail `json:"changeHostPassword"`
+	Params ChangeHostPasswordParamDetail `json:"changeHostPassword"`
 }
 // CreateSlbInstanceParamDetail CreateSlbInstance detail param
 type CreateSlbInstanceParamDetail struct {
@@ -1432,7 +1432,7 @@ type CreateSlbInstanceParamDetail struct {
 // CreateSlbInstanceParam CreateSlbInstance request param
 type CreateSlbInstanceParam struct {
 	BaseParam
-	CreateSlbInstance CreateSlbInstanceParamDetail `json:"createSlbInstance"`
+	Params CreateSlbInstanceParamDetail `json:"createSlbInstance"`
 }
 // ChangePortForwardingRuleStateParamDetail ChangePortForwardingRuleState detail param
 type ChangePortForwardingRuleStateParamDetail struct {
@@ -1443,7 +1443,7 @@ type ChangePortForwardingRuleStateParamDetail struct {
 // ChangePortForwardingRuleStateParam ChangePortForwardingRuleState request param
 type ChangePortForwardingRuleStateParam struct {
 	BaseParam
-	ChangePortForwardingRuleState ChangePortForwardingRuleStateParamDetail `json:"changePortForwardingRuleState"`
+	Params ChangePortForwardingRuleStateParamDetail `json:"changePortForwardingRuleState"`
 }
 // IsLicenseServerParamDetail IsLicenseServer detail param
 type IsLicenseServerParamDetail struct {
@@ -1452,7 +1452,7 @@ type IsLicenseServerParamDetail struct {
 // IsLicenseServerParam IsLicenseServer request param
 type IsLicenseServerParam struct {
 	BaseParam
-	IsLicenseServer IsLicenseServerParamDetail `json:"isLicenseServer"`
+	Params IsLicenseServerParamDetail `json:"isLicenseServer"`
 }
 // PrometheusQueryLabelValuesParamDetail PrometheusQueryLabelValues detail param
 type PrometheusQueryLabelValuesParamDetail struct {
@@ -1462,7 +1462,7 @@ type PrometheusQueryLabelValuesParamDetail struct {
 // PrometheusQueryLabelValuesParam PrometheusQueryLabelValues request param
 type PrometheusQueryLabelValuesParam struct {
 	BaseParam
-	PrometheusQueryLabelValues PrometheusQueryLabelValuesParamDetail `json:"prometheusQueryLabelValues"`
+	Params PrometheusQueryLabelValuesParamDetail `json:"prometheusQueryLabelValues"`
 }
 // ValidateClusterSupportDRSParamDetail ValidateClusterSupportDRS detail param
 type ValidateClusterSupportDRSParamDetail struct {
@@ -1472,7 +1472,7 @@ type ValidateClusterSupportDRSParamDetail struct {
 // ValidateClusterSupportDRSParam ValidateClusterSupportDRS request param
 type ValidateClusterSupportDRSParam struct {
 	BaseParam
-	ValidateClusterSupportDRS ValidateClusterSupportDRSParamDetail `json:"validateClusterSupportDRS"`
+	Params ValidateClusterSupportDRSParamDetail `json:"validateClusterSupportDRS"`
 }
 // ShrinkVolumeSnapshotParamDetail ShrinkVolumeSnapshot detail param
 type ShrinkVolumeSnapshotParamDetail struct {
@@ -1482,7 +1482,7 @@ type ShrinkVolumeSnapshotParamDetail struct {
 // ShrinkVolumeSnapshotParam ShrinkVolumeSnapshot request param
 type ShrinkVolumeSnapshotParam struct {
 	BaseParam
-	ShrinkVolumeSnapshot ShrinkVolumeSnapshotParamDetail `json:"shrinkVolumeSnapshot"`
+	Params ShrinkVolumeSnapshotParamDetail `json:"shrinkVolumeSnapshot"`
 }
 // AddHostToHostSchedulingRuleGroupParamDetail AddHostToHostSchedulingRuleGroup detail param
 type AddHostToHostSchedulingRuleGroupParamDetail struct {
@@ -1493,7 +1493,7 @@ type AddHostToHostSchedulingRuleGroupParamDetail struct {
 // AddHostToHostSchedulingRuleGroupParam AddHostToHostSchedulingRuleGroup request param
 type AddHostToHostSchedulingRuleGroupParam struct {
 	BaseParam
-	AddHostToHostSchedulingRuleGroup AddHostToHostSchedulingRuleGroupParamDetail `json:"addHostToHostSchedulingRuleGroup"`
+	Params AddHostToHostSchedulingRuleGroupParamDetail `json:"addHostToHostSchedulingRuleGroup"`
 }
 // CreateBuildAppParamDetail CreateBuildApp detail param
 type CreateBuildAppParamDetail struct {
@@ -1507,7 +1507,7 @@ type CreateBuildAppParamDetail struct {
 // CreateBuildAppParam CreateBuildApp request param
 type CreateBuildAppParam struct {
 	BaseParam
-	CreateBuildApp CreateBuildAppParamDetail `json:"createBuildApp"`
+	Params CreateBuildAppParamDetail `json:"createBuildApp"`
 }
 // GetVmNicAttachedNetworkServiceParamDetail GetVmNicAttachedNetworkService detail param
 type GetVmNicAttachedNetworkServiceParamDetail struct {
@@ -1517,7 +1517,7 @@ type GetVmNicAttachedNetworkServiceParamDetail struct {
 // GetVmNicAttachedNetworkServiceParam GetVmNicAttachedNetworkService request param
 type GetVmNicAttachedNetworkServiceParam struct {
 	BaseParam
-	GetVmNicAttachedNetworkService GetVmNicAttachedNetworkServiceParamDetail `json:"getVmNicAttachedNetworkService"`
+	Params GetVmNicAttachedNetworkServiceParamDetail `json:"getVmNicAttachedNetworkService"`
 }
 // GetVmHostnameParamDetail GetVmHostname detail param
 type GetVmHostnameParamDetail struct {
@@ -1527,7 +1527,7 @@ type GetVmHostnameParamDetail struct {
 // GetVmHostnameParam GetVmHostname request param
 type GetVmHostnameParam struct {
 	BaseParam
-	GetVmHostname GetVmHostnameParamDetail `json:"getVmHostname"`
+	Params GetVmHostnameParamDetail `json:"getVmHostname"`
 }
 // AddSchedulerJobsToSchedulerJobGroupParamDetail AddSchedulerJobsToSchedulerJobGroup detail param
 type AddSchedulerJobsToSchedulerJobGroupParamDetail struct {
@@ -1538,7 +1538,7 @@ type AddSchedulerJobsToSchedulerJobGroupParamDetail struct {
 // AddSchedulerJobsToSchedulerJobGroupParam AddSchedulerJobsToSchedulerJobGroup request param
 type AddSchedulerJobsToSchedulerJobGroupParam struct {
 	BaseParam
-	AddSchedulerJobsToSchedulerJobGroup AddSchedulerJobsToSchedulerJobGroupParamDetail `json:"addSchedulerJobsToSchedulerJobGroup"`
+	Params AddSchedulerJobsToSchedulerJobGroupParamDetail `json:"addSchedulerJobsToSchedulerJobGroup"`
 }
 // DetachL3NetworkFromVmParamDetail DetachL3NetworkFromVm detail param
 type DetachL3NetworkFromVmParamDetail struct {
@@ -1548,7 +1548,7 @@ type DetachL3NetworkFromVmParamDetail struct {
 // DetachL3NetworkFromVmParam DetachL3NetworkFromVm request param
 type DetachL3NetworkFromVmParam struct {
 	BaseParam
-	DetachL3NetworkFromVm DetachL3NetworkFromVmParamDetail `json:"detachL3NetworkFromVm"`
+	Params DetachL3NetworkFromVmParamDetail `json:"detachL3NetworkFromVm"`
 }
 // DeleteVpcUserVpnGatewayLocalParamDetail DeleteVpcUserVpnGatewayLocal detail param
 type DeleteVpcUserVpnGatewayLocalParamDetail struct {
@@ -1559,7 +1559,7 @@ type DeleteVpcUserVpnGatewayLocalParamDetail struct {
 // DeleteVpcUserVpnGatewayLocalParam DeleteVpcUserVpnGatewayLocal request param
 type DeleteVpcUserVpnGatewayLocalParam struct {
 	BaseParam
-	DeleteVpcUserVpnGatewayLocal DeleteVpcUserVpnGatewayLocalParamDetail `json:"deleteVpcUserVpnGatewayLocal"`
+	Params DeleteVpcUserVpnGatewayLocalParamDetail `json:"deleteVpcUserVpnGatewayLocal"`
 }
 // CreateVRouterOspfAreaParamDetail CreateVRouterOspfArea detail param
 type CreateVRouterOspfAreaParamDetail struct {
@@ -1575,7 +1575,7 @@ type CreateVRouterOspfAreaParamDetail struct {
 // CreateVRouterOspfAreaParam CreateVRouterOspfArea request param
 type CreateVRouterOspfAreaParam struct {
 	BaseParam
-	CreateVRouterOspfArea CreateVRouterOspfAreaParamDetail `json:"createVRouterOspfArea"`
+	Params CreateVRouterOspfAreaParamDetail `json:"createVRouterOspfArea"`
 }
 // SetSecurityMachineKeyParamDetail SetSecurityMachineKey detail param
 type SetSecurityMachineKeyParamDetail struct {
@@ -1588,7 +1588,7 @@ type SetSecurityMachineKeyParamDetail struct {
 // SetSecurityMachineKeyParam SetSecurityMachineKey request param
 type SetSecurityMachineKeyParam struct {
 	BaseParam
-	SetSecurityMachineKey SetSecurityMachineKeyParamDetail `json:"setSecurityMachineKey"`
+	Params SetSecurityMachineKeyParamDetail `json:"setSecurityMachineKey"`
 }
 // CreateOAuthClientParamDetail CreateOAuthClient detail param
 type CreateOAuthClientParamDetail struct {
@@ -1616,7 +1616,7 @@ type CreateOAuthClientParamDetail struct {
 // CreateOAuthClientParam CreateOAuthClient request param
 type CreateOAuthClientParam struct {
 	BaseParam
-	CreateOAuthClient CreateOAuthClientParamDetail `json:"createOAuthClient"`
+	Params CreateOAuthClientParamDetail `json:"createOAuthClient"`
 }
 // GetVpcAttachedEipParamDetail GetVpcAttachedEip detail param
 type GetVpcAttachedEipParamDetail struct {
@@ -1628,7 +1628,7 @@ type GetVpcAttachedEipParamDetail struct {
 // GetVpcAttachedEipParam GetVpcAttachedEip request param
 type GetVpcAttachedEipParam struct {
 	BaseParam
-	GetVpcAttachedEip GetVpcAttachedEipParamDetail `json:"getVpcAttachedEip"`
+	Params GetVpcAttachedEipParamDetail `json:"getVpcAttachedEip"`
 }
 // RemoveSchedulerJobFromSchedulerTriggerParamDetail RemoveSchedulerJobFromSchedulerTrigger detail param
 type RemoveSchedulerJobFromSchedulerTriggerParamDetail struct {
@@ -1639,7 +1639,7 @@ type RemoveSchedulerJobFromSchedulerTriggerParamDetail struct {
 // RemoveSchedulerJobFromSchedulerTriggerParam RemoveSchedulerJobFromSchedulerTrigger request param
 type RemoveSchedulerJobFromSchedulerTriggerParam struct {
 	BaseParam
-	RemoveSchedulerJobFromSchedulerTrigger RemoveSchedulerJobFromSchedulerTriggerParamDetail `json:"removeSchedulerJobFromSchedulerTrigger"`
+	Params RemoveSchedulerJobFromSchedulerTriggerParamDetail `json:"removeSchedulerJobFromSchedulerTrigger"`
 }
 // ChangeMediaStateParamDetail ChangeMediaState detail param
 type ChangeMediaStateParamDetail struct {
@@ -1650,7 +1650,7 @@ type ChangeMediaStateParamDetail struct {
 // ChangeMediaStateParam ChangeMediaState request param
 type ChangeMediaStateParam struct {
 	BaseParam
-	ChangeMediaState ChangeMediaStateParamDetail `json:"changeMediaState"`
+	Params ChangeMediaStateParamDetail `json:"changeMediaState"`
 }
 // ChangeIPSecConnectionStateParamDetail ChangeIPSecConnectionState detail param
 type ChangeIPSecConnectionStateParamDetail struct {
@@ -1661,7 +1661,7 @@ type ChangeIPSecConnectionStateParamDetail struct {
 // ChangeIPSecConnectionStateParam ChangeIPSecConnectionState request param
 type ChangeIPSecConnectionStateParam struct {
 	BaseParam
-	ChangeIPSecConnectionState ChangeIPSecConnectionStateParamDetail `json:"changeIPSecConnectionState"`
+	Params ChangeIPSecConnectionStateParamDetail `json:"changeIPSecConnectionState"`
 }
 // StopAllResourcesInIAM2ProjectParamDetail StopAllResourcesInIAM2Project detail param
 type StopAllResourcesInIAM2ProjectParamDetail struct {
@@ -1671,7 +1671,7 @@ type StopAllResourcesInIAM2ProjectParamDetail struct {
 // StopAllResourcesInIAM2ProjectParam StopAllResourcesInIAM2Project request param
 type StopAllResourcesInIAM2ProjectParam struct {
 	BaseParam
-	StopAllResourcesInIAM2Project StopAllResourcesInIAM2ProjectParamDetail `json:"stopAllResourcesInIAM2Project"`
+	Params StopAllResourcesInIAM2ProjectParamDetail `json:"stopAllResourcesInIAM2Project"`
 }
 // UpdateVmNetworkConfigParamDetail UpdateVmNetworkConfig detail param
 type UpdateVmNetworkConfigParamDetail struct {
@@ -1682,7 +1682,7 @@ type UpdateVmNetworkConfigParamDetail struct {
 // UpdateVmNetworkConfigParam UpdateVmNetworkConfig request param
 type UpdateVmNetworkConfigParam struct {
 	BaseParam
-	UpdateVmNetworkConfig UpdateVmNetworkConfigParamDetail `json:"updateVmNetworkConfig"`
+	Params UpdateVmNetworkConfigParamDetail `json:"updateVmNetworkConfig"`
 }
 // RemoveTicketTypesFromTicketFlowCollectionParamDetail RemoveTicketTypesFromTicketFlowCollection detail param
 type RemoveTicketTypesFromTicketFlowCollectionParamDetail struct {
@@ -1693,7 +1693,7 @@ type RemoveTicketTypesFromTicketFlowCollectionParamDetail struct {
 // RemoveTicketTypesFromTicketFlowCollectionParam RemoveTicketTypesFromTicketFlowCollection request param
 type RemoveTicketTypesFromTicketFlowCollectionParam struct {
 	BaseParam
-	RemoveTicketTypesFromTicketFlowCollection RemoveTicketTypesFromTicketFlowCollectionParamDetail `json:"removeTicketTypesFromTicketFlowCollection"`
+	Params RemoveTicketTypesFromTicketFlowCollectionParamDetail `json:"removeTicketTypesFromTicketFlowCollection"`
 }
 // DeleteEcsVSwitchRemoteParamDetail DeleteEcsVSwitchRemote detail param
 type DeleteEcsVSwitchRemoteParamDetail struct {
@@ -1704,7 +1704,7 @@ type DeleteEcsVSwitchRemoteParamDetail struct {
 // DeleteEcsVSwitchRemoteParam DeleteEcsVSwitchRemote request param
 type DeleteEcsVSwitchRemoteParam struct {
 	BaseParam
-	DeleteEcsVSwitchRemote DeleteEcsVSwitchRemoteParamDetail `json:"deleteEcsVSwitchRemote"`
+	Params DeleteEcsVSwitchRemoteParamDetail `json:"deleteEcsVSwitchRemote"`
 }
 // SetVmStaticIpParamDetail SetVmStaticIp detail param
 type SetVmStaticIpParamDetail struct {
@@ -1721,7 +1721,7 @@ type SetVmStaticIpParamDetail struct {
 // SetVmStaticIpParam SetVmStaticIp request param
 type SetVmStaticIpParam struct {
 	BaseParam
-	SetVmStaticIp SetVmStaticIpParamDetail `json:"setVmStaticIp"`
+	Params SetVmStaticIpParamDetail `json:"setVmStaticIp"`
 }
 // GetVmSshKeyParamDetail GetVmSshKey detail param
 type GetVmSshKeyParamDetail struct {
@@ -1731,7 +1731,7 @@ type GetVmSshKeyParamDetail struct {
 // GetVmSshKeyParam GetVmSshKey request param
 type GetVmSshKeyParam struct {
 	BaseParam
-	GetVmSshKey GetVmSshKeyParamDetail `json:"getVmSshKey"`
+	Params GetVmSshKeyParamDetail `json:"getVmSshKey"`
 }
 // GetVmGuestToolsInfoParamDetail GetVmGuestToolsInfo detail param
 type GetVmGuestToolsInfoParamDetail struct {
@@ -1742,7 +1742,7 @@ type GetVmGuestToolsInfoParamDetail struct {
 // GetVmGuestToolsInfoParam GetVmGuestToolsInfo request param
 type GetVmGuestToolsInfoParam struct {
 	BaseParam
-	GetVmGuestToolsInfo GetVmGuestToolsInfoParamDetail `json:"getVmGuestToolsInfo"`
+	Params GetVmGuestToolsInfoParamDetail `json:"getVmGuestToolsInfo"`
 }
 // ValidateDiskOfferingUserConfigParamDetail ValidateDiskOfferingUserConfig detail param
 type ValidateDiskOfferingUserConfigParamDetail struct {
@@ -1752,7 +1752,7 @@ type ValidateDiskOfferingUserConfigParamDetail struct {
 // ValidateDiskOfferingUserConfigParam ValidateDiskOfferingUserConfig request param
 type ValidateDiskOfferingUserConfigParam struct {
 	BaseParam
-	ValidateDiskOfferingUserConfig ValidateDiskOfferingUserConfigParamDetail `json:"validateDiskOfferingUserConfig"`
+	Params ValidateDiskOfferingUserConfigParamDetail `json:"validateDiskOfferingUserConfig"`
 }
 // DeleteVpcVpnGatewayLocalParamDetail DeleteVpcVpnGatewayLocal detail param
 type DeleteVpcVpnGatewayLocalParamDetail struct {
@@ -1763,7 +1763,7 @@ type DeleteVpcVpnGatewayLocalParamDetail struct {
 // DeleteVpcVpnGatewayLocalParam DeleteVpcVpnGatewayLocal request param
 type DeleteVpcVpnGatewayLocalParam struct {
 	BaseParam
-	DeleteVpcVpnGatewayLocal DeleteVpcVpnGatewayLocalParamDetail `json:"deleteVpcVpnGatewayLocal"`
+	Params DeleteVpcVpnGatewayLocalParamDetail `json:"deleteVpcVpnGatewayLocal"`
 }
 // SetVmRDPParamDetail SetVmRDP detail param
 type SetVmRDPParamDetail struct {
@@ -1774,7 +1774,7 @@ type SetVmRDPParamDetail struct {
 // SetVmRDPParam SetVmRDP request param
 type SetVmRDPParam struct {
 	BaseParam
-	SetVmRDP SetVmRDPParamDetail `json:"setVmRDP"`
+	Params SetVmRDPParamDetail `json:"setVmRDP"`
 }
 // RunSchedulerTriggerParamDetail RunSchedulerTrigger detail param
 type RunSchedulerTriggerParamDetail struct {
@@ -1785,7 +1785,7 @@ type RunSchedulerTriggerParamDetail struct {
 // RunSchedulerTriggerParam RunSchedulerTrigger request param
 type RunSchedulerTriggerParam struct {
 	BaseParam
-	RunSchedulerTrigger RunSchedulerTriggerParamDetail `json:"runSchedulerTrigger"`
+	Params RunSchedulerTriggerParamDetail `json:"runSchedulerTrigger"`
 }
 // CreateAliyunVpcVirtualRouterEntryRemoteParamDetail CreateAliyunVpcVirtualRouterEntryRemote detail param
 type CreateAliyunVpcVirtualRouterEntryRemoteParamDetail struct {
@@ -1801,7 +1801,7 @@ type CreateAliyunVpcVirtualRouterEntryRemoteParamDetail struct {
 // CreateAliyunVpcVirtualRouterEntryRemoteParam CreateAliyunVpcVirtualRouterEntryRemote request param
 type CreateAliyunVpcVirtualRouterEntryRemoteParam struct {
 	BaseParam
-	CreateAliyunVpcVirtualRouterEntryRemote CreateAliyunVpcVirtualRouterEntryRemoteParamDetail `json:"createAliyunVpcVirtualRouterEntryRemote"`
+	Params CreateAliyunVpcVirtualRouterEntryRemoteParamDetail `json:"createAliyunVpcVirtualRouterEntryRemote"`
 }
 // PowerOnHostParamDetail PowerOnHost detail param
 type PowerOnHostParamDetail struct {
@@ -1812,7 +1812,7 @@ type PowerOnHostParamDetail struct {
 // PowerOnHostParam PowerOnHost request param
 type PowerOnHostParam struct {
 	BaseParam
-	PowerOnHost PowerOnHostParamDetail `json:"powerOnHost"`
+	Params PowerOnHostParamDetail `json:"powerOnHost"`
 }
 // DeleteAliyunSnapshotFromRemoteParamDetail DeleteAliyunSnapshotFromRemote detail param
 type DeleteAliyunSnapshotFromRemoteParamDetail struct {
@@ -1823,7 +1823,7 @@ type DeleteAliyunSnapshotFromRemoteParamDetail struct {
 // DeleteAliyunSnapshotFromRemoteParam DeleteAliyunSnapshotFromRemote request param
 type DeleteAliyunSnapshotFromRemoteParam struct {
 	BaseParam
-	DeleteAliyunSnapshotFromRemote DeleteAliyunSnapshotFromRemoteParamDetail `json:"deleteAliyunSnapshotFromRemote"`
+	Params DeleteAliyunSnapshotFromRemoteParamDetail `json:"deleteAliyunSnapshotFromRemote"`
 }
 // RemoveCertificateFromLoadBalancerListenerParamDetail RemoveCertificateFromLoadBalancerListener detail param
 type RemoveCertificateFromLoadBalancerListenerParamDetail struct {
@@ -1834,7 +1834,7 @@ type RemoveCertificateFromLoadBalancerListenerParamDetail struct {
 // RemoveCertificateFromLoadBalancerListenerParam RemoveCertificateFromLoadBalancerListener request param
 type RemoveCertificateFromLoadBalancerListenerParam struct {
 	BaseParam
-	RemoveCertificateFromLoadBalancerListener RemoveCertificateFromLoadBalancerListenerParamDetail `json:"removeCertificateFromLoadBalancerListener"`
+	Params RemoveCertificateFromLoadBalancerListenerParamDetail `json:"removeCertificateFromLoadBalancerListener"`
 }
 // GetPortForwardingAttachableVmNicsParamDetail GetPortForwardingAttachableVmNics detail param
 type GetPortForwardingAttachableVmNicsParamDetail struct {
@@ -1844,7 +1844,7 @@ type GetPortForwardingAttachableVmNicsParamDetail struct {
 // GetPortForwardingAttachableVmNicsParam GetPortForwardingAttachableVmNics request param
 type GetPortForwardingAttachableVmNicsParam struct {
 	BaseParam
-	GetPortForwardingAttachableVmNics GetPortForwardingAttachableVmNicsParamDetail `json:"getPortForwardingAttachableVmNics"`
+	Params GetPortForwardingAttachableVmNicsParamDetail `json:"getPortForwardingAttachableVmNics"`
 }
 // RemoveRendezvousPointFromMulticastRouterParamDetail RemoveRendezvousPointFromMulticastRouter detail param
 type RemoveRendezvousPointFromMulticastRouterParamDetail struct {
@@ -1857,7 +1857,7 @@ type RemoveRendezvousPointFromMulticastRouterParamDetail struct {
 // RemoveRendezvousPointFromMulticastRouterParam RemoveRendezvousPointFromMulticastRouter request param
 type RemoveRendezvousPointFromMulticastRouterParam struct {
 	BaseParam
-	RemoveRendezvousPointFromMulticastRouter RemoveRendezvousPointFromMulticastRouterParamDetail `json:"removeRendezvousPointFromMulticastRouter"`
+	Params RemoveRendezvousPointFromMulticastRouterParamDetail `json:"removeRendezvousPointFromMulticastRouter"`
 }
 // AddIAM2VirtualIDsToProjectParamDetail AddIAM2VirtualIDsToProject detail param
 type AddIAM2VirtualIDsToProjectParamDetail struct {
@@ -1869,7 +1869,7 @@ type AddIAM2VirtualIDsToProjectParamDetail struct {
 // AddIAM2VirtualIDsToProjectParam AddIAM2VirtualIDsToProject request param
 type AddIAM2VirtualIDsToProjectParam struct {
 	BaseParam
-	AddIAM2VirtualIDsToProject AddIAM2VirtualIDsToProjectParamDetail `json:"addIAM2VirtualIDsToProject"`
+	Params AddIAM2VirtualIDsToProjectParamDetail `json:"addIAM2VirtualIDsToProject"`
 }
 // SubscribeEventParamDetail SubscribeEvent detail param
 type SubscribeEventParamDetail struct {
@@ -1886,7 +1886,7 @@ type SubscribeEventParamDetail struct {
 // SubscribeEventParam SubscribeEvent request param
 type SubscribeEventParam struct {
 	BaseParam
-	SubscribeEvent SubscribeEventParamDetail `json:"subscribeEvent"`
+	Params SubscribeEventParamDetail `json:"subscribeEvent"`
 }
 // GetPrimaryStorageCandidatesForVolumeMigrationParamDetail GetPrimaryStorageCandidatesForVolumeMigration detail param
 type GetPrimaryStorageCandidatesForVolumeMigrationParamDetail struct {
@@ -1896,7 +1896,7 @@ type GetPrimaryStorageCandidatesForVolumeMigrationParamDetail struct {
 // GetPrimaryStorageCandidatesForVolumeMigrationParam GetPrimaryStorageCandidatesForVolumeMigration request param
 type GetPrimaryStorageCandidatesForVolumeMigrationParam struct {
 	BaseParam
-	GetPrimaryStorageCandidatesForVolumeMigration GetPrimaryStorageCandidatesForVolumeMigrationParamDetail `json:"getPrimaryStorageCandidatesForVolumeMigration"`
+	Params GetPrimaryStorageCandidatesForVolumeMigrationParamDetail `json:"getPrimaryStorageCandidatesForVolumeMigration"`
 }
 // UpgradeBackupStorageCdpTasksParamDetail UpgradeBackupStorageCdpTasks detail param
 type UpgradeBackupStorageCdpTasksParamDetail struct {
@@ -1906,7 +1906,7 @@ type UpgradeBackupStorageCdpTasksParamDetail struct {
 // UpgradeBackupStorageCdpTasksParam UpgradeBackupStorageCdpTasks request param
 type UpgradeBackupStorageCdpTasksParam struct {
 	BaseParam
-	UpgradeBackupStorageCdpTasks UpgradeBackupStorageCdpTasksParamDetail `json:"upgradeBackupStorageCdpTasks"`
+	Params UpgradeBackupStorageCdpTasksParamDetail `json:"upgradeBackupStorageCdpTasks"`
 }
 // DeleteVxlanL2NetworkParamDetail DeleteVxlanL2Network detail param
 type DeleteVxlanL2NetworkParamDetail struct {
@@ -1917,7 +1917,7 @@ type DeleteVxlanL2NetworkParamDetail struct {
 // DeleteVxlanL2NetworkParam DeleteVxlanL2Network request param
 type DeleteVxlanL2NetworkParam struct {
 	BaseParam
-	DeleteVxlanL2Network DeleteVxlanL2NetworkParamDetail `json:"deleteVxlanL2Network"`
+	Params DeleteVxlanL2NetworkParamDetail `json:"deleteVxlanL2Network"`
 }
 // RemoveVmFromAffinityGroupParamDetail RemoveVmFromAffinityGroup detail param
 type RemoveVmFromAffinityGroupParamDetail struct {
@@ -1928,7 +1928,7 @@ type RemoveVmFromAffinityGroupParamDetail struct {
 // RemoveVmFromAffinityGroupParam RemoveVmFromAffinityGroup request param
 type RemoveVmFromAffinityGroupParam struct {
 	BaseParam
-	RemoveVmFromAffinityGroup RemoveVmFromAffinityGroupParamDetail `json:"removeVmFromAffinityGroup"`
+	Params RemoveVmFromAffinityGroupParamDetail `json:"removeVmFromAffinityGroup"`
 }
 // SetVolumeIoThreadPinParamDetail SetVolumeIoThreadPin detail param
 type SetVolumeIoThreadPinParamDetail struct {
@@ -1941,7 +1941,7 @@ type SetVolumeIoThreadPinParamDetail struct {
 // SetVolumeIoThreadPinParam SetVolumeIoThreadPin request param
 type SetVolumeIoThreadPinParam struct {
 	BaseParam
-	SetVolumeIoThreadPin SetVolumeIoThreadPinParamDetail `json:"setVolumeIoThreadPin"`
+	Params SetVolumeIoThreadPinParamDetail `json:"setVolumeIoThreadPin"`
 }
 // UpdatePriorityConfigParamDetail UpdatePriorityConfig detail param
 type UpdatePriorityConfigParamDetail struct {
@@ -1953,7 +1953,7 @@ type UpdatePriorityConfigParamDetail struct {
 // UpdatePriorityConfigParam UpdatePriorityConfig request param
 type UpdatePriorityConfigParam struct {
 	BaseParam
-	UpdatePriorityConfig UpdatePriorityConfigParamDetail `json:"updatePriorityConfig"`
+	Params UpdatePriorityConfigParamDetail `json:"updatePriorityConfig"`
 }
 // IdentifyHostParamDetail IdentifyHost detail param
 type IdentifyHostParamDetail struct {
@@ -1964,7 +1964,7 @@ type IdentifyHostParamDetail struct {
 // IdentifyHostParam IdentifyHost request param
 type IdentifyHostParam struct {
 	BaseParam
-	IdentifyHost IdentifyHostParamDetail `json:"identifyHost"`
+	Params IdentifyHostParamDetail `json:"identifyHost"`
 }
 // CreateRootVolumeTemplateFromVolumeBackupParamDetail CreateRootVolumeTemplateFromVolumeBackup detail param
 type CreateRootVolumeTemplateFromVolumeBackupParamDetail struct {
@@ -1984,7 +1984,7 @@ type CreateRootVolumeTemplateFromVolumeBackupParamDetail struct {
 // CreateRootVolumeTemplateFromVolumeBackupParam CreateRootVolumeTemplateFromVolumeBackup request param
 type CreateRootVolumeTemplateFromVolumeBackupParam struct {
 	BaseParam
-	CreateRootVolumeTemplateFromVolumeBackup CreateRootVolumeTemplateFromVolumeBackupParamDetail `json:"createRootVolumeTemplateFromVolumeBackup"`
+	Params CreateRootVolumeTemplateFromVolumeBackupParamDetail `json:"createRootVolumeTemplateFromVolumeBackup"`
 }
 // CheckFirewallRuleConfigFileParamDetail CheckFirewallRuleConfigFile detail param
 type CheckFirewallRuleConfigFileParamDetail struct {
@@ -1994,7 +1994,7 @@ type CheckFirewallRuleConfigFileParamDetail struct {
 // CheckFirewallRuleConfigFileParam CheckFirewallRuleConfigFile request param
 type CheckFirewallRuleConfigFileParam struct {
 	BaseParam
-	CheckFirewallRuleConfigFile CheckFirewallRuleConfigFileParamDetail `json:"checkFirewallRuleConfigFile"`
+	Params CheckFirewallRuleConfigFileParamDetail `json:"checkFirewallRuleConfigFile"`
 }
 // GetVmConsoleAddressParamDetail GetVmConsoleAddress detail param
 type GetVmConsoleAddressParamDetail struct {
@@ -2004,7 +2004,7 @@ type GetVmConsoleAddressParamDetail struct {
 // GetVmConsoleAddressParam GetVmConsoleAddress request param
 type GetVmConsoleAddressParam struct {
 	BaseParam
-	GetVmConsoleAddress GetVmConsoleAddressParamDetail `json:"getVmConsoleAddress"`
+	Params GetVmConsoleAddressParamDetail `json:"getVmConsoleAddress"`
 }
 // GetLoadBalancerListenerACLEntriesParamDetail GetLoadBalancerListenerACLEntries detail param
 type GetLoadBalancerListenerACLEntriesParamDetail struct {
@@ -2015,7 +2015,7 @@ type GetLoadBalancerListenerACLEntriesParamDetail struct {
 // GetLoadBalancerListenerACLEntriesParam GetLoadBalancerListenerACLEntries request param
 type GetLoadBalancerListenerACLEntriesParam struct {
 	BaseParam
-	GetLoadBalancerListenerACLEntries GetLoadBalancerListenerACLEntriesParamDetail `json:"getLoadBalancerListenerACLEntries"`
+	Params GetLoadBalancerListenerACLEntriesParamDetail `json:"getLoadBalancerListenerACLEntries"`
 }
 // UpdateHostIommuStateParamDetail UpdateHostIommuState detail param
 type UpdateHostIommuStateParamDetail struct {
@@ -2026,7 +2026,7 @@ type UpdateHostIommuStateParamDetail struct {
 // UpdateHostIommuStateParam UpdateHostIommuState request param
 type UpdateHostIommuStateParam struct {
 	BaseParam
-	UpdateHostIommuState UpdateHostIommuStateParamDetail `json:"updateHostIommuState"`
+	Params UpdateHostIommuStateParamDetail `json:"updateHostIommuState"`
 }
 // UnsubscribeEventParamDetail UnsubscribeEvent detail param
 type UnsubscribeEventParamDetail struct {
@@ -2037,7 +2037,7 @@ type UnsubscribeEventParamDetail struct {
 // UnsubscribeEventParam UnsubscribeEvent request param
 type UnsubscribeEventParam struct {
 	BaseParam
-	UnsubscribeEvent UnsubscribeEventParamDetail `json:"unsubscribeEvent"`
+	Params UnsubscribeEventParamDetail `json:"unsubscribeEvent"`
 }
 // CreateObservabilityServerParamDetail CreateObservabilityServer detail param
 type CreateObservabilityServerParamDetail struct {
@@ -2056,7 +2056,7 @@ type CreateObservabilityServerParamDetail struct {
 // CreateObservabilityServerParam CreateObservabilityServer request param
 type CreateObservabilityServerParam struct {
 	BaseParam
-	CreateObservabilityServer CreateObservabilityServerParamDetail `json:"createObservabilityServer"`
+	Params CreateObservabilityServerParamDetail `json:"createObservabilityServer"`
 }
 // RemoveMonFromCephPrimaryStorageParamDetail RemoveMonFromCephPrimaryStorage detail param
 type RemoveMonFromCephPrimaryStorageParamDetail struct {
@@ -2067,7 +2067,7 @@ type RemoveMonFromCephPrimaryStorageParamDetail struct {
 // RemoveMonFromCephPrimaryStorageParam RemoveMonFromCephPrimaryStorage request param
 type RemoveMonFromCephPrimaryStorageParam struct {
 	BaseParam
-	RemoveMonFromCephPrimaryStorage RemoveMonFromCephPrimaryStorageParamDetail `json:"removeMonFromCephPrimaryStorage"`
+	Params RemoveMonFromCephPrimaryStorageParamDetail `json:"removeMonFromCephPrimaryStorage"`
 }
 // GetVmsSchedulingStateFromSchedulingRuleParamDetail GetVmsSchedulingStateFromSchedulingRule detail param
 type GetVmsSchedulingStateFromSchedulingRuleParamDetail struct {
@@ -2078,7 +2078,7 @@ type GetVmsSchedulingStateFromSchedulingRuleParamDetail struct {
 // GetVmsSchedulingStateFromSchedulingRuleParam GetVmsSchedulingStateFromSchedulingRule request param
 type GetVmsSchedulingStateFromSchedulingRuleParam struct {
 	BaseParam
-	GetVmsSchedulingStateFromSchedulingRule GetVmsSchedulingStateFromSchedulingRuleParamDetail `json:"getVmsSchedulingStateFromSchedulingRule"`
+	Params GetVmsSchedulingStateFromSchedulingRuleParamDetail `json:"getVmsSchedulingStateFromSchedulingRule"`
 }
 // ChangeAlarmStateParamDetail ChangeAlarmState detail param
 type ChangeAlarmStateParamDetail struct {
@@ -2089,7 +2089,7 @@ type ChangeAlarmStateParamDetail struct {
 // ChangeAlarmStateParam ChangeAlarmState request param
 type ChangeAlarmStateParam struct {
 	BaseParam
-	ChangeAlarmState ChangeAlarmStateParamDetail `json:"changeAlarmState"`
+	Params ChangeAlarmStateParamDetail `json:"changeAlarmState"`
 }
 // GetLocalStorageHostDiskCapacityParamDetail GetLocalStorageHostDiskCapacity detail param
 type GetLocalStorageHostDiskCapacityParamDetail struct {
@@ -2100,7 +2100,7 @@ type GetLocalStorageHostDiskCapacityParamDetail struct {
 // GetLocalStorageHostDiskCapacityParam GetLocalStorageHostDiskCapacity request param
 type GetLocalStorageHostDiskCapacityParam struct {
 	BaseParam
-	GetLocalStorageHostDiskCapacity GetLocalStorageHostDiskCapacityParamDetail `json:"getLocalStorageHostDiskCapacity"`
+	Params GetLocalStorageHostDiskCapacityParamDetail `json:"getLocalStorageHostDiskCapacity"`
 }
 // DeleteVmSshKeyParamDetail DeleteVmSshKey detail param
 type DeleteVmSshKeyParamDetail struct {
@@ -2110,7 +2110,7 @@ type DeleteVmSshKeyParamDetail struct {
 // DeleteVmSshKeyParam DeleteVmSshKey request param
 type DeleteVmSshKeyParam struct {
 	BaseParam
-	DeleteVmSshKey DeleteVmSshKeyParamDetail `json:"deleteVmSshKey"`
+	Params DeleteVmSshKeyParamDetail `json:"deleteVmSshKey"`
 }
 // GetPolicyRouteRuleSetFromVirtualRouterParamDetail GetPolicyRouteRuleSetFromVirtualRouter detail param
 type GetPolicyRouteRuleSetFromVirtualRouterParamDetail struct {
@@ -2120,7 +2120,7 @@ type GetPolicyRouteRuleSetFromVirtualRouterParamDetail struct {
 // GetPolicyRouteRuleSetFromVirtualRouterParam GetPolicyRouteRuleSetFromVirtualRouter request param
 type GetPolicyRouteRuleSetFromVirtualRouterParam struct {
 	BaseParam
-	GetPolicyRouteRuleSetFromVirtualRouter GetPolicyRouteRuleSetFromVirtualRouterParamDetail `json:"getPolicyRouteRuleSetFromVirtualRouter"`
+	Params GetPolicyRouteRuleSetFromVirtualRouterParamDetail `json:"getPolicyRouteRuleSetFromVirtualRouter"`
 }
 // DeleteVxlanPoolRemoteVtepParamDetail DeleteVxlanPoolRemoteVtep detail param
 type DeleteVxlanPoolRemoteVtepParamDetail struct {
@@ -2133,7 +2133,7 @@ type DeleteVxlanPoolRemoteVtepParamDetail struct {
 // DeleteVxlanPoolRemoteVtepParam DeleteVxlanPoolRemoteVtep request param
 type DeleteVxlanPoolRemoteVtepParam struct {
 	BaseParam
-	DeleteVxlanPoolRemoteVtep DeleteVxlanPoolRemoteVtepParamDetail `json:"deleteVxlanPoolRemoteVtep"`
+	Params DeleteVxlanPoolRemoteVtepParamDetail `json:"deleteVxlanPoolRemoteVtep"`
 }
 // RemoveAttributesFromIAM2ProjectParamDetail RemoveAttributesFromIAM2Project detail param
 type RemoveAttributesFromIAM2ProjectParamDetail struct {
@@ -2144,7 +2144,7 @@ type RemoveAttributesFromIAM2ProjectParamDetail struct {
 // RemoveAttributesFromIAM2ProjectParam RemoveAttributesFromIAM2Project request param
 type RemoveAttributesFromIAM2ProjectParam struct {
 	BaseParam
-	RemoveAttributesFromIAM2Project RemoveAttributesFromIAM2ProjectParamDetail `json:"removeAttributesFromIAM2Project"`
+	Params RemoveAttributesFromIAM2ProjectParamDetail `json:"removeAttributesFromIAM2Project"`
 }
 // RecoverDataVolumeParamDetail RecoverDataVolume detail param
 type RecoverDataVolumeParamDetail struct {
@@ -2154,7 +2154,7 @@ type RecoverDataVolumeParamDetail struct {
 // RecoverDataVolumeParam RecoverDataVolume request param
 type RecoverDataVolumeParam struct {
 	BaseParam
-	RecoverDataVolume RecoverDataVolumeParamDetail `json:"recoverDataVolume"`
+	Params RecoverDataVolumeParamDetail `json:"recoverDataVolume"`
 }
 // RemoveIAM2VirtualIDsFromGroupParamDetail RemoveIAM2VirtualIDsFromGroup detail param
 type RemoveIAM2VirtualIDsFromGroupParamDetail struct {
@@ -2165,7 +2165,7 @@ type RemoveIAM2VirtualIDsFromGroupParamDetail struct {
 // RemoveIAM2VirtualIDsFromGroupParam RemoveIAM2VirtualIDsFromGroup request param
 type RemoveIAM2VirtualIDsFromGroupParam struct {
 	BaseParam
-	RemoveIAM2VirtualIDsFromGroup RemoveIAM2VirtualIDsFromGroupParamDetail `json:"removeIAM2VirtualIDsFromGroup"`
+	Params RemoveIAM2VirtualIDsFromGroupParamDetail `json:"removeIAM2VirtualIDsFromGroup"`
 }
 // AttachBareMetal2ProvisionNetworkToClusterParamDetail AttachBareMetal2ProvisionNetworkToCluster detail param
 type AttachBareMetal2ProvisionNetworkToClusterParamDetail struct {
@@ -2176,7 +2176,7 @@ type AttachBareMetal2ProvisionNetworkToClusterParamDetail struct {
 // AttachBareMetal2ProvisionNetworkToClusterParam AttachBareMetal2ProvisionNetworkToCluster request param
 type AttachBareMetal2ProvisionNetworkToClusterParam struct {
 	BaseParam
-	AttachBareMetal2ProvisionNetworkToCluster AttachBareMetal2ProvisionNetworkToClusterParamDetail `json:"attachBareMetal2ProvisionNetworkToCluster"`
+	Params AttachBareMetal2ProvisionNetworkToClusterParamDetail `json:"attachBareMetal2ProvisionNetworkToCluster"`
 }
 // ProvisionSlbInstanceParamDetail ProvisionSlbInstance detail param
 type ProvisionSlbInstanceParamDetail struct {
@@ -2186,7 +2186,7 @@ type ProvisionSlbInstanceParamDetail struct {
 // ProvisionSlbInstanceParam ProvisionSlbInstance request param
 type ProvisionSlbInstanceParam struct {
 	BaseParam
-	ProvisionSlbInstance ProvisionSlbInstanceParamDetail `json:"provisionSlbInstance"`
+	Params ProvisionSlbInstanceParamDetail `json:"provisionSlbInstance"`
 }
 // SetVmUserDefinedXmlHookScriptParamDetail SetVmUserDefinedXmlHookScript detail param
 type SetVmUserDefinedXmlHookScriptParamDetail struct {
@@ -2199,7 +2199,7 @@ type SetVmUserDefinedXmlHookScriptParamDetail struct {
 // SetVmUserDefinedXmlHookScriptParam SetVmUserDefinedXmlHookScript request param
 type SetVmUserDefinedXmlHookScriptParam struct {
 	BaseParam
-	SetVmUserDefinedXmlHookScript SetVmUserDefinedXmlHookScriptParamDetail `json:"setVmUserDefinedXmlHookScript"`
+	Params SetVmUserDefinedXmlHookScriptParamDetail `json:"setVmUserDefinedXmlHookScript"`
 }
 // DetachProvisionNicFromBondingParamDetail DetachProvisionNicFromBonding detail param
 type DetachProvisionNicFromBondingParamDetail struct {
@@ -2210,7 +2210,7 @@ type DetachProvisionNicFromBondingParamDetail struct {
 // DetachProvisionNicFromBondingParam DetachProvisionNicFromBonding request param
 type DetachProvisionNicFromBondingParam struct {
 	BaseParam
-	DetachProvisionNicFromBonding DetachProvisionNicFromBondingParamDetail `json:"detachProvisionNicFromBonding"`
+	Params DetachProvisionNicFromBondingParamDetail `json:"detachProvisionNicFromBonding"`
 }
 // GetHostAllocatorStrategiesParamDetail GetHostAllocatorStrategies detail param
 type GetHostAllocatorStrategiesParamDetail struct {
@@ -2219,7 +2219,7 @@ type GetHostAllocatorStrategiesParamDetail struct {
 // GetHostAllocatorStrategiesParam GetHostAllocatorStrategies request param
 type GetHostAllocatorStrategiesParam struct {
 	BaseParam
-	GetHostAllocatorStrategies GetHostAllocatorStrategiesParamDetail `json:"getHostAllocatorStrategies"`
+	Params GetHostAllocatorStrategiesParamDetail `json:"getHostAllocatorStrategies"`
 }
 // GetInterfaceServiceTypeStatisticParamDetail GetInterfaceServiceTypeStatistic detail param
 type GetInterfaceServiceTypeStatisticParamDetail struct {
@@ -2240,7 +2240,7 @@ type GetInterfaceServiceTypeStatisticParamDetail struct {
 // GetInterfaceServiceTypeStatisticParam GetInterfaceServiceTypeStatistic request param
 type GetInterfaceServiceTypeStatisticParam struct {
 	BaseParam
-	GetInterfaceServiceTypeStatistic GetInterfaceServiceTypeStatisticParamDetail `json:"getInterfaceServiceTypeStatistic"`
+	Params GetInterfaceServiceTypeStatisticParamDetail `json:"getInterfaceServiceTypeStatistic"`
 }
 // StartConnectionBetweenAliyunRouterInterfaceParamDetail StartConnectionBetweenAliyunRouterInterface detail param
 type StartConnectionBetweenAliyunRouterInterfaceParamDetail struct {
@@ -2251,7 +2251,7 @@ type StartConnectionBetweenAliyunRouterInterfaceParamDetail struct {
 // StartConnectionBetweenAliyunRouterInterfaceParam StartConnectionBetweenAliyunRouterInterface request param
 type StartConnectionBetweenAliyunRouterInterfaceParam struct {
 	BaseParam
-	StartConnectionBetweenAliyunRouterInterface StartConnectionBetweenAliyunRouterInterfaceParamDetail `json:"startConnectionBetweenAliyunRouterInterface"`
+	Params StartConnectionBetweenAliyunRouterInterfaceParamDetail `json:"startConnectionBetweenAliyunRouterInterface"`
 }
 // DeleteModelsParamDetail DeleteModels detail param
 type DeleteModelsParamDetail struct {
@@ -2262,7 +2262,7 @@ type DeleteModelsParamDetail struct {
 // DeleteModelsParam DeleteModels request param
 type DeleteModelsParam struct {
 	BaseParam
-	DeleteModels DeleteModelsParamDetail `json:"deleteModels"`
+	Params DeleteModelsParamDetail `json:"deleteModels"`
 }
 // ListVmsFromSchedulingStateParamDetail ListVmsFromSchedulingState detail param
 type ListVmsFromSchedulingStateParamDetail struct {
@@ -2273,7 +2273,7 @@ type ListVmsFromSchedulingStateParamDetail struct {
 // ListVmsFromSchedulingStateParam ListVmsFromSchedulingState request param
 type ListVmsFromSchedulingStateParam struct {
 	BaseParam
-	ListVmsFromSchedulingState ListVmsFromSchedulingStateParamDetail `json:"listVmsFromSchedulingState"`
+	Params ListVmsFromSchedulingStateParamDetail `json:"listVmsFromSchedulingState"`
 }
 // CreateRootVolumeTemplateFromVolumeSnapshotParamDetail CreateRootVolumeTemplateFromVolumeSnapshot detail param
 type CreateRootVolumeTemplateFromVolumeSnapshotParamDetail struct {
@@ -2293,7 +2293,7 @@ type CreateRootVolumeTemplateFromVolumeSnapshotParamDetail struct {
 // CreateRootVolumeTemplateFromVolumeSnapshotParam CreateRootVolumeTemplateFromVolumeSnapshot request param
 type CreateRootVolumeTemplateFromVolumeSnapshotParam struct {
 	BaseParam
-	CreateRootVolumeTemplateFromVolumeSnapshot CreateRootVolumeTemplateFromVolumeSnapshotParamDetail `json:"createRootVolumeTemplateFromVolumeSnapshot"`
+	Params CreateRootVolumeTemplateFromVolumeSnapshotParamDetail `json:"createRootVolumeTemplateFromVolumeSnapshot"`
 }
 // AllocateHostResourceParamDetail AllocateHostResource detail param
 type AllocateHostResourceParamDetail struct {
@@ -2307,7 +2307,7 @@ type AllocateHostResourceParamDetail struct {
 // AllocateHostResourceParam AllocateHostResource request param
 type AllocateHostResourceParam struct {
 	BaseParam
-	AllocateHostResource AllocateHostResourceParamDetail `json:"allocateHostResource"`
+	Params AllocateHostResourceParamDetail `json:"allocateHostResource"`
 }
 // GetCandidateLdapEntryForBindingParamDetail GetCandidateLdapEntryForBinding detail param
 type GetCandidateLdapEntryForBindingParamDetail struct {
@@ -2318,7 +2318,7 @@ type GetCandidateLdapEntryForBindingParamDetail struct {
 // GetCandidateLdapEntryForBindingParam GetCandidateLdapEntryForBinding request param
 type GetCandidateLdapEntryForBindingParam struct {
 	BaseParam
-	GetCandidateLdapEntryForBinding GetCandidateLdapEntryForBindingParamDetail `json:"getCandidateLdapEntryForBinding"`
+	Params GetCandidateLdapEntryForBindingParamDetail `json:"getCandidateLdapEntryForBinding"`
 }
 // CheckElaborationContentParamDetail CheckElaborationContent detail param
 type CheckElaborationContentParamDetail struct {
@@ -2329,7 +2329,7 @@ type CheckElaborationContentParamDetail struct {
 // CheckElaborationContentParam CheckElaborationContent request param
 type CheckElaborationContentParam struct {
 	BaseParam
-	CheckElaborationContent CheckElaborationContentParamDetail `json:"checkElaborationContent"`
+	Params CheckElaborationContentParamDetail `json:"checkElaborationContent"`
 }
 // DeleteVmConsolePasswordParamDetail DeleteVmConsolePassword detail param
 type DeleteVmConsolePasswordParamDetail struct {
@@ -2339,7 +2339,7 @@ type DeleteVmConsolePasswordParamDetail struct {
 // DeleteVmConsolePasswordParam DeleteVmConsolePassword request param
 type DeleteVmConsolePasswordParam struct {
 	BaseParam
-	DeleteVmConsolePassword DeleteVmConsolePasswordParamDetail `json:"deleteVmConsolePassword"`
+	Params DeleteVmConsolePasswordParamDetail `json:"deleteVmConsolePassword"`
 }
 // CreateVmBackupParamDetail CreateVmBackup detail param
 type CreateVmBackupParamDetail struct {
@@ -2359,7 +2359,7 @@ type CreateVmBackupParamDetail struct {
 // CreateVmBackupParam CreateVmBackup request param
 type CreateVmBackupParam struct {
 	BaseParam
-	CreateVmBackup CreateVmBackupParamDetail `json:"createVmBackup"`
+	Params CreateVmBackupParamDetail `json:"createVmBackup"`
 }
 // GetPrimaryStorageLicenseInfoParamDetail GetPrimaryStorageLicenseInfo detail param
 type GetPrimaryStorageLicenseInfoParamDetail struct {
@@ -2369,7 +2369,7 @@ type GetPrimaryStorageLicenseInfoParamDetail struct {
 // GetPrimaryStorageLicenseInfoParam GetPrimaryStorageLicenseInfo request param
 type GetPrimaryStorageLicenseInfoParam struct {
 	BaseParam
-	GetPrimaryStorageLicenseInfo GetPrimaryStorageLicenseInfoParamDetail `json:"getPrimaryStorageLicenseInfo"`
+	Params GetPrimaryStorageLicenseInfoParamDetail `json:"getPrimaryStorageLicenseInfo"`
 }
 // GetEncryptedFieldParamDetail GetEncryptedField detail param
 type GetEncryptedFieldParamDetail struct {
@@ -2379,7 +2379,7 @@ type GetEncryptedFieldParamDetail struct {
 // GetEncryptedFieldParam GetEncryptedField request param
 type GetEncryptedFieldParam struct {
 	BaseParam
-	GetEncryptedField GetEncryptedFieldParamDetail `json:"getEncryptedField"`
+	Params GetEncryptedFieldParamDetail `json:"getEncryptedField"`
 }
 // CleanInvalidLdapBindingParamDetail CleanInvalidLdapBinding detail param
 type CleanInvalidLdapBindingParamDetail struct {
@@ -2388,7 +2388,7 @@ type CleanInvalidLdapBindingParamDetail struct {
 // CleanInvalidLdapBindingParam CleanInvalidLdapBinding request param
 type CleanInvalidLdapBindingParam struct {
 	BaseParam
-	CleanInvalidLdapBinding CleanInvalidLdapBindingParamDetail `json:"cleanInvalidLdapBinding"`
+	Params CleanInvalidLdapBindingParamDetail `json:"cleanInvalidLdapBinding"`
 }
 // AttachBaremetalPxeServerToClusterParamDetail AttachBaremetalPxeServerToCluster detail param
 type AttachBaremetalPxeServerToClusterParamDetail struct {
@@ -2399,7 +2399,7 @@ type AttachBaremetalPxeServerToClusterParamDetail struct {
 // AttachBaremetalPxeServerToClusterParam AttachBaremetalPxeServerToCluster request param
 type AttachBaremetalPxeServerToClusterParam struct {
 	BaseParam
-	AttachBaremetalPxeServerToCluster AttachBaremetalPxeServerToClusterParamDetail `json:"attachBaremetalPxeServerToCluster"`
+	Params AttachBaremetalPxeServerToClusterParamDetail `json:"attachBaremetalPxeServerToCluster"`
 }
 // GetVmStartingCandidateClustersHostsParamDetail GetVmStartingCandidateClustersHosts detail param
 type GetVmStartingCandidateClustersHostsParamDetail struct {
@@ -2409,7 +2409,7 @@ type GetVmStartingCandidateClustersHostsParamDetail struct {
 // GetVmStartingCandidateClustersHostsParam GetVmStartingCandidateClustersHosts request param
 type GetVmStartingCandidateClustersHostsParam struct {
 	BaseParam
-	GetVmStartingCandidateClustersHosts GetVmStartingCandidateClustersHostsParamDetail `json:"getVmStartingCandidateClustersHosts"`
+	Params GetVmStartingCandidateClustersHostsParamDetail `json:"getVmStartingCandidateClustersHosts"`
 }
 // RecoverVmBackupFromImageStoreBackupStorageParamDetail RecoverVmBackupFromImageStoreBackupStorage detail param
 type RecoverVmBackupFromImageStoreBackupStorageParamDetail struct {
@@ -2421,7 +2421,7 @@ type RecoverVmBackupFromImageStoreBackupStorageParamDetail struct {
 // RecoverVmBackupFromImageStoreBackupStorageParam RecoverVmBackupFromImageStoreBackupStorage request param
 type RecoverVmBackupFromImageStoreBackupStorageParam struct {
 	BaseParam
-	RecoverVmBackupFromImageStoreBackupStorage RecoverVmBackupFromImageStoreBackupStorageParamDetail `json:"recoverVmBackupFromImageStoreBackupStorage"`
+	Params RecoverVmBackupFromImageStoreBackupStorageParamDetail `json:"recoverVmBackupFromImageStoreBackupStorage"`
 }
 // DetachIAM2ProjectFromIAM2OrganizationParamDetail DetachIAM2ProjectFromIAM2Organization detail param
 type DetachIAM2ProjectFromIAM2OrganizationParamDetail struct {
@@ -2431,7 +2431,7 @@ type DetachIAM2ProjectFromIAM2OrganizationParamDetail struct {
 // DetachIAM2ProjectFromIAM2OrganizationParam DetachIAM2ProjectFromIAM2Organization request param
 type DetachIAM2ProjectFromIAM2OrganizationParam struct {
 	BaseParam
-	DetachIAM2ProjectFromIAM2Organization DetachIAM2ProjectFromIAM2OrganizationParamDetail `json:"detachIAM2ProjectFromIAM2Organization"`
+	Params DetachIAM2ProjectFromIAM2OrganizationParamDetail `json:"detachIAM2ProjectFromIAM2Organization"`
 }
 // DiscoverExternalPrimaryStorageParamDetail DiscoverExternalPrimaryStorage detail param
 type DiscoverExternalPrimaryStorageParamDetail struct {
@@ -2443,7 +2443,7 @@ type DiscoverExternalPrimaryStorageParamDetail struct {
 // DiscoverExternalPrimaryStorageParam DiscoverExternalPrimaryStorage request param
 type DiscoverExternalPrimaryStorageParam struct {
 	BaseParam
-	DiscoverExternalPrimaryStorage DiscoverExternalPrimaryStorageParamDetail `json:"discoverExternalPrimaryStorage"`
+	Params DiscoverExternalPrimaryStorageParamDetail `json:"discoverExternalPrimaryStorage"`
 }
 // GetVolumeIoThreadPinParamDetail GetVolumeIoThreadPin detail param
 type GetVolumeIoThreadPinParamDetail struct {
@@ -2453,7 +2453,7 @@ type GetVolumeIoThreadPinParamDetail struct {
 // GetVolumeIoThreadPinParam GetVolumeIoThreadPin request param
 type GetVolumeIoThreadPinParam struct {
 	BaseParam
-	GetVolumeIoThreadPin GetVolumeIoThreadPinParamDetail `json:"getVolumeIoThreadPin"`
+	Params GetVolumeIoThreadPinParamDetail `json:"getVolumeIoThreadPin"`
 }
 // GetConnectionAccessPointFromRemoteParamDetail GetConnectionAccessPointFromRemote detail param
 type GetConnectionAccessPointFromRemoteParamDetail struct {
@@ -2463,7 +2463,7 @@ type GetConnectionAccessPointFromRemoteParamDetail struct {
 // GetConnectionAccessPointFromRemoteParam GetConnectionAccessPointFromRemote request param
 type GetConnectionAccessPointFromRemoteParam struct {
 	BaseParam
-	GetConnectionAccessPointFromRemote GetConnectionAccessPointFromRemoteParamDetail `json:"getConnectionAccessPointFromRemote"`
+	Params GetConnectionAccessPointFromRemoteParamDetail `json:"getConnectionAccessPointFromRemote"`
 }
 // GetVpcAttachedOspfParamDetail GetVpcAttachedOspf detail param
 type GetVpcAttachedOspfParamDetail struct {
@@ -2475,7 +2475,7 @@ type GetVpcAttachedOspfParamDetail struct {
 // GetVpcAttachedOspfParam GetVpcAttachedOspf request param
 type GetVpcAttachedOspfParam struct {
 	BaseParam
-	GetVpcAttachedOspf GetVpcAttachedOspfParamDetail `json:"getVpcAttachedOspf"`
+	Params GetVpcAttachedOspfParamDetail `json:"getVpcAttachedOspf"`
 }
 // PowerOffHostParamDetail PowerOffHost detail param
 type PowerOffHostParamDetail struct {
@@ -2488,7 +2488,7 @@ type PowerOffHostParamDetail struct {
 // PowerOffHostParam PowerOffHost request param
 type PowerOffHostParam struct {
 	BaseParam
-	PowerOffHost PowerOffHostParamDetail `json:"powerOffHost"`
+	Params PowerOffHostParamDetail `json:"powerOffHost"`
 }
 // RemoveIAM2VirtualIDGroupFromProjectsParamDetail RemoveIAM2VirtualIDGroupFromProjects detail param
 type RemoveIAM2VirtualIDGroupFromProjectsParamDetail struct {
@@ -2499,7 +2499,7 @@ type RemoveIAM2VirtualIDGroupFromProjectsParamDetail struct {
 // RemoveIAM2VirtualIDGroupFromProjectsParam RemoveIAM2VirtualIDGroupFromProjects request param
 type RemoveIAM2VirtualIDGroupFromProjectsParam struct {
 	BaseParam
-	RemoveIAM2VirtualIDGroupFromProjects RemoveIAM2VirtualIDGroupFromProjectsParamDetail `json:"removeIAM2VirtualIDGroupFromProjects"`
+	Params RemoveIAM2VirtualIDGroupFromProjectsParamDetail `json:"removeIAM2VirtualIDGroupFromProjects"`
 }
 // UpdateVmUserDefinedXmlHookScriptParamDetail UpdateVmUserDefinedXmlHookScript detail param
 type UpdateVmUserDefinedXmlHookScriptParamDetail struct {
@@ -2513,7 +2513,7 @@ type UpdateVmUserDefinedXmlHookScriptParamDetail struct {
 // UpdateVmUserDefinedXmlHookScriptParam UpdateVmUserDefinedXmlHookScript request param
 type UpdateVmUserDefinedXmlHookScriptParam struct {
 	BaseParam
-	UpdateVmUserDefinedXmlHookScript UpdateVmUserDefinedXmlHookScriptParamDetail `json:"updateVmUserDefinedXmlHookScript"`
+	Params UpdateVmUserDefinedXmlHookScriptParamDetail `json:"updateVmUserDefinedXmlHookScript"`
 }
 // GetIAM2ProjectContainerImageTagsParamDetail GetIAM2ProjectContainerImageTags detail param
 type GetIAM2ProjectContainerImageTagsParamDetail struct {
@@ -2527,7 +2527,7 @@ type GetIAM2ProjectContainerImageTagsParamDetail struct {
 // GetIAM2ProjectContainerImageTagsParam GetIAM2ProjectContainerImageTags request param
 type GetIAM2ProjectContainerImageTagsParam struct {
 	BaseParam
-	GetIAM2ProjectContainerImageTags GetIAM2ProjectContainerImageTagsParamDetail `json:"getIAM2ProjectContainerImageTags"`
+	Params GetIAM2ProjectContainerImageTagsParamDetail `json:"getIAM2ProjectContainerImageTags"`
 }
 // DeleteAliyunDiskFromRemoteParamDetail DeleteAliyunDiskFromRemote detail param
 type DeleteAliyunDiskFromRemoteParamDetail struct {
@@ -2538,7 +2538,7 @@ type DeleteAliyunDiskFromRemoteParamDetail struct {
 // DeleteAliyunDiskFromRemoteParam DeleteAliyunDiskFromRemote request param
 type DeleteAliyunDiskFromRemoteParam struct {
 	BaseParam
-	DeleteAliyunDiskFromRemote DeleteAliyunDiskFromRemoteParamDetail `json:"deleteAliyunDiskFromRemote"`
+	Params DeleteAliyunDiskFromRemoteParamDetail `json:"deleteAliyunDiskFromRemote"`
 }
 // GetVersionParamDetail GetVersion detail param
 type GetVersionParamDetail struct {
@@ -2547,7 +2547,7 @@ type GetVersionParamDetail struct {
 // GetVersionParam GetVersion request param
 type GetVersionParam struct {
 	BaseParam
-	GetVersion GetVersionParamDetail `json:"getVersion"`
+	Params GetVersionParamDetail `json:"getVersion"`
 }
 // GetCandidateBackupStorageForCreatingImageParamDetail GetCandidateBackupStorageForCreatingImage detail param
 type GetCandidateBackupStorageForCreatingImageParamDetail struct {
@@ -2558,7 +2558,7 @@ type GetCandidateBackupStorageForCreatingImageParamDetail struct {
 // GetCandidateBackupStorageForCreatingImageParam GetCandidateBackupStorageForCreatingImage request param
 type GetCandidateBackupStorageForCreatingImageParam struct {
 	BaseParam
-	GetCandidateBackupStorageForCreatingImage GetCandidateBackupStorageForCreatingImageParamDetail `json:"getCandidateBackupStorageForCreatingImage"`
+	Params GetCandidateBackupStorageForCreatingImageParamDetail `json:"getCandidateBackupStorageForCreatingImage"`
 }
 // AttachAutoScalingTemplateToGroupParamDetail AttachAutoScalingTemplateToGroup detail param
 type AttachAutoScalingTemplateToGroupParamDetail struct {
@@ -2569,7 +2569,7 @@ type AttachAutoScalingTemplateToGroupParamDetail struct {
 // AttachAutoScalingTemplateToGroupParam AttachAutoScalingTemplateToGroup request param
 type AttachAutoScalingTemplateToGroupParam struct {
 	BaseParam
-	AttachAutoScalingTemplateToGroup AttachAutoScalingTemplateToGroupParamDetail `json:"attachAutoScalingTemplateToGroup"`
+	Params AttachAutoScalingTemplateToGroupParamDetail `json:"attachAutoScalingTemplateToGroup"`
 }
 // GetCpuMemoryCapacityParamDetail GetCpuMemoryCapacity detail param
 type GetCpuMemoryCapacityParamDetail struct {
@@ -2583,7 +2583,7 @@ type GetCpuMemoryCapacityParamDetail struct {
 // GetCpuMemoryCapacityParam GetCpuMemoryCapacity request param
 type GetCpuMemoryCapacityParam struct {
 	BaseParam
-	GetCpuMemoryCapacity GetCpuMemoryCapacityParamDetail `json:"getCpuMemoryCapacity"`
+	Params GetCpuMemoryCapacityParamDetail `json:"getCpuMemoryCapacity"`
 }
 // AddIntegrityResourceParamDetail AddIntegrityResource detail param
 type AddIntegrityResourceParamDetail struct {
@@ -2594,7 +2594,7 @@ type AddIntegrityResourceParamDetail struct {
 // AddIntegrityResourceParam AddIntegrityResource request param
 type AddIntegrityResourceParam struct {
 	BaseParam
-	AddIntegrityResource AddIntegrityResourceParamDetail `json:"addIntegrityResource"`
+	Params AddIntegrityResourceParamDetail `json:"addIntegrityResource"`
 }
 // CheckVipPortAvailabilityParamDetail CheckVipPortAvailability detail param
 type CheckVipPortAvailabilityParamDetail struct {
@@ -2608,7 +2608,7 @@ type CheckVipPortAvailabilityParamDetail struct {
 // CheckVipPortAvailabilityParam CheckVipPortAvailability request param
 type CheckVipPortAvailabilityParam struct {
 	BaseParam
-	CheckVipPortAvailability CheckVipPortAvailabilityParamDetail `json:"checkVipPortAvailability"`
+	Params CheckVipPortAvailabilityParamDetail `json:"checkVipPortAvailability"`
 }
 // GetCandidateClustersForAttachingL2NetworkParamDetail GetCandidateClustersForAttachingL2Network detail param
 type GetCandidateClustersForAttachingL2NetworkParamDetail struct {
@@ -2621,7 +2621,7 @@ type GetCandidateClustersForAttachingL2NetworkParamDetail struct {
 // GetCandidateClustersForAttachingL2NetworkParam GetCandidateClustersForAttachingL2Network request param
 type GetCandidateClustersForAttachingL2NetworkParam struct {
 	BaseParam
-	GetCandidateClustersForAttachingL2Network GetCandidateClustersForAttachingL2NetworkParamDetail `json:"getCandidateClustersForAttachingL2Network"`
+	Params GetCandidateClustersForAttachingL2NetworkParamDetail `json:"getCandidateClustersForAttachingL2Network"`
 }
 // CheckScsiLunClusterStatusParamDetail CheckScsiLunClusterStatus detail param
 type CheckScsiLunClusterStatusParamDetail struct {
@@ -2632,7 +2632,7 @@ type CheckScsiLunClusterStatusParamDetail struct {
 // CheckScsiLunClusterStatusParam CheckScsiLunClusterStatus request param
 type CheckScsiLunClusterStatusParam struct {
 	BaseParam
-	CheckScsiLunClusterStatus CheckScsiLunClusterStatusParamDetail `json:"checkScsiLunClusterStatus"`
+	Params CheckScsiLunClusterStatusParamDetail `json:"checkScsiLunClusterStatus"`
 }
 // CheckBatchDataIntegrityParamDetail CheckBatchDataIntegrity detail param
 type CheckBatchDataIntegrityParamDetail struct {
@@ -2643,7 +2643,7 @@ type CheckBatchDataIntegrityParamDetail struct {
 // CheckBatchDataIntegrityParam CheckBatchDataIntegrity request param
 type CheckBatchDataIntegrityParam struct {
 	BaseParam
-	CheckBatchDataIntegrity CheckBatchDataIntegrityParamDetail `json:"checkBatchDataIntegrity"`
+	Params CheckBatchDataIntegrityParamDetail `json:"checkBatchDataIntegrity"`
 }
 // UpdateAutoScalingGroupRemovalInstanceRuleParamDetail UpdateAutoScalingGroupRemovalInstanceRule detail param
 type UpdateAutoScalingGroupRemovalInstanceRuleParamDetail struct {
@@ -2659,7 +2659,7 @@ type UpdateAutoScalingGroupRemovalInstanceRuleParamDetail struct {
 // UpdateAutoScalingGroupRemovalInstanceRuleParam UpdateAutoScalingGroupRemovalInstanceRule request param
 type UpdateAutoScalingGroupRemovalInstanceRuleParam struct {
 	BaseParam
-	UpdateAutoScalingGroupRemovalInstanceRule UpdateAutoScalingGroupRemovalInstanceRuleParamDetail `json:"updateAutoScalingGroupRemovalInstanceRule"`
+	Params UpdateAutoScalingGroupRemovalInstanceRuleParamDetail `json:"updateAutoScalingGroupRemovalInstanceRule"`
 }
 // UploadFileToVmParamDetail UploadFileToVm detail param
 type UploadFileToVmParamDetail struct {
@@ -2671,7 +2671,7 @@ type UploadFileToVmParamDetail struct {
 // UploadFileToVmParam UploadFileToVm request param
 type UploadFileToVmParam struct {
 	BaseParam
-	UploadFileToVm UploadFileToVmParamDetail `json:"uploadFileToVm"`
+	Params UploadFileToVmParamDetail `json:"uploadFileToVm"`
 }
 // ChangeL3NetworkDhcpIpAddressParamDetail ChangeL3NetworkDhcpIpAddress detail param
 type ChangeL3NetworkDhcpIpAddressParamDetail struct {
@@ -2683,7 +2683,7 @@ type ChangeL3NetworkDhcpIpAddressParamDetail struct {
 // ChangeL3NetworkDhcpIpAddressParam ChangeL3NetworkDhcpIpAddress request param
 type ChangeL3NetworkDhcpIpAddressParam struct {
 	BaseParam
-	ChangeL3NetworkDhcpIpAddress ChangeL3NetworkDhcpIpAddressParamDetail `json:"changeL3NetworkDhcpIpAddress"`
+	Params ChangeL3NetworkDhcpIpAddressParamDetail `json:"changeL3NetworkDhcpIpAddress"`
 }
 // CheckVolumeSnapshotGroupAvailabilityParamDetail CheckVolumeSnapshotGroupAvailability detail param
 type CheckVolumeSnapshotGroupAvailabilityParamDetail struct {
@@ -2693,7 +2693,7 @@ type CheckVolumeSnapshotGroupAvailabilityParamDetail struct {
 // CheckVolumeSnapshotGroupAvailabilityParam CheckVolumeSnapshotGroupAvailability request param
 type CheckVolumeSnapshotGroupAvailabilityParam struct {
 	BaseParam
-	CheckVolumeSnapshotGroupAvailability CheckVolumeSnapshotGroupAvailabilityParamDetail `json:"checkVolumeSnapshotGroupAvailability"`
+	Params CheckVolumeSnapshotGroupAvailabilityParamDetail `json:"checkVolumeSnapshotGroupAvailability"`
 }
 // SsoClientPushDataParamDetail SsoClientPushData detail param
 type SsoClientPushDataParamDetail struct {
@@ -2705,7 +2705,7 @@ type SsoClientPushDataParamDetail struct {
 // SsoClientPushDataParam SsoClientPushData request param
 type SsoClientPushDataParam struct {
 	BaseParam
-	SsoClientPushData SsoClientPushDataParamDetail `json:"ssoClientPushData"`
+	Params SsoClientPushDataParamDetail `json:"ssoClientPushData"`
 }
 // AddEmailAddressToSNSEmailEndpointParamDetail AddEmailAddressToSNSEmailEndpoint detail param
 type AddEmailAddressToSNSEmailEndpointParamDetail struct {
@@ -2718,7 +2718,7 @@ type AddEmailAddressToSNSEmailEndpointParamDetail struct {
 // AddEmailAddressToSNSEmailEndpointParam AddEmailAddressToSNSEmailEndpoint request param
 type AddEmailAddressToSNSEmailEndpointParam struct {
 	BaseParam
-	AddEmailAddressToSNSEmailEndpoint AddEmailAddressToSNSEmailEndpointParamDetail `json:"addEmailAddressToSNSEmailEndpoint"`
+	Params AddEmailAddressToSNSEmailEndpointParamDetail `json:"addEmailAddressToSNSEmailEndpoint"`
 }
 // BackupDatabaseToPublicCloudParamDetail BackupDatabaseToPublicCloud detail param
 type BackupDatabaseToPublicCloudParamDetail struct {
@@ -2730,7 +2730,7 @@ type BackupDatabaseToPublicCloudParamDetail struct {
 // BackupDatabaseToPublicCloudParam BackupDatabaseToPublicCloud request param
 type BackupDatabaseToPublicCloudParam struct {
 	BaseParam
-	BackupDatabaseToPublicCloud BackupDatabaseToPublicCloudParamDetail `json:"backupDatabaseToPublicCloud"`
+	Params BackupDatabaseToPublicCloudParamDetail `json:"backupDatabaseToPublicCloud"`
 }
 // RecoveryImageFromImageStoreBackupStorageParamDetail RecoveryImageFromImageStoreBackupStorage detail param
 type RecoveryImageFromImageStoreBackupStorageParamDetail struct {
@@ -2744,7 +2744,7 @@ type RecoveryImageFromImageStoreBackupStorageParamDetail struct {
 // RecoveryImageFromImageStoreBackupStorageParam RecoveryImageFromImageStoreBackupStorage request param
 type RecoveryImageFromImageStoreBackupStorageParam struct {
 	BaseParam
-	RecoveryImageFromImageStoreBackupStorage RecoveryImageFromImageStoreBackupStorageParamDetail `json:"recoveryImageFromImageStoreBackupStorage"`
+	Params RecoveryImageFromImageStoreBackupStorageParamDetail `json:"recoveryImageFromImageStoreBackupStorage"`
 }
 // RevertVmFromSnapshotGroupParamDetail RevertVmFromSnapshotGroup detail param
 type RevertVmFromSnapshotGroupParamDetail struct {
@@ -2754,7 +2754,7 @@ type RevertVmFromSnapshotGroupParamDetail struct {
 // RevertVmFromSnapshotGroupParam RevertVmFromSnapshotGroup request param
 type RevertVmFromSnapshotGroupParam struct {
 	BaseParam
-	RevertVmFromSnapshotGroup RevertVmFromSnapshotGroupParamDetail `json:"revertVmFromSnapshotGroup"`
+	Params RevertVmFromSnapshotGroupParamDetail `json:"revertVmFromSnapshotGroup"`
 }
 // DetachFirewallRuleSetFromL3ParamDetail DetachFirewallRuleSetFromL3 detail param
 type DetachFirewallRuleSetFromL3ParamDetail struct {
@@ -2767,7 +2767,7 @@ type DetachFirewallRuleSetFromL3ParamDetail struct {
 // DetachFirewallRuleSetFromL3Param DetachFirewallRuleSetFromL3 request param
 type DetachFirewallRuleSetFromL3Param struct {
 	BaseParam
-	DetachFirewallRuleSetFromL3 DetachFirewallRuleSetFromL3ParamDetail `json:"detachFirewallRuleSetFromL3"`
+	Params DetachFirewallRuleSetFromL3ParamDetail `json:"detachFirewallRuleSetFromL3"`
 }
 // ListVmSchedulingRulesFromExecuteStateParamDetail ListVmSchedulingRulesFromExecuteState detail param
 type ListVmSchedulingRulesFromExecuteStateParamDetail struct {
@@ -2777,7 +2777,7 @@ type ListVmSchedulingRulesFromExecuteStateParamDetail struct {
 // ListVmSchedulingRulesFromExecuteStateParam ListVmSchedulingRulesFromExecuteState request param
 type ListVmSchedulingRulesFromExecuteStateParam struct {
 	BaseParam
-	ListVmSchedulingRulesFromExecuteState ListVmSchedulingRulesFromExecuteStateParamDetail `json:"listVmSchedulingRulesFromExecuteState"`
+	Params ListVmSchedulingRulesFromExecuteStateParamDetail `json:"listVmSchedulingRulesFromExecuteState"`
 }
 // SetVmUserDefinedXmlParamDetail SetVmUserDefinedXml detail param
 type SetVmUserDefinedXmlParamDetail struct {
@@ -2790,7 +2790,7 @@ type SetVmUserDefinedXmlParamDetail struct {
 // SetVmUserDefinedXmlParam SetVmUserDefinedXml request param
 type SetVmUserDefinedXmlParam struct {
 	BaseParam
-	SetVmUserDefinedXml SetVmUserDefinedXmlParamDetail `json:"setVmUserDefinedXml"`
+	Params SetVmUserDefinedXmlParamDetail `json:"setVmUserDefinedXml"`
 }
 // SetImageQgaParamDetail SetImageQga detail param
 type SetImageQgaParamDetail struct {
@@ -2801,7 +2801,7 @@ type SetImageQgaParamDetail struct {
 // SetImageQgaParam SetImageQga request param
 type SetImageQgaParam struct {
 	BaseParam
-	SetImageQga SetImageQgaParamDetail `json:"setImageQga"`
+	Params SetImageQgaParamDetail `json:"setImageQga"`
 }
 // ListVMsFromKVMHostParamDetail ListVMsFromKVMHost detail param
 type ListVMsFromKVMHostParamDetail struct {
@@ -2814,7 +2814,7 @@ type ListVMsFromKVMHostParamDetail struct {
 // ListVMsFromKVMHostParam ListVMsFromKVMHost request param
 type ListVMsFromKVMHostParam struct {
 	BaseParam
-	ListVMsFromKVMHost ListVMsFromKVMHostParamDetail `json:"listVMsFromKVMHost"`
+	Params ListVMsFromKVMHostParamDetail `json:"listVMsFromKVMHost"`
 }
 // TakeVmConsoleScreenshotParamDetail TakeVmConsoleScreenshot detail param
 type TakeVmConsoleScreenshotParamDetail struct {
@@ -2824,7 +2824,7 @@ type TakeVmConsoleScreenshotParamDetail struct {
 // TakeVmConsoleScreenshotParam TakeVmConsoleScreenshot request param
 type TakeVmConsoleScreenshotParam struct {
 	BaseParam
-	TakeVmConsoleScreenshot TakeVmConsoleScreenshotParamDetail `json:"takeVmConsoleScreenshot"`
+	Params TakeVmConsoleScreenshotParamDetail `json:"takeVmConsoleScreenshot"`
 }
 // RemoveVRouterNetworksFromOspfAreaParamDetail RemoveVRouterNetworksFromOspfArea detail param
 type RemoveVRouterNetworksFromOspfAreaParamDetail struct {
@@ -2835,7 +2835,7 @@ type RemoveVRouterNetworksFromOspfAreaParamDetail struct {
 // RemoveVRouterNetworksFromOspfAreaParam RemoveVRouterNetworksFromOspfArea request param
 type RemoveVRouterNetworksFromOspfAreaParam struct {
 	BaseParam
-	RemoveVRouterNetworksFromOspfArea RemoveVRouterNetworksFromOspfAreaParamDetail `json:"removeVRouterNetworksFromOspfArea"`
+	Params RemoveVRouterNetworksFromOspfAreaParamDetail `json:"removeVRouterNetworksFromOspfArea"`
 }
 // GetAliyunNasMountTargetRemoteParamDetail GetAliyunNasMountTargetRemote detail param
 type GetAliyunNasMountTargetRemoteParamDetail struct {
@@ -2846,7 +2846,7 @@ type GetAliyunNasMountTargetRemoteParamDetail struct {
 // GetAliyunNasMountTargetRemoteParam GetAliyunNasMountTargetRemote request param
 type GetAliyunNasMountTargetRemoteParam struct {
 	BaseParam
-	GetAliyunNasMountTargetRemote GetAliyunNasMountTargetRemoteParamDetail `json:"getAliyunNasMountTargetRemote"`
+	Params GetAliyunNasMountTargetRemoteParamDetail `json:"getAliyunNasMountTargetRemote"`
 }
 // CreateImageGroupFromVmInstanceParamDetail CreateImageGroupFromVmInstance detail param
 type CreateImageGroupFromVmInstanceParamDetail struct {
@@ -2860,7 +2860,7 @@ type CreateImageGroupFromVmInstanceParamDetail struct {
 // CreateImageGroupFromVmInstanceParam CreateImageGroupFromVmInstance request param
 type CreateImageGroupFromVmInstanceParam struct {
 	BaseParam
-	CreateImageGroupFromVmInstance CreateImageGroupFromVmInstanceParamDetail `json:"createImageGroupFromVmInstance"`
+	Params CreateImageGroupFromVmInstanceParamDetail `json:"createImageGroupFromVmInstance"`
 }
 // TerminateVirtualBorderRouterRemoteParamDetail TerminateVirtualBorderRouterRemote detail param
 type TerminateVirtualBorderRouterRemoteParamDetail struct {
@@ -2870,7 +2870,7 @@ type TerminateVirtualBorderRouterRemoteParamDetail struct {
 // TerminateVirtualBorderRouterRemoteParam TerminateVirtualBorderRouterRemote request param
 type TerminateVirtualBorderRouterRemoteParam struct {
 	BaseParam
-	TerminateVirtualBorderRouterRemote TerminateVirtualBorderRouterRemoteParamDetail `json:"terminateVirtualBorderRouterRemote"`
+	Params TerminateVirtualBorderRouterRemoteParamDetail `json:"terminateVirtualBorderRouterRemote"`
 }
 // DeleteVmBackupParamDetail DeleteVmBackup detail param
 type DeleteVmBackupParamDetail struct {
@@ -2883,7 +2883,7 @@ type DeleteVmBackupParamDetail struct {
 // DeleteVmBackupParam DeleteVmBackup request param
 type DeleteVmBackupParam struct {
 	BaseParam
-	DeleteVmBackup DeleteVmBackupParamDetail `json:"deleteVmBackup"`
+	Params DeleteVmBackupParamDetail `json:"deleteVmBackup"`
 }
 // SetVmSecurityLevelParamDetail SetVmSecurityLevel detail param
 type SetVmSecurityLevelParamDetail struct {
@@ -2894,7 +2894,7 @@ type SetVmSecurityLevelParamDetail struct {
 // SetVmSecurityLevelParam SetVmSecurityLevel request param
 type SetVmSecurityLevelParam struct {
 	BaseParam
-	SetVmSecurityLevel SetVmSecurityLevelParamDetail `json:"setVmSecurityLevel"`
+	Params SetVmSecurityLevelParamDetail `json:"setVmSecurityLevel"`
 }
 // RemoveMdevDeviceSpecFromVmInstanceParamDetail RemoveMdevDeviceSpecFromVmInstance detail param
 type RemoveMdevDeviceSpecFromVmInstanceParamDetail struct {
@@ -2905,7 +2905,7 @@ type RemoveMdevDeviceSpecFromVmInstanceParamDetail struct {
 // RemoveMdevDeviceSpecFromVmInstanceParam RemoveMdevDeviceSpecFromVmInstance request param
 type RemoveMdevDeviceSpecFromVmInstanceParam struct {
 	BaseParam
-	RemoveMdevDeviceSpecFromVmInstance RemoveMdevDeviceSpecFromVmInstanceParamDetail `json:"removeMdevDeviceSpecFromVmInstance"`
+	Params RemoveMdevDeviceSpecFromVmInstanceParamDetail `json:"removeMdevDeviceSpecFromVmInstance"`
 }
 // SyncVolumeSizeParamDetail SyncVolumeSize detail param
 type SyncVolumeSizeParamDetail struct {
@@ -2915,7 +2915,7 @@ type SyncVolumeSizeParamDetail struct {
 // SyncVolumeSizeParam SyncVolumeSize request param
 type SyncVolumeSizeParam struct {
 	BaseParam
-	SyncVolumeSize SyncVolumeSizeParamDetail `json:"syncVolumeSize"`
+	Params SyncVolumeSizeParamDetail `json:"syncVolumeSize"`
 }
 // GetTrashOnBackupStorageParamDetail GetTrashOnBackupStorage detail param
 type GetTrashOnBackupStorageParamDetail struct {
@@ -2928,7 +2928,7 @@ type GetTrashOnBackupStorageParamDetail struct {
 // GetTrashOnBackupStorageParam GetTrashOnBackupStorage request param
 type GetTrashOnBackupStorageParam struct {
 	BaseParam
-	GetTrashOnBackupStorage GetTrashOnBackupStorageParamDetail `json:"getTrashOnBackupStorage"`
+	Params GetTrashOnBackupStorageParamDetail `json:"getTrashOnBackupStorage"`
 }
 // ChangeDiskOfferingStateParamDetail ChangeDiskOfferingState detail param
 type ChangeDiskOfferingStateParamDetail struct {
@@ -2939,7 +2939,7 @@ type ChangeDiskOfferingStateParamDetail struct {
 // ChangeDiskOfferingStateParam ChangeDiskOfferingState request param
 type ChangeDiskOfferingStateParam struct {
 	BaseParam
-	ChangeDiskOfferingState ChangeDiskOfferingStateParamDetail `json:"changeDiskOfferingState"`
+	Params ChangeDiskOfferingStateParamDetail `json:"changeDiskOfferingState"`
 }
 // RequestConsoleAccessParamDetail RequestConsoleAccess detail param
 type RequestConsoleAccessParamDetail struct {
@@ -2949,7 +2949,7 @@ type RequestConsoleAccessParamDetail struct {
 // RequestConsoleAccessParam RequestConsoleAccess request param
 type RequestConsoleAccessParam struct {
 	BaseParam
-	RequestConsoleAccess RequestConsoleAccessParamDetail `json:"requestConsoleAccess"`
+	Params RequestConsoleAccessParamDetail `json:"requestConsoleAccess"`
 }
 // ChangeIAM2VirtualIDGroupStateParamDetail ChangeIAM2VirtualIDGroupState detail param
 type ChangeIAM2VirtualIDGroupStateParamDetail struct {
@@ -2960,7 +2960,7 @@ type ChangeIAM2VirtualIDGroupStateParamDetail struct {
 // ChangeIAM2VirtualIDGroupStateParam ChangeIAM2VirtualIDGroupState request param
 type ChangeIAM2VirtualIDGroupStateParam struct {
 	BaseParam
-	ChangeIAM2VirtualIDGroupState ChangeIAM2VirtualIDGroupStateParamDetail `json:"changeIAM2VirtualIDGroupState"`
+	Params ChangeIAM2VirtualIDGroupStateParamDetail `json:"changeIAM2VirtualIDGroupState"`
 }
 // UpdateEventDataParamDetail UpdateEventData detail param
 type UpdateEventDataParamDetail struct {
@@ -2974,7 +2974,7 @@ type UpdateEventDataParamDetail struct {
 // UpdateEventDataParam UpdateEventData request param
 type UpdateEventDataParam struct {
 	BaseParam
-	UpdateEventData UpdateEventDataParamDetail `json:"updateEventData"`
+	Params UpdateEventDataParamDetail `json:"updateEventData"`
 }
 // SyncHybridEipFromRemoteParamDetail SyncHybridEipFromRemote detail param
 type SyncHybridEipFromRemoteParamDetail struct {
@@ -2987,7 +2987,7 @@ type SyncHybridEipFromRemoteParamDetail struct {
 // SyncHybridEipFromRemoteParam SyncHybridEipFromRemote request param
 type SyncHybridEipFromRemoteParam struct {
 	BaseParam
-	SyncHybridEipFromRemote SyncHybridEipFromRemoteParamDetail `json:"syncHybridEipFromRemote"`
+	Params SyncHybridEipFromRemoteParamDetail `json:"syncHybridEipFromRemote"`
 }
 // DeleteAliyunRouteEntryRemoteParamDetail DeleteAliyunRouteEntryRemote detail param
 type DeleteAliyunRouteEntryRemoteParamDetail struct {
@@ -2998,7 +2998,7 @@ type DeleteAliyunRouteEntryRemoteParamDetail struct {
 // DeleteAliyunRouteEntryRemoteParam DeleteAliyunRouteEntryRemote request param
 type DeleteAliyunRouteEntryRemoteParam struct {
 	BaseParam
-	DeleteAliyunRouteEntryRemote DeleteAliyunRouteEntryRemoteParamDetail `json:"deleteAliyunRouteEntryRemote"`
+	Params DeleteAliyunRouteEntryRemoteParamDetail `json:"deleteAliyunRouteEntryRemote"`
 }
 // UngenerateSriovPciDevicesParamDetail UngenerateSriovPciDevices detail param
 type UngenerateSriovPciDevicesParamDetail struct {
@@ -3008,7 +3008,7 @@ type UngenerateSriovPciDevicesParamDetail struct {
 // UngenerateSriovPciDevicesParam UngenerateSriovPciDevices request param
 type UngenerateSriovPciDevicesParam struct {
 	BaseParam
-	UngenerateSriovPciDevices UngenerateSriovPciDevicesParamDetail `json:"ungenerateSriovPciDevices"`
+	Params UngenerateSriovPciDevicesParamDetail `json:"ungenerateSriovPciDevices"`
 }
 // DeleteVmStaticIpParamDetail DeleteVmStaticIp detail param
 type DeleteVmStaticIpParamDetail struct {
@@ -3021,7 +3021,7 @@ type DeleteVmStaticIpParamDetail struct {
 // DeleteVmStaticIpParam DeleteVmStaticIp request param
 type DeleteVmStaticIpParam struct {
 	BaseParam
-	DeleteVmStaticIp DeleteVmStaticIpParamDetail `json:"deleteVmStaticIp"`
+	Params DeleteVmStaticIpParamDetail `json:"deleteVmStaticIp"`
 }
 // AttachMonitorTriggerActionToTriggerParamDetail AttachMonitorTriggerActionToTrigger detail param
 type AttachMonitorTriggerActionToTriggerParamDetail struct {
@@ -3032,7 +3032,7 @@ type AttachMonitorTriggerActionToTriggerParamDetail struct {
 // AttachMonitorTriggerActionToTriggerParam AttachMonitorTriggerActionToTrigger request param
 type AttachMonitorTriggerActionToTriggerParam struct {
 	BaseParam
-	AttachMonitorTriggerActionToTrigger AttachMonitorTriggerActionToTriggerParamDetail `json:"attachMonitorTriggerActionToTrigger"`
+	Params AttachMonitorTriggerActionToTriggerParamDetail `json:"attachMonitorTriggerActionToTrigger"`
 }
 // GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
 type GetAliyunNasFileSystemRemoteParamDetail struct {
@@ -3043,7 +3043,7 @@ type GetAliyunNasFileSystemRemoteParamDetail struct {
 // GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
 type GetAliyunNasFileSystemRemoteParam struct {
 	BaseParam
-	GetAliyunNasFileSystemRemote GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
+	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
 }
 // UpdateOrganizationQuotaParamDetail UpdateOrganizationQuota detail param
 type UpdateOrganizationQuotaParamDetail struct {
@@ -3055,7 +3055,7 @@ type UpdateOrganizationQuotaParamDetail struct {
 // UpdateOrganizationQuotaParam UpdateOrganizationQuota request param
 type UpdateOrganizationQuotaParam struct {
 	BaseParam
-	UpdateOrganizationQuota UpdateOrganizationQuotaParamDetail `json:"updateOrganizationQuota"`
+	Params UpdateOrganizationQuotaParamDetail `json:"updateOrganizationQuota"`
 }
 // ChangePreconfigurationTemplateStateParamDetail ChangePreconfigurationTemplateState detail param
 type ChangePreconfigurationTemplateStateParamDetail struct {
@@ -3066,7 +3066,7 @@ type ChangePreconfigurationTemplateStateParamDetail struct {
 // ChangePreconfigurationTemplateStateParam ChangePreconfigurationTemplateState request param
 type ChangePreconfigurationTemplateStateParam struct {
 	BaseParam
-	ChangePreconfigurationTemplateState ChangePreconfigurationTemplateStateParamDetail `json:"changePreconfigurationTemplateState"`
+	Params ChangePreconfigurationTemplateStateParamDetail `json:"changePreconfigurationTemplateState"`
 }
 // SetOrganizationSupervisorParamDetail SetOrganizationSupervisor detail param
 type SetOrganizationSupervisorParamDetail struct {
@@ -3077,7 +3077,7 @@ type SetOrganizationSupervisorParamDetail struct {
 // SetOrganizationSupervisorParam SetOrganizationSupervisor request param
 type SetOrganizationSupervisorParam struct {
 	BaseParam
-	SetOrganizationSupervisor SetOrganizationSupervisorParamDetail `json:"setOrganizationSupervisor"`
+	Params SetOrganizationSupervisorParamDetail `json:"setOrganizationSupervisor"`
 }
 // AttachL3NetworksToIPsecConnectionParamDetail AttachL3NetworksToIPsecConnection detail param
 type AttachL3NetworksToIPsecConnectionParamDetail struct {
@@ -3090,7 +3090,7 @@ type AttachL3NetworksToIPsecConnectionParamDetail struct {
 // AttachL3NetworksToIPsecConnectionParam AttachL3NetworksToIPsecConnection request param
 type AttachL3NetworksToIPsecConnectionParam struct {
 	BaseParam
-	AttachL3NetworksToIPsecConnection AttachL3NetworksToIPsecConnectionParamDetail `json:"attachL3NetworksToIPsecConnection"`
+	Params AttachL3NetworksToIPsecConnectionParamDetail `json:"attachL3NetworksToIPsecConnection"`
 }
 // ExecuteGuestVmScriptParamDetail ExecuteGuestVmScript detail param
 type ExecuteGuestVmScriptParamDetail struct {
@@ -3105,7 +3105,7 @@ type ExecuteGuestVmScriptParamDetail struct {
 // ExecuteGuestVmScriptParam ExecuteGuestVmScript request param
 type ExecuteGuestVmScriptParam struct {
 	BaseParam
-	ExecuteGuestVmScript ExecuteGuestVmScriptParamDetail `json:"executeGuestVmScript"`
+	Params ExecuteGuestVmScriptParamDetail `json:"executeGuestVmScript"`
 }
 // AddNfsPrimaryStorageParamDetail AddNfsPrimaryStorage detail param
 type AddNfsPrimaryStorageParamDetail struct {
@@ -3121,7 +3121,7 @@ type AddNfsPrimaryStorageParamDetail struct {
 // AddNfsPrimaryStorageParam AddNfsPrimaryStorage request param
 type AddNfsPrimaryStorageParam struct {
 	BaseParam
-	AddNfsPrimaryStorage AddNfsPrimaryStorageParamDetail `json:"addNfsPrimaryStorage"`
+	Params AddNfsPrimaryStorageParamDetail `json:"addNfsPrimaryStorage"`
 }
 // GetIAM2ProjectContainerClusterCandidatesParamDetail GetIAM2ProjectContainerClusterCandidates detail param
 type GetIAM2ProjectContainerClusterCandidatesParamDetail struct {
@@ -3130,7 +3130,7 @@ type GetIAM2ProjectContainerClusterCandidatesParamDetail struct {
 // GetIAM2ProjectContainerClusterCandidatesParam GetIAM2ProjectContainerClusterCandidates request param
 type GetIAM2ProjectContainerClusterCandidatesParam struct {
 	BaseParam
-	GetIAM2ProjectContainerClusterCandidates GetIAM2ProjectContainerClusterCandidatesParamDetail `json:"getIAM2ProjectContainerClusterCandidates"`
+	Params GetIAM2ProjectContainerClusterCandidatesParamDetail `json:"getIAM2ProjectContainerClusterCandidates"`
 }
 // AttachTagToResourcesParamDetail AttachTagToResources detail param
 type AttachTagToResourcesParamDetail struct {
@@ -3142,7 +3142,7 @@ type AttachTagToResourcesParamDetail struct {
 // AttachTagToResourcesParam AttachTagToResources request param
 type AttachTagToResourcesParam struct {
 	BaseParam
-	AttachTagToResources AttachTagToResourcesParamDetail `json:"attachTagToResources"`
+	Params AttachTagToResourcesParamDetail `json:"attachTagToResources"`
 }
 // ChangePrimaryStorageStateParamDetail ChangePrimaryStorageState detail param
 type ChangePrimaryStorageStateParamDetail struct {
@@ -3153,7 +3153,7 @@ type ChangePrimaryStorageStateParamDetail struct {
 // ChangePrimaryStorageStateParam ChangePrimaryStorageState request param
 type ChangePrimaryStorageStateParam struct {
 	BaseParam
-	ChangePrimaryStorageState ChangePrimaryStorageStateParamDetail `json:"changePrimaryStorageState"`
+	Params ChangePrimaryStorageStateParamDetail `json:"changePrimaryStorageState"`
 }
 // GetVpcAttachedNetflowParamDetail GetVpcAttachedNetflow detail param
 type GetVpcAttachedNetflowParamDetail struct {
@@ -3165,7 +3165,7 @@ type GetVpcAttachedNetflowParamDetail struct {
 // GetVpcAttachedNetflowParam GetVpcAttachedNetflow request param
 type GetVpcAttachedNetflowParam struct {
 	BaseParam
-	GetVpcAttachedNetflow GetVpcAttachedNetflowParamDetail `json:"getVpcAttachedNetflow"`
+	Params GetVpcAttachedNetflowParamDetail `json:"getVpcAttachedNetflow"`
 }
 // GetAuditDataParamDetail GetAuditData detail param
 type GetAuditDataParamDetail struct {
@@ -3179,7 +3179,7 @@ type GetAuditDataParamDetail struct {
 // GetAuditDataParam GetAuditData request param
 type GetAuditDataParam struct {
 	BaseParam
-	GetAuditData GetAuditDataParamDetail `json:"getAuditData"`
+	Params GetAuditDataParamDetail `json:"getAuditData"`
 }
 // GetSpiceCertificatesParamDetail GetSpiceCertificates detail param
 type GetSpiceCertificatesParamDetail struct {
@@ -3188,7 +3188,7 @@ type GetSpiceCertificatesParamDetail struct {
 // GetSpiceCertificatesParam GetSpiceCertificates request param
 type GetSpiceCertificatesParam struct {
 	BaseParam
-	GetSpiceCertificates GetSpiceCertificatesParamDetail `json:"getSpiceCertificates"`
+	Params GetSpiceCertificatesParamDetail `json:"getSpiceCertificates"`
 }
 // RemoveUserFromGroupParamDetail RemoveUserFromGroup detail param
 type RemoveUserFromGroupParamDetail struct {
@@ -3199,7 +3199,7 @@ type RemoveUserFromGroupParamDetail struct {
 // RemoveUserFromGroupParam RemoveUserFromGroup request param
 type RemoveUserFromGroupParam struct {
 	BaseParam
-	RemoveUserFromGroup RemoveUserFromGroupParamDetail `json:"removeUserFromGroup"`
+	Params RemoveUserFromGroupParamDetail `json:"removeUserFromGroup"`
 }
 // DeleteEcsVpcRemoteParamDetail DeleteEcsVpcRemote detail param
 type DeleteEcsVpcRemoteParamDetail struct {
@@ -3210,7 +3210,7 @@ type DeleteEcsVpcRemoteParamDetail struct {
 // DeleteEcsVpcRemoteParam DeleteEcsVpcRemote request param
 type DeleteEcsVpcRemoteParam struct {
 	BaseParam
-	DeleteEcsVpcRemote DeleteEcsVpcRemoteParamDetail `json:"deleteEcsVpcRemote"`
+	Params DeleteEcsVpcRemoteParamDetail `json:"deleteEcsVpcRemote"`
 }
 // SyncDatabaseBackupFromImageStoreBackupStorageParamDetail SyncDatabaseBackupFromImageStoreBackupStorage detail param
 type SyncDatabaseBackupFromImageStoreBackupStorageParamDetail struct {
@@ -3222,7 +3222,7 @@ type SyncDatabaseBackupFromImageStoreBackupStorageParamDetail struct {
 // SyncDatabaseBackupFromImageStoreBackupStorageParam SyncDatabaseBackupFromImageStoreBackupStorage request param
 type SyncDatabaseBackupFromImageStoreBackupStorageParam struct {
 	BaseParam
-	SyncDatabaseBackupFromImageStoreBackupStorage SyncDatabaseBackupFromImageStoreBackupStorageParamDetail `json:"syncDatabaseBackupFromImageStoreBackupStorage"`
+	Params SyncDatabaseBackupFromImageStoreBackupStorageParamDetail `json:"syncDatabaseBackupFromImageStoreBackupStorage"`
 }
 // DeleteFirewallIpSetTemplateParamDetail DeleteFirewallIpSetTemplate detail param
 type DeleteFirewallIpSetTemplateParamDetail struct {
@@ -3233,7 +3233,7 @@ type DeleteFirewallIpSetTemplateParamDetail struct {
 // DeleteFirewallIpSetTemplateParam DeleteFirewallIpSetTemplate request param
 type DeleteFirewallIpSetTemplateParam struct {
 	BaseParam
-	DeleteFirewallIpSetTemplate DeleteFirewallIpSetTemplateParamDetail `json:"deleteFirewallIpSetTemplate"`
+	Params DeleteFirewallIpSetTemplateParamDetail `json:"deleteFirewallIpSetTemplate"`
 }
 // SNSDingTalkTestConnectionParamDetail SNSDingTalkTestConnection detail param
 type SNSDingTalkTestConnectionParamDetail struct {
@@ -3248,7 +3248,7 @@ type SNSDingTalkTestConnectionParamDetail struct {
 // SNSDingTalkTestConnectionParam SNSDingTalkTestConnection request param
 type SNSDingTalkTestConnectionParam struct {
 	BaseParam
-	SNSDingTalkTestConnection SNSDingTalkTestConnectionParamDetail `json:"sNSDingTalkTestConnection"`
+	Params SNSDingTalkTestConnectionParamDetail `json:"sNSDingTalkTestConnection"`
 }
 // ExportImageFromBackupStorageParamDetail ExportImageFromBackupStorage detail param
 type ExportImageFromBackupStorageParamDetail struct {
@@ -3260,7 +3260,7 @@ type ExportImageFromBackupStorageParamDetail struct {
 // ExportImageFromBackupStorageParam ExportImageFromBackupStorage request param
 type ExportImageFromBackupStorageParam struct {
 	BaseParam
-	ExportImageFromBackupStorage ExportImageFromBackupStorageParamDetail `json:"exportImageFromBackupStorage"`
+	Params ExportImageFromBackupStorageParamDetail `json:"exportImageFromBackupStorage"`
 }
 // GetModelCenterServicesParamDetail GetModelCenterServices detail param
 type GetModelCenterServicesParamDetail struct {
@@ -3270,7 +3270,7 @@ type GetModelCenterServicesParamDetail struct {
 // GetModelCenterServicesParam GetModelCenterServices request param
 type GetModelCenterServicesParam struct {
 	BaseParam
-	GetModelCenterServices GetModelCenterServicesParamDetail `json:"getModelCenterServices"`
+	Params GetModelCenterServicesParamDetail `json:"getModelCenterServices"`
 }
 // CreateFirewallIpSetTemplateParamDetail CreateFirewallIpSetTemplate detail param
 type CreateFirewallIpSetTemplateParamDetail struct {
@@ -3285,7 +3285,7 @@ type CreateFirewallIpSetTemplateParamDetail struct {
 // CreateFirewallIpSetTemplateParam CreateFirewallIpSetTemplate request param
 type CreateFirewallIpSetTemplateParam struct {
 	BaseParam
-	CreateFirewallIpSetTemplate CreateFirewallIpSetTemplateParamDetail `json:"createFirewallIpSetTemplate"`
+	Params CreateFirewallIpSetTemplateParamDetail `json:"createFirewallIpSetTemplate"`
 }
 // DetachMonitorTriggerActionFromTriggerParamDetail DetachMonitorTriggerActionFromTrigger detail param
 type DetachMonitorTriggerActionFromTriggerParamDetail struct {
@@ -3296,7 +3296,7 @@ type DetachMonitorTriggerActionFromTriggerParamDetail struct {
 // DetachMonitorTriggerActionFromTriggerParam DetachMonitorTriggerActionFromTrigger request param
 type DetachMonitorTriggerActionFromTriggerParam struct {
 	BaseParam
-	DetachMonitorTriggerActionFromTrigger DetachMonitorTriggerActionFromTriggerParamDetail `json:"detachMonitorTriggerActionFromTrigger"`
+	Params DetachMonitorTriggerActionFromTriggerParamDetail `json:"detachMonitorTriggerActionFromTrigger"`
 }
 // DetachPolicyRouteRuleSetFromL3ParamDetail DetachPolicyRouteRuleSetFromL3 detail param
 type DetachPolicyRouteRuleSetFromL3ParamDetail struct {
@@ -3307,7 +3307,7 @@ type DetachPolicyRouteRuleSetFromL3ParamDetail struct {
 // DetachPolicyRouteRuleSetFromL3Param DetachPolicyRouteRuleSetFromL3 request param
 type DetachPolicyRouteRuleSetFromL3Param struct {
 	BaseParam
-	DetachPolicyRouteRuleSetFromL3 DetachPolicyRouteRuleSetFromL3ParamDetail `json:"detachPolicyRouteRuleSetFromL3"`
+	Params DetachPolicyRouteRuleSetFromL3ParamDetail `json:"detachPolicyRouteRuleSetFromL3"`
 }
 // CreateL2TfNetworkParamDetail CreateL2TfNetwork detail param
 type CreateL2TfNetworkParamDetail struct {
@@ -3328,7 +3328,7 @@ type CreateL2TfNetworkParamDetail struct {
 // CreateL2TfNetworkParam CreateL2TfNetwork request param
 type CreateL2TfNetworkParam struct {
 	BaseParam
-	CreateL2TfNetwork CreateL2TfNetworkParamDetail `json:"createL2TfNetwork"`
+	Params CreateL2TfNetworkParamDetail `json:"createL2TfNetwork"`
 }
 // GetInterdependentL3NetworksImagesParamDetail GetInterdependentL3NetworksImages detail param
 type GetInterdependentL3NetworksImagesParamDetail struct {
@@ -3341,7 +3341,7 @@ type GetInterdependentL3NetworksImagesParamDetail struct {
 // GetInterdependentL3NetworksImagesParam GetInterdependentL3NetworksImages request param
 type GetInterdependentL3NetworksImagesParam struct {
 	BaseParam
-	GetInterdependentL3NetworksImages GetInterdependentL3NetworksImagesParamDetail `json:"getInterdependentL3NetworksImages"`
+	Params GetInterdependentL3NetworksImagesParamDetail `json:"getInterdependentL3NetworksImages"`
 }
 // ValidateVolumeSnapshotChainParamDetail ValidateVolumeSnapshotChain detail param
 type ValidateVolumeSnapshotChainParamDetail struct {
@@ -3351,7 +3351,7 @@ type ValidateVolumeSnapshotChainParamDetail struct {
 // ValidateVolumeSnapshotChainParam ValidateVolumeSnapshotChain request param
 type ValidateVolumeSnapshotChainParam struct {
 	BaseParam
-	ValidateVolumeSnapshotChain ValidateVolumeSnapshotChainParamDetail `json:"validateVolumeSnapshotChain"`
+	Params ValidateVolumeSnapshotChainParamDetail `json:"validateVolumeSnapshotChain"`
 }
 // ChangeHostNetworkInterfaceLldpModeParamDetail ChangeHostNetworkInterfaceLldpMode detail param
 type ChangeHostNetworkInterfaceLldpModeParamDetail struct {
@@ -3362,7 +3362,7 @@ type ChangeHostNetworkInterfaceLldpModeParamDetail struct {
 // ChangeHostNetworkInterfaceLldpModeParam ChangeHostNetworkInterfaceLldpMode request param
 type ChangeHostNetworkInterfaceLldpModeParam struct {
 	BaseParam
-	ChangeHostNetworkInterfaceLldpMode ChangeHostNetworkInterfaceLldpModeParamDetail `json:"changeHostNetworkInterfaceLldpMode"`
+	Params ChangeHostNetworkInterfaceLldpModeParamDetail `json:"changeHostNetworkInterfaceLldpMode"`
 }
 // GetGuestOsMetadataParamDetail GetGuestOsMetadata detail param
 type GetGuestOsMetadataParamDetail struct {
@@ -3371,7 +3371,7 @@ type GetGuestOsMetadataParamDetail struct {
 // GetGuestOsMetadataParam GetGuestOsMetadata request param
 type GetGuestOsMetadataParam struct {
 	BaseParam
-	GetGuestOsMetadata GetGuestOsMetadataParamDetail `json:"getGuestOsMetadata"`
+	Params GetGuestOsMetadataParamDetail `json:"getGuestOsMetadata"`
 }
 // GetCandidateVmNicsForLoadBalancerServerGroupParamDetail GetCandidateVmNicsForLoadBalancerServerGroup detail param
 type GetCandidateVmNicsForLoadBalancerServerGroupParamDetail struct {
@@ -3383,7 +3383,7 @@ type GetCandidateVmNicsForLoadBalancerServerGroupParamDetail struct {
 // GetCandidateVmNicsForLoadBalancerServerGroupParam GetCandidateVmNicsForLoadBalancerServerGroup request param
 type GetCandidateVmNicsForLoadBalancerServerGroupParam struct {
 	BaseParam
-	GetCandidateVmNicsForLoadBalancerServerGroup GetCandidateVmNicsForLoadBalancerServerGroupParamDetail `json:"getCandidateVmNicsForLoadBalancerServerGroup"`
+	Params GetCandidateVmNicsForLoadBalancerServerGroupParamDetail `json:"getCandidateVmNicsForLoadBalancerServerGroup"`
 }
 // AttachIscsiServerToClusterParamDetail AttachIscsiServerToCluster detail param
 type AttachIscsiServerToClusterParamDetail struct {
@@ -3394,7 +3394,7 @@ type AttachIscsiServerToClusterParamDetail struct {
 // AttachIscsiServerToClusterParam AttachIscsiServerToCluster request param
 type AttachIscsiServerToClusterParam struct {
 	BaseParam
-	AttachIscsiServerToCluster AttachIscsiServerToClusterParamDetail `json:"attachIscsiServerToCluster"`
+	Params AttachIscsiServerToClusterParamDetail `json:"attachIscsiServerToCluster"`
 }
 // AttachRoleToAccountParamDetail AttachRoleToAccount detail param
 type AttachRoleToAccountParamDetail struct {
@@ -3405,7 +3405,7 @@ type AttachRoleToAccountParamDetail struct {
 // AttachRoleToAccountParam AttachRoleToAccount request param
 type AttachRoleToAccountParam struct {
 	BaseParam
-	AttachRoleToAccount AttachRoleToAccountParamDetail `json:"attachRoleToAccount"`
+	Params AttachRoleToAccountParamDetail `json:"attachRoleToAccount"`
 }
 // AttachIsoToVmInstanceParamDetail AttachIsoToVmInstance detail param
 type AttachIsoToVmInstanceParamDetail struct {
@@ -3416,7 +3416,7 @@ type AttachIsoToVmInstanceParamDetail struct {
 // AttachIsoToVmInstanceParam AttachIsoToVmInstance request param
 type AttachIsoToVmInstanceParam struct {
 	BaseParam
-	AttachIsoToVmInstance AttachIsoToVmInstanceParamDetail `json:"attachIsoToVmInstance"`
+	Params AttachIsoToVmInstanceParamDetail `json:"attachIsoToVmInstance"`
 }
 // SetVRouterRouterIdParamDetail SetVRouterRouterId detail param
 type SetVRouterRouterIdParamDetail struct {
@@ -3427,7 +3427,7 @@ type SetVRouterRouterIdParamDetail struct {
 // SetVRouterRouterIdParam SetVRouterRouterId request param
 type SetVRouterRouterIdParam struct {
 	BaseParam
-	SetVRouterRouterId SetVRouterRouterIdParamDetail `json:"setVRouterRouterId"`
+	Params SetVRouterRouterIdParamDetail `json:"setVRouterRouterId"`
 }
 // ExpungeVmUserDefinedXmlHookScriptParamDetail ExpungeVmUserDefinedXmlHookScript detail param
 type ExpungeVmUserDefinedXmlHookScriptParamDetail struct {
@@ -3437,7 +3437,7 @@ type ExpungeVmUserDefinedXmlHookScriptParamDetail struct {
 // ExpungeVmUserDefinedXmlHookScriptParam ExpungeVmUserDefinedXmlHookScript request param
 type ExpungeVmUserDefinedXmlHookScriptParam struct {
 	BaseParam
-	ExpungeVmUserDefinedXmlHookScript ExpungeVmUserDefinedXmlHookScriptParamDetail `json:"expungeVmUserDefinedXmlHookScript"`
+	Params ExpungeVmUserDefinedXmlHookScriptParamDetail `json:"expungeVmUserDefinedXmlHookScript"`
 }
 // DeleteCdpTaskDataParamDetail DeleteCdpTaskData detail param
 type DeleteCdpTaskDataParamDetail struct {
@@ -3447,7 +3447,7 @@ type DeleteCdpTaskDataParamDetail struct {
 // DeleteCdpTaskDataParam DeleteCdpTaskData request param
 type DeleteCdpTaskDataParam struct {
 	BaseParam
-	DeleteCdpTaskData DeleteCdpTaskDataParamDetail `json:"deleteCdpTaskData"`
+	Params DeleteCdpTaskDataParamDetail `json:"deleteCdpTaskData"`
 }
 // CheckApiPermissionParamDetail CheckApiPermission detail param
 type CheckApiPermissionParamDetail struct {
@@ -3458,7 +3458,7 @@ type CheckApiPermissionParamDetail struct {
 // CheckApiPermissionParam CheckApiPermission request param
 type CheckApiPermissionParam struct {
 	BaseParam
-	CheckApiPermission CheckApiPermissionParamDetail `json:"checkApiPermission"`
+	Params CheckApiPermissionParamDetail `json:"checkApiPermission"`
 }
 // GetTextTemplateArgParamDetail GetTextTemplateArg detail param
 type GetTextTemplateArgParamDetail struct {
@@ -3467,7 +3467,7 @@ type GetTextTemplateArgParamDetail struct {
 // GetTextTemplateArgParam GetTextTemplateArg request param
 type GetTextTemplateArgParam struct {
 	BaseParam
-	GetTextTemplateArg GetTextTemplateArgParamDetail `json:"getTextTemplateArg"`
+	Params GetTextTemplateArgParamDetail `json:"getTextTemplateArg"`
 }
 // DeleteFirewallParamDetail DeleteFirewall detail param
 type DeleteFirewallParamDetail struct {
@@ -3478,7 +3478,7 @@ type DeleteFirewallParamDetail struct {
 // DeleteFirewallParam DeleteFirewall request param
 type DeleteFirewallParam struct {
 	BaseParam
-	DeleteFirewall DeleteFirewallParamDetail `json:"deleteFirewall"`
+	Params DeleteFirewallParamDetail `json:"deleteFirewall"`
 }
 // GetVmCapabilitiesParamDetail GetVmCapabilities detail param
 type GetVmCapabilitiesParamDetail struct {
@@ -3488,7 +3488,7 @@ type GetVmCapabilitiesParamDetail struct {
 // GetVmCapabilitiesParam GetVmCapabilities request param
 type GetVmCapabilitiesParam struct {
 	BaseParam
-	GetVmCapabilities GetVmCapabilitiesParamDetail `json:"getVmCapabilities"`
+	Params GetVmCapabilitiesParamDetail `json:"getVmCapabilities"`
 }
 // ChangeAccessKeyStateParamDetail ChangeAccessKeyState detail param
 type ChangeAccessKeyStateParamDetail struct {
@@ -3499,7 +3499,7 @@ type ChangeAccessKeyStateParamDetail struct {
 // ChangeAccessKeyStateParam ChangeAccessKeyState request param
 type ChangeAccessKeyStateParam struct {
 	BaseParam
-	ChangeAccessKeyState ChangeAccessKeyStateParamDetail `json:"changeAccessKeyState"`
+	Params ChangeAccessKeyStateParamDetail `json:"changeAccessKeyState"`
 }
 // DeployDistributedModelServiceParamDetail DeployDistributedModelService detail param
 type DeployDistributedModelServiceParamDetail struct {
@@ -3514,7 +3514,7 @@ type DeployDistributedModelServiceParamDetail struct {
 // DeployDistributedModelServiceParam DeployDistributedModelService request param
 type DeployDistributedModelServiceParam struct {
 	BaseParam
-	DeployDistributedModelService DeployDistributedModelServiceParamDetail `json:"deployDistributedModelService"`
+	Params DeployDistributedModelServiceParamDetail `json:"deployDistributedModelService"`
 }
 // GetIAM2SystemAttributesParamDetail GetIAM2SystemAttributes detail param
 type GetIAM2SystemAttributesParamDetail struct {
@@ -3523,7 +3523,7 @@ type GetIAM2SystemAttributesParamDetail struct {
 // GetIAM2SystemAttributesParam GetIAM2SystemAttributes request param
 type GetIAM2SystemAttributesParam struct {
 	BaseParam
-	GetIAM2SystemAttributes GetIAM2SystemAttributesParamDetail `json:"getIAM2SystemAttributes"`
+	Params GetIAM2SystemAttributesParamDetail `json:"getIAM2SystemAttributes"`
 }
 // ChangeInstanceOfferingStateParamDetail ChangeInstanceOfferingState detail param
 type ChangeInstanceOfferingStateParamDetail struct {
@@ -3534,7 +3534,7 @@ type ChangeInstanceOfferingStateParamDetail struct {
 // ChangeInstanceOfferingStateParam ChangeInstanceOfferingState request param
 type ChangeInstanceOfferingStateParam struct {
 	BaseParam
-	ChangeInstanceOfferingState ChangeInstanceOfferingStateParamDetail `json:"changeInstanceOfferingState"`
+	Params ChangeInstanceOfferingStateParamDetail `json:"changeInstanceOfferingState"`
 }
 // GetBackupStorageCapacityParamDetail GetBackupStorageCapacity detail param
 type GetBackupStorageCapacityParamDetail struct {
@@ -3546,7 +3546,7 @@ type GetBackupStorageCapacityParamDetail struct {
 // GetBackupStorageCapacityParam GetBackupStorageCapacity request param
 type GetBackupStorageCapacityParam struct {
 	BaseParam
-	GetBackupStorageCapacity GetBackupStorageCapacityParamDetail `json:"getBackupStorageCapacity"`
+	Params GetBackupStorageCapacityParamDetail `json:"getBackupStorageCapacity"`
 }
 // GenerateSeMdevDevicesParamDetail GenerateSeMdevDevices detail param
 type GenerateSeMdevDevicesParamDetail struct {
@@ -3557,7 +3557,7 @@ type GenerateSeMdevDevicesParamDetail struct {
 // GenerateSeMdevDevicesParam GenerateSeMdevDevices request param
 type GenerateSeMdevDevicesParam struct {
 	BaseParam
-	GenerateSeMdevDevices GenerateSeMdevDevicesParamDetail `json:"generateSeMdevDevices"`
+	Params GenerateSeMdevDevicesParamDetail `json:"generateSeMdevDevices"`
 }
 // CreateMiniClusterParamDetail CreateMiniCluster detail param
 type CreateMiniClusterParamDetail struct {
@@ -3576,7 +3576,7 @@ type CreateMiniClusterParamDetail struct {
 // CreateMiniClusterParam CreateMiniCluster request param
 type CreateMiniClusterParam struct {
 	BaseParam
-	CreateMiniCluster CreateMiniClusterParamDetail `json:"createMiniCluster"`
+	Params CreateMiniClusterParamDetail `json:"createMiniCluster"`
 }
 // SyncImageFromImageStoreBackupStorageParamDetail SyncImageFromImageStoreBackupStorage detail param
 type SyncImageFromImageStoreBackupStorageParamDetail struct {
@@ -3590,7 +3590,7 @@ type SyncImageFromImageStoreBackupStorageParamDetail struct {
 // SyncImageFromImageStoreBackupStorageParam SyncImageFromImageStoreBackupStorage request param
 type SyncImageFromImageStoreBackupStorageParam struct {
 	BaseParam
-	SyncImageFromImageStoreBackupStorage SyncImageFromImageStoreBackupStorageParamDetail `json:"syncImageFromImageStoreBackupStorage"`
+	Params SyncImageFromImageStoreBackupStorageParamDetail `json:"syncImageFromImageStoreBackupStorage"`
 }
 // ChangeVipStateParamDetail ChangeVipState detail param
 type ChangeVipStateParamDetail struct {
@@ -3601,7 +3601,7 @@ type ChangeVipStateParamDetail struct {
 // ChangeVipStateParam ChangeVipState request param
 type ChangeVipStateParam struct {
 	BaseParam
-	ChangeVipState ChangeVipStateParamDetail `json:"changeVipState"`
+	Params ChangeVipStateParamDetail `json:"changeVipState"`
 }
 // UndoSnapshotCreationParamDetail UndoSnapshotCreation detail param
 type UndoSnapshotCreationParamDetail struct {
@@ -3612,7 +3612,7 @@ type UndoSnapshotCreationParamDetail struct {
 // UndoSnapshotCreationParam UndoSnapshotCreation request param
 type UndoSnapshotCreationParam struct {
 	BaseParam
-	UndoSnapshotCreation UndoSnapshotCreationParamDetail `json:"undoSnapshotCreation"`
+	Params UndoSnapshotCreationParamDetail `json:"undoSnapshotCreation"`
 }
 // AddBuildAppParamDetail AddBuildApp detail param
 type AddBuildAppParamDetail struct {
@@ -3627,7 +3627,7 @@ type AddBuildAppParamDetail struct {
 // AddBuildAppParam AddBuildApp request param
 type AddBuildAppParam struct {
 	BaseParam
-	AddBuildApp AddBuildAppParamDetail `json:"addBuildApp"`
+	Params AddBuildAppParamDetail `json:"addBuildApp"`
 }
 // CreateVmFromVolumeBackupParamDetail CreateVmFromVolumeBackup detail param
 type CreateVmFromVolumeBackupParamDetail struct {
@@ -3652,7 +3652,7 @@ type CreateVmFromVolumeBackupParamDetail struct {
 // CreateVmFromVolumeBackupParam CreateVmFromVolumeBackup request param
 type CreateVmFromVolumeBackupParam struct {
 	BaseParam
-	CreateVmFromVolumeBackup CreateVmFromVolumeBackupParamDetail `json:"createVmFromVolumeBackup"`
+	Params CreateVmFromVolumeBackupParamDetail `json:"createVmFromVolumeBackup"`
 }
 // GetIdentityZoneFromRemoteParamDetail GetIdentityZoneFromRemote detail param
 type GetIdentityZoneFromRemoteParamDetail struct {
@@ -3664,7 +3664,7 @@ type GetIdentityZoneFromRemoteParamDetail struct {
 // GetIdentityZoneFromRemoteParam GetIdentityZoneFromRemote request param
 type GetIdentityZoneFromRemoteParam struct {
 	BaseParam
-	GetIdentityZoneFromRemote GetIdentityZoneFromRemoteParamDetail `json:"getIdentityZoneFromRemote"`
+	Params GetIdentityZoneFromRemoteParamDetail `json:"getIdentityZoneFromRemote"`
 }
 // GetEcsInstanceVncUrlParamDetail GetEcsInstanceVncUrl detail param
 type GetEcsInstanceVncUrlParamDetail struct {
@@ -3674,7 +3674,7 @@ type GetEcsInstanceVncUrlParamDetail struct {
 // GetEcsInstanceVncUrlParam GetEcsInstanceVncUrl request param
 type GetEcsInstanceVncUrlParam struct {
 	BaseParam
-	GetEcsInstanceVncUrl GetEcsInstanceVncUrlParamDetail `json:"getEcsInstanceVncUrl"`
+	Params GetEcsInstanceVncUrlParamDetail `json:"getEcsInstanceVncUrl"`
 }
 // AddMonToCephPrimaryStorageParamDetail AddMonToCephPrimaryStorage detail param
 type AddMonToCephPrimaryStorageParamDetail struct {
@@ -3685,7 +3685,7 @@ type AddMonToCephPrimaryStorageParamDetail struct {
 // AddMonToCephPrimaryStorageParam AddMonToCephPrimaryStorage request param
 type AddMonToCephPrimaryStorageParam struct {
 	BaseParam
-	AddMonToCephPrimaryStorage AddMonToCephPrimaryStorageParamDetail `json:"addMonToCephPrimaryStorage"`
+	Params AddMonToCephPrimaryStorageParamDetail `json:"addMonToCephPrimaryStorage"`
 }
 // RemoveHostRouteFromL3NetworkParamDetail RemoveHostRouteFromL3Network detail param
 type RemoveHostRouteFromL3NetworkParamDetail struct {
@@ -3696,7 +3696,7 @@ type RemoveHostRouteFromL3NetworkParamDetail struct {
 // RemoveHostRouteFromL3NetworkParam RemoveHostRouteFromL3Network request param
 type RemoveHostRouteFromL3NetworkParam struct {
 	BaseParam
-	RemoveHostRouteFromL3Network RemoveHostRouteFromL3NetworkParamDetail `json:"removeHostRouteFromL3Network"`
+	Params RemoveHostRouteFromL3NetworkParamDetail `json:"removeHostRouteFromL3Network"`
 }
 // BackupStorageMigrateImageParamDetail BackupStorageMigrateImage detail param
 type BackupStorageMigrateImageParamDetail struct {
@@ -3708,7 +3708,7 @@ type BackupStorageMigrateImageParamDetail struct {
 // BackupStorageMigrateImageParam BackupStorageMigrateImage request param
 type BackupStorageMigrateImageParam struct {
 	BaseParam
-	BackupStorageMigrateImage BackupStorageMigrateImageParamDetail `json:"backupStorageMigrateImage"`
+	Params BackupStorageMigrateImageParamDetail `json:"backupStorageMigrateImage"`
 }
 // ChangeIAM2VirtualIDTypeParamDetail ChangeIAM2VirtualIDType detail param
 type ChangeIAM2VirtualIDTypeParamDetail struct {
@@ -3719,7 +3719,7 @@ type ChangeIAM2VirtualIDTypeParamDetail struct {
 // ChangeIAM2VirtualIDTypeParam ChangeIAM2VirtualIDType request param
 type ChangeIAM2VirtualIDTypeParam struct {
 	BaseParam
-	ChangeIAM2VirtualIDType ChangeIAM2VirtualIDTypeParamDetail `json:"changeIAM2VirtualIDType"`
+	Params ChangeIAM2VirtualIDTypeParamDetail `json:"changeIAM2VirtualIDType"`
 }
 // RemoveBackendServerFromServerGroupParamDetail RemoveBackendServerFromServerGroup detail param
 type RemoveBackendServerFromServerGroupParamDetail struct {
@@ -3731,7 +3731,7 @@ type RemoveBackendServerFromServerGroupParamDetail struct {
 // RemoveBackendServerFromServerGroupParam RemoveBackendServerFromServerGroup request param
 type RemoveBackendServerFromServerGroupParam struct {
 	BaseParam
-	RemoveBackendServerFromServerGroup RemoveBackendServerFromServerGroupParamDetail `json:"removeBackendServerFromServerGroup"`
+	Params RemoveBackendServerFromServerGroupParamDetail `json:"removeBackendServerFromServerGroup"`
 }
 // GetVpcAttachedVipParamDetail GetVpcAttachedVip detail param
 type GetVpcAttachedVipParamDetail struct {
@@ -3743,7 +3743,7 @@ type GetVpcAttachedVipParamDetail struct {
 // GetVpcAttachedVipParam GetVpcAttachedVip request param
 type GetVpcAttachedVipParam struct {
 	BaseParam
-	GetVpcAttachedVip GetVpcAttachedVipParamDetail `json:"getVpcAttachedVip"`
+	Params GetVpcAttachedVipParamDetail `json:"getVpcAttachedVip"`
 }
 // AddIpv6RangeParamDetail AddIpv6Range detail param
 type AddIpv6RangeParamDetail struct {
@@ -3763,7 +3763,7 @@ type AddIpv6RangeParamDetail struct {
 // AddIpv6RangeParam AddIpv6Range request param
 type AddIpv6RangeParam struct {
 	BaseParam
-	AddIpv6Range AddIpv6RangeParamDetail `json:"addIpv6Range"`
+	Params AddIpv6RangeParamDetail `json:"addIpv6Range"`
 }
 // CheckBaremetalChassisConfigFileParamDetail CheckBaremetalChassisConfigFile detail param
 type CheckBaremetalChassisConfigFileParamDetail struct {
@@ -3773,7 +3773,7 @@ type CheckBaremetalChassisConfigFileParamDetail struct {
 // CheckBaremetalChassisConfigFileParam CheckBaremetalChassisConfigFile request param
 type CheckBaremetalChassisConfigFileParam struct {
 	BaseParam
-	CheckBaremetalChassisConfigFile CheckBaremetalChassisConfigFileParamDetail `json:"checkBaremetalChassisConfigFile"`
+	Params CheckBaremetalChassisConfigFileParamDetail `json:"checkBaremetalChassisConfigFile"`
 }
 // DeleteOssBucketFileRemoteParamDetail DeleteOssBucketFileRemote detail param
 type DeleteOssBucketFileRemoteParamDetail struct {
@@ -3785,7 +3785,7 @@ type DeleteOssBucketFileRemoteParamDetail struct {
 // DeleteOssBucketFileRemoteParam DeleteOssBucketFileRemote request param
 type DeleteOssBucketFileRemoteParam struct {
 	BaseParam
-	DeleteOssBucketFileRemote DeleteOssBucketFileRemoteParamDetail `json:"deleteOssBucketFileRemote"`
+	Params DeleteOssBucketFileRemoteParamDetail `json:"deleteOssBucketFileRemote"`
 }
 // ChangeMulticastRouterStateParamDetail ChangeMulticastRouterState detail param
 type ChangeMulticastRouterStateParamDetail struct {
@@ -3796,7 +3796,7 @@ type ChangeMulticastRouterStateParamDetail struct {
 // ChangeMulticastRouterStateParam ChangeMulticastRouterState request param
 type ChangeMulticastRouterStateParam struct {
 	BaseParam
-	ChangeMulticastRouterState ChangeMulticastRouterStateParamDetail `json:"changeMulticastRouterState"`
+	Params ChangeMulticastRouterStateParamDetail `json:"changeMulticastRouterState"`
 }
 // GetMaaSUsageParamDetail GetMaaSUsage detail param
 type GetMaaSUsageParamDetail struct {
@@ -3805,7 +3805,7 @@ type GetMaaSUsageParamDetail struct {
 // GetMaaSUsageParam GetMaaSUsage request param
 type GetMaaSUsageParam struct {
 	BaseParam
-	GetMaaSUsage GetMaaSUsageParamDetail `json:"getMaaSUsage"`
+	Params GetMaaSUsageParamDetail `json:"getMaaSUsage"`
 }
 // GetFreeIpParamDetail GetFreeIp detail param
 type GetFreeIpParamDetail struct {
@@ -3820,7 +3820,7 @@ type GetFreeIpParamDetail struct {
 // GetFreeIpParam GetFreeIp request param
 type GetFreeIpParam struct {
 	BaseParam
-	GetFreeIp GetFreeIpParamDetail `json:"getFreeIp"`
+	Params GetFreeIpParamDetail `json:"getFreeIp"`
 }
 // DeleteOssBucketRemoteParamDetail DeleteOssBucketRemote detail param
 type DeleteOssBucketRemoteParamDetail struct {
@@ -3831,7 +3831,7 @@ type DeleteOssBucketRemoteParamDetail struct {
 // DeleteOssBucketRemoteParam DeleteOssBucketRemote request param
 type DeleteOssBucketRemoteParam struct {
 	BaseParam
-	DeleteOssBucketRemote DeleteOssBucketRemoteParamDetail `json:"deleteOssBucketRemote"`
+	Params DeleteOssBucketRemoteParamDetail `json:"deleteOssBucketRemote"`
 }
 // CreateL2PortGroupParamDetail CreateL2PortGroup detail param
 type CreateL2PortGroupParamDetail struct {
@@ -3854,7 +3854,7 @@ type CreateL2PortGroupParamDetail struct {
 // CreateL2PortGroupParam CreateL2PortGroup request param
 type CreateL2PortGroupParam struct {
 	BaseParam
-	CreateL2PortGroup CreateL2PortGroupParamDetail `json:"createL2PortGroup"`
+	Params CreateL2PortGroupParamDetail `json:"createL2PortGroup"`
 }
 // ValidateInstanceOfferingUserConfigParamDetail ValidateInstanceOfferingUserConfig detail param
 type ValidateInstanceOfferingUserConfigParamDetail struct {
@@ -3864,7 +3864,7 @@ type ValidateInstanceOfferingUserConfigParamDetail struct {
 // ValidateInstanceOfferingUserConfigParam ValidateInstanceOfferingUserConfig request param
 type ValidateInstanceOfferingUserConfigParam struct {
 	BaseParam
-	ValidateInstanceOfferingUserConfig ValidateInstanceOfferingUserConfigParamDetail `json:"validateInstanceOfferingUserConfig"`
+	Params ValidateInstanceOfferingUserConfigParamDetail `json:"validateInstanceOfferingUserConfig"`
 }
 // SetVmHostnameParamDetail SetVmHostname detail param
 type SetVmHostnameParamDetail struct {
@@ -3875,7 +3875,7 @@ type SetVmHostnameParamDetail struct {
 // SetVmHostnameParam SetVmHostname request param
 type SetVmHostnameParam struct {
 	BaseParam
-	SetVmHostname SetVmHostnameParamDetail `json:"setVmHostname"`
+	Params SetVmHostnameParamDetail `json:"setVmHostname"`
 }
 // TriggerGCJobParamDetail TriggerGCJob detail param
 type TriggerGCJobParamDetail struct {
@@ -3885,7 +3885,7 @@ type TriggerGCJobParamDetail struct {
 // TriggerGCJobParam TriggerGCJob request param
 type TriggerGCJobParam struct {
 	BaseParam
-	TriggerGCJob TriggerGCJobParamDetail `json:"triggerGCJob"`
+	Params TriggerGCJobParamDetail `json:"triggerGCJob"`
 }
 // CheckBareMetal2IpmiChassisConfigFileParamDetail CheckBareMetal2IpmiChassisConfigFile detail param
 type CheckBareMetal2IpmiChassisConfigFileParamDetail struct {
@@ -3895,7 +3895,7 @@ type CheckBareMetal2IpmiChassisConfigFileParamDetail struct {
 // CheckBareMetal2IpmiChassisConfigFileParam CheckBareMetal2IpmiChassisConfigFile request param
 type CheckBareMetal2IpmiChassisConfigFileParam struct {
 	BaseParam
-	CheckBareMetal2IpmiChassisConfigFile CheckBareMetal2IpmiChassisConfigFileParamDetail `json:"checkBareMetal2IpmiChassisConfigFile"`
+	Params CheckBareMetal2IpmiChassisConfigFileParamDetail `json:"checkBareMetal2IpmiChassisConfigFile"`
 }
 // DeleteVirtualRouterLocalParamDetail DeleteVirtualRouterLocal detail param
 type DeleteVirtualRouterLocalParamDetail struct {
@@ -3906,7 +3906,7 @@ type DeleteVirtualRouterLocalParamDetail struct {
 // DeleteVirtualRouterLocalParam DeleteVirtualRouterLocal request param
 type DeleteVirtualRouterLocalParam struct {
 	BaseParam
-	DeleteVirtualRouterLocal DeleteVirtualRouterLocalParamDetail `json:"deleteVirtualRouterLocal"`
+	Params DeleteVirtualRouterLocalParamDetail `json:"deleteVirtualRouterLocal"`
 }
 // DeleteVpcIkeConfigLocalParamDetail DeleteVpcIkeConfigLocal detail param
 type DeleteVpcIkeConfigLocalParamDetail struct {
@@ -3917,7 +3917,7 @@ type DeleteVpcIkeConfigLocalParamDetail struct {
 // DeleteVpcIkeConfigLocalParam DeleteVpcIkeConfigLocal request param
 type DeleteVpcIkeConfigLocalParam struct {
 	BaseParam
-	DeleteVpcIkeConfigLocal DeleteVpcIkeConfigLocalParamDetail `json:"deleteVpcIkeConfigLocal"`
+	Params DeleteVpcIkeConfigLocalParamDetail `json:"deleteVpcIkeConfigLocal"`
 }
 // CreateOssBucketRemoteParamDetail CreateOssBucketRemote detail param
 type CreateOssBucketRemoteParamDetail struct {
@@ -3934,7 +3934,7 @@ type CreateOssBucketRemoteParamDetail struct {
 // CreateOssBucketRemoteParam CreateOssBucketRemote request param
 type CreateOssBucketRemoteParam struct {
 	BaseParam
-	CreateOssBucketRemote CreateOssBucketRemoteParamDetail `json:"createOssBucketRemote"`
+	Params CreateOssBucketRemoteParamDetail `json:"createOssBucketRemote"`
 }
 // AddSimulatorPrimaryStorageParamDetail AddSimulatorPrimaryStorage detail param
 type AddSimulatorPrimaryStorageParamDetail struct {
@@ -3954,7 +3954,7 @@ type AddSimulatorPrimaryStorageParamDetail struct {
 // AddSimulatorPrimaryStorageParam AddSimulatorPrimaryStorage request param
 type AddSimulatorPrimaryStorageParam struct {
 	BaseParam
-	AddSimulatorPrimaryStorage AddSimulatorPrimaryStorageParamDetail `json:"addSimulatorPrimaryStorage"`
+	Params AddSimulatorPrimaryStorageParamDetail `json:"addSimulatorPrimaryStorage"`
 }
 // DetachVRouterRouteTableFromVRouterParamDetail DetachVRouterRouteTableFromVRouter detail param
 type DetachVRouterRouteTableFromVRouterParamDetail struct {
@@ -3965,7 +3965,7 @@ type DetachVRouterRouteTableFromVRouterParamDetail struct {
 // DetachVRouterRouteTableFromVRouterParam DetachVRouterRouteTableFromVRouter request param
 type DetachVRouterRouteTableFromVRouterParam struct {
 	BaseParam
-	DetachVRouterRouteTableFromVRouter DetachVRouterRouteTableFromVRouterParamDetail `json:"detachVRouterRouteTableFromVRouter"`
+	Params DetachVRouterRouteTableFromVRouterParamDetail `json:"detachVRouterRouteTableFromVRouter"`
 }
 // GetVipUsedPortsParamDetail GetVipUsedPorts detail param
 type GetVipUsedPortsParamDetail struct {
@@ -3976,7 +3976,7 @@ type GetVipUsedPortsParamDetail struct {
 // GetVipUsedPortsParam GetVipUsedPorts request param
 type GetVipUsedPortsParam struct {
 	BaseParam
-	GetVipUsedPorts GetVipUsedPortsParamDetail `json:"getVipUsedPorts"`
+	Params GetVipUsedPortsParamDetail `json:"getVipUsedPorts"`
 }
 // SetVmConsolePasswordParamDetail SetVmConsolePassword detail param
 type SetVmConsolePasswordParamDetail struct {
@@ -3987,7 +3987,7 @@ type SetVmConsolePasswordParamDetail struct {
 // SetVmConsolePasswordParam SetVmConsolePassword request param
 type SetVmConsolePasswordParam struct {
 	BaseParam
-	SetVmConsolePassword SetVmConsolePasswordParamDetail `json:"setVmConsolePassword"`
+	Params SetVmConsolePasswordParamDetail `json:"setVmConsolePassword"`
 }
 // AttachFirewallRuleSetToL3ParamDetail AttachFirewallRuleSetToL3 detail param
 type AttachFirewallRuleSetToL3ParamDetail struct {
@@ -4000,7 +4000,7 @@ type AttachFirewallRuleSetToL3ParamDetail struct {
 // AttachFirewallRuleSetToL3Param AttachFirewallRuleSetToL3 request param
 type AttachFirewallRuleSetToL3Param struct {
 	BaseParam
-	AttachFirewallRuleSetToL3 AttachFirewallRuleSetToL3ParamDetail `json:"attachFirewallRuleSetToL3"`
+	Params AttachFirewallRuleSetToL3ParamDetail `json:"attachFirewallRuleSetToL3"`
 }
 // CleanUpStorageTrashOnPrimaryStorageParamDetail CleanUpStorageTrashOnPrimaryStorage detail param
 type CleanUpStorageTrashOnPrimaryStorageParamDetail struct {
@@ -4011,7 +4011,7 @@ type CleanUpStorageTrashOnPrimaryStorageParamDetail struct {
 // CleanUpStorageTrashOnPrimaryStorageParam CleanUpStorageTrashOnPrimaryStorage request param
 type CleanUpStorageTrashOnPrimaryStorageParam struct {
 	BaseParam
-	CleanUpStorageTrashOnPrimaryStorage CleanUpStorageTrashOnPrimaryStorageParamDetail `json:"cleanUpStorageTrashOnPrimaryStorage"`
+	Params CleanUpStorageTrashOnPrimaryStorageParamDetail `json:"cleanUpStorageTrashOnPrimaryStorage"`
 }
 // GetManagementNodeDirCapacityParamDetail GetManagementNodeDirCapacity detail param
 type GetManagementNodeDirCapacityParamDetail struct {
@@ -4021,7 +4021,7 @@ type GetManagementNodeDirCapacityParamDetail struct {
 // GetManagementNodeDirCapacityParam GetManagementNodeDirCapacity request param
 type GetManagementNodeDirCapacityParam struct {
 	BaseParam
-	GetManagementNodeDirCapacity GetManagementNodeDirCapacityParamDetail `json:"getManagementNodeDirCapacity"`
+	Params GetManagementNodeDirCapacityParamDetail `json:"getManagementNodeDirCapacity"`
 }
 // GetGpuDeviceSpecCandidatesParamDetail GetGpuDeviceSpecCandidates detail param
 type GetGpuDeviceSpecCandidatesParamDetail struct {
@@ -4034,7 +4034,7 @@ type GetGpuDeviceSpecCandidatesParamDetail struct {
 // GetGpuDeviceSpecCandidatesParam GetGpuDeviceSpecCandidates request param
 type GetGpuDeviceSpecCandidatesParam struct {
 	BaseParam
-	GetGpuDeviceSpecCandidates GetGpuDeviceSpecCandidatesParamDetail `json:"getGpuDeviceSpecCandidates"`
+	Params GetGpuDeviceSpecCandidatesParamDetail `json:"getGpuDeviceSpecCandidates"`
 }
 // UngroupVolumeSnapshotGroupParamDetail UngroupVolumeSnapshotGroup detail param
 type UngroupVolumeSnapshotGroupParamDetail struct {
@@ -4044,7 +4044,7 @@ type UngroupVolumeSnapshotGroupParamDetail struct {
 // UngroupVolumeSnapshotGroupParam UngroupVolumeSnapshotGroup request param
 type UngroupVolumeSnapshotGroupParam struct {
 	BaseParam
-	UngroupVolumeSnapshotGroup UngroupVolumeSnapshotGroupParamDetail `json:"ungroupVolumeSnapshotGroup"`
+	Params UngroupVolumeSnapshotGroupParamDetail `json:"ungroupVolumeSnapshotGroup"`
 }
 // SubscribeSNSTopicParamDetail SubscribeSNSTopic detail param
 type SubscribeSNSTopicParamDetail struct {
@@ -4055,7 +4055,7 @@ type SubscribeSNSTopicParamDetail struct {
 // SubscribeSNSTopicParam SubscribeSNSTopic request param
 type SubscribeSNSTopicParam struct {
 	BaseParam
-	SubscribeSNSTopic SubscribeSNSTopicParamDetail `json:"subscribeSNSTopic"`
+	Params SubscribeSNSTopicParamDetail `json:"subscribeSNSTopic"`
 }
 // GetCandidateVmNicForSecurityGroupParamDetail GetCandidateVmNicForSecurityGroup detail param
 type GetCandidateVmNicForSecurityGroupParamDetail struct {
@@ -4065,7 +4065,7 @@ type GetCandidateVmNicForSecurityGroupParamDetail struct {
 // GetCandidateVmNicForSecurityGroupParam GetCandidateVmNicForSecurityGroup request param
 type GetCandidateVmNicForSecurityGroupParam struct {
 	BaseParam
-	GetCandidateVmNicForSecurityGroup GetCandidateVmNicForSecurityGroupParamDetail `json:"getCandidateVmNicForSecurityGroup"`
+	Params GetCandidateVmNicForSecurityGroupParamDetail `json:"getCandidateVmNicForSecurityGroup"`
 }
 // GetVmRDPParamDetail GetVmRDP detail param
 type GetVmRDPParamDetail struct {
@@ -4075,7 +4075,7 @@ type GetVmRDPParamDetail struct {
 // GetVmRDPParam GetVmRDP request param
 type GetVmRDPParam struct {
 	BaseParam
-	GetVmRDP GetVmRDPParamDetail `json:"getVmRDP"`
+	Params GetVmRDPParamDetail `json:"getVmRDP"`
 }
 // AttachPciDeviceToVmParamDetail AttachPciDeviceToVm detail param
 type AttachPciDeviceToVmParamDetail struct {
@@ -4086,7 +4086,7 @@ type AttachPciDeviceToVmParamDetail struct {
 // AttachPciDeviceToVmParam AttachPciDeviceToVm request param
 type AttachPciDeviceToVmParam struct {
 	BaseParam
-	AttachPciDeviceToVm AttachPciDeviceToVmParamDetail `json:"attachPciDeviceToVm"`
+	Params AttachPciDeviceToVmParamDetail `json:"attachPciDeviceToVm"`
 }
 // CleanupBillingUsageParamDetail CleanupBillingUsage detail param
 type CleanupBillingUsageParamDetail struct {
@@ -4096,7 +4096,7 @@ type CleanupBillingUsageParamDetail struct {
 // CleanupBillingUsageParam CleanupBillingUsage request param
 type CleanupBillingUsageParam struct {
 	BaseParam
-	CleanupBillingUsage CleanupBillingUsageParamDetail `json:"cleanupBillingUsage"`
+	Params CleanupBillingUsageParamDetail `json:"cleanupBillingUsage"`
 }
 // GetLdapEntryParamDetail GetLdapEntry detail param
 type GetLdapEntryParamDetail struct {
@@ -4108,7 +4108,7 @@ type GetLdapEntryParamDetail struct {
 // GetLdapEntryParam GetLdapEntry request param
 type GetLdapEntryParam struct {
 	BaseParam
-	GetLdapEntry GetLdapEntryParamDetail `json:"getLdapEntry"`
+	Params GetLdapEntryParamDetail `json:"getLdapEntry"`
 }
 // GetCandidateL2NetworksForAttachingClusterParamDetail GetCandidateL2NetworksForAttachingCluster detail param
 type GetCandidateL2NetworksForAttachingClusterParamDetail struct {
@@ -4120,7 +4120,7 @@ type GetCandidateL2NetworksForAttachingClusterParamDetail struct {
 // GetCandidateL2NetworksForAttachingClusterParam GetCandidateL2NetworksForAttachingCluster request param
 type GetCandidateL2NetworksForAttachingClusterParam struct {
 	BaseParam
-	GetCandidateL2NetworksForAttachingCluster GetCandidateL2NetworksForAttachingClusterParamDetail `json:"getCandidateL2NetworksForAttachingCluster"`
+	Params GetCandidateL2NetworksForAttachingClusterParamDetail `json:"getCandidateL2NetworksForAttachingCluster"`
 }
 // IsVfNicAvailableInL3NetworkParamDetail IsVfNicAvailableInL3Network detail param
 type IsVfNicAvailableInL3NetworkParamDetail struct {
@@ -4131,7 +4131,7 @@ type IsVfNicAvailableInL3NetworkParamDetail struct {
 // IsVfNicAvailableInL3NetworkParam IsVfNicAvailableInL3Network request param
 type IsVfNicAvailableInL3NetworkParam struct {
 	BaseParam
-	IsVfNicAvailableInL3Network IsVfNicAvailableInL3NetworkParamDetail `json:"isVfNicAvailableInL3Network"`
+	Params IsVfNicAvailableInL3NetworkParamDetail `json:"isVfNicAvailableInL3Network"`
 }
 // GetAllMetricMetadataParamDetail GetAllMetricMetadata detail param
 type GetAllMetricMetadataParamDetail struct {
@@ -4142,7 +4142,7 @@ type GetAllMetricMetadataParamDetail struct {
 // GetAllMetricMetadataParam GetAllMetricMetadata request param
 type GetAllMetricMetadataParam struct {
 	BaseParam
-	GetAllMetricMetadata GetAllMetricMetadataParamDetail `json:"getAllMetricMetadata"`
+	Params GetAllMetricMetadataParamDetail `json:"getAllMetricMetadata"`
 }
 // AddOssBucketFromRemoteParamDetail AddOssBucketFromRemote detail param
 type AddOssBucketFromRemoteParamDetail struct {
@@ -4159,7 +4159,7 @@ type AddOssBucketFromRemoteParamDetail struct {
 // AddOssBucketFromRemoteParam AddOssBucketFromRemote request param
 type AddOssBucketFromRemoteParam struct {
 	BaseParam
-	AddOssBucketFromRemote AddOssBucketFromRemoteParamDetail `json:"addOssBucketFromRemote"`
+	Params AddOssBucketFromRemoteParamDetail `json:"addOssBucketFromRemote"`
 }
 // SyncVmBackupParamDetail SyncVmBackup detail param
 type SyncVmBackupParamDetail struct {
@@ -4169,7 +4169,7 @@ type SyncVmBackupParamDetail struct {
 // SyncVmBackupParam SyncVmBackup request param
 type SyncVmBackupParam struct {
 	BaseParam
-	SyncVmBackup SyncVmBackupParamDetail `json:"syncVmBackup"`
+	Params SyncVmBackupParamDetail `json:"syncVmBackup"`
 }
 // RefreshGuestOsMetadataParamDetail RefreshGuestOsMetadata detail param
 type RefreshGuestOsMetadataParamDetail struct {
@@ -4178,7 +4178,7 @@ type RefreshGuestOsMetadataParamDetail struct {
 // RefreshGuestOsMetadataParam RefreshGuestOsMetadata request param
 type RefreshGuestOsMetadataParam struct {
 	BaseParam
-	RefreshGuestOsMetadata RefreshGuestOsMetadataParamDetail `json:"refreshGuestOsMetadata"`
+	Params RefreshGuestOsMetadataParamDetail `json:"refreshGuestOsMetadata"`
 }
 // GCAliyunSnapshotRemoteParamDetail GCAliyunSnapshotRemote detail param
 type GCAliyunSnapshotRemoteParamDetail struct {
@@ -4189,7 +4189,7 @@ type GCAliyunSnapshotRemoteParamDetail struct {
 // GCAliyunSnapshotRemoteParam GCAliyunSnapshotRemote request param
 type GCAliyunSnapshotRemoteParam struct {
 	BaseParam
-	GCAliyunSnapshotRemote GCAliyunSnapshotRemoteParamDetail `json:"gCAliyunSnapshotRemote"`
+	Params GCAliyunSnapshotRemoteParamDetail `json:"gCAliyunSnapshotRemote"`
 }
 // DownloadBackupFileFromPublicCloudParamDetail DownloadBackupFileFromPublicCloud detail param
 type DownloadBackupFileFromPublicCloudParamDetail struct {
@@ -4201,7 +4201,7 @@ type DownloadBackupFileFromPublicCloudParamDetail struct {
 // DownloadBackupFileFromPublicCloudParam DownloadBackupFileFromPublicCloud request param
 type DownloadBackupFileFromPublicCloudParam struct {
 	BaseParam
-	DownloadBackupFileFromPublicCloud DownloadBackupFileFromPublicCloudParamDetail `json:"downloadBackupFileFromPublicCloud"`
+	Params DownloadBackupFileFromPublicCloudParamDetail `json:"downloadBackupFileFromPublicCloud"`
 }
 // AddIAM2VirtualIDsToProjectsParamDetail AddIAM2VirtualIDsToProjects detail param
 type AddIAM2VirtualIDsToProjectsParamDetail struct {
@@ -4213,7 +4213,7 @@ type AddIAM2VirtualIDsToProjectsParamDetail struct {
 // AddIAM2VirtualIDsToProjectsParam AddIAM2VirtualIDsToProjects request param
 type AddIAM2VirtualIDsToProjectsParam struct {
 	BaseParam
-	AddIAM2VirtualIDsToProjects AddIAM2VirtualIDsToProjectsParamDetail `json:"addIAM2VirtualIDsToProjects"`
+	Params AddIAM2VirtualIDsToProjectsParamDetail `json:"addIAM2VirtualIDsToProjects"`
 }
 // CreateIAM2ProjectTemplateFromProjectParamDetail CreateIAM2ProjectTemplateFromProject detail param
 type CreateIAM2ProjectTemplateFromProjectParamDetail struct {
@@ -4227,7 +4227,7 @@ type CreateIAM2ProjectTemplateFromProjectParamDetail struct {
 // CreateIAM2ProjectTemplateFromProjectParam CreateIAM2ProjectTemplateFromProject request param
 type CreateIAM2ProjectTemplateFromProjectParam struct {
 	BaseParam
-	CreateIAM2ProjectTemplateFromProject CreateIAM2ProjectTemplateFromProjectParamDetail `json:"createIAM2ProjectTemplateFromProject"`
+	Params CreateIAM2ProjectTemplateFromProjectParamDetail `json:"createIAM2ProjectTemplateFromProject"`
 }
 // CreateTagParamDetail CreateTag detail param
 type CreateTagParamDetail struct {
@@ -4243,7 +4243,7 @@ type CreateTagParamDetail struct {
 // CreateTagParam CreateTag request param
 type CreateTagParam struct {
 	BaseParam
-	CreateTag CreateTagParamDetail `json:"createTag"`
+	Params CreateTagParamDetail `json:"createTag"`
 }
 // UpdateConsolePasswordParamDetail UpdateConsolePassword detail param
 type UpdateConsolePasswordParamDetail struct {
@@ -4254,7 +4254,7 @@ type UpdateConsolePasswordParamDetail struct {
 // UpdateConsolePasswordParam UpdateConsolePassword request param
 type UpdateConsolePasswordParam struct {
 	BaseParam
-	UpdateConsolePassword UpdateConsolePasswordParamDetail `json:"updateConsolePassword"`
+	Params UpdateConsolePasswordParamDetail `json:"updateConsolePassword"`
 }
 // CreateVmInstanceFromVolumeSnapshotGroupParamDetail CreateVmInstanceFromVolumeSnapshotGroup detail param
 type CreateVmInstanceFromVolumeSnapshotGroupParamDetail struct {
@@ -4282,7 +4282,7 @@ type CreateVmInstanceFromVolumeSnapshotGroupParamDetail struct {
 // CreateVmInstanceFromVolumeSnapshotGroupParam CreateVmInstanceFromVolumeSnapshotGroup request param
 type CreateVmInstanceFromVolumeSnapshotGroupParam struct {
 	BaseParam
-	CreateVmInstanceFromVolumeSnapshotGroup CreateVmInstanceFromVolumeSnapshotGroupParamDetail `json:"createVmInstanceFromVolumeSnapshotGroup"`
+	Params CreateVmInstanceFromVolumeSnapshotGroupParamDetail `json:"createVmInstanceFromVolumeSnapshotGroup"`
 }
 // SetIAM2ProjectRetirePolicyParamDetail SetIAM2ProjectRetirePolicy detail param
 type SetIAM2ProjectRetirePolicyParamDetail struct {
@@ -4293,7 +4293,7 @@ type SetIAM2ProjectRetirePolicyParamDetail struct {
 // SetIAM2ProjectRetirePolicyParam SetIAM2ProjectRetirePolicy request param
 type SetIAM2ProjectRetirePolicyParam struct {
 	BaseParam
-	SetIAM2ProjectRetirePolicy SetIAM2ProjectRetirePolicyParamDetail `json:"setIAM2ProjectRetirePolicy"`
+	Params SetIAM2ProjectRetirePolicyParamDetail `json:"setIAM2ProjectRetirePolicy"`
 }
 // RunIAM2ScriptParamDetail RunIAM2Script detail param
 type RunIAM2ScriptParamDetail struct {
@@ -4305,7 +4305,7 @@ type RunIAM2ScriptParamDetail struct {
 // RunIAM2ScriptParam RunIAM2Script request param
 type RunIAM2ScriptParam struct {
 	BaseParam
-	RunIAM2Script RunIAM2ScriptParamDetail `json:"runIAM2Script"`
+	Params RunIAM2ScriptParamDetail `json:"runIAM2Script"`
 }
 // AttachServiceToObservabilityServerParamDetail AttachServiceToObservabilityServer detail param
 type AttachServiceToObservabilityServerParamDetail struct {
@@ -4317,7 +4317,7 @@ type AttachServiceToObservabilityServerParamDetail struct {
 // AttachServiceToObservabilityServerParam AttachServiceToObservabilityServer request param
 type AttachServiceToObservabilityServerParam struct {
 	BaseParam
-	AttachServiceToObservabilityServer AttachServiceToObservabilityServerParamDetail `json:"attachServiceToObservabilityServer"`
+	Params AttachServiceToObservabilityServerParamDetail `json:"attachServiceToObservabilityServer"`
 }
 // DeleteHostNetworkServiceTypeParamDetail DeleteHostNetworkServiceType detail param
 type DeleteHostNetworkServiceTypeParamDetail struct {
@@ -4328,7 +4328,7 @@ type DeleteHostNetworkServiceTypeParamDetail struct {
 // DeleteHostNetworkServiceTypeParam DeleteHostNetworkServiceType request param
 type DeleteHostNetworkServiceTypeParam struct {
 	BaseParam
-	DeleteHostNetworkServiceType DeleteHostNetworkServiceTypeParamDetail `json:"deleteHostNetworkServiceType"`
+	Params DeleteHostNetworkServiceTypeParamDetail `json:"deleteHostNetworkServiceType"`
 }
 // CreateIAM2ProjectFromTemplateParamDetail CreateIAM2ProjectFromTemplate detail param
 type CreateIAM2ProjectFromTemplateParamDetail struct {
@@ -4346,7 +4346,7 @@ type CreateIAM2ProjectFromTemplateParamDetail struct {
 // CreateIAM2ProjectFromTemplateParam CreateIAM2ProjectFromTemplate request param
 type CreateIAM2ProjectFromTemplateParam struct {
 	BaseParam
-	CreateIAM2ProjectFromTemplate CreateIAM2ProjectFromTemplateParamDetail `json:"createIAM2ProjectFromTemplate"`
+	Params CreateIAM2ProjectFromTemplateParamDetail `json:"createIAM2ProjectFromTemplate"`
 }
 // AddConnectionAccessPointFromRemoteParamDetail AddConnectionAccessPointFromRemote detail param
 type AddConnectionAccessPointFromRemoteParamDetail struct {
@@ -4359,7 +4359,7 @@ type AddConnectionAccessPointFromRemoteParamDetail struct {
 // AddConnectionAccessPointFromRemoteParam AddConnectionAccessPointFromRemote request param
 type AddConnectionAccessPointFromRemoteParam struct {
 	BaseParam
-	AddConnectionAccessPointFromRemote AddConnectionAccessPointFromRemoteParamDetail `json:"addConnectionAccessPointFromRemote"`
+	Params AddConnectionAccessPointFromRemoteParamDetail `json:"addConnectionAccessPointFromRemote"`
 }
 // AttachSshKeyPairToVmInstanceParamDetail AttachSshKeyPairToVmInstance detail param
 type AttachSshKeyPairToVmInstanceParamDetail struct {
@@ -4370,7 +4370,7 @@ type AttachSshKeyPairToVmInstanceParamDetail struct {
 // AttachSshKeyPairToVmInstanceParam AttachSshKeyPairToVmInstance request param
 type AttachSshKeyPairToVmInstanceParam struct {
 	BaseParam
-	AttachSshKeyPairToVmInstance AttachSshKeyPairToVmInstanceParamDetail `json:"attachSshKeyPairToVmInstance"`
+	Params AttachSshKeyPairToVmInstanceParamDetail `json:"attachSshKeyPairToVmInstance"`
 }
 // DetachBareMetal2GatewayFromClusterParamDetail DetachBareMetal2GatewayFromCluster detail param
 type DetachBareMetal2GatewayFromClusterParamDetail struct {
@@ -4381,7 +4381,7 @@ type DetachBareMetal2GatewayFromClusterParamDetail struct {
 // DetachBareMetal2GatewayFromClusterParam DetachBareMetal2GatewayFromCluster request param
 type DetachBareMetal2GatewayFromClusterParam struct {
 	BaseParam
-	DetachBareMetal2GatewayFromCluster DetachBareMetal2GatewayFromClusterParamDetail `json:"detachBareMetal2GatewayFromCluster"`
+	Params DetachBareMetal2GatewayFromClusterParamDetail `json:"detachBareMetal2GatewayFromCluster"`
 }
 // ReloadElaborationParamDetail ReloadElaboration detail param
 type ReloadElaborationParamDetail struct {
@@ -4390,7 +4390,7 @@ type ReloadElaborationParamDetail struct {
 // ReloadElaborationParam ReloadElaboration request param
 type ReloadElaborationParam struct {
 	BaseParam
-	ReloadElaboration ReloadElaborationParamDetail `json:"reloadElaboration"`
+	Params ReloadElaborationParamDetail `json:"reloadElaboration"`
 }
 // ReconnectVirtualRouterParamDetail ReconnectVirtualRouter detail param
 type ReconnectVirtualRouterParamDetail struct {
@@ -4400,7 +4400,7 @@ type ReconnectVirtualRouterParamDetail struct {
 // ReconnectVirtualRouterParam ReconnectVirtualRouter request param
 type ReconnectVirtualRouterParam struct {
 	BaseParam
-	ReconnectVirtualRouter ReconnectVirtualRouterParamDetail `json:"reconnectVirtualRouter"`
+	Params ReconnectVirtualRouterParamDetail `json:"reconnectVirtualRouter"`
 }
 // ConvertVmFromForeignHypervisorParamDetail ConvertVmFromForeignHypervisor detail param
 type ConvertVmFromForeignHypervisorParamDetail struct {
@@ -4433,7 +4433,7 @@ type ConvertVmFromForeignHypervisorParamDetail struct {
 // ConvertVmFromForeignHypervisorParam ConvertVmFromForeignHypervisor request param
 type ConvertVmFromForeignHypervisorParam struct {
 	BaseParam
-	ConvertVmFromForeignHypervisor ConvertVmFromForeignHypervisorParamDetail `json:"convertVmFromForeignHypervisor"`
+	Params ConvertVmFromForeignHypervisorParamDetail `json:"convertVmFromForeignHypervisor"`
 }
 // DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail DeleteConnectionBetweenL3NetWorkAndAliyunVSwitch detail param
 type DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail struct {
@@ -4444,7 +4444,7 @@ type DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail struct {
 // DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParam DeleteConnectionBetweenL3NetWorkAndAliyunVSwitch request param
 type DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParam struct {
 	BaseParam
-	DeleteConnectionBetweenL3NetWorkAndAliyunVSwitch DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail `json:"deleteConnectionBetweenL3NetWorkAndAliyunVSwitch"`
+	Params DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail `json:"deleteConnectionBetweenL3NetWorkAndAliyunVSwitch"`
 }
 // RestartResourceStackParamDetail RestartResourceStack detail param
 type RestartResourceStackParamDetail struct {
@@ -4454,7 +4454,7 @@ type RestartResourceStackParamDetail struct {
 // RestartResourceStackParam RestartResourceStack request param
 type RestartResourceStackParam struct {
 	BaseParam
-	RestartResourceStack RestartResourceStackParamDetail `json:"restartResourceStack"`
+	Params RestartResourceStackParamDetail `json:"restartResourceStack"`
 }
 // SyncEcsImageFromRemoteParamDetail SyncEcsImageFromRemote detail param
 type SyncEcsImageFromRemoteParamDetail struct {
@@ -4467,7 +4467,7 @@ type SyncEcsImageFromRemoteParamDetail struct {
 // SyncEcsImageFromRemoteParam SyncEcsImageFromRemote request param
 type SyncEcsImageFromRemoteParam struct {
 	BaseParam
-	SyncEcsImageFromRemote SyncEcsImageFromRemoteParamDetail `json:"syncEcsImageFromRemote"`
+	Params SyncEcsImageFromRemoteParamDetail `json:"syncEcsImageFromRemote"`
 }
 // AttachPoliciesToUserParamDetail AttachPoliciesToUser detail param
 type AttachPoliciesToUserParamDetail struct {
@@ -4478,7 +4478,7 @@ type AttachPoliciesToUserParamDetail struct {
 // AttachPoliciesToUserParam AttachPoliciesToUser request param
 type AttachPoliciesToUserParam struct {
 	BaseParam
-	AttachPoliciesToUser AttachPoliciesToUserParamDetail `json:"attachPoliciesToUser"`
+	Params AttachPoliciesToUserParamDetail `json:"attachPoliciesToUser"`
 }
 // AttachBackupStorageToZoneParamDetail AttachBackupStorageToZone detail param
 type AttachBackupStorageToZoneParamDetail struct {
@@ -4489,7 +4489,7 @@ type AttachBackupStorageToZoneParamDetail struct {
 // AttachBackupStorageToZoneParam AttachBackupStorageToZone request param
 type AttachBackupStorageToZoneParam struct {
 	BaseParam
-	AttachBackupStorageToZone AttachBackupStorageToZoneParamDetail `json:"attachBackupStorageToZone"`
+	Params AttachBackupStorageToZoneParamDetail `json:"attachBackupStorageToZone"`
 }
 // AddPciDeviceSpecToVmInstanceParamDetail AddPciDeviceSpecToVmInstance detail param
 type AddPciDeviceSpecToVmInstanceParamDetail struct {
@@ -4501,7 +4501,7 @@ type AddPciDeviceSpecToVmInstanceParamDetail struct {
 // AddPciDeviceSpecToVmInstanceParam AddPciDeviceSpecToVmInstance request param
 type AddPciDeviceSpecToVmInstanceParam struct {
 	BaseParam
-	AddPciDeviceSpecToVmInstance AddPciDeviceSpecToVmInstanceParamDetail `json:"addPciDeviceSpecToVmInstance"`
+	Params AddPciDeviceSpecToVmInstanceParamDetail `json:"addPciDeviceSpecToVmInstance"`
 }
 // ResizeRootVolumeParamDetail ResizeRootVolume detail param
 type ResizeRootVolumeParamDetail struct {
@@ -4513,7 +4513,7 @@ type ResizeRootVolumeParamDetail struct {
 // ResizeRootVolumeParam ResizeRootVolume request param
 type ResizeRootVolumeParam struct {
 	BaseParam
-	ResizeRootVolume ResizeRootVolumeParamDetail `json:"resizeRootVolume"`
+	Params ResizeRootVolumeParamDetail `json:"resizeRootVolume"`
 }
 // GetVpcVpnConfigurationFromRemoteParamDetail GetVpcVpnConfigurationFromRemote detail param
 type GetVpcVpnConfigurationFromRemoteParamDetail struct {
@@ -4523,7 +4523,7 @@ type GetVpcVpnConfigurationFromRemoteParamDetail struct {
 // GetVpcVpnConfigurationFromRemoteParam GetVpcVpnConfigurationFromRemote request param
 type GetVpcVpnConfigurationFromRemoteParam struct {
 	BaseParam
-	GetVpcVpnConfigurationFromRemote GetVpcVpnConfigurationFromRemoteParamDetail `json:"getVpcVpnConfigurationFromRemote"`
+	Params GetVpcVpnConfigurationFromRemoteParamDetail `json:"getVpcVpnConfigurationFromRemote"`
 }
 // CreateImageGroupFromImageParamDetail CreateImageGroupFromImage detail param
 type CreateImageGroupFromImageParamDetail struct {
@@ -4538,7 +4538,7 @@ type CreateImageGroupFromImageParamDetail struct {
 // CreateImageGroupFromImageParam CreateImageGroupFromImage request param
 type CreateImageGroupFromImageParam struct {
 	BaseParam
-	CreateImageGroupFromImage CreateImageGroupFromImageParamDetail `json:"createImageGroupFromImage"`
+	Params CreateImageGroupFromImageParamDetail `json:"createImageGroupFromImage"`
 }
 // TokenIntrospectionParamDetail TokenIntrospection detail param
 type TokenIntrospectionParamDetail struct {
@@ -4549,7 +4549,7 @@ type TokenIntrospectionParamDetail struct {
 // TokenIntrospectionParam TokenIntrospection request param
 type TokenIntrospectionParam struct {
 	BaseParam
-	TokenIntrospection TokenIntrospectionParamDetail `json:"tokenIntrospection"`
+	Params TokenIntrospectionParamDetail `json:"tokenIntrospection"`
 }
 // SyncVmBackupFromImageStoreBackupStorageParamDetail SyncVmBackupFromImageStoreBackupStorage detail param
 type SyncVmBackupFromImageStoreBackupStorageParamDetail struct {
@@ -4561,7 +4561,7 @@ type SyncVmBackupFromImageStoreBackupStorageParamDetail struct {
 // SyncVmBackupFromImageStoreBackupStorageParam SyncVmBackupFromImageStoreBackupStorage request param
 type SyncVmBackupFromImageStoreBackupStorageParam struct {
 	BaseParam
-	SyncVmBackupFromImageStoreBackupStorage SyncVmBackupFromImageStoreBackupStorageParamDetail `json:"syncVmBackupFromImageStoreBackupStorage"`
+	Params SyncVmBackupFromImageStoreBackupStorageParamDetail `json:"syncVmBackupFromImageStoreBackupStorage"`
 }
 // AddCertificateToLoadBalancerListenerParamDetail AddCertificateToLoadBalancerListener detail param
 type AddCertificateToLoadBalancerListenerParamDetail struct {
@@ -4572,7 +4572,7 @@ type AddCertificateToLoadBalancerListenerParamDetail struct {
 // AddCertificateToLoadBalancerListenerParam AddCertificateToLoadBalancerListener request param
 type AddCertificateToLoadBalancerListenerParam struct {
 	BaseParam
-	AddCertificateToLoadBalancerListener AddCertificateToLoadBalancerListenerParamDetail `json:"addCertificateToLoadBalancerListener"`
+	Params AddCertificateToLoadBalancerListenerParamDetail `json:"addCertificateToLoadBalancerListener"`
 }
 // AddRolesToIAM2VirtualIDParamDetail AddRolesToIAM2VirtualID detail param
 type AddRolesToIAM2VirtualIDParamDetail struct {
@@ -4584,7 +4584,7 @@ type AddRolesToIAM2VirtualIDParamDetail struct {
 // AddRolesToIAM2VirtualIDParam AddRolesToIAM2VirtualID request param
 type AddRolesToIAM2VirtualIDParam struct {
 	BaseParam
-	AddRolesToIAM2VirtualID AddRolesToIAM2VirtualIDParamDetail `json:"addRolesToIAM2VirtualID"`
+	Params AddRolesToIAM2VirtualIDParamDetail `json:"addRolesToIAM2VirtualID"`
 }
 // CreateFaultToleranceVmInstanceParamDetail CreateFaultToleranceVmInstance detail param
 type CreateFaultToleranceVmInstanceParamDetail struct {
@@ -4613,7 +4613,7 @@ type CreateFaultToleranceVmInstanceParamDetail struct {
 // CreateFaultToleranceVmInstanceParam CreateFaultToleranceVmInstance request param
 type CreateFaultToleranceVmInstanceParam struct {
 	BaseParam
-	CreateFaultToleranceVmInstance CreateFaultToleranceVmInstanceParamDetail `json:"createFaultToleranceVmInstance"`
+	Params CreateFaultToleranceVmInstanceParamDetail `json:"createFaultToleranceVmInstance"`
 }
 // DeleteResourceStackVmPortMonitorParamDetail DeleteResourceStackVmPortMonitor detail param
 type DeleteResourceStackVmPortMonitorParamDetail struct {
@@ -4626,7 +4626,7 @@ type DeleteResourceStackVmPortMonitorParamDetail struct {
 // DeleteResourceStackVmPortMonitorParam DeleteResourceStackVmPortMonitor request param
 type DeleteResourceStackVmPortMonitorParam struct {
 	BaseParam
-	DeleteResourceStackVmPortMonitor DeleteResourceStackVmPortMonitorParamDetail `json:"deleteResourceStackVmPortMonitor"`
+	Params DeleteResourceStackVmPortMonitorParamDetail `json:"deleteResourceStackVmPortMonitor"`
 }
 // DeleteGCJobParamDetail DeleteGCJob detail param
 type DeleteGCJobParamDetail struct {
@@ -4636,7 +4636,7 @@ type DeleteGCJobParamDetail struct {
 // DeleteGCJobParam DeleteGCJob request param
 type DeleteGCJobParam struct {
 	BaseParam
-	DeleteGCJob DeleteGCJobParamDetail `json:"deleteGCJob"`
+	Params DeleteGCJobParamDetail `json:"deleteGCJob"`
 }
 // DeleteEmailAddressOfSNSEmailEndpointParamDetail DeleteEmailAddressOfSNSEmailEndpoint detail param
 type DeleteEmailAddressOfSNSEmailEndpointParamDetail struct {
@@ -4647,7 +4647,7 @@ type DeleteEmailAddressOfSNSEmailEndpointParamDetail struct {
 // DeleteEmailAddressOfSNSEmailEndpointParam DeleteEmailAddressOfSNSEmailEndpoint request param
 type DeleteEmailAddressOfSNSEmailEndpointParam struct {
 	BaseParam
-	DeleteEmailAddressOfSNSEmailEndpoint DeleteEmailAddressOfSNSEmailEndpointParamDetail `json:"deleteEmailAddressOfSNSEmailEndpoint"`
+	Params DeleteEmailAddressOfSNSEmailEndpointParamDetail `json:"deleteEmailAddressOfSNSEmailEndpoint"`
 }
 // CleanInvalidLdapIAM2BindingParamDetail CleanInvalidLdapIAM2Binding detail param
 type CleanInvalidLdapIAM2BindingParamDetail struct {
@@ -4656,7 +4656,7 @@ type CleanInvalidLdapIAM2BindingParamDetail struct {
 // CleanInvalidLdapIAM2BindingParam CleanInvalidLdapIAM2Binding request param
 type CleanInvalidLdapIAM2BindingParam struct {
 	BaseParam
-	CleanInvalidLdapIAM2Binding CleanInvalidLdapIAM2BindingParamDetail `json:"cleanInvalidLdapIAM2Binding"`
+	Params CleanInvalidLdapIAM2BindingParamDetail `json:"cleanInvalidLdapIAM2Binding"`
 }
 // UpdateHybridEipParamDetail UpdateHybridEip detail param
 type UpdateHybridEipParamDetail struct {
@@ -4669,7 +4669,7 @@ type UpdateHybridEipParamDetail struct {
 // UpdateHybridEipParam UpdateHybridEip request param
 type UpdateHybridEipParam struct {
 	BaseParam
-	UpdateHybridEip UpdateHybridEipParamDetail `json:"updateHybridEip"`
+	Params UpdateHybridEipParamDetail `json:"updateHybridEip"`
 }
 // GetVpcAttachedIpsecParamDetail GetVpcAttachedIpsec detail param
 type GetVpcAttachedIpsecParamDetail struct {
@@ -4681,7 +4681,7 @@ type GetVpcAttachedIpsecParamDetail struct {
 // GetVpcAttachedIpsecParam GetVpcAttachedIpsec request param
 type GetVpcAttachedIpsecParam struct {
 	BaseParam
-	GetVpcAttachedIpsec GetVpcAttachedIpsecParamDetail `json:"getVpcAttachedIpsec"`
+	Params GetVpcAttachedIpsecParamDetail `json:"getVpcAttachedIpsec"`
 }
 // GetImagesFromImageStoreBackupStorageParamDetail GetImagesFromImageStoreBackupStorage detail param
 type GetImagesFromImageStoreBackupStorageParamDetail struct {
@@ -4691,7 +4691,7 @@ type GetImagesFromImageStoreBackupStorageParamDetail struct {
 // GetImagesFromImageStoreBackupStorageParam GetImagesFromImageStoreBackupStorage request param
 type GetImagesFromImageStoreBackupStorageParam struct {
 	BaseParam
-	GetImagesFromImageStoreBackupStorage GetImagesFromImageStoreBackupStorageParamDetail `json:"getImagesFromImageStoreBackupStorage"`
+	Params GetImagesFromImageStoreBackupStorageParamDetail `json:"getImagesFromImageStoreBackupStorage"`
 }
 // GetElaborationCategoriesParamDetail GetElaborationCategories detail param
 type GetElaborationCategoriesParamDetail struct {
@@ -4700,7 +4700,7 @@ type GetElaborationCategoriesParamDetail struct {
 // GetElaborationCategoriesParam GetElaborationCategories request param
 type GetElaborationCategoriesParam struct {
 	BaseParam
-	GetElaborationCategories GetElaborationCategoriesParamDetail `json:"getElaborationCategories"`
+	Params GetElaborationCategoriesParamDetail `json:"getElaborationCategories"`
 }
 // GetScsiLunCandidatesForAttachingVmParamDetail GetScsiLunCandidatesForAttachingVm detail param
 type GetScsiLunCandidatesForAttachingVmParamDetail struct {
@@ -4710,7 +4710,7 @@ type GetScsiLunCandidatesForAttachingVmParamDetail struct {
 // GetScsiLunCandidatesForAttachingVmParam GetScsiLunCandidatesForAttachingVm request param
 type GetScsiLunCandidatesForAttachingVmParam struct {
 	BaseParam
-	GetScsiLunCandidatesForAttachingVm GetScsiLunCandidatesForAttachingVmParamDetail `json:"getScsiLunCandidatesForAttachingVm"`
+	Params GetScsiLunCandidatesForAttachingVmParamDetail `json:"getScsiLunCandidatesForAttachingVm"`
 }
 // GetHostMultipathTopologyParamDetail GetHostMultipathTopology detail param
 type GetHostMultipathTopologyParamDetail struct {
@@ -4721,7 +4721,7 @@ type GetHostMultipathTopologyParamDetail struct {
 // GetHostMultipathTopologyParam GetHostMultipathTopology request param
 type GetHostMultipathTopologyParam struct {
 	BaseParam
-	GetHostMultipathTopology GetHostMultipathTopologyParamDetail `json:"getHostMultipathTopology"`
+	Params GetHostMultipathTopologyParamDetail `json:"getHostMultipathTopology"`
 }
 // DeleteEcsImageRemoteParamDetail DeleteEcsImageRemote detail param
 type DeleteEcsImageRemoteParamDetail struct {
@@ -4732,7 +4732,7 @@ type DeleteEcsImageRemoteParamDetail struct {
 // DeleteEcsImageRemoteParam DeleteEcsImageRemote request param
 type DeleteEcsImageRemoteParam struct {
 	BaseParam
-	DeleteEcsImageRemote DeleteEcsImageRemoteParamDetail `json:"deleteEcsImageRemote"`
+	Params DeleteEcsImageRemoteParamDetail `json:"deleteEcsImageRemote"`
 }
 // GetHostNetworkFactsParamDetail GetHostNetworkFacts detail param
 type GetHostNetworkFactsParamDetail struct {
@@ -4742,7 +4742,7 @@ type GetHostNetworkFactsParamDetail struct {
 // GetHostNetworkFactsParam GetHostNetworkFacts request param
 type GetHostNetworkFactsParam struct {
 	BaseParam
-	GetHostNetworkFacts GetHostNetworkFactsParamDetail `json:"getHostNetworkFacts"`
+	Params GetHostNetworkFactsParamDetail `json:"getHostNetworkFacts"`
 }
 // CleanUpTrashOnBackupStorageParamDetail CleanUpTrashOnBackupStorage detail param
 type CleanUpTrashOnBackupStorageParamDetail struct {
@@ -4753,7 +4753,7 @@ type CleanUpTrashOnBackupStorageParamDetail struct {
 // CleanUpTrashOnBackupStorageParam CleanUpTrashOnBackupStorage request param
 type CleanUpTrashOnBackupStorageParam struct {
 	BaseParam
-	CleanUpTrashOnBackupStorage CleanUpTrashOnBackupStorageParamDetail `json:"cleanUpTrashOnBackupStorage"`
+	Params CleanUpTrashOnBackupStorageParamDetail `json:"cleanUpTrashOnBackupStorage"`
 }
 // CreateConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail CreateConnectionBetweenL3NetworkAndAliyunVSwitch detail param
 type CreateConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
@@ -4771,7 +4771,7 @@ type CreateConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
 // CreateConnectionBetweenL3NetworkAndAliyunVSwitchParam CreateConnectionBetweenL3NetworkAndAliyunVSwitch request param
 type CreateConnectionBetweenL3NetworkAndAliyunVSwitchParam struct {
 	BaseParam
-	CreateConnectionBetweenL3NetworkAndAliyunVSwitch CreateConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail `json:"createConnectionBetweenL3NetworkAndAliyunVSwitch"`
+	Params CreateConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail `json:"createConnectionBetweenL3NetworkAndAliyunVSwitch"`
 }
 // DetachPriceTableFromAccountParamDetail DetachPriceTableFromAccount detail param
 type DetachPriceTableFromAccountParamDetail struct {
@@ -4782,7 +4782,7 @@ type DetachPriceTableFromAccountParamDetail struct {
 // DetachPriceTableFromAccountParam DetachPriceTableFromAccount request param
 type DetachPriceTableFromAccountParam struct {
 	BaseParam
-	DetachPriceTableFromAccount DetachPriceTableFromAccountParamDetail `json:"detachPriceTableFromAccount"`
+	Params DetachPriceTableFromAccountParamDetail `json:"detachPriceTableFromAccount"`
 }
 // AddVRouterNetworksToFlowMeterParamDetail AddVRouterNetworksToFlowMeter detail param
 type AddVRouterNetworksToFlowMeterParamDetail struct {
@@ -4796,7 +4796,7 @@ type AddVRouterNetworksToFlowMeterParamDetail struct {
 // AddVRouterNetworksToFlowMeterParam AddVRouterNetworksToFlowMeter request param
 type AddVRouterNetworksToFlowMeterParam struct {
 	BaseParam
-	AddVRouterNetworksToFlowMeter AddVRouterNetworksToFlowMeterParamDetail `json:"addVRouterNetworksToFlowMeter"`
+	Params AddVRouterNetworksToFlowMeterParamDetail `json:"addVRouterNetworksToFlowMeter"`
 }
 // GetIAM2VirtualIDInGroupParamDetail GetIAM2VirtualIDInGroup detail param
 type GetIAM2VirtualIDInGroupParamDetail struct {
@@ -4812,7 +4812,7 @@ type GetIAM2VirtualIDInGroupParamDetail struct {
 // GetIAM2VirtualIDInGroupParam GetIAM2VirtualIDInGroup request param
 type GetIAM2VirtualIDInGroupParam struct {
 	BaseParam
-	GetIAM2VirtualIDInGroup GetIAM2VirtualIDInGroupParamDetail `json:"getIAM2VirtualIDInGroup"`
+	Params GetIAM2VirtualIDInGroupParamDetail `json:"getIAM2VirtualIDInGroup"`
 }
 // UnlockIdentityParamDetail UnlockIdentity detail param
 type UnlockIdentityParamDetail struct {
@@ -4823,18 +4823,7 @@ type UnlockIdentityParamDetail struct {
 // UnlockIdentityParam UnlockIdentity request param
 type UnlockIdentityParam struct {
 	BaseParam
-	UnlockIdentity UnlockIdentityParamDetail `json:"unlockIdentity"`
-}
-// GetCandidateVmNicsForPortMirrorParamDetail GetCandidateVmNicsForPortMirror detail param
-type GetCandidateVmNicsForPortMirrorParamDetail struct {
-	PortMirrorUuid string `json:"portMirrorUuid" validate:"required"`
-	Type string `json:"type" validate:"required"`
-}
-
-// GetCandidateVmNicsForPortMirrorParam GetCandidateVmNicsForPortMirror request param
-type GetCandidateVmNicsForPortMirrorParam struct {
-	BaseParam
-	GetCandidateVmNicsForPortMirror GetCandidateVmNicsForPortMirrorParamDetail `json:"getCandidateVmNicsForPortMirror"`
+	Params UnlockIdentityParamDetail `json:"unlockIdentity"`
 }
 // ChangeVmSchedulingRuleStateParamDetail ChangeVmSchedulingRuleState detail param
 type ChangeVmSchedulingRuleStateParamDetail struct {
@@ -4845,7 +4834,18 @@ type ChangeVmSchedulingRuleStateParamDetail struct {
 // ChangeVmSchedulingRuleStateParam ChangeVmSchedulingRuleState request param
 type ChangeVmSchedulingRuleStateParam struct {
 	BaseParam
-	ChangeVmSchedulingRuleState ChangeVmSchedulingRuleStateParamDetail `json:"changeVmSchedulingRuleState"`
+	Params ChangeVmSchedulingRuleStateParamDetail `json:"changeVmSchedulingRuleState"`
+}
+// GetCandidateVmNicsForPortMirrorParamDetail GetCandidateVmNicsForPortMirror detail param
+type GetCandidateVmNicsForPortMirrorParamDetail struct {
+	PortMirrorUuid string `json:"portMirrorUuid" validate:"required"`
+	Type string `json:"type" validate:"required"`
+}
+
+// GetCandidateVmNicsForPortMirrorParam GetCandidateVmNicsForPortMirror request param
+type GetCandidateVmNicsForPortMirrorParam struct {
+	BaseParam
+	Params GetCandidateVmNicsForPortMirrorParamDetail `json:"getCandidateVmNicsForPortMirror"`
 }
 // CreateFirewallRuleParamDetail CreateFirewallRule detail param
 type CreateFirewallRuleParamDetail struct {
@@ -4870,7 +4870,7 @@ type CreateFirewallRuleParamDetail struct {
 // CreateFirewallRuleParam CreateFirewallRule request param
 type CreateFirewallRuleParam struct {
 	BaseParam
-	CreateFirewallRule CreateFirewallRuleParamDetail `json:"createFirewallRule"`
+	Params CreateFirewallRuleParamDetail `json:"createFirewallRule"`
 }
 // GetVmEmulatorPinningParamDetail GetVmEmulatorPinning detail param
 type GetVmEmulatorPinningParamDetail struct {
@@ -4880,7 +4880,7 @@ type GetVmEmulatorPinningParamDetail struct {
 // GetVmEmulatorPinningParam GetVmEmulatorPinning request param
 type GetVmEmulatorPinningParam struct {
 	BaseParam
-	GetVmEmulatorPinning GetVmEmulatorPinningParamDetail `json:"getVmEmulatorPinning"`
+	Params GetVmEmulatorPinningParamDetail `json:"getVmEmulatorPinning"`
 }
 // GetDataVolumeAttachableVmParamDetail GetDataVolumeAttachableVm detail param
 type GetDataVolumeAttachableVmParamDetail struct {
@@ -4890,7 +4890,7 @@ type GetDataVolumeAttachableVmParamDetail struct {
 // GetDataVolumeAttachableVmParam GetDataVolumeAttachableVm request param
 type GetDataVolumeAttachableVmParam struct {
 	BaseParam
-	GetDataVolumeAttachableVm GetDataVolumeAttachableVmParamDetail `json:"getDataVolumeAttachableVm"`
+	Params GetDataVolumeAttachableVmParamDetail `json:"getDataVolumeAttachableVm"`
 }
 // AddIpRangeByNetworkCidrParamDetail AddIpRangeByNetworkCidr detail param
 type AddIpRangeByNetworkCidrParamDetail struct {
@@ -4907,7 +4907,7 @@ type AddIpRangeByNetworkCidrParamDetail struct {
 // AddIpRangeByNetworkCidrParam AddIpRangeByNetworkCidr request param
 type AddIpRangeByNetworkCidrParam struct {
 	BaseParam
-	AddIpRangeByNetworkCidr AddIpRangeByNetworkCidrParamDetail `json:"addIpRangeByNetworkCidr"`
+	Params AddIpRangeByNetworkCidrParamDetail `json:"addIpRangeByNetworkCidr"`
 }
 // CreateL2NoVlanNetworkParamDetail CreateL2NoVlanNetwork detail param
 type CreateL2NoVlanNetworkParamDetail struct {
@@ -4926,7 +4926,7 @@ type CreateL2NoVlanNetworkParamDetail struct {
 // CreateL2NoVlanNetworkParam CreateL2NoVlanNetwork request param
 type CreateL2NoVlanNetworkParam struct {
 	BaseParam
-	CreateL2NoVlanNetwork CreateL2NoVlanNetworkParamDetail `json:"createL2NoVlanNetwork"`
+	Params CreateL2NoVlanNetworkParamDetail `json:"createL2NoVlanNetwork"`
 }
 // AddMonToCephBackupStorageParamDetail AddMonToCephBackupStorage detail param
 type AddMonToCephBackupStorageParamDetail struct {
@@ -4937,7 +4937,7 @@ type AddMonToCephBackupStorageParamDetail struct {
 // AddMonToCephBackupStorageParam AddMonToCephBackupStorage request param
 type AddMonToCephBackupStorageParam struct {
 	BaseParam
-	AddMonToCephBackupStorage AddMonToCephBackupStorageParamDetail `json:"addMonToCephBackupStorage"`
+	Params AddMonToCephBackupStorageParamDetail `json:"addMonToCephBackupStorage"`
 }
 // DetachBareMetal2ProvisionNetworkFromClusterParamDetail DetachBareMetal2ProvisionNetworkFromCluster detail param
 type DetachBareMetal2ProvisionNetworkFromClusterParamDetail struct {
@@ -4948,7 +4948,7 @@ type DetachBareMetal2ProvisionNetworkFromClusterParamDetail struct {
 // DetachBareMetal2ProvisionNetworkFromClusterParam DetachBareMetal2ProvisionNetworkFromCluster request param
 type DetachBareMetal2ProvisionNetworkFromClusterParam struct {
 	BaseParam
-	DetachBareMetal2ProvisionNetworkFromCluster DetachBareMetal2ProvisionNetworkFromClusterParamDetail `json:"detachBareMetal2ProvisionNetworkFromCluster"`
+	Params DetachBareMetal2ProvisionNetworkFromClusterParamDetail `json:"detachBareMetal2ProvisionNetworkFromCluster"`
 }
 // DeleteAliyunDiskFromLocalParamDetail DeleteAliyunDiskFromLocal detail param
 type DeleteAliyunDiskFromLocalParamDetail struct {
@@ -4959,7 +4959,7 @@ type DeleteAliyunDiskFromLocalParamDetail struct {
 // DeleteAliyunDiskFromLocalParam DeleteAliyunDiskFromLocal request param
 type DeleteAliyunDiskFromLocalParam struct {
 	BaseParam
-	DeleteAliyunDiskFromLocal DeleteAliyunDiskFromLocalParamDetail `json:"deleteAliyunDiskFromLocal"`
+	Params DeleteAliyunDiskFromLocalParamDetail `json:"deleteAliyunDiskFromLocal"`
 }
 // GetResourceNamesParamDetail GetResourceNames detail param
 type GetResourceNamesParamDetail struct {
@@ -4969,7 +4969,7 @@ type GetResourceNamesParamDetail struct {
 // GetResourceNamesParam GetResourceNames request param
 type GetResourceNamesParam struct {
 	BaseParam
-	GetResourceNames GetResourceNamesParamDetail `json:"getResourceNames"`
+	Params GetResourceNamesParamDetail `json:"getResourceNames"`
 }
 // GetIAM2VirtualIDAPIPermissionParamDetail GetIAM2VirtualIDPermission detail param
 type GetIAM2VirtualIDAPIPermissionParamDetail struct {
@@ -4980,7 +4980,7 @@ type GetIAM2VirtualIDAPIPermissionParamDetail struct {
 // GetIAM2VirtualIDAPIPermissionParam GetIAM2VirtualIDPermission request param
 type GetIAM2VirtualIDAPIPermissionParam struct {
 	BaseParam
-	GetIAM2VirtualIDAPIPermission GetIAM2VirtualIDAPIPermissionParamDetail `json:"getIAM2VirtualIDAPIPermission"`
+	Params GetIAM2VirtualIDAPIPermissionParamDetail `json:"getIAM2VirtualIDAPIPermission"`
 }
 // GetOrganizationQuotaUsageParamDetail GetOrganizationQuotaUsage detail param
 type GetOrganizationQuotaUsageParamDetail struct {
@@ -4990,7 +4990,7 @@ type GetOrganizationQuotaUsageParamDetail struct {
 // GetOrganizationQuotaUsageParam GetOrganizationQuotaUsage request param
 type GetOrganizationQuotaUsageParam struct {
 	BaseParam
-	GetOrganizationQuotaUsage GetOrganizationQuotaUsageParamDetail `json:"getOrganizationQuotaUsage"`
+	Params GetOrganizationQuotaUsageParamDetail `json:"getOrganizationQuotaUsage"`
 }
 // GetResourceConfigsParamDetail GetResourceConfigs detail param
 type GetResourceConfigsParamDetail struct {
@@ -5002,7 +5002,7 @@ type GetResourceConfigsParamDetail struct {
 // GetResourceConfigsParam GetResourceConfigs request param
 type GetResourceConfigsParam struct {
 	BaseParam
-	GetResourceConfigs GetResourceConfigsParamDetail `json:"getResourceConfigs"`
+	Params GetResourceConfigsParamDetail `json:"getResourceConfigs"`
 }
 // SyncVpcUserVpnGatewayFromRemoteParamDetail SyncVpcUserVpnGatewayFromRemote detail param
 type SyncVpcUserVpnGatewayFromRemoteParamDetail struct {
@@ -5014,7 +5014,7 @@ type SyncVpcUserVpnGatewayFromRemoteParamDetail struct {
 // SyncVpcUserVpnGatewayFromRemoteParam SyncVpcUserVpnGatewayFromRemote request param
 type SyncVpcUserVpnGatewayFromRemoteParam struct {
 	BaseParam
-	SyncVpcUserVpnGatewayFromRemote SyncVpcUserVpnGatewayFromRemoteParamDetail `json:"syncVpcUserVpnGatewayFromRemote"`
+	Params SyncVpcUserVpnGatewayFromRemoteParamDetail `json:"syncVpcUserVpnGatewayFromRemote"`
 }
 // DetachPrimaryStorageFromClusterParamDetail DetachPrimaryStorageFromCluster detail param
 type DetachPrimaryStorageFromClusterParamDetail struct {
@@ -5025,7 +5025,7 @@ type DetachPrimaryStorageFromClusterParamDetail struct {
 // DetachPrimaryStorageFromClusterParam DetachPrimaryStorageFromCluster request param
 type DetachPrimaryStorageFromClusterParam struct {
 	BaseParam
-	DetachPrimaryStorageFromCluster DetachPrimaryStorageFromClusterParamDetail `json:"detachPrimaryStorageFromCluster"`
+	Params DetachPrimaryStorageFromClusterParamDetail `json:"detachPrimaryStorageFromCluster"`
 }
 // CheckStackTemplateParametersParamDetail CheckStackTemplateParameters detail param
 type CheckStackTemplateParametersParamDetail struct {
@@ -5037,7 +5037,7 @@ type CheckStackTemplateParametersParamDetail struct {
 // CheckStackTemplateParametersParam CheckStackTemplateParameters request param
 type CheckStackTemplateParametersParam struct {
 	BaseParam
-	CheckStackTemplateParameters CheckStackTemplateParametersParamDetail `json:"checkStackTemplateParameters"`
+	Params CheckStackTemplateParametersParamDetail `json:"checkStackTemplateParameters"`
 }
 // GetFactoryModeStateParamDetail GetFactoryModeState detail param
 type GetFactoryModeStateParamDetail struct {
@@ -5046,7 +5046,7 @@ type GetFactoryModeStateParamDetail struct {
 // GetFactoryModeStateParam GetFactoryModeState request param
 type GetFactoryModeStateParam struct {
 	BaseParam
-	GetFactoryModeState GetFactoryModeStateParamDetail `json:"getFactoryModeState"`
+	Params GetFactoryModeStateParamDetail `json:"getFactoryModeState"`
 }
 // AddServerGroupToLoadBalancerListenerParamDetail AddServerGroupToLoadBalancerListener detail param
 type AddServerGroupToLoadBalancerListenerParamDetail struct {
@@ -5057,7 +5057,7 @@ type AddServerGroupToLoadBalancerListenerParamDetail struct {
 // AddServerGroupToLoadBalancerListenerParam AddServerGroupToLoadBalancerListener request param
 type AddServerGroupToLoadBalancerListenerParam struct {
 	BaseParam
-	AddServerGroupToLoadBalancerListener AddServerGroupToLoadBalancerListenerParamDetail `json:"addServerGroupToLoadBalancerListener"`
+	Params AddServerGroupToLoadBalancerListenerParamDetail `json:"addServerGroupToLoadBalancerListener"`
 }
 // GetActiveAlarmStatusParamDetail GetActiveAlarmStatus detail param
 type GetActiveAlarmStatusParamDetail struct {
@@ -5067,7 +5067,7 @@ type GetActiveAlarmStatusParamDetail struct {
 // GetActiveAlarmStatusParam GetActiveAlarmStatus request param
 type GetActiveAlarmStatusParam struct {
 	BaseParam
-	GetActiveAlarmStatus GetActiveAlarmStatusParamDetail `json:"getActiveAlarmStatus"`
+	Params GetActiveAlarmStatusParamDetail `json:"getActiveAlarmStatus"`
 }
 // DeployModelEvalServiceParamDetail DeployModelEvalService detail param
 type DeployModelEvalServiceParamDetail struct {
@@ -5117,7 +5117,7 @@ type DeployModelEvalServiceParamDetail struct {
 // DeployModelEvalServiceParam DeployModelEvalService request param
 type DeployModelEvalServiceParam struct {
 	BaseParam
-	DeployModelEvalService DeployModelEvalServiceParamDetail `json:"deployModelEvalService"`
+	Params DeployModelEvalServiceParamDetail `json:"deployModelEvalService"`
 }
 // AttachNvmeServerToClusterParamDetail AttachNvmeServerToCluster detail param
 type AttachNvmeServerToClusterParamDetail struct {
@@ -5128,7 +5128,7 @@ type AttachNvmeServerToClusterParamDetail struct {
 // AttachNvmeServerToClusterParam AttachNvmeServerToCluster request param
 type AttachNvmeServerToClusterParam struct {
 	BaseParam
-	AttachNvmeServerToCluster AttachNvmeServerToClusterParamDetail `json:"attachNvmeServerToCluster"`
+	Params AttachNvmeServerToClusterParamDetail `json:"attachNvmeServerToCluster"`
 }
 // GetHostResourceAllocationParamDetail GetHostResourceAllocation detail param
 type GetHostResourceAllocationParamDetail struct {
@@ -5142,7 +5142,7 @@ type GetHostResourceAllocationParamDetail struct {
 // GetHostResourceAllocationParam GetHostResourceAllocation request param
 type GetHostResourceAllocationParam struct {
 	BaseParam
-	GetHostResourceAllocation GetHostResourceAllocationParamDetail `json:"getHostResourceAllocation"`
+	Params GetHostResourceAllocationParamDetail `json:"getHostResourceAllocation"`
 }
 // AttachUsbDeviceToVmParamDetail AttachUsbDeviceToVm detail param
 type AttachUsbDeviceToVmParamDetail struct {
@@ -5154,7 +5154,7 @@ type AttachUsbDeviceToVmParamDetail struct {
 // AttachUsbDeviceToVmParam AttachUsbDeviceToVm request param
 type AttachUsbDeviceToVmParam struct {
 	BaseParam
-	AttachUsbDeviceToVm AttachUsbDeviceToVmParamDetail `json:"attachUsbDeviceToVm"`
+	Params AttachUsbDeviceToVmParamDetail `json:"attachUsbDeviceToVm"`
 }
 // GetLicenseAddOnsParamDetail GetLicenseAddOns detail param
 type GetLicenseAddOnsParamDetail struct {
@@ -5163,7 +5163,7 @@ type GetLicenseAddOnsParamDetail struct {
 // GetLicenseAddOnsParam GetLicenseAddOns request param
 type GetLicenseAddOnsParam struct {
 	BaseParam
-	GetLicenseAddOns GetLicenseAddOnsParamDetail `json:"getLicenseAddOns"`
+	Params GetLicenseAddOnsParamDetail `json:"getLicenseAddOns"`
 }
 // SyncAliyunSnapshotRemoteParamDetail SyncAliyunSnapshotRemote detail param
 type SyncAliyunSnapshotRemoteParamDetail struct {
@@ -5176,7 +5176,7 @@ type SyncAliyunSnapshotRemoteParamDetail struct {
 // SyncAliyunSnapshotRemoteParam SyncAliyunSnapshotRemote request param
 type SyncAliyunSnapshotRemoteParam struct {
 	BaseParam
-	SyncAliyunSnapshotRemote SyncAliyunSnapshotRemoteParamDetail `json:"syncAliyunSnapshotRemote"`
+	Params SyncAliyunSnapshotRemoteParamDetail `json:"syncAliyunSnapshotRemote"`
 }
 // UpdateTicketRequestParamDetail UpdateTicketRequest detail param
 type UpdateTicketRequestParamDetail struct {
@@ -5188,7 +5188,7 @@ type UpdateTicketRequestParamDetail struct {
 // UpdateTicketRequestParam UpdateTicketRequest request param
 type UpdateTicketRequestParam struct {
 	BaseParam
-	UpdateTicketRequest UpdateTicketRequestParamDetail `json:"updateTicketRequest"`
+	Params UpdateTicketRequestParamDetail `json:"updateTicketRequest"`
 }
 // GetVpcIPsecLogParamDetail GetVpcIPsecLog detail param
 type GetVpcIPsecLogParamDetail struct {
@@ -5199,7 +5199,7 @@ type GetVpcIPsecLogParamDetail struct {
 // GetVpcIPsecLogParam GetVpcIPsecLog request param
 type GetVpcIPsecLogParam struct {
 	BaseParam
-	GetVpcIPsecLog GetVpcIPsecLogParamDetail `json:"getVpcIPsecLog"`
+	Params GetVpcIPsecLogParamDetail `json:"getVpcIPsecLog"`
 }
 // CreateVmInstanceFromOvfParamDetail CreateVmInstanceFromOvf detail param
 type CreateVmInstanceFromOvfParamDetail struct {
@@ -5216,7 +5216,7 @@ type CreateVmInstanceFromOvfParamDetail struct {
 // CreateVmInstanceFromOvfParam CreateVmInstanceFromOvf request param
 type CreateVmInstanceFromOvfParam struct {
 	BaseParam
-	CreateVmInstanceFromOvf CreateVmInstanceFromOvfParamDetail `json:"createVmInstanceFromOvf"`
+	Params CreateVmInstanceFromOvfParamDetail `json:"createVmInstanceFromOvf"`
 }
 // ChangeVmImageParamDetail ChangeVmImage detail param
 type ChangeVmImageParamDetail struct {
@@ -5229,7 +5229,7 @@ type ChangeVmImageParamDetail struct {
 // ChangeVmImageParam ChangeVmImage request param
 type ChangeVmImageParam struct {
 	BaseParam
-	ChangeVmImage ChangeVmImageParamDetail `json:"changeVmImage"`
+	Params ChangeVmImageParamDetail `json:"changeVmImage"`
 }
 // AddResourcesToDirectoryParamDetail AddResourcesToDirectory detail param
 type AddResourcesToDirectoryParamDetail struct {
@@ -5240,7 +5240,7 @@ type AddResourcesToDirectoryParamDetail struct {
 // AddResourcesToDirectoryParam AddResourcesToDirectory request param
 type AddResourcesToDirectoryParam struct {
 	BaseParam
-	AddResourcesToDirectory AddResourcesToDirectoryParamDetail `json:"addResourcesToDirectory"`
+	Params AddResourcesToDirectoryParamDetail `json:"addResourcesToDirectory"`
 }
 // AttachGuestToolsIsoToVmParamDetail AttachGuestToolsIsoToVm detail param
 type AttachGuestToolsIsoToVmParamDetail struct {
@@ -5250,7 +5250,7 @@ type AttachGuestToolsIsoToVmParamDetail struct {
 // AttachGuestToolsIsoToVmParam AttachGuestToolsIsoToVm request param
 type AttachGuestToolsIsoToVmParam struct {
 	BaseParam
-	AttachGuestToolsIsoToVm AttachGuestToolsIsoToVmParamDetail `json:"attachGuestToolsIsoToVm"`
+	Params AttachGuestToolsIsoToVmParamDetail `json:"attachGuestToolsIsoToVm"`
 }
 // DetachAliyunKeyParamDetail DetachAliyunKey detail param
 type DetachAliyunKeyParamDetail struct {
@@ -5260,7 +5260,7 @@ type DetachAliyunKeyParamDetail struct {
 // DetachAliyunKeyParam DetachAliyunKey request param
 type DetachAliyunKeyParam struct {
 	BaseParam
-	DetachAliyunKey DetachAliyunKeyParamDetail `json:"detachAliyunKey"`
+	Params DetachAliyunKeyParamDetail `json:"detachAliyunKey"`
 }
 // DeleteBuildAppParamDetail DeleteBuildApp detail param
 type DeleteBuildAppParamDetail struct {
@@ -5271,7 +5271,7 @@ type DeleteBuildAppParamDetail struct {
 // DeleteBuildAppParam DeleteBuildApp request param
 type DeleteBuildAppParam struct {
 	BaseParam
-	DeleteBuildApp DeleteBuildAppParamDetail `json:"deleteBuildApp"`
+	Params DeleteBuildAppParamDetail `json:"deleteBuildApp"`
 }
 // ChangeBareMetal2InstancePasswordParamDetail ChangeBareMetal2InstancePassword detail param
 type ChangeBareMetal2InstancePasswordParamDetail struct {
@@ -5283,7 +5283,7 @@ type ChangeBareMetal2InstancePasswordParamDetail struct {
 // ChangeBareMetal2InstancePasswordParam ChangeBareMetal2InstancePassword request param
 type ChangeBareMetal2InstancePasswordParam struct {
 	BaseParam
-	ChangeBareMetal2InstancePassword ChangeBareMetal2InstancePasswordParamDetail `json:"changeBareMetal2InstancePassword"`
+	Params ChangeBareMetal2InstancePasswordParamDetail `json:"changeBareMetal2InstancePassword"`
 }
 // GetResourceFromPublishAppParamDetail GetResourceFromPublishApp detail param
 type GetResourceFromPublishAppParamDetail struct {
@@ -5293,7 +5293,7 @@ type GetResourceFromPublishAppParamDetail struct {
 // GetResourceFromPublishAppParam GetResourceFromPublishApp request param
 type GetResourceFromPublishAppParam struct {
 	BaseParam
-	GetResourceFromPublishApp GetResourceFromPublishAppParamDetail `json:"getResourceFromPublishApp"`
+	Params GetResourceFromPublishAppParamDetail `json:"getResourceFromPublishApp"`
 }
 // ChangeResourceOwnerParamDetail ChangeResourceOwner detail param
 type ChangeResourceOwnerParamDetail struct {
@@ -5304,7 +5304,7 @@ type ChangeResourceOwnerParamDetail struct {
 // ChangeResourceOwnerParam ChangeResourceOwner request param
 type ChangeResourceOwnerParam struct {
 	BaseParam
-	ChangeResourceOwner ChangeResourceOwnerParamDetail `json:"changeResourceOwner"`
+	Params ChangeResourceOwnerParamDetail `json:"changeResourceOwner"`
 }
 // GetHostIommuStateParamDetail GetHostIommuState detail param
 type GetHostIommuStateParamDetail struct {
@@ -5314,7 +5314,7 @@ type GetHostIommuStateParamDetail struct {
 // GetHostIommuStateParam GetHostIommuState request param
 type GetHostIommuStateParam struct {
 	BaseParam
-	GetHostIommuState GetHostIommuStateParamDetail `json:"getHostIommuState"`
+	Params GetHostIommuStateParamDetail `json:"getHostIommuState"`
 }
 // DeleteVirtualBorderRouterLocalParamDetail DeleteVirtualBorderRouterLocal detail param
 type DeleteVirtualBorderRouterLocalParamDetail struct {
@@ -5325,7 +5325,7 @@ type DeleteVirtualBorderRouterLocalParamDetail struct {
 // DeleteVirtualBorderRouterLocalParam DeleteVirtualBorderRouterLocal request param
 type DeleteVirtualBorderRouterLocalParam struct {
 	BaseParam
-	DeleteVirtualBorderRouterLocal DeleteVirtualBorderRouterLocalParamDetail `json:"deleteVirtualBorderRouterLocal"`
+	Params DeleteVirtualBorderRouterLocalParamDetail `json:"deleteVirtualBorderRouterLocal"`
 }
 // GetMetricDataParamDetail GetMetricData detail param
 type GetMetricDataParamDetail struct {
@@ -5343,7 +5343,7 @@ type GetMetricDataParamDetail struct {
 // GetMetricDataParam GetMetricData request param
 type GetMetricDataParam struct {
 	BaseParam
-	GetMetricData GetMetricDataParamDetail `json:"getMetricData"`
+	Params GetMetricDataParamDetail `json:"getMetricData"`
 }
 // EnableCbtTaskParamDetail EnableCbtTask detail param
 type EnableCbtTaskParamDetail struct {
@@ -5354,7 +5354,7 @@ type EnableCbtTaskParamDetail struct {
 // EnableCbtTaskParam EnableCbtTask request param
 type EnableCbtTaskParam struct {
 	BaseParam
-	EnableCbtTask EnableCbtTaskParamDetail `json:"enableCbtTask"`
+	Params EnableCbtTaskParamDetail `json:"enableCbtTask"`
 }
 // GetAliyunNasAccessGroupRemoteParamDetail GetAliyunNasAccessGroupRemote detail param
 type GetAliyunNasAccessGroupRemoteParamDetail struct {
@@ -5365,7 +5365,7 @@ type GetAliyunNasAccessGroupRemoteParamDetail struct {
 // GetAliyunNasAccessGroupRemoteParam GetAliyunNasAccessGroupRemote request param
 type GetAliyunNasAccessGroupRemoteParam struct {
 	BaseParam
-	GetAliyunNasAccessGroupRemote GetAliyunNasAccessGroupRemoteParamDetail `json:"getAliyunNasAccessGroupRemote"`
+	Params GetAliyunNasAccessGroupRemoteParamDetail `json:"getAliyunNasAccessGroupRemote"`
 }
 // CheckBuildAppParametersParamDetail CheckBuildAppParameters detail param
 type CheckBuildAppParametersParamDetail struct {
@@ -5376,7 +5376,7 @@ type CheckBuildAppParametersParamDetail struct {
 // CheckBuildAppParametersParam CheckBuildAppParameters request param
 type CheckBuildAppParametersParam struct {
 	BaseParam
-	CheckBuildAppParameters CheckBuildAppParametersParamDetail `json:"checkBuildAppParameters"`
+	Params CheckBuildAppParametersParamDetail `json:"checkBuildAppParameters"`
 }
 // AddLabelToEventSubscriptionParamDetail AddLabelToEventSubscription detail param
 type AddLabelToEventSubscriptionParamDetail struct {
@@ -5391,7 +5391,7 @@ type AddLabelToEventSubscriptionParamDetail struct {
 // AddLabelToEventSubscriptionParam AddLabelToEventSubscription request param
 type AddLabelToEventSubscriptionParam struct {
 	BaseParam
-	AddLabelToEventSubscription AddLabelToEventSubscriptionParamDetail `json:"addLabelToEventSubscription"`
+	Params AddLabelToEventSubscriptionParamDetail `json:"addLabelToEventSubscription"`
 }
 // GetVpcVRouterDistributedRoutingConnectionsParamDetail GetVpcVRouterDistributedRoutingConnections detail param
 type GetVpcVRouterDistributedRoutingConnectionsParamDetail struct {
@@ -5401,7 +5401,7 @@ type GetVpcVRouterDistributedRoutingConnectionsParamDetail struct {
 // GetVpcVRouterDistributedRoutingConnectionsParam GetVpcVRouterDistributedRoutingConnections request param
 type GetVpcVRouterDistributedRoutingConnectionsParam struct {
 	BaseParam
-	GetVpcVRouterDistributedRoutingConnections GetVpcVRouterDistributedRoutingConnectionsParamDetail `json:"getVpcVRouterDistributedRoutingConnections"`
+	Params GetVpcVRouterDistributedRoutingConnectionsParamDetail `json:"getVpcVRouterDistributedRoutingConnections"`
 }
 // UpdateThirdpartyAlertsParamDetail UpdateThirdpartyAlerts detail param
 type UpdateThirdpartyAlertsParamDetail struct {
@@ -5414,7 +5414,7 @@ type UpdateThirdpartyAlertsParamDetail struct {
 // UpdateThirdpartyAlertsParam UpdateThirdpartyAlerts request param
 type UpdateThirdpartyAlertsParam struct {
 	BaseParam
-	UpdateThirdpartyAlerts UpdateThirdpartyAlertsParamDetail `json:"updateThirdpartyAlerts"`
+	Params UpdateThirdpartyAlertsParamDetail `json:"updateThirdpartyAlerts"`
 }
 // PullSdnControllerTenantParamDetail PullSdnControllerTenant detail param
 type PullSdnControllerTenantParamDetail struct {
@@ -5424,7 +5424,7 @@ type PullSdnControllerTenantParamDetail struct {
 // PullSdnControllerTenantParam PullSdnControllerTenant request param
 type PullSdnControllerTenantParam struct {
 	BaseParam
-	PullSdnControllerTenant PullSdnControllerTenantParamDetail `json:"pullSdnControllerTenant"`
+	Params PullSdnControllerTenantParamDetail `json:"pullSdnControllerTenant"`
 }
 // DetachServiceFromObservabilityServerParamDetail DetachServiceFromObservabilityServer detail param
 type DetachServiceFromObservabilityServerParamDetail struct {
@@ -5436,7 +5436,7 @@ type DetachServiceFromObservabilityServerParamDetail struct {
 // DetachServiceFromObservabilityServerParam DetachServiceFromObservabilityServer request param
 type DetachServiceFromObservabilityServerParam struct {
 	BaseParam
-	DetachServiceFromObservabilityServer DetachServiceFromObservabilityServerParamDetail `json:"detachServiceFromObservabilityServer"`
+	Params DetachServiceFromObservabilityServerParamDetail `json:"detachServiceFromObservabilityServer"`
 }
 // GenerateHygonMdevDevicesParamDetail GenerateHygonMdevDevices detail param
 type GenerateHygonMdevDevicesParamDetail struct {
@@ -5447,7 +5447,7 @@ type GenerateHygonMdevDevicesParamDetail struct {
 // GenerateHygonMdevDevicesParam GenerateHygonMdevDevices request param
 type GenerateHygonMdevDevicesParam struct {
 	BaseParam
-	GenerateHygonMdevDevices GenerateHygonMdevDevicesParamDetail `json:"generateHygonMdevDevices"`
+	Params GenerateHygonMdevDevicesParamDetail `json:"generateHygonMdevDevices"`
 }
 // SetVmUsbRedirectParamDetail SetVmUsbRedirect detail param
 type SetVmUsbRedirectParamDetail struct {
@@ -5458,7 +5458,7 @@ type SetVmUsbRedirectParamDetail struct {
 // SetVmUsbRedirectParam SetVmUsbRedirect request param
 type SetVmUsbRedirectParam struct {
 	BaseParam
-	SetVmUsbRedirect SetVmUsbRedirectParamDetail `json:"setVmUsbRedirect"`
+	Params SetVmUsbRedirectParamDetail `json:"setVmUsbRedirect"`
 }
 // GetHostCandidatesForVmMigrationParamDetail GetHostCandidatesForVmMigration detail param
 type GetHostCandidatesForVmMigrationParamDetail struct {
@@ -5470,7 +5470,7 @@ type GetHostCandidatesForVmMigrationParamDetail struct {
 // GetHostCandidatesForVmMigrationParam GetHostCandidatesForVmMigration request param
 type GetHostCandidatesForVmMigrationParam struct {
 	BaseParam
-	GetHostCandidatesForVmMigration GetHostCandidatesForVmMigrationParamDetail `json:"getHostCandidatesForVmMigration"`
+	Params GetHostCandidatesForVmMigrationParamDetail `json:"getHostCandidatesForVmMigration"`
 }
 // GetVmNicAttachableEipsParamDetail GetVmNicAttachableEips detail param
 type GetVmNicAttachableEipsParamDetail struct {
@@ -5483,7 +5483,7 @@ type GetVmNicAttachableEipsParamDetail struct {
 // GetVmNicAttachableEipsParam GetVmNicAttachableEips request param
 type GetVmNicAttachableEipsParam struct {
 	BaseParam
-	GetVmNicAttachableEips GetVmNicAttachableEipsParamDetail `json:"getVmNicAttachableEips"`
+	Params GetVmNicAttachableEipsParamDetail `json:"getVmNicAttachableEips"`
 }
 // UpdateFactoryModeStateParamDetail UpdateFactoryModeState detail param
 type UpdateFactoryModeStateParamDetail struct {
@@ -5493,7 +5493,7 @@ type UpdateFactoryModeStateParamDetail struct {
 // UpdateFactoryModeStateParam UpdateFactoryModeState request param
 type UpdateFactoryModeStateParam struct {
 	BaseParam
-	UpdateFactoryModeState UpdateFactoryModeStateParamDetail `json:"updateFactoryModeState"`
+	Params UpdateFactoryModeStateParamDetail `json:"updateFactoryModeState"`
 }
 // UpdateChronyServersParamDetail UpdateChronyServers detail param
 type UpdateChronyServersParamDetail struct {
@@ -5504,7 +5504,7 @@ type UpdateChronyServersParamDetail struct {
 // UpdateChronyServersParam UpdateChronyServers request param
 type UpdateChronyServersParam struct {
 	BaseParam
-	UpdateChronyServers UpdateChronyServersParamDetail `json:"updateChronyServers"`
+	Params UpdateChronyServersParamDetail `json:"updateChronyServers"`
 }
 // AttachPolicyRouteRuleSetToL3ParamDetail AttachPolicyRouteRuleSetToL3 detail param
 type AttachPolicyRouteRuleSetToL3ParamDetail struct {
@@ -5515,7 +5515,7 @@ type AttachPolicyRouteRuleSetToL3ParamDetail struct {
 // AttachPolicyRouteRuleSetToL3Param AttachPolicyRouteRuleSetToL3 request param
 type AttachPolicyRouteRuleSetToL3Param struct {
 	BaseParam
-	AttachPolicyRouteRuleSetToL3 AttachPolicyRouteRuleSetToL3ParamDetail `json:"attachPolicyRouteRuleSetToL3"`
+	Params AttachPolicyRouteRuleSetToL3ParamDetail `json:"attachPolicyRouteRuleSetToL3"`
 }
 // UpdateOAuthClientParamDetail UpdateOAuthClient detail param
 type UpdateOAuthClientParamDetail struct {
@@ -5538,7 +5538,7 @@ type UpdateOAuthClientParamDetail struct {
 // UpdateOAuthClientParam UpdateOAuthClient request param
 type UpdateOAuthClientParam struct {
 	BaseParam
-	UpdateOAuthClient UpdateOAuthClientParamDetail `json:"updateOAuthClient"`
+	Params UpdateOAuthClientParamDetail `json:"updateOAuthClient"`
 }
 // GetZWatchAlertHistogramParamDetail GetZWatchAlertHistogram detail param
 type GetZWatchAlertHistogramParamDetail struct {
@@ -5552,7 +5552,7 @@ type GetZWatchAlertHistogramParamDetail struct {
 // GetZWatchAlertHistogramParam GetZWatchAlertHistogram request param
 type GetZWatchAlertHistogramParam struct {
 	BaseParam
-	GetZWatchAlertHistogram GetZWatchAlertHistogramParamDetail `json:"getZWatchAlertHistogram"`
+	Params GetZWatchAlertHistogramParamDetail `json:"getZWatchAlertHistogram"`
 }
 // DeleteAliyunRouterInterfaceRemoteParamDetail DeleteAliyunRouterInterfaceRemote detail param
 type DeleteAliyunRouterInterfaceRemoteParamDetail struct {
@@ -5564,7 +5564,7 @@ type DeleteAliyunRouterInterfaceRemoteParamDetail struct {
 // DeleteAliyunRouterInterfaceRemoteParam DeleteAliyunRouterInterfaceRemote request param
 type DeleteAliyunRouterInterfaceRemoteParam struct {
 	BaseParam
-	DeleteAliyunRouterInterfaceRemote DeleteAliyunRouterInterfaceRemoteParamDetail `json:"deleteAliyunRouterInterfaceRemote"`
+	Params DeleteAliyunRouterInterfaceRemoteParamDetail `json:"deleteAliyunRouterInterfaceRemote"`
 }
 // SetImageBootModeParamDetail SetImageBootMode detail param
 type SetImageBootModeParamDetail struct {
@@ -5575,7 +5575,7 @@ type SetImageBootModeParamDetail struct {
 // SetImageBootModeParam SetImageBootMode request param
 type SetImageBootModeParam struct {
 	BaseParam
-	SetImageBootMode SetImageBootModeParamDetail `json:"setImageBootMode"`
+	Params SetImageBootModeParamDetail `json:"setImageBootMode"`
 }
 // DetachAutoScalingTemplateFromGroupParamDetail DetachAutoScalingTemplateFromGroup detail param
 type DetachAutoScalingTemplateFromGroupParamDetail struct {
@@ -5586,7 +5586,7 @@ type DetachAutoScalingTemplateFromGroupParamDetail struct {
 // DetachAutoScalingTemplateFromGroupParam DetachAutoScalingTemplateFromGroup request param
 type DetachAutoScalingTemplateFromGroupParam struct {
 	BaseParam
-	DetachAutoScalingTemplateFromGroup DetachAutoScalingTemplateFromGroupParamDetail `json:"detachAutoScalingTemplateFromGroup"`
+	Params DetachAutoScalingTemplateFromGroupParamDetail `json:"detachAutoScalingTemplateFromGroup"`
 }
 // UpdateVirtualBorderRouterRemoteParamDetail UpdateVirtualBorderRouterRemote detail param
 type UpdateVirtualBorderRouterRemoteParamDetail struct {
@@ -5603,7 +5603,7 @@ type UpdateVirtualBorderRouterRemoteParamDetail struct {
 // UpdateVirtualBorderRouterRemoteParam UpdateVirtualBorderRouterRemote request param
 type UpdateVirtualBorderRouterRemoteParam struct {
 	BaseParam
-	UpdateVirtualBorderRouterRemote UpdateVirtualBorderRouterRemoteParamDetail `json:"updateVirtualBorderRouterRemote"`
+	Params UpdateVirtualBorderRouterRemoteParamDetail `json:"updateVirtualBorderRouterRemote"`
 }
 // GetVmsCapabilitiesParamDetail GetVmsCapabilities detail param
 type GetVmsCapabilitiesParamDetail struct {
@@ -5613,7 +5613,7 @@ type GetVmsCapabilitiesParamDetail struct {
 // GetVmsCapabilitiesParam GetVmsCapabilities request param
 type GetVmsCapabilitiesParam struct {
 	BaseParam
-	GetVmsCapabilities GetVmsCapabilitiesParamDetail `json:"getVmsCapabilities"`
+	Params GetVmsCapabilitiesParamDetail `json:"getVmsCapabilities"`
 }
 // AttachPolicyToUserGroupParamDetail AttachPolicyToUserGroup detail param
 type AttachPolicyToUserGroupParamDetail struct {
@@ -5624,7 +5624,7 @@ type AttachPolicyToUserGroupParamDetail struct {
 // AttachPolicyToUserGroupParam AttachPolicyToUserGroup request param
 type AttachPolicyToUserGroupParam struct {
 	BaseParam
-	AttachPolicyToUserGroup AttachPolicyToUserGroupParamDetail `json:"attachPolicyToUserGroup"`
+	Params AttachPolicyToUserGroupParamDetail `json:"attachPolicyToUserGroup"`
 }
 // RevokeMonitorTemplateFromMonitorGroupParamDetail RevokeMonitorTemplateFromMonitorGroup detail param
 type RevokeMonitorTemplateFromMonitorGroupParamDetail struct {
@@ -5636,7 +5636,7 @@ type RevokeMonitorTemplateFromMonitorGroupParamDetail struct {
 // RevokeMonitorTemplateFromMonitorGroupParam RevokeMonitorTemplateFromMonitorGroup request param
 type RevokeMonitorTemplateFromMonitorGroupParam struct {
 	BaseParam
-	RevokeMonitorTemplateFromMonitorGroup RevokeMonitorTemplateFromMonitorGroupParamDetail `json:"revokeMonitorTemplateFromMonitorGroup"`
+	Params RevokeMonitorTemplateFromMonitorGroupParamDetail `json:"revokeMonitorTemplateFromMonitorGroup"`
 }
 // DeleteFirewallRuleParamDetail DeleteFirewallRule detail param
 type DeleteFirewallRuleParamDetail struct {
@@ -5647,7 +5647,7 @@ type DeleteFirewallRuleParamDetail struct {
 // DeleteFirewallRuleParam DeleteFirewallRule request param
 type DeleteFirewallRuleParam struct {
 	BaseParam
-	DeleteFirewallRule DeleteFirewallRuleParamDetail `json:"deleteFirewallRule"`
+	Params DeleteFirewallRuleParamDetail `json:"deleteFirewallRule"`
 }
 // ShareResourceParamDetail ShareResource detail param
 type ShareResourceParamDetail struct {
@@ -5659,7 +5659,7 @@ type ShareResourceParamDetail struct {
 // ShareResourceParam ShareResource request param
 type ShareResourceParam struct {
 	BaseParam
-	ShareResource ShareResourceParamDetail `json:"shareResource"`
+	Params ShareResourceParamDetail `json:"shareResource"`
 }
 // CreateEcsVpcRemoteParamDetail CreateEcsVpcRemote detail param
 type CreateEcsVpcRemoteParamDetail struct {
@@ -5675,7 +5675,7 @@ type CreateEcsVpcRemoteParamDetail struct {
 // CreateEcsVpcRemoteParam CreateEcsVpcRemote request param
 type CreateEcsVpcRemoteParam struct {
 	BaseParam
-	CreateEcsVpcRemote CreateEcsVpcRemoteParamDetail `json:"createEcsVpcRemote"`
+	Params CreateEcsVpcRemoteParamDetail `json:"createEcsVpcRemote"`
 }
 // GetAccountQuotaUsageParamDetail GetAccountQuotaUsage detail param
 type GetAccountQuotaUsageParamDetail struct {
@@ -5685,7 +5685,7 @@ type GetAccountQuotaUsageParamDetail struct {
 // GetAccountQuotaUsageParam GetAccountQuotaUsage request param
 type GetAccountQuotaUsageParam struct {
 	BaseParam
-	GetAccountQuotaUsage GetAccountQuotaUsageParamDetail `json:"getAccountQuotaUsage"`
+	Params GetAccountQuotaUsageParamDetail `json:"getAccountQuotaUsage"`
 }
 // RemoveIAM2VirtualIDsFromProjectsParamDetail RemoveIAM2VirtualIDsFromProjects detail param
 type RemoveIAM2VirtualIDsFromProjectsParamDetail struct {
@@ -5696,7 +5696,7 @@ type RemoveIAM2VirtualIDsFromProjectsParamDetail struct {
 // RemoveIAM2VirtualIDsFromProjectsParam RemoveIAM2VirtualIDsFromProjects request param
 type RemoveIAM2VirtualIDsFromProjectsParam struct {
 	BaseParam
-	RemoveIAM2VirtualIDsFromProjects RemoveIAM2VirtualIDsFromProjectsParamDetail `json:"removeIAM2VirtualIDsFromProjects"`
+	Params RemoveIAM2VirtualIDsFromProjectsParamDetail `json:"removeIAM2VirtualIDsFromProjects"`
 }
 // GetCandidateL3NetworksForServerGroupParamDetail GetCandidateL3NetworksForServerGroup detail param
 type GetCandidateL3NetworksForServerGroupParamDetail struct {
@@ -5709,7 +5709,7 @@ type GetCandidateL3NetworksForServerGroupParamDetail struct {
 // GetCandidateL3NetworksForServerGroupParam GetCandidateL3NetworksForServerGroup request param
 type GetCandidateL3NetworksForServerGroupParam struct {
 	BaseParam
-	GetCandidateL3NetworksForServerGroup GetCandidateL3NetworksForServerGroupParamDetail `json:"getCandidateL3NetworksForServerGroup"`
+	Params GetCandidateL3NetworksForServerGroupParamDetail `json:"getCandidateL3NetworksForServerGroup"`
 }
 // CreateVmFromCdpBackupParamDetail CreateVmFromCdpBackup detail param
 type CreateVmFromCdpBackupParamDetail struct {
@@ -5736,7 +5736,7 @@ type CreateVmFromCdpBackupParamDetail struct {
 // CreateVmFromCdpBackupParam CreateVmFromCdpBackup request param
 type CreateVmFromCdpBackupParam struct {
 	BaseParam
-	CreateVmFromCdpBackup CreateVmFromCdpBackupParamDetail `json:"createVmFromCdpBackup"`
+	Params CreateVmFromCdpBackupParamDetail `json:"createVmFromCdpBackup"`
 }
 // SyncVpcVpnConnectionFromRemoteParamDetail SyncVpcVpnConnectionFromRemote detail param
 type SyncVpcVpnConnectionFromRemoteParamDetail struct {
@@ -5748,7 +5748,7 @@ type SyncVpcVpnConnectionFromRemoteParamDetail struct {
 // SyncVpcVpnConnectionFromRemoteParam SyncVpcVpnConnectionFromRemote request param
 type SyncVpcVpnConnectionFromRemoteParam struct {
 	BaseParam
-	SyncVpcVpnConnectionFromRemote SyncVpcVpnConnectionFromRemoteParamDetail `json:"syncVpcVpnConnectionFromRemote"`
+	Params SyncVpcVpnConnectionFromRemoteParamDetail `json:"syncVpcVpnConnectionFromRemote"`
 }
 // CreateVpnIkeConfigParamDetail CreateVpnIkeConfig detail param
 type CreateVpnIkeConfigParamDetail struct {
@@ -5770,7 +5770,7 @@ type CreateVpnIkeConfigParamDetail struct {
 // CreateVpnIkeConfigParam CreateVpnIkeConfig request param
 type CreateVpnIkeConfigParam struct {
 	BaseParam
-	CreateVpnIkeConfig CreateVpnIkeConfigParamDetail `json:"createVpnIkeConfig"`
+	Params CreateVpnIkeConfigParamDetail `json:"createVpnIkeConfig"`
 }
 // SubmitLongJobParamDetail SubmitLongJob detail param
 type SubmitLongJobParamDetail struct {
@@ -5786,7 +5786,7 @@ type SubmitLongJobParamDetail struct {
 // SubmitLongJobParam SubmitLongJob request param
 type SubmitLongJobParam struct {
 	BaseParam
-	SubmitLongJob SubmitLongJobParamDetail `json:"submitLongJob"`
+	Params SubmitLongJobParamDetail `json:"submitLongJob"`
 }
 // CreateDataVolumeTemplateFromVolumeBackupParamDetail CreateDataVolumeTemplateFromVolumeBackup detail param
 type CreateDataVolumeTemplateFromVolumeBackupParamDetail struct {
@@ -5806,7 +5806,7 @@ type CreateDataVolumeTemplateFromVolumeBackupParamDetail struct {
 // CreateDataVolumeTemplateFromVolumeBackupParam CreateDataVolumeTemplateFromVolumeBackup request param
 type CreateDataVolumeTemplateFromVolumeBackupParam struct {
 	BaseParam
-	CreateDataVolumeTemplateFromVolumeBackup CreateDataVolumeTemplateFromVolumeBackupParamDetail `json:"createDataVolumeTemplateFromVolumeBackup"`
+	Params CreateDataVolumeTemplateFromVolumeBackupParamDetail `json:"createDataVolumeTemplateFromVolumeBackup"`
 }
 // DegradeFromLicenseServerParamDetail DegradeFromLicenseServer detail param
 type DegradeFromLicenseServerParamDetail struct {
@@ -5815,7 +5815,7 @@ type DegradeFromLicenseServerParamDetail struct {
 // DegradeFromLicenseServerParam DegradeFromLicenseServer request param
 type DegradeFromLicenseServerParam struct {
 	BaseParam
-	DegradeFromLicenseServer DegradeFromLicenseServerParamDetail `json:"degradeFromLicenseServer"`
+	Params DegradeFromLicenseServerParamDetail `json:"degradeFromLicenseServer"`
 }
 // UpdateNfvInstProvisionConfigParamDetail UpdateNfvInstProvisionConfig detail param
 type UpdateNfvInstProvisionConfigParamDetail struct {
@@ -5825,7 +5825,7 @@ type UpdateNfvInstProvisionConfigParamDetail struct {
 // UpdateNfvInstProvisionConfigParam UpdateNfvInstProvisionConfig request param
 type UpdateNfvInstProvisionConfigParam struct {
 	BaseParam
-	UpdateNfvInstProvisionConfig UpdateNfvInstProvisionConfigParamDetail `json:"updateNfvInstProvisionConfig"`
+	Params UpdateNfvInstProvisionConfigParamDetail `json:"updateNfvInstProvisionConfig"`
 }
 // GetDebugSignalParamDetail GetDebugSignal detail param
 type GetDebugSignalParamDetail struct {
@@ -5834,7 +5834,7 @@ type GetDebugSignalParamDetail struct {
 // GetDebugSignalParam GetDebugSignal request param
 type GetDebugSignalParam struct {
 	BaseParam
-	GetDebugSignal GetDebugSignalParamDetail `json:"getDebugSignal"`
+	Params GetDebugSignalParamDetail `json:"getDebugSignal"`
 }
 // UpdateAliyunKeySecretParamDetail UpdateAliyunKeySecret detail param
 type UpdateAliyunKeySecretParamDetail struct {
@@ -5846,7 +5846,7 @@ type UpdateAliyunKeySecretParamDetail struct {
 // UpdateAliyunKeySecretParam UpdateAliyunKeySecret request param
 type UpdateAliyunKeySecretParam struct {
 	BaseParam
-	UpdateAliyunKeySecret UpdateAliyunKeySecretParamDetail `json:"updateAliyunKeySecret"`
+	Params UpdateAliyunKeySecretParamDetail `json:"updateAliyunKeySecret"`
 }
 // SyncLicenseCapacityParamDetail SyncLicenseCapacity detail param
 type SyncLicenseCapacityParamDetail struct {
@@ -5855,7 +5855,7 @@ type SyncLicenseCapacityParamDetail struct {
 // SyncLicenseCapacityParam SyncLicenseCapacity request param
 type SyncLicenseCapacityParam struct {
 	BaseParam
-	SyncLicenseCapacity SyncLicenseCapacityParamDetail `json:"syncLicenseCapacity"`
+	Params SyncLicenseCapacityParamDetail `json:"syncLicenseCapacity"`
 }
 // AttachDataVolumeToHostParamDetail AttachDataVolumeToHost detail param
 type AttachDataVolumeToHostParamDetail struct {
@@ -5867,7 +5867,7 @@ type AttachDataVolumeToHostParamDetail struct {
 // AttachDataVolumeToHostParam AttachDataVolumeToHost request param
 type AttachDataVolumeToHostParam struct {
 	BaseParam
-	AttachDataVolumeToHost AttachDataVolumeToHostParamDetail `json:"attachDataVolumeToHost"`
+	Params AttachDataVolumeToHostParamDetail `json:"attachDataVolumeToHost"`
 }
 // SecurityMachineEncryptParamDetail SecurityMachineEncrypt detail param
 type SecurityMachineEncryptParamDetail struct {
@@ -5878,7 +5878,7 @@ type SecurityMachineEncryptParamDetail struct {
 // SecurityMachineEncryptParam SecurityMachineEncrypt request param
 type SecurityMachineEncryptParam struct {
 	BaseParam
-	SecurityMachineEncrypt SecurityMachineEncryptParamDetail `json:"securityMachineEncrypt"`
+	Params SecurityMachineEncryptParamDetail `json:"securityMachineEncrypt"`
 }
 // ChangeAppBuildSystemStateParamDetail ChangeAppBuildSystemState detail param
 type ChangeAppBuildSystemStateParamDetail struct {
@@ -5889,7 +5889,7 @@ type ChangeAppBuildSystemStateParamDetail struct {
 // ChangeAppBuildSystemStateParam ChangeAppBuildSystemState request param
 type ChangeAppBuildSystemStateParam struct {
 	BaseParam
-	ChangeAppBuildSystemState ChangeAppBuildSystemStateParamDetail `json:"changeAppBuildSystemState"`
+	Params ChangeAppBuildSystemStateParamDetail `json:"changeAppBuildSystemState"`
 }
 // GetMemorySnapshotGroupReferenceParamDetail GetMemorySnapshotGroupReference detail param
 type GetMemorySnapshotGroupReferenceParamDetail struct {
@@ -5900,7 +5900,7 @@ type GetMemorySnapshotGroupReferenceParamDetail struct {
 // GetMemorySnapshotGroupReferenceParam GetMemorySnapshotGroupReference request param
 type GetMemorySnapshotGroupReferenceParam struct {
 	BaseParam
-	GetMemorySnapshotGroupReference GetMemorySnapshotGroupReferenceParamDetail `json:"getMemorySnapshotGroupReference"`
+	Params GetMemorySnapshotGroupReferenceParamDetail `json:"getMemorySnapshotGroupReference"`
 }
 // GetVpcVRouterNetworkServiceStateParamDetail GetVpcVRouterNetworkServiceState detail param
 type GetVpcVRouterNetworkServiceStateParamDetail struct {
@@ -5912,7 +5912,7 @@ type GetVpcVRouterNetworkServiceStateParamDetail struct {
 // GetVpcVRouterNetworkServiceStateParam GetVpcVRouterNetworkServiceState request param
 type GetVpcVRouterNetworkServiceStateParam struct {
 	BaseParam
-	GetVpcVRouterNetworkServiceState GetVpcVRouterNetworkServiceStateParamDetail `json:"getVpcVRouterNetworkServiceState"`
+	Params GetVpcVRouterNetworkServiceStateParamDetail `json:"getVpcVRouterNetworkServiceState"`
 }
 // DetachNetworkServiceFromL3NetworkParamDetail DetachNetworkServiceFromL3Network detail param
 type DetachNetworkServiceFromL3NetworkParamDetail struct {
@@ -5924,7 +5924,7 @@ type DetachNetworkServiceFromL3NetworkParamDetail struct {
 // DetachNetworkServiceFromL3NetworkParam DetachNetworkServiceFromL3Network request param
 type DetachNetworkServiceFromL3NetworkParam struct {
 	BaseParam
-	DetachNetworkServiceFromL3Network DetachNetworkServiceFromL3NetworkParamDetail `json:"detachNetworkServiceFromL3Network"`
+	Params DetachNetworkServiceFromL3NetworkParamDetail `json:"detachNetworkServiceFromL3Network"`
 }
 // CreateDataVolumeFromVolumeBackupParamDetail CreateDataVolumeFromVolumeBackup detail param
 type CreateDataVolumeFromVolumeBackupParamDetail struct {
@@ -5941,7 +5941,7 @@ type CreateDataVolumeFromVolumeBackupParamDetail struct {
 // CreateDataVolumeFromVolumeBackupParam CreateDataVolumeFromVolumeBackup request param
 type CreateDataVolumeFromVolumeBackupParam struct {
 	BaseParam
-	CreateDataVolumeFromVolumeBackup CreateDataVolumeFromVolumeBackupParamDetail `json:"createDataVolumeFromVolumeBackup"`
+	Params CreateDataVolumeFromVolumeBackupParamDetail `json:"createDataVolumeFromVolumeBackup"`
 }
 // DeleteContainerResourceFromEndpointParamDetail DeleteContainerResourceFromEndpoint detail param
 type DeleteContainerResourceFromEndpointParamDetail struct {
@@ -5951,7 +5951,7 @@ type DeleteContainerResourceFromEndpointParamDetail struct {
 // DeleteContainerResourceFromEndpointParam DeleteContainerResourceFromEndpoint request param
 type DeleteContainerResourceFromEndpointParam struct {
 	BaseParam
-	DeleteContainerResourceFromEndpoint DeleteContainerResourceFromEndpointParamDetail `json:"deleteContainerResourceFromEndpoint"`
+	Params DeleteContainerResourceFromEndpointParamDetail `json:"deleteContainerResourceFromEndpoint"`
 }
 // GetSupportAPIsParamDetail GetSupports detail param
 type GetSupportAPIsParamDetail struct {
@@ -5960,7 +5960,7 @@ type GetSupportAPIsParamDetail struct {
 // GetSupportAPIsParam GetSupports request param
 type GetSupportAPIsParam struct {
 	BaseParam
-	GetSupportAPIs GetSupportAPIsParamDetail `json:"getSupportAPIs"`
+	Params GetSupportAPIsParamDetail `json:"getSupportAPIs"`
 }
 // AddSharedMountPointPrimaryStorageParamDetail AddSharedMountPointPrimaryStorage detail param
 type AddSharedMountPointPrimaryStorageParamDetail struct {
@@ -5976,7 +5976,7 @@ type AddSharedMountPointPrimaryStorageParamDetail struct {
 // AddSharedMountPointPrimaryStorageParam AddSharedMountPointPrimaryStorage request param
 type AddSharedMountPointPrimaryStorageParam struct {
 	BaseParam
-	AddSharedMountPointPrimaryStorage AddSharedMountPointPrimaryStorageParamDetail `json:"addSharedMountPointPrimaryStorage"`
+	Params AddSharedMountPointPrimaryStorageParamDetail `json:"addSharedMountPointPrimaryStorage"`
 }
 // GetTrashOnPrimaryStorageParamDetail GetTrashOnPrimaryStorage detail param
 type GetTrashOnPrimaryStorageParamDetail struct {
@@ -5989,7 +5989,7 @@ type GetTrashOnPrimaryStorageParamDetail struct {
 // GetTrashOnPrimaryStorageParam GetTrashOnPrimaryStorage request param
 type GetTrashOnPrimaryStorageParam struct {
 	BaseParam
-	GetTrashOnPrimaryStorage GetTrashOnPrimaryStorageParamDetail `json:"getTrashOnPrimaryStorage"`
+	Params GetTrashOnPrimaryStorageParamDetail `json:"getTrashOnPrimaryStorage"`
 }
 // GetCandidateVmNicsForLoadBalancerParamDetail GetCandidateVmNicsForLoadBalancer detail param
 type GetCandidateVmNicsForLoadBalancerParamDetail struct {
@@ -5999,7 +5999,7 @@ type GetCandidateVmNicsForLoadBalancerParamDetail struct {
 // GetCandidateVmNicsForLoadBalancerParam GetCandidateVmNicsForLoadBalancer request param
 type GetCandidateVmNicsForLoadBalancerParam struct {
 	BaseParam
-	GetCandidateVmNicsForLoadBalancer GetCandidateVmNicsForLoadBalancerParamDetail `json:"getCandidateVmNicsForLoadBalancer"`
+	Params GetCandidateVmNicsForLoadBalancerParamDetail `json:"getCandidateVmNicsForLoadBalancer"`
 }
 // DetachBaremetalPxeServerFromClusterParamDetail DetachBaremetalPxeServerFromCluster detail param
 type DetachBaremetalPxeServerFromClusterParamDetail struct {
@@ -6010,7 +6010,7 @@ type DetachBaremetalPxeServerFromClusterParamDetail struct {
 // DetachBaremetalPxeServerFromClusterParam DetachBaremetalPxeServerFromCluster request param
 type DetachBaremetalPxeServerFromClusterParam struct {
 	BaseParam
-	DetachBaremetalPxeServerFromCluster DetachBaremetalPxeServerFromClusterParamDetail `json:"detachBaremetalPxeServerFromCluster"`
+	Params DetachBaremetalPxeServerFromClusterParamDetail `json:"detachBaremetalPxeServerFromCluster"`
 }
 // DeleteVpcUserVpnGatewayRemoteParamDetail DeleteVpcUserVpnGatewayRemote detail param
 type DeleteVpcUserVpnGatewayRemoteParamDetail struct {
@@ -6021,7 +6021,7 @@ type DeleteVpcUserVpnGatewayRemoteParamDetail struct {
 // DeleteVpcUserVpnGatewayRemoteParam DeleteVpcUserVpnGatewayRemote request param
 type DeleteVpcUserVpnGatewayRemoteParam struct {
 	BaseParam
-	DeleteVpcUserVpnGatewayRemote DeleteVpcUserVpnGatewayRemoteParamDetail `json:"deleteVpcUserVpnGatewayRemote"`
+	Params DeleteVpcUserVpnGatewayRemoteParamDetail `json:"deleteVpcUserVpnGatewayRemote"`
 }
 // ChangeAccessControlListRedirectRuleParamDetail ChangeAccessControlListRedirectRule detail param
 type ChangeAccessControlListRedirectRuleParamDetail struct {
@@ -6032,7 +6032,7 @@ type ChangeAccessControlListRedirectRuleParamDetail struct {
 // ChangeAccessControlListRedirectRuleParam ChangeAccessControlListRedirectRule request param
 type ChangeAccessControlListRedirectRuleParam struct {
 	BaseParam
-	ChangeAccessControlListRedirectRule ChangeAccessControlListRedirectRuleParamDetail `json:"changeAccessControlListRedirectRule"`
+	Params ChangeAccessControlListRedirectRuleParamDetail `json:"changeAccessControlListRedirectRule"`
 }
 // AddResourceStackVmPortMonitorParamDetail AddResourceStackVmPortMonitor detail param
 type AddResourceStackVmPortMonitorParamDetail struct {
@@ -6044,7 +6044,7 @@ type AddResourceStackVmPortMonitorParamDetail struct {
 // AddResourceStackVmPortMonitorParam AddResourceStackVmPortMonitor request param
 type AddResourceStackVmPortMonitorParam struct {
 	BaseParam
-	AddResourceStackVmPortMonitor AddResourceStackVmPortMonitorParamDetail `json:"addResourceStackVmPortMonitor"`
+	Params AddResourceStackVmPortMonitorParamDetail `json:"addResourceStackVmPortMonitor"`
 }
 // ChangeSNSApplicationEndpointStateParamDetail ChangeSNSApplicationEndpointState detail param
 type ChangeSNSApplicationEndpointStateParamDetail struct {
@@ -6055,7 +6055,7 @@ type ChangeSNSApplicationEndpointStateParamDetail struct {
 // ChangeSNSApplicationEndpointStateParam ChangeSNSApplicationEndpointState request param
 type ChangeSNSApplicationEndpointStateParam struct {
 	BaseParam
-	ChangeSNSApplicationEndpointState ChangeSNSApplicationEndpointStateParamDetail `json:"changeSNSApplicationEndpointState"`
+	Params ChangeSNSApplicationEndpointStateParamDetail `json:"changeSNSApplicationEndpointState"`
 }
 // GetVpcAttachedLoadBalancerParamDetail GetVpcAttachedLoadBalancer detail param
 type GetVpcAttachedLoadBalancerParamDetail struct {
@@ -6067,7 +6067,7 @@ type GetVpcAttachedLoadBalancerParamDetail struct {
 // GetVpcAttachedLoadBalancerParam GetVpcAttachedLoadBalancer request param
 type GetVpcAttachedLoadBalancerParam struct {
 	BaseParam
-	GetVpcAttachedLoadBalancer GetVpcAttachedLoadBalancerParamDetail `json:"getVpcAttachedLoadBalancer"`
+	Params GetVpcAttachedLoadBalancerParamDetail `json:"getVpcAttachedLoadBalancer"`
 }
 // CreateVpcVpnConnectionRemoteParamDetail CreateVpcVpnConnectionRemote detail param
 type CreateVpcVpnConnectionRemoteParamDetail struct {
@@ -6086,7 +6086,7 @@ type CreateVpcVpnConnectionRemoteParamDetail struct {
 // CreateVpcVpnConnectionRemoteParam CreateVpcVpnConnectionRemote request param
 type CreateVpcVpnConnectionRemoteParam struct {
 	BaseParam
-	CreateVpcVpnConnectionRemote CreateVpcVpnConnectionRemoteParamDetail `json:"createVpcVpnConnectionRemote"`
+	Params CreateVpcVpnConnectionRemoteParamDetail `json:"createVpcVpnConnectionRemote"`
 }
 // GetVpcAttachedPortForwardingRulesParamDetail GetVpcAttachedPortForwardingRules detail param
 type GetVpcAttachedPortForwardingRulesParamDetail struct {
@@ -6098,7 +6098,7 @@ type GetVpcAttachedPortForwardingRulesParamDetail struct {
 // GetVpcAttachedPortForwardingRulesParam GetVpcAttachedPortForwardingRules request param
 type GetVpcAttachedPortForwardingRulesParam struct {
 	BaseParam
-	GetVpcAttachedPortForwardingRules GetVpcAttachedPortForwardingRulesParamDetail `json:"getVpcAttachedPortForwardingRules"`
+	Params GetVpcAttachedPortForwardingRulesParamDetail `json:"getVpcAttachedPortForwardingRules"`
 }
 // SetVpcVRouterNetworkServiceStateParamDetail SetVpcVRouterNetworkServiceState detail param
 type SetVpcVRouterNetworkServiceStateParamDetail struct {
@@ -6111,7 +6111,7 @@ type SetVpcVRouterNetworkServiceStateParamDetail struct {
 // SetVpcVRouterNetworkServiceStateParam SetVpcVRouterNetworkServiceState request param
 type SetVpcVRouterNetworkServiceStateParam struct {
 	BaseParam
-	SetVpcVRouterNetworkServiceState SetVpcVRouterNetworkServiceStateParamDetail `json:"setVpcVRouterNetworkServiceState"`
+	Params SetVpcVRouterNetworkServiceStateParamDetail `json:"setVpcVRouterNetworkServiceState"`
 }
 // DetachNfvInstFromGroupParamDetail DetachNfvInstFromGroup detail param
 type DetachNfvInstFromGroupParamDetail struct {
@@ -6122,7 +6122,7 @@ type DetachNfvInstFromGroupParamDetail struct {
 // DetachNfvInstFromGroupParam DetachNfvInstFromGroup request param
 type DetachNfvInstFromGroupParam struct {
 	BaseParam
-	DetachNfvInstFromGroup DetachNfvInstFromGroupParamDetail `json:"detachNfvInstFromGroup"`
+	Params DetachNfvInstFromGroupParamDetail `json:"detachNfvInstFromGroup"`
 }
 // AddDnsToVpcRouterParamDetail AddDnsToVpcRouter detail param
 type AddDnsToVpcRouterParamDetail struct {
@@ -6135,7 +6135,7 @@ type AddDnsToVpcRouterParamDetail struct {
 // AddDnsToVpcRouterParam AddDnsToVpcRouter request param
 type AddDnsToVpcRouterParam struct {
 	BaseParam
-	AddDnsToVpcRouter AddDnsToVpcRouterParamDetail `json:"addDnsToVpcRouter"`
+	Params AddDnsToVpcRouterParamDetail `json:"addDnsToVpcRouter"`
 }
 // GetVmXmlParamDetail GetVmXml detail param
 type GetVmXmlParamDetail struct {
@@ -6145,7 +6145,7 @@ type GetVmXmlParamDetail struct {
 // GetVmXmlParam GetVmXml request param
 type GetVmXmlParam struct {
 	BaseParam
-	GetVmXml GetVmXmlParamDetail `json:"getVmXml"`
+	Params GetVmXmlParamDetail `json:"getVmXml"`
 }
 // GetVmInstanceFirstBootDeviceParamDetail GetVmInstanceFirstBootDevice detail param
 type GetVmInstanceFirstBootDeviceParamDetail struct {
@@ -6155,7 +6155,7 @@ type GetVmInstanceFirstBootDeviceParamDetail struct {
 // GetVmInstanceFirstBootDeviceParam GetVmInstanceFirstBootDevice request param
 type GetVmInstanceFirstBootDeviceParam struct {
 	BaseParam
-	GetVmInstanceFirstBootDevice GetVmInstanceFirstBootDeviceParamDetail `json:"getVmInstanceFirstBootDevice"`
+	Params GetVmInstanceFirstBootDeviceParamDetail `json:"getVmInstanceFirstBootDevice"`
 }
 // CreateOvnControllerVmParamDetail CreateOvnControllerVm detail param
 type CreateOvnControllerVmParamDetail struct {
@@ -6195,7 +6195,7 @@ type CreateOvnControllerVmParamDetail struct {
 // CreateOvnControllerVmParam CreateOvnControllerVm request param
 type CreateOvnControllerVmParam struct {
 	BaseParam
-	CreateOvnControllerVm CreateOvnControllerVmParamDetail `json:"createOvnControllerVm"`
+	Params CreateOvnControllerVmParamDetail `json:"createOvnControllerVm"`
 }
 // DeleteIpAddressParamDetail DeleteIpAddress detail param
 type DeleteIpAddressParamDetail struct {
@@ -6207,7 +6207,7 @@ type DeleteIpAddressParamDetail struct {
 // DeleteIpAddressParam DeleteIpAddress request param
 type DeleteIpAddressParam struct {
 	BaseParam
-	DeleteIpAddress DeleteIpAddressParamDetail `json:"deleteIpAddress"`
+	Params DeleteIpAddressParamDetail `json:"deleteIpAddress"`
 }
 // DeleteVpcVpnConnectionRemoteParamDetail DeleteVpcVpnConnectionRemote detail param
 type DeleteVpcVpnConnectionRemoteParamDetail struct {
@@ -6218,7 +6218,7 @@ type DeleteVpcVpnConnectionRemoteParamDetail struct {
 // DeleteVpcVpnConnectionRemoteParam DeleteVpcVpnConnectionRemote request param
 type DeleteVpcVpnConnectionRemoteParam struct {
 	BaseParam
-	DeleteVpcVpnConnectionRemote DeleteVpcVpnConnectionRemoteParamDetail `json:"deleteVpcVpnConnectionRemote"`
+	Params DeleteVpcVpnConnectionRemoteParamDetail `json:"deleteVpcVpnConnectionRemote"`
 }
 // AttachOssBucketToEcsDataCenterParamDetail AttachOssBucketToEcsDataCenter detail param
 type AttachOssBucketToEcsDataCenterParamDetail struct {
@@ -6228,7 +6228,7 @@ type AttachOssBucketToEcsDataCenterParamDetail struct {
 // AttachOssBucketToEcsDataCenterParam AttachOssBucketToEcsDataCenter request param
 type AttachOssBucketToEcsDataCenterParam struct {
 	BaseParam
-	AttachOssBucketToEcsDataCenter AttachOssBucketToEcsDataCenterParamDetail `json:"attachOssBucketToEcsDataCenter"`
+	Params AttachOssBucketToEcsDataCenterParamDetail `json:"attachOssBucketToEcsDataCenter"`
 }
 // CheckIAM2OrganizationAvailabilityParamDetail CheckIAM2OrganizationAvailability detail param
 type CheckIAM2OrganizationAvailabilityParamDetail struct {
@@ -6237,7 +6237,7 @@ type CheckIAM2OrganizationAvailabilityParamDetail struct {
 // CheckIAM2OrganizationAvailabilityParam CheckIAM2OrganizationAvailability request param
 type CheckIAM2OrganizationAvailabilityParam struct {
 	BaseParam
-	CheckIAM2OrganizationAvailability CheckIAM2OrganizationAvailabilityParamDetail `json:"checkIAM2OrganizationAvailability"`
+	Params CheckIAM2OrganizationAvailabilityParamDetail `json:"checkIAM2OrganizationAvailability"`
 }
 // UnmountVmInstanceRecoveryPointParamDetail UnmountVmInstanceRecoveryPoint detail param
 type UnmountVmInstanceRecoveryPointParamDetail struct {
@@ -6248,7 +6248,7 @@ type UnmountVmInstanceRecoveryPointParamDetail struct {
 // UnmountVmInstanceRecoveryPointParam UnmountVmInstanceRecoveryPoint request param
 type UnmountVmInstanceRecoveryPointParam struct {
 	BaseParam
-	UnmountVmInstanceRecoveryPoint UnmountVmInstanceRecoveryPointParamDetail `json:"unmountVmInstanceRecoveryPoint"`
+	Params UnmountVmInstanceRecoveryPointParamDetail `json:"unmountVmInstanceRecoveryPoint"`
 }
 // RemovePolicyStatementsFromRoleParamDetail RemovePolicyStatementsFromRole detail param
 type RemovePolicyStatementsFromRoleParamDetail struct {
@@ -6259,7 +6259,7 @@ type RemovePolicyStatementsFromRoleParamDetail struct {
 // RemovePolicyStatementsFromRoleParam RemovePolicyStatementsFromRole request param
 type RemovePolicyStatementsFromRoleParam struct {
 	BaseParam
-	RemovePolicyStatementsFromRole RemovePolicyStatementsFromRoleParamDetail `json:"removePolicyStatementsFromRole"`
+	Params RemovePolicyStatementsFromRoleParamDetail `json:"removePolicyStatementsFromRole"`
 }
 // GenerateModelMetadataParamDetail GenerateModelMetadata detail param
 type GenerateModelMetadataParamDetail struct {
@@ -6270,7 +6270,7 @@ type GenerateModelMetadataParamDetail struct {
 // GenerateModelMetadataParam GenerateModelMetadata request param
 type GenerateModelMetadataParam struct {
 	BaseParam
-	GenerateModelMetadata GenerateModelMetadataParamDetail `json:"generateModelMetadata"`
+	Params GenerateModelMetadataParamDetail `json:"generateModelMetadata"`
 }
 // IsReadyToGoParamDetail IsReadyToGo detail param
 type IsReadyToGoParamDetail struct {
@@ -6280,7 +6280,7 @@ type IsReadyToGoParamDetail struct {
 // IsReadyToGoParam IsReadyToGo request param
 type IsReadyToGoParam struct {
 	BaseParam
-	IsReadyToGo IsReadyToGoParamDetail `json:"isReadyToGo"`
+	Params IsReadyToGoParamDetail `json:"isReadyToGo"`
 }
 // GetHostIommuStatusParamDetail GetHostIommuStatus detail param
 type GetHostIommuStatusParamDetail struct {
@@ -6290,7 +6290,7 @@ type GetHostIommuStatusParamDetail struct {
 // GetHostIommuStatusParam GetHostIommuStatus request param
 type GetHostIommuStatusParam struct {
 	BaseParam
-	GetHostIommuStatus GetHostIommuStatusParamDetail `json:"getHostIommuStatus"`
+	Params GetHostIommuStatusParamDetail `json:"getHostIommuStatus"`
 }
 // DescribeVmInstanceRecoveryPointParamDetail DescribeVmInstanceRecoveryPoint detail param
 type DescribeVmInstanceRecoveryPointParamDetail struct {
@@ -6303,7 +6303,7 @@ type DescribeVmInstanceRecoveryPointParamDetail struct {
 // DescribeVmInstanceRecoveryPointParam DescribeVmInstanceRecoveryPoint request param
 type DescribeVmInstanceRecoveryPointParam struct {
 	BaseParam
-	DescribeVmInstanceRecoveryPoint DescribeVmInstanceRecoveryPointParamDetail `json:"describeVmInstanceRecoveryPoint"`
+	Params DescribeVmInstanceRecoveryPointParamDetail `json:"describeVmInstanceRecoveryPoint"`
 }
 // GetPciDeviceCandidatesForAttachingVmParamDetail GetPciDeviceCandidatesForAttachingVm detail param
 type GetPciDeviceCandidatesForAttachingVmParamDetail struct {
@@ -6315,7 +6315,7 @@ type GetPciDeviceCandidatesForAttachingVmParamDetail struct {
 // GetPciDeviceCandidatesForAttachingVmParam GetPciDeviceCandidatesForAttachingVm request param
 type GetPciDeviceCandidatesForAttachingVmParam struct {
 	BaseParam
-	GetPciDeviceCandidatesForAttachingVm GetPciDeviceCandidatesForAttachingVmParamDetail `json:"getPciDeviceCandidatesForAttachingVm"`
+	Params GetPciDeviceCandidatesForAttachingVmParamDetail `json:"getPciDeviceCandidatesForAttachingVm"`
 }
 // ChangeMonitorTriggerStateParamDetail ChangeMonitorTriggerState detail param
 type ChangeMonitorTriggerStateParamDetail struct {
@@ -6326,7 +6326,7 @@ type ChangeMonitorTriggerStateParamDetail struct {
 // ChangeMonitorTriggerStateParam ChangeMonitorTriggerState request param
 type ChangeMonitorTriggerStateParam struct {
 	BaseParam
-	ChangeMonitorTriggerState ChangeMonitorTriggerStateParamDetail `json:"changeMonitorTriggerState"`
+	Params ChangeMonitorTriggerStateParamDetail `json:"changeMonitorTriggerState"`
 }
 // GetBareMetal2ChassisPowerStatusParamDetail GetBareMetal2ChassisPowerStatus detail param
 type GetBareMetal2ChassisPowerStatusParamDetail struct {
@@ -6336,7 +6336,7 @@ type GetBareMetal2ChassisPowerStatusParamDetail struct {
 // GetBareMetal2ChassisPowerStatusParam GetBareMetal2ChassisPowerStatus request param
 type GetBareMetal2ChassisPowerStatusParam struct {
 	BaseParam
-	GetBareMetal2ChassisPowerStatus GetBareMetal2ChassisPowerStatusParamDetail `json:"getBareMetal2ChassisPowerStatus"`
+	Params GetBareMetal2ChassisPowerStatusParamDetail `json:"getBareMetal2ChassisPowerStatus"`
 }
 // GetTaskProgressParamDetail GetTaskProgress detail param
 type GetTaskProgressParamDetail struct {
@@ -6347,7 +6347,7 @@ type GetTaskProgressParamDetail struct {
 // GetTaskProgressParam GetTaskProgress request param
 type GetTaskProgressParam struct {
 	BaseParam
-	GetTaskProgress GetTaskProgressParamDetail `json:"getTaskProgress"`
+	Params GetTaskProgressParamDetail `json:"getTaskProgress"`
 }
 // StartDataProtectionParamDetail StartDataProtection detail param
 type StartDataProtectionParamDetail struct {
@@ -6358,7 +6358,7 @@ type StartDataProtectionParamDetail struct {
 // StartDataProtectionParam StartDataProtection request param
 type StartDataProtectionParam struct {
 	BaseParam
-	StartDataProtection StartDataProtectionParamDetail `json:"startDataProtection"`
+	Params StartDataProtectionParamDetail `json:"startDataProtection"`
 }
 // ChangeActiveAlarmStateParamDetail ChangeActiveAlarmState detail param
 type ChangeActiveAlarmStateParamDetail struct {
@@ -6369,7 +6369,7 @@ type ChangeActiveAlarmStateParamDetail struct {
 // ChangeActiveAlarmStateParam ChangeActiveAlarmState request param
 type ChangeActiveAlarmStateParam struct {
 	BaseParam
-	ChangeActiveAlarmState ChangeActiveAlarmStateParamDetail `json:"changeActiveAlarmState"`
+	Params ChangeActiveAlarmStateParamDetail `json:"changeActiveAlarmState"`
 }
 // SetVmCleanTrafficParamDetail SetVmCleanTraffic detail param
 type SetVmCleanTrafficParamDetail struct {
@@ -6380,7 +6380,7 @@ type SetVmCleanTrafficParamDetail struct {
 // SetVmCleanTrafficParam SetVmCleanTraffic request param
 type SetVmCleanTrafficParam struct {
 	BaseParam
-	SetVmCleanTraffic SetVmCleanTrafficParamDetail `json:"setVmCleanTraffic"`
+	Params SetVmCleanTrafficParamDetail `json:"setVmCleanTraffic"`
 }
 // SetVmBootModeParamDetail SetVmBootMode detail param
 type SetVmBootModeParamDetail struct {
@@ -6391,7 +6391,7 @@ type SetVmBootModeParamDetail struct {
 // SetVmBootModeParam SetVmBootMode request param
 type SetVmBootModeParam struct {
 	BaseParam
-	SetVmBootMode SetVmBootModeParamDetail `json:"setVmBootMode"`
+	Params SetVmBootModeParamDetail `json:"setVmBootMode"`
 }
 // SyncImageSizeParamDetail SyncImageSize detail param
 type SyncImageSizeParamDetail struct {
@@ -6401,7 +6401,7 @@ type SyncImageSizeParamDetail struct {
 // SyncImageSizeParam SyncImageSize request param
 type SyncImageSizeParam struct {
 	BaseParam
-	SyncImageSize SyncImageSizeParamDetail `json:"syncImageSize"`
+	Params SyncImageSizeParamDetail `json:"syncImageSize"`
 }
 // GetNoTriggerSchedulerJobsParamDetail GetNoTriggerSchedulerJobs detail param
 type GetNoTriggerSchedulerJobsParamDetail struct {
@@ -6410,7 +6410,7 @@ type GetNoTriggerSchedulerJobsParamDetail struct {
 // GetNoTriggerSchedulerJobsParam GetNoTriggerSchedulerJobs request param
 type GetNoTriggerSchedulerJobsParam struct {
 	BaseParam
-	GetNoTriggerSchedulerJobs GetNoTriggerSchedulerJobsParamDetail `json:"getNoTriggerSchedulerJobs"`
+	Params GetNoTriggerSchedulerJobsParamDetail `json:"getNoTriggerSchedulerJobs"`
 }
 // AddProxyToResourceParamDetail AddProxyToResource detail param
 type AddProxyToResourceParamDetail struct {
@@ -6421,7 +6421,7 @@ type AddProxyToResourceParamDetail struct {
 // AddProxyToResourceParam AddProxyToResource request param
 type AddProxyToResourceParam struct {
 	BaseParam
-	AddProxyToResource AddProxyToResourceParamDetail `json:"addProxyToResource"`
+	Params AddProxyToResourceParamDetail `json:"addProxyToResource"`
 }
 // ProtectVmInstanceRecoveryPointParamDetail ProtectVmInstanceRecoveryPoint detail param
 type ProtectVmInstanceRecoveryPointParamDetail struct {
@@ -6433,7 +6433,7 @@ type ProtectVmInstanceRecoveryPointParamDetail struct {
 // ProtectVmInstanceRecoveryPointParam ProtectVmInstanceRecoveryPoint request param
 type ProtectVmInstanceRecoveryPointParam struct {
 	BaseParam
-	ProtectVmInstanceRecoveryPoint ProtectVmInstanceRecoveryPointParamDetail `json:"protectVmInstanceRecoveryPoint"`
+	Params ProtectVmInstanceRecoveryPointParamDetail `json:"protectVmInstanceRecoveryPoint"`
 }
 // DeleteConnectionAccessPointLocalParamDetail DeleteConnectionAccessPointLocal detail param
 type DeleteConnectionAccessPointLocalParamDetail struct {
@@ -6444,7 +6444,7 @@ type DeleteConnectionAccessPointLocalParamDetail struct {
 // DeleteConnectionAccessPointLocalParam DeleteConnectionAccessPointLocal request param
 type DeleteConnectionAccessPointLocalParam struct {
 	BaseParam
-	DeleteConnectionAccessPointLocal DeleteConnectionAccessPointLocalParamDetail `json:"deleteConnectionAccessPointLocal"`
+	Params DeleteConnectionAccessPointLocalParamDetail `json:"deleteConnectionAccessPointLocal"`
 }
 // RemoveIAM2VirtualIDsFromProjectParamDetail RemoveIAM2VirtualIDsFromProject detail param
 type RemoveIAM2VirtualIDsFromProjectParamDetail struct {
@@ -6455,7 +6455,7 @@ type RemoveIAM2VirtualIDsFromProjectParamDetail struct {
 // RemoveIAM2VirtualIDsFromProjectParam RemoveIAM2VirtualIDsFromProject request param
 type RemoveIAM2VirtualIDsFromProjectParam struct {
 	BaseParam
-	RemoveIAM2VirtualIDsFromProject RemoveIAM2VirtualIDsFromProjectParamDetail `json:"removeIAM2VirtualIDsFromProject"`
+	Params RemoveIAM2VirtualIDsFromProjectParamDetail `json:"removeIAM2VirtualIDsFromProject"`
 }
 // CreateEcsImageFromEcsSnapshotParamDetail CreateEcsImageFromEcsSnapshot detail param
 type CreateEcsImageFromEcsSnapshotParamDetail struct {
@@ -6469,7 +6469,7 @@ type CreateEcsImageFromEcsSnapshotParamDetail struct {
 // CreateEcsImageFromEcsSnapshotParam CreateEcsImageFromEcsSnapshot request param
 type CreateEcsImageFromEcsSnapshotParam struct {
 	BaseParam
-	CreateEcsImageFromEcsSnapshot CreateEcsImageFromEcsSnapshotParamDetail `json:"createEcsImageFromEcsSnapshot"`
+	Params CreateEcsImageFromEcsSnapshotParamDetail `json:"createEcsImageFromEcsSnapshot"`
 }
 // CreateResourceStackFromAppParamDetail CreateResourceStackFromApp detail param
 type CreateResourceStackFromAppParamDetail struct {
@@ -6486,7 +6486,7 @@ type CreateResourceStackFromAppParamDetail struct {
 // CreateResourceStackFromAppParam CreateResourceStackFromApp request param
 type CreateResourceStackFromAppParam struct {
 	BaseParam
-	CreateResourceStackFromApp CreateResourceStackFromAppParamDetail `json:"createResourceStackFromApp"`
+	Params CreateResourceStackFromAppParamDetail `json:"createResourceStackFromApp"`
 }
 // GetSharedBlockCandidateParamDetail GetSharedBlockCandidate detail param
 type GetSharedBlockCandidateParamDetail struct {
@@ -6496,7 +6496,7 @@ type GetSharedBlockCandidateParamDetail struct {
 // GetSharedBlockCandidateParam GetSharedBlockCandidate request param
 type GetSharedBlockCandidateParam struct {
 	BaseParam
-	GetSharedBlockCandidate GetSharedBlockCandidateParamDetail `json:"getSharedBlockCandidate"`
+	Params GetSharedBlockCandidateParamDetail `json:"getSharedBlockCandidate"`
 }
 // SyncEcsSecurityGroupFromRemoteParamDetail SyncEcsSecurityGroupFromRemote detail param
 type SyncEcsSecurityGroupFromRemoteParamDetail struct {
@@ -6509,7 +6509,7 @@ type SyncEcsSecurityGroupFromRemoteParamDetail struct {
 // SyncEcsSecurityGroupFromRemoteParam SyncEcsSecurityGroupFromRemote request param
 type SyncEcsSecurityGroupFromRemoteParam struct {
 	BaseParam
-	SyncEcsSecurityGroupFromRemote SyncEcsSecurityGroupFromRemoteParamDetail `json:"syncEcsSecurityGroupFromRemote"`
+	Params SyncEcsSecurityGroupFromRemoteParamDetail `json:"syncEcsSecurityGroupFromRemote"`
 }
 // ExportBuildAppParamDetail ExportBuildApp detail param
 type ExportBuildAppParamDetail struct {
@@ -6519,7 +6519,7 @@ type ExportBuildAppParamDetail struct {
 // ExportBuildAppParam ExportBuildApp request param
 type ExportBuildAppParam struct {
 	BaseParam
-	ExportBuildApp ExportBuildAppParamDetail `json:"exportBuildApp"`
+	Params ExportBuildAppParamDetail `json:"exportBuildApp"`
 }
 // ReclaimSpaceFromImageStoreParamDetail ReclaimSpaceFromImageStore detail param
 type ReclaimSpaceFromImageStoreParamDetail struct {
@@ -6529,7 +6529,7 @@ type ReclaimSpaceFromImageStoreParamDetail struct {
 // ReclaimSpaceFromImageStoreParam ReclaimSpaceFromImageStore request param
 type ReclaimSpaceFromImageStoreParam struct {
 	BaseParam
-	ReclaimSpaceFromImageStore ReclaimSpaceFromImageStoreParamDetail `json:"reclaimSpaceFromImageStore"`
+	Params ReclaimSpaceFromImageStoreParamDetail `json:"reclaimSpaceFromImageStore"`
 }
 // GetAllEventMetadataParamDetail GetAllEventMetadata detail param
 type GetAllEventMetadataParamDetail struct {
@@ -6540,7 +6540,7 @@ type GetAllEventMetadataParamDetail struct {
 // GetAllEventMetadataParam GetAllEventMetadata request param
 type GetAllEventMetadataParam struct {
 	BaseParam
-	GetAllEventMetadata GetAllEventMetadataParamDetail `json:"getAllEventMetadata"`
+	Params GetAllEventMetadataParamDetail `json:"getAllEventMetadata"`
 }
 // GetCandidateVmForAttachingIsoParamDetail GetCandidateVmForAttachingIso detail param
 type GetCandidateVmForAttachingIsoParamDetail struct {
@@ -6550,7 +6550,7 @@ type GetCandidateVmForAttachingIsoParamDetail struct {
 // GetCandidateVmForAttachingIsoParam GetCandidateVmForAttachingIso request param
 type GetCandidateVmForAttachingIsoParam struct {
 	BaseParam
-	GetCandidateVmForAttachingIso GetCandidateVmForAttachingIsoParamDetail `json:"getCandidateVmForAttachingIso"`
+	Params GetCandidateVmForAttachingIsoParamDetail `json:"getCandidateVmForAttachingIso"`
 }
 // AttachDataVolumeToVmParamDetail AttachDataVolumeToVm detail param
 type AttachDataVolumeToVmParamDetail struct {
@@ -6561,7 +6561,7 @@ type AttachDataVolumeToVmParamDetail struct {
 // AttachDataVolumeToVmParam AttachDataVolumeToVm request param
 type AttachDataVolumeToVmParam struct {
 	BaseParam
-	AttachDataVolumeToVm AttachDataVolumeToVmParamDetail `json:"attachDataVolumeToVm"`
+	Params AttachDataVolumeToVmParamDetail `json:"attachDataVolumeToVm"`
 }
 // UpdateAliyunVirtualRouterParamDetail UpdateAliyunVirtualRouter detail param
 type UpdateAliyunVirtualRouterParamDetail struct {
@@ -6573,7 +6573,7 @@ type UpdateAliyunVirtualRouterParamDetail struct {
 // UpdateAliyunVirtualRouterParam UpdateAliyunVirtualRouter request param
 type UpdateAliyunVirtualRouterParam struct {
 	BaseParam
-	UpdateAliyunVirtualRouter UpdateAliyunVirtualRouterParamDetail `json:"updateAliyunVirtualRouter"`
+	Params UpdateAliyunVirtualRouterParamDetail `json:"updateAliyunVirtualRouter"`
 }
 // DeleteDataVolumeParamDetail DeleteDataVolume detail param
 type DeleteDataVolumeParamDetail struct {
@@ -6584,7 +6584,7 @@ type DeleteDataVolumeParamDetail struct {
 // DeleteDataVolumeParam DeleteDataVolume request param
 type DeleteDataVolumeParam struct {
 	BaseParam
-	DeleteDataVolume DeleteDataVolumeParamDetail `json:"deleteDataVolume"`
+	Params DeleteDataVolumeParamDetail `json:"deleteDataVolume"`
 }
 // GetUploadImageJobDetailsParamDetail GetUploadImageJobDetails detail param
 type GetUploadImageJobDetailsParamDetail struct {
@@ -6594,7 +6594,7 @@ type GetUploadImageJobDetailsParamDetail struct {
 // GetUploadImageJobDetailsParam GetUploadImageJobDetails request param
 type GetUploadImageJobDetailsParam struct {
 	BaseParam
-	GetUploadImageJobDetails GetUploadImageJobDetailsParamDetail `json:"getUploadImageJobDetails"`
+	Params GetUploadImageJobDetailsParamDetail `json:"getUploadImageJobDetails"`
 }
 // DetachIscsiServerFromClusterParamDetail DetachIscsiServerFromCluster detail param
 type DetachIscsiServerFromClusterParamDetail struct {
@@ -6605,7 +6605,7 @@ type DetachIscsiServerFromClusterParamDetail struct {
 // DetachIscsiServerFromClusterParam DetachIscsiServerFromCluster request param
 type DetachIscsiServerFromClusterParam struct {
 	BaseParam
-	DetachIscsiServerFromCluster DetachIscsiServerFromClusterParamDetail `json:"detachIscsiServerFromCluster"`
+	Params DetachIscsiServerFromClusterParamDetail `json:"detachIscsiServerFromCluster"`
 }
 // SetVolumeQosParamDetail SetVolumeQos detail param
 type SetVolumeQosParamDetail struct {
@@ -6623,7 +6623,7 @@ type SetVolumeQosParamDetail struct {
 // SetVolumeQosParam SetVolumeQos request param
 type SetVolumeQosParam struct {
 	BaseParam
-	SetVolumeQos SetVolumeQosParamDetail `json:"setVolumeQos"`
+	Params SetVolumeQosParamDetail `json:"setVolumeQos"`
 }
 // DetachHybridEipFromEcsParamDetail DetachHybridEipFromEcs detail param
 type DetachHybridEipFromEcsParamDetail struct {
@@ -6634,7 +6634,7 @@ type DetachHybridEipFromEcsParamDetail struct {
 // DetachHybridEipFromEcsParam DetachHybridEipFromEcs request param
 type DetachHybridEipFromEcsParam struct {
 	BaseParam
-	DetachHybridEipFromEcs DetachHybridEipFromEcsParamDetail `json:"detachHybridEipFromEcs"`
+	Params DetachHybridEipFromEcsParamDetail `json:"detachHybridEipFromEcs"`
 }
 // GetVolumeCapabilitiesParamDetail GetVolumeCapabilities detail param
 type GetVolumeCapabilitiesParamDetail struct {
@@ -6644,7 +6644,7 @@ type GetVolumeCapabilitiesParamDetail struct {
 // GetVolumeCapabilitiesParam GetVolumeCapabilities request param
 type GetVolumeCapabilitiesParam struct {
 	BaseParam
-	GetVolumeCapabilities GetVolumeCapabilitiesParamDetail `json:"getVolumeCapabilities"`
+	Params GetVolumeCapabilitiesParamDetail `json:"getVolumeCapabilities"`
 }
 // ChangeBareMetal2GatewayClusterParamDetail ChangeBareMetal2GatewayCluster detail param
 type ChangeBareMetal2GatewayClusterParamDetail struct {
@@ -6655,7 +6655,7 @@ type ChangeBareMetal2GatewayClusterParamDetail struct {
 // ChangeBareMetal2GatewayClusterParam ChangeBareMetal2GatewayCluster request param
 type ChangeBareMetal2GatewayClusterParam struct {
 	BaseParam
-	ChangeBareMetal2GatewayCluster ChangeBareMetal2GatewayClusterParamDetail `json:"changeBareMetal2GatewayCluster"`
+	Params ChangeBareMetal2GatewayClusterParamDetail `json:"changeBareMetal2GatewayCluster"`
 }
 // SetVmInstanceHaLevelParamDetail SetVmInstanceHaLevel detail param
 type SetVmInstanceHaLevelParamDetail struct {
@@ -6666,7 +6666,7 @@ type SetVmInstanceHaLevelParamDetail struct {
 // SetVmInstanceHaLevelParam SetVmInstanceHaLevel request param
 type SetVmInstanceHaLevelParam struct {
 	BaseParam
-	SetVmInstanceHaLevel SetVmInstanceHaLevelParamDetail `json:"setVmInstanceHaLevel"`
+	Params SetVmInstanceHaLevelParamDetail `json:"setVmInstanceHaLevel"`
 }
 // RemoveVRouterNetworksFromFlowMeterParamDetail RemoveVRouterNetworksFromFlowMeter detail param
 type RemoveVRouterNetworksFromFlowMeterParamDetail struct {
@@ -6677,7 +6677,7 @@ type RemoveVRouterNetworksFromFlowMeterParamDetail struct {
 // RemoveVRouterNetworksFromFlowMeterParam RemoveVRouterNetworksFromFlowMeter request param
 type RemoveVRouterNetworksFromFlowMeterParam struct {
 	BaseParam
-	RemoveVRouterNetworksFromFlowMeter RemoveVRouterNetworksFromFlowMeterParamDetail `json:"removeVRouterNetworksFromFlowMeter"`
+	Params RemoveVRouterNetworksFromFlowMeterParamDetail `json:"removeVRouterNetworksFromFlowMeter"`
 }
 // GetCandidateL3NetworksForChangeVmNicNetworkParamDetail GetCandidateL3NetworksForChangeVmNicNetwork detail param
 type GetCandidateL3NetworksForChangeVmNicNetworkParamDetail struct {
@@ -6687,7 +6687,7 @@ type GetCandidateL3NetworksForChangeVmNicNetworkParamDetail struct {
 // GetCandidateL3NetworksForChangeVmNicNetworkParam GetCandidateL3NetworksForChangeVmNicNetwork request param
 type GetCandidateL3NetworksForChangeVmNicNetworkParam struct {
 	BaseParam
-	GetCandidateL3NetworksForChangeVmNicNetwork GetCandidateL3NetworksForChangeVmNicNetworkParamDetail `json:"getCandidateL3NetworksForChangeVmNicNetwork"`
+	Params GetCandidateL3NetworksForChangeVmNicNetworkParamDetail `json:"getCandidateL3NetworksForChangeVmNicNetwork"`
 }
 // DeleteHybridKeySecretParamDetail DeleteHybridKeySecret detail param
 type DeleteHybridKeySecretParamDetail struct {
@@ -6698,7 +6698,7 @@ type DeleteHybridKeySecretParamDetail struct {
 // DeleteHybridKeySecretParam DeleteHybridKeySecret request param
 type DeleteHybridKeySecretParam struct {
 	BaseParam
-	DeleteHybridKeySecret DeleteHybridKeySecretParamDetail `json:"deleteHybridKeySecret"`
+	Params DeleteHybridKeySecretParamDetail `json:"deleteHybridKeySecret"`
 }
 // GetCandidatePrimaryStoragesForCreatingVmParamDetail GetCandidatePrimaryStoragesForCreatingVm detail param
 type GetCandidatePrimaryStoragesForCreatingVmParamDetail struct {
@@ -6717,7 +6717,7 @@ type GetCandidatePrimaryStoragesForCreatingVmParamDetail struct {
 // GetCandidatePrimaryStoragesForCreatingVmParam GetCandidatePrimaryStoragesForCreatingVm request param
 type GetCandidatePrimaryStoragesForCreatingVmParam struct {
 	BaseParam
-	GetCandidatePrimaryStoragesForCreatingVm GetCandidatePrimaryStoragesForCreatingVmParamDetail `json:"getCandidatePrimaryStoragesForCreatingVm"`
+	Params GetCandidatePrimaryStoragesForCreatingVmParamDetail `json:"getCandidatePrimaryStoragesForCreatingVm"`
 }
 // GetVmConsolePasswordParamDetail GetVmConsolePassword detail param
 type GetVmConsolePasswordParamDetail struct {
@@ -6727,7 +6727,7 @@ type GetVmConsolePasswordParamDetail struct {
 // GetVmConsolePasswordParam GetVmConsolePassword request param
 type GetVmConsolePasswordParam struct {
 	BaseParam
-	GetVmConsolePassword GetVmConsolePasswordParamDetail `json:"getVmConsolePassword"`
+	Params GetVmConsolePasswordParamDetail `json:"getVmConsolePassword"`
 }
 // GetResourceBindableConfigParamDetail GetResourceBindableConfig detail param
 type GetResourceBindableConfigParamDetail struct {
@@ -6737,7 +6737,7 @@ type GetResourceBindableConfigParamDetail struct {
 // GetResourceBindableConfigParam GetResourceBindableConfig request param
 type GetResourceBindableConfigParam struct {
 	BaseParam
-	GetResourceBindableConfig GetResourceBindableConfigParamDetail `json:"getResourceBindableConfig"`
+	Params GetResourceBindableConfigParamDetail `json:"getResourceBindableConfig"`
 }
 // GetVmInstanceHaLevelParamDetail GetVmInstanceHaLevel detail param
 type GetVmInstanceHaLevelParamDetail struct {
@@ -6747,7 +6747,7 @@ type GetVmInstanceHaLevelParamDetail struct {
 // GetVmInstanceHaLevelParam GetVmInstanceHaLevel request param
 type GetVmInstanceHaLevelParam struct {
 	BaseParam
-	GetVmInstanceHaLevel GetVmInstanceHaLevelParamDetail `json:"getVmInstanceHaLevel"`
+	Params GetVmInstanceHaLevelParamDetail `json:"getVmInstanceHaLevel"`
 }
 // GetCandidateLdapEntryForIAM2BindingParamDetail GetCandidateLdapEntryForIAM2Binding detail param
 type GetCandidateLdapEntryForIAM2BindingParamDetail struct {
@@ -6758,7 +6758,7 @@ type GetCandidateLdapEntryForIAM2BindingParamDetail struct {
 // GetCandidateLdapEntryForIAM2BindingParam GetCandidateLdapEntryForIAM2Binding request param
 type GetCandidateLdapEntryForIAM2BindingParam struct {
 	BaseParam
-	GetCandidateLdapEntryForIAM2Binding GetCandidateLdapEntryForIAM2BindingParamDetail `json:"getCandidateLdapEntryForIAM2Binding"`
+	Params GetCandidateLdapEntryForIAM2BindingParamDetail `json:"getCandidateLdapEntryForIAM2Binding"`
 }
 // RemoveResourcesFromDirectoryParamDetail RemoveResourcesFromDirectory detail param
 type RemoveResourcesFromDirectoryParamDetail struct {
@@ -6769,7 +6769,7 @@ type RemoveResourcesFromDirectoryParamDetail struct {
 // RemoveResourcesFromDirectoryParam RemoveResourcesFromDirectory request param
 type RemoveResourcesFromDirectoryParam struct {
 	BaseParam
-	RemoveResourcesFromDirectory RemoveResourcesFromDirectoryParamDetail `json:"removeResourcesFromDirectory"`
+	Params RemoveResourcesFromDirectoryParamDetail `json:"removeResourcesFromDirectory"`
 }
 // CreateVmFromVmBackupParamDetail CreateVmFromVmBackup detail param
 type CreateVmFromVmBackupParamDetail struct {
@@ -6800,7 +6800,7 @@ type CreateVmFromVmBackupParamDetail struct {
 // CreateVmFromVmBackupParam CreateVmFromVmBackup request param
 type CreateVmFromVmBackupParam struct {
 	BaseParam
-	CreateVmFromVmBackup CreateVmFromVmBackupParamDetail `json:"createVmFromVmBackup"`
+	Params CreateVmFromVmBackupParamDetail `json:"createVmFromVmBackup"`
 }
 // DeleteExportedDatabaseBackupFromBackupStorageParamDetail DeleteExportedDatabaseBackupFromBackupStorage detail param
 type DeleteExportedDatabaseBackupFromBackupStorageParamDetail struct {
@@ -6811,7 +6811,7 @@ type DeleteExportedDatabaseBackupFromBackupStorageParamDetail struct {
 // DeleteExportedDatabaseBackupFromBackupStorageParam DeleteExportedDatabaseBackupFromBackupStorage request param
 type DeleteExportedDatabaseBackupFromBackupStorageParam struct {
 	BaseParam
-	DeleteExportedDatabaseBackupFromBackupStorage DeleteExportedDatabaseBackupFromBackupStorageParamDetail `json:"deleteExportedDatabaseBackupFromBackupStorage"`
+	Params DeleteExportedDatabaseBackupFromBackupStorageParamDetail `json:"deleteExportedDatabaseBackupFromBackupStorage"`
 }
 // AttachNetworkServiceToL3NetworkParamDetail AttachNetworkServiceToL3Network detail param
 type AttachNetworkServiceToL3NetworkParamDetail struct {
@@ -6822,7 +6822,7 @@ type AttachNetworkServiceToL3NetworkParamDetail struct {
 // AttachNetworkServiceToL3NetworkParam AttachNetworkServiceToL3Network request param
 type AttachNetworkServiceToL3NetworkParam struct {
 	BaseParam
-	AttachNetworkServiceToL3Network AttachNetworkServiceToL3NetworkParamDetail `json:"attachNetworkServiceToL3Network"`
+	Params AttachNetworkServiceToL3NetworkParamDetail `json:"attachNetworkServiceToL3Network"`
 }
 // UnexportNbdVolumesParamDetail UnexportNbdVolumes detail param
 type UnexportNbdVolumesParamDetail struct {
@@ -6833,7 +6833,7 @@ type UnexportNbdVolumesParamDetail struct {
 // UnexportNbdVolumesParam UnexportNbdVolumes request param
 type UnexportNbdVolumesParam struct {
 	BaseParam
-	UnexportNbdVolumes UnexportNbdVolumesParamDetail `json:"unexportNbdVolumes"`
+	Params UnexportNbdVolumesParamDetail `json:"unexportNbdVolumes"`
 }
 // RecoveryVirtualBorderRouterRemoteParamDetail RecoveryVirtualBorderRouterRemote detail param
 type RecoveryVirtualBorderRouterRemoteParamDetail struct {
@@ -6843,7 +6843,7 @@ type RecoveryVirtualBorderRouterRemoteParamDetail struct {
 // RecoveryVirtualBorderRouterRemoteParam RecoveryVirtualBorderRouterRemote request param
 type RecoveryVirtualBorderRouterRemoteParam struct {
 	BaseParam
-	RecoveryVirtualBorderRouterRemote RecoveryVirtualBorderRouterRemoteParamDetail `json:"recoveryVirtualBorderRouterRemote"`
+	Params RecoveryVirtualBorderRouterRemoteParamDetail `json:"recoveryVirtualBorderRouterRemote"`
 }
 // ExecuteAutoScalingRuleParamDetail ExecuteAutoScalingRule detail param
 type ExecuteAutoScalingRuleParamDetail struct {
@@ -6853,7 +6853,7 @@ type ExecuteAutoScalingRuleParamDetail struct {
 // ExecuteAutoScalingRuleParam ExecuteAutoScalingRule request param
 type ExecuteAutoScalingRuleParam struct {
 	BaseParam
-	ExecuteAutoScalingRule ExecuteAutoScalingRuleParamDetail `json:"executeAutoScalingRule"`
+	Params ExecuteAutoScalingRuleParamDetail `json:"executeAutoScalingRule"`
 }
 // SNSHttpTestConnectionParamDetail SNSHttpTestConnection detail param
 type SNSHttpTestConnectionParamDetail struct {
@@ -6866,7 +6866,7 @@ type SNSHttpTestConnectionParamDetail struct {
 // SNSHttpTestConnectionParam SNSHttpTestConnection request param
 type SNSHttpTestConnectionParam struct {
 	BaseParam
-	SNSHttpTestConnection SNSHttpTestConnectionParamDetail `json:"sNSHttpTestConnection"`
+	Params SNSHttpTestConnectionParamDetail `json:"sNSHttpTestConnection"`
 }
 // SetImageSecurityLevelParamDetail SetImageSecurityLevel detail param
 type SetImageSecurityLevelParamDetail struct {
@@ -6877,7 +6877,7 @@ type SetImageSecurityLevelParamDetail struct {
 // SetImageSecurityLevelParam SetImageSecurityLevel request param
 type SetImageSecurityLevelParam struct {
 	BaseParam
-	SetImageSecurityLevel SetImageSecurityLevelParamDetail `json:"setImageSecurityLevel"`
+	Params SetImageSecurityLevelParamDetail `json:"setImageSecurityLevel"`
 }
 // ChangeBareMetal2ChassisStateParamDetail ChangeBareMetal2ChassisState detail param
 type ChangeBareMetal2ChassisStateParamDetail struct {
@@ -6888,7 +6888,7 @@ type ChangeBareMetal2ChassisStateParamDetail struct {
 // ChangeBareMetal2ChassisStateParam ChangeBareMetal2ChassisState request param
 type ChangeBareMetal2ChassisStateParam struct {
 	BaseParam
-	ChangeBareMetal2ChassisState ChangeBareMetal2ChassisStateParamDetail `json:"changeBareMetal2ChassisState"`
+	Params ChangeBareMetal2ChassisStateParamDetail `json:"changeBareMetal2ChassisState"`
 }
 // AddHybridKeySecretParamDetail AddHybridKeySecret detail param
 type AddHybridKeySecretParamDetail struct {
@@ -6906,7 +6906,7 @@ type AddHybridKeySecretParamDetail struct {
 // AddHybridKeySecretParam AddHybridKeySecret request param
 type AddHybridKeySecretParam struct {
 	BaseParam
-	AddHybridKeySecret AddHybridKeySecretParamDetail `json:"addHybridKeySecret"`
+	Params AddHybridKeySecretParamDetail `json:"addHybridKeySecret"`
 }
 // DetachVmFromVmSchedulingRuleGroupParamDetail DetachVmFromVmSchedulingRuleGroup detail param
 type DetachVmFromVmSchedulingRuleGroupParamDetail struct {
@@ -6917,7 +6917,7 @@ type DetachVmFromVmSchedulingRuleGroupParamDetail struct {
 // DetachVmFromVmSchedulingRuleGroupParam DetachVmFromVmSchedulingRuleGroup request param
 type DetachVmFromVmSchedulingRuleGroupParam struct {
 	BaseParam
-	DetachVmFromVmSchedulingRuleGroup DetachVmFromVmSchedulingRuleGroupParamDetail `json:"detachVmFromVmSchedulingRuleGroup"`
+	Params DetachVmFromVmSchedulingRuleGroupParamDetail `json:"detachVmFromVmSchedulingRuleGroup"`
 }
 // AddVRouterNetworksToOspfAreaParamDetail AddVRouterNetworksToOspfArea detail param
 type AddVRouterNetworksToOspfAreaParamDetail struct {
@@ -6931,7 +6931,7 @@ type AddVRouterNetworksToOspfAreaParamDetail struct {
 // AddVRouterNetworksToOspfAreaParam AddVRouterNetworksToOspfArea request param
 type AddVRouterNetworksToOspfAreaParam struct {
 	BaseParam
-	AddVRouterNetworksToOspfArea AddVRouterNetworksToOspfAreaParamDetail `json:"addVRouterNetworksToOspfArea"`
+	Params AddVRouterNetworksToOspfAreaParamDetail `json:"addVRouterNetworksToOspfArea"`
 }
 // AddRolesToIAM2VirtualIDGroupParamDetail AddRolesToIAM2VirtualIDGroup detail param
 type AddRolesToIAM2VirtualIDGroupParamDetail struct {
@@ -6943,7 +6943,7 @@ type AddRolesToIAM2VirtualIDGroupParamDetail struct {
 // AddRolesToIAM2VirtualIDGroupParam AddRolesToIAM2VirtualIDGroup request param
 type AddRolesToIAM2VirtualIDGroupParam struct {
 	BaseParam
-	AddRolesToIAM2VirtualIDGroup AddRolesToIAM2VirtualIDGroupParamDetail `json:"addRolesToIAM2VirtualIDGroup"`
+	Params AddRolesToIAM2VirtualIDGroupParamDetail `json:"addRolesToIAM2VirtualIDGroup"`
 }
 // CheckStaticProvisionIpParamDetail CheckStaticProvisionIp detail param
 type CheckStaticProvisionIpParamDetail struct {
@@ -6954,7 +6954,7 @@ type CheckStaticProvisionIpParamDetail struct {
 // CheckStaticProvisionIpParam CheckStaticProvisionIp request param
 type CheckStaticProvisionIpParam struct {
 	BaseParam
-	CheckStaticProvisionIp CheckStaticProvisionIpParamDetail `json:"checkStaticProvisionIp"`
+	Params CheckStaticProvisionIpParamDetail `json:"checkStaticProvisionIp"`
 }
 // ChangeEventSubscriptionStateParamDetail ChangeEventSubscriptionState detail param
 type ChangeEventSubscriptionStateParamDetail struct {
@@ -6965,7 +6965,7 @@ type ChangeEventSubscriptionStateParamDetail struct {
 // ChangeEventSubscriptionStateParam ChangeEventSubscriptionState request param
 type ChangeEventSubscriptionStateParam struct {
 	BaseParam
-	ChangeEventSubscriptionState ChangeEventSubscriptionStateParamDetail `json:"changeEventSubscriptionState"`
+	Params ChangeEventSubscriptionStateParamDetail `json:"changeEventSubscriptionState"`
 }
 // PushLicenseAddOnsUsageParamDetail PushLicenseAddOnsUsage detail param
 type PushLicenseAddOnsUsageParamDetail struct {
@@ -6975,7 +6975,7 @@ type PushLicenseAddOnsUsageParamDetail struct {
 // PushLicenseAddOnsUsageParam PushLicenseAddOnsUsage request param
 type PushLicenseAddOnsUsageParam struct {
 	BaseParam
-	PushLicenseAddOnsUsage PushLicenseAddOnsUsageParamDetail `json:"pushLicenseAddOnsUsage"`
+	Params PushLicenseAddOnsUsageParamDetail `json:"pushLicenseAddOnsUsage"`
 }
 // AttachHybridEipToEcsParamDetail AttachHybridEipToEcs detail param
 type AttachHybridEipToEcsParamDetail struct {
@@ -6987,7 +6987,7 @@ type AttachHybridEipToEcsParamDetail struct {
 // AttachHybridEipToEcsParam AttachHybridEipToEcs request param
 type AttachHybridEipToEcsParam struct {
 	BaseParam
-	AttachHybridEipToEcs AttachHybridEipToEcsParamDetail `json:"attachHybridEipToEcs"`
+	Params AttachHybridEipToEcsParamDetail `json:"attachHybridEipToEcs"`
 }
 // CreateEcsImageFromLocalImageParamDetail CreateEcsImageFromLocalImage detail param
 type CreateEcsImageFromLocalImageParamDetail struct {
@@ -7003,7 +7003,7 @@ type CreateEcsImageFromLocalImageParamDetail struct {
 // CreateEcsImageFromLocalImageParam CreateEcsImageFromLocalImage request param
 type CreateEcsImageFromLocalImageParam struct {
 	BaseParam
-	CreateEcsImageFromLocalImage CreateEcsImageFromLocalImageParamDetail `json:"createEcsImageFromLocalImage"`
+	Params CreateEcsImageFromLocalImageParamDetail `json:"createEcsImageFromLocalImage"`
 }
 // AddHostRouteToL3NetworkParamDetail AddHostRouteToL3Network detail param
 type AddHostRouteToL3NetworkParamDetail struct {
@@ -7015,7 +7015,7 @@ type AddHostRouteToL3NetworkParamDetail struct {
 // AddHostRouteToL3NetworkParam AddHostRouteToL3Network request param
 type AddHostRouteToL3NetworkParam struct {
 	BaseParam
-	AddHostRouteToL3Network AddHostRouteToL3NetworkParamDetail `json:"addHostRouteToL3Network"`
+	Params AddHostRouteToL3NetworkParamDetail `json:"addHostRouteToL3Network"`
 }
 // AddInstanceToMonitorGroupParamDetail AddInstanceToMonitorGroup detail param
 type AddInstanceToMonitorGroupParamDetail struct {
@@ -7028,7 +7028,7 @@ type AddInstanceToMonitorGroupParamDetail struct {
 // AddInstanceToMonitorGroupParam AddInstanceToMonitorGroup request param
 type AddInstanceToMonitorGroupParam struct {
 	BaseParam
-	AddInstanceToMonitorGroup AddInstanceToMonitorGroupParamDetail `json:"addInstanceToMonitorGroup"`
+	Params AddInstanceToMonitorGroupParamDetail `json:"addInstanceToMonitorGroup"`
 }
 // GetBareMetal2ProvisionNetworkIpAddressCapacityParamDetail GetBareMetal2ProvisionNetworkIpAddressCapacity detail param
 type GetBareMetal2ProvisionNetworkIpAddressCapacityParamDetail struct {
@@ -7038,7 +7038,7 @@ type GetBareMetal2ProvisionNetworkIpAddressCapacityParamDetail struct {
 // GetBareMetal2ProvisionNetworkIpAddressCapacityParam GetBareMetal2ProvisionNetworkIpAddressCapacity request param
 type GetBareMetal2ProvisionNetworkIpAddressCapacityParam struct {
 	BaseParam
-	GetBareMetal2ProvisionNetworkIpAddressCapacity GetBareMetal2ProvisionNetworkIpAddressCapacityParamDetail `json:"getBareMetal2ProvisionNetworkIpAddressCapacity"`
+	Params GetBareMetal2ProvisionNetworkIpAddressCapacityParamDetail `json:"getBareMetal2ProvisionNetworkIpAddressCapacity"`
 }
 // AttachMdevDeviceToVmParamDetail AttachMdevDeviceToVm detail param
 type AttachMdevDeviceToVmParamDetail struct {
@@ -7049,7 +7049,7 @@ type AttachMdevDeviceToVmParamDetail struct {
 // AttachMdevDeviceToVmParam AttachMdevDeviceToVm request param
 type AttachMdevDeviceToVmParam struct {
 	BaseParam
-	AttachMdevDeviceToVm AttachMdevDeviceToVmParamDetail `json:"attachMdevDeviceToVm"`
+	Params AttachMdevDeviceToVmParamDetail `json:"attachMdevDeviceToVm"`
 }
 // DecodeStackTemplateParamDetail DecodeStackTemplate detail param
 type DecodeStackTemplateParamDetail struct {
@@ -7063,7 +7063,7 @@ type DecodeStackTemplateParamDetail struct {
 // DecodeStackTemplateParam DecodeStackTemplate request param
 type DecodeStackTemplateParam struct {
 	BaseParam
-	DecodeStackTemplate DecodeStackTemplateParamDetail `json:"decodeStackTemplate"`
+	Params DecodeStackTemplateParamDetail `json:"decodeStackTemplate"`
 }
 // UpdateVirtualRouterParamDetail UpdateVirtualRouter detail param
 type UpdateVirtualRouterParamDetail struct {
@@ -7074,7 +7074,7 @@ type UpdateVirtualRouterParamDetail struct {
 // UpdateVirtualRouterParam UpdateVirtualRouter request param
 type UpdateVirtualRouterParam struct {
 	BaseParam
-	UpdateVirtualRouter UpdateVirtualRouterParamDetail `json:"updateVirtualRouter"`
+	Params UpdateVirtualRouterParamDetail `json:"updateVirtualRouter"`
 }
 // GetVSwitchTypesParamDetail GetVSwitchTypes detail param
 type GetVSwitchTypesParamDetail struct {
@@ -7083,7 +7083,7 @@ type GetVSwitchTypesParamDetail struct {
 // GetVSwitchTypesParam GetVSwitchTypes request param
 type GetVSwitchTypesParam struct {
 	BaseParam
-	GetVSwitchTypes GetVSwitchTypesParamDetail `json:"getVSwitchTypes"`
+	Params GetVSwitchTypesParamDetail `json:"getVSwitchTypes"`
 }
 // CreateL2HardwareVxlanNetworkPoolParamDetail CreateL2HardwareVxlanNetworkPool detail param
 type CreateL2HardwareVxlanNetworkPoolParamDetail struct {
@@ -7103,7 +7103,7 @@ type CreateL2HardwareVxlanNetworkPoolParamDetail struct {
 // CreateL2HardwareVxlanNetworkPoolParam CreateL2HardwareVxlanNetworkPool request param
 type CreateL2HardwareVxlanNetworkPoolParam struct {
 	BaseParam
-	CreateL2HardwareVxlanNetworkPool CreateL2HardwareVxlanNetworkPoolParamDetail `json:"createL2HardwareVxlanNetworkPool"`
+	Params CreateL2HardwareVxlanNetworkPoolParamDetail `json:"createL2HardwareVxlanNetworkPool"`
 }
 // GetLdapServerAvailableAttributesParamDetail GetLdapServerAvailableAttributes detail param
 type GetLdapServerAvailableAttributesParamDetail struct {
@@ -7113,7 +7113,7 @@ type GetLdapServerAvailableAttributesParamDetail struct {
 // GetLdapServerAvailableAttributesParam GetLdapServerAvailableAttributes request param
 type GetLdapServerAvailableAttributesParam struct {
 	BaseParam
-	GetLdapServerAvailableAttributes GetLdapServerAvailableAttributesParamDetail `json:"getLdapServerAvailableAttributes"`
+	Params GetLdapServerAvailableAttributesParamDetail `json:"getLdapServerAvailableAttributes"`
 }
 // ResizeDataVolumeParamDetail ResizeDataVolume detail param
 type ResizeDataVolumeParamDetail struct {
@@ -7124,7 +7124,7 @@ type ResizeDataVolumeParamDetail struct {
 // ResizeDataVolumeParam ResizeDataVolume request param
 type ResizeDataVolumeParam struct {
 	BaseParam
-	ResizeDataVolume ResizeDataVolumeParamDetail `json:"resizeDataVolume"`
+	Params ResizeDataVolumeParamDetail `json:"resizeDataVolume"`
 }
 // GetEipAttachableVmNicsParamDetail GetEipAttachableVmNics detail param
 type GetEipAttachableVmNicsParamDetail struct {
@@ -7141,7 +7141,7 @@ type GetEipAttachableVmNicsParamDetail struct {
 // GetEipAttachableVmNicsParam GetEipAttachableVmNics request param
 type GetEipAttachableVmNicsParam struct {
 	BaseParam
-	GetEipAttachableVmNics GetEipAttachableVmNicsParamDetail `json:"getEipAttachableVmNics"`
+	Params GetEipAttachableVmNicsParamDetail `json:"getEipAttachableVmNics"`
 }
 // AddIpv6RangeByNetworkCidrParamDetail AddIpv6RangeByNetworkCidr detail param
 type AddIpv6RangeByNetworkCidrParamDetail struct {
@@ -7158,7 +7158,7 @@ type AddIpv6RangeByNetworkCidrParamDetail struct {
 // AddIpv6RangeByNetworkCidrParam AddIpv6RangeByNetworkCidr request param
 type AddIpv6RangeByNetworkCidrParam struct {
 	BaseParam
-	AddIpv6RangeByNetworkCidr AddIpv6RangeByNetworkCidrParamDetail `json:"addIpv6RangeByNetworkCidr"`
+	Params AddIpv6RangeByNetworkCidrParamDetail `json:"addIpv6RangeByNetworkCidr"`
 }
 // BatchQueryParamDetail BatchQuery detail param
 type BatchQueryParamDetail struct {
@@ -7168,7 +7168,7 @@ type BatchQueryParamDetail struct {
 // BatchQueryParam BatchQuery request param
 type BatchQueryParam struct {
 	BaseParam
-	BatchQuery BatchQueryParamDetail `json:"batchQuery"`
+	Params BatchQueryParamDetail `json:"batchQuery"`
 }
 // ReloadExternalServiceParamDetail ReloadExternalService detail param
 type ReloadExternalServiceParamDetail struct {
@@ -7178,7 +7178,7 @@ type ReloadExternalServiceParamDetail struct {
 // ReloadExternalServiceParam ReloadExternalService request param
 type ReloadExternalServiceParam struct {
 	BaseParam
-	ReloadExternalService ReloadExternalServiceParamDetail `json:"reloadExternalService"`
+	Params ReloadExternalServiceParamDetail `json:"reloadExternalService"`
 }
 // AddIAM2VirtualIDsToGroupParamDetail AddIAM2VirtualIDsToGroup detail param
 type AddIAM2VirtualIDsToGroupParamDetail struct {
@@ -7189,7 +7189,7 @@ type AddIAM2VirtualIDsToGroupParamDetail struct {
 // AddIAM2VirtualIDsToGroupParam AddIAM2VirtualIDsToGroup request param
 type AddIAM2VirtualIDsToGroupParam struct {
 	BaseParam
-	AddIAM2VirtualIDsToGroup AddIAM2VirtualIDsToGroupParamDetail `json:"addIAM2VirtualIDsToGroup"`
+	Params AddIAM2VirtualIDsToGroupParamDetail `json:"addIAM2VirtualIDsToGroup"`
 }
 // CreateIAM2VirtualIDLdapBindingParamDetail CreateIAM2VirtualIDLdapBinding detail param
 type CreateIAM2VirtualIDLdapBindingParamDetail struct {
@@ -7202,7 +7202,7 @@ type CreateIAM2VirtualIDLdapBindingParamDetail struct {
 // CreateIAM2VirtualIDLdapBindingParam CreateIAM2VirtualIDLdapBinding request param
 type CreateIAM2VirtualIDLdapBindingParam struct {
 	BaseParam
-	CreateIAM2VirtualIDLdapBinding CreateIAM2VirtualIDLdapBindingParamDetail `json:"createIAM2VirtualIDLdapBinding"`
+	Params CreateIAM2VirtualIDLdapBindingParamDetail `json:"createIAM2VirtualIDLdapBinding"`
 }
 // SetVmNicSecurityGroupParamDetail SetVmNicSecurityGroup detail param
 type SetVmNicSecurityGroupParamDetail struct {
@@ -7213,7 +7213,7 @@ type SetVmNicSecurityGroupParamDetail struct {
 // SetVmNicSecurityGroupParam SetVmNicSecurityGroup request param
 type SetVmNicSecurityGroupParam struct {
 	BaseParam
-	SetVmNicSecurityGroup SetVmNicSecurityGroupParamDetail `json:"setVmNicSecurityGroup"`
+	Params SetVmNicSecurityGroupParamDetail `json:"setVmNicSecurityGroup"`
 }
 // AddIdentityZoneFromRemoteParamDetail AddIdentityZoneFromRemote detail param
 type AddIdentityZoneFromRemoteParamDetail struct {
@@ -7228,7 +7228,7 @@ type AddIdentityZoneFromRemoteParamDetail struct {
 // AddIdentityZoneFromRemoteParam AddIdentityZoneFromRemote request param
 type AddIdentityZoneFromRemoteParam struct {
 	BaseParam
-	AddIdentityZoneFromRemote AddIdentityZoneFromRemoteParamDetail `json:"addIdentityZoneFromRemote"`
+	Params AddIdentityZoneFromRemoteParamDetail `json:"addIdentityZoneFromRemote"`
 }
 // GetVolumeSnapshotSizeParamDetail GetVolumeSnapshotSize detail param
 type GetVolumeSnapshotSizeParamDetail struct {
@@ -7238,7 +7238,7 @@ type GetVolumeSnapshotSizeParamDetail struct {
 // GetVolumeSnapshotSizeParam GetVolumeSnapshotSize request param
 type GetVolumeSnapshotSizeParam struct {
 	BaseParam
-	GetVolumeSnapshotSize GetVolumeSnapshotSizeParamDetail `json:"getVolumeSnapshotSize"`
+	Params GetVolumeSnapshotSizeParamDetail `json:"getVolumeSnapshotSize"`
 }
 // BatchSyncVolumeSizeParamDetail BatchSyncVolumeSize detail param
 type BatchSyncVolumeSizeParamDetail struct {
@@ -7248,7 +7248,7 @@ type BatchSyncVolumeSizeParamDetail struct {
 // BatchSyncVolumeSizeParam BatchSyncVolumeSize request param
 type BatchSyncVolumeSizeParam struct {
 	BaseParam
-	BatchSyncVolumeSize BatchSyncVolumeSizeParamDetail `json:"batchSyncVolumeSize"`
+	Params BatchSyncVolumeSizeParamDetail `json:"batchSyncVolumeSize"`
 }
 // GetHypervisorTypesParamDetail GetHypervisorTypes detail param
 type GetHypervisorTypesParamDetail struct {
@@ -7257,7 +7257,7 @@ type GetHypervisorTypesParamDetail struct {
 // GetHypervisorTypesParam GetHypervisorTypes request param
 type GetHypervisorTypesParam struct {
 	BaseParam
-	GetHypervisorTypes GetHypervisorTypesParamDetail `json:"getHypervisorTypes"`
+	Params GetHypervisorTypesParamDetail `json:"getHypervisorTypes"`
 }
 // GetVmAttachableDataVolumeParamDetail GetVmAttachableDataVolume detail param
 type GetVmAttachableDataVolumeParamDetail struct {
@@ -7267,7 +7267,7 @@ type GetVmAttachableDataVolumeParamDetail struct {
 // GetVmAttachableDataVolumeParam GetVmAttachableDataVolume request param
 type GetVmAttachableDataVolumeParam struct {
 	BaseParam
-	GetVmAttachableDataVolume GetVmAttachableDataVolumeParamDetail `json:"getVmAttachableDataVolume"`
+	Params GetVmAttachableDataVolumeParamDetail `json:"getVmAttachableDataVolume"`
 }
 // GetVmMonitorNumberParamDetail GetVmMonitorNumber detail param
 type GetVmMonitorNumberParamDetail struct {
@@ -7277,7 +7277,7 @@ type GetVmMonitorNumberParamDetail struct {
 // GetVmMonitorNumberParam GetVmMonitorNumber request param
 type GetVmMonitorNumberParam struct {
 	BaseParam
-	GetVmMonitorNumber GetVmMonitorNumberParamDetail `json:"getVmMonitorNumber"`
+	Params GetVmMonitorNumberParamDetail `json:"getVmMonitorNumber"`
 }
 // CreateIAM2VirtualIDFromLdapUidParamDetail CreateIAM2VirtualIDFromLdapUid detail param
 type CreateIAM2VirtualIDFromLdapUidParamDetail struct {
@@ -7289,7 +7289,7 @@ type CreateIAM2VirtualIDFromLdapUidParamDetail struct {
 // CreateIAM2VirtualIDFromLdapUidParam CreateIAM2VirtualIDFromLdapUid request param
 type CreateIAM2VirtualIDFromLdapUidParam struct {
 	BaseParam
-	CreateIAM2VirtualIDFromLdapUid CreateIAM2VirtualIDFromLdapUidParamDetail `json:"createIAM2VirtualIDFromLdapUid"`
+	Params CreateIAM2VirtualIDFromLdapUidParamDetail `json:"createIAM2VirtualIDFromLdapUid"`
 }
 // ValidatePriceUserConfigParamDetail ValidatePriceUserConfig detail param
 type ValidatePriceUserConfigParamDetail struct {
@@ -7299,7 +7299,7 @@ type ValidatePriceUserConfigParamDetail struct {
 // ValidatePriceUserConfigParam ValidatePriceUserConfig request param
 type ValidatePriceUserConfigParam struct {
 	BaseParam
-	ValidatePriceUserConfig ValidatePriceUserConfigParamDetail `json:"validatePriceUserConfig"`
+	Params ValidatePriceUserConfigParamDetail `json:"validatePriceUserConfig"`
 }
 // ChangeBareMetal2GatewayStateParamDetail ChangeBareMetal2GatewayState detail param
 type ChangeBareMetal2GatewayStateParamDetail struct {
@@ -7310,7 +7310,7 @@ type ChangeBareMetal2GatewayStateParamDetail struct {
 // ChangeBareMetal2GatewayStateParam ChangeBareMetal2GatewayState request param
 type ChangeBareMetal2GatewayStateParam struct {
 	BaseParam
-	ChangeBareMetal2GatewayState ChangeBareMetal2GatewayStateParamDetail `json:"changeBareMetal2GatewayState"`
+	Params ChangeBareMetal2GatewayStateParamDetail `json:"changeBareMetal2GatewayState"`
 }
 // RemoveActionFromEventSubscriptionParamDetail RemoveActionFromEventSubscription detail param
 type RemoveActionFromEventSubscriptionParamDetail struct {
@@ -7321,7 +7321,7 @@ type RemoveActionFromEventSubscriptionParamDetail struct {
 // RemoveActionFromEventSubscriptionParam RemoveActionFromEventSubscription request param
 type RemoveActionFromEventSubscriptionParam struct {
 	BaseParam
-	RemoveActionFromEventSubscription RemoveActionFromEventSubscriptionParamDetail `json:"removeActionFromEventSubscription"`
+	Params RemoveActionFromEventSubscriptionParamDetail `json:"removeActionFromEventSubscription"`
 }
 // CheckKVMHostConfigFileParamDetail CheckKVMHostConfigFile detail param
 type CheckKVMHostConfigFileParamDetail struct {
@@ -7331,7 +7331,7 @@ type CheckKVMHostConfigFileParamDetail struct {
 // CheckKVMHostConfigFileParam CheckKVMHostConfigFile request param
 type CheckKVMHostConfigFileParam struct {
 	BaseParam
-	CheckKVMHostConfigFile CheckKVMHostConfigFileParamDetail `json:"checkKVMHostConfigFile"`
+	Params CheckKVMHostConfigFileParamDetail `json:"checkKVMHostConfigFile"`
 }
 // GetContainerUsageParamDetail GetContainerUsage detail param
 type GetContainerUsageParamDetail struct {
@@ -7340,7 +7340,7 @@ type GetContainerUsageParamDetail struct {
 // GetContainerUsageParam GetContainerUsage request param
 type GetContainerUsageParam struct {
 	BaseParam
-	GetContainerUsage GetContainerUsageParamDetail `json:"getContainerUsage"`
+	Params GetContainerUsageParamDetail `json:"getContainerUsage"`
 }
 // SNSSnmpTestConnectionParamDetail SNSSnmpTestConnection detail param
 type SNSSnmpTestConnectionParamDetail struct {
@@ -7351,7 +7351,7 @@ type SNSSnmpTestConnectionParamDetail struct {
 // SNSSnmpTestConnectionParam SNSSnmpTestConnection request param
 type SNSSnmpTestConnectionParam struct {
 	BaseParam
-	SNSSnmpTestConnection SNSSnmpTestConnectionParamDetail `json:"sNSSnmpTestConnection"`
+	Params SNSSnmpTestConnectionParamDetail `json:"sNSSnmpTestConnection"`
 }
 // GetDataCenterFromRemoteParamDetail GetDataCenterFromRemote detail param
 type GetDataCenterFromRemoteParamDetail struct {
@@ -7362,7 +7362,7 @@ type GetDataCenterFromRemoteParamDetail struct {
 // GetDataCenterFromRemoteParam GetDataCenterFromRemote request param
 type GetDataCenterFromRemoteParam struct {
 	BaseParam
-	GetDataCenterFromRemote GetDataCenterFromRemoteParamDetail `json:"getDataCenterFromRemote"`
+	Params GetDataCenterFromRemoteParamDetail `json:"getDataCenterFromRemote"`
 }
 // CreateHostNetworkServiceTypeParamDetail CreateHostNetworkServiceType detail param
 type CreateHostNetworkServiceTypeParamDetail struct {
@@ -7375,7 +7375,7 @@ type CreateHostNetworkServiceTypeParamDetail struct {
 // CreateHostNetworkServiceTypeParam CreateHostNetworkServiceType request param
 type CreateHostNetworkServiceTypeParam struct {
 	BaseParam
-	CreateHostNetworkServiceType CreateHostNetworkServiceTypeParamDetail `json:"createHostNetworkServiceType"`
+	Params CreateHostNetworkServiceTypeParamDetail `json:"createHostNetworkServiceType"`
 }
 // DeleteEcsImageLocalParamDetail DeleteEcsImageLocal detail param
 type DeleteEcsImageLocalParamDetail struct {
@@ -7386,7 +7386,7 @@ type DeleteEcsImageLocalParamDetail struct {
 // DeleteEcsImageLocalParam DeleteEcsImageLocal request param
 type DeleteEcsImageLocalParam struct {
 	BaseParam
-	DeleteEcsImageLocal DeleteEcsImageLocalParamDetail `json:"deleteEcsImageLocal"`
+	Params DeleteEcsImageLocalParamDetail `json:"deleteEcsImageLocal"`
 }
 // DetachNvmeServerFromClusterParamDetail DetachNvmeServerFromCluster detail param
 type DetachNvmeServerFromClusterParamDetail struct {
@@ -7397,7 +7397,7 @@ type DetachNvmeServerFromClusterParamDetail struct {
 // DetachNvmeServerFromClusterParam DetachNvmeServerFromCluster request param
 type DetachNvmeServerFromClusterParam struct {
 	BaseParam
-	DetachNvmeServerFromCluster DetachNvmeServerFromClusterParamDetail `json:"detachNvmeServerFromCluster"`
+	Params DetachNvmeServerFromClusterParamDetail `json:"detachNvmeServerFromCluster"`
 }
 // GetBackupStorageTypesParamDetail GetBackupStorageTypes detail param
 type GetBackupStorageTypesParamDetail struct {
@@ -7406,7 +7406,7 @@ type GetBackupStorageTypesParamDetail struct {
 // GetBackupStorageTypesParam GetBackupStorageTypes request param
 type GetBackupStorageTypesParam struct {
 	BaseParam
-	GetBackupStorageTypes GetBackupStorageTypesParamDetail `json:"getBackupStorageTypes"`
+	Params GetBackupStorageTypesParamDetail `json:"getBackupStorageTypes"`
 }
 // GetVolumeQosParamDetail GetVolumeQos detail param
 type GetVolumeQosParamDetail struct {
@@ -7417,7 +7417,7 @@ type GetVolumeQosParamDetail struct {
 // GetVolumeQosParam GetVolumeQos request param
 type GetVolumeQosParam struct {
 	BaseParam
-	GetVolumeQos GetVolumeQosParamDetail `json:"getVolumeQos"`
+	Params GetVolumeQosParamDetail `json:"getVolumeQos"`
 }
 // AddRemoteCidrsToIPsecConnectionParamDetail AddRemoteCidrsToIPsecConnection detail param
 type AddRemoteCidrsToIPsecConnectionParamDetail struct {
@@ -7430,7 +7430,7 @@ type AddRemoteCidrsToIPsecConnectionParamDetail struct {
 // AddRemoteCidrsToIPsecConnectionParam AddRemoteCidrsToIPsecConnection request param
 type AddRemoteCidrsToIPsecConnectionParam struct {
 	BaseParam
-	AddRemoteCidrsToIPsecConnection AddRemoteCidrsToIPsecConnectionParamDetail `json:"addRemoteCidrsToIPsecConnection"`
+	Params AddRemoteCidrsToIPsecConnectionParamDetail `json:"addRemoteCidrsToIPsecConnection"`
 }
 // PowerOnBaremetalChassisParamDetail PowerOnBaremetalChassis detail param
 type PowerOnBaremetalChassisParamDetail struct {
@@ -7440,7 +7440,7 @@ type PowerOnBaremetalChassisParamDetail struct {
 // PowerOnBaremetalChassisParam PowerOnBaremetalChassis request param
 type PowerOnBaremetalChassisParam struct {
 	BaseParam
-	PowerOnBaremetalChassis PowerOnBaremetalChassisParamDetail `json:"powerOnBaremetalChassis"`
+	Params PowerOnBaremetalChassisParamDetail `json:"powerOnBaremetalChassis"`
 }
 // RequestLicenseCapacityParamDetail RequestLicenseCapacity detail param
 type RequestLicenseCapacityParamDetail struct {
@@ -7455,7 +7455,7 @@ type RequestLicenseCapacityParamDetail struct {
 // RequestLicenseCapacityParam RequestLicenseCapacity request param
 type RequestLicenseCapacityParam struct {
 	BaseParam
-	RequestLicenseCapacity RequestLicenseCapacityParamDetail `json:"requestLicenseCapacity"`
+	Params RequestLicenseCapacityParamDetail `json:"requestLicenseCapacity"`
 }
 // CreateDataVolumeFromVolumeSnapshotParamDetail CreateDataVolumeFromVolumeSnapshot detail param
 type CreateDataVolumeFromVolumeSnapshotParamDetail struct {
@@ -7470,7 +7470,7 @@ type CreateDataVolumeFromVolumeSnapshotParamDetail struct {
 // CreateDataVolumeFromVolumeSnapshotParam CreateDataVolumeFromVolumeSnapshot request param
 type CreateDataVolumeFromVolumeSnapshotParam struct {
 	BaseParam
-	CreateDataVolumeFromVolumeSnapshot CreateDataVolumeFromVolumeSnapshotParamDetail `json:"createDataVolumeFromVolumeSnapshot"`
+	Params CreateDataVolumeFromVolumeSnapshotParamDetail `json:"createDataVolumeFromVolumeSnapshot"`
 }
 // DetachIsoFromVmInstanceParamDetail DetachIsoFromVmInstance detail param
 type DetachIsoFromVmInstanceParamDetail struct {
@@ -7481,7 +7481,7 @@ type DetachIsoFromVmInstanceParamDetail struct {
 // DetachIsoFromVmInstanceParam DetachIsoFromVmInstance request param
 type DetachIsoFromVmInstanceParam struct {
 	BaseParam
-	DetachIsoFromVmInstance DetachIsoFromVmInstanceParamDetail `json:"detachIsoFromVmInstance"`
+	Params DetachIsoFromVmInstanceParamDetail `json:"detachIsoFromVmInstance"`
 }
 // DetachSecurityGroupFromL3NetworkParamDetail DetachSecurityGroupFromL3Network detail param
 type DetachSecurityGroupFromL3NetworkParamDetail struct {
@@ -7492,7 +7492,7 @@ type DetachSecurityGroupFromL3NetworkParamDetail struct {
 // DetachSecurityGroupFromL3NetworkParam DetachSecurityGroupFromL3Network request param
 type DetachSecurityGroupFromL3NetworkParam struct {
 	BaseParam
-	DetachSecurityGroupFromL3Network DetachSecurityGroupFromL3NetworkParamDetail `json:"detachSecurityGroupFromL3Network"`
+	Params DetachSecurityGroupFromL3NetworkParamDetail `json:"detachSecurityGroupFromL3Network"`
 }
 // GetVirtualizerInfoParamDetail GetVirtualizerInfo detail param
 type GetVirtualizerInfoParamDetail struct {
@@ -7502,7 +7502,7 @@ type GetVirtualizerInfoParamDetail struct {
 // GetVirtualizerInfoParam GetVirtualizerInfo request param
 type GetVirtualizerInfoParam struct {
 	BaseParam
-	GetVirtualizerInfo GetVirtualizerInfoParamDetail `json:"getVirtualizerInfo"`
+	Params GetVirtualizerInfoParamDetail `json:"getVirtualizerInfo"`
 }
 // GetL3NetworkIpStatisticParamDetail GetL3NetworkIpStatistic detail param
 type GetL3NetworkIpStatisticParamDetail struct {
@@ -7519,7 +7519,7 @@ type GetL3NetworkIpStatisticParamDetail struct {
 // GetL3NetworkIpStatisticParam GetL3NetworkIpStatistic request param
 type GetL3NetworkIpStatisticParam struct {
 	BaseParam
-	GetL3NetworkIpStatistic GetL3NetworkIpStatisticParamDetail `json:"getL3NetworkIpStatistic"`
+	Params GetL3NetworkIpStatisticParamDetail `json:"getL3NetworkIpStatistic"`
 }
 // GetImageCandidatesForVmToChangeParamDetail GetImageCandidatesForVmToChange detail param
 type GetImageCandidatesForVmToChangeParamDetail struct {
@@ -7529,7 +7529,7 @@ type GetImageCandidatesForVmToChangeParamDetail struct {
 // GetImageCandidatesForVmToChangeParam GetImageCandidatesForVmToChange request param
 type GetImageCandidatesForVmToChangeParam struct {
 	BaseParam
-	GetImageCandidatesForVmToChange GetImageCandidatesForVmToChangeParamDetail `json:"getImageCandidatesForVmToChange"`
+	Params GetImageCandidatesForVmToChangeParamDetail `json:"getImageCandidatesForVmToChange"`
 }
 // ChangeImageStateParamDetail ChangeImageState detail param
 type ChangeImageStateParamDetail struct {
@@ -7540,7 +7540,7 @@ type ChangeImageStateParamDetail struct {
 // ChangeImageStateParam ChangeImageState request param
 type ChangeImageStateParam struct {
 	BaseParam
-	ChangeImageState ChangeImageStateParamDetail `json:"changeImageState"`
+	Params ChangeImageStateParamDetail `json:"changeImageState"`
 }
 // KvmRunShellParamDetail KvmRunShell detail param
 type KvmRunShellParamDetail struct {
@@ -7551,7 +7551,7 @@ type KvmRunShellParamDetail struct {
 // KvmRunShellParam KvmRunShell request param
 type KvmRunShellParam struct {
 	BaseParam
-	KvmRunShell KvmRunShellParamDetail `json:"kvmRunShell"`
+	Params KvmRunShellParamDetail `json:"kvmRunShell"`
 }
 // CreateAliyunNasAccessGroupRuleParamDetail CreateAliyunNasAccessGroupRule detail param
 type CreateAliyunNasAccessGroupRuleParamDetail struct {
@@ -7566,7 +7566,7 @@ type CreateAliyunNasAccessGroupRuleParamDetail struct {
 // CreateAliyunNasAccessGroupRuleParam CreateAliyunNasAccessGroupRule request param
 type CreateAliyunNasAccessGroupRuleParam struct {
 	BaseParam
-	CreateAliyunNasAccessGroupRule CreateAliyunNasAccessGroupRuleParamDetail `json:"createAliyunNasAccessGroupRule"`
+	Params CreateAliyunNasAccessGroupRuleParamDetail `json:"createAliyunNasAccessGroupRule"`
 }
 // RecoverBackupFromImageStoreBackupStorageParamDetail RecoverBackupFromImageStoreBackupStorage detail param
 type RecoverBackupFromImageStoreBackupStorageParamDetail struct {
@@ -7578,7 +7578,7 @@ type RecoverBackupFromImageStoreBackupStorageParamDetail struct {
 // RecoverBackupFromImageStoreBackupStorageParam RecoverBackupFromImageStoreBackupStorage request param
 type RecoverBackupFromImageStoreBackupStorageParam struct {
 	BaseParam
-	RecoverBackupFromImageStoreBackupStorage RecoverBackupFromImageStoreBackupStorageParamDetail `json:"recoverBackupFromImageStoreBackupStorage"`
+	Params RecoverBackupFromImageStoreBackupStorageParamDetail `json:"recoverBackupFromImageStoreBackupStorage"`
 }
 // ChangeTicketFlowCollectionStateParamDetail ChangeTicketFlowCollectionState detail param
 type ChangeTicketFlowCollectionStateParamDetail struct {
@@ -7589,7 +7589,7 @@ type ChangeTicketFlowCollectionStateParamDetail struct {
 // ChangeTicketFlowCollectionStateParam ChangeTicketFlowCollectionState request param
 type ChangeTicketFlowCollectionStateParam struct {
 	BaseParam
-	ChangeTicketFlowCollectionState ChangeTicketFlowCollectionStateParamDetail `json:"changeTicketFlowCollectionState"`
+	Params ChangeTicketFlowCollectionStateParamDetail `json:"changeTicketFlowCollectionState"`
 }
 // ExpungeDataVolumeParamDetail ExpungeDataVolume detail param
 type ExpungeDataVolumeParamDetail struct {
@@ -7599,7 +7599,7 @@ type ExpungeDataVolumeParamDetail struct {
 // ExpungeDataVolumeParam ExpungeDataVolume request param
 type ExpungeDataVolumeParam struct {
 	BaseParam
-	ExpungeDataVolume ExpungeDataVolumeParamDetail `json:"expungeDataVolume"`
+	Params ExpungeDataVolumeParamDetail `json:"expungeDataVolume"`
 }
 // AddActionToEventSubscriptionParamDetail AddActionToEventSubscription detail param
 type AddActionToEventSubscriptionParamDetail struct {
@@ -7611,7 +7611,7 @@ type AddActionToEventSubscriptionParamDetail struct {
 // AddActionToEventSubscriptionParam AddActionToEventSubscription request param
 type AddActionToEventSubscriptionParam struct {
 	BaseParam
-	AddActionToEventSubscription AddActionToEventSubscriptionParamDetail `json:"addActionToEventSubscription"`
+	Params AddActionToEventSubscriptionParamDetail `json:"addActionToEventSubscription"`
 }
 // GetVRouterRouterIdParamDetail GetVRouterRouterId detail param
 type GetVRouterRouterIdParamDetail struct {
@@ -7621,7 +7621,7 @@ type GetVRouterRouterIdParamDetail struct {
 // GetVRouterRouterIdParam GetVRouterRouterId request param
 type GetVRouterRouterIdParam struct {
 	BaseParam
-	GetVRouterRouterId GetVRouterRouterIdParamDetail `json:"getVRouterRouterId"`
+	Params GetVRouterRouterIdParamDetail `json:"getVRouterRouterId"`
 }
 // GetZBoxBackupDetailsParamDetail GetZBoxBackupDetails detail param
 type GetZBoxBackupDetailsParamDetail struct {
@@ -7631,7 +7631,7 @@ type GetZBoxBackupDetailsParamDetail struct {
 // GetZBoxBackupDetailsParam GetZBoxBackupDetails request param
 type GetZBoxBackupDetailsParam struct {
 	BaseParam
-	GetZBoxBackupDetails GetZBoxBackupDetailsParamDetail `json:"getZBoxBackupDetails"`
+	Params GetZBoxBackupDetailsParamDetail `json:"getZBoxBackupDetails"`
 }
 // GetExternalServicesParamDetail GetExternalServices detail param
 type GetExternalServicesParamDetail struct {
@@ -7640,7 +7640,7 @@ type GetExternalServicesParamDetail struct {
 // GetExternalServicesParam GetExternalServices request param
 type GetExternalServicesParam struct {
 	BaseParam
-	GetExternalServices GetExternalServicesParamDetail `json:"getExternalServices"`
+	Params GetExternalServicesParamDetail `json:"getExternalServices"`
 }
 // GetIAM2ProjectRepositoryParamDetail GetIAM2ProjectRepository detail param
 type GetIAM2ProjectRepositoryParamDetail struct {
@@ -7651,7 +7651,7 @@ type GetIAM2ProjectRepositoryParamDetail struct {
 // GetIAM2ProjectRepositoryParam GetIAM2ProjectRepository request param
 type GetIAM2ProjectRepositoryParam struct {
 	BaseParam
-	GetIAM2ProjectRepository GetIAM2ProjectRepositoryParamDetail `json:"getIAM2ProjectRepository"`
+	Params GetIAM2ProjectRepositoryParamDetail `json:"getIAM2ProjectRepository"`
 }
 // GetCandidateNetworkInterfacesParamDetail GetCandidateNetworkInterfaces detail param
 type GetCandidateNetworkInterfacesParamDetail struct {
@@ -7664,7 +7664,7 @@ type GetCandidateNetworkInterfacesParamDetail struct {
 // GetCandidateNetworkInterfacesParam GetCandidateNetworkInterfaces request param
 type GetCandidateNetworkInterfacesParam struct {
 	BaseParam
-	GetCandidateNetworkInterfaces GetCandidateNetworkInterfacesParamDetail `json:"getCandidateNetworkInterfaces"`
+	Params GetCandidateNetworkInterfacesParamDetail `json:"getCandidateNetworkInterfaces"`
 }
 // ChangeAccessControlListServerGroupParamDetail ChangeAccessControlListServerGroup detail param
 type ChangeAccessControlListServerGroupParamDetail struct {
@@ -7676,7 +7676,7 @@ type ChangeAccessControlListServerGroupParamDetail struct {
 // ChangeAccessControlListServerGroupParam ChangeAccessControlListServerGroup request param
 type ChangeAccessControlListServerGroupParam struct {
 	BaseParam
-	ChangeAccessControlListServerGroup ChangeAccessControlListServerGroupParamDetail `json:"changeAccessControlListServerGroup"`
+	Params ChangeAccessControlListServerGroupParamDetail `json:"changeAccessControlListServerGroup"`
 }
 // SyncVirtualBorderRouterFromRemoteParamDetail SyncVirtualBorderRouterFromRemote detail param
 type SyncVirtualBorderRouterFromRemoteParamDetail struct {
@@ -7688,7 +7688,7 @@ type SyncVirtualBorderRouterFromRemoteParamDetail struct {
 // SyncVirtualBorderRouterFromRemoteParam SyncVirtualBorderRouterFromRemote request param
 type SyncVirtualBorderRouterFromRemoteParam struct {
 	BaseParam
-	SyncVirtualBorderRouterFromRemote SyncVirtualBorderRouterFromRemoteParamDetail `json:"syncVirtualBorderRouterFromRemote"`
+	Params SyncVirtualBorderRouterFromRemoteParamDetail `json:"syncVirtualBorderRouterFromRemote"`
 }
 // UpdateAtPersonOfAtFeiShuEndpointParamDetail UpdateAtPersonOfAtFeiShuEndpoint detail param
 type UpdateAtPersonOfAtFeiShuEndpointParamDetail struct {
@@ -7701,7 +7701,7 @@ type UpdateAtPersonOfAtFeiShuEndpointParamDetail struct {
 // UpdateAtPersonOfAtFeiShuEndpointParam UpdateAtPersonOfAtFeiShuEndpoint request param
 type UpdateAtPersonOfAtFeiShuEndpointParam struct {
 	BaseParam
-	UpdateAtPersonOfAtFeiShuEndpoint UpdateAtPersonOfAtFeiShuEndpointParamDetail `json:"updateAtPersonOfAtFeiShuEndpoint"`
+	Params UpdateAtPersonOfAtFeiShuEndpointParamDetail `json:"updateAtPersonOfAtFeiShuEndpoint"`
 }
 // CreateL2HardwareVxlanNetworkParamDetail CreateL2HardwareVxlanNetwork detail param
 type CreateL2HardwareVxlanNetworkParamDetail struct {
@@ -7724,7 +7724,7 @@ type CreateL2HardwareVxlanNetworkParamDetail struct {
 // CreateL2HardwareVxlanNetworkParam CreateL2HardwareVxlanNetwork request param
 type CreateL2HardwareVxlanNetworkParam struct {
 	BaseParam
-	CreateL2HardwareVxlanNetwork CreateL2HardwareVxlanNetworkParamDetail `json:"createL2HardwareVxlanNetwork"`
+	Params CreateL2HardwareVxlanNetworkParamDetail `json:"createL2HardwareVxlanNetwork"`
 }
 // GetGlobalConfigOptionsParamDetail GetGlobalConfigOptions detail param
 type GetGlobalConfigOptionsParamDetail struct {
@@ -7735,7 +7735,7 @@ type GetGlobalConfigOptionsParamDetail struct {
 // GetGlobalConfigOptionsParam GetGlobalConfigOptions request param
 type GetGlobalConfigOptionsParam struct {
 	BaseParam
-	GetGlobalConfigOptions GetGlobalConfigOptionsParamDetail `json:"getGlobalConfigOptions"`
+	Params GetGlobalConfigOptionsParamDetail `json:"getGlobalConfigOptions"`
 }
 // CreateHybridEipParamDetail CreateHybridEip detail param
 type CreateHybridEipParamDetail struct {
@@ -7752,7 +7752,7 @@ type CreateHybridEipParamDetail struct {
 // CreateHybridEipParam CreateHybridEip request param
 type CreateHybridEipParam struct {
 	BaseParam
-	CreateHybridEip CreateHybridEipParamDetail `json:"createHybridEip"`
+	Params CreateHybridEipParamDetail `json:"createHybridEip"`
 }
 // ApplyMonitorTemplateToMonitorGroupParamDetail ApplyMonitorTemplateToMonitorGroup detail param
 type ApplyMonitorTemplateToMonitorGroupParamDetail struct {
@@ -7763,7 +7763,7 @@ type ApplyMonitorTemplateToMonitorGroupParamDetail struct {
 // ApplyMonitorTemplateToMonitorGroupParam ApplyMonitorTemplateToMonitorGroup request param
 type ApplyMonitorTemplateToMonitorGroupParam struct {
 	BaseParam
-	ApplyMonitorTemplateToMonitorGroup ApplyMonitorTemplateToMonitorGroupParamDetail `json:"applyMonitorTemplateToMonitorGroup"`
+	Params ApplyMonitorTemplateToMonitorGroupParamDetail `json:"applyMonitorTemplateToMonitorGroup"`
 }
 // PutMetricDataParamDetail PutMetricData detail param
 type PutMetricDataParamDetail struct {
@@ -7774,7 +7774,7 @@ type PutMetricDataParamDetail struct {
 // PutMetricDataParam PutMetricData request param
 type PutMetricDataParam struct {
 	BaseParam
-	PutMetricData PutMetricDataParamDetail `json:"putMetricData"`
+	Params PutMetricDataParamDetail `json:"putMetricData"`
 }
 // GetAttachablePublicL3ForVRouterParamDetail GetAttachablePublicL3ForVRouter detail param
 type GetAttachablePublicL3ForVRouterParamDetail struct {
@@ -7784,7 +7784,7 @@ type GetAttachablePublicL3ForVRouterParamDetail struct {
 // GetAttachablePublicL3ForVRouterParam GetAttachablePublicL3ForVRouter request param
 type GetAttachablePublicL3ForVRouterParam struct {
 	BaseParam
-	GetAttachablePublicL3ForVRouter GetAttachablePublicL3ForVRouterParamDetail `json:"getAttachablePublicL3ForVRouter"`
+	Params GetAttachablePublicL3ForVRouterParamDetail `json:"getAttachablePublicL3ForVRouter"`
 }
 // RerunLongJobParamDetail RerunLongJob detail param
 type RerunLongJobParamDetail struct {
@@ -7794,7 +7794,7 @@ type RerunLongJobParamDetail struct {
 // RerunLongJobParam RerunLongJob request param
 type RerunLongJobParam struct {
 	BaseParam
-	RerunLongJob RerunLongJobParamDetail `json:"rerunLongJob"`
+	Params RerunLongJobParamDetail `json:"rerunLongJob"`
 }
 // DeleteExportedImageFromBackupStorageParamDetail DeleteExportedImageFromBackupStorage detail param
 type DeleteExportedImageFromBackupStorageParamDetail struct {
@@ -7805,7 +7805,7 @@ type DeleteExportedImageFromBackupStorageParamDetail struct {
 // DeleteExportedImageFromBackupStorageParam DeleteExportedImageFromBackupStorage request param
 type DeleteExportedImageFromBackupStorageParam struct {
 	BaseParam
-	DeleteExportedImageFromBackupStorage DeleteExportedImageFromBackupStorageParamDetail `json:"deleteExportedImageFromBackupStorage"`
+	Params DeleteExportedImageFromBackupStorageParamDetail `json:"deleteExportedImageFromBackupStorage"`
 }
 // UpdateClusterOSParamDetail UpdateClusterOS detail param
 type UpdateClusterOSParamDetail struct {
@@ -7822,7 +7822,7 @@ type UpdateClusterOSParamDetail struct {
 // UpdateClusterOSParam UpdateClusterOS request param
 type UpdateClusterOSParam struct {
 	BaseParam
-	UpdateClusterOS UpdateClusterOSParamDetail `json:"updateClusterOS"`
+	Params UpdateClusterOSParamDetail `json:"updateClusterOS"`
 }
 // GetVmUsbRedirectParamDetail GetVmUsbRedirect detail param
 type GetVmUsbRedirectParamDetail struct {
@@ -7832,7 +7832,7 @@ type GetVmUsbRedirectParamDetail struct {
 // GetVmUsbRedirectParam GetVmUsbRedirect request param
 type GetVmUsbRedirectParam struct {
 	BaseParam
-	GetVmUsbRedirect GetVmUsbRedirectParamDetail `json:"getVmUsbRedirect"`
+	Params GetVmUsbRedirectParamDetail `json:"getVmUsbRedirect"`
 }
 // CreateImageGroupFromSnapshotParamDetail CreateImageGroupFromSnapshot detail param
 type CreateImageGroupFromSnapshotParamDetail struct {
@@ -7847,7 +7847,7 @@ type CreateImageGroupFromSnapshotParamDetail struct {
 // CreateImageGroupFromSnapshotParam CreateImageGroupFromSnapshot request param
 type CreateImageGroupFromSnapshotParam struct {
 	BaseParam
-	CreateImageGroupFromSnapshot CreateImageGroupFromSnapshotParamDetail `json:"createImageGroupFromSnapshot"`
+	Params CreateImageGroupFromSnapshotParamDetail `json:"createImageGroupFromSnapshot"`
 }
 // GetOssBucketFileFromRemoteParamDetail GetOssBucketFileFromRemote detail param
 type GetOssBucketFileFromRemoteParamDetail struct {
@@ -7860,7 +7860,7 @@ type GetOssBucketFileFromRemoteParamDetail struct {
 // GetOssBucketFileFromRemoteParam GetOssBucketFileFromRemote request param
 type GetOssBucketFileFromRemoteParam struct {
 	BaseParam
-	GetOssBucketFileFromRemote GetOssBucketFileFromRemoteParamDetail `json:"getOssBucketFileFromRemote"`
+	Params GetOssBucketFileFromRemoteParamDetail `json:"getOssBucketFileFromRemote"`
 }
 // AttachVipToVpcSharedQosParamDetail AttachVipToVpcSharedQos detail param
 type AttachVipToVpcSharedQosParamDetail struct {
@@ -7872,7 +7872,7 @@ type AttachVipToVpcSharedQosParamDetail struct {
 // AttachVipToVpcSharedQosParam AttachVipToVpcSharedQos request param
 type AttachVipToVpcSharedQosParam struct {
 	BaseParam
-	AttachVipToVpcSharedQos AttachVipToVpcSharedQosParamDetail `json:"attachVipToVpcSharedQos"`
+	Params AttachVipToVpcSharedQosParamDetail `json:"attachVipToVpcSharedQos"`
 }
 // GetEventDataParamDetail GetEventData detail param
 type GetEventDataParamDetail struct {
@@ -7890,7 +7890,7 @@ type GetEventDataParamDetail struct {
 // GetEventDataParam GetEventData request param
 type GetEventDataParam struct {
 	BaseParam
-	GetEventData GetEventDataParamDetail `json:"getEventData"`
+	Params GetEventDataParamDetail `json:"getEventData"`
 }
 // CheckIpAvailabilityParamDetail CheckIpAvailability detail param
 type CheckIpAvailabilityParamDetail struct {
@@ -7903,7 +7903,7 @@ type CheckIpAvailabilityParamDetail struct {
 // CheckIpAvailabilityParam CheckIpAvailability request param
 type CheckIpAvailabilityParam struct {
 	BaseParam
-	CheckIpAvailability CheckIpAvailabilityParamDetail `json:"checkIpAvailability"`
+	Params CheckIpAvailabilityParamDetail `json:"checkIpAvailability"`
 }
 // RemoveVmNicFromLoadBalancerParamDetail RemoveVmNicFromLoadBalancer detail param
 type RemoveVmNicFromLoadBalancerParamDetail struct {
@@ -7914,7 +7914,7 @@ type RemoveVmNicFromLoadBalancerParamDetail struct {
 // RemoveVmNicFromLoadBalancerParam RemoveVmNicFromLoadBalancer request param
 type RemoveVmNicFromLoadBalancerParam struct {
 	BaseParam
-	RemoveVmNicFromLoadBalancer RemoveVmNicFromLoadBalancerParamDetail `json:"removeVmNicFromLoadBalancer"`
+	Params RemoveVmNicFromLoadBalancerParamDetail `json:"removeVmNicFromLoadBalancer"`
 }
 // RemoveRolesFromIAM2VirtualIDParamDetail RemoveRolesFromIAM2VirtualID detail param
 type RemoveRolesFromIAM2VirtualIDParamDetail struct {
@@ -7926,7 +7926,7 @@ type RemoveRolesFromIAM2VirtualIDParamDetail struct {
 // RemoveRolesFromIAM2VirtualIDParam RemoveRolesFromIAM2VirtualID request param
 type RemoveRolesFromIAM2VirtualIDParam struct {
 	BaseParam
-	RemoveRolesFromIAM2VirtualID RemoveRolesFromIAM2VirtualIDParamDetail `json:"removeRolesFromIAM2VirtualID"`
+	Params RemoveRolesFromIAM2VirtualIDParamDetail `json:"removeRolesFromIAM2VirtualID"`
 }
 // CalculateResourceSpendingParamDetail CalculateResourceSpending detail param
 type CalculateResourceSpendingParamDetail struct {
@@ -7941,7 +7941,7 @@ type CalculateResourceSpendingParamDetail struct {
 // CalculateResourceSpendingParam CalculateResourceSpending request param
 type CalculateResourceSpendingParam struct {
 	BaseParam
-	CalculateResourceSpending CalculateResourceSpendingParamDetail `json:"calculateResourceSpending"`
+	Params CalculateResourceSpendingParamDetail `json:"calculateResourceSpending"`
 }
 // DetachBackupStorageFromZoneParamDetail DetachBackupStorageFromZone detail param
 type DetachBackupStorageFromZoneParamDetail struct {
@@ -7952,7 +7952,7 @@ type DetachBackupStorageFromZoneParamDetail struct {
 // DetachBackupStorageFromZoneParam DetachBackupStorageFromZone request param
 type DetachBackupStorageFromZoneParam struct {
 	BaseParam
-	DetachBackupStorageFromZone DetachBackupStorageFromZoneParamDetail `json:"detachBackupStorageFromZone"`
+	Params DetachBackupStorageFromZoneParamDetail `json:"detachBackupStorageFromZone"`
 }
 // UpdateCCSCertificateUserStateParamDetail UpdateCCSCertificateUserState detail param
 type UpdateCCSCertificateUserStateParamDetail struct {
@@ -7963,7 +7963,7 @@ type UpdateCCSCertificateUserStateParamDetail struct {
 // UpdateCCSCertificateUserStateParam UpdateCCSCertificateUserState request param
 type UpdateCCSCertificateUserStateParam struct {
 	BaseParam
-	UpdateCCSCertificateUserState UpdateCCSCertificateUserStateParamDetail `json:"updateCCSCertificateUserState"`
+	Params UpdateCCSCertificateUserStateParamDetail `json:"updateCCSCertificateUserState"`
 }
 // PowerResetBaremetalChassisParamDetail PowerResetBaremetalChassis detail param
 type PowerResetBaremetalChassisParamDetail struct {
@@ -7973,7 +7973,7 @@ type PowerResetBaremetalChassisParamDetail struct {
 // PowerResetBaremetalChassisParam PowerResetBaremetalChassis request param
 type PowerResetBaremetalChassisParam struct {
 	BaseParam
-	PowerResetBaremetalChassis PowerResetBaremetalChassisParamDetail `json:"powerResetBaremetalChassis"`
+	Params PowerResetBaremetalChassisParamDetail `json:"powerResetBaremetalChassis"`
 }
 // CleanUpTrashOnPrimaryStorageParamDetail CleanUpTrashOnPrimaryStorage detail param
 type CleanUpTrashOnPrimaryStorageParamDetail struct {
@@ -7984,7 +7984,7 @@ type CleanUpTrashOnPrimaryStorageParamDetail struct {
 // CleanUpTrashOnPrimaryStorageParam CleanUpTrashOnPrimaryStorage request param
 type CleanUpTrashOnPrimaryStorageParam struct {
 	BaseParam
-	CleanUpTrashOnPrimaryStorage CleanUpTrashOnPrimaryStorageParamDetail `json:"cleanUpTrashOnPrimaryStorage"`
+	Params CleanUpTrashOnPrimaryStorageParamDetail `json:"cleanUpTrashOnPrimaryStorage"`
 }
 // AddDisasterImageStoreBackupStorageParamDetail AddDisasterImageStoreBackupStorage detail param
 type AddDisasterImageStoreBackupStorageParamDetail struct {
@@ -8006,7 +8006,7 @@ type AddDisasterImageStoreBackupStorageParamDetail struct {
 // AddDisasterImageStoreBackupStorageParam AddDisasterImageStoreBackupStorage request param
 type AddDisasterImageStoreBackupStorageParam struct {
 	BaseParam
-	AddDisasterImageStoreBackupStorage AddDisasterImageStoreBackupStorageParamDetail `json:"addDisasterImageStoreBackupStorage"`
+	Params AddDisasterImageStoreBackupStorageParamDetail `json:"addDisasterImageStoreBackupStorage"`
 }
 // GetVmSchedulingRulesExecuteStateParamDetail GetVmSchedulingRulesExecuteState detail param
 type GetVmSchedulingRulesExecuteStateParamDetail struct {
@@ -8016,7 +8016,7 @@ type GetVmSchedulingRulesExecuteStateParamDetail struct {
 // GetVmSchedulingRulesExecuteStateParam GetVmSchedulingRulesExecuteState request param
 type GetVmSchedulingRulesExecuteStateParam struct {
 	BaseParam
-	GetVmSchedulingRulesExecuteState GetVmSchedulingRulesExecuteStateParamDetail `json:"getVmSchedulingRulesExecuteState"`
+	Params GetVmSchedulingRulesExecuteStateParamDetail `json:"getVmSchedulingRulesExecuteState"`
 }
 // CreateVolumesSnapshotParamDetail CreateVolumesSnapshot detail param
 type CreateVolumesSnapshotParamDetail struct {
@@ -8026,7 +8026,7 @@ type CreateVolumesSnapshotParamDetail struct {
 // CreateVolumesSnapshotParam CreateVolumesSnapshot request param
 type CreateVolumesSnapshotParam struct {
 	BaseParam
-	CreateVolumesSnapshot CreateVolumesSnapshotParamDetail `json:"createVolumesSnapshot"`
+	Params CreateVolumesSnapshotParamDetail `json:"createVolumesSnapshot"`
 }
 // GetIpAddressCapacityParamDetail GetIpAddressCapacity detail param
 type GetIpAddressCapacityParamDetail struct {
@@ -8039,7 +8039,7 @@ type GetIpAddressCapacityParamDetail struct {
 // GetIpAddressCapacityParam GetIpAddressCapacity request param
 type GetIpAddressCapacityParam struct {
 	BaseParam
-	GetIpAddressCapacity GetIpAddressCapacityParamDetail `json:"getIpAddressCapacity"`
+	Params GetIpAddressCapacityParamDetail `json:"getIpAddressCapacity"`
 }
 // SetIAM2ProjectContainerClusterParamDetail SetIAM2ProjectContainerCluster detail param
 type SetIAM2ProjectContainerClusterParamDetail struct {
@@ -8051,7 +8051,7 @@ type SetIAM2ProjectContainerClusterParamDetail struct {
 // SetIAM2ProjectContainerClusterParam SetIAM2ProjectContainerCluster request param
 type SetIAM2ProjectContainerClusterParam struct {
 	BaseParam
-	SetIAM2ProjectContainerCluster SetIAM2ProjectContainerClusterParamDetail `json:"setIAM2ProjectContainerCluster"`
+	Params SetIAM2ProjectContainerClusterParamDetail `json:"setIAM2ProjectContainerCluster"`
 }
 // DeployAppDevelopmentServiceParamDetail DeployAppDevelopmentService detail param
 type DeployAppDevelopmentServiceParamDetail struct {
@@ -8084,7 +8084,7 @@ type DeployAppDevelopmentServiceParamDetail struct {
 // DeployAppDevelopmentServiceParam DeployAppDevelopmentService request param
 type DeployAppDevelopmentServiceParam struct {
 	BaseParam
-	DeployAppDevelopmentService DeployAppDevelopmentServiceParamDetail `json:"deployAppDevelopmentService"`
+	Params DeployAppDevelopmentServiceParamDetail `json:"deployAppDevelopmentService"`
 }
 // RefreshPluginDriversParamDetail RefreshPluginDrivers detail param
 type RefreshPluginDriversParamDetail struct {
@@ -8094,7 +8094,7 @@ type RefreshPluginDriversParamDetail struct {
 // RefreshPluginDriversParam RefreshPluginDrivers request param
 type RefreshPluginDriversParam struct {
 	BaseParam
-	RefreshPluginDrivers RefreshPluginDriversParamDetail `json:"refreshPluginDrivers"`
+	Params RefreshPluginDriversParamDetail `json:"refreshPluginDrivers"`
 }
 // PauseVmInstanceParamDetail PauseVmInstance detail param
 type PauseVmInstanceParamDetail struct {
@@ -8104,7 +8104,7 @@ type PauseVmInstanceParamDetail struct {
 // PauseVmInstanceParam PauseVmInstance request param
 type PauseVmInstanceParam struct {
 	BaseParam
-	PauseVmInstance PauseVmInstanceParamDetail `json:"pauseVmInstance"`
+	Params PauseVmInstanceParamDetail `json:"pauseVmInstance"`
 }
 // DetachUserDefinedXmlHookScriptFromVmParamDetail DetachUserDefinedXmlHookScriptFromVm detail param
 type DetachUserDefinedXmlHookScriptFromVmParamDetail struct {
@@ -8116,7 +8116,7 @@ type DetachUserDefinedXmlHookScriptFromVmParamDetail struct {
 // DetachUserDefinedXmlHookScriptFromVmParam DetachUserDefinedXmlHookScriptFromVm request param
 type DetachUserDefinedXmlHookScriptFromVmParam struct {
 	BaseParam
-	DetachUserDefinedXmlHookScriptFromVm DetachUserDefinedXmlHookScriptFromVmParamDetail `json:"detachUserDefinedXmlHookScriptFromVm"`
+	Params DetachUserDefinedXmlHookScriptFromVmParamDetail `json:"detachUserDefinedXmlHookScriptFromVm"`
 }
 // GetSignatureServerEncryptPublicKeyParamDetail GetSignatureServerEncryptPublicKey detail param
 type GetSignatureServerEncryptPublicKeyParamDetail struct {
@@ -8125,7 +8125,7 @@ type GetSignatureServerEncryptPublicKeyParamDetail struct {
 // GetSignatureServerEncryptPublicKeyParam GetSignatureServerEncryptPublicKey request param
 type GetSignatureServerEncryptPublicKeyParam struct {
 	BaseParam
-	GetSignatureServerEncryptPublicKey GetSignatureServerEncryptPublicKeyParamDetail `json:"getSignatureServerEncryptPublicKey"`
+	Params GetSignatureServerEncryptPublicKeyParamDetail `json:"getSignatureServerEncryptPublicKey"`
 }
 // AddAliyunKeySecretParamDetail AddAliyunKeySecret detail param
 type AddAliyunKeySecretParamDetail struct {
@@ -8142,7 +8142,7 @@ type AddAliyunKeySecretParamDetail struct {
 // AddAliyunKeySecretParam AddAliyunKeySecret request param
 type AddAliyunKeySecretParam struct {
 	BaseParam
-	AddAliyunKeySecret AddAliyunKeySecretParamDetail `json:"addAliyunKeySecret"`
+	Params AddAliyunKeySecretParamDetail `json:"addAliyunKeySecret"`
 }
 // AddBackupStoragesToReplicationGroupParamDetail AddBackupStoragesToReplicationGroup detail param
 type AddBackupStoragesToReplicationGroupParamDetail struct {
@@ -8155,7 +8155,7 @@ type AddBackupStoragesToReplicationGroupParamDetail struct {
 // AddBackupStoragesToReplicationGroupParam AddBackupStoragesToReplicationGroup request param
 type AddBackupStoragesToReplicationGroupParam struct {
 	BaseParam
-	AddBackupStoragesToReplicationGroup AddBackupStoragesToReplicationGroupParamDetail `json:"addBackupStoragesToReplicationGroup"`
+	Params AddBackupStoragesToReplicationGroupParamDetail `json:"addBackupStoragesToReplicationGroup"`
 }
 // AddDataCenterFromRemoteParamDetail AddDataCenterFromRemote detail param
 type AddDataCenterFromRemoteParamDetail struct {
@@ -8171,7 +8171,7 @@ type AddDataCenterFromRemoteParamDetail struct {
 // AddDataCenterFromRemoteParam AddDataCenterFromRemote request param
 type AddDataCenterFromRemoteParam struct {
 	BaseParam
-	AddDataCenterFromRemote AddDataCenterFromRemoteParamDetail `json:"addDataCenterFromRemote"`
+	Params AddDataCenterFromRemoteParamDetail `json:"addDataCenterFromRemote"`
 }
 // DeleteFirewallRuleSetParamDetail DeleteFirewallRuleSet detail param
 type DeleteFirewallRuleSetParamDetail struct {
@@ -8182,7 +8182,7 @@ type DeleteFirewallRuleSetParamDetail struct {
 // DeleteFirewallRuleSetParam DeleteFirewallRuleSet request param
 type DeleteFirewallRuleSetParam struct {
 	BaseParam
-	DeleteFirewallRuleSet DeleteFirewallRuleSetParamDetail `json:"deleteFirewallRuleSet"`
+	Params DeleteFirewallRuleSetParamDetail `json:"deleteFirewallRuleSet"`
 }
 // BatchAddBareMetal2IpmiChassisParamDetail BatchAddBareMetal2IpmiChassis detail param
 type BatchAddBareMetal2IpmiChassisParamDetail struct {
@@ -8196,7 +8196,7 @@ type BatchAddBareMetal2IpmiChassisParamDetail struct {
 // BatchAddBareMetal2IpmiChassisParam BatchAddBareMetal2IpmiChassis request param
 type BatchAddBareMetal2IpmiChassisParam struct {
 	BaseParam
-	BatchAddBareMetal2IpmiChassis BatchAddBareMetal2IpmiChassisParamDetail `json:"batchAddBareMetal2IpmiChassis"`
+	Params BatchAddBareMetal2IpmiChassisParamDetail `json:"batchAddBareMetal2IpmiChassis"`
 }
 // LocalStorageMigrateVolumeParamDetail LocalStorageMigrateVolume detail param
 type LocalStorageMigrateVolumeParamDetail struct {
@@ -8207,7 +8207,7 @@ type LocalStorageMigrateVolumeParamDetail struct {
 // LocalStorageMigrateVolumeParam LocalStorageMigrateVolume request param
 type LocalStorageMigrateVolumeParam struct {
 	BaseParam
-	LocalStorageMigrateVolume LocalStorageMigrateVolumeParamDetail `json:"localStorageMigrateVolume"`
+	Params LocalStorageMigrateVolumeParamDetail `json:"localStorageMigrateVolume"`
 }
 // AttachNicToBondingParamDetail AttachNicToBonding detail param
 type AttachNicToBondingParamDetail struct {
@@ -8219,7 +8219,7 @@ type AttachNicToBondingParamDetail struct {
 // AttachNicToBondingParam AttachNicToBonding request param
 type AttachNicToBondingParam struct {
 	BaseParam
-	AttachNicToBonding AttachNicToBondingParamDetail `json:"attachNicToBonding"`
+	Params AttachNicToBondingParamDetail `json:"attachNicToBonding"`
 }
 // SetOrganizationOperationParamDetail SetOrganizationOperation detail param
 type SetOrganizationOperationParamDetail struct {
@@ -8230,7 +8230,7 @@ type SetOrganizationOperationParamDetail struct {
 // SetOrganizationOperationParam SetOrganizationOperation request param
 type SetOrganizationOperationParam struct {
 	BaseParam
-	SetOrganizationOperation SetOrganizationOperationParamDetail `json:"setOrganizationOperation"`
+	Params SetOrganizationOperationParamDetail `json:"setOrganizationOperation"`
 }
 // CreateDataVolumeTemplateFromVolumeParamDetail CreateDataVolumeTemplateFromVolume detail param
 type CreateDataVolumeTemplateFromVolumeParamDetail struct {
@@ -8245,7 +8245,7 @@ type CreateDataVolumeTemplateFromVolumeParamDetail struct {
 // CreateDataVolumeTemplateFromVolumeParam CreateDataVolumeTemplateFromVolume request param
 type CreateDataVolumeTemplateFromVolumeParam struct {
 	BaseParam
-	CreateDataVolumeTemplateFromVolume CreateDataVolumeTemplateFromVolumeParamDetail `json:"createDataVolumeTemplateFromVolume"`
+	Params CreateDataVolumeTemplateFromVolumeParamDetail `json:"createDataVolumeTemplateFromVolume"`
 }
 // RemoveIAM2VirtualIDsFromOrganizationParamDetail RemoveIAM2VirtualIDsFromOrganization detail param
 type RemoveIAM2VirtualIDsFromOrganizationParamDetail struct {
@@ -8256,7 +8256,7 @@ type RemoveIAM2VirtualIDsFromOrganizationParamDetail struct {
 // RemoveIAM2VirtualIDsFromOrganizationParam RemoveIAM2VirtualIDsFromOrganization request param
 type RemoveIAM2VirtualIDsFromOrganizationParam struct {
 	BaseParam
-	RemoveIAM2VirtualIDsFromOrganization RemoveIAM2VirtualIDsFromOrganizationParamDetail `json:"removeIAM2VirtualIDsFromOrganization"`
+	Params RemoveIAM2VirtualIDsFromOrganizationParamDetail `json:"removeIAM2VirtualIDsFromOrganization"`
 }
 // ExportDatabaseBackupFromBackupStorageParamDetail ExportDatabaseBackupFromBackupStorage detail param
 type ExportDatabaseBackupFromBackupStorageParamDetail struct {
@@ -8267,7 +8267,7 @@ type ExportDatabaseBackupFromBackupStorageParamDetail struct {
 // ExportDatabaseBackupFromBackupStorageParam ExportDatabaseBackupFromBackupStorage request param
 type ExportDatabaseBackupFromBackupStorageParam struct {
 	BaseParam
-	ExportDatabaseBackupFromBackupStorage ExportDatabaseBackupFromBackupStorageParamDetail `json:"exportDatabaseBackupFromBackupStorage"`
+	Params ExportDatabaseBackupFromBackupStorageParamDetail `json:"exportDatabaseBackupFromBackupStorage"`
 }
 // AttachIAM2ProjectToIAM2OrganizationParamDetail AttachIAM2ProjectToIAM2Organization detail param
 type AttachIAM2ProjectToIAM2OrganizationParamDetail struct {
@@ -8278,7 +8278,7 @@ type AttachIAM2ProjectToIAM2OrganizationParamDetail struct {
 // AttachIAM2ProjectToIAM2OrganizationParam AttachIAM2ProjectToIAM2Organization request param
 type AttachIAM2ProjectToIAM2OrganizationParam struct {
 	BaseParam
-	AttachIAM2ProjectToIAM2Organization AttachIAM2ProjectToIAM2OrganizationParamDetail `json:"attachIAM2ProjectToIAM2Organization"`
+	Params AttachIAM2ProjectToIAM2OrganizationParamDetail `json:"attachIAM2ProjectToIAM2Organization"`
 }
 // CreateEmailMonitorTriggerActionParamDetail CreateEmailMonitorTriggerAction detail param
 type CreateEmailMonitorTriggerActionParamDetail struct {
@@ -8294,7 +8294,7 @@ type CreateEmailMonitorTriggerActionParamDetail struct {
 // CreateEmailMonitorTriggerActionParam CreateEmailMonitorTriggerAction request param
 type CreateEmailMonitorTriggerActionParam struct {
 	BaseParam
-	CreateEmailMonitorTriggerAction CreateEmailMonitorTriggerActionParamDetail `json:"createEmailMonitorTriggerAction"`
+	Params CreateEmailMonitorTriggerActionParamDetail `json:"createEmailMonitorTriggerAction"`
 }
 // SetVpcVRouterDistributedRoutingEnabledParamDetail SetVpcVRouterDistributedRoutingEnabled detail param
 type SetVpcVRouterDistributedRoutingEnabledParamDetail struct {
@@ -8305,7 +8305,7 @@ type SetVpcVRouterDistributedRoutingEnabledParamDetail struct {
 // SetVpcVRouterDistributedRoutingEnabledParam SetVpcVRouterDistributedRoutingEnabled request param
 type SetVpcVRouterDistributedRoutingEnabledParam struct {
 	BaseParam
-	SetVpcVRouterDistributedRoutingEnabled SetVpcVRouterDistributedRoutingEnabledParamDetail `json:"setVpcVRouterDistributedRoutingEnabled"`
+	Params SetVpcVRouterDistributedRoutingEnabledParamDetail `json:"setVpcVRouterDistributedRoutingEnabled"`
 }
 // PowerOnBareMetal2ChassisParamDetail PowerOnBareMetal2Chassis detail param
 type PowerOnBareMetal2ChassisParamDetail struct {
@@ -8316,7 +8316,7 @@ type PowerOnBareMetal2ChassisParamDetail struct {
 // PowerOnBareMetal2ChassisParam PowerOnBareMetal2Chassis request param
 type PowerOnBareMetal2ChassisParam struct {
 	BaseParam
-	PowerOnBareMetal2Chassis PowerOnBareMetal2ChassisParamDetail `json:"powerOnBareMetal2Chassis"`
+	Params PowerOnBareMetal2ChassisParamDetail `json:"powerOnBareMetal2Chassis"`
 }
 // GetLocalRaidPhysicalDriveSmartParamDetail GetLocalRaidPhysicalDriveSmart detail param
 type GetLocalRaidPhysicalDriveSmartParamDetail struct {
@@ -8326,7 +8326,7 @@ type GetLocalRaidPhysicalDriveSmartParamDetail struct {
 // GetLocalRaidPhysicalDriveSmartParam GetLocalRaidPhysicalDriveSmart request param
 type GetLocalRaidPhysicalDriveSmartParam struct {
 	BaseParam
-	GetLocalRaidPhysicalDriveSmart GetLocalRaidPhysicalDriveSmartParamDetail `json:"getLocalRaidPhysicalDriveSmart"`
+	Params GetLocalRaidPhysicalDriveSmartParamDetail `json:"getLocalRaidPhysicalDriveSmart"`
 }
 // UpdateHybridKeySecretParamDetail UpdateHybridKeySecret detail param
 type UpdateHybridKeySecretParamDetail struct {
@@ -8338,7 +8338,7 @@ type UpdateHybridKeySecretParamDetail struct {
 // UpdateHybridKeySecretParam UpdateHybridKeySecret request param
 type UpdateHybridKeySecretParam struct {
 	BaseParam
-	UpdateHybridKeySecret UpdateHybridKeySecretParamDetail `json:"updateHybridKeySecret"`
+	Params UpdateHybridKeySecretParamDetail `json:"updateHybridKeySecret"`
 }
 // PullHuaweiIMasterControllerParamDetail PullHuaweiIMasterController detail param
 type PullHuaweiIMasterControllerParamDetail struct {
@@ -8349,7 +8349,7 @@ type PullHuaweiIMasterControllerParamDetail struct {
 // PullHuaweiIMasterControllerParam PullHuaweiIMasterController request param
 type PullHuaweiIMasterControllerParam struct {
 	BaseParam
-	PullHuaweiIMasterController PullHuaweiIMasterControllerParamDetail `json:"pullHuaweiIMasterController"`
+	Params PullHuaweiIMasterControllerParamDetail `json:"pullHuaweiIMasterController"`
 }
 // RemoveRolesFromIAM2VirtualIDGroupParamDetail RemoveRolesFromIAM2VirtualIDGroup detail param
 type RemoveRolesFromIAM2VirtualIDGroupParamDetail struct {
@@ -8361,7 +8361,7 @@ type RemoveRolesFromIAM2VirtualIDGroupParamDetail struct {
 // RemoveRolesFromIAM2VirtualIDGroupParam RemoveRolesFromIAM2VirtualIDGroup request param
 type RemoveRolesFromIAM2VirtualIDGroupParam struct {
 	BaseParam
-	RemoveRolesFromIAM2VirtualIDGroup RemoveRolesFromIAM2VirtualIDGroupParamDetail `json:"removeRolesFromIAM2VirtualIDGroup"`
+	Params RemoveRolesFromIAM2VirtualIDGroupParamDetail `json:"removeRolesFromIAM2VirtualIDGroup"`
 }
 // AckAlarmDataParamDetail AckAlarmData detail param
 type AckAlarmDataParamDetail struct {
@@ -8375,7 +8375,7 @@ type AckAlarmDataParamDetail struct {
 // AckAlarmDataParam AckAlarmData request param
 type AckAlarmDataParam struct {
 	BaseParam
-	AckAlarmData AckAlarmDataParamDetail `json:"ackAlarmData"`
+	Params AckAlarmDataParamDetail `json:"ackAlarmData"`
 }
 // RemoveDnsFromL3NetworkParamDetail RemoveDnsFromL3Network detail param
 type RemoveDnsFromL3NetworkParamDetail struct {
@@ -8386,7 +8386,7 @@ type RemoveDnsFromL3NetworkParamDetail struct {
 // RemoveDnsFromL3NetworkParam RemoveDnsFromL3Network request param
 type RemoveDnsFromL3NetworkParam struct {
 	BaseParam
-	RemoveDnsFromL3Network RemoveDnsFromL3NetworkParamDetail `json:"removeDnsFromL3Network"`
+	Params RemoveDnsFromL3NetworkParamDetail `json:"removeDnsFromL3Network"`
 }
 // ChangeIAM2OrganizationParentParamDetail ChangeIAM2OrganizationParent detail param
 type ChangeIAM2OrganizationParentParamDetail struct {
@@ -8397,7 +8397,7 @@ type ChangeIAM2OrganizationParentParamDetail struct {
 // ChangeIAM2OrganizationParentParam ChangeIAM2OrganizationParent request param
 type ChangeIAM2OrganizationParentParam struct {
 	BaseParam
-	ChangeIAM2OrganizationParent ChangeIAM2OrganizationParentParamDetail `json:"changeIAM2OrganizationParent"`
+	Params ChangeIAM2OrganizationParentParamDetail `json:"changeIAM2OrganizationParent"`
 }
 // SNSWeComTestConnectionParamDetail SNSWeComTestConnection detail param
 type SNSWeComTestConnectionParamDetail struct {
@@ -8411,7 +8411,7 @@ type SNSWeComTestConnectionParamDetail struct {
 // SNSWeComTestConnectionParam SNSWeComTestConnection request param
 type SNSWeComTestConnectionParam struct {
 	BaseParam
-	SNSWeComTestConnection SNSWeComTestConnectionParamDetail `json:"sNSWeComTestConnection"`
+	Params SNSWeComTestConnectionParamDetail `json:"sNSWeComTestConnection"`
 }
 // ProvisionVirtualRouterConfigParamDetail ProvisionVirtualRouterConfig detail param
 type ProvisionVirtualRouterConfigParamDetail struct {
@@ -8421,7 +8421,7 @@ type ProvisionVirtualRouterConfigParamDetail struct {
 // ProvisionVirtualRouterConfigParam ProvisionVirtualRouterConfig request param
 type ProvisionVirtualRouterConfigParam struct {
 	BaseParam
-	ProvisionVirtualRouterConfig ProvisionVirtualRouterConfigParamDetail `json:"provisionVirtualRouterConfig"`
+	Params ProvisionVirtualRouterConfigParamDetail `json:"provisionVirtualRouterConfig"`
 }
 // SetVmQgaParamDetail SetVmQga detail param
 type SetVmQgaParamDetail struct {
@@ -8432,7 +8432,7 @@ type SetVmQgaParamDetail struct {
 // SetVmQgaParam SetVmQga request param
 type SetVmQgaParam struct {
 	BaseParam
-	SetVmQga SetVmQgaParamDetail `json:"setVmQga"`
+	Params SetVmQgaParamDetail `json:"setVmQga"`
 }
 // ValidatePasswordParamDetail ValidatePassword detail param
 type ValidatePasswordParamDetail struct {
@@ -8444,7 +8444,7 @@ type ValidatePasswordParamDetail struct {
 // ValidatePasswordParam ValidatePassword request param
 type ValidatePasswordParam struct {
 	BaseParam
-	ValidatePassword ValidatePasswordParamDetail `json:"validatePassword"`
+	Params ValidatePasswordParamDetail `json:"validatePassword"`
 }
 // GetChronyServersParamDetail GetChronyServers detail param
 type GetChronyServersParamDetail struct {
@@ -8453,7 +8453,7 @@ type GetChronyServersParamDetail struct {
 // GetChronyServersParam GetChronyServers request param
 type GetChronyServersParam struct {
 	BaseParam
-	GetChronyServers GetChronyServersParamDetail `json:"getChronyServers"`
+	Params GetChronyServersParamDetail `json:"getChronyServers"`
 }
 // AttachL3NetworkToVmNicParamDetail AttachL3NetworkToVmNic detail param
 type AttachL3NetworkToVmNicParamDetail struct {
@@ -8465,7 +8465,7 @@ type AttachL3NetworkToVmNicParamDetail struct {
 // AttachL3NetworkToVmNicParam AttachL3NetworkToVmNic request param
 type AttachL3NetworkToVmNicParam struct {
 	BaseParam
-	AttachL3NetworkToVmNic AttachL3NetworkToVmNicParamDetail `json:"attachL3NetworkToVmNic"`
+	Params AttachL3NetworkToVmNicParamDetail `json:"attachL3NetworkToVmNic"`
 }
 // ChangeSecurityMachineStateParamDetail ChangeSecurityMachineState detail param
 type ChangeSecurityMachineStateParamDetail struct {
@@ -8476,7 +8476,7 @@ type ChangeSecurityMachineStateParamDetail struct {
 // ChangeSecurityMachineStateParam ChangeSecurityMachineState request param
 type ChangeSecurityMachineStateParam struct {
 	BaseParam
-	ChangeSecurityMachineState ChangeSecurityMachineStateParamDetail `json:"changeSecurityMachineState"`
+	Params ChangeSecurityMachineStateParamDetail `json:"changeSecurityMachineState"`
 }
 // SetVmQxlMemoryParamDetail SetVmQxlMemory detail param
 type SetVmQxlMemoryParamDetail struct {
@@ -8489,7 +8489,7 @@ type SetVmQxlMemoryParamDetail struct {
 // SetVmQxlMemoryParam SetVmQxlMemory request param
 type SetVmQxlMemoryParam struct {
 	BaseParam
-	SetVmQxlMemory SetVmQxlMemoryParamDetail `json:"setVmQxlMemory"`
+	Params SetVmQxlMemoryParamDetail `json:"setVmQxlMemory"`
 }
 // AddLocalPrimaryStorageParamDetail AddLocalPrimaryStorage detail param
 type AddLocalPrimaryStorageParamDetail struct {
@@ -8505,7 +8505,7 @@ type AddLocalPrimaryStorageParamDetail struct {
 // AddLocalPrimaryStorageParam AddLocalPrimaryStorage request param
 type AddLocalPrimaryStorageParam struct {
 	BaseParam
-	AddLocalPrimaryStorage AddLocalPrimaryStorageParamDetail `json:"addLocalPrimaryStorage"`
+	Params AddLocalPrimaryStorageParamDetail `json:"addLocalPrimaryStorage"`
 }
 // GetVolumeFormatParamDetail GetVolumeFormat detail param
 type GetVolumeFormatParamDetail struct {
@@ -8514,7 +8514,7 @@ type GetVolumeFormatParamDetail struct {
 // GetVolumeFormatParam GetVolumeFormat request param
 type GetVolumeFormatParam struct {
 	BaseParam
-	GetVolumeFormat GetVolumeFormatParamDetail `json:"getVolumeFormat"`
+	Params GetVolumeFormatParamDetail `json:"getVolumeFormat"`
 }
 // UpdateAtPersonOfAtDingTalkEndpointParamDetail UpdateAtPersonOfAtDingTalkEndpoint detail param
 type UpdateAtPersonOfAtDingTalkEndpointParamDetail struct {
@@ -8527,7 +8527,7 @@ type UpdateAtPersonOfAtDingTalkEndpointParamDetail struct {
 // UpdateAtPersonOfAtDingTalkEndpointParam UpdateAtPersonOfAtDingTalkEndpoint request param
 type UpdateAtPersonOfAtDingTalkEndpointParam struct {
 	BaseParam
-	UpdateAtPersonOfAtDingTalkEndpoint UpdateAtPersonOfAtDingTalkEndpointParamDetail `json:"updateAtPersonOfAtDingTalkEndpoint"`
+	Params UpdateAtPersonOfAtDingTalkEndpointParamDetail `json:"updateAtPersonOfAtDingTalkEndpoint"`
 }
 // UpdateAliyunMountTargetParamDetail UpdateAliyunMountTarget detail param
 type UpdateAliyunMountTargetParamDetail struct {
@@ -8540,7 +8540,7 @@ type UpdateAliyunMountTargetParamDetail struct {
 // UpdateAliyunMountTargetParam UpdateAliyunMountTarget request param
 type UpdateAliyunMountTargetParam struct {
 	BaseParam
-	UpdateAliyunMountTarget UpdateAliyunMountTargetParamDetail `json:"updateAliyunMountTarget"`
+	Params UpdateAliyunMountTargetParamDetail `json:"updateAliyunMountTarget"`
 }
 // GetResourceAccountParamDetail GetResourceAccount detail param
 type GetResourceAccountParamDetail struct {
@@ -8550,7 +8550,7 @@ type GetResourceAccountParamDetail struct {
 // GetResourceAccountParam GetResourceAccount request param
 type GetResourceAccountParam struct {
 	BaseParam
-	GetResourceAccount GetResourceAccountParamDetail `json:"getResourceAccount"`
+	Params GetResourceAccountParamDetail `json:"getResourceAccount"`
 }
 // ChangeSecretResourcePoolStateParamDetail ChangeSecretResourcePoolState detail param
 type ChangeSecretResourcePoolStateParamDetail struct {
@@ -8561,7 +8561,7 @@ type ChangeSecretResourcePoolStateParamDetail struct {
 // ChangeSecretResourcePoolStateParam ChangeSecretResourcePoolState request param
 type ChangeSecretResourcePoolStateParam struct {
 	BaseParam
-	ChangeSecretResourcePoolState ChangeSecretResourcePoolStateParamDetail `json:"changeSecretResourcePoolState"`
+	Params ChangeSecretResourcePoolStateParamDetail `json:"changeSecretResourcePoolState"`
 }
 // AddSimulatorBackupStorageParamDetail AddSimulatorBackupStorage detail param
 type AddSimulatorBackupStorageParamDetail struct {
@@ -8579,7 +8579,7 @@ type AddSimulatorBackupStorageParamDetail struct {
 // AddSimulatorBackupStorageParam AddSimulatorBackupStorage request param
 type AddSimulatorBackupStorageParam struct {
 	BaseParam
-	AddSimulatorBackupStorage AddSimulatorBackupStorageParamDetail `json:"addSimulatorBackupStorage"`
+	Params AddSimulatorBackupStorageParamDetail `json:"addSimulatorBackupStorage"`
 }
 // BindModelToServiceParamDetail BindModelToService detail param
 type BindModelToServiceParamDetail struct {
@@ -8590,7 +8590,7 @@ type BindModelToServiceParamDetail struct {
 // BindModelToServiceParam BindModelToService request param
 type BindModelToServiceParam struct {
 	BaseParam
-	BindModelToService BindModelToServiceParamDetail `json:"bindModelToService"`
+	Params BindModelToServiceParamDetail `json:"bindModelToService"`
 }
 // GetCandidateAffinityGroupForCreatingVmParamDetail GetCandidateAffinityGroupForCreatingVm detail param
 type GetCandidateAffinityGroupForCreatingVmParamDetail struct {
@@ -8602,7 +8602,7 @@ type GetCandidateAffinityGroupForCreatingVmParamDetail struct {
 // GetCandidateAffinityGroupForCreatingVmParam GetCandidateAffinityGroupForCreatingVm request param
 type GetCandidateAffinityGroupForCreatingVmParam struct {
 	BaseParam
-	GetCandidateAffinityGroupForCreatingVm GetCandidateAffinityGroupForCreatingVmParamDetail `json:"getCandidateAffinityGroupForCreatingVm"`
+	Params GetCandidateAffinityGroupForCreatingVmParamDetail `json:"getCandidateAffinityGroupForCreatingVm"`
 }
 // CheckNetworkReachableParamDetail CheckNetworkReachable detail param
 type CheckNetworkReachableParamDetail struct {
@@ -8613,7 +8613,7 @@ type CheckNetworkReachableParamDetail struct {
 // CheckNetworkReachableParam CheckNetworkReachable request param
 type CheckNetworkReachableParam struct {
 	BaseParam
-	CheckNetworkReachable CheckNetworkReachableParamDetail `json:"checkNetworkReachable"`
+	Params CheckNetworkReachableParamDetail `json:"checkNetworkReachable"`
 }
 // SetFlowMeterRouterIdParamDetail SetFlowMeterRouterId detail param
 type SetFlowMeterRouterIdParamDetail struct {
@@ -8624,7 +8624,7 @@ type SetFlowMeterRouterIdParamDetail struct {
 // SetFlowMeterRouterIdParam SetFlowMeterRouterId request param
 type SetFlowMeterRouterIdParam struct {
 	BaseParam
-	SetFlowMeterRouterId SetFlowMeterRouterIdParamDetail `json:"setFlowMeterRouterId"`
+	Params SetFlowMeterRouterIdParamDetail `json:"setFlowMeterRouterId"`
 }
 // AddStorageProtocolParamDetail AddStorageProtocol detail param
 type AddStorageProtocolParamDetail struct {
@@ -8635,7 +8635,7 @@ type AddStorageProtocolParamDetail struct {
 // AddStorageProtocolParam AddStorageProtocol request param
 type AddStorageProtocolParam struct {
 	BaseParam
-	AddStorageProtocol AddStorageProtocolParamDetail `json:"addStorageProtocol"`
+	Params AddStorageProtocolParamDetail `json:"addStorageProtocol"`
 }
 // DeployModelServiceParamDetail DeployModelService detail param
 type DeployModelServiceParamDetail struct {
@@ -8668,7 +8668,7 @@ type DeployModelServiceParamDetail struct {
 // DeployModelServiceParam DeployModelService request param
 type DeployModelServiceParam struct {
 	BaseParam
-	DeployModelService DeployModelServiceParamDetail `json:"deployModelService"`
+	Params DeployModelServiceParamDetail `json:"deployModelService"`
 }
 // GetMonitorItemParamDetail GetMonitorItem detail param
 type GetMonitorItemParamDetail struct {
@@ -8678,7 +8678,7 @@ type GetMonitorItemParamDetail struct {
 // GetMonitorItemParam GetMonitorItem request param
 type GetMonitorItemParam struct {
 	BaseParam
-	GetMonitorItem GetMonitorItemParamDetail `json:"getMonitorItem"`
+	Params GetMonitorItemParamDetail `json:"getMonitorItem"`
 }
 // GetLicenseRecordsParamDetail GetLicenseRecords detail param
 type GetLicenseRecordsParamDetail struct {
@@ -8693,7 +8693,7 @@ type GetLicenseRecordsParamDetail struct {
 // GetLicenseRecordsParam GetLicenseRecords request param
 type GetLicenseRecordsParam struct {
 	BaseParam
-	GetLicenseRecords GetLicenseRecordsParamDetail `json:"getLicenseRecords"`
+	Params GetLicenseRecordsParamDetail `json:"getLicenseRecords"`
 }
 // UnregisterLicenseRequestedApplicationParamDetail UnregisterLicenseRequestedApplication detail param
 type UnregisterLicenseRequestedApplicationParamDetail struct {
@@ -8703,7 +8703,7 @@ type UnregisterLicenseRequestedApplicationParamDetail struct {
 // UnregisterLicenseRequestedApplicationParam UnregisterLicenseRequestedApplication request param
 type UnregisterLicenseRequestedApplicationParam struct {
 	BaseParam
-	UnregisterLicenseRequestedApplication UnregisterLicenseRequestedApplicationParamDetail `json:"unregisterLicenseRequestedApplication"`
+	Params UnregisterLicenseRequestedApplicationParamDetail `json:"unregisterLicenseRequestedApplication"`
 }
 // AttachSecurityGroupToL3NetworkParamDetail AttachSecurityGroupToL3Network detail param
 type AttachSecurityGroupToL3NetworkParamDetail struct {
@@ -8714,7 +8714,7 @@ type AttachSecurityGroupToL3NetworkParamDetail struct {
 // AttachSecurityGroupToL3NetworkParam AttachSecurityGroupToL3Network request param
 type AttachSecurityGroupToL3NetworkParam struct {
 	BaseParam
-	AttachSecurityGroupToL3Network AttachSecurityGroupToL3NetworkParamDetail `json:"attachSecurityGroupToL3Network"`
+	Params AttachSecurityGroupToL3NetworkParamDetail `json:"attachSecurityGroupToL3Network"`
 }
 // UpdateVmNicDriverParamDetail UpdateVmNicDriver detail param
 type UpdateVmNicDriverParamDetail struct {
@@ -8726,7 +8726,7 @@ type UpdateVmNicDriverParamDetail struct {
 // UpdateVmNicDriverParam UpdateVmNicDriver request param
 type UpdateVmNicDriverParam struct {
 	BaseParam
-	UpdateVmNicDriver UpdateVmNicDriverParamDetail `json:"updateVmNicDriver"`
+	Params UpdateVmNicDriverParamDetail `json:"updateVmNicDriver"`
 }
 // SetIpOnHostNetworkInterfaceParamDetail SetIpOnHostNetworkInterface detail param
 type SetIpOnHostNetworkInterfaceParamDetail struct {
@@ -8738,7 +8738,7 @@ type SetIpOnHostNetworkInterfaceParamDetail struct {
 // SetIpOnHostNetworkInterfaceParam SetIpOnHostNetworkInterface request param
 type SetIpOnHostNetworkInterfaceParam struct {
 	BaseParam
-	SetIpOnHostNetworkInterface SetIpOnHostNetworkInterfaceParamDetail `json:"setIpOnHostNetworkInterface"`
+	Params SetIpOnHostNetworkInterfaceParamDetail `json:"setIpOnHostNetworkInterface"`
 }
 // ProvisionNfvInstGroupParamDetail ProvisionNfvInstGroup detail param
 type ProvisionNfvInstGroupParamDetail struct {
@@ -8748,7 +8748,7 @@ type ProvisionNfvInstGroupParamDetail struct {
 // ProvisionNfvInstGroupParam ProvisionNfvInstGroup request param
 type ProvisionNfvInstGroupParam struct {
 	BaseParam
-	ProvisionNfvInstGroup ProvisionNfvInstGroupParamDetail `json:"provisionNfvInstGroup"`
+	Params ProvisionNfvInstGroupParamDetail `json:"provisionNfvInstGroup"`
 }
 // DetachNicFromBondingParamDetail DetachNicFromBonding detail param
 type DetachNicFromBondingParamDetail struct {
@@ -8760,7 +8760,7 @@ type DetachNicFromBondingParamDetail struct {
 // DetachNicFromBondingParam DetachNicFromBonding request param
 type DetachNicFromBondingParam struct {
 	BaseParam
-	DetachNicFromBonding DetachNicFromBondingParamDetail `json:"detachNicFromBonding"`
+	Params DetachNicFromBondingParamDetail `json:"detachNicFromBonding"`
 }
 // ChangeMonitorTriggerActionStateParamDetail ChangeMonitorTriggerActionState detail param
 type ChangeMonitorTriggerActionStateParamDetail struct {
@@ -8771,7 +8771,7 @@ type ChangeMonitorTriggerActionStateParamDetail struct {
 // ChangeMonitorTriggerActionStateParam ChangeMonitorTriggerActionState request param
 type ChangeMonitorTriggerActionStateParam struct {
 	BaseParam
-	ChangeMonitorTriggerActionState ChangeMonitorTriggerActionStateParamDetail `json:"changeMonitorTriggerActionState"`
+	Params ChangeMonitorTriggerActionStateParamDetail `json:"changeMonitorTriggerActionState"`
 }
 // MigrateVmParamDetail MigrateVm detail param
 type MigrateVmParamDetail struct {
@@ -8786,7 +8786,7 @@ type MigrateVmParamDetail struct {
 // MigrateVmParam MigrateVm request param
 type MigrateVmParam struct {
 	BaseParam
-	MigrateVm MigrateVmParamDetail `json:"migrateVm"`
+	Params MigrateVmParamDetail `json:"migrateVm"`
 }
 // ChangeVmPasswordParamDetail ChangeVmPassword detail param
 type ChangeVmPasswordParamDetail struct {
@@ -8798,7 +8798,7 @@ type ChangeVmPasswordParamDetail struct {
 // ChangeVmPasswordParam ChangeVmPassword request param
 type ChangeVmPasswordParam struct {
 	BaseParam
-	ChangeVmPassword ChangeVmPasswordParamDetail `json:"changeVmPassword"`
+	Params ChangeVmPasswordParamDetail `json:"changeVmPassword"`
 }
 // FlattenVmInstanceParamDetail FlattenVmInstance detail param
 type FlattenVmInstanceParamDetail struct {
@@ -8810,7 +8810,7 @@ type FlattenVmInstanceParamDetail struct {
 // FlattenVmInstanceParam FlattenVmInstance request param
 type FlattenVmInstanceParam struct {
 	BaseParam
-	FlattenVmInstance FlattenVmInstanceParamDetail `json:"flattenVmInstance"`
+	Params FlattenVmInstanceParamDetail `json:"flattenVmInstance"`
 }
 // DeleteAllEcsInstancesFromDataCenterParamDetail DeleteAllEcsInstancesFromDataCenter detail param
 type DeleteAllEcsInstancesFromDataCenterParamDetail struct {
@@ -8821,7 +8821,7 @@ type DeleteAllEcsInstancesFromDataCenterParamDetail struct {
 // DeleteAllEcsInstancesFromDataCenterParam DeleteAllEcsInstancesFromDataCenter request param
 type DeleteAllEcsInstancesFromDataCenterParam struct {
 	BaseParam
-	DeleteAllEcsInstancesFromDataCenter DeleteAllEcsInstancesFromDataCenterParamDetail `json:"deleteAllEcsInstancesFromDataCenter"`
+	Params DeleteAllEcsInstancesFromDataCenterParamDetail `json:"deleteAllEcsInstancesFromDataCenter"`
 }
 // GetVpcMulticastRouteParamDetail GetVpcMulticastRoute detail param
 type GetVpcMulticastRouteParamDetail struct {
@@ -8831,7 +8831,7 @@ type GetVpcMulticastRouteParamDetail struct {
 // GetVpcMulticastRouteParam GetVpcMulticastRoute request param
 type GetVpcMulticastRouteParam struct {
 	BaseParam
-	GetVpcMulticastRoute GetVpcMulticastRouteParamDetail `json:"getVpcMulticastRoute"`
+	Params GetVpcMulticastRouteParamDetail `json:"getVpcMulticastRoute"`
 }
 // DeleteVmUserDefinedXmlHookScriptParamDetail DeleteVmUserDefinedXmlHookScript detail param
 type DeleteVmUserDefinedXmlHookScriptParamDetail struct {
@@ -8842,7 +8842,7 @@ type DeleteVmUserDefinedXmlHookScriptParamDetail struct {
 // DeleteVmUserDefinedXmlHookScriptParam DeleteVmUserDefinedXmlHookScript request param
 type DeleteVmUserDefinedXmlHookScriptParam struct {
 	BaseParam
-	DeleteVmUserDefinedXmlHookScript DeleteVmUserDefinedXmlHookScriptParamDetail `json:"deleteVmUserDefinedXmlHookScript"`
+	Params DeleteVmUserDefinedXmlHookScriptParamDetail `json:"deleteVmUserDefinedXmlHookScript"`
 }
 // AddL3NetworkToGroupParamDetail AddL3NetworkToGroup detail param
 type AddL3NetworkToGroupParamDetail struct {
@@ -8855,7 +8855,7 @@ type AddL3NetworkToGroupParamDetail struct {
 // AddL3NetworkToGroupParam AddL3NetworkToGroup request param
 type AddL3NetworkToGroupParam struct {
 	BaseParam
-	AddL3NetworkToGroup AddL3NetworkToGroupParamDetail `json:"addL3NetworkToGroup"`
+	Params AddL3NetworkToGroupParamDetail `json:"addL3NetworkToGroup"`
 }
 // SyncZBoxCapacityParamDetail SyncZBoxCapacity detail param
 type SyncZBoxCapacityParamDetail struct {
@@ -8865,7 +8865,7 @@ type SyncZBoxCapacityParamDetail struct {
 // SyncZBoxCapacityParam SyncZBoxCapacity request param
 type SyncZBoxCapacityParam struct {
 	BaseParam
-	SyncZBoxCapacity SyncZBoxCapacityParamDetail `json:"syncZBoxCapacity"`
+	Params SyncZBoxCapacityParamDetail `json:"syncZBoxCapacity"`
 }
 // AckEventDataParamDetail AckEventData detail param
 type AckEventDataParamDetail struct {
@@ -8879,7 +8879,7 @@ type AckEventDataParamDetail struct {
 // AckEventDataParam AckEventData request param
 type AckEventDataParam struct {
 	BaseParam
-	AckEventData AckEventDataParamDetail `json:"ackEventData"`
+	Params AckEventDataParamDetail `json:"ackEventData"`
 }
 // CheckResourcePermissionParamDetail CheckResourcePermission detail param
 type CheckResourcePermissionParamDetail struct {
@@ -8889,7 +8889,7 @@ type CheckResourcePermissionParamDetail struct {
 // CheckResourcePermissionParam CheckResourcePermission request param
 type CheckResourcePermissionParam struct {
 	BaseParam
-	CheckResourcePermission CheckResourcePermissionParamDetail `json:"checkResourcePermission"`
+	Params CheckResourcePermissionParamDetail `json:"checkResourcePermission"`
 }
 // ProvisionNfvInstConfigParamDetail ProvisionNfvInstConfig detail param
 type ProvisionNfvInstConfigParamDetail struct {
@@ -8899,7 +8899,7 @@ type ProvisionNfvInstConfigParamDetail struct {
 // ProvisionNfvInstConfigParam ProvisionNfvInstConfig request param
 type ProvisionNfvInstConfigParam struct {
 	BaseParam
-	ProvisionNfvInstConfig ProvisionNfvInstConfigParamDetail `json:"provisionNfvInstConfig"`
+	Params ProvisionNfvInstConfigParamDetail `json:"provisionNfvInstConfig"`
 }
 // GetCandidateMiniHostsParamDetail GetCandidateMiniHosts detail param
 type GetCandidateMiniHostsParamDetail struct {
@@ -8910,7 +8910,7 @@ type GetCandidateMiniHostsParamDetail struct {
 // GetCandidateMiniHostsParam GetCandidateMiniHosts request param
 type GetCandidateMiniHostsParam struct {
 	BaseParam
-	GetCandidateMiniHosts GetCandidateMiniHostsParamDetail `json:"getCandidateMiniHosts"`
+	Params GetCandidateMiniHostsParamDetail `json:"getCandidateMiniHosts"`
 }
 // DeleteDatasetsParamDetail DeleteDatasets detail param
 type DeleteDatasetsParamDetail struct {
@@ -8921,7 +8921,7 @@ type DeleteDatasetsParamDetail struct {
 // DeleteDatasetsParam DeleteDatasets request param
 type DeleteDatasetsParam struct {
 	BaseParam
-	DeleteDatasets DeleteDatasetsParamDetail `json:"deleteDatasets"`
+	Params DeleteDatasetsParamDetail `json:"deleteDatasets"`
 }
 // RevokeResourceSharingParamDetail RevokeResourceSharing detail param
 type RevokeResourceSharingParamDetail struct {
@@ -8934,7 +8934,7 @@ type RevokeResourceSharingParamDetail struct {
 // RevokeResourceSharingParam RevokeResourceSharing request param
 type RevokeResourceSharingParam struct {
 	BaseParam
-	RevokeResourceSharing RevokeResourceSharingParamDetail `json:"revokeResourceSharing"`
+	Params RevokeResourceSharingParamDetail `json:"revokeResourceSharing"`
 }
 // DeleteModelServicesParamDetail DeleteModelServices detail param
 type DeleteModelServicesParamDetail struct {
@@ -8945,7 +8945,7 @@ type DeleteModelServicesParamDetail struct {
 // DeleteModelServicesParam DeleteModelServices request param
 type DeleteModelServicesParam struct {
 	BaseParam
-	DeleteModelServices DeleteModelServicesParamDetail `json:"deleteModelServices"`
+	Params DeleteModelServicesParamDetail `json:"deleteModelServices"`
 }
 // ChangeL3NetworkStateParamDetail ChangeL3NetworkState detail param
 type ChangeL3NetworkStateParamDetail struct {
@@ -8956,7 +8956,7 @@ type ChangeL3NetworkStateParamDetail struct {
 // ChangeL3NetworkStateParam ChangeL3NetworkState request param
 type ChangeL3NetworkStateParam struct {
 	BaseParam
-	ChangeL3NetworkState ChangeL3NetworkStateParamDetail `json:"changeL3NetworkState"`
+	Params ChangeL3NetworkStateParamDetail `json:"changeL3NetworkState"`
 }
 // GetHostNUMATopologyParamDetail GetHostNUMATopology detail param
 type GetHostNUMATopologyParamDetail struct {
@@ -8966,7 +8966,7 @@ type GetHostNUMATopologyParamDetail struct {
 // GetHostNUMATopologyParam GetHostNUMATopology request param
 type GetHostNUMATopologyParam struct {
 	BaseParam
-	GetHostNUMATopology GetHostNUMATopologyParamDetail `json:"getHostNUMATopology"`
+	Params GetHostNUMATopologyParamDetail `json:"getHostNUMATopology"`
 }
 // CreateL2VirtualSwitchParamDetail CreateL2VirtualSwitch detail param
 type CreateL2VirtualSwitchParamDetail struct {
@@ -8986,7 +8986,7 @@ type CreateL2VirtualSwitchParamDetail struct {
 // CreateL2VirtualSwitchParam CreateL2VirtualSwitch request param
 type CreateL2VirtualSwitchParam struct {
 	BaseParam
-	CreateL2VirtualSwitch CreateL2VirtualSwitchParamDetail `json:"createL2VirtualSwitch"`
+	Params CreateL2VirtualSwitchParamDetail `json:"createL2VirtualSwitch"`
 }
 // AddVmNicToLoadBalancerParamDetail AddVmNicToLoadBalancer detail param
 type AddVmNicToLoadBalancerParamDetail struct {
@@ -8997,7 +8997,7 @@ type AddVmNicToLoadBalancerParamDetail struct {
 // AddVmNicToLoadBalancerParam AddVmNicToLoadBalancer request param
 type AddVmNicToLoadBalancerParam struct {
 	BaseParam
-	AddVmNicToLoadBalancer AddVmNicToLoadBalancerParamDetail `json:"addVmNicToLoadBalancer"`
+	Params AddVmNicToLoadBalancerParamDetail `json:"addVmNicToLoadBalancer"`
 }
 // UpdateBuildAppParamDetail UpdateBuildApp detail param
 type UpdateBuildAppParamDetail struct {
@@ -9010,7 +9010,7 @@ type UpdateBuildAppParamDetail struct {
 // UpdateBuildAppParam UpdateBuildApp request param
 type UpdateBuildAppParam struct {
 	BaseParam
-	UpdateBuildApp UpdateBuildAppParamDetail `json:"updateBuildApp"`
+	Params UpdateBuildAppParamDetail `json:"updateBuildApp"`
 }
 // GetClusterDRSStatusParamDetail GetClusterDRSStatus detail param
 type GetClusterDRSStatusParamDetail struct {
@@ -9020,7 +9020,7 @@ type GetClusterDRSStatusParamDetail struct {
 // GetClusterDRSStatusParam GetClusterDRSStatus request param
 type GetClusterDRSStatusParam struct {
 	BaseParam
-	GetClusterDRSStatus GetClusterDRSStatusParamDetail `json:"getClusterDRSStatus"`
+	Params GetClusterDRSStatusParamDetail `json:"getClusterDRSStatus"`
 }
 // AddAliyunNasPrimaryStorageParamDetail AddAliyunNasPrimaryStorage detail param
 type AddAliyunNasPrimaryStorageParamDetail struct {
@@ -9039,7 +9039,7 @@ type AddAliyunNasPrimaryStorageParamDetail struct {
 // AddAliyunNasPrimaryStorageParam AddAliyunNasPrimaryStorage request param
 type AddAliyunNasPrimaryStorageParam struct {
 	BaseParam
-	AddAliyunNasPrimaryStorage AddAliyunNasPrimaryStorageParamDetail `json:"addAliyunNasPrimaryStorage"`
+	Params AddAliyunNasPrimaryStorageParamDetail `json:"addAliyunNasPrimaryStorage"`
 }
 // GetVmNumaParamDetail GetVmNuma detail param
 type GetVmNumaParamDetail struct {
@@ -9049,7 +9049,7 @@ type GetVmNumaParamDetail struct {
 // GetVmNumaParam GetVmNuma request param
 type GetVmNumaParam struct {
 	BaseParam
-	GetVmNuma GetVmNumaParamDetail `json:"getVmNuma"`
+	Params GetVmNumaParamDetail `json:"getVmNuma"`
 }
 // ChangeZoneStateParamDetail ChangeZoneState detail param
 type ChangeZoneStateParamDetail struct {
@@ -9060,7 +9060,7 @@ type ChangeZoneStateParamDetail struct {
 // ChangeZoneStateParam ChangeZoneState request param
 type ChangeZoneStateParam struct {
 	BaseParam
-	ChangeZoneState ChangeZoneStateParamDetail `json:"changeZoneState"`
+	Params ChangeZoneStateParamDetail `json:"changeZoneState"`
 }
 // AttachAppBuildSystemToZoneParamDetail AttachAppBuildSystemToZone detail param
 type AttachAppBuildSystemToZoneParamDetail struct {
@@ -9071,7 +9071,7 @@ type AttachAppBuildSystemToZoneParamDetail struct {
 // AttachAppBuildSystemToZoneParam AttachAppBuildSystemToZone request param
 type AttachAppBuildSystemToZoneParam struct {
 	BaseParam
-	AttachAppBuildSystemToZone AttachAppBuildSystemToZoneParamDetail `json:"attachAppBuildSystemToZone"`
+	Params AttachAppBuildSystemToZoneParamDetail `json:"attachAppBuildSystemToZone"`
 }
 // CreateDataVolumeParamDetail CreateDataVolume detail param
 type CreateDataVolumeParamDetail struct {
@@ -9087,7 +9087,7 @@ type CreateDataVolumeParamDetail struct {
 // CreateDataVolumeParam CreateDataVolume request param
 type CreateDataVolumeParam struct {
 	BaseParam
-	CreateDataVolume CreateDataVolumeParamDetail `json:"createDataVolume"`
+	Params CreateDataVolumeParamDetail `json:"createDataVolume"`
 }
 // UngenerateHygonMdevDevicesParamDetail UngenerateHygonMdevDevices detail param
 type UngenerateHygonMdevDevicesParamDetail struct {
@@ -9097,7 +9097,7 @@ type UngenerateHygonMdevDevicesParamDetail struct {
 // UngenerateHygonMdevDevicesParam UngenerateHygonMdevDevices request param
 type UngenerateHygonMdevDevicesParam struct {
 	BaseParam
-	UngenerateHygonMdevDevices UngenerateHygonMdevDevicesParamDetail `json:"ungenerateHygonMdevDevices"`
+	Params UngenerateHygonMdevDevicesParamDetail `json:"ungenerateHygonMdevDevices"`
 }
 // DeletePluginDriversParamDetail DeletePluginDrivers detail param
 type DeletePluginDriversParamDetail struct {
@@ -9108,7 +9108,7 @@ type DeletePluginDriversParamDetail struct {
 // DeletePluginDriversParam DeletePluginDrivers request param
 type DeletePluginDriversParam struct {
 	BaseParam
-	DeletePluginDrivers DeletePluginDriversParamDetail `json:"deletePluginDrivers"`
+	Params DeletePluginDriversParamDetail `json:"deletePluginDrivers"`
 }
 // BatchCreateBaremetalChassisParamDetail BatchCreateBaremetalChassis detail param
 type BatchCreateBaremetalChassisParamDetail struct {
@@ -9122,7 +9122,7 @@ type BatchCreateBaremetalChassisParamDetail struct {
 // BatchCreateBaremetalChassisParam BatchCreateBaremetalChassis request param
 type BatchCreateBaremetalChassisParam struct {
 	BaseParam
-	BatchCreateBaremetalChassis BatchCreateBaremetalChassisParamDetail `json:"batchCreateBaremetalChassis"`
+	Params BatchCreateBaremetalChassisParamDetail `json:"batchCreateBaremetalChassis"`
 }
 // AddSchedulerJobToSchedulerTriggerParamDetail AddSchedulerJobToSchedulerTrigger detail param
 type AddSchedulerJobToSchedulerTriggerParamDetail struct {
@@ -9134,7 +9134,7 @@ type AddSchedulerJobToSchedulerTriggerParamDetail struct {
 // AddSchedulerJobToSchedulerTriggerParam AddSchedulerJobToSchedulerTrigger request param
 type AddSchedulerJobToSchedulerTriggerParam struct {
 	BaseParam
-	AddSchedulerJobToSchedulerTrigger AddSchedulerJobToSchedulerTriggerParamDetail `json:"addSchedulerJobToSchedulerTrigger"`
+	Params AddSchedulerJobToSchedulerTriggerParamDetail `json:"addSchedulerJobToSchedulerTrigger"`
 }
 // DetachPolicyFromRoleParamDetail DetachPolicyFromRole detail param
 type DetachPolicyFromRoleParamDetail struct {
@@ -9145,7 +9145,7 @@ type DetachPolicyFromRoleParamDetail struct {
 // DetachPolicyFromRoleParam DetachPolicyFromRole request param
 type DetachPolicyFromRoleParam struct {
 	BaseParam
-	DetachPolicyFromRole DetachPolicyFromRoleParamDetail `json:"detachPolicyFromRole"`
+	Params DetachPolicyFromRoleParamDetail `json:"detachPolicyFromRole"`
 }
 // RestartModelServiceGroupsParamDetail RestartModelServiceGroups detail param
 type RestartModelServiceGroupsParamDetail struct {
@@ -9155,7 +9155,7 @@ type RestartModelServiceGroupsParamDetail struct {
 // RestartModelServiceGroupsParam RestartModelServiceGroups request param
 type RestartModelServiceGroupsParam struct {
 	BaseParam
-	RestartModelServiceGroups RestartModelServiceGroupsParamDetail `json:"restartModelServiceGroups"`
+	Params RestartModelServiceGroupsParamDetail `json:"restartModelServiceGroups"`
 }
 // GetLoadBalancerOwnerParamDetail GetLoadBalancerOwner detail param
 type GetLoadBalancerOwnerParamDetail struct {
@@ -9165,7 +9165,7 @@ type GetLoadBalancerOwnerParamDetail struct {
 // GetLoadBalancerOwnerParam GetLoadBalancerOwner request param
 type GetLoadBalancerOwnerParam struct {
 	BaseParam
-	GetLoadBalancerOwner GetLoadBalancerOwnerParamDetail `json:"getLoadBalancerOwner"`
+	Params GetLoadBalancerOwnerParamDetail `json:"getLoadBalancerOwner"`
 }
 // GetNicQosParamDetail GetNicQos detail param
 type GetNicQosParamDetail struct {
@@ -9176,7 +9176,7 @@ type GetNicQosParamDetail struct {
 // GetNicQosParam GetNicQos request param
 type GetNicQosParam struct {
 	BaseParam
-	GetNicQos GetNicQosParamDetail `json:"getNicQos"`
+	Params GetNicQosParamDetail `json:"getNicQos"`
 }
 // ChangeVmNicNetworkParamDetail ChangeVmNicNetwork detail param
 type ChangeVmNicNetworkParamDetail struct {
@@ -9188,7 +9188,7 @@ type ChangeVmNicNetworkParamDetail struct {
 // ChangeVmNicNetworkParam ChangeVmNicNetwork request param
 type ChangeVmNicNetworkParam struct {
 	BaseParam
-	ChangeVmNicNetwork ChangeVmNicNetworkParamDetail `json:"changeVmNicNetwork"`
+	Params ChangeVmNicNetworkParamDetail `json:"changeVmNicNetwork"`
 }
 // CreateBareMetal2IpmiChassisHardwareInfoParamDetail CreateBareMetal2IpmiChassisHardwareInfo detail param
 type CreateBareMetal2IpmiChassisHardwareInfoParamDetail struct {
@@ -9201,7 +9201,7 @@ type CreateBareMetal2IpmiChassisHardwareInfoParamDetail struct {
 // CreateBareMetal2IpmiChassisHardwareInfoParam CreateBareMetal2IpmiChassisHardwareInfo request param
 type CreateBareMetal2IpmiChassisHardwareInfoParam struct {
 	BaseParam
-	CreateBareMetal2IpmiChassisHardwareInfo CreateBareMetal2IpmiChassisHardwareInfoParamDetail `json:"createBareMetal2IpmiChassisHardwareInfo"`
+	Params CreateBareMetal2IpmiChassisHardwareInfoParamDetail `json:"createBareMetal2IpmiChassisHardwareInfo"`
 }
 // RemoveLabelFromAlarmParamDetail RemoveLabelFromAlarm detail param
 type RemoveLabelFromAlarmParamDetail struct {
@@ -9212,7 +9212,7 @@ type RemoveLabelFromAlarmParamDetail struct {
 // RemoveLabelFromAlarmParam RemoveLabelFromAlarm request param
 type RemoveLabelFromAlarmParam struct {
 	BaseParam
-	RemoveLabelFromAlarm RemoveLabelFromAlarmParamDetail `json:"removeLabelFromAlarm"`
+	Params RemoveLabelFromAlarmParamDetail `json:"removeLabelFromAlarm"`
 }
 // DeleteIAM2VirtualIDLdapBindingParamDetail DeleteIAM2VirtualIDLdapBinding detail param
 type DeleteIAM2VirtualIDLdapBindingParamDetail struct {
@@ -9223,7 +9223,7 @@ type DeleteIAM2VirtualIDLdapBindingParamDetail struct {
 // DeleteIAM2VirtualIDLdapBindingParam DeleteIAM2VirtualIDLdapBinding request param
 type DeleteIAM2VirtualIDLdapBindingParam struct {
 	BaseParam
-	DeleteIAM2VirtualIDLdapBinding DeleteIAM2VirtualIDLdapBindingParamDetail `json:"deleteIAM2VirtualIDLdapBinding"`
+	Params DeleteIAM2VirtualIDLdapBindingParamDetail `json:"deleteIAM2VirtualIDLdapBinding"`
 }
 // UpdateVmPriorityParamDetail UpdateVmPriority detail param
 type UpdateVmPriorityParamDetail struct {
@@ -9234,7 +9234,7 @@ type UpdateVmPriorityParamDetail struct {
 // UpdateVmPriorityParam UpdateVmPriority request param
 type UpdateVmPriorityParam struct {
 	BaseParam
-	UpdateVmPriority UpdateVmPriorityParamDetail `json:"updateVmPriority"`
+	Params UpdateVmPriorityParamDetail `json:"updateVmPriority"`
 }
 // DetachMdevDeviceFromVmParamDetail DetachMdevDeviceFromVm detail param
 type DetachMdevDeviceFromVmParamDetail struct {
@@ -9245,7 +9245,7 @@ type DetachMdevDeviceFromVmParamDetail struct {
 // DetachMdevDeviceFromVmParam DetachMdevDeviceFromVm request param
 type DetachMdevDeviceFromVmParam struct {
 	BaseParam
-	DetachMdevDeviceFromVm DetachMdevDeviceFromVmParamDetail `json:"detachMdevDeviceFromVm"`
+	Params DetachMdevDeviceFromVmParamDetail `json:"detachMdevDeviceFromVm"`
 }
 // DeleteVmHostnameParamDetail DeleteVmHostname detail param
 type DeleteVmHostnameParamDetail struct {
@@ -9256,7 +9256,7 @@ type DeleteVmHostnameParamDetail struct {
 // DeleteVmHostnameParam DeleteVmHostname request param
 type DeleteVmHostnameParam struct {
 	BaseParam
-	DeleteVmHostname DeleteVmHostnameParamDetail `json:"deleteVmHostname"`
+	Params DeleteVmHostnameParamDetail `json:"deleteVmHostname"`
 }
 // GetLicenseCapabilitiesParamDetail GetLicenseCapabilities detail param
 type GetLicenseCapabilitiesParamDetail struct {
@@ -9265,7 +9265,7 @@ type GetLicenseCapabilitiesParamDetail struct {
 // GetLicenseCapabilitiesParam GetLicenseCapabilities request param
 type GetLicenseCapabilitiesParam struct {
 	BaseParam
-	GetLicenseCapabilities GetLicenseCapabilitiesParamDetail `json:"getLicenseCapabilities"`
+	Params GetLicenseCapabilitiesParamDetail `json:"getLicenseCapabilities"`
 }
 // CreateFirewallRuleTemplateParamDetail CreateFirewallRuleTemplate detail param
 type CreateFirewallRuleTemplateParamDetail struct {
@@ -9290,7 +9290,7 @@ type CreateFirewallRuleTemplateParamDetail struct {
 // CreateFirewallRuleTemplateParam CreateFirewallRuleTemplate request param
 type CreateFirewallRuleTemplateParam struct {
 	BaseParam
-	CreateFirewallRuleTemplate CreateFirewallRuleTemplateParamDetail `json:"createFirewallRuleTemplate"`
+	Params CreateFirewallRuleTemplateParamDetail `json:"createFirewallRuleTemplate"`
 }
 // ChangeIAM2ProjectStateParamDetail ChangeIAM2ProjectState detail param
 type ChangeIAM2ProjectStateParamDetail struct {
@@ -9301,7 +9301,7 @@ type ChangeIAM2ProjectStateParamDetail struct {
 // ChangeIAM2ProjectStateParam ChangeIAM2ProjectState request param
 type ChangeIAM2ProjectStateParam struct {
 	BaseParam
-	ChangeIAM2ProjectState ChangeIAM2ProjectStateParamDetail `json:"changeIAM2ProjectState"`
+	Params ChangeIAM2ProjectStateParamDetail `json:"changeIAM2ProjectState"`
 }
 // SetVmSoundTypeParamDetail SetVmSoundType detail param
 type SetVmSoundTypeParamDetail struct {
@@ -9312,7 +9312,7 @@ type SetVmSoundTypeParamDetail struct {
 // SetVmSoundTypeParam SetVmSoundType request param
 type SetVmSoundTypeParam struct {
 	BaseParam
-	SetVmSoundType SetVmSoundTypeParamDetail `json:"setVmSoundType"`
+	Params SetVmSoundTypeParamDetail `json:"setVmSoundType"`
 }
 // MergeDataOnBackupStorageParamDetail MergeDataOnBackupStorage detail param
 type MergeDataOnBackupStorageParamDetail struct {
@@ -9322,7 +9322,7 @@ type MergeDataOnBackupStorageParamDetail struct {
 // MergeDataOnBackupStorageParam MergeDataOnBackupStorage request param
 type MergeDataOnBackupStorageParam struct {
 	BaseParam
-	MergeDataOnBackupStorage MergeDataOnBackupStorageParamDetail `json:"mergeDataOnBackupStorage"`
+	Params MergeDataOnBackupStorageParamDetail `json:"mergeDataOnBackupStorage"`
 }
 // GetCdpBackupStorageRequirementParamDetail GetCdpBackupStorageRequirement detail param
 type GetCdpBackupStorageRequirementParamDetail struct {
@@ -9334,7 +9334,7 @@ type GetCdpBackupStorageRequirementParamDetail struct {
 // GetCdpBackupStorageRequirementParam GetCdpBackupStorageRequirement request param
 type GetCdpBackupStorageRequirementParam struct {
 	BaseParam
-	GetCdpBackupStorageRequirement GetCdpBackupStorageRequirementParamDetail `json:"getCdpBackupStorageRequirement"`
+	Params GetCdpBackupStorageRequirementParamDetail `json:"getCdpBackupStorageRequirement"`
 }
 // AddAttributesToIAM2VirtualIDGroupParamDetail AddAttributesToIAM2VirtualIDGroup detail param
 type AddAttributesToIAM2VirtualIDGroupParamDetail struct {
@@ -9345,7 +9345,7 @@ type AddAttributesToIAM2VirtualIDGroupParamDetail struct {
 // AddAttributesToIAM2VirtualIDGroupParam AddAttributesToIAM2VirtualIDGroup request param
 type AddAttributesToIAM2VirtualIDGroupParam struct {
 	BaseParam
-	AddAttributesToIAM2VirtualIDGroup AddAttributesToIAM2VirtualIDGroupParamDetail `json:"addAttributesToIAM2VirtualIDGroup"`
+	Params AddAttributesToIAM2VirtualIDGroupParamDetail `json:"addAttributesToIAM2VirtualIDGroup"`
 }
 // ChangeAffinityGroupStateParamDetail ChangeAffinityGroupState detail param
 type ChangeAffinityGroupStateParamDetail struct {
@@ -9356,7 +9356,7 @@ type ChangeAffinityGroupStateParamDetail struct {
 // ChangeAffinityGroupStateParam ChangeAffinityGroupState request param
 type ChangeAffinityGroupStateParam struct {
 	BaseParam
-	ChangeAffinityGroupState ChangeAffinityGroupStateParamDetail `json:"changeAffinityGroupState"`
+	Params ChangeAffinityGroupStateParamDetail `json:"changeAffinityGroupState"`
 }
 // ChangeSecurityGroupRuleStateParamDetail ChangeSecurityGroupRuleState detail param
 type ChangeSecurityGroupRuleStateParamDetail struct {
@@ -9368,7 +9368,7 @@ type ChangeSecurityGroupRuleStateParamDetail struct {
 // ChangeSecurityGroupRuleStateParam ChangeSecurityGroupRuleState request param
 type ChangeSecurityGroupRuleStateParam struct {
 	BaseParam
-	ChangeSecurityGroupRuleState ChangeSecurityGroupRuleStateParamDetail `json:"changeSecurityGroupRuleState"`
+	Params ChangeSecurityGroupRuleStateParamDetail `json:"changeSecurityGroupRuleState"`
 }
 // AddVmNicToSecurityGroupParamDetail AddVmNicToSecurityGroup detail param
 type AddVmNicToSecurityGroupParamDetail struct {
@@ -9379,7 +9379,7 @@ type AddVmNicToSecurityGroupParamDetail struct {
 // AddVmNicToSecurityGroupParam AddVmNicToSecurityGroup request param
 type AddVmNicToSecurityGroupParam struct {
 	BaseParam
-	AddVmNicToSecurityGroup AddVmNicToSecurityGroupParamDetail `json:"addVmNicToSecurityGroup"`
+	Params AddVmNicToSecurityGroupParamDetail `json:"addVmNicToSecurityGroup"`
 }
 // SyncAliyunRouteEntryFromRemoteParamDetail SyncAliyunRouteEntryFromRemote detail param
 type SyncAliyunRouteEntryFromRemoteParamDetail struct {
@@ -9392,7 +9392,7 @@ type SyncAliyunRouteEntryFromRemoteParamDetail struct {
 // SyncAliyunRouteEntryFromRemoteParam SyncAliyunRouteEntryFromRemote request param
 type SyncAliyunRouteEntryFromRemoteParam struct {
 	BaseParam
-	SyncAliyunRouteEntryFromRemote SyncAliyunRouteEntryFromRemoteParamDetail `json:"syncAliyunRouteEntryFromRemote"`
+	Params SyncAliyunRouteEntryFromRemoteParamDetail `json:"syncAliyunRouteEntryFromRemote"`
 }
 // UpdateEmailAddressOfSNSEmailEndpointParamDetail UpdateEmailAddressOfSNSEmailEndpoint detail param
 type UpdateEmailAddressOfSNSEmailEndpointParamDetail struct {
@@ -9404,7 +9404,7 @@ type UpdateEmailAddressOfSNSEmailEndpointParamDetail struct {
 // UpdateEmailAddressOfSNSEmailEndpointParam UpdateEmailAddressOfSNSEmailEndpoint request param
 type UpdateEmailAddressOfSNSEmailEndpointParam struct {
 	BaseParam
-	UpdateEmailAddressOfSNSEmailEndpoint UpdateEmailAddressOfSNSEmailEndpointParamDetail `json:"updateEmailAddressOfSNSEmailEndpoint"`
+	Params UpdateEmailAddressOfSNSEmailEndpointParamDetail `json:"updateEmailAddressOfSNSEmailEndpoint"`
 }
 // GetMetricLabelValueParamDetail GetMetricLabelValue detail param
 type GetMetricLabelValueParamDetail struct {
@@ -9419,7 +9419,7 @@ type GetMetricLabelValueParamDetail struct {
 // GetMetricLabelValueParam GetMetricLabelValue request param
 type GetMetricLabelValueParam struct {
 	BaseParam
-	GetMetricLabelValue GetMetricLabelValueParamDetail `json:"getMetricLabelValue"`
+	Params GetMetricLabelValueParamDetail `json:"getMetricLabelValue"`
 }
 // GetCandidateZonesClustersHostsForCreatingVmParamDetail GetCandidateZonesClustersHostsForCreatingVm detail param
 type GetCandidateZonesClustersHostsForCreatingVmParamDetail struct {
@@ -9439,7 +9439,7 @@ type GetCandidateZonesClustersHostsForCreatingVmParamDetail struct {
 // GetCandidateZonesClustersHostsForCreatingVmParam GetCandidateZonesClustersHostsForCreatingVm request param
 type GetCandidateZonesClustersHostsForCreatingVmParam struct {
 	BaseParam
-	GetCandidateZonesClustersHostsForCreatingVm GetCandidateZonesClustersHostsForCreatingVmParamDetail `json:"getCandidateZonesClustersHostsForCreatingVm"`
+	Params GetCandidateZonesClustersHostsForCreatingVmParamDetail `json:"getCandidateZonesClustersHostsForCreatingVm"`
 }
 // CreateResourcePriceParamDetail CreateResourcePrice detail param
 type CreateResourcePriceParamDetail struct {
@@ -9457,7 +9457,7 @@ type CreateResourcePriceParamDetail struct {
 // CreateResourcePriceParam CreateResourcePrice request param
 type CreateResourcePriceParam struct {
 	BaseParam
-	CreateResourcePrice CreateResourcePriceParamDetail `json:"createResourcePrice"`
+	Params CreateResourcePriceParamDetail `json:"createResourcePrice"`
 }
 // RemoveSchedulerJobGroupFromSchedulerTriggerParamDetail RemoveSchedulerJobGroupFromSchedulerTrigger detail param
 type RemoveSchedulerJobGroupFromSchedulerTriggerParamDetail struct {
@@ -9468,7 +9468,7 @@ type RemoveSchedulerJobGroupFromSchedulerTriggerParamDetail struct {
 // RemoveSchedulerJobGroupFromSchedulerTriggerParam RemoveSchedulerJobGroupFromSchedulerTrigger request param
 type RemoveSchedulerJobGroupFromSchedulerTriggerParam struct {
 	BaseParam
-	RemoveSchedulerJobGroupFromSchedulerTrigger RemoveSchedulerJobGroupFromSchedulerTriggerParamDetail `json:"removeSchedulerJobGroupFromSchedulerTrigger"`
+	Params RemoveSchedulerJobGroupFromSchedulerTriggerParamDetail `json:"removeSchedulerJobGroupFromSchedulerTrigger"`
 }
 // ChangeAccountPriceTableBindingParamDetail ChangeAccountPriceTableBinding detail param
 type ChangeAccountPriceTableBindingParamDetail struct {
@@ -9479,7 +9479,7 @@ type ChangeAccountPriceTableBindingParamDetail struct {
 // ChangeAccountPriceTableBindingParam ChangeAccountPriceTableBinding request param
 type ChangeAccountPriceTableBindingParam struct {
 	BaseParam
-	ChangeAccountPriceTableBinding ChangeAccountPriceTableBindingParamDetail `json:"changeAccountPriceTableBinding"`
+	Params ChangeAccountPriceTableBindingParamDetail `json:"changeAccountPriceTableBinding"`
 }
 // DeleteVolumeQosParamDetail DeleteVolumeQos detail param
 type DeleteVolumeQosParamDetail struct {
@@ -9490,7 +9490,7 @@ type DeleteVolumeQosParamDetail struct {
 // DeleteVolumeQosParam DeleteVolumeQos request param
 type DeleteVolumeQosParam struct {
 	BaseParam
-	DeleteVolumeQos DeleteVolumeQosParamDetail `json:"deleteVolumeQos"`
+	Params DeleteVolumeQosParamDetail `json:"deleteVolumeQos"`
 }
 // GetL3NetworkDhcpIpAddressParamDetail GetL3NetworkDhcpIpAddress detail param
 type GetL3NetworkDhcpIpAddressParamDetail struct {
@@ -9500,7 +9500,7 @@ type GetL3NetworkDhcpIpAddressParamDetail struct {
 // GetL3NetworkDhcpIpAddressParam GetL3NetworkDhcpIpAddress request param
 type GetL3NetworkDhcpIpAddressParam struct {
 	BaseParam
-	GetL3NetworkDhcpIpAddress GetL3NetworkDhcpIpAddressParamDetail `json:"getL3NetworkDhcpIpAddress"`
+	Params GetL3NetworkDhcpIpAddressParamDetail `json:"getL3NetworkDhcpIpAddress"`
 }
 // CreateFirewallRuleSetParamDetail CreateFirewallRuleSet detail param
 type CreateFirewallRuleSetParamDetail struct {
@@ -9514,7 +9514,7 @@ type CreateFirewallRuleSetParamDetail struct {
 // CreateFirewallRuleSetParam CreateFirewallRuleSet request param
 type CreateFirewallRuleSetParam struct {
 	BaseParam
-	CreateFirewallRuleSet CreateFirewallRuleSetParamDetail `json:"createFirewallRuleSet"`
+	Params CreateFirewallRuleSetParamDetail `json:"createFirewallRuleSet"`
 }
 // CreateJitSecretResourcePoolParamDetail CreateJitSecretResourcePool detail param
 type CreateJitSecretResourcePoolParamDetail struct {
@@ -9532,7 +9532,7 @@ type CreateJitSecretResourcePoolParamDetail struct {
 // CreateJitSecretResourcePoolParam CreateJitSecretResourcePool request param
 type CreateJitSecretResourcePoolParam struct {
 	BaseParam
-	CreateJitSecretResourcePool CreateJitSecretResourcePoolParamDetail `json:"createJitSecretResourcePool"`
+	Params CreateJitSecretResourcePoolParamDetail `json:"createJitSecretResourcePool"`
 }
 // GetBaremetalChassisPowerStatusParamDetail GetBaremetalChassisPowerStatus detail param
 type GetBaremetalChassisPowerStatusParamDetail struct {
@@ -9542,7 +9542,7 @@ type GetBaremetalChassisPowerStatusParamDetail struct {
 // GetBaremetalChassisPowerStatusParam GetBaremetalChassisPowerStatus request param
 type GetBaremetalChassisPowerStatusParam struct {
 	BaseParam
-	GetBaremetalChassisPowerStatus GetBaremetalChassisPowerStatusParamDetail `json:"getBaremetalChassisPowerStatus"`
+	Params GetBaremetalChassisPowerStatusParamDetail `json:"getBaremetalChassisPowerStatus"`
 }
 // RefreshFirewallParamDetail RefreshFirewall detail param
 type RefreshFirewallParamDetail struct {
@@ -9552,7 +9552,7 @@ type RefreshFirewallParamDetail struct {
 // RefreshFirewallParam RefreshFirewall request param
 type RefreshFirewallParam struct {
 	BaseParam
-	RefreshFirewall RefreshFirewallParamDetail `json:"refreshFirewall"`
+	Params RefreshFirewallParamDetail `json:"refreshFirewall"`
 }
 // DetachL3NetworksFromIPsecConnectionParamDetail DetachL3NetworksFromIPsecConnection detail param
 type DetachL3NetworksFromIPsecConnectionParamDetail struct {
@@ -9563,7 +9563,7 @@ type DetachL3NetworksFromIPsecConnectionParamDetail struct {
 // DetachL3NetworksFromIPsecConnectionParam DetachL3NetworksFromIPsecConnection request param
 type DetachL3NetworksFromIPsecConnectionParam struct {
 	BaseParam
-	DetachL3NetworksFromIPsecConnection DetachL3NetworksFromIPsecConnectionParamDetail `json:"detachL3NetworksFromIPsecConnection"`
+	Params DetachL3NetworksFromIPsecConnectionParamDetail `json:"detachL3NetworksFromIPsecConnection"`
 }
 // UpdateAutoScalingGroupAddingNewInstanceRuleParamDetail UpdateAutoScalingGroupAddingNewInstanceRule detail param
 type UpdateAutoScalingGroupAddingNewInstanceRuleParamDetail struct {
@@ -9578,7 +9578,7 @@ type UpdateAutoScalingGroupAddingNewInstanceRuleParamDetail struct {
 // UpdateAutoScalingGroupAddingNewInstanceRuleParam UpdateAutoScalingGroupAddingNewInstanceRule request param
 type UpdateAutoScalingGroupAddingNewInstanceRuleParam struct {
 	BaseParam
-	UpdateAutoScalingGroupAddingNewInstanceRule UpdateAutoScalingGroupAddingNewInstanceRuleParamDetail `json:"updateAutoScalingGroupAddingNewInstanceRule"`
+	Params UpdateAutoScalingGroupAddingNewInstanceRuleParamDetail `json:"updateAutoScalingGroupAddingNewInstanceRule"`
 }
 // GetFaultToleranceVmsParamDetail GetFaultToleranceVms detail param
 type GetFaultToleranceVmsParamDetail struct {
@@ -9588,7 +9588,7 @@ type GetFaultToleranceVmsParamDetail struct {
 // GetFaultToleranceVmsParam GetFaultToleranceVms request param
 type GetFaultToleranceVmsParam struct {
 	BaseParam
-	GetFaultToleranceVms GetFaultToleranceVmsParamDetail `json:"getFaultToleranceVms"`
+	Params GetFaultToleranceVmsParamDetail `json:"getFaultToleranceVms"`
 }
 // DeleteAliyunKeySecretParamDetail DeleteAliyunKeySecret detail param
 type DeleteAliyunKeySecretParamDetail struct {
@@ -9599,7 +9599,7 @@ type DeleteAliyunKeySecretParamDetail struct {
 // DeleteAliyunKeySecretParam DeleteAliyunKeySecret request param
 type DeleteAliyunKeySecretParam struct {
 	BaseParam
-	DeleteAliyunKeySecret DeleteAliyunKeySecretParamDetail `json:"deleteAliyunKeySecret"`
+	Params DeleteAliyunKeySecretParamDetail `json:"deleteAliyunKeySecret"`
 }
 // CreateVmInstanceFromVolumeSnapshotParamDetail CreateVmInstanceFromVolumeSnapshot detail param
 type CreateVmInstanceFromVolumeSnapshotParamDetail struct {
@@ -9628,7 +9628,7 @@ type CreateVmInstanceFromVolumeSnapshotParamDetail struct {
 // CreateVmInstanceFromVolumeSnapshotParam CreateVmInstanceFromVolumeSnapshot request param
 type CreateVmInstanceFromVolumeSnapshotParam struct {
 	BaseParam
-	CreateVmInstanceFromVolumeSnapshot CreateVmInstanceFromVolumeSnapshotParamDetail `json:"createVmInstanceFromVolumeSnapshot"`
+	Params CreateVmInstanceFromVolumeSnapshotParamDetail `json:"createVmInstanceFromVolumeSnapshot"`
 }
 // PowerResetBareMetal2ChassisParamDetail PowerResetBareMetal2Chassis detail param
 type PowerResetBareMetal2ChassisParamDetail struct {
@@ -9639,7 +9639,7 @@ type PowerResetBareMetal2ChassisParamDetail struct {
 // PowerResetBareMetal2ChassisParam PowerResetBareMetal2Chassis request param
 type PowerResetBareMetal2ChassisParam struct {
 	BaseParam
-	PowerResetBareMetal2Chassis PowerResetBareMetal2ChassisParamDetail `json:"powerResetBareMetal2Chassis"`
+	Params PowerResetBareMetal2ChassisParamDetail `json:"powerResetBareMetal2Chassis"`
 }
 // PrometheusQueryVmMonitoringDataParamDetail PrometheusQueryVmMonitoringData detail param
 type PrometheusQueryVmMonitoringDataParamDetail struct {
@@ -9655,7 +9655,7 @@ type PrometheusQueryVmMonitoringDataParamDetail struct {
 // PrometheusQueryVmMonitoringDataParam PrometheusQueryVmMonitoringData request param
 type PrometheusQueryVmMonitoringDataParam struct {
 	BaseParam
-	PrometheusQueryVmMonitoringData PrometheusQueryVmMonitoringDataParamDetail `json:"prometheusQueryVmMonitoringData"`
+	Params PrometheusQueryVmMonitoringDataParamDetail `json:"prometheusQueryVmMonitoringData"`
 }
 // UpdateResourceConfigsParamDetail UpdateResourceConfigs detail param
 type UpdateResourceConfigsParamDetail struct {
@@ -9666,7 +9666,7 @@ type UpdateResourceConfigsParamDetail struct {
 // UpdateResourceConfigsParam UpdateResourceConfigs request param
 type UpdateResourceConfigsParam struct {
 	BaseParam
-	UpdateResourceConfigs UpdateResourceConfigsParamDetail `json:"updateResourceConfigs"`
+	Params UpdateResourceConfigsParamDetail `json:"updateResourceConfigs"`
 }
 // RevertVolumeFromSnapshotParamDetail RevertVolumeFromSnapshot detail param
 type RevertVolumeFromSnapshotParamDetail struct {
@@ -9676,7 +9676,7 @@ type RevertVolumeFromSnapshotParamDetail struct {
 // RevertVolumeFromSnapshotParam RevertVolumeFromSnapshot request param
 type RevertVolumeFromSnapshotParam struct {
 	BaseParam
-	RevertVolumeFromSnapshot RevertVolumeFromSnapshotParamDetail `json:"revertVolumeFromSnapshot"`
+	Params RevertVolumeFromSnapshotParamDetail `json:"revertVolumeFromSnapshot"`
 }
 // GetBlockPrimaryStorageMetadataParamDetail GetBlockPrimaryStorageMetadata detail param
 type GetBlockPrimaryStorageMetadataParamDetail struct {
@@ -9687,7 +9687,7 @@ type GetBlockPrimaryStorageMetadataParamDetail struct {
 // GetBlockPrimaryStorageMetadataParam GetBlockPrimaryStorageMetadata request param
 type GetBlockPrimaryStorageMetadataParam struct {
 	BaseParam
-	GetBlockPrimaryStorageMetadata GetBlockPrimaryStorageMetadataParamDetail `json:"getBlockPrimaryStorageMetadata"`
+	Params GetBlockPrimaryStorageMetadataParamDetail `json:"getBlockPrimaryStorageMetadata"`
 }
 // UpdateBondingParamDetail UpdateBonding detail param
 type UpdateBondingParamDetail struct {
@@ -9703,7 +9703,7 @@ type UpdateBondingParamDetail struct {
 // UpdateBondingParam UpdateBonding request param
 type UpdateBondingParam struct {
 	BaseParam
-	UpdateBonding UpdateBondingParamDetail `json:"updateBonding"`
+	Params UpdateBondingParamDetail `json:"updateBonding"`
 }
 // GetManagementNodeArchParamDetail GetManagementNodeArch detail param
 type GetManagementNodeArchParamDetail struct {
@@ -9712,7 +9712,7 @@ type GetManagementNodeArchParamDetail struct {
 // GetManagementNodeArchParam GetManagementNodeArch request param
 type GetManagementNodeArchParam struct {
 	BaseParam
-	GetManagementNodeArch GetManagementNodeArchParamDetail `json:"getManagementNodeArch"`
+	Params GetManagementNodeArchParamDetail `json:"getManagementNodeArch"`
 }
 // DetachScsiLunFromHostParamDetail DetachScsiLunFromHost detail param
 type DetachScsiLunFromHostParamDetail struct {
@@ -9723,7 +9723,7 @@ type DetachScsiLunFromHostParamDetail struct {
 // DetachScsiLunFromHostParam DetachScsiLunFromHost request param
 type DetachScsiLunFromHostParam struct {
 	BaseParam
-	DetachScsiLunFromHost DetachScsiLunFromHostParamDetail `json:"detachScsiLunFromHost"`
+	Params DetachScsiLunFromHostParamDetail `json:"detachScsiLunFromHost"`
 }
 // DisableCbtTaskParamDetail DisableCbtTask detail param
 type DisableCbtTaskParamDetail struct {
@@ -9734,7 +9734,7 @@ type DisableCbtTaskParamDetail struct {
 // DisableCbtTaskParam DisableCbtTask request param
 type DisableCbtTaskParam struct {
 	BaseParam
-	DisableCbtTask DisableCbtTaskParamDetail `json:"disableCbtTask"`
+	Params DisableCbtTaskParamDetail `json:"disableCbtTask"`
 }
 // RefreshLocalRaidParamDetail RefreshLocalRaid detail param
 type RefreshLocalRaidParamDetail struct {
@@ -9744,7 +9744,7 @@ type RefreshLocalRaidParamDetail struct {
 // RefreshLocalRaidParam RefreshLocalRaid request param
 type RefreshLocalRaidParam struct {
 	BaseParam
-	RefreshLocalRaid RefreshLocalRaidParamDetail `json:"refreshLocalRaid"`
+	Params RefreshLocalRaidParamDetail `json:"refreshLocalRaid"`
 }
 // UpdateSubscribeEventParamDetail UpdateSubscribeEvent detail param
 type UpdateSubscribeEventParamDetail struct {
@@ -9756,7 +9756,7 @@ type UpdateSubscribeEventParamDetail struct {
 // UpdateSubscribeEventParam UpdateSubscribeEvent request param
 type UpdateSubscribeEventParam struct {
 	BaseParam
-	UpdateSubscribeEvent UpdateSubscribeEventParamDetail `json:"updateSubscribeEvent"`
+	Params UpdateSubscribeEventParamDetail `json:"updateSubscribeEvent"`
 }
 // SetVmSshKeyParamDetail SetVmSshKey detail param
 type SetVmSshKeyParamDetail struct {
@@ -9767,7 +9767,7 @@ type SetVmSshKeyParamDetail struct {
 // SetVmSshKeyParam SetVmSshKey request param
 type SetVmSshKeyParam struct {
 	BaseParam
-	SetVmSshKey SetVmSshKeyParamDetail `json:"setVmSshKey"`
+	Params SetVmSshKeyParamDetail `json:"setVmSshKey"`
 }
 // FailoverFaultToleranceVmParamDetail FailoverFaultToleranceVm detail param
 type FailoverFaultToleranceVmParamDetail struct {
@@ -9777,7 +9777,7 @@ type FailoverFaultToleranceVmParamDetail struct {
 // FailoverFaultToleranceVmParam FailoverFaultToleranceVm request param
 type FailoverFaultToleranceVmParam struct {
 	BaseParam
-	FailoverFaultToleranceVm FailoverFaultToleranceVmParamDetail `json:"failoverFaultToleranceVm"`
+	Params FailoverFaultToleranceVmParamDetail `json:"failoverFaultToleranceVm"`
 }
 // EjectZBoxParamDetail EjectZBox detail param
 type EjectZBoxParamDetail struct {
@@ -9787,7 +9787,7 @@ type EjectZBoxParamDetail struct {
 // EjectZBoxParam EjectZBox request param
 type EjectZBoxParam struct {
 	BaseParam
-	EjectZBox EjectZBoxParamDetail `json:"ejectZBox"`
+	Params EjectZBoxParamDetail `json:"ejectZBox"`
 }
 // PrometheusQueryMetadataParamDetail PrometheusQueryMetadata detail param
 type PrometheusQueryMetadataParamDetail struct {
@@ -9797,7 +9797,7 @@ type PrometheusQueryMetadataParamDetail struct {
 // PrometheusQueryMetadataParam PrometheusQueryMetadata request param
 type PrometheusQueryMetadataParam struct {
 	BaseParam
-	PrometheusQueryMetadata PrometheusQueryMetadataParamDetail `json:"prometheusQueryMetadata"`
+	Params PrometheusQueryMetadataParamDetail `json:"prometheusQueryMetadata"`
 }
 // DeleteFirewallRuleTemplateParamDetail DeleteFirewallRuleTemplate detail param
 type DeleteFirewallRuleTemplateParamDetail struct {
@@ -9808,7 +9808,7 @@ type DeleteFirewallRuleTemplateParamDetail struct {
 // DeleteFirewallRuleTemplateParam DeleteFirewallRuleTemplate request param
 type DeleteFirewallRuleTemplateParam struct {
 	BaseParam
-	DeleteFirewallRuleTemplate DeleteFirewallRuleTemplateParamDetail `json:"deleteFirewallRuleTemplate"`
+	Params DeleteFirewallRuleTemplateParamDetail `json:"deleteFirewallRuleTemplate"`
 }
 // DetachPciDeviceFromVmParamDetail DetachPciDeviceFromVm detail param
 type DetachPciDeviceFromVmParamDetail struct {
@@ -9819,7 +9819,7 @@ type DetachPciDeviceFromVmParamDetail struct {
 // DetachPciDeviceFromVmParam DetachPciDeviceFromVm request param
 type DetachPciDeviceFromVmParam struct {
 	BaseParam
-	DetachPciDeviceFromVm DetachPciDeviceFromVmParamDetail `json:"detachPciDeviceFromVm"`
+	Params DetachPciDeviceFromVmParamDetail `json:"detachPciDeviceFromVm"`
 }
 // ExecuteGuestVmCommandParamDetail ExecuteGuestVmCommand detail param
 type ExecuteGuestVmCommandParamDetail struct {
@@ -9832,7 +9832,7 @@ type ExecuteGuestVmCommandParamDetail struct {
 // ExecuteGuestVmCommandParam ExecuteGuestVmCommand request param
 type ExecuteGuestVmCommandParam struct {
 	BaseParam
-	ExecuteGuestVmCommand ExecuteGuestVmCommandParamDetail `json:"executeGuestVmCommand"`
+	Params ExecuteGuestVmCommandParamDetail `json:"executeGuestVmCommand"`
 }
 // ChangeVpcSharedQosBandwidthParamDetail ChangeVpcSharedQosBandwidth detail param
 type ChangeVpcSharedQosBandwidthParamDetail struct {
@@ -9843,7 +9843,7 @@ type ChangeVpcSharedQosBandwidthParamDetail struct {
 // ChangeVpcSharedQosBandwidthParam ChangeVpcSharedQosBandwidth request param
 type ChangeVpcSharedQosBandwidthParam struct {
 	BaseParam
-	ChangeVpcSharedQosBandwidth ChangeVpcSharedQosBandwidthParamDetail `json:"changeVpcSharedQosBandwidth"`
+	Params ChangeVpcSharedQosBandwidthParamDetail `json:"changeVpcSharedQosBandwidth"`
 }
 // RemoveAttributesFromIAM2VirtualIDGroupParamDetail RemoveAttributesFromIAM2VirtualIDGroup detail param
 type RemoveAttributesFromIAM2VirtualIDGroupParamDetail struct {
@@ -9854,7 +9854,7 @@ type RemoveAttributesFromIAM2VirtualIDGroupParamDetail struct {
 // RemoveAttributesFromIAM2VirtualIDGroupParam RemoveAttributesFromIAM2VirtualIDGroup request param
 type RemoveAttributesFromIAM2VirtualIDGroupParam struct {
 	BaseParam
-	RemoveAttributesFromIAM2VirtualIDGroup RemoveAttributesFromIAM2VirtualIDGroupParamDetail `json:"removeAttributesFromIAM2VirtualIDGroup"`
+	Params RemoveAttributesFromIAM2VirtualIDGroupParamDetail `json:"removeAttributesFromIAM2VirtualIDGroup"`
 }
 // AddAttributesToIAM2VirtualIDParamDetail AddAttributesToIAM2VirtualID detail param
 type AddAttributesToIAM2VirtualIDParamDetail struct {
@@ -9865,7 +9865,7 @@ type AddAttributesToIAM2VirtualIDParamDetail struct {
 // AddAttributesToIAM2VirtualIDParam AddAttributesToIAM2VirtualID request param
 type AddAttributesToIAM2VirtualIDParam struct {
 	BaseParam
-	AddAttributesToIAM2VirtualID AddAttributesToIAM2VirtualIDParamDetail `json:"addAttributesToIAM2VirtualID"`
+	Params AddAttributesToIAM2VirtualIDParamDetail `json:"addAttributesToIAM2VirtualID"`
 }
 // FlattenVolumeParamDetail FlattenVolume detail param
 type FlattenVolumeParamDetail struct {
@@ -9876,7 +9876,7 @@ type FlattenVolumeParamDetail struct {
 // FlattenVolumeParam FlattenVolume request param
 type FlattenVolumeParam struct {
 	BaseParam
-	FlattenVolume FlattenVolumeParamDetail `json:"flattenVolume"`
+	Params FlattenVolumeParamDetail `json:"flattenVolume"`
 }
 // CreateAliyunDiskFromRemoteParamDetail CreateAliyunDiskFromRemote detail param
 type CreateAliyunDiskFromRemoteParamDetail struct {
@@ -9893,7 +9893,7 @@ type CreateAliyunDiskFromRemoteParamDetail struct {
 // CreateAliyunDiskFromRemoteParam CreateAliyunDiskFromRemote request param
 type CreateAliyunDiskFromRemoteParam struct {
 	BaseParam
-	CreateAliyunDiskFromRemote CreateAliyunDiskFromRemoteParamDetail `json:"createAliyunDiskFromRemote"`
+	Params CreateAliyunDiskFromRemoteParamDetail `json:"createAliyunDiskFromRemote"`
 }
 // DeleteEcsSecurityGroupRuleRemoteParamDetail DeleteEcsSecurityGroupRuleRemote detail param
 type DeleteEcsSecurityGroupRuleRemoteParamDetail struct {
@@ -9904,7 +9904,17 @@ type DeleteEcsSecurityGroupRuleRemoteParamDetail struct {
 // DeleteEcsSecurityGroupRuleRemoteParam DeleteEcsSecurityGroupRuleRemote request param
 type DeleteEcsSecurityGroupRuleRemoteParam struct {
 	BaseParam
-	DeleteEcsSecurityGroupRuleRemote DeleteEcsSecurityGroupRuleRemoteParamDetail `json:"deleteEcsSecurityGroupRuleRemote"`
+	Params DeleteEcsSecurityGroupRuleRemoteParamDetail `json:"deleteEcsSecurityGroupRuleRemote"`
+}
+// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
+type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
+	VmUuid string `json:"vmUuid" validate:"required"`
+}
+
+// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
+type GetCandidateAffinityGroupForAttachingVmParam struct {
+	BaseParam
+	Params GetCandidateAffinityGroupForAttachingVmParamDetail `json:"getCandidateAffinityGroupForAttachingVm"`
 }
 // DetachAliyunDiskFromEcsParamDetail DetachAliyunDiskFromEcs detail param
 type DetachAliyunDiskFromEcsParamDetail struct {
@@ -9916,17 +9926,7 @@ type DetachAliyunDiskFromEcsParamDetail struct {
 // DetachAliyunDiskFromEcsParam DetachAliyunDiskFromEcs request param
 type DetachAliyunDiskFromEcsParam struct {
 	BaseParam
-	DetachAliyunDiskFromEcs DetachAliyunDiskFromEcsParamDetail `json:"detachAliyunDiskFromEcs"`
-}
-// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
-type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
-	VmUuid string `json:"vmUuid" validate:"required"`
-}
-
-// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
-type GetCandidateAffinityGroupForAttachingVmParam struct {
-	BaseParam
-	GetCandidateAffinityGroupForAttachingVm GetCandidateAffinityGroupForAttachingVmParamDetail `json:"getCandidateAffinityGroupForAttachingVm"`
+	Params DetachAliyunDiskFromEcsParamDetail `json:"detachAliyunDiskFromEcs"`
 }
 // UpdateFirewallIpSetTemplateParamDetail UpdateFirewallIpSetTemplate detail param
 type UpdateFirewallIpSetTemplateParamDetail struct {
@@ -9940,7 +9940,7 @@ type UpdateFirewallIpSetTemplateParamDetail struct {
 // UpdateFirewallIpSetTemplateParam UpdateFirewallIpSetTemplate request param
 type UpdateFirewallIpSetTemplateParam struct {
 	BaseParam
-	UpdateFirewallIpSetTemplate UpdateFirewallIpSetTemplateParamDetail `json:"updateFirewallIpSetTemplate"`
+	Params UpdateFirewallIpSetTemplateParamDetail `json:"updateFirewallIpSetTemplate"`
 }
 // AddAccessControlListRedirectRuleParamDetail AddAccessControlListRedirectRule detail param
 type AddAccessControlListRedirectRuleParamDetail struct {
@@ -9956,7 +9956,7 @@ type AddAccessControlListRedirectRuleParamDetail struct {
 // AddAccessControlListRedirectRuleParam AddAccessControlListRedirectRule request param
 type AddAccessControlListRedirectRuleParam struct {
 	BaseParam
-	AddAccessControlListRedirectRule AddAccessControlListRedirectRuleParamDetail `json:"addAccessControlListRedirectRule"`
+	Params AddAccessControlListRedirectRuleParamDetail `json:"addAccessControlListRedirectRule"`
 }
 // DetachHostFromHostSchedulingRuleGroupParamDetail DetachHostFromHostSchedulingRuleGroup detail param
 type DetachHostFromHostSchedulingRuleGroupParamDetail struct {
@@ -9967,7 +9967,7 @@ type DetachHostFromHostSchedulingRuleGroupParamDetail struct {
 // DetachHostFromHostSchedulingRuleGroupParam DetachHostFromHostSchedulingRuleGroup request param
 type DetachHostFromHostSchedulingRuleGroupParam struct {
 	BaseParam
-	DetachHostFromHostSchedulingRuleGroup DetachHostFromHostSchedulingRuleGroupParamDetail `json:"detachHostFromHostSchedulingRuleGroup"`
+	Params DetachHostFromHostSchedulingRuleGroupParamDetail `json:"detachHostFromHostSchedulingRuleGroup"`
 }
 // UpdateAliyunRouteInterfaceRemoteParamDetail UpdateAliyunRouteInterfaceRemote detail param
 type UpdateAliyunRouteInterfaceRemoteParamDetail struct {
@@ -9979,7 +9979,7 @@ type UpdateAliyunRouteInterfaceRemoteParamDetail struct {
 // UpdateAliyunRouteInterfaceRemoteParam UpdateAliyunRouteInterfaceRemote request param
 type UpdateAliyunRouteInterfaceRemoteParam struct {
 	BaseParam
-	UpdateAliyunRouteInterfaceRemote UpdateAliyunRouteInterfaceRemoteParamDetail `json:"updateAliyunRouteInterfaceRemote"`
+	Params UpdateAliyunRouteInterfaceRemoteParamDetail `json:"updateAliyunRouteInterfaceRemote"`
 }
 // GetPciDeviceSpecCandidatesParamDetail GetPciDeviceSpecCandidates detail param
 type GetPciDeviceSpecCandidatesParamDetail struct {
@@ -9993,7 +9993,7 @@ type GetPciDeviceSpecCandidatesParamDetail struct {
 // GetPciDeviceSpecCandidatesParam GetPciDeviceSpecCandidates request param
 type GetPciDeviceSpecCandidatesParam struct {
 	BaseParam
-	GetPciDeviceSpecCandidates GetPciDeviceSpecCandidatesParamDetail `json:"getPciDeviceSpecCandidates"`
+	Params GetPciDeviceSpecCandidatesParamDetail `json:"getPciDeviceSpecCandidates"`
 }
 // PrometheusQueryPassThroughParamDetail PrometheusQueryPassThrough detail param
 type PrometheusQueryPassThroughParamDetail struct {
@@ -10008,7 +10008,7 @@ type PrometheusQueryPassThroughParamDetail struct {
 // PrometheusQueryPassThroughParam PrometheusQueryPassThrough request param
 type PrometheusQueryPassThroughParam struct {
 	BaseParam
-	PrometheusQueryPassThrough PrometheusQueryPassThroughParamDetail `json:"prometheusQueryPassThrough"`
+	Params PrometheusQueryPassThroughParamDetail `json:"prometheusQueryPassThrough"`
 }
 // AttachVmNicToVmParamDetail AttachVmNicToVm detail param
 type AttachVmNicToVmParamDetail struct {
@@ -10019,7 +10019,7 @@ type AttachVmNicToVmParamDetail struct {
 // AttachVmNicToVmParam AttachVmNicToVm request param
 type AttachVmNicToVmParam struct {
 	BaseParam
-	AttachVmNicToVm AttachVmNicToVmParamDetail `json:"attachVmNicToVm"`
+	Params AttachVmNicToVmParamDetail `json:"attachVmNicToVm"`
 }
 // RemoveMonFromCephBackupStorageParamDetail RemoveMonFromCephBackupStorage detail param
 type RemoveMonFromCephBackupStorageParamDetail struct {
@@ -10030,7 +10030,7 @@ type RemoveMonFromCephBackupStorageParamDetail struct {
 // RemoveMonFromCephBackupStorageParam RemoveMonFromCephBackupStorage request param
 type RemoveMonFromCephBackupStorageParam struct {
 	BaseParam
-	RemoveMonFromCephBackupStorage RemoveMonFromCephBackupStorageParamDetail `json:"removeMonFromCephBackupStorage"`
+	Params RemoveMonFromCephBackupStorageParamDetail `json:"removeMonFromCephBackupStorage"`
 }
 // GetVmDeviceAddressParamDetail GetVmDeviceAddress detail param
 type GetVmDeviceAddressParamDetail struct {
@@ -10041,7 +10041,7 @@ type GetVmDeviceAddressParamDetail struct {
 // GetVmDeviceAddressParam GetVmDeviceAddress request param
 type GetVmDeviceAddressParam struct {
 	BaseParam
-	GetVmDeviceAddress GetVmDeviceAddressParamDetail `json:"getVmDeviceAddress"`
+	Params GetVmDeviceAddressParamDetail `json:"getVmDeviceAddress"`
 }
 // RemoveInstanceFromMonitorGroupParamDetail RemoveInstanceFromMonitorGroup detail param
 type RemoveInstanceFromMonitorGroupParamDetail struct {
@@ -10053,7 +10053,7 @@ type RemoveInstanceFromMonitorGroupParamDetail struct {
 // RemoveInstanceFromMonitorGroupParam RemoveInstanceFromMonitorGroup request param
 type RemoveInstanceFromMonitorGroupParam struct {
 	BaseParam
-	RemoveInstanceFromMonitorGroup RemoveInstanceFromMonitorGroupParamDetail `json:"removeInstanceFromMonitorGroup"`
+	Params RemoveInstanceFromMonitorGroupParamDetail `json:"removeInstanceFromMonitorGroup"`
 }
 // CleanQueueParamDetail CleanQueue detail param
 type CleanQueueParamDetail struct {
@@ -10067,7 +10067,7 @@ type CleanQueueParamDetail struct {
 // CleanQueueParam CleanQueue request param
 type CleanQueueParam struct {
 	BaseParam
-	CleanQueue CleanQueueParamDetail `json:"cleanQueue"`
+	Params CleanQueueParamDetail `json:"cleanQueue"`
 }
 // RemoveAccessControlListFromLoadBalancerParamDetail RemoveAccessControlListFromLoadBalancer detail param
 type RemoveAccessControlListFromLoadBalancerParamDetail struct {
@@ -10079,7 +10079,7 @@ type RemoveAccessControlListFromLoadBalancerParamDetail struct {
 // RemoveAccessControlListFromLoadBalancerParam RemoveAccessControlListFromLoadBalancer request param
 type RemoveAccessControlListFromLoadBalancerParam struct {
 	BaseParam
-	RemoveAccessControlListFromLoadBalancer RemoveAccessControlListFromLoadBalancerParamDetail `json:"removeAccessControlListFromLoadBalancer"`
+	Params RemoveAccessControlListFromLoadBalancerParamDetail `json:"removeAccessControlListFromLoadBalancer"`
 }
 // RemoveLabelFromEventSubscriptionParamDetail RemoveLabelFromEventSubscription detail param
 type RemoveLabelFromEventSubscriptionParamDetail struct {
@@ -10089,7 +10089,7 @@ type RemoveLabelFromEventSubscriptionParamDetail struct {
 // RemoveLabelFromEventSubscriptionParam RemoveLabelFromEventSubscription request param
 type RemoveLabelFromEventSubscriptionParam struct {
 	BaseParam
-	RemoveLabelFromEventSubscription RemoveLabelFromEventSubscriptionParamDetail `json:"removeLabelFromEventSubscription"`
+	Params RemoveLabelFromEventSubscriptionParamDetail `json:"removeLabelFromEventSubscription"`
 }
 // SdnControllerRemoveHostParamDetail SdnControllerRemoveHost detail param
 type SdnControllerRemoveHostParamDetail struct {
@@ -10101,7 +10101,7 @@ type SdnControllerRemoveHostParamDetail struct {
 // SdnControllerRemoveHostParam SdnControllerRemoveHost request param
 type SdnControllerRemoveHostParam struct {
 	BaseParam
-	SdnControllerRemoveHost SdnControllerRemoveHostParamDetail `json:"sdnControllerRemoveHost"`
+	Params SdnControllerRemoveHostParamDetail `json:"sdnControllerRemoveHost"`
 }
 // DetachCCSCertificateFromUserParamDetail DetachCCSCertificateFromUser detail param
 type DetachCCSCertificateFromUserParamDetail struct {
@@ -10111,7 +10111,7 @@ type DetachCCSCertificateFromUserParamDetail struct {
 // DetachCCSCertificateFromUserParam DetachCCSCertificateFromUser request param
 type DetachCCSCertificateFromUserParam struct {
 	BaseParam
-	DetachCCSCertificateFromUser DetachCCSCertificateFromUserParamDetail `json:"detachCCSCertificateFromUser"`
+	Params DetachCCSCertificateFromUserParamDetail `json:"detachCCSCertificateFromUser"`
 }
 // GetManagementNodeOSParamDetail GetManagementNodeOS detail param
 type GetManagementNodeOSParamDetail struct {
@@ -10120,7 +10120,7 @@ type GetManagementNodeOSParamDetail struct {
 // GetManagementNodeOSParam GetManagementNodeOS request param
 type GetManagementNodeOSParam struct {
 	BaseParam
-	GetManagementNodeOS GetManagementNodeOSParamDetail `json:"getManagementNodeOS"`
+	Params GetManagementNodeOSParamDetail `json:"getManagementNodeOS"`
 }
 // CreateLdapBindingParamDetail CreateLdapBinding detail param
 type CreateLdapBindingParamDetail struct {
@@ -10131,7 +10131,7 @@ type CreateLdapBindingParamDetail struct {
 // CreateLdapBindingParam CreateLdapBinding request param
 type CreateLdapBindingParam struct {
 	BaseParam
-	CreateLdapBinding CreateLdapBindingParamDetail `json:"createLdapBinding"`
+	Params CreateLdapBindingParamDetail `json:"createLdapBinding"`
 }
 // ExecuteDRSSchedulingParamDetail ExecuteDRSScheduling detail param
 type ExecuteDRSSchedulingParamDetail struct {
@@ -10141,7 +10141,7 @@ type ExecuteDRSSchedulingParamDetail struct {
 // ExecuteDRSSchedulingParam ExecuteDRSScheduling request param
 type ExecuteDRSSchedulingParam struct {
 	BaseParam
-	ExecuteDRSScheduling ExecuteDRSSchedulingParamDetail `json:"executeDRSScheduling"`
+	Params ExecuteDRSSchedulingParamDetail `json:"executeDRSScheduling"`
 }
 // CreateEcsSecurityGroupRuleRemoteParamDetail CreateEcsSecurityGroupRuleRemote detail param
 type CreateEcsSecurityGroupRuleRemoteParamDetail struct {
@@ -10161,7 +10161,7 @@ type CreateEcsSecurityGroupRuleRemoteParamDetail struct {
 // CreateEcsSecurityGroupRuleRemoteParam CreateEcsSecurityGroupRuleRemote request param
 type CreateEcsSecurityGroupRuleRemoteParam struct {
 	BaseParam
-	CreateEcsSecurityGroupRuleRemote CreateEcsSecurityGroupRuleRemoteParamDetail `json:"createEcsSecurityGroupRuleRemote"`
+	Params CreateEcsSecurityGroupRuleRemoteParamDetail `json:"createEcsSecurityGroupRuleRemote"`
 }
 // GetVmQgaParamDetail GetVmQga detail param
 type GetVmQgaParamDetail struct {
@@ -10171,7 +10171,7 @@ type GetVmQgaParamDetail struct {
 // GetVmQgaParam GetVmQga request param
 type GetVmQgaParam struct {
 	BaseParam
-	GetVmQga GetVmQgaParamDetail `json:"getVmQga"`
+	Params GetVmQgaParamDetail `json:"getVmQga"`
 }
 // PreviewResourceStackParamDetail PreviewResourceStack detail param
 type PreviewResourceStackParamDetail struct {
@@ -10185,7 +10185,7 @@ type PreviewResourceStackParamDetail struct {
 // PreviewResourceStackParam PreviewResourceStack request param
 type PreviewResourceStackParam struct {
 	BaseParam
-	PreviewResourceStack PreviewResourceStackParamDetail `json:"previewResourceStack"`
+	Params PreviewResourceStackParamDetail `json:"previewResourceStack"`
 }
 // GetVmvNUMATopologyParamDetail GetVmvNUMATopology detail param
 type GetVmvNUMATopologyParamDetail struct {
@@ -10195,7 +10195,7 @@ type GetVmvNUMATopologyParamDetail struct {
 // GetVmvNUMATopologyParam GetVmvNUMATopology request param
 type GetVmvNUMATopologyParam struct {
 	BaseParam
-	GetVmvNUMATopology GetVmvNUMATopologyParamDetail `json:"getVmvNUMATopology"`
+	Params GetVmvNUMATopologyParamDetail `json:"getVmvNUMATopology"`
 }
 // RemoveSchedulerJobsFromSchedulerJobGroupParamDetail RemoveSchedulerJobsFromSchedulerJobGroup detail param
 type RemoveSchedulerJobsFromSchedulerJobGroupParamDetail struct {
@@ -10206,7 +10206,7 @@ type RemoveSchedulerJobsFromSchedulerJobGroupParamDetail struct {
 // RemoveSchedulerJobsFromSchedulerJobGroupParam RemoveSchedulerJobsFromSchedulerJobGroup request param
 type RemoveSchedulerJobsFromSchedulerJobGroupParam struct {
 	BaseParam
-	RemoveSchedulerJobsFromSchedulerJobGroup RemoveSchedulerJobsFromSchedulerJobGroupParamDetail `json:"removeSchedulerJobsFromSchedulerJobGroup"`
+	Params RemoveSchedulerJobsFromSchedulerJobGroupParamDetail `json:"removeSchedulerJobsFromSchedulerJobGroup"`
 }
 // ChangeTicketStatusParamDetail ChangeTicketStatus detail param
 type ChangeTicketStatusParamDetail struct {
@@ -10218,7 +10218,7 @@ type ChangeTicketStatusParamDetail struct {
 // ChangeTicketStatusParam ChangeTicketStatus request param
 type ChangeTicketStatusParam struct {
 	BaseParam
-	ChangeTicketStatus ChangeTicketStatusParamDetail `json:"changeTicketStatus"`
+	Params ChangeTicketStatusParamDetail `json:"changeTicketStatus"`
 }
 // GetHostPhysicalMemoryFactsParamDetail GetHostPhysicalMemoryFacts detail param
 type GetHostPhysicalMemoryFactsParamDetail struct {
@@ -10228,7 +10228,7 @@ type GetHostPhysicalMemoryFactsParamDetail struct {
 // GetHostPhysicalMemoryFactsParam GetHostPhysicalMemoryFacts request param
 type GetHostPhysicalMemoryFactsParam struct {
 	BaseParam
-	GetHostPhysicalMemoryFacts GetHostPhysicalMemoryFactsParamDetail `json:"getHostPhysicalMemoryFacts"`
+	Params GetHostPhysicalMemoryFactsParamDetail `json:"getHostPhysicalMemoryFacts"`
 }
 // GetLicenseInfoParamDetail GetLicenseInfo detail param
 type GetLicenseInfoParamDetail struct {
@@ -10238,7 +10238,7 @@ type GetLicenseInfoParamDetail struct {
 // GetLicenseInfoParam GetLicenseInfo request param
 type GetLicenseInfoParam struct {
 	BaseParam
-	GetLicenseInfo GetLicenseInfoParamDetail `json:"getLicenseInfo"`
+	Params GetLicenseInfoParamDetail `json:"getLicenseInfo"`
 }
 // ChangeSchedulerStateParamDetail ChangeSchedulerState detail param
 type ChangeSchedulerStateParamDetail struct {
@@ -10249,7 +10249,7 @@ type ChangeSchedulerStateParamDetail struct {
 // ChangeSchedulerStateParam ChangeSchedulerState request param
 type ChangeSchedulerStateParam struct {
 	BaseParam
-	ChangeSchedulerState ChangeSchedulerStateParamDetail `json:"changeSchedulerState"`
+	Params ChangeSchedulerStateParamDetail `json:"changeSchedulerState"`
 }
 // AttachPriceTableToAccountParamDetail AttachPriceTableToAccount detail param
 type AttachPriceTableToAccountParamDetail struct {
@@ -10260,7 +10260,7 @@ type AttachPriceTableToAccountParamDetail struct {
 // AttachPriceTableToAccountParam AttachPriceTableToAccount request param
 type AttachPriceTableToAccountParam struct {
 	BaseParam
-	AttachPriceTableToAccount AttachPriceTableToAccountParamDetail `json:"attachPriceTableToAccount"`
+	Params AttachPriceTableToAccountParamDetail `json:"attachPriceTableToAccount"`
 }
 // GenerateMdevDevicesParamDetail GenerateMdevDevices detail param
 type GenerateMdevDevicesParamDetail struct {
@@ -10271,7 +10271,7 @@ type GenerateMdevDevicesParamDetail struct {
 // GenerateMdevDevicesParam GenerateMdevDevices request param
 type GenerateMdevDevicesParam struct {
 	BaseParam
-	GenerateMdevDevices GenerateMdevDevicesParamDetail `json:"generateMdevDevices"`
+	Params GenerateMdevDevicesParamDetail `json:"generateMdevDevices"`
 }
 // PreviewResourceFromAppParamDetail PreviewResourceFromApp detail param
 type PreviewResourceFromAppParamDetail struct {
@@ -10282,7 +10282,7 @@ type PreviewResourceFromAppParamDetail struct {
 // PreviewResourceFromAppParam PreviewResourceFromApp request param
 type PreviewResourceFromAppParam struct {
 	BaseParam
-	PreviewResourceFromApp PreviewResourceFromAppParamDetail `json:"previewResourceFromApp"`
+	Params PreviewResourceFromAppParamDetail `json:"previewResourceFromApp"`
 }
 // ChangeSNSTopicStateParamDetail ChangeSNSTopicState detail param
 type ChangeSNSTopicStateParamDetail struct {
@@ -10293,7 +10293,7 @@ type ChangeSNSTopicStateParamDetail struct {
 // ChangeSNSTopicStateParam ChangeSNSTopicState request param
 type ChangeSNSTopicStateParam struct {
 	BaseParam
-	ChangeSNSTopicState ChangeSNSTopicStateParamDetail `json:"changeSNSTopicState"`
+	Params ChangeSNSTopicStateParamDetail `json:"changeSNSTopicState"`
 }
 // AttachScsiLunToVmInstanceParamDetail AttachScsiLunToVmInstance detail param
 type AttachScsiLunToVmInstanceParamDetail struct {
@@ -10305,7 +10305,7 @@ type AttachScsiLunToVmInstanceParamDetail struct {
 // AttachScsiLunToVmInstanceParam AttachScsiLunToVmInstance request param
 type AttachScsiLunToVmInstanceParam struct {
 	BaseParam
-	AttachScsiLunToVmInstance AttachScsiLunToVmInstanceParamDetail `json:"attachScsiLunToVmInstance"`
+	Params AttachScsiLunToVmInstanceParamDetail `json:"attachScsiLunToVmInstance"`
 }
 // RemoveRemoteCidrsFromIPsecConnectionParamDetail RemoveRemoteCidrsFromIPsecConnection detail param
 type RemoveRemoteCidrsFromIPsecConnectionParamDetail struct {
@@ -10316,7 +10316,7 @@ type RemoveRemoteCidrsFromIPsecConnectionParamDetail struct {
 // RemoveRemoteCidrsFromIPsecConnectionParam RemoveRemoteCidrsFromIPsecConnection request param
 type RemoveRemoteCidrsFromIPsecConnectionParam struct {
 	BaseParam
-	RemoveRemoteCidrsFromIPsecConnection RemoveRemoteCidrsFromIPsecConnectionParamDetail `json:"removeRemoteCidrsFromIPsecConnection"`
+	Params RemoveRemoteCidrsFromIPsecConnectionParamDetail `json:"removeRemoteCidrsFromIPsecConnection"`
 }
 // GetIAM2ProjectsOfVirtualIDParamDetail GetIAM2ProjectsOfVirtualID detail param
 type GetIAM2ProjectsOfVirtualIDParamDetail struct {
@@ -10325,7 +10325,7 @@ type GetIAM2ProjectsOfVirtualIDParamDetail struct {
 // GetIAM2ProjectsOfVirtualIDParam GetIAM2ProjectsOfVirtualID request param
 type GetIAM2ProjectsOfVirtualIDParam struct {
 	BaseParam
-	GetIAM2ProjectsOfVirtualID GetIAM2ProjectsOfVirtualIDParamDetail `json:"getIAM2ProjectsOfVirtualID"`
+	Params GetIAM2ProjectsOfVirtualIDParamDetail `json:"getIAM2ProjectsOfVirtualID"`
 }
 // AddVmToAffinityGroupParamDetail AddVmToAffinityGroup detail param
 type AddVmToAffinityGroupParamDetail struct {
@@ -10336,7 +10336,7 @@ type AddVmToAffinityGroupParamDetail struct {
 // AddVmToAffinityGroupParam AddVmToAffinityGroup request param
 type AddVmToAffinityGroupParam struct {
 	BaseParam
-	AddVmToAffinityGroup AddVmToAffinityGroupParamDetail `json:"addVmToAffinityGroup"`
+	Params AddVmToAffinityGroupParamDetail `json:"addVmToAffinityGroup"`
 }
 // GetPrimaryStorageAllocatorStrategiesParamDetail GetPrimaryStorageAllocatorStrategies detail param
 type GetPrimaryStorageAllocatorStrategiesParamDetail struct {
@@ -10345,7 +10345,7 @@ type GetPrimaryStorageAllocatorStrategiesParamDetail struct {
 // GetPrimaryStorageAllocatorStrategiesParam GetPrimaryStorageAllocatorStrategies request param
 type GetPrimaryStorageAllocatorStrategiesParam struct {
 	BaseParam
-	GetPrimaryStorageAllocatorStrategies GetPrimaryStorageAllocatorStrategiesParamDetail `json:"getPrimaryStorageAllocatorStrategies"`
+	Params GetPrimaryStorageAllocatorStrategiesParamDetail `json:"getPrimaryStorageAllocatorStrategies"`
 }
 // GetPlatformTimeZoneParamDetail GetPlatformTimeZone detail param
 type GetPlatformTimeZoneParamDetail struct {
@@ -10354,7 +10354,7 @@ type GetPlatformTimeZoneParamDetail struct {
 // GetPlatformTimeZoneParam GetPlatformTimeZone request param
 type GetPlatformTimeZoneParam struct {
 	BaseParam
-	GetPlatformTimeZone GetPlatformTimeZoneParamDetail `json:"getPlatformTimeZone"`
+	Params GetPlatformTimeZoneParamDetail `json:"getPlatformTimeZone"`
 }
 // DetachPolicyFromUserParamDetail DetachPolicyFromUser detail param
 type DetachPolicyFromUserParamDetail struct {
@@ -10365,7 +10365,7 @@ type DetachPolicyFromUserParamDetail struct {
 // DetachPolicyFromUserParam DetachPolicyFromUser request param
 type DetachPolicyFromUserParam struct {
 	BaseParam
-	DetachPolicyFromUser DetachPolicyFromUserParamDetail `json:"detachPolicyFromUser"`
+	Params DetachPolicyFromUserParamDetail `json:"detachPolicyFromUser"`
 }
 // SetVmInstanceDefaultCdRomParamDetail SetVmInstanceDefaultCdRom detail param
 type SetVmInstanceDefaultCdRomParamDetail struct {
@@ -10376,7 +10376,7 @@ type SetVmInstanceDefaultCdRomParamDetail struct {
 // SetVmInstanceDefaultCdRomParam SetVmInstanceDefaultCdRom request param
 type SetVmInstanceDefaultCdRomParam struct {
 	BaseParam
-	SetVmInstanceDefaultCdRom SetVmInstanceDefaultCdRomParamDetail `json:"setVmInstanceDefaultCdRom"`
+	Params SetVmInstanceDefaultCdRomParamDetail `json:"setVmInstanceDefaultCdRom"`
 }
 // RefreshSharedblockDeviceCapacityParamDetail RefreshSharedblockDeviceCapacity detail param
 type RefreshSharedblockDeviceCapacityParamDetail struct {
@@ -10387,7 +10387,7 @@ type RefreshSharedblockDeviceCapacityParamDetail struct {
 // RefreshSharedblockDeviceCapacityParam RefreshSharedblockDeviceCapacity request param
 type RefreshSharedblockDeviceCapacityParam struct {
 	BaseParam
-	RefreshSharedblockDeviceCapacity RefreshSharedblockDeviceCapacityParamDetail `json:"refreshSharedblockDeviceCapacity"`
+	Params RefreshSharedblockDeviceCapacityParamDetail `json:"refreshSharedblockDeviceCapacity"`
 }
 // FstrimVmParamDetail FstrimVm detail param
 type FstrimVmParamDetail struct {
@@ -10397,7 +10397,7 @@ type FstrimVmParamDetail struct {
 // FstrimVmParam FstrimVm request param
 type FstrimVmParam struct {
 	BaseParam
-	FstrimVm FstrimVmParamDetail `json:"fstrimVm"`
+	Params FstrimVmParamDetail `json:"fstrimVm"`
 }
 // DetachL2NetworkFromClusterParamDetail DetachL2NetworkFromCluster detail param
 type DetachL2NetworkFromClusterParamDetail struct {
@@ -10408,7 +10408,7 @@ type DetachL2NetworkFromClusterParamDetail struct {
 // DetachL2NetworkFromClusterParam DetachL2NetworkFromCluster request param
 type DetachL2NetworkFromClusterParam struct {
 	BaseParam
-	DetachL2NetworkFromCluster DetachL2NetworkFromClusterParamDetail `json:"detachL2NetworkFromCluster"`
+	Params DetachL2NetworkFromClusterParamDetail `json:"detachL2NetworkFromCluster"`
 }
 // SyncAINginxConfigurationParamDetail SyncAINginxConfiguration detail param
 type SyncAINginxConfigurationParamDetail struct {
@@ -10420,7 +10420,7 @@ type SyncAINginxConfigurationParamDetail struct {
 // SyncAINginxConfigurationParam SyncAINginxConfiguration request param
 type SyncAINginxConfigurationParam struct {
 	BaseParam
-	SyncAINginxConfiguration SyncAINginxConfigurationParamDetail `json:"syncAINginxConfiguration"`
+	Params SyncAINginxConfigurationParamDetail `json:"syncAINginxConfiguration"`
 }
 // MatchModelServiceTemplateWithModelParamDetail MatchModelServiceTemplateWithModel detail param
 type MatchModelServiceTemplateWithModelParamDetail struct {
@@ -10456,7 +10456,7 @@ type MatchModelServiceTemplateWithModelParamDetail struct {
 // MatchModelServiceTemplateWithModelParam MatchModelServiceTemplateWithModel request param
 type MatchModelServiceTemplateWithModelParam struct {
 	BaseParam
-	MatchModelServiceTemplateWithModel MatchModelServiceTemplateWithModelParamDetail `json:"matchModelServiceTemplateWithModel"`
+	Params MatchModelServiceTemplateWithModelParamDetail `json:"matchModelServiceTemplateWithModel"`
 }
 // ChangeVmNicStateParamDetail ChangeVmNicState detail param
 type ChangeVmNicStateParamDetail struct {
@@ -10467,7 +10467,7 @@ type ChangeVmNicStateParamDetail struct {
 // ChangeVmNicStateParam ChangeVmNicState request param
 type ChangeVmNicStateParam struct {
 	BaseParam
-	ChangeVmNicState ChangeVmNicStateParamDetail `json:"changeVmNicState"`
+	Params ChangeVmNicStateParamDetail `json:"changeVmNicState"`
 }
 // AddPolicyStatementsToRoleParamDetail AddPolicyStatementsToRole detail param
 type AddPolicyStatementsToRoleParamDetail struct {
@@ -10478,7 +10478,7 @@ type AddPolicyStatementsToRoleParamDetail struct {
 // AddPolicyStatementsToRoleParam AddPolicyStatementsToRole request param
 type AddPolicyStatementsToRoleParam struct {
 	BaseParam
-	AddPolicyStatementsToRole AddPolicyStatementsToRoleParamDetail `json:"addPolicyStatementsToRole"`
+	Params AddPolicyStatementsToRoleParamDetail `json:"addPolicyStatementsToRole"`
 }
 // UnprotectVmInstanceRecoveryPointParamDetail UnprotectVmInstanceRecoveryPoint detail param
 type UnprotectVmInstanceRecoveryPointParamDetail struct {
@@ -10489,7 +10489,7 @@ type UnprotectVmInstanceRecoveryPointParamDetail struct {
 // UnprotectVmInstanceRecoveryPointParam UnprotectVmInstanceRecoveryPoint request param
 type UnprotectVmInstanceRecoveryPointParam struct {
 	BaseParam
-	UnprotectVmInstanceRecoveryPoint UnprotectVmInstanceRecoveryPointParamDetail `json:"unprotectVmInstanceRecoveryPoint"`
+	Params UnprotectVmInstanceRecoveryPointParamDetail `json:"unprotectVmInstanceRecoveryPoint"`
 }
 // DetachVipFromVpcSharedQosParamDetail DetachVipFromVpcSharedQos detail param
 type DetachVipFromVpcSharedQosParamDetail struct {
@@ -10501,7 +10501,7 @@ type DetachVipFromVpcSharedQosParamDetail struct {
 // DetachVipFromVpcSharedQosParam DetachVipFromVpcSharedQos request param
 type DetachVipFromVpcSharedQosParam struct {
 	BaseParam
-	DetachVipFromVpcSharedQos DetachVipFromVpcSharedQosParamDetail `json:"detachVipFromVpcSharedQos"`
+	Params DetachVipFromVpcSharedQosParamDetail `json:"detachVipFromVpcSharedQos"`
 }
 // ApplyRuleSetChangesParamDetail ApplyRuleSetChanges detail param
 type ApplyRuleSetChangesParamDetail struct {
@@ -10511,7 +10511,7 @@ type ApplyRuleSetChangesParamDetail struct {
 // ApplyRuleSetChangesParam ApplyRuleSetChanges request param
 type ApplyRuleSetChangesParam struct {
 	BaseParam
-	ApplyRuleSetChanges ApplyRuleSetChangesParamDetail `json:"applyRuleSetChanges"`
+	Params ApplyRuleSetChangesParamDetail `json:"applyRuleSetChanges"`
 }
 // PrimaryStorageMigrateVmParamDetail PrimaryStorageMigrateVm detail param
 type PrimaryStorageMigrateVmParamDetail struct {
@@ -10530,7 +10530,7 @@ type PrimaryStorageMigrateVmParamDetail struct {
 // PrimaryStorageMigrateVmParam PrimaryStorageMigrateVm request param
 type PrimaryStorageMigrateVmParam struct {
 	BaseParam
-	PrimaryStorageMigrateVm PrimaryStorageMigrateVmParamDetail `json:"primaryStorageMigrateVm"`
+	Params PrimaryStorageMigrateVmParamDetail `json:"primaryStorageMigrateVm"`
 }
 // RecoverDatabaseFromBackupParamDetail RecoverDatabaseFromBackup detail param
 type RecoverDatabaseFromBackupParamDetail struct {
@@ -10543,7 +10543,7 @@ type RecoverDatabaseFromBackupParamDetail struct {
 // RecoverDatabaseFromBackupParam RecoverDatabaseFromBackup request param
 type RecoverDatabaseFromBackupParam struct {
 	BaseParam
-	RecoverDatabaseFromBackup RecoverDatabaseFromBackupParamDetail `json:"recoverDatabaseFromBackup"`
+	Params RecoverDatabaseFromBackupParamDetail `json:"recoverDatabaseFromBackup"`
 }
 // CreateIAM2TickFlowCollectionParamDetail CreateIAM2TickFlowCollection detail param
 type CreateIAM2TickFlowCollectionParamDetail struct {
@@ -10560,7 +10560,7 @@ type CreateIAM2TickFlowCollectionParamDetail struct {
 // CreateIAM2TickFlowCollectionParam CreateIAM2TickFlowCollection request param
 type CreateIAM2TickFlowCollectionParam struct {
 	BaseParam
-	CreateIAM2TickFlowCollection CreateIAM2TickFlowCollectionParamDetail `json:"createIAM2TickFlowCollection"`
+	Params CreateIAM2TickFlowCollectionParamDetail `json:"createIAM2TickFlowCollection"`
 }
 // UngenerateMdevDevicesParamDetail UngenerateMdevDevices detail param
 type UngenerateMdevDevicesParamDetail struct {
@@ -10570,7 +10570,7 @@ type UngenerateMdevDevicesParamDetail struct {
 // UngenerateMdevDevicesParam UngenerateMdevDevices request param
 type UngenerateMdevDevicesParam struct {
 	BaseParam
-	UngenerateMdevDevices UngenerateMdevDevicesParamDetail `json:"ungenerateMdevDevices"`
+	Params UngenerateMdevDevicesParamDetail `json:"ungenerateMdevDevices"`
 }
 // MoveDirectoryParamDetail MoveDirectory detail param
 type MoveDirectoryParamDetail struct {
@@ -10581,7 +10581,7 @@ type MoveDirectoryParamDetail struct {
 // MoveDirectoryParam MoveDirectory request param
 type MoveDirectoryParam struct {
 	BaseParam
-	MoveDirectory MoveDirectoryParamDetail `json:"moveDirectory"`
+	Params MoveDirectoryParamDetail `json:"moveDirectory"`
 }
 // GetVRouterOspfNeighborParamDetail GetVRouterOspfNeighbor detail param
 type GetVRouterOspfNeighborParamDetail struct {
@@ -10591,7 +10591,7 @@ type GetVRouterOspfNeighborParamDetail struct {
 // GetVRouterOspfNeighborParam GetVRouterOspfNeighbor request param
 type GetVRouterOspfNeighborParam struct {
 	BaseParam
-	GetVRouterOspfNeighbor GetVRouterOspfNeighborParamDetail `json:"getVRouterOspfNeighbor"`
+	Params GetVRouterOspfNeighborParamDetail `json:"getVRouterOspfNeighbor"`
 }
 // CreateVpcVRouterParamDetail CreateVpcVRouter detail param
 type CreateVpcVRouterParamDetail struct {
@@ -10610,7 +10610,7 @@ type CreateVpcVRouterParamDetail struct {
 // CreateVpcVRouterParam CreateVpcVRouter request param
 type CreateVpcVRouterParam struct {
 	BaseParam
-	CreateVpcVRouter CreateVpcVRouterParamDetail `json:"createVpcVRouter"`
+	Params CreateVpcVRouterParamDetail `json:"createVpcVRouter"`
 }
 // SyncEcsInstanceFromRemoteParamDetail SyncEcsInstanceFromRemote detail param
 type SyncEcsInstanceFromRemoteParamDetail struct {
@@ -10623,7 +10623,7 @@ type SyncEcsInstanceFromRemoteParamDetail struct {
 // SyncEcsInstanceFromRemoteParam SyncEcsInstanceFromRemote request param
 type SyncEcsInstanceFromRemoteParam struct {
 	BaseParam
-	SyncEcsInstanceFromRemote SyncEcsInstanceFromRemoteParamDetail `json:"syncEcsInstanceFromRemote"`
+	Params SyncEcsInstanceFromRemoteParamDetail `json:"syncEcsInstanceFromRemote"`
 }
 // GetMdevDeviceSpecCandidatesParamDetail GetMdevDeviceSpecCandidates detail param
 type GetMdevDeviceSpecCandidatesParamDetail struct {
@@ -10637,7 +10637,7 @@ type GetMdevDeviceSpecCandidatesParamDetail struct {
 // GetMdevDeviceSpecCandidatesParam GetMdevDeviceSpecCandidates request param
 type GetMdevDeviceSpecCandidatesParam struct {
 	BaseParam
-	GetMdevDeviceSpecCandidates GetMdevDeviceSpecCandidatesParamDetail `json:"getMdevDeviceSpecCandidates"`
+	Params GetMdevDeviceSpecCandidatesParamDetail `json:"getMdevDeviceSpecCandidates"`
 }
 // GetFlowMeterRouterIdParamDetail GetFlowMeterRouterId detail param
 type GetFlowMeterRouterIdParamDetail struct {
@@ -10647,7 +10647,7 @@ type GetFlowMeterRouterIdParamDetail struct {
 // GetFlowMeterRouterIdParam GetFlowMeterRouterId request param
 type GetFlowMeterRouterIdParam struct {
 	BaseParam
-	GetFlowMeterRouterId GetFlowMeterRouterIdParamDetail `json:"getFlowMeterRouterId"`
+	Params GetFlowMeterRouterIdParamDetail `json:"getFlowMeterRouterId"`
 }
 // GetPciDeviceCandidatesForNewCreateVmParamDetail GetPciDeviceCandidatesForNewCreateVm detail param
 type GetPciDeviceCandidatesForNewCreateVmParamDetail struct {
@@ -10659,7 +10659,7 @@ type GetPciDeviceCandidatesForNewCreateVmParamDetail struct {
 // GetPciDeviceCandidatesForNewCreateVmParam GetPciDeviceCandidatesForNewCreateVm request param
 type GetPciDeviceCandidatesForNewCreateVmParam struct {
 	BaseParam
-	GetPciDeviceCandidatesForNewCreateVm GetPciDeviceCandidatesForNewCreateVmParamDetail `json:"getPciDeviceCandidatesForNewCreateVm"`
+	Params GetPciDeviceCandidatesForNewCreateVmParamDetail `json:"getPciDeviceCandidatesForNewCreateVm"`
 }
 // GetHostTaskParamDetail GetHostTask detail param
 type GetHostTaskParamDetail struct {
@@ -10670,7 +10670,7 @@ type GetHostTaskParamDetail struct {
 // GetHostTaskParam GetHostTask request param
 type GetHostTaskParam struct {
 	BaseParam
-	GetHostTask GetHostTaskParamDetail `json:"getHostTask"`
+	Params GetHostTaskParamDetail `json:"getHostTask"`
 }
 // AddResourceToIAM2ProjectParamDetail AddResourceToIAM2Project detail param
 type AddResourceToIAM2ProjectParamDetail struct {
@@ -10681,7 +10681,7 @@ type AddResourceToIAM2ProjectParamDetail struct {
 // AddResourceToIAM2ProjectParam AddResourceToIAM2Project request param
 type AddResourceToIAM2ProjectParam struct {
 	BaseParam
-	AddResourceToIAM2Project AddResourceToIAM2ProjectParamDetail `json:"addResourceToIAM2Project"`
+	Params AddResourceToIAM2ProjectParamDetail `json:"addResourceToIAM2Project"`
 }
 // GetAlarmDataParamDetail GetAlarmData detail param
 type GetAlarmDataParamDetail struct {
@@ -10698,7 +10698,7 @@ type GetAlarmDataParamDetail struct {
 // GetAlarmDataParam GetAlarmData request param
 type GetAlarmDataParam struct {
 	BaseParam
-	GetAlarmData GetAlarmDataParamDetail `json:"getAlarmData"`
+	Params GetAlarmDataParamDetail `json:"getAlarmData"`
 }
 // ChangeV2VConversionHostStateParamDetail ChangeV2VConversionHostState detail param
 type ChangeV2VConversionHostStateParamDetail struct {
@@ -10709,7 +10709,7 @@ type ChangeV2VConversionHostStateParamDetail struct {
 // ChangeV2VConversionHostStateParam ChangeV2VConversionHostState request param
 type ChangeV2VConversionHostStateParam struct {
 	BaseParam
-	ChangeV2VConversionHostState ChangeV2VConversionHostStateParamDetail `json:"changeV2VConversionHostState"`
+	Params ChangeV2VConversionHostStateParamDetail `json:"changeV2VConversionHostState"`
 }
 // RecoverResourceSplitBrainParamDetail RecoverResourceSplitBrain detail param
 type RecoverResourceSplitBrainParamDetail struct {
@@ -10723,7 +10723,7 @@ type RecoverResourceSplitBrainParamDetail struct {
 // RecoverResourceSplitBrainParam RecoverResourceSplitBrain request param
 type RecoverResourceSplitBrainParam struct {
 	BaseParam
-	RecoverResourceSplitBrain RecoverResourceSplitBrainParamDetail `json:"recoverResourceSplitBrain"`
+	Params RecoverResourceSplitBrainParamDetail `json:"recoverResourceSplitBrain"`
 }
 // IsOpensourceVersionParamDetail IsOpensourceVersion detail param
 type IsOpensourceVersionParamDetail struct {
@@ -10732,7 +10732,7 @@ type IsOpensourceVersionParamDetail struct {
 // IsOpensourceVersionParam IsOpensourceVersion request param
 type IsOpensourceVersionParam struct {
 	BaseParam
-	IsOpensourceVersion IsOpensourceVersionParamDetail `json:"isOpensourceVersion"`
+	Params IsOpensourceVersionParamDetail `json:"isOpensourceVersion"`
 }
 // CreateEcsInstanceFromEcsImageParamDetail CreateEcsInstanceFromEcsImage detail param
 type CreateEcsInstanceFromEcsImageParamDetail struct {
@@ -10758,7 +10758,7 @@ type CreateEcsInstanceFromEcsImageParamDetail struct {
 // CreateEcsInstanceFromEcsImageParam CreateEcsInstanceFromEcsImage request param
 type CreateEcsInstanceFromEcsImageParam struct {
 	BaseParam
-	CreateEcsInstanceFromEcsImage CreateEcsInstanceFromEcsImageParamDetail `json:"createEcsInstanceFromEcsImage"`
+	Params CreateEcsInstanceFromEcsImageParamDetail `json:"createEcsInstanceFromEcsImage"`
 }
 // GetResourceFromResourceStackParamDetail GetResourceFromResourceStack detail param
 type GetResourceFromResourceStackParamDetail struct {
@@ -10768,7 +10768,7 @@ type GetResourceFromResourceStackParamDetail struct {
 // GetResourceFromResourceStackParam GetResourceFromResourceStack request param
 type GetResourceFromResourceStackParam struct {
 	BaseParam
-	GetResourceFromResourceStack GetResourceFromResourceStackParamDetail `json:"getResourceFromResourceStack"`
+	Params GetResourceFromResourceStackParamDetail `json:"getResourceFromResourceStack"`
 }
 // MoveResourcesToDirectoryParamDetail MoveResourcesToDirectory detail param
 type MoveResourcesToDirectoryParamDetail struct {
@@ -10779,7 +10779,7 @@ type MoveResourcesToDirectoryParamDetail struct {
 // MoveResourcesToDirectoryParam MoveResourcesToDirectory request param
 type MoveResourcesToDirectoryParam struct {
 	BaseParam
-	MoveResourcesToDirectory MoveResourcesToDirectoryParamDetail `json:"moveResourcesToDirectory"`
+	Params MoveResourcesToDirectoryParamDetail `json:"moveResourcesToDirectory"`
 }
 // GetSupportedCloudFormationResourcesParamDetail GetSupportedCloudFormationResources detail param
 type GetSupportedCloudFormationResourcesParamDetail struct {
@@ -10790,7 +10790,7 @@ type GetSupportedCloudFormationResourcesParamDetail struct {
 // GetSupportedCloudFormationResourcesParam GetSupportedCloudFormationResources request param
 type GetSupportedCloudFormationResourcesParam struct {
 	BaseParam
-	GetSupportedCloudFormationResources GetSupportedCloudFormationResourcesParamDetail `json:"getSupportedCloudFormationResources"`
+	Params GetSupportedCloudFormationResourcesParamDetail `json:"getSupportedCloudFormationResources"`
 }
 // DeleteIdentityZoneInLocalParamDetail DeleteIdentityZoneInLocal detail param
 type DeleteIdentityZoneInLocalParamDetail struct {
@@ -10801,7 +10801,7 @@ type DeleteIdentityZoneInLocalParamDetail struct {
 // DeleteIdentityZoneInLocalParam DeleteIdentityZoneInLocal request param
 type DeleteIdentityZoneInLocalParam struct {
 	BaseParam
-	DeleteIdentityZoneInLocal DeleteIdentityZoneInLocalParamDetail `json:"deleteIdentityZoneInLocal"`
+	Params DeleteIdentityZoneInLocalParamDetail `json:"deleteIdentityZoneInLocal"`
 }
 // ChangeIAM2VirtualIDStateParamDetail ChangeIAM2VirtualIDState detail param
 type ChangeIAM2VirtualIDStateParamDetail struct {
@@ -10812,7 +10812,7 @@ type ChangeIAM2VirtualIDStateParamDetail struct {
 // ChangeIAM2VirtualIDStateParam ChangeIAM2VirtualIDState request param
 type ChangeIAM2VirtualIDStateParam struct {
 	BaseParam
-	ChangeIAM2VirtualIDState ChangeIAM2VirtualIDStateParamDetail `json:"changeIAM2VirtualIDState"`
+	Params ChangeIAM2VirtualIDStateParamDetail `json:"changeIAM2VirtualIDState"`
 }
 // UnregisterLicenseServerParamDetail UnregisterLicenseServer detail param
 type UnregisterLicenseServerParamDetail struct {
@@ -10822,7 +10822,7 @@ type UnregisterLicenseServerParamDetail struct {
 // UnregisterLicenseServerParam UnregisterLicenseServer request param
 type UnregisterLicenseServerParam struct {
 	BaseParam
-	UnregisterLicenseServer UnregisterLicenseServerParamDetail `json:"unregisterLicenseServer"`
+	Params UnregisterLicenseServerParamDetail `json:"unregisterLicenseServer"`
 }
 // CreateVmUserDefinedXmlHookScriptParamDetail CreateVmUserDefinedXmlHookScript detail param
 type CreateVmUserDefinedXmlHookScriptParamDetail struct {
@@ -10836,7 +10836,7 @@ type CreateVmUserDefinedXmlHookScriptParamDetail struct {
 // CreateVmUserDefinedXmlHookScriptParam CreateVmUserDefinedXmlHookScript request param
 type CreateVmUserDefinedXmlHookScriptParam struct {
 	BaseParam
-	CreateVmUserDefinedXmlHookScript CreateVmUserDefinedXmlHookScriptParamDetail `json:"createVmUserDefinedXmlHookScript"`
+	Params CreateVmUserDefinedXmlHookScriptParamDetail `json:"createVmUserDefinedXmlHookScript"`
 }
 // UpgradeToLicenseServerParamDetail UpgradeToLicenseServer detail param
 type UpgradeToLicenseServerParamDetail struct {
@@ -10845,7 +10845,7 @@ type UpgradeToLicenseServerParamDetail struct {
 // UpgradeToLicenseServerParam UpgradeToLicenseServer request param
 type UpgradeToLicenseServerParam struct {
 	BaseParam
-	UpgradeToLicenseServer UpgradeToLicenseServerParamDetail `json:"upgradeToLicenseServer"`
+	Params UpgradeToLicenseServerParamDetail `json:"upgradeToLicenseServer"`
 }
 // DetachAppBuildSystemToZoneParamDetail DetachAppBuildSystemToZone detail param
 type DetachAppBuildSystemToZoneParamDetail struct {
@@ -10856,7 +10856,7 @@ type DetachAppBuildSystemToZoneParamDetail struct {
 // DetachAppBuildSystemToZoneParam DetachAppBuildSystemToZone request param
 type DetachAppBuildSystemToZoneParam struct {
 	BaseParam
-	DetachAppBuildSystemToZone DetachAppBuildSystemToZoneParamDetail `json:"detachAppBuildSystemToZone"`
+	Params DetachAppBuildSystemToZoneParamDetail `json:"detachAppBuildSystemToZone"`
 }
 // GetAppBuildSystemCapacityParamDetail GetAppBuildSystemCapacity detail param
 type GetAppBuildSystemCapacityParamDetail struct {
@@ -10866,7 +10866,7 @@ type GetAppBuildSystemCapacityParamDetail struct {
 // GetAppBuildSystemCapacityParam GetAppBuildSystemCapacity request param
 type GetAppBuildSystemCapacityParam struct {
 	BaseParam
-	GetAppBuildSystemCapacity GetAppBuildSystemCapacityParamDetail `json:"getAppBuildSystemCapacity"`
+	Params GetAppBuildSystemCapacityParamDetail `json:"getAppBuildSystemCapacity"`
 }
 // GetAttachableVpcL3NetworkParamDetail GetAttachableVpcL3Network detail param
 type GetAttachableVpcL3NetworkParamDetail struct {
@@ -10876,7 +10876,7 @@ type GetAttachableVpcL3NetworkParamDetail struct {
 // GetAttachableVpcL3NetworkParam GetAttachableVpcL3Network request param
 type GetAttachableVpcL3NetworkParam struct {
 	BaseParam
-	GetAttachableVpcL3Network GetAttachableVpcL3NetworkParamDetail `json:"getAttachableVpcL3Network"`
+	Params GetAttachableVpcL3NetworkParamDetail `json:"getAttachableVpcL3Network"`
 }
 // ChangeBaremetalChassisStateParamDetail ChangeBaremetalChassisState detail param
 type ChangeBaremetalChassisStateParamDetail struct {
@@ -10887,7 +10887,7 @@ type ChangeBaremetalChassisStateParamDetail struct {
 // ChangeBaremetalChassisStateParam ChangeBaremetalChassisState request param
 type ChangeBaremetalChassisStateParam struct {
 	BaseParam
-	ChangeBaremetalChassisState ChangeBaremetalChassisStateParamDetail `json:"changeBaremetalChassisState"`
+	Params ChangeBaremetalChassisStateParamDetail `json:"changeBaremetalChassisState"`
 }
 // ChangeNfvInstGroupOperationModeParamDetail ChangeNfvInstGroupOperationMode detail param
 type ChangeNfvInstGroupOperationModeParamDetail struct {
@@ -10898,7 +10898,7 @@ type ChangeNfvInstGroupOperationModeParamDetail struct {
 // ChangeNfvInstGroupOperationModeParam ChangeNfvInstGroupOperationMode request param
 type ChangeNfvInstGroupOperationModeParam struct {
 	BaseParam
-	ChangeNfvInstGroupOperationMode ChangeNfvInstGroupOperationModeParamDetail `json:"changeNfvInstGroupOperationMode"`
+	Params ChangeNfvInstGroupOperationModeParamDetail `json:"changeNfvInstGroupOperationMode"`
 }
 // GetL3NetworkMtuParamDetail GetL3NetworkMtu detail param
 type GetL3NetworkMtuParamDetail struct {
@@ -10908,7 +10908,7 @@ type GetL3NetworkMtuParamDetail struct {
 // GetL3NetworkMtuParam GetL3NetworkMtu request param
 type GetL3NetworkMtuParam struct {
 	BaseParam
-	GetL3NetworkMtu GetL3NetworkMtuParamDetail `json:"getL3NetworkMtu"`
+	Params GetL3NetworkMtuParamDetail `json:"getL3NetworkMtu"`
 }
 // AttachVipToLoadBalancerParamDetail AttachVipToLoadBalancer detail param
 type AttachVipToLoadBalancerParamDetail struct {
@@ -10919,7 +10919,7 @@ type AttachVipToLoadBalancerParamDetail struct {
 // AttachVipToLoadBalancerParam AttachVipToLoadBalancer request param
 type AttachVipToLoadBalancerParam struct {
 	BaseParam
-	AttachVipToLoadBalancer AttachVipToLoadBalancerParamDetail `json:"attachVipToLoadBalancer"`
+	Params AttachVipToLoadBalancerParamDetail `json:"attachVipToLoadBalancer"`
 }
 // UpdateSecurityGroupRulePriorityParamDetail UpdateSecurityGroupRulePriority detail param
 type UpdateSecurityGroupRulePriorityParamDetail struct {
@@ -10931,7 +10931,7 @@ type UpdateSecurityGroupRulePriorityParamDetail struct {
 // UpdateSecurityGroupRulePriorityParam UpdateSecurityGroupRulePriority request param
 type UpdateSecurityGroupRulePriorityParam struct {
 	BaseParam
-	UpdateSecurityGroupRulePriority UpdateSecurityGroupRulePriorityParamDetail `json:"updateSecurityGroupRulePriority"`
+	Params UpdateSecurityGroupRulePriorityParamDetail `json:"updateSecurityGroupRulePriority"`
 }
 // AddDnsToL3NetworkParamDetail AddDnsToL3Network detail param
 type AddDnsToL3NetworkParamDetail struct {
@@ -10942,7 +10942,7 @@ type AddDnsToL3NetworkParamDetail struct {
 // AddDnsToL3NetworkParam AddDnsToL3Network request param
 type AddDnsToL3NetworkParam struct {
 	BaseParam
-	AddDnsToL3Network AddDnsToL3NetworkParamDetail `json:"addDnsToL3Network"`
+	Params AddDnsToL3NetworkParamDetail `json:"addDnsToL3Network"`
 }
 // SetVmMonitorNumberParamDetail SetVmMonitorNumber detail param
 type SetVmMonitorNumberParamDetail struct {
@@ -10953,7 +10953,7 @@ type SetVmMonitorNumberParamDetail struct {
 // SetVmMonitorNumberParam SetVmMonitorNumber request param
 type SetVmMonitorNumberParam struct {
 	BaseParam
-	SetVmMonitorNumber SetVmMonitorNumberParamDetail `json:"setVmMonitorNumber"`
+	Params SetVmMonitorNumberParamDetail `json:"setVmMonitorNumber"`
 }
 // ChangeLoadBalancerBackendServerParamDetail ChangeLoadBalancerBackendServer detail param
 type ChangeLoadBalancerBackendServerParamDetail struct {
@@ -10965,7 +10965,7 @@ type ChangeLoadBalancerBackendServerParamDetail struct {
 // ChangeLoadBalancerBackendServerParam ChangeLoadBalancerBackendServer request param
 type ChangeLoadBalancerBackendServerParam struct {
 	BaseParam
-	ChangeLoadBalancerBackendServer ChangeLoadBalancerBackendServerParamDetail `json:"changeLoadBalancerBackendServer"`
+	Params ChangeLoadBalancerBackendServerParamDetail `json:"changeLoadBalancerBackendServer"`
 }
 // CreateEcsVSwitchRemoteParamDetail CreateEcsVSwitchRemote detail param
 type CreateEcsVSwitchRemoteParamDetail struct {
@@ -10981,7 +10981,7 @@ type CreateEcsVSwitchRemoteParamDetail struct {
 // CreateEcsVSwitchRemoteParam CreateEcsVSwitchRemote request param
 type CreateEcsVSwitchRemoteParam struct {
 	BaseParam
-	CreateEcsVSwitchRemote CreateEcsVSwitchRemoteParamDetail `json:"createEcsVSwitchRemote"`
+	Params CreateEcsVSwitchRemoteParamDetail `json:"createEcsVSwitchRemote"`
 }
 // GetVmMigrationCandidateHostsParamDetail GetVmMigrationCandidateHosts detail param
 type GetVmMigrationCandidateHostsParamDetail struct {
@@ -10991,7 +10991,7 @@ type GetVmMigrationCandidateHostsParamDetail struct {
 // GetVmMigrationCandidateHostsParam GetVmMigrationCandidateHosts request param
 type GetVmMigrationCandidateHostsParam struct {
 	BaseParam
-	GetVmMigrationCandidateHosts GetVmMigrationCandidateHostsParamDetail `json:"getVmMigrationCandidateHosts"`
+	Params GetVmMigrationCandidateHostsParamDetail `json:"getVmMigrationCandidateHosts"`
 }
 // GetCandidateL3NetworksForIpSecConnectionParamDetail GetCandidateL3NetworksForIpSecConnection detail param
 type GetCandidateL3NetworksForIpSecConnectionParamDetail struct {
@@ -11005,7 +11005,7 @@ type GetCandidateL3NetworksForIpSecConnectionParamDetail struct {
 // GetCandidateL3NetworksForIpSecConnectionParam GetCandidateL3NetworksForIpSecConnection request param
 type GetCandidateL3NetworksForIpSecConnectionParam struct {
 	BaseParam
-	GetCandidateL3NetworksForIpSecConnection GetCandidateL3NetworksForIpSecConnectionParamDetail `json:"getCandidateL3NetworksForIpSecConnection"`
+	Params GetCandidateL3NetworksForIpSecConnectionParamDetail `json:"getCandidateL3NetworksForIpSecConnection"`
 }
 // UpdateHostNetworkServiceTypeParamDetail UpdateHostNetworkServiceType detail param
 type UpdateHostNetworkServiceTypeParamDetail struct {
@@ -11017,7 +11017,7 @@ type UpdateHostNetworkServiceTypeParamDetail struct {
 // UpdateHostNetworkServiceTypeParam UpdateHostNetworkServiceType request param
 type UpdateHostNetworkServiceTypeParam struct {
 	BaseParam
-	UpdateHostNetworkServiceType UpdateHostNetworkServiceTypeParamDetail `json:"updateHostNetworkServiceType"`
+	Params UpdateHostNetworkServiceTypeParamDetail `json:"updateHostNetworkServiceType"`
 }
 // SNSMicrosoftTeamsTestConnectionParamDetail SNSMicrosoftTeamsTestConnection detail param
 type SNSMicrosoftTeamsTestConnectionParamDetail struct {
@@ -11029,7 +11029,7 @@ type SNSMicrosoftTeamsTestConnectionParamDetail struct {
 // SNSMicrosoftTeamsTestConnectionParam SNSMicrosoftTeamsTestConnection request param
 type SNSMicrosoftTeamsTestConnectionParam struct {
 	BaseParam
-	SNSMicrosoftTeamsTestConnection SNSMicrosoftTeamsTestConnectionParamDetail `json:"sNSMicrosoftTeamsTestConnection"`
+	Params SNSMicrosoftTeamsTestConnectionParamDetail `json:"sNSMicrosoftTeamsTestConnection"`
 }
 // GetLatestGuestToolsForVmParamDetail GetLatestGuestToolsForVm detail param
 type GetLatestGuestToolsForVmParamDetail struct {
@@ -11039,7 +11039,7 @@ type GetLatestGuestToolsForVmParamDetail struct {
 // GetLatestGuestToolsForVmParam GetLatestGuestToolsForVm request param
 type GetLatestGuestToolsForVmParam struct {
 	BaseParam
-	GetLatestGuestToolsForVm GetLatestGuestToolsForVmParamDetail `json:"getLatestGuestToolsForVm"`
+	Params GetLatestGuestToolsForVmParamDetail `json:"getLatestGuestToolsForVm"`
 }
 // CreateVpcUserVpnGatewayRemoteParamDetail CreateVpcUserVpnGatewayRemote detail param
 type CreateVpcUserVpnGatewayRemoteParamDetail struct {
@@ -11054,7 +11054,7 @@ type CreateVpcUserVpnGatewayRemoteParamDetail struct {
 // CreateVpcUserVpnGatewayRemoteParam CreateVpcUserVpnGatewayRemote request param
 type CreateVpcUserVpnGatewayRemoteParam struct {
 	BaseParam
-	CreateVpcUserVpnGatewayRemote CreateVpcUserVpnGatewayRemoteParamDetail `json:"createVpcUserVpnGatewayRemote"`
+	Params CreateVpcUserVpnGatewayRemoteParamDetail `json:"createVpcUserVpnGatewayRemote"`
 }
 // CreateOssBackupBucketRemoteParamDetail CreateOssBackupBucketRemote detail param
 type CreateOssBackupBucketRemoteParamDetail struct {
@@ -11069,7 +11069,7 @@ type CreateOssBackupBucketRemoteParamDetail struct {
 // CreateOssBackupBucketRemoteParam CreateOssBackupBucketRemote request param
 type CreateOssBackupBucketRemoteParam struct {
 	BaseParam
-	CreateOssBackupBucketRemote CreateOssBackupBucketRemoteParamDetail `json:"createOssBackupBucketRemote"`
+	Params CreateOssBackupBucketRemoteParamDetail `json:"createOssBackupBucketRemote"`
 }
 // PowerOffBaremetalChassisParamDetail PowerOffBaremetalChassis detail param
 type PowerOffBaremetalChassisParamDetail struct {
@@ -11079,7 +11079,7 @@ type PowerOffBaremetalChassisParamDetail struct {
 // PowerOffBaremetalChassisParam PowerOffBaremetalChassis request param
 type PowerOffBaremetalChassisParam struct {
 	BaseParam
-	PowerOffBaremetalChassis PowerOffBaremetalChassisParamDetail `json:"powerOffBaremetalChassis"`
+	Params PowerOffBaremetalChassisParamDetail `json:"powerOffBaremetalChassis"`
 }
 // GetCandidateInterfaceVlanIdsParamDetail GetCandidateInterfaceVlanIds detail param
 type GetCandidateInterfaceVlanIdsParamDetail struct {
@@ -11091,7 +11091,7 @@ type GetCandidateInterfaceVlanIdsParamDetail struct {
 // GetCandidateInterfaceVlanIdsParam GetCandidateInterfaceVlanIds request param
 type GetCandidateInterfaceVlanIdsParam struct {
 	BaseParam
-	GetCandidateInterfaceVlanIds GetCandidateInterfaceVlanIdsParamDetail `json:"getCandidateInterfaceVlanIds"`
+	Params GetCandidateInterfaceVlanIdsParamDetail `json:"getCandidateInterfaceVlanIds"`
 }
 // GetNetworkServiceTypesParamDetail GetNetworkServiceTypes detail param
 type GetNetworkServiceTypesParamDetail struct {
@@ -11100,7 +11100,7 @@ type GetNetworkServiceTypesParamDetail struct {
 // GetNetworkServiceTypesParam GetNetworkServiceTypes request param
 type GetNetworkServiceTypesParam struct {
 	BaseParam
-	GetNetworkServiceTypes GetNetworkServiceTypesParamDetail `json:"getNetworkServiceTypes"`
+	Params GetNetworkServiceTypesParamDetail `json:"getNetworkServiceTypes"`
 }
 // DeleteVmUserDefinedXmlParamDetail DeleteVmUserDefinedXml detail param
 type DeleteVmUserDefinedXmlParamDetail struct {
@@ -11111,7 +11111,7 @@ type DeleteVmUserDefinedXmlParamDetail struct {
 // DeleteVmUserDefinedXmlParam DeleteVmUserDefinedXml request param
 type DeleteVmUserDefinedXmlParam struct {
 	BaseParam
-	DeleteVmUserDefinedXml DeleteVmUserDefinedXmlParamDetail `json:"deleteVmUserDefinedXml"`
+	Params DeleteVmUserDefinedXmlParamDetail `json:"deleteVmUserDefinedXml"`
 }
 // GetAvailableVpcL3NetworkParamDetail GetAvailableVpcL3Network detail param
 type GetAvailableVpcL3NetworkParamDetail struct {
@@ -11121,7 +11121,7 @@ type GetAvailableVpcL3NetworkParamDetail struct {
 // GetAvailableVpcL3NetworkParam GetAvailableVpcL3Network request param
 type GetAvailableVpcL3NetworkParam struct {
 	BaseParam
-	GetAvailableVpcL3Network GetAvailableVpcL3NetworkParamDetail `json:"getAvailableVpcL3Network"`
+	Params GetAvailableVpcL3NetworkParamDetail `json:"getAvailableVpcL3Network"`
 }
 // GetCurrentTimeParamDetail GetCurrentTime detail param
 type GetCurrentTimeParamDetail struct {
@@ -11130,7 +11130,7 @@ type GetCurrentTimeParamDetail struct {
 // GetCurrentTimeParam GetCurrentTime request param
 type GetCurrentTimeParam struct {
 	BaseParam
-	GetCurrentTime GetCurrentTimeParamDetail `json:"getCurrentTime"`
+	Params GetCurrentTimeParamDetail `json:"getCurrentTime"`
 }
 // CalculateAccountSpendingParamDetail CalculateAccountSpending detail param
 type CalculateAccountSpendingParamDetail struct {
@@ -11144,7 +11144,7 @@ type CalculateAccountSpendingParamDetail struct {
 // CalculateAccountSpendingParam CalculateAccountSpending request param
 type CalculateAccountSpendingParam struct {
 	BaseParam
-	CalculateAccountSpending CalculateAccountSpendingParamDetail `json:"calculateAccountSpending"`
+	Params CalculateAccountSpendingParamDetail `json:"calculateAccountSpending"`
 }
 // GetVmAttachableL3NetworkParamDetail GetVmAttachableL3Network detail param
 type GetVmAttachableL3NetworkParamDetail struct {
@@ -11154,7 +11154,7 @@ type GetVmAttachableL3NetworkParamDetail struct {
 // GetVmAttachableL3NetworkParam GetVmAttachableL3Network request param
 type GetVmAttachableL3NetworkParam struct {
 	BaseParam
-	GetVmAttachableL3Network GetVmAttachableL3NetworkParamDetail `json:"getVmAttachableL3Network"`
+	Params GetVmAttachableL3NetworkParamDetail `json:"getVmAttachableL3Network"`
 }
 // UpdateEcsInstanceVncPasswordParamDetail UpdateEcsInstanceVncPassword detail param
 type UpdateEcsInstanceVncPasswordParamDetail struct {
@@ -11165,7 +11165,7 @@ type UpdateEcsInstanceVncPasswordParamDetail struct {
 // UpdateEcsInstanceVncPasswordParam UpdateEcsInstanceVncPassword request param
 type UpdateEcsInstanceVncPasswordParam struct {
 	BaseParam
-	UpdateEcsInstanceVncPassword UpdateEcsInstanceVncPasswordParamDetail `json:"updateEcsInstanceVncPassword"`
+	Params UpdateEcsInstanceVncPasswordParamDetail `json:"updateEcsInstanceVncPassword"`
 }
 // SyncChronyServersParamDetail SyncChronyServers detail param
 type SyncChronyServersParamDetail struct {
@@ -11174,7 +11174,7 @@ type SyncChronyServersParamDetail struct {
 // SyncChronyServersParam SyncChronyServers request param
 type SyncChronyServersParam struct {
 	BaseParam
-	SyncChronyServers SyncChronyServersParamDetail `json:"syncChronyServers"`
+	Params SyncChronyServersParamDetail `json:"syncChronyServers"`
 }
 // GetVmInstanceProtectedRecoveryPointsParamDetail GetVmInstanceProtectedRecoveryPoints detail param
 type GetVmInstanceProtectedRecoveryPointsParamDetail struct {
@@ -11186,7 +11186,7 @@ type GetVmInstanceProtectedRecoveryPointsParamDetail struct {
 // GetVmInstanceProtectedRecoveryPointsParam GetVmInstanceProtectedRecoveryPoints request param
 type GetVmInstanceProtectedRecoveryPointsParam struct {
 	BaseParam
-	GetVmInstanceProtectedRecoveryPoints GetVmInstanceProtectedRecoveryPointsParamDetail `json:"getVmInstanceProtectedRecoveryPoints"`
+	Params GetVmInstanceProtectedRecoveryPointsParamDetail `json:"getVmInstanceProtectedRecoveryPoints"`
 }
 // AddVmToVmSchedulingRuleGroupParamDetail AddVmToVmSchedulingRuleGroup detail param
 type AddVmToVmSchedulingRuleGroupParamDetail struct {
@@ -11197,7 +11197,7 @@ type AddVmToVmSchedulingRuleGroupParamDetail struct {
 // AddVmToVmSchedulingRuleGroupParam AddVmToVmSchedulingRuleGroup request param
 type AddVmToVmSchedulingRuleGroupParam struct {
 	BaseParam
-	AddVmToVmSchedulingRuleGroup AddVmToVmSchedulingRuleGroupParamDetail `json:"addVmToVmSchedulingRuleGroup"`
+	Params AddVmToVmSchedulingRuleGroupParamDetail `json:"addVmToVmSchedulingRuleGroup"`
 }
 // SyncBackupFromImageStoreBackupStorageParamDetail SyncBackupFromImageStoreBackupStorage detail param
 type SyncBackupFromImageStoreBackupStorageParamDetail struct {
@@ -11209,7 +11209,7 @@ type SyncBackupFromImageStoreBackupStorageParamDetail struct {
 // SyncBackupFromImageStoreBackupStorageParam SyncBackupFromImageStoreBackupStorage request param
 type SyncBackupFromImageStoreBackupStorageParam struct {
 	BaseParam
-	SyncBackupFromImageStoreBackupStorage SyncBackupFromImageStoreBackupStorageParamDetail `json:"syncBackupFromImageStoreBackupStorage"`
+	Params SyncBackupFromImageStoreBackupStorageParamDetail `json:"syncBackupFromImageStoreBackupStorage"`
 }
 // GetHostWebSshUrlParamDetail GetHostWebSshUrl detail param
 type GetHostWebSshUrlParamDetail struct {
@@ -11222,7 +11222,7 @@ type GetHostWebSshUrlParamDetail struct {
 // GetHostWebSshUrlParam GetHostWebSshUrl request param
 type GetHostWebSshUrlParam struct {
 	BaseParam
-	GetHostWebSshUrl GetHostWebSshUrlParamDetail `json:"getHostWebSshUrl"`
+	Params GetHostWebSshUrlParamDetail `json:"getHostWebSshUrl"`
 }
 // SetL3NetworkMtuParamDetail SetL3NetworkMtu detail param
 type SetL3NetworkMtuParamDetail struct {
@@ -11233,7 +11233,7 @@ type SetL3NetworkMtuParamDetail struct {
 // SetL3NetworkMtuParam SetL3NetworkMtu request param
 type SetL3NetworkMtuParam struct {
 	BaseParam
-	SetL3NetworkMtu SetL3NetworkMtuParamDetail `json:"setL3NetworkMtu"`
+	Params SetL3NetworkMtuParamDetail `json:"setL3NetworkMtu"`
 }
 // GetL3NetworkRouterInterfaceIpParamDetail GetL3NetworkRouterInterfaceIp detail param
 type GetL3NetworkRouterInterfaceIpParamDetail struct {
@@ -11243,7 +11243,7 @@ type GetL3NetworkRouterInterfaceIpParamDetail struct {
 // GetL3NetworkRouterInterfaceIpParam GetL3NetworkRouterInterfaceIp request param
 type GetL3NetworkRouterInterfaceIpParam struct {
 	BaseParam
-	GetL3NetworkRouterInterfaceIp GetL3NetworkRouterInterfaceIpParamDetail `json:"getL3NetworkRouterInterfaceIp"`
+	Params GetL3NetworkRouterInterfaceIpParamDetail `json:"getL3NetworkRouterInterfaceIp"`
 }
 // SyncVmClockParamDetail SyncVmClock detail param
 type SyncVmClockParamDetail struct {
@@ -11253,7 +11253,7 @@ type SyncVmClockParamDetail struct {
 // SyncVmClockParam SyncVmClock request param
 type SyncVmClockParam struct {
 	BaseParam
-	SyncVmClock SyncVmClockParamDetail `json:"syncVmClock"`
+	Params SyncVmClockParamDetail `json:"syncVmClock"`
 }
 // CreateSNSSnmpEndpointParamDetail CreateSNSSnmpEndpoint detail param
 type CreateSNSSnmpEndpointParamDetail struct {
@@ -11267,7 +11267,7 @@ type CreateSNSSnmpEndpointParamDetail struct {
 // CreateSNSSnmpEndpointParam CreateSNSSnmpEndpoint request param
 type CreateSNSSnmpEndpointParam struct {
 	BaseParam
-	CreateSNSSnmpEndpoint CreateSNSSnmpEndpointParamDetail `json:"createSNSSnmpEndpoint"`
+	Params CreateSNSSnmpEndpointParamDetail `json:"createSNSSnmpEndpoint"`
 }
 // SdnControllerAddHostParamDetail SdnControllerAddHost detail param
 type SdnControllerAddHostParamDetail struct {
@@ -11284,7 +11284,7 @@ type SdnControllerAddHostParamDetail struct {
 // SdnControllerAddHostParam SdnControllerAddHost request param
 type SdnControllerAddHostParam struct {
 	BaseParam
-	SdnControllerAddHost SdnControllerAddHostParamDetail `json:"sdnControllerAddHost"`
+	Params SdnControllerAddHostParamDetail `json:"sdnControllerAddHost"`
 }
 // GetLicenseNodeUsageDetailsParamDetail GetLicenseNodeUsageDetails detail param
 type GetLicenseNodeUsageDetailsParamDetail struct {
@@ -11294,7 +11294,7 @@ type GetLicenseNodeUsageDetailsParamDetail struct {
 // GetLicenseNodeUsageDetailsParam GetLicenseNodeUsageDetails request param
 type GetLicenseNodeUsageDetailsParam struct {
 	BaseParam
-	GetLicenseNodeUsageDetails GetLicenseNodeUsageDetailsParamDetail `json:"getLicenseNodeUsageDetails"`
+	Params GetLicenseNodeUsageDetailsParamDetail `json:"getLicenseNodeUsageDetails"`
 }
 // CreateAliyunSnapshotRemoteParamDetail CreateAliyunSnapshotRemote detail param
 type CreateAliyunSnapshotRemoteParamDetail struct {
@@ -11308,7 +11308,7 @@ type CreateAliyunSnapshotRemoteParamDetail struct {
 // CreateAliyunSnapshotRemoteParam CreateAliyunSnapshotRemote request param
 type CreateAliyunSnapshotRemoteParam struct {
 	BaseParam
-	CreateAliyunSnapshotRemote CreateAliyunSnapshotRemoteParamDetail `json:"createAliyunSnapshotRemote"`
+	Params CreateAliyunSnapshotRemoteParamDetail `json:"createAliyunSnapshotRemote"`
 }
 // SetVmBootVolumeParamDetail SetVmBootVolume detail param
 type SetVmBootVolumeParamDetail struct {
@@ -11319,7 +11319,7 @@ type SetVmBootVolumeParamDetail struct {
 // SetVmBootVolumeParam SetVmBootVolume request param
 type SetVmBootVolumeParam struct {
 	BaseParam
-	SetVmBootVolume SetVmBootVolumeParamDetail `json:"setVmBootVolume"`
+	Params SetVmBootVolumeParamDetail `json:"setVmBootVolume"`
 }
 // ChangeVpcHaGroupMonitorIpsParamDetail ChangeVpcHaGroupMonitorIps detail param
 type ChangeVpcHaGroupMonitorIpsParamDetail struct {
@@ -11330,7 +11330,7 @@ type ChangeVpcHaGroupMonitorIpsParamDetail struct {
 // ChangeVpcHaGroupMonitorIpsParam ChangeVpcHaGroupMonitorIps request param
 type ChangeVpcHaGroupMonitorIpsParam struct {
 	BaseParam
-	ChangeVpcHaGroupMonitorIps ChangeVpcHaGroupMonitorIpsParamDetail `json:"changeVpcHaGroupMonitorIps"`
+	Params ChangeVpcHaGroupMonitorIpsParamDetail `json:"changeVpcHaGroupMonitorIps"`
 }
 // RenewSessionParamDetail RenewSession detail param
 type RenewSessionParamDetail struct {
@@ -11341,7 +11341,7 @@ type RenewSessionParamDetail struct {
 // RenewSessionParam RenewSession request param
 type RenewSessionParam struct {
 	BaseParam
-	RenewSession RenewSessionParamDetail `json:"renewSession"`
+	Params RenewSessionParamDetail `json:"renewSession"`
 }
 // DeleteDataCenterInLocalParamDetail DeleteDataCenterInLocal detail param
 type DeleteDataCenterInLocalParamDetail struct {
@@ -11352,7 +11352,7 @@ type DeleteDataCenterInLocalParamDetail struct {
 // DeleteDataCenterInLocalParam DeleteDataCenterInLocal request param
 type DeleteDataCenterInLocalParam struct {
 	BaseParam
-	DeleteDataCenterInLocal DeleteDataCenterInLocalParamDetail `json:"deleteDataCenterInLocal"`
+	Params DeleteDataCenterInLocalParamDetail `json:"deleteDataCenterInLocal"`
 }
 // SetVmConsoleModeParamDetail SetVmConsoleMode detail param
 type SetVmConsoleModeParamDetail struct {
@@ -11363,7 +11363,7 @@ type SetVmConsoleModeParamDetail struct {
 // SetVmConsoleModeParam SetVmConsoleMode request param
 type SetVmConsoleModeParam struct {
 	BaseParam
-	SetVmConsoleMode SetVmConsoleModeParamDetail `json:"setVmConsoleMode"`
+	Params SetVmConsoleModeParamDetail `json:"setVmConsoleMode"`
 }
 // AttachPolicyToUserParamDetail AttachPolicyToUser detail param
 type AttachPolicyToUserParamDetail struct {
@@ -11374,7 +11374,7 @@ type AttachPolicyToUserParamDetail struct {
 // AttachPolicyToUserParam AttachPolicyToUser request param
 type AttachPolicyToUserParam struct {
 	BaseParam
-	AttachPolicyToUser AttachPolicyToUserParamDetail `json:"attachPolicyToUser"`
+	Params AttachPolicyToUserParamDetail `json:"attachPolicyToUser"`
 }
 // GetVfPciDeviceAvailableInL2NetworkParamDetail GetVfPciDeviceAvailableInL2Network detail param
 type GetVfPciDeviceAvailableInL2NetworkParamDetail struct {
@@ -11384,7 +11384,7 @@ type GetVfPciDeviceAvailableInL2NetworkParamDetail struct {
 // GetVfPciDeviceAvailableInL2NetworkParam GetVfPciDeviceAvailableInL2Network request param
 type GetVfPciDeviceAvailableInL2NetworkParam struct {
 	BaseParam
-	GetVfPciDeviceAvailableInL2Network GetVfPciDeviceAvailableInL2NetworkParamDetail `json:"getVfPciDeviceAvailableInL2Network"`
+	Params GetVfPciDeviceAvailableInL2NetworkParamDetail `json:"getVfPciDeviceAvailableInL2Network"`
 }
 // AddAttributesToIAM2ProjectParamDetail AddAttributesToIAM2Project detail param
 type AddAttributesToIAM2ProjectParamDetail struct {
@@ -11395,7 +11395,7 @@ type AddAttributesToIAM2ProjectParamDetail struct {
 // AddAttributesToIAM2ProjectParam AddAttributesToIAM2Project request param
 type AddAttributesToIAM2ProjectParam struct {
 	BaseParam
-	AddAttributesToIAM2Project AddAttributesToIAM2ProjectParamDetail `json:"addAttributesToIAM2Project"`
+	Params AddAttributesToIAM2ProjectParamDetail `json:"addAttributesToIAM2Project"`
 }
 // UngenerateSeMdevDevicesParamDetail UngenerateSeMdevDevices detail param
 type UngenerateSeMdevDevicesParamDetail struct {
@@ -11405,7 +11405,7 @@ type UngenerateSeMdevDevicesParamDetail struct {
 // UngenerateSeMdevDevicesParam UngenerateSeMdevDevices request param
 type UngenerateSeMdevDevicesParam struct {
 	BaseParam
-	UngenerateSeMdevDevices UngenerateSeMdevDevicesParamDetail `json:"ungenerateSeMdevDevices"`
+	Params UngenerateSeMdevDevicesParamDetail `json:"ungenerateSeMdevDevices"`
 }
 // SetVmEmulatorPinningParamDetail SetVmEmulatorPinning detail param
 type SetVmEmulatorPinningParamDetail struct {
@@ -11416,7 +11416,7 @@ type SetVmEmulatorPinningParamDetail struct {
 // SetVmEmulatorPinningParam SetVmEmulatorPinning request param
 type SetVmEmulatorPinningParam struct {
 	BaseParam
-	SetVmEmulatorPinning SetVmEmulatorPinningParamDetail `json:"setVmEmulatorPinning"`
+	Params SetVmEmulatorPinningParamDetail `json:"setVmEmulatorPinning"`
 }
 // CleanV2VConversionCacheParamDetail CleanV2VConversionCache detail param
 type CleanV2VConversionCacheParamDetail struct {
@@ -11426,7 +11426,7 @@ type CleanV2VConversionCacheParamDetail struct {
 // CleanV2VConversionCacheParam CleanV2VConversionCache request param
 type CleanV2VConversionCacheParam struct {
 	BaseParam
-	CleanV2VConversionCache CleanV2VConversionCacheParamDetail `json:"cleanV2VConversionCache"`
+	Params CleanV2VConversionCacheParamDetail `json:"cleanV2VConversionCache"`
 }
 // UnbindModelFromServiceParamDetail UnbindModelFromService detail param
 type UnbindModelFromServiceParamDetail struct {
@@ -11437,7 +11437,7 @@ type UnbindModelFromServiceParamDetail struct {
 // UnbindModelFromServiceParam UnbindModelFromService request param
 type UnbindModelFromServiceParam struct {
 	BaseParam
-	UnbindModelFromService UnbindModelFromServiceParamDetail `json:"unbindModelFromService"`
+	Params UnbindModelFromServiceParamDetail `json:"unbindModelFromService"`
 }
 // GetEcsInstanceTypeParamDetail GetEcsInstanceType detail param
 type GetEcsInstanceTypeParamDetail struct {
@@ -11448,7 +11448,7 @@ type GetEcsInstanceTypeParamDetail struct {
 // GetEcsInstanceTypeParam GetEcsInstanceType request param
 type GetEcsInstanceTypeParam struct {
 	BaseParam
-	GetEcsInstanceType GetEcsInstanceTypeParamDetail `json:"getEcsInstanceType"`
+	Params GetEcsInstanceTypeParamDetail `json:"getEcsInstanceType"`
 }
 // GetLicenseUKeyStatusParamDetail GetLicenseUKeyStatus detail param
 type GetLicenseUKeyStatusParamDetail struct {
@@ -11457,7 +11457,7 @@ type GetLicenseUKeyStatusParamDetail struct {
 // GetLicenseUKeyStatusParam GetLicenseUKeyStatus request param
 type GetLicenseUKeyStatusParam struct {
 	BaseParam
-	GetLicenseUKeyStatus GetLicenseUKeyStatusParamDetail `json:"getLicenseUKeyStatus"`
+	Params GetLicenseUKeyStatusParamDetail `json:"getLicenseUKeyStatus"`
 }
 // AddTicketTypesToTicketFlowCollectionParamDetail AddTicketTypesToTicketFlowCollection detail param
 type AddTicketTypesToTicketFlowCollectionParamDetail struct {
@@ -11468,7 +11468,7 @@ type AddTicketTypesToTicketFlowCollectionParamDetail struct {
 // AddTicketTypesToTicketFlowCollectionParam AddTicketTypesToTicketFlowCollection request param
 type AddTicketTypesToTicketFlowCollectionParam struct {
 	BaseParam
-	AddTicketTypesToTicketFlowCollection AddTicketTypesToTicketFlowCollectionParamDetail `json:"addTicketTypesToTicketFlowCollection"`
+	Params AddTicketTypesToTicketFlowCollectionParamDetail `json:"addTicketTypesToTicketFlowCollection"`
 }
 // SetL3NetworkRouterInterfaceIpParamDetail SetL3NetworkRouterInterfaceIp detail param
 type SetL3NetworkRouterInterfaceIpParamDetail struct {
@@ -11479,7 +11479,7 @@ type SetL3NetworkRouterInterfaceIpParamDetail struct {
 // SetL3NetworkRouterInterfaceIpParam SetL3NetworkRouterInterfaceIp request param
 type SetL3NetworkRouterInterfaceIpParam struct {
 	BaseParam
-	SetL3NetworkRouterInterfaceIp SetL3NetworkRouterInterfaceIpParamDetail `json:"setL3NetworkRouterInterfaceIp"`
+	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"setL3NetworkRouterInterfaceIp"`
 }
 // GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail GetConnectionBetweenL3NetworkAndAliyunVSwitch detail param
 type GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
@@ -11490,7 +11490,7 @@ type GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
 // GetConnectionBetweenL3NetworkAndAliyunVSwitchParam GetConnectionBetweenL3NetworkAndAliyunVSwitch request param
 type GetConnectionBetweenL3NetworkAndAliyunVSwitchParam struct {
 	BaseParam
-	GetConnectionBetweenL3NetworkAndAliyunVSwitch GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail `json:"getConnectionBetweenL3NetworkAndAliyunVSwitch"`
+	Params GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail `json:"getConnectionBetweenL3NetworkAndAliyunVSwitch"`
 }
 // GetBareMetal2GatewayAllocatorStrategiesParamDetail GetBareMetal2GatewayAllocatorStrategies detail param
 type GetBareMetal2GatewayAllocatorStrategiesParamDetail struct {
@@ -11499,7 +11499,7 @@ type GetBareMetal2GatewayAllocatorStrategiesParamDetail struct {
 // GetBareMetal2GatewayAllocatorStrategiesParam GetBareMetal2GatewayAllocatorStrategies request param
 type GetBareMetal2GatewayAllocatorStrategiesParam struct {
 	BaseParam
-	GetBareMetal2GatewayAllocatorStrategies GetBareMetal2GatewayAllocatorStrategiesParamDetail `json:"getBareMetal2GatewayAllocatorStrategies"`
+	Params GetBareMetal2GatewayAllocatorStrategiesParamDetail `json:"getBareMetal2GatewayAllocatorStrategies"`
 }
 // UpdateFirewallRuleTemplateParamDetail UpdateFirewallRuleTemplate detail param
 type UpdateFirewallRuleTemplateParamDetail struct {
@@ -11525,7 +11525,7 @@ type UpdateFirewallRuleTemplateParamDetail struct {
 // UpdateFirewallRuleTemplateParam UpdateFirewallRuleTemplate request param
 type UpdateFirewallRuleTemplateParam struct {
 	BaseParam
-	UpdateFirewallRuleTemplate UpdateFirewallRuleTemplateParamDetail `json:"updateFirewallRuleTemplate"`
+	Params UpdateFirewallRuleTemplateParamDetail `json:"updateFirewallRuleTemplate"`
 }
 // GetUsbDeviceCandidatesForAttachingVmParamDetail GetUsbDeviceCandidatesForAttachingVm detail param
 type GetUsbDeviceCandidatesForAttachingVmParamDetail struct {
@@ -11536,7 +11536,7 @@ type GetUsbDeviceCandidatesForAttachingVmParamDetail struct {
 // GetUsbDeviceCandidatesForAttachingVmParam GetUsbDeviceCandidatesForAttachingVm request param
 type GetUsbDeviceCandidatesForAttachingVmParam struct {
 	BaseParam
-	GetUsbDeviceCandidatesForAttachingVm GetUsbDeviceCandidatesForAttachingVmParamDetail `json:"getUsbDeviceCandidatesForAttachingVm"`
+	Params GetUsbDeviceCandidatesForAttachingVmParamDetail `json:"getUsbDeviceCandidatesForAttachingVm"`
 }
 // GetCandidateL3NetworksForLoadBalancerParamDetail GetCandidateL3NetworksForLoadBalancer detail param
 type GetCandidateL3NetworksForLoadBalancerParamDetail struct {
@@ -11548,7 +11548,7 @@ type GetCandidateL3NetworksForLoadBalancerParamDetail struct {
 // GetCandidateL3NetworksForLoadBalancerParam GetCandidateL3NetworksForLoadBalancer request param
 type GetCandidateL3NetworksForLoadBalancerParam struct {
 	BaseParam
-	GetCandidateL3NetworksForLoadBalancer GetCandidateL3NetworksForLoadBalancerParamDetail `json:"getCandidateL3NetworksForLoadBalancer"`
+	Params GetCandidateL3NetworksForLoadBalancerParamDetail `json:"getCandidateL3NetworksForLoadBalancer"`
 }
 // WithdrawLicenseCapacityApplicationParamDetail WithdrawLicenseCapacityApplication detail param
 type WithdrawLicenseCapacityApplicationParamDetail struct {
@@ -11560,7 +11560,7 @@ type WithdrawLicenseCapacityApplicationParamDetail struct {
 // WithdrawLicenseCapacityApplicationParam WithdrawLicenseCapacityApplication request param
 type WithdrawLicenseCapacityApplicationParam struct {
 	BaseParam
-	WithdrawLicenseCapacityApplication WithdrawLicenseCapacityApplicationParamDetail `json:"withdrawLicenseCapacityApplication"`
+	Params WithdrawLicenseCapacityApplicationParamDetail `json:"withdrawLicenseCapacityApplication"`
 }
 // PowerResetHostParamDetail PowerResetHost detail param
 type PowerResetHostParamDetail struct {
@@ -11572,7 +11572,7 @@ type PowerResetHostParamDetail struct {
 // PowerResetHostParam PowerResetHost request param
 type PowerResetHostParam struct {
 	BaseParam
-	PowerResetHost PowerResetHostParamDetail `json:"powerResetHost"`
+	Params PowerResetHostParamDetail `json:"powerResetHost"`
 }
 // RevertVmFromVmBackupParamDetail RevertVmFromVmBackup detail param
 type RevertVmFromVmBackupParamDetail struct {
@@ -11583,7 +11583,7 @@ type RevertVmFromVmBackupParamDetail struct {
 // RevertVmFromVmBackupParam RevertVmFromVmBackup request param
 type RevertVmFromVmBackupParam struct {
 	BaseParam
-	RevertVmFromVmBackup RevertVmFromVmBackupParamDetail `json:"revertVmFromVmBackup"`
+	Params RevertVmFromVmBackupParamDetail `json:"revertVmFromVmBackup"`
 }
 // AttachCCSCertificateToUserParamDetail AttachCCSCertificateToUser detail param
 type AttachCCSCertificateToUserParamDetail struct {
@@ -11595,7 +11595,7 @@ type AttachCCSCertificateToUserParamDetail struct {
 // AttachCCSCertificateToUserParam AttachCCSCertificateToUser request param
 type AttachCCSCertificateToUserParam struct {
 	BaseParam
-	AttachCCSCertificateToUser AttachCCSCertificateToUserParamDetail `json:"attachCCSCertificateToUser"`
+	Params AttachCCSCertificateToUserParamDetail `json:"attachCCSCertificateToUser"`
 }
 // SetVmNumaParamDetail SetVmNuma detail param
 type SetVmNumaParamDetail struct {
@@ -11606,7 +11606,7 @@ type SetVmNumaParamDetail struct {
 // SetVmNumaParam SetVmNuma request param
 type SetVmNumaParam struct {
 	BaseParam
-	SetVmNuma SetVmNumaParamDetail `json:"setVmNuma"`
+	Params SetVmNumaParamDetail `json:"setVmNuma"`
 }
 // DeleteAliyunRouterInterfaceLocalParamDetail DeleteAliyunRouterInterfaceLocal detail param
 type DeleteAliyunRouterInterfaceLocalParamDetail struct {
@@ -11617,7 +11617,7 @@ type DeleteAliyunRouterInterfaceLocalParamDetail struct {
 // DeleteAliyunRouterInterfaceLocalParam DeleteAliyunRouterInterfaceLocal request param
 type DeleteAliyunRouterInterfaceLocalParam struct {
 	BaseParam
-	DeleteAliyunRouterInterfaceLocal DeleteAliyunRouterInterfaceLocalParamDetail `json:"deleteAliyunRouterInterfaceLocal"`
+	Params DeleteAliyunRouterInterfaceLocalParamDetail `json:"deleteAliyunRouterInterfaceLocal"`
 }
 // UpdateFirewallRuleSetParamDetail UpdateFirewallRuleSet detail param
 type UpdateFirewallRuleSetParamDetail struct {
@@ -11630,7 +11630,7 @@ type UpdateFirewallRuleSetParamDetail struct {
 // UpdateFirewallRuleSetParam UpdateFirewallRuleSet request param
 type UpdateFirewallRuleSetParam struct {
 	BaseParam
-	UpdateFirewallRuleSet UpdateFirewallRuleSetParamDetail `json:"updateFirewallRuleSet"`
+	Params UpdateFirewallRuleSetParamDetail `json:"updateFirewallRuleSet"`
 }
 // AttachAliyunKeyParamDetail AttachAliyunKey detail param
 type AttachAliyunKeyParamDetail struct {
@@ -11640,7 +11640,7 @@ type AttachAliyunKeyParamDetail struct {
 // AttachAliyunKeyParam AttachAliyunKey request param
 type AttachAliyunKeyParam struct {
 	BaseParam
-	AttachAliyunKey AttachAliyunKeyParamDetail `json:"attachAliyunKey"`
+	Params AttachAliyunKeyParamDetail `json:"attachAliyunKey"`
 }
 // RefreshSearchIndexesParamDetail RefreshSearchIndexes detail param
 type RefreshSearchIndexesParamDetail struct {
@@ -11649,7 +11649,7 @@ type RefreshSearchIndexesParamDetail struct {
 // RefreshSearchIndexesParam RefreshSearchIndexes request param
 type RefreshSearchIndexesParam struct {
 	BaseParam
-	RefreshSearchIndexes RefreshSearchIndexesParamDetail `json:"refreshSearchIndexes"`
+	Params RefreshSearchIndexesParamDetail `json:"refreshSearchIndexes"`
 }
 // CalculateImageHashParamDetail CalculateImageHash detail param
 type CalculateImageHashParamDetail struct {
@@ -11661,7 +11661,7 @@ type CalculateImageHashParamDetail struct {
 // CalculateImageHashParam CalculateImageHash request param
 type CalculateImageHashParam struct {
 	BaseParam
-	CalculateImageHash CalculateImageHashParamDetail `json:"calculateImageHash"`
+	Params CalculateImageHashParamDetail `json:"calculateImageHash"`
 }
 // GetL2NetworkTypesParamDetail GetL2NetworkTypes detail param
 type GetL2NetworkTypesParamDetail struct {
@@ -11670,7 +11670,7 @@ type GetL2NetworkTypesParamDetail struct {
 // GetL2NetworkTypesParam GetL2NetworkTypes request param
 type GetL2NetworkTypesParam struct {
 	BaseParam
-	GetL2NetworkTypes GetL2NetworkTypesParamDetail `json:"getL2NetworkTypes"`
+	Params GetL2NetworkTypesParamDetail `json:"getL2NetworkTypes"`
 }
 // ShutdownHostParamDetail ShutdownHost detail param
 type ShutdownHostParamDetail struct {
@@ -11683,7 +11683,7 @@ type ShutdownHostParamDetail struct {
 // ShutdownHostParam ShutdownHost request param
 type ShutdownHostParam struct {
 	BaseParam
-	ShutdownHost ShutdownHostParamDetail `json:"shutdownHost"`
+	Params ShutdownHostParamDetail `json:"shutdownHost"`
 }
 // UpdateVpcVpnConnectionRemoteParamDetail UpdateVpcVpnConnectionRemote detail param
 type UpdateVpcVpnConnectionRemoteParamDetail struct {
@@ -11700,7 +11700,7 @@ type UpdateVpcVpnConnectionRemoteParamDetail struct {
 // UpdateVpcVpnConnectionRemoteParam UpdateVpcVpnConnectionRemote request param
 type UpdateVpcVpnConnectionRemoteParam struct {
 	BaseParam
-	UpdateVpcVpnConnectionRemote UpdateVpcVpnConnectionRemoteParamDetail `json:"updateVpcVpnConnectionRemote"`
+	Params UpdateVpcVpnConnectionRemoteParamDetail `json:"updateVpcVpnConnectionRemote"`
 }
 // GetVmTaskParamDetail GetVmTask detail param
 type GetVmTaskParamDetail struct {
@@ -11711,7 +11711,7 @@ type GetVmTaskParamDetail struct {
 // GetVmTaskParam GetVmTask request param
 type GetVmTaskParam struct {
 	BaseParam
-	GetVmTask GetVmTaskParamDetail `json:"getVmTask"`
+	Params GetVmTaskParamDetail `json:"getVmTask"`
 }
 // DisableCdpTaskParamDetail DisableCdpTask detail param
 type DisableCdpTaskParamDetail struct {
@@ -11722,7 +11722,7 @@ type DisableCdpTaskParamDetail struct {
 // DisableCdpTaskParam DisableCdpTask request param
 type DisableCdpTaskParam struct {
 	BaseParam
-	DisableCdpTask DisableCdpTaskParamDetail `json:"disableCdpTask"`
+	Params DisableCdpTaskParamDetail `json:"disableCdpTask"`
 }
 // SetIpOnHostNetworkBondingParamDetail SetIpOnHostNetworkBonding detail param
 type SetIpOnHostNetworkBondingParamDetail struct {
@@ -11734,7 +11734,7 @@ type SetIpOnHostNetworkBondingParamDetail struct {
 // SetIpOnHostNetworkBondingParam SetIpOnHostNetworkBonding request param
 type SetIpOnHostNetworkBondingParam struct {
 	BaseParam
-	SetIpOnHostNetworkBonding SetIpOnHostNetworkBondingParamDetail `json:"setIpOnHostNetworkBonding"`
+	Params SetIpOnHostNetworkBondingParamDetail `json:"setIpOnHostNetworkBonding"`
 }
 // RemoveAttributesFromIAM2VirtualIDParamDetail RemoveAttributesFromIAM2VirtualID detail param
 type RemoveAttributesFromIAM2VirtualIDParamDetail struct {
@@ -11745,7 +11745,7 @@ type RemoveAttributesFromIAM2VirtualIDParamDetail struct {
 // RemoveAttributesFromIAM2VirtualIDParam RemoveAttributesFromIAM2VirtualID request param
 type RemoveAttributesFromIAM2VirtualIDParam struct {
 	BaseParam
-	RemoveAttributesFromIAM2VirtualID RemoveAttributesFromIAM2VirtualIDParamDetail `json:"removeAttributesFromIAM2VirtualID"`
+	Params RemoveAttributesFromIAM2VirtualIDParamDetail `json:"removeAttributesFromIAM2VirtualID"`
 }
 // CreateBondingParamDetail CreateBonding detail param
 type CreateBondingParamDetail struct {
@@ -11764,7 +11764,7 @@ type CreateBondingParamDetail struct {
 // CreateBondingParam CreateBonding request param
 type CreateBondingParam struct {
 	BaseParam
-	CreateBonding CreateBondingParamDetail `json:"createBonding"`
+	Params CreateBondingParamDetail `json:"createBonding"`
 }
 // DetachUsbDeviceFromVmParamDetail DetachUsbDeviceFromVm detail param
 type DetachUsbDeviceFromVmParamDetail struct {
@@ -11774,7 +11774,7 @@ type DetachUsbDeviceFromVmParamDetail struct {
 // DetachUsbDeviceFromVmParam DetachUsbDeviceFromVm request param
 type DetachUsbDeviceFromVmParam struct {
 	BaseParam
-	DetachUsbDeviceFromVm DetachUsbDeviceFromVmParamDetail `json:"detachUsbDeviceFromVm"`
+	Params DetachUsbDeviceFromVmParamDetail `json:"detachUsbDeviceFromVm"`
 }
 // CreateDataVolumeTemplateFromVolumeSnapshotParamDetail CreateDataVolumeTemplateFromVolumeSnapshot detail param
 type CreateDataVolumeTemplateFromVolumeSnapshotParamDetail struct {
@@ -11789,7 +11789,7 @@ type CreateDataVolumeTemplateFromVolumeSnapshotParamDetail struct {
 // CreateDataVolumeTemplateFromVolumeSnapshotParam CreateDataVolumeTemplateFromVolumeSnapshot request param
 type CreateDataVolumeTemplateFromVolumeSnapshotParam struct {
 	BaseParam
-	CreateDataVolumeTemplateFromVolumeSnapshot CreateDataVolumeTemplateFromVolumeSnapshotParamDetail `json:"createDataVolumeTemplateFromVolumeSnapshot"`
+	Params CreateDataVolumeTemplateFromVolumeSnapshotParamDetail `json:"createDataVolumeTemplateFromVolumeSnapshot"`
 }
 // DetachRoleFromAccountParamDetail DetachRoleFromAccount detail param
 type DetachRoleFromAccountParamDetail struct {
@@ -11801,7 +11801,7 @@ type DetachRoleFromAccountParamDetail struct {
 // DetachRoleFromAccountParam DetachRoleFromAccount request param
 type DetachRoleFromAccountParam struct {
 	BaseParam
-	DetachRoleFromAccount DetachRoleFromAccountParamDetail `json:"detachRoleFromAccount"`
+	Params DetachRoleFromAccountParamDetail `json:"detachRoleFromAccount"`
 }
 // AddRendezvousPointToMulticastRouterParamDetail AddRendezvousPointToMulticastRouter detail param
 type AddRendezvousPointToMulticastRouterParamDetail struct {
@@ -11815,7 +11815,7 @@ type AddRendezvousPointToMulticastRouterParamDetail struct {
 // AddRendezvousPointToMulticastRouterParam AddRendezvousPointToMulticastRouter request param
 type AddRendezvousPointToMulticastRouterParam struct {
 	BaseParam
-	AddRendezvousPointToMulticastRouter AddRendezvousPointToMulticastRouterParamDetail `json:"addRendezvousPointToMulticastRouter"`
+	Params AddRendezvousPointToMulticastRouterParamDetail `json:"addRendezvousPointToMulticastRouter"`
 }
 // DeleteLdapBindingParamDetail DeleteLdapBinding detail param
 type DeleteLdapBindingParamDetail struct {
@@ -11825,7 +11825,7 @@ type DeleteLdapBindingParamDetail struct {
 // DeleteLdapBindingParam DeleteLdapBinding request param
 type DeleteLdapBindingParam struct {
 	BaseParam
-	DeleteLdapBinding DeleteLdapBindingParamDetail `json:"deleteLdapBinding"`
+	Params DeleteLdapBindingParamDetail `json:"deleteLdapBinding"`
 }
 // AttachNfvInstToGroupParamDetail AttachNfvInstToGroup detail param
 type AttachNfvInstToGroupParamDetail struct {
@@ -11836,7 +11836,7 @@ type AttachNfvInstToGroupParamDetail struct {
 // AttachNfvInstToGroupParam AttachNfvInstToGroup request param
 type AttachNfvInstToGroupParam struct {
 	BaseParam
-	AttachNfvInstToGroup AttachNfvInstToGroupParamDetail `json:"attachNfvInstToGroup"`
+	Params AttachNfvInstToGroupParamDetail `json:"attachNfvInstToGroup"`
 }
 // DebugSignalParamDetail DebugSignal detail param
 type DebugSignalParamDetail struct {
@@ -11846,7 +11846,7 @@ type DebugSignalParamDetail struct {
 // DebugSignalParam DebugSignal request param
 type DebugSignalParam struct {
 	BaseParam
-	DebugSignal DebugSignalParamDetail `json:"debugSignal"`
+	Params DebugSignalParamDetail `json:"debugSignal"`
 }
 // CreateVmInstanceFromVolumeParamDetail CreateVmInstanceFromVolume detail param
 type CreateVmInstanceFromVolumeParamDetail struct {
@@ -11874,7 +11874,7 @@ type CreateVmInstanceFromVolumeParamDetail struct {
 // CreateVmInstanceFromVolumeParam CreateVmInstanceFromVolume request param
 type CreateVmInstanceFromVolumeParam struct {
 	BaseParam
-	CreateVmInstanceFromVolume CreateVmInstanceFromVolumeParamDetail `json:"createVmInstanceFromVolume"`
+	Params CreateVmInstanceFromVolumeParamDetail `json:"createVmInstanceFromVolume"`
 }
 // GetVpcVRouterDistributedRoutingEnabledParamDetail GetVpcVRouterDistributedRoutingEnabled detail param
 type GetVpcVRouterDistributedRoutingEnabledParamDetail struct {
@@ -11884,7 +11884,7 @@ type GetVpcVRouterDistributedRoutingEnabledParamDetail struct {
 // GetVpcVRouterDistributedRoutingEnabledParam GetVpcVRouterDistributedRoutingEnabled request param
 type GetVpcVRouterDistributedRoutingEnabledParam struct {
 	BaseParam
-	GetVpcVRouterDistributedRoutingEnabled GetVpcVRouterDistributedRoutingEnabledParamDetail `json:"getVpcVRouterDistributedRoutingEnabled"`
+	Params GetVpcVRouterDistributedRoutingEnabledParamDetail `json:"getVpcVRouterDistributedRoutingEnabled"`
 }
 // CreateEcsSecurityGroupRemoteParamDetail CreateEcsSecurityGroupRemote detail param
 type CreateEcsSecurityGroupRemoteParamDetail struct {
@@ -11899,7 +11899,7 @@ type CreateEcsSecurityGroupRemoteParamDetail struct {
 // CreateEcsSecurityGroupRemoteParam CreateEcsSecurityGroupRemote request param
 type CreateEcsSecurityGroupRemoteParam struct {
 	BaseParam
-	CreateEcsSecurityGroupRemote CreateEcsSecurityGroupRemoteParamDetail `json:"createEcsSecurityGroupRemote"`
+	Params CreateEcsSecurityGroupRemoteParamDetail `json:"createEcsSecurityGroupRemote"`
 }
 // RemoveAttributesFromIAM2OrganizationParamDetail RemoveAttributesFromIAM2Organization detail param
 type RemoveAttributesFromIAM2OrganizationParamDetail struct {
@@ -11910,7 +11910,7 @@ type RemoveAttributesFromIAM2OrganizationParamDetail struct {
 // RemoveAttributesFromIAM2OrganizationParam RemoveAttributesFromIAM2Organization request param
 type RemoveAttributesFromIAM2OrganizationParam struct {
 	BaseParam
-	RemoveAttributesFromIAM2Organization RemoveAttributesFromIAM2OrganizationParamDetail `json:"removeAttributesFromIAM2Organization"`
+	Params RemoveAttributesFromIAM2OrganizationParamDetail `json:"removeAttributesFromIAM2Organization"`
 }
 // DeleteAliyunSnapshotFromLocalParamDetail DeleteAliyunSnapshotFromLocal detail param
 type DeleteAliyunSnapshotFromLocalParamDetail struct {
@@ -11921,7 +11921,7 @@ type DeleteAliyunSnapshotFromLocalParamDetail struct {
 // DeleteAliyunSnapshotFromLocalParam DeleteAliyunSnapshotFromLocal request param
 type DeleteAliyunSnapshotFromLocalParam struct {
 	BaseParam
-	DeleteAliyunSnapshotFromLocal DeleteAliyunSnapshotFromLocalParamDetail `json:"deleteAliyunSnapshotFromLocal"`
+	Params DeleteAliyunSnapshotFromLocalParamDetail `json:"deleteAliyunSnapshotFromLocal"`
 }
 // GetIAM2ProjectContainerImagesParamDetail GetIAM2ProjectContainerImages detail param
 type GetIAM2ProjectContainerImagesParamDetail struct {
@@ -11934,7 +11934,7 @@ type GetIAM2ProjectContainerImagesParamDetail struct {
 // GetIAM2ProjectContainerImagesParam GetIAM2ProjectContainerImages request param
 type GetIAM2ProjectContainerImagesParam struct {
 	BaseParam
-	GetIAM2ProjectContainerImages GetIAM2ProjectContainerImagesParamDetail `json:"getIAM2ProjectContainerImages"`
+	Params GetIAM2ProjectContainerImagesParamDetail `json:"getIAM2ProjectContainerImages"`
 }
 // DetachDataVolumeFromVmParamDetail DetachDataVolumeFromVm detail param
 type DetachDataVolumeFromVmParamDetail struct {
@@ -11945,7 +11945,7 @@ type DetachDataVolumeFromVmParamDetail struct {
 // DetachDataVolumeFromVmParam DetachDataVolumeFromVm request param
 type DetachDataVolumeFromVmParam struct {
 	BaseParam
-	DetachDataVolumeFromVm DetachDataVolumeFromVmParamDetail `json:"detachDataVolumeFromVm"`
+	Params DetachDataVolumeFromVmParamDetail `json:"detachDataVolumeFromVm"`
 }
 // CreateRootVolumeTemplateFromRootVolumeParamDetail CreateRootVolumeTemplateFromRootVolume detail param
 type CreateRootVolumeTemplateFromRootVolumeParamDetail struct {
@@ -11965,7 +11965,7 @@ type CreateRootVolumeTemplateFromRootVolumeParamDetail struct {
 // CreateRootVolumeTemplateFromRootVolumeParam CreateRootVolumeTemplateFromRootVolume request param
 type CreateRootVolumeTemplateFromRootVolumeParam struct {
 	BaseParam
-	CreateRootVolumeTemplateFromRootVolume CreateRootVolumeTemplateFromRootVolumeParamDetail `json:"createRootVolumeTemplateFromRootVolume"`
+	Params CreateRootVolumeTemplateFromRootVolumeParamDetail `json:"createRootVolumeTemplateFromRootVolume"`
 }
 // AttachAliyunDiskToEcsParamDetail AttachAliyunDiskToEcs detail param
 type AttachAliyunDiskToEcsParamDetail struct {
@@ -11979,7 +11979,7 @@ type AttachAliyunDiskToEcsParamDetail struct {
 // AttachAliyunDiskToEcsParam AttachAliyunDiskToEcs request param
 type AttachAliyunDiskToEcsParam struct {
 	BaseParam
-	AttachAliyunDiskToEcs AttachAliyunDiskToEcsParamDetail `json:"attachAliyunDiskToEcs"`
+	Params AttachAliyunDiskToEcsParamDetail `json:"attachAliyunDiskToEcs"`
 }
 // DeleteOssBucketNameLocalParamDetail DeleteOssBucketNameLocal detail param
 type DeleteOssBucketNameLocalParamDetail struct {
@@ -11990,7 +11990,7 @@ type DeleteOssBucketNameLocalParamDetail struct {
 // DeleteOssBucketNameLocalParam DeleteOssBucketNameLocal request param
 type DeleteOssBucketNameLocalParam struct {
 	BaseParam
-	DeleteOssBucketNameLocal DeleteOssBucketNameLocalParamDetail `json:"deleteOssBucketNameLocal"`
+	Params DeleteOssBucketNameLocalParamDetail `json:"deleteOssBucketNameLocal"`
 }
 // GetObservabilityServerServiceDataParamDetail GetObservabilityServerServiceData detail param
 type GetObservabilityServerServiceDataParamDetail struct {
@@ -12007,7 +12007,7 @@ type GetObservabilityServerServiceDataParamDetail struct {
 // GetObservabilityServerServiceDataParam GetObservabilityServerServiceData request param
 type GetObservabilityServerServiceDataParam struct {
 	BaseParam
-	GetObservabilityServerServiceData GetObservabilityServerServiceDataParamDetail `json:"getObservabilityServerServiceData"`
+	Params GetObservabilityServerServiceDataParamDetail `json:"getObservabilityServerServiceData"`
 }
 // VerifyLicenseServerParamDetail VerifyLicenseServer detail param
 type VerifyLicenseServerParamDetail struct {
@@ -12019,7 +12019,7 @@ type VerifyLicenseServerParamDetail struct {
 // VerifyLicenseServerParam VerifyLicenseServer request param
 type VerifyLicenseServerParam struct {
 	BaseParam
-	VerifyLicenseServer VerifyLicenseServerParamDetail `json:"verifyLicenseServer"`
+	Params VerifyLicenseServerParamDetail `json:"verifyLicenseServer"`
 }
 // AttachBareMetal2GatewayToClusterParamDetail AttachBareMetal2GatewayToCluster detail param
 type AttachBareMetal2GatewayToClusterParamDetail struct {
@@ -12030,7 +12030,7 @@ type AttachBareMetal2GatewayToClusterParamDetail struct {
 // AttachBareMetal2GatewayToClusterParam AttachBareMetal2GatewayToCluster request param
 type AttachBareMetal2GatewayToClusterParam struct {
 	BaseParam
-	AttachBareMetal2GatewayToCluster AttachBareMetal2GatewayToClusterParamDetail `json:"attachBareMetal2GatewayToCluster"`
+	Params AttachBareMetal2GatewayToClusterParamDetail `json:"attachBareMetal2GatewayToCluster"`
 }
 // UpdateAtPersonOfAtWeComEndpointParamDetail UpdateAtPersonOfAtWeComEndpoint detail param
 type UpdateAtPersonOfAtWeComEndpointParamDetail struct {
@@ -12043,7 +12043,7 @@ type UpdateAtPersonOfAtWeComEndpointParamDetail struct {
 // UpdateAtPersonOfAtWeComEndpointParam UpdateAtPersonOfAtWeComEndpoint request param
 type UpdateAtPersonOfAtWeComEndpointParam struct {
 	BaseParam
-	UpdateAtPersonOfAtWeComEndpoint UpdateAtPersonOfAtWeComEndpointParamDetail `json:"updateAtPersonOfAtWeComEndpoint"`
+	Params UpdateAtPersonOfAtWeComEndpointParamDetail `json:"updateAtPersonOfAtWeComEndpoint"`
 }
 // ChangeSlbGroupDeployTypeParamDetail ChangeSlbGroupDeployType detail param
 type ChangeSlbGroupDeployTypeParamDetail struct {
@@ -12054,7 +12054,7 @@ type ChangeSlbGroupDeployTypeParamDetail struct {
 // ChangeSlbGroupDeployTypeParam ChangeSlbGroupDeployType request param
 type ChangeSlbGroupDeployTypeParam struct {
 	BaseParam
-	ChangeSlbGroupDeployType ChangeSlbGroupDeployTypeParamDetail `json:"changeSlbGroupDeployType"`
+	Params ChangeSlbGroupDeployTypeParamDetail `json:"changeSlbGroupDeployType"`
 }
 // DeleteEcsSecurityGroupInLocalParamDetail DeleteEcsSecurityGroupInLocal detail param
 type DeleteEcsSecurityGroupInLocalParamDetail struct {
@@ -12065,7 +12065,7 @@ type DeleteEcsSecurityGroupInLocalParamDetail struct {
 // DeleteEcsSecurityGroupInLocalParam DeleteEcsSecurityGroupInLocal request param
 type DeleteEcsSecurityGroupInLocalParam struct {
 	BaseParam
-	DeleteEcsSecurityGroupInLocal DeleteEcsSecurityGroupInLocalParamDetail `json:"deleteEcsSecurityGroupInLocal"`
+	Params DeleteEcsSecurityGroupInLocalParamDetail `json:"deleteEcsSecurityGroupInLocal"`
 }
 // DetachDataVolumeFromHostParamDetail DetachDataVolumeFromHost detail param
 type DetachDataVolumeFromHostParamDetail struct {
@@ -12076,7 +12076,7 @@ type DetachDataVolumeFromHostParamDetail struct {
 // DetachDataVolumeFromHostParam DetachDataVolumeFromHost request param
 type DetachDataVolumeFromHostParam struct {
 	BaseParam
-	DetachDataVolumeFromHost DetachDataVolumeFromHostParamDetail `json:"detachDataVolumeFromHost"`
+	Params DetachDataVolumeFromHostParamDetail `json:"detachDataVolumeFromHost"`
 }
 // GetVmInstanceRecoveryPointsParamDetail GetVmInstanceRecoveryPoints detail param
 type GetVmInstanceRecoveryPointsParamDetail struct {
@@ -12091,7 +12091,7 @@ type GetVmInstanceRecoveryPointsParamDetail struct {
 // GetVmInstanceRecoveryPointsParam GetVmInstanceRecoveryPoints request param
 type GetVmInstanceRecoveryPointsParam struct {
 	BaseParam
-	GetVmInstanceRecoveryPoints GetVmInstanceRecoveryPointsParamDetail `json:"getVmInstanceRecoveryPoints"`
+	Params GetVmInstanceRecoveryPointsParamDetail `json:"getVmInstanceRecoveryPoints"`
 }
 // CreateSystemTagsParamDetail CreateSystemTags detail param
 type CreateSystemTagsParamDetail struct {
@@ -12103,7 +12103,7 @@ type CreateSystemTagsParamDetail struct {
 // CreateSystemTagsParam CreateSystemTags request param
 type CreateSystemTagsParam struct {
 	BaseParam
-	CreateSystemTags CreateSystemTagsParamDetail `json:"createSystemTags"`
+	Params CreateSystemTagsParamDetail `json:"createSystemTags"`
 }
 // GetOssBackupBucketFromRemoteParamDetail GetOssBackupBucketFromRemote detail param
 type GetOssBackupBucketFromRemoteParamDetail struct {
@@ -12112,7 +12112,7 @@ type GetOssBackupBucketFromRemoteParamDetail struct {
 // GetOssBackupBucketFromRemoteParam GetOssBackupBucketFromRemote request param
 type GetOssBackupBucketFromRemoteParam struct {
 	BaseParam
-	GetOssBackupBucketFromRemote GetOssBackupBucketFromRemoteParamDetail `json:"getOssBackupBucketFromRemote"`
+	Params GetOssBackupBucketFromRemoteParamDetail `json:"getOssBackupBucketFromRemote"`
 }
 // GetL3NetworkTypesParamDetail GetL3NetworkTypes detail param
 type GetL3NetworkTypesParamDetail struct {
@@ -12121,7 +12121,7 @@ type GetL3NetworkTypesParamDetail struct {
 // GetL3NetworkTypesParam GetL3NetworkTypes request param
 type GetL3NetworkTypesParam struct {
 	BaseParam
-	GetL3NetworkTypes GetL3NetworkTypesParamDetail `json:"getL3NetworkTypes"`
+	Params GetL3NetworkTypesParamDetail `json:"getL3NetworkTypes"`
 }
 // DetachPoliciesFromUserParamDetail DetachPoliciesFromUser detail param
 type DetachPoliciesFromUserParamDetail struct {
@@ -12132,7 +12132,7 @@ type DetachPoliciesFromUserParamDetail struct {
 // DetachPoliciesFromUserParam DetachPoliciesFromUser request param
 type DetachPoliciesFromUserParam struct {
 	BaseParam
-	DetachPoliciesFromUser DetachPoliciesFromUserParamDetail `json:"detachPoliciesFromUser"`
+	Params DetachPoliciesFromUserParamDetail `json:"detachPoliciesFromUser"`
 }
 // CleanUpImageCacheOnPrimaryStorageParamDetail CleanUpImageCacheOnPrimaryStorage detail param
 type CleanUpImageCacheOnPrimaryStorageParamDetail struct {
@@ -12143,7 +12143,7 @@ type CleanUpImageCacheOnPrimaryStorageParamDetail struct {
 // CleanUpImageCacheOnPrimaryStorageParam CleanUpImageCacheOnPrimaryStorage request param
 type CleanUpImageCacheOnPrimaryStorageParam struct {
 	BaseParam
-	CleanUpImageCacheOnPrimaryStorage CleanUpImageCacheOnPrimaryStorageParamDetail `json:"cleanUpImageCacheOnPrimaryStorage"`
+	Params CleanUpImageCacheOnPrimaryStorageParamDetail `json:"cleanUpImageCacheOnPrimaryStorage"`
 }
 // AddKVMHostFromConfigFileParamDetail AddKVMHostFromConfigFile detail param
 type AddKVMHostFromConfigFileParamDetail struct {
@@ -12155,7 +12155,7 @@ type AddKVMHostFromConfigFileParamDetail struct {
 // AddKVMHostFromConfigFileParam AddKVMHostFromConfigFile request param
 type AddKVMHostFromConfigFileParam struct {
 	BaseParam
-	AddKVMHostFromConfigFile AddKVMHostFromConfigFileParamDetail `json:"addKVMHostFromConfigFile"`
+	Params AddKVMHostFromConfigFileParamDetail `json:"addKVMHostFromConfigFile"`
 }
 // InspectBareMetal2ChassisByInstanceParamDetail InspectBareMetal2ChassisByInstance detail param
 type InspectBareMetal2ChassisByInstanceParamDetail struct {
@@ -12165,7 +12165,7 @@ type InspectBareMetal2ChassisByInstanceParamDetail struct {
 // InspectBareMetal2ChassisByInstanceParam InspectBareMetal2ChassisByInstance request param
 type InspectBareMetal2ChassisByInstanceParam struct {
 	BaseParam
-	InspectBareMetal2ChassisByInstance InspectBareMetal2ChassisByInstanceParamDetail `json:"inspectBareMetal2ChassisByInstance"`
+	Params InspectBareMetal2ChassisByInstanceParamDetail `json:"inspectBareMetal2ChassisByInstance"`
 }
 // DeleteVmBootModeParamDetail DeleteVmBootMode detail param
 type DeleteVmBootModeParamDetail struct {
@@ -12176,7 +12176,7 @@ type DeleteVmBootModeParamDetail struct {
 // DeleteVmBootModeParam DeleteVmBootMode request param
 type DeleteVmBootModeParam struct {
 	BaseParam
-	DeleteVmBootMode DeleteVmBootModeParamDetail `json:"deleteVmBootMode"`
+	Params DeleteVmBootModeParamDetail `json:"deleteVmBootMode"`
 }
 // GetCandidateVMForAttachingAffinityGroupParamDetail GetCandidateVMForAttachingAffinityGroup detail param
 type GetCandidateVMForAttachingAffinityGroupParamDetail struct {
@@ -12186,7 +12186,7 @@ type GetCandidateVMForAttachingAffinityGroupParamDetail struct {
 // GetCandidateVMForAttachingAffinityGroupParam GetCandidateVMForAttachingAffinityGroup request param
 type GetCandidateVMForAttachingAffinityGroupParam struct {
 	BaseParam
-	GetCandidateVMForAttachingAffinityGroup GetCandidateVMForAttachingAffinityGroupParamDetail `json:"getCandidateVMForAttachingAffinityGroup"`
+	Params GetCandidateVMForAttachingAffinityGroupParamDetail `json:"getCandidateVMForAttachingAffinityGroup"`
 }
 // DeleteVpcVpnConnectionLocalParamDetail DeleteVpcVpnConnectionLocal detail param
 type DeleteVpcVpnConnectionLocalParamDetail struct {
@@ -12197,7 +12197,7 @@ type DeleteVpcVpnConnectionLocalParamDetail struct {
 // DeleteVpcVpnConnectionLocalParam DeleteVpcVpnConnectionLocal request param
 type DeleteVpcVpnConnectionLocalParam struct {
 	BaseParam
-	DeleteVpcVpnConnectionLocal DeleteVpcVpnConnectionLocalParamDetail `json:"deleteVpcVpnConnectionLocal"`
+	Params DeleteVpcVpnConnectionLocalParamDetail `json:"deleteVpcVpnConnectionLocal"`
 }
 // DetachPolicyFromUserGroupParamDetail DetachPolicyFromUserGroup detail param
 type DetachPolicyFromUserGroupParamDetail struct {
@@ -12208,7 +12208,7 @@ type DetachPolicyFromUserGroupParamDetail struct {
 // DetachPolicyFromUserGroupParam DetachPolicyFromUserGroup request param
 type DetachPolicyFromUserGroupParam struct {
 	BaseParam
-	DetachPolicyFromUserGroup DetachPolicyFromUserGroupParamDetail `json:"detachPolicyFromUserGroup"`
+	Params DetachPolicyFromUserGroupParamDetail `json:"detachPolicyFromUserGroup"`
 }
 // AddActionToAlarmParamDetail AddActionToAlarm detail param
 type AddActionToAlarmParamDetail struct {
@@ -12220,7 +12220,7 @@ type AddActionToAlarmParamDetail struct {
 // AddActionToAlarmParam AddActionToAlarm request param
 type AddActionToAlarmParam struct {
 	BaseParam
-	AddActionToAlarm AddActionToAlarmParamDetail `json:"addActionToAlarm"`
+	Params AddActionToAlarmParamDetail `json:"addActionToAlarm"`
 }
 // UpdateFirewallRuleParamDetail UpdateFirewallRule detail param
 type UpdateFirewallRuleParamDetail struct {
@@ -12244,7 +12244,7 @@ type UpdateFirewallRuleParamDetail struct {
 // UpdateFirewallRuleParam UpdateFirewallRule request param
 type UpdateFirewallRuleParam struct {
 	BaseParam
-	UpdateFirewallRule UpdateFirewallRuleParamDetail `json:"updateFirewallRule"`
+	Params UpdateFirewallRuleParamDetail `json:"updateFirewallRule"`
 }
 // ZQLQueryParamDetail ZQLQuery detail param
 type ZQLQueryParamDetail struct {
@@ -12254,7 +12254,7 @@ type ZQLQueryParamDetail struct {
 // ZQLQueryParam ZQLQuery request param
 type ZQLQueryParam struct {
 	BaseParam
-	ZQLQuery ZQLQueryParamDetail `json:"zQLQuery"`
+	Params ZQLQueryParamDetail `json:"zQLQuery"`
 }
 // GetElaborationsParamDetail GetElaborations detail param
 type GetElaborationsParamDetail struct {
@@ -12266,7 +12266,7 @@ type GetElaborationsParamDetail struct {
 // GetElaborationsParam GetElaborations request param
 type GetElaborationsParam struct {
 	BaseParam
-	GetElaborations GetElaborationsParamDetail `json:"getElaborations"`
+	Params GetElaborationsParamDetail `json:"getElaborations"`
 }
 // GetAccessPathParamDetail GetAccessPath detail param
 type GetAccessPathParamDetail struct {
@@ -12276,7 +12276,7 @@ type GetAccessPathParamDetail struct {
 // GetAccessPathParam GetAccessPath request param
 type GetAccessPathParam struct {
 	BaseParam
-	GetAccessPath GetAccessPathParamDetail `json:"getAccessPath"`
+	Params GetAccessPathParamDetail `json:"getAccessPath"`
 }
 // GetPrimaryStorageUsageReportParamDetail GetPrimaryStorageUsageReport detail param
 type GetPrimaryStorageUsageReportParamDetail struct {
@@ -12287,7 +12287,7 @@ type GetPrimaryStorageUsageReportParamDetail struct {
 // GetPrimaryStorageUsageReportParam GetPrimaryStorageUsageReport request param
 type GetPrimaryStorageUsageReportParam struct {
 	BaseParam
-	GetPrimaryStorageUsageReport GetPrimaryStorageUsageReportParamDetail `json:"getPrimaryStorageUsageReport"`
+	Params GetPrimaryStorageUsageReportParamDetail `json:"getPrimaryStorageUsageReport"`
 }
 // RevertVolumeFromVolumeBackupParamDetail RevertVolumeFromVolumeBackup detail param
 type RevertVolumeFromVolumeBackupParamDetail struct {
@@ -12298,7 +12298,7 @@ type RevertVolumeFromVolumeBackupParamDetail struct {
 // RevertVolumeFromVolumeBackupParam RevertVolumeFromVolumeBackup request param
 type RevertVolumeFromVolumeBackupParam struct {
 	BaseParam
-	RevertVolumeFromVolumeBackup RevertVolumeFromVolumeBackupParamDetail `json:"revertVolumeFromVolumeBackup"`
+	Params RevertVolumeFromVolumeBackupParamDetail `json:"revertVolumeFromVolumeBackup"`
 }
 // CreateDataVolumeFromVolumeTemplateParamDetail CreateDataVolumeFromVolumeTemplate detail param
 type CreateDataVolumeFromVolumeTemplateParamDetail struct {
@@ -12314,7 +12314,7 @@ type CreateDataVolumeFromVolumeTemplateParamDetail struct {
 // CreateDataVolumeFromVolumeTemplateParam CreateDataVolumeFromVolumeTemplate request param
 type CreateDataVolumeFromVolumeTemplateParam struct {
 	BaseParam
-	CreateDataVolumeFromVolumeTemplate CreateDataVolumeFromVolumeTemplateParamDetail `json:"createDataVolumeFromVolumeTemplate"`
+	Params CreateDataVolumeFromVolumeTemplateParamDetail `json:"createDataVolumeFromVolumeTemplate"`
 }
 // LocalStorageGetVolumeMigratableHostsParamDetail LocalStorageGetVolumeMigratableHosts detail param
 type LocalStorageGetVolumeMigratableHostsParamDetail struct {
@@ -12324,7 +12324,7 @@ type LocalStorageGetVolumeMigratableHostsParamDetail struct {
 // LocalStorageGetVolumeMigratableHostsParam LocalStorageGetVolumeMigratableHosts request param
 type LocalStorageGetVolumeMigratableHostsParam struct {
 	BaseParam
-	LocalStorageGetVolumeMigratableHosts LocalStorageGetVolumeMigratableHostsParamDetail `json:"localStorageGetVolumeMigratableHosts"`
+	Params LocalStorageGetVolumeMigratableHostsParamDetail `json:"localStorageGetVolumeMigratableHosts"`
 }
 // GetOssBucketNameFromRemoteParamDetail GetOssBucketNameFromRemote detail param
 type GetOssBucketNameFromRemoteParamDetail struct {
@@ -12337,7 +12337,7 @@ type GetOssBucketNameFromRemoteParamDetail struct {
 // GetOssBucketNameFromRemoteParam GetOssBucketNameFromRemote request param
 type GetOssBucketNameFromRemoteParam struct {
 	BaseParam
-	GetOssBucketNameFromRemote GetOssBucketNameFromRemoteParamDetail `json:"getOssBucketNameFromRemote"`
+	Params GetOssBucketNameFromRemoteParamDetail `json:"getOssBucketNameFromRemote"`
 }
 // SyncEcsVpcFromRemoteParamDetail SyncEcsVpcFromRemote detail param
 type SyncEcsVpcFromRemoteParamDetail struct {
@@ -12350,7 +12350,7 @@ type SyncEcsVpcFromRemoteParamDetail struct {
 // SyncEcsVpcFromRemoteParam SyncEcsVpcFromRemote request param
 type SyncEcsVpcFromRemoteParam struct {
 	BaseParam
-	SyncEcsVpcFromRemote SyncEcsVpcFromRemoteParamDetail `json:"syncEcsVpcFromRemote"`
+	Params SyncEcsVpcFromRemoteParamDetail `json:"syncEcsVpcFromRemote"`
 }
 // SetServiceTypeOnHostNetworkInterfaceParamDetail SetServiceTypeOnHostNetworkInterface detail param
 type SetServiceTypeOnHostNetworkInterfaceParamDetail struct {
@@ -12362,7 +12362,7 @@ type SetServiceTypeOnHostNetworkInterfaceParamDetail struct {
 // SetServiceTypeOnHostNetworkInterfaceParam SetServiceTypeOnHostNetworkInterface request param
 type SetServiceTypeOnHostNetworkInterfaceParam struct {
 	BaseParam
-	SetServiceTypeOnHostNetworkInterface SetServiceTypeOnHostNetworkInterfaceParamDetail `json:"setServiceTypeOnHostNetworkInterface"`
+	Params SetServiceTypeOnHostNetworkInterfaceParamDetail `json:"setServiceTypeOnHostNetworkInterface"`
 }
 // AddBackendServerToServerGroupParamDetail AddBackendServerToServerGroup detail param
 type AddBackendServerToServerGroupParamDetail struct {
@@ -12374,7 +12374,7 @@ type AddBackendServerToServerGroupParamDetail struct {
 // AddBackendServerToServerGroupParam AddBackendServerToServerGroup request param
 type AddBackendServerToServerGroupParam struct {
 	BaseParam
-	AddBackendServerToServerGroup AddBackendServerToServerGroupParamDetail `json:"addBackendServerToServerGroup"`
+	Params AddBackendServerToServerGroupParamDetail `json:"addBackendServerToServerGroup"`
 }
 // AttachUserDefinedXmlHookScriptToVmParamDetail AttachUserDefinedXmlHookScriptToVm detail param
 type AttachUserDefinedXmlHookScriptToVmParamDetail struct {
@@ -12386,7 +12386,7 @@ type AttachUserDefinedXmlHookScriptToVmParamDetail struct {
 // AttachUserDefinedXmlHookScriptToVmParam AttachUserDefinedXmlHookScriptToVm request param
 type AttachUserDefinedXmlHookScriptToVmParam struct {
 	BaseParam
-	AttachUserDefinedXmlHookScriptToVm AttachUserDefinedXmlHookScriptToVmParamDetail `json:"attachUserDefinedXmlHookScriptToVm"`
+	Params AttachUserDefinedXmlHookScriptToVmParamDetail `json:"attachUserDefinedXmlHookScriptToVm"`
 }
 // AttachPolicyToRoleParamDetail AttachPolicyToRole detail param
 type AttachPolicyToRoleParamDetail struct {
@@ -12397,7 +12397,7 @@ type AttachPolicyToRoleParamDetail struct {
 // AttachPolicyToRoleParam AttachPolicyToRole request param
 type AttachPolicyToRoleParam struct {
 	BaseParam
-	AttachPolicyToRole AttachPolicyToRoleParamDetail `json:"attachPolicyToRole"`
+	Params AttachPolicyToRoleParamDetail `json:"attachPolicyToRole"`
 }
 // ChangeBareMetal2ProvisionNetworkStateParamDetail ChangeBareMetal2ProvisionNetworkState detail param
 type ChangeBareMetal2ProvisionNetworkStateParamDetail struct {
@@ -12408,7 +12408,7 @@ type ChangeBareMetal2ProvisionNetworkStateParamDetail struct {
 // ChangeBareMetal2ProvisionNetworkStateParam ChangeBareMetal2ProvisionNetworkState request param
 type ChangeBareMetal2ProvisionNetworkStateParam struct {
 	BaseParam
-	ChangeBareMetal2ProvisionNetworkState ChangeBareMetal2ProvisionNetworkStateParamDetail `json:"changeBareMetal2ProvisionNetworkState"`
+	Params ChangeBareMetal2ProvisionNetworkStateParamDetail `json:"changeBareMetal2ProvisionNetworkState"`
 }
 // GetBackupStorageCandidatesForImageMigrationParamDetail GetBackupStorageCandidatesForImageMigration detail param
 type GetBackupStorageCandidatesForImageMigrationParamDetail struct {
@@ -12418,7 +12418,7 @@ type GetBackupStorageCandidatesForImageMigrationParamDetail struct {
 // GetBackupStorageCandidatesForImageMigrationParam GetBackupStorageCandidatesForImageMigration request param
 type GetBackupStorageCandidatesForImageMigrationParam struct {
 	BaseParam
-	GetBackupStorageCandidatesForImageMigration GetBackupStorageCandidatesForImageMigrationParamDetail `json:"getBackupStorageCandidatesForImageMigration"`
+	Params GetBackupStorageCandidatesForImageMigrationParamDetail `json:"getBackupStorageCandidatesForImageMigration"`
 }
 // DeleteVpcIpSecConfigLocalParamDetail DeleteVpcIpSecConfigLocal detail param
 type DeleteVpcIpSecConfigLocalParamDetail struct {
@@ -12429,7 +12429,7 @@ type DeleteVpcIpSecConfigLocalParamDetail struct {
 // DeleteVpcIpSecConfigLocalParam DeleteVpcIpSecConfigLocal request param
 type DeleteVpcIpSecConfigLocalParam struct {
 	BaseParam
-	DeleteVpcIpSecConfigLocal DeleteVpcIpSecConfigLocalParamDetail `json:"deleteVpcIpSecConfigLocal"`
+	Params DeleteVpcIpSecConfigLocalParamDetail `json:"deleteVpcIpSecConfigLocal"`
 }
 // GenerateSriovPciDevicesParamDetail GenerateSriovPciDevices detail param
 type GenerateSriovPciDevicesParamDetail struct {
@@ -12440,7 +12440,7 @@ type GenerateSriovPciDevicesParamDetail struct {
 // GenerateSriovPciDevicesParam GenerateSriovPciDevices request param
 type GenerateSriovPciDevicesParam struct {
 	BaseParam
-	GenerateSriovPciDevices GenerateSriovPciDevicesParamDetail `json:"generateSriovPciDevices"`
+	Params GenerateSriovPciDevicesParamDetail `json:"generateSriovPciDevices"`
 }
 // CalculateAccountBillingSpendingParamDetail CalculateAccountBillingSpending detail param
 type CalculateAccountBillingSpendingParamDetail struct {
@@ -12454,7 +12454,7 @@ type CalculateAccountBillingSpendingParamDetail struct {
 // CalculateAccountBillingSpendingParam CalculateAccountBillingSpending request param
 type CalculateAccountBillingSpendingParam struct {
 	BaseParam
-	CalculateAccountBillingSpending CalculateAccountBillingSpendingParamDetail `json:"calculateAccountBillingSpending"`
+	Params CalculateAccountBillingSpendingParamDetail `json:"calculateAccountBillingSpending"`
 }
 // DeleteVRouterOspfAreaParamDetail DeleteVRouterOspfArea detail param
 type DeleteVRouterOspfAreaParamDetail struct {
@@ -12465,7 +12465,7 @@ type DeleteVRouterOspfAreaParamDetail struct {
 // DeleteVRouterOspfAreaParam DeleteVRouterOspfArea request param
 type DeleteVRouterOspfAreaParam struct {
 	BaseParam
-	DeleteVRouterOspfArea DeleteVRouterOspfAreaParamDetail `json:"deleteVRouterOspfArea"`
+	Params DeleteVRouterOspfAreaParamDetail `json:"deleteVRouterOspfArea"`
 }
 // GetVipAvailablePortParamDetail GetVipAvailablePort detail param
 type GetVipAvailablePortParamDetail struct {
@@ -12478,7 +12478,7 @@ type GetVipAvailablePortParamDetail struct {
 // GetVipAvailablePortParam GetVipAvailablePort request param
 type GetVipAvailablePortParam struct {
 	BaseParam
-	GetVipAvailablePort GetVipAvailablePortParamDetail `json:"getVipAvailablePort"`
+	Params GetVipAvailablePortParamDetail `json:"getVipAvailablePort"`
 }
 // SyncDiskFromAliyunFromRemoteParamDetail SyncDiskFromAliyunFromRemote detail param
 type SyncDiskFromAliyunFromRemoteParamDetail struct {
@@ -12491,7 +12491,7 @@ type SyncDiskFromAliyunFromRemoteParamDetail struct {
 // SyncDiskFromAliyunFromRemoteParam SyncDiskFromAliyunFromRemote request param
 type SyncDiskFromAliyunFromRemoteParam struct {
 	BaseParam
-	SyncDiskFromAliyunFromRemote SyncDiskFromAliyunFromRemoteParamDetail `json:"syncDiskFromAliyunFromRemote"`
+	Params SyncDiskFromAliyunFromRemoteParamDetail `json:"syncDiskFromAliyunFromRemote"`
 }
 // ChangeVolumeStateParamDetail ChangeVolumeState detail param
 type ChangeVolumeStateParamDetail struct {
@@ -12502,7 +12502,7 @@ type ChangeVolumeStateParamDetail struct {
 // ChangeVolumeStateParam ChangeVolumeState request param
 type ChangeVolumeStateParam struct {
 	BaseParam
-	ChangeVolumeState ChangeVolumeStateParamDetail `json:"changeVolumeState"`
+	Params ChangeVolumeStateParamDetail `json:"changeVolumeState"`
 }
 // MountVmInstanceRecoveryPointParamDetail MountVmInstanceRecoveryPoint detail param
 type MountVmInstanceRecoveryPointParamDetail struct {
@@ -12514,7 +12514,7 @@ type MountVmInstanceRecoveryPointParamDetail struct {
 // MountVmInstanceRecoveryPointParam MountVmInstanceRecoveryPoint request param
 type MountVmInstanceRecoveryPointParam struct {
 	BaseParam
-	MountVmInstanceRecoveryPoint MountVmInstanceRecoveryPointParamDetail `json:"mountVmInstanceRecoveryPoint"`
+	Params MountVmInstanceRecoveryPointParamDetail `json:"mountVmInstanceRecoveryPoint"`
 }
 // CreateVxlanPoolRemoteVtepParamDetail CreateVxlanPoolRemoteVtep detail param
 type CreateVxlanPoolRemoteVtepParamDetail struct {
@@ -12528,7 +12528,7 @@ type CreateVxlanPoolRemoteVtepParamDetail struct {
 // CreateVxlanPoolRemoteVtepParam CreateVxlanPoolRemoteVtep request param
 type CreateVxlanPoolRemoteVtepParam struct {
 	BaseParam
-	CreateVxlanPoolRemoteVtep CreateVxlanPoolRemoteVtepParamDetail `json:"createVxlanPoolRemoteVtep"`
+	Params CreateVxlanPoolRemoteVtepParamDetail `json:"createVxlanPoolRemoteVtep"`
 }
 // GetResourceStackFromResourceParamDetail GetResourceStackFromResource detail param
 type GetResourceStackFromResourceParamDetail struct {
@@ -12538,7 +12538,7 @@ type GetResourceStackFromResourceParamDetail struct {
 // GetResourceStackFromResourceParam GetResourceStackFromResource request param
 type GetResourceStackFromResourceParam struct {
 	BaseParam
-	GetResourceStackFromResource GetResourceStackFromResourceParamDetail `json:"getResourceStackFromResource"`
+	Params GetResourceStackFromResourceParamDetail `json:"getResourceStackFromResource"`
 }
 // CheckIAM2VirtualIDConfigFileParamDetail CheckIAM2VirtualIDConfigFile detail param
 type CheckIAM2VirtualIDConfigFileParamDetail struct {
@@ -12548,7 +12548,7 @@ type CheckIAM2VirtualIDConfigFileParamDetail struct {
 // CheckIAM2VirtualIDConfigFileParam CheckIAM2VirtualIDConfigFile request param
 type CheckIAM2VirtualIDConfigFileParam struct {
 	BaseParam
-	CheckIAM2VirtualIDConfigFile CheckIAM2VirtualIDConfigFileParamDetail `json:"checkIAM2VirtualIDConfigFile"`
+	Params CheckIAM2VirtualIDConfigFileParamDetail `json:"checkIAM2VirtualIDConfigFile"`
 }
 // GetClusterHostNetworkFactsParamDetail GetClusterHostNetworkFacts detail param
 type GetClusterHostNetworkFactsParamDetail struct {
@@ -12560,7 +12560,7 @@ type GetClusterHostNetworkFactsParamDetail struct {
 // GetClusterHostNetworkFactsParam GetClusterHostNetworkFacts request param
 type GetClusterHostNetworkFactsParam struct {
 	BaseParam
-	GetClusterHostNetworkFacts GetClusterHostNetworkFactsParamDetail `json:"getClusterHostNetworkFacts"`
+	Params GetClusterHostNetworkFactsParamDetail `json:"getClusterHostNetworkFacts"`
 }
 // DetachOssBucketFromEcsDataCenterParamDetail DetachOssBucketFromEcsDataCenter detail param
 type DetachOssBucketFromEcsDataCenterParamDetail struct {
@@ -12570,7 +12570,7 @@ type DetachOssBucketFromEcsDataCenterParamDetail struct {
 // DetachOssBucketFromEcsDataCenterParam DetachOssBucketFromEcsDataCenter request param
 type DetachOssBucketFromEcsDataCenterParam struct {
 	BaseParam
-	DetachOssBucketFromEcsDataCenter DetachOssBucketFromEcsDataCenterParamDetail `json:"detachOssBucketFromEcsDataCenter"`
+	Params DetachOssBucketFromEcsDataCenterParamDetail `json:"detachOssBucketFromEcsDataCenter"`
 }
 // ParseOvfParamDetail ParseOvf detail param
 type ParseOvfParamDetail struct {
@@ -12580,7 +12580,7 @@ type ParseOvfParamDetail struct {
 // ParseOvfParam ParseOvf request param
 type ParseOvfParam struct {
 	BaseParam
-	ParseOvf ParseOvfParamDetail `json:"parseOvf"`
+	Params ParseOvfParamDetail `json:"parseOvf"`
 }
 // AddSchedulerJobGroupToSchedulerTriggerParamDetail AddSchedulerJobGroupToSchedulerTrigger detail param
 type AddSchedulerJobGroupToSchedulerTriggerParamDetail struct {
@@ -12592,7 +12592,7 @@ type AddSchedulerJobGroupToSchedulerTriggerParamDetail struct {
 // AddSchedulerJobGroupToSchedulerTriggerParam AddSchedulerJobGroupToSchedulerTrigger request param
 type AddSchedulerJobGroupToSchedulerTriggerParam struct {
 	BaseParam
-	AddSchedulerJobGroupToSchedulerTrigger AddSchedulerJobGroupToSchedulerTriggerParamDetail `json:"addSchedulerJobGroupToSchedulerTrigger"`
+	Params AddSchedulerJobGroupToSchedulerTriggerParamDetail `json:"addSchedulerJobGroupToSchedulerTrigger"`
 }
 // DeleteAliyunNasAccessGroupRuleParamDetail DeleteAliyunNasAccessGroupRule detail param
 type DeleteAliyunNasAccessGroupRuleParamDetail struct {
@@ -12603,7 +12603,7 @@ type DeleteAliyunNasAccessGroupRuleParamDetail struct {
 // DeleteAliyunNasAccessGroupRuleParam DeleteAliyunNasAccessGroupRule request param
 type DeleteAliyunNasAccessGroupRuleParam struct {
 	BaseParam
-	DeleteAliyunNasAccessGroupRule DeleteAliyunNasAccessGroupRuleParamDetail `json:"deleteAliyunNasAccessGroupRule"`
+	Params DeleteAliyunNasAccessGroupRuleParamDetail `json:"deleteAliyunNasAccessGroupRule"`
 }
 // DeleteBondingParamDetail DeleteBonding detail param
 type DeleteBondingParamDetail struct {
@@ -12614,7 +12614,7 @@ type DeleteBondingParamDetail struct {
 // DeleteBondingParam DeleteBonding request param
 type DeleteBondingParam struct {
 	BaseParam
-	DeleteBonding DeleteBondingParamDetail `json:"deleteBonding"`
+	Params DeleteBondingParamDetail `json:"deleteBonding"`
 }
 // DeleteEcsSecurityGroupRemoteParamDetail DeleteEcsSecurityGroupRemote detail param
 type DeleteEcsSecurityGroupRemoteParamDetail struct {
@@ -12625,7 +12625,7 @@ type DeleteEcsSecurityGroupRemoteParamDetail struct {
 // DeleteEcsSecurityGroupRemoteParam DeleteEcsSecurityGroupRemote request param
 type DeleteEcsSecurityGroupRemoteParam struct {
 	BaseParam
-	DeleteEcsSecurityGroupRemote DeleteEcsSecurityGroupRemoteParamDetail `json:"deleteEcsSecurityGroupRemote"`
+	Params DeleteEcsSecurityGroupRemoteParamDetail `json:"deleteEcsSecurityGroupRemote"`
 }
 // DeleteVmNicFromSecurityGroupParamDetail DeleteVmNicFromSecurityGroup detail param
 type DeleteVmNicFromSecurityGroupParamDetail struct {
@@ -12636,7 +12636,7 @@ type DeleteVmNicFromSecurityGroupParamDetail struct {
 // DeleteVmNicFromSecurityGroupParam DeleteVmNicFromSecurityGroup request param
 type DeleteVmNicFromSecurityGroupParam struct {
 	BaseParam
-	DeleteVmNicFromSecurityGroup DeleteVmNicFromSecurityGroupParamDetail `json:"deleteVmNicFromSecurityGroup"`
+	Params DeleteVmNicFromSecurityGroupParamDetail `json:"deleteVmNicFromSecurityGroup"`
 }
 // UpdateTagParamDetail UpdateTag detail param
 type UpdateTagParamDetail struct {
@@ -12650,7 +12650,7 @@ type UpdateTagParamDetail struct {
 // UpdateTagParam UpdateTag request param
 type UpdateTagParam struct {
 	BaseParam
-	UpdateTag UpdateTagParamDetail `json:"updateTag"`
+	Params UpdateTagParamDetail `json:"updateTag"`
 }
 // AttachVRouterRouteTableToVRouterParamDetail AttachVRouterRouteTableToVRouter detail param
 type AttachVRouterRouteTableToVRouterParamDetail struct {
@@ -12661,7 +12661,7 @@ type AttachVRouterRouteTableToVRouterParamDetail struct {
 // AttachVRouterRouteTableToVRouterParam AttachVRouterRouteTableToVRouter request param
 type AttachVRouterRouteTableToVRouterParam struct {
 	BaseParam
-	AttachVRouterRouteTableToVRouter AttachVRouterRouteTableToVRouterParamDetail `json:"attachVRouterRouteTableToVRouter"`
+	Params AttachVRouterRouteTableToVRouterParamDetail `json:"attachVRouterRouteTableToVRouter"`
 }
 // CreateVxlanVtepParamDetail CreateVxlanVtep detail param
 type CreateVxlanVtepParamDetail struct {
@@ -12675,7 +12675,7 @@ type CreateVxlanVtepParamDetail struct {
 // CreateVxlanVtepParam CreateVxlanVtep request param
 type CreateVxlanVtepParam struct {
 	BaseParam
-	CreateVxlanVtep CreateVxlanVtepParamDetail `json:"createVxlanVtep"`
+	Params CreateVxlanVtepParamDetail `json:"createVxlanVtep"`
 }
 // AddMdevDeviceSpecToVmInstanceParamDetail AddMdevDeviceSpecToVmInstance detail param
 type AddMdevDeviceSpecToVmInstanceParamDetail struct {
@@ -12687,7 +12687,7 @@ type AddMdevDeviceSpecToVmInstanceParamDetail struct {
 // AddMdevDeviceSpecToVmInstanceParam AddMdevDeviceSpecToVmInstance request param
 type AddMdevDeviceSpecToVmInstanceParam struct {
 	BaseParam
-	AddMdevDeviceSpecToVmInstance AddMdevDeviceSpecToVmInstanceParamDetail `json:"addMdevDeviceSpecToVmInstance"`
+	Params AddMdevDeviceSpecToVmInstanceParamDetail `json:"addMdevDeviceSpecToVmInstance"`
 }
 // DetachScsiLunFromVmInstanceParamDetail DetachScsiLunFromVmInstance detail param
 type DetachScsiLunFromVmInstanceParamDetail struct {
@@ -12698,7 +12698,7 @@ type DetachScsiLunFromVmInstanceParamDetail struct {
 // DetachScsiLunFromVmInstanceParam DetachScsiLunFromVmInstance request param
 type DetachScsiLunFromVmInstanceParam struct {
 	BaseParam
-	DetachScsiLunFromVmInstance DetachScsiLunFromVmInstanceParamDetail `json:"detachScsiLunFromVmInstance"`
+	Params DetachScsiLunFromVmInstanceParamDetail `json:"detachScsiLunFromVmInstance"`
 }
 // EnableCdpTaskParamDetail EnableCdpTask detail param
 type EnableCdpTaskParamDetail struct {
@@ -12708,7 +12708,7 @@ type EnableCdpTaskParamDetail struct {
 // EnableCdpTaskParam EnableCdpTask request param
 type EnableCdpTaskParam struct {
 	BaseParam
-	EnableCdpTask EnableCdpTaskParamDetail `json:"enableCdpTask"`
+	Params EnableCdpTaskParamDetail `json:"enableCdpTask"`
 }
 // SyncConnectionAccessPointFromRemoteParamDetail SyncConnectionAccessPointFromRemote detail param
 type SyncConnectionAccessPointFromRemoteParamDetail struct {
@@ -12721,7 +12721,7 @@ type SyncConnectionAccessPointFromRemoteParamDetail struct {
 // SyncConnectionAccessPointFromRemoteParam SyncConnectionAccessPointFromRemote request param
 type SyncConnectionAccessPointFromRemoteParam struct {
 	BaseParam
-	SyncConnectionAccessPointFromRemote SyncConnectionAccessPointFromRemoteParamDetail `json:"syncConnectionAccessPointFromRemote"`
+	Params SyncConnectionAccessPointFromRemoteParamDetail `json:"syncConnectionAccessPointFromRemote"`
 }
 // RegisterLicenseRequestedApplicationParamDetail RegisterLicenseRequestedApplication detail param
 type RegisterLicenseRequestedApplicationParamDetail struct {
@@ -12733,7 +12733,7 @@ type RegisterLicenseRequestedApplicationParamDetail struct {
 // RegisterLicenseRequestedApplicationParam RegisterLicenseRequestedApplication request param
 type RegisterLicenseRequestedApplicationParam struct {
 	BaseParam
-	RegisterLicenseRequestedApplication RegisterLicenseRequestedApplicationParamDetail `json:"registerLicenseRequestedApplication"`
+	Params RegisterLicenseRequestedApplicationParamDetail `json:"registerLicenseRequestedApplication"`
 }
 // SyncVpcVpnGatewayFromRemoteParamDetail SyncVpcVpnGatewayFromRemote detail param
 type SyncVpcVpnGatewayFromRemoteParamDetail struct {
@@ -12745,7 +12745,7 @@ type SyncVpcVpnGatewayFromRemoteParamDetail struct {
 // SyncVpcVpnGatewayFromRemoteParam SyncVpcVpnGatewayFromRemote request param
 type SyncVpcVpnGatewayFromRemoteParam struct {
 	BaseParam
-	SyncVpcVpnGatewayFromRemote SyncVpcVpnGatewayFromRemoteParamDetail `json:"syncVpcVpnGatewayFromRemote"`
+	Params SyncVpcVpnGatewayFromRemoteParamDetail `json:"syncVpcVpnGatewayFromRemote"`
 }
 // DeleteEcsVpcInLocalParamDetail DeleteEcsVpcInLocal detail param
 type DeleteEcsVpcInLocalParamDetail struct {
@@ -12756,5 +12756,5 @@ type DeleteEcsVpcInLocalParamDetail struct {
 // DeleteEcsVpcInLocalParam DeleteEcsVpcInLocal request param
 type DeleteEcsVpcInLocalParam struct {
 	BaseParam
-	DeleteEcsVpcInLocal DeleteEcsVpcInLocalParamDetail `json:"deleteEcsVpcInLocal"`
+	Params DeleteEcsVpcInLocalParamDetail `json:"deleteEcsVpcInLocal"`
 }

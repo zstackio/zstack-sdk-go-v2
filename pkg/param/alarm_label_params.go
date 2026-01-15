@@ -17,5 +17,5 @@ type UpdateAlarmLabelParamDetail struct {
 // UpdateAlarmLabelParam UpdateAlarmLabel request param
 type UpdateAlarmLabelParam struct {
 	BaseParam
-	UpdateAlarmLabel UpdateAlarmLabelParamDetail `json:"updateAlarmLabel"`
+	Params UpdateAlarmLabelParamDetail `json:"updateAlarmLabel"`
 }

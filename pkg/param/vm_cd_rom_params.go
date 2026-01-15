@@ -19,7 +19,7 @@ type CreateVmCdRomParamDetail struct {
 // CreateVmCdRomParam CreateVmCdRom request param
 type CreateVmCdRomParam struct {
 	BaseParam
-	CreateVmCdRom CreateVmCdRomParamDetail `json:"createVmCdRom"`
+	Params CreateVmCdRomParamDetail `json:"createVmCdRom"`
 }
 // DeleteVmCdRomParamDetail DeleteVmCdRom detail param
 type DeleteVmCdRomParamDetail struct {
@@ -30,7 +30,7 @@ type DeleteVmCdRomParamDetail struct {
 // DeleteVmCdRomParam DeleteVmCdRom request param
 type DeleteVmCdRomParam struct {
 	BaseParam
-	DeleteVmCdRom DeleteVmCdRomParamDetail `json:"deleteVmCdRom"`
+	Params DeleteVmCdRomParamDetail `json:"deleteVmCdRom"`
 }
 // UpdateVmCdRomParamDetail UpdateVmCdRom detail param
 type UpdateVmCdRomParamDetail struct {
@@ -42,5 +42,5 @@ type UpdateVmCdRomParamDetail struct {
 // UpdateVmCdRomParam UpdateVmCdRom request param
 type UpdateVmCdRomParam struct {
 	BaseParam
-	UpdateVmCdRom UpdateVmCdRomParamDetail `json:"updateVmCdRom"`
+	Params UpdateVmCdRomParamDetail `json:"updateVmCdRom"`
 }

@@ -27,7 +27,7 @@ type AddImageParamDetail struct {
 // AddImageParam AddImage request param
 type AddImageParam struct {
 	BaseParam
-	AddImage AddImageParamDetail `json:"addImage"`
+	Params AddImageParamDetail `json:"addImage"`
 }
 // SyncImageParamDetail SyncImage detail param
 type SyncImageParamDetail struct {
@@ -37,7 +37,7 @@ type SyncImageParamDetail struct {
 // SyncImageParam SyncImage request param
 type SyncImageParam struct {
 	BaseParam
-	SyncImage SyncImageParamDetail `json:"syncImage"`
+	Params SyncImageParamDetail `json:"syncImage"`
 }
 // RecoverImageParamDetail RecoverImage detail param
 type RecoverImageParamDetail struct {
@@ -48,7 +48,7 @@ type RecoverImageParamDetail struct {
 // RecoverImageParam RecoverImage request param
 type RecoverImageParam struct {
 	BaseParam
-	RecoverImage RecoverImageParamDetail `json:"recoverImage"`
+	Params RecoverImageParamDetail `json:"recoverImage"`
 }
 // CloneImageParamDetail CloneImage detail param
 type CloneImageParamDetail struct {
@@ -61,7 +61,7 @@ type CloneImageParamDetail struct {
 // CloneImageParam CloneImage request param
 type CloneImageParam struct {
 	BaseParam
-	CloneImage CloneImageParamDetail `json:"cloneImage"`
+	Params CloneImageParamDetail `json:"cloneImage"`
 }
 // DeleteImageParamDetail DeleteImage detail param
 type DeleteImageParamDetail struct {
@@ -73,7 +73,7 @@ type DeleteImageParamDetail struct {
 // DeleteImageParam DeleteImage request param
 type DeleteImageParam struct {
 	BaseParam
-	DeleteImage DeleteImageParamDetail `json:"deleteImage"`
+	Params DeleteImageParamDetail `json:"deleteImage"`
 }
 // UpdateImageParamDetail UpdateImage detail param
 type UpdateImageParamDetail struct {
@@ -92,7 +92,7 @@ type UpdateImageParamDetail struct {
 // UpdateImageParam UpdateImage request param
 type UpdateImageParam struct {
 	BaseParam
-	UpdateImage UpdateImageParamDetail `json:"updateImage"`
+	Params UpdateImageParamDetail `json:"updateImage"`
 }
 // ExpungeImageParamDetail ExpungeImage detail param
 type ExpungeImageParamDetail struct {
@@ -104,5 +104,5 @@ type ExpungeImageParamDetail struct {
 // ExpungeImageParam ExpungeImage request param
 type ExpungeImageParam struct {
 	BaseParam
-	ExpungeImage ExpungeImageParamDetail `json:"expungeImage"`
+	Params ExpungeImageParamDetail `json:"expungeImage"`
 }

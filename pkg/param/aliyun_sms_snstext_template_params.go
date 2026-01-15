@@ -25,7 +25,7 @@ type UpdateAliyunSmsSNSTextTemplateParamDetail struct {
 // UpdateAliyunSmsSNSTextTemplateParam UpdateAliyunSmsSNSTextTemplate request param
 type UpdateAliyunSmsSNSTextTemplateParam struct {
 	BaseParam
-	UpdateAliyunSmsSNSTextTemplate UpdateAliyunSmsSNSTextTemplateParamDetail `json:"updateAliyunSmsSNSTextTemplate"`
+	Params UpdateAliyunSmsSNSTextTemplateParamDetail `json:"updateAliyunSmsSNSTextTemplate"`
 }
 // CreateAliyunSmsSNSTextTemplateParamDetail CreateAliyunSmsSNSTextTemplate detail param
 type CreateAliyunSmsSNSTextTemplateParamDetail struct {
@@ -49,5 +49,5 @@ type CreateAliyunSmsSNSTextTemplateParamDetail struct {
 // CreateAliyunSmsSNSTextTemplateParam CreateAliyunSmsSNSTextTemplate request param
 type CreateAliyunSmsSNSTextTemplateParam struct {
 	BaseParam
-	CreateAliyunSmsSNSTextTemplate CreateAliyunSmsSNSTextTemplateParamDetail `json:"createAliyunSmsSNSTextTemplate"`
+	Params CreateAliyunSmsSNSTextTemplateParamDetail `json:"createAliyunSmsSNSTextTemplate"`
 }

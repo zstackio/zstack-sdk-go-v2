@@ -16,5 +16,5 @@ type DeleteHuaweiIMasterVpcParamDetail struct {
 // DeleteHuaweiIMasterVpcParam DeleteHuaweiIMasterVpc request param
 type DeleteHuaweiIMasterVpcParam struct {
 	BaseParam
-	DeleteHuaweiIMasterVpc DeleteHuaweiIMasterVpcParamDetail `json:"deleteHuaweiIMasterVpc"`
+	Params DeleteHuaweiIMasterVpcParamDetail `json:"deleteHuaweiIMasterVpc"`
 }

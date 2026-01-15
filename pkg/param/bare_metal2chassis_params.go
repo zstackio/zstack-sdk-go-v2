@@ -14,7 +14,7 @@ type InspectBareMetal2ChassisParamDetail struct {
 // InspectBareMetal2ChassisParam InspectBareMetal2Chassis request param
 type InspectBareMetal2ChassisParam struct {
 	BaseParam
-	InspectBareMetal2Chassis InspectBareMetal2ChassisParamDetail `json:"inspectBareMetal2Chassis"`
+	Params InspectBareMetal2ChassisParamDetail `json:"inspectBareMetal2Chassis"`
 }
 // UpdateBareMetal2ChassisParamDetail UpdateBareMetal2Chassis detail param
 type UpdateBareMetal2ChassisParamDetail struct {
@@ -26,7 +26,7 @@ type UpdateBareMetal2ChassisParamDetail struct {
 // UpdateBareMetal2ChassisParam UpdateBareMetal2Chassis request param
 type UpdateBareMetal2ChassisParam struct {
 	BaseParam
-	UpdateBareMetal2Chassis UpdateBareMetal2ChassisParamDetail `json:"updateBareMetal2Chassis"`
+	Params UpdateBareMetal2ChassisParamDetail `json:"updateBareMetal2Chassis"`
 }
 // DeleteBareMetal2ChassisParamDetail DeleteBareMetal2Chassis detail param
 type DeleteBareMetal2ChassisParamDetail struct {
@@ -37,5 +37,5 @@ type DeleteBareMetal2ChassisParamDetail struct {
 // DeleteBareMetal2ChassisParam DeleteBareMetal2Chassis request param
 type DeleteBareMetal2ChassisParam struct {
 	BaseParam
-	DeleteBareMetal2Chassis DeleteBareMetal2ChassisParamDetail `json:"deleteBareMetal2Chassis"`
+	Params DeleteBareMetal2ChassisParamDetail `json:"deleteBareMetal2Chassis"`
 }

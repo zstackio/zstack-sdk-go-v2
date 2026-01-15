@@ -15,7 +15,7 @@ type DeleteBaremetalPxeServerParamDetail struct {
 // DeleteBaremetalPxeServerParam DeleteBaremetalPxeServer request param
 type DeleteBaremetalPxeServerParam struct {
 	BaseParam
-	DeleteBaremetalPxeServer DeleteBaremetalPxeServerParamDetail `json:"deleteBaremetalPxeServer"`
+	Params DeleteBaremetalPxeServerParamDetail `json:"deleteBaremetalPxeServer"`
 }
 // UpdateBaremetalPxeServerParamDetail UpdateBaremetalPxeServer detail param
 type UpdateBaremetalPxeServerParamDetail struct {
@@ -30,7 +30,7 @@ type UpdateBaremetalPxeServerParamDetail struct {
 // UpdateBaremetalPxeServerParam UpdateBaremetalPxeServer request param
 type UpdateBaremetalPxeServerParam struct {
 	BaseParam
-	UpdateBaremetalPxeServer UpdateBaremetalPxeServerParamDetail `json:"updateBaremetalPxeServer"`
+	Params UpdateBaremetalPxeServerParamDetail `json:"updateBaremetalPxeServer"`
 }
 // StartBaremetalPxeServerParamDetail StartBaremetalPxeServer detail param
 type StartBaremetalPxeServerParamDetail struct {
@@ -40,7 +40,7 @@ type StartBaremetalPxeServerParamDetail struct {
 // StartBaremetalPxeServerParam StartBaremetalPxeServer request param
 type StartBaremetalPxeServerParam struct {
 	BaseParam
-	StartBaremetalPxeServer StartBaremetalPxeServerParamDetail `json:"startBaremetalPxeServer"`
+	Params StartBaremetalPxeServerParamDetail `json:"startBaremetalPxeServer"`
 }
 // ReconnectBaremetalPxeServerParamDetail ReconnectBaremetalPxeServer detail param
 type ReconnectBaremetalPxeServerParamDetail struct {
@@ -50,7 +50,7 @@ type ReconnectBaremetalPxeServerParamDetail struct {
 // ReconnectBaremetalPxeServerParam ReconnectBaremetalPxeServer request param
 type ReconnectBaremetalPxeServerParam struct {
 	BaseParam
-	ReconnectBaremetalPxeServer ReconnectBaremetalPxeServerParamDetail `json:"reconnectBaremetalPxeServer"`
+	Params ReconnectBaremetalPxeServerParamDetail `json:"reconnectBaremetalPxeServer"`
 }
 // StopBaremetalPxeServerParamDetail StopBaremetalPxeServer detail param
 type StopBaremetalPxeServerParamDetail struct {
@@ -60,7 +60,7 @@ type StopBaremetalPxeServerParamDetail struct {
 // StopBaremetalPxeServerParam StopBaremetalPxeServer request param
 type StopBaremetalPxeServerParam struct {
 	BaseParam
-	StopBaremetalPxeServer StopBaremetalPxeServerParamDetail `json:"stopBaremetalPxeServer"`
+	Params StopBaremetalPxeServerParamDetail `json:"stopBaremetalPxeServer"`
 }
 // CreateBaremetalPxeServerParamDetail CreateBaremetalPxeServer detail param
 type CreateBaremetalPxeServerParamDetail struct {
@@ -83,5 +83,5 @@ type CreateBaremetalPxeServerParamDetail struct {
 // CreateBaremetalPxeServerParam CreateBaremetalPxeServer request param
 type CreateBaremetalPxeServerParam struct {
 	BaseParam
-	CreateBaremetalPxeServer CreateBaremetalPxeServerParamDetail `json:"createBaremetalPxeServer"`
+	Params CreateBaremetalPxeServerParamDetail `json:"createBaremetalPxeServer"`
 }

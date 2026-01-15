@@ -14,7 +14,7 @@ type ReconnectHostParamDetail struct {
 // ReconnectHostParam ReconnectHost request param
 type ReconnectHostParam struct {
 	BaseParam
-	ReconnectHost ReconnectHostParamDetail `json:"reconnectHost"`
+	Params ReconnectHostParamDetail `json:"reconnectHost"`
 }
 // UpdateHostParamDetail UpdateHost detail param
 type UpdateHostParamDetail struct {
@@ -27,7 +27,7 @@ type UpdateHostParamDetail struct {
 // UpdateHostParam UpdateHost request param
 type UpdateHostParam struct {
 	BaseParam
-	UpdateHost UpdateHostParamDetail `json:"updateHost"`
+	Params UpdateHostParamDetail `json:"updateHost"`
 }
 // DeleteHostParamDetail DeleteHost detail param
 type DeleteHostParamDetail struct {
@@ -38,5 +38,5 @@ type DeleteHostParamDetail struct {
 // DeleteHostParam DeleteHost request param
 type DeleteHostParam struct {
 	BaseParam
-	DeleteHost DeleteHostParamDetail `json:"deleteHost"`
+	Params DeleteHostParamDetail `json:"deleteHost"`
 }

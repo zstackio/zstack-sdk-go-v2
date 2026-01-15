@@ -26,5 +26,5 @@ type CreateNfvInstOfferingParamDetail struct {
 // CreateNfvInstOfferingParam CreateNfvInstOffering request param
 type CreateNfvInstOfferingParam struct {
 	BaseParam
-	CreateNfvInstOffering CreateNfvInstOfferingParamDetail `json:"createNfvInstOffering"`
+	Params CreateNfvInstOfferingParamDetail `json:"createNfvInstOffering"`
 }

@@ -21,7 +21,7 @@ type UpdateKoAlSecretResourcePoolParamDetail struct {
 // UpdateKoAlSecretResourcePoolParam UpdateKoAlSecretResourcePool request param
 type UpdateKoAlSecretResourcePoolParam struct {
 	BaseParam
-	UpdateKoAlSecretResourcePool UpdateKoAlSecretResourcePoolParamDetail `json:"updateKoAlSecretResourcePool"`
+	Params UpdateKoAlSecretResourcePoolParamDetail `json:"updateKoAlSecretResourcePool"`
 }
 // CreateKoAlSecretResourcePoolParamDetail CreateKoAlSecretResourcePool detail param
 type CreateKoAlSecretResourcePoolParamDetail struct {
@@ -42,5 +42,5 @@ type CreateKoAlSecretResourcePoolParamDetail struct {
 // CreateKoAlSecretResourcePoolParam CreateKoAlSecretResourcePool request param
 type CreateKoAlSecretResourcePoolParam struct {
 	BaseParam
-	CreateKoAlSecretResourcePool CreateKoAlSecretResourcePoolParamDetail `json:"createKoAlSecretResourcePool"`
+	Params CreateKoAlSecretResourcePoolParamDetail `json:"createKoAlSecretResourcePool"`
 }

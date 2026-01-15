@@ -15,7 +15,7 @@ type DeleteResourceStackParamDetail struct {
 // DeleteResourceStackParam DeleteResourceStack request param
 type DeleteResourceStackParam struct {
 	BaseParam
-	DeleteResourceStack DeleteResourceStackParamDetail `json:"deleteResourceStack"`
+	Params DeleteResourceStackParamDetail `json:"deleteResourceStack"`
 }
 // CreateResourceStackParamDetail CreateResourceStack detail param
 type CreateResourceStackParamDetail struct {
@@ -33,7 +33,7 @@ type CreateResourceStackParamDetail struct {
 // CreateResourceStackParam CreateResourceStack request param
 type CreateResourceStackParam struct {
 	BaseParam
-	CreateResourceStack CreateResourceStackParamDetail `json:"createResourceStack"`
+	Params CreateResourceStackParamDetail `json:"createResourceStack"`
 }
 // UpdateResourceStackParamDetail UpdateResourceStack detail param
 type UpdateResourceStackParamDetail struct {
@@ -48,5 +48,5 @@ type UpdateResourceStackParamDetail struct {
 // UpdateResourceStackParam UpdateResourceStack request param
 type UpdateResourceStackParam struct {
 	BaseParam
-	UpdateResourceStack UpdateResourceStackParamDetail `json:"updateResourceStack"`
+	Params UpdateResourceStackParamDetail `json:"updateResourceStack"`
 }

@@ -16,7 +16,7 @@ type UpdateLogServerParamDetail struct {
 // UpdateLogServerParam UpdateLogServer request param
 type UpdateLogServerParam struct {
 	BaseParam
-	UpdateLogServer UpdateLogServerParamDetail `json:"updateLogServer"`
+	Params UpdateLogServerParamDetail `json:"updateLogServer"`
 }
 // DeleteLogServerParamDetail DeleteLogServer detail param
 type DeleteLogServerParamDetail struct {
@@ -26,7 +26,7 @@ type DeleteLogServerParamDetail struct {
 // DeleteLogServerParam DeleteLogServer request param
 type DeleteLogServerParam struct {
 	BaseParam
-	DeleteLogServer DeleteLogServerParamDetail `json:"deleteLogServer"`
+	Params DeleteLogServerParamDetail `json:"deleteLogServer"`
 }
 // AddLogServerParamDetail AddLogServer detail param
 type AddLogServerParamDetail struct {
@@ -43,5 +43,5 @@ type AddLogServerParamDetail struct {
 // AddLogServerParam AddLogServer request param
 type AddLogServerParam struct {
 	BaseParam
-	AddLogServer AddLogServerParamDetail `json:"addLogServer"`
+	Params AddLogServerParamDetail `json:"addLogServer"`
 }

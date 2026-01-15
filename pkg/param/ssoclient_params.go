@@ -15,7 +15,7 @@ type DeleteSSOClientParamDetail struct {
 // DeleteSSOClientParam DeleteSSOClient request param
 type DeleteSSOClientParam struct {
 	BaseParam
-	DeleteSSOClient DeleteSSOClientParamDetail `json:"deleteSSOClient"`
+	Params DeleteSSOClientParamDetail `json:"deleteSSOClient"`
 }
 // GetSSOClientParamDetail GetSSOClient detail param
 type GetSSOClientParamDetail struct {
@@ -24,5 +24,5 @@ type GetSSOClientParamDetail struct {
 // GetSSOClientParam GetSSOClient request param
 type GetSSOClientParam struct {
 	BaseParam
-	GetSSOClient GetSSOClientParamDetail `json:"getSSOClient"`
+	Params GetSSOClientParamDetail `json:"getSSOClient"`
 }

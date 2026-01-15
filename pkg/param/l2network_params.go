@@ -15,7 +15,7 @@ type DeleteL2NetworkParamDetail struct {
 // DeleteL2NetworkParam DeleteL2Network request param
 type DeleteL2NetworkParam struct {
 	BaseParam
-	DeleteL2Network DeleteL2NetworkParamDetail `json:"deleteL2Network"`
+	Params DeleteL2NetworkParamDetail `json:"deleteL2Network"`
 }
 // UpdateL2NetworkParamDetail UpdateL2Network detail param
 type UpdateL2NetworkParamDetail struct {
@@ -27,5 +27,5 @@ type UpdateL2NetworkParamDetail struct {
 // UpdateL2NetworkParam UpdateL2Network request param
 type UpdateL2NetworkParam struct {
 	BaseParam
-	UpdateL2Network UpdateL2NetworkParamDetail `json:"updateL2Network"`
+	Params UpdateL2NetworkParamDetail `json:"updateL2Network"`
 }

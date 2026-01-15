@@ -15,5 +15,5 @@ type DeleteMediaParamDetail struct {
 // DeleteMediaParam DeleteMedia request param
 type DeleteMediaParam struct {
 	BaseParam
-	DeleteMedia DeleteMediaParamDetail `json:"deleteMedia"`
+	Params DeleteMediaParamDetail `json:"deleteMedia"`
 }

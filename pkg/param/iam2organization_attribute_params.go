@@ -15,5 +15,5 @@ type UpdateIAM2OrganizationAttributeParamDetail struct {
 // UpdateIAM2OrganizationAttributeParam UpdateIAM2OrganizationAttribute request param
 type UpdateIAM2OrganizationAttributeParam struct {
 	BaseParam
-	UpdateIAM2OrganizationAttribute UpdateIAM2OrganizationAttributeParamDetail `json:"updateIAM2OrganizationAttribute"`
+	Params UpdateIAM2OrganizationAttributeParamDetail `json:"updateIAM2OrganizationAttribute"`
 }

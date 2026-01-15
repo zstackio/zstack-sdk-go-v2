@@ -16,7 +16,7 @@ type GetResourceConfigParamDetail struct {
 // GetResourceConfigParam GetResourceConfig request param
 type GetResourceConfigParam struct {
 	BaseParam
-	GetResourceConfig GetResourceConfigParamDetail `json:"getResourceConfig"`
+	Params GetResourceConfigParamDetail `json:"getResourceConfig"`
 }
 // UpdateResourceConfigParamDetail UpdateResourceConfig detail param
 type UpdateResourceConfigParamDetail struct {
@@ -29,7 +29,7 @@ type UpdateResourceConfigParamDetail struct {
 // UpdateResourceConfigParam UpdateResourceConfig request param
 type UpdateResourceConfigParam struct {
 	BaseParam
-	UpdateResourceConfig UpdateResourceConfigParamDetail `json:"updateResourceConfig"`
+	Params UpdateResourceConfigParamDetail `json:"updateResourceConfig"`
 }
 // DeleteResourceConfigParamDetail DeleteResourceConfig detail param
 type DeleteResourceConfigParamDetail struct {
@@ -42,5 +42,5 @@ type DeleteResourceConfigParamDetail struct {
 // DeleteResourceConfigParam DeleteResourceConfig request param
 type DeleteResourceConfigParam struct {
 	BaseParam
-	DeleteResourceConfig DeleteResourceConfigParamDetail `json:"deleteResourceConfig"`
+	Params DeleteResourceConfigParamDetail `json:"deleteResourceConfig"`
 }

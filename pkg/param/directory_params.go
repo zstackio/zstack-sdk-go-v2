@@ -15,7 +15,7 @@ type UpdateDirectoryParamDetail struct {
 // UpdateDirectoryParam UpdateDirectory request param
 type UpdateDirectoryParam struct {
 	BaseParam
-	UpdateDirectory UpdateDirectoryParamDetail `json:"updateDirectory"`
+	Params UpdateDirectoryParamDetail `json:"updateDirectory"`
 }
 // CreateDirectoryParamDetail CreateDirectory detail param
 type CreateDirectoryParamDetail struct {
@@ -30,7 +30,7 @@ type CreateDirectoryParamDetail struct {
 // CreateDirectoryParam CreateDirectory request param
 type CreateDirectoryParam struct {
 	BaseParam
-	CreateDirectory CreateDirectoryParamDetail `json:"createDirectory"`
+	Params CreateDirectoryParamDetail `json:"createDirectory"`
 }
 // DeleteDirectoryParamDetail DeleteDirectory detail param
 type DeleteDirectoryParamDetail struct {
@@ -41,5 +41,5 @@ type DeleteDirectoryParamDetail struct {
 // DeleteDirectoryParam DeleteDirectory request param
 type DeleteDirectoryParam struct {
 	BaseParam
-	DeleteDirectory DeleteDirectoryParamDetail `json:"deleteDirectory"`
+	Params DeleteDirectoryParamDetail `json:"deleteDirectory"`
 }

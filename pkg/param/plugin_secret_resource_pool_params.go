@@ -24,7 +24,7 @@ type CreatePluginSecretResourcePoolParamDetail struct {
 // CreatePluginSecretResourcePoolParam CreatePluginSecretResourcePool request param
 type CreatePluginSecretResourcePoolParam struct {
 	BaseParam
-	CreatePluginSecretResourcePool CreatePluginSecretResourcePoolParamDetail `json:"createPluginSecretResourcePool"`
+	Params CreatePluginSecretResourcePoolParamDetail `json:"createPluginSecretResourcePool"`
 }
 // UpdatePluginSecretResourcePoolParamDetail UpdatePluginSecretResourcePool detail param
 type UpdatePluginSecretResourcePoolParamDetail struct {
@@ -39,5 +39,5 @@ type UpdatePluginSecretResourcePoolParamDetail struct {
 // UpdatePluginSecretResourcePoolParam UpdatePluginSecretResourcePool request param
 type UpdatePluginSecretResourcePoolParam struct {
 	BaseParam
-	UpdatePluginSecretResourcePool UpdatePluginSecretResourcePoolParamDetail `json:"updatePluginSecretResourcePool"`
+	Params UpdatePluginSecretResourcePoolParamDetail `json:"updatePluginSecretResourcePool"`
 }

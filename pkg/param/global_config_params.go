@@ -16,7 +16,7 @@ type UpdateGlobalConfigParamDetail struct {
 // UpdateGlobalConfigParam UpdateGlobalConfig request param
 type UpdateGlobalConfigParam struct {
 	BaseParam
-	UpdateGlobalConfig UpdateGlobalConfigParamDetail `json:"updateGlobalConfig"`
+	Params UpdateGlobalConfigParamDetail `json:"updateGlobalConfig"`
 }
 // ResetGlobalConfigParamDetail ResetGlobalConfig detail param
 type ResetGlobalConfigParamDetail struct {
@@ -25,5 +25,5 @@ type ResetGlobalConfigParamDetail struct {
 // ResetGlobalConfigParam ResetGlobalConfig request param
 type ResetGlobalConfigParam struct {
 	BaseParam
-	ResetGlobalConfig ResetGlobalConfigParamDetail `json:"resetGlobalConfig"`
+	Params ResetGlobalConfigParamDetail `json:"resetGlobalConfig"`
 }

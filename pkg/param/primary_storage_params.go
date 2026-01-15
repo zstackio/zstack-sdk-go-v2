@@ -14,7 +14,7 @@ type ReconnectPrimaryStorageParamDetail struct {
 // ReconnectPrimaryStorageParam ReconnectPrimaryStorage request param
 type ReconnectPrimaryStorageParam struct {
 	BaseParam
-	ReconnectPrimaryStorage ReconnectPrimaryStorageParamDetail `json:"reconnectPrimaryStorage"`
+	Params ReconnectPrimaryStorageParamDetail `json:"reconnectPrimaryStorage"`
 }
 // UpdatePrimaryStorageParamDetail UpdatePrimaryStorage detail param
 type UpdatePrimaryStorageParamDetail struct {
@@ -27,7 +27,7 @@ type UpdatePrimaryStorageParamDetail struct {
 // UpdatePrimaryStorageParam UpdatePrimaryStorage request param
 type UpdatePrimaryStorageParam struct {
 	BaseParam
-	UpdatePrimaryStorage UpdatePrimaryStorageParamDetail `json:"updatePrimaryStorage"`
+	Params UpdatePrimaryStorageParamDetail `json:"updatePrimaryStorage"`
 }
 // DeletePrimaryStorageParamDetail DeletePrimaryStorage detail param
 type DeletePrimaryStorageParamDetail struct {
@@ -38,5 +38,5 @@ type DeletePrimaryStorageParamDetail struct {
 // DeletePrimaryStorageParam DeletePrimaryStorage request param
 type DeletePrimaryStorageParam struct {
 	BaseParam
-	DeletePrimaryStorage DeletePrimaryStorageParamDetail `json:"deletePrimaryStorage"`
+	Params DeletePrimaryStorageParamDetail `json:"deletePrimaryStorage"`
 }

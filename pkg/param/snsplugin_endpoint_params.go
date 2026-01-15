@@ -21,5 +21,5 @@ type CreateSNSPluginEndpointParamDetail struct {
 // CreateSNSPluginEndpointParam CreateSNSPluginEndpoint request param
 type CreateSNSPluginEndpointParam struct {
 	BaseParam
-	CreateSNSPluginEndpoint CreateSNSPluginEndpointParamDetail `json:"createSNSPluginEndpoint"`
+	Params CreateSNSPluginEndpointParamDetail `json:"createSNSPluginEndpoint"`
 }

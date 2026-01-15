@@ -38,7 +38,7 @@ type CloneModelServiceParamDetail struct {
 // CloneModelServiceParam CloneModelService request param
 type CloneModelServiceParam struct {
 	BaseParam
-	CloneModelService CloneModelServiceParamDetail `json:"cloneModelService"`
+	Params CloneModelServiceParamDetail `json:"cloneModelService"`
 }
 // UpdateModelServiceParamDetail UpdateModelService detail param
 type UpdateModelServiceParamDetail struct {
@@ -74,7 +74,7 @@ type UpdateModelServiceParamDetail struct {
 // UpdateModelServiceParam UpdateModelService request param
 type UpdateModelServiceParam struct {
 	BaseParam
-	UpdateModelService UpdateModelServiceParamDetail `json:"updateModelService"`
+	Params UpdateModelServiceParamDetail `json:"updateModelService"`
 }
 // DeleteModelServiceParamDetail DeleteModelService detail param
 type DeleteModelServiceParamDetail struct {
@@ -85,7 +85,7 @@ type DeleteModelServiceParamDetail struct {
 // DeleteModelServiceParam DeleteModelService request param
 type DeleteModelServiceParam struct {
 	BaseParam
-	DeleteModelService DeleteModelServiceParamDetail `json:"deleteModelService"`
+	Params DeleteModelServiceParamDetail `json:"deleteModelService"`
 }
 // AddModelServiceParamDetail AddModelService detail param
 type AddModelServiceParamDetail struct {
@@ -118,5 +118,5 @@ type AddModelServiceParamDetail struct {
 // AddModelServiceParam AddModelService request param
 type AddModelServiceParam struct {
 	BaseParam
-	AddModelService AddModelServiceParamDetail `json:"addModelService"`
+	Params AddModelServiceParamDetail `json:"addModelService"`
 }

@@ -15,7 +15,7 @@ type RemoveSdnControllerParamDetail struct {
 // RemoveSdnControllerParam RemoveSdnController request param
 type RemoveSdnControllerParam struct {
 	BaseParam
-	RemoveSdnController RemoveSdnControllerParamDetail `json:"removeSdnController"`
+	Params RemoveSdnControllerParamDetail `json:"removeSdnController"`
 }
 // AddSdnControllerParamDetail AddSdnController detail param
 type AddSdnControllerParamDetail struct {
@@ -33,7 +33,7 @@ type AddSdnControllerParamDetail struct {
 // AddSdnControllerParam AddSdnController request param
 type AddSdnControllerParam struct {
 	BaseParam
-	AddSdnController AddSdnControllerParamDetail `json:"addSdnController"`
+	Params AddSdnControllerParamDetail `json:"addSdnController"`
 }
 // UpdateSdnControllerParamDetail UpdateSdnController detail param
 type UpdateSdnControllerParamDetail struct {
@@ -45,7 +45,7 @@ type UpdateSdnControllerParamDetail struct {
 // UpdateSdnControllerParam UpdateSdnController request param
 type UpdateSdnControllerParam struct {
 	BaseParam
-	UpdateSdnController UpdateSdnControllerParamDetail `json:"updateSdnController"`
+	Params UpdateSdnControllerParamDetail `json:"updateSdnController"`
 }
 // ChangeSdnControllerParamDetail ChangeSdnController detail param
 type ChangeSdnControllerParamDetail struct {
@@ -58,7 +58,7 @@ type ChangeSdnControllerParamDetail struct {
 // ChangeSdnControllerParam ChangeSdnController request param
 type ChangeSdnControllerParam struct {
 	BaseParam
-	ChangeSdnController ChangeSdnControllerParamDetail `json:"changeSdnController"`
+	Params ChangeSdnControllerParamDetail `json:"changeSdnController"`
 }
 // ReconnectSdnControllerParamDetail ReconnectSdnController detail param
 type ReconnectSdnControllerParamDetail struct {
@@ -68,5 +68,5 @@ type ReconnectSdnControllerParamDetail struct {
 // ReconnectSdnControllerParam ReconnectSdnController request param
 type ReconnectSdnControllerParam struct {
 	BaseParam
-	ReconnectSdnController ReconnectSdnControllerParamDetail `json:"reconnectSdnController"`
+	Params ReconnectSdnControllerParamDetail `json:"reconnectSdnController"`
 }

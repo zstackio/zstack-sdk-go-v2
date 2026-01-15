@@ -24,7 +24,7 @@ type AddSanSecSecurityMachineParamDetail struct {
 // AddSanSecSecurityMachineParam AddSanSecSecurityMachine request param
 type AddSanSecSecurityMachineParam struct {
 	BaseParam
-	AddSanSecSecurityMachine AddSanSecSecurityMachineParamDetail `json:"addSanSecSecurityMachine"`
+	Params AddSanSecSecurityMachineParamDetail `json:"addSanSecSecurityMachine"`
 }
 // UpdateSanSecSecurityMachineParamDetail UpdateSanSecSecurityMachine detail param
 type UpdateSanSecSecurityMachineParamDetail struct {
@@ -40,5 +40,5 @@ type UpdateSanSecSecurityMachineParamDetail struct {
 // UpdateSanSecSecurityMachineParam UpdateSanSecSecurityMachine request param
 type UpdateSanSecSecurityMachineParam struct {
 	BaseParam
-	UpdateSanSecSecurityMachine UpdateSanSecSecurityMachineParamDetail `json:"updateSanSecSecurityMachine"`
+	Params UpdateSanSecSecurityMachineParamDetail `json:"updateSanSecSecurityMachine"`
 }

@@ -16,5 +16,5 @@ type UpdateScsiLunParamDetail struct {
 // UpdateScsiLunParam UpdateScsiLun request param
 type UpdateScsiLunParam struct {
 	BaseParam
-	UpdateScsiLun UpdateScsiLunParamDetail `json:"updateScsiLun"`
+	Params UpdateScsiLunParamDetail `json:"updateScsiLun"`
 }

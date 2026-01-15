@@ -23,7 +23,7 @@ type AddBareMetal2IpmiChassisParamDetail struct {
 // AddBareMetal2IpmiChassisParam AddBareMetal2IpmiChassis request param
 type AddBareMetal2IpmiChassisParam struct {
 	BaseParam
-	AddBareMetal2IpmiChassis AddBareMetal2IpmiChassisParamDetail `json:"addBareMetal2IpmiChassis"`
+	Params AddBareMetal2IpmiChassisParamDetail `json:"addBareMetal2IpmiChassis"`
 }
 // UpdateBareMetal2IpmiChassisParamDetail UpdateBareMetal2IpmiChassis detail param
 type UpdateBareMetal2IpmiChassisParamDetail struct {
@@ -39,5 +39,5 @@ type UpdateBareMetal2IpmiChassisParamDetail struct {
 // UpdateBareMetal2IpmiChassisParam UpdateBareMetal2IpmiChassis request param
 type UpdateBareMetal2IpmiChassisParam struct {
 	BaseParam
-	UpdateBareMetal2IpmiChassis UpdateBareMetal2IpmiChassisParamDetail `json:"updateBareMetal2IpmiChassis"`
+	Params UpdateBareMetal2IpmiChassisParamDetail `json:"updateBareMetal2IpmiChassis"`
 }

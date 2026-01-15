@@ -15,7 +15,7 @@ type DeletePciDeviceOfferingParamDetail struct {
 // DeletePciDeviceOfferingParam DeletePciDeviceOffering request param
 type DeletePciDeviceOfferingParam struct {
 	BaseParam
-	DeletePciDeviceOffering DeletePciDeviceOfferingParamDetail `json:"deletePciDeviceOffering"`
+	Params DeletePciDeviceOfferingParamDetail `json:"deletePciDeviceOffering"`
 }
 // CreatePciDeviceOfferingParamDetail CreatePciDeviceOffering detail param
 type CreatePciDeviceOfferingParamDetail struct {
@@ -33,5 +33,5 @@ type CreatePciDeviceOfferingParamDetail struct {
 // CreatePciDeviceOfferingParam CreatePciDeviceOffering request param
 type CreatePciDeviceOfferingParam struct {
 	BaseParam
-	CreatePciDeviceOffering CreatePciDeviceOfferingParamDetail `json:"createPciDeviceOffering"`
+	Params CreatePciDeviceOfferingParamDetail `json:"createPciDeviceOffering"`
 }

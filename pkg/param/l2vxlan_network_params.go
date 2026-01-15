@@ -25,5 +25,5 @@ type CreateL2VxlanNetworkParamDetail struct {
 // CreateL2VxlanNetworkParam CreateL2VxlanNetwork request param
 type CreateL2VxlanNetworkParam struct {
 	BaseParam
-	CreateL2VxlanNetwork CreateL2VxlanNetworkParamDetail `json:"createL2VxlanNetwork"`
+	Params CreateL2VxlanNetworkParamDetail `json:"createL2VxlanNetwork"`
 }

@@ -23,7 +23,7 @@ type UpdateUserProxyConfigParamDetail struct {
 // UpdateUserProxyConfigParam UpdateUserProxyConfig request param
 type UpdateUserProxyConfigParam struct {
 	BaseParam
-	UpdateUserProxyConfig UpdateUserProxyConfigParamDetail `json:"updateUserProxyConfig"`
+	Params UpdateUserProxyConfigParamDetail `json:"updateUserProxyConfig"`
 }
 // DeleteUserProxyConfigParamDetail DeleteUserProxyConfig detail param
 type DeleteUserProxyConfigParamDetail struct {
@@ -33,7 +33,7 @@ type DeleteUserProxyConfigParamDetail struct {
 // DeleteUserProxyConfigParam DeleteUserProxyConfig request param
 type DeleteUserProxyConfigParam struct {
 	BaseParam
-	DeleteUserProxyConfig DeleteUserProxyConfigParamDetail `json:"deleteUserProxyConfig"`
+	Params DeleteUserProxyConfigParamDetail `json:"deleteUserProxyConfig"`
 }
 // CreateUserProxyConfigParamDetail CreateUserProxyConfig detail param
 type CreateUserProxyConfigParamDetail struct {
@@ -53,5 +53,5 @@ type CreateUserProxyConfigParamDetail struct {
 // CreateUserProxyConfigParam CreateUserProxyConfig request param
 type CreateUserProxyConfigParam struct {
 	BaseParam
-	CreateUserProxyConfig CreateUserProxyConfigParamDetail `json:"createUserProxyConfig"`
+	Params CreateUserProxyConfigParamDetail `json:"createUserProxyConfig"`
 }

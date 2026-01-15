@@ -16,7 +16,7 @@ type UpdateBlockVolumeParamDetail struct {
 // UpdateBlockVolumeParam UpdateBlockVolume request param
 type UpdateBlockVolumeParam struct {
 	BaseParam
-	UpdateBlockVolume UpdateBlockVolumeParamDetail `json:"updateBlockVolume"`
+	Params UpdateBlockVolumeParamDetail `json:"updateBlockVolume"`
 }
 // CreateBlockVolumeParamDetail CreateBlockVolume detail param
 type CreateBlockVolumeParamDetail struct {
@@ -38,5 +38,5 @@ type CreateBlockVolumeParamDetail struct {
 // CreateBlockVolumeParam CreateBlockVolume request param
 type CreateBlockVolumeParam struct {
 	BaseParam
-	CreateBlockVolume CreateBlockVolumeParamDetail `json:"createBlockVolume"`
+	Params CreateBlockVolumeParamDetail `json:"createBlockVolume"`
 }

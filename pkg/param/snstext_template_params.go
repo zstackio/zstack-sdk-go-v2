@@ -21,7 +21,7 @@ type UpdateSNSTextTemplateParamDetail struct {
 // UpdateSNSTextTemplateParam UpdateSNSTextTemplate request param
 type UpdateSNSTextTemplateParam struct {
 	BaseParam
-	UpdateSNSTextTemplate UpdateSNSTextTemplateParamDetail `json:"updateSNSTextTemplate"`
+	Params UpdateSNSTextTemplateParamDetail `json:"updateSNSTextTemplate"`
 }
 // CreateSNSTextTemplateParamDetail CreateSNSTextTemplate detail param
 type CreateSNSTextTemplateParamDetail struct {
@@ -41,7 +41,7 @@ type CreateSNSTextTemplateParamDetail struct {
 // CreateSNSTextTemplateParam CreateSNSTextTemplate request param
 type CreateSNSTextTemplateParam struct {
 	BaseParam
-	CreateSNSTextTemplate CreateSNSTextTemplateParamDetail `json:"createSNSTextTemplate"`
+	Params CreateSNSTextTemplateParamDetail `json:"createSNSTextTemplate"`
 }
 // DeleteSNSTextTemplateParamDetail DeleteSNSTextTemplate detail param
 type DeleteSNSTextTemplateParamDetail struct {
@@ -52,5 +52,5 @@ type DeleteSNSTextTemplateParamDetail struct {
 // DeleteSNSTextTemplateParam DeleteSNSTextTemplate request param
 type DeleteSNSTextTemplateParam struct {
 	BaseParam
-	DeleteSNSTextTemplate DeleteSNSTextTemplateParamDetail `json:"deleteSNSTextTemplate"`
+	Params DeleteSNSTextTemplateParamDetail `json:"deleteSNSTextTemplate"`
 }

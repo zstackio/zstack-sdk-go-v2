@@ -17,5 +17,5 @@ type UpdateUsbDeviceParamDetail struct {
 // UpdateUsbDeviceParam UpdateUsbDevice request param
 type UpdateUsbDeviceParam struct {
 	BaseParam
-	UpdateUsbDevice UpdateUsbDeviceParamDetail `json:"updateUsbDevice"`
+	Params UpdateUsbDeviceParamDetail `json:"updateUsbDevice"`
 }

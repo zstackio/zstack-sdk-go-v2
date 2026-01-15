@@ -35,7 +35,7 @@ func TestGetAccountPriceTableRef(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetAccountPriceTableRef(*list[0].AccountUuid)
+	result, err := accountLoginCli.GetAccountPriceTableRef(list[0].AccountUuid)
 	if err != nil {
 		t.Errorf("TestGetAccountPriceTableRef error: %v", err)
 		return

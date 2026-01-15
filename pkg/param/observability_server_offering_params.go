@@ -28,5 +28,5 @@ type CreateObservabilityServerOfferingParamDetail struct {
 // CreateObservabilityServerOfferingParam CreateObservabilityServerOffering request param
 type CreateObservabilityServerOfferingParam struct {
 	BaseParam
-	CreateObservabilityServerOffering CreateObservabilityServerOfferingParamDetail `json:"createObservabilityServerOffering"`
+	Params CreateObservabilityServerOfferingParamDetail `json:"createObservabilityServerOffering"`
 }

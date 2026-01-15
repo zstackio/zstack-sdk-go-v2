@@ -23,7 +23,7 @@ type CreateSnmpAgentParamDetail struct {
 // CreateSnmpAgentParam CreateSnmpAgent request param
 type CreateSnmpAgentParam struct {
 	BaseParam
-	CreateSnmpAgent CreateSnmpAgentParamDetail `json:"createSnmpAgent"`
+	Params CreateSnmpAgentParamDetail `json:"createSnmpAgent"`
 }
 // StartSnmpAgentParamDetail StartSnmpAgent detail param
 type StartSnmpAgentParamDetail struct {
@@ -33,7 +33,7 @@ type StartSnmpAgentParamDetail struct {
 // StartSnmpAgentParam StartSnmpAgent request param
 type StartSnmpAgentParam struct {
 	BaseParam
-	StartSnmpAgent StartSnmpAgentParamDetail `json:"startSnmpAgent"`
+	Params StartSnmpAgentParamDetail `json:"startSnmpAgent"`
 }
 // StopSnmpAgentParamDetail StopSnmpAgent detail param
 type StopSnmpAgentParamDetail struct {
@@ -43,7 +43,7 @@ type StopSnmpAgentParamDetail struct {
 // StopSnmpAgentParam StopSnmpAgent request param
 type StopSnmpAgentParam struct {
 	BaseParam
-	StopSnmpAgent StopSnmpAgentParamDetail `json:"stopSnmpAgent"`
+	Params StopSnmpAgentParamDetail `json:"stopSnmpAgent"`
 }
 // UpdateSnmpAgentParamDetail UpdateSnmpAgent detail param
 type UpdateSnmpAgentParamDetail struct {
@@ -61,5 +61,5 @@ type UpdateSnmpAgentParamDetail struct {
 // UpdateSnmpAgentParam UpdateSnmpAgent request param
 type UpdateSnmpAgentParam struct {
 	BaseParam
-	UpdateSnmpAgent UpdateSnmpAgentParamDetail `json:"updateSnmpAgent"`
+	Params UpdateSnmpAgentParamDetail `json:"updateSnmpAgent"`
 }

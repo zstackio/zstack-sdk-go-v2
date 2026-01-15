@@ -14,5 +14,5 @@ type ReconnectZdfsParamDetail struct {
 // ReconnectZdfsParam ReconnectZdfs request param
 type ReconnectZdfsParam struct {
 	BaseParam
-	ReconnectZdfs ReconnectZdfsParamDetail `json:"reconnectZdfs"`
+	Params ReconnectZdfsParamDetail `json:"reconnectZdfs"`
 }

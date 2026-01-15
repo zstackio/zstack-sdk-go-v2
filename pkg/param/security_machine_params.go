@@ -15,7 +15,7 @@ type DeleteSecurityMachineParamDetail struct {
 // DeleteSecurityMachineParam DeleteSecurityMachine request param
 type DeleteSecurityMachineParam struct {
 	BaseParam
-	DeleteSecurityMachine DeleteSecurityMachineParamDetail `json:"deleteSecurityMachine"`
+	Params DeleteSecurityMachineParamDetail `json:"deleteSecurityMachine"`
 }
 // UpdateSecurityMachineParamDetail UpdateSecurityMachine detail param
 type UpdateSecurityMachineParamDetail struct {
@@ -29,5 +29,5 @@ type UpdateSecurityMachineParamDetail struct {
 // UpdateSecurityMachineParam UpdateSecurityMachine request param
 type UpdateSecurityMachineParam struct {
 	BaseParam
-	UpdateSecurityMachine UpdateSecurityMachineParamDetail `json:"updateSecurityMachine"`
+	Params UpdateSecurityMachineParamDetail `json:"updateSecurityMachine"`
 }

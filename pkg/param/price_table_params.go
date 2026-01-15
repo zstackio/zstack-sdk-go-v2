@@ -18,7 +18,7 @@ type CreatePriceTableParamDetail struct {
 // CreatePriceTableParam CreatePriceTable request param
 type CreatePriceTableParam struct {
 	BaseParam
-	CreatePriceTable CreatePriceTableParamDetail `json:"createPriceTable"`
+	Params CreatePriceTableParamDetail `json:"createPriceTable"`
 }
 // UpdatePriceTableParamDetail UpdatePriceTable detail param
 type UpdatePriceTableParamDetail struct {
@@ -30,7 +30,7 @@ type UpdatePriceTableParamDetail struct {
 // UpdatePriceTableParam UpdatePriceTable request param
 type UpdatePriceTableParam struct {
 	BaseParam
-	UpdatePriceTable UpdatePriceTableParamDetail `json:"updatePriceTable"`
+	Params UpdatePriceTableParamDetail `json:"updatePriceTable"`
 }
 // DeletePriceTableParamDetail DeletePriceTable detail param
 type DeletePriceTableParamDetail struct {
@@ -41,5 +41,5 @@ type DeletePriceTableParamDetail struct {
 // DeletePriceTableParam DeletePriceTable request param
 type DeletePriceTableParam struct {
 	BaseParam
-	DeletePriceTable DeletePriceTableParamDetail `json:"deletePriceTable"`
+	Params DeletePriceTableParamDetail `json:"deletePriceTable"`
 }

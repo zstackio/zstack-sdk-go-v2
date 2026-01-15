@@ -59,7 +59,7 @@ func TestDeleteBuildAppExportHistory(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteBuildAppExportHistory(*list[0].BuildAppUuid, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteBuildAppExportHistory(list[0].BuildAppUuid, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteBuildAppExportHistory error: %v", err)
 		return

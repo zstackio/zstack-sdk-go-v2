@@ -21,5 +21,5 @@ type AddMiniStorageParamDetail struct {
 // AddMiniStorageParam AddMiniStorage request param
 type AddMiniStorageParam struct {
 	BaseParam
-	AddMiniStorage AddMiniStorageParamDetail `json:"addMiniStorage"`
+	Params AddMiniStorageParamDetail `json:"addMiniStorage"`
 }

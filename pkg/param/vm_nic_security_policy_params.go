@@ -16,5 +16,5 @@ type ChangeVmNicSecurityPolicyParamDetail struct {
 // ChangeVmNicSecurityPolicyParam ChangeVmNicSecurityPolicy request param
 type ChangeVmNicSecurityPolicyParam struct {
 	BaseParam
-	ChangeVmNicSecurityPolicy ChangeVmNicSecurityPolicyParamDetail `json:"changeVmNicSecurityPolicy"`
+	Params ChangeVmNicSecurityPolicyParamDetail `json:"changeVmNicSecurityPolicy"`
 }

@@ -21,7 +21,7 @@ type AddEventRuleTemplateParamDetail struct {
 // AddEventRuleTemplateParam AddEventRuleTemplate request param
 type AddEventRuleTemplateParam struct {
 	BaseParam
-	AddEventRuleTemplate AddEventRuleTemplateParamDetail `json:"addEventRuleTemplate"`
+	Params AddEventRuleTemplateParamDetail `json:"addEventRuleTemplate"`
 }
 // DeleteEventRuleTemplateParamDetail DeleteEventRuleTemplate detail param
 type DeleteEventRuleTemplateParamDetail struct {
@@ -32,7 +32,7 @@ type DeleteEventRuleTemplateParamDetail struct {
 // DeleteEventRuleTemplateParam DeleteEventRuleTemplate request param
 type DeleteEventRuleTemplateParam struct {
 	BaseParam
-	DeleteEventRuleTemplate DeleteEventRuleTemplateParamDetail `json:"deleteEventRuleTemplate"`
+	Params DeleteEventRuleTemplateParamDetail `json:"deleteEventRuleTemplate"`
 }
 // UpdateEventRuleTemplateParamDetail UpdateEventRuleTemplate detail param
 type UpdateEventRuleTemplateParamDetail struct {
@@ -45,5 +45,5 @@ type UpdateEventRuleTemplateParamDetail struct {
 // UpdateEventRuleTemplateParam UpdateEventRuleTemplate request param
 type UpdateEventRuleTemplateParam struct {
 	BaseParam
-	UpdateEventRuleTemplate UpdateEventRuleTemplateParamDetail `json:"updateEventRuleTemplate"`
+	Params UpdateEventRuleTemplateParamDetail `json:"updateEventRuleTemplate"`
 }

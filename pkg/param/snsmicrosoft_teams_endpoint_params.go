@@ -18,7 +18,7 @@ type UpdateSNSMicrosoftTeamsEndpointParamDetail struct {
 // UpdateSNSMicrosoftTeamsEndpointParam UpdateSNSMicrosoftTeamsEndpoint request param
 type UpdateSNSMicrosoftTeamsEndpointParam struct {
 	BaseParam
-	UpdateSNSMicrosoftTeamsEndpoint UpdateSNSMicrosoftTeamsEndpointParamDetail `json:"updateSNSMicrosoftTeamsEndpoint"`
+	Params UpdateSNSMicrosoftTeamsEndpointParamDetail `json:"updateSNSMicrosoftTeamsEndpoint"`
 }
 // CreateSNSMicrosoftTeamsEndpointParamDetail CreateSNSMicrosoftTeamsEndpoint detail param
 type CreateSNSMicrosoftTeamsEndpointParamDetail struct {
@@ -33,5 +33,5 @@ type CreateSNSMicrosoftTeamsEndpointParamDetail struct {
 // CreateSNSMicrosoftTeamsEndpointParam CreateSNSMicrosoftTeamsEndpoint request param
 type CreateSNSMicrosoftTeamsEndpointParam struct {
 	BaseParam
-	CreateSNSMicrosoftTeamsEndpoint CreateSNSMicrosoftTeamsEndpointParamDetail `json:"createSNSMicrosoftTeamsEndpoint"`
+	Params CreateSNSMicrosoftTeamsEndpointParamDetail `json:"createSNSMicrosoftTeamsEndpoint"`
 }

@@ -19,7 +19,7 @@ type CreateSecurityGroupParamDetail struct {
 // CreateSecurityGroupParam CreateSecurityGroup request param
 type CreateSecurityGroupParam struct {
 	BaseParam
-	CreateSecurityGroup CreateSecurityGroupParamDetail `json:"createSecurityGroup"`
+	Params CreateSecurityGroupParamDetail `json:"createSecurityGroup"`
 }
 // DeleteSecurityGroupParamDetail DeleteSecurityGroup detail param
 type DeleteSecurityGroupParamDetail struct {
@@ -30,7 +30,7 @@ type DeleteSecurityGroupParamDetail struct {
 // DeleteSecurityGroupParam DeleteSecurityGroup request param
 type DeleteSecurityGroupParam struct {
 	BaseParam
-	DeleteSecurityGroup DeleteSecurityGroupParamDetail `json:"deleteSecurityGroup"`
+	Params DeleteSecurityGroupParamDetail `json:"deleteSecurityGroup"`
 }
 // UpdateSecurityGroupParamDetail UpdateSecurityGroup detail param
 type UpdateSecurityGroupParamDetail struct {
@@ -42,5 +42,5 @@ type UpdateSecurityGroupParamDetail struct {
 // UpdateSecurityGroupParam UpdateSecurityGroup request param
 type UpdateSecurityGroupParam struct {
 	BaseParam
-	UpdateSecurityGroup UpdateSecurityGroupParamDetail `json:"updateSecurityGroup"`
+	Params UpdateSecurityGroupParamDetail `json:"updateSecurityGroup"`
 }

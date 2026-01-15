@@ -19,7 +19,7 @@ type UpdateFiSecSecurityMachineParamDetail struct {
 // UpdateFiSecSecurityMachineParam UpdateFiSecSecurityMachine request param
 type UpdateFiSecSecurityMachineParam struct {
 	BaseParam
-	UpdateFiSecSecurityMachine UpdateFiSecSecurityMachineParamDetail `json:"updateFiSecSecurityMachine"`
+	Params UpdateFiSecSecurityMachineParamDetail `json:"updateFiSecSecurityMachine"`
 }
 // AddFiSecSecurityMachineParamDetail AddFiSecSecurityMachine detail param
 type AddFiSecSecurityMachineParamDetail struct {
@@ -38,5 +38,5 @@ type AddFiSecSecurityMachineParamDetail struct {
 // AddFiSecSecurityMachineParam AddFiSecSecurityMachine request param
 type AddFiSecSecurityMachineParam struct {
 	BaseParam
-	AddFiSecSecurityMachine AddFiSecSecurityMachineParamDetail `json:"addFiSecSecurityMachine"`
+	Params AddFiSecSecurityMachineParamDetail `json:"addFiSecSecurityMachine"`
 }

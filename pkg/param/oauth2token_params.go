@@ -13,5 +13,5 @@ type GetOAuth2TokenParamDetail struct {
 // GetOAuth2TokenParam GetOAuth2Token request param
 type GetOAuth2TokenParam struct {
 	BaseParam
-	GetOAuth2Token GetOAuth2TokenParamDetail `json:"getOAuth2Token"`
+	Params GetOAuth2TokenParamDetail `json:"getOAuth2Token"`
 }

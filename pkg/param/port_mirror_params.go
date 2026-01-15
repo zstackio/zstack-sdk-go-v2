@@ -19,7 +19,7 @@ type CreatePortMirrorParamDetail struct {
 // CreatePortMirrorParam CreatePortMirror request param
 type CreatePortMirrorParam struct {
 	BaseParam
-	CreatePortMirror CreatePortMirrorParamDetail `json:"createPortMirror"`
+	Params CreatePortMirrorParamDetail `json:"createPortMirror"`
 }
 // DeletePortMirrorParamDetail DeletePortMirror detail param
 type DeletePortMirrorParamDetail struct {
@@ -30,7 +30,7 @@ type DeletePortMirrorParamDetail struct {
 // DeletePortMirrorParam DeletePortMirror request param
 type DeletePortMirrorParam struct {
 	BaseParam
-	DeletePortMirror DeletePortMirrorParamDetail `json:"deletePortMirror"`
+	Params DeletePortMirrorParamDetail `json:"deletePortMirror"`
 }
 // UpdatePortMirrorParamDetail UpdatePortMirror detail param
 type UpdatePortMirrorParamDetail struct {
@@ -42,5 +42,5 @@ type UpdatePortMirrorParamDetail struct {
 // UpdatePortMirrorParam UpdatePortMirror request param
 type UpdatePortMirrorParam struct {
 	BaseParam
-	UpdatePortMirror UpdatePortMirrorParamDetail `json:"updatePortMirror"`
+	Params UpdatePortMirrorParamDetail `json:"updatePortMirror"`
 }

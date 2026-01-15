@@ -26,5 +26,5 @@ type CreateSlbOfferingParamDetail struct {
 // CreateSlbOfferingParam CreateSlbOffering request param
 type CreateSlbOfferingParam struct {
 	BaseParam
-	CreateSlbOffering CreateSlbOfferingParamDetail `json:"createSlbOffering"`
+	Params CreateSlbOfferingParamDetail `json:"createSlbOffering"`
 }

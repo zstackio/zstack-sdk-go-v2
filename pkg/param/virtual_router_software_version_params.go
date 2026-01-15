@@ -16,7 +16,7 @@ type GetVirtualRouterSoftwareVersionParamDetail struct {
 // GetVirtualRouterSoftwareVersionParam GetVirtualRouterSoftwareVersion request param
 type GetVirtualRouterSoftwareVersionParam struct {
 	BaseParam
-	GetVirtualRouterSoftwareVersion GetVirtualRouterSoftwareVersionParamDetail `json:"getVirtualRouterSoftwareVersion"`
+	Params GetVirtualRouterSoftwareVersionParamDetail `json:"getVirtualRouterSoftwareVersion"`
 }
 // UpdateVirtualRouterSoftwareVersionParamDetail UpdateVirtualRouterSoftwareVersion detail param
 type UpdateVirtualRouterSoftwareVersionParamDetail struct {
@@ -28,5 +28,5 @@ type UpdateVirtualRouterSoftwareVersionParamDetail struct {
 // UpdateVirtualRouterSoftwareVersionParam UpdateVirtualRouterSoftwareVersion request param
 type UpdateVirtualRouterSoftwareVersionParam struct {
 	BaseParam
-	UpdateVirtualRouterSoftwareVersion UpdateVirtualRouterSoftwareVersionParamDetail `json:"updateVirtualRouterSoftwareVersion"`
+	Params UpdateVirtualRouterSoftwareVersionParamDetail `json:"updateVirtualRouterSoftwareVersion"`
 }

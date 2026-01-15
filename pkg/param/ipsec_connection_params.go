@@ -14,7 +14,7 @@ type ReconnectIPsecConnectionParamDetail struct {
 // ReconnectIPsecConnectionParam ReconnectIPsecConnection request param
 type ReconnectIPsecConnectionParam struct {
 	BaseParam
-	ReconnectIPsecConnection ReconnectIPsecConnectionParamDetail `json:"reconnectIPsecConnection"`
+	Params ReconnectIPsecConnectionParamDetail `json:"reconnectIPsecConnection"`
 }
 // UpdateIPsecConnectionParamDetail UpdateIPsecConnection detail param
 type UpdateIPsecConnectionParamDetail struct {
@@ -26,7 +26,7 @@ type UpdateIPsecConnectionParamDetail struct {
 // UpdateIPsecConnectionParam UpdateIPsecConnection request param
 type UpdateIPsecConnectionParam struct {
 	BaseParam
-	UpdateIPsecConnection UpdateIPsecConnectionParamDetail `json:"updateIPsecConnection"`
+	Params UpdateIPsecConnectionParamDetail `json:"updateIPsecConnection"`
 }
 // DeleteIPsecConnectionParamDetail DeleteIPsecConnection detail param
 type DeleteIPsecConnectionParamDetail struct {
@@ -37,7 +37,7 @@ type DeleteIPsecConnectionParamDetail struct {
 // DeleteIPsecConnectionParam DeleteIPsecConnection request param
 type DeleteIPsecConnectionParam struct {
 	BaseParam
-	DeleteIPsecConnection DeleteIPsecConnectionParamDetail `json:"deleteIPsecConnection"`
+	Params DeleteIPsecConnectionParamDetail `json:"deleteIPsecConnection"`
 }
 // CreateIPsecConnectionParamDetail CreateIPsecConnection detail param
 type CreateIPsecConnectionParamDetail struct {
@@ -70,7 +70,7 @@ type CreateIPsecConnectionParamDetail struct {
 // CreateIPsecConnectionParam CreateIPsecConnection request param
 type CreateIPsecConnectionParam struct {
 	BaseParam
-	CreateIPsecConnection CreateIPsecConnectionParamDetail `json:"createIPsecConnection"`
+	Params CreateIPsecConnectionParamDetail `json:"createIPsecConnection"`
 }
 // ChangeIPsecConnectionParamDetail ChangeIPsecConnection detail param
 type ChangeIPsecConnectionParamDetail struct {
@@ -97,5 +97,5 @@ type ChangeIPsecConnectionParamDetail struct {
 // ChangeIPsecConnectionParam ChangeIPsecConnection request param
 type ChangeIPsecConnectionParam struct {
 	BaseParam
-	ChangeIPsecConnection ChangeIPsecConnectionParamDetail `json:"changeIPsecConnection"`
+	Params ChangeIPsecConnectionParamDetail `json:"changeIPsecConnection"`
 }

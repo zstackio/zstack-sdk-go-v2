@@ -16,5 +16,5 @@ type UpdateEcsSecurityGroupParamDetail struct {
 // UpdateEcsSecurityGroupParam UpdateEcsSecurityGroup request param
 type UpdateEcsSecurityGroupParam struct {
 	BaseParam
-	UpdateEcsSecurityGroup UpdateEcsSecurityGroupParamDetail `json:"updateEcsSecurityGroup"`
+	Params UpdateEcsSecurityGroupParamDetail `json:"updateEcsSecurityGroup"`
 }

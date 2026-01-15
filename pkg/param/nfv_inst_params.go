@@ -21,7 +21,7 @@ type CreateNfvInstParamDetail struct {
 // CreateNfvInstParam CreateNfvInst request param
 type CreateNfvInstParam struct {
 	BaseParam
-	CreateNfvInst CreateNfvInstParamDetail `json:"createNfvInst"`
+	Params CreateNfvInstParamDetail `json:"createNfvInst"`
 }
 // ReconnectNfvInstParamDetail ReconnectNfvInst detail param
 type ReconnectNfvInstParamDetail struct {
@@ -31,5 +31,5 @@ type ReconnectNfvInstParamDetail struct {
 // ReconnectNfvInstParam ReconnectNfvInst request param
 type ReconnectNfvInstParam struct {
 	BaseParam
-	ReconnectNfvInst ReconnectNfvInstParamDetail `json:"reconnectNfvInst"`
+	Params ReconnectNfvInstParamDetail `json:"reconnectNfvInst"`
 }

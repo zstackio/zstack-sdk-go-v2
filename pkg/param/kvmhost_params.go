@@ -22,7 +22,7 @@ type AddKVMHostParamDetail struct {
 // AddKVMHostParam AddKVMHost request param
 type AddKVMHostParam struct {
 	BaseParam
-	AddKVMHost AddKVMHostParamDetail `json:"addKVMHost"`
+	Params AddKVMHostParamDetail `json:"addKVMHost"`
 }
 // UpdateKVMHostParamDetail UpdateKVMHost detail param
 type UpdateKVMHostParamDetail struct {
@@ -38,5 +38,5 @@ type UpdateKVMHostParamDetail struct {
 // UpdateKVMHostParam UpdateKVMHost request param
 type UpdateKVMHostParam struct {
 	BaseParam
-	UpdateKVMHost UpdateKVMHostParamDetail `json:"updateKVMHost"`
+	Params UpdateKVMHostParamDetail `json:"updateKVMHost"`
 }

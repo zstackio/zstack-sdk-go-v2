@@ -23,7 +23,7 @@ type CreateCasClientParamDetail struct {
 // CreateCasClientParam CreateCasClient request param
 type CreateCasClientParam struct {
 	BaseParam
-	CreateCasClient CreateCasClientParamDetail `json:"createCasClient"`
+	Params CreateCasClientParamDetail `json:"createCasClient"`
 }
 // UpdateCasClientParamDetail UpdateCasClient detail param
 type UpdateCasClientParamDetail struct {
@@ -39,5 +39,5 @@ type UpdateCasClientParamDetail struct {
 // UpdateCasClientParam UpdateCasClient request param
 type UpdateCasClientParam struct {
 	BaseParam
-	UpdateCasClient UpdateCasClientParamDetail `json:"updateCasClient"`
+	Params UpdateCasClientParamDetail `json:"updateCasClient"`
 }

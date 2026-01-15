@@ -16,5 +16,5 @@ type UpdateAliyunSnapshotParamDetail struct {
 // UpdateAliyunSnapshotParam UpdateAliyunSnapshot request param
 type UpdateAliyunSnapshotParam struct {
 	BaseParam
-	UpdateAliyunSnapshot UpdateAliyunSnapshotParamDetail `json:"updateAliyunSnapshot"`
+	Params UpdateAliyunSnapshotParamDetail `json:"updateAliyunSnapshot"`
 }

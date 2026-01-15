@@ -24,7 +24,7 @@ type CreateVolumeBackupParamDetail struct {
 // CreateVolumeBackupParam CreateVolumeBackup request param
 type CreateVolumeBackupParam struct {
 	BaseParam
-	CreateVolumeBackup CreateVolumeBackupParamDetail `json:"createVolumeBackup"`
+	Params CreateVolumeBackupParamDetail `json:"createVolumeBackup"`
 }
 // SyncVolumeBackupParamDetail SyncVolumeBackup detail param
 type SyncVolumeBackupParamDetail struct {
@@ -34,7 +34,7 @@ type SyncVolumeBackupParamDetail struct {
 // SyncVolumeBackupParam SyncVolumeBackup request param
 type SyncVolumeBackupParam struct {
 	BaseParam
-	SyncVolumeBackup SyncVolumeBackupParamDetail `json:"syncVolumeBackup"`
+	Params SyncVolumeBackupParamDetail `json:"syncVolumeBackup"`
 }
 // DeleteVolumeBackupParamDetail DeleteVolumeBackup detail param
 type DeleteVolumeBackupParamDetail struct {
@@ -47,5 +47,5 @@ type DeleteVolumeBackupParamDetail struct {
 // DeleteVolumeBackupParam DeleteVolumeBackup request param
 type DeleteVolumeBackupParam struct {
 	BaseParam
-	DeleteVolumeBackup DeleteVolumeBackupParamDetail `json:"deleteVolumeBackup"`
+	Params DeleteVolumeBackupParamDetail `json:"deleteVolumeBackup"`
 }

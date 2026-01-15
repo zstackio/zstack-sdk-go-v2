@@ -15,7 +15,7 @@ type DeleteGuestVmScriptParamDetail struct {
 // DeleteGuestVmScriptParam DeleteGuestVmScript request param
 type DeleteGuestVmScriptParam struct {
 	BaseParam
-	DeleteGuestVmScript DeleteGuestVmScriptParamDetail `json:"deleteGuestVmScript"`
+	Params DeleteGuestVmScriptParamDetail `json:"deleteGuestVmScript"`
 }
 // CreateGuestVmScriptParamDetail CreateGuestVmScript detail param
 type CreateGuestVmScriptParamDetail struct {
@@ -34,7 +34,7 @@ type CreateGuestVmScriptParamDetail struct {
 // CreateGuestVmScriptParam CreateGuestVmScript request param
 type CreateGuestVmScriptParam struct {
 	BaseParam
-	CreateGuestVmScript CreateGuestVmScriptParamDetail `json:"createGuestVmScript"`
+	Params CreateGuestVmScriptParamDetail `json:"createGuestVmScript"`
 }
 // UpdateGuestVmScriptParamDetail UpdateGuestVmScript detail param
 type UpdateGuestVmScriptParamDetail struct {
@@ -52,5 +52,5 @@ type UpdateGuestVmScriptParamDetail struct {
 // UpdateGuestVmScriptParam UpdateGuestVmScript request param
 type UpdateGuestVmScriptParam struct {
 	BaseParam
-	UpdateGuestVmScript UpdateGuestVmScriptParamDetail `json:"updateGuestVmScript"`
+	Params UpdateGuestVmScriptParamDetail `json:"updateGuestVmScript"`
 }

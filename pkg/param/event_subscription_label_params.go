@@ -17,5 +17,5 @@ type UpdateEventSubscriptionLabelParamDetail struct {
 // UpdateEventSubscriptionLabelParam UpdateEventSubscriptionLabel request param
 type UpdateEventSubscriptionLabelParam struct {
 	BaseParam
-	UpdateEventSubscriptionLabel UpdateEventSubscriptionLabelParamDetail `json:"updateEventSubscriptionLabel"`
+	Params UpdateEventSubscriptionLabelParamDetail `json:"updateEventSubscriptionLabel"`
 }

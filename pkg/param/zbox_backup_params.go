@@ -21,5 +21,5 @@ type CreateZBoxBackupParamDetail struct {
 // CreateZBoxBackupParam CreateZBoxBackup request param
 type CreateZBoxBackupParam struct {
 	BaseParam
-	CreateZBoxBackup CreateZBoxBackupParamDetail `json:"createZBoxBackup"`
+	Params CreateZBoxBackupParamDetail `json:"createZBoxBackup"`
 }

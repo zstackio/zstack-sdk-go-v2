@@ -15,7 +15,7 @@ type DeleteDiskOfferingParamDetail struct {
 // DeleteDiskOfferingParam DeleteDiskOffering request param
 type DeleteDiskOfferingParam struct {
 	BaseParam
-	DeleteDiskOffering DeleteDiskOfferingParamDetail `json:"deleteDiskOffering"`
+	Params DeleteDiskOfferingParamDetail `json:"deleteDiskOffering"`
 }
 // CreateDiskOfferingParamDetail CreateDiskOffering detail param
 type CreateDiskOfferingParamDetail struct {
@@ -32,7 +32,7 @@ type CreateDiskOfferingParamDetail struct {
 // CreateDiskOfferingParam CreateDiskOffering request param
 type CreateDiskOfferingParam struct {
 	BaseParam
-	CreateDiskOffering CreateDiskOfferingParamDetail `json:"createDiskOffering"`
+	Params CreateDiskOfferingParamDetail `json:"createDiskOffering"`
 }
 // UpdateDiskOfferingParamDetail UpdateDiskOffering detail param
 type UpdateDiskOfferingParamDetail struct {
@@ -44,5 +44,5 @@ type UpdateDiskOfferingParamDetail struct {
 // UpdateDiskOfferingParam UpdateDiskOffering request param
 type UpdateDiskOfferingParam struct {
 	BaseParam
-	UpdateDiskOffering UpdateDiskOfferingParamDetail `json:"updateDiskOffering"`
+	Params UpdateDiskOfferingParamDetail `json:"updateDiskOffering"`
 }

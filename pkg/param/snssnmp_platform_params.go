@@ -18,7 +18,7 @@ type UpdateSNSSnmpPlatformParamDetail struct {
 // UpdateSNSSnmpPlatformParam UpdateSNSSnmpPlatform request param
 type UpdateSNSSnmpPlatformParam struct {
 	BaseParam
-	UpdateSNSSnmpPlatform UpdateSNSSnmpPlatformParamDetail `json:"updateSNSSnmpPlatform"`
+	Params UpdateSNSSnmpPlatformParamDetail `json:"updateSNSSnmpPlatform"`
 }
 // CreateSNSSnmpPlatformParamDetail CreateSNSSnmpPlatform detail param
 type CreateSNSSnmpPlatformParamDetail struct {
@@ -33,5 +33,5 @@ type CreateSNSSnmpPlatformParamDetail struct {
 // CreateSNSSnmpPlatformParam CreateSNSSnmpPlatform request param
 type CreateSNSSnmpPlatformParam struct {
 	BaseParam
-	CreateSNSSnmpPlatform CreateSNSSnmpPlatformParamDetail `json:"createSNSSnmpPlatform"`
+	Params CreateSNSSnmpPlatformParamDetail `json:"createSNSSnmpPlatform"`
 }

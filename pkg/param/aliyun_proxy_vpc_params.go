@@ -20,7 +20,7 @@ type CreateAliyunProxyVpcParamDetail struct {
 // CreateAliyunProxyVpcParam CreateAliyunProxyVpc request param
 type CreateAliyunProxyVpcParam struct {
 	BaseParam
-	CreateAliyunProxyVpc CreateAliyunProxyVpcParamDetail `json:"createAliyunProxyVpc"`
+	Params CreateAliyunProxyVpcParamDetail `json:"createAliyunProxyVpc"`
 }
 // UpdateAliyunProxyVpcParamDetail UpdateAliyunProxyVpc detail param
 type UpdateAliyunProxyVpcParamDetail struct {
@@ -34,7 +34,7 @@ type UpdateAliyunProxyVpcParamDetail struct {
 // UpdateAliyunProxyVpcParam UpdateAliyunProxyVpc request param
 type UpdateAliyunProxyVpcParam struct {
 	BaseParam
-	UpdateAliyunProxyVpc UpdateAliyunProxyVpcParamDetail `json:"updateAliyunProxyVpc"`
+	Params UpdateAliyunProxyVpcParamDetail `json:"updateAliyunProxyVpc"`
 }
 // DeleteAliyunProxyVpcParamDetail DeleteAliyunProxyVpc detail param
 type DeleteAliyunProxyVpcParamDetail struct {
@@ -45,5 +45,5 @@ type DeleteAliyunProxyVpcParamDetail struct {
 // DeleteAliyunProxyVpcParam DeleteAliyunProxyVpc request param
 type DeleteAliyunProxyVpcParam struct {
 	BaseParam
-	DeleteAliyunProxyVpc DeleteAliyunProxyVpcParamDetail `json:"deleteAliyunProxyVpc"`
+	Params DeleteAliyunProxyVpcParamDetail `json:"deleteAliyunProxyVpc"`
 }

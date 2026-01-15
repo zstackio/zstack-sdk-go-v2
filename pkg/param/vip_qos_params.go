@@ -15,7 +15,7 @@ type DeleteVipQosParamDetail struct {
 // DeleteVipQosParam DeleteVipQos request param
 type DeleteVipQosParam struct {
 	BaseParam
-	DeleteVipQos DeleteVipQosParamDetail `json:"deleteVipQos"`
+	Params DeleteVipQosParamDetail `json:"deleteVipQos"`
 }
 // SetVipQosParamDetail SetVipQos detail param
 type SetVipQosParamDetail struct {
@@ -28,7 +28,7 @@ type SetVipQosParamDetail struct {
 // SetVipQosParam SetVipQos request param
 type SetVipQosParam struct {
 	BaseParam
-	SetVipQos SetVipQosParamDetail `json:"setVipQos"`
+	Params SetVipQosParamDetail `json:"setVipQos"`
 }
 // GetVipQosParamDetail GetVipQos detail param
 type GetVipQosParamDetail struct {
@@ -38,5 +38,5 @@ type GetVipQosParamDetail struct {
 // GetVipQosParam GetVipQos request param
 type GetVipQosParam struct {
 	BaseParam
-	GetVipQos GetVipQosParamDetail `json:"getVipQos"`
+	Params GetVipQosParamDetail `json:"getVipQos"`
 }

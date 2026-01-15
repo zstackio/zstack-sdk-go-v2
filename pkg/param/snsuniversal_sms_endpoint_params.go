@@ -19,7 +19,7 @@ type UpdateSNSUniversalSmsEndpointParamDetail struct {
 // UpdateSNSUniversalSmsEndpointParam UpdateSNSUniversalSmsEndpoint request param
 type UpdateSNSUniversalSmsEndpointParam struct {
 	BaseParam
-	UpdateSNSUniversalSmsEndpoint UpdateSNSUniversalSmsEndpointParamDetail `json:"updateSNSUniversalSmsEndpoint"`
+	Params UpdateSNSUniversalSmsEndpointParamDetail `json:"updateSNSUniversalSmsEndpoint"`
 }
 // CreateSNSUniversalSmsEndpointParamDetail CreateSNSUniversalSmsEndpoint detail param
 type CreateSNSUniversalSmsEndpointParamDetail struct {
@@ -37,7 +37,7 @@ type CreateSNSUniversalSmsEndpointParamDetail struct {
 // CreateSNSUniversalSmsEndpointParam CreateSNSUniversalSmsEndpoint request param
 type CreateSNSUniversalSmsEndpointParam struct {
 	BaseParam
-	CreateSNSUniversalSmsEndpoint CreateSNSUniversalSmsEndpointParamDetail `json:"createSNSUniversalSmsEndpoint"`
+	Params CreateSNSUniversalSmsEndpointParamDetail `json:"createSNSUniversalSmsEndpoint"`
 }
 // ValidateSNSUniversalSmsEndpointParamDetail ValidateSNSUniversalSmsEndpoint detail param
 type ValidateSNSUniversalSmsEndpointParamDetail struct {
@@ -49,5 +49,5 @@ type ValidateSNSUniversalSmsEndpointParamDetail struct {
 // ValidateSNSUniversalSmsEndpointParam ValidateSNSUniversalSmsEndpoint request param
 type ValidateSNSUniversalSmsEndpointParam struct {
 	BaseParam
-	ValidateSNSUniversalSmsEndpoint ValidateSNSUniversalSmsEndpointParamDetail `json:"validateSNSUniversalSmsEndpoint"`
+	Params ValidateSNSUniversalSmsEndpointParamDetail `json:"validateSNSUniversalSmsEndpoint"`
 }

@@ -16,7 +16,7 @@ type UpdateVolumeSnapshotParamDetail struct {
 // UpdateVolumeSnapshotParam UpdateVolumeSnapshot request param
 type UpdateVolumeSnapshotParam struct {
 	BaseParam
-	UpdateVolumeSnapshot UpdateVolumeSnapshotParamDetail `json:"updateVolumeSnapshot"`
+	Params UpdateVolumeSnapshotParamDetail `json:"updateVolumeSnapshot"`
 }
 // DeleteVolumeSnapshotParamDetail DeleteVolumeSnapshot detail param
 type DeleteVolumeSnapshotParamDetail struct {
@@ -29,7 +29,7 @@ type DeleteVolumeSnapshotParamDetail struct {
 // DeleteVolumeSnapshotParam DeleteVolumeSnapshot request param
 type DeleteVolumeSnapshotParam struct {
 	BaseParam
-	DeleteVolumeSnapshot DeleteVolumeSnapshotParamDetail `json:"deleteVolumeSnapshot"`
+	Params DeleteVolumeSnapshotParamDetail `json:"deleteVolumeSnapshot"`
 }
 // CreateVolumeSnapshotParamDetail CreateVolumeSnapshot detail param
 type CreateVolumeSnapshotParamDetail struct {
@@ -43,5 +43,5 @@ type CreateVolumeSnapshotParamDetail struct {
 // CreateVolumeSnapshotParam CreateVolumeSnapshot request param
 type CreateVolumeSnapshotParam struct {
 	BaseParam
-	CreateVolumeSnapshot CreateVolumeSnapshotParamDetail `json:"createVolumeSnapshot"`
+	Params CreateVolumeSnapshotParamDetail `json:"createVolumeSnapshot"`
 }

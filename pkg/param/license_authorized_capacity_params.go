@@ -15,5 +15,5 @@ type GetLicenseAuthorizedCapacityParamDetail struct {
 // GetLicenseAuthorizedCapacityParam GetLicenseAuthorizedCapacity request param
 type GetLicenseAuthorizedCapacityParam struct {
 	BaseParam
-	GetLicenseAuthorizedCapacity GetLicenseAuthorizedCapacityParamDetail `json:"getLicenseAuthorizedCapacity"`
+	Params GetLicenseAuthorizedCapacityParamDetail `json:"getLicenseAuthorizedCapacity"`
 }

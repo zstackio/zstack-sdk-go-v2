@@ -15,5 +15,5 @@ type DeleteExternalBackupParamDetail struct {
 // DeleteExternalBackupParam DeleteExternalBackup request param
 type DeleteExternalBackupParam struct {
 	BaseParam
-	DeleteExternalBackup DeleteExternalBackupParamDetail `json:"deleteExternalBackup"`
+	Params DeleteExternalBackupParamDetail `json:"deleteExternalBackup"`
 }

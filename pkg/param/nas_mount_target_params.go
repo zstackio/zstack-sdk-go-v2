@@ -16,7 +16,7 @@ type UpdateNasMountTargetParamDetail struct {
 // UpdateNasMountTargetParam UpdateNasMountTarget request param
 type UpdateNasMountTargetParam struct {
 	BaseParam
-	UpdateNasMountTarget UpdateNasMountTargetParamDetail `json:"updateNasMountTarget"`
+	Params UpdateNasMountTargetParamDetail `json:"updateNasMountTarget"`
 }
 // DeleteNasMountTargetParamDetail DeleteNasMountTarget detail param
 type DeleteNasMountTargetParamDetail struct {
@@ -27,5 +27,5 @@ type DeleteNasMountTargetParamDetail struct {
 // DeleteNasMountTargetParam DeleteNasMountTarget request param
 type DeleteNasMountTargetParam struct {
 	BaseParam
-	DeleteNasMountTarget DeleteNasMountTargetParamDetail `json:"deleteNasMountTarget"`
+	Params DeleteNasMountTargetParamDetail `json:"deleteNasMountTarget"`
 }

@@ -19,7 +19,7 @@ type CreateSSORedirectTemplateParamDetail struct {
 // CreateSSORedirectTemplateParam CreateSSORedirectTemplate request param
 type CreateSSORedirectTemplateParam struct {
 	BaseParam
-	CreateSSORedirectTemplate CreateSSORedirectTemplateParamDetail `json:"createSSORedirectTemplate"`
+	Params CreateSSORedirectTemplateParamDetail `json:"createSSORedirectTemplate"`
 }
 // UpdateSSORedirectTemplateParamDetail UpdateSSORedirectTemplate detail param
 type UpdateSSORedirectTemplateParamDetail struct {
@@ -30,7 +30,7 @@ type UpdateSSORedirectTemplateParamDetail struct {
 // UpdateSSORedirectTemplateParam UpdateSSORedirectTemplate request param
 type UpdateSSORedirectTemplateParam struct {
 	BaseParam
-	UpdateSSORedirectTemplate UpdateSSORedirectTemplateParamDetail `json:"updateSSORedirectTemplate"`
+	Params UpdateSSORedirectTemplateParamDetail `json:"updateSSORedirectTemplate"`
 }
 // DeleteSSORedirectTemplateParamDetail DeleteSSORedirectTemplate detail param
 type DeleteSSORedirectTemplateParamDetail struct {
@@ -41,5 +41,5 @@ type DeleteSSORedirectTemplateParamDetail struct {
 // DeleteSSORedirectTemplateParam DeleteSSORedirectTemplate request param
 type DeleteSSORedirectTemplateParam struct {
 	BaseParam
-	DeleteSSORedirectTemplate DeleteSSORedirectTemplateParamDetail `json:"deleteSSORedirectTemplate"`
+	Params DeleteSSORedirectTemplateParamDetail `json:"deleteSSORedirectTemplate"`
 }

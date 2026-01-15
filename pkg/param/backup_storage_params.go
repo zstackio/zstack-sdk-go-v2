@@ -16,7 +16,7 @@ type UpdateBackupStorageParamDetail struct {
 // UpdateBackupStorageParam UpdateBackupStorage request param
 type UpdateBackupStorageParam struct {
 	BaseParam
-	UpdateBackupStorage UpdateBackupStorageParamDetail `json:"updateBackupStorage"`
+	Params UpdateBackupStorageParamDetail `json:"updateBackupStorage"`
 }
 // DeleteBackupStorageParamDetail DeleteBackupStorage detail param
 type DeleteBackupStorageParamDetail struct {
@@ -27,7 +27,7 @@ type DeleteBackupStorageParamDetail struct {
 // DeleteBackupStorageParam DeleteBackupStorage request param
 type DeleteBackupStorageParam struct {
 	BaseParam
-	DeleteBackupStorage DeleteBackupStorageParamDetail `json:"deleteBackupStorage"`
+	Params DeleteBackupStorageParamDetail `json:"deleteBackupStorage"`
 }
 // ReconnectBackupStorageParamDetail ReconnectBackupStorage detail param
 type ReconnectBackupStorageParamDetail struct {
@@ -37,5 +37,5 @@ type ReconnectBackupStorageParamDetail struct {
 // ReconnectBackupStorageParam ReconnectBackupStorage request param
 type ReconnectBackupStorageParam struct {
 	BaseParam
-	ReconnectBackupStorage ReconnectBackupStorageParamDetail `json:"reconnectBackupStorage"`
+	Params ReconnectBackupStorageParamDetail `json:"reconnectBackupStorage"`
 }

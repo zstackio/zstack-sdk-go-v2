@@ -14,7 +14,7 @@ type GetZoneParamDetail struct {
 // GetZoneParam GetZone request param
 type GetZoneParam struct {
 	BaseParam
-	GetZone GetZoneParamDetail `json:"getZone"`
+	Params GetZoneParamDetail `json:"getZone"`
 }
 // CreateZoneParamDetail CreateZone detail param
 type CreateZoneParamDetail struct {
@@ -28,7 +28,7 @@ type CreateZoneParamDetail struct {
 // CreateZoneParam CreateZone request param
 type CreateZoneParam struct {
 	BaseParam
-	CreateZone CreateZoneParamDetail `json:"createZone"`
+	Params CreateZoneParamDetail `json:"createZone"`
 }
 // DeleteZoneParamDetail DeleteZone detail param
 type DeleteZoneParamDetail struct {
@@ -39,7 +39,7 @@ type DeleteZoneParamDetail struct {
 // DeleteZoneParam DeleteZone request param
 type DeleteZoneParam struct {
 	BaseParam
-	DeleteZone DeleteZoneParamDetail `json:"deleteZone"`
+	Params DeleteZoneParamDetail `json:"deleteZone"`
 }
 // UpdateZoneParamDetail UpdateZone detail param
 type UpdateZoneParamDetail struct {
@@ -52,5 +52,5 @@ type UpdateZoneParamDetail struct {
 // UpdateZoneParam UpdateZone request param
 type UpdateZoneParam struct {
 	BaseParam
-	UpdateZone UpdateZoneParamDetail `json:"updateZone"`
+	Params UpdateZoneParamDetail `json:"updateZone"`
 }

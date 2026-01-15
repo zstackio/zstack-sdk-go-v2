@@ -18,7 +18,7 @@ type UpdateAccountParamDetail struct {
 // UpdateAccountParam UpdateAccount request param
 type UpdateAccountParam struct {
 	BaseParam
-	UpdateAccount UpdateAccountParamDetail `json:"updateAccount"`
+	Params UpdateAccountParamDetail `json:"updateAccount"`
 }
 // DeleteAccountParamDetail DeleteAccount detail param
 type DeleteAccountParamDetail struct {
@@ -29,7 +29,7 @@ type DeleteAccountParamDetail struct {
 // DeleteAccountParam DeleteAccount request param
 type DeleteAccountParam struct {
 	BaseParam
-	DeleteAccount DeleteAccountParamDetail `json:"deleteAccount"`
+	Params DeleteAccountParamDetail `json:"deleteAccount"`
 }
 // CreateAccountParamDetail CreateAccount detail param
 type CreateAccountParamDetail struct {
@@ -44,5 +44,5 @@ type CreateAccountParamDetail struct {
 // CreateAccountParam CreateAccount request param
 type CreateAccountParam struct {
 	BaseParam
-	CreateAccount CreateAccountParamDetail `json:"createAccount"`
+	Params CreateAccountParamDetail `json:"createAccount"`
 }

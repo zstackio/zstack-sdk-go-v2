@@ -16,5 +16,5 @@ type AddZBoxParamDetail struct {
 // AddZBoxParam AddZBox request param
 type AddZBoxParam struct {
 	BaseParam
-	AddZBox AddZBoxParamDetail `json:"addZBox"`
+	Params AddZBoxParamDetail `json:"addZBox"`
 }

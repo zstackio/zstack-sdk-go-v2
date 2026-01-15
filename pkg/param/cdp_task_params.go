@@ -24,7 +24,7 @@ type CreateCdpTaskParamDetail struct {
 // CreateCdpTaskParam CreateCdpTask request param
 type CreateCdpTaskParam struct {
 	BaseParam
-	CreateCdpTask CreateCdpTaskParamDetail `json:"createCdpTask"`
+	Params CreateCdpTaskParamDetail `json:"createCdpTask"`
 }
 // UpdateCdpTaskParamDetail UpdateCdpTask detail param
 type UpdateCdpTaskParamDetail struct {
@@ -41,7 +41,7 @@ type UpdateCdpTaskParamDetail struct {
 // UpdateCdpTaskParam UpdateCdpTask request param
 type UpdateCdpTaskParam struct {
 	BaseParam
-	UpdateCdpTask UpdateCdpTaskParamDetail `json:"updateCdpTask"`
+	Params UpdateCdpTaskParamDetail `json:"updateCdpTask"`
 }
 // DeleteCdpTaskParamDetail DeleteCdpTask detail param
 type DeleteCdpTaskParamDetail struct {
@@ -53,5 +53,5 @@ type DeleteCdpTaskParamDetail struct {
 // DeleteCdpTaskParam DeleteCdpTask request param
 type DeleteCdpTaskParam struct {
 	BaseParam
-	DeleteCdpTask DeleteCdpTaskParamDetail `json:"deleteCdpTask"`
+	Params DeleteCdpTaskParamDetail `json:"deleteCdpTask"`
 }

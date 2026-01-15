@@ -23,7 +23,7 @@ type CreateSlbGroupParamDetail struct {
 // CreateSlbGroupParam CreateSlbGroup request param
 type CreateSlbGroupParam struct {
 	BaseParam
-	CreateSlbGroup CreateSlbGroupParamDetail `json:"createSlbGroup"`
+	Params CreateSlbGroupParamDetail `json:"createSlbGroup"`
 }
 // DeleteSlbGroupParamDetail DeleteSlbGroup detail param
 type DeleteSlbGroupParamDetail struct {
@@ -34,7 +34,7 @@ type DeleteSlbGroupParamDetail struct {
 // DeleteSlbGroupParam DeleteSlbGroup request param
 type DeleteSlbGroupParam struct {
 	BaseParam
-	DeleteSlbGroup DeleteSlbGroupParamDetail `json:"deleteSlbGroup"`
+	Params DeleteSlbGroupParamDetail `json:"deleteSlbGroup"`
 }
 // UpdateSlbGroupParamDetail UpdateSlbGroup detail param
 type UpdateSlbGroupParamDetail struct {
@@ -47,5 +47,5 @@ type UpdateSlbGroupParamDetail struct {
 // UpdateSlbGroupParam UpdateSlbGroup request param
 type UpdateSlbGroupParam struct {
 	BaseParam
-	UpdateSlbGroup UpdateSlbGroupParamDetail `json:"updateSlbGroup"`
+	Params UpdateSlbGroupParamDetail `json:"updateSlbGroup"`
 }

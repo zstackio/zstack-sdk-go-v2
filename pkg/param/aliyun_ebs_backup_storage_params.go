@@ -21,7 +21,7 @@ type AddAliyunEbsBackupStorageParamDetail struct {
 // AddAliyunEbsBackupStorageParam AddAliyunEbsBackupStorage request param
 type AddAliyunEbsBackupStorageParam struct {
 	BaseParam
-	AddAliyunEbsBackupStorage AddAliyunEbsBackupStorageParamDetail `json:"addAliyunEbsBackupStorage"`
+	Params AddAliyunEbsBackupStorageParamDetail `json:"addAliyunEbsBackupStorage"`
 }
 // UpdateAliyunEbsBackupStorageParamDetail UpdateAliyunEbsBackupStorage detail param
 type UpdateAliyunEbsBackupStorageParamDetail struct {
@@ -35,5 +35,5 @@ type UpdateAliyunEbsBackupStorageParamDetail struct {
 // UpdateAliyunEbsBackupStorageParam UpdateAliyunEbsBackupStorage request param
 type UpdateAliyunEbsBackupStorageParam struct {
 	BaseParam
-	UpdateAliyunEbsBackupStorage UpdateAliyunEbsBackupStorageParamDetail `json:"updateAliyunEbsBackupStorage"`
+	Params UpdateAliyunEbsBackupStorageParamDetail `json:"updateAliyunEbsBackupStorage"`
 }

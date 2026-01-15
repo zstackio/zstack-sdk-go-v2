@@ -16,5 +16,5 @@ type UpdateEcsVpcParamDetail struct {
 // UpdateEcsVpcParam UpdateEcsVpc request param
 type UpdateEcsVpcParam struct {
 	BaseParam
-	UpdateEcsVpc UpdateEcsVpcParamDetail `json:"updateEcsVpc"`
+	Params UpdateEcsVpcParamDetail `json:"updateEcsVpc"`
 }

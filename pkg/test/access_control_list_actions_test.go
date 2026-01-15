@@ -70,7 +70,7 @@ func TestUpdateAccessControlList(t *testing.T) {
     // Update with minimal params - 字段名改为操作名称
     updateParam := param.UpdateAccessControlListParam{
         BaseParam: param.BaseParam{},
-        UpdateAccessControlList: param.UpdateAccessControlListParamDetail{
+        Params: param.UpdateAccessControlListParamDetail{
             // Add fields you want to update here
             // Name: "updated-name",
             // Description: "updated description",

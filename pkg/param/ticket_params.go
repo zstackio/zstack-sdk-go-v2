@@ -21,7 +21,7 @@ type CreateTicketParamDetail struct {
 // CreateTicketParam CreateTicket request param
 type CreateTicketParam struct {
 	BaseParam
-	CreateTicket CreateTicketParamDetail `json:"createTicket"`
+	Params CreateTicketParamDetail `json:"createTicket"`
 }
 // DeleteTicketParamDetail DeleteTicket detail param
 type DeleteTicketParamDetail struct {
@@ -32,5 +32,5 @@ type DeleteTicketParamDetail struct {
 // DeleteTicketParam DeleteTicket request param
 type DeleteTicketParam struct {
 	BaseParam
-	DeleteTicket DeleteTicketParamDetail `json:"deleteTicket"`
+	Params DeleteTicketParamDetail `json:"deleteTicket"`
 }

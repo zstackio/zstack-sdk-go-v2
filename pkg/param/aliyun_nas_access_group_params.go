@@ -17,7 +17,7 @@ type AddAliyunNasAccessGroupParamDetail struct {
 // AddAliyunNasAccessGroupParam AddAliyunNasAccessGroup request param
 type AddAliyunNasAccessGroupParam struct {
 	BaseParam
-	AddAliyunNasAccessGroup AddAliyunNasAccessGroupParamDetail `json:"addAliyunNasAccessGroup"`
+	Params AddAliyunNasAccessGroupParamDetail `json:"addAliyunNasAccessGroup"`
 }
 // UpdateAliyunNasAccessGroupParamDetail UpdateAliyunNasAccessGroup detail param
 type UpdateAliyunNasAccessGroupParamDetail struct {
@@ -28,7 +28,7 @@ type UpdateAliyunNasAccessGroupParamDetail struct {
 // UpdateAliyunNasAccessGroupParam UpdateAliyunNasAccessGroup request param
 type UpdateAliyunNasAccessGroupParam struct {
 	BaseParam
-	UpdateAliyunNasAccessGroup UpdateAliyunNasAccessGroupParamDetail `json:"updateAliyunNasAccessGroup"`
+	Params UpdateAliyunNasAccessGroupParamDetail `json:"updateAliyunNasAccessGroup"`
 }
 // CreateAliyunNasAccessGroupParamDetail CreateAliyunNasAccessGroup detail param
 type CreateAliyunNasAccessGroupParamDetail struct {
@@ -43,7 +43,7 @@ type CreateAliyunNasAccessGroupParamDetail struct {
 // CreateAliyunNasAccessGroupParam CreateAliyunNasAccessGroup request param
 type CreateAliyunNasAccessGroupParam struct {
 	BaseParam
-	CreateAliyunNasAccessGroup CreateAliyunNasAccessGroupParamDetail `json:"createAliyunNasAccessGroup"`
+	Params CreateAliyunNasAccessGroupParamDetail `json:"createAliyunNasAccessGroup"`
 }
 // DeleteAliyunNasAccessGroupParamDetail DeleteAliyunNasAccessGroup detail param
 type DeleteAliyunNasAccessGroupParamDetail struct {
@@ -54,5 +54,5 @@ type DeleteAliyunNasAccessGroupParamDetail struct {
 // DeleteAliyunNasAccessGroupParam DeleteAliyunNasAccessGroup request param
 type DeleteAliyunNasAccessGroupParam struct {
 	BaseParam
-	DeleteAliyunNasAccessGroup DeleteAliyunNasAccessGroupParamDetail `json:"deleteAliyunNasAccessGroup"`
+	Params DeleteAliyunNasAccessGroupParamDetail `json:"deleteAliyunNasAccessGroup"`
 }

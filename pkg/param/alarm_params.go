@@ -24,7 +24,7 @@ type UpdateAlarmParamDetail struct {
 // UpdateAlarmParam UpdateAlarm request param
 type UpdateAlarmParam struct {
 	BaseParam
-	UpdateAlarm UpdateAlarmParamDetail `json:"updateAlarm"`
+	Params UpdateAlarmParamDetail `json:"updateAlarm"`
 }
 // DeleteAlarmParamDetail DeleteAlarm detail param
 type DeleteAlarmParamDetail struct {
@@ -35,7 +35,7 @@ type DeleteAlarmParamDetail struct {
 // DeleteAlarmParam DeleteAlarm request param
 type DeleteAlarmParam struct {
 	BaseParam
-	DeleteAlarm DeleteAlarmParamDetail `json:"deleteAlarm"`
+	Params DeleteAlarmParamDetail `json:"deleteAlarm"`
 }
 // CreateAlarmParamDetail CreateAlarm detail param
 type CreateAlarmParamDetail struct {
@@ -60,5 +60,5 @@ type CreateAlarmParamDetail struct {
 // CreateAlarmParam CreateAlarm request param
 type CreateAlarmParam struct {
 	BaseParam
-	CreateAlarm CreateAlarmParamDetail `json:"createAlarm"`
+	Params CreateAlarmParamDetail `json:"createAlarm"`
 }

@@ -15,5 +15,5 @@ type UpdateIAM2VirtualIDAttributeParamDetail struct {
 // UpdateIAM2VirtualIDAttributeParam UpdateIAM2VirtualIDAttribute request param
 type UpdateIAM2VirtualIDAttributeParam struct {
 	BaseParam
-	UpdateIAM2VirtualIDAttribute UpdateIAM2VirtualIDAttributeParamDetail `json:"updateIAM2VirtualIDAttribute"`
+	Params UpdateIAM2VirtualIDAttributeParamDetail `json:"updateIAM2VirtualIDAttribute"`
 }

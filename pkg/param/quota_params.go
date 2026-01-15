@@ -16,5 +16,5 @@ type UpdateQuotaParamDetail struct {
 // UpdateQuotaParam UpdateQuota request param
 type UpdateQuotaParam struct {
 	BaseParam
-	UpdateQuota UpdateQuotaParamDetail `json:"updateQuota"`
+	Params UpdateQuotaParamDetail `json:"updateQuota"`
 }

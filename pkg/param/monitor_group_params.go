@@ -18,7 +18,7 @@ type CreateMonitorGroupParamDetail struct {
 // CreateMonitorGroupParam CreateMonitorGroup request param
 type CreateMonitorGroupParam struct {
 	BaseParam
-	CreateMonitorGroup CreateMonitorGroupParamDetail `json:"createMonitorGroup"`
+	Params CreateMonitorGroupParamDetail `json:"createMonitorGroup"`
 }
 // DeleteMonitorGroupParamDetail DeleteMonitorGroup detail param
 type DeleteMonitorGroupParamDetail struct {
@@ -29,7 +29,7 @@ type DeleteMonitorGroupParamDetail struct {
 // DeleteMonitorGroupParam DeleteMonitorGroup request param
 type DeleteMonitorGroupParam struct {
 	BaseParam
-	DeleteMonitorGroup DeleteMonitorGroupParamDetail `json:"deleteMonitorGroup"`
+	Params DeleteMonitorGroupParamDetail `json:"deleteMonitorGroup"`
 }
 // UpdateMonitorGroupParamDetail UpdateMonitorGroup detail param
 type UpdateMonitorGroupParamDetail struct {
@@ -43,5 +43,5 @@ type UpdateMonitorGroupParamDetail struct {
 // UpdateMonitorGroupParam UpdateMonitorGroup request param
 type UpdateMonitorGroupParam struct {
 	BaseParam
-	UpdateMonitorGroup UpdateMonitorGroupParamDetail `json:"updateMonitorGroup"`
+	Params UpdateMonitorGroupParamDetail `json:"updateMonitorGroup"`
 }

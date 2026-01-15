@@ -16,7 +16,7 @@ type DeleteLicenseParamDetail struct {
 // DeleteLicenseParam DeleteLicense request param
 type DeleteLicenseParam struct {
 	BaseParam
-	DeleteLicense DeleteLicenseParamDetail `json:"deleteLicense"`
+	Params DeleteLicenseParamDetail `json:"deleteLicense"`
 }
 // UpdateLicenseParamDetail UpdateLicense detail param
 type UpdateLicenseParamDetail struct {
@@ -28,5 +28,5 @@ type UpdateLicenseParamDetail struct {
 // UpdateLicenseParam UpdateLicense request param
 type UpdateLicenseParam struct {
 	BaseParam
-	UpdateLicense UpdateLicenseParamDetail `json:"updateLicense"`
+	Params UpdateLicenseParamDetail `json:"updateLicense"`
 }

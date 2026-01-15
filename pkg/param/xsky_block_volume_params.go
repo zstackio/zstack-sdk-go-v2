@@ -20,5 +20,5 @@ type UpdateXskyBlockVolumeParamDetail struct {
 // UpdateXskyBlockVolumeParam UpdateXskyBlockVolume request param
 type UpdateXskyBlockVolumeParam struct {
 	BaseParam
-	UpdateXskyBlockVolume UpdateXskyBlockVolumeParamDetail `json:"updateXskyBlockVolume"`
+	Params UpdateXskyBlockVolumeParamDetail `json:"updateXskyBlockVolume"`
 }

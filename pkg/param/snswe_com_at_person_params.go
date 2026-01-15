@@ -18,7 +18,7 @@ type AddSNSWeComAtPersonParamDetail struct {
 // AddSNSWeComAtPersonParam AddSNSWeComAtPerson request param
 type AddSNSWeComAtPersonParam struct {
 	BaseParam
-	AddSNSWeComAtPerson AddSNSWeComAtPersonParamDetail `json:"addSNSWeComAtPerson"`
+	Params AddSNSWeComAtPersonParamDetail `json:"addSNSWeComAtPerson"`
 }
 // RemoveSNSWeComAtPersonParamDetail RemoveSNSWeComAtPerson detail param
 type RemoveSNSWeComAtPersonParamDetail struct {
@@ -30,5 +30,5 @@ type RemoveSNSWeComAtPersonParamDetail struct {
 // RemoveSNSWeComAtPersonParam RemoveSNSWeComAtPerson request param
 type RemoveSNSWeComAtPersonParam struct {
 	BaseParam
-	RemoveSNSWeComAtPerson RemoveSNSWeComAtPersonParamDetail `json:"removeSNSWeComAtPerson"`
+	Params RemoveSNSWeComAtPersonParamDetail `json:"removeSNSWeComAtPerson"`
 }

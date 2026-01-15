@@ -15,7 +15,7 @@ type DeleteUserParamDetail struct {
 // DeleteUserParam DeleteUser request param
 type DeleteUserParam struct {
 	BaseParam
-	DeleteUser DeleteUserParamDetail `json:"deleteUser"`
+	Params DeleteUserParamDetail `json:"deleteUser"`
 }
 // UpdateUserParamDetail UpdateUser detail param
 type UpdateUserParamDetail struct {
@@ -29,7 +29,7 @@ type UpdateUserParamDetail struct {
 // UpdateUserParam UpdateUser request param
 type UpdateUserParam struct {
 	BaseParam
-	UpdateUser UpdateUserParamDetail `json:"updateUser"`
+	Params UpdateUserParamDetail `json:"updateUser"`
 }
 // CreateUserParamDetail CreateUser detail param
 type CreateUserParamDetail struct {
@@ -43,5 +43,5 @@ type CreateUserParamDetail struct {
 // CreateUserParam CreateUser request param
 type CreateUserParam struct {
 	BaseParam
-	CreateUser CreateUserParamDetail `json:"createUser"`
+	Params CreateUserParamDetail `json:"createUser"`
 }

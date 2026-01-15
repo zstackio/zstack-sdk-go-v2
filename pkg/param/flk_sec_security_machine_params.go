@@ -19,7 +19,7 @@ type UpdateFlkSecSecurityMachineParamDetail struct {
 // UpdateFlkSecSecurityMachineParam UpdateFlkSecSecurityMachine request param
 type UpdateFlkSecSecurityMachineParam struct {
 	BaseParam
-	UpdateFlkSecSecurityMachine UpdateFlkSecSecurityMachineParamDetail `json:"updateFlkSecSecurityMachine"`
+	Params UpdateFlkSecSecurityMachineParamDetail `json:"updateFlkSecSecurityMachine"`
 }
 // AddFlkSecSecurityMachineParamDetail AddFlkSecSecurityMachine detail param
 type AddFlkSecSecurityMachineParamDetail struct {
@@ -38,5 +38,5 @@ type AddFlkSecSecurityMachineParamDetail struct {
 // AddFlkSecSecurityMachineParam AddFlkSecSecurityMachine request param
 type AddFlkSecSecurityMachineParam struct {
 	BaseParam
-	AddFlkSecSecurityMachine AddFlkSecSecurityMachineParamDetail `json:"addFlkSecSecurityMachine"`
+	Params AddFlkSecSecurityMachineParamDetail `json:"addFlkSecSecurityMachine"`
 }

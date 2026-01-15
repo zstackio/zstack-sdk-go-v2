@@ -22,7 +22,7 @@ type UpdateFlkSecSecretResourcePoolParamDetail struct {
 // UpdateFlkSecSecretResourcePoolParam UpdateFlkSecSecretResourcePool request param
 type UpdateFlkSecSecretResourcePoolParam struct {
 	BaseParam
-	UpdateFlkSecSecretResourcePool UpdateFlkSecSecretResourcePoolParamDetail `json:"updateFlkSecSecretResourcePool"`
+	Params UpdateFlkSecSecretResourcePoolParamDetail `json:"updateFlkSecSecretResourcePool"`
 }
 // CreateFlkSecSecretResourcePoolParamDetail CreateFlkSecSecretResourcePool detail param
 type CreateFlkSecSecretResourcePoolParamDetail struct {
@@ -45,5 +45,5 @@ type CreateFlkSecSecretResourcePoolParamDetail struct {
 // CreateFlkSecSecretResourcePoolParam CreateFlkSecSecretResourcePool request param
 type CreateFlkSecSecretResourcePoolParam struct {
 	BaseParam
-	CreateFlkSecSecretResourcePool CreateFlkSecSecretResourcePoolParamDetail `json:"createFlkSecSecretResourcePool"`
+	Params CreateFlkSecSecretResourcePoolParamDetail `json:"createFlkSecSecretResourcePool"`
 }

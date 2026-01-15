@@ -14,7 +14,7 @@ type StartEcsInstanceParamDetail struct {
 // StartEcsInstanceParam StartEcsInstance request param
 type StartEcsInstanceParam struct {
 	BaseParam
-	StartEcsInstance StartEcsInstanceParamDetail `json:"startEcsInstance"`
+	Params StartEcsInstanceParamDetail `json:"startEcsInstance"`
 }
 // DeleteEcsInstanceParamDetail DeleteEcsInstance detail param
 type DeleteEcsInstanceParamDetail struct {
@@ -25,7 +25,7 @@ type DeleteEcsInstanceParamDetail struct {
 // DeleteEcsInstanceParam DeleteEcsInstance request param
 type DeleteEcsInstanceParam struct {
 	BaseParam
-	DeleteEcsInstance DeleteEcsInstanceParamDetail `json:"deleteEcsInstance"`
+	Params DeleteEcsInstanceParamDetail `json:"deleteEcsInstance"`
 }
 // StopEcsInstanceParamDetail StopEcsInstance detail param
 type StopEcsInstanceParamDetail struct {
@@ -35,7 +35,7 @@ type StopEcsInstanceParamDetail struct {
 // StopEcsInstanceParam StopEcsInstance request param
 type StopEcsInstanceParam struct {
 	BaseParam
-	StopEcsInstance StopEcsInstanceParamDetail `json:"stopEcsInstance"`
+	Params StopEcsInstanceParamDetail `json:"stopEcsInstance"`
 }
 // RebootEcsInstanceParamDetail RebootEcsInstance detail param
 type RebootEcsInstanceParamDetail struct {
@@ -45,7 +45,7 @@ type RebootEcsInstanceParamDetail struct {
 // RebootEcsInstanceParam RebootEcsInstance request param
 type RebootEcsInstanceParam struct {
 	BaseParam
-	RebootEcsInstance RebootEcsInstanceParamDetail `json:"rebootEcsInstance"`
+	Params RebootEcsInstanceParamDetail `json:"rebootEcsInstance"`
 }
 // UpdateEcsInstanceParamDetail UpdateEcsInstance detail param
 type UpdateEcsInstanceParamDetail struct {
@@ -58,5 +58,5 @@ type UpdateEcsInstanceParamDetail struct {
 // UpdateEcsInstanceParam UpdateEcsInstance request param
 type UpdateEcsInstanceParam struct {
 	BaseParam
-	UpdateEcsInstance UpdateEcsInstanceParamDetail `json:"updateEcsInstance"`
+	Params UpdateEcsInstanceParamDetail `json:"updateEcsInstance"`
 }

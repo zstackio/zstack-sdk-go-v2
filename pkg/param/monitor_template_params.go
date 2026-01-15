@@ -16,7 +16,7 @@ type UpdateMonitorTemplateParamDetail struct {
 // UpdateMonitorTemplateParam UpdateMonitorTemplate request param
 type UpdateMonitorTemplateParam struct {
 	BaseParam
-	UpdateMonitorTemplate UpdateMonitorTemplateParamDetail `json:"updateMonitorTemplate"`
+	Params UpdateMonitorTemplateParamDetail `json:"updateMonitorTemplate"`
 }
 // CloneMonitorTemplateParamDetail CloneMonitorTemplate detail param
 type CloneMonitorTemplateParamDetail struct {
@@ -30,7 +30,7 @@ type CloneMonitorTemplateParamDetail struct {
 // CloneMonitorTemplateParam CloneMonitorTemplate request param
 type CloneMonitorTemplateParam struct {
 	BaseParam
-	CloneMonitorTemplate CloneMonitorTemplateParamDetail `json:"cloneMonitorTemplate"`
+	Params CloneMonitorTemplateParamDetail `json:"cloneMonitorTemplate"`
 }
 // CreateMonitorTemplateParamDetail CreateMonitorTemplate detail param
 type CreateMonitorTemplateParamDetail struct {
@@ -43,7 +43,7 @@ type CreateMonitorTemplateParamDetail struct {
 // CreateMonitorTemplateParam CreateMonitorTemplate request param
 type CreateMonitorTemplateParam struct {
 	BaseParam
-	CreateMonitorTemplate CreateMonitorTemplateParamDetail `json:"createMonitorTemplate"`
+	Params CreateMonitorTemplateParamDetail `json:"createMonitorTemplate"`
 }
 // DeleteMonitorTemplateParamDetail DeleteMonitorTemplate detail param
 type DeleteMonitorTemplateParamDetail struct {
@@ -54,5 +54,5 @@ type DeleteMonitorTemplateParamDetail struct {
 // DeleteMonitorTemplateParam DeleteMonitorTemplate request param
 type DeleteMonitorTemplateParam struct {
 	BaseParam
-	DeleteMonitorTemplate DeleteMonitorTemplateParamDetail `json:"deleteMonitorTemplate"`
+	Params DeleteMonitorTemplateParamDetail `json:"deleteMonitorTemplate"`
 }

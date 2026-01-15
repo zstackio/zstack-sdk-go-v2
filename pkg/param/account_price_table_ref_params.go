@@ -15,5 +15,5 @@ type GetAccountPriceTableRefParamDetail struct {
 // GetAccountPriceTableRefParam GetAccountPriceTableRef request param
 type GetAccountPriceTableRefParam struct {
 	BaseParam
-	GetAccountPriceTableRef GetAccountPriceTableRefParamDetail `json:"getAccountPriceTableRef"`
+	Params GetAccountPriceTableRefParamDetail `json:"getAccountPriceTableRef"`
 }

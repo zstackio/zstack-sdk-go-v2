@@ -21,7 +21,7 @@ type CreatePortMirrorSessionParamDetail struct {
 // CreatePortMirrorSessionParam CreatePortMirrorSession request param
 type CreatePortMirrorSessionParam struct {
 	BaseParam
-	CreatePortMirrorSession CreatePortMirrorSessionParamDetail `json:"createPortMirrorSession"`
+	Params CreatePortMirrorSessionParamDetail `json:"createPortMirrorSession"`
 }
 // DeletePortMirrorSessionParamDetail DeletePortMirrorSession detail param
 type DeletePortMirrorSessionParamDetail struct {
@@ -32,5 +32,5 @@ type DeletePortMirrorSessionParamDetail struct {
 // DeletePortMirrorSessionParam DeletePortMirrorSession request param
 type DeletePortMirrorSessionParam struct {
 	BaseParam
-	DeletePortMirrorSession DeletePortMirrorSessionParamDetail `json:"deletePortMirrorSession"`
+	Params DeletePortMirrorSessionParamDetail `json:"deletePortMirrorSession"`
 }

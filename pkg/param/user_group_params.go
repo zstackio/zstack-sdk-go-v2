@@ -15,7 +15,7 @@ type DeleteUserGroupParamDetail struct {
 // DeleteUserGroupParam DeleteUserGroup request param
 type DeleteUserGroupParam struct {
 	BaseParam
-	DeleteUserGroup DeleteUserGroupParamDetail `json:"deleteUserGroup"`
+	Params DeleteUserGroupParamDetail `json:"deleteUserGroup"`
 }
 // CreateUserGroupParamDetail CreateUserGroup detail param
 type CreateUserGroupParamDetail struct {
@@ -28,7 +28,7 @@ type CreateUserGroupParamDetail struct {
 // CreateUserGroupParam CreateUserGroup request param
 type CreateUserGroupParam struct {
 	BaseParam
-	CreateUserGroup CreateUserGroupParamDetail `json:"createUserGroup"`
+	Params CreateUserGroupParamDetail `json:"createUserGroup"`
 }
 // UpdateUserGroupParamDetail UpdateUserGroup detail param
 type UpdateUserGroupParamDetail struct {
@@ -40,5 +40,5 @@ type UpdateUserGroupParamDetail struct {
 // UpdateUserGroupParam UpdateUserGroup request param
 type UpdateUserGroupParam struct {
 	BaseParam
-	UpdateUserGroup UpdateUserGroupParamDetail `json:"updateUserGroup"`
+	Params UpdateUserGroupParamDetail `json:"updateUserGroup"`
 }

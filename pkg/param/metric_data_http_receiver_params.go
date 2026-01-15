@@ -15,7 +15,7 @@ type DeleteMetricDataHttpReceiverParamDetail struct {
 // DeleteMetricDataHttpReceiverParam DeleteMetricDataHttpReceiver request param
 type DeleteMetricDataHttpReceiverParam struct {
 	BaseParam
-	DeleteMetricDataHttpReceiver DeleteMetricDataHttpReceiverParamDetail `json:"deleteMetricDataHttpReceiver"`
+	Params DeleteMetricDataHttpReceiverParamDetail `json:"deleteMetricDataHttpReceiver"`
 }
 // CreateMetricDataHttpReceiverParamDetail CreateMetricDataHttpReceiver detail param
 type CreateMetricDataHttpReceiverParamDetail struct {
@@ -30,5 +30,5 @@ type CreateMetricDataHttpReceiverParamDetail struct {
 // CreateMetricDataHttpReceiverParam CreateMetricDataHttpReceiver request param
 type CreateMetricDataHttpReceiverParam struct {
 	BaseParam
-	CreateMetricDataHttpReceiver CreateMetricDataHttpReceiverParamDetail `json:"createMetricDataHttpReceiver"`
+	Params CreateMetricDataHttpReceiverParamDetail `json:"createMetricDataHttpReceiver"`
 }

@@ -14,7 +14,7 @@ type ReconnectConsoleProxyAgentParamDetail struct {
 // ReconnectConsoleProxyAgentParam ReconnectConsoleProxyAgent request param
 type ReconnectConsoleProxyAgentParam struct {
 	BaseParam
-	ReconnectConsoleProxyAgent ReconnectConsoleProxyAgentParamDetail `json:"reconnectConsoleProxyAgent"`
+	Params ReconnectConsoleProxyAgentParamDetail `json:"reconnectConsoleProxyAgent"`
 }
 // UpdateConsoleProxyAgentParamDetail UpdateConsoleProxyAgent detail param
 type UpdateConsoleProxyAgentParamDetail struct {
@@ -26,5 +26,5 @@ type UpdateConsoleProxyAgentParamDetail struct {
 // UpdateConsoleProxyAgentParam UpdateConsoleProxyAgent request param
 type UpdateConsoleProxyAgentParam struct {
 	BaseParam
-	UpdateConsoleProxyAgent UpdateConsoleProxyAgentParamDetail `json:"updateConsoleProxyAgent"`
+	Params UpdateConsoleProxyAgentParamDetail `json:"updateConsoleProxyAgent"`
 }

@@ -23,7 +23,7 @@ type CreateFiSecSecretResourcePoolParamDetail struct {
 // CreateFiSecSecretResourcePoolParam CreateFiSecSecretResourcePool request param
 type CreateFiSecSecretResourcePoolParam struct {
 	BaseParam
-	CreateFiSecSecretResourcePool CreateFiSecSecretResourcePoolParamDetail `json:"createFiSecSecretResourcePool"`
+	Params CreateFiSecSecretResourcePoolParamDetail `json:"createFiSecSecretResourcePool"`
 }
 // UpdateFiSecSecretResourcePoolParamDetail UpdateFiSecSecretResourcePool detail param
 type UpdateFiSecSecretResourcePoolParamDetail struct {
@@ -38,5 +38,5 @@ type UpdateFiSecSecretResourcePoolParamDetail struct {
 // UpdateFiSecSecretResourcePoolParam UpdateFiSecSecretResourcePool request param
 type UpdateFiSecSecretResourcePoolParam struct {
 	BaseParam
-	UpdateFiSecSecretResourcePool UpdateFiSecSecretResourcePoolParamDetail `json:"updateFiSecSecretResourcePool"`
+	Params UpdateFiSecSecretResourcePoolParamDetail `json:"updateFiSecSecretResourcePool"`
 }

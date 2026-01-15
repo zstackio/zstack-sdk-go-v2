@@ -16,7 +16,7 @@ type UpdateAffinityGroupParamDetail struct {
 // UpdateAffinityGroupParam UpdateAffinityGroup request param
 type UpdateAffinityGroupParam struct {
 	BaseParam
-	UpdateAffinityGroup UpdateAffinityGroupParamDetail `json:"updateAffinityGroup"`
+	Params UpdateAffinityGroupParamDetail `json:"updateAffinityGroup"`
 }
 // DeleteAffinityGroupParamDetail DeleteAffinityGroup detail param
 type DeleteAffinityGroupParamDetail struct {
@@ -27,7 +27,7 @@ type DeleteAffinityGroupParamDetail struct {
 // DeleteAffinityGroupParam DeleteAffinityGroup request param
 type DeleteAffinityGroupParam struct {
 	BaseParam
-	DeleteAffinityGroup DeleteAffinityGroupParamDetail `json:"deleteAffinityGroup"`
+	Params DeleteAffinityGroupParamDetail `json:"deleteAffinityGroup"`
 }
 // CreateAffinityGroupParamDetail CreateAffinityGroup detail param
 type CreateAffinityGroupParamDetail struct {
@@ -44,5 +44,5 @@ type CreateAffinityGroupParamDetail struct {
 // CreateAffinityGroupParam CreateAffinityGroup request param
 type CreateAffinityGroupParam struct {
 	BaseParam
-	CreateAffinityGroup CreateAffinityGroupParamDetail `json:"createAffinityGroup"`
+	Params CreateAffinityGroupParamDetail `json:"createAffinityGroup"`
 }

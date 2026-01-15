@@ -23,7 +23,7 @@ type CreateSNSDingTalkEndpointParamDetail struct {
 // CreateSNSDingTalkEndpointParam CreateSNSDingTalkEndpoint request param
 type CreateSNSDingTalkEndpointParam struct {
 	BaseParam
-	CreateSNSDingTalkEndpoint CreateSNSDingTalkEndpointParamDetail `json:"createSNSDingTalkEndpoint"`
+	Params CreateSNSDingTalkEndpointParamDetail `json:"createSNSDingTalkEndpoint"`
 }
 // UpdateSNSDingTalkEndpointParamDetail UpdateSNSDingTalkEndpoint detail param
 type UpdateSNSDingTalkEndpointParamDetail struct {
@@ -39,5 +39,5 @@ type UpdateSNSDingTalkEndpointParamDetail struct {
 // UpdateSNSDingTalkEndpointParam UpdateSNSDingTalkEndpoint request param
 type UpdateSNSDingTalkEndpointParam struct {
 	BaseParam
-	UpdateSNSDingTalkEndpoint UpdateSNSDingTalkEndpointParamDetail `json:"updateSNSDingTalkEndpoint"`
+	Params UpdateSNSDingTalkEndpointParamDetail `json:"updateSNSDingTalkEndpoint"`
 }

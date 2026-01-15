@@ -16,7 +16,7 @@ type RemoveSNSFeiShuAtPersonParamDetail struct {
 // RemoveSNSFeiShuAtPersonParam RemoveSNSFeiShuAtPerson request param
 type RemoveSNSFeiShuAtPersonParam struct {
 	BaseParam
-	RemoveSNSFeiShuAtPerson RemoveSNSFeiShuAtPersonParamDetail `json:"removeSNSFeiShuAtPerson"`
+	Params RemoveSNSFeiShuAtPersonParamDetail `json:"removeSNSFeiShuAtPerson"`
 }
 // AddSNSFeiShuAtPersonParamDetail AddSNSFeiShuAtPerson detail param
 type AddSNSFeiShuAtPersonParamDetail struct {
@@ -30,5 +30,5 @@ type AddSNSFeiShuAtPersonParamDetail struct {
 // AddSNSFeiShuAtPersonParam AddSNSFeiShuAtPerson request param
 type AddSNSFeiShuAtPersonParam struct {
 	BaseParam
-	AddSNSFeiShuAtPerson AddSNSFeiShuAtPersonParamDetail `json:"addSNSFeiShuAtPerson"`
+	Params AddSNSFeiShuAtPersonParamDetail `json:"addSNSFeiShuAtPerson"`
 }

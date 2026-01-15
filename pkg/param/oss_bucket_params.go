@@ -18,5 +18,5 @@ type UpdateOssBucketParamDetail struct {
 // UpdateOssBucketParam UpdateOssBucket request param
 type UpdateOssBucketParam struct {
 	BaseParam
-	UpdateOssBucket UpdateOssBucketParamDetail `json:"updateOssBucket"`
+	Params UpdateOssBucketParamDetail `json:"updateOssBucket"`
 }

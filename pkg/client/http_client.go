@@ -168,10 +168,10 @@ func (cli *ZSHttpClient) httpList(urlStr string) (http.Header, jsonutils.JSONObj
 	if err != nil {
 		if e, ok := err.(*httputils.JSONClientError); ok {
 			if strings.Contains(e.Details, "wrong accessKey signature") || strings.Contains(e.Details, "access key id") {
-				return nil, nil, errors.Wrapf(errors.ErrInvalidAccessKey, err.Error())
+				return nil, nil, errors.Wrapf(errors.ErrInvalidAccessKey, "%s", err.Error())
 			}
 		}
-		return nil, nil, errors.Wrapf(err, fmt.Sprintf("%s %s", http.MethodGet, urlStr))
+		return nil, nil, errors.Wrapf(err, "%s %s", http.MethodGet, urlStr)
 	}
 
 	return respHeader, resp, nil
@@ -263,7 +263,7 @@ func (cli *ZSHttpClient) httpGet(urlStr string, async bool) (string, http.Header
 				time.Sleep(time.Second * 5)
 				continue
 			}
-			return "", nil, nil, errors.Wrapf(err, fmt.Sprintf("%s %s", http.MethodGet, urlStr))
+			return "", nil, nil, errors.Wrapf(err, "%s %s", http.MethodGet, urlStr)
 		}
 
 		respHeader = httpRespHeader
@@ -324,7 +324,7 @@ func (cli *ZSHttpClient) httpPost(urlStr string, params jsonutils.JSONObject, as
 
 	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, context.TODO(), httputils.POST, urlStr, header, params, cli.debug)
 	if err != nil {
-		return "", nil, nil, errors.Wrapf(err, fmt.Sprintf("%s %s %s", http.MethodPost, urlStr, params.String()))
+		return "", nil, nil, errors.Wrapf(err, "%s %s %s", http.MethodPost, urlStr, params.String())
 	}
 
 	var location string
@@ -384,7 +384,7 @@ func (cli *ZSHttpClient) httpPut(urlStr string, params jsonutils.JSONObject, asy
 
 	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, context.Background(), httputils.PUT, urlStr, header, params, cli.debug)
 	if err != nil {
-		return "", nil, nil, errors.Wrapf(err, fmt.Sprintf("%s %s %s", http.MethodPut, urlStr, params.String()))
+		return "", nil, nil, errors.Wrapf(err, "%s %s %s", http.MethodPut, urlStr, params.String())
 	}
 
 	var location string
@@ -436,7 +436,7 @@ func (cli *ZSHttpClient) httpDelete(urlStr string, async bool) (string, http.Hea
 
 	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, context.Background(), httputils.DELETE, urlStr, header, nil, cli.debug)
 	if err != nil {
-		return "", nil, nil, errors.Wrapf(err, fmt.Sprintf("%s %s", http.MethodDelete, urlStr))
+		return "", nil, nil, errors.Wrapf(err, "%s %s", http.MethodDelete, urlStr)
 	}
 
 	var location string

@@ -15,7 +15,7 @@ type RebootBaremetalInstanceParamDetail struct {
 // RebootBaremetalInstanceParam RebootBaremetalInstance request param
 type RebootBaremetalInstanceParam struct {
 	BaseParam
-	RebootBaremetalInstance RebootBaremetalInstanceParamDetail `json:"rebootBaremetalInstance"`
+	Params RebootBaremetalInstanceParamDetail `json:"rebootBaremetalInstance"`
 }
 // StartBaremetalInstanceParamDetail StartBaremetalInstance detail param
 type StartBaremetalInstanceParamDetail struct {
@@ -26,7 +26,7 @@ type StartBaremetalInstanceParamDetail struct {
 // StartBaremetalInstanceParam StartBaremetalInstance request param
 type StartBaremetalInstanceParam struct {
 	BaseParam
-	StartBaremetalInstance StartBaremetalInstanceParamDetail `json:"startBaremetalInstance"`
+	Params StartBaremetalInstanceParamDetail `json:"startBaremetalInstance"`
 }
 // CreateBaremetalInstanceParamDetail CreateBaremetalInstance detail param
 type CreateBaremetalInstanceParamDetail struct {
@@ -48,7 +48,7 @@ type CreateBaremetalInstanceParamDetail struct {
 // CreateBaremetalInstanceParam CreateBaremetalInstance request param
 type CreateBaremetalInstanceParam struct {
 	BaseParam
-	CreateBaremetalInstance CreateBaremetalInstanceParamDetail `json:"createBaremetalInstance"`
+	Params CreateBaremetalInstanceParamDetail `json:"createBaremetalInstance"`
 }
 // DestroyBaremetalInstanceParamDetail DestroyBaremetalInstance detail param
 type DestroyBaremetalInstanceParamDetail struct {
@@ -59,7 +59,7 @@ type DestroyBaremetalInstanceParamDetail struct {
 // DestroyBaremetalInstanceParam DestroyBaremetalInstance request param
 type DestroyBaremetalInstanceParam struct {
 	BaseParam
-	DestroyBaremetalInstance DestroyBaremetalInstanceParamDetail `json:"destroyBaremetalInstance"`
+	Params DestroyBaremetalInstanceParamDetail `json:"destroyBaremetalInstance"`
 }
 // ExpungeBaremetalInstanceParamDetail ExpungeBaremetalInstance detail param
 type ExpungeBaremetalInstanceParamDetail struct {
@@ -69,7 +69,7 @@ type ExpungeBaremetalInstanceParamDetail struct {
 // ExpungeBaremetalInstanceParam ExpungeBaremetalInstance request param
 type ExpungeBaremetalInstanceParam struct {
 	BaseParam
-	ExpungeBaremetalInstance ExpungeBaremetalInstanceParamDetail `json:"expungeBaremetalInstance"`
+	Params ExpungeBaremetalInstanceParamDetail `json:"expungeBaremetalInstance"`
 }
 // UpdateBaremetalInstanceParamDetail UpdateBaremetalInstance detail param
 type UpdateBaremetalInstanceParamDetail struct {
@@ -83,7 +83,7 @@ type UpdateBaremetalInstanceParamDetail struct {
 // UpdateBaremetalInstanceParam UpdateBaremetalInstance request param
 type UpdateBaremetalInstanceParam struct {
 	BaseParam
-	UpdateBaremetalInstance UpdateBaremetalInstanceParamDetail `json:"updateBaremetalInstance"`
+	Params UpdateBaremetalInstanceParamDetail `json:"updateBaremetalInstance"`
 }
 // StopBaremetalInstanceParamDetail StopBaremetalInstance detail param
 type StopBaremetalInstanceParamDetail struct {
@@ -94,7 +94,7 @@ type StopBaremetalInstanceParamDetail struct {
 // StopBaremetalInstanceParam StopBaremetalInstance request param
 type StopBaremetalInstanceParam struct {
 	BaseParam
-	StopBaremetalInstance StopBaremetalInstanceParamDetail `json:"stopBaremetalInstance"`
+	Params StopBaremetalInstanceParamDetail `json:"stopBaremetalInstance"`
 }
 // RecoverBaremetalInstanceParamDetail RecoverBaremetalInstance detail param
 type RecoverBaremetalInstanceParamDetail struct {
@@ -104,5 +104,5 @@ type RecoverBaremetalInstanceParamDetail struct {
 // RecoverBaremetalInstanceParam RecoverBaremetalInstance request param
 type RecoverBaremetalInstanceParam struct {
 	BaseParam
-	RecoverBaremetalInstance RecoverBaremetalInstanceParamDetail `json:"recoverBaremetalInstance"`
+	Params RecoverBaremetalInstanceParamDetail `json:"recoverBaremetalInstance"`
 }

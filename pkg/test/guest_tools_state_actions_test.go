@@ -63,7 +63,7 @@ func TestUpdateGuestToolsState(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateGuestToolsState(*list[0].VmInstanceUuid, updateParam)
+	result, err := accountLoginCli.UpdateGuestToolsState(list[0].VmInstanceUuid, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateGuestToolsState error: %v", err)
 		return

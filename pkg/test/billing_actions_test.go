@@ -27,7 +27,7 @@ func TestDeleteBilling(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteBilling(*list[0].ResourceName, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteBilling(list[0].ResourceName, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteBilling error: %v", err)
 		return

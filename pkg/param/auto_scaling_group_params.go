@@ -15,7 +15,7 @@ type DeleteAutoScalingGroupParamDetail struct {
 // DeleteAutoScalingGroupParam DeleteAutoScalingGroup request param
 type DeleteAutoScalingGroupParam struct {
 	BaseParam
-	DeleteAutoScalingGroup DeleteAutoScalingGroupParamDetail `json:"deleteAutoScalingGroup"`
+	Params DeleteAutoScalingGroupParamDetail `json:"deleteAutoScalingGroup"`
 }
 // CreateAutoScalingGroupParamDetail CreateAutoScalingGroup detail param
 type CreateAutoScalingGroupParamDetail struct {
@@ -34,7 +34,7 @@ type CreateAutoScalingGroupParamDetail struct {
 // CreateAutoScalingGroupParam CreateAutoScalingGroup request param
 type CreateAutoScalingGroupParam struct {
 	BaseParam
-	CreateAutoScalingGroup CreateAutoScalingGroupParamDetail `json:"createAutoScalingGroup"`
+	Params CreateAutoScalingGroupParamDetail `json:"createAutoScalingGroup"`
 }
 // UpdateAutoScalingGroupParamDetail UpdateAutoScalingGroup detail param
 type UpdateAutoScalingGroupParamDetail struct {
@@ -49,5 +49,5 @@ type UpdateAutoScalingGroupParamDetail struct {
 // UpdateAutoScalingGroupParam UpdateAutoScalingGroup request param
 type UpdateAutoScalingGroupParam struct {
 	BaseParam
-	UpdateAutoScalingGroup UpdateAutoScalingGroupParamDetail `json:"updateAutoScalingGroup"`
+	Params UpdateAutoScalingGroupParamDetail `json:"updateAutoScalingGroup"`
 }

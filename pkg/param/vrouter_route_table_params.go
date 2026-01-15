@@ -15,7 +15,7 @@ type DeleteVRouterRouteTableParamDetail struct {
 // DeleteVRouterRouteTableParam DeleteVRouterRouteTable request param
 type DeleteVRouterRouteTableParam struct {
 	BaseParam
-	DeleteVRouterRouteTable DeleteVRouterRouteTableParamDetail `json:"deleteVRouterRouteTable"`
+	Params DeleteVRouterRouteTableParamDetail `json:"deleteVRouterRouteTable"`
 }
 // GetVRouterRouteTableParamDetail GetVRouterRouteTable detail param
 type GetVRouterRouteTableParamDetail struct {
@@ -25,7 +25,7 @@ type GetVRouterRouteTableParamDetail struct {
 // GetVRouterRouteTableParam GetVRouterRouteTable request param
 type GetVRouterRouteTableParam struct {
 	BaseParam
-	GetVRouterRouteTable GetVRouterRouteTableParamDetail `json:"getVRouterRouteTable"`
+	Params GetVRouterRouteTableParamDetail `json:"getVRouterRouteTable"`
 }
 // CreateVRouterRouteTableParamDetail CreateVRouterRouteTable detail param
 type CreateVRouterRouteTableParamDetail struct {
@@ -38,7 +38,7 @@ type CreateVRouterRouteTableParamDetail struct {
 // CreateVRouterRouteTableParam CreateVRouterRouteTable request param
 type CreateVRouterRouteTableParam struct {
 	BaseParam
-	CreateVRouterRouteTable CreateVRouterRouteTableParamDetail `json:"createVRouterRouteTable"`
+	Params CreateVRouterRouteTableParamDetail `json:"createVRouterRouteTable"`
 }
 // UpdateVRouterRouteTableParamDetail UpdateVRouterRouteTable detail param
 type UpdateVRouterRouteTableParamDetail struct {
@@ -50,5 +50,5 @@ type UpdateVRouterRouteTableParamDetail struct {
 // UpdateVRouterRouteTableParam UpdateVRouterRouteTable request param
 type UpdateVRouterRouteTableParam struct {
 	BaseParam
-	UpdateVRouterRouteTable UpdateVRouterRouteTableParamDetail `json:"updateVRouterRouteTable"`
+	Params UpdateVRouterRouteTableParamDetail `json:"updateVRouterRouteTable"`
 }

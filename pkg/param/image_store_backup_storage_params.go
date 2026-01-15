@@ -24,7 +24,7 @@ type AddImageStoreBackupStorageParamDetail struct {
 // AddImageStoreBackupStorageParam AddImageStoreBackupStorage request param
 type AddImageStoreBackupStorageParam struct {
 	BaseParam
-	AddImageStoreBackupStorage AddImageStoreBackupStorageParamDetail `json:"addImageStoreBackupStorage"`
+	Params AddImageStoreBackupStorageParamDetail `json:"addImageStoreBackupStorage"`
 }
 // UpdateImageStoreBackupStorageParamDetail UpdateImageStoreBackupStorage detail param
 type UpdateImageStoreBackupStorageParamDetail struct {
@@ -40,7 +40,7 @@ type UpdateImageStoreBackupStorageParamDetail struct {
 // UpdateImageStoreBackupStorageParam UpdateImageStoreBackupStorage request param
 type UpdateImageStoreBackupStorageParam struct {
 	BaseParam
-	UpdateImageStoreBackupStorage UpdateImageStoreBackupStorageParamDetail `json:"updateImageStoreBackupStorage"`
+	Params UpdateImageStoreBackupStorageParamDetail `json:"updateImageStoreBackupStorage"`
 }
 // ReconnectImageStoreBackupStorageParamDetail ReconnectImageStoreBackupStorage detail param
 type ReconnectImageStoreBackupStorageParamDetail struct {
@@ -50,5 +50,5 @@ type ReconnectImageStoreBackupStorageParamDetail struct {
 // ReconnectImageStoreBackupStorageParam ReconnectImageStoreBackupStorage request param
 type ReconnectImageStoreBackupStorageParam struct {
 	BaseParam
-	ReconnectImageStoreBackupStorage ReconnectImageStoreBackupStorageParamDetail `json:"reconnectImageStoreBackupStorage"`
+	Params ReconnectImageStoreBackupStorageParamDetail `json:"reconnectImageStoreBackupStorage"`
 }

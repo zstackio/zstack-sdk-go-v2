@@ -20,5 +20,5 @@ type CreateAutoScalingRuleSchedulerJobTriggerParamDetail struct {
 // CreateAutoScalingRuleSchedulerJobTriggerParam CreateAutoScalingRuleSchedulerJobTrigger request param
 type CreateAutoScalingRuleSchedulerJobTriggerParam struct {
 	BaseParam
-	CreateAutoScalingRuleSchedulerJobTrigger CreateAutoScalingRuleSchedulerJobTriggerParamDetail `json:"createAutoScalingRuleSchedulerJobTrigger"`
+	Params CreateAutoScalingRuleSchedulerJobTriggerParamDetail `json:"createAutoScalingRuleSchedulerJobTrigger"`
 }

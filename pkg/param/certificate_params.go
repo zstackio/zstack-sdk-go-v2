@@ -18,7 +18,7 @@ type UpdateCertificateParamDetail struct {
 // UpdateCertificateParam UpdateCertificate request param
 type UpdateCertificateParam struct {
 	BaseParam
-	UpdateCertificate UpdateCertificateParamDetail `json:"updateCertificate"`
+	Params UpdateCertificateParamDetail `json:"updateCertificate"`
 }
 // CreateCertificateParamDetail CreateCertificate detail param
 type CreateCertificateParamDetail struct {
@@ -32,7 +32,7 @@ type CreateCertificateParamDetail struct {
 // CreateCertificateParam CreateCertificate request param
 type CreateCertificateParam struct {
 	BaseParam
-	CreateCertificate CreateCertificateParamDetail `json:"createCertificate"`
+	Params CreateCertificateParamDetail `json:"createCertificate"`
 }
 // DeleteCertificateParamDetail DeleteCertificate detail param
 type DeleteCertificateParamDetail struct {
@@ -43,5 +43,5 @@ type DeleteCertificateParamDetail struct {
 // DeleteCertificateParam DeleteCertificate request param
 type DeleteCertificateParam struct {
 	BaseParam
-	DeleteCertificate DeleteCertificateParamDetail `json:"deleteCertificate"`
+	Params DeleteCertificateParamDetail `json:"deleteCertificate"`
 }

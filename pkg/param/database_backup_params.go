@@ -15,7 +15,7 @@ type DeleteDatabaseBackupParamDetail struct {
 // DeleteDatabaseBackupParam DeleteDatabaseBackup request param
 type DeleteDatabaseBackupParam struct {
 	BaseParam
-	DeleteDatabaseBackup DeleteDatabaseBackupParamDetail `json:"deleteDatabaseBackup"`
+	Params DeleteDatabaseBackupParamDetail `json:"deleteDatabaseBackup"`
 }
 // CreateDatabaseBackupParamDetail CreateDatabaseBackup detail param
 type CreateDatabaseBackupParamDetail struct {
@@ -29,7 +29,7 @@ type CreateDatabaseBackupParamDetail struct {
 // CreateDatabaseBackupParam CreateDatabaseBackup request param
 type CreateDatabaseBackupParam struct {
 	BaseParam
-	CreateDatabaseBackup CreateDatabaseBackupParamDetail `json:"createDatabaseBackup"`
+	Params CreateDatabaseBackupParamDetail `json:"createDatabaseBackup"`
 }
 // SyncDatabaseBackupParamDetail SyncDatabaseBackup detail param
 type SyncDatabaseBackupParamDetail struct {
@@ -39,5 +39,5 @@ type SyncDatabaseBackupParamDetail struct {
 // SyncDatabaseBackupParam SyncDatabaseBackup request param
 type SyncDatabaseBackupParam struct {
 	BaseParam
-	SyncDatabaseBackup SyncDatabaseBackupParamDetail `json:"syncDatabaseBackup"`
+	Params SyncDatabaseBackupParamDetail `json:"syncDatabaseBackup"`
 }

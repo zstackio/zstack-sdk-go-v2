@@ -63,7 +63,7 @@ func TestUpdateTemplateConfig(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateTemplateConfig(*list[0].TemplateUuid, updateParam)
+	result, err := accountLoginCli.UpdateTemplateConfig(list[0].TemplateUuid, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateTemplateConfig error: %v", err)
 		return

@@ -15,7 +15,7 @@ type UpdateSystemTagParamDetail struct {
 // UpdateSystemTagParam UpdateSystemTag request param
 type UpdateSystemTagParam struct {
 	BaseParam
-	UpdateSystemTag UpdateSystemTagParamDetail `json:"updateSystemTag"`
+	Params UpdateSystemTagParamDetail `json:"updateSystemTag"`
 }
 // CreateSystemTagParamDetail CreateSystemTag detail param
 type CreateSystemTagParamDetail struct {
@@ -27,5 +27,5 @@ type CreateSystemTagParamDetail struct {
 // CreateSystemTagParam CreateSystemTag request param
 type CreateSystemTagParam struct {
 	BaseParam
-	CreateSystemTag CreateSystemTagParamDetail `json:"createSystemTag"`
+	Params CreateSystemTagParamDetail `json:"createSystemTag"`
 }

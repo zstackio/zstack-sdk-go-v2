@@ -16,5 +16,5 @@ type UpdateEcsImageParamDetail struct {
 // UpdateEcsImageParam UpdateEcsImage request param
 type UpdateEcsImageParam struct {
 	BaseParam
-	UpdateEcsImage UpdateEcsImageParamDetail `json:"updateEcsImage"`
+	Params UpdateEcsImageParamDetail `json:"updateEcsImage"`
 }

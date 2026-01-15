@@ -16,5 +16,5 @@ type UpdateBareMetal2ChassisOfferingParamDetail struct {
 // UpdateBareMetal2ChassisOfferingParam UpdateBareMetal2ChassisOffering request param
 type UpdateBareMetal2ChassisOfferingParam struct {
 	BaseParam
-	UpdateBareMetal2ChassisOffering UpdateBareMetal2ChassisOfferingParamDetail `json:"updateBareMetal2ChassisOffering"`
+	Params UpdateBareMetal2ChassisOfferingParamDetail `json:"updateBareMetal2ChassisOffering"`
 }

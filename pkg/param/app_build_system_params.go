@@ -23,7 +23,7 @@ type AddAppBuildSystemParamDetail struct {
 // AddAppBuildSystemParam AddAppBuildSystem request param
 type AddAppBuildSystemParam struct {
 	BaseParam
-	AddAppBuildSystem AddAppBuildSystemParamDetail `json:"addAppBuildSystem"`
+	Params AddAppBuildSystemParamDetail `json:"addAppBuildSystem"`
 }
 // ReconnectAppBuildSystemParamDetail ReconnectAppBuildSystem detail param
 type ReconnectAppBuildSystemParamDetail struct {
@@ -33,7 +33,7 @@ type ReconnectAppBuildSystemParamDetail struct {
 // ReconnectAppBuildSystemParam ReconnectAppBuildSystem request param
 type ReconnectAppBuildSystemParam struct {
 	BaseParam
-	ReconnectAppBuildSystem ReconnectAppBuildSystemParamDetail `json:"reconnectAppBuildSystem"`
+	Params ReconnectAppBuildSystemParamDetail `json:"reconnectAppBuildSystem"`
 }
 // UpdateAppBuildSystemParamDetail UpdateAppBuildSystem detail param
 type UpdateAppBuildSystemParamDetail struct {
@@ -48,7 +48,7 @@ type UpdateAppBuildSystemParamDetail struct {
 // UpdateAppBuildSystemParam UpdateAppBuildSystem request param
 type UpdateAppBuildSystemParam struct {
 	BaseParam
-	UpdateAppBuildSystem UpdateAppBuildSystemParamDetail `json:"updateAppBuildSystem"`
+	Params UpdateAppBuildSystemParamDetail `json:"updateAppBuildSystem"`
 }
 // DeleteAppBuildSystemParamDetail DeleteAppBuildSystem detail param
 type DeleteAppBuildSystemParamDetail struct {
@@ -59,5 +59,5 @@ type DeleteAppBuildSystemParamDetail struct {
 // DeleteAppBuildSystemParam DeleteAppBuildSystem request param
 type DeleteAppBuildSystemParam struct {
 	BaseParam
-	DeleteAppBuildSystem DeleteAppBuildSystemParamDetail `json:"deleteAppBuildSystem"`
+	Params DeleteAppBuildSystemParamDetail `json:"deleteAppBuildSystem"`
 }

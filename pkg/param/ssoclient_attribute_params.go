@@ -17,5 +17,5 @@ type UpdateSSOClientAttributeParamDetail struct {
 // UpdateSSOClientAttributeParam UpdateSSOClientAttribute request param
 type UpdateSSOClientAttributeParam struct {
 	BaseParam
-	UpdateSSOClientAttribute UpdateSSOClientAttributeParamDetail `json:"updateSSOClientAttribute"`
+	Params UpdateSSOClientAttributeParamDetail `json:"updateSSOClientAttribute"`
 }

@@ -23,7 +23,7 @@ type CreateCdpPolicyParamDetail struct {
 // CreateCdpPolicyParam CreateCdpPolicy request param
 type CreateCdpPolicyParam struct {
 	BaseParam
-	CreateCdpPolicy CreateCdpPolicyParamDetail `json:"createCdpPolicy"`
+	Params CreateCdpPolicyParamDetail `json:"createCdpPolicy"`
 }
 // DeleteCdpPolicyParamDetail DeleteCdpPolicy detail param
 type DeleteCdpPolicyParamDetail struct {
@@ -34,7 +34,7 @@ type DeleteCdpPolicyParamDetail struct {
 // DeleteCdpPolicyParam DeleteCdpPolicy request param
 type DeleteCdpPolicyParam struct {
 	BaseParam
-	DeleteCdpPolicy DeleteCdpPolicyParamDetail `json:"deleteCdpPolicy"`
+	Params DeleteCdpPolicyParamDetail `json:"deleteCdpPolicy"`
 }
 // UpdateCdpPolicyParamDetail UpdateCdpPolicy detail param
 type UpdateCdpPolicyParamDetail struct {
@@ -54,5 +54,5 @@ type UpdateCdpPolicyParamDetail struct {
 // UpdateCdpPolicyParam UpdateCdpPolicy request param
 type UpdateCdpPolicyParam struct {
 	BaseParam
-	UpdateCdpPolicy UpdateCdpPolicyParamDetail `json:"updateCdpPolicy"`
+	Params UpdateCdpPolicyParamDetail `json:"updateCdpPolicy"`
 }

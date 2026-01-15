@@ -20,7 +20,7 @@ type CreateSNSAliyunSmsEndpointParamDetail struct {
 // CreateSNSAliyunSmsEndpointParam CreateSNSAliyunSmsEndpoint request param
 type CreateSNSAliyunSmsEndpointParam struct {
 	BaseParam
-	CreateSNSAliyunSmsEndpoint CreateSNSAliyunSmsEndpointParamDetail `json:"createSNSAliyunSmsEndpoint"`
+	Params CreateSNSAliyunSmsEndpointParamDetail `json:"createSNSAliyunSmsEndpoint"`
 }
 // ValidateSNSAliyunSmsEndpointParamDetail ValidateSNSAliyunSmsEndpoint detail param
 type ValidateSNSAliyunSmsEndpointParamDetail struct {
@@ -31,5 +31,5 @@ type ValidateSNSAliyunSmsEndpointParamDetail struct {
 // ValidateSNSAliyunSmsEndpointParam ValidateSNSAliyunSmsEndpoint request param
 type ValidateSNSAliyunSmsEndpointParam struct {
 	BaseParam
-	ValidateSNSAliyunSmsEndpoint ValidateSNSAliyunSmsEndpointParamDetail `json:"validateSNSAliyunSmsEndpoint"`
+	Params ValidateSNSAliyunSmsEndpointParamDetail `json:"validateSNSAliyunSmsEndpoint"`
 }

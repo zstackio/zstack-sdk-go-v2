@@ -24,7 +24,7 @@ type CloneVmInstanceParamDetail struct {
 // CloneVmInstanceParam CloneVmInstance request param
 type CloneVmInstanceParam struct {
 	BaseParam
-	CloneVmInstance CloneVmInstanceParamDetail `json:"cloneVmInstance"`
+	Params CloneVmInstanceParamDetail `json:"cloneVmInstance"`
 }
 // ResumeVmInstanceParamDetail ResumeVmInstance detail param
 type ResumeVmInstanceParamDetail struct {
@@ -34,7 +34,7 @@ type ResumeVmInstanceParamDetail struct {
 // ResumeVmInstanceParam ResumeVmInstance request param
 type ResumeVmInstanceParam struct {
 	BaseParam
-	ResumeVmInstance ResumeVmInstanceParamDetail `json:"resumeVmInstance"`
+	Params ResumeVmInstanceParamDetail `json:"resumeVmInstance"`
 }
 // StartVmInstanceParamDetail StartVmInstance detail param
 type StartVmInstanceParamDetail struct {
@@ -46,7 +46,7 @@ type StartVmInstanceParamDetail struct {
 // StartVmInstanceParam StartVmInstance request param
 type StartVmInstanceParam struct {
 	BaseParam
-	StartVmInstance StartVmInstanceParamDetail `json:"startVmInstance"`
+	Params StartVmInstanceParamDetail `json:"startVmInstance"`
 }
 // StopVmInstanceParamDetail StopVmInstance detail param
 type StopVmInstanceParamDetail struct {
@@ -58,7 +58,7 @@ type StopVmInstanceParamDetail struct {
 // StopVmInstanceParam StopVmInstance request param
 type StopVmInstanceParam struct {
 	BaseParam
-	StopVmInstance StopVmInstanceParamDetail `json:"stopVmInstance"`
+	Params StopVmInstanceParamDetail `json:"stopVmInstance"`
 }
 // ExpungeVmInstanceParamDetail ExpungeVmInstance detail param
 type ExpungeVmInstanceParamDetail struct {
@@ -68,7 +68,7 @@ type ExpungeVmInstanceParamDetail struct {
 // ExpungeVmInstanceParam ExpungeVmInstance request param
 type ExpungeVmInstanceParam struct {
 	BaseParam
-	ExpungeVmInstance ExpungeVmInstanceParamDetail `json:"expungeVmInstance"`
+	Params ExpungeVmInstanceParamDetail `json:"expungeVmInstance"`
 }
 // RebootVmInstanceParamDetail RebootVmInstance detail param
 type RebootVmInstanceParamDetail struct {
@@ -78,7 +78,7 @@ type RebootVmInstanceParamDetail struct {
 // RebootVmInstanceParam RebootVmInstance request param
 type RebootVmInstanceParam struct {
 	BaseParam
-	RebootVmInstance RebootVmInstanceParamDetail `json:"rebootVmInstance"`
+	Params RebootVmInstanceParamDetail `json:"rebootVmInstance"`
 }
 // UpdateVmInstanceParamDetail UpdateVmInstance detail param
 type UpdateVmInstanceParamDetail struct {
@@ -97,7 +97,7 @@ type UpdateVmInstanceParamDetail struct {
 // UpdateVmInstanceParam UpdateVmInstance request param
 type UpdateVmInstanceParam struct {
 	BaseParam
-	UpdateVmInstance UpdateVmInstanceParamDetail `json:"updateVmInstance"`
+	Params UpdateVmInstanceParamDetail `json:"updateVmInstance"`
 }
 // DestroyVmInstanceParamDetail DestroyVmInstance detail param
 type DestroyVmInstanceParamDetail struct {
@@ -108,7 +108,7 @@ type DestroyVmInstanceParamDetail struct {
 // DestroyVmInstanceParam DestroyVmInstance request param
 type DestroyVmInstanceParam struct {
 	BaseParam
-	DestroyVmInstance DestroyVmInstanceParamDetail `json:"destroyVmInstance"`
+	Params DestroyVmInstanceParamDetail `json:"destroyVmInstance"`
 }
 // CreateVmInstanceParamDetail CreateVmInstance detail param
 type CreateVmInstanceParamDetail struct {
@@ -148,7 +148,7 @@ type CreateVmInstanceParamDetail struct {
 // CreateVmInstanceParam CreateVmInstance request param
 type CreateVmInstanceParam struct {
 	BaseParam
-	CreateVmInstance CreateVmInstanceParamDetail `json:"createVmInstance"`
+	Params CreateVmInstanceParamDetail `json:"createVmInstance"`
 }
 // RecoverVmInstanceParamDetail RecoverVmInstance detail param
 type RecoverVmInstanceParamDetail struct {
@@ -158,5 +158,5 @@ type RecoverVmInstanceParamDetail struct {
 // RecoverVmInstanceParam RecoverVmInstance request param
 type RecoverVmInstanceParam struct {
 	BaseParam
-	RecoverVmInstance RecoverVmInstanceParamDetail `json:"recoverVmInstance"`
+	Params RecoverVmInstanceParamDetail `json:"recoverVmInstance"`
 }

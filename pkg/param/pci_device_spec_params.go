@@ -20,5 +20,5 @@ type UpdatePciDeviceSpecParamDetail struct {
 // UpdatePciDeviceSpecParam UpdatePciDeviceSpec request param
 type UpdatePciDeviceSpecParam struct {
 	BaseParam
-	UpdatePciDeviceSpec UpdatePciDeviceSpecParamDetail `json:"updatePciDeviceSpec"`
+	Params UpdatePciDeviceSpecParamDetail `json:"updatePciDeviceSpec"`
 }

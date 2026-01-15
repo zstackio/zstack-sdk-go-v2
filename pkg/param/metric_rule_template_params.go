@@ -15,7 +15,7 @@ type DeleteMetricRuleTemplateParamDetail struct {
 // DeleteMetricRuleTemplateParam DeleteMetricRuleTemplate request param
 type DeleteMetricRuleTemplateParam struct {
 	BaseParam
-	DeleteMetricRuleTemplate DeleteMetricRuleTemplateParamDetail `json:"deleteMetricRuleTemplate"`
+	Params DeleteMetricRuleTemplateParamDetail `json:"deleteMetricRuleTemplate"`
 }
 // UpdateMetricRuleTemplateParamDetail UpdateMetricRuleTemplate detail param
 type UpdateMetricRuleTemplateParamDetail struct {
@@ -34,7 +34,7 @@ type UpdateMetricRuleTemplateParamDetail struct {
 // UpdateMetricRuleTemplateParam UpdateMetricRuleTemplate request param
 type UpdateMetricRuleTemplateParam struct {
 	BaseParam
-	UpdateMetricRuleTemplate UpdateMetricRuleTemplateParamDetail `json:"updateMetricRuleTemplate"`
+	Params UpdateMetricRuleTemplateParamDetail `json:"updateMetricRuleTemplate"`
 }
 // AddMetricRuleTemplateParamDetail AddMetricRuleTemplate detail param
 type AddMetricRuleTemplateParamDetail struct {
@@ -57,5 +57,5 @@ type AddMetricRuleTemplateParamDetail struct {
 // AddMetricRuleTemplateParam AddMetricRuleTemplate request param
 type AddMetricRuleTemplateParam struct {
 	BaseParam
-	AddMetricRuleTemplate AddMetricRuleTemplateParamDetail `json:"addMetricRuleTemplate"`
+	Params AddMetricRuleTemplateParamDetail `json:"addMetricRuleTemplate"`
 }

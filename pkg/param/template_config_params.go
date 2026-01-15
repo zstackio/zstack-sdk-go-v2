@@ -17,7 +17,7 @@ type UpdateTemplateConfigParamDetail struct {
 // UpdateTemplateConfigParam UpdateTemplateConfig request param
 type UpdateTemplateConfigParam struct {
 	BaseParam
-	UpdateTemplateConfig UpdateTemplateConfigParamDetail `json:"updateTemplateConfig"`
+	Params UpdateTemplateConfigParamDetail `json:"updateTemplateConfig"`
 }
 // RevertTemplateConfigParamDetail RevertTemplateConfig detail param
 type RevertTemplateConfigParamDetail struct {
@@ -27,7 +27,7 @@ type RevertTemplateConfigParamDetail struct {
 // RevertTemplateConfigParam RevertTemplateConfig request param
 type RevertTemplateConfigParam struct {
 	BaseParam
-	RevertTemplateConfig RevertTemplateConfigParamDetail `json:"revertTemplateConfig"`
+	Params RevertTemplateConfigParamDetail `json:"revertTemplateConfig"`
 }
 // ApplyTemplateConfigParamDetail ApplyTemplateConfig detail param
 type ApplyTemplateConfigParamDetail struct {
@@ -37,7 +37,7 @@ type ApplyTemplateConfigParamDetail struct {
 // ApplyTemplateConfigParam ApplyTemplateConfig request param
 type ApplyTemplateConfigParam struct {
 	BaseParam
-	ApplyTemplateConfig ApplyTemplateConfigParamDetail `json:"applyTemplateConfig"`
+	Params ApplyTemplateConfigParamDetail `json:"applyTemplateConfig"`
 }
 // ResetTemplateConfigParamDetail ResetTemplateConfig detail param
 type ResetTemplateConfigParamDetail struct {
@@ -47,5 +47,5 @@ type ResetTemplateConfigParamDetail struct {
 // ResetTemplateConfigParam ResetTemplateConfig request param
 type ResetTemplateConfigParam struct {
 	BaseParam
-	ResetTemplateConfig ResetTemplateConfigParamDetail `json:"resetTemplateConfig"`
+	Params ResetTemplateConfigParamDetail `json:"resetTemplateConfig"`
 }

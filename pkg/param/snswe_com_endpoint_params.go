@@ -22,7 +22,7 @@ type CreateSNSWeComEndpointParamDetail struct {
 // CreateSNSWeComEndpointParam CreateSNSWeComEndpoint request param
 type CreateSNSWeComEndpointParam struct {
 	BaseParam
-	CreateSNSWeComEndpoint CreateSNSWeComEndpointParamDetail `json:"createSNSWeComEndpoint"`
+	Params CreateSNSWeComEndpointParamDetail `json:"createSNSWeComEndpoint"`
 }
 // UpdateSNSWeComEndpointParamDetail UpdateSNSWeComEndpoint detail param
 type UpdateSNSWeComEndpointParamDetail struct {
@@ -37,5 +37,5 @@ type UpdateSNSWeComEndpointParamDetail struct {
 // UpdateSNSWeComEndpointParam UpdateSNSWeComEndpoint request param
 type UpdateSNSWeComEndpointParam struct {
 	BaseParam
-	UpdateSNSWeComEndpoint UpdateSNSWeComEndpointParamDetail `json:"updateSNSWeComEndpoint"`
+	Params UpdateSNSWeComEndpointParamDetail `json:"updateSNSWeComEndpoint"`
 }

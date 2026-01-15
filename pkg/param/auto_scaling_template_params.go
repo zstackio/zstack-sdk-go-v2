@@ -15,5 +15,5 @@ type DeleteAutoScalingTemplateParamDetail struct {
 // DeleteAutoScalingTemplateParam DeleteAutoScalingTemplate request param
 type DeleteAutoScalingTemplateParam struct {
 	BaseParam
-	DeleteAutoScalingTemplate DeleteAutoScalingTemplateParamDetail `json:"deleteAutoScalingTemplate"`
+	Params DeleteAutoScalingTemplateParamDetail `json:"deleteAutoScalingTemplate"`
 }

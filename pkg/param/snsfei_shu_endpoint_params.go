@@ -20,7 +20,7 @@ type UpdateSNSFeiShuEndpointParamDetail struct {
 // UpdateSNSFeiShuEndpointParam UpdateSNSFeiShuEndpoint request param
 type UpdateSNSFeiShuEndpointParam struct {
 	BaseParam
-	UpdateSNSFeiShuEndpoint UpdateSNSFeiShuEndpointParamDetail `json:"updateSNSFeiShuEndpoint"`
+	Params UpdateSNSFeiShuEndpointParamDetail `json:"updateSNSFeiShuEndpoint"`
 }
 // CreateSNSFeiShuEndpointParamDetail CreateSNSFeiShuEndpoint detail param
 type CreateSNSFeiShuEndpointParamDetail struct {
@@ -39,5 +39,5 @@ type CreateSNSFeiShuEndpointParamDetail struct {
 // CreateSNSFeiShuEndpointParam CreateSNSFeiShuEndpoint request param
 type CreateSNSFeiShuEndpointParam struct {
 	BaseParam
-	CreateSNSFeiShuEndpoint CreateSNSFeiShuEndpointParamDetail `json:"createSNSFeiShuEndpoint"`
+	Params CreateSNSFeiShuEndpointParamDetail `json:"createSNSFeiShuEndpoint"`
 }

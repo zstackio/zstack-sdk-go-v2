@@ -14,7 +14,7 @@ type AddCCSCertificateParamDetail struct {
 // AddCCSCertificateParam AddCCSCertificate request param
 type AddCCSCertificateParam struct {
 	BaseParam
-	AddCCSCertificate AddCCSCertificateParamDetail `json:"addCCSCertificate"`
+	Params AddCCSCertificateParamDetail `json:"addCCSCertificate"`
 }
 // DeleteCCSCertificateParamDetail DeleteCCSCertificate detail param
 type DeleteCCSCertificateParamDetail struct {
@@ -25,5 +25,5 @@ type DeleteCCSCertificateParamDetail struct {
 // DeleteCCSCertificateParam DeleteCCSCertificate request param
 type DeleteCCSCertificateParam struct {
 	BaseParam
-	DeleteCCSCertificate DeleteCCSCertificateParamDetail `json:"deleteCCSCertificate"`
+	Params DeleteCCSCertificateParamDetail `json:"deleteCCSCertificate"`
 }

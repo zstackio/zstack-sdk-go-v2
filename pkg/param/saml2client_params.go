@@ -18,7 +18,7 @@ type UpdateSAML2ClientParamDetail struct {
 // UpdateSAML2ClientParam UpdateSAML2Client request param
 type UpdateSAML2ClientParam struct {
 	BaseParam
-	UpdateSAML2Client UpdateSAML2ClientParamDetail `json:"updateSAML2Client"`
+	Params UpdateSAML2ClientParamDetail `json:"updateSAML2Client"`
 }
 // CreateSAML2ClientParamDetail CreateSAML2Client detail param
 type CreateSAML2ClientParamDetail struct {
@@ -36,5 +36,5 @@ type CreateSAML2ClientParamDetail struct {
 // CreateSAML2ClientParam CreateSAML2Client request param
 type CreateSAML2ClientParam struct {
 	BaseParam
-	CreateSAML2Client CreateSAML2ClientParamDetail `json:"createSAML2Client"`
+	Params CreateSAML2ClientParamDetail `json:"createSAML2Client"`
 }

@@ -20,7 +20,7 @@ type UpdateSftpBackupStorageParamDetail struct {
 // UpdateSftpBackupStorageParam UpdateSftpBackupStorage request param
 type UpdateSftpBackupStorageParam struct {
 	BaseParam
-	UpdateSftpBackupStorage UpdateSftpBackupStorageParamDetail `json:"updateSftpBackupStorage"`
+	Params UpdateSftpBackupStorageParamDetail `json:"updateSftpBackupStorage"`
 }
 // ReconnectSftpBackupStorageParamDetail ReconnectSftpBackupStorage detail param
 type ReconnectSftpBackupStorageParamDetail struct {
@@ -30,7 +30,7 @@ type ReconnectSftpBackupStorageParamDetail struct {
 // ReconnectSftpBackupStorageParam ReconnectSftpBackupStorage request param
 type ReconnectSftpBackupStorageParam struct {
 	BaseParam
-	ReconnectSftpBackupStorage ReconnectSftpBackupStorageParamDetail `json:"reconnectSftpBackupStorage"`
+	Params ReconnectSftpBackupStorageParamDetail `json:"reconnectSftpBackupStorage"`
 }
 // AddSftpBackupStorageParamDetail AddSftpBackupStorage detail param
 type AddSftpBackupStorageParamDetail struct {
@@ -50,5 +50,5 @@ type AddSftpBackupStorageParamDetail struct {
 // AddSftpBackupStorageParam AddSftpBackupStorage request param
 type AddSftpBackupStorageParam struct {
 	BaseParam
-	AddSftpBackupStorage AddSftpBackupStorageParamDetail `json:"addSftpBackupStorage"`
+	Params AddSftpBackupStorageParamDetail `json:"addSftpBackupStorage"`
 }
