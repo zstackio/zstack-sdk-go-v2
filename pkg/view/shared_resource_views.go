@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type SharedResourceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	OwnerAccountUuid *string `json:"ownerAccountUuid,omitempty"`
-	ReceiverAccountUuid *string `json:"receiverAccountUuid,omitempty"`
-	ToPublic *bool `json:"toPublic,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
+	OwnerAccountUuid string `json:"ownerAccountUuid,omitempty"`
+	ReceiverAccountUuid string `json:"receiverAccountUuid,omitempty"`
+	ToPublic bool `json:"toPublic,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
 }
 
 // QuerySharedResourceView QuerySharedResource

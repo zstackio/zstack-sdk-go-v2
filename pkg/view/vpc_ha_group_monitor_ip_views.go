@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type VpcHaGroupMonitorIpInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	VpcHaRouterUuid *string `json:"vpcHaRouterUuid,omitempty"`
-	MonitorIp *string `json:"monitorIp,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	VpcHaRouterUuid string `json:"vpcHaRouterUuid,omitempty"`
+	MonitorIp string `json:"monitorIp,omitempty"`
 }
 

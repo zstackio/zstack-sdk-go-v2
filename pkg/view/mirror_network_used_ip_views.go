@@ -11,10 +11,10 @@ type MirrorNetworkUsedIpInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	UsedIpInventory UsedIpInventoryView `json:"usedIpInventory,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
 }
 
 // QueryPortMirrorNetworkUsedIpView QueryPortMirrorNetworkUsedIp

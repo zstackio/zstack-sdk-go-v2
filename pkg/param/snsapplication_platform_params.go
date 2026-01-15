@@ -15,7 +15,7 @@ type DeleteSNSApplicationPlatformParamDetail struct {
 // DeleteSNSApplicationPlatformParam DeleteSNSApplicationPlatform request param
 type DeleteSNSApplicationPlatformParam struct {
 	BaseParam
-	Params DeleteSNSApplicationPlatformParamDetail `json:"params"`
+	DeleteSNSApplicationPlatform DeleteSNSApplicationPlatformParamDetail `json:"deleteSNSApplicationPlatform"`
 }
 // UpdateSNSApplicationPlatformParamDetail UpdateSNSApplicationPlatform detail param
 type UpdateSNSApplicationPlatformParamDetail struct {
@@ -27,5 +27,5 @@ type UpdateSNSApplicationPlatformParamDetail struct {
 // UpdateSNSApplicationPlatformParam UpdateSNSApplicationPlatform request param
 type UpdateSNSApplicationPlatformParam struct {
 	BaseParam
-	Params UpdateSNSApplicationPlatformParamDetail `json:"params"`
+	UpdateSNSApplicationPlatform UpdateSNSApplicationPlatformParamDetail `json:"updateSNSApplicationPlatform"`
 }

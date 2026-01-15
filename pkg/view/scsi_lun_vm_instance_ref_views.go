@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type ScsiLunVmInstanceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ScsiLunUuid *string `json:"scsiLunUuid,omitempty"`
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
-	DeviceId *int `json:"deviceId,omitempty"`
+	ScsiLunUuid string `json:"scsiLunUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	DeviceId int `json:"deviceId,omitempty"`
 	AttachMultipath bool `json:"attachMultipath,omitempty"`
 }
 

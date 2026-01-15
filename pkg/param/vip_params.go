@@ -15,7 +15,7 @@ type DeleteVipParamDetail struct {
 // DeleteVipParam DeleteVip request param
 type DeleteVipParam struct {
 	BaseParam
-	Params DeleteVipParamDetail `json:"params"`
+	DeleteVip DeleteVipParamDetail `json:"deleteVip"`
 }
 // UpdateVipParamDetail UpdateVip detail param
 type UpdateVipParamDetail struct {
@@ -27,7 +27,7 @@ type UpdateVipParamDetail struct {
 // UpdateVipParam UpdateVip request param
 type UpdateVipParam struct {
 	BaseParam
-	Params UpdateVipParamDetail `json:"params"`
+	UpdateVip UpdateVipParamDetail `json:"updateVip"`
 }
 // CreateVipParamDetail CreateVip detail param
 type CreateVipParamDetail struct {
@@ -45,5 +45,5 @@ type CreateVipParamDetail struct {
 // CreateVipParam CreateVip request param
 type CreateVipParam struct {
 	BaseParam
-	Params CreateVipParamDetail `json:"params"`
+	CreateVip CreateVipParamDetail `json:"createVip"`
 }

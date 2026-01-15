@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type VirtualRouterMetadataInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ZvrVersion *string `json:"zvrVersion,omitempty"`
-	VyosVersion *string `json:"vyosVersion,omitempty"`
-	KernelVersion *string `json:"kernelVersion,omitempty"`
+	ZvrVersion string `json:"zvrVersion,omitempty"`
+	VyosVersion string `json:"vyosVersion,omitempty"`
+	KernelVersion string `json:"kernelVersion,omitempty"`
 }
 

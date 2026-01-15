@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type EventSubscriptionLabelInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Key *string `json:"key,omitempty"`
+	Key string `json:"key,omitempty"`
 	Operator string `json:"operator,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 
 // AddLabelToEventSubscriptionEventView AddLabelToEventSubscriptionEvent

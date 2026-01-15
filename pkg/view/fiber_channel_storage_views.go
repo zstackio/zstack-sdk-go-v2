@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type FiberChannelStorageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Wwnn *string `json:"wwnn,omitempty"`
-	State *string `json:"state,omitempty"`
+	Wwnn string `json:"wwnn,omitempty"`
+	State string `json:"state,omitempty"`
 	FiberChannelLuns []FiberChannelLunInventoryView `json:"fiberChannelLuns,omitempty"`
 }
 

@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type ConsoleProxyAgentInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	ManagementIp *string `json:"managementIp,omitempty"`
-	ConsoleProxyOverriddenIp *string `json:"consoleProxyOverriddenIp,omitempty"`
-	ConsoleProxyPort *int `json:"consoleProxyPort,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Status *string `json:"status,omitempty"`
-	State *string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp,omitempty"`
+	ConsoleProxyOverriddenIp string `json:"consoleProxyOverriddenIp,omitempty"`
+	ConsoleProxyPort int `json:"consoleProxyPort,omitempty"`
+	Type string `json:"type,omitempty"`
+	Status string `json:"status,omitempty"`
+	State string `json:"state,omitempty"`
 }
 
 // ReconnectConsoleProxyAgentEventView ReconnectConsoleProxyAgentEvent

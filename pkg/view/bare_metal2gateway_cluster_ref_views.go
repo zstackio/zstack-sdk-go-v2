@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type BareMetal2GatewayClusterRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
-	GatewayUuid *string `json:"gatewayUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	GatewayUuid string `json:"gatewayUuid,omitempty"`
 }
 

@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type BuildAppImageRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	ImageUuid *string `json:"imageUuid,omitempty"`
-	BuildAppUuid *string `json:"buildAppUuid,omitempty"`
-	ImageName *string `json:"imageName,omitempty"`
-	BackupStorageUuid *string `json:"backupStorageUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	ImageUuid string `json:"imageUuid,omitempty"`
+	BuildAppUuid string `json:"buildAppUuid,omitempty"`
+	ImageName string `json:"imageName,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
 }
 

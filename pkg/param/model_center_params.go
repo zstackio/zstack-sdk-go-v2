@@ -15,7 +15,7 @@ type DeleteModelCenterParamDetail struct {
 // DeleteModelCenterParam DeleteModelCenter request param
 type DeleteModelCenterParam struct {
 	BaseParam
-	Params DeleteModelCenterParamDetail `json:"params"`
+	DeleteModelCenter DeleteModelCenterParamDetail `json:"deleteModelCenter"`
 }
 // AddModelCenterParamDetail AddModelCenter detail param
 type AddModelCenterParamDetail struct {
@@ -38,7 +38,7 @@ type AddModelCenterParamDetail struct {
 // AddModelCenterParam AddModelCenter request param
 type AddModelCenterParam struct {
 	BaseParam
-	Params AddModelCenterParamDetail `json:"params"`
+	AddModelCenter AddModelCenterParamDetail `json:"addModelCenter"`
 }
 // UpdateModelCenterParamDetail UpdateModelCenter detail param
 type UpdateModelCenterParamDetail struct {
@@ -59,5 +59,5 @@ type UpdateModelCenterParamDetail struct {
 // UpdateModelCenterParam UpdateModelCenter request param
 type UpdateModelCenterParam struct {
 	BaseParam
-	Params UpdateModelCenterParamDetail `json:"params"`
+	UpdateModelCenter UpdateModelCenterParamDetail `json:"updateModelCenter"`
 }

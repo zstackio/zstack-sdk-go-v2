@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type NetworkRouterAreaRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VRouterUuid *string `json:"vRouterUuid,omitempty"`
-	ApplianceVmType *string `json:"applianceVmType,omitempty"`
-	RouterAreaUuid *string `json:"routerAreaUuid,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
+	VRouterUuid string `json:"vRouterUuid,omitempty"`
+	ApplianceVmType string `json:"applianceVmType,omitempty"`
+	RouterAreaUuid string `json:"routerAreaUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 }
 
 // GetVpcAttachedOspfView GetVpcAttachedOspf

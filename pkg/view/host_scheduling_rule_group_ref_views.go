@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type HostSchedulingRuleGroupRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	HostGroupUuid *string `json:"hostGroupUuid,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
+	HostGroupUuid string `json:"hostGroupUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
 }
 

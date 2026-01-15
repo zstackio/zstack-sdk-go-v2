@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type GuestOsCategoryInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Platform *string `json:"platform,omitempty"`
-	OsRelease *string `json:"osRelease,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	OsRelease string `json:"osRelease,omitempty"`
+	Version string `json:"version,omitempty"`
 }
 

@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type ClusterInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
-	HypervisorType *string `json:"hypervisorType,omitempty"`
-	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Architecture *string `json:"architecture,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
 }
 
 // ChangeClusterStateEventView ChangeClusterStateEvent

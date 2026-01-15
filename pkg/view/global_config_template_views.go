@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type GlobalConfigTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Type *string `json:"type,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // QueryGlobalConfigTemplateView QueryGlobalConfigTemplate

@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type HostNetworkLabelInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ServiceType *string `json:"serviceType,omitempty"`
-	System *bool `json:"system,omitempty"`
+	ServiceType string `json:"serviceType,omitempty"`
+	System bool `json:"system,omitempty"`
 }
 
 // CreateHostNetworkServiceTypeEventView CreateHostNetworkServiceTypeEvent

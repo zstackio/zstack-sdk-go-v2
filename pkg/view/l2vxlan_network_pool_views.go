@@ -15,14 +15,14 @@ type L2VxlanNetworkPoolInventoryView struct {
 	AttachedVxlanNetworkRefs []L2VxlanNetworkInventoryView `json:"attachedVxlanNetworkRefs,omitempty"`
 	AttachedVniRanges []VniRangeInventoryView `json:"attachedVniRanges,omitempty"`
 	AttachedCidrs map[string]string `json:"attachedCidrs,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	PhysicalInterface *string `json:"physicalInterface,omitempty"`
-	Type *string `json:"type,omitempty"`
-	VSwitchType *string `json:"vSwitchType,omitempty"`
-	VirtualNetworkId *int `json:"virtualNetworkId,omitempty"`
-	Isolated *bool `json:"isolated,omitempty"`
-	Pvlan *string `json:"pvlan,omitempty"`
+	Description string `json:"description,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	PhysicalInterface string `json:"physicalInterface,omitempty"`
+	Type string `json:"type,omitempty"`
+	VSwitchType string `json:"vSwitchType,omitempty"`
+	VirtualNetworkId int `json:"virtualNetworkId,omitempty"`
+	Isolated bool `json:"isolated,omitempty"`
+	Pvlan string `json:"pvlan,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

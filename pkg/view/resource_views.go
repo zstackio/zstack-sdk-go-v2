@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type ResourceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ResourceName *string `json:"resourceName,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
-	ConcreteResourceType *string `json:"concreteResourceType,omitempty"`
+	ResourceName string `json:"resourceName,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	ConcreteResourceType string `json:"concreteResourceType,omitempty"`
 }
 
 // GetResourceNamesView GetResourceNames

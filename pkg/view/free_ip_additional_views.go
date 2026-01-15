@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type FreeIpInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	IpRangeUuid *string `json:"ipRangeUuid,omitempty"`
-	Ip *string `json:"ip,omitempty"`
-	Netmask *string `json:"netmask,omitempty"`
-	Gateway *string `json:"gateway,omitempty"`
+	IpRangeUuid string `json:"ipRangeUuid,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
+	Gateway string `json:"gateway,omitempty"`
 }
 

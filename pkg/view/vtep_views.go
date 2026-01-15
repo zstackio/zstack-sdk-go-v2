@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type VtepInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	HostUuid *string `json:"hostUuid,omitempty"`
-	VtepIp *string `json:"vtepIp,omitempty"`
-	Port *int `json:"port,omitempty"`
-	Type *string `json:"type,omitempty"`
-	PhysicalInterface *string `json:"physicalInterface,omitempty"`
-	PoolUuid *string `json:"poolUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	VtepIp string `json:"vtepIp,omitempty"`
+	Port int `json:"port,omitempty"`
+	Type string `json:"type,omitempty"`
+	PhysicalInterface string `json:"physicalInterface,omitempty"`
+	PoolUuid string `json:"poolUuid,omitempty"`
 }
 
 // QueryVtepView QueryVtep

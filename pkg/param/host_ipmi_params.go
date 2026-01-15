@@ -18,5 +18,5 @@ type UpdateHostIpmiParamDetail struct {
 // UpdateHostIpmiParam UpdateHostIpmi request param
 type UpdateHostIpmiParam struct {
 	BaseParam
-	Params UpdateHostIpmiParamDetail `json:"params"`
+	UpdateHostIpmi UpdateHostIpmiParamDetail `json:"updateHostIpmi"`
 }

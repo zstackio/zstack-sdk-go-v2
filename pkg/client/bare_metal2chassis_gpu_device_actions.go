@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryBareMetal2ChassisGpuDevice(params *param.QueryParam) (
 	return resp, cli.List("v1/baremetal2/chassis/gpu-device/gpu-devices", params, &resp)
 }
 
-func (cli *ZSClient) GetBareMetal2ChassisGpuDevice(uuid string) (*view.BareMetal2ChassisGpuDeviceInventoryView, error) {
-	var resp view.BareMetal2ChassisGpuDeviceInventoryView
-	if err := cli.Get("v1/baremetal2/chassis/gpu-device/gpu-devices", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageBareMetal2ChassisGpuDevice Pagination
+func (cli *ZSClient) PageBareMetal2ChassisGpuDevice(params *param.QueryParam) ([]view.BareMetal2ChassisGpuDeviceInventoryView, int, error) {
+	var bareMetal2ChassisGpuDevices []view.BareMetal2ChassisGpuDeviceInventoryView
+	total, err := cli.Page("v1/baremetal2/chassis/gpu-device/gpu-devices", params, &bareMetal2ChassisGpuDevices)
+	return bareMetal2ChassisGpuDevices, total, err
 }

@@ -11,7 +11,7 @@ type VpcFirewallRuleSetInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	ActionType string `json:"actionType,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	IsDefault bool `json:"isDefault,omitempty"`
 	IsApplied bool `json:"isApplied,omitempty"`
 	Rules []VpcFirewallRuleInventoryView `json:"rules,omitempty"`

@@ -21,5 +21,5 @@ type AddSimulatorHostParamDetail struct {
 // AddSimulatorHostParam AddSimulatorHost request param
 type AddSimulatorHostParam struct {
 	BaseParam
-	Params AddSimulatorHostParamDetail `json:"params"`
+	AddSimulatorHost AddSimulatorHostParamDetail `json:"addSimulatorHost"`
 }

@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateMonitorGroup creates MonitorGroup
 func (cli *ZSClient) CreateMonitorGroup(params param.CreateMonitorGroupParam) (*view.MonitorGroupInventoryView, error) {
-	var resp view.CreateMonitorGroupEventView
+	resp := view.MonitorGroupInventoryView{}
 	if err := cli.Post("v1/zwatch/monitorgroups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteMonitorGroup deletes MonitorGroup
 func (cli *ZSClient) DeleteMonitorGroup(uuid string, deleteMode param.DeleteMode) error {
@@ -28,18 +28,17 @@ func (cli *ZSClient) QueryMonitorGroup(params *param.QueryParam) ([]view.Monitor
 	return resp, cli.List("v1/zwatch/monitorgroups", params, &resp)
 }
 
-func (cli *ZSClient) GetMonitorGroup(uuid string) (*view.MonitorGroupInventoryView, error) {
-	var resp view.MonitorGroupInventoryView
-	if err := cli.Get("v1/zwatch/monitorgroups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageMonitorGroup Pagination
+func (cli *ZSClient) PageMonitorGroup(params *param.QueryParam) ([]view.MonitorGroupInventoryView, int, error) {
+	var monitorGroups []view.MonitorGroupInventoryView
+	total, err := cli.Page("v1/zwatch/monitorgroups", params, &monitorGroups)
+	return monitorGroups, total, err
 }
 // UpdateMonitorGroup updates MonitorGroup
 func (cli *ZSClient) UpdateMonitorGroup(uuid string, params param.UpdateMonitorGroupParam) (*view.MonitorGroupInventoryView, error) {
-	var resp view.UpdateMonitorGroupEventView
+	resp := view.MonitorGroupInventoryView{}
 	if err := cli.Put("v1/zwatch/monitorgroups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

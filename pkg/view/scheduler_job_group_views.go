@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type SchedulerJobGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
-	JobType *string `json:"jobType,omitempty"`
-	JobData *string `json:"jobData,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	JobType string `json:"jobType,omitempty"`
+	JobData string `json:"jobData,omitempty"`
 	TriggersUuid []string `json:"triggersUuid,omitempty"`
 	JobsUuid []string `json:"jobsUuid,omitempty"`
 }

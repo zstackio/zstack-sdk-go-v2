@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryContainerImage(params *param.QueryParam) ([]view.Conta
 	return resp, cli.List("v1/container/images", params, &resp)
 }
 
-func (cli *ZSClient) GetContainerImage(uuid string) (*view.ContainerImageInventoryView, error) {
-	var resp view.ContainerImageInventoryView
-	if err := cli.Get("v1/container/images", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageContainerImage Pagination
+func (cli *ZSClient) PageContainerImage(params *param.QueryParam) ([]view.ContainerImageInventoryView, int, error) {
+	var containerImages []view.ContainerImageInventoryView
+	total, err := cli.Page("v1/container/images", params, &containerImages)
+	return containerImages, total, err
 }

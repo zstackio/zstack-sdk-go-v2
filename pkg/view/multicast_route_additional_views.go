@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type MulticastRouteInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SourceAddress *string `json:"sourceAddress,omitempty"`
-	GroupAddress *string `json:"groupAddress,omitempty"`
-	IngressInterfaces *string `json:"ingressInterfaces,omitempty"`
-	EgressInterfaces *string `json:"egressInterfaces,omitempty"`
+	SourceAddress string `json:"sourceAddress,omitempty"`
+	GroupAddress string `json:"groupAddress,omitempty"`
+	IngressInterfaces string `json:"ingressInterfaces,omitempty"`
+	EgressInterfaces string `json:"egressInterfaces,omitempty"`
 }
 

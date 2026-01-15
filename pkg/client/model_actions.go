@@ -16,12 +16,11 @@ func (cli *ZSClient) QueryModel(params *param.QueryParam) ([]view.ModelInventory
 	return resp, cli.List("v1/ai/models", params, &resp)
 }
 
-func (cli *ZSClient) GetModel(uuid string) (*view.ModelInventoryView, error) {
-	var resp view.ModelInventoryView
-	if err := cli.Get("v1/ai/models", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageModel Pagination
+func (cli *ZSClient) PageModel(params *param.QueryParam) ([]view.ModelInventoryView, int, error) {
+	var models []view.ModelInventoryView
+	total, err := cli.Page("v1/ai/models", params, &models)
+	return models, total, err
 }
 // DeleteModel deletes Model
 func (cli *ZSClient) DeleteModel(uuid string, deleteMode param.DeleteMode) error {
@@ -29,19 +28,19 @@ func (cli *ZSClient) DeleteModel(uuid string, deleteMode param.DeleteMode) error
 }
 // UpdateModel updates Model
 func (cli *ZSClient) UpdateModel(uuid string, params param.UpdateModelParam) (*view.ModelInventoryView, error) {
-	var resp view.UpdateModelEventView
+	resp := view.ModelInventoryView{}
 	if err := cli.Put("v1/ai/models", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // AddModel adds Model
 func (cli *ZSClient) AddModel(params param.AddModelParam) (*view.ModelInventoryView, error) {
-	var resp view.AddModelEventView
+	resp := view.ModelInventoryView{}
 	if err := cli.Post("v1/ai/models", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 
 // AddModelAsync Async

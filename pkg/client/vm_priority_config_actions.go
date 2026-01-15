@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryVmPriorityConfig(params *param.QueryParam) ([]view.VmP
 	return resp, cli.List("v1/vm-priority-config", params, &resp)
 }
 
-func (cli *ZSClient) GetVmPriorityConfig(uuid string) (*view.VmPriorityConfigInventoryView, error) {
-	var resp view.VmPriorityConfigInventoryView
-	if err := cli.Get("v1/vm-priority-config", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVmPriorityConfig Pagination
+func (cli *ZSClient) PageVmPriorityConfig(params *param.QueryParam) ([]view.VmPriorityConfigInventoryView, int, error) {
+	var vmPriorityConfigs []view.VmPriorityConfigInventoryView
+	total, err := cli.Page("v1/vm-priority-config", params, &vmPriorityConfigs)
+	return vmPriorityConfigs, total, err
 }

@@ -11,9 +11,9 @@ type NasFileSystemInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Protocol string `json:"protocol,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Description *string `json:"description,omitempty"`
-	FileSystemId *string `json:"fileSystemId,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	FileSystemId string `json:"fileSystemId,omitempty"`
 }
 
 // QueryNasFileSystemView QueryNasFileSystem
@@ -23,6 +23,11 @@ type QueryNasFileSystemView struct {
 
 // UpdateNasFileSystemEventView UpdateNasFileSystemEvent
 type UpdateNasFileSystemEventView struct {
+	Inventory NasFileSystemInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateNasFileSystemEventView CreateNasFileSystemEvent
+type CreateNasFileSystemEventView struct {
 	Inventory NasFileSystemInventoryView `json:"inventory,omitempty"`
 }
 

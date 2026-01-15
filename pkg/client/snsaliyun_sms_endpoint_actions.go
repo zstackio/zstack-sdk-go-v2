@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateSNSAliyunSmsEndpoint creates SNSAliyunSmsEndpoint
 func (cli *ZSClient) CreateSNSAliyunSmsEndpoint(params param.CreateSNSAliyunSmsEndpointParam) (*view.SNSAliyunSmsEndpointInventoryView, error) {
-	var resp view.CreateSNSAliyunSmsEndpointEventView
+	resp := view.SNSAliyunSmsEndpointInventoryView{}
 	if err := cli.Post("v1/sns/sms-endpoints/aliyunsms", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // ValidateSNSAliyunSmsEndpoint operates on SNSAliyunSmsEndpoint
 func (cli *ZSClient) ValidateSNSAliyunSmsEndpoint(uuid string, params param.ValidateSNSAliyunSmsEndpointParam) (*view.SNSAliyunSmsEndpointInventoryView, error) {

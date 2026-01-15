@@ -14,7 +14,7 @@ type DeleteModelEvaluationTaskParamDetail struct {
 // DeleteModelEvaluationTaskParam DeleteModelEvaluationTask request param
 type DeleteModelEvaluationTaskParam struct {
 	BaseParam
-	Params DeleteModelEvaluationTaskParamDetail `json:"params"`
+	DeleteModelEvaluationTask DeleteModelEvaluationTaskParamDetail `json:"deleteModelEvaluationTask"`
 }
 // UpdateModelEvaluationTaskParamDetail UpdateModelEvaluationTask detail param
 type UpdateModelEvaluationTaskParamDetail struct {
@@ -26,5 +26,5 @@ type UpdateModelEvaluationTaskParamDetail struct {
 // UpdateModelEvaluationTaskParam UpdateModelEvaluationTask request param
 type UpdateModelEvaluationTaskParam struct {
 	BaseParam
-	Params UpdateModelEvaluationTaskParamDetail `json:"params"`
+	UpdateModelEvaluationTask UpdateModelEvaluationTaskParamDetail `json:"updateModelEvaluationTask"`
 }

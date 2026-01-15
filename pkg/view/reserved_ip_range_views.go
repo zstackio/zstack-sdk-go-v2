@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type ReservedIpRangeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	StartIp *string `json:"startIp,omitempty"`
-	EndIp *string `json:"endIp,omitempty"`
-	IpVersion *int `json:"ipVersion,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	StartIp string `json:"startIp,omitempty"`
+	EndIp string `json:"endIp,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
 }
 
 // DeleteReservedIpRangeEventView DeleteReservedIpRangeEvent

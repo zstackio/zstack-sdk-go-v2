@@ -15,7 +15,7 @@ type UpdateVniRangeParamDetail struct {
 // UpdateVniRangeParam UpdateVniRange request param
 type UpdateVniRangeParam struct {
 	BaseParam
-	Params UpdateVniRangeParamDetail `json:"params"`
+	UpdateVniRange UpdateVniRangeParamDetail `json:"updateVniRange"`
 }
 // CreateVniRangeParamDetail CreateVniRange detail param
 type CreateVniRangeParamDetail struct {
@@ -31,7 +31,7 @@ type CreateVniRangeParamDetail struct {
 // CreateVniRangeParam CreateVniRange request param
 type CreateVniRangeParam struct {
 	BaseParam
-	Params CreateVniRangeParamDetail `json:"params"`
+	CreateVniRange CreateVniRangeParamDetail `json:"createVniRange"`
 }
 // DeleteVniRangeParamDetail DeleteVniRange detail param
 type DeleteVniRangeParamDetail struct {
@@ -42,5 +42,5 @@ type DeleteVniRangeParamDetail struct {
 // DeleteVniRangeParam DeleteVniRange request param
 type DeleteVniRangeParam struct {
 	BaseParam
-	Params DeleteVniRangeParamDetail `json:"params"`
+	DeleteVniRange DeleteVniRangeParamDetail `json:"deleteVniRange"`
 }

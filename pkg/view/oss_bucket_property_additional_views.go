@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // OssBucketPropertyView OssBucketProperty
 type OssBucketPropertyView struct {
-	BucketName *string `json:"bucketName,omitempty"`
-	RegionId *string `json:"regionId,omitempty"`
+	BucketName string `json:"bucketName,omitempty"`
+	RegionId string `json:"regionId,omitempty"`
 }
 

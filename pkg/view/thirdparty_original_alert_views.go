@@ -10,17 +10,17 @@ var _ = time.Now // avoid unused import
 type ThirdpartyOriginalAlertInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ThirdpartyPlatformUuid *string `json:"thirdpartyPlatformUuid,omitempty"`
-	Product *string `json:"product,omitempty"`
-	Service *string `json:"service,omitempty"`
-	Metric *string `json:"metric,omitempty"`
-	AlertLevel *string `json:"alertLevel,omitempty"`
-	AlertTime *time.Time `json:"alertTime,omitempty"`
-	Dimensions *string `json:"dimensions,omitempty"`
-	Message *string `json:"message,omitempty"`
-	DataSource *string `json:"dataSource,omitempty"`
-	SourceText *string `json:"sourceText,omitempty"`
-	ReadStatus *string `json:"readStatus,omitempty"`
+	ThirdpartyPlatformUuid string `json:"thirdpartyPlatformUuid,omitempty"`
+	Product string `json:"product,omitempty"`
+	Service string `json:"service,omitempty"`
+	Metric string `json:"metric,omitempty"`
+	AlertLevel string `json:"alertLevel,omitempty"`
+	AlertTime time.Time `json:"alertTime,omitempty"`
+	Dimensions string `json:"dimensions,omitempty"`
+	Message string `json:"message,omitempty"`
+	DataSource string `json:"dataSource,omitempty"`
+	SourceText string `json:"sourceText,omitempty"`
+	ReadStatus string `json:"readStatus,omitempty"`
 }
 
 // QueryThirdpartyAlertView QueryThirdpartyAlert

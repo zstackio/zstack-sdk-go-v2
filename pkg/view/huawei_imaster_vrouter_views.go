@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type HuaweiIMasterVRouterInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	LogicalNetworkId *string `json:"logicalNetworkId,omitempty"`
-	TenantId *string `json:"tenantId,omitempty"`
-	FabricUuid *string `json:"fabricUuid,omitempty"`
-	SdnControllerUuid *string `json:"sdnControllerUuid,omitempty"`
-	State *string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	LogicalNetworkId string `json:"logicalNetworkId,omitempty"`
+	TenantId string `json:"tenantId,omitempty"`
+	FabricUuid string `json:"fabricUuid,omitempty"`
+	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
+	State string `json:"state,omitempty"`
 }
 
 // CreateHuaweiIMasterVRouterEventView CreateHuaweiIMasterVRouterEvent

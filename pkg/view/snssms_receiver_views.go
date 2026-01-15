@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type SNSSmsReceiverInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PhoneNumber *string `json:"phoneNumber,omitempty"`
-	EndpointUuid *string `json:"endpointUuid,omitempty"`
+	PhoneNumber string `json:"phoneNumber,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
 	Type string `json:"type,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // AddSNSSmsReceiverEventView AddSNSSmsReceiverEvent

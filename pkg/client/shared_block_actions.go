@@ -17,19 +17,18 @@ func (cli *ZSClient) QuerySharedBlock(params *param.QueryParam) ([]view.SharedBl
 	return resp, cli.List("v1/sharedblock-group/sharedblocks", params, &resp)
 }
 
-func (cli *ZSClient) GetSharedBlock(uuid string) (*view.SharedBlockInventoryView, error) {
-	var resp view.SharedBlockInventoryView
-	if err := cli.Get("v1/sharedblock-group/sharedblocks", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSharedBlock Pagination
+func (cli *ZSClient) PageSharedBlock(params *param.QueryParam) ([]view.SharedBlockInventoryView, int, error) {
+	var sharedBlocks []view.SharedBlockInventoryView
+	total, err := cli.Page("v1/sharedblock-group/sharedblocks", params, &sharedBlocks)
+	return sharedBlocks, total, err
 }
 // UpdateSharedBlock updates SharedBlock
 func (cli *ZSClient) UpdateSharedBlock(sharedBlockGroupUuid string, uuid string, params param.UpdateSharedBlockParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
-	var resp view.UpdateSharedBlockEventView
+	resp := view.SharedBlockGroupPrimaryStorageInventoryView{}
 	err := cli.PutWithSpec("v1/primary-storage/sharedblockgroup", sharedBlockGroupUuid, fmt.Sprintf("sharedblocks/%s/actions", uuid), "", params, &resp)
 	if err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

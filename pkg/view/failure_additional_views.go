@@ -8,6 +8,6 @@ var _ = time.Now // avoid unused import
 
 // FailureView Failure
 type FailureView struct {
-	BackupStorageUuid *string `json:"backupStorageUuid,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
 }
 

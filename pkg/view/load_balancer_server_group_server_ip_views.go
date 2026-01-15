@@ -11,9 +11,9 @@ type LoadBalancerServerGroupServerIpInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	ServerGroupUuid *string `json:"serverGroupUuid,omitempty"`
-	IpAddress *string `json:"ipAddress,omitempty"`
-	Weight *int64 `json:"weight,omitempty"`
-	Status *string `json:"status,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
+	IpAddress string `json:"ipAddress,omitempty"`
+	Weight int64 `json:"weight,omitempty"`
+	Status string `json:"status,omitempty"`
 }
 

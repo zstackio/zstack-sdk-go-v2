@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type ZdfsStorageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	EndPoint *string `json:"endPoint,omitempty"`
-	AccessKey *string `json:"accessKey,omitempty"`
-	SecretKey *string `json:"secretKey,omitempty"`
+	EndPoint string `json:"endPoint,omitempty"`
+	AccessKey string `json:"accessKey,omitempty"`
+	SecretKey string `json:"secretKey,omitempty"`
 	Type string `json:"type,omitempty"`
-	UsedCapacity *int64 `json:"usedCapacity,omitempty"`
+	UsedCapacity int64 `json:"usedCapacity,omitempty"`
 }
 

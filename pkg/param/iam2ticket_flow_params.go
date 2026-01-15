@@ -18,7 +18,7 @@ type UpdateIAM2TicketFlowParamDetail struct {
 // UpdateIAM2TicketFlowParam UpdateIAM2TicketFlow request param
 type UpdateIAM2TicketFlowParam struct {
 	BaseParam
-	Params UpdateIAM2TicketFlowParamDetail `json:"params"`
+	UpdateIAM2TicketFlow UpdateIAM2TicketFlowParamDetail `json:"updateIAM2TicketFlow"`
 }
 // DeleteIAM2TicketFlowParamDetail DeleteIAM2TicketFlow detail param
 type DeleteIAM2TicketFlowParamDetail struct {
@@ -29,7 +29,7 @@ type DeleteIAM2TicketFlowParamDetail struct {
 // DeleteIAM2TicketFlowParam DeleteIAM2TicketFlow request param
 type DeleteIAM2TicketFlowParam struct {
 	BaseParam
-	Params DeleteIAM2TicketFlowParamDetail `json:"params"`
+	DeleteIAM2TicketFlow DeleteIAM2TicketFlowParamDetail `json:"deleteIAM2TicketFlow"`
 }
 // AddIAM2TicketFlowParamDetail AddIAM2TicketFlow detail param
 type AddIAM2TicketFlowParamDetail struct {
@@ -46,5 +46,5 @@ type AddIAM2TicketFlowParamDetail struct {
 // AddIAM2TicketFlowParam AddIAM2TicketFlow request param
 type AddIAM2TicketFlowParam struct {
 	BaseParam
-	Params AddIAM2TicketFlowParamDetail `json:"params"`
+	AddIAM2TicketFlow AddIAM2TicketFlowParamDetail `json:"addIAM2TicketFlow"`
 }

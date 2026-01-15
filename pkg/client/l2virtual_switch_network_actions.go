@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryL2VirtualSwitchNetwork(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/l2-networks/virtual-switch", params, &resp)
 }
 
-func (cli *ZSClient) GetL2VirtualSwitchNetwork(uuid string) (*view.L2VirtualSwitchNetworkInventoryView, error) {
-	var resp view.L2VirtualSwitchNetworkInventoryView
-	if err := cli.Get("v1/l2-networks/virtual-switch", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageL2VirtualSwitchNetwork Pagination
+func (cli *ZSClient) PageL2VirtualSwitchNetwork(params *param.QueryParam) ([]view.L2VirtualSwitchNetworkInventoryView, int, error) {
+	var l2VirtualSwitchNetworks []view.L2VirtualSwitchNetworkInventoryView
+	total, err := cli.Page("v1/l2-networks/virtual-switch", params, &l2VirtualSwitchNetworks)
+	return l2VirtualSwitchNetworks, total, err
 }

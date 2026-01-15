@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateMdevDeviceSpec updates MdevDeviceSpec
 func (cli *ZSClient) UpdateMdevDeviceSpec(uuid string, params param.UpdateMdevDeviceSpecParam) (*view.MdevDeviceSpecInventoryView, error) {
-	var resp view.UpdateMdevDeviceSpecEventView
+	resp := view.MdevDeviceSpecInventoryView{}
 	if err := cli.Put("v1/mdev-device-specs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryMdevDeviceSpec queries MdevDeviceSpec list
 func (cli *ZSClient) QueryMdevDeviceSpec(params *param.QueryParam) ([]view.MdevDeviceSpecInventoryView, error) {
@@ -24,10 +24,9 @@ func (cli *ZSClient) QueryMdevDeviceSpec(params *param.QueryParam) ([]view.MdevD
 	return resp, cli.List("v1/mdev-device-specs", params, &resp)
 }
 
-func (cli *ZSClient) GetMdevDeviceSpec(uuid string) (*view.MdevDeviceSpecInventoryView, error) {
-	var resp view.MdevDeviceSpecInventoryView
-	if err := cli.Get("v1/mdev-device-specs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageMdevDeviceSpec Pagination
+func (cli *ZSClient) PageMdevDeviceSpec(params *param.QueryParam) ([]view.MdevDeviceSpecInventoryView, int, error) {
+	var mdevDeviceSpecs []view.MdevDeviceSpecInventoryView
+	total, err := cli.Page("v1/mdev-device-specs", params, &mdevDeviceSpecs)
+	return mdevDeviceSpecs, total, err
 }

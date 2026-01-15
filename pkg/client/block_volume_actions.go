@@ -12,19 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateBlockVolume updates BlockVolume
 func (cli *ZSClient) UpdateBlockVolume(uuid string, params param.UpdateBlockVolumeParam) (*view.BlockVolumeInventoryView, error) {
-	var resp view.UpdateBlockVolumeEventView
+	resp := view.BlockVolumeInventoryView{}
 	if err := cli.Put("v1/block-volumes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateBlockVolume creates BlockVolume
 func (cli *ZSClient) CreateBlockVolume(params param.CreateBlockVolumeParam) (*view.BlockVolumeInventoryView, error) {
-	var resp view.CreateBlockVolumeEventView
+	resp := view.BlockVolumeInventoryView{}
 	if err := cli.Post("v1/block-volumes", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryBlockVolume queries BlockVolume list
 func (cli *ZSClient) QueryBlockVolume(params *param.QueryParam) ([]view.BlockVolumeInventoryView, error) {
@@ -32,10 +32,9 @@ func (cli *ZSClient) QueryBlockVolume(params *param.QueryParam) ([]view.BlockVol
 	return resp, cli.List("v1/block-volumes", params, &resp)
 }
 
-func (cli *ZSClient) GetBlockVolume(uuid string) (*view.BlockVolumeInventoryView, error) {
-	var resp view.BlockVolumeInventoryView
-	if err := cli.Get("v1/block-volumes", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageBlockVolume Pagination
+func (cli *ZSClient) PageBlockVolume(params *param.QueryParam) ([]view.BlockVolumeInventoryView, int, error) {
+	var blockVolumes []view.BlockVolumeInventoryView
+	total, err := cli.Page("v1/block-volumes", params, &blockVolumes)
+	return blockVolumes, total, err
 }

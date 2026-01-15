@@ -18,7 +18,7 @@ type CreateSshKeyPairParamDetail struct {
 // CreateSshKeyPairParam CreateSshKeyPair request param
 type CreateSshKeyPairParam struct {
 	BaseParam
-	Params CreateSshKeyPairParamDetail `json:"params"`
+	CreateSshKeyPair CreateSshKeyPairParamDetail `json:"createSshKeyPair"`
 }
 // GenerateSshKeyPairParamDetail GenerateSshKeyPair detail param
 type GenerateSshKeyPairParamDetail struct {
@@ -29,7 +29,7 @@ type GenerateSshKeyPairParamDetail struct {
 // GenerateSshKeyPairParam GenerateSshKeyPair request param
 type GenerateSshKeyPairParam struct {
 	BaseParam
-	Params GenerateSshKeyPairParamDetail `json:"params"`
+	GenerateSshKeyPair GenerateSshKeyPairParamDetail `json:"generateSshKeyPair"`
 }
 // UpdateSshKeyPairParamDetail UpdateSshKeyPair detail param
 type UpdateSshKeyPairParamDetail struct {
@@ -41,7 +41,7 @@ type UpdateSshKeyPairParamDetail struct {
 // UpdateSshKeyPairParam UpdateSshKeyPair request param
 type UpdateSshKeyPairParam struct {
 	BaseParam
-	Params UpdateSshKeyPairParamDetail `json:"params"`
+	UpdateSshKeyPair UpdateSshKeyPairParamDetail `json:"updateSshKeyPair"`
 }
 // DeleteSshKeyPairParamDetail DeleteSshKeyPair detail param
 type DeleteSshKeyPairParamDetail struct {
@@ -51,5 +51,5 @@ type DeleteSshKeyPairParamDetail struct {
 // DeleteSshKeyPairParam DeleteSshKeyPair request param
 type DeleteSshKeyPairParam struct {
 	BaseParam
-	Params DeleteSshKeyPairParamDetail `json:"params"`
+	DeleteSshKeyPair DeleteSshKeyPairParamDetail `json:"deleteSshKeyPair"`
 }

@@ -12,19 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // ReconnectIPsecConnection operates on IPsecConnection
 func (cli *ZSClient) ReconnectIPsecConnection(uuid string, params param.ReconnectIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
-	var resp view.ReconnectIPsecConnectionEventView
+	resp := view.IPsecConnectionInventoryView{}
 	if err := cli.Put("v1/ipsec", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateIPsecConnection updates IPsecConnection
 func (cli *ZSClient) UpdateIPsecConnection(uuid string, params param.UpdateIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
-	var resp view.UpdateIPsecConnectionEventView
+	resp := view.IPsecConnectionInventoryView{}
 	if err := cli.Put("v1/ipsec", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteIPsecConnection deletes IPsecConnection
 func (cli *ZSClient) DeleteIPsecConnection(uuid string, deleteMode param.DeleteMode) error {
@@ -32,17 +32,17 @@ func (cli *ZSClient) DeleteIPsecConnection(uuid string, deleteMode param.DeleteM
 }
 // CreateIPsecConnection creates IPsecConnection
 func (cli *ZSClient) CreateIPsecConnection(params param.CreateIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
-	var resp view.CreateIPsecConnectionEventView
+	resp := view.IPsecConnectionInventoryView{}
 	if err := cli.Post("v1/ipsec", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // ChangeIPsecConnection changes IPsecConnection
 func (cli *ZSClient) ChangeIPsecConnection(uuid string, params param.ChangeIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
-	var resp view.ChangeIPsecConnectionEventView
+	resp := view.IPsecConnectionInventoryView{}
 	if err := cli.Put("v1/ipsec/config", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

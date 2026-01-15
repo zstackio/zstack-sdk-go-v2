@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type UserGroupUserRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	UserUuid *string `json:"userUuid,omitempty"`
-	GroupUuid *string `json:"groupUuid,omitempty"`
+	UserUuid string `json:"userUuid,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
 }
 

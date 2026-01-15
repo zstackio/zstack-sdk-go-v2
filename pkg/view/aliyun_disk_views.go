@@ -10,16 +10,16 @@ var _ = time.Now // avoid unused import
 type AliyunDiskInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	DiskId *string `json:"diskId,omitempty"`
-	Description *string `json:"description,omitempty"`
-	IdentityZoneUuid *string `json:"identityZoneUuid,omitempty"`
-	EcsInstanceUuid *string `json:"ecsInstanceUuid,omitempty"`
-	DiskCategory *string `json:"diskCategory,omitempty"`
-	DiskType *string `json:"diskType,omitempty"`
-	DiskChargeType *string `json:"diskChargeType,omitempty"`
-	Status *string `json:"status,omitempty"`
-	SizeWithGB *int `json:"sizeWithGB,omitempty"`
-	DeviceInfo *string `json:"deviceInfo,omitempty"`
+	DiskId string `json:"diskId,omitempty"`
+	Description string `json:"description,omitempty"`
+	IdentityZoneUuid string `json:"identityZoneUuid,omitempty"`
+	EcsInstanceUuid string `json:"ecsInstanceUuid,omitempty"`
+	DiskCategory string `json:"diskCategory,omitempty"`
+	DiskType string `json:"diskType,omitempty"`
+	DiskChargeType string `json:"diskChargeType,omitempty"`
+	Status string `json:"status,omitempty"`
+	SizeWithGB int `json:"sizeWithGB,omitempty"`
+	DeviceInfo string `json:"deviceInfo,omitempty"`
 }
 
 // QueryAliyunDiskFromLocalView QueryAliyunDiskFromLocal

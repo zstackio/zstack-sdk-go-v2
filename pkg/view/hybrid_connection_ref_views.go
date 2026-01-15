@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type HybridConnectionRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
-	AccountUuid *string `json:"accountUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
 	ConnectionType string `json:"connectionType,omitempty"`
-	ConnectionUuid *string `json:"connectionUuid,omitempty"`
-	Direction *string `json:"direction,omitempty"`
+	ConnectionUuid string `json:"connectionUuid,omitempty"`
+	Direction string `json:"direction,omitempty"`
 }
 

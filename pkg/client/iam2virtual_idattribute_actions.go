@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateIAM2VirtualIDAttribute updates IAM2VirtualIDAttribute
 func (cli *ZSClient) UpdateIAM2VirtualIDAttribute(uuid string, params param.UpdateIAM2VirtualIDAttributeParam) (*view.IAM2VirtualIDAttributeInventoryView, error) {
-	var resp view.UpdateIAM2VirtualIDAttributeEventView
+	resp := view.IAM2VirtualIDAttributeInventoryView{}
 	if err := cli.Put("v1/iam2/virtual-ids/attributes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryIAM2VirtualIDAttribute queries IAM2VirtualIDAttribute list
 func (cli *ZSClient) QueryIAM2VirtualIDAttribute(params *param.QueryParam) ([]view.IAM2VirtualIDAttributeInventoryView, error) {
@@ -24,10 +24,9 @@ func (cli *ZSClient) QueryIAM2VirtualIDAttribute(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/iam2/virtual-ids/attributes", params, &resp)
 }
 
-func (cli *ZSClient) GetIAM2VirtualIDAttribute(uuid string) (*view.IAM2VirtualIDAttributeInventoryView, error) {
-	var resp view.IAM2VirtualIDAttributeInventoryView
-	if err := cli.Get("v1/iam2/virtual-ids/attributes", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageIAM2VirtualIDAttribute Pagination
+func (cli *ZSClient) PageIAM2VirtualIDAttribute(params *param.QueryParam) ([]view.IAM2VirtualIDAttributeInventoryView, int, error) {
+	var iAM2VirtualIDAttributes []view.IAM2VirtualIDAttributeInventoryView
+	total, err := cli.Page("v1/iam2/virtual-ids/attributes", params, &iAM2VirtualIDAttributes)
+	return iAM2VirtualIDAttributes, total, err
 }

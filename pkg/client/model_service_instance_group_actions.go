@@ -16,20 +16,19 @@ func (cli *ZSClient) QueryModelServiceInstanceGroup(params *param.QueryParam) ([
 	return resp, cli.List("v1/ai/model-services/instances/groups/", params, &resp)
 }
 
-func (cli *ZSClient) GetModelServiceInstanceGroup(uuid string) (*view.ModelServiceInstanceGroupInventoryView, error) {
-	var resp view.ModelServiceInstanceGroupInventoryView
-	if err := cli.Get("v1/ai/model-services/instances/groups/", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageModelServiceInstanceGroup Pagination
+func (cli *ZSClient) PageModelServiceInstanceGroup(params *param.QueryParam) ([]view.ModelServiceInstanceGroupInventoryView, int, error) {
+	var modelServiceInstanceGroups []view.ModelServiceInstanceGroupInventoryView
+	total, err := cli.Page("v1/ai/model-services/instances/groups/", params, &modelServiceInstanceGroups)
+	return modelServiceInstanceGroups, total, err
 }
 // UpdateModelServiceInstanceGroup updates ModelServiceInstanceGroup
 func (cli *ZSClient) UpdateModelServiceInstanceGroup(uuid string, params param.UpdateModelServiceInstanceGroupParam) (*view.ModelServiceInstanceGroupInventoryView, error) {
-	var resp view.UpdateModelServiceInstanceGroupEventView
+	resp := view.ModelServiceInstanceGroupInventoryView{}
 	if err := cli.Put("v1/model-service-instance-groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteModelServiceInstanceGroup deletes ModelServiceInstanceGroup
 func (cli *ZSClient) DeleteModelServiceInstanceGroup(uuid string, deleteMode param.DeleteMode) error {

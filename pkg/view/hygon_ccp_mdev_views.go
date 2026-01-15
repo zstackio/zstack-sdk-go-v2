@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type HygonCcpMdevInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	MdevUuid *string `json:"mdevUuid,omitempty"`
-	CcpDeviceUuid *string `json:"ccpDeviceUuid,omitempty"`
-	VendorIdx *int `json:"vendorIdx,omitempty"`
-	UseFlag *int `json:"useFlag,omitempty"`
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	MdevUuid string `json:"mdevUuid,omitempty"`
+	CcpDeviceUuid string `json:"ccpDeviceUuid,omitempty"`
+	VendorIdx int `json:"vendorIdx,omitempty"`
+	UseFlag int `json:"useFlag,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	Status string `json:"status,omitempty"`
 	State string `json:"state,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type CleanLongJobParamDetail struct {
 // CleanLongJobParam CleanLongJob request param
 type CleanLongJobParam struct {
 	BaseParam
-	Params CleanLongJobParamDetail `json:"params"`
+	CleanLongJob CleanLongJobParamDetail `json:"cleanLongJob"`
 }
 // ResumeLongJobParamDetail ResumeLongJob detail param
 type ResumeLongJobParamDetail struct {
@@ -24,7 +24,7 @@ type ResumeLongJobParamDetail struct {
 // ResumeLongJobParam ResumeLongJob request param
 type ResumeLongJobParam struct {
 	BaseParam
-	Params ResumeLongJobParamDetail `json:"params"`
+	ResumeLongJob ResumeLongJobParamDetail `json:"resumeLongJob"`
 }
 // DeleteLongJobParamDetail DeleteLongJob detail param
 type DeleteLongJobParamDetail struct {
@@ -34,7 +34,7 @@ type DeleteLongJobParamDetail struct {
 // DeleteLongJobParam DeleteLongJob request param
 type DeleteLongJobParam struct {
 	BaseParam
-	Params DeleteLongJobParamDetail `json:"params"`
+	DeleteLongJob DeleteLongJobParamDetail `json:"deleteLongJob"`
 }
 // UpdateLongJobParamDetail UpdateLongJob detail param
 type UpdateLongJobParamDetail struct {
@@ -46,5 +46,5 @@ type UpdateLongJobParamDetail struct {
 // UpdateLongJobParam UpdateLongJob request param
 type UpdateLongJobParam struct {
 	BaseParam
-	Params UpdateLongJobParamDetail `json:"params"`
+	UpdateLongJob UpdateLongJobParamDetail `json:"updateLongJob"`
 }

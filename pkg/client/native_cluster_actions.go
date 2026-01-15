@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryNativeCluster(params *param.QueryParam) ([]view.Native
 	return resp, cli.List("v1/container/native/cluster", params, &resp)
 }
 
-func (cli *ZSClient) GetNativeCluster(uuid string) (*view.NativeClusterInventoryView, error) {
-	var resp view.NativeClusterInventoryView
-	if err := cli.Get("v1/container/native/cluster", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageNativeCluster Pagination
+func (cli *ZSClient) PageNativeCluster(params *param.QueryParam) ([]view.NativeClusterInventoryView, int, error) {
+	var nativeClusters []view.NativeClusterInventoryView
+	total, err := cli.Page("v1/container/native/cluster", params, &nativeClusters)
+	return nativeClusters, total, err
 }

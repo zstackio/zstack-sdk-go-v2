@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type H3cSdnControllerTenantInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SdnControllerUuid *string `json:"sdnControllerUuid,omitempty"`
-	TenantUuid *string `json:"tenantUuid,omitempty"`
-	VdsUuid *string `json:"vdsUuid,omitempty"`
-	TenantName *string `json:"tenantName,omitempty"`
-	VdsName *string `json:"vdsName,omitempty"`
-	CloudDomainName *string `json:"cloudDomainName,omitempty"`
-	State *string `json:"state,omitempty"`
+	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
+	TenantUuid string `json:"tenantUuid,omitempty"`
+	VdsUuid string `json:"vdsUuid,omitempty"`
+	TenantName string `json:"tenantName,omitempty"`
+	VdsName string `json:"vdsName,omitempty"`
+	CloudDomainName string `json:"cloudDomainName,omitempty"`
+	State string `json:"state,omitempty"`
 }
 

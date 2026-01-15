@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type LicenseAuthorizedNodeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AppId *string `json:"appId,omitempty"`
-	Ip *string `json:"ip,omitempty"`
-	LastSyncDate *time.Time `json:"lastSyncDate,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Type *string `json:"type,omitempty"`
+	AppId string `json:"appId,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	LastSyncDate time.Time `json:"lastSyncDate,omitempty"`
+	Status string `json:"status,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // QueryLicenseAuthorizedNodeView QueryLicenseAuthorizedNode

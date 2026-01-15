@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryApplicationDevelopmentService(params *param.QueryParam
 	return resp, cli.List("v1/ai/model-services/app/", params, &resp)
 }
 
-func (cli *ZSClient) GetApplicationDevelopmentService(uuid string) (*view.ApplicationDevelopmentServiceInventoryView, error) {
-	var resp view.ApplicationDevelopmentServiceInventoryView
-	if err := cli.Get("v1/ai/model-services/app/", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageApplicationDevelopmentService Pagination
+func (cli *ZSClient) PageApplicationDevelopmentService(params *param.QueryParam) ([]view.ApplicationDevelopmentServiceInventoryView, int, error) {
+	var applicationDevelopmentServices []view.ApplicationDevelopmentServiceInventoryView
+	total, err := cli.Page("v1/ai/model-services/app/", params, &applicationDevelopmentServices)
+	return applicationDevelopmentServices, total, err
 }

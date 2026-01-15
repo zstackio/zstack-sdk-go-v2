@@ -23,7 +23,7 @@ type CreateIAM2VirtualIDParamDetail struct {
 // CreateIAM2VirtualIDParam CreateIAM2VirtualID request param
 type CreateIAM2VirtualIDParam struct {
 	BaseParam
-	Params CreateIAM2VirtualIDParamDetail `json:"params"`
+	CreateIAM2VirtualID CreateIAM2VirtualIDParamDetail `json:"createIAM2VirtualID"`
 }
 // DeleteIAM2VirtualIDParamDetail DeleteIAM2VirtualID detail param
 type DeleteIAM2VirtualIDParamDetail struct {
@@ -34,7 +34,7 @@ type DeleteIAM2VirtualIDParamDetail struct {
 // DeleteIAM2VirtualIDParam DeleteIAM2VirtualID request param
 type DeleteIAM2VirtualIDParam struct {
 	BaseParam
-	Params DeleteIAM2VirtualIDParamDetail `json:"params"`
+	DeleteIAM2VirtualID DeleteIAM2VirtualIDParamDetail `json:"deleteIAM2VirtualID"`
 }
 // LoginIAM2VirtualIDParamDetail LoginIAM2VirtualID detail param
 type LoginIAM2VirtualIDParamDetail struct {
@@ -48,7 +48,7 @@ type LoginIAM2VirtualIDParamDetail struct {
 // LoginIAM2VirtualIDParam LoginIAM2VirtualID request param
 type LoginIAM2VirtualIDParam struct {
 	BaseParam
-	Params LoginIAM2VirtualIDParamDetail `json:"params"`
+	LoginIAM2VirtualID LoginIAM2VirtualIDParamDetail `json:"loginIAM2VirtualID"`
 }
 // UpdateIAM2VirtualIDParamDetail UpdateIAM2VirtualID detail param
 type UpdateIAM2VirtualIDParamDetail struct {
@@ -62,5 +62,5 @@ type UpdateIAM2VirtualIDParamDetail struct {
 // UpdateIAM2VirtualIDParam UpdateIAM2VirtualID request param
 type UpdateIAM2VirtualIDParam struct {
 	BaseParam
-	Params UpdateIAM2VirtualIDParamDetail `json:"params"`
+	UpdateIAM2VirtualID UpdateIAM2VirtualIDParamDetail `json:"updateIAM2VirtualID"`
 }

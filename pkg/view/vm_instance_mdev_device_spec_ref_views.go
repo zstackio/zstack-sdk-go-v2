@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type VmInstanceMdevDeviceSpecRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
-	MdevSpecUuid *string `json:"mdevSpecUuid,omitempty"`
-	MdevDeviceNumber *int `json:"mdevDeviceNumber,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	MdevSpecUuid string `json:"mdevSpecUuid,omitempty"`
+	MdevDeviceNumber int `json:"mdevDeviceNumber,omitempty"`
 }
 
 // QueryVmInstanceMdevDeviceSpecRefView QueryVmInstanceMdevDeviceSpecRef

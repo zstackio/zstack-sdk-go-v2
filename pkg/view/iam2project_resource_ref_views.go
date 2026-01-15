@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type IAM2ProjectResourceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ProjectUuid *string `json:"projectUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	ProjectUuid string `json:"projectUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 

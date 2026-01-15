@@ -20,11 +20,11 @@ func (cli *ZSClient) CleanLongJob(uuid string, params param.CleanLongJobParam) (
 }
 // ResumeLongJob operates on LongJob
 func (cli *ZSClient) ResumeLongJob(uuid string, params param.ResumeLongJobParam) (*view.LongJobInventoryView, error) {
-	var resp view.ResumeLongJobEventView
+	resp := view.LongJobInventoryView{}
 	if err := cli.Put("v1/longjobs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteLongJob deletes LongJob
 func (cli *ZSClient) DeleteLongJob(uuid string, deleteMode param.DeleteMode) error {
@@ -32,11 +32,11 @@ func (cli *ZSClient) DeleteLongJob(uuid string, deleteMode param.DeleteMode) err
 }
 // UpdateLongJob updates LongJob
 func (cli *ZSClient) UpdateLongJob(uuid string, params param.UpdateLongJobParam) (*view.LongJobInventoryView, error) {
-	var resp view.UpdateLongJobEventView
+	resp := view.LongJobInventoryView{}
 	if err := cli.Put("v1/longjobs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryLongJob queries LongJob list
 func (cli *ZSClient) QueryLongJob(params *param.QueryParam) ([]view.LongJobInventoryView, error) {
@@ -44,10 +44,9 @@ func (cli *ZSClient) QueryLongJob(params *param.QueryParam) ([]view.LongJobInven
 	return resp, cli.List("v1/longjobs", params, &resp)
 }
 
-func (cli *ZSClient) GetLongJob(uuid string) (*view.LongJobInventoryView, error) {
-	var resp view.LongJobInventoryView
-	if err := cli.Get("v1/longjobs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageLongJob Pagination
+func (cli *ZSClient) PageLongJob(params *param.QueryParam) ([]view.LongJobInventoryView, int, error) {
+	var longJobs []view.LongJobInventoryView
+	total, err := cli.Page("v1/longjobs", params, &longJobs)
+	return longJobs, total, err
 }

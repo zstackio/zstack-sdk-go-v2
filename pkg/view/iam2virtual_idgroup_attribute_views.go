@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type IAM2VirtualIDGroupAttributeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	GroupUuid *string `json:"groupUuid,omitempty"`
-	Value *string `json:"value,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
+	Value string `json:"value,omitempty"`
 	Type string `json:"type,omitempty"`
 }
 

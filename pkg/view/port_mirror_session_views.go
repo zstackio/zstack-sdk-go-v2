@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type PortMirrorSessionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	Status string `json:"status,omitempty"`
-	InternalId *int64 `json:"internalId,omitempty"`
-	SrcEndPoint *string `json:"srcEndPoint,omitempty"`
+	InternalId int64 `json:"internalId,omitempty"`
+	SrcEndPoint string `json:"srcEndPoint,omitempty"`
 	Type string `json:"type,omitempty"`
-	DstEndPoint *string `json:"dstEndPoint,omitempty"`
-	PortMirrorUuid *string `json:"portMirrorUuid,omitempty"`
+	DstEndPoint string `json:"dstEndPoint,omitempty"`
+	PortMirrorUuid string `json:"portMirrorUuid,omitempty"`
 }
 
 // CreatePortMirrorSessionEventView CreatePortMirrorSessionEvent

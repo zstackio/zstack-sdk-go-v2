@@ -16,10 +16,9 @@ func (cli *ZSClient) QuerySchedulerJobHistory(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/scheduler/job/history", params, &resp)
 }
 
-func (cli *ZSClient) GetSchedulerJobHistory(uuid string) (*view.SchedulerJobHistoryInventoryView, error) {
-	var resp view.SchedulerJobHistoryInventoryView
-	if err := cli.Get("v1/scheduler/job/history", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSchedulerJobHistory Pagination
+func (cli *ZSClient) PageSchedulerJobHistory(params *param.QueryParam) ([]view.SchedulerJobHistoryInventoryView, int, error) {
+	var schedulerJobHistories []view.SchedulerJobHistoryInventoryView
+	total, err := cli.Page("v1/scheduler/job/history", params, &schedulerJobHistories)
+	return schedulerJobHistories, total, err
 }

@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // AddKVMHost adds KVMHost
 func (cli *ZSClient) AddKVMHost(params param.AddKVMHostParam) (*view.HostInventoryView, error) {
-	var resp view.AddHostEventView
+	resp := view.HostInventoryView{}
 	if err := cli.Post("v1/hosts/kvm", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 
 // AddKVMHostAsync Async
@@ -35,9 +35,9 @@ func (cli *ZSClient) AddKVMHostAsync(params param.AddKVMHostParam) (string, erro
 }
 // UpdateKVMHost updates KVMHost
 func (cli *ZSClient) UpdateKVMHost(uuid string, params param.UpdateKVMHostParam) (*view.HostInventoryView, error) {
-	var resp view.UpdateHostEventView
+	resp := view.HostInventoryView{}
 	if err := cli.Put("v1/hosts/kvm", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

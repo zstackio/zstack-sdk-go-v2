@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type ObservabilityServerServiceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ObservabilityServerOfferingUuid *string `json:"observabilityServerOfferingUuid,omitempty"`
-	ObservabilityServerUuid *string `json:"observabilityServerUuid,omitempty"`
-	ServiceUuid *string `json:"serviceUuid,omitempty"`
-	ServiceType *string `json:"serviceType,omitempty"`
-	ObservabilityServerPublicIp *string `json:"observabilityServerPublicIp,omitempty"`
-	ServicePublicIp *string `json:"servicePublicIp,omitempty"`
+	ObservabilityServerOfferingUuid string `json:"observabilityServerOfferingUuid,omitempty"`
+	ObservabilityServerUuid string `json:"observabilityServerUuid,omitempty"`
+	ServiceUuid string `json:"serviceUuid,omitempty"`
+	ServiceType string `json:"serviceType,omitempty"`
+	ObservabilityServerPublicIp string `json:"observabilityServerPublicIp,omitempty"`
+	ServicePublicIp string `json:"servicePublicIp,omitempty"`
 }
 

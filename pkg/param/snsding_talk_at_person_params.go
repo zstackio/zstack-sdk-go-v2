@@ -16,7 +16,7 @@ type RemoveSNSDingTalkAtPersonParamDetail struct {
 // RemoveSNSDingTalkAtPersonParam RemoveSNSDingTalkAtPerson request param
 type RemoveSNSDingTalkAtPersonParam struct {
 	BaseParam
-	Params RemoveSNSDingTalkAtPersonParamDetail `json:"params"`
+	RemoveSNSDingTalkAtPerson RemoveSNSDingTalkAtPersonParamDetail `json:"removeSNSDingTalkAtPerson"`
 }
 // AddSNSDingTalkAtPersonParamDetail AddSNSDingTalkAtPerson detail param
 type AddSNSDingTalkAtPersonParamDetail struct {
@@ -30,5 +30,5 @@ type AddSNSDingTalkAtPersonParamDetail struct {
 // AddSNSDingTalkAtPersonParam AddSNSDingTalkAtPerson request param
 type AddSNSDingTalkAtPersonParam struct {
 	BaseParam
-	Params AddSNSDingTalkAtPersonParamDetail `json:"params"`
+	AddSNSDingTalkAtPerson AddSNSDingTalkAtPersonParamDetail `json:"addSNSDingTalkAtPerson"`
 }

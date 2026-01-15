@@ -15,7 +15,7 @@ type DeletePortForwardingRuleParamDetail struct {
 // DeletePortForwardingRuleParam DeletePortForwardingRule request param
 type DeletePortForwardingRuleParam struct {
 	BaseParam
-	Params DeletePortForwardingRuleParamDetail `json:"params"`
+	DeletePortForwardingRule DeletePortForwardingRuleParamDetail `json:"deletePortForwardingRule"`
 }
 // UpdatePortForwardingRuleParamDetail UpdatePortForwardingRule detail param
 type UpdatePortForwardingRuleParamDetail struct {
@@ -27,7 +27,7 @@ type UpdatePortForwardingRuleParamDetail struct {
 // UpdatePortForwardingRuleParam UpdatePortForwardingRule request param
 type UpdatePortForwardingRuleParam struct {
 	BaseParam
-	Params UpdatePortForwardingRuleParamDetail `json:"params"`
+	UpdatePortForwardingRule UpdatePortForwardingRuleParamDetail `json:"updatePortForwardingRule"`
 }
 // DetachPortForwardingRuleParamDetail DetachPortForwardingRule detail param
 type DetachPortForwardingRuleParamDetail struct {
@@ -37,7 +37,7 @@ type DetachPortForwardingRuleParamDetail struct {
 // DetachPortForwardingRuleParam DetachPortForwardingRule request param
 type DetachPortForwardingRuleParam struct {
 	BaseParam
-	Params DetachPortForwardingRuleParamDetail `json:"params"`
+	DetachPortForwardingRule DetachPortForwardingRuleParamDetail `json:"detachPortForwardingRule"`
 }
 // AttachPortForwardingRuleParamDetail AttachPortForwardingRule detail param
 type AttachPortForwardingRuleParamDetail struct {
@@ -48,7 +48,7 @@ type AttachPortForwardingRuleParamDetail struct {
 // AttachPortForwardingRuleParam AttachPortForwardingRule request param
 type AttachPortForwardingRuleParam struct {
 	BaseParam
-	Params AttachPortForwardingRuleParamDetail `json:"params"`
+	AttachPortForwardingRule AttachPortForwardingRuleParamDetail `json:"attachPortForwardingRule"`
 }
 // CreatePortForwardingRuleParamDetail CreatePortForwardingRule detail param
 type CreatePortForwardingRuleParamDetail struct {
@@ -69,5 +69,5 @@ type CreatePortForwardingRuleParamDetail struct {
 // CreatePortForwardingRuleParam CreatePortForwardingRule request param
 type CreatePortForwardingRuleParam struct {
 	BaseParam
-	Params CreatePortForwardingRuleParamDetail `json:"params"`
+	CreatePortForwardingRule CreatePortForwardingRuleParamDetail `json:"createPortForwardingRule"`
 }

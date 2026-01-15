@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateCdpTask creates CdpTask
 func (cli *ZSClient) CreateCdpTask(params param.CreateCdpTaskParam) (*view.CdpTaskInventoryView, error) {
-	var resp view.CreateCdpTaskEventView
+	resp := view.CdpTaskInventoryView{}
 	if err := cli.Post("v1/cdp-backup-storage/task", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryCdpTask queries CdpTask list
 func (cli *ZSClient) QueryCdpTask(params *param.QueryParam) ([]view.CdpTaskInventoryView, error) {
@@ -24,20 +24,19 @@ func (cli *ZSClient) QueryCdpTask(params *param.QueryParam) ([]view.CdpTaskInven
 	return resp, cli.List("v1/cdp-task", params, &resp)
 }
 
-func (cli *ZSClient) GetCdpTask(uuid string) (*view.CdpTaskInventoryView, error) {
-	var resp view.CdpTaskInventoryView
-	if err := cli.Get("v1/cdp-task", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageCdpTask Pagination
+func (cli *ZSClient) PageCdpTask(params *param.QueryParam) ([]view.CdpTaskInventoryView, int, error) {
+	var cdpTasks []view.CdpTaskInventoryView
+	total, err := cli.Page("v1/cdp-task", params, &cdpTasks)
+	return cdpTasks, total, err
 }
 // UpdateCdpTask updates CdpTask
 func (cli *ZSClient) UpdateCdpTask(uuid string, params param.UpdateCdpTaskParam) (*view.CdpTaskInventoryView, error) {
-	var resp view.UpdateCdpTaskEventView
+	resp := view.CdpTaskInventoryView{}
 	if err := cli.Put("v1/cdp-backup-storage/task", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteCdpTask deletes CdpTask
 func (cli *ZSClient) DeleteCdpTask(uuid string, deleteMode param.DeleteMode) error {

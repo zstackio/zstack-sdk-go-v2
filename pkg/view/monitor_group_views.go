@@ -11,8 +11,8 @@ type MonitorGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	State string `json:"state,omitempty"`
-	Actions *string `json:"actions,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Actions string `json:"actions,omitempty"`
+	Description string `json:"description,omitempty"`
 	MonitorGroupTemplateRefs []MonitorGroupTemplateRefVOView `json:"monitorGroupTemplateRefs,omitempty"`
 }
 

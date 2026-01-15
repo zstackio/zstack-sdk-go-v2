@@ -16,20 +16,19 @@ func (cli *ZSClient) QueryIAM2VirtualID(params *param.QueryParam) ([]view.IAM2Vi
 	return resp, cli.List("v1/iam2/virtual-ids", params, &resp)
 }
 
-func (cli *ZSClient) GetIAM2VirtualID(uuid string) (*view.IAM2VirtualIDInventoryView, error) {
-	var resp view.IAM2VirtualIDInventoryView
-	if err := cli.Get("v1/iam2/virtual-ids", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageIAM2VirtualID Pagination
+func (cli *ZSClient) PageIAM2VirtualID(params *param.QueryParam) ([]view.IAM2VirtualIDInventoryView, int, error) {
+	var iAM2VirtualIDs []view.IAM2VirtualIDInventoryView
+	total, err := cli.Page("v1/iam2/virtual-ids", params, &iAM2VirtualIDs)
+	return iAM2VirtualIDs, total, err
 }
 // CreateIAM2VirtualID creates IAM2VirtualID
 func (cli *ZSClient) CreateIAM2VirtualID(params param.CreateIAM2VirtualIDParam) (*view.IAM2VirtualIDInventoryView, error) {
-	var resp view.CreateIAM2VirtualIDEventView
+	resp := view.IAM2VirtualIDInventoryView{}
 	if err := cli.Post("v1/iam2/virtual-ids", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteIAM2VirtualID deletes IAM2VirtualID
 func (cli *ZSClient) DeleteIAM2VirtualID(uuid string, deleteMode param.DeleteMode) error {
@@ -37,17 +36,17 @@ func (cli *ZSClient) DeleteIAM2VirtualID(uuid string, deleteMode param.DeleteMod
 }
 // LoginIAM2VirtualID operates on IAM2VirtualID
 func (cli *ZSClient) LoginIAM2VirtualID(uuid string, params param.LoginIAM2VirtualIDParam) (*view.SessionInventoryView, error) {
-	var resp view.LoginIAM2VirtualIDView
+	resp := view.SessionInventoryView{}
 	if err := cli.Put("v1/iam2/virtual-ids/login", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateIAM2VirtualID updates IAM2VirtualID
 func (cli *ZSClient) UpdateIAM2VirtualID(uuid string, params param.UpdateIAM2VirtualIDParam) (*view.IAM2VirtualIDInventoryView, error) {
-	var resp view.UpdateIAM2VirtualIDEventView
+	resp := view.IAM2VirtualIDInventoryView{}
 	if err := cli.Put("v1/iam2/virtual-ids", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

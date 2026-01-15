@@ -11,7 +11,7 @@ type LoadBalancerListenerServerGroupRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	ListenerUuid *string `json:"listenerUuid,omitempty"`
-	ServerGroupUuid *string `json:"serverGroupUuid,omitempty"`
+	ListenerUuid string `json:"listenerUuid,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
 }
 

@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type MulticastRouterInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
 	RpGroups []MulticastRouterRendezvousPointInventoryView `json:"rpGroups,omitempty"`
 	VpcVrs []MulticastRouterVpcVRouterRefInventoryView `json:"vpcVrs,omitempty"`
 }

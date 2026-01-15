@@ -21,7 +21,7 @@ type CreateDatasetParamDetail struct {
 // CreateDatasetParam CreateDataset request param
 type CreateDatasetParam struct {
 	BaseParam
-	Params CreateDatasetParamDetail `json:"params"`
+	CreateDataset CreateDatasetParamDetail `json:"createDataset"`
 }
 // DeleteDatasetParamDetail DeleteDataset detail param
 type DeleteDatasetParamDetail struct {
@@ -31,7 +31,7 @@ type DeleteDatasetParamDetail struct {
 // DeleteDatasetParam DeleteDataset request param
 type DeleteDatasetParam struct {
 	BaseParam
-	Params DeleteDatasetParamDetail `json:"params"`
+	DeleteDataset DeleteDatasetParamDetail `json:"deleteDataset"`
 }
 // UpdateDatasetParamDetail UpdateDataset detail param
 type UpdateDatasetParamDetail struct {
@@ -45,5 +45,5 @@ type UpdateDatasetParamDetail struct {
 // UpdateDatasetParam UpdateDataset request param
 type UpdateDatasetParam struct {
 	BaseParam
-	Params UpdateDatasetParamDetail `json:"params"`
+	UpdateDataset UpdateDatasetParamDetail `json:"updateDataset"`
 }

@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type VmSchedulingRuleGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Appliance *string `json:"appliance,omitempty"`
-	ZoneUuid *string `json:"zoneUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Appliance string `json:"appliance,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
 }
 
 // DeleteVmSchedulingRuleGroupEventView DeleteVmSchedulingRuleGroupEvent

@@ -12,17 +12,17 @@ var _ = view.MapView{} // avoid unused import
 
 // AddAliyunNasMountTarget adds AliyunNasMountTarget
 func (cli *ZSClient) AddAliyunNasMountTarget(params param.AddAliyunNasMountTargetParam) (*view.AliyunNasMountTargetInventoryView, error) {
-	var resp view.AddAliyunNasMountTargetEventView
+	resp := view.AliyunNasMountTargetInventoryView{}
 	if err := cli.Post("v1/nas/aliyun/mount", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateAliyunNasMountTarget creates AliyunNasMountTarget
 func (cli *ZSClient) CreateAliyunNasMountTarget(params param.CreateAliyunNasMountTargetParam) (*view.NasMountTargetInventoryView, error) {
-	var resp view.CreateNasMountTargetEventView
+	resp := view.NasMountTargetInventoryView{}
 	if err := cli.Post("v1/nas/aliyun/mount", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

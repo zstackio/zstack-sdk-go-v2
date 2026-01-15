@@ -11,8 +11,8 @@ type PolicyRouteTableVRouterRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	TableUuid *string `json:"tableUuid,omitempty"`
-	VRouterUuid *string `json:"vRouterUuid,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
+	VRouterUuid string `json:"vRouterUuid,omitempty"`
 }
 
 // QueryPolicyRouteTableVRouterRefView QueryPolicyRouteTableVRouterRef

@@ -12,9 +12,9 @@ var _ = view.MapView{} // avoid unused import
 
 // AddXDragonHost adds XDragonHost
 func (cli *ZSClient) AddXDragonHost(params param.AddXDragonHostParam) (*view.HostInventoryView, error) {
-	var resp view.AddHostEventView
+	resp := view.HostInventoryView{}
 	if err := cli.Post("v1/hosts/xdragon", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

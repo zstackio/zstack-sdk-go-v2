@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type TemplateConfigInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TemplateUuid *string `json:"templateUuid,omitempty"`
-	Category *string `json:"category,omitempty"`
-	DefaultValue *string `json:"defaultValue,omitempty"`
-	Value *string `json:"value,omitempty"`
+	TemplateUuid string `json:"templateUuid,omitempty"`
+	Category string `json:"category,omitempty"`
+	DefaultValue string `json:"defaultValue,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 
 // UpdateTemplateConfigEventView UpdateTemplateConfigEvent

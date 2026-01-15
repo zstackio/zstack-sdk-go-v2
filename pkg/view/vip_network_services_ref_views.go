@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type VipNetworkServicesRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ServiceType *string `json:"serviceType,omitempty"`
-	VipUuid *string `json:"vipUuid,omitempty"`
+	ServiceType string `json:"serviceType,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
 }
 

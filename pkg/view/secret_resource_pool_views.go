@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type SecretResourcePoolInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Model *string `json:"model,omitempty"`
-	HeartbeatInterval *int `json:"heartbeatInterval,omitempty"`
-	Ability *string `json:"ability,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	Model string `json:"model,omitempty"`
+	HeartbeatInterval int `json:"heartbeatInterval,omitempty"`
+	Ability string `json:"ability,omitempty"`
 }
 
 // DeleteSecretResourcePoolEventView DeleteSecretResourcePoolEvent

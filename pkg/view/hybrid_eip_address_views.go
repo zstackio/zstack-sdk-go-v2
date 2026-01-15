@@ -10,17 +10,17 @@ var _ = time.Now // avoid unused import
 type HybridEipAddressInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	EipId *string `json:"eipId,omitempty"`
-	BandWidth *string `json:"bandWidth,omitempty"`
-	DataCenterUuid *string `json:"dataCenterUuid,omitempty"`
-	AllocateResourceUuid *string `json:"allocateResourceUuid,omitempty"`
-	AllocateResourceType *string `json:"allocateResourceType,omitempty"`
+	EipId string `json:"eipId,omitempty"`
+	BandWidth string `json:"bandWidth,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	AllocateResourceUuid string `json:"allocateResourceUuid,omitempty"`
+	AllocateResourceType string `json:"allocateResourceType,omitempty"`
 	Status string `json:"status,omitempty"`
-	EipAddress *string `json:"eipAddress,omitempty"`
+	EipAddress string `json:"eipAddress,omitempty"`
 	EipType string `json:"eipType,omitempty"`
-	ChargeType *string `json:"chargeType,omitempty"`
-	Description *string `json:"description,omitempty"`
-	AllocateTime *time.Time `json:"allocateTime,omitempty"`
+	ChargeType string `json:"chargeType,omitempty"`
+	Description string `json:"description,omitempty"`
+	AllocateTime time.Time `json:"allocateTime,omitempty"`
 }
 
 // SyncHybridEipFromRemoteEventView SyncHybridEipFromRemoteEvent

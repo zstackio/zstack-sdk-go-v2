@@ -12,17 +12,17 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateFlkSecSecretResourcePool updates FlkSecSecretResourcePool
 func (cli *ZSClient) UpdateFlkSecSecretResourcePool(uuid string, params param.UpdateFlkSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.UpdateSecretResourcePoolEventView
+	resp := view.SecretResourcePoolInventoryView{}
 	if err := cli.Put("v1/secret-resource-pools/flkSec", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateFlkSecSecretResourcePool creates FlkSecSecretResourcePool
 func (cli *ZSClient) CreateFlkSecSecretResourcePool(params param.CreateFlkSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.CreateSecretResourcePoolEventView
+	resp := view.SecretResourcePoolInventoryView{}
 	if err := cli.Post("v1/secret-resource-pool/flkSec", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

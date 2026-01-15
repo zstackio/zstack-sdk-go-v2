@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type MonitorGroupAlarmInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	GroupUuid *string `json:"groupUuid,omitempty"`
-	AlarmUuid *string `json:"alarmUuid,omitempty"`
-	MetricRuleTemplateUuid *string `json:"metricRuleTemplateUuid,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
+	AlarmUuid string `json:"alarmUuid,omitempty"`
+	MetricRuleTemplateUuid string `json:"metricRuleTemplateUuid,omitempty"`
 }
 
 // QueryMonitorGroupAlarmView QueryMonitorGroupAlarm

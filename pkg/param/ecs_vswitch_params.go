@@ -16,5 +16,5 @@ type UpdateEcsVSwitchParamDetail struct {
 // UpdateEcsVSwitchParam UpdateEcsVSwitch request param
 type UpdateEcsVSwitchParam struct {
 	BaseParam
-	Params UpdateEcsVSwitchParamDetail `json:"params"`
+	UpdateEcsVSwitch UpdateEcsVSwitchParamDetail `json:"updateEcsVSwitch"`
 }

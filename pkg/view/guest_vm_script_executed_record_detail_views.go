@@ -10,16 +10,16 @@ var _ = time.Now // avoid unused import
 type GuestVmScriptExecutedRecordDetailInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	RecordUuid *string `json:"recordUuid,omitempty"`
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
-	VmName *string `json:"vmName,omitempty"`
-	Status *string `json:"status,omitempty"`
-	ExitCode *int `json:"exitCode,omitempty"`
-	Stdout *string `json:"stdout,omitempty"`
-	ErrCause *string `json:"errCause,omitempty"`
-	Stderr *string `json:"stderr,omitempty"`
-	StartTime *time.Time `json:"startTime,omitempty"`
-	EndTime *time.Time `json:"endTime,omitempty"`
+	RecordUuid string `json:"recordUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	VmName string `json:"vmName,omitempty"`
+	Status string `json:"status,omitempty"`
+	ExitCode int `json:"exitCode,omitempty"`
+	Stdout string `json:"stdout,omitempty"`
+	ErrCause string `json:"errCause,omitempty"`
+	Stderr string `json:"stderr,omitempty"`
+	StartTime time.Time `json:"startTime,omitempty"`
+	EndTime time.Time `json:"endTime,omitempty"`
 }
 
 // QueryGuestVmScriptExecutedRecordDetailView QueryGuestVmScriptExecutedRecordDetail

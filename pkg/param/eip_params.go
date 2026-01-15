@@ -20,7 +20,7 @@ type CreateEipParamDetail struct {
 // CreateEipParam CreateEip request param
 type CreateEipParam struct {
 	BaseParam
-	Params CreateEipParamDetail `json:"params"`
+	CreateEip CreateEipParamDetail `json:"createEip"`
 }
 // AttachEipParamDetail AttachEip detail param
 type AttachEipParamDetail struct {
@@ -32,7 +32,7 @@ type AttachEipParamDetail struct {
 // AttachEipParam AttachEip request param
 type AttachEipParam struct {
 	BaseParam
-	Params AttachEipParamDetail `json:"params"`
+	AttachEip AttachEipParamDetail `json:"attachEip"`
 }
 // UpdateEipParamDetail UpdateEip detail param
 type UpdateEipParamDetail struct {
@@ -44,7 +44,7 @@ type UpdateEipParamDetail struct {
 // UpdateEipParam UpdateEip request param
 type UpdateEipParam struct {
 	BaseParam
-	Params UpdateEipParamDetail `json:"params"`
+	UpdateEip UpdateEipParamDetail `json:"updateEip"`
 }
 // DeleteEipParamDetail DeleteEip detail param
 type DeleteEipParamDetail struct {
@@ -55,7 +55,7 @@ type DeleteEipParamDetail struct {
 // DeleteEipParam DeleteEip request param
 type DeleteEipParam struct {
 	BaseParam
-	Params DeleteEipParamDetail `json:"params"`
+	DeleteEip DeleteEipParamDetail `json:"deleteEip"`
 }
 // DetachEipParamDetail DetachEip detail param
 type DetachEipParamDetail struct {
@@ -65,5 +65,5 @@ type DetachEipParamDetail struct {
 // DetachEipParam DetachEip request param
 type DetachEipParam struct {
 	BaseParam
-	Params DetachEipParamDetail `json:"params"`
+	DetachEip DetachEipParamDetail `json:"detachEip"`
 }

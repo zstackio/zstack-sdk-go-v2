@@ -25,5 +25,5 @@ type CreateHaiTaiSecretResourcePoolParamDetail struct {
 // CreateHaiTaiSecretResourcePoolParam CreateHaiTaiSecretResourcePool request param
 type CreateHaiTaiSecretResourcePoolParam struct {
 	BaseParam
-	Params CreateHaiTaiSecretResourcePoolParamDetail `json:"params"`
+	CreateHaiTaiSecretResourcePool CreateHaiTaiSecretResourcePoolParamDetail `json:"createHaiTaiSecretResourcePool"`
 }

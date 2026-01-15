@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type ManagementNodeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	HostName *string `json:"hostName,omitempty"`
-	JoinDate *time.Time `json:"joinDate,omitempty"`
-	HeartBeat *time.Time `json:"heartBeat,omitempty"`
+	HostName string `json:"hostName,omitempty"`
+	JoinDate time.Time `json:"joinDate,omitempty"`
+	HeartBeat time.Time `json:"heartBeat,omitempty"`
 }
 
 // QueryManagementNodeView QueryManagementNode

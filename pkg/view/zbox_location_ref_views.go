@@ -11,8 +11,8 @@ type ZBoxLocationRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	ZboxUuid *string `json:"zboxUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	ZboxUuid string `json:"zboxUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 

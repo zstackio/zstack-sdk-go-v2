@@ -16,12 +16,11 @@ func (cli *ZSClient) QueryClusterDRS(params *param.QueryParam) ([]view.ClusterDR
 	return resp, cli.List("v1/clusters/drs", params, &resp)
 }
 
-func (cli *ZSClient) GetClusterDRS(uuid string) (*view.ClusterDRSInventoryView, error) {
-	var resp view.ClusterDRSInventoryView
-	if err := cli.Get("v1/clusters/drs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageClusterDRS Pagination
+func (cli *ZSClient) PageClusterDRS(params *param.QueryParam) ([]view.ClusterDRSInventoryView, int, error) {
+	var clusterDRSs []view.ClusterDRSInventoryView
+	total, err := cli.Page("v1/clusters/drs", params, &clusterDRSs)
+	return clusterDRSs, total, err
 }
 // DeleteClusterDRS deletes ClusterDRS
 func (cli *ZSClient) DeleteClusterDRS(uuid string, deleteMode param.DeleteMode) error {
@@ -29,17 +28,17 @@ func (cli *ZSClient) DeleteClusterDRS(uuid string, deleteMode param.DeleteMode) 
 }
 // CreateClusterDRS creates ClusterDRS
 func (cli *ZSClient) CreateClusterDRS(params param.CreateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
-	var resp view.CreateClusterDRSEventView
+	resp := view.ClusterDRSInventoryView{}
 	if err := cli.Post("v1/clusters/{clusterUuid}/drs", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateClusterDRS updates ClusterDRS
 func (cli *ZSClient) UpdateClusterDRS(uuid string, params param.UpdateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
-	var resp view.UpdateClusterDRSEventView
+	resp := view.ClusterDRSInventoryView{}
 	if err := cli.Put("v1/clusters/drs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

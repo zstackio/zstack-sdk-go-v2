@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type NfvInstGroupNetworkServiceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	NfvInstGroupUuid *string `json:"nfvInstGroupUuid,omitempty"`
-	NetworkServiceName *string `json:"networkServiceName,omitempty"`
-	NetworkServiceUuid *string `json:"networkServiceUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	NfvInstGroupUuid string `json:"nfvInstGroupUuid,omitempty"`
+	NetworkServiceName string `json:"networkServiceName,omitempty"`
+	NetworkServiceUuid string `json:"networkServiceUuid,omitempty"`
 }
 

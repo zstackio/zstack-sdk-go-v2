@@ -16,19 +16,19 @@ func (cli *ZSClient) DeleteCluster(uuid string, deleteMode param.DeleteMode) err
 }
 // UpdateCluster updates Cluster
 func (cli *ZSClient) UpdateCluster(uuid string, params param.UpdateClusterParam) (*view.ClusterInventoryView, error) {
-	var resp view.UpdateClusterEventView
+	resp := view.ClusterInventoryView{}
 	if err := cli.Put("v1/clusters", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateCluster creates Cluster
 func (cli *ZSClient) CreateCluster(params param.CreateClusterParam) (*view.ClusterInventoryView, error) {
-	var resp view.CreateClusterEventView
+	resp := view.ClusterInventoryView{}
 	if err := cli.Post("v1/clusters", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryCluster queries Cluster list
 func (cli *ZSClient) QueryCluster(params *param.QueryParam) ([]view.ClusterInventoryView, error) {
@@ -36,10 +36,9 @@ func (cli *ZSClient) QueryCluster(params *param.QueryParam) ([]view.ClusterInven
 	return resp, cli.List("v1/clusters", params, &resp)
 }
 
-func (cli *ZSClient) GetCluster(uuid string) (*view.ClusterInventoryView, error) {
-	var resp view.ClusterInventoryView
-	if err := cli.Get("v1/clusters", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageCluster Pagination
+func (cli *ZSClient) PageCluster(params *param.QueryParam) ([]view.ClusterInventoryView, int, error) {
+	var clusters []view.ClusterInventoryView
+	total, err := cli.Page("v1/clusters", params, &clusters)
+	return clusters, total, err
 }

@@ -16,7 +16,7 @@ type UpdateVpcFirewallParamDetail struct {
 // UpdateVpcFirewallParam UpdateVpcFirewall request param
 type UpdateVpcFirewallParam struct {
 	BaseParam
-	Params UpdateVpcFirewallParamDetail `json:"params"`
+	UpdateVpcFirewall UpdateVpcFirewallParamDetail `json:"updateVpcFirewall"`
 }
 // CreateVpcFirewallParamDetail CreateVpcFirewall detail param
 type CreateVpcFirewallParamDetail struct {
@@ -30,5 +30,5 @@ type CreateVpcFirewallParamDetail struct {
 // CreateVpcFirewallParam CreateVpcFirewall request param
 type CreateVpcFirewallParam struct {
 	BaseParam
-	Params CreateVpcFirewallParamDetail `json:"params"`
+	CreateVpcFirewall CreateVpcFirewallParamDetail `json:"createVpcFirewall"`
 }

@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type VpcHaGroupNetworkServiceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	VpcHaRouterUuid *string `json:"vpcHaRouterUuid,omitempty"`
-	NetworkServiceName *string `json:"networkServiceName,omitempty"`
-	NetworkServiceUuid *string `json:"networkServiceUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	VpcHaRouterUuid string `json:"vpcHaRouterUuid,omitempty"`
+	NetworkServiceName string `json:"networkServiceName,omitempty"`
+	NetworkServiceUuid string `json:"networkServiceUuid,omitempty"`
 }
 
 // QueryVpcHaGroupNetworkServiceRefView QueryVpcHaGroupNetworkServiceRef

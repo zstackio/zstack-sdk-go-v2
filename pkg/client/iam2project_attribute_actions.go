@@ -16,18 +16,17 @@ func (cli *ZSClient) QueryIAM2ProjectAttribute(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/iam2/projects/attributes", params, &resp)
 }
 
-func (cli *ZSClient) GetIAM2ProjectAttribute(uuid string) (*view.IAM2ProjectAttributeInventoryView, error) {
-	var resp view.IAM2ProjectAttributeInventoryView
-	if err := cli.Get("v1/iam2/projects/attributes", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageIAM2ProjectAttribute Pagination
+func (cli *ZSClient) PageIAM2ProjectAttribute(params *param.QueryParam) ([]view.IAM2ProjectAttributeInventoryView, int, error) {
+	var iAM2ProjectAttributes []view.IAM2ProjectAttributeInventoryView
+	total, err := cli.Page("v1/iam2/projects/attributes", params, &iAM2ProjectAttributes)
+	return iAM2ProjectAttributes, total, err
 }
 // UpdateIAM2ProjectAttribute updates IAM2ProjectAttribute
 func (cli *ZSClient) UpdateIAM2ProjectAttribute(uuid string, params param.UpdateIAM2ProjectAttributeParam) (*view.IAM2ProjectAttributeInventoryView, error) {
-	var resp view.UpdateIAM2ProjectAttributeEventView
+	resp := view.IAM2ProjectAttributeInventoryView{}
 	if err := cli.Put("v1/iam2/projects/attributes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

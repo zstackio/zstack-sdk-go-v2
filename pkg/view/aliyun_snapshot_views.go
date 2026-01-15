@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type AliyunSnapshotInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SnapshotId *string `json:"snapshotId,omitempty"`
-	Description *string `json:"description,omitempty"`
-	DataCenterUuid *string `json:"dataCenterUuid,omitempty"`
-	DiskUuid *string `json:"diskUuid,omitempty"`
-	Status *string `json:"status,omitempty"`
-	AliyunSnapshotUsage *string `json:"aliyunSnapshotUsage,omitempty"`
+	SnapshotId string `json:"snapshotId,omitempty"`
+	Description string `json:"description,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	DiskUuid string `json:"diskUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	AliyunSnapshotUsage string `json:"aliyunSnapshotUsage,omitempty"`
 }
 
 // UpdateAliyunSnapshotEventView UpdateAliyunSnapshotEvent

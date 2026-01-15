@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type VpcVirtualRouteEntryInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Type *string `json:"type,omitempty"`
-	VRouterType *string `json:"vRouterType,omitempty"`
-	Status *string `json:"status,omitempty"`
-	DestinationCidrBlock *string `json:"destinationCidrBlock,omitempty"`
-	NextHopId *string `json:"nextHopId,omitempty"`
-	VirtualRouterUuid *string `json:"virtualRouterUuid,omitempty"`
-	NextHopType *string `json:"nextHopType,omitempty"`
+	Type string `json:"type,omitempty"`
+	VRouterType string `json:"vRouterType,omitempty"`
+	Status string `json:"status,omitempty"`
+	DestinationCidrBlock string `json:"destinationCidrBlock,omitempty"`
+	NextHopId string `json:"nextHopId,omitempty"`
+	VirtualRouterUuid string `json:"virtualRouterUuid,omitempty"`
+	NextHopType string `json:"nextHopType,omitempty"`
 }
 
 // CreateAliyunVpcVirtualRouterEntryRemoteEventView CreateAliyunVpcVirtualRouterEntryRemoteEvent

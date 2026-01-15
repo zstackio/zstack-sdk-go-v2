@@ -10,17 +10,17 @@ var _ = time.Now // avoid unused import
 type BareMetal2ChassisPciDeviceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ChassisUuid *string `json:"chassisUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	PciDeviceAddress *string `json:"pciDeviceAddress,omitempty"`
-	VendorId *string `json:"vendorId,omitempty"`
-	DeviceId *string `json:"deviceId,omitempty"`
-	SubvendorId *string `json:"subvendorId,omitempty"`
-	SubdeviceId *string `json:"subdeviceId,omitempty"`
-	IommuGroup *string `json:"iommuGroup,omitempty"`
-	Vendor *string `json:"vendor,omitempty"`
-	Device *string `json:"device,omitempty"`
+	ChassisUuid string `json:"chassisUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	PciDeviceAddress string `json:"pciDeviceAddress,omitempty"`
+	VendorId string `json:"vendorId,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	SubvendorId string `json:"subvendorId,omitempty"`
+	SubdeviceId string `json:"subdeviceId,omitempty"`
+	IommuGroup string `json:"iommuGroup,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	Device string `json:"device,omitempty"`
 }
 
 // QueryBareMetal2ChassisPciDeviceView QueryBareMetal2ChassisPciDevice

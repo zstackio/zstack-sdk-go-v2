@@ -14,5 +14,5 @@ type GetHostNetworkInterfaceLldpParamDetail struct {
 // GetHostNetworkInterfaceLldpParam GetHostNetworkInterfaceLldp request param
 type GetHostNetworkInterfaceLldpParam struct {
 	BaseParam
-	Params GetHostNetworkInterfaceLldpParamDetail `json:"params"`
+	GetHostNetworkInterfaceLldp GetHostNetworkInterfaceLldpParamDetail `json:"getHostNetworkInterfaceLldp"`
 }

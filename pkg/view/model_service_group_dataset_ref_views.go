@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type ModelServiceGroupDatasetRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	DatasetUuid *string `json:"datasetUuid,omitempty"`
-	ModelServiceInstanceGroupUuid *string `json:"modelServiceInstanceGroupUuid,omitempty"`
+	DatasetUuid string `json:"datasetUuid,omitempty"`
+	ModelServiceInstanceGroupUuid string `json:"modelServiceInstanceGroupUuid,omitempty"`
 }
 

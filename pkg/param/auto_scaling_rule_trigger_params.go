@@ -15,5 +15,5 @@ type DeleteAutoScalingRuleTriggerParamDetail struct {
 // DeleteAutoScalingRuleTriggerParam DeleteAutoScalingRuleTrigger request param
 type DeleteAutoScalingRuleTriggerParam struct {
 	BaseParam
-	Params DeleteAutoScalingRuleTriggerParamDetail `json:"params"`
+	DeleteAutoScalingRuleTrigger DeleteAutoScalingRuleTriggerParamDetail `json:"deleteAutoScalingRuleTrigger"`
 }

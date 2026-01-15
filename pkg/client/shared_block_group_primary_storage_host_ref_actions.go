@@ -16,10 +16,9 @@ func (cli *ZSClient) QuerySharedBlockGroupPrimaryStorageHostRef(params *param.Qu
 	return resp, cli.List("v1/sharedblock-group/host-refs", params, &resp)
 }
 
-func (cli *ZSClient) GetSharedBlockGroupPrimaryStorageHostRef(uuid string) (*view.SharedBlockGroupPrimaryStorageHostRefInventoryView, error) {
-	var resp view.SharedBlockGroupPrimaryStorageHostRefInventoryView
-	if err := cli.Get("v1/sharedblock-group/host-refs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSharedBlockGroupPrimaryStorageHostRef Pagination
+func (cli *ZSClient) PageSharedBlockGroupPrimaryStorageHostRef(params *param.QueryParam) ([]view.SharedBlockGroupPrimaryStorageHostRefInventoryView, int, error) {
+	var sharedBlockGroupPrimaryStorageHostRefs []view.SharedBlockGroupPrimaryStorageHostRefInventoryView
+	total, err := cli.Page("v1/sharedblock-group/host-refs", params, &sharedBlockGroupPrimaryStorageHostRefs)
+	return sharedBlockGroupPrimaryStorageHostRefs, total, err
 }

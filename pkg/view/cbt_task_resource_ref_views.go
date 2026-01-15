@@ -11,8 +11,8 @@ type CbtTaskResourceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	TaskUuid *string `json:"taskUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	TaskUuid string `json:"taskUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 

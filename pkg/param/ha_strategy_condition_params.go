@@ -16,5 +16,5 @@ type UpdateHaStrategyConditionParamDetail struct {
 // UpdateHaStrategyConditionParam UpdateHaStrategyCondition request param
 type UpdateHaStrategyConditionParam struct {
 	BaseParam
-	Params UpdateHaStrategyConditionParamDetail `json:"params"`
+	UpdateHaStrategyCondition UpdateHaStrategyConditionParamDetail `json:"updateHaStrategyCondition"`
 }

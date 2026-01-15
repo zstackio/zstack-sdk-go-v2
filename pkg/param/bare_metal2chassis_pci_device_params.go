@@ -17,5 +17,5 @@ type UpdateBareMetal2ChassisPciDeviceParamDetail struct {
 // UpdateBareMetal2ChassisPciDeviceParam UpdateBareMetal2ChassisPciDevice request param
 type UpdateBareMetal2ChassisPciDeviceParam struct {
 	BaseParam
-	Params UpdateBareMetal2ChassisPciDeviceParamDetail `json:"params"`
+	UpdateBareMetal2ChassisPciDevice UpdateBareMetal2ChassisPciDeviceParamDetail `json:"updateBareMetal2ChassisPciDevice"`
 }

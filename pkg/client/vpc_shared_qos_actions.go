@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateVpcSharedQos creates VpcSharedQos
 func (cli *ZSClient) CreateVpcSharedQos(params param.CreateVpcSharedQosParam) (*view.VpcSharedQosInventoryView, error) {
-	var resp view.CreateVpcSharedQosEventView
+	resp := view.VpcSharedQosInventoryView{}
 	if err := cli.Post("v1/vips/sharedqos", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryVpcSharedQos queries VpcSharedQos list
 func (cli *ZSClient) QueryVpcSharedQos(params *param.QueryParam) ([]view.VpcSharedQosInventoryView, error) {
@@ -24,20 +24,19 @@ func (cli *ZSClient) QueryVpcSharedQos(params *param.QueryParam) ([]view.VpcShar
 	return resp, cli.List("v1/vips/sharedqos", params, &resp)
 }
 
-func (cli *ZSClient) GetVpcSharedQos(uuid string) (*view.VpcSharedQosInventoryView, error) {
-	var resp view.VpcSharedQosInventoryView
-	if err := cli.Get("v1/vips/sharedqos", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVpcSharedQos Pagination
+func (cli *ZSClient) PageVpcSharedQos(params *param.QueryParam) ([]view.VpcSharedQosInventoryView, int, error) {
+	var vpcSharedQos []view.VpcSharedQosInventoryView
+	total, err := cli.Page("v1/vips/sharedqos", params, &vpcSharedQos)
+	return vpcSharedQos, total, err
 }
 // UpdateVpcSharedQos updates VpcSharedQos
 func (cli *ZSClient) UpdateVpcSharedQos(uuid string, params param.UpdateVpcSharedQosParam) (*view.VpcSharedQosInventoryView, error) {
-	var resp view.UpdateVpcSharedQosEventView
+	resp := view.VpcSharedQosInventoryView{}
 	if err := cli.Put("v1/vips/sharedqos", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteVpcSharedQos deletes VpcSharedQos
 func (cli *ZSClient) DeleteVpcSharedQos(uuid string, deleteMode param.DeleteMode) error {

@@ -16,12 +16,11 @@ func (cli *ZSClient) QueryGuestVmScript(params *param.QueryParam) ([]view.GuestV
 	return resp, cli.List("v1/scripts", params, &resp)
 }
 
-func (cli *ZSClient) GetGuestVmScript(uuid string) (*view.GuestVmScriptInventoryView, error) {
-	var resp view.GuestVmScriptInventoryView
-	if err := cli.Get("v1/scripts", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageGuestVmScript Pagination
+func (cli *ZSClient) PageGuestVmScript(params *param.QueryParam) ([]view.GuestVmScriptInventoryView, int, error) {
+	var guestVmScripts []view.GuestVmScriptInventoryView
+	total, err := cli.Page("v1/scripts", params, &guestVmScripts)
+	return guestVmScripts, total, err
 }
 // DeleteGuestVmScript deletes GuestVmScript
 func (cli *ZSClient) DeleteGuestVmScript(uuid string, deleteMode param.DeleteMode) error {
@@ -29,17 +28,17 @@ func (cli *ZSClient) DeleteGuestVmScript(uuid string, deleteMode param.DeleteMod
 }
 // CreateGuestVmScript creates GuestVmScript
 func (cli *ZSClient) CreateGuestVmScript(params param.CreateGuestVmScriptParam) (*view.GuestVmScriptInventoryView, error) {
-	var resp view.CreateGuestVmScriptEventView
+	resp := view.GuestVmScriptInventoryView{}
 	if err := cli.Post("v1/scripts", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateGuestVmScript updates GuestVmScript
 func (cli *ZSClient) UpdateGuestVmScript(uuid string, params param.UpdateGuestVmScriptParam) (*view.GuestVmScriptInventoryView, error) {
-	var resp view.UpdateGuestVmScriptEventView
+	resp := view.GuestVmScriptInventoryView{}
 	if err := cli.Put("v1/scripts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

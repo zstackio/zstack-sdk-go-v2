@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type SecurityGroupL3NetworkRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	SecurityGroupUuid *string `json:"securityGroupUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	SecurityGroupUuid string `json:"securityGroupUuid,omitempty"`
 }
 

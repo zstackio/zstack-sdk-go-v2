@@ -16,5 +16,5 @@ type UpdateVolumeParamDetail struct {
 // UpdateVolumeParam UpdateVolume request param
 type UpdateVolumeParam struct {
 	BaseParam
-	Params UpdateVolumeParamDetail `json:"params"`
+	UpdateVolume UpdateVolumeParamDetail `json:"updateVolume"`
 }

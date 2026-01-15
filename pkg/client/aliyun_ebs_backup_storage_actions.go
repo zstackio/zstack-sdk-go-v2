@@ -16,26 +16,25 @@ func (cli *ZSClient) QueryAliyunEbsBackupStorage(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/backup-storage/aliyun/ebs", params, &resp)
 }
 
-func (cli *ZSClient) GetAliyunEbsBackupStorage(uuid string) (*view.BackupStorageInventoryView, error) {
-	var resp view.BackupStorageInventoryView
-	if err := cli.Get("v1/backup-storage/aliyun/ebs", uuid, nil, &resp); err != nil {
+// PageAliyunEbsBackupStorage Pagination
+func (cli *ZSClient) PageAliyunEbsBackupStorage(params *param.QueryParam) ([]view.BackupStorageInventoryView, int, error) {
+	var aliyunEbsBackupStorages []view.BackupStorageInventoryView
+	total, err := cli.Page("v1/backup-storage/aliyun/ebs", params, &aliyunEbsBackupStorages)
+	return aliyunEbsBackupStorages, total, err
+}
+// AddAliyunEbsBackupStorage adds AliyunEbsBackupStorage
+func (cli *ZSClient) AddAliyunEbsBackupStorage(params param.AddAliyunEbsBackupStorageParam) (*view.BackupStorageInventoryView, error) {
+	resp := view.BackupStorageInventoryView{}
+	if err := cli.Post("v1/backup-storage/aliyun/ebs", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// AddAliyunEbsBackupStorage adds AliyunEbsBackupStorage
-func (cli *ZSClient) AddAliyunEbsBackupStorage(params param.AddAliyunEbsBackupStorageParam) (*view.BackupStorageInventoryView, error) {
-	var resp view.AddBackupStorageEventView
-	if err := cli.Post("v1/backup-storage/aliyun/ebs", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // UpdateAliyunEbsBackupStorage updates AliyunEbsBackupStorage
 func (cli *ZSClient) UpdateAliyunEbsBackupStorage(uuid string, params param.UpdateAliyunEbsBackupStorageParam) (*view.BackupStorageInventoryView, error) {
-	var resp view.UpdateBackupStorageEventView
+	resp := view.BackupStorageInventoryView{}
 	if err := cli.Put("v1/backup-storage/aliyun/ebs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

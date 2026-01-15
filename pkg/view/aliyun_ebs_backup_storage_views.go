@@ -10,29 +10,14 @@ var _ = time.Now // avoid unused import
 type AliyunEbsBackupStorageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	OssBucketUuid *string `json:"ossBucketUuid,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Description *string `json:"description,omitempty"`
-	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
-	AvailableCapacity *int64 `json:"availableCapacity,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
+	OssBucketUuid string `json:"ossBucketUuid,omitempty"`
+	Url string `json:"url,omitempty"`
+	Description string `json:"description,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
-}
-
-// QueryBackupStorageView QueryBackupStorage
-type QueryBackupStorageView struct {
-	Inventories []BackupStorageInventoryView `json:"inventories,omitempty"`
-}
-
-// AddBackupStorageEventView AddBackupStorageEvent
-type AddBackupStorageEventView struct {
-	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateBackupStorageEventView UpdateBackupStorageEvent
-type UpdateBackupStorageEventView struct {
-	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
 }
 

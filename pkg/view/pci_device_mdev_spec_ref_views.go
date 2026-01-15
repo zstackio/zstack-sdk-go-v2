@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type PciDeviceMdevSpecRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PciDeviceUuid *string `json:"pciDeviceUuid,omitempty"`
-	MdevSpecUuid *string `json:"mdevSpecUuid,omitempty"`
-	Effective *bool `json:"effective,omitempty"`
+	PciDeviceUuid string `json:"pciDeviceUuid,omitempty"`
+	MdevSpecUuid string `json:"mdevSpecUuid,omitempty"`
+	Effective bool `json:"effective,omitempty"`
 }
 

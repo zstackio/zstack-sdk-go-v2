@@ -16,20 +16,19 @@ func (cli *ZSClient) QuerySNSApplicationEndpoint(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/sns/application-endpoints", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSApplicationEndpoint(uuid string) (*view.SNSApplicationEndpointInventoryView, error) {
-	var resp view.SNSApplicationEndpointInventoryView
-	if err := cli.Get("v1/sns/application-endpoints", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSNSApplicationEndpoint Pagination
+func (cli *ZSClient) PageSNSApplicationEndpoint(params *param.QueryParam) ([]view.SNSApplicationEndpointInventoryView, int, error) {
+	var sNSApplicationEndpoints []view.SNSApplicationEndpointInventoryView
+	total, err := cli.Page("v1/sns/application-endpoints", params, &sNSApplicationEndpoints)
+	return sNSApplicationEndpoints, total, err
 }
 // UpdateSNSApplicationEndpoint updates SNSApplicationEndpoint
 func (cli *ZSClient) UpdateSNSApplicationEndpoint(uuid string, params param.UpdateSNSApplicationEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
-	var resp view.UpdateSNSApplicationEndpointEventView
+	resp := view.SNSApplicationEndpointInventoryView{}
 	if err := cli.Put("v1/sns/application-endpoints", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteSNSApplicationEndpoint deletes SNSApplicationEndpoint
 func (cli *ZSClient) DeleteSNSApplicationEndpoint(uuid string, deleteMode param.DeleteMode) error {

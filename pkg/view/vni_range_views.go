@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type VniRangeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	StartVni *int `json:"startVni,omitempty"`
-	EndVni *int `json:"endVni,omitempty"`
-	L2NetworkUuid *string `json:"l2NetworkUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	StartVni int `json:"startVni,omitempty"`
+	EndVni int `json:"endVni,omitempty"`
+	L2NetworkUuid string `json:"l2NetworkUuid,omitempty"`
 }
 
 // UpdateVniRangeEventView UpdateVniRangeEvent

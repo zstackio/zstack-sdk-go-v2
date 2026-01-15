@@ -10,6 +10,6 @@ var _ = time.Now // avoid unused import
 type ItemInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ReadableName *string `json:"readableName,omitempty"`
+	ReadableName string `json:"readableName,omitempty"`
 }
 

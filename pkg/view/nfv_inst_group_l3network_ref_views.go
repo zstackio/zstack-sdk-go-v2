@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type NfvInstGroupL3NetworkRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	NfvInstGroupUuid *string `json:"nfvInstGroupUuid,omitempty"`
-	NetworkServiceUuid *string `json:"networkServiceUuid,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	L3NetworkCategory *string `json:"l3NetworkCategory,omitempty"`
-	L3NetworkType *string `json:"l3NetworkType,omitempty"`
-	Type *string `json:"type,omitempty"`
+	NfvInstGroupUuid string `json:"nfvInstGroupUuid,omitempty"`
+	NetworkServiceUuid string `json:"networkServiceUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	L3NetworkCategory string `json:"l3NetworkCategory,omitempty"`
+	L3NetworkType string `json:"l3NetworkType,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 

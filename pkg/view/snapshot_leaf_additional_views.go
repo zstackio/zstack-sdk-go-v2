@@ -11,7 +11,7 @@ type SnapshotLeafInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Inventory VolumeSnapshotInventoryView `json:"inventory,omitempty"`
-	ParentUuid *string `json:"parentUuid,omitempty"`
+	ParentUuid string `json:"parentUuid,omitempty"`
 	Children []*SnapshotLeafInventoryView `json:"children,omitempty"`
 }
 

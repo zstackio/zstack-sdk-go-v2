@@ -20,7 +20,7 @@ type CreateLoadBalancerParamDetail struct {
 // CreateLoadBalancerParam CreateLoadBalancer request param
 type CreateLoadBalancerParam struct {
 	BaseParam
-	Params CreateLoadBalancerParamDetail `json:"params"`
+	CreateLoadBalancer CreateLoadBalancerParamDetail `json:"createLoadBalancer"`
 }
 // UpdateLoadBalancerParamDetail UpdateLoadBalancer detail param
 type UpdateLoadBalancerParamDetail struct {
@@ -34,7 +34,7 @@ type UpdateLoadBalancerParamDetail struct {
 // UpdateLoadBalancerParam UpdateLoadBalancer request param
 type UpdateLoadBalancerParam struct {
 	BaseParam
-	Params UpdateLoadBalancerParamDetail `json:"params"`
+	UpdateLoadBalancer UpdateLoadBalancerParamDetail `json:"updateLoadBalancer"`
 }
 // DeleteLoadBalancerParamDetail DeleteLoadBalancer detail param
 type DeleteLoadBalancerParamDetail struct {
@@ -45,7 +45,7 @@ type DeleteLoadBalancerParamDetail struct {
 // DeleteLoadBalancerParam DeleteLoadBalancer request param
 type DeleteLoadBalancerParam struct {
 	BaseParam
-	Params DeleteLoadBalancerParamDetail `json:"params"`
+	DeleteLoadBalancer DeleteLoadBalancerParamDetail `json:"deleteLoadBalancer"`
 }
 // RefreshLoadBalancerParamDetail RefreshLoadBalancer detail param
 type RefreshLoadBalancerParamDetail struct {
@@ -55,5 +55,5 @@ type RefreshLoadBalancerParamDetail struct {
 // RefreshLoadBalancerParam RefreshLoadBalancer request param
 type RefreshLoadBalancerParam struct {
 	BaseParam
-	Params RefreshLoadBalancerParamDetail `json:"params"`
+	RefreshLoadBalancer RefreshLoadBalancerParamDetail `json:"refreshLoadBalancer"`
 }

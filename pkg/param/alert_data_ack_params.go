@@ -15,5 +15,5 @@ type UpdateAlertDataAckParamDetail struct {
 // UpdateAlertDataAckParam UpdateAlertDataAck request param
 type UpdateAlertDataAckParam struct {
 	BaseParam
-	Params UpdateAlertDataAckParamDetail `json:"params"`
+	UpdateAlertDataAck UpdateAlertDataAckParamDetail `json:"updateAlertDataAck"`
 }

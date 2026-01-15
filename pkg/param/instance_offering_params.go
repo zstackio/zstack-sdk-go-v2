@@ -15,7 +15,7 @@ type ChangeInstanceOfferingParamDetail struct {
 // ChangeInstanceOfferingParam ChangeInstanceOffering request param
 type ChangeInstanceOfferingParam struct {
 	BaseParam
-	Params ChangeInstanceOfferingParamDetail `json:"params"`
+	ChangeInstanceOffering ChangeInstanceOfferingParamDetail `json:"changeInstanceOffering"`
 }
 // UpdateInstanceOfferingParamDetail UpdateInstanceOffering detail param
 type UpdateInstanceOfferingParamDetail struct {
@@ -28,7 +28,7 @@ type UpdateInstanceOfferingParamDetail struct {
 // UpdateInstanceOfferingParam UpdateInstanceOffering request param
 type UpdateInstanceOfferingParam struct {
 	BaseParam
-	Params UpdateInstanceOfferingParamDetail `json:"params"`
+	UpdateInstanceOffering UpdateInstanceOfferingParamDetail `json:"updateInstanceOffering"`
 }
 // CreateInstanceOfferingParamDetail CreateInstanceOffering detail param
 type CreateInstanceOfferingParamDetail struct {
@@ -47,7 +47,7 @@ type CreateInstanceOfferingParamDetail struct {
 // CreateInstanceOfferingParam CreateInstanceOffering request param
 type CreateInstanceOfferingParam struct {
 	BaseParam
-	Params CreateInstanceOfferingParamDetail `json:"params"`
+	CreateInstanceOffering CreateInstanceOfferingParamDetail `json:"createInstanceOffering"`
 }
 // DeleteInstanceOfferingParamDetail DeleteInstanceOffering detail param
 type DeleteInstanceOfferingParamDetail struct {
@@ -58,5 +58,5 @@ type DeleteInstanceOfferingParamDetail struct {
 // DeleteInstanceOfferingParam DeleteInstanceOffering request param
 type DeleteInstanceOfferingParam struct {
 	BaseParam
-	Params DeleteInstanceOfferingParamDetail `json:"params"`
+	DeleteInstanceOffering DeleteInstanceOfferingParamDetail `json:"deleteInstanceOffering"`
 }

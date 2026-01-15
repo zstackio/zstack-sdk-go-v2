@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type BaremetalHardwareInfoInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ChassisUuid *string `json:"chassisUuid,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Content *string `json:"content,omitempty"`
+	ChassisUuid string `json:"chassisUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	Content string `json:"content,omitempty"`
 }
 

@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type VpcSharedQosInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	VpcUuid *string `json:"vpcUuid,omitempty"`
-	Bandwidth *int64 `json:"bandwidth,omitempty"`
+	Description string `json:"description,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	VpcUuid string `json:"vpcUuid,omitempty"`
+	Bandwidth int64 `json:"bandwidth,omitempty"`
 	Vips []VpcSharedQosRefVipInventoryView `json:"vips,omitempty"`
 }
 

@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type ExternalServiceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Status *string `json:"status,omitempty"`
+	Status string `json:"status,omitempty"`
 	Capabilities ExternalServiceCapabilitiesView `json:"capabilities,omitempty"`
 }
 

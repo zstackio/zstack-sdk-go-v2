@@ -20,7 +20,7 @@ type CreateVpcSharedQosParamDetail struct {
 // CreateVpcSharedQosParam CreateVpcSharedQos request param
 type CreateVpcSharedQosParam struct {
 	BaseParam
-	Params CreateVpcSharedQosParamDetail `json:"params"`
+	CreateVpcSharedQos CreateVpcSharedQosParamDetail `json:"createVpcSharedQos"`
 }
 // UpdateVpcSharedQosParamDetail UpdateVpcSharedQos detail param
 type UpdateVpcSharedQosParamDetail struct {
@@ -32,7 +32,7 @@ type UpdateVpcSharedQosParamDetail struct {
 // UpdateVpcSharedQosParam UpdateVpcSharedQos request param
 type UpdateVpcSharedQosParam struct {
 	BaseParam
-	Params UpdateVpcSharedQosParamDetail `json:"params"`
+	UpdateVpcSharedQos UpdateVpcSharedQosParamDetail `json:"updateVpcSharedQos"`
 }
 // DeleteVpcSharedQosParamDetail DeleteVpcSharedQos detail param
 type DeleteVpcSharedQosParamDetail struct {
@@ -43,5 +43,5 @@ type DeleteVpcSharedQosParamDetail struct {
 // DeleteVpcSharedQosParam DeleteVpcSharedQos request param
 type DeleteVpcSharedQosParam struct {
 	BaseParam
-	Params DeleteVpcSharedQosParamDetail `json:"params"`
+	DeleteVpcSharedQos DeleteVpcSharedQosParamDetail `json:"deleteVpcSharedQos"`
 }

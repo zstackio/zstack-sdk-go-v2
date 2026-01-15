@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type AliyunNasMountTargetInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccessGroupUuid *string `json:"accessGroupUuid,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Description *string `json:"description,omitempty"`
-	MountDomain *string `json:"mountDomain,omitempty"`
-	NasFileSystemUuid *string `json:"nasFileSystemUuid,omitempty"`
-	Type *string `json:"type,omitempty"`
+	AccessGroupUuid string `json:"accessGroupUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	Description string `json:"description,omitempty"`
+	MountDomain string `json:"mountDomain,omitempty"`
+	NasFileSystemUuid string `json:"nasFileSystemUuid,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // AddAliyunNasMountTargetEventView AddAliyunNasMountTargetEvent

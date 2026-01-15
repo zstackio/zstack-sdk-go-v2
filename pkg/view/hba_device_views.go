@@ -10,7 +10,12 @@ var _ = time.Now // avoid unused import
 type HbaDeviceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	HostUuid *string `json:"hostUuid,omitempty"`
-	HbaType *string `json:"hbaType,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	HbaType string `json:"hbaType,omitempty"`
+}
+
+// QueryFcHbaDeviceView QueryFcHbaDevice
+type QueryFcHbaDeviceView struct {
+	Inventories []HbaDeviceInventoryView `json:"inventories,omitempty"`
 }
 

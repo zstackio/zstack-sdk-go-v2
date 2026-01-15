@@ -17,7 +17,7 @@ type UpdateContainerManagementEndpointParamDetail struct {
 // UpdateContainerManagementEndpointParam UpdateContainerManagementEndpoint request param
 type UpdateContainerManagementEndpointParam struct {
 	BaseParam
-	Params UpdateContainerManagementEndpointParamDetail `json:"params"`
+	UpdateContainerManagementEndpoint UpdateContainerManagementEndpointParamDetail `json:"updateContainerManagementEndpoint"`
 }
 // AddContainerManagementEndpointParamDetail AddContainerManagementEndpoint detail param
 type AddContainerManagementEndpointParamDetail struct {
@@ -35,7 +35,7 @@ type AddContainerManagementEndpointParamDetail struct {
 // AddContainerManagementEndpointParam AddContainerManagementEndpoint request param
 type AddContainerManagementEndpointParam struct {
 	BaseParam
-	Params AddContainerManagementEndpointParamDetail `json:"params"`
+	AddContainerManagementEndpoint AddContainerManagementEndpointParamDetail `json:"addContainerManagementEndpoint"`
 }
 // SyncContainerManagementEndpointParamDetail SyncContainerManagementEndpoint detail param
 type SyncContainerManagementEndpointParamDetail struct {
@@ -46,7 +46,7 @@ type SyncContainerManagementEndpointParamDetail struct {
 // SyncContainerManagementEndpointParam SyncContainerManagementEndpoint request param
 type SyncContainerManagementEndpointParam struct {
 	BaseParam
-	Params SyncContainerManagementEndpointParamDetail `json:"params"`
+	SyncContainerManagementEndpoint SyncContainerManagementEndpointParamDetail `json:"syncContainerManagementEndpoint"`
 }
 // DeleteContainerManagementEndpointParamDetail DeleteContainerManagementEndpoint detail param
 type DeleteContainerManagementEndpointParamDetail struct {
@@ -57,5 +57,5 @@ type DeleteContainerManagementEndpointParamDetail struct {
 // DeleteContainerManagementEndpointParam DeleteContainerManagementEndpoint request param
 type DeleteContainerManagementEndpointParam struct {
 	BaseParam
-	Params DeleteContainerManagementEndpointParamDetail `json:"params"`
+	DeleteContainerManagementEndpoint DeleteContainerManagementEndpointParamDetail `json:"deleteContainerManagementEndpoint"`
 }

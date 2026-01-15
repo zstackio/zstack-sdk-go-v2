@@ -18,7 +18,7 @@ type AddAliyunNasFileSystemParamDetail struct {
 // AddAliyunNasFileSystemParam AddAliyunNasFileSystem request param
 type AddAliyunNasFileSystemParam struct {
 	BaseParam
-	Params AddAliyunNasFileSystemParamDetail `json:"params"`
+	AddAliyunNasFileSystem AddAliyunNasFileSystemParamDetail `json:"addAliyunNasFileSystem"`
 }
 // CreateAliyunNasFileSystemParamDetail CreateAliyunNasFileSystem detail param
 type CreateAliyunNasFileSystemParamDetail struct {
@@ -34,5 +34,5 @@ type CreateAliyunNasFileSystemParamDetail struct {
 // CreateAliyunNasFileSystemParam CreateAliyunNasFileSystem request param
 type CreateAliyunNasFileSystemParam struct {
 	BaseParam
-	Params CreateAliyunNasFileSystemParamDetail `json:"params"`
+	CreateAliyunNasFileSystem CreateAliyunNasFileSystemParamDetail `json:"createAliyunNasFileSystem"`
 }

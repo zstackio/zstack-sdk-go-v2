@@ -15,7 +15,7 @@ type DeleteSNSTopicParamDetail struct {
 // DeleteSNSTopicParam DeleteSNSTopic request param
 type DeleteSNSTopicParam struct {
 	BaseParam
-	Params DeleteSNSTopicParamDetail `json:"params"`
+	DeleteSNSTopic DeleteSNSTopicParamDetail `json:"deleteSNSTopic"`
 }
 // UpdateSNSTopicParamDetail UpdateSNSTopic detail param
 type UpdateSNSTopicParamDetail struct {
@@ -28,7 +28,7 @@ type UpdateSNSTopicParamDetail struct {
 // UpdateSNSTopicParam UpdateSNSTopic request param
 type UpdateSNSTopicParam struct {
 	BaseParam
-	Params UpdateSNSTopicParamDetail `json:"params"`
+	UpdateSNSTopic UpdateSNSTopicParamDetail `json:"updateSNSTopic"`
 }
 // CreateSNSTopicParamDetail CreateSNSTopic detail param
 type CreateSNSTopicParamDetail struct {
@@ -42,5 +42,5 @@ type CreateSNSTopicParamDetail struct {
 // CreateSNSTopicParam CreateSNSTopic request param
 type CreateSNSTopicParam struct {
 	BaseParam
-	Params CreateSNSTopicParamDetail `json:"params"`
+	CreateSNSTopic CreateSNSTopicParamDetail `json:"createSNSTopic"`
 }

@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateBareMetal2ChassisOffering updates BareMetal2ChassisOffering
 func (cli *ZSClient) UpdateBareMetal2ChassisOffering(uuid string, params param.UpdateBareMetal2ChassisOfferingParam) (*view.BareMetal2ChassisOfferingInventoryView, error) {
-	var resp view.UpdateBareMetal2ChassisOfferingEventView
+	resp := view.BareMetal2ChassisOfferingInventoryView{}
 	if err := cli.Put("v1/baremetal2/chassis/offerings", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryBareMetal2ChassisOffering queries BareMetal2ChassisOffering list
 func (cli *ZSClient) QueryBareMetal2ChassisOffering(params *param.QueryParam) ([]view.BareMetal2ChassisOfferingInventoryView, error) {
@@ -24,10 +24,9 @@ func (cli *ZSClient) QueryBareMetal2ChassisOffering(params *param.QueryParam) ([
 	return resp, cli.List("v1/baremetal2/chassis/offerings", params, &resp)
 }
 
-func (cli *ZSClient) GetBareMetal2ChassisOffering(uuid string) (*view.BareMetal2ChassisOfferingInventoryView, error) {
-	var resp view.BareMetal2ChassisOfferingInventoryView
-	if err := cli.Get("v1/baremetal2/chassis/offerings", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageBareMetal2ChassisOffering Pagination
+func (cli *ZSClient) PageBareMetal2ChassisOffering(params *param.QueryParam) ([]view.BareMetal2ChassisOfferingInventoryView, int, error) {
+	var bareMetal2ChassisOfferings []view.BareMetal2ChassisOfferingInventoryView
+	total, err := cli.Page("v1/baremetal2/chassis/offerings", params, &bareMetal2ChassisOfferings)
+	return bareMetal2ChassisOfferings, total, err
 }

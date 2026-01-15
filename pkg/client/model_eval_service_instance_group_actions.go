@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryModelEvalServiceInstanceGroup(params *param.QueryParam
 	return resp, cli.List("v1/ai/model-eval-services/instances/groups/", params, &resp)
 }
 
-func (cli *ZSClient) GetModelEvalServiceInstanceGroup(uuid string) (*view.ModelServiceInstanceGroupInventoryView, error) {
-	var resp view.ModelServiceInstanceGroupInventoryView
-	if err := cli.Get("v1/ai/model-eval-services/instances/groups/", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageModelEvalServiceInstanceGroup Pagination
+func (cli *ZSClient) PageModelEvalServiceInstanceGroup(params *param.QueryParam) ([]view.ModelServiceInstanceGroupInventoryView, int, error) {
+	var modelEvalServiceInstanceGroups []view.ModelServiceInstanceGroupInventoryView
+	total, err := cli.Page("v1/ai/model-eval-services/instances/groups/", params, &modelEvalServiceInstanceGroups)
+	return modelEvalServiceInstanceGroups, total, err
 }

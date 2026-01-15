@@ -16,12 +16,11 @@ func (cli *ZSClient) QueryMetricRuleTemplate(params *param.QueryParam) ([]view.M
 	return resp, cli.List("v1/zwatch/monitortemplates/metricrules", params, &resp)
 }
 
-func (cli *ZSClient) GetMetricRuleTemplate(uuid string) (*view.MetricRuleTemplateInventoryView, error) {
-	var resp view.MetricRuleTemplateInventoryView
-	if err := cli.Get("v1/zwatch/monitortemplates/metricrules", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageMetricRuleTemplate Pagination
+func (cli *ZSClient) PageMetricRuleTemplate(params *param.QueryParam) ([]view.MetricRuleTemplateInventoryView, int, error) {
+	var metricRuleTemplates []view.MetricRuleTemplateInventoryView
+	total, err := cli.Page("v1/zwatch/monitortemplates/metricrules", params, &metricRuleTemplates)
+	return metricRuleTemplates, total, err
 }
 // DeleteMetricRuleTemplate deletes MetricRuleTemplate
 func (cli *ZSClient) DeleteMetricRuleTemplate(uuid string, deleteMode param.DeleteMode) error {
@@ -29,17 +28,17 @@ func (cli *ZSClient) DeleteMetricRuleTemplate(uuid string, deleteMode param.Dele
 }
 // UpdateMetricRuleTemplate updates MetricRuleTemplate
 func (cli *ZSClient) UpdateMetricRuleTemplate(uuid string, params param.UpdateMetricRuleTemplateParam) (*view.MetricRuleTemplateInventoryView, error) {
-	var resp view.UpdateMetricRuleTemplateEventView
+	resp := view.MetricRuleTemplateInventoryView{}
 	if err := cli.Put("v1/zwatch/monitortemplates/metricrules", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // AddMetricRuleTemplate adds MetricRuleTemplate
 func (cli *ZSClient) AddMetricRuleTemplate(params param.AddMetricRuleTemplateParam) (*view.MetricRuleTemplateInventoryView, error) {
-	var resp view.AddMetricRuleTemplateEventView
+	resp := view.MetricRuleTemplateInventoryView{}
 	if err := cli.Post("v1/zwatch/monitortemplates/{monitorTemplateUuid}/metricrules", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

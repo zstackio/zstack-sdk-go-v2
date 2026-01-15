@@ -19,5 +19,5 @@ type UpdateCephBackupStorageMonParamDetail struct {
 // UpdateCephBackupStorageMonParam UpdateCephBackupStorageMon request param
 type UpdateCephBackupStorageMonParam struct {
 	BaseParam
-	Params UpdateCephBackupStorageMonParamDetail `json:"params"`
+	UpdateCephBackupStorageMon UpdateCephBackupStorageMonParamDetail `json:"updateCephBackupStorageMon"`
 }

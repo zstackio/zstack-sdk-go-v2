@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type LoadBalancerListenerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	LoadBalancerUuid *string `json:"loadBalancerUuid,omitempty"`
-	InstancePort *int `json:"instancePort,omitempty"`
-	LoadBalancerPort *int `json:"loadBalancerPort,omitempty"`
-	SecurityPolicyType *string `json:"securityPolicyType,omitempty"`
-	Protocol *string `json:"protocol,omitempty"`
-	ServerGroupUuid *string `json:"serverGroupUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	LoadBalancerUuid string `json:"loadBalancerUuid,omitempty"`
+	InstancePort int `json:"instancePort,omitempty"`
+	LoadBalancerPort int `json:"loadBalancerPort,omitempty"`
+	SecurityPolicyType string `json:"securityPolicyType,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
 	VmNicRefs []LoadBalancerListenerVmNicRefInventoryView `json:"vmNicRefs,omitempty"`
 	AclRefs []LoadBalancerListenerACLRefInventoryView `json:"aclRefs,omitempty"`
 	CertificateRefs []LoadBalancerListenerCertificateRefInventoryView `json:"certificateRefs,omitempty"`
@@ -76,10 +76,5 @@ type ChangeLoadBalancerListenerEventView struct {
 // RemoveAccessControlListFromLoadBalancerEventView RemoveAccessControlListFromLoadBalancerEvent
 type RemoveAccessControlListFromLoadBalancerEventView struct {
 	Inventory LoadBalancerListenerInventoryView `json:"inventory,omitempty"`
-}
-
-// DeleteLoadBalancerListenerEventView DeleteLoadBalancerListenerEvent
-type DeleteLoadBalancerListenerEventView struct {
-	Inventory LoadBalancerInventoryView `json:"inventory,omitempty"`
 }
 

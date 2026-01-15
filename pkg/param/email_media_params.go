@@ -21,7 +21,7 @@ type CreateEmailMediaParamDetail struct {
 // CreateEmailMediaParam CreateEmailMedia request param
 type CreateEmailMediaParam struct {
 	BaseParam
-	Params CreateEmailMediaParamDetail `json:"params"`
+	CreateEmailMedia CreateEmailMediaParamDetail `json:"createEmailMedia"`
 }
 // UpdateEmailMediaParamDetail UpdateEmailMedia detail param
 type UpdateEmailMediaParamDetail struct {
@@ -37,5 +37,5 @@ type UpdateEmailMediaParamDetail struct {
 // UpdateEmailMediaParam UpdateEmailMedia request param
 type UpdateEmailMediaParam struct {
 	BaseParam
-	Params UpdateEmailMediaParamDetail `json:"params"`
+	UpdateEmailMedia UpdateEmailMediaParamDetail `json:"updateEmailMedia"`
 }

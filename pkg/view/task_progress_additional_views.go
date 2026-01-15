@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type TaskProgressInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TaskUuid *string `json:"taskUuid,omitempty"`
-	TaskName *string `json:"taskName,omitempty"`
-	ParentUuid *string `json:"parentUuid,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Content *string `json:"content,omitempty"`
+	TaskUuid string `json:"taskUuid,omitempty"`
+	TaskName string `json:"taskName,omitempty"`
+	ParentUuid string `json:"parentUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	Content string `json:"content,omitempty"`
 	Opaque interface{} `json:"opaque,omitempty"`
-	Time *int64 `json:"time,omitempty"`
+	Time int64 `json:"time,omitempty"`
 	SubTasks []*TaskProgressInventoryView `json:"subTasks,omitempty"`
-	Arguments *string `json:"arguments,omitempty"`
+	Arguments string `json:"arguments,omitempty"`
 }
 

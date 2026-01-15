@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type IAM2ProjectTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	Template TemplateView `json:"template,omitempty"`
 }
 

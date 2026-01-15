@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type VxlanHostMappingInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VxlanUuid *string `json:"vxlanUuid,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
-	VlanId *int `json:"vlanId,omitempty"`
-	PhysicalInterface *string `json:"physicalInterface,omitempty"`
+	VxlanUuid string `json:"vxlanUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	VlanId int `json:"vlanId,omitempty"`
+	PhysicalInterface string `json:"physicalInterface,omitempty"`
 }
 

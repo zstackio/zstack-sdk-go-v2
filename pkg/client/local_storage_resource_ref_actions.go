@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryLocalStorageResourceRef(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/primary-storage/local-storage/resource-refs", params, &resp)
 }
 
-func (cli *ZSClient) GetLocalStorageResourceRef(uuid string) (*view.LocalStorageResourceRefInventoryView, error) {
-	var resp view.LocalStorageResourceRefInventoryView
-	if err := cli.Get("v1/primary-storage/local-storage/resource-refs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageLocalStorageResourceRef Pagination
+func (cli *ZSClient) PageLocalStorageResourceRef(params *param.QueryParam) ([]view.LocalStorageResourceRefInventoryView, int, error) {
+	var localStorageResourceRefs []view.LocalStorageResourceRefInventoryView
+	total, err := cli.Page("v1/primary-storage/local-storage/resource-refs", params, &localStorageResourceRefs)
+	return localStorageResourceRefs, total, err
 }

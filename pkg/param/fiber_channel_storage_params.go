@@ -16,5 +16,5 @@ type RefreshFiberChannelStorageParamDetail struct {
 // RefreshFiberChannelStorageParam RefreshFiberChannelStorage request param
 type RefreshFiberChannelStorageParam struct {
 	BaseParam
-	Params RefreshFiberChannelStorageParamDetail `json:"params"`
+	RefreshFiberChannelStorage RefreshFiberChannelStorageParamDetail `json:"refreshFiberChannelStorage"`
 }

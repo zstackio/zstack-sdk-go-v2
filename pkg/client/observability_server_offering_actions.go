@@ -12,9 +12,9 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateObservabilityServerOffering creates ObservabilityServerOffering
 func (cli *ZSClient) CreateObservabilityServerOffering(params param.CreateObservabilityServerOfferingParam) (*view.InstanceOfferingInventoryView, error) {
-	var resp view.CreateInstanceOfferingEventView
+	resp := view.InstanceOfferingInventoryView{}
 	if err := cli.Post("v1/instance-offerings/observability-servers", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

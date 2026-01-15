@@ -16,19 +16,19 @@ func (cli *ZSClient) DeleteAutoScalingGroup(uuid string, deleteMode param.Delete
 }
 // CreateAutoScalingGroup creates AutoScalingGroup
 func (cli *ZSClient) CreateAutoScalingGroup(params param.CreateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
-	var resp view.CreateAutoScalingGroupEventView
+	resp := view.AutoScalingGroupInventoryView{}
 	if err := cli.Post("v1/autoscaling/groups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateAutoScalingGroup updates AutoScalingGroup
 func (cli *ZSClient) UpdateAutoScalingGroup(uuid string, params param.UpdateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
-	var resp view.UpdateAutoScalingGroupEventView
+	resp := view.AutoScalingGroupInventoryView{}
 	if err := cli.Put("v1/autoscaling/groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryAutoScalingGroup queries AutoScalingGroup list
 func (cli *ZSClient) QueryAutoScalingGroup(params *param.QueryParam) ([]view.AutoScalingGroupInventoryView, error) {
@@ -36,10 +36,9 @@ func (cli *ZSClient) QueryAutoScalingGroup(params *param.QueryParam) ([]view.Aut
 	return resp, cli.List("v1/autoscaling/groups", params, &resp)
 }
 
-func (cli *ZSClient) GetAutoScalingGroup(uuid string) (*view.AutoScalingGroupInventoryView, error) {
-	var resp view.AutoScalingGroupInventoryView
-	if err := cli.Get("v1/autoscaling/groups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageAutoScalingGroup Pagination
+func (cli *ZSClient) PageAutoScalingGroup(params *param.QueryParam) ([]view.AutoScalingGroupInventoryView, int, error) {
+	var autoScalingGroups []view.AutoScalingGroupInventoryView
+	total, err := cli.Page("v1/autoscaling/groups", params, &autoScalingGroups)
+	return autoScalingGroups, total, err
 }

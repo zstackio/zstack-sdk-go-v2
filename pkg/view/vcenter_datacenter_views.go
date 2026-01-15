@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type VCenterDatacenterInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VCenterUuid *string `json:"vCenterUuid,omitempty"`
-	Morval *string `json:"morval,omitempty"`
+	VCenterUuid string `json:"vCenterUuid,omitempty"`
+	Morval string `json:"morval,omitempty"`
 }
 
 // QueryVCenterDatacenterView QueryVCenterDatacenter

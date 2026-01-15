@@ -12,35 +12,35 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateSnmpAgent creates SnmpAgent
 func (cli *ZSClient) CreateSnmpAgent(params param.CreateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
-	var resp view.CreateSnmpAgentEventView
+	resp := view.SnmpAgentInventoryView{}
 	if err := cli.Post("v1/snmp/agent", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // StartSnmpAgent starts SnmpAgent
 func (cli *ZSClient) StartSnmpAgent(uuid string, params param.StartSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
-	var resp view.StartSnmpAgentEventView
+	resp := view.SnmpAgentInventoryView{}
 	if err := cli.Put("v1/snmp/agent/actions", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // StopSnmpAgent stops SnmpAgent
 func (cli *ZSClient) StopSnmpAgent(uuid string, params param.StopSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
-	var resp view.StopSnmpAgentEventView
+	resp := view.SnmpAgentInventoryView{}
 	if err := cli.Put("v1/snmp/agent/actions", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateSnmpAgent updates SnmpAgent
 func (cli *ZSClient) UpdateSnmpAgent(uuid string, params param.UpdateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
-	var resp view.UpdateSnmpAgentEventView
+	resp := view.SnmpAgentInventoryView{}
 	if err := cli.Put("v1/snmp/agent/actions", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QuerySnmpAgent queries SnmpAgent list
 func (cli *ZSClient) QuerySnmpAgent(params *param.QueryParam) ([]view.SnmpAgentInventoryView, error) {
@@ -48,10 +48,9 @@ func (cli *ZSClient) QuerySnmpAgent(params *param.QueryParam) ([]view.SnmpAgentI
 	return resp, cli.List("v1/snmp/agent", params, &resp)
 }
 
-func (cli *ZSClient) GetSnmpAgent(uuid string) (*view.SnmpAgentInventoryView, error) {
-	var resp view.SnmpAgentInventoryView
-	if err := cli.Get("v1/snmp/agent", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSnmpAgent Pagination
+func (cli *ZSClient) PageSnmpAgent(params *param.QueryParam) ([]view.SnmpAgentInventoryView, int, error) {
+	var snmpAgents []view.SnmpAgentInventoryView
+	total, err := cli.Page("v1/snmp/agent", params, &snmpAgents)
+	return snmpAgents, total, err
 }

@@ -23,7 +23,7 @@ type AddVCenterParamDetail struct {
 // AddVCenterParam AddVCenter request param
 type AddVCenterParam struct {
 	BaseParam
-	Params AddVCenterParamDetail `json:"params"`
+	AddVCenter AddVCenterParamDetail `json:"addVCenter"`
 }
 // SyncVCenterParamDetail SyncVCenter detail param
 type SyncVCenterParamDetail struct {
@@ -33,7 +33,7 @@ type SyncVCenterParamDetail struct {
 // SyncVCenterParam SyncVCenter request param
 type SyncVCenterParam struct {
 	BaseParam
-	Params SyncVCenterParamDetail `json:"params"`
+	SyncVCenter SyncVCenterParamDetail `json:"syncVCenter"`
 }
 // UpdateVCenterParamDetail UpdateVCenter detail param
 type UpdateVCenterParamDetail struct {
@@ -50,7 +50,7 @@ type UpdateVCenterParamDetail struct {
 // UpdateVCenterParam UpdateVCenter request param
 type UpdateVCenterParam struct {
 	BaseParam
-	Params UpdateVCenterParamDetail `json:"params"`
+	UpdateVCenter UpdateVCenterParamDetail `json:"updateVCenter"`
 }
 // DeleteVCenterParamDetail DeleteVCenter detail param
 type DeleteVCenterParamDetail struct {
@@ -61,5 +61,5 @@ type DeleteVCenterParamDetail struct {
 // DeleteVCenterParam DeleteVCenter request param
 type DeleteVCenterParam struct {
 	BaseParam
-	Params DeleteVCenterParamDetail `json:"params"`
+	DeleteVCenter DeleteVCenterParamDetail `json:"deleteVCenter"`
 }

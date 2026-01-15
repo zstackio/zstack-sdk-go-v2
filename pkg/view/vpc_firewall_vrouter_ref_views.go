@@ -11,8 +11,8 @@ type VpcFirewallVRouterRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	VpcFirewallUuid *string `json:"vpcFirewallUuid,omitempty"`
-	VRouterUuid *string `json:"vRouterUuid,omitempty"`
+	VpcFirewallUuid string `json:"vpcFirewallUuid,omitempty"`
+	VRouterUuid string `json:"vRouterUuid,omitempty"`
 }
 
 // QueryVpcFirewallVRouterRefView QueryVpcFirewallVRouterRef

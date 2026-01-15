@@ -20,7 +20,7 @@ type AddIscsiServerParamDetail struct {
 // AddIscsiServerParam AddIscsiServer request param
 type AddIscsiServerParam struct {
 	BaseParam
-	Params AddIscsiServerParamDetail `json:"params"`
+	AddIscsiServer AddIscsiServerParamDetail `json:"addIscsiServer"`
 }
 // DeleteIscsiServerParamDetail DeleteIscsiServer detail param
 type DeleteIscsiServerParamDetail struct {
@@ -31,7 +31,7 @@ type DeleteIscsiServerParamDetail struct {
 // DeleteIscsiServerParam DeleteIscsiServer request param
 type DeleteIscsiServerParam struct {
 	BaseParam
-	Params DeleteIscsiServerParamDetail `json:"params"`
+	DeleteIscsiServer DeleteIscsiServerParamDetail `json:"deleteIscsiServer"`
 }
 // RefreshIscsiServerParamDetail RefreshIscsiServer detail param
 type RefreshIscsiServerParamDetail struct {
@@ -41,7 +41,7 @@ type RefreshIscsiServerParamDetail struct {
 // RefreshIscsiServerParam RefreshIscsiServer request param
 type RefreshIscsiServerParam struct {
 	BaseParam
-	Params RefreshIscsiServerParamDetail `json:"params"`
+	RefreshIscsiServer RefreshIscsiServerParamDetail `json:"refreshIscsiServer"`
 }
 // UpdateIscsiServerParamDetail UpdateIscsiServer detail param
 type UpdateIscsiServerParamDetail struct {
@@ -55,5 +55,5 @@ type UpdateIscsiServerParamDetail struct {
 // UpdateIscsiServerParam UpdateIscsiServer request param
 type UpdateIscsiServerParam struct {
 	BaseParam
-	Params UpdateIscsiServerParamDetail `json:"params"`
+	UpdateIscsiServer UpdateIscsiServerParamDetail `json:"updateIscsiServer"`
 }

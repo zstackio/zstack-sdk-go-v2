@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type AccountPriceTableRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccountUuid *string `json:"accountUuid,omitempty"`
-	TableUuid *string `json:"tableUuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
 }
 
 // QueryAccountPriceTableRefView QueryAccountPriceTableRef
@@ -22,7 +22,7 @@ type QueryAccountPriceTableRefView struct {
 // GetAccountPriceTableRefView GetAccountPriceTableRef
 type GetAccountPriceTableRefView struct {
 	AccountUuids []string `json:"accountUuids,omitempty"`
-	TableUuid *string `json:"tableUuid,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

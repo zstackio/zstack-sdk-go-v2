@@ -18,7 +18,7 @@ type CreateAccessControlListParamDetail struct {
 // CreateAccessControlListParam CreateAccessControlList request param
 type CreateAccessControlListParam struct {
 	BaseParam
-	Params CreateAccessControlListParamDetail `json:"params"`
+	CreateAccessControlList CreateAccessControlListParamDetail `json:"createAccessControlList"`
 }
 // UpdateAccessControlListParamDetail UpdateAccessControlList detail param
 type UpdateAccessControlListParamDetail struct {
@@ -30,7 +30,7 @@ type UpdateAccessControlListParamDetail struct {
 // UpdateAccessControlListParam UpdateAccessControlList request param
 type UpdateAccessControlListParam struct {
 	BaseParam
-	Params UpdateAccessControlListParamDetail `json:"params"`
+	UpdateAccessControlList UpdateAccessControlListParamDetail `json:"updateAccessControlList"`
 }
 // DeleteAccessControlListParamDetail DeleteAccessControlList detail param
 type DeleteAccessControlListParamDetail struct {
@@ -41,5 +41,5 @@ type DeleteAccessControlListParamDetail struct {
 // DeleteAccessControlListParam DeleteAccessControlList request param
 type DeleteAccessControlListParam struct {
 	BaseParam
-	Params DeleteAccessControlListParamDetail `json:"params"`
+	DeleteAccessControlList DeleteAccessControlListParamDetail `json:"deleteAccessControlList"`
 }

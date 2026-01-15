@@ -24,5 +24,5 @@ type CreateL2VlanNetworkParamDetail struct {
 // CreateL2VlanNetworkParam CreateL2VlanNetwork request param
 type CreateL2VlanNetworkParam struct {
 	BaseParam
-	Params CreateL2VlanNetworkParamDetail `json:"params"`
+	CreateL2VlanNetwork CreateL2VlanNetworkParamDetail `json:"createL2VlanNetwork"`
 }

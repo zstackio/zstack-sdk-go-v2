@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // HostDiskCapacityView HostDiskCapacity
 type HostDiskCapacityView struct {
-	HostUuid *string `json:"hostUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
 	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
 	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`

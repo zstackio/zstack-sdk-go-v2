@@ -10,16 +10,16 @@ var _ = time.Now // avoid unused import
 type PublishAppInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	TemplateContent *string `json:"templateContent,omitempty"`
-	AppMetaData *string `json:"appMetaData,omitempty"`
-	PreParams *string `json:"preParams,omitempty"`
-	VmRelationShip *string `json:"vmRelationShip,omitempty"`
-	BuildAppUuid *string `json:"buildAppUuid,omitempty"`
-	Type *string `json:"type,omitempty"`
-	AppId *string `json:"appId,omitempty"`
-	Version *string `json:"version,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Description string `json:"description,omitempty"`
+	TemplateContent string `json:"templateContent,omitempty"`
+	AppMetaData string `json:"appMetaData,omitempty"`
+	PreParams string `json:"preParams,omitempty"`
+	VmRelationShip string `json:"vmRelationShip,omitempty"`
+	BuildAppUuid string `json:"buildAppUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	AppId string `json:"appId,omitempty"`
+	Version string `json:"version,omitempty"`
+	Status string `json:"status,omitempty"`
 }
 
 // QueryPublishAppView QueryPublishApp

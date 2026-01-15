@@ -12,17 +12,17 @@ var _ = view.MapView{} // avoid unused import
 
 // AddInfoSecSecurityMachine adds InfoSecSecurityMachine
 func (cli *ZSClient) AddInfoSecSecurityMachine(params param.AddInfoSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
-	var resp view.AddSecurityMachineEventView
+	resp := view.SecurityMachineInventoryView{}
 	if err := cli.Post("v1/security-machine/infoSec", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateInfoSecSecurityMachine updates InfoSecSecurityMachine
 func (cli *ZSClient) UpdateInfoSecSecurityMachine(uuid string, params param.UpdateInfoSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
-	var resp view.UpdateSecurityMachineEventView
+	resp := view.SecurityMachineInventoryView{}
 	if err := cli.Put("v1/security-machines/infoSec", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

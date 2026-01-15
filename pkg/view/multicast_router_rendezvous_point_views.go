@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type MulticastRouterRendezvousPointInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	MulticastRouterUuid *string `json:"multicastRouterUuid,omitempty"`
-	RpAddress *string `json:"rpAddress,omitempty"`
-	GroupAddress *string `json:"groupAddress,omitempty"`
+	MulticastRouterUuid string `json:"multicastRouterUuid,omitempty"`
+	RpAddress string `json:"rpAddress,omitempty"`
+	GroupAddress string `json:"groupAddress,omitempty"`
 }
 

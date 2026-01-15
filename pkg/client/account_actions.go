@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateAccount updates Account
 func (cli *ZSClient) UpdateAccount(uuid string, params param.UpdateAccountParam) (*view.AccountInventoryView, error) {
-	var resp view.UpdateAccountEventView
+	resp := view.AccountInventoryView{}
 	if err := cli.Put("v1/accounts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteAccount deletes Account
 func (cli *ZSClient) DeleteAccount(uuid string, deleteMode param.DeleteMode) error {
@@ -24,11 +24,11 @@ func (cli *ZSClient) DeleteAccount(uuid string, deleteMode param.DeleteMode) err
 }
 // CreateAccount creates Account
 func (cli *ZSClient) CreateAccount(params param.CreateAccountParam) (*view.AccountInventoryView, error) {
-	var resp view.CreateAccountEventView
+	resp := view.AccountInventoryView{}
 	if err := cli.Post("v1/accounts", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryAccount queries Account list
 func (cli *ZSClient) QueryAccount(params *param.QueryParam) ([]view.AccountInventoryView, error) {
@@ -36,10 +36,9 @@ func (cli *ZSClient) QueryAccount(params *param.QueryParam) ([]view.AccountInven
 	return resp, cli.List("v1/accounts", params, &resp)
 }
 
-func (cli *ZSClient) GetAccount(uuid string) (*view.AccountInventoryView, error) {
-	var resp view.AccountInventoryView
-	if err := cli.Get("v1/accounts", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageAccount Pagination
+func (cli *ZSClient) PageAccount(params *param.QueryParam) ([]view.AccountInventoryView, int, error) {
+	var accounts []view.AccountInventoryView
+	total, err := cli.Page("v1/accounts", params, &accounts)
+	return accounts, total, err
 }

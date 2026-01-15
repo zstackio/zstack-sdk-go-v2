@@ -15,7 +15,7 @@ type DeleteReservedIpRangeParamDetail struct {
 // DeleteReservedIpRangeParam DeleteReservedIpRange request param
 type DeleteReservedIpRangeParam struct {
 	BaseParam
-	Params DeleteReservedIpRangeParamDetail `json:"params"`
+	DeleteReservedIpRange DeleteReservedIpRangeParamDetail `json:"deleteReservedIpRange"`
 }
 // AddReservedIpRangeParamDetail AddReservedIpRange detail param
 type AddReservedIpRangeParamDetail struct {
@@ -29,5 +29,5 @@ type AddReservedIpRangeParamDetail struct {
 // AddReservedIpRangeParam AddReservedIpRange request param
 type AddReservedIpRangeParam struct {
 	BaseParam
-	Params AddReservedIpRangeParamDetail `json:"params"`
+	AddReservedIpRange AddReservedIpRangeParamDetail `json:"addReservedIpRange"`
 }

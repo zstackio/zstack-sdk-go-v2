@@ -31,7 +31,7 @@ type CreateNfvInstGroupParamDetail struct {
 // CreateNfvInstGroupParam CreateNfvInstGroup request param
 type CreateNfvInstGroupParam struct {
 	BaseParam
-	Params CreateNfvInstGroupParamDetail `json:"params"`
+	CreateNfvInstGroup CreateNfvInstGroupParamDetail `json:"createNfvInstGroup"`
 }
 // SyncNfvInstGroupParamDetail SyncNfvInstGroup detail param
 type SyncNfvInstGroupParamDetail struct {
@@ -41,7 +41,7 @@ type SyncNfvInstGroupParamDetail struct {
 // SyncNfvInstGroupParam SyncNfvInstGroup request param
 type SyncNfvInstGroupParam struct {
 	BaseParam
-	Params SyncNfvInstGroupParamDetail `json:"params"`
+	SyncNfvInstGroup SyncNfvInstGroupParamDetail `json:"syncNfvInstGroup"`
 }
 // UpdateNfvInstGroupParamDetail UpdateNfvInstGroup detail param
 type UpdateNfvInstGroupParamDetail struct {
@@ -53,7 +53,7 @@ type UpdateNfvInstGroupParamDetail struct {
 // UpdateNfvInstGroupParam UpdateNfvInstGroup request param
 type UpdateNfvInstGroupParam struct {
 	BaseParam
-	Params UpdateNfvInstGroupParamDetail `json:"params"`
+	UpdateNfvInstGroup UpdateNfvInstGroupParamDetail `json:"updateNfvInstGroup"`
 }
 // DeleteNfvInstGroupParamDetail DeleteNfvInstGroup detail param
 type DeleteNfvInstGroupParamDetail struct {
@@ -64,5 +64,5 @@ type DeleteNfvInstGroupParamDetail struct {
 // DeleteNfvInstGroupParam DeleteNfvInstGroup request param
 type DeleteNfvInstGroupParam struct {
 	BaseParam
-	Params DeleteNfvInstGroupParamDetail `json:"params"`
+	DeleteNfvInstGroup DeleteNfvInstGroupParamDetail `json:"deleteNfvInstGroup"`
 }

@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type TwoFactorAuthenticationSecretInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Secret *string `json:"secret,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	Secret string `json:"secret,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 	Status string `json:"status,omitempty"`
-	UserUuid *string `json:"userUuid,omitempty"`
-	UserType *string `json:"userType,omitempty"`
+	UserUuid string `json:"userUuid,omitempty"`
+	UserType string `json:"userType,omitempty"`
 }
 
 // GetTwoFactorAuthenticationSecretView GetTwoFactorAuthenticationSecret

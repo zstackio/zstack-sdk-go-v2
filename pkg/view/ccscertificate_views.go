@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type CCSCertificateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Algorithm *string `json:"algorithm,omitempty"`
-	Format *string `json:"format,omitempty"`
-	IssuerDN *string `json:"issuerDN,omitempty"`
-	SubjectDN *string `json:"subjectDN,omitempty"`
-	SerNumber *string `json:"serNumber,omitempty"`
-	EffectiveTime *time.Time `json:"effectiveTime,omitempty"`
-	ExpirationTime *time.Time `json:"expirationTime,omitempty"`
+	Algorithm string `json:"algorithm,omitempty"`
+	Format string `json:"format,omitempty"`
+	IssuerDN string `json:"issuerDN,omitempty"`
+	SubjectDN string `json:"subjectDN,omitempty"`
+	SerNumber string `json:"serNumber,omitempty"`
+	EffectiveTime time.Time `json:"effectiveTime,omitempty"`
+	ExpirationTime time.Time `json:"expirationTime,omitempty"`
 	UserCertificateRefs []CCSCertificateUserRefInventoryView `json:"userCertificateRefs,omitempty"`
 }
 

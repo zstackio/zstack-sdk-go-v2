@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryMonitorGroupAlarm(params *param.QueryParam) ([]view.Mo
 	return resp, cli.List("v1/zwatch/monitorgroups/alarms", params, &resp)
 }
 
-func (cli *ZSClient) GetMonitorGroupAlarm(uuid string) (*view.MonitorGroupAlarmInventoryView, error) {
-	var resp view.MonitorGroupAlarmInventoryView
-	if err := cli.Get("v1/zwatch/monitorgroups/alarms", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageMonitorGroupAlarm Pagination
+func (cli *ZSClient) PageMonitorGroupAlarm(params *param.QueryParam) ([]view.MonitorGroupAlarmInventoryView, int, error) {
+	var monitorGroupAlarms []view.MonitorGroupAlarmInventoryView
+	total, err := cli.Page("v1/zwatch/monitorgroups/alarms", params, &monitorGroupAlarms)
+	return monitorGroupAlarms, total, err
 }

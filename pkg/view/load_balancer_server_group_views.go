@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type LoadBalancerServerGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	LoadBalancerUuid *string `json:"loadBalancerUuid,omitempty"`
-	IpVersion *int `json:"ipVersion,omitempty"`
+	Description string `json:"description,omitempty"`
+	LoadBalancerUuid string `json:"loadBalancerUuid,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
 	ListenerServerGroupRefs []LoadBalancerListenerServerGroupRefInventoryView `json:"listenerServerGroupRefs,omitempty"`
 	ServerIps []LoadBalancerServerGroupServerIpInventoryView `json:"serverIps,omitempty"`
 	VmNicRefs []LoadBalancerServerGroupVmNicRefInventoryView `json:"vmNicRefs,omitempty"`

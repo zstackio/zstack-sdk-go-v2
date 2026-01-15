@@ -20,5 +20,5 @@ type CreateAutoScalingRuleAlarmTriggerParamDetail struct {
 // CreateAutoScalingRuleAlarmTriggerParam CreateAutoScalingRuleAlarmTrigger request param
 type CreateAutoScalingRuleAlarmTriggerParam struct {
 	BaseParam
-	Params CreateAutoScalingRuleAlarmTriggerParamDetail `json:"params"`
+	CreateAutoScalingRuleAlarmTrigger CreateAutoScalingRuleAlarmTriggerParamDetail `json:"createAutoScalingRuleAlarmTrigger"`
 }

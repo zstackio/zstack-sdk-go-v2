@@ -20,9 +20,9 @@ func (cli *ZSClient) GetTwoFactorAuthenticationSecret(uuid string) (*view.TwoFac
 }
 // ResetTwoFactorAuthenticationSecret operates on TwoFactorAuthenticationSecret
 func (cli *ZSClient) ResetTwoFactorAuthenticationSecret(uuid string, params param.ResetTwoFactorAuthenticationSecretParam) (*view.TwoFactorAuthenticationSecretInventoryView, error) {
-	var resp view.ResetTwoFactorAuthenticationSecretEventView
+	resp := view.TwoFactorAuthenticationSecretInventoryView{}
 	if err := cli.Put("v1/twofactorauthentication/secrets", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

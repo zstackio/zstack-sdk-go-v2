@@ -25,5 +25,5 @@ type AddXDragonHostParamDetail struct {
 // AddXDragonHostParam AddXDragonHost request param
 type AddXDragonHostParam struct {
 	BaseParam
-	Params AddXDragonHostParamDetail `json:"params"`
+	AddXDragonHost AddXDragonHostParamDetail `json:"addXDragonHost"`
 }

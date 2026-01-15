@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type RouterAreaInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AreaId *string `json:"areaId,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Authentication *string `json:"authentication,omitempty"`
-	Password *string `json:"password,omitempty"`
-	KeyId *int `json:"keyId,omitempty"`
+	AreaId string `json:"areaId,omitempty"`
+	Type string `json:"type,omitempty"`
+	Authentication string `json:"authentication,omitempty"`
+	Password string `json:"password,omitempty"`
+	KeyId int `json:"keyId,omitempty"`
 }
 
 // UpdateVRouterOspfAreaEventView UpdateVRouterOspfAreaEvent

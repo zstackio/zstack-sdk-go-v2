@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type IAM2VirtualIDInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
 }
@@ -39,7 +39,7 @@ type CleanInvalidLdapIAM2BindingEventView struct {
 // GetIAM2VirtualIDInGroupView GetIAM2VirtualIDInGroup
 type GetIAM2VirtualIDInGroupView struct {
 	Inventories []IAM2VirtualIDInventoryView `json:"inventories,omitempty"`
-	Total *int64 `json:"total,omitempty"`
+	Total int64 `json:"total,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 

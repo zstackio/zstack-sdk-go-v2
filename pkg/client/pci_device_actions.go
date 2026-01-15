@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdatePciDevice updates PciDevice
 func (cli *ZSClient) UpdatePciDevice(uuid string, params param.UpdatePciDeviceParam) (*view.PciDeviceInventoryView, error) {
-	var resp view.UpdatePciDeviceEventView
+	resp := view.PciDeviceInventoryView{}
 	if err := cli.Put("v1/pci-device/pci-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeletePciDevice deletes PciDevice
 func (cli *ZSClient) DeletePciDevice(uuid string, deleteMode param.DeleteMode) error {
@@ -28,10 +28,9 @@ func (cli *ZSClient) QueryPciDevice(params *param.QueryParam) ([]view.PciDeviceI
 	return resp, cli.List("v1/pci-device/pci-devices", params, &resp)
 }
 
-func (cli *ZSClient) GetPciDevice(uuid string) (*view.PciDeviceInventoryView, error) {
-	var resp view.PciDeviceInventoryView
-	if err := cli.Get("v1/pci-device/pci-devices", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PagePciDevice Pagination
+func (cli *ZSClient) PagePciDevice(params *param.QueryParam) ([]view.PciDeviceInventoryView, int, error) {
+	var pciDevices []view.PciDeviceInventoryView
+	total, err := cli.Page("v1/pci-device/pci-devices", params, &pciDevices)
+	return pciDevices, total, err
 }

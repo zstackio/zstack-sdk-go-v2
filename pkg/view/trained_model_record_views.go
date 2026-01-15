@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type TrainedModelRecordInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ModelUuid *string `json:"modelUuid,omitempty"`
-	SourceModelUuid *string `json:"sourceModelUuid,omitempty"`
-	ModelServiceInstanceGroupUuid *string `json:"modelServiceInstanceGroupUuid,omitempty"`
-	DatasetUuid *string `json:"datasetUuid,omitempty"`
+	ModelUuid string `json:"modelUuid,omitempty"`
+	SourceModelUuid string `json:"sourceModelUuid,omitempty"`
+	ModelServiceInstanceGroupUuid string `json:"modelServiceInstanceGroupUuid,omitempty"`
+	DatasetUuid string `json:"datasetUuid,omitempty"`
 }
 
 // QueryTrainedModelRecordView QueryTrainedModelRecord

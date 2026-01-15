@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type IPsecPeerCidrInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Cidr *string `json:"cidr,omitempty"`
-	ConnectionUuid *string `json:"connectionUuid,omitempty"`
+	Cidr string `json:"cidr,omitempty"`
+	ConnectionUuid string `json:"connectionUuid,omitempty"`
 }
 

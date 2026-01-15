@@ -10,12 +10,22 @@ var _ = time.Now // avoid unused import
 type EmailMediaInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SmtpServer *string `json:"smtpServer,omitempty"`
-	SmtpPort *int `json:"smtpPort,omitempty"`
-	Username *string `json:"username,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
+	SmtpServer string `json:"smtpServer,omitempty"`
+	SmtpPort int `json:"smtpPort,omitempty"`
+	Username string `json:"username,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+}
+
+// QueryMediaView QueryMedia
+type QueryMediaView struct {
+	Inventories []MediaInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateMediaEventView CreateMediaEvent
+type CreateMediaEventView struct {
+	Inventory MediaInventoryView `json:"inventory,omitempty"`
 }
 
 // UpdateEmailMediaEventView UpdateEmailMediaEvent

@@ -18,5 +18,5 @@ type CreateBareMetal2BondingParamDetail struct {
 // CreateBareMetal2BondingParam CreateBareMetal2Bonding request param
 type CreateBareMetal2BondingParam struct {
 	BaseParam
-	Params CreateBareMetal2BondingParamDetail `json:"params"`
+	CreateBareMetal2Bonding CreateBareMetal2BondingParamDetail `json:"createBareMetal2Bonding"`
 }

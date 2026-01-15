@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // AddVCenter adds VCenter
 func (cli *ZSClient) AddVCenter(params param.AddVCenterParam) (*view.VCenterInventoryView, error) {
-	var resp view.AddVCenterEventView
+	resp := view.VCenterInventoryView{}
 	if err := cli.Post("v1/vcenters", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // SyncVCenter operates on VCenter
 func (cli *ZSClient) SyncVCenter(uuid string, params param.SyncVCenterParam) (*view.VCenterInventoryView, error) {
@@ -32,20 +32,19 @@ func (cli *ZSClient) QueryVCenter(params *param.QueryParam) ([]view.VCenterInven
 	return resp, cli.List("v1/vcenters", params, &resp)
 }
 
-func (cli *ZSClient) GetVCenter(uuid string) (*view.VCenterInventoryView, error) {
-	var resp view.VCenterInventoryView
-	if err := cli.Get("v1/vcenters", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVCenter Pagination
+func (cli *ZSClient) PageVCenter(params *param.QueryParam) ([]view.VCenterInventoryView, int, error) {
+	var vCenters []view.VCenterInventoryView
+	total, err := cli.Page("v1/vcenters", params, &vCenters)
+	return vCenters, total, err
 }
 // UpdateVCenter updates VCenter
 func (cli *ZSClient) UpdateVCenter(uuid string, params param.UpdateVCenterParam) (*view.VCenterInventoryView, error) {
-	var resp view.UpdateVCenterEventView
+	resp := view.VCenterInventoryView{}
 	if err := cli.Put("v1/vcenters", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteVCenter deletes VCenter
 func (cli *ZSClient) DeleteVCenter(uuid string, deleteMode param.DeleteMode) error {

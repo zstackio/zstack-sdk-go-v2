@@ -10,15 +10,15 @@ var _ = time.Now // avoid unused import
 type BaremetalChassisInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
-	PxeServerUuid *string `json:"pxeServerUuid,omitempty"`
-	IpmiAddress *string `json:"ipmiAddress,omitempty"`
-	IpmiPort *int `json:"ipmiPort,omitempty"`
-	IpmiUsername *string `json:"ipmiUsername,omitempty"`
-	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Description string `json:"description,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	PxeServerUuid string `json:"pxeServerUuid,omitempty"`
+	IpmiAddress string `json:"ipmiAddress,omitempty"`
+	IpmiPort int `json:"ipmiPort,omitempty"`
+	IpmiUsername string `json:"ipmiUsername,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
 	HardwareInfos []BaremetalHardwareInfoInventoryView `json:"hardwareInfos,omitempty"`
 }
 

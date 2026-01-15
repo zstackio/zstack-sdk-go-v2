@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryVmInstanceDeviceAddressGroup(params *param.QueryParam)
 	return resp, cli.List("v1/vmInstance/device/address/group", params, &resp)
 }
 
-func (cli *ZSClient) GetVmInstanceDeviceAddressGroup(uuid string) (*view.VmInstanceDeviceAddressGroupInventoryView, error) {
-	var resp view.VmInstanceDeviceAddressGroupInventoryView
-	if err := cli.Get("v1/vmInstance/device/address/group", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVmInstanceDeviceAddressGroup Pagination
+func (cli *ZSClient) PageVmInstanceDeviceAddressGroup(params *param.QueryParam) ([]view.VmInstanceDeviceAddressGroupInventoryView, int, error) {
+	var vmInstanceDeviceAddressGroups []view.VmInstanceDeviceAddressGroupInventoryView
+	total, err := cli.Page("v1/vmInstance/device/address/group", params, &vmInstanceDeviceAddressGroups)
+	return vmInstanceDeviceAddressGroups, total, err
 }

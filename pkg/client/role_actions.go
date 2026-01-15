@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateRole creates Role
 func (cli *ZSClient) CreateRole(params param.CreateRoleParam) (*view.RoleInventoryView, error) {
-	var resp view.CreateRoleEventView
+	resp := view.RoleInventoryView{}
 	if err := cli.Post("v1/identities/roles", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryRole queries Role list
 func (cli *ZSClient) QueryRole(params *param.QueryParam) ([]view.RoleInventoryView, error) {
@@ -24,12 +24,11 @@ func (cli *ZSClient) QueryRole(params *param.QueryParam) ([]view.RoleInventoryVi
 	return resp, cli.List("v1/identities/roles", params, &resp)
 }
 
-func (cli *ZSClient) GetRole(uuid string) (*view.RoleInventoryView, error) {
-	var resp view.RoleInventoryView
-	if err := cli.Get("v1/identities/roles", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageRole Pagination
+func (cli *ZSClient) PageRole(params *param.QueryParam) ([]view.RoleInventoryView, int, error) {
+	var roles []view.RoleInventoryView
+	total, err := cli.Page("v1/identities/roles", params, &roles)
+	return roles, total, err
 }
 // DeleteRole deletes Role
 func (cli *ZSClient) DeleteRole(uuid string, deleteMode param.DeleteMode) error {
@@ -37,9 +36,9 @@ func (cli *ZSClient) DeleteRole(uuid string, deleteMode param.DeleteMode) error 
 }
 // UpdateRole updates Role
 func (cli *ZSClient) UpdateRole(uuid string, params param.UpdateRoleParam) (*view.RoleInventoryView, error) {
-	var resp view.UpdateRoleEventView
+	resp := view.RoleInventoryView{}
 	if err := cli.Put("v1/identities/roles", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

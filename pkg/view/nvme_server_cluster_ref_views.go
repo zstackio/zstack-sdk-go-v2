@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type NvmeServerClusterRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	NvmeServerUuid *string `json:"nvmeServerUuid,omitempty"`
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
+	NvmeServerUuid string `json:"nvmeServerUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
 }
 

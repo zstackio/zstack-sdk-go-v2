@@ -16,10 +16,9 @@ func (cli *ZSClient) QuerySharedResource(params *param.QueryParam) ([]view.Share
 	return resp, cli.List("v1/accounts/resources", params, &resp)
 }
 
-func (cli *ZSClient) GetSharedResource(uuid string) (*view.SharedResourceInventoryView, error) {
-	var resp view.SharedResourceInventoryView
-	if err := cli.Get("v1/accounts/resources", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSharedResource Pagination
+func (cli *ZSClient) PageSharedResource(params *param.QueryParam) ([]view.SharedResourceInventoryView, int, error) {
+	var sharedResources []view.SharedResourceInventoryView
+	total, err := cli.Page("v1/accounts/resources", params, &sharedResources)
+	return sharedResources, total, err
 }

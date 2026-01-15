@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type IAM2AttributeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Value *string `json:"value,omitempty"`
+	Value string `json:"value,omitempty"`
 	Type string `json:"type,omitempty"`
 }
 

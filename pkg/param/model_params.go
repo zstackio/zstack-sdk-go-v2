@@ -15,7 +15,7 @@ type DeleteModelParamDetail struct {
 // DeleteModelParam DeleteModel request param
 type DeleteModelParam struct {
 	BaseParam
-	Params DeleteModelParamDetail `json:"params"`
+	DeleteModel DeleteModelParamDetail `json:"deleteModel"`
 }
 // UpdateModelParamDetail UpdateModel detail param
 type UpdateModelParamDetail struct {
@@ -33,7 +33,7 @@ type UpdateModelParamDetail struct {
 // UpdateModelParam UpdateModel request param
 type UpdateModelParam struct {
 	BaseParam
-	Params UpdateModelParamDetail `json:"params"`
+	UpdateModel UpdateModelParamDetail `json:"updateModel"`
 }
 // AddModelParamDetail AddModel detail param
 type AddModelParamDetail struct {
@@ -58,5 +58,5 @@ type AddModelParamDetail struct {
 // AddModelParam AddModel request param
 type AddModelParam struct {
 	BaseParam
-	Params AddModelParamDetail `json:"params"`
+	AddModel AddModelParamDetail `json:"addModel"`
 }

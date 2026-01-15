@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type AccessControlListInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	IpVersion *int `json:"ipVersion,omitempty"`
-	Description *string `json:"description,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	Description string `json:"description,omitempty"`
 	Entries []AccessControlListEntryInventoryView `json:"entries,omitempty"`
 }
 

@@ -21,5 +21,5 @@ type AddExternalBackupStorageParamDetail struct {
 // AddExternalBackupStorageParam AddExternalBackupStorage request param
 type AddExternalBackupStorageParam struct {
 	BaseParam
-	Params AddExternalBackupStorageParamDetail `json:"params"`
+	AddExternalBackupStorage AddExternalBackupStorageParamDetail `json:"addExternalBackupStorage"`
 }

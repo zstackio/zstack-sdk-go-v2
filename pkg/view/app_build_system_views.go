@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type AppBuildSystemInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	StorageType *string `json:"storageType,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Hostname *string `json:"hostname,omitempty"`
-	Username *string `json:"username,omitempty"`
+	Description string `json:"description,omitempty"`
+	StorageType string `json:"storageType,omitempty"`
+	Url string `json:"url,omitempty"`
+	Hostname string `json:"hostname,omitempty"`
+	Username string `json:"username,omitempty"`
 	SshPort int `json:"sshPort,omitempty"`
-	Status *string `json:"status,omitempty"`
-	State *string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	State string `json:"state,omitempty"`
 	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
 }

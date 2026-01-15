@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type IAM2ProjectAttributeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ProjectUuid *string `json:"projectUuid,omitempty"`
-	Value *string `json:"value,omitempty"`
+	ProjectUuid string `json:"projectUuid,omitempty"`
+	Value string `json:"value,omitempty"`
 	Type string `json:"type,omitempty"`
 }
 

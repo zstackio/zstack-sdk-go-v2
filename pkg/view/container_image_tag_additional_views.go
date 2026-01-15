@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type ContainerImageTagInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Size *int64 `json:"size,omitempty"`
-	SizeStr *string `json:"sizeStr,omitempty"`
-	Digest *string `json:"digest,omitempty"`
-	CreateTime *string `json:"createTime,omitempty"`
-	Address *string `json:"address,omitempty"`
-	PullCommand *string `json:"pullCommand,omitempty"`
-	Architectures *string `json:"architectures,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	SizeStr string `json:"sizeStr,omitempty"`
+	Digest string `json:"digest,omitempty"`
+	CreateTime string `json:"createTime,omitempty"`
+	Address string `json:"address,omitempty"`
+	PullCommand string `json:"pullCommand,omitempty"`
+	Architectures string `json:"architectures,omitempty"`
 }
 

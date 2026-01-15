@@ -16,7 +16,7 @@ type UpdateLoadBalancerListenerParamDetail struct {
 // UpdateLoadBalancerListenerParam UpdateLoadBalancerListener request param
 type UpdateLoadBalancerListenerParam struct {
 	BaseParam
-	Params UpdateLoadBalancerListenerParamDetail `json:"params"`
+	UpdateLoadBalancerListener UpdateLoadBalancerListenerParamDetail `json:"updateLoadBalancerListener"`
 }
 // CreateLoadBalancerListenerParamDetail CreateLoadBalancerListener detail param
 type CreateLoadBalancerListenerParamDetail struct {
@@ -45,7 +45,7 @@ type CreateLoadBalancerListenerParamDetail struct {
 // CreateLoadBalancerListenerParam CreateLoadBalancerListener request param
 type CreateLoadBalancerListenerParam struct {
 	BaseParam
-	Params CreateLoadBalancerListenerParamDetail `json:"params"`
+	CreateLoadBalancerListener CreateLoadBalancerListenerParamDetail `json:"createLoadBalancerListener"`
 }
 // ChangeLoadBalancerListenerParamDetail ChangeLoadBalancerListener detail param
 type ChangeLoadBalancerListenerParamDetail struct {
@@ -79,7 +79,7 @@ type ChangeLoadBalancerListenerParamDetail struct {
 // ChangeLoadBalancerListenerParam ChangeLoadBalancerListener request param
 type ChangeLoadBalancerListenerParam struct {
 	BaseParam
-	Params ChangeLoadBalancerListenerParamDetail `json:"params"`
+	ChangeLoadBalancerListener ChangeLoadBalancerListenerParamDetail `json:"changeLoadBalancerListener"`
 }
 // DeleteLoadBalancerListenerParamDetail DeleteLoadBalancerListener detail param
 type DeleteLoadBalancerListenerParamDetail struct {
@@ -89,5 +89,5 @@ type DeleteLoadBalancerListenerParamDetail struct {
 // DeleteLoadBalancerListenerParam DeleteLoadBalancerListener request param
 type DeleteLoadBalancerListenerParam struct {
 	BaseParam
-	Params DeleteLoadBalancerListenerParamDetail `json:"params"`
+	DeleteLoadBalancerListener DeleteLoadBalancerListenerParamDetail `json:"deleteLoadBalancerListener"`
 }

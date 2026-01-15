@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreatePolicyRouteTable creates PolicyRouteTable
 func (cli *ZSClient) CreatePolicyRouteTable(params param.CreatePolicyRouteTableParam) (*view.PolicyRouteTableInventoryView, error) {
-	var resp view.CreatePolicyRouteTableEventView
+	resp := view.PolicyRouteTableInventoryView{}
 	if err := cli.Post("v1/policy-routes/tables", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeletePolicyRouteTable deletes PolicyRouteTable
 func (cli *ZSClient) DeletePolicyRouteTable(uuid string, deleteMode param.DeleteMode) error {
@@ -28,10 +28,9 @@ func (cli *ZSClient) QueryPolicyRouteTable(params *param.QueryParam) ([]view.Pol
 	return resp, cli.List("v1/policy-routes/tables", params, &resp)
 }
 
-func (cli *ZSClient) GetPolicyRouteTable(uuid string) (*view.PolicyRouteTableInventoryView, error) {
-	var resp view.PolicyRouteTableInventoryView
-	if err := cli.Get("v1/policy-routes/tables", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PagePolicyRouteTable Pagination
+func (cli *ZSClient) PagePolicyRouteTable(params *param.QueryParam) ([]view.PolicyRouteTableInventoryView, int, error) {
+	var policyRouteTables []view.PolicyRouteTableInventoryView
+	total, err := cli.Page("v1/policy-routes/tables", params, &policyRouteTables)
+	return policyRouteTables, total, err
 }

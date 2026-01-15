@@ -8,8 +8,8 @@ var _ = time.Now // avoid unused import
 
 // OssBucketFilesPropertyView OssBucketFilesProperty
 type OssBucketFilesPropertyView struct {
-	RegionId *string `json:"regionId,omitempty"`
-	OssBucket *string `json:"ossBucket,omitempty"`
+	RegionId string `json:"regionId,omitempty"`
+	OssBucket string `json:"ossBucket,omitempty"`
 	Files []string `json:"files,omitempty"`
 }
 

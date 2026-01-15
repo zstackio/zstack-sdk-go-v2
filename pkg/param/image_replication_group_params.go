@@ -15,7 +15,7 @@ type DeleteImageReplicationGroupParamDetail struct {
 // DeleteImageReplicationGroupParam DeleteImageReplicationGroup request param
 type DeleteImageReplicationGroupParam struct {
 	BaseParam
-	Params DeleteImageReplicationGroupParamDetail `json:"params"`
+	DeleteImageReplicationGroup DeleteImageReplicationGroupParamDetail `json:"deleteImageReplicationGroup"`
 }
 // CreateImageReplicationGroupParamDetail CreateImageReplicationGroup detail param
 type CreateImageReplicationGroupParamDetail struct {
@@ -28,5 +28,5 @@ type CreateImageReplicationGroupParamDetail struct {
 // CreateImageReplicationGroupParam CreateImageReplicationGroup request param
 type CreateImageReplicationGroupParam struct {
 	BaseParam
-	Params CreateImageReplicationGroupParamDetail `json:"params"`
+	CreateImageReplicationGroup CreateImageReplicationGroupParamDetail `json:"createImageReplicationGroup"`
 }

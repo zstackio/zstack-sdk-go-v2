@@ -20,26 +20,25 @@ func (cli *ZSClient) QueryModelCenter(params *param.QueryParam) ([]view.ModelCen
 	return resp, cli.List("v1/ai/model-centers", params, &resp)
 }
 
-func (cli *ZSClient) GetModelCenter(uuid string) (*view.ModelCenterInventoryView, error) {
-	var resp view.ModelCenterInventoryView
-	if err := cli.Get("v1/ai/model-centers", uuid, nil, &resp); err != nil {
+// PageModelCenter Pagination
+func (cli *ZSClient) PageModelCenter(params *param.QueryParam) ([]view.ModelCenterInventoryView, int, error) {
+	var modelCenters []view.ModelCenterInventoryView
+	total, err := cli.Page("v1/ai/model-centers", params, &modelCenters)
+	return modelCenters, total, err
+}
+// AddModelCenter adds ModelCenter
+func (cli *ZSClient) AddModelCenter(params param.AddModelCenterParam) (*view.ModelCenterInventoryView, error) {
+	resp := view.ModelCenterInventoryView{}
+	if err := cli.Post("v1/ai/model-centers", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// AddModelCenter adds ModelCenter
-func (cli *ZSClient) AddModelCenter(params param.AddModelCenterParam) (*view.ModelCenterInventoryView, error) {
-	var resp view.AddModelCenterEventView
-	if err := cli.Post("v1/ai/model-centers", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // UpdateModelCenter updates ModelCenter
 func (cli *ZSClient) UpdateModelCenter(uuid string, params param.UpdateModelCenterParam) (*view.ModelCenterInventoryView, error) {
-	var resp view.UpdateModelCenterEventView
+	resp := view.ModelCenterInventoryView{}
 	if err := cli.Put("v1/ai/model-centers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

@@ -12,17 +12,17 @@ var _ = view.MapView{} // avoid unused import
 
 // CreatePluginSecretResourcePool creates PluginSecretResourcePool
 func (cli *ZSClient) CreatePluginSecretResourcePool(params param.CreatePluginSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.CreateSecretResourcePoolEventView
+	resp := view.SecretResourcePoolInventoryView{}
 	if err := cli.Post("v1/secret-resource-pool/plugin", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdatePluginSecretResourcePool updates PluginSecretResourcePool
 func (cli *ZSClient) UpdatePluginSecretResourcePool(uuid string, params param.UpdatePluginSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.UpdateSecretResourcePoolEventView
+	resp := view.SecretResourcePoolInventoryView{}
 	if err := cli.Put("v1/secret-resource-pool/plugin", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

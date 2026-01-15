@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type ConnectionRelationShipInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	RelationShips *string `json:"relationShips,omitempty"`
-	Description *string `json:"description,omitempty"`
+	RelationShips string `json:"relationShips,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchEventView UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchEvent

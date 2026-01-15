@@ -18,7 +18,7 @@ type GetTwoFactorAuthenticationSecretParamDetail struct {
 // GetTwoFactorAuthenticationSecretParam GetTwoFactorAuthenticationSecret request param
 type GetTwoFactorAuthenticationSecretParam struct {
 	BaseParam
-	Params GetTwoFactorAuthenticationSecretParamDetail `json:"params"`
+	GetTwoFactorAuthenticationSecret GetTwoFactorAuthenticationSecretParamDetail `json:"getTwoFactorAuthenticationSecret"`
 }
 // ResetTwoFactorAuthenticationSecretParamDetail ResetTwoFactorAuthenticationSecret detail param
 type ResetTwoFactorAuthenticationSecretParamDetail struct {
@@ -32,5 +32,5 @@ type ResetTwoFactorAuthenticationSecretParamDetail struct {
 // ResetTwoFactorAuthenticationSecretParam ResetTwoFactorAuthenticationSecret request param
 type ResetTwoFactorAuthenticationSecretParam struct {
 	BaseParam
-	Params ResetTwoFactorAuthenticationSecretParamDetail `json:"params"`
+	ResetTwoFactorAuthenticationSecret ResetTwoFactorAuthenticationSecretParamDetail `json:"resetTwoFactorAuthenticationSecret"`
 }

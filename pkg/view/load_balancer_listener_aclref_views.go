@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type LoadBalancerListenerACLRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	ListenerUuid *string `json:"listenerUuid,omitempty"`
-	ServerGroupUuid *string `json:"serverGroupUuid,omitempty"`
-	AclUuid *string `json:"aclUuid,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	ListenerUuid string `json:"listenerUuid,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
+	AclUuid string `json:"aclUuid,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 

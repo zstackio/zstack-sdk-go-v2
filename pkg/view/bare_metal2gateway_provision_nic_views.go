@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type BareMetal2GatewayProvisionNicInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	NetworkUuid *string `json:"networkUuid,omitempty"`
-	InterfaceName *string `json:"interfaceName,omitempty"`
-	Ip *string `json:"ip,omitempty"`
-	Netmask *string `json:"netmask,omitempty"`
-	Gateway *string `json:"gateway,omitempty"`
-	Metadata *string `json:"metadata,omitempty"`
+	NetworkUuid string `json:"networkUuid,omitempty"`
+	InterfaceName string `json:"interfaceName,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
+	Gateway string `json:"gateway,omitempty"`
+	Metadata string `json:"metadata,omitempty"`
 }
 

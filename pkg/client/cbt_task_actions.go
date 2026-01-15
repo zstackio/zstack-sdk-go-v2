@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateCbtTask creates CbtTask
 func (cli *ZSClient) CreateCbtTask(params param.CreateCbtTaskParam) (*view.CbtTaskInventoryView, error) {
-	var resp view.CreateCbtTaskEventView
+	resp := view.CbtTaskInventoryView{}
 	if err := cli.Post("v1/cbt-task/create", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteCbtTask deletes CbtTask
 func (cli *ZSClient) DeleteCbtTask(uuid string, deleteMode param.DeleteMode) error {
@@ -28,10 +28,9 @@ func (cli *ZSClient) QueryCbtTask(params *param.QueryParam) ([]view.CbtTaskInven
 	return resp, cli.List("v1/cbt-task", params, &resp)
 }
 
-func (cli *ZSClient) GetCbtTask(uuid string) (*view.CbtTaskInventoryView, error) {
-	var resp view.CbtTaskInventoryView
-	if err := cli.Get("v1/cbt-task", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageCbtTask Pagination
+func (cli *ZSClient) PageCbtTask(params *param.QueryParam) ([]view.CbtTaskInventoryView, int, error) {
+	var cbtTasks []view.CbtTaskInventoryView
+	total, err := cli.Page("v1/cbt-task", params, &cbtTasks)
+	return cbtTasks, total, err
 }

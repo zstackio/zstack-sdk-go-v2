@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type LoadBalancerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	ServerGroupUuid *string `json:"serverGroupUuid,omitempty"`
-	State *string `json:"state,omitempty"`
-	Type *string `json:"type,omitempty"`
-	VipUuid *string `json:"vipUuid,omitempty"`
-	Ipv6VipUuid *string `json:"ipv6VipUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	Ipv6VipUuid string `json:"ipv6VipUuid,omitempty"`
 	Listeners []LoadBalancerListenerInventoryView `json:"listeners,omitempty"`
 }
 
@@ -47,6 +47,11 @@ type RemoveVmNicFromLoadBalancerEventView struct {
 // DeleteLoadBalancerEventView DeleteLoadBalancerEvent
 type DeleteLoadBalancerEventView struct {
 	Success bool `json:"success,omitempty"`
+}
+
+// DeleteLoadBalancerListenerEventView DeleteLoadBalancerListenerEvent
+type DeleteLoadBalancerListenerEventView struct {
+	Inventory LoadBalancerInventoryView `json:"inventory,omitempty"`
 }
 
 // AttachVipToLoadBalancerEventView AttachVipToLoadBalancerEvent

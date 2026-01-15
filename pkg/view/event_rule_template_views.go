@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type EventRuleTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	MonitorTemplateUuid *string `json:"monitorTemplateUuid,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
-	EventName *string `json:"eventName,omitempty"`
+	MonitorTemplateUuid string `json:"monitorTemplateUuid,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	EventName string `json:"eventName,omitempty"`
 	EmergencyLevel string `json:"emergencyLevel,omitempty"`
-	Labels *string `json:"labels,omitempty"`
+	Labels string `json:"labels,omitempty"`
 }
 
 // AddEventRuleTemplateEventView AddEventRuleTemplateEvent

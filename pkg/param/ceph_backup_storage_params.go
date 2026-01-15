@@ -22,5 +22,5 @@ type AddCephBackupStorageParamDetail struct {
 // AddCephBackupStorageParam AddCephBackupStorage request param
 type AddCephBackupStorageParam struct {
 	BaseParam
-	Params AddCephBackupStorageParamDetail `json:"params"`
+	AddCephBackupStorage AddCephBackupStorageParamDetail `json:"addCephBackupStorage"`
 }

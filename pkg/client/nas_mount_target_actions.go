@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateNasMountTarget updates NasMountTarget
 func (cli *ZSClient) UpdateNasMountTarget(uuid string, params param.UpdateNasMountTargetParam) (*view.NasMountTargetInventoryView, error) {
-	var resp view.UpdateNasMountTargetEventView
+	resp := view.NasMountTargetInventoryView{}
 	if err := cli.Put("v1/primary-storage/nas/mount", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryNasMountTarget queries NasMountTarget list
 func (cli *ZSClient) QueryNasMountTarget(params *param.QueryParam) ([]view.NasMountTargetInventoryView, error) {
@@ -24,12 +24,11 @@ func (cli *ZSClient) QueryNasMountTarget(params *param.QueryParam) ([]view.NasMo
 	return resp, cli.List("v1/primary-storage/nas/mount", params, &resp)
 }
 
-func (cli *ZSClient) GetNasMountTarget(uuid string) (*view.NasMountTargetInventoryView, error) {
-	var resp view.NasMountTargetInventoryView
-	if err := cli.Get("v1/primary-storage/nas/mount", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageNasMountTarget Pagination
+func (cli *ZSClient) PageNasMountTarget(params *param.QueryParam) ([]view.NasMountTargetInventoryView, int, error) {
+	var nasMountTargets []view.NasMountTargetInventoryView
+	total, err := cli.Page("v1/primary-storage/nas/mount", params, &nasMountTargets)
+	return nasMountTargets, total, err
 }
 // DeleteNasMountTarget deletes NasMountTarget
 func (cli *ZSClient) DeleteNasMountTarget(uuid string, deleteMode param.DeleteMode) error {

@@ -11,17 +11,17 @@ type ArchiveTicketStatusHistoryInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Sequence int `json:"sequence,omitempty"`
-	TicketUuid *string `json:"ticketUuid,omitempty"`
-	HistoryUuid *string `json:"historyUuid,omitempty"`
+	TicketUuid string `json:"ticketUuid,omitempty"`
+	HistoryUuid string `json:"historyUuid,omitempty"`
 	FromStatus string `json:"fromStatus,omitempty"`
 	ToStatus string `json:"toStatus,omitempty"`
-	Comment *string `json:"comment,omitempty"`
-	AccountUuid *string `json:"accountUuid,omitempty"`
-	OperationContextType *string `json:"operationContextType,omitempty"`
+	Comment string `json:"comment,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	OperationContextType string `json:"operationContextType,omitempty"`
 	OperationContext interface{} `json:"operationContext,omitempty"`
-	OperatorType *string `json:"operatorType,omitempty"`
-	OperatorUuid *string `json:"operatorUuid,omitempty"`
-	FlowName *string `json:"flowName,omitempty"`
+	OperatorType string `json:"operatorType,omitempty"`
+	OperatorUuid string `json:"operatorUuid,omitempty"`
+	FlowName string `json:"flowName,omitempty"`
 }
 
 // QueryArchiveTicketHistoryView QueryArchiveTicketHistory

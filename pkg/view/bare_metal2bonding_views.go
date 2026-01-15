@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type BareMetal2BondingInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ChassisUuid *string `json:"chassisUuid,omitempty"`
-	Slaves *string `json:"slaves,omitempty"`
-	Opts *string `json:"opts,omitempty"`
-	Mode *int `json:"mode,omitempty"`
-	AccountUuid *string `json:"accountUuid,omitempty"`
+	ChassisUuid string `json:"chassisUuid,omitempty"`
+	Slaves string `json:"slaves,omitempty"`
+	Opts string `json:"opts,omitempty"`
+	Mode int `json:"mode,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
 }
 
 // QueryBareMetal2BondingView QueryBareMetal2Bonding

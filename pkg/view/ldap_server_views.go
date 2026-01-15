@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type LdapServerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Base *string `json:"base,omitempty"`
-	Username *string `json:"username,omitempty"`
-	Scope *string `json:"scope,omitempty"`
-	Encryption *string `json:"encryption,omitempty"`
+	Description string `json:"description,omitempty"`
+	Url string `json:"url,omitempty"`
+	Base string `json:"base,omitempty"`
+	Username string `json:"username,omitempty"`
+	Scope string `json:"scope,omitempty"`
+	Encryption string `json:"encryption,omitempty"`
 }
 
 // AddLdapServerEventView AddLdapServerEvent
@@ -26,6 +26,11 @@ type AddLdapServerEventView struct {
 // QueryLdapServerView QueryLdapServer
 type QueryLdapServerView struct {
 	Inventories []LdapServerInventoryView `json:"inventories,omitempty"`
+}
+
+// SyncLdapServerEventView SyncLdapServerEvent
+type SyncLdapServerEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
 }
 
 // DeleteLdapServerEventView DeleteLdapServerEvent

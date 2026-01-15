@@ -12,9 +12,9 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateEventSubscriptionLabel updates EventSubscriptionLabel
 func (cli *ZSClient) UpdateEventSubscriptionLabel(uuid string, params param.UpdateEventSubscriptionLabelParam) (*view.EventSubscriptionLabelInventoryView, error) {
-	var resp view.UpdateEventSubscriptionLabelEventView
+	resp := view.EventSubscriptionLabelInventoryView{}
 	if err := cli.Put("v1/zwatch/events/subscriptions/labels", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

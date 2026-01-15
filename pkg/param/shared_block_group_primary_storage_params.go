@@ -21,5 +21,5 @@ type AddSharedBlockGroupPrimaryStorageParamDetail struct {
 // AddSharedBlockGroupPrimaryStorageParam AddSharedBlockGroupPrimaryStorage request param
 type AddSharedBlockGroupPrimaryStorageParam struct {
 	BaseParam
-	Params AddSharedBlockGroupPrimaryStorageParamDetail `json:"params"`
+	AddSharedBlockGroupPrimaryStorage AddSharedBlockGroupPrimaryStorageParamDetail `json:"addSharedBlockGroupPrimaryStorage"`
 }

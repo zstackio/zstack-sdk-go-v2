@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type LocalStorageResourceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
-	Size *int64 `json:"size,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 
 // QueryLocalStorageResourceRefView QueryLocalStorageResourceRef

@@ -16,11 +16,11 @@ func (cli *ZSClient) DeleteSNSApplicationPlatform(uuid string, deleteMode param.
 }
 // UpdateSNSApplicationPlatform updates SNSApplicationPlatform
 func (cli *ZSClient) UpdateSNSApplicationPlatform(uuid string, params param.UpdateSNSApplicationPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
-	var resp view.UpdateSNSApplicationPlatformEventView
+	resp := view.SNSApplicationPlatformInventoryView{}
 	if err := cli.Put("v1/sns/application-platforms", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QuerySNSApplicationPlatform queries SNSApplicationPlatform list
 func (cli *ZSClient) QuerySNSApplicationPlatform(params *param.QueryParam) ([]view.SNSApplicationPlatformInventoryView, error) {
@@ -28,10 +28,9 @@ func (cli *ZSClient) QuerySNSApplicationPlatform(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/sns/application-platforms", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSApplicationPlatform(uuid string) (*view.SNSApplicationPlatformInventoryView, error) {
-	var resp view.SNSApplicationPlatformInventoryView
-	if err := cli.Get("v1/sns/application-platforms", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSNSApplicationPlatform Pagination
+func (cli *ZSClient) PageSNSApplicationPlatform(params *param.QueryParam) ([]view.SNSApplicationPlatformInventoryView, int, error) {
+	var sNSApplicationPlatforms []view.SNSApplicationPlatformInventoryView
+	total, err := cli.Page("v1/sns/application-platforms", params, &sNSApplicationPlatforms)
+	return sNSApplicationPlatforms, total, err
 }

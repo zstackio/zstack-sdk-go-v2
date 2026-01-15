@@ -10,12 +10,17 @@ var _ = time.Now // avoid unused import
 type SNSEmailPlatformInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SmtpServer *string `json:"smtpServer,omitempty"`
+	SmtpServer string `json:"smtpServer,omitempty"`
 	SmtpPort int `json:"smtpPort,omitempty"`
-	Username *string `json:"username,omitempty"`
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Username string `json:"username,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
+}
+
+// CreateSNSApplicationPlatformEventView CreateSNSApplicationPlatformEvent
+type CreateSNSApplicationPlatformEventView struct {
+	Inventory SNSApplicationPlatformInventoryView `json:"inventory,omitempty"`
 }
 
 // QuerySNSEmailPlatformView QuerySNSEmailPlatform

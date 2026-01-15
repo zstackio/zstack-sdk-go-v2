@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryCephOsdGroup(params *param.QueryParam) ([]view.CephOsd
 	return resp, cli.List("v1/primary-storage/ceph/osdgroups", params, &resp)
 }
 
-func (cli *ZSClient) GetCephOsdGroup(uuid string) (*view.CephOsdGroupInventoryView, error) {
-	var resp view.CephOsdGroupInventoryView
-	if err := cli.Get("v1/primary-storage/ceph/osdgroups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageCephOsdGroup Pagination
+func (cli *ZSClient) PageCephOsdGroup(params *param.QueryParam) ([]view.CephOsdGroupInventoryView, int, error) {
+	var cephOsdGroups []view.CephOsdGroupInventoryView
+	total, err := cli.Page("v1/primary-storage/ceph/osdgroups", params, &cephOsdGroups)
+	return cephOsdGroups, total, err
 }

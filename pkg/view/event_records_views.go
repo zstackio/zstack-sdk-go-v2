@@ -12,14 +12,14 @@ type EventRecordsInventoryView struct {
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
 	CreateTime int64 `json:"createTime,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
-	EmergencyLevel *string `json:"emergencyLevel,omitempty"`
-	ResourceId *string `json:"resourceId,omitempty"`
-	DataUuid *string `json:"dataUuid,omitempty"`
-	AccountUuid *string `json:"accountUuid,omitempty"`
-	SubscriptionUuid *string `json:"subscriptionUuid,omitempty"`
-	ReadStatus *bool `json:"readStatus,omitempty"`
-	Labels *string `json:"labels,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+	ResourceId string `json:"resourceId,omitempty"`
+	DataUuid string `json:"dataUuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	SubscriptionUuid string `json:"subscriptionUuid,omitempty"`
+	ReadStatus bool `json:"readStatus,omitempty"`
+	Labels string `json:"labels,omitempty"`
 }
 
 // QueryEventRecordView QueryEventRecord

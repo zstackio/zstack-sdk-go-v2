@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type VmCdRomInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
-	DeviceId *int `json:"deviceId,omitempty"`
-	IsoUuid *string `json:"isoUuid,omitempty"`
-	IsoInstallPath *string `json:"isoInstallPath,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Protocol *string `json:"protocol,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	DeviceId int `json:"deviceId,omitempty"`
+	IsoUuid string `json:"isoUuid,omitempty"`
+	IsoInstallPath string `json:"isoInstallPath,omitempty"`
+	Description string `json:"description,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
 }
 
 // CreateVmCdRomEventView CreateVmCdRomEvent

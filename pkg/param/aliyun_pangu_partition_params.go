@@ -20,7 +20,7 @@ type AddAliyunPanguPartitionParamDetail struct {
 // AddAliyunPanguPartitionParam AddAliyunPanguPartition request param
 type AddAliyunPanguPartitionParam struct {
 	BaseParam
-	Params AddAliyunPanguPartitionParamDetail `json:"params"`
+	AddAliyunPanguPartition AddAliyunPanguPartitionParamDetail `json:"addAliyunPanguPartition"`
 }
 // DeleteAliyunPanguPartitionParamDetail DeleteAliyunPanguPartition detail param
 type DeleteAliyunPanguPartitionParamDetail struct {
@@ -31,7 +31,7 @@ type DeleteAliyunPanguPartitionParamDetail struct {
 // DeleteAliyunPanguPartitionParam DeleteAliyunPanguPartition request param
 type DeleteAliyunPanguPartitionParam struct {
 	BaseParam
-	Params DeleteAliyunPanguPartitionParamDetail `json:"params"`
+	DeleteAliyunPanguPartition DeleteAliyunPanguPartitionParamDetail `json:"deleteAliyunPanguPartition"`
 }
 // UpdateAliyunPanguPartitionParamDetail UpdateAliyunPanguPartition detail param
 type UpdateAliyunPanguPartitionParamDetail struct {
@@ -45,5 +45,5 @@ type UpdateAliyunPanguPartitionParamDetail struct {
 // UpdateAliyunPanguPartitionParam UpdateAliyunPanguPartition request param
 type UpdateAliyunPanguPartitionParam struct {
 	BaseParam
-	Params UpdateAliyunPanguPartitionParamDetail `json:"params"`
+	UpdateAliyunPanguPartition UpdateAliyunPanguPartitionParamDetail `json:"updateAliyunPanguPartition"`
 }

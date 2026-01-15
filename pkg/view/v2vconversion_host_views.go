@@ -10,15 +10,15 @@ var _ = time.Now // avoid unused import
 type V2VConversionHostInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
-	StoragePath *string `json:"storagePath,omitempty"`
-	State *string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	StoragePath string `json:"storagePath,omitempty"`
+	State string `json:"state,omitempty"`
 	TotalSize int64 `json:"totalSize,omitempty"`
 	AvailableSize int64 `json:"availableSize,omitempty"`
-	HostStatus *string `json:"hostStatus,omitempty"`
-	HostState *string `json:"hostState,omitempty"`
+	HostStatus string `json:"hostStatus,omitempty"`
+	HostState string `json:"hostState,omitempty"`
 }
 
 // AddV2VConversionHostEventView AddV2VConversionHostEvent

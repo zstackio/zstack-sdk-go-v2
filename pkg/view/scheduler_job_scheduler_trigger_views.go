@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type SchedulerJobSchedulerTriggerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SchedulerJobUuid *string `json:"schedulerJobUuid,omitempty"`
-	SchedulerTriggerUuid *string `json:"schedulerTriggerUuid,omitempty"`
+	SchedulerJobUuid string `json:"schedulerJobUuid,omitempty"`
+	SchedulerTriggerUuid string `json:"schedulerTriggerUuid,omitempty"`
 }
 
 // AddSchedulerJobToSchedulerTriggerEventView AddSchedulerJobToSchedulerTriggerEvent

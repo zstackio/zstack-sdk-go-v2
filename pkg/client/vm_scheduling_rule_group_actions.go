@@ -20,26 +20,25 @@ func (cli *ZSClient) QueryVmSchedulingRuleGroup(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/query/vm/schedulingRule/group", params, &resp)
 }
 
-func (cli *ZSClient) GetVmSchedulingRuleGroup(uuid string) (*view.VmSchedulingRuleGroupInventoryView, error) {
-	var resp view.VmSchedulingRuleGroupInventoryView
-	if err := cli.Get("v1/query/vm/schedulingRule/group", uuid, nil, &resp); err != nil {
+// PageVmSchedulingRuleGroup Pagination
+func (cli *ZSClient) PageVmSchedulingRuleGroup(params *param.QueryParam) ([]view.VmSchedulingRuleGroupInventoryView, int, error) {
+	var vmSchedulingRuleGroups []view.VmSchedulingRuleGroupInventoryView
+	total, err := cli.Page("v1/query/vm/schedulingRule/group", params, &vmSchedulingRuleGroups)
+	return vmSchedulingRuleGroups, total, err
+}
+// UpdateVmSchedulingRuleGroup updates VmSchedulingRuleGroup
+func (cli *ZSClient) UpdateVmSchedulingRuleGroup(uuid string, params param.UpdateVmSchedulingRuleGroupParam) (*view.VmSchedulingRuleGroupInventoryView, error) {
+	resp := view.VmSchedulingRuleGroupInventoryView{}
+	if err := cli.Put("v1/vmSchedulingRuleGroup", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// UpdateVmSchedulingRuleGroup updates VmSchedulingRuleGroup
-func (cli *ZSClient) UpdateVmSchedulingRuleGroup(uuid string, params param.UpdateVmSchedulingRuleGroupParam) (*view.VmSchedulingRuleGroupInventoryView, error) {
-	var resp view.UpdateVmSchedulingRuleGroupEventView
-	if err := cli.Put("v1/vmSchedulingRuleGroup", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // CreateVmSchedulingRuleGroup creates VmSchedulingRuleGroup
 func (cli *ZSClient) CreateVmSchedulingRuleGroup(params param.CreateVmSchedulingRuleGroupParam) (*view.VmSchedulingRuleGroupInventoryView, error) {
-	var resp view.CreateVmSchedulingRuleGroupEventView
+	resp := view.VmSchedulingRuleGroupInventoryView{}
 	if err := cli.Post("v1/vmSchedulingRuleGroup", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

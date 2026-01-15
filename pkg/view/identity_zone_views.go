@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type IdentityZoneInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Closed *string `json:"closed,omitempty"`
-	DataCenterUuid *string `json:"dataCenterUuid,omitempty"`
-	ZoneId *string `json:"zoneId,omitempty"`
+	Closed string `json:"closed,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	ZoneId string `json:"zoneId,omitempty"`
 	Type string `json:"type,omitempty"`
-	ZoneName *string `json:"zoneName,omitempty"`
-	Description *string `json:"description,omitempty"`
+	ZoneName string `json:"zoneName,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // QueryIdentityZoneFromLocalView QueryIdentityZoneFromLocal

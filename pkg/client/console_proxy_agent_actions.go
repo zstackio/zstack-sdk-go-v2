@@ -24,18 +24,17 @@ func (cli *ZSClient) QueryConsoleProxyAgent(params *param.QueryParam) ([]view.Co
 	return resp, cli.List("v1/consoles/agents", params, &resp)
 }
 
-func (cli *ZSClient) GetConsoleProxyAgent(uuid string) (*view.ConsoleProxyAgentInventoryView, error) {
-	var resp view.ConsoleProxyAgentInventoryView
-	if err := cli.Get("v1/consoles/agents", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageConsoleProxyAgent Pagination
+func (cli *ZSClient) PageConsoleProxyAgent(params *param.QueryParam) ([]view.ConsoleProxyAgentInventoryView, int, error) {
+	var consoleProxyAgents []view.ConsoleProxyAgentInventoryView
+	total, err := cli.Page("v1/consoles/agents", params, &consoleProxyAgents)
+	return consoleProxyAgents, total, err
 }
 // UpdateConsoleProxyAgent updates ConsoleProxyAgent
 func (cli *ZSClient) UpdateConsoleProxyAgent(uuid string, params param.UpdateConsoleProxyAgentParam) (*view.ConsoleProxyAgentInventoryView, error) {
-	var resp view.UpdateConsoleProxyAgentEventView
+	resp := view.ConsoleProxyAgentInventoryView{}
 	if err := cli.Put("v1/consoles/agents", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

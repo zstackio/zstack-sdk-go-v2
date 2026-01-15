@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type GlobalConfigInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	Category *string `json:"category,omitempty"`
-	Description *string `json:"description,omitempty"`
-	DefaultValue *string `json:"defaultValue,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	Category string `json:"category,omitempty"`
+	Description string `json:"description,omitempty"`
+	DefaultValue string `json:"defaultValue,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 
 // UpdateGlobalConfigEventView UpdateGlobalConfigEvent

@@ -11,13 +11,13 @@ type OssUploadPartsInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	UploadId *string `json:"uploadId,omitempty"`
+	UploadId string `json:"uploadId,omitempty"`
 	PartNumber int `json:"partNumber,omitempty"`
 	Total int `json:"total,omitempty"`
-	ETag *string `json:"eTag,omitempty"`
+	ETag string `json:"eTag,omitempty"`
 	PartSize int64 `json:"partSize,omitempty"`
 	PartCRC int64 `json:"partCRC,omitempty"`
-	OssBucketUuid *string `json:"ossBucketUuid,omitempty"`
-	FileKey *string `json:"fileKey,omitempty"`
+	OssBucketUuid string `json:"ossBucketUuid,omitempty"`
+	FileKey string `json:"fileKey,omitempty"`
 }
 

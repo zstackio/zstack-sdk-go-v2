@@ -17,7 +17,7 @@ type CreateMulticastRouterParamDetail struct {
 // CreateMulticastRouterParam CreateMulticastRouter request param
 type CreateMulticastRouterParam struct {
 	BaseParam
-	Params CreateMulticastRouterParamDetail `json:"params"`
+	CreateMulticastRouter CreateMulticastRouterParamDetail `json:"createMulticastRouter"`
 }
 // DeleteMulticastRouterParamDetail DeleteMulticastRouter detail param
 type DeleteMulticastRouterParamDetail struct {
@@ -28,5 +28,5 @@ type DeleteMulticastRouterParamDetail struct {
 // DeleteMulticastRouterParam DeleteMulticastRouter request param
 type DeleteMulticastRouterParam struct {
 	BaseParam
-	Params DeleteMulticastRouterParamDetail `json:"params"`
+	DeleteMulticastRouter DeleteMulticastRouterParamDetail `json:"deleteMulticastRouter"`
 }

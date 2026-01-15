@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type VRouterRouteTableInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	AttachedRouterRefs []VirtualRouterVRouterRouteTableRefInventoryView `json:"attachedRouterRefs,omitempty"`
 	RouteEntries []VRouterRouteEntryInventoryView `json:"routeEntries,omitempty"`
 }
@@ -18,6 +18,11 @@ type VRouterRouteTableInventoryView struct {
 // QueryVRouterRouteTableView QueryVRouterRouteTable
 type QueryVRouterRouteTableView struct {
 	Inventories []VRouterRouteTableInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteVRouterRouteEntryEventView DeleteVRouterRouteEntryEvent
+type DeleteVRouterRouteEntryEventView struct {
+	Inventory VRouterRouteTableInventoryView `json:"inventory,omitempty"`
 }
 
 // DetachVRouterRouteTableFromVRouterEventView DetachVRouterRouteTableFromVRouterEvent

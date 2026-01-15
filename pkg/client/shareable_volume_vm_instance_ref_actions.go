@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryShareableVolumeVmInstanceRef(params *param.QueryParam)
 	return resp, cli.List("v1/volumes/vm-instances/refs", params, &resp)
 }
 
-func (cli *ZSClient) GetShareableVolumeVmInstanceRef(uuid string) (*view.ShareableVolumeVmInstanceRefInventoryView, error) {
-	var resp view.ShareableVolumeVmInstanceRefInventoryView
-	if err := cli.Get("v1/volumes/vm-instances/refs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageShareableVolumeVmInstanceRef Pagination
+func (cli *ZSClient) PageShareableVolumeVmInstanceRef(params *param.QueryParam) ([]view.ShareableVolumeVmInstanceRefInventoryView, int, error) {
+	var shareableVolumeVmInstanceRefs []view.ShareableVolumeVmInstanceRefInventoryView
+	total, err := cli.Page("v1/volumes/vm-instances/refs", params, &shareableVolumeVmInstanceRefs)
+	return shareableVolumeVmInstanceRefs, total, err
 }

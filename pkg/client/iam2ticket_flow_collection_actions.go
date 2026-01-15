@@ -12,9 +12,9 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateIAM2TicketFlowCollection updates IAM2TicketFlowCollection
 func (cli *ZSClient) UpdateIAM2TicketFlowCollection(uuid string, params param.UpdateIAM2TicketFlowCollectionParam) (*view.TicketFlowCollectionInventoryView, error) {
-	var resp view.UpdateTicketFlowCollectionEventView
+	resp := view.TicketFlowCollectionInventoryView{}
 	if err := cli.Put("v1/tickets/flow-collections", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

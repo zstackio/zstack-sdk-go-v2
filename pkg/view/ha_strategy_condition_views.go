@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type HaStrategyConditionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	FencerName *string `json:"fencerName,omitempty"`
-	State *string `json:"state,omitempty"`
+	FencerName string `json:"fencerName,omitempty"`
+	State string `json:"state,omitempty"`
 }
 
 // UpdateHaStrategyConditionEventView UpdateHaStrategyConditionEvent

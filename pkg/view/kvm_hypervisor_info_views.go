@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type KvmHypervisorInfoInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Hypervisor *string `json:"hypervisor,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Hypervisor string `json:"hypervisor,omitempty"`
+	Version string `json:"version,omitempty"`
 	MatchState string `json:"matchState,omitempty"`
 }
 

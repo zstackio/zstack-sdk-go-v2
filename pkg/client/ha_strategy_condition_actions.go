@@ -12,9 +12,9 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateHaStrategyCondition updates HaStrategyCondition
 func (cli *ZSClient) UpdateHaStrategyCondition(uuid string, params param.UpdateHaStrategyConditionParam) (*view.HaStrategyConditionInventoryView, error) {
-	var resp view.UpdateHaStrategyConditionEventView
+	resp := view.HaStrategyConditionInventoryView{}
 	if err := cli.Put("v1/ha-strategy-condition", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

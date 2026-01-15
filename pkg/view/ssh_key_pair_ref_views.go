@@ -11,7 +11,7 @@ type SshKeyPairRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	SshKeyPairUuid *string `json:"sshKeyPairUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	SshKeyPairUuid string `json:"sshKeyPairUuid,omitempty"`
 }
 

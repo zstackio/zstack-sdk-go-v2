@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type VirtualRouterVRouterRouteTableRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VirtualRouterVmUuid *string `json:"virtualRouterVmUuid,omitempty"`
-	RouteTableUuid *string `json:"routeTableUuid,omitempty"`
+	VirtualRouterVmUuid string `json:"virtualRouterVmUuid,omitempty"`
+	RouteTableUuid string `json:"routeTableUuid,omitempty"`
 }
 
 // QueryVirtualRouterVRouterRouteTableRefView QueryVirtualRouterVRouterRouteTableRef

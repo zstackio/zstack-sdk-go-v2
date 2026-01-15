@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryVtep(params *param.QueryParam) ([]view.VtepInventoryVi
 	return resp, cli.List("v1/l2-networks/vteps", params, &resp)
 }
 
-func (cli *ZSClient) GetVtep(uuid string) (*view.VtepInventoryView, error) {
-	var resp view.VtepInventoryView
-	if err := cli.Get("v1/l2-networks/vteps", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVtep Pagination
+func (cli *ZSClient) PageVtep(params *param.QueryParam) ([]view.VtepInventoryView, int, error) {
+	var vteps []view.VtepInventoryView
+	total, err := cli.Page("v1/l2-networks/vteps", params, &vteps)
+	return vteps, total, err
 }

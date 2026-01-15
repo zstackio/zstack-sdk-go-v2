@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type MonitorGroupEventSubscriptionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	GroupUuid *string `json:"groupUuid,omitempty"`
-	EventSubscriptionUuid *string `json:"eventSubscriptionUuid,omitempty"`
-	EventRuleTemplateUuid *string `json:"eventRuleTemplateUuid,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
+	EventSubscriptionUuid string `json:"eventSubscriptionUuid,omitempty"`
+	EventRuleTemplateUuid string `json:"eventRuleTemplateUuid,omitempty"`
 }
 
 // QueryMonitorGroupEventSubscriptionView QueryMonitorGroupEventSubscription

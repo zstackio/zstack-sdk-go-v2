@@ -10,17 +10,17 @@ var _ = time.Now // avoid unused import
 type CephPrimaryStoragePoolInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
-	PoolName *string `json:"poolName,omitempty"`
-	AliasName *string `json:"aliasName,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	AvailableCapacity *int64 `json:"availableCapacity,omitempty"`
-	UsedCapacity *int64 `json:"usedCapacity,omitempty"`
-	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
-	SecurityPolicy *string `json:"securityPolicy,omitempty"`
-	ReplicatedSize *int `json:"replicatedSize,omitempty"`
-	DiskUtilization *float32 `json:"diskUtilization,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	PoolName string `json:"poolName,omitempty"`
+	AliasName string `json:"aliasName,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	UsedCapacity int64 `json:"usedCapacity,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	SecurityPolicy string `json:"securityPolicy,omitempty"`
+	ReplicatedSize int `json:"replicatedSize,omitempty"`
+	DiskUtilization float32 `json:"diskUtilization,omitempty"`
 }
 
 // UpdateCephPrimaryStoragePoolEventView UpdateCephPrimaryStoragePoolEvent

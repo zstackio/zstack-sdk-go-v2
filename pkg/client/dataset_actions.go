@@ -16,20 +16,19 @@ func (cli *ZSClient) QueryDataset(params *param.QueryParam) ([]view.DatasetInven
 	return resp, cli.List("v1/ai/datasets", params, &resp)
 }
 
-func (cli *ZSClient) GetDataset(uuid string) (*view.DatasetInventoryView, error) {
-	var resp view.DatasetInventoryView
-	if err := cli.Get("v1/ai/datasets", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageDataset Pagination
+func (cli *ZSClient) PageDataset(params *param.QueryParam) ([]view.DatasetInventoryView, int, error) {
+	var datasets []view.DatasetInventoryView
+	total, err := cli.Page("v1/ai/datasets", params, &datasets)
+	return datasets, total, err
 }
 // CreateDataset creates Dataset
 func (cli *ZSClient) CreateDataset(params param.CreateDatasetParam) (*view.DatasetInventoryView, error) {
-	var resp view.CreateDatasetEventView
+	resp := view.DatasetInventoryView{}
 	if err := cli.Post("v1/ai/datasets", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 
 // CreateDatasetAsync Async
@@ -52,9 +51,9 @@ func (cli *ZSClient) DeleteDataset(uuid string, deleteMode param.DeleteMode) err
 }
 // UpdateDataset updates Dataset
 func (cli *ZSClient) UpdateDataset(uuid string, params param.UpdateDatasetParam) (*view.DatasetInventoryView, error) {
-	var resp view.UpdateDatasetEventView
+	resp := view.DatasetInventoryView{}
 	if err := cli.Put("v1/ai/datasets", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

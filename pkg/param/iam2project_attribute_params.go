@@ -15,5 +15,5 @@ type UpdateIAM2ProjectAttributeParamDetail struct {
 // UpdateIAM2ProjectAttributeParam UpdateIAM2ProjectAttribute request param
 type UpdateIAM2ProjectAttributeParam struct {
 	BaseParam
-	Params UpdateIAM2ProjectAttributeParamDetail `json:"params"`
+	UpdateIAM2ProjectAttribute UpdateIAM2ProjectAttributeParamDetail `json:"updateIAM2ProjectAttribute"`
 }

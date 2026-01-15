@@ -16,7 +16,7 @@ type UpdateNasFileSystemParamDetail struct {
 // UpdateNasFileSystemParam UpdateNasFileSystem request param
 type UpdateNasFileSystemParam struct {
 	BaseParam
-	Params UpdateNasFileSystemParamDetail `json:"params"`
+	UpdateNasFileSystem UpdateNasFileSystemParamDetail `json:"updateNasFileSystem"`
 }
 // DeleteNasFileSystemParamDetail DeleteNasFileSystem detail param
 type DeleteNasFileSystemParamDetail struct {
@@ -27,5 +27,5 @@ type DeleteNasFileSystemParamDetail struct {
 // DeleteNasFileSystemParam DeleteNasFileSystem request param
 type DeleteNasFileSystemParam struct {
 	BaseParam
-	Params DeleteNasFileSystemParamDetail `json:"params"`
+	DeleteNasFileSystem DeleteNasFileSystemParamDetail `json:"deleteNasFileSystem"`
 }

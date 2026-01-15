@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type NetworkServiceTypeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	NetworkServiceProviderUuid *string `json:"networkServiceProviderUuid,omitempty"`
-	Type *string `json:"type,omitempty"`
+	NetworkServiceProviderUuid string `json:"networkServiceProviderUuid,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 

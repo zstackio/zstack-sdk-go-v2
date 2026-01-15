@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type LicenseAuthorizedCapacityInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	NodeUuid *string `json:"nodeUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceInfo *string `json:"resourceInfo,omitempty"`
-	QuotaType *string `json:"quotaType,omitempty"`
-	Quota *int64 `json:"quota,omitempty"`
-	LicenseType *string `json:"licenseType,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	NodeUuid string `json:"nodeUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceInfo string `json:"resourceInfo,omitempty"`
+	QuotaType string `json:"quotaType,omitempty"`
+	Quota int64 `json:"quota,omitempty"`
+	LicenseType string `json:"licenseType,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // GetLicenseAuthorizedCapacityView GetLicenseAuthorizedCapacity

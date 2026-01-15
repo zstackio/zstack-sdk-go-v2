@@ -16,18 +16,17 @@ func (cli *ZSClient) QueryUsbDevice(params *param.QueryParam) ([]view.UsbDeviceI
 	return resp, cli.List("v1/usb-device/usb-devices", params, &resp)
 }
 
-func (cli *ZSClient) GetUsbDevice(uuid string) (*view.UsbDeviceInventoryView, error) {
-	var resp view.UsbDeviceInventoryView
-	if err := cli.Get("v1/usb-device/usb-devices", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageUsbDevice Pagination
+func (cli *ZSClient) PageUsbDevice(params *param.QueryParam) ([]view.UsbDeviceInventoryView, int, error) {
+	var usbDevices []view.UsbDeviceInventoryView
+	total, err := cli.Page("v1/usb-device/usb-devices", params, &usbDevices)
+	return usbDevices, total, err
 }
 // UpdateUsbDevice updates UsbDevice
 func (cli *ZSClient) UpdateUsbDevice(uuid string, params param.UpdateUsbDeviceParam) (*view.UsbDeviceInventoryView, error) {
-	var resp view.UpdateUsbDeviceEventView
+	resp := view.UsbDeviceInventoryView{}
 	if err := cli.Put("v1/usb-device/usb-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

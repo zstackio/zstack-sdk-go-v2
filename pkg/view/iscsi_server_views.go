@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type IscsiServerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Ip *string `json:"ip,omitempty"`
-	Port *int `json:"port,omitempty"`
-	ChapUserName *string `json:"chapUserName,omitempty"`
-	ChapUserPassword *string `json:"chapUserPassword,omitempty"`
-	State *string `json:"state,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Port int `json:"port,omitempty"`
+	ChapUserName string `json:"chapUserName,omitempty"`
+	ChapUserPassword string `json:"chapUserPassword,omitempty"`
+	State string `json:"state,omitempty"`
 	IscsiTargets []IscsiTargetInventoryView `json:"iscsiTargets,omitempty"`
 	IscsiClusterRefs []IscsiServerClusterRefInventoryView `json:"iscsiClusterRefs,omitempty"`
 }

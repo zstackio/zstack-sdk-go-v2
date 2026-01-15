@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type SNSTopicInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
-	Locale *string `json:"locale,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Locale string `json:"locale,omitempty"`
 }
 
 // DeleteSNSTopicEventView DeleteSNSTopicEvent

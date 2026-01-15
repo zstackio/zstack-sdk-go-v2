@@ -16,28 +16,27 @@ func (cli *ZSClient) QueryBaremetalChassis(params *param.QueryParam) ([]view.Bar
 	return resp, cli.List("v1/baremetal/chassis", params, &resp)
 }
 
-func (cli *ZSClient) GetBaremetalChassis(uuid string) (*view.BaremetalChassisInventoryView, error) {
-	var resp view.BaremetalChassisInventoryView
-	if err := cli.Get("v1/baremetal/chassis", uuid, nil, &resp); err != nil {
+// PageBaremetalChassis Pagination
+func (cli *ZSClient) PageBaremetalChassis(params *param.QueryParam) ([]view.BaremetalChassisInventoryView, int, error) {
+	var baremetalChassis []view.BaremetalChassisInventoryView
+	total, err := cli.Page("v1/baremetal/chassis", params, &baremetalChassis)
+	return baremetalChassis, total, err
+}
+// InspectBaremetalChassis operates on BaremetalChassis
+func (cli *ZSClient) InspectBaremetalChassis(uuid string, params param.InspectBaremetalChassisParam) (*view.BaremetalChassisInventoryView, error) {
+	resp := view.BaremetalChassisInventoryView{}
+	if err := cli.Put("v1/baremetal/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// InspectBaremetalChassis operates on BaremetalChassis
-func (cli *ZSClient) InspectBaremetalChassis(uuid string, params param.InspectBaremetalChassisParam) (*view.BaremetalChassisInventoryView, error) {
-	var resp view.InspectBaremetalChassisEventView
-	if err := cli.Put("v1/baremetal/chassis", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // UpdateBaremetalChassis updates BaremetalChassis
 func (cli *ZSClient) UpdateBaremetalChassis(uuid string, params param.UpdateBaremetalChassisParam) (*view.BaremetalChassisInventoryView, error) {
-	var resp view.UpdateBaremetalChassisEventView
+	resp := view.BaremetalChassisInventoryView{}
 	if err := cli.Put("v1/baremetal/chassis", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteBaremetalChassis deletes BaremetalChassis
 func (cli *ZSClient) DeleteBaremetalChassis(uuid string, deleteMode param.DeleteMode) error {
@@ -45,9 +44,9 @@ func (cli *ZSClient) DeleteBaremetalChassis(uuid string, deleteMode param.Delete
 }
 // CreateBaremetalChassis creates BaremetalChassis
 func (cli *ZSClient) CreateBaremetalChassis(params param.CreateBaremetalChassisParam) (*view.BaremetalChassisInventoryView, error) {
-	var resp view.CreateBaremetalChassisEventView
+	resp := view.BaremetalChassisInventoryView{}
 	if err := cli.Post("v1/baremetal/chassis", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

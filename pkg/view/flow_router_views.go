@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type FlowRouterInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SystemID *int64 `json:"systemID,omitempty"`
-	Type *string `json:"type,omitempty"`
+	SystemID int64 `json:"systemID,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 

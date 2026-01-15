@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type LoadBalancerListenerCertificateRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	ListenerUuid *string `json:"listenerUuid,omitempty"`
-	CertificateUuid *string `json:"certificateUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	ListenerUuid string `json:"listenerUuid,omitempty"`
+	CertificateUuid string `json:"certificateUuid,omitempty"`
 }
 

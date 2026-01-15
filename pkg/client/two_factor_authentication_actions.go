@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryTwoFactorAuthentication(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/twofactorauthentication/secrets", params, &resp)
 }
 
-func (cli *ZSClient) GetTwoFactorAuthentication(uuid string) (*view.TwoFactorAuthenticationInventoryView, error) {
-	var resp view.TwoFactorAuthenticationInventoryView
-	if err := cli.Get("v1/twofactorauthentication/secrets", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageTwoFactorAuthentication Pagination
+func (cli *ZSClient) PageTwoFactorAuthentication(params *param.QueryParam) ([]view.TwoFactorAuthenticationInventoryView, int, error) {
+	var twoFactorAuthentications []view.TwoFactorAuthenticationInventoryView
+	total, err := cli.Page("v1/twofactorauthentication/secrets", params, &twoFactorAuthentications)
+	return twoFactorAuthentications, total, err
 }

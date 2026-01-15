@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type AutoScalingGroupInstanceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	InstanceUuid *string `json:"instanceUuid,omitempty"`
-	ScalingGroupUuid *string `json:"scalingGroupUuid,omitempty"`
-	TemplateUuid *string `json:"templateUuid,omitempty"`
-	ScalingGroupActivityUuid *string `json:"scalingGroupActivityUuid,omitempty"`
-	Status *string `json:"status,omitempty"`
-	HealthStatus *string `json:"healthStatus,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ProtectionStrategy *string `json:"protectionStrategy,omitempty"`
+	InstanceUuid string `json:"instanceUuid,omitempty"`
+	ScalingGroupUuid string `json:"scalingGroupUuid,omitempty"`
+	TemplateUuid string `json:"templateUuid,omitempty"`
+	ScalingGroupActivityUuid string `json:"scalingGroupActivityUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	HealthStatus string `json:"healthStatus,omitempty"`
+	Description string `json:"description,omitempty"`
+	ProtectionStrategy string `json:"protectionStrategy,omitempty"`
 }
 
 // UpdateAutoScalingGroupInstanceEventView UpdateAutoScalingGroupInstanceEvent

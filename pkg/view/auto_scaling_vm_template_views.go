@@ -10,23 +10,23 @@ var _ = time.Now // avoid unused import
 type AutoScalingVmTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VmInstanceName *string `json:"vmInstanceName,omitempty"`
-	VmInstanceType *string `json:"vmInstanceType,omitempty"`
-	VmInstanceDescription *string `json:"vmInstanceDescription,omitempty"`
-	VmInstanceOfferingUuid *string `json:"vmInstanceOfferingUuid,omitempty"`
-	ImageUuid *string `json:"imageUuid,omitempty"`
+	VmInstanceName string `json:"vmInstanceName,omitempty"`
+	VmInstanceType string `json:"vmInstanceType,omitempty"`
+	VmInstanceDescription string `json:"vmInstanceDescription,omitempty"`
+	VmInstanceOfferingUuid string `json:"vmInstanceOfferingUuid,omitempty"`
+	ImageUuid string `json:"imageUuid,omitempty"`
 	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
-	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
+	RootDiskOfferingUuid string `json:"rootDiskOfferingUuid,omitempty"`
 	DataDiskOfferingUuids []string `json:"dataDiskOfferingUuids,omitempty"`
-	VmInstanceZoneUuid *string `json:"vmInstanceZoneUuid,omitempty"`
-	VmInstanceClusterUuid *string `json:"vmInstanceClusterUuid,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
-	PrimaryStorageUuidForRootVolume *string `json:"primaryStorageUuidForRootVolume,omitempty"`
-	DefaultL3NetworkUuid *string `json:"defaultL3NetworkUuid,omitempty"`
-	Strategy *string `json:"strategy,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
+	VmInstanceZoneUuid string `json:"vmInstanceZoneUuid,omitempty"`
+	VmInstanceClusterUuid string `json:"vmInstanceClusterUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	PrimaryStorageUuidForRootVolume string `json:"primaryStorageUuidForRootVolume,omitempty"`
+	DefaultL3NetworkUuid string `json:"defaultL3NetworkUuid,omitempty"`
+	Strategy string `json:"strategy,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
 	SystemTags []string `json:"systemTags,omitempty"`
 }
 

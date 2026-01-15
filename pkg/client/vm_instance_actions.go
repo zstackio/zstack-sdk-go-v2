@@ -11,36 +11,36 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CloneVmInstance operates on VmInstance
-func (cli *ZSClient) CloneVmInstance(uuid string, params param.CloneVmInstanceParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) CloneVmInstance(vmInstanceUuid string, params param.CloneVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/vm-instances", vmInstanceUuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // ResumeVmInstance operates on VmInstance
 func (cli *ZSClient) ResumeVmInstance(uuid string, params param.ResumeVmInstanceParam) (*view.VmInstanceInventoryView, error) {
-	var resp view.ResumeVmInstanceEventView
+	resp := view.VmInstanceInventoryView{}
 	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // StartVmInstance starts VmInstance
 func (cli *ZSClient) StartVmInstance(uuid string, params param.StartVmInstanceParam) (*view.VmInstanceInventoryView, error) {
-	var resp view.StartVmInstanceEventView
+	resp := view.VmInstanceInventoryView{}
 	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // StopVmInstance stops VmInstance
 func (cli *ZSClient) StopVmInstance(uuid string, params param.StopVmInstanceParam) (*view.VmInstanceInventoryView, error) {
-	var resp view.StopVmInstanceEventView
+	resp := view.VmInstanceInventoryView{}
 	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryVmInstance queries VmInstance list
 func (cli *ZSClient) QueryVmInstance(params *param.QueryParam) ([]view.VmInstanceInventoryView, error) {
@@ -48,32 +48,34 @@ func (cli *ZSClient) QueryVmInstance(params *param.QueryParam) ([]view.VmInstanc
 	return resp, cli.List("v1/vm-instances", params, &resp)
 }
 
-func (cli *ZSClient) GetVmInstance(uuid string) (*view.VmInstanceInventoryView, error) {
-	var resp view.VmInstanceInventoryView
-	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
+// PageVmInstance Pagination
+func (cli *ZSClient) PageVmInstance(params *param.QueryParam) ([]view.VmInstanceInventoryView, int, error) {
+	var vmInstances []view.VmInstanceInventoryView
+	total, err := cli.Page("v1/vm-instances", params, &vmInstances)
+	return vmInstances, total, err
+}
+// ExpungeVmInstance operates on VmInstance
+func (cli *ZSClient) ExpungeVmInstance(uuid string) error {
+	params := map[string]interface{}{
+		"expungeVmInstance": map[string]interface{}{},
+	}
+	return cli.Put("v1/vm-instances", uuid, params, nil)
+}
+// RebootVmInstance operates on VmInstance
+func (cli *ZSClient) RebootVmInstance(uuid string, params param.RebootVmInstanceParam) (*view.VmInstanceInventoryView, error) {
+	resp := view.VmInstanceInventoryView{}
+	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// ExpungeVmInstance operates on VmInstance
-func (cli *ZSClient) ExpungeVmInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
-}
-// RebootVmInstance operates on VmInstance
-func (cli *ZSClient) RebootVmInstance(uuid string, params param.RebootVmInstanceParam) (*view.VmInstanceInventoryView, error) {
-	var resp view.RebootVmInstanceEventView
-	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // UpdateVmInstance updates VmInstance
 func (cli *ZSClient) UpdateVmInstance(uuid string, params param.UpdateVmInstanceParam) (*view.VmInstanceInventoryView, error) {
-	var resp view.UpdateVmInstanceEventView
+	resp := view.VmInstanceInventoryView{}
 	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DestroyVmInstance destroys VmInstance
 func (cli *ZSClient) DestroyVmInstance(uuid string, deleteMode param.DeleteMode) error {
@@ -81,17 +83,17 @@ func (cli *ZSClient) DestroyVmInstance(uuid string, deleteMode param.DeleteMode)
 }
 // CreateVmInstance creates VmInstance
 func (cli *ZSClient) CreateVmInstance(params param.CreateVmInstanceParam) (*view.VmInstanceInventoryView, error) {
-	var resp view.CreateVmInstanceEventView
+	resp := view.VmInstanceInventoryView{}
 	if err := cli.Post("v1/vm-instances", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // RecoverVmInstance operates on VmInstance
 func (cli *ZSClient) RecoverVmInstance(uuid string, params param.RecoverVmInstanceParam) (*view.VmInstanceInventoryView, error) {
-	var resp view.RecoverVmInstanceEventView
+	resp := view.VmInstanceInventoryView{}
 	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

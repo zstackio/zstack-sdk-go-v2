@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type SNSUniversalSmsEndpointInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SmsAccessKeyId *string `json:"smsAccessKeyId,omitempty"`
-	SmsAccessKeySecret *string `json:"smsAccessKeySecret,omitempty"`
-	Supplier *string `json:"supplier,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
-	PlatformUuid *string `json:"platformUuid,omitempty"`
-	ConnectionStatus *string `json:"connectionStatus,omitempty"`
+	SmsAccessKeyId string `json:"smsAccessKeyId,omitempty"`
+	SmsAccessKeySecret string `json:"smsAccessKeySecret,omitempty"`
+	Supplier string `json:"supplier,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	PlatformUuid string `json:"platformUuid,omitempty"`
+	ConnectionStatus string `json:"connectionStatus,omitempty"`
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
 

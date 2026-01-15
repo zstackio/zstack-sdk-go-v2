@@ -16,7 +16,7 @@ type RemoveAccessControlListEntryParamDetail struct {
 // RemoveAccessControlListEntryParam RemoveAccessControlListEntry request param
 type RemoveAccessControlListEntryParam struct {
 	BaseParam
-	Params RemoveAccessControlListEntryParamDetail `json:"params"`
+	RemoveAccessControlListEntry RemoveAccessControlListEntryParamDetail `json:"removeAccessControlListEntry"`
 }
 // AddAccessControlListEntryParamDetail AddAccessControlListEntry detail param
 type AddAccessControlListEntryParamDetail struct {
@@ -30,5 +30,5 @@ type AddAccessControlListEntryParamDetail struct {
 // AddAccessControlListEntryParam AddAccessControlListEntry request param
 type AddAccessControlListEntryParam struct {
 	BaseParam
-	Params AddAccessControlListEntryParamDetail `json:"params"`
+	AddAccessControlListEntry AddAccessControlListEntryParamDetail `json:"addAccessControlListEntry"`
 }

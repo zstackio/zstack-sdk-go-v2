@@ -19,7 +19,7 @@ type AddAccessControlRuleParamDetail struct {
 // AddAccessControlRuleParam AddAccessControlRule request param
 type AddAccessControlRuleParam struct {
 	BaseParam
-	Params AddAccessControlRuleParamDetail `json:"params"`
+	AddAccessControlRule AddAccessControlRuleParamDetail `json:"addAccessControlRule"`
 }
 // UpdateAccessControlRuleParamDetail UpdateAccessControlRule detail param
 type UpdateAccessControlRuleParamDetail struct {
@@ -32,7 +32,7 @@ type UpdateAccessControlRuleParamDetail struct {
 // UpdateAccessControlRuleParam UpdateAccessControlRule request param
 type UpdateAccessControlRuleParam struct {
 	BaseParam
-	Params UpdateAccessControlRuleParamDetail `json:"params"`
+	UpdateAccessControlRule UpdateAccessControlRuleParamDetail `json:"updateAccessControlRule"`
 }
 // DeleteAccessControlRuleParamDetail DeleteAccessControlRule detail param
 type DeleteAccessControlRuleParamDetail struct {
@@ -43,5 +43,5 @@ type DeleteAccessControlRuleParamDetail struct {
 // DeleteAccessControlRuleParam DeleteAccessControlRule request param
 type DeleteAccessControlRuleParam struct {
 	BaseParam
-	Params DeleteAccessControlRuleParamDetail `json:"params"`
+	DeleteAccessControlRule DeleteAccessControlRuleParamDetail `json:"deleteAccessControlRule"`
 }

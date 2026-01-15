@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type NetworkRouterFlowMeterRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VRouterUuid *string `json:"vRouterUuid,omitempty"`
-	FlowMeterUuid *string `json:"flowMeterUuid,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
+	VRouterUuid string `json:"vRouterUuid,omitempty"`
+	FlowMeterUuid string `json:"flowMeterUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 }
 
 // QueryVRouterFlowMeterNetworkView QueryVRouterFlowMeterNetwork

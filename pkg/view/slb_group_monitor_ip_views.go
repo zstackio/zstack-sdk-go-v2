@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type SlbGroupMonitorIpInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	SlbGroupUuid *string `json:"slbGroupUuid,omitempty"`
-	MonitorIp *string `json:"monitorIp,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	SlbGroupUuid string `json:"slbGroupUuid,omitempty"`
+	MonitorIp string `json:"monitorIp,omitempty"`
 }
 

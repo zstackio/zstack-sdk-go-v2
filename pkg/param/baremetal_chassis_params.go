@@ -14,7 +14,7 @@ type InspectBaremetalChassisParamDetail struct {
 // InspectBaremetalChassisParam InspectBaremetalChassis request param
 type InspectBaremetalChassisParam struct {
 	BaseParam
-	Params InspectBaremetalChassisParamDetail `json:"params"`
+	InspectBaremetalChassis InspectBaremetalChassisParamDetail `json:"inspectBaremetalChassis"`
 }
 // UpdateBaremetalChassisParamDetail UpdateBaremetalChassis detail param
 type UpdateBaremetalChassisParamDetail struct {
@@ -30,7 +30,7 @@ type UpdateBaremetalChassisParamDetail struct {
 // UpdateBaremetalChassisParam UpdateBaremetalChassis request param
 type UpdateBaremetalChassisParam struct {
 	BaseParam
-	Params UpdateBaremetalChassisParamDetail `json:"params"`
+	UpdateBaremetalChassis UpdateBaremetalChassisParamDetail `json:"updateBaremetalChassis"`
 }
 // DeleteBaremetalChassisParamDetail DeleteBaremetalChassis detail param
 type DeleteBaremetalChassisParamDetail struct {
@@ -41,7 +41,7 @@ type DeleteBaremetalChassisParamDetail struct {
 // DeleteBaremetalChassisParam DeleteBaremetalChassis request param
 type DeleteBaremetalChassisParam struct {
 	BaseParam
-	Params DeleteBaremetalChassisParamDetail `json:"params"`
+	DeleteBaremetalChassis DeleteBaremetalChassisParamDetail `json:"deleteBaremetalChassis"`
 }
 // CreateBaremetalChassisParamDetail CreateBaremetalChassis detail param
 type CreateBaremetalChassisParamDetail struct {
@@ -59,5 +59,5 @@ type CreateBaremetalChassisParamDetail struct {
 // CreateBaremetalChassisParam CreateBaremetalChassis request param
 type CreateBaremetalChassisParam struct {
 	BaseParam
-	Params CreateBaremetalChassisParamDetail `json:"params"`
+	CreateBaremetalChassis CreateBaremetalChassisParamDetail `json:"createBaremetalChassis"`
 }

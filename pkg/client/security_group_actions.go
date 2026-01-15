@@ -16,20 +16,19 @@ func (cli *ZSClient) QuerySecurityGroup(params *param.QueryParam) ([]view.Securi
 	return resp, cli.List("v1/security-groups", params, &resp)
 }
 
-func (cli *ZSClient) GetSecurityGroup(uuid string) (*view.SecurityGroupInventoryView, error) {
-	var resp view.SecurityGroupInventoryView
-	if err := cli.Get("v1/security-groups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSecurityGroup Pagination
+func (cli *ZSClient) PageSecurityGroup(params *param.QueryParam) ([]view.SecurityGroupInventoryView, int, error) {
+	var securityGroups []view.SecurityGroupInventoryView
+	total, err := cli.Page("v1/security-groups", params, &securityGroups)
+	return securityGroups, total, err
 }
 // CreateSecurityGroup creates SecurityGroup
 func (cli *ZSClient) CreateSecurityGroup(params param.CreateSecurityGroupParam) (*view.SecurityGroupInventoryView, error) {
-	var resp view.CreateSecurityGroupEventView
+	resp := view.SecurityGroupInventoryView{}
 	if err := cli.Post("v1/security-groups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteSecurityGroup deletes SecurityGroup
 func (cli *ZSClient) DeleteSecurityGroup(uuid string, deleteMode param.DeleteMode) error {
@@ -37,9 +36,9 @@ func (cli *ZSClient) DeleteSecurityGroup(uuid string, deleteMode param.DeleteMod
 }
 // UpdateSecurityGroup updates SecurityGroup
 func (cli *ZSClient) UpdateSecurityGroup(uuid string, params param.UpdateSecurityGroupParam) (*view.SecurityGroupInventoryView, error) {
-	var resp view.UpdateSecurityGroupEventView
+	resp := view.SecurityGroupInventoryView{}
 	if err := cli.Put("v1/security-groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

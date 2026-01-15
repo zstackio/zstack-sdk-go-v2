@@ -10,15 +10,15 @@ var _ = time.Now // avoid unused import
 type VCenterBackupStorageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VCenterUuid *string `json:"vCenterUuid,omitempty"`
-	Datastore *string `json:"datastore,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Description *string `json:"description,omitempty"`
-	TotalCapacity *int64 `json:"totalCapacity,omitempty"`
-	AvailableCapacity *int64 `json:"availableCapacity,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
+	VCenterUuid string `json:"vCenterUuid,omitempty"`
+	Datastore string `json:"datastore,omitempty"`
+	Url string `json:"url,omitempty"`
+	Description string `json:"description,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 

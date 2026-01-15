@@ -17,7 +17,7 @@ type UpdateMdevDeviceParamDetail struct {
 // UpdateMdevDeviceParam UpdateMdevDevice request param
 type UpdateMdevDeviceParam struct {
 	BaseParam
-	Params UpdateMdevDeviceParamDetail `json:"params"`
+	UpdateMdevDevice UpdateMdevDeviceParamDetail `json:"updateMdevDevice"`
 }
 // DeleteMdevDeviceParamDetail DeleteMdevDevice detail param
 type DeleteMdevDeviceParamDetail struct {
@@ -28,5 +28,5 @@ type DeleteMdevDeviceParamDetail struct {
 // DeleteMdevDeviceParam DeleteMdevDevice request param
 type DeleteMdevDeviceParam struct {
 	BaseParam
-	Params DeleteMdevDeviceParamDetail `json:"params"`
+	DeleteMdevDevice DeleteMdevDeviceParamDetail `json:"deleteMdevDevice"`
 }

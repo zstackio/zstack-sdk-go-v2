@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type ImagePackageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	VmUuid *string `json:"vmUuid,omitempty"`
-	BackupStorageUuid *string `json:"backupStorageUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	VmUuid string `json:"vmUuid,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
 	State string `json:"state,omitempty"`
-	ExportUrl *string `json:"exportUrl,omitempty"`
-	Md5Sum *string `json:"md5Sum,omitempty"`
-	Format *string `json:"format,omitempty"`
-	Size *int64 `json:"size,omitempty"`
+	ExportUrl string `json:"exportUrl,omitempty"`
+	Md5Sum string `json:"md5Sum,omitempty"`
+	Format string `json:"format,omitempty"`
+	Size int64 `json:"size,omitempty"`
 }
 
 // UpdateImagePackageEventView UpdateImagePackageEvent

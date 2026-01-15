@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type CCSCertificateUserRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	UserUuid *string `json:"userUuid,omitempty"`
-	CertificateUuid *string `json:"certificateUuid,omitempty"`
+	UserUuid string `json:"userUuid,omitempty"`
+	CertificateUuid string `json:"certificateUuid,omitempty"`
 	State string `json:"state,omitempty"`
 }
 

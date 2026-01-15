@@ -15,5 +15,5 @@ type RefreshSSOServerTokenParamDetail struct {
 // RefreshSSOServerTokenParam RefreshSSOServerToken request param
 type RefreshSSOServerTokenParam struct {
 	BaseParam
-	Params RefreshSSOServerTokenParamDetail `json:"params"`
+	RefreshSSOServerToken RefreshSSOServerTokenParamDetail `json:"refreshSSOServerToken"`
 }

@@ -16,12 +16,11 @@ func (cli *ZSClient) QueryStackTemplate(params *param.QueryParam) ([]view.StackT
 	return resp, cli.List("v1/cloudformation/template", params, &resp)
 }
 
-func (cli *ZSClient) GetStackTemplate(uuid string) (*view.StackTemplateInventoryView, error) {
-	var resp view.StackTemplateInventoryView
-	if err := cli.Get("v1/cloudformation/template", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageStackTemplate Pagination
+func (cli *ZSClient) PageStackTemplate(params *param.QueryParam) ([]view.StackTemplateInventoryView, int, error) {
+	var stackTemplates []view.StackTemplateInventoryView
+	total, err := cli.Page("v1/cloudformation/template", params, &stackTemplates)
+	return stackTemplates, total, err
 }
 // DeleteStackTemplate deletes StackTemplate
 func (cli *ZSClient) DeleteStackTemplate(uuid string, deleteMode param.DeleteMode) error {
@@ -29,17 +28,17 @@ func (cli *ZSClient) DeleteStackTemplate(uuid string, deleteMode param.DeleteMod
 }
 // UpdateStackTemplate updates StackTemplate
 func (cli *ZSClient) UpdateStackTemplate(uuid string, params param.UpdateStackTemplateParam) (*view.StackTemplateInventoryView, error) {
-	var resp view.UpdateStackTemplateEventView
+	resp := view.StackTemplateInventoryView{}
 	if err := cli.Put("v1/cloudformation/template", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // AddStackTemplate adds StackTemplate
 func (cli *ZSClient) AddStackTemplate(params param.AddStackTemplateParam) (*view.StackTemplateInventoryView, error) {
-	var resp view.AddStackTemplateEventView
+	resp := view.StackTemplateInventoryView{}
 	if err := cli.Post("v1/cloudformation/template", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

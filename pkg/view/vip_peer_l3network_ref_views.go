@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type VipPeerL3NetworkRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VipUuid *string `json:"vipUuid,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 }
 

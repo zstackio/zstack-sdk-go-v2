@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // OvfSystemInfoView OvfSystemInfo
 type OvfSystemInfoView struct {
-	VirtualSystemType *string `json:"virtualSystemType,omitempty"`
-	FirmwareType *string `json:"firmwareType,omitempty"`
+	VirtualSystemType string `json:"virtualSystemType,omitempty"`
+	FirmwareType string `json:"firmwareType,omitempty"`
 }
 

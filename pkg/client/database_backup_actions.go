@@ -16,11 +16,11 @@ func (cli *ZSClient) DeleteDatabaseBackup(uuid string, deleteMode param.DeleteMo
 }
 // CreateDatabaseBackup creates DatabaseBackup
 func (cli *ZSClient) CreateDatabaseBackup(params param.CreateDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
-	var resp view.CreateDatabaseBackupEventView
+	resp := view.DatabaseBackupInventoryView{}
 	if err := cli.Post("v1/database-backups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 
 // CreateDatabaseBackupAsync Async
@@ -43,17 +43,16 @@ func (cli *ZSClient) QueryDatabaseBackup(params *param.QueryParam) ([]view.Datab
 	return resp, cli.List("v1/database-backups", params, &resp)
 }
 
-func (cli *ZSClient) GetDatabaseBackup(uuid string) (*view.DatabaseBackupInventoryView, error) {
-	var resp view.DatabaseBackupInventoryView
-	if err := cli.Get("v1/database-backups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageDatabaseBackup Pagination
+func (cli *ZSClient) PageDatabaseBackup(params *param.QueryParam) ([]view.DatabaseBackupInventoryView, int, error) {
+	var databaseBackups []view.DatabaseBackupInventoryView
+	total, err := cli.Page("v1/database-backups", params, &databaseBackups)
+	return databaseBackups, total, err
 }
 // SyncDatabaseBackup operates on DatabaseBackup
-func (cli *ZSClient) SyncDatabaseBackup(uuid string, params param.SyncDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
+func (cli *ZSClient) SyncDatabaseBackup(imageStoreUuid string, params param.SyncDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
 	resp := view.DatabaseBackupInventoryView{}
-	if err := cli.Put("v1/database-backups/imageStore", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/database-backups/imageStore", imageStoreUuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

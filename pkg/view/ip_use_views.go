@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type IpUseInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	UsedIpUuid *string `json:"usedIpUuid,omitempty"`
-	ServiceId *string `json:"serviceId,omitempty"`
-	Use *string `json:"use,omitempty"`
-	Details *string `json:"details,omitempty"`
+	UsedIpUuid string `json:"usedIpUuid,omitempty"`
+	ServiceId string `json:"serviceId,omitempty"`
+	Use string `json:"use,omitempty"`
+	Details string `json:"details,omitempty"`
 }
 

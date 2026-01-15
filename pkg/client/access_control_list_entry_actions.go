@@ -17,9 +17,9 @@ func (cli *ZSClient) RemoveAccessControlListEntry(aclUuid string, uuid string, d
 }
 // AddAccessControlListEntry adds AccessControlListEntry
 func (cli *ZSClient) AddAccessControlListEntry(params param.AddAccessControlListEntryParam) (*view.AccessControlListEntryInventoryView, error) {
-	var resp view.AddAccessControlListEntryEventView
+	resp := view.AccessControlListEntryInventoryView{}
 	if err := cli.Post("v1/access-control-lists/{aclUuid}/ipentries", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

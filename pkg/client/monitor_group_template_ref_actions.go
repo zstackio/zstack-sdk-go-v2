@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryMonitorGroupTemplateRef(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/zwatch/monitorgroups/monitortemplates/refs", params, &resp)
 }
 
-func (cli *ZSClient) GetMonitorGroupTemplateRef(uuid string) (*view.MonitorGroupTemplateRefInventoryView, error) {
-	var resp view.MonitorGroupTemplateRefInventoryView
-	if err := cli.Get("v1/zwatch/monitorgroups/monitortemplates/refs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageMonitorGroupTemplateRef Pagination
+func (cli *ZSClient) PageMonitorGroupTemplateRef(params *param.QueryParam) ([]view.MonitorGroupTemplateRefInventoryView, int, error) {
+	var monitorGroupTemplateRefs []view.MonitorGroupTemplateRefInventoryView
+	total, err := cli.Page("v1/zwatch/monitorgroups/monitortemplates/refs", params, &monitorGroupTemplateRefs)
+	return monitorGroupTemplateRefs, total, err
 }

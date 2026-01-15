@@ -16,12 +16,11 @@ func (cli *ZSClient) QueryNvmeServer(params *param.QueryParam) ([]view.NvmeServe
 	return resp, cli.List("v1/storage-devices/nvme/servers", params, &resp)
 }
 
-func (cli *ZSClient) GetNvmeServer(uuid string) (*view.NvmeServerInventoryView, error) {
-	var resp view.NvmeServerInventoryView
-	if err := cli.Get("v1/storage-devices/nvme/servers", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageNvmeServer Pagination
+func (cli *ZSClient) PageNvmeServer(params *param.QueryParam) ([]view.NvmeServerInventoryView, int, error) {
+	var nvmeServers []view.NvmeServerInventoryView
+	total, err := cli.Page("v1/storage-devices/nvme/servers", params, &nvmeServers)
+	return nvmeServers, total, err
 }
 // DeleteNvmeServer deletes NvmeServer
 func (cli *ZSClient) DeleteNvmeServer(uuid string, deleteMode param.DeleteMode) error {
@@ -29,9 +28,9 @@ func (cli *ZSClient) DeleteNvmeServer(uuid string, deleteMode param.DeleteMode) 
 }
 // AddNvmeServer adds NvmeServer
 func (cli *ZSClient) AddNvmeServer(params param.AddNvmeServerParam) (*view.NvmeServerInventoryView, error) {
-	var resp view.AddNvmeServerEventView
+	resp := view.NvmeServerInventoryView{}
 	if err := cli.Post("v1/storage-devices/nvme/servers", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

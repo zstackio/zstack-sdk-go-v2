@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type VirtualRouterSoftwareVersionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SoftwareName *string `json:"softwareName,omitempty"`
-	CurrentVersion *string `json:"currentVersion,omitempty"`
-	LatestVersion *string `json:"latestVersion,omitempty"`
+	SoftwareName string `json:"softwareName,omitempty"`
+	CurrentVersion string `json:"currentVersion,omitempty"`
+	LatestVersion string `json:"latestVersion,omitempty"`
 }
 
 // GetVirtualRouterSoftwareVersionView GetVirtualRouterSoftwareVersion

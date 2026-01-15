@@ -15,7 +15,7 @@ type DeleteSecretResourcePoolParamDetail struct {
 // DeleteSecretResourcePoolParam DeleteSecretResourcePool request param
 type DeleteSecretResourcePoolParam struct {
 	BaseParam
-	Params DeleteSecretResourcePoolParamDetail `json:"params"`
+	DeleteSecretResourcePool DeleteSecretResourcePoolParamDetail `json:"deleteSecretResourcePool"`
 }
 // UpdateSecretResourcePoolParamDetail UpdateSecretResourcePool detail param
 type UpdateSecretResourcePoolParamDetail struct {
@@ -29,5 +29,5 @@ type UpdateSecretResourcePoolParamDetail struct {
 // UpdateSecretResourcePoolParam UpdateSecretResourcePool request param
 type UpdateSecretResourcePoolParam struct {
 	BaseParam
-	Params UpdateSecretResourcePoolParamDetail `json:"params"`
+	UpdateSecretResourcePool UpdateSecretResourcePoolParamDetail `json:"updateSecretResourcePool"`
 }

@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type TicketInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	Status string `json:"status,omitempty"`
 	Request []TicketRequestView `json:"request,omitempty"`
-	AccountSystemType *string `json:"accountSystemType,omitempty"`
-	TicketTypeUuid *string `json:"ticketTypeUuid,omitempty"`
+	AccountSystemType string `json:"accountSystemType,omitempty"`
+	TicketTypeUuid string `json:"ticketTypeUuid,omitempty"`
 	AccountSystemContext interface{} `json:"accountSystemContext,omitempty"`
-	CurrentFlowUuid *string `json:"currentFlowUuid,omitempty"`
-	FlowCollectionUuid *string `json:"flowCollectionUuid,omitempty"`
+	CurrentFlowUuid string `json:"currentFlowUuid,omitempty"`
+	FlowCollectionUuid string `json:"flowCollectionUuid,omitempty"`
 }
 
 // CreateTicketEventView CreateTicketEvent

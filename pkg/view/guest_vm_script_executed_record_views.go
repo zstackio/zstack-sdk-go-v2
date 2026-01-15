@@ -10,18 +10,18 @@ var _ = time.Now // avoid unused import
 type GuestVmScriptExecutedRecordInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ScriptUuid *string `json:"scriptUuid,omitempty"`
-	RecordName *string `json:"recordName,omitempty"`
-	ScriptTimeout *int `json:"scriptTimeout,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Executor *string `json:"executor,omitempty"`
-	ExecutionCount *int `json:"executionCount,omitempty"`
-	Version *int `json:"version,omitempty"`
-	EncodingType *string `json:"encodingType,omitempty"`
-	ScriptContent *string `json:"scriptContent,omitempty"`
-	RenderParams *string `json:"renderParams,omitempty"`
-	StartTime *time.Time `json:"startTime,omitempty"`
-	EndTime *time.Time `json:"endTime,omitempty"`
+	ScriptUuid string `json:"scriptUuid,omitempty"`
+	RecordName string `json:"recordName,omitempty"`
+	ScriptTimeout int `json:"scriptTimeout,omitempty"`
+	Status string `json:"status,omitempty"`
+	Executor string `json:"executor,omitempty"`
+	ExecutionCount int `json:"executionCount,omitempty"`
+	Version int `json:"version,omitempty"`
+	EncodingType string `json:"encodingType,omitempty"`
+	ScriptContent string `json:"scriptContent,omitempty"`
+	RenderParams string `json:"renderParams,omitempty"`
+	StartTime time.Time `json:"startTime,omitempty"`
+	EndTime time.Time `json:"endTime,omitempty"`
 }
 
 // QueryGuestVmScriptExecutedRecordView QueryGuestVmScriptExecutedRecord

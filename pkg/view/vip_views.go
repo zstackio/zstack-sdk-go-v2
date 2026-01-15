@@ -10,17 +10,17 @@ var _ = time.Now // avoid unused import
 type VipInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	Ip *string `json:"ip,omitempty"`
-	State *string `json:"state,omitempty"`
-	Gateway *string `json:"gateway,omitempty"`
-	Netmask *string `json:"netmask,omitempty"`
-	PrefixLen *int `json:"prefixLen,omitempty"`
-	ServiceProvider *string `json:"serviceProvider,omitempty"`
+	Description string `json:"description,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	State string `json:"state,omitempty"`
+	Gateway string `json:"gateway,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
+	PrefixLen int `json:"prefixLen,omitempty"`
+	ServiceProvider string `json:"serviceProvider,omitempty"`
 	PeerL3NetworkUuids []string `json:"peerL3NetworkUuids,omitempty"`
 	ServicesRefs []VipNetworkServicesRefInventoryView `json:"servicesRefs,omitempty"`
-	UseFor *string `json:"useFor,omitempty"`
+	UseFor string `json:"useFor,omitempty"`
 	System bool `json:"system,omitempty"`
 }
 

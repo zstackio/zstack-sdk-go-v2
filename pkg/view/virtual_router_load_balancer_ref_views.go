@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type VirtualRouterLoadBalancerRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	VirtualRouterVmUuid *string `json:"virtualRouterVmUuid,omitempty"`
-	LoadBalancerUuid *string `json:"loadBalancerUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	VirtualRouterVmUuid string `json:"virtualRouterVmUuid,omitempty"`
+	LoadBalancerUuid string `json:"loadBalancerUuid,omitempty"`
 }
 

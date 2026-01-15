@@ -16,7 +16,7 @@ type UpdateAutoScalingGroupInstanceParamDetail struct {
 // UpdateAutoScalingGroupInstanceParam UpdateAutoScalingGroupInstance request param
 type UpdateAutoScalingGroupInstanceParam struct {
 	BaseParam
-	Params UpdateAutoScalingGroupInstanceParamDetail `json:"params"`
+	UpdateAutoScalingGroupInstance UpdateAutoScalingGroupInstanceParamDetail `json:"updateAutoScalingGroupInstance"`
 }
 // DeleteAutoScalingGroupInstanceParamDetail DeleteAutoScalingGroupInstance detail param
 type DeleteAutoScalingGroupInstanceParamDetail struct {
@@ -27,5 +27,5 @@ type DeleteAutoScalingGroupInstanceParamDetail struct {
 // DeleteAutoScalingGroupInstanceParam DeleteAutoScalingGroupInstance request param
 type DeleteAutoScalingGroupInstanceParam struct {
 	BaseParam
-	Params DeleteAutoScalingGroupInstanceParamDetail `json:"params"`
+	DeleteAutoScalingGroupInstance DeleteAutoScalingGroupInstanceParamDetail `json:"deleteAutoScalingGroupInstance"`
 }

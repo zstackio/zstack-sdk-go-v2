@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateSchedulerJobGroup creates SchedulerJobGroup
 func (cli *ZSClient) CreateSchedulerJobGroup(params param.CreateSchedulerJobGroupParam) (*view.SchedulerJobGroupInventoryView, error) {
-	var resp view.CreateSchedulerJobGroupEventView
+	resp := view.SchedulerJobGroupInventoryView{}
 	if err := cli.Post("v1/scheduler/jobgroups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteSchedulerJobGroup deletes SchedulerJobGroup
 func (cli *ZSClient) DeleteSchedulerJobGroup(uuid string, deleteMode param.DeleteMode) error {
@@ -24,11 +24,11 @@ func (cli *ZSClient) DeleteSchedulerJobGroup(uuid string, deleteMode param.Delet
 }
 // UpdateSchedulerJobGroup updates SchedulerJobGroup
 func (cli *ZSClient) UpdateSchedulerJobGroup(uuid string, params param.UpdateSchedulerJobGroupParam) (*view.SchedulerJobGroupInventoryView, error) {
-	var resp view.UpdateSchedulerJobGroupEventView
+	resp := view.SchedulerJobGroupInventoryView{}
 	if err := cli.Put("v1/scheduler/jobgroups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QuerySchedulerJobGroup queries SchedulerJobGroup list
 func (cli *ZSClient) QuerySchedulerJobGroup(params *param.QueryParam) ([]view.SchedulerJobGroupInventoryView, error) {
@@ -36,10 +36,9 @@ func (cli *ZSClient) QuerySchedulerJobGroup(params *param.QueryParam) ([]view.Sc
 	return resp, cli.List("v1/scheduler/jobgroups", params, &resp)
 }
 
-func (cli *ZSClient) GetSchedulerJobGroup(uuid string) (*view.SchedulerJobGroupInventoryView, error) {
-	var resp view.SchedulerJobGroupInventoryView
-	if err := cli.Get("v1/scheduler/jobgroups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSchedulerJobGroup Pagination
+func (cli *ZSClient) PageSchedulerJobGroup(params *param.QueryParam) ([]view.SchedulerJobGroupInventoryView, int, error) {
+	var schedulerJobGroups []view.SchedulerJobGroupInventoryView
+	total, err := cli.Page("v1/scheduler/jobgroups", params, &schedulerJobGroups)
+	return schedulerJobGroups, total, err
 }

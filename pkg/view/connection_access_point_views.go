@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type ConnectionAccessPointInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccessPointId *string `json:"accessPointId,omitempty"`
-	Type *string `json:"type,omitempty"`
-	DataCenterUuid *string `json:"dataCenterUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Status *string `json:"status,omitempty"`
-	HostOperator *string `json:"hostOperator,omitempty"`
+	AccessPointId string `json:"accessPointId,omitempty"`
+	Type string `json:"type,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Status string `json:"status,omitempty"`
+	HostOperator string `json:"hostOperator,omitempty"`
 }
 
 // QueryConnectionAccessPointFromLocalView QueryConnectionAccessPointFromLocal

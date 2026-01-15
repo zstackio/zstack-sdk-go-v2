@@ -15,5 +15,5 @@ type DeleteTicketFlowCollectionParamDetail struct {
 // DeleteTicketFlowCollectionParam DeleteTicketFlowCollection request param
 type DeleteTicketFlowCollectionParam struct {
 	BaseParam
-	Params DeleteTicketFlowCollectionParamDetail `json:"params"`
+	DeleteTicketFlowCollection DeleteTicketFlowCollectionParamDetail `json:"deleteTicketFlowCollection"`
 }

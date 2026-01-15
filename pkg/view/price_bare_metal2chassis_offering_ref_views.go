@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type PriceBareMetal2ChassisOfferingRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PriceUuid *string `json:"priceUuid,omitempty"`
-	BareMetal2ChassisOfferingUuid *string `json:"bareMetal2ChassisOfferingUuid,omitempty"`
+	PriceUuid string `json:"priceUuid,omitempty"`
+	BareMetal2ChassisOfferingUuid string `json:"bareMetal2ChassisOfferingUuid,omitempty"`
 }
 

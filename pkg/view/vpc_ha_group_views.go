@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type VpcHaGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	Monitors []VpcHaGroupMonitorIpInventoryView `json:"monitors,omitempty"`
 	VrRefs []VpcHaGroupApplianceVmRefInventoryView `json:"vrRefs,omitempty"`
 	Services []VpcHaGroupNetworkServiceRefInventoryView `json:"services,omitempty"`

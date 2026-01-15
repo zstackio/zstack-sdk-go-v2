@@ -11,8 +11,8 @@ type BaseInfoView struct {
 }
 
 type BaseTimeView struct {
-	CreateDate *time.Time `json:"createDate,omitempty"` // 创建时间
-	LastOpDate *time.Time `json:"lastOpDate,omitempty"` // 最后操作时间
+	CreateDate time.Time `json:"createDate,omitempty"` // 创建时间
+	LastOpDate time.Time `json:"lastOpDate,omitempty"` // 最后操作时间
 }
 
 // Generic wrapper types for APIs that return simple data types

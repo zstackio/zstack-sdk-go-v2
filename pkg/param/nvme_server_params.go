@@ -15,7 +15,7 @@ type DeleteNvmeServerParamDetail struct {
 // DeleteNvmeServerParam DeleteNvmeServer request param
 type DeleteNvmeServerParam struct {
 	BaseParam
-	Params DeleteNvmeServerParamDetail `json:"params"`
+	DeleteNvmeServer DeleteNvmeServerParamDetail `json:"deleteNvmeServer"`
 }
 // AddNvmeServerParamDetail AddNvmeServer detail param
 type AddNvmeServerParamDetail struct {
@@ -30,5 +30,5 @@ type AddNvmeServerParamDetail struct {
 // AddNvmeServerParam AddNvmeServer request param
 type AddNvmeServerParam struct {
 	BaseParam
-	Params AddNvmeServerParamDetail `json:"params"`
+	AddNvmeServer AddNvmeServerParamDetail `json:"addNvmeServer"`
 }

@@ -18,7 +18,7 @@ type CreateHuaweiIMasterVRouterParamDetail struct {
 // CreateHuaweiIMasterVRouterParam CreateHuaweiIMasterVRouter request param
 type CreateHuaweiIMasterVRouterParam struct {
 	BaseParam
-	Params CreateHuaweiIMasterVRouterParamDetail `json:"params"`
+	CreateHuaweiIMasterVRouter CreateHuaweiIMasterVRouterParamDetail `json:"createHuaweiIMasterVRouter"`
 }
 // DeleteHuaweiIMasterVRouterParamDetail DeleteHuaweiIMasterVRouter detail param
 type DeleteHuaweiIMasterVRouterParamDetail struct {
@@ -30,5 +30,5 @@ type DeleteHuaweiIMasterVRouterParamDetail struct {
 // DeleteHuaweiIMasterVRouterParam DeleteHuaweiIMasterVRouter request param
 type DeleteHuaweiIMasterVRouterParam struct {
 	BaseParam
-	Params DeleteHuaweiIMasterVRouterParamDetail `json:"params"`
+	DeleteHuaweiIMasterVRouter DeleteHuaweiIMasterVRouterParamDetail `json:"deleteHuaweiIMasterVRouter"`
 }

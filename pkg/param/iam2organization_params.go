@@ -14,7 +14,7 @@ type DeleteIAM2OrganizationParamDetail struct {
 // DeleteIAM2OrganizationParam DeleteIAM2Organization request param
 type DeleteIAM2OrganizationParam struct {
 	BaseParam
-	Params DeleteIAM2OrganizationParamDetail `json:"params"`
+	DeleteIAM2Organization DeleteIAM2OrganizationParamDetail `json:"deleteIAM2Organization"`
 }
 // UpdateIAM2OrganizationParamDetail UpdateIAM2Organization detail param
 type UpdateIAM2OrganizationParamDetail struct {
@@ -28,7 +28,7 @@ type UpdateIAM2OrganizationParamDetail struct {
 // UpdateIAM2OrganizationParam UpdateIAM2Organization request param
 type UpdateIAM2OrganizationParam struct {
 	BaseParam
-	Params UpdateIAM2OrganizationParamDetail `json:"params"`
+	UpdateIAM2Organization UpdateIAM2OrganizationParamDetail `json:"updateIAM2Organization"`
 }
 // CreateIAM2OrganizationParamDetail CreateIAM2Organization detail param
 type CreateIAM2OrganizationParamDetail struct {
@@ -46,5 +46,5 @@ type CreateIAM2OrganizationParamDetail struct {
 // CreateIAM2OrganizationParam CreateIAM2Organization request param
 type CreateIAM2OrganizationParam struct {
 	BaseParam
-	Params CreateIAM2OrganizationParamDetail `json:"params"`
+	CreateIAM2Organization CreateIAM2OrganizationParamDetail `json:"createIAM2Organization"`
 }

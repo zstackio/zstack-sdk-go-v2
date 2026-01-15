@@ -16,18 +16,17 @@ func (cli *ZSClient) QueryBareMetal2ChassisPciDevice(params *param.QueryParam) (
 	return resp, cli.List("v1/baremetal2/chassis/pci-device/pci-devices", params, &resp)
 }
 
-func (cli *ZSClient) GetBareMetal2ChassisPciDevice(uuid string) (*view.BareMetal2ChassisPciDeviceInventoryView, error) {
-	var resp view.BareMetal2ChassisPciDeviceInventoryView
-	if err := cli.Get("v1/baremetal2/chassis/pci-device/pci-devices", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageBareMetal2ChassisPciDevice Pagination
+func (cli *ZSClient) PageBareMetal2ChassisPciDevice(params *param.QueryParam) ([]view.BareMetal2ChassisPciDeviceInventoryView, int, error) {
+	var bareMetal2ChassisPciDevices []view.BareMetal2ChassisPciDeviceInventoryView
+	total, err := cli.Page("v1/baremetal2/chassis/pci-device/pci-devices", params, &bareMetal2ChassisPciDevices)
+	return bareMetal2ChassisPciDevices, total, err
 }
 // UpdateBareMetal2ChassisPciDevice updates BareMetal2ChassisPciDevice
 func (cli *ZSClient) UpdateBareMetal2ChassisPciDevice(uuid string, params param.UpdateBareMetal2ChassisPciDeviceParam) (*view.BareMetal2ChassisPciDeviceInventoryView, error) {
-	var resp view.UpdateBareMetal2ChassisPciDeviceEventView
+	resp := view.BareMetal2ChassisPciDeviceInventoryView{}
 	if err := cli.Put("v1/baremetal2/chassis/pci-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

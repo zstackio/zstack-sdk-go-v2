@@ -16,7 +16,7 @@ type UpdateVpcHaGroupParamDetail struct {
 // UpdateVpcHaGroupParam UpdateVpcHaGroup request param
 type UpdateVpcHaGroupParam struct {
 	BaseParam
-	Params UpdateVpcHaGroupParamDetail `json:"params"`
+	UpdateVpcHaGroup UpdateVpcHaGroupParamDetail `json:"updateVpcHaGroup"`
 }
 // DeleteVpcHaGroupParamDetail DeleteVpcHaGroup detail param
 type DeleteVpcHaGroupParamDetail struct {
@@ -27,7 +27,7 @@ type DeleteVpcHaGroupParamDetail struct {
 // DeleteVpcHaGroupParam DeleteVpcHaGroup request param
 type DeleteVpcHaGroupParam struct {
 	BaseParam
-	Params DeleteVpcHaGroupParamDetail `json:"params"`
+	DeleteVpcHaGroup DeleteVpcHaGroupParamDetail `json:"deleteVpcHaGroup"`
 }
 // CreateVpcHaGroupParamDetail CreateVpcHaGroup detail param
 type CreateVpcHaGroupParamDetail struct {
@@ -41,5 +41,5 @@ type CreateVpcHaGroupParamDetail struct {
 // CreateVpcHaGroupParam CreateVpcHaGroup request param
 type CreateVpcHaGroupParam struct {
 	BaseParam
-	Params CreateVpcHaGroupParamDetail `json:"params"`
+	CreateVpcHaGroup CreateVpcHaGroupParamDetail `json:"createVpcHaGroup"`
 }

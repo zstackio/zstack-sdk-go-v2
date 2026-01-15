@@ -21,7 +21,7 @@ type UpdateSchedulerTriggerParamDetail struct {
 // UpdateSchedulerTriggerParam UpdateSchedulerTrigger request param
 type UpdateSchedulerTriggerParam struct {
 	BaseParam
-	Params UpdateSchedulerTriggerParamDetail `json:"params"`
+	UpdateSchedulerTrigger UpdateSchedulerTriggerParamDetail `json:"updateSchedulerTrigger"`
 }
 // DeleteSchedulerTriggerParamDetail DeleteSchedulerTrigger detail param
 type DeleteSchedulerTriggerParamDetail struct {
@@ -32,7 +32,7 @@ type DeleteSchedulerTriggerParamDetail struct {
 // DeleteSchedulerTriggerParam DeleteSchedulerTrigger request param
 type DeleteSchedulerTriggerParam struct {
 	BaseParam
-	Params DeleteSchedulerTriggerParamDetail `json:"params"`
+	DeleteSchedulerTrigger DeleteSchedulerTriggerParamDetail `json:"deleteSchedulerTrigger"`
 }
 // CreateSchedulerTriggerParamDetail CreateSchedulerTrigger detail param
 type CreateSchedulerTriggerParamDetail struct {
@@ -50,5 +50,5 @@ type CreateSchedulerTriggerParamDetail struct {
 // CreateSchedulerTriggerParam CreateSchedulerTrigger request param
 type CreateSchedulerTriggerParam struct {
 	BaseParam
-	Params CreateSchedulerTriggerParamDetail `json:"params"`
+	CreateSchedulerTrigger CreateSchedulerTriggerParamDetail `json:"createSchedulerTrigger"`
 }

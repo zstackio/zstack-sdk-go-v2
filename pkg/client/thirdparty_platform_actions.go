@@ -16,28 +16,27 @@ func (cli *ZSClient) QueryThirdpartyPlatform(params *param.QueryParam) ([]view.T
 	return resp, cli.List("v1/zwatch/third-party/platforms", params, &resp)
 }
 
-func (cli *ZSClient) GetThirdpartyPlatform(uuid string) (*view.ThirdpartyPlatformInventoryView, error) {
-	var resp view.ThirdpartyPlatformInventoryView
-	if err := cli.Get("v1/zwatch/third-party/platforms", uuid, nil, &resp); err != nil {
+// PageThirdpartyPlatform Pagination
+func (cli *ZSClient) PageThirdpartyPlatform(params *param.QueryParam) ([]view.ThirdpartyPlatformInventoryView, int, error) {
+	var thirdpartyPlatforms []view.ThirdpartyPlatformInventoryView
+	total, err := cli.Page("v1/zwatch/third-party/platforms", params, &thirdpartyPlatforms)
+	return thirdpartyPlatforms, total, err
+}
+// UpdateThirdpartyPlatform updates ThirdpartyPlatform
+func (cli *ZSClient) UpdateThirdpartyPlatform(uuid string, params param.UpdateThirdpartyPlatformParam) (*view.ThirdpartyPlatformInventoryView, error) {
+	resp := view.ThirdpartyPlatformInventoryView{}
+	if err := cli.Put("v1/zwatch/third-party/platforms", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// UpdateThirdpartyPlatform updates ThirdpartyPlatform
-func (cli *ZSClient) UpdateThirdpartyPlatform(uuid string, params param.UpdateThirdpartyPlatformParam) (*view.ThirdpartyPlatformInventoryView, error) {
-	var resp view.UpdateThirdpartyPlatformEventView
-	if err := cli.Put("v1/zwatch/third-party/platforms", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // AddThirdpartyPlatform adds ThirdpartyPlatform
 func (cli *ZSClient) AddThirdpartyPlatform(params param.AddThirdpartyPlatformParam) (*view.ThirdpartyPlatformInventoryView, error) {
-	var resp view.AddThirdpartyPlatformEventView
+	resp := view.ThirdpartyPlatformInventoryView{}
 	if err := cli.Post("v1/zwatch/third-party/platforms", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteThirdpartyPlatform deletes ThirdpartyPlatform
 func (cli *ZSClient) DeleteThirdpartyPlatform(uuid string, deleteMode param.DeleteMode) error {

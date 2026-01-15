@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type SharedBlockGroupPrimaryStorageHostRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
-	HostId *int `json:"hostId,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	HostId int `json:"hostId,omitempty"`
 	Status string `json:"status,omitempty"`
 }
 

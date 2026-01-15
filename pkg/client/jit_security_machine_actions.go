@@ -12,17 +12,17 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateJitSecurityMachine updates JitSecurityMachine
 func (cli *ZSClient) UpdateJitSecurityMachine(uuid string, params param.UpdateJitSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
-	var resp view.UpdateSecurityMachineEventView
+	resp := view.SecurityMachineInventoryView{}
 	if err := cli.Put("v1/security-machines/jida/auth-gateway", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // AddJitSecurityMachine adds JitSecurityMachine
 func (cli *ZSClient) AddJitSecurityMachine(params param.AddJitSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
-	var resp view.AddSecurityMachineEventView
+	resp := view.SecurityMachineInventoryView{}
 	if err := cli.Post("v1/security-machine/jida/auth-gateway", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

@@ -18,7 +18,7 @@ type AddAliyunNasMountTargetParamDetail struct {
 // AddAliyunNasMountTargetParam AddAliyunNasMountTarget request param
 type AddAliyunNasMountTargetParam struct {
 	BaseParam
-	Params AddAliyunNasMountTargetParamDetail `json:"params"`
+	AddAliyunNasMountTarget AddAliyunNasMountTargetParamDetail `json:"addAliyunNasMountTarget"`
 }
 // CreateAliyunNasMountTargetParamDetail CreateAliyunNasMountTarget detail param
 type CreateAliyunNasMountTargetParamDetail struct {
@@ -34,5 +34,5 @@ type CreateAliyunNasMountTargetParamDetail struct {
 // CreateAliyunNasMountTargetParam CreateAliyunNasMountTarget request param
 type CreateAliyunNasMountTargetParam struct {
 	BaseParam
-	Params CreateAliyunNasMountTargetParamDetail `json:"params"`
+	CreateAliyunNasMountTarget CreateAliyunNasMountTargetParamDetail `json:"createAliyunNasMountTarget"`
 }

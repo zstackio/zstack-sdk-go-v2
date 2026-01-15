@@ -10,25 +10,20 @@ var _ = time.Now // avoid unused import
 type InstanceOfferingInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	CpuNum *int `json:"cpuNum,omitempty"`
-	CpuSpeed *int `json:"cpuSpeed,omitempty"`
-	MemorySize *int64 `json:"memorySize,omitempty"`
-	ReservedMemorySize *int64 `json:"reservedMemorySize,omitempty"`
-	Type *string `json:"type,omitempty"`
-	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
-	SortKey *int `json:"sortKey,omitempty"`
-	State *string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	CpuSpeed int `json:"cpuSpeed,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty"`
+	ReservedMemorySize int64 `json:"reservedMemorySize,omitempty"`
+	Type string `json:"type,omitempty"`
+	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
+	SortKey int `json:"sortKey,omitempty"`
+	State string `json:"state,omitempty"`
 }
 
 // ChangeInstanceOfferingEventView ChangeInstanceOfferingEvent
 type ChangeInstanceOfferingEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
-}
-
-// CreateInstanceOfferingEventView CreateInstanceOfferingEvent
-type CreateInstanceOfferingEventView struct {
-	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
 }
 
 // UpdateInstanceOfferingEventView UpdateInstanceOfferingEvent

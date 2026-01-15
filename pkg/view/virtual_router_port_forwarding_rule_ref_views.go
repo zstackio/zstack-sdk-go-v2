@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type VirtualRouterPortForwardingRuleRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VipUuid *string `json:"vipUuid,omitempty"`
-	VirtualRouterVmUuid *string `json:"virtualRouterVmUuid,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	VirtualRouterVmUuid string `json:"virtualRouterVmUuid,omitempty"`
 }
 

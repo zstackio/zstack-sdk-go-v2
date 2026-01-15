@@ -12,19 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // AddIpRange adds IpRange
 func (cli *ZSClient) AddIpRange(params param.AddIpRangeParam) (*view.IpRangeInventoryView, error) {
-	var resp view.AddIpRangeEventView
+	resp := view.IpRangeInventoryView{}
 	if err := cli.Post("v1/l3-networks/{l3NetworkUuid}/ip-ranges", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateIpRange updates IpRange
 func (cli *ZSClient) UpdateIpRange(uuid string, params param.UpdateIpRangeParam) (*view.IpRangeInventoryView, error) {
-	var resp view.UpdateIpRangeEventView
+	resp := view.IpRangeInventoryView{}
 	if err := cli.Put("v1/l3-networks/ip-ranges", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryIpRange queries IpRange list
 func (cli *ZSClient) QueryIpRange(params *param.QueryParam) ([]view.IpRangeInventoryView, error) {
@@ -32,12 +32,11 @@ func (cli *ZSClient) QueryIpRange(params *param.QueryParam) ([]view.IpRangeInven
 	return resp, cli.List("v1/l3-networks/ip-ranges", params, &resp)
 }
 
-func (cli *ZSClient) GetIpRange(uuid string) (*view.IpRangeInventoryView, error) {
-	var resp view.IpRangeInventoryView
-	if err := cli.Get("v1/l3-networks/ip-ranges", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageIpRange Pagination
+func (cli *ZSClient) PageIpRange(params *param.QueryParam) ([]view.IpRangeInventoryView, int, error) {
+	var ipRanges []view.IpRangeInventoryView
+	total, err := cli.Page("v1/l3-networks/ip-ranges", params, &ipRanges)
+	return ipRanges, total, err
 }
 // DeleteIpRange deletes IpRange
 func (cli *ZSClient) DeleteIpRange(uuid string, deleteMode param.DeleteMode) error {

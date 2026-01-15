@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type CdpTaskResourceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TaskUuid *string `json:"taskUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	TaskUuid string `json:"taskUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 

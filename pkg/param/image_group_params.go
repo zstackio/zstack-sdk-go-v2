@@ -14,5 +14,5 @@ type ExpungeImageGroupParamDetail struct {
 // ExpungeImageGroupParam ExpungeImageGroup request param
 type ExpungeImageGroupParam struct {
 	BaseParam
-	Params ExpungeImageGroupParamDetail `json:"params"`
+	ExpungeImageGroup ExpungeImageGroupParamDetail `json:"expungeImageGroup"`
 }

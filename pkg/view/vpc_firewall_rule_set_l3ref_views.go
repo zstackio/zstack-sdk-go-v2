@@ -11,9 +11,9 @@ type VpcFirewallRuleSetL3RefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	RuleSetUuid *string `json:"ruleSetUuid,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	VpcFirewallUuid *string `json:"vpcFirewallUuid,omitempty"`
+	RuleSetUuid string `json:"ruleSetUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	VpcFirewallUuid string `json:"vpcFirewallUuid,omitempty"`
 	PacketsForwardType string `json:"packetsForwardType,omitempty"`
 }
 

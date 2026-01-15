@@ -11,8 +11,8 @@ type PolicyRouteRuleSetL3RefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	RuleSetUuid *string `json:"ruleSetUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	RuleSetUuid string `json:"ruleSetUuid,omitempty"`
 }
 
 // QueryPolicyRouteRuleSetL3RefView QueryPolicyRouteRuleSetL3Ref

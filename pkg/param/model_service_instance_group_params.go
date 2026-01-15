@@ -21,7 +21,7 @@ type UpdateModelServiceInstanceGroupParamDetail struct {
 // UpdateModelServiceInstanceGroupParam UpdateModelServiceInstanceGroup request param
 type UpdateModelServiceInstanceGroupParam struct {
 	BaseParam
-	Params UpdateModelServiceInstanceGroupParamDetail `json:"params"`
+	UpdateModelServiceInstanceGroup UpdateModelServiceInstanceGroupParamDetail `json:"updateModelServiceInstanceGroup"`
 }
 // DeleteModelServiceInstanceGroupParamDetail DeleteModelServiceInstanceGroup detail param
 type DeleteModelServiceInstanceGroupParamDetail struct {
@@ -32,5 +32,5 @@ type DeleteModelServiceInstanceGroupParamDetail struct {
 // DeleteModelServiceInstanceGroupParam DeleteModelServiceInstanceGroup request param
 type DeleteModelServiceInstanceGroupParam struct {
 	BaseParam
-	Params DeleteModelServiceInstanceGroupParamDetail `json:"params"`
+	DeleteModelServiceInstanceGroup DeleteModelServiceInstanceGroupParamDetail `json:"deleteModelServiceInstanceGroup"`
 }

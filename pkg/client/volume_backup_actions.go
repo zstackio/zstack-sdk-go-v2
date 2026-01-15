@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateVolumeBackup creates VolumeBackup
 func (cli *ZSClient) CreateVolumeBackup(params param.CreateVolumeBackupParam) (*view.VolumeBackupInventoryView, error) {
-	var resp view.CreateVolumeBackupEventView
+	resp := view.VolumeBackupInventoryView{}
 	if err := cli.Post("v1/volumes/{volumeUuid}/volume-backups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 
 // CreateVolumeBackupAsync Async
@@ -34,9 +34,9 @@ func (cli *ZSClient) CreateVolumeBackupAsync(params param.CreateVolumeBackupPara
 	return apiId, nil
 }
 // SyncVolumeBackup operates on VolumeBackup
-func (cli *ZSClient) SyncVolumeBackup(uuid string, params param.SyncVolumeBackupParam) (*view.VolumeBackupInventoryView, error) {
+func (cli *ZSClient) SyncVolumeBackup(imageStoreUuid string, params param.SyncVolumeBackupParam) (*view.VolumeBackupInventoryView, error) {
 	resp := view.VolumeBackupInventoryView{}
-	if err := cli.Put("v1/volume-backups/imageStore", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/volume-backups/imageStore", imageStoreUuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -47,12 +47,11 @@ func (cli *ZSClient) QueryVolumeBackup(params *param.QueryParam) ([]view.VolumeB
 	return resp, cli.List("v1/volume-backups", params, &resp)
 }
 
-func (cli *ZSClient) GetVolumeBackup(uuid string) (*view.VolumeBackupInventoryView, error) {
-	var resp view.VolumeBackupInventoryView
-	if err := cli.Get("v1/volume-backups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVolumeBackup Pagination
+func (cli *ZSClient) PageVolumeBackup(params *param.QueryParam) ([]view.VolumeBackupInventoryView, int, error) {
+	var volumeBackups []view.VolumeBackupInventoryView
+	total, err := cli.Page("v1/volume-backups", params, &volumeBackups)
+	return volumeBackups, total, err
 }
 // DeleteVolumeBackup deletes VolumeBackup
 func (cli *ZSClient) DeleteVolumeBackup(uuid string, deleteMode param.DeleteMode) error {

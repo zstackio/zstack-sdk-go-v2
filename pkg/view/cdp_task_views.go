@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type CdpTaskInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	PolicyUuid *string `json:"policyUuid,omitempty"`
-	BackupStorageUuid *string `json:"backupStorageUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	PolicyUuid string `json:"policyUuid,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
 	Status string `json:"status,omitempty"`
 	State string `json:"state,omitempty"`
 	TaskType string `json:"taskType,omitempty"`

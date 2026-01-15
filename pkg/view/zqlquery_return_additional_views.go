@@ -11,7 +11,7 @@ type ZQLQueryReturnView struct {
 	Inventories ListView `json:"inventories,omitempty"`
 	InventoryCounts map[string]int64 `json:"inventoryCounts,omitempty"`
 	InventoryAggregateFunctions map[string]interface{} `json:"inventoryAggregateFunctions,omitempty"`
-	Total *int64 `json:"total,omitempty"`
+	Total int64 `json:"total,omitempty"`
 	ReturnWith interface{} `json:"returnWith,omitempty"`
 	Name string `json:"name,omitempty"`
 }

@@ -18,7 +18,7 @@ type UpdatePciDeviceParamDetail struct {
 // UpdatePciDeviceParam UpdatePciDevice request param
 type UpdatePciDeviceParam struct {
 	BaseParam
-	Params UpdatePciDeviceParamDetail `json:"params"`
+	UpdatePciDevice UpdatePciDeviceParamDetail `json:"updatePciDevice"`
 }
 // DeletePciDeviceParamDetail DeletePciDevice detail param
 type DeletePciDeviceParamDetail struct {
@@ -29,5 +29,5 @@ type DeletePciDeviceParamDetail struct {
 // DeletePciDeviceParam DeletePciDevice request param
 type DeletePciDeviceParam struct {
 	BaseParam
-	Params DeletePciDeviceParamDetail `json:"params"`
+	DeletePciDevice DeletePciDeviceParamDetail `json:"deletePciDevice"`
 }

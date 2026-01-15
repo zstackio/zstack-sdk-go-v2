@@ -12,17 +12,17 @@ var _ = view.MapView{} // avoid unused import
 
 // AddAliyunNasFileSystem adds AliyunNasFileSystem
 func (cli *ZSClient) AddAliyunNasFileSystem(params param.AddAliyunNasFileSystemParam) (*view.AliyunNasFileSystemInventoryView, error) {
-	var resp view.AddAliyunNasFileSystemEventView
+	resp := view.AliyunNasFileSystemInventoryView{}
 	if err := cli.Post("v1/nas/aliyun", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateAliyunNasFileSystem creates AliyunNasFileSystem
 func (cli *ZSClient) CreateAliyunNasFileSystem(params param.CreateAliyunNasFileSystemParam) (*view.NasFileSystemInventoryView, error) {
-	var resp view.CreateNasFileSystemEventView
+	resp := view.NasFileSystemInventoryView{}
 	if err := cli.Post("v1/nas/aliyun", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

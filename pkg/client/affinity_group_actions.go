@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateAffinityGroup updates AffinityGroup
 func (cli *ZSClient) UpdateAffinityGroup(uuid string, params param.UpdateAffinityGroupParam) (*view.AffinityGroupInventoryView, error) {
-	var resp view.UpdateAffinityGroupEventView
+	resp := view.AffinityGroupInventoryView{}
 	if err := cli.Put("v1/affinity-groups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteAffinityGroup deletes AffinityGroup
 func (cli *ZSClient) DeleteAffinityGroup(uuid string, deleteMode param.DeleteMode) error {
@@ -24,11 +24,11 @@ func (cli *ZSClient) DeleteAffinityGroup(uuid string, deleteMode param.DeleteMod
 }
 // CreateAffinityGroup creates AffinityGroup
 func (cli *ZSClient) CreateAffinityGroup(params param.CreateAffinityGroupParam) (*view.AffinityGroupInventoryView, error) {
-	var resp view.CreateAffinityGroupEventView
+	resp := view.AffinityGroupInventoryView{}
 	if err := cli.Post("v1/affinity-groups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryAffinityGroup queries AffinityGroup list
 func (cli *ZSClient) QueryAffinityGroup(params *param.QueryParam) ([]view.AffinityGroupInventoryView, error) {
@@ -36,10 +36,9 @@ func (cli *ZSClient) QueryAffinityGroup(params *param.QueryParam) ([]view.Affini
 	return resp, cli.List("v1/affinity-groups", params, &resp)
 }
 
-func (cli *ZSClient) GetAffinityGroup(uuid string) (*view.AffinityGroupInventoryView, error) {
-	var resp view.AffinityGroupInventoryView
-	if err := cli.Get("v1/affinity-groups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageAffinityGroup Pagination
+func (cli *ZSClient) PageAffinityGroup(params *param.QueryParam) ([]view.AffinityGroupInventoryView, int, error) {
+	var affinityGroups []view.AffinityGroupInventoryView
+	total, err := cli.Page("v1/affinity-groups", params, &affinityGroups)
+	return affinityGroups, total, err
 }

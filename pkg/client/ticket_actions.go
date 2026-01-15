@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateTicket creates Ticket
 func (cli *ZSClient) CreateTicket(params param.CreateTicketParam) (*view.TicketInventoryView, error) {
-	var resp view.CreateTicketEventView
+	resp := view.TicketInventoryView{}
 	if err := cli.Post("v1/tickets", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteTicket deletes Ticket
 func (cli *ZSClient) DeleteTicket(uuid string, deleteMode param.DeleteMode) error {
@@ -28,10 +28,9 @@ func (cli *ZSClient) QueryTicket(params *param.QueryParam) ([]view.TicketInvento
 	return resp, cli.List("v1/tickets", params, &resp)
 }
 
-func (cli *ZSClient) GetTicket(uuid string) (*view.TicketInventoryView, error) {
-	var resp view.TicketInventoryView
-	if err := cli.Get("v1/tickets", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageTicket Pagination
+func (cli *ZSClient) PageTicket(params *param.QueryParam) ([]view.TicketInventoryView, int, error) {
+	var tickets []view.TicketInventoryView
+	total, err := cli.Page("v1/tickets", params, &tickets)
+	return tickets, total, err
 }

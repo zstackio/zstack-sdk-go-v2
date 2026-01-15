@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type PolicyRouteTableRouteEntryInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TableUuid *string `json:"tableUuid,omitempty"`
-	DestinationCidr *string `json:"destinationCidr,omitempty"`
-	NextHopIp *string `json:"nextHopIp,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
+	DestinationCidr string `json:"destinationCidr,omitempty"`
+	NextHopIp string `json:"nextHopIp,omitempty"`
 	Distance int `json:"distance,omitempty"`
 }
 

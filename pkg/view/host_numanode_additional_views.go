@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type HostNUMANodeView struct {
 	Distance []string `json:"distance,omitempty"`
 	Cpus []string `json:"cpus,omitempty"`
-	Free *int64 `json:"free,omitempty"`
-	Size *int64 `json:"size,omitempty"`
-	NodeID *string `json:"nodeID,omitempty"`
+	Free int64 `json:"free,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	NodeID string `json:"nodeID,omitempty"`
 	VMsUuid []string `json:"VMsUuid,omitempty"`
 }
 

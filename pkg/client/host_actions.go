@@ -12,19 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // ReconnectHost operates on Host
 func (cli *ZSClient) ReconnectHost(uuid string, params param.ReconnectHostParam) (*view.HostInventoryView, error) {
-	var resp view.ReconnectHostEventView
+	resp := view.HostInventoryView{}
 	if err := cli.Put("v1/hosts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateHost updates Host
 func (cli *ZSClient) UpdateHost(uuid string, params param.UpdateHostParam) (*view.HostInventoryView, error) {
-	var resp view.UpdateHostEventView
+	resp := view.HostInventoryView{}
 	if err := cli.Put("v1/hosts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteHost deletes Host
 func (cli *ZSClient) DeleteHost(uuid string, deleteMode param.DeleteMode) error {
@@ -36,10 +36,9 @@ func (cli *ZSClient) QueryHost(params *param.QueryParam) ([]view.HostInventoryVi
 	return resp, cli.List("v1/hosts", params, &resp)
 }
 
-func (cli *ZSClient) GetHost(uuid string) (*view.HostInventoryView, error) {
-	var resp view.HostInventoryView
-	if err := cli.Get("v1/hosts", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageHost Pagination
+func (cli *ZSClient) PageHost(params *param.QueryParam) ([]view.HostInventoryView, int, error) {
+	var hosts []view.HostInventoryView
+	total, err := cli.Page("v1/hosts", params, &hosts)
+	return hosts, total, err
 }

@@ -18,5 +18,5 @@ type UpdateSharedBlockParamDetail struct {
 // UpdateSharedBlockParam UpdateSharedBlock request param
 type UpdateSharedBlockParam struct {
 	BaseParam
-	Params UpdateSharedBlockParamDetail `json:"params"`
+	UpdateSharedBlock UpdateSharedBlockParamDetail `json:"updateSharedBlock"`
 }

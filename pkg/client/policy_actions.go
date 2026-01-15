@@ -20,18 +20,17 @@ func (cli *ZSClient) QueryPolicy(params *param.QueryParam) ([]view.PolicyInvento
 	return resp, cli.List("v1/accounts/policies", params, &resp)
 }
 
-func (cli *ZSClient) GetPolicy(uuid string) (*view.PolicyInventoryView, error) {
-	var resp view.PolicyInventoryView
-	if err := cli.Get("v1/accounts/policies", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PagePolicy Pagination
+func (cli *ZSClient) PagePolicy(params *param.QueryParam) ([]view.PolicyInventoryView, int, error) {
+	var policies []view.PolicyInventoryView
+	total, err := cli.Page("v1/accounts/policies", params, &policies)
+	return policies, total, err
 }
 // CreatePolicy creates Policy
 func (cli *ZSClient) CreatePolicy(params param.CreatePolicyParam) (*view.PolicyInventoryView, error) {
-	var resp view.CreatePolicyEventView
+	resp := view.PolicyInventoryView{}
 	if err := cli.Post("v1/accounts/policies", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

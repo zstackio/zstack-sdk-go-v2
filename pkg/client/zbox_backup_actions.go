@@ -16,20 +16,19 @@ func (cli *ZSClient) QueryZBoxBackup(params *param.QueryParam) ([]view.ZBoxBacku
 	return resp, cli.List("v1/externalbackup/zbox", params, &resp)
 }
 
-func (cli *ZSClient) GetZBoxBackup(uuid string) (*view.ZBoxBackupInventoryView, error) {
-	var resp view.ZBoxBackupInventoryView
-	if err := cli.Get("v1/externalbackup/zbox", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageZBoxBackup Pagination
+func (cli *ZSClient) PageZBoxBackup(params *param.QueryParam) ([]view.ZBoxBackupInventoryView, int, error) {
+	var zBoxBackups []view.ZBoxBackupInventoryView
+	total, err := cli.Page("v1/externalbackup/zbox", params, &zBoxBackups)
+	return zBoxBackups, total, err
 }
 // CreateZBoxBackup creates ZBoxBackup
 func (cli *ZSClient) CreateZBoxBackup(params param.CreateZBoxBackupParam) (*view.ExternalBackupInventoryView, error) {
-	var resp view.CreateExternalBackupEventView
+	resp := view.ExternalBackupInventoryView{}
 	if err := cli.Post("v1/externalbackup/zbox", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 
 // CreateZBoxBackupAsync Async

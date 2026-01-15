@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type OssBucketInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	BucketName *string `json:"bucketName,omitempty"`
-	DataCenterUuid *string `json:"dataCenterUuid,omitempty"`
-	Current *string `json:"current,omitempty"`
-	RegionName *string `json:"regionName,omitempty"`
-	Description *string `json:"description,omitempty"`
+	BucketName string `json:"bucketName,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	Current string `json:"current,omitempty"`
+	RegionName string `json:"regionName,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // CreateOssBucketRemoteEventView CreateOssBucketRemoteEvent

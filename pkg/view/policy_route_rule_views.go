@@ -11,12 +11,12 @@ type PolicyRouteRuleInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	RuleNumber int `json:"ruleNumber,omitempty"`
-	RuleSetUuid *string `json:"ruleSetUuid,omitempty"`
-	TableUuid *string `json:"tableUuid,omitempty"`
-	DestIp *string `json:"destIp,omitempty"`
-	SourceIp *string `json:"sourceIp,omitempty"`
-	DestPort *string `json:"destPort,omitempty"`
-	SourcePort *string `json:"sourcePort,omitempty"`
+	RuleSetUuid string `json:"ruleSetUuid,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
+	DestIp string `json:"destIp,omitempty"`
+	SourceIp string `json:"sourceIp,omitempty"`
+	DestPort string `json:"destPort,omitempty"`
+	SourcePort string `json:"sourcePort,omitempty"`
 	Protocol string `json:"protocol,omitempty"`
 	State string `json:"state,omitempty"`
 }

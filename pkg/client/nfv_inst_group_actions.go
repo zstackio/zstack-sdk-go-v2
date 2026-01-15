@@ -12,27 +12,27 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateNfvInstGroup creates NfvInstGroup
 func (cli *ZSClient) CreateNfvInstGroup(params param.CreateNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
-	var resp view.CreateNfvInstGroupEventView
+	resp := view.NfvInstGroupInventoryView{}
 	if err := cli.Post("v1/nfvinstgroup/group", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // SyncNfvInstGroup operates on NfvInstGroup
 func (cli *ZSClient) SyncNfvInstGroup(uuid string, params param.SyncNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
-	var resp view.SyncNfvInstGroupEventView
+	resp := view.NfvInstGroupInventoryView{}
 	if err := cli.Put("v1/nfvinstgroup/group", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateNfvInstGroup updates NfvInstGroup
 func (cli *ZSClient) UpdateNfvInstGroup(uuid string, params param.UpdateNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
-	var resp view.UpdateNfvInstGroupEventView
+	resp := view.NfvInstGroupInventoryView{}
 	if err := cli.Put("v1/nfvinstgroup/group", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteNfvInstGroup deletes NfvInstGroup
 func (cli *ZSClient) DeleteNfvInstGroup(uuid string, deleteMode param.DeleteMode) error {
@@ -44,10 +44,9 @@ func (cli *ZSClient) QueryNfvInstGroup(params *param.QueryParam) ([]view.NfvInst
 	return resp, cli.List("v1/nfvinstgroup/group", params, &resp)
 }
 
-func (cli *ZSClient) GetNfvInstGroup(uuid string) (*view.NfvInstGroupInventoryView, error) {
-	var resp view.NfvInstGroupInventoryView
-	if err := cli.Get("v1/nfvinstgroup/group", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageNfvInstGroup Pagination
+func (cli *ZSClient) PageNfvInstGroup(params *param.QueryParam) ([]view.NfvInstGroupInventoryView, int, error) {
+	var nfvInstGroups []view.NfvInstGroupInventoryView
+	total, err := cli.Page("v1/nfvinstgroup/group", params, &nfvInstGroups)
+	return nfvInstGroups, total, err
 }

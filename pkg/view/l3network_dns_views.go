@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type L3NetworkDnsInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	Dns *string `json:"dns,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Dns string `json:"dns,omitempty"`
 }
 

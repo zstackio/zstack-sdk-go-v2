@@ -21,7 +21,7 @@ type CreateSNSHttpEndpointParamDetail struct {
 // CreateSNSHttpEndpointParam CreateSNSHttpEndpoint request param
 type CreateSNSHttpEndpointParam struct {
 	BaseParam
-	Params CreateSNSHttpEndpointParamDetail `json:"params"`
+	CreateSNSHttpEndpoint CreateSNSHttpEndpointParamDetail `json:"createSNSHttpEndpoint"`
 }
 // UpdateSNSHttpEndpointParamDetail UpdateSNSHttpEndpoint detail param
 type UpdateSNSHttpEndpointParamDetail struct {
@@ -37,5 +37,5 @@ type UpdateSNSHttpEndpointParamDetail struct {
 // UpdateSNSHttpEndpointParam UpdateSNSHttpEndpoint request param
 type UpdateSNSHttpEndpointParam struct {
 	BaseParam
-	Params UpdateSNSHttpEndpointParamDetail `json:"params"`
+	UpdateSNSHttpEndpoint UpdateSNSHttpEndpointParamDetail `json:"updateSNSHttpEndpoint"`
 }

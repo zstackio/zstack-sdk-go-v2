@@ -12,19 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateAccessControlList creates AccessControlList
 func (cli *ZSClient) CreateAccessControlList(params param.CreateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
-	var resp view.CreateAccessControlListEventView
+	resp := view.AccessControlListInventoryView{}
 	if err := cli.Post("v1/access-control-lists", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateAccessControlList updates AccessControlList
 func (cli *ZSClient) UpdateAccessControlList(uuid string, params param.UpdateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
-	var resp view.UpdateAccessControlListEventView
+	resp := view.AccessControlListInventoryView{}
 	if err := cli.Put("v1/access-control-lists", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryAccessControlList queries AccessControlList list
 func (cli *ZSClient) QueryAccessControlList(params *param.QueryParam) ([]view.AccessControlListInventoryView, error) {
@@ -32,12 +32,11 @@ func (cli *ZSClient) QueryAccessControlList(params *param.QueryParam) ([]view.Ac
 	return resp, cli.List("v1/access-control-lists", params, &resp)
 }
 
-func (cli *ZSClient) GetAccessControlList(uuid string) (*view.AccessControlListInventoryView, error) {
-	var resp view.AccessControlListInventoryView
-	if err := cli.Get("v1/access-control-lists", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageAccessControlList Pagination
+func (cli *ZSClient) PageAccessControlList(params *param.QueryParam) ([]view.AccessControlListInventoryView, int, error) {
+	var accessControlLists []view.AccessControlListInventoryView
+	total, err := cli.Page("v1/access-control-lists", params, &accessControlLists)
+	return accessControlLists, total, err
 }
 // DeleteAccessControlList deletes AccessControlList
 func (cli *ZSClient) DeleteAccessControlList(uuid string, deleteMode param.DeleteMode) error {

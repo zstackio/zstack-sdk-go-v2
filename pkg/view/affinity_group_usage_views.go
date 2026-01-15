@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type AffinityGroupUsageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AffinityGroupUuid *string `json:"affinityGroupUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	AffinityGroupUuid string `json:"affinityGroupUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 

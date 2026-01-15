@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type VipQosInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VipUuid *string `json:"vipUuid,omitempty"`
-	Port *int `json:"port,omitempty"`
-	InboundBandwidth *int64 `json:"inboundBandwidth,omitempty"`
-	OutboundBandwidth *int64 `json:"outboundBandwidth,omitempty"`
-	Type *string `json:"type,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	Port int `json:"port,omitempty"`
+	InboundBandwidth int64 `json:"inboundBandwidth,omitempty"`
+	OutboundBandwidth int64 `json:"outboundBandwidth,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // DeleteVipQosEventView DeleteVipQosEvent

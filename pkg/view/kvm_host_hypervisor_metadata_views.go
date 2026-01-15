@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type KvmHostHypervisorMetadataInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	CategoryUuid *string `json:"categoryUuid,omitempty"`
-	ManagementNodeUuid *string `json:"managementNodeUuid,omitempty"`
-	Hypervisor *string `json:"hypervisor,omitempty"`
-	Version *string `json:"version,omitempty"`
+	CategoryUuid string `json:"categoryUuid,omitempty"`
+	ManagementNodeUuid string `json:"managementNodeUuid,omitempty"`
+	Hypervisor string `json:"hypervisor,omitempty"`
+	Version string `json:"version,omitempty"`
 }
 

@@ -16,5 +16,5 @@ type DeleteHuaweiIMasterTenantParamDetail struct {
 // DeleteHuaweiIMasterTenantParam DeleteHuaweiIMasterTenant request param
 type DeleteHuaweiIMasterTenantParam struct {
 	BaseParam
-	Params DeleteHuaweiIMasterTenantParamDetail `json:"params"`
+	DeleteHuaweiIMasterTenant DeleteHuaweiIMasterTenantParamDetail `json:"deleteHuaweiIMasterTenant"`
 }

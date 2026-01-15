@@ -20,26 +20,25 @@ func (cli *ZSClient) QueryResourceStack(params *param.QueryParam) ([]view.Resour
 	return resp, cli.List("v1/cloudformation/stack", params, &resp)
 }
 
-func (cli *ZSClient) GetResourceStack(uuid string) (*view.ResourceStackInventoryView, error) {
-	var resp view.ResourceStackInventoryView
-	if err := cli.Get("v1/cloudformation/stack", uuid, nil, &resp); err != nil {
+// PageResourceStack Pagination
+func (cli *ZSClient) PageResourceStack(params *param.QueryParam) ([]view.ResourceStackInventoryView, int, error) {
+	var resourceStacks []view.ResourceStackInventoryView
+	total, err := cli.Page("v1/cloudformation/stack", params, &resourceStacks)
+	return resourceStacks, total, err
+}
+// CreateResourceStack creates ResourceStack
+func (cli *ZSClient) CreateResourceStack(params param.CreateResourceStackParam) (*view.ResourceStackInventoryView, error) {
+	resp := view.ResourceStackInventoryView{}
+	if err := cli.Post("v1/cloudformation/stack", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// CreateResourceStack creates ResourceStack
-func (cli *ZSClient) CreateResourceStack(params param.CreateResourceStackParam) (*view.ResourceStackInventoryView, error) {
-	var resp view.CreateResourceStackEventView
-	if err := cli.Post("v1/cloudformation/stack", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // UpdateResourceStack updates ResourceStack
 func (cli *ZSClient) UpdateResourceStack(uuid string, params param.UpdateResourceStackParam) (*view.ResourceStackInventoryView, error) {
-	var resp view.UpdateResourceStackEventView
+	resp := view.ResourceStackInventoryView{}
 	if err := cli.Put("v1/cloudformation/stack", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

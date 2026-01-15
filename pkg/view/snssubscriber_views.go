@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type SNSSubscriberInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TopicUuid *string `json:"topicUuid,omitempty"`
-	EndpointUuid *string `json:"endpointUuid,omitempty"`
+	TopicUuid string `json:"topicUuid,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
 }
 
 // QuerySNSTopicSubscriberView QuerySNSTopicSubscriber

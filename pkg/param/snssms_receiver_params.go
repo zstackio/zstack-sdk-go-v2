@@ -20,7 +20,7 @@ type AddSNSSmsReceiverParamDetail struct {
 // AddSNSSmsReceiverParam AddSNSSmsReceiver request param
 type AddSNSSmsReceiverParam struct {
 	BaseParam
-	Params AddSNSSmsReceiverParamDetail `json:"params"`
+	AddSNSSmsReceiver AddSNSSmsReceiverParamDetail `json:"addSNSSmsReceiver"`
 }
 // RemoveSNSSmsReceiverParamDetail RemoveSNSSmsReceiver detail param
 type RemoveSNSSmsReceiverParamDetail struct {
@@ -33,5 +33,5 @@ type RemoveSNSSmsReceiverParamDetail struct {
 // RemoveSNSSmsReceiverParam RemoveSNSSmsReceiver request param
 type RemoveSNSSmsReceiverParam struct {
 	BaseParam
-	Params RemoveSNSSmsReceiverParamDetail `json:"params"`
+	RemoveSNSSmsReceiver RemoveSNSSmsReceiverParamDetail `json:"removeSNSSmsReceiver"`
 }

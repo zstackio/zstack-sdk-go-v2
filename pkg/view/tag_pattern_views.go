@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type TagPatternInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Value *string `json:"value,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Color *string `json:"color,omitempty"`
+	Value string `json:"value,omitempty"`
+	Description string `json:"description,omitempty"`
+	Color string `json:"color,omitempty"`
 	Type string `json:"type,omitempty"`
 }
 

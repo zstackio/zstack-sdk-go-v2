@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type MdevDeviceSpecInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Specification *string `json:"specification,omitempty"`
+	Description string `json:"description,omitempty"`
+	Specification string `json:"specification,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
-	Vendor *string `json:"vendor,omitempty"`
-	MaxAvailableDevicesPerHost *int `json:"maxAvailableDevicesPerHost,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
 }
 
 // UpdateMdevDeviceSpecEventView UpdateMdevDeviceSpecEvent

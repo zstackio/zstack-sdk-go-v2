@@ -20,7 +20,7 @@ type AddV2VConversionHostParamDetail struct {
 // AddV2VConversionHostParam AddV2VConversionHost request param
 type AddV2VConversionHostParam struct {
 	BaseParam
-	Params AddV2VConversionHostParamDetail `json:"params"`
+	AddV2VConversionHost AddV2VConversionHostParamDetail `json:"addV2VConversionHost"`
 }
 // UpdateV2VConversionHostParamDetail UpdateV2VConversionHost detail param
 type UpdateV2VConversionHostParamDetail struct {
@@ -33,7 +33,7 @@ type UpdateV2VConversionHostParamDetail struct {
 // UpdateV2VConversionHostParam UpdateV2VConversionHost request param
 type UpdateV2VConversionHostParam struct {
 	BaseParam
-	Params UpdateV2VConversionHostParamDetail `json:"params"`
+	UpdateV2VConversionHost UpdateV2VConversionHostParamDetail `json:"updateV2VConversionHost"`
 }
 // DeleteV2VConversionHostParamDetail DeleteV2VConversionHost detail param
 type DeleteV2VConversionHostParamDetail struct {
@@ -44,5 +44,5 @@ type DeleteV2VConversionHostParamDetail struct {
 // DeleteV2VConversionHostParam DeleteV2VConversionHost request param
 type DeleteV2VConversionHostParam struct {
 	BaseParam
-	Params DeleteV2VConversionHostParamDetail `json:"params"`
+	DeleteV2VConversionHost DeleteV2VConversionHostParamDetail `json:"deleteV2VConversionHost"`
 }

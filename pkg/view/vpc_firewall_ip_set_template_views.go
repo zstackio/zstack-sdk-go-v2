@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type VpcFirewallIpSetTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SourceValue *string `json:"sourceValue,omitempty"`
-	DestValue *string `json:"destValue,omitempty"`
+	SourceValue string `json:"sourceValue,omitempty"`
+	DestValue string `json:"destValue,omitempty"`
 	Type string `json:"type,omitempty"`
-	AccountUuid *string `json:"accountUuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
 }
 
 // CreateFirewallIpSetTemplateEventView CreateFirewallIpSetTemplateEvent

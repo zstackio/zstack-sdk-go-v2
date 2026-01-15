@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type RemoteVtepInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
-	VtepIp *string `json:"vtepIp,omitempty"`
-	Port *int `json:"port,omitempty"`
-	Type *string `json:"type,omitempty"`
-	PoolUuid *string `json:"poolUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	VtepIp string `json:"vtepIp,omitempty"`
+	Port int `json:"port,omitempty"`
+	Type string `json:"type,omitempty"`
+	PoolUuid string `json:"poolUuid,omitempty"`
 }
 
 // CreateVxlanPoolRemoteVtepEventView CreateVxlanPoolRemoteVtepEvent

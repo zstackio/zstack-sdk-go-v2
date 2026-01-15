@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type LogServerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	Category string `json:"category,omitempty"`
 	Type string `json:"type,omitempty"`
 	Level string `json:"level,omitempty"`
-	Configuration *string `json:"configuration,omitempty"`
+	Configuration string `json:"configuration,omitempty"`
 }
 
 // UpdateLogServerEventView UpdateLogServerEvent

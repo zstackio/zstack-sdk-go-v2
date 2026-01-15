@@ -16,19 +16,19 @@ func (cli *ZSClient) DeleteDiskOffering(uuid string, deleteMode param.DeleteMode
 }
 // CreateDiskOffering creates DiskOffering
 func (cli *ZSClient) CreateDiskOffering(params param.CreateDiskOfferingParam) (*view.DiskOfferingInventoryView, error) {
-	var resp view.CreateDiskOfferingEventView
+	resp := view.DiskOfferingInventoryView{}
 	if err := cli.Post("v1/disk-offerings", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateDiskOffering updates DiskOffering
 func (cli *ZSClient) UpdateDiskOffering(uuid string, params param.UpdateDiskOfferingParam) (*view.DiskOfferingInventoryView, error) {
-	var resp view.UpdateDiskOfferingEventView
+	resp := view.DiskOfferingInventoryView{}
 	if err := cli.Put("v1/disk-offerings", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryDiskOffering queries DiskOffering list
 func (cli *ZSClient) QueryDiskOffering(params *param.QueryParam) ([]view.DiskOfferingInventoryView, error) {
@@ -36,10 +36,9 @@ func (cli *ZSClient) QueryDiskOffering(params *param.QueryParam) ([]view.DiskOff
 	return resp, cli.List("v1/disk-offerings", params, &resp)
 }
 
-func (cli *ZSClient) GetDiskOffering(uuid string) (*view.DiskOfferingInventoryView, error) {
-	var resp view.DiskOfferingInventoryView
-	if err := cli.Get("v1/disk-offerings", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageDiskOffering Pagination
+func (cli *ZSClient) PageDiskOffering(params *param.QueryParam) ([]view.DiskOfferingInventoryView, int, error) {
+	var diskOfferings []view.DiskOfferingInventoryView
+	total, err := cli.Page("v1/disk-offerings", params, &diskOfferings)
+	return diskOfferings, total, err
 }

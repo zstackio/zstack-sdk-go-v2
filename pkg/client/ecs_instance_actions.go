@@ -40,9 +40,9 @@ func (cli *ZSClient) RebootEcsInstance(uuid string, params param.RebootEcsInstan
 }
 // UpdateEcsInstance updates EcsInstance
 func (cli *ZSClient) UpdateEcsInstance(uuid string, params param.UpdateEcsInstanceParam) (*view.EcsInstanceInventoryView, error) {
-	var resp view.UpdateEcsInstanceEventView
+	resp := view.EcsInstanceInventoryView{}
 	if err := cli.Put("v1/hybrid/aliyun", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

@@ -12,9 +12,9 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateAiSiNoSecretResourcePool creates AiSiNoSecretResourcePool
 func (cli *ZSClient) CreateAiSiNoSecretResourcePool(params param.CreateAiSiNoSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.CreateSecretResourcePoolEventView
+	resp := view.SecretResourcePoolInventoryView{}
 	if err := cli.Post("v1/secret-resource-pool/aisino", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

@@ -19,7 +19,7 @@ type PublishAppParamDetail struct {
 // PublishAppParam PublishApp request param
 type PublishAppParam struct {
 	BaseParam
-	Params PublishAppParamDetail `json:"params"`
+	PublishApp PublishAppParamDetail `json:"publishApp"`
 }
 // UpdatePublishAppParamDetail UpdatePublishApp detail param
 type UpdatePublishAppParamDetail struct {
@@ -31,7 +31,7 @@ type UpdatePublishAppParamDetail struct {
 // UpdatePublishAppParam UpdatePublishApp request param
 type UpdatePublishAppParam struct {
 	BaseParam
-	Params UpdatePublishAppParamDetail `json:"params"`
+	UpdatePublishApp UpdatePublishAppParamDetail `json:"updatePublishApp"`
 }
 // DeletePublishAppParamDetail DeletePublishApp detail param
 type DeletePublishAppParamDetail struct {
@@ -42,5 +42,5 @@ type DeletePublishAppParamDetail struct {
 // DeletePublishAppParam DeletePublishApp request param
 type DeletePublishAppParam struct {
 	BaseParam
-	Params DeletePublishAppParamDetail `json:"params"`
+	DeletePublishApp DeletePublishAppParamDetail `json:"deletePublishApp"`
 }

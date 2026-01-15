@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type SNSDingTalkAtPersonInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PhoneNumber *string `json:"phoneNumber,omitempty"`
-	EndpointUuid *string `json:"endpointUuid,omitempty"`
-	Remark *string `json:"remark,omitempty"`
+	PhoneNumber string `json:"phoneNumber,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
+	Remark string `json:"remark,omitempty"`
 }
 
 // RemoveSNSDingTalkAtPersonEventView RemoveSNSDingTalkAtPersonEvent

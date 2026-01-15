@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryFiberChannelLun(params *param.QueryParam) ([]view.Fibe
 	return resp, cli.List("v1/storage-devices/fiber-channel/luns", params, &resp)
 }
 
-func (cli *ZSClient) GetFiberChannelLun(uuid string) (*view.FiberChannelLunInventoryView, error) {
-	var resp view.FiberChannelLunInventoryView
-	if err := cli.Get("v1/storage-devices/fiber-channel/luns", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageFiberChannelLun Pagination
+func (cli *ZSClient) PageFiberChannelLun(params *param.QueryParam) ([]view.FiberChannelLunInventoryView, int, error) {
+	var fiberChannelLuns []view.FiberChannelLunInventoryView
+	total, err := cli.Page("v1/storage-devices/fiber-channel/luns", params, &fiberChannelLuns)
+	return fiberChannelLuns, total, err
 }

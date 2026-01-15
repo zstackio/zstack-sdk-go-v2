@@ -29,7 +29,7 @@ type CreateSanSecSecretResourcePoolParamDetail struct {
 // CreateSanSecSecretResourcePoolParam CreateSanSecSecretResourcePool request param
 type CreateSanSecSecretResourcePoolParam struct {
 	BaseParam
-	Params CreateSanSecSecretResourcePoolParamDetail `json:"params"`
+	CreateSanSecSecretResourcePool CreateSanSecSecretResourcePoolParamDetail `json:"createSanSecSecretResourcePool"`
 }
 // UpdateSanSecSecretResourcePoolParamDetail UpdateSanSecSecretResourcePool detail param
 type UpdateSanSecSecretResourcePoolParamDetail struct {
@@ -50,5 +50,5 @@ type UpdateSanSecSecretResourcePoolParamDetail struct {
 // UpdateSanSecSecretResourcePoolParam UpdateSanSecSecretResourcePool request param
 type UpdateSanSecSecretResourcePoolParam struct {
 	BaseParam
-	Params UpdateSanSecSecretResourcePoolParamDetail `json:"params"`
+	UpdateSanSecSecretResourcePool UpdateSanSecSecretResourcePoolParamDetail `json:"updateSanSecSecretResourcePool"`
 }

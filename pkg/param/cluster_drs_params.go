@@ -15,7 +15,7 @@ type DeleteClusterDRSParamDetail struct {
 // DeleteClusterDRSParam DeleteClusterDRS request param
 type DeleteClusterDRSParam struct {
 	BaseParam
-	Params DeleteClusterDRSParamDetail `json:"params"`
+	DeleteClusterDRS DeleteClusterDRSParamDetail `json:"deleteClusterDRS"`
 }
 // CreateClusterDRSParamDetail CreateClusterDRS detail param
 type CreateClusterDRSParamDetail struct {
@@ -33,7 +33,7 @@ type CreateClusterDRSParamDetail struct {
 // CreateClusterDRSParam CreateClusterDRS request param
 type CreateClusterDRSParam struct {
 	BaseParam
-	Params CreateClusterDRSParamDetail `json:"params"`
+	CreateClusterDRS CreateClusterDRSParamDetail `json:"createClusterDRS"`
 }
 // UpdateClusterDRSParamDetail UpdateClusterDRS detail param
 type UpdateClusterDRSParamDetail struct {
@@ -49,5 +49,5 @@ type UpdateClusterDRSParamDetail struct {
 // UpdateClusterDRSParam UpdateClusterDRS request param
 type UpdateClusterDRSParam struct {
 	BaseParam
-	Params UpdateClusterDRSParamDetail `json:"params"`
+	UpdateClusterDRS UpdateClusterDRSParamDetail `json:"updateClusterDRS"`
 }

@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type L2NetworkHostRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	HostUuid *string `json:"hostUuid,omitempty"`
-	L2NetworkUuid *string `json:"l2NetworkUuid,omitempty"`
-	L2ProviderType *string `json:"l2ProviderType,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	L2NetworkUuid string `json:"l2NetworkUuid,omitempty"`
+	L2ProviderType string `json:"l2ProviderType,omitempty"`
 	AttachStatus string `json:"attachStatus,omitempty"`
 }
 

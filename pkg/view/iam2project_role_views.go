@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type IAM2ProjectRoleInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Iam2ProjectRoleType *string `json:"iam2ProjectRoleType,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Identity *string `json:"identity,omitempty"`
+	Iam2ProjectRoleType string `json:"iam2ProjectRoleType,omitempty"`
+	Description string `json:"description,omitempty"`
+	Identity string `json:"identity,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	Statements []RolePolicyStatementInventoryView `json:"statements,omitempty"`

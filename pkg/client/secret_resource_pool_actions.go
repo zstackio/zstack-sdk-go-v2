@@ -16,11 +16,11 @@ func (cli *ZSClient) DeleteSecretResourcePool(uuid string, deleteMode param.Dele
 }
 // UpdateSecretResourcePool updates SecretResourcePool
 func (cli *ZSClient) UpdateSecretResourcePool(uuid string, params param.UpdateSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.UpdateSecretResourcePoolEventView
+	resp := view.SecretResourcePoolInventoryView{}
 	if err := cli.Put("v1/secret-resource-pool", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QuerySecretResourcePool queries SecretResourcePool list
 func (cli *ZSClient) QuerySecretResourcePool(params *param.QueryParam) ([]view.SecretResourcePoolInventoryView, error) {
@@ -28,10 +28,9 @@ func (cli *ZSClient) QuerySecretResourcePool(params *param.QueryParam) ([]view.S
 	return resp, cli.List("v1/secret-resource-pools", params, &resp)
 }
 
-func (cli *ZSClient) GetSecretResourcePool(uuid string) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.SecretResourcePoolInventoryView
-	if err := cli.Get("v1/secret-resource-pools", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSecretResourcePool Pagination
+func (cli *ZSClient) PageSecretResourcePool(params *param.QueryParam) ([]view.SecretResourcePoolInventoryView, int, error) {
+	var secretResourcePools []view.SecretResourcePoolInventoryView
+	total, err := cli.Page("v1/secret-resource-pools", params, &secretResourcePools)
+	return secretResourcePools, total, err
 }

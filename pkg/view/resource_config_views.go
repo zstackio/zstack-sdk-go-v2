@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type ResourceConfigInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Category *string `json:"category,omitempty"`
-	Value *string `json:"value,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	Description string `json:"description,omitempty"`
+	Category string `json:"category,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 
 // QueryResourceConfigView QueryResourceConfig
@@ -24,7 +24,7 @@ type QueryResourceConfigView struct {
 
 // GetResourceConfigView GetResourceConfig
 type GetResourceConfigView struct {
-	Value *string `json:"value,omitempty"`
+	Value string `json:"value,omitempty"`
 	EffectiveConfigs []ResourceConfigInventoryView `json:"effectiveConfigs,omitempty"`
 	Success bool `json:"success,omitempty"`
 }

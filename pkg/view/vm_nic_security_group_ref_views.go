@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type VmNicSecurityGroupRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Priority *int `json:"priority,omitempty"`
-	VmNicUuid *string `json:"vmNicUuid,omitempty"`
-	SecurityGroupUuid *string `json:"securityGroupUuid,omitempty"`
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	Priority int `json:"priority,omitempty"`
+	VmNicUuid string `json:"vmNicUuid,omitempty"`
+	SecurityGroupUuid string `json:"securityGroupUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 }
 
 // QueryVmNicInSecurityGroupView QueryVmNicInSecurityGroup

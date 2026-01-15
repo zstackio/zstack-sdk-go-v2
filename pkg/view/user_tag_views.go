@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type UserTagInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TagPatternUuid *string `json:"tagPatternUuid,omitempty"`
+	TagPatternUuid string `json:"tagPatternUuid,omitempty"`
 	TagPattern TagPatternInventoryView `json:"tagPattern,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
-	Tag *string `json:"tag,omitempty"`
-	Type *string `json:"type,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	Tag string `json:"tag,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // CreateUserTagEventView CreateUserTagEvent

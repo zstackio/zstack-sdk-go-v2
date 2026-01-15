@@ -14,7 +14,7 @@ type SyncPrimaryStorageCapacityParamDetail struct {
 // SyncPrimaryStorageCapacityParam SyncPrimaryStorageCapacity request param
 type SyncPrimaryStorageCapacityParam struct {
 	BaseParam
-	Params SyncPrimaryStorageCapacityParamDetail `json:"params"`
+	SyncPrimaryStorageCapacity SyncPrimaryStorageCapacityParamDetail `json:"syncPrimaryStorageCapacity"`
 }
 // GetPrimaryStorageCapacityParamDetail GetPrimaryStorageCapacity detail param
 type GetPrimaryStorageCapacityParamDetail struct {
@@ -27,5 +27,5 @@ type GetPrimaryStorageCapacityParamDetail struct {
 // GetPrimaryStorageCapacityParam GetPrimaryStorageCapacity request param
 type GetPrimaryStorageCapacityParam struct {
 	BaseParam
-	Params GetPrimaryStorageCapacityParamDetail `json:"params"`
+	GetPrimaryStorageCapacity GetPrimaryStorageCapacityParamDetail `json:"getPrimaryStorageCapacity"`
 }

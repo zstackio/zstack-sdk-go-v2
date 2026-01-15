@@ -10,18 +10,13 @@ var _ = time.Now // avoid unused import
 type SNSMicrosoftTeamsEndpointInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Url *string `json:"url,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
-	PlatformUuid *string `json:"platformUuid,omitempty"`
-	ConnectionStatus *string `json:"connectionStatus,omitempty"`
+	Url string `json:"url,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	PlatformUuid string `json:"platformUuid,omitempty"`
+	ConnectionStatus string `json:"connectionStatus,omitempty"`
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
-}
-
-// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
-type UpdateSNSApplicationEndpointEventView struct {
-	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
 }
 
 // CreateSNSMicrosoftTeamsEndpointEventView CreateSNSMicrosoftTeamsEndpointEvent

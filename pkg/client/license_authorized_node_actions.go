@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryLicenseAuthorizedNode(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/license-servers", params, &resp)
 }
 
-func (cli *ZSClient) GetLicenseAuthorizedNode(uuid string) (*view.LicenseAuthorizedNodeInventoryView, error) {
-	var resp view.LicenseAuthorizedNodeInventoryView
-	if err := cli.Get("v1/license-servers", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageLicenseAuthorizedNode Pagination
+func (cli *ZSClient) PageLicenseAuthorizedNode(params *param.QueryParam) ([]view.LicenseAuthorizedNodeInventoryView, int, error) {
+	var licenseAuthorizedNodes []view.LicenseAuthorizedNodeInventoryView
+	total, err := cli.Page("v1/license-servers", params, &licenseAuthorizedNodes)
+	return licenseAuthorizedNodes, total, err
 }

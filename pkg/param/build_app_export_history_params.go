@@ -17,5 +17,5 @@ type DeleteBuildAppExportHistoryParamDetail struct {
 // DeleteBuildAppExportHistoryParam DeleteBuildAppExportHistory request param
 type DeleteBuildAppExportHistoryParam struct {
 	BaseParam
-	Params DeleteBuildAppExportHistoryParamDetail `json:"params"`
+	DeleteBuildAppExportHistory DeleteBuildAppExportHistoryParamDetail `json:"deleteBuildAppExportHistory"`
 }

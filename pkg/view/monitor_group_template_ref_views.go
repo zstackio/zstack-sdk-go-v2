@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type MonitorGroupTemplateRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TemplateUuid *string `json:"templateUuid,omitempty"`
-	GroupUuid *string `json:"groupUuid,omitempty"`
+	TemplateUuid string `json:"templateUuid,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
 	IsApplied bool `json:"isApplied,omitempty"`
 }
 

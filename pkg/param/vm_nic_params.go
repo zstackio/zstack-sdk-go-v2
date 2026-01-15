@@ -17,7 +17,7 @@ type CreateVmNicParamDetail struct {
 // CreateVmNicParam CreateVmNic request param
 type CreateVmNicParam struct {
 	BaseParam
-	Params CreateVmNicParamDetail `json:"params"`
+	CreateVmNic CreateVmNicParamDetail `json:"createVmNic"`
 }
 // DeleteVmNicParamDetail DeleteVmNic detail param
 type DeleteVmNicParamDetail struct {
@@ -28,5 +28,5 @@ type DeleteVmNicParamDetail struct {
 // DeleteVmNicParam DeleteVmNic request param
 type DeleteVmNicParam struct {
 	BaseParam
-	Params DeleteVmNicParamDetail `json:"params"`
+	DeleteVmNic DeleteVmNicParamDetail `json:"deleteVmNic"`
 }

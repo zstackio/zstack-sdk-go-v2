@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type SlbGroupL3NetworkRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SlbGroupUuid *string `json:"slbGroupUuid,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	L3NetworkCategory *string `json:"l3NetworkCategory,omitempty"`
-	L3NetworkType *string `json:"l3NetworkType,omitempty"`
-	Type *string `json:"type,omitempty"`
+	SlbGroupUuid string `json:"slbGroupUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	L3NetworkCategory string `json:"l3NetworkCategory,omitempty"`
+	L3NetworkType string `json:"l3NetworkType,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 

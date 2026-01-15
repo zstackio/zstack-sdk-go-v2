@@ -12,19 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateSNSTextTemplate updates SNSTextTemplate
 func (cli *ZSClient) UpdateSNSTextTemplate(uuid string, params param.UpdateSNSTextTemplateParam) (*view.SNSTextTemplateInventoryView, error) {
-	var resp view.UpdateSNSTextTemplateEventView
+	resp := view.SNSTextTemplateInventoryView{}
 	if err := cli.Put("v1/zwatch/alarms/sns/text-templates", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateSNSTextTemplate creates SNSTextTemplate
 func (cli *ZSClient) CreateSNSTextTemplate(params param.CreateSNSTextTemplateParam) (*view.SNSTextTemplateInventoryView, error) {
-	var resp view.CreateSNSTextTemplateEventView
+	resp := view.SNSTextTemplateInventoryView{}
 	if err := cli.Post("v1/zwatch/alarms/sns/text-templates", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteSNSTextTemplate deletes SNSTextTemplate
 func (cli *ZSClient) DeleteSNSTextTemplate(uuid string, deleteMode param.DeleteMode) error {
@@ -36,10 +36,9 @@ func (cli *ZSClient) QuerySNSTextTemplate(params *param.QueryParam) ([]view.SNST
 	return resp, cli.List("v1/zwatch/alarms/sns/text-templates", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSTextTemplate(uuid string) (*view.SNSTextTemplateInventoryView, error) {
-	var resp view.SNSTextTemplateInventoryView
-	if err := cli.Get("v1/zwatch/alarms/sns/text-templates", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSNSTextTemplate Pagination
+func (cli *ZSClient) PageSNSTextTemplate(params *param.QueryParam) ([]view.SNSTextTemplateInventoryView, int, error) {
+	var sNSTextTemplates []view.SNSTextTemplateInventoryView
+	total, err := cli.Page("v1/zwatch/alarms/sns/text-templates", params, &sNSTextTemplates)
+	return sNSTextTemplates, total, err
 }

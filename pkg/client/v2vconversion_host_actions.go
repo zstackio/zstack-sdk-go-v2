@@ -12,19 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // AddV2VConversionHost adds V2VConversionHost
 func (cli *ZSClient) AddV2VConversionHost(params param.AddV2VConversionHostParam) (*view.V2VConversionHostInventoryView, error) {
-	var resp view.AddV2VConversionHostEventView
+	resp := view.V2VConversionHostInventoryView{}
 	if err := cli.Post("v1/v2v-conversion-hosts", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateV2VConversionHost updates V2VConversionHost
 func (cli *ZSClient) UpdateV2VConversionHost(uuid string, params param.UpdateV2VConversionHostParam) (*view.V2VConversionHostInventoryView, error) {
-	var resp view.UpdateV2VConversionHostEventView
+	resp := view.V2VConversionHostInventoryView{}
 	if err := cli.Put("v1/v2v-conversion-hosts", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryV2VConversionHost queries V2VConversionHost list
 func (cli *ZSClient) QueryV2VConversionHost(params *param.QueryParam) ([]view.V2VConversionHostInventoryView, error) {
@@ -32,12 +32,11 @@ func (cli *ZSClient) QueryV2VConversionHost(params *param.QueryParam) ([]view.V2
 	return resp, cli.List("v1/v2v-conversion-hosts", params, &resp)
 }
 
-func (cli *ZSClient) GetV2VConversionHost(uuid string) (*view.V2VConversionHostInventoryView, error) {
-	var resp view.V2VConversionHostInventoryView
-	if err := cli.Get("v1/v2v-conversion-hosts", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageV2VConversionHost Pagination
+func (cli *ZSClient) PageV2VConversionHost(params *param.QueryParam) ([]view.V2VConversionHostInventoryView, int, error) {
+	var v2VConversionHosts []view.V2VConversionHostInventoryView
+	total, err := cli.Page("v1/v2v-conversion-hosts", params, &v2VConversionHosts)
+	return v2VConversionHosts, total, err
 }
 // DeleteV2VConversionHost deletes V2VConversionHost
 func (cli *ZSClient) DeleteV2VConversionHost(uuid string, deleteMode param.DeleteMode) error {

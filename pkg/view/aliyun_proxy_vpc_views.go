@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type AliyunProxyVpcInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VpcName *string `json:"vpcName,omitempty"`
-	CidrBlock *string `json:"cidrBlock,omitempty"`
-	VRouterUuid *string `json:"vRouterUuid,omitempty"`
-	Status *string `json:"status,omitempty"`
+	VpcName string `json:"vpcName,omitempty"`
+	CidrBlock string `json:"cidrBlock,omitempty"`
+	VRouterUuid string `json:"vRouterUuid,omitempty"`
+	Status string `json:"status,omitempty"`
 	AliyunProxyVSwitches []AliyunProxyVSwitchInventoryView `json:"aliyunProxyVSwitches,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	IsDefault bool `json:"isDefault,omitempty"`
 }
 

@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type PciDevicePciDeviceOfferingRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PciDeviceUuid *string `json:"pciDeviceUuid,omitempty"`
-	PciDeviceOfferingUuid *string `json:"pciDeviceOfferingUuid,omitempty"`
+	PciDeviceUuid string `json:"pciDeviceUuid,omitempty"`
+	PciDeviceOfferingUuid string `json:"pciDeviceOfferingUuid,omitempty"`
 }
 
 // QueryPciDevicePciDeviceOfferingView QueryPciDevicePciDeviceOffering

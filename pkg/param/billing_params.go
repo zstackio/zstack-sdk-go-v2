@@ -17,5 +17,5 @@ type DeleteBillingParamDetail struct {
 // DeleteBillingParam DeleteBilling request param
 type DeleteBillingParam struct {
 	BaseParam
-	Params DeleteBillingParamDetail `json:"params"`
+	DeleteBilling DeleteBillingParamDetail `json:"deleteBilling"`
 }

@@ -16,12 +16,11 @@ func (cli *ZSClient) QueryVip(params *param.QueryParam) ([]view.VipInventoryView
 	return resp, cli.List("v1/vips", params, &resp)
 }
 
-func (cli *ZSClient) GetVip(uuid string) (*view.VipInventoryView, error) {
-	var resp view.VipInventoryView
-	if err := cli.Get("v1/vips", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVip Pagination
+func (cli *ZSClient) PageVip(params *param.QueryParam) ([]view.VipInventoryView, int, error) {
+	var vips []view.VipInventoryView
+	total, err := cli.Page("v1/vips", params, &vips)
+	return vips, total, err
 }
 // DeleteVip deletes Vip
 func (cli *ZSClient) DeleteVip(uuid string, deleteMode param.DeleteMode) error {
@@ -29,17 +28,17 @@ func (cli *ZSClient) DeleteVip(uuid string, deleteMode param.DeleteMode) error {
 }
 // UpdateVip updates Vip
 func (cli *ZSClient) UpdateVip(uuid string, params param.UpdateVipParam) (*view.VipInventoryView, error) {
-	var resp view.UpdateVipEventView
+	resp := view.VipInventoryView{}
 	if err := cli.Put("v1/vips", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateVip creates Vip
 func (cli *ZSClient) CreateVip(params param.CreateVipParam) (*view.VipInventoryView, error) {
-	var resp view.CreateVipEventView
+	resp := view.VipInventoryView{}
 	if err := cli.Post("v1/vips", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

@@ -11,9 +11,9 @@ type PciDeviceOfferingInstanceOfferingRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	InstanceOfferingUuid *string `json:"instanceOfferingUuid,omitempty"`
-	PciDeviceOfferingUuid *string `json:"pciDeviceOfferingUuid,omitempty"`
+	InstanceOfferingUuid string `json:"instanceOfferingUuid,omitempty"`
+	PciDeviceOfferingUuid string `json:"pciDeviceOfferingUuid,omitempty"`
 	Metadata PciDeviceMetaDataView `json:"metadata,omitempty"`
-	PciDeviceCount *int `json:"pciDeviceCount,omitempty"`
+	PciDeviceCount int `json:"pciDeviceCount,omitempty"`
 }
 

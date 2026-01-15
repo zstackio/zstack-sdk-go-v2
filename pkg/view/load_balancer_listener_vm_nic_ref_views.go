@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type LoadBalancerListenerVmNicRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	ListenerUuid *string `json:"listenerUuid,omitempty"`
-	VmNicUuid *string `json:"vmNicUuid,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	ListenerUuid string `json:"listenerUuid,omitempty"`
+	VmNicUuid string `json:"vmNicUuid,omitempty"`
+	Status string `json:"status,omitempty"`
 }
 

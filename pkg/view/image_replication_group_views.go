@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type ImageReplicationGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
 	BackupStorageRefs []ImageReplicationGroupBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
 }

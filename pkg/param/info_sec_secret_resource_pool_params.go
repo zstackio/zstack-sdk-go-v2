@@ -23,7 +23,7 @@ type CreateInfoSecSecretResourcePoolParamDetail struct {
 // CreateInfoSecSecretResourcePoolParam CreateInfoSecSecretResourcePool request param
 type CreateInfoSecSecretResourcePoolParam struct {
 	BaseParam
-	Params CreateInfoSecSecretResourcePoolParamDetail `json:"params"`
+	CreateInfoSecSecretResourcePool CreateInfoSecSecretResourcePoolParamDetail `json:"createInfoSecSecretResourcePool"`
 }
 // UpdateInfoSecSecretResourcePoolParamDetail UpdateInfoSecSecretResourcePool detail param
 type UpdateInfoSecSecretResourcePoolParamDetail struct {
@@ -41,5 +41,5 @@ type UpdateInfoSecSecretResourcePoolParamDetail struct {
 // UpdateInfoSecSecretResourcePoolParam UpdateInfoSecSecretResourcePool request param
 type UpdateInfoSecSecretResourcePoolParam struct {
 	BaseParam
-	Params UpdateInfoSecSecretResourcePoolParamDetail `json:"params"`
+	UpdateInfoSecSecretResourcePool UpdateInfoSecSecretResourcePoolParamDetail `json:"updateInfoSecSecretResourcePool"`
 }

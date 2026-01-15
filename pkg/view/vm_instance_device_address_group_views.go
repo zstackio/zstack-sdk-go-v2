@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type VmInstanceDeviceAddressGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	AddressList []VmInstanceDeviceAddressArchiveInventoryView `json:"addressList,omitempty"`
 }
 

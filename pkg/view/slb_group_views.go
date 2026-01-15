@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type SlbGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	BackendType *string `json:"backendType,omitempty"`
-	DeployType *string `json:"deployType,omitempty"`
-	SlbOfferingUuid *string `json:"slbOfferingUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ConfigVersion *int64 `json:"configVersion,omitempty"`
+	BackendType string `json:"backendType,omitempty"`
+	DeployType string `json:"deployType,omitempty"`
+	SlbOfferingUuid string `json:"slbOfferingUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ConfigVersion int64 `json:"configVersion,omitempty"`
 	SlbVms []SlbVmInstanceInventoryView `json:"slbVms,omitempty"`
 	Lbs []SlbLoadBalancerInventoryView `json:"lbs,omitempty"`
 	Networks []SlbGroupL3NetworkRefInventoryView `json:"networks,omitempty"`

@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type SNSTextTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	ApplicationPlatformType *string `json:"applicationPlatformType,omitempty"`
-	Subject *string `json:"subject,omitempty"`
-	RecoverySubject *string `json:"recoverySubject,omitempty"`
-	Template *string `json:"template,omitempty"`
-	RecoveryTemplate *string `json:"recoveryTemplate,omitempty"`
-	DefaultTemplate *bool `json:"defaultTemplate,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	ApplicationPlatformType string `json:"applicationPlatformType,omitempty"`
+	Subject string `json:"subject,omitempty"`
+	RecoverySubject string `json:"recoverySubject,omitempty"`
+	Template string `json:"template,omitempty"`
+	RecoveryTemplate string `json:"recoveryTemplate,omitempty"`
+	DefaultTemplate bool `json:"defaultTemplate,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // UpdateSNSTextTemplateEventView UpdateSNSTextTemplateEvent

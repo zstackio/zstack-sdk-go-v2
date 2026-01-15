@@ -10,15 +10,15 @@ var _ = time.Now // avoid unused import
 type SNSPluginEndpointInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PluginDriverUuid *string `json:"pluginDriverUuid,omitempty"`
+	PluginDriverUuid string `json:"pluginDriverUuid,omitempty"`
 	TimeoutInSeconds int64 `json:"timeoutInSeconds,omitempty"`
 	Properties interface{} `json:"properties,omitempty"`
 	Driver PluginDriverInventoryView `json:"driver,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
-	PlatformUuid *string `json:"platformUuid,omitempty"`
-	ConnectionStatus *string `json:"connectionStatus,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	PlatformUuid string `json:"platformUuid,omitempty"`
+	ConnectionStatus string `json:"connectionStatus,omitempty"`
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
 

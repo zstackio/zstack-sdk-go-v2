@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // ReconnectZdfs operates on Zdfs
 func (cli *ZSClient) ReconnectZdfs(uuid string, params param.ReconnectZdfsParam) (*view.ZdfsInventoryView, error) {
-	var resp view.ReconnectZdfsEventView
+	resp := view.ZdfsInventoryView{}
 	if err := cli.Put("v1/zdfs", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryZdfs queries Zdfs list
 func (cli *ZSClient) QueryZdfs(params *param.QueryParam) ([]view.ZdfsInventoryView, error) {
@@ -24,10 +24,9 @@ func (cli *ZSClient) QueryZdfs(params *param.QueryParam) ([]view.ZdfsInventoryVi
 	return resp, cli.List("v1/zdfs", params, &resp)
 }
 
-func (cli *ZSClient) GetZdfs(uuid string) (*view.ZdfsInventoryView, error) {
-	var resp view.ZdfsInventoryView
-	if err := cli.Get("v1/zdfs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageZdfs Pagination
+func (cli *ZSClient) PageZdfs(params *param.QueryParam) ([]view.ZdfsInventoryView, int, error) {
+	var zdfs []view.ZdfsInventoryView
+	total, err := cli.Page("v1/zdfs", params, &zdfs)
+	return zdfs, total, err
 }

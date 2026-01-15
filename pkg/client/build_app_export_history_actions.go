@@ -20,10 +20,9 @@ func (cli *ZSClient) QueryBuildAppExportHistory(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/appcenter/exportapp", params, &resp)
 }
 
-func (cli *ZSClient) GetBuildAppExportHistory(uuid string) (*view.BuildAppExportHistoryInventoryView, error) {
-	var resp view.BuildAppExportHistoryInventoryView
-	if err := cli.Get("v1/appcenter/exportapp", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageBuildAppExportHistory Pagination
+func (cli *ZSClient) PageBuildAppExportHistory(params *param.QueryParam) ([]view.BuildAppExportHistoryInventoryView, int, error) {
+	var buildAppExportHistories []view.BuildAppExportHistoryInventoryView
+	total, err := cli.Page("v1/appcenter/exportapp", params, &buildAppExportHistories)
+	return buildAppExportHistories, total, err
 }

@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type AlarmActionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AlarmUuid *string `json:"alarmUuid,omitempty"`
-	ActionType *string `json:"actionType,omitempty"`
-	ActionUuid *string `json:"actionUuid,omitempty"`
+	AlarmUuid string `json:"alarmUuid,omitempty"`
+	ActionType string `json:"actionType,omitempty"`
+	ActionUuid string `json:"actionUuid,omitempty"`
 }
 

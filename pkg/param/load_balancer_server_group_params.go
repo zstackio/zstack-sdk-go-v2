@@ -19,7 +19,7 @@ type CreateLoadBalancerServerGroupParamDetail struct {
 // CreateLoadBalancerServerGroupParam CreateLoadBalancerServerGroup request param
 type CreateLoadBalancerServerGroupParam struct {
 	BaseParam
-	Params CreateLoadBalancerServerGroupParamDetail `json:"params"`
+	CreateLoadBalancerServerGroup CreateLoadBalancerServerGroupParamDetail `json:"createLoadBalancerServerGroup"`
 }
 // DeleteLoadBalancerServerGroupParamDetail DeleteLoadBalancerServerGroup detail param
 type DeleteLoadBalancerServerGroupParamDetail struct {
@@ -29,7 +29,7 @@ type DeleteLoadBalancerServerGroupParamDetail struct {
 // DeleteLoadBalancerServerGroupParam DeleteLoadBalancerServerGroup request param
 type DeleteLoadBalancerServerGroupParam struct {
 	BaseParam
-	Params DeleteLoadBalancerServerGroupParamDetail `json:"params"`
+	DeleteLoadBalancerServerGroup DeleteLoadBalancerServerGroupParamDetail `json:"deleteLoadBalancerServerGroup"`
 }
 // UpdateLoadBalancerServerGroupParamDetail UpdateLoadBalancerServerGroup detail param
 type UpdateLoadBalancerServerGroupParamDetail struct {
@@ -41,5 +41,5 @@ type UpdateLoadBalancerServerGroupParamDetail struct {
 // UpdateLoadBalancerServerGroupParam UpdateLoadBalancerServerGroup request param
 type UpdateLoadBalancerServerGroupParam struct {
 	BaseParam
-	Params UpdateLoadBalancerServerGroupParamDetail `json:"params"`
+	UpdateLoadBalancerServerGroup UpdateLoadBalancerServerGroupParamDetail `json:"updateLoadBalancerServerGroup"`
 }

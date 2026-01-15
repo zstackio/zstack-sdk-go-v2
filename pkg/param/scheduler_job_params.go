@@ -20,7 +20,7 @@ type CreateSchedulerJobParamDetail struct {
 // CreateSchedulerJobParam CreateSchedulerJob request param
 type CreateSchedulerJobParam struct {
 	BaseParam
-	Params CreateSchedulerJobParamDetail `json:"params"`
+	CreateSchedulerJob CreateSchedulerJobParamDetail `json:"createSchedulerJob"`
 }
 // UpdateSchedulerJobParamDetail UpdateSchedulerJob detail param
 type UpdateSchedulerJobParamDetail struct {
@@ -33,7 +33,7 @@ type UpdateSchedulerJobParamDetail struct {
 // UpdateSchedulerJobParam UpdateSchedulerJob request param
 type UpdateSchedulerJobParam struct {
 	BaseParam
-	Params UpdateSchedulerJobParamDetail `json:"params"`
+	UpdateSchedulerJob UpdateSchedulerJobParamDetail `json:"updateSchedulerJob"`
 }
 // DeleteSchedulerJobParamDetail DeleteSchedulerJob detail param
 type DeleteSchedulerJobParamDetail struct {
@@ -44,5 +44,5 @@ type DeleteSchedulerJobParamDetail struct {
 // DeleteSchedulerJobParam DeleteSchedulerJob request param
 type DeleteSchedulerJobParam struct {
 	BaseParam
-	Params DeleteSchedulerJobParamDetail `json:"params"`
+	DeleteSchedulerJob DeleteSchedulerJobParamDetail `json:"deleteSchedulerJob"`
 }

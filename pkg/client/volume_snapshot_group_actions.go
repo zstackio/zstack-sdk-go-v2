@@ -16,28 +16,27 @@ func (cli *ZSClient) QueryVolumeSnapshotGroup(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/volume-snapshots/group", params, &resp)
 }
 
-func (cli *ZSClient) GetVolumeSnapshotGroup(uuid string) (*view.VolumeSnapshotGroupInventoryView, error) {
-	var resp view.VolumeSnapshotGroupInventoryView
-	if err := cli.Get("v1/volume-snapshots/group", uuid, nil, &resp); err != nil {
+// PageVolumeSnapshotGroup Pagination
+func (cli *ZSClient) PageVolumeSnapshotGroup(params *param.QueryParam) ([]view.VolumeSnapshotGroupInventoryView, int, error) {
+	var volumeSnapshotGroups []view.VolumeSnapshotGroupInventoryView
+	total, err := cli.Page("v1/volume-snapshots/group", params, &volumeSnapshotGroups)
+	return volumeSnapshotGroups, total, err
+}
+// CreateVolumeSnapshotGroup creates VolumeSnapshotGroup
+func (cli *ZSClient) CreateVolumeSnapshotGroup(params param.CreateVolumeSnapshotGroupParam) (*view.VolumeSnapshotGroupInventoryView, error) {
+	resp := view.VolumeSnapshotGroupInventoryView{}
+	if err := cli.Post("v1/volume-snapshots/group", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// CreateVolumeSnapshotGroup creates VolumeSnapshotGroup
-func (cli *ZSClient) CreateVolumeSnapshotGroup(params param.CreateVolumeSnapshotGroupParam) (*view.VolumeSnapshotGroupInventoryView, error) {
-	var resp view.CreateVolumeSnapshotGroupEventView
-	if err := cli.Post("v1/volume-snapshots/group", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // UpdateVolumeSnapshotGroup updates VolumeSnapshotGroup
 func (cli *ZSClient) UpdateVolumeSnapshotGroup(uuid string, params param.UpdateVolumeSnapshotGroupParam) (*view.VolumeSnapshotGroupInventoryView, error) {
-	var resp view.UpdateVolumeSnapshotGroupEventView
+	resp := view.VolumeSnapshotGroupInventoryView{}
 	if err := cli.Put("v1/volume-snapshots/group", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteVolumeSnapshotGroup deletes VolumeSnapshotGroup
 func (cli *ZSClient) DeleteVolumeSnapshotGroup(uuid string, deleteMode param.DeleteMode) error {

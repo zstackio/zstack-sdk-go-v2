@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type MonitorGroupInstanceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	GroupUuid *string `json:"groupUuid,omitempty"`
-	InstanceResourceType *string `json:"instanceResourceType,omitempty"`
-	InstanceUuid *string `json:"instanceUuid,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
+	InstanceResourceType string `json:"instanceResourceType,omitempty"`
+	InstanceUuid string `json:"instanceUuid,omitempty"`
 	Status string `json:"status,omitempty"`
 }
 

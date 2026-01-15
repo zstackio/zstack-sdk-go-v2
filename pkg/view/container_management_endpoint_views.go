@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type ContainerManagementEndpointInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	AccessKeyId *string `json:"accessKeyId,omitempty"`
-	ManagementIp *string `json:"managementIp,omitempty"`
-	ManagementPort *int `json:"managementPort,omitempty"`
-	Vendor *string `json:"vendor,omitempty"`
+	Description string `json:"description,omitempty"`
+	AccessKeyId string `json:"accessKeyId,omitempty"`
+	ManagementIp string `json:"managementIp,omitempty"`
+	ManagementPort int `json:"managementPort,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
 }
 
 // UpdateContainerManagementEndpointEventView UpdateContainerManagementEndpointEvent

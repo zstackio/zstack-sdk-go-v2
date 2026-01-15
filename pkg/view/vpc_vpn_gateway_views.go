@@ -10,16 +10,16 @@ var _ = time.Now // avoid unused import
 type VpcVpnGatewayInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccountName *string `json:"accountName,omitempty"`
+	AccountName string `json:"accountName,omitempty"`
 	Type string `json:"type,omitempty"`
-	GatewayId *string `json:"gatewayId,omitempty"`
-	VSwitchUuid *string `json:"vSwitchUuid,omitempty"`
-	PublicIp *string `json:"publicIp,omitempty"`
-	Spec *string `json:"spec,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Status *string `json:"status,omitempty"`
-	BusinessStatus *string `json:"businessStatus,omitempty"`
-	EndDate *time.Time `json:"endDate,omitempty"`
+	GatewayId string `json:"gatewayId,omitempty"`
+	VSwitchUuid string `json:"vSwitchUuid,omitempty"`
+	PublicIp string `json:"publicIp,omitempty"`
+	Spec string `json:"spec,omitempty"`
+	Description string `json:"description,omitempty"`
+	Status string `json:"status,omitempty"`
+	BusinessStatus string `json:"businessStatus,omitempty"`
+	EndDate time.Time `json:"endDate,omitempty"`
 }
 
 // QueryVpcVpnGatewayFromLocalView QueryVpcVpnGatewayFromLocal

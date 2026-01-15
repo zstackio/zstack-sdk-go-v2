@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type OAuth2TokenInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccessToken *string `json:"accessToken,omitempty"`
-	IdToken *string `json:"idToken,omitempty"`
-	RefreshToken *string `json:"refreshToken,omitempty"`
-	ClientUuid *string `json:"clientUuid,omitempty"`
-	UserUuid *string `json:"userUuid,omitempty"`
+	AccessToken string `json:"accessToken,omitempty"`
+	IdToken string `json:"idToken,omitempty"`
+	RefreshToken string `json:"refreshToken,omitempty"`
+	ClientUuid string `json:"clientUuid,omitempty"`
+	UserUuid string `json:"userUuid,omitempty"`
 }
 
 // GetOAuth2TokenView GetOAuth2Token

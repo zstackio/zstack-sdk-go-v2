@@ -30,7 +30,7 @@ type CreateBareMetal2InstanceParamDetail struct {
 // CreateBareMetal2InstanceParam CreateBareMetal2Instance request param
 type CreateBareMetal2InstanceParam struct {
 	BaseParam
-	Params CreateBareMetal2InstanceParamDetail `json:"params"`
+	CreateBareMetal2Instance CreateBareMetal2InstanceParamDetail `json:"createBareMetal2Instance"`
 }
 // ReconnectBareMetal2InstanceParamDetail ReconnectBareMetal2Instance detail param
 type ReconnectBareMetal2InstanceParamDetail struct {
@@ -40,7 +40,7 @@ type ReconnectBareMetal2InstanceParamDetail struct {
 // ReconnectBareMetal2InstanceParam ReconnectBareMetal2Instance request param
 type ReconnectBareMetal2InstanceParam struct {
 	BaseParam
-	Params ReconnectBareMetal2InstanceParamDetail `json:"params"`
+	ReconnectBareMetal2Instance ReconnectBareMetal2InstanceParamDetail `json:"reconnectBareMetal2Instance"`
 }
 // StartBareMetal2InstanceParamDetail StartBareMetal2Instance detail param
 type StartBareMetal2InstanceParamDetail struct {
@@ -54,7 +54,7 @@ type StartBareMetal2InstanceParamDetail struct {
 // StartBareMetal2InstanceParam StartBareMetal2Instance request param
 type StartBareMetal2InstanceParam struct {
 	BaseParam
-	Params StartBareMetal2InstanceParamDetail `json:"params"`
+	StartBareMetal2Instance StartBareMetal2InstanceParamDetail `json:"startBareMetal2Instance"`
 }
 // UpdateBareMetal2InstanceParamDetail UpdateBareMetal2Instance detail param
 type UpdateBareMetal2InstanceParamDetail struct {
@@ -70,5 +70,5 @@ type UpdateBareMetal2InstanceParamDetail struct {
 // UpdateBareMetal2InstanceParam UpdateBareMetal2Instance request param
 type UpdateBareMetal2InstanceParam struct {
 	BaseParam
-	Params UpdateBareMetal2InstanceParamDetail `json:"params"`
+	UpdateBareMetal2Instance UpdateBareMetal2InstanceParamDetail `json:"updateBareMetal2Instance"`
 }

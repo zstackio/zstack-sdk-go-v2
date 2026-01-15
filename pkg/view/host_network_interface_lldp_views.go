@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type HostNetworkInterfaceLldpInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	InterfaceUuid *string `json:"interfaceUuid,omitempty"`
-	Mode *string `json:"mode,omitempty"`
+	InterfaceUuid string `json:"interfaceUuid,omitempty"`
+	Mode string `json:"mode,omitempty"`
 	NeighborDevice HostNetworkInterfaceLldpRefInventoryView `json:"neighborDevice,omitempty"`
 }
 

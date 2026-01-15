@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type MonitorTriggerActionRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TriggerUuid *string `json:"triggerUuid,omitempty"`
-	ActionUuid *string `json:"actionUuid,omitempty"`
+	TriggerUuid string `json:"triggerUuid,omitempty"`
+	ActionUuid string `json:"actionUuid,omitempty"`
 }
 

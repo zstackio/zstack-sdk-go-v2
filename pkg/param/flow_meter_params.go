@@ -23,7 +23,7 @@ type CreateFlowMeterParamDetail struct {
 // CreateFlowMeterParam CreateFlowMeter request param
 type CreateFlowMeterParam struct {
 	BaseParam
-	Params CreateFlowMeterParamDetail `json:"params"`
+	CreateFlowMeter CreateFlowMeterParamDetail `json:"createFlowMeter"`
 }
 // DeleteFlowMeterParamDetail DeleteFlowMeter detail param
 type DeleteFlowMeterParamDetail struct {
@@ -34,7 +34,7 @@ type DeleteFlowMeterParamDetail struct {
 // DeleteFlowMeterParam DeleteFlowMeter request param
 type DeleteFlowMeterParam struct {
 	BaseParam
-	Params DeleteFlowMeterParamDetail `json:"params"`
+	DeleteFlowMeter DeleteFlowMeterParamDetail `json:"deleteFlowMeter"`
 }
 // UpdateFlowMeterParamDetail UpdateFlowMeter detail param
 type UpdateFlowMeterParamDetail struct {
@@ -49,5 +49,5 @@ type UpdateFlowMeterParamDetail struct {
 // UpdateFlowMeterParam UpdateFlowMeter request param
 type UpdateFlowMeterParam struct {
 	BaseParam
-	Params UpdateFlowMeterParamDetail `json:"params"`
+	UpdateFlowMeter UpdateFlowMeterParamDetail `json:"updateFlowMeter"`
 }

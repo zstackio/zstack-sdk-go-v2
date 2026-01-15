@@ -15,5 +15,5 @@ type DeleteAlertParamDetail struct {
 // DeleteAlertParam DeleteAlert request param
 type DeleteAlertParam struct {
 	BaseParam
-	Params DeleteAlertParamDetail `json:"params"`
+	DeleteAlert DeleteAlertParamDetail `json:"deleteAlert"`
 }

@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type PhysicalDriveSmartSelfTestHistoryInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	RaidPhysicalDriveUuid *string `json:"raidPhysicalDriveUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	RaidPhysicalDriveUuid string `json:"raidPhysicalDriveUuid,omitempty"`
 	RunningState string `json:"runningState,omitempty"`
-	TestResult *string `json:"testResult,omitempty"`
+	TestResult string `json:"testResult,omitempty"`
 }
 
 // QueryPhysicalDriveSelfTestHistoryView QueryPhysicalDriveSelfTestHistory

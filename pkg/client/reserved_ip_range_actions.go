@@ -16,9 +16,9 @@ func (cli *ZSClient) DeleteReservedIpRange(uuid string, deleteMode param.DeleteM
 }
 // AddReservedIpRange adds ReservedIpRange
 func (cli *ZSClient) AddReservedIpRange(params param.AddReservedIpRangeParam) (*view.ReservedIpRangeInventoryView, error) {
-	var resp view.AddReservedIpRangeEventView
+	resp := view.ReservedIpRangeInventoryView{}
 	if err := cli.Post("v1/l3-networks/{l3NetworkUuid}/reserved-ip-ranges", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

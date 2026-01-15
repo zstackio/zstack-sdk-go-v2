@@ -16,28 +16,27 @@ func (cli *ZSClient) QuerySftpBackupStorage(params *param.QueryParam) ([]view.Sf
 	return resp, cli.List("v1/backup-storage/sftp", params, &resp)
 }
 
-func (cli *ZSClient) GetSftpBackupStorage(uuid string) (*view.SftpBackupStorageInventoryView, error) {
-	var resp view.SftpBackupStorageInventoryView
-	if err := cli.Get("v1/backup-storage/sftp", uuid, nil, &resp); err != nil {
+// PageSftpBackupStorage Pagination
+func (cli *ZSClient) PageSftpBackupStorage(params *param.QueryParam) ([]view.SftpBackupStorageInventoryView, int, error) {
+	var sftpBackupStorages []view.SftpBackupStorageInventoryView
+	total, err := cli.Page("v1/backup-storage/sftp", params, &sftpBackupStorages)
+	return sftpBackupStorages, total, err
+}
+// UpdateSftpBackupStorage updates SftpBackupStorage
+func (cli *ZSClient) UpdateSftpBackupStorage(uuid string, params param.UpdateSftpBackupStorageParam) (*view.BackupStorageInventoryView, error) {
+	resp := view.BackupStorageInventoryView{}
+	if err := cli.Put("v1/backup-storage/sftp", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// UpdateSftpBackupStorage updates SftpBackupStorage
-func (cli *ZSClient) UpdateSftpBackupStorage(uuid string, params param.UpdateSftpBackupStorageParam) (*view.BackupStorageInventoryView, error) {
-	var resp view.UpdateBackupStorageEventView
-	if err := cli.Put("v1/backup-storage/sftp", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // ReconnectSftpBackupStorage operates on SftpBackupStorage
 func (cli *ZSClient) ReconnectSftpBackupStorage(uuid string, params param.ReconnectSftpBackupStorageParam) (*view.SftpBackupStorageInventoryView, error) {
-	var resp view.ReconnectSftpBackupStorageEventView
+	resp := view.SftpBackupStorageInventoryView{}
 	if err := cli.Put("v1/backup-storage/sftp", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // AddSftpBackupStorage adds SftpBackupStorage
 func (cli *ZSClient) AddSftpBackupStorage(params param.AddSftpBackupStorageParam) (*view.SftpBackupStorageInventoryView, error) {

@@ -12,17 +12,17 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateCSPSecretResourcePool updates CSPSecretResourcePool
 func (cli *ZSClient) UpdateCSPSecretResourcePool(uuid string, params param.UpdateCSPSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.UpdateSecretResourcePoolEventView
+	resp := view.SecretResourcePoolInventoryView{}
 	if err := cli.Put("v1/secret-resource-pools/csp", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateCSPSecretResourcePool creates CSPSecretResourcePool
 func (cli *ZSClient) CreateCSPSecretResourcePool(params param.CreateCSPSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.CreateSecretResourcePoolEventView
+	resp := view.SecretResourcePoolInventoryView{}
 	if err := cli.Post("v1/secret-resource-pool/csp", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

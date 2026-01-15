@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type VpcVpnIpSecConfigInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccountName *string `json:"accountName,omitempty"`
-	EncodeAlgorithm *string `json:"encodeAlgorithm,omitempty"`
-	AuthAlgorithm *string `json:"authAlgorithm,omitempty"`
-	Pfs *string `json:"pfs,omitempty"`
-	Lifetime *int `json:"lifetime,omitempty"`
-	Description *string `json:"description,omitempty"`
+	AccountName string `json:"accountName,omitempty"`
+	EncodeAlgorithm string `json:"encodeAlgorithm,omitempty"`
+	AuthAlgorithm string `json:"authAlgorithm,omitempty"`
+	Pfs string `json:"pfs,omitempty"`
+	Lifetime int `json:"lifetime,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // CreateVpnIpsecConfigEventView CreateVpnIpsecConfigEvent

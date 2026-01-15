@@ -10,17 +10,17 @@ var _ = time.Now // avoid unused import
 type VpcVpnConnectionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccountName *string `json:"accountName,omitempty"`
+	AccountName string `json:"accountName,omitempty"`
 	Type string `json:"type,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ConnectionId *string `json:"connectionId,omitempty"`
-	UserGatewayUuid *string `json:"userGatewayUuid,omitempty"`
-	VpnGatewayUuid *string `json:"vpnGatewayUuid,omitempty"`
-	LocalSubnet *string `json:"localSubnet,omitempty"`
-	RemoteSubnet *string `json:"remoteSubnet,omitempty"`
-	IkeConfigUuid *string `json:"ikeConfigUuid,omitempty"`
-	IpsecConfigUuid *string `json:"ipsecConfigUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	Description string `json:"description,omitempty"`
+	ConnectionId string `json:"connectionId,omitempty"`
+	UserGatewayUuid string `json:"userGatewayUuid,omitempty"`
+	VpnGatewayUuid string `json:"vpnGatewayUuid,omitempty"`
+	LocalSubnet string `json:"localSubnet,omitempty"`
+	RemoteSubnet string `json:"remoteSubnet,omitempty"`
+	IkeConfigUuid string `json:"ikeConfigUuid,omitempty"`
+	IpsecConfigUuid string `json:"ipsecConfigUuid,omitempty"`
 }
 
 // SyncVpcVpnConnectionFromRemoteEventView SyncVpcVpnConnectionFromRemoteEvent

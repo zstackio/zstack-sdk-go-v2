@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type SNSSnmpPlatformInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SnmpAddress *string `json:"snmpAddress,omitempty"`
+	SnmpAddress string `json:"snmpAddress,omitempty"`
 	SnmpPort int `json:"snmpPort,omitempty"`
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 

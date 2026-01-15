@@ -20,5 +20,5 @@ type CreateSNSEmailEndpointParamDetail struct {
 // CreateSNSEmailEndpointParam CreateSNSEmailEndpoint request param
 type CreateSNSEmailEndpointParam struct {
 	BaseParam
-	Params CreateSNSEmailEndpointParamDetail `json:"params"`
+	CreateSNSEmailEndpoint CreateSNSEmailEndpointParamDetail `json:"createSNSEmailEndpoint"`
 }

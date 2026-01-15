@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type VpcVirtualRouterInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VrId *string `json:"vrId,omitempty"`
-	VpcUuid *string `json:"vpcUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
+	VrId string `json:"vrId,omitempty"`
+	VpcUuid string `json:"vpcUuid,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // SyncAliyunVirtualRouterFromRemoteEventView SyncAliyunVirtualRouterFromRemoteEvent

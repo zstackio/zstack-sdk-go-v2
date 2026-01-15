@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // CreatePortMirrorSession creates PortMirrorSession
 func (cli *ZSClient) CreatePortMirrorSession(params param.CreatePortMirrorSessionParam) (*view.PortMirrorSessionInventoryView, error) {
-	var resp view.CreatePortMirrorSessionEventView
+	resp := view.PortMirrorSessionInventoryView{}
 	if err := cli.Post("v1/port-mirrors/sessions", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeletePortMirrorSession deletes PortMirrorSession
 func (cli *ZSClient) DeletePortMirrorSession(uuid string, deleteMode param.DeleteMode) error {
@@ -28,10 +28,9 @@ func (cli *ZSClient) QueryPortMirrorSession(params *param.QueryParam) ([]view.Po
 	return resp, cli.List("v1/port-mirrors/sessions", params, &resp)
 }
 
-func (cli *ZSClient) GetPortMirrorSession(uuid string) (*view.PortMirrorSessionInventoryView, error) {
-	var resp view.PortMirrorSessionInventoryView
-	if err := cli.Get("v1/port-mirrors/sessions", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PagePortMirrorSession Pagination
+func (cli *ZSClient) PagePortMirrorSession(params *param.QueryParam) ([]view.PortMirrorSessionInventoryView, int, error) {
+	var portMirrorSessions []view.PortMirrorSessionInventoryView
+	total, err := cli.Page("v1/port-mirrors/sessions", params, &portMirrorSessions)
+	return portMirrorSessions, total, err
 }

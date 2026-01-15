@@ -23,7 +23,7 @@ type AddExternalPrimaryStorageParamDetail struct {
 // AddExternalPrimaryStorageParam AddExternalPrimaryStorage request param
 type AddExternalPrimaryStorageParam struct {
 	BaseParam
-	Params AddExternalPrimaryStorageParamDetail `json:"params"`
+	AddExternalPrimaryStorage AddExternalPrimaryStorageParamDetail `json:"addExternalPrimaryStorage"`
 }
 // UpdateExternalPrimaryStorageParamDetail UpdateExternalPrimaryStorage detail param
 type UpdateExternalPrimaryStorageParamDetail struct {
@@ -38,5 +38,5 @@ type UpdateExternalPrimaryStorageParamDetail struct {
 // UpdateExternalPrimaryStorageParam UpdateExternalPrimaryStorage request param
 type UpdateExternalPrimaryStorageParam struct {
 	BaseParam
-	Params UpdateExternalPrimaryStorageParamDetail `json:"params"`
+	UpdateExternalPrimaryStorage UpdateExternalPrimaryStorageParamDetail `json:"updateExternalPrimaryStorage"`
 }

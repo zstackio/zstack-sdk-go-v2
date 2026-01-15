@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type AutoScalingTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
 	SystemTags []string `json:"systemTags,omitempty"`
 }
 

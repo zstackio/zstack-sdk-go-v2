@@ -16,20 +16,19 @@ func (cli *ZSClient) QuerySchedulerTrigger(params *param.QueryParam) ([]view.Sch
 	return resp, cli.List("v1/scheduler/triggers", params, &resp)
 }
 
-func (cli *ZSClient) GetSchedulerTrigger(uuid string) (*view.SchedulerTriggerInventoryView, error) {
-	var resp view.SchedulerTriggerInventoryView
-	if err := cli.Get("v1/scheduler/triggers", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSchedulerTrigger Pagination
+func (cli *ZSClient) PageSchedulerTrigger(params *param.QueryParam) ([]view.SchedulerTriggerInventoryView, int, error) {
+	var schedulerTriggers []view.SchedulerTriggerInventoryView
+	total, err := cli.Page("v1/scheduler/triggers", params, &schedulerTriggers)
+	return schedulerTriggers, total, err
 }
 // UpdateSchedulerTrigger updates SchedulerTrigger
 func (cli *ZSClient) UpdateSchedulerTrigger(uuid string, params param.UpdateSchedulerTriggerParam) (*view.SchedulerTriggerInventoryView, error) {
-	var resp view.UpdateSchedulerTriggerEventView
+	resp := view.SchedulerTriggerInventoryView{}
 	if err := cli.Put("v1/scheduler/triggers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteSchedulerTrigger deletes SchedulerTrigger
 func (cli *ZSClient) DeleteSchedulerTrigger(uuid string, deleteMode param.DeleteMode) error {
@@ -37,9 +36,9 @@ func (cli *ZSClient) DeleteSchedulerTrigger(uuid string, deleteMode param.Delete
 }
 // CreateSchedulerTrigger creates SchedulerTrigger
 func (cli *ZSClient) CreateSchedulerTrigger(params param.CreateSchedulerTriggerParam) (*view.SchedulerTriggerInventoryView, error) {
-	var resp view.CreateSchedulerTriggerEventView
+	resp := view.SchedulerTriggerInventoryView{}
 	if err := cli.Post("v1/scheduler/triggers", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

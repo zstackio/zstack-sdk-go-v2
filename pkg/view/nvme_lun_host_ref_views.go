@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type NvmeLunHostRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	NvmeLunUuid *string `json:"nvmeLunUuid,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
-	Path *string `json:"path,omitempty"`
-	Hctl *string `json:"hctl,omitempty"`
+	NvmeLunUuid string `json:"nvmeLunUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	Path string `json:"path,omitempty"`
+	Hctl string `json:"hctl,omitempty"`
 }
 

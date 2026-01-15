@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type GuestToolsStateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
-	QgaState *string `json:"qgaState,omitempty"`
-	ZwatchState *string `json:"zwatchState,omitempty"`
-	Version *string `json:"version,omitempty"`
-	Platform *string `json:"platform,omitempty"`
-	OsType *string `json:"osType,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	QgaState string `json:"qgaState,omitempty"`
+	ZwatchState string `json:"zwatchState,omitempty"`
+	Version string `json:"version,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	OsType string `json:"osType,omitempty"`
 }
 
 // QueryGuestToolsStateView QueryGuestToolsState

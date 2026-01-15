@@ -12,9 +12,9 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateAutoScalingRuleAlarmTrigger creates AutoScalingRuleAlarmTrigger
 func (cli *ZSClient) CreateAutoScalingRuleAlarmTrigger(params param.CreateAutoScalingRuleAlarmTriggerParam) (*view.AutoScalingRuleTriggerInventoryView, error) {
-	var resp view.CreateAutoScalingRuleTriggerEventView
+	resp := view.AutoScalingRuleTriggerInventoryView{}
 	if err := cli.Post("v1/zwatch/alarms/{alarmUuid}/autoscaling/rules/{ruleUuid}", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

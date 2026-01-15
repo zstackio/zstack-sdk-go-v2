@@ -11,7 +11,7 @@ type LicenseAppIdRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	LicenseId *string `json:"licenseId,omitempty"`
-	AppId *string `json:"appId,omitempty"`
+	LicenseId string `json:"licenseId,omitempty"`
+	AppId string `json:"appId,omitempty"`
 }
 

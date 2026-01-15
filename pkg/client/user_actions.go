@@ -16,12 +16,11 @@ func (cli *ZSClient) QueryUser(params *param.QueryParam) ([]view.UserInventoryVi
 	return resp, cli.List("v1/accounts/users", params, &resp)
 }
 
-func (cli *ZSClient) GetUser(uuid string) (*view.UserInventoryView, error) {
-	var resp view.UserInventoryView
-	if err := cli.Get("v1/accounts/users", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageUser Pagination
+func (cli *ZSClient) PageUser(params *param.QueryParam) ([]view.UserInventoryView, int, error) {
+	var users []view.UserInventoryView
+	total, err := cli.Page("v1/accounts/users", params, &users)
+	return users, total, err
 }
 // DeleteUser deletes User
 func (cli *ZSClient) DeleteUser(uuid string, deleteMode param.DeleteMode) error {
@@ -29,17 +28,17 @@ func (cli *ZSClient) DeleteUser(uuid string, deleteMode param.DeleteMode) error 
 }
 // UpdateUser updates User
 func (cli *ZSClient) UpdateUser(uuid string, params param.UpdateUserParam) (*view.UserInventoryView, error) {
-	var resp view.UpdateUserEventView
+	resp := view.UserInventoryView{}
 	if err := cli.Put("v1/accounts/users/actions", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateUser creates User
 func (cli *ZSClient) CreateUser(params param.CreateUserParam) (*view.UserInventoryView, error) {
-	var resp view.CreateUserEventView
+	resp := view.UserInventoryView{}
 	if err := cli.Post("v1/accounts/users", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

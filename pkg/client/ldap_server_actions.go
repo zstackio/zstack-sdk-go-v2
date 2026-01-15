@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // AddLdapServer adds LdapServer
 func (cli *ZSClient) AddLdapServer(params param.AddLdapServerParam) (*view.LdapServerInventoryView, error) {
-	var resp view.AddLdapServerEventView
+	resp := view.LdapServerInventoryView{}
 	if err := cli.Post("v1/ldap/servers", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryLdapServer queries LdapServer list
 func (cli *ZSClient) QueryLdapServer(params *param.QueryParam) ([]view.LdapServerInventoryView, error) {
@@ -24,20 +24,19 @@ func (cli *ZSClient) QueryLdapServer(params *param.QueryParam) ([]view.LdapServe
 	return resp, cli.List("v1/ldap/servers", params, &resp)
 }
 
-func (cli *ZSClient) GetLdapServer(uuid string) (*view.LdapServerInventoryView, error) {
-	var resp view.LdapServerInventoryView
-	if err := cli.Get("v1/ldap/servers", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageLdapServer Pagination
+func (cli *ZSClient) PageLdapServer(params *param.QueryParam) ([]view.LdapServerInventoryView, int, error) {
+	var ldapServers []view.LdapServerInventoryView
+	total, err := cli.Page("v1/ldap/servers", params, &ldapServers)
+	return ldapServers, total, err
 }
 // SyncLdapServer operates on LdapServer
 func (cli *ZSClient) SyncLdapServer(uuid string, params param.SyncLdapServerParam) (*view.LongJobInventoryView, error) {
-	var resp view.SyncLdapServerEventView
+	resp := view.LongJobInventoryView{}
 	if err := cli.Put("v1/ldap/servers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 
 // SyncLdapServerAsync Async
@@ -59,10 +58,10 @@ func (cli *ZSClient) DeleteLdapServer(uuid string, deleteMode param.DeleteMode) 
 	return cli.Delete("v1/ldap/servers", uuid, string(deleteMode))
 }
 // UpdateLdapServer updates LdapServer
-func (cli *ZSClient) UpdateLdapServer(uuid string, params param.UpdateLdapServerParam) (*view.LdapServerInventoryView, error) {
-	var resp view.UpdateLdapServerEventView
-	if err := cli.Put("v1/ldap/servers", uuid, params, &resp); err != nil {
+func (cli *ZSClient) UpdateLdapServer(ldapServerUuid string, params param.UpdateLdapServerParam) (*view.LdapServerInventoryView, error) {
+	resp := view.LdapServerInventoryView{}
+	if err := cli.Put("v1/ldap/servers", ldapServerUuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

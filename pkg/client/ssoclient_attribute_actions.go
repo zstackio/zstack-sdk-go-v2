@@ -12,9 +12,9 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateSSOClientAttribute updates SSOClientAttribute
 func (cli *ZSClient) UpdateSSOClientAttribute(uuid string, params param.UpdateSSOClientAttributeParam) (*view.SSOClientAttributeInventoryView, error) {
-	var resp view.UpdateSSOClientAttributeEventView
+	resp := view.SSOClientAttributeInventoryView{}
 	if err := cli.Put("v1/sso/client/attributes", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type AppBuildSystemZoneRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	BuildSystemUuid *string `json:"buildSystemUuid,omitempty"`
-	ZoneUuid *string `json:"zoneUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	BuildSystemUuid string `json:"buildSystemUuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
 }
 
 // AttachAppBuildSystemToZoneEventView AttachAppBuildSystemToZoneEvent

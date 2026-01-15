@@ -20,7 +20,7 @@ type CreateAccessKeyParamDetail struct {
 // CreateAccessKeyParam CreateAccessKey request param
 type CreateAccessKeyParam struct {
 	BaseParam
-	Params CreateAccessKeyParamDetail `json:"params"`
+	CreateAccessKey CreateAccessKeyParamDetail `json:"createAccessKey"`
 }
 // DeleteAccessKeyParamDetail DeleteAccessKey detail param
 type DeleteAccessKeyParamDetail struct {
@@ -31,5 +31,5 @@ type DeleteAccessKeyParamDetail struct {
 // DeleteAccessKeyParam DeleteAccessKey request param
 type DeleteAccessKeyParam struct {
 	BaseParam
-	Params DeleteAccessKeyParamDetail `json:"params"`
+	DeleteAccessKey DeleteAccessKeyParamDetail `json:"deleteAccessKey"`
 }

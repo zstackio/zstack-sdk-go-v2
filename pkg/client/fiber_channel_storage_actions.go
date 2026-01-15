@@ -24,10 +24,9 @@ func (cli *ZSClient) QueryFiberChannelStorage(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/storage-devices/fiber-channel/controllers", params, &resp)
 }
 
-func (cli *ZSClient) GetFiberChannelStorage(uuid string) (*view.FiberChannelStorageInventoryView, error) {
-	var resp view.FiberChannelStorageInventoryView
-	if err := cli.Get("v1/storage-devices/fiber-channel/controllers", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageFiberChannelStorage Pagination
+func (cli *ZSClient) PageFiberChannelStorage(params *param.QueryParam) ([]view.FiberChannelStorageInventoryView, int, error) {
+	var fiberChannelStorages []view.FiberChannelStorageInventoryView
+	total, err := cli.Page("v1/storage-devices/fiber-channel/controllers", params, &fiberChannelStorages)
+	return fiberChannelStorages, total, err
 }

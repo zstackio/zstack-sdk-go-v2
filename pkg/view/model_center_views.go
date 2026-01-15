@@ -10,17 +10,17 @@ var _ = time.Now // avoid unused import
 type ModelCenterInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Parameters *string `json:"parameters,omitempty"`
-	ManagementIp *string `json:"managementIp,omitempty"`
+	Description string `json:"description,omitempty"`
+	Url string `json:"url,omitempty"`
+	Status string `json:"status,omitempty"`
+	Parameters string `json:"parameters,omitempty"`
+	ManagementIp string `json:"managementIp,omitempty"`
 	ManagementPort int `json:"managementPort,omitempty"`
-	StorageNetworkUuid *string `json:"storageNetworkUuid,omitempty"`
-	ServiceNetworkUuid *string `json:"serviceNetworkUuid,omitempty"`
-	ContainerRegistry *string `json:"containerRegistry,omitempty"`
-	ContainerStorageNetwork *string `json:"containerStorageNetwork,omitempty"`
-	ContainerNetwork *string `json:"containerNetwork,omitempty"`
+	StorageNetworkUuid string `json:"storageNetworkUuid,omitempty"`
+	ServiceNetworkUuid string `json:"serviceNetworkUuid,omitempty"`
+	ContainerRegistry string `json:"containerRegistry,omitempty"`
+	ContainerStorageNetwork string `json:"containerStorageNetwork,omitempty"`
+	ContainerNetwork string `json:"containerNetwork,omitempty"`
 	Capacity ModelCenterCapacityInventoryView `json:"capacity,omitempty"`
 	Zdfs ZdfsInventoryView `json:"zdfs,omitempty"`
 }

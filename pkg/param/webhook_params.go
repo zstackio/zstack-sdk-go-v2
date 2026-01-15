@@ -19,7 +19,7 @@ type UpdateWebhookParamDetail struct {
 // UpdateWebhookParam UpdateWebhook request param
 type UpdateWebhookParam struct {
 	BaseParam
-	Params UpdateWebhookParamDetail `json:"params"`
+	UpdateWebhook UpdateWebhookParamDetail `json:"updateWebhook"`
 }
 // DeleteWebhookParamDetail DeleteWebhook detail param
 type DeleteWebhookParamDetail struct {
@@ -30,7 +30,7 @@ type DeleteWebhookParamDetail struct {
 // DeleteWebhookParam DeleteWebhook request param
 type DeleteWebhookParam struct {
 	BaseParam
-	Params DeleteWebhookParamDetail `json:"params"`
+	DeleteWebhook DeleteWebhookParamDetail `json:"deleteWebhook"`
 }
 // CreateWebhookParamDetail CreateWebhook detail param
 type CreateWebhookParamDetail struct {
@@ -46,5 +46,5 @@ type CreateWebhookParamDetail struct {
 // CreateWebhookParam CreateWebhook request param
 type CreateWebhookParam struct {
 	BaseParam
-	Params CreateWebhookParamDetail `json:"params"`
+	CreateWebhook CreateWebhookParamDetail `json:"createWebhook"`
 }

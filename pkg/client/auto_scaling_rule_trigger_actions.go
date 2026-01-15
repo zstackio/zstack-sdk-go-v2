@@ -16,12 +16,11 @@ func (cli *ZSClient) QueryAutoScalingRuleTrigger(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/autoscaling/groups/rules/trigger", params, &resp)
 }
 
-func (cli *ZSClient) GetAutoScalingRuleTrigger(uuid string) (*view.AutoScalingRuleTriggerInventoryView, error) {
-	var resp view.AutoScalingRuleTriggerInventoryView
-	if err := cli.Get("v1/autoscaling/groups/rules/trigger", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageAutoScalingRuleTrigger Pagination
+func (cli *ZSClient) PageAutoScalingRuleTrigger(params *param.QueryParam) ([]view.AutoScalingRuleTriggerInventoryView, int, error) {
+	var autoScalingRuleTriggers []view.AutoScalingRuleTriggerInventoryView
+	total, err := cli.Page("v1/autoscaling/groups/rules/trigger", params, &autoScalingRuleTriggers)
+	return autoScalingRuleTriggers, total, err
 }
 // DeleteAutoScalingRuleTrigger deletes AutoScalingRuleTrigger
 func (cli *ZSClient) DeleteAutoScalingRuleTrigger(uuid string, deleteMode param.DeleteMode) error {

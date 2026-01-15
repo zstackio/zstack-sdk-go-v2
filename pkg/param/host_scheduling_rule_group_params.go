@@ -16,7 +16,7 @@ type UpdateHostSchedulingRuleGroupParamDetail struct {
 // UpdateHostSchedulingRuleGroupParam UpdateHostSchedulingRuleGroup request param
 type UpdateHostSchedulingRuleGroupParam struct {
 	BaseParam
-	Params UpdateHostSchedulingRuleGroupParamDetail `json:"params"`
+	UpdateHostSchedulingRuleGroup UpdateHostSchedulingRuleGroupParamDetail `json:"updateHostSchedulingRuleGroup"`
 }
 // CreateHostSchedulingRuleGroupParamDetail CreateHostSchedulingRuleGroup detail param
 type CreateHostSchedulingRuleGroupParamDetail struct {
@@ -30,7 +30,7 @@ type CreateHostSchedulingRuleGroupParamDetail struct {
 // CreateHostSchedulingRuleGroupParam CreateHostSchedulingRuleGroup request param
 type CreateHostSchedulingRuleGroupParam struct {
 	BaseParam
-	Params CreateHostSchedulingRuleGroupParamDetail `json:"params"`
+	CreateHostSchedulingRuleGroup CreateHostSchedulingRuleGroupParamDetail `json:"createHostSchedulingRuleGroup"`
 }
 // DeleteHostSchedulingRuleGroupParamDetail DeleteHostSchedulingRuleGroup detail param
 type DeleteHostSchedulingRuleGroupParamDetail struct {
@@ -40,5 +40,5 @@ type DeleteHostSchedulingRuleGroupParamDetail struct {
 // DeleteHostSchedulingRuleGroupParam DeleteHostSchedulingRuleGroup request param
 type DeleteHostSchedulingRuleGroupParam struct {
 	BaseParam
-	Params DeleteHostSchedulingRuleGroupParamDetail `json:"params"`
+	DeleteHostSchedulingRuleGroup DeleteHostSchedulingRuleGroupParamDetail `json:"deleteHostSchedulingRuleGroup"`
 }

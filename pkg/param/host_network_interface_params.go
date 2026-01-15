@@ -15,7 +15,7 @@ type UpdateHostNetworkInterfaceParamDetail struct {
 // UpdateHostNetworkInterfaceParam UpdateHostNetworkInterface request param
 type UpdateHostNetworkInterfaceParam struct {
 	BaseParam
-	Params UpdateHostNetworkInterfaceParamDetail `json:"params"`
+	UpdateHostNetworkInterface UpdateHostNetworkInterfaceParamDetail `json:"updateHostNetworkInterface"`
 }
 // LocateHostNetworkInterfaceParamDetail LocateHostNetworkInterface detail param
 type LocateHostNetworkInterfaceParamDetail struct {
@@ -27,5 +27,5 @@ type LocateHostNetworkInterfaceParamDetail struct {
 // LocateHostNetworkInterfaceParam LocateHostNetworkInterface request param
 type LocateHostNetworkInterfaceParam struct {
 	BaseParam
-	Params LocateHostNetworkInterfaceParamDetail `json:"params"`
+	LocateHostNetworkInterface LocateHostNetworkInterfaceParamDetail `json:"locateHostNetworkInterface"`
 }

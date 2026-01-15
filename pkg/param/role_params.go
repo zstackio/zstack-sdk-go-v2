@@ -20,7 +20,7 @@ type CreateRoleParamDetail struct {
 // CreateRoleParam CreateRole request param
 type CreateRoleParam struct {
 	BaseParam
-	Params CreateRoleParamDetail `json:"params"`
+	CreateRole CreateRoleParamDetail `json:"createRole"`
 }
 // DeleteRoleParamDetail DeleteRole detail param
 type DeleteRoleParamDetail struct {
@@ -31,7 +31,7 @@ type DeleteRoleParamDetail struct {
 // DeleteRoleParam DeleteRole request param
 type DeleteRoleParam struct {
 	BaseParam
-	Params DeleteRoleParamDetail `json:"params"`
+	DeleteRole DeleteRoleParamDetail `json:"deleteRole"`
 }
 // UpdateRoleParamDetail UpdateRole detail param
 type UpdateRoleParamDetail struct {
@@ -45,5 +45,5 @@ type UpdateRoleParamDetail struct {
 // UpdateRoleParam UpdateRole request param
 type UpdateRoleParam struct {
 	BaseParam
-	Params UpdateRoleParamDetail `json:"params"`
+	UpdateRole UpdateRoleParamDetail `json:"updateRole"`
 }

@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type PhysicalSwitchPortInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	EthTrunkName *string `json:"ethTrunkName,omitempty"`
-	PortType *string `json:"portType,omitempty"`
-	PeerInterfaceUuid *string `json:"peerInterfaceUuid,omitempty"`
-	SwitchUuid *string `json:"switchUuid,omitempty"`
-	SdnControllerUuid *string `json:"sdnControllerUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	EthTrunkName string `json:"ethTrunkName,omitempty"`
+	PortType string `json:"portType,omitempty"`
+	PeerInterfaceUuid string `json:"peerInterfaceUuid,omitempty"`
+	SwitchUuid string `json:"switchUuid,omitempty"`
+	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
 }
 

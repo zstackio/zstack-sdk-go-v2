@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type FlowCollectorInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	FlowMeterUuid *string `json:"flowMeterUuid,omitempty"`
-	Server *string `json:"server,omitempty"`
-	Port *int64 `json:"port,omitempty"`
+	Description string `json:"description,omitempty"`
+	FlowMeterUuid string `json:"flowMeterUuid,omitempty"`
+	Server string `json:"server,omitempty"`
+	Port int64 `json:"port,omitempty"`
 }
 
 // CreateFlowCollectorEventView CreateFlowCollectorEvent

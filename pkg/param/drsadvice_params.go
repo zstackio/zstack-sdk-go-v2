@@ -14,5 +14,5 @@ type ApplyDRSAdviceParamDetail struct {
 // ApplyDRSAdviceParam ApplyDRSAdvice request param
 type ApplyDRSAdviceParam struct {
 	BaseParam
-	Params ApplyDRSAdviceParamDetail `json:"params"`
+	ApplyDRSAdvice ApplyDRSAdviceParamDetail `json:"applyDRSAdvice"`
 }

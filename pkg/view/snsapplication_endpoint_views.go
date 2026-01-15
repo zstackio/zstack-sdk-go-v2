@@ -10,12 +10,22 @@ var _ = time.Now // avoid unused import
 type SNSApplicationEndpointInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
-	PlatformUuid *string `json:"platformUuid,omitempty"`
-	ConnectionStatus *string `json:"connectionStatus,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	PlatformUuid string `json:"platformUuid,omitempty"`
+	ConnectionStatus string `json:"connectionStatus,omitempty"`
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
+}
+
+// CreateSNSApplicationEndpointEventView CreateSNSApplicationEndpointEvent
+type CreateSNSApplicationEndpointEventView struct {
+	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
+type UpdateSNSApplicationEndpointEventView struct {
+	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
 }
 
 // ChangeSNSApplicationEndpointStateEventView ChangeSNSApplicationEndpointStateEvent

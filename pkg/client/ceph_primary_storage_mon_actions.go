@@ -11,10 +11,10 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateCephPrimaryStorageMon updates CephPrimaryStorageMon
-func (cli *ZSClient) UpdateCephPrimaryStorageMon(uuid string, params param.UpdateCephPrimaryStorageMonParam) (*view.CephPrimaryStorageInventoryView, error) {
-	var resp view.UpdateCephPrimaryStorageMonEventView
-	if err := cli.Put("v1/primary-storage/ceph/mons", uuid, params, &resp); err != nil {
+func (cli *ZSClient) UpdateCephPrimaryStorageMon(monUuid string, params param.UpdateCephPrimaryStorageMonParam) (*view.CephPrimaryStorageInventoryView, error) {
+	resp := view.CephPrimaryStorageInventoryView{}
+	if err := cli.Put("v1/primary-storage/ceph/mons", monUuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

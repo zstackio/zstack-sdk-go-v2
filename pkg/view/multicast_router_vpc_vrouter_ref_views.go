@@ -10,6 +10,6 @@ var _ = time.Now // avoid unused import
 type MulticastRouterVpcVRouterRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VpcRouterUuid *string `json:"vpcRouterUuid,omitempty"`
+	VpcRouterUuid string `json:"vpcRouterUuid,omitempty"`
 }
 

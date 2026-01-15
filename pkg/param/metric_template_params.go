@@ -15,7 +15,7 @@ type DeleteMetricTemplateParamDetail struct {
 // DeleteMetricTemplateParam DeleteMetricTemplate request param
 type DeleteMetricTemplateParam struct {
 	BaseParam
-	Params DeleteMetricTemplateParamDetail `json:"params"`
+	DeleteMetricTemplate DeleteMetricTemplateParamDetail `json:"deleteMetricTemplate"`
 }
 // CreateMetricTemplateParamDetail CreateMetricTemplate detail param
 type CreateMetricTemplateParamDetail struct {
@@ -32,5 +32,5 @@ type CreateMetricTemplateParamDetail struct {
 // CreateMetricTemplateParam CreateMetricTemplate request param
 type CreateMetricTemplateParam struct {
 	BaseParam
-	Params CreateMetricTemplateParamDetail `json:"params"`
+	CreateMetricTemplate CreateMetricTemplateParamDetail `json:"createMetricTemplate"`
 }

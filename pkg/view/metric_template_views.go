@@ -10,22 +10,17 @@ var _ = time.Now // avoid unused import
 type MetricTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ReceiverUuid *string `json:"receiverUuid,omitempty"`
-	Template *string `json:"template,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
-	MetricName *string `json:"metricName,omitempty"`
-	LabelsJsonStr *string `json:"labelsJsonStr,omitempty"`
-	Description *string `json:"description,omitempty"`
+	ReceiverUuid string `json:"receiverUuid,omitempty"`
+	Template string `json:"template,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	MetricName string `json:"metricName,omitempty"`
+	LabelsJsonStr string `json:"labelsJsonStr,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // DeleteMetricTemplateEventView DeleteMetricTemplateEvent
 type DeleteMetricTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// QueryMetricDataHttpReceiverView QueryMetricDataHttpReceiver
-type QueryMetricDataHttpReceiverView struct {
-	Inventories []MetricDataHttpReceiverInventoryView `json:"inventories,omitempty"`
 }
 
 // CreateMetricTemplateEventView CreateMetricTemplateEvent

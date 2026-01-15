@@ -11,8 +11,8 @@ type PolicyRouteRuleSetVRouterRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	VRouterUuid *string `json:"vRouterUuid,omitempty"`
-	RuleSetUuid *string `json:"ruleSetUuid,omitempty"`
+	VRouterUuid string `json:"vRouterUuid,omitempty"`
+	RuleSetUuid string `json:"ruleSetUuid,omitempty"`
 }
 
 // QueryPolicyRouteRuleSetVRouterRefView QueryPolicyRouteRuleSetVRouterRef

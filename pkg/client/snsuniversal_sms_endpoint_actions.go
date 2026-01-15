@@ -16,28 +16,27 @@ func (cli *ZSClient) QuerySNSUniversalSmsEndpoint(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/sns/application-endpoints/universal-sms", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSUniversalSmsEndpoint(uuid string) (*view.SNSUniversalSmsEndpointInventoryView, error) {
-	var resp view.SNSUniversalSmsEndpointInventoryView
-	if err := cli.Get("v1/sns/application-endpoints/universal-sms", uuid, nil, &resp); err != nil {
+// PageSNSUniversalSmsEndpoint Pagination
+func (cli *ZSClient) PageSNSUniversalSmsEndpoint(params *param.QueryParam) ([]view.SNSUniversalSmsEndpointInventoryView, int, error) {
+	var sNSUniversalSmsEndpoints []view.SNSUniversalSmsEndpointInventoryView
+	total, err := cli.Page("v1/sns/application-endpoints/universal-sms", params, &sNSUniversalSmsEndpoints)
+	return sNSUniversalSmsEndpoints, total, err
+}
+// UpdateSNSUniversalSmsEndpoint updates SNSUniversalSmsEndpoint
+func (cli *ZSClient) UpdateSNSUniversalSmsEndpoint(uuid string, params param.UpdateSNSUniversalSmsEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
+	resp := view.SNSApplicationEndpointInventoryView{}
+	if err := cli.Put("v1/sns/application-endpoints/universal-sms", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// UpdateSNSUniversalSmsEndpoint updates SNSUniversalSmsEndpoint
-func (cli *ZSClient) UpdateSNSUniversalSmsEndpoint(uuid string, params param.UpdateSNSUniversalSmsEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
-	var resp view.UpdateSNSApplicationEndpointEventView
-	if err := cli.Put("v1/sns/application-endpoints/universal-sms", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // CreateSNSUniversalSmsEndpoint creates SNSUniversalSmsEndpoint
 func (cli *ZSClient) CreateSNSUniversalSmsEndpoint(params param.CreateSNSUniversalSmsEndpointParam) (*view.SNSUniversalSmsEndpointInventoryView, error) {
-	var resp view.CreateSNSUniversalSmsEndpointEventView
+	resp := view.SNSUniversalSmsEndpointInventoryView{}
 	if err := cli.Post("v1/sns/application-endpoints/universal-sms", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // ValidateSNSUniversalSmsEndpoint operates on SNSUniversalSmsEndpoint
 func (cli *ZSClient) ValidateSNSUniversalSmsEndpoint(uuid string, params param.ValidateSNSUniversalSmsEndpointParam) (*view.SNSUniversalSmsEndpointInventoryView, error) {

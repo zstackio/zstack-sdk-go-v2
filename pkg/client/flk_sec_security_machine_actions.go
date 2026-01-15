@@ -12,17 +12,17 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateFlkSecSecurityMachine updates FlkSecSecurityMachine
 func (cli *ZSClient) UpdateFlkSecSecurityMachine(uuid string, params param.UpdateFlkSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
-	var resp view.UpdateSecurityMachineEventView
+	resp := view.SecurityMachineInventoryView{}
 	if err := cli.Put("v1/security-machines/flkSec", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // AddFlkSecSecurityMachine adds FlkSecSecurityMachine
 func (cli *ZSClient) AddFlkSecSecurityMachine(params param.AddFlkSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
-	var resp view.AddSecurityMachineEventView
+	resp := view.SecurityMachineInventoryView{}
 	if err := cli.Post("v1/security-machine/flkSec", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

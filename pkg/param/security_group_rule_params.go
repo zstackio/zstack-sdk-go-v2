@@ -23,7 +23,7 @@ type ChangeSecurityGroupRuleParamDetail struct {
 // ChangeSecurityGroupRuleParam ChangeSecurityGroupRule request param
 type ChangeSecurityGroupRuleParam struct {
 	BaseParam
-	Params ChangeSecurityGroupRuleParamDetail `json:"params"`
+	ChangeSecurityGroupRule ChangeSecurityGroupRuleParamDetail `json:"changeSecurityGroupRule"`
 }
 // ValidateSecurityGroupRuleParamDetail ValidateSecurityGroupRule detail param
 type ValidateSecurityGroupRuleParamDetail struct {
@@ -44,7 +44,7 @@ type ValidateSecurityGroupRuleParamDetail struct {
 // ValidateSecurityGroupRuleParam ValidateSecurityGroupRule request param
 type ValidateSecurityGroupRuleParam struct {
 	BaseParam
-	Params ValidateSecurityGroupRuleParamDetail `json:"params"`
+	ValidateSecurityGroupRule ValidateSecurityGroupRuleParamDetail `json:"validateSecurityGroupRule"`
 }
 // AddSecurityGroupRuleParamDetail AddSecurityGroupRule detail param
 type AddSecurityGroupRuleParamDetail struct {
@@ -57,7 +57,7 @@ type AddSecurityGroupRuleParamDetail struct {
 // AddSecurityGroupRuleParam AddSecurityGroupRule request param
 type AddSecurityGroupRuleParam struct {
 	BaseParam
-	Params AddSecurityGroupRuleParamDetail `json:"params"`
+	AddSecurityGroupRule AddSecurityGroupRuleParamDetail `json:"addSecurityGroupRule"`
 }
 // DeleteSecurityGroupRuleParamDetail DeleteSecurityGroupRule detail param
 type DeleteSecurityGroupRuleParamDetail struct {
@@ -67,5 +67,5 @@ type DeleteSecurityGroupRuleParamDetail struct {
 // DeleteSecurityGroupRuleParam DeleteSecurityGroupRule request param
 type DeleteSecurityGroupRuleParam struct {
 	BaseParam
-	Params DeleteSecurityGroupRuleParamDetail `json:"params"`
+	DeleteSecurityGroupRule DeleteSecurityGroupRuleParamDetail `json:"deleteSecurityGroupRule"`
 }

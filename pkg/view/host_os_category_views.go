@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type HostOsCategoryInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Architecture *string `json:"architecture,omitempty"`
-	OsReleaseVersion *string `json:"osReleaseVersion,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	OsReleaseVersion string `json:"osReleaseVersion,omitempty"`
 	MetadataList []KvmHostHypervisorMetadataInventoryView `json:"metadataList,omitempty"`
 }
 

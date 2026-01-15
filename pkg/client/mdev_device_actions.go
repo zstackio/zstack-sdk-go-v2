@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateMdevDevice updates MdevDevice
 func (cli *ZSClient) UpdateMdevDevice(uuid string, params param.UpdateMdevDeviceParam) (*view.MdevDeviceInventoryView, error) {
-	var resp view.UpdateMdevDeviceEventView
+	resp := view.MdevDeviceInventoryView{}
 	if err := cli.Put("v1/mdev-devices", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteMdevDevice deletes MdevDevice
 func (cli *ZSClient) DeleteMdevDevice(uuid string, deleteMode param.DeleteMode) error {
@@ -28,10 +28,9 @@ func (cli *ZSClient) QueryMdevDevice(params *param.QueryParam) ([]view.MdevDevic
 	return resp, cli.List("v1/mdev-devices", params, &resp)
 }
 
-func (cli *ZSClient) GetMdevDevice(uuid string) (*view.MdevDeviceInventoryView, error) {
-	var resp view.MdevDeviceInventoryView
-	if err := cli.Get("v1/mdev-devices", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageMdevDevice Pagination
+func (cli *ZSClient) PageMdevDevice(params *param.QueryParam) ([]view.MdevDeviceInventoryView, int, error) {
+	var mdevDevices []view.MdevDeviceInventoryView
+	total, err := cli.Page("v1/mdev-devices", params, &mdevDevices)
+	return mdevDevices, total, err
 }

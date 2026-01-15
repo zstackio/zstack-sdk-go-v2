@@ -19,7 +19,7 @@ type CreateIAM2ProjectTemplateParamDetail struct {
 // CreateIAM2ProjectTemplateParam CreateIAM2ProjectTemplate request param
 type CreateIAM2ProjectTemplateParam struct {
 	BaseParam
-	Params CreateIAM2ProjectTemplateParamDetail `json:"params"`
+	CreateIAM2ProjectTemplate CreateIAM2ProjectTemplateParamDetail `json:"createIAM2ProjectTemplate"`
 }
 // UpdateIAM2ProjectTemplateParamDetail UpdateIAM2ProjectTemplate detail param
 type UpdateIAM2ProjectTemplateParamDetail struct {
@@ -33,7 +33,7 @@ type UpdateIAM2ProjectTemplateParamDetail struct {
 // UpdateIAM2ProjectTemplateParam UpdateIAM2ProjectTemplate request param
 type UpdateIAM2ProjectTemplateParam struct {
 	BaseParam
-	Params UpdateIAM2ProjectTemplateParamDetail `json:"params"`
+	UpdateIAM2ProjectTemplate UpdateIAM2ProjectTemplateParamDetail `json:"updateIAM2ProjectTemplate"`
 }
 // DeleteIAM2ProjectTemplateParamDetail DeleteIAM2ProjectTemplate detail param
 type DeleteIAM2ProjectTemplateParamDetail struct {
@@ -43,5 +43,5 @@ type DeleteIAM2ProjectTemplateParamDetail struct {
 // DeleteIAM2ProjectTemplateParam DeleteIAM2ProjectTemplate request param
 type DeleteIAM2ProjectTemplateParam struct {
 	BaseParam
-	Params DeleteIAM2ProjectTemplateParamDetail `json:"params"`
+	DeleteIAM2ProjectTemplate DeleteIAM2ProjectTemplateParamDetail `json:"deleteIAM2ProjectTemplate"`
 }

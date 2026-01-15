@@ -16,18 +16,17 @@ func (cli *ZSClient) QueryGuestToolsState(params *param.QueryParam) ([]view.Gues
 	return resp, cli.List("v1/guesttools", params, &resp)
 }
 
-func (cli *ZSClient) GetGuestToolsState(uuid string) (*view.GuestToolsStateInventoryView, error) {
-	var resp view.GuestToolsStateInventoryView
-	if err := cli.Get("v1/guesttools", uuid, nil, &resp); err != nil {
+// PageGuestToolsState Pagination
+func (cli *ZSClient) PageGuestToolsState(params *param.QueryParam) ([]view.GuestToolsStateInventoryView, int, error) {
+	var guestToolsStates []view.GuestToolsStateInventoryView
+	total, err := cli.Page("v1/guesttools", params, &guestToolsStates)
+	return guestToolsStates, total, err
+}
+// UpdateGuestToolsState updates GuestToolsState
+func (cli *ZSClient) UpdateGuestToolsState(vmInstanceUuid string, params param.UpdateGuestToolsStateParam) (*view.GuestToolsStateInventoryView, error) {
+	resp := view.GuestToolsStateInventoryView{}
+	if err := cli.Put("v1/vm-instances", vmInstanceUuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
-}
-// UpdateGuestToolsState updates GuestToolsState
-func (cli *ZSClient) UpdateGuestToolsState(uuid string, params param.UpdateGuestToolsStateParam) (*view.GuestToolsStateInventoryView, error) {
-	var resp view.UpdateGuestToolsStateView
-	if err := cli.Put("v1/vm-instances", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
 }

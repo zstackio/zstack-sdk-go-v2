@@ -15,7 +15,7 @@ type DeleteClusterParamDetail struct {
 // DeleteClusterParam DeleteCluster request param
 type DeleteClusterParam struct {
 	BaseParam
-	Params DeleteClusterParamDetail `json:"params"`
+	DeleteCluster DeleteClusterParamDetail `json:"deleteCluster"`
 }
 // UpdateClusterParamDetail UpdateCluster detail param
 type UpdateClusterParamDetail struct {
@@ -27,7 +27,7 @@ type UpdateClusterParamDetail struct {
 // UpdateClusterParam UpdateCluster request param
 type UpdateClusterParam struct {
 	BaseParam
-	Params UpdateClusterParamDetail `json:"params"`
+	UpdateCluster UpdateClusterParamDetail `json:"updateCluster"`
 }
 // CreateClusterParamDetail CreateCluster detail param
 type CreateClusterParamDetail struct {
@@ -44,5 +44,5 @@ type CreateClusterParamDetail struct {
 // CreateClusterParam CreateCluster request param
 type CreateClusterParam struct {
 	BaseParam
-	Params CreateClusterParamDetail `json:"params"`
+	CreateCluster CreateClusterParamDetail `json:"createCluster"`
 }

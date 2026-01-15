@@ -16,26 +16,25 @@ func (cli *ZSClient) QuerySNSSnmpPlatform(params *param.QueryParam) ([]view.SNSE
 	return resp, cli.List("v1/sns/application-platforms/snmp", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSSnmpPlatform(uuid string) (*view.SNSEmailPlatformInventoryView, error) {
-	var resp view.SNSEmailPlatformInventoryView
-	if err := cli.Get("v1/sns/application-platforms/snmp", uuid, nil, &resp); err != nil {
+// PageSNSSnmpPlatform Pagination
+func (cli *ZSClient) PageSNSSnmpPlatform(params *param.QueryParam) ([]view.SNSEmailPlatformInventoryView, int, error) {
+	var sNSSnmpPlatforms []view.SNSEmailPlatformInventoryView
+	total, err := cli.Page("v1/sns/application-platforms/snmp", params, &sNSSnmpPlatforms)
+	return sNSSnmpPlatforms, total, err
+}
+// UpdateSNSSnmpPlatform updates SNSSnmpPlatform
+func (cli *ZSClient) UpdateSNSSnmpPlatform(uuid string, params param.UpdateSNSSnmpPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
+	resp := view.SNSApplicationPlatformInventoryView{}
+	if err := cli.Put("v1/sns/application-platforms/snmp", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// UpdateSNSSnmpPlatform updates SNSSnmpPlatform
-func (cli *ZSClient) UpdateSNSSnmpPlatform(uuid string, params param.UpdateSNSSnmpPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
-	var resp view.UpdateSNSApplicationPlatformEventView
-	if err := cli.Put("v1/sns/application-platforms/snmp", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // CreateSNSSnmpPlatform creates SNSSnmpPlatform
 func (cli *ZSClient) CreateSNSSnmpPlatform(params param.CreateSNSSnmpPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
-	var resp view.CreateSNSApplicationPlatformEventView
+	resp := view.SNSApplicationPlatformInventoryView{}
 	if err := cli.Post("v1/sns/application-platforms/snmp", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

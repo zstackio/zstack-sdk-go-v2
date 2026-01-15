@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type XmlHookVmInstanceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	XmlHookUuid *string `json:"xmlHookUuid,omitempty"`
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	XmlHookUuid string `json:"xmlHookUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 }
 

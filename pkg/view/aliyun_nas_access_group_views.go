@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type AliyunNasAccessGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	DataCenterUuid *string `json:"dataCenterUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
 	Rules []AliyunNasAccessRuleInventoryView `json:"rules,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // AddAliyunNasAccessGroupEventView AddAliyunNasAccessGroupEvent

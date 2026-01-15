@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type EcsImageUsageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int `json:"id,omitempty"`
-	EcsImageUuid *string `json:"ecsImageUuid,omitempty"`
-	SnapshotUuidOfCreatedImage *string `json:"snapshotUuidOfCreatedImage,omitempty"`
+	Id int `json:"id,omitempty"`
+	EcsImageUuid string `json:"ecsImageUuid,omitempty"`
+	SnapshotUuidOfCreatedImage string `json:"snapshotUuidOfCreatedImage,omitempty"`
 }
 

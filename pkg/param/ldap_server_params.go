@@ -21,7 +21,7 @@ type AddLdapServerParamDetail struct {
 // AddLdapServerParam AddLdapServer request param
 type AddLdapServerParam struct {
 	BaseParam
-	Params AddLdapServerParamDetail `json:"params"`
+	AddLdapServer AddLdapServerParamDetail `json:"addLdapServer"`
 }
 // SyncLdapServerParamDetail SyncLdapServer detail param
 type SyncLdapServerParamDetail struct {
@@ -31,7 +31,7 @@ type SyncLdapServerParamDetail struct {
 // SyncLdapServerParam SyncLdapServer request param
 type SyncLdapServerParam struct {
 	BaseParam
-	Params SyncLdapServerParamDetail `json:"params"`
+	SyncLdapServer SyncLdapServerParamDetail `json:"syncLdapServer"`
 }
 // DeleteLdapServerParamDetail DeleteLdapServer detail param
 type DeleteLdapServerParamDetail struct {
@@ -42,7 +42,7 @@ type DeleteLdapServerParamDetail struct {
 // DeleteLdapServerParam DeleteLdapServer request param
 type DeleteLdapServerParam struct {
 	BaseParam
-	Params DeleteLdapServerParamDetail `json:"params"`
+	DeleteLdapServer DeleteLdapServerParamDetail `json:"deleteLdapServer"`
 }
 // UpdateLdapServerParamDetail UpdateLdapServer detail param
 type UpdateLdapServerParamDetail struct {
@@ -59,5 +59,5 @@ type UpdateLdapServerParamDetail struct {
 // UpdateLdapServerParam UpdateLdapServer request param
 type UpdateLdapServerParam struct {
 	BaseParam
-	Params UpdateLdapServerParamDetail `json:"params"`
+	UpdateLdapServer UpdateLdapServerParamDetail `json:"updateLdapServer"`
 }

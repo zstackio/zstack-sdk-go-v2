@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryNetworkServiceL3NetworkRef(params *param.QueryParam) (
 	return resp, cli.List("v1/l3-networks/network-services/refs", params, &resp)
 }
 
-func (cli *ZSClient) GetNetworkServiceL3NetworkRef(uuid string) (*view.NetworkServiceL3NetworkRefInventoryView, error) {
-	var resp view.NetworkServiceL3NetworkRefInventoryView
-	if err := cli.Get("v1/l3-networks/network-services/refs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageNetworkServiceL3NetworkRef Pagination
+func (cli *ZSClient) PageNetworkServiceL3NetworkRef(params *param.QueryParam) ([]view.NetworkServiceL3NetworkRefInventoryView, int, error) {
+	var networkServiceL3NetworkRefs []view.NetworkServiceL3NetworkRefInventoryView
+	total, err := cli.Page("v1/l3-networks/network-services/refs", params, &networkServiceL3NetworkRefs)
+	return networkServiceL3NetworkRefs, total, err
 }

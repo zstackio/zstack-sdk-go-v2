@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type SNSFeiShuAtPersonInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	UserId *string `json:"userId,omitempty"`
-	EndpointUuid *string `json:"endpointUuid,omitempty"`
-	Remark *string `json:"remark,omitempty"`
+	UserId string `json:"userId,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
+	Remark string `json:"remark,omitempty"`
 }
 
 // QuerySNSFeiShuAtPersonView QuerySNSFeiShuAtPerson

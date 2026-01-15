@@ -23,7 +23,7 @@ type CreatePolicyRouteRuleParamDetail struct {
 // CreatePolicyRouteRuleParam CreatePolicyRouteRule request param
 type CreatePolicyRouteRuleParam struct {
 	BaseParam
-	Params CreatePolicyRouteRuleParamDetail `json:"params"`
+	CreatePolicyRouteRule CreatePolicyRouteRuleParamDetail `json:"createPolicyRouteRule"`
 }
 // DeletePolicyRouteRuleParamDetail DeletePolicyRouteRule detail param
 type DeletePolicyRouteRuleParamDetail struct {
@@ -34,5 +34,5 @@ type DeletePolicyRouteRuleParamDetail struct {
 // DeletePolicyRouteRuleParam DeletePolicyRouteRule request param
 type DeletePolicyRouteRuleParam struct {
 	BaseParam
-	Params DeletePolicyRouteRuleParamDetail `json:"params"`
+	DeletePolicyRouteRule DeletePolicyRouteRuleParamDetail `json:"deletePolicyRouteRule"`
 }

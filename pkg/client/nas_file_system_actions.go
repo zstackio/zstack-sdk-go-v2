@@ -16,20 +16,19 @@ func (cli *ZSClient) QueryNasFileSystem(params *param.QueryParam) ([]view.NasFil
 	return resp, cli.List("v1/primary-storage/nas", params, &resp)
 }
 
-func (cli *ZSClient) GetNasFileSystem(uuid string) (*view.NasFileSystemInventoryView, error) {
-	var resp view.NasFileSystemInventoryView
-	if err := cli.Get("v1/primary-storage/nas", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageNasFileSystem Pagination
+func (cli *ZSClient) PageNasFileSystem(params *param.QueryParam) ([]view.NasFileSystemInventoryView, int, error) {
+	var nasFileSystems []view.NasFileSystemInventoryView
+	total, err := cli.Page("v1/primary-storage/nas", params, &nasFileSystems)
+	return nasFileSystems, total, err
 }
 // UpdateNasFileSystem updates NasFileSystem
 func (cli *ZSClient) UpdateNasFileSystem(uuid string, params param.UpdateNasFileSystemParam) (*view.NasFileSystemInventoryView, error) {
-	var resp view.UpdateNasFileSystemEventView
+	resp := view.NasFileSystemInventoryView{}
 	if err := cli.Put("v1/primary-storage/nas", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteNasFileSystem deletes NasFileSystem
 func (cli *ZSClient) DeleteNasFileSystem(uuid string, deleteMode param.DeleteMode) error {

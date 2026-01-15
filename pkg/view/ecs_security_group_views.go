@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type EcsSecurityGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	EcsVpcUuid *string `json:"ecsVpcUuid,omitempty"`
-	SecurityGroupId *string `json:"securityGroupId,omitempty"`
-	Description *string `json:"description,omitempty"`
+	EcsVpcUuid string `json:"ecsVpcUuid,omitempty"`
+	SecurityGroupId string `json:"securityGroupId,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // SyncEcsSecurityGroupFromRemoteEventView SyncEcsSecurityGroupFromRemoteEvent

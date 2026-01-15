@@ -12,17 +12,17 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateSAML2Client updates SAML2Client
 func (cli *ZSClient) UpdateSAML2Client(uuid string, params param.UpdateSAML2ClientParam) (*view.SAML2ClientInventoryView, error) {
-	var resp view.UpdateSAML2ClientEventView
+	resp := view.SAML2ClientInventoryView{}
 	if err := cli.Put("v1/update/saml2/client", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateSAML2Client creates SAML2Client
 func (cli *ZSClient) CreateSAML2Client(params param.CreateSAML2ClientParam) (*view.SAML2ClientInventoryView, error) {
-	var resp view.CreateSAML2ClientEventView
+	resp := view.SAML2ClientInventoryView{}
 	if err := cli.Post("v1/create/saml2/client", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

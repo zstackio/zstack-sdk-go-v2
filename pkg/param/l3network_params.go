@@ -19,7 +19,7 @@ type UpdateL3NetworkParamDetail struct {
 // UpdateL3NetworkParam UpdateL3Network request param
 type UpdateL3NetworkParam struct {
 	BaseParam
-	Params UpdateL3NetworkParamDetail `json:"params"`
+	UpdateL3Network UpdateL3NetworkParamDetail `json:"updateL3Network"`
 }
 // CreateL3NetworkParamDetail CreateL3Network detail param
 type CreateL3NetworkParamDetail struct {
@@ -39,7 +39,7 @@ type CreateL3NetworkParamDetail struct {
 // CreateL3NetworkParam CreateL3Network request param
 type CreateL3NetworkParam struct {
 	BaseParam
-	Params CreateL3NetworkParamDetail `json:"params"`
+	CreateL3Network CreateL3NetworkParamDetail `json:"createL3Network"`
 }
 // DeleteL3NetworkParamDetail DeleteL3Network detail param
 type DeleteL3NetworkParamDetail struct {
@@ -50,5 +50,5 @@ type DeleteL3NetworkParamDetail struct {
 // DeleteL3NetworkParam DeleteL3Network request param
 type DeleteL3NetworkParam struct {
 	BaseParam
-	Params DeleteL3NetworkParamDetail `json:"params"`
+	DeleteL3Network DeleteL3NetworkParamDetail `json:"deleteL3Network"`
 }

@@ -15,7 +15,7 @@ type RemoveSdnControllerParamDetail struct {
 // RemoveSdnControllerParam RemoveSdnController request param
 type RemoveSdnControllerParam struct {
 	BaseParam
-	Params RemoveSdnControllerParamDetail `json:"params"`
+	RemoveSdnController RemoveSdnControllerParamDetail `json:"removeSdnController"`
 }
 // AddSdnControllerParamDetail AddSdnController detail param
 type AddSdnControllerParamDetail struct {
@@ -33,7 +33,7 @@ type AddSdnControllerParamDetail struct {
 // AddSdnControllerParam AddSdnController request param
 type AddSdnControllerParam struct {
 	BaseParam
-	Params AddSdnControllerParamDetail `json:"params"`
+	AddSdnController AddSdnControllerParamDetail `json:"addSdnController"`
 }
 // UpdateSdnControllerParamDetail UpdateSdnController detail param
 type UpdateSdnControllerParamDetail struct {
@@ -45,7 +45,7 @@ type UpdateSdnControllerParamDetail struct {
 // UpdateSdnControllerParam UpdateSdnController request param
 type UpdateSdnControllerParam struct {
 	BaseParam
-	Params UpdateSdnControllerParamDetail `json:"params"`
+	UpdateSdnController UpdateSdnControllerParamDetail `json:"updateSdnController"`
 }
 // ChangeSdnControllerParamDetail ChangeSdnController detail param
 type ChangeSdnControllerParamDetail struct {
@@ -58,7 +58,7 @@ type ChangeSdnControllerParamDetail struct {
 // ChangeSdnControllerParam ChangeSdnController request param
 type ChangeSdnControllerParam struct {
 	BaseParam
-	Params ChangeSdnControllerParamDetail `json:"params"`
+	ChangeSdnController ChangeSdnControllerParamDetail `json:"changeSdnController"`
 }
 // ReconnectSdnControllerParamDetail ReconnectSdnController detail param
 type ReconnectSdnControllerParamDetail struct {
@@ -68,5 +68,5 @@ type ReconnectSdnControllerParamDetail struct {
 // ReconnectSdnControllerParam ReconnectSdnController request param
 type ReconnectSdnControllerParam struct {
 	BaseParam
-	Params ReconnectSdnControllerParamDetail `json:"params"`
+	ReconnectSdnController ReconnectSdnControllerParamDetail `json:"reconnectSdnController"`
 }

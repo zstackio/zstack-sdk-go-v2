@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // AddAppBuildSystem adds AppBuildSystem
 func (cli *ZSClient) AddAppBuildSystem(params param.AddAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
-	var resp view.AddAppBuildSystemEventView
+	resp := view.AppBuildSystemInventoryView{}
 	if err := cli.Post("v1/appcenter/buildsystem", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryAppBuildSystem queries AppBuildSystem list
 func (cli *ZSClient) QueryAppBuildSystem(params *param.QueryParam) ([]view.AppBuildSystemInventoryView, error) {
@@ -24,28 +24,27 @@ func (cli *ZSClient) QueryAppBuildSystem(params *param.QueryParam) ([]view.AppBu
 	return resp, cli.List("v1/appcenter/buildsystem", params, &resp)
 }
 
-func (cli *ZSClient) GetAppBuildSystem(uuid string) (*view.AppBuildSystemInventoryView, error) {
-	var resp view.AppBuildSystemInventoryView
-	if err := cli.Get("v1/appcenter/buildsystem", uuid, nil, &resp); err != nil {
+// PageAppBuildSystem Pagination
+func (cli *ZSClient) PageAppBuildSystem(params *param.QueryParam) ([]view.AppBuildSystemInventoryView, int, error) {
+	var appBuildSystems []view.AppBuildSystemInventoryView
+	total, err := cli.Page("v1/appcenter/buildsystem", params, &appBuildSystems)
+	return appBuildSystems, total, err
+}
+// ReconnectAppBuildSystem operates on AppBuildSystem
+func (cli *ZSClient) ReconnectAppBuildSystem(uuid string, params param.ReconnectAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
+	resp := view.AppBuildSystemInventoryView{}
+	if err := cli.Put("v1/appcenter/buildsystem", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// ReconnectAppBuildSystem operates on AppBuildSystem
-func (cli *ZSClient) ReconnectAppBuildSystem(uuid string, params param.ReconnectAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
-	var resp view.ReconnectAppBuildSystemEventView
-	if err := cli.Put("v1/appcenter/buildsystem", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // UpdateAppBuildSystem updates AppBuildSystem
 func (cli *ZSClient) UpdateAppBuildSystem(uuid string, params param.UpdateAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
-	var resp view.UpdateAppBuildSystemEventView
+	resp := view.AppBuildSystemInventoryView{}
 	if err := cli.Put("v1/appcenter/buildsystem", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteAppBuildSystem deletes AppBuildSystem
 func (cli *ZSClient) DeleteAppBuildSystem(uuid string, deleteMode param.DeleteMode) error {

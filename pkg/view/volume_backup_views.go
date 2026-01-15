@@ -10,16 +10,16 @@ var _ = time.Now // avoid unused import
 type VolumeBackupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VolumeUuid *string `json:"volumeUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Size *int64 `json:"size,omitempty"`
-	Metadata *string `json:"metadata,omitempty"`
-	GroupUuid *string `json:"groupUuid,omitempty"`
+	VolumeUuid string `json:"volumeUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	Metadata string `json:"metadata,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
 	Mode string `json:"mode,omitempty"`
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	BackupStorageRefs []VolumeBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
 }
 

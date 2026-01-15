@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type AlertInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TriggerUuid *string `json:"triggerUuid,omitempty"`
-	TargetResourceUuid *string `json:"targetResourceUuid,omitempty"`
-	Content *string `json:"content,omitempty"`
+	TriggerUuid string `json:"triggerUuid,omitempty"`
+	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
+	Content string `json:"content,omitempty"`
 }
 
 // QueryAlertView QueryAlert

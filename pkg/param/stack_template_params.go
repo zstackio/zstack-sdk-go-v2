@@ -15,7 +15,7 @@ type DeleteStackTemplateParamDetail struct {
 // DeleteStackTemplateParam DeleteStackTemplate request param
 type DeleteStackTemplateParam struct {
 	BaseParam
-	Params DeleteStackTemplateParamDetail `json:"params"`
+	DeleteStackTemplate DeleteStackTemplateParamDetail `json:"deleteStackTemplate"`
 }
 // UpdateStackTemplateParamDetail UpdateStackTemplate detail param
 type UpdateStackTemplateParamDetail struct {
@@ -29,7 +29,7 @@ type UpdateStackTemplateParamDetail struct {
 // UpdateStackTemplateParam UpdateStackTemplate request param
 type UpdateStackTemplateParam struct {
 	BaseParam
-	Params UpdateStackTemplateParamDetail `json:"params"`
+	UpdateStackTemplate UpdateStackTemplateParamDetail `json:"updateStackTemplate"`
 }
 // AddStackTemplateParamDetail AddStackTemplate detail param
 type AddStackTemplateParamDetail struct {
@@ -44,5 +44,5 @@ type AddStackTemplateParamDetail struct {
 // AddStackTemplateParam AddStackTemplate request param
 type AddStackTemplateParam struct {
 	BaseParam
-	Params AddStackTemplateParamDetail `json:"params"`
+	AddStackTemplate AddStackTemplateParamDetail `json:"addStackTemplate"`
 }

@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type TicketFlowCollectionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	IsDefault bool `json:"isDefault,omitempty"`
 	Flows []TicketFlowInventoryView `json:"flows,omitempty"`
 	TicketTypeUuids []string `json:"ticketTypeUuids,omitempty"`
 }

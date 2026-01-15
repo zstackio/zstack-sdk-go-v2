@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type VmPriorityConfigInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccountUuid *string `json:"accountUuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
 	Level string `json:"level,omitempty"`
 	CpuShares int `json:"cpuShares,omitempty"`
 	OomScoreAdj int `json:"oomScoreAdj,omitempty"`

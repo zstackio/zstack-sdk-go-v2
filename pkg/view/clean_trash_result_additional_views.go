@@ -10,6 +10,6 @@ var _ = time.Now // avoid unused import
 type CleanTrashResultView struct {
 	ResourceUuids []string `json:"resourceUuids,omitempty"`
 	Details []string `json:"details,omitempty"`
-	Size *int64 `json:"size,omitempty"`
+	Size int64 `json:"size,omitempty"`
 }
 

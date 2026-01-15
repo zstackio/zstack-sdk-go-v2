@@ -22,5 +22,5 @@ type UpdateActiveAlarmTemplateParamDetail struct {
 // UpdateActiveAlarmTemplateParam UpdateActiveAlarmTemplate request param
 type UpdateActiveAlarmTemplateParam struct {
 	BaseParam
-	Params UpdateActiveAlarmTemplateParamDetail `json:"params"`
+	UpdateActiveAlarmTemplate UpdateActiveAlarmTemplateParamDetail `json:"updateActiveAlarmTemplate"`
 }

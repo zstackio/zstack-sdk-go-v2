@@ -16,9 +16,16 @@ func (cli *ZSClient) QueryAccountPriceTableRef(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/accounts/price-tables/refs", params, &resp)
 }
 
+// PageAccountPriceTableRef Pagination
+func (cli *ZSClient) PageAccountPriceTableRef(params *param.QueryParam) ([]view.AccountPriceTableRefInventoryView, int, error) {
+	var accountPriceTableRefs []view.AccountPriceTableRefInventoryView
+	total, err := cli.Page("v1/accounts/price-tables/refs", params, &accountPriceTableRefs)
+	return accountPriceTableRefs, total, err
+}
+// GetAccountPriceTableRef gets AccountPriceTableRef by uuid
 func (cli *ZSClient) GetAccountPriceTableRef(uuid string) (*view.AccountPriceTableRefInventoryView, error) {
 	var resp view.AccountPriceTableRefInventoryView
-	if err := cli.Get("v1/accounts/price-tables/refs", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/billings/price-tables/refs", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

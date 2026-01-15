@@ -10,18 +10,18 @@ var _ = time.Now // avoid unused import
 type L2PortGroupNetworkInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VSwitchUuid *string `json:"vSwitchUuid,omitempty"`
+	VSwitchUuid string `json:"vSwitchUuid,omitempty"`
 	VlanMode string `json:"vlanMode,omitempty"`
-	VlanId *int `json:"vlanId,omitempty"`
-	VlanRanges *string `json:"vlanRanges,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	PhysicalInterface *string `json:"physicalInterface,omitempty"`
-	Type *string `json:"type,omitempty"`
-	VSwitchType *string `json:"vSwitchType,omitempty"`
-	VirtualNetworkId *int `json:"virtualNetworkId,omitempty"`
-	Isolated *bool `json:"isolated,omitempty"`
-	Pvlan *string `json:"pvlan,omitempty"`
+	VlanId int `json:"vlanId,omitempty"`
+	VlanRanges string `json:"vlanRanges,omitempty"`
+	Description string `json:"description,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	PhysicalInterface string `json:"physicalInterface,omitempty"`
+	Type string `json:"type,omitempty"`
+	VSwitchType string `json:"vSwitchType,omitempty"`
+	VirtualNetworkId int `json:"virtualNetworkId,omitempty"`
+	Isolated bool `json:"isolated,omitempty"`
+	Pvlan string `json:"pvlan,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 

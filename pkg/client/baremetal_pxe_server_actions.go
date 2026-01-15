@@ -16,35 +16,35 @@ func (cli *ZSClient) DeleteBaremetalPxeServer(uuid string, deleteMode param.Dele
 }
 // UpdateBaremetalPxeServer updates BaremetalPxeServer
 func (cli *ZSClient) UpdateBaremetalPxeServer(uuid string, params param.UpdateBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
-	var resp view.UpdateBaremetalPxeServerEventView
+	resp := view.BaremetalPxeServerInventoryView{}
 	if err := cli.Put("v1/baremetal/pxeservers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // StartBaremetalPxeServer starts BaremetalPxeServer
 func (cli *ZSClient) StartBaremetalPxeServer(uuid string, params param.StartBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
-	var resp view.StartBaremetalPxeServerEventView
+	resp := view.BaremetalPxeServerInventoryView{}
 	if err := cli.Put("v1/baremetal/pxeservers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // ReconnectBaremetalPxeServer operates on BaremetalPxeServer
 func (cli *ZSClient) ReconnectBaremetalPxeServer(uuid string, params param.ReconnectBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
-	var resp view.ReconnectBaremetalPxeServerEventView
+	resp := view.BaremetalPxeServerInventoryView{}
 	if err := cli.Put("v1/baremetal/pxeservers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // StopBaremetalPxeServer stops BaremetalPxeServer
 func (cli *ZSClient) StopBaremetalPxeServer(uuid string, params param.StopBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
-	var resp view.StopBaremetalPxeServerEventView
+	resp := view.BaremetalPxeServerInventoryView{}
 	if err := cli.Put("v1/baremetal/pxeservers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryBaremetalPxeServer queries BaremetalPxeServer list
 func (cli *ZSClient) QueryBaremetalPxeServer(params *param.QueryParam) ([]view.BaremetalPxeServerInventoryView, error) {
@@ -52,18 +52,17 @@ func (cli *ZSClient) QueryBaremetalPxeServer(params *param.QueryParam) ([]view.B
 	return resp, cli.List("v1/baremetal/pxeservers", params, &resp)
 }
 
-func (cli *ZSClient) GetBaremetalPxeServer(uuid string) (*view.BaremetalPxeServerInventoryView, error) {
-	var resp view.BaremetalPxeServerInventoryView
-	if err := cli.Get("v1/baremetal/pxeservers", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageBaremetalPxeServer Pagination
+func (cli *ZSClient) PageBaremetalPxeServer(params *param.QueryParam) ([]view.BaremetalPxeServerInventoryView, int, error) {
+	var baremetalPxeServers []view.BaremetalPxeServerInventoryView
+	total, err := cli.Page("v1/baremetal/pxeservers", params, &baremetalPxeServers)
+	return baremetalPxeServers, total, err
 }
 // CreateBaremetalPxeServer creates BaremetalPxeServer
 func (cli *ZSClient) CreateBaremetalPxeServer(params param.CreateBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
-	var resp view.CreateBaremetalPxeServerEventView
+	resp := view.BaremetalPxeServerInventoryView{}
 	if err := cli.Post("v1/baremetal/pxeservers", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type SNSEmailAddressInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	EmailAddress *string `json:"emailAddress,omitempty"`
-	EndpointUuid *string `json:"endpointUuid,omitempty"`
+	EmailAddress string `json:"emailAddress,omitempty"`
+	EndpointUuid string `json:"endpointUuid,omitempty"`
 }
 
 // AddEmailAddressToSNSEmailEndpointEventView AddEmailAddressToSNSEmailEndpointEvent

@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type SystemTagInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Inherent *bool `json:"inherent,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
-	Tag *string `json:"tag,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Inherent bool `json:"inherent,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	Tag string `json:"tag,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // UpdateSystemTagEventView UpdateSystemTagEvent

@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryEventLog(params *param.QueryParam) ([]view.EventLogInv
 	return resp, cli.List("v1/eventlogs", params, &resp)
 }
 
-func (cli *ZSClient) GetEventLog(uuid string) (*view.EventLogInventoryView, error) {
-	var resp view.EventLogInventoryView
-	if err := cli.Get("v1/eventlogs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageEventLog Pagination
+func (cli *ZSClient) PageEventLog(params *param.QueryParam) ([]view.EventLogInventoryView, int, error) {
+	var eventLogs []view.EventLogInventoryView
+	total, err := cli.Page("v1/eventlogs", params, &eventLogs)
+	return eventLogs, total, err
 }

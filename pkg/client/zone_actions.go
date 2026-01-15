@@ -16,6 +16,13 @@ func (cli *ZSClient) QueryZone(params *param.QueryParam) ([]view.ZoneInventoryVi
 	return resp, cli.List("v1/zones", params, &resp)
 }
 
+// PageZone Pagination
+func (cli *ZSClient) PageZone(params *param.QueryParam) ([]view.ZoneInventoryView, int, error) {
+	var zones []view.ZoneInventoryView
+	total, err := cli.Page("v1/zones", params, &zones)
+	return zones, total, err
+}
+// GetZone gets Zone by uuid
 func (cli *ZSClient) GetZone(uuid string) (*view.ZoneInventoryView, error) {
 	var resp view.ZoneInventoryView
 	if err := cli.Get("v1/zones", uuid, nil, &resp); err != nil {
@@ -25,11 +32,11 @@ func (cli *ZSClient) GetZone(uuid string) (*view.ZoneInventoryView, error) {
 }
 // CreateZone creates Zone
 func (cli *ZSClient) CreateZone(params param.CreateZoneParam) (*view.ZoneInventoryView, error) {
-	var resp view.CreateZoneEventView
+	resp := view.ZoneInventoryView{}
 	if err := cli.Post("v1/zones", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteZone deletes Zone
 func (cli *ZSClient) DeleteZone(uuid string, deleteMode param.DeleteMode) error {
@@ -37,9 +44,9 @@ func (cli *ZSClient) DeleteZone(uuid string, deleteMode param.DeleteMode) error 
 }
 // UpdateZone updates Zone
 func (cli *ZSClient) UpdateZone(uuid string, params param.UpdateZoneParam) (*view.ZoneInventoryView, error) {
-	var resp view.UpdateZoneEventView
+	resp := view.ZoneInventoryView{}
 	if err := cli.Put("v1/zones", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

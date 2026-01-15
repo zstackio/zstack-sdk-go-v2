@@ -15,7 +15,7 @@ type DeletePreconfigurationTemplateParamDetail struct {
 // DeletePreconfigurationTemplateParam DeletePreconfigurationTemplate request param
 type DeletePreconfigurationTemplateParam struct {
 	BaseParam
-	Params DeletePreconfigurationTemplateParamDetail `json:"params"`
+	DeletePreconfigurationTemplate DeletePreconfigurationTemplateParamDetail `json:"deletePreconfigurationTemplate"`
 }
 // AddPreconfigurationTemplateParamDetail AddPreconfigurationTemplate detail param
 type AddPreconfigurationTemplateParamDetail struct {
@@ -31,7 +31,7 @@ type AddPreconfigurationTemplateParamDetail struct {
 // AddPreconfigurationTemplateParam AddPreconfigurationTemplate request param
 type AddPreconfigurationTemplateParam struct {
 	BaseParam
-	Params AddPreconfigurationTemplateParamDetail `json:"params"`
+	AddPreconfigurationTemplate AddPreconfigurationTemplateParamDetail `json:"addPreconfigurationTemplate"`
 }
 // UpdatePreconfigurationTemplateParamDetail UpdatePreconfigurationTemplate detail param
 type UpdatePreconfigurationTemplateParamDetail struct {
@@ -46,5 +46,5 @@ type UpdatePreconfigurationTemplateParamDetail struct {
 // UpdatePreconfigurationTemplateParam UpdatePreconfigurationTemplate request param
 type UpdatePreconfigurationTemplateParam struct {
 	BaseParam
-	Params UpdatePreconfigurationTemplateParamDetail `json:"params"`
+	UpdatePreconfigurationTemplate UpdatePreconfigurationTemplateParamDetail `json:"updatePreconfigurationTemplate"`
 }

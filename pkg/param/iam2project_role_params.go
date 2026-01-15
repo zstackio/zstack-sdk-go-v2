@@ -20,5 +20,5 @@ type CreateIAM2ProjectRoleParamDetail struct {
 // CreateIAM2ProjectRoleParam CreateIAM2ProjectRole request param
 type CreateIAM2ProjectRoleParam struct {
 	BaseParam
-	Params CreateIAM2ProjectRoleParamDetail `json:"params"`
+	CreateIAM2ProjectRole CreateIAM2ProjectRoleParamDetail `json:"createIAM2ProjectRole"`
 }

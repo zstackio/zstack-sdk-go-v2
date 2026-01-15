@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type QuotaInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	IdentityUuid *string `json:"identityUuid,omitempty"`
-	IdentityType *string `json:"identityType,omitempty"`
-	Value *int64 `json:"value,omitempty"`
+	IdentityUuid string `json:"identityUuid,omitempty"`
+	IdentityType string `json:"identityType,omitempty"`
+	Value int64 `json:"value,omitempty"`
 }
 
 // QueryQuotaView QueryQuota

@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryVpcFirewallVRouterRef(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/vpcfirewalls/vrouters/refs", params, &resp)
 }
 
-func (cli *ZSClient) GetVpcFirewallVRouterRef(uuid string) (*view.VpcFirewallVRouterRefInventoryView, error) {
-	var resp view.VpcFirewallVRouterRefInventoryView
-	if err := cli.Get("v1/vpcfirewalls/vrouters/refs", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVpcFirewallVRouterRef Pagination
+func (cli *ZSClient) PageVpcFirewallVRouterRef(params *param.QueryParam) ([]view.VpcFirewallVRouterRefInventoryView, int, error) {
+	var vpcFirewallVRouterRefs []view.VpcFirewallVRouterRefInventoryView
+	total, err := cli.Page("v1/vpcfirewalls/vrouters/refs", params, &vpcFirewallVRouterRefs)
+	return vpcFirewallVRouterRefs, total, err
 }

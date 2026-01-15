@@ -11,9 +11,9 @@ type ResourceStackVmPortRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Id int64 `json:"id,omitempty"`
-	StackUuid *string `json:"stackUuid,omitempty"`
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	StackUuid string `json:"stackUuid,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	Port int `json:"port,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Status string `json:"status,omitempty"`
 }
 

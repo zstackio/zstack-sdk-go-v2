@@ -16,28 +16,27 @@ func (cli *ZSClient) QueryPrimaryStorage(params *param.QueryParam) ([]view.Prima
 	return resp, cli.List("v1/primary-storage", params, &resp)
 }
 
-func (cli *ZSClient) GetPrimaryStorage(uuid string) (*view.PrimaryStorageInventoryView, error) {
-	var resp view.PrimaryStorageInventoryView
-	if err := cli.Get("v1/primary-storage", uuid, nil, &resp); err != nil {
+// PagePrimaryStorage Pagination
+func (cli *ZSClient) PagePrimaryStorage(params *param.QueryParam) ([]view.PrimaryStorageInventoryView, int, error) {
+	var primaryStorages []view.PrimaryStorageInventoryView
+	total, err := cli.Page("v1/primary-storage", params, &primaryStorages)
+	return primaryStorages, total, err
+}
+// ReconnectPrimaryStorage operates on PrimaryStorage
+func (cli *ZSClient) ReconnectPrimaryStorage(uuid string, params param.ReconnectPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
+	resp := view.PrimaryStorageInventoryView{}
+	if err := cli.Put("v1/primary-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// ReconnectPrimaryStorage operates on PrimaryStorage
-func (cli *ZSClient) ReconnectPrimaryStorage(uuid string, params param.ReconnectPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
-	var resp view.ReconnectPrimaryStorageEventView
-	if err := cli.Put("v1/primary-storage", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // UpdatePrimaryStorage updates PrimaryStorage
 func (cli *ZSClient) UpdatePrimaryStorage(uuid string, params param.UpdatePrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
-	var resp view.UpdatePrimaryStorageEventView
+	resp := view.PrimaryStorageInventoryView{}
 	if err := cli.Put("v1/primary-storage", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeletePrimaryStorage deletes PrimaryStorage
 func (cli *ZSClient) DeletePrimaryStorage(uuid string, deleteMode param.DeleteMode) error {

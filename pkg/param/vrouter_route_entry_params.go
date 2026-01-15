@@ -16,7 +16,7 @@ type DeleteVRouterRouteEntryParamDetail struct {
 // DeleteVRouterRouteEntryParam DeleteVRouterRouteEntry request param
 type DeleteVRouterRouteEntryParam struct {
 	BaseParam
-	Params DeleteVRouterRouteEntryParamDetail `json:"params"`
+	DeleteVRouterRouteEntry DeleteVRouterRouteEntryParamDetail `json:"deleteVRouterRouteEntry"`
 }
 // AddVRouterRouteEntryParamDetail AddVRouterRouteEntry detail param
 type AddVRouterRouteEntryParamDetail struct {
@@ -33,5 +33,5 @@ type AddVRouterRouteEntryParamDetail struct {
 // AddVRouterRouteEntryParam AddVRouterRouteEntry request param
 type AddVRouterRouteEntryParam struct {
 	BaseParam
-	Params AddVRouterRouteEntryParamDetail `json:"params"`
+	AddVRouterRouteEntry AddVRouterRouteEntryParamDetail `json:"addVRouterRouteEntry"`
 }

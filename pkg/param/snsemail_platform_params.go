@@ -22,7 +22,7 @@ type CreateSNSEmailPlatformParamDetail struct {
 // CreateSNSEmailPlatformParam CreateSNSEmailPlatform request param
 type CreateSNSEmailPlatformParam struct {
 	BaseParam
-	Params CreateSNSEmailPlatformParamDetail `json:"params"`
+	CreateSNSEmailPlatform CreateSNSEmailPlatformParamDetail `json:"createSNSEmailPlatform"`
 }
 // ValidateSNSEmailPlatformParamDetail ValidateSNSEmailPlatform detail param
 type ValidateSNSEmailPlatformParamDetail struct {
@@ -37,5 +37,5 @@ type ValidateSNSEmailPlatformParamDetail struct {
 // ValidateSNSEmailPlatformParam ValidateSNSEmailPlatform request param
 type ValidateSNSEmailPlatformParam struct {
 	BaseParam
-	Params ValidateSNSEmailPlatformParamDetail `json:"params"`
+	ValidateSNSEmailPlatform ValidateSNSEmailPlatformParamDetail `json:"validateSNSEmailPlatform"`
 }

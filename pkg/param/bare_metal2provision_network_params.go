@@ -21,7 +21,7 @@ type UpdateBareMetal2ProvisionNetworkParamDetail struct {
 // UpdateBareMetal2ProvisionNetworkParam UpdateBareMetal2ProvisionNetwork request param
 type UpdateBareMetal2ProvisionNetworkParam struct {
 	BaseParam
-	Params UpdateBareMetal2ProvisionNetworkParamDetail `json:"params"`
+	UpdateBareMetal2ProvisionNetwork UpdateBareMetal2ProvisionNetworkParamDetail `json:"updateBareMetal2ProvisionNetwork"`
 }
 // CreateBareMetal2ProvisionNetworkParamDetail CreateBareMetal2ProvisionNetwork detail param
 type CreateBareMetal2ProvisionNetworkParamDetail struct {
@@ -40,7 +40,7 @@ type CreateBareMetal2ProvisionNetworkParamDetail struct {
 // CreateBareMetal2ProvisionNetworkParam CreateBareMetal2ProvisionNetwork request param
 type CreateBareMetal2ProvisionNetworkParam struct {
 	BaseParam
-	Params CreateBareMetal2ProvisionNetworkParamDetail `json:"params"`
+	CreateBareMetal2ProvisionNetwork CreateBareMetal2ProvisionNetworkParamDetail `json:"createBareMetal2ProvisionNetwork"`
 }
 // DeleteBareMetal2ProvisionNetworkParamDetail DeleteBareMetal2ProvisionNetwork detail param
 type DeleteBareMetal2ProvisionNetworkParamDetail struct {
@@ -51,5 +51,5 @@ type DeleteBareMetal2ProvisionNetworkParamDetail struct {
 // DeleteBareMetal2ProvisionNetworkParam DeleteBareMetal2ProvisionNetwork request param
 type DeleteBareMetal2ProvisionNetworkParam struct {
 	BaseParam
-	Params DeleteBareMetal2ProvisionNetworkParamDetail `json:"params"`
+	DeleteBareMetal2ProvisionNetwork DeleteBareMetal2ProvisionNetworkParamDetail `json:"deleteBareMetal2ProvisionNetwork"`
 }

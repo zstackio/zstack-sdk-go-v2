@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type BuildAppExportHistoryInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	BuildAppUuid *string `json:"buildAppUuid,omitempty"`
-	Path *string `json:"path,omitempty"`
-	Size *int64 `json:"size,omitempty"`
-	Md5Sum *string `json:"md5Sum,omitempty"`
-	Version *string `json:"version,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	BuildAppUuid string `json:"buildAppUuid,omitempty"`
+	Path string `json:"path,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	Md5Sum string `json:"md5Sum,omitempty"`
+	Version string `json:"version,omitempty"`
+	Status string `json:"status,omitempty"`
 }
 
 // ExportBuildAppEventView ExportBuildAppEvent

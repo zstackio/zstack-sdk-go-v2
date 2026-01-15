@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type ObservabilityServerServiceDataInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Job *string `json:"job,omitempty"`
-	FileName *string `json:"fileName,omitempty"`
+	Job string `json:"job,omitempty"`
+	FileName string `json:"fileName,omitempty"`
 }
 

@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryIscsiLun(params *param.QueryParam) ([]view.IscsiLunInv
 	return resp, cli.List("v1/storage-devices/iscsi/luns", params, &resp)
 }
 
-func (cli *ZSClient) GetIscsiLun(uuid string) (*view.IscsiLunInventoryView, error) {
-	var resp view.IscsiLunInventoryView
-	if err := cli.Get("v1/storage-devices/iscsi/luns", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageIscsiLun Pagination
+func (cli *ZSClient) PageIscsiLun(params *param.QueryParam) ([]view.IscsiLunInventoryView, int, error) {
+	var iscsiLuns []view.IscsiLunInventoryView
+	total, err := cli.Page("v1/storage-devices/iscsi/luns", params, &iscsiLuns)
+	return iscsiLuns, total, err
 }

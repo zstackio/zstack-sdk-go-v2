@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type AccountResourceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccountUuid *string `json:"accountUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
-	ConcreteResourceType *string `json:"concreteResourceType,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	ConcreteResourceType string `json:"concreteResourceType,omitempty"`
 }
 
 // QueryAccountResourceRefView QueryAccountResourceRef

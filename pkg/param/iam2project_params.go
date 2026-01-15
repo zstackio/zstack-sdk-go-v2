@@ -23,7 +23,7 @@ type CreateIAM2ProjectParamDetail struct {
 // CreateIAM2ProjectParam CreateIAM2Project request param
 type CreateIAM2ProjectParam struct {
 	BaseParam
-	Params CreateIAM2ProjectParamDetail `json:"params"`
+	CreateIAM2Project CreateIAM2ProjectParamDetail `json:"createIAM2Project"`
 }
 // DeleteIAM2ProjectParamDetail DeleteIAM2Project detail param
 type DeleteIAM2ProjectParamDetail struct {
@@ -33,7 +33,7 @@ type DeleteIAM2ProjectParamDetail struct {
 // DeleteIAM2ProjectParam DeleteIAM2Project request param
 type DeleteIAM2ProjectParam struct {
 	BaseParam
-	Params DeleteIAM2ProjectParamDetail `json:"params"`
+	DeleteIAM2Project DeleteIAM2ProjectParamDetail `json:"deleteIAM2Project"`
 }
 // RecoverIAM2ProjectParamDetail RecoverIAM2Project detail param
 type RecoverIAM2ProjectParamDetail struct {
@@ -43,7 +43,7 @@ type RecoverIAM2ProjectParamDetail struct {
 // RecoverIAM2ProjectParam RecoverIAM2Project request param
 type RecoverIAM2ProjectParam struct {
 	BaseParam
-	Params RecoverIAM2ProjectParamDetail `json:"params"`
+	RecoverIAM2Project RecoverIAM2ProjectParamDetail `json:"recoverIAM2Project"`
 }
 // ExpungeIAM2ProjectParamDetail ExpungeIAM2Project detail param
 type ExpungeIAM2ProjectParamDetail struct {
@@ -53,7 +53,7 @@ type ExpungeIAM2ProjectParamDetail struct {
 // ExpungeIAM2ProjectParam ExpungeIAM2Project request param
 type ExpungeIAM2ProjectParam struct {
 	BaseParam
-	Params ExpungeIAM2ProjectParamDetail `json:"params"`
+	ExpungeIAM2Project ExpungeIAM2ProjectParamDetail `json:"expungeIAM2Project"`
 }
 // LoginIAM2ProjectParamDetail LoginIAM2Project detail param
 type LoginIAM2ProjectParamDetail struct {
@@ -64,7 +64,7 @@ type LoginIAM2ProjectParamDetail struct {
 // LoginIAM2ProjectParam LoginIAM2Project request param
 type LoginIAM2ProjectParam struct {
 	BaseParam
-	Params LoginIAM2ProjectParamDetail `json:"params"`
+	LoginIAM2Project LoginIAM2ProjectParamDetail `json:"loginIAM2Project"`
 }
 // UpdateIAM2ProjectParamDetail UpdateIAM2Project detail param
 type UpdateIAM2ProjectParamDetail struct {
@@ -76,5 +76,5 @@ type UpdateIAM2ProjectParamDetail struct {
 // UpdateIAM2ProjectParam UpdateIAM2Project request param
 type UpdateIAM2ProjectParam struct {
 	BaseParam
-	Params UpdateIAM2ProjectParamDetail `json:"params"`
+	UpdateIAM2Project UpdateIAM2ProjectParamDetail `json:"updateIAM2Project"`
 }

@@ -8,7 +8,7 @@ var _ = time.Now // avoid unused import
 
 // SdnVlanRangeView SdnVlanRange
 type SdnVlanRangeView struct {
-	StartVlan *int `json:"startVlan,omitempty"`
-	EndVlan *int `json:"endVlan,omitempty"`
+	StartVlan int `json:"startVlan,omitempty"`
+	EndVlan int `json:"endVlan,omitempty"`
 }
 

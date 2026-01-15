@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type BareMetal2ChassisOfferingInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Architecture *string `json:"architecture,omitempty"`
-	CpuModelName *string `json:"cpuModelName,omitempty"`
-	CpuNum *int `json:"cpuNum,omitempty"`
-	MemorySize *int64 `json:"memorySize,omitempty"`
-	BootMode *string `json:"bootMode,omitempty"`
-	State *string `json:"state,omitempty"`
-	ProvisionType *string `json:"provisionType,omitempty"`
+	Description string `json:"description,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	CpuModelName string `json:"cpuModelName,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty"`
+	BootMode string `json:"bootMode,omitempty"`
+	State string `json:"state,omitempty"`
+	ProvisionType string `json:"provisionType,omitempty"`
 }
 
 // UpdateBareMetal2ChassisOfferingEventView UpdateBareMetal2ChassisOfferingEvent

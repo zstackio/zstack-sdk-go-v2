@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type DirectoryInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	GroupName *string `json:"groupName,omitempty"`
-	ParentUuid *string `json:"parentUuid,omitempty"`
-	RootDirectoryUuid *string `json:"rootDirectoryUuid,omitempty"`
-	ZoneUuid *string `json:"zoneUuid,omitempty"`
-	Type *string `json:"type,omitempty"`
+	GroupName string `json:"groupName,omitempty"`
+	ParentUuid string `json:"parentUuid,omitempty"`
+	RootDirectoryUuid string `json:"rootDirectoryUuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // UpdateDirectoryEventView UpdateDirectoryEvent

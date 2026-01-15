@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // AddZBox adds ZBox
 func (cli *ZSClient) AddZBox(params param.AddZBoxParam) (*view.ZBoxInventoryView, error) {
-	var resp view.AddZBoxEventView
+	resp := view.ZBoxInventoryView{}
 	if err := cli.Post("v1/zbox", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryZBox queries ZBox list
 func (cli *ZSClient) QueryZBox(params *param.QueryParam) ([]view.ZBoxInventoryView, error) {
@@ -24,10 +24,9 @@ func (cli *ZSClient) QueryZBox(params *param.QueryParam) ([]view.ZBoxInventoryVi
 	return resp, cli.List("v1/zbox", params, &resp)
 }
 
-func (cli *ZSClient) GetZBox(uuid string) (*view.ZBoxInventoryView, error) {
-	var resp view.ZBoxInventoryView
-	if err := cli.Get("v1/zbox", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageZBox Pagination
+func (cli *ZSClient) PageZBox(params *param.QueryParam) ([]view.ZBoxInventoryView, int, error) {
+	var zBoxs []view.ZBoxInventoryView
+	total, err := cli.Page("v1/zbox", params, &zBoxs)
+	return zBoxs, total, err
 }

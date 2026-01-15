@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type ModelServiceTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ModelServiceUuid *string `json:"modelServiceUuid,omitempty"`
-	CpuArchitecture *string `json:"cpuArchitecture,omitempty"`
-	VmImageUuid *string `json:"vmImageUuid,omitempty"`
-	DockerImage *string `json:"dockerImage,omitempty"`
+	ModelServiceUuid string `json:"modelServiceUuid,omitempty"`
+	CpuArchitecture string `json:"cpuArchitecture,omitempty"`
+	VmImageUuid string `json:"vmImageUuid,omitempty"`
+	DockerImage string `json:"dockerImage,omitempty"`
 }
 

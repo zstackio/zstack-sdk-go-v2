@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type VipPortRangeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Protocol *string `json:"protocol,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
 	UsedPorts []string `json:"usedPorts,omitempty"`
 }
 

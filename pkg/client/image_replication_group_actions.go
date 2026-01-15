@@ -20,18 +20,17 @@ func (cli *ZSClient) QueryImageReplicationGroup(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/image-replication-groups", params, &resp)
 }
 
-func (cli *ZSClient) GetImageReplicationGroup(uuid string) (*view.ImageReplicationGroupInventoryView, error) {
-	var resp view.ImageReplicationGroupInventoryView
-	if err := cli.Get("v1/image-replication-groups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageImageReplicationGroup Pagination
+func (cli *ZSClient) PageImageReplicationGroup(params *param.QueryParam) ([]view.ImageReplicationGroupInventoryView, int, error) {
+	var imageReplicationGroups []view.ImageReplicationGroupInventoryView
+	total, err := cli.Page("v1/image-replication-groups", params, &imageReplicationGroups)
+	return imageReplicationGroups, total, err
 }
 // CreateImageReplicationGroup creates ImageReplicationGroup
 func (cli *ZSClient) CreateImageReplicationGroup(params param.CreateImageReplicationGroupParam) (*view.ImageReplicationGroupInventoryView, error) {
-	var resp view.CreateImageReplicationGroupEventView
+	resp := view.ImageReplicationGroupInventoryView{}
 	if err := cli.Post("v1/image-replication-groups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

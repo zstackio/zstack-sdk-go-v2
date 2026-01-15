@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type NvmeServerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Ip *string `json:"ip,omitempty"`
-	Port *int `json:"port,omitempty"`
-	State *string `json:"state,omitempty"`
-	Transport *string `json:"transport,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Port int `json:"port,omitempty"`
+	State string `json:"state,omitempty"`
+	Transport string `json:"transport,omitempty"`
 	NvmeTargets []NvmeTargetInventoryView `json:"nvmeTargets,omitempty"`
 	NvmeClusterRefs []NvmeServerClusterRefInventoryView `json:"nvmeClusterRefs,omitempty"`
 }

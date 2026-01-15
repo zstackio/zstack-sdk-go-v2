@@ -16,11 +16,11 @@ func (cli *ZSClient) RemoveVmSchedulingRule(uuid string, deleteMode param.Delete
 }
 // CreateVmSchedulingRule creates VmSchedulingRule
 func (cli *ZSClient) CreateVmSchedulingRule(params param.CreateVmSchedulingRuleParam) (*view.AffinityGroupInventoryView, error) {
-	var resp view.CreateAffinityGroupEventView
+	resp := view.AffinityGroupInventoryView{}
 	if err := cli.Post("v1/vmsSchedulingRule", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // ValidateVmSchedulingRule operates on VmSchedulingRule
 func (cli *ZSClient) ValidateVmSchedulingRule(uuid string, params param.ValidateVmSchedulingRuleParam) (*view.VmSchedulingRuleInventoryView, error) {
@@ -32,11 +32,11 @@ func (cli *ZSClient) ValidateVmSchedulingRule(uuid string, params param.Validate
 }
 // UpdateVmSchedulingRule updates VmSchedulingRule
 func (cli *ZSClient) UpdateVmSchedulingRule(uuid string, params param.UpdateVmSchedulingRuleParam) (*view.VmSchedulingRuleInventoryView, error) {
-	var resp view.UpdateVmSchedulingRuleEventView
+	resp := view.VmSchedulingRuleInventoryView{}
 	if err := cli.Put("v1/vmSchedulingRule", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryVmSchedulingRule queries VmSchedulingRule list
 func (cli *ZSClient) QueryVmSchedulingRule(params *param.QueryParam) ([]view.VmSchedulingRuleInventoryView, error) {
@@ -44,10 +44,9 @@ func (cli *ZSClient) QueryVmSchedulingRule(params *param.QueryParam) ([]view.VmS
 	return resp, cli.List("v1/query/vm/schedulingRule", params, &resp)
 }
 
-func (cli *ZSClient) GetVmSchedulingRule(uuid string) (*view.VmSchedulingRuleInventoryView, error) {
-	var resp view.VmSchedulingRuleInventoryView
-	if err := cli.Get("v1/query/vm/schedulingRule", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVmSchedulingRule Pagination
+func (cli *ZSClient) PageVmSchedulingRule(params *param.QueryParam) ([]view.VmSchedulingRuleInventoryView, int, error) {
+	var vmSchedulingRules []view.VmSchedulingRuleInventoryView
+	total, err := cli.Page("v1/query/vm/schedulingRule", params, &vmSchedulingRules)
+	return vmSchedulingRules, total, err
 }

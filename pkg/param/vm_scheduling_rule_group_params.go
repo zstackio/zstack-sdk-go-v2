@@ -14,7 +14,7 @@ type DeleteVmSchedulingRuleGroupParamDetail struct {
 // DeleteVmSchedulingRuleGroupParam DeleteVmSchedulingRuleGroup request param
 type DeleteVmSchedulingRuleGroupParam struct {
 	BaseParam
-	Params DeleteVmSchedulingRuleGroupParamDetail `json:"params"`
+	DeleteVmSchedulingRuleGroup DeleteVmSchedulingRuleGroupParamDetail `json:"deleteVmSchedulingRuleGroup"`
 }
 // UpdateVmSchedulingRuleGroupParamDetail UpdateVmSchedulingRuleGroup detail param
 type UpdateVmSchedulingRuleGroupParamDetail struct {
@@ -26,7 +26,7 @@ type UpdateVmSchedulingRuleGroupParamDetail struct {
 // UpdateVmSchedulingRuleGroupParam UpdateVmSchedulingRuleGroup request param
 type UpdateVmSchedulingRuleGroupParam struct {
 	BaseParam
-	Params UpdateVmSchedulingRuleGroupParamDetail `json:"params"`
+	UpdateVmSchedulingRuleGroup UpdateVmSchedulingRuleGroupParamDetail `json:"updateVmSchedulingRuleGroup"`
 }
 // CreateVmSchedulingRuleGroupParamDetail CreateVmSchedulingRuleGroup detail param
 type CreateVmSchedulingRuleGroupParamDetail struct {
@@ -40,5 +40,5 @@ type CreateVmSchedulingRuleGroupParamDetail struct {
 // CreateVmSchedulingRuleGroupParam CreateVmSchedulingRuleGroup request param
 type CreateVmSchedulingRuleGroupParam struct {
 	BaseParam
-	Params CreateVmSchedulingRuleGroupParamDetail `json:"params"`
+	CreateVmSchedulingRuleGroup CreateVmSchedulingRuleGroupParamDetail `json:"createVmSchedulingRuleGroup"`
 }

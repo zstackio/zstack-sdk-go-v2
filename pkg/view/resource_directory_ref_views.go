@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type ResourceDirectoryRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	DirectoryUuid *string `json:"directoryUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	DirectoryUuid string `json:"directoryUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 

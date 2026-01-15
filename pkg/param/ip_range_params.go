@@ -23,7 +23,7 @@ type AddIpRangeParamDetail struct {
 // AddIpRangeParam AddIpRange request param
 type AddIpRangeParam struct {
 	BaseParam
-	Params AddIpRangeParamDetail `json:"params"`
+	AddIpRange AddIpRangeParamDetail `json:"addIpRange"`
 }
 // UpdateIpRangeParamDetail UpdateIpRange detail param
 type UpdateIpRangeParamDetail struct {
@@ -35,7 +35,7 @@ type UpdateIpRangeParamDetail struct {
 // UpdateIpRangeParam UpdateIpRange request param
 type UpdateIpRangeParam struct {
 	BaseParam
-	Params UpdateIpRangeParamDetail `json:"params"`
+	UpdateIpRange UpdateIpRangeParamDetail `json:"updateIpRange"`
 }
 // DeleteIpRangeParamDetail DeleteIpRange detail param
 type DeleteIpRangeParamDetail struct {
@@ -46,5 +46,5 @@ type DeleteIpRangeParamDetail struct {
 // DeleteIpRangeParam DeleteIpRange request param
 type DeleteIpRangeParam struct {
 	BaseParam
-	Params DeleteIpRangeParamDetail `json:"params"`
+	DeleteIpRange DeleteIpRangeParamDetail `json:"deleteIpRange"`
 }

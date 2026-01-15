@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type VmNicSecurityPolicyInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VmNicUuid *string `json:"vmNicUuid,omitempty"`
-	IngressPolicy *string `json:"ingressPolicy,omitempty"`
-	EgressPolicy *string `json:"egressPolicy,omitempty"`
+	VmNicUuid string `json:"vmNicUuid,omitempty"`
+	IngressPolicy string `json:"ingressPolicy,omitempty"`
+	EgressPolicy string `json:"egressPolicy,omitempty"`
 }
 
 // ChangeVmNicSecurityPolicyEventView ChangeVmNicSecurityPolicyEvent

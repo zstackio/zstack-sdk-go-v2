@@ -16,11 +16,11 @@ func (cli *ZSClient) DeleteSecurityMachine(uuid string, deleteMode param.DeleteM
 }
 // UpdateSecurityMachine updates SecurityMachine
 func (cli *ZSClient) UpdateSecurityMachine(uuid string, params param.UpdateSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
-	var resp view.UpdateSecurityMachineEventView
+	resp := view.SecurityMachineInventoryView{}
 	if err := cli.Put("v1/security-machines", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QuerySecurityMachine queries SecurityMachine list
 func (cli *ZSClient) QuerySecurityMachine(params *param.QueryParam) ([]view.SecurityMachineInventoryView, error) {
@@ -28,10 +28,9 @@ func (cli *ZSClient) QuerySecurityMachine(params *param.QueryParam) ([]view.Secu
 	return resp, cli.List("v1/security-machines", params, &resp)
 }
 
-func (cli *ZSClient) GetSecurityMachine(uuid string) (*view.SecurityMachineInventoryView, error) {
-	var resp view.SecurityMachineInventoryView
-	if err := cli.Get("v1/security-machines", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageSecurityMachine Pagination
+func (cli *ZSClient) PageSecurityMachine(params *param.QueryParam) ([]view.SecurityMachineInventoryView, int, error) {
+	var securityMachines []view.SecurityMachineInventoryView
+	total, err := cli.Page("v1/security-machines", params, &securityMachines)
+	return securityMachines, total, err
 }

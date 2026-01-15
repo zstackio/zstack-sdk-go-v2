@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type DataCenterInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Deleted *string `json:"deleted,omitempty"`
-	RegionName *string `json:"regionName,omitempty"`
+	Deleted string `json:"deleted,omitempty"`
+	RegionName string `json:"regionName,omitempty"`
 	DcType string `json:"dcType,omitempty"`
-	RegionId *string `json:"regionId,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Endpoint *string `json:"endpoint,omitempty"`
+	RegionId string `json:"regionId,omitempty"`
+	Description string `json:"description,omitempty"`
+	Endpoint string `json:"endpoint,omitempty"`
 }
 
 // AddDataCenterFromRemoteEventView AddDataCenterFromRemoteEvent

@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type VCenterResourcePoolUsageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VCenterResourcePoolUuid *string `json:"vCenterResourcePoolUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	VCenterResourcePoolUuid string `json:"vCenterResourcePoolUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 

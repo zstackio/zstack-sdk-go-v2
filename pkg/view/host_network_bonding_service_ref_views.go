@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type HostNetworkBondingServiceRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	BondingUuid *string `json:"bondingUuid,omitempty"`
-	VlanId *int `json:"vlanId,omitempty"`
-	ServiceType *string `json:"serviceType,omitempty"`
+	BondingUuid string `json:"bondingUuid,omitempty"`
+	VlanId int `json:"vlanId,omitempty"`
+	ServiceType string `json:"serviceType,omitempty"`
 }
 
 // SetServiceTypeOnHostNetworkBondingEventView SetServiceTypeOnHostNetworkBondingEvent

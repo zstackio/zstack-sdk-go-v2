@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateLogServer updates LogServer
 func (cli *ZSClient) UpdateLogServer(uuid string, params param.UpdateLogServerParam) (*view.LogServerInventoryView, error) {
-	var resp view.UpdateLogServerEventView
+	resp := view.LogServerInventoryView{}
 	if err := cli.Put("v1/log/servers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteLogServer deletes LogServer
 func (cli *ZSClient) DeleteLogServer(uuid string, deleteMode param.DeleteMode) error {
@@ -28,18 +28,17 @@ func (cli *ZSClient) QueryLogServer(params *param.QueryParam) ([]view.LogServerI
 	return resp, cli.List("v1/log/servers", params, &resp)
 }
 
-func (cli *ZSClient) GetLogServer(uuid string) (*view.LogServerInventoryView, error) {
-	var resp view.LogServerInventoryView
-	if err := cli.Get("v1/log/servers", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageLogServer Pagination
+func (cli *ZSClient) PageLogServer(params *param.QueryParam) ([]view.LogServerInventoryView, int, error) {
+	var logServers []view.LogServerInventoryView
+	total, err := cli.Page("v1/log/servers", params, &logServers)
+	return logServers, total, err
 }
 // AddLogServer adds LogServer
 func (cli *ZSClient) AddLogServer(params param.AddLogServerParam) (*view.LogServerInventoryView, error) {
-	var resp view.AddLogServerEventView
+	resp := view.LogServerInventoryView{}
 	if err := cli.Post("v1/log/servers", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

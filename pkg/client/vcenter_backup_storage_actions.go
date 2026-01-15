@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryVCenterBackupStorage(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/vcenters/backup-storage", params, &resp)
 }
 
-func (cli *ZSClient) GetVCenterBackupStorage(uuid string) (*view.VCenterBackupStorageInventoryView, error) {
-	var resp view.VCenterBackupStorageInventoryView
-	if err := cli.Get("v1/vcenters/backup-storage", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVCenterBackupStorage Pagination
+func (cli *ZSClient) PageVCenterBackupStorage(params *param.QueryParam) ([]view.VCenterBackupStorageInventoryView, int, error) {
+	var vCenterBackupStorages []view.VCenterBackupStorageInventoryView
+	total, err := cli.Page("v1/vcenters/backup-storage", params, &vCenterBackupStorages)
+	return vCenterBackupStorages, total, err
 }

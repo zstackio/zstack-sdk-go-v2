@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type CbtTaskInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	Status string `json:"status,omitempty"`
 	ResourceRefs []CbtTaskResourceRefInventoryView `json:"resourceRefs,omitempty"`
 }

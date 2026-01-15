@@ -20,7 +20,7 @@ type CreateFlowCollectorParamDetail struct {
 // CreateFlowCollectorParam CreateFlowCollector request param
 type CreateFlowCollectorParam struct {
 	BaseParam
-	Params CreateFlowCollectorParamDetail `json:"params"`
+	CreateFlowCollector CreateFlowCollectorParamDetail `json:"createFlowCollector"`
 }
 // UpdateFlowCollectorParamDetail UpdateFlowCollector detail param
 type UpdateFlowCollectorParamDetail struct {
@@ -32,7 +32,7 @@ type UpdateFlowCollectorParamDetail struct {
 // UpdateFlowCollectorParam UpdateFlowCollector request param
 type UpdateFlowCollectorParam struct {
 	BaseParam
-	Params UpdateFlowCollectorParamDetail `json:"params"`
+	UpdateFlowCollector UpdateFlowCollectorParamDetail `json:"updateFlowCollector"`
 }
 // DeleteFlowCollectorParamDetail DeleteFlowCollector detail param
 type DeleteFlowCollectorParamDetail struct {
@@ -43,5 +43,5 @@ type DeleteFlowCollectorParamDetail struct {
 // DeleteFlowCollectorParam DeleteFlowCollector request param
 type DeleteFlowCollectorParam struct {
 	BaseParam
-	Params DeleteFlowCollectorParamDetail `json:"params"`
+	DeleteFlowCollector DeleteFlowCollectorParamDetail `json:"deleteFlowCollector"`
 }

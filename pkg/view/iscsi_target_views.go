@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type IscsiTargetInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	IscsiServerUuid *string `json:"iscsiServerUuid,omitempty"`
-	Iqn *string `json:"iqn,omitempty"`
+	IscsiServerUuid string `json:"iscsiServerUuid,omitempty"`
+	Iqn string `json:"iqn,omitempty"`
 	IscsiLuns []IscsiLunInventoryView `json:"iscsiLuns,omitempty"`
 }
 

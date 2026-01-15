@@ -24,7 +24,7 @@ type AddInfoSecSecurityMachineParamDetail struct {
 // AddInfoSecSecurityMachineParam AddInfoSecSecurityMachine request param
 type AddInfoSecSecurityMachineParam struct {
 	BaseParam
-	Params AddInfoSecSecurityMachineParamDetail `json:"params"`
+	AddInfoSecSecurityMachine AddInfoSecSecurityMachineParamDetail `json:"addInfoSecSecurityMachine"`
 }
 // UpdateInfoSecSecurityMachineParamDetail UpdateInfoSecSecurityMachine detail param
 type UpdateInfoSecSecurityMachineParamDetail struct {
@@ -40,5 +40,5 @@ type UpdateInfoSecSecurityMachineParamDetail struct {
 // UpdateInfoSecSecurityMachineParam UpdateInfoSecSecurityMachine request param
 type UpdateInfoSecSecurityMachineParam struct {
 	BaseParam
-	Params UpdateInfoSecSecurityMachineParamDetail `json:"params"`
+	UpdateInfoSecSecurityMachine UpdateInfoSecSecurityMachineParamDetail `json:"updateInfoSecSecurityMachine"`
 }

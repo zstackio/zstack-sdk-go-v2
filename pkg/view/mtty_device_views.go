@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type MttyDeviceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	HostUuid *string `json:"hostUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	VirtStatus string `json:"virtStatus,omitempty"`

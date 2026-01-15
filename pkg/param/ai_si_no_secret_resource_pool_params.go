@@ -30,5 +30,5 @@ type CreateAiSiNoSecretResourcePoolParamDetail struct {
 // CreateAiSiNoSecretResourcePoolParam CreateAiSiNoSecretResourcePool request param
 type CreateAiSiNoSecretResourcePoolParam struct {
 	BaseParam
-	Params CreateAiSiNoSecretResourcePoolParamDetail `json:"params"`
+	CreateAiSiNoSecretResourcePool CreateAiSiNoSecretResourcePoolParamDetail `json:"createAiSiNoSecretResourcePool"`
 }

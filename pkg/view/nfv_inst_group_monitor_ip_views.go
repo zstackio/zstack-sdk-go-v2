@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type NfvInstGroupMonitorIpInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	NfvInstGroupUuid *string `json:"nfvInstGroupUuid,omitempty"`
-	MonitorIp *string `json:"monitorIp,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	NfvInstGroupUuid string `json:"nfvInstGroupUuid,omitempty"`
+	MonitorIp string `json:"monitorIp,omitempty"`
 }
 

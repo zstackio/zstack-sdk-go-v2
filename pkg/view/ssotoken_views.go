@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type SSOTokenInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ClientUuid *string `json:"clientUuid,omitempty"`
-	UserUuid *string `json:"userUuid,omitempty"`
+	ClientUuid string `json:"clientUuid,omitempty"`
+	UserUuid string `json:"userUuid,omitempty"`
 }
 

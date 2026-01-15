@@ -12,19 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // CloneModelService operates on ModelService
 func (cli *ZSClient) CloneModelService(params param.CloneModelServiceParam) (*view.ModelServiceInventoryView, error) {
-	var resp view.CloneModelServiceEventView
+	resp := view.ModelServiceInventoryView{}
 	if err := cli.Post("v1/ai/model-services", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateModelService updates ModelService
 func (cli *ZSClient) UpdateModelService(uuid string, params param.UpdateModelServiceParam) (*view.ModelServiceInventoryView, error) {
-	var resp view.UpdateModelServiceEventView
+	resp := view.ModelServiceInventoryView{}
 	if err := cli.Put("v1/ai/model-services", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteModelService deletes ModelService
 func (cli *ZSClient) DeleteModelService(uuid string, deleteMode param.DeleteMode) error {
@@ -32,11 +32,11 @@ func (cli *ZSClient) DeleteModelService(uuid string, deleteMode param.DeleteMode
 }
 // AddModelService adds ModelService
 func (cli *ZSClient) AddModelService(params param.AddModelServiceParam) (*view.ModelServiceInventoryView, error) {
-	var resp view.AddModelServiceEventView
+	resp := view.ModelServiceInventoryView{}
 	if err := cli.Post("v1/ai/model-services", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 
 // AddModelServiceAsync Async
@@ -59,10 +59,9 @@ func (cli *ZSClient) QueryModelService(params *param.QueryParam) ([]view.ModelSe
 	return resp, cli.List("v1/ai/model-services", params, &resp)
 }
 
-func (cli *ZSClient) GetModelService(uuid string) (*view.ModelServiceInventoryView, error) {
-	var resp view.ModelServiceInventoryView
-	if err := cli.Get("v1/ai/model-services", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageModelService Pagination
+func (cli *ZSClient) PageModelService(params *param.QueryParam) ([]view.ModelServiceInventoryView, int, error) {
+	var modelServices []view.ModelServiceInventoryView
+	total, err := cli.Page("v1/ai/model-services", params, &modelServices)
+	return modelServices, total, err
 }

@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type VpcRouterDnsInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Id *int64 `json:"id,omitempty"`
-	VpcRouterUuid *string `json:"vpcRouterUuid,omitempty"`
-	Dns *string `json:"dns,omitempty"`
+	Id int64 `json:"id,omitempty"`
+	VpcRouterUuid string `json:"vpcRouterUuid,omitempty"`
+	Dns string `json:"dns,omitempty"`
 }
 

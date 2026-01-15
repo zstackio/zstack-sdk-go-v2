@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type SSOServerTokenInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccessToken *string `json:"accessToken,omitempty"`
-	IdToken *string `json:"idToken,omitempty"`
-	RefreshToken *string `json:"refreshToken,omitempty"`
-	UserUuid *string `json:"userUuid,omitempty"`
-	SessionUuid *string `json:"sessionUuid,omitempty"`
+	AccessToken string `json:"accessToken,omitempty"`
+	IdToken string `json:"idToken,omitempty"`
+	RefreshToken string `json:"refreshToken,omitempty"`
+	UserUuid string `json:"userUuid,omitempty"`
+	SessionUuid string `json:"sessionUuid,omitempty"`
 }
 
 // RefreshSSOServerTokenEventView RefreshSSOServerTokenEvent

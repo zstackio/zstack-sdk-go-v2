@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type ThirdClientAccountRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ClientUuid *string `json:"clientUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
+	ClientUuid string `json:"clientUuid,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 

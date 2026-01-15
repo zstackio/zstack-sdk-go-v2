@@ -16,18 +16,17 @@ func (cli *ZSClient) QueryNfvInstOffering(params *param.QueryParam) ([]view.NfvI
 	return resp, cli.List("v1/instance-offerings/nfvinst", params, &resp)
 }
 
-func (cli *ZSClient) GetNfvInstOffering(uuid string) (*view.NfvInstOfferingInventoryView, error) {
-	var resp view.NfvInstOfferingInventoryView
-	if err := cli.Get("v1/instance-offerings/nfvinst", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageNfvInstOffering Pagination
+func (cli *ZSClient) PageNfvInstOffering(params *param.QueryParam) ([]view.NfvInstOfferingInventoryView, int, error) {
+	var nfvInstOfferings []view.NfvInstOfferingInventoryView
+	total, err := cli.Page("v1/instance-offerings/nfvinst", params, &nfvInstOfferings)
+	return nfvInstOfferings, total, err
 }
 // CreateNfvInstOffering creates NfvInstOffering
 func (cli *ZSClient) CreateNfvInstOffering(params param.CreateNfvInstOfferingParam) (*view.InstanceOfferingInventoryView, error) {
-	var resp view.CreateInstanceOfferingEventView
+	resp := view.InstanceOfferingInventoryView{}
 	if err := cli.Post("v1/instance-offerings/nfvinst", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

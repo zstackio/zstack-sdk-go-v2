@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type NetworkServiceL3NetworkRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	NetworkServiceProviderUuid *string `json:"networkServiceProviderUuid,omitempty"`
-	NetworkServiceType *string `json:"networkServiceType,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	NetworkServiceProviderUuid string `json:"networkServiceProviderUuid,omitempty"`
+	NetworkServiceType string `json:"networkServiceType,omitempty"`
 }
 
 // QueryNetworkServiceL3NetworkRefView QueryNetworkServiceL3NetworkRef

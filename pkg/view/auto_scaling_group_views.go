@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type AutoScalingGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ScalingResourceType *string `json:"scalingResourceType,omitempty"`
-	State *string `json:"state,omitempty"`
-	DefaultCooldown *int64 `json:"defaultCooldown,omitempty"`
-	Description *string `json:"description,omitempty"`
-	MinResourceSize *int `json:"minResourceSize,omitempty"`
-	MaxResourceSize *int `json:"maxResourceSize,omitempty"`
-	RemovalPolicy *string `json:"removalPolicy,omitempty"`
+	ScalingResourceType string `json:"scalingResourceType,omitempty"`
+	State string `json:"state,omitempty"`
+	DefaultCooldown int64 `json:"defaultCooldown,omitempty"`
+	Description string `json:"description,omitempty"`
+	MinResourceSize int `json:"minResourceSize,omitempty"`
+	MaxResourceSize int `json:"maxResourceSize,omitempty"`
+	RemovalPolicy string `json:"removalPolicy,omitempty"`
 	AttachedTemplates []string `json:"attachedTemplates,omitempty"`
 	SystemTags []string `json:"systemTags,omitempty"`
 }

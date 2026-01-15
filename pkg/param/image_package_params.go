@@ -16,7 +16,7 @@ type UpdateImagePackageParamDetail struct {
 // UpdateImagePackageParam UpdateImagePackage request param
 type UpdateImagePackageParam struct {
 	BaseParam
-	Params UpdateImagePackageParamDetail `json:"params"`
+	UpdateImagePackage UpdateImagePackageParamDetail `json:"updateImagePackage"`
 }
 // DeleteImagePackageParamDetail DeleteImagePackage detail param
 type DeleteImagePackageParamDetail struct {
@@ -27,5 +27,5 @@ type DeleteImagePackageParamDetail struct {
 // DeleteImagePackageParam DeleteImagePackage request param
 type DeleteImagePackageParam struct {
 	BaseParam
-	Params DeleteImagePackageParamDetail `json:"params"`
+	DeleteImagePackage DeleteImagePackageParamDetail `json:"deleteImagePackage"`
 }

@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type GuestVmScriptInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	EncodingType *string `json:"encodingType,omitempty"`
-	ScriptContent *string `json:"scriptContent,omitempty"`
-	RenderParams *string `json:"renderParams,omitempty"`
-	Platform *string `json:"platform,omitempty"`
-	ScriptType *string `json:"scriptType,omitempty"`
-	ScriptTimeout *int `json:"scriptTimeout,omitempty"`
+	Description string `json:"description,omitempty"`
+	EncodingType string `json:"encodingType,omitempty"`
+	ScriptContent string `json:"scriptContent,omitempty"`
+	RenderParams string `json:"renderParams,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	ScriptType string `json:"scriptType,omitempty"`
+	ScriptTimeout int `json:"scriptTimeout,omitempty"`
 }
 
 // QueryGuestVmScriptView QueryGuestVmScript

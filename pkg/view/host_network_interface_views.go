@@ -10,27 +10,27 @@ var _ = time.Now // avoid unused import
 type HostNetworkInterfaceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	HostUuid *string `json:"hostUuid,omitempty"`
-	BondingUuid *string `json:"bondingUuid,omitempty"`
-	InterfaceModel *string `json:"interfaceModel,omitempty"`
-	VendorId *string `json:"vendorId,omitempty"`
-	DeviceId *string `json:"deviceId,omitempty"`
-	SubvendorId *string `json:"subvendorId,omitempty"`
-	SubdeviceId *string `json:"subdeviceId,omitempty"`
-	InterfaceName *string `json:"interfaceName,omitempty"`
-	InterfaceType *string `json:"interfaceType,omitempty"`
-	Speed *int64 `json:"speed,omitempty"`
-	SlaveActive *bool `json:"slaveActive,omitempty"`
-	CarrierActive *bool `json:"carrierActive,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	BondingUuid string `json:"bondingUuid,omitempty"`
+	InterfaceModel string `json:"interfaceModel,omitempty"`
+	VendorId string `json:"vendorId,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	SubvendorId string `json:"subvendorId,omitempty"`
+	SubdeviceId string `json:"subdeviceId,omitempty"`
+	InterfaceName string `json:"interfaceName,omitempty"`
+	InterfaceType string `json:"interfaceType,omitempty"`
+	Speed int64 `json:"speed,omitempty"`
+	SlaveActive bool `json:"slaveActive,omitempty"`
+	CarrierActive bool `json:"carrierActive,omitempty"`
 	IpAddresses []string `json:"ipAddresses,omitempty"`
-	Gateway *string `json:"gateway,omitempty"`
-	Mac *string `json:"mac,omitempty"`
-	CallBackIp *string `json:"callBackIp,omitempty"`
-	PciDeviceAddress *string `json:"pciDeviceAddress,omitempty"`
-	DriverType *string `json:"driverType,omitempty"`
-	OffloadStatus *string `json:"offloadStatus,omitempty"`
-	VirtStatus *string `json:"virtStatus,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Gateway string `json:"gateway,omitempty"`
+	Mac string `json:"mac,omitempty"`
+	CallBackIp string `json:"callBackIp,omitempty"`
+	PciDeviceAddress string `json:"pciDeviceAddress,omitempty"`
+	DriverType string `json:"driverType,omitempty"`
+	OffloadStatus string `json:"offloadStatus,omitempty"`
+	VirtStatus string `json:"virtStatus,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // UpdateHostNetworkInterfaceEventView UpdateHostNetworkInterfaceEvent

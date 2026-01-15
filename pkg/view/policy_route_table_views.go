@@ -11,8 +11,8 @@ type PolicyRouteTableInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	TableNumber int `json:"tableNumber,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
 	Routes []PolicyRouteTableRouteEntryInventoryView `json:"routes,omitempty"`
 }
 

@@ -21,20 +21,19 @@ func (cli *ZSClient) QueryPortForwardingRule(params *param.QueryParam) ([]view.P
 	return resp, cli.List("v1/port-forwarding", params, &resp)
 }
 
-func (cli *ZSClient) GetPortForwardingRule(uuid string) (*view.PortForwardingRuleInventoryView, error) {
-	var resp view.PortForwardingRuleInventoryView
-	if err := cli.Get("v1/port-forwarding", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PagePortForwardingRule Pagination
+func (cli *ZSClient) PagePortForwardingRule(params *param.QueryParam) ([]view.PortForwardingRuleInventoryView, int, error) {
+	var portForwardingRules []view.PortForwardingRuleInventoryView
+	total, err := cli.Page("v1/port-forwarding", params, &portForwardingRules)
+	return portForwardingRules, total, err
 }
 // UpdatePortForwardingRule updates PortForwardingRule
 func (cli *ZSClient) UpdatePortForwardingRule(uuid string, params param.UpdatePortForwardingRuleParam) (*view.PortForwardingRuleInventoryView, error) {
-	var resp view.UpdatePortForwardingRuleEventView
+	resp := view.PortForwardingRuleInventoryView{}
 	if err := cli.Put("v1/port-forwarding", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DetachPortForwardingRule operates on PortForwardingRule
 func (cli *ZSClient) DetachPortForwardingRule(uuid string, deleteMode param.DeleteMode) error {
@@ -42,18 +41,18 @@ func (cli *ZSClient) DetachPortForwardingRule(uuid string, deleteMode param.Dele
 }
 // AttachPortForwardingRule operates on PortForwardingRule
 func (cli *ZSClient) AttachPortForwardingRule(ruleUuid string, vmNicUuid string, params param.AttachPortForwardingRuleParam) (*view.PortForwardingRuleInventoryView, error) {
-	var resp view.AttachPortForwardingRuleEventView
+	resp := view.PortForwardingRuleInventoryView{}
 	err := cli.Post(fmt.Sprintf("v1/port-forwarding/%s/vm-instances/nics/%s", ruleUuid, vmNicUuid), params, &resp)
 	if err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreatePortForwardingRule creates PortForwardingRule
 func (cli *ZSClient) CreatePortForwardingRule(params param.CreatePortForwardingRuleParam) (*view.PortForwardingRuleInventoryView, error) {
-	var resp view.CreatePortForwardingRuleEventView
+	resp := view.PortForwardingRuleInventoryView{}
 	if err := cli.Post("v1/port-forwarding", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

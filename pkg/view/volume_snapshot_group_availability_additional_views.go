@@ -10,6 +10,6 @@ var _ = time.Now // avoid unused import
 type VolumeSnapshotGroupAvailabilityView struct {
 	Uuid string `json:"uuid,omitempty"`
 	Available bool `json:"available,omitempty"`
-	Reason *string `json:"reason,omitempty"`
+	Reason string `json:"reason,omitempty"`
 }
 

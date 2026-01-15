@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type WebhookInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Opaque *string `json:"opaque,omitempty"`
+	Description string `json:"description,omitempty"`
+	Url string `json:"url,omitempty"`
+	Type string `json:"type,omitempty"`
+	Opaque string `json:"opaque,omitempty"`
 }
 
 // QueryWebhookView QueryWebhook

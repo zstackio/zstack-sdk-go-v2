@@ -16,26 +16,25 @@ func (cli *ZSClient) QueryVirtualRouterOffering(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/instance-offerings/virtual-routers", params, &resp)
 }
 
-func (cli *ZSClient) GetVirtualRouterOffering(uuid string) (*view.VirtualRouterOfferingInventoryView, error) {
-	var resp view.VirtualRouterOfferingInventoryView
-	if err := cli.Get("v1/instance-offerings/virtual-routers", uuid, nil, &resp); err != nil {
+// PageVirtualRouterOffering Pagination
+func (cli *ZSClient) PageVirtualRouterOffering(params *param.QueryParam) ([]view.VirtualRouterOfferingInventoryView, int, error) {
+	var virtualRouterOfferings []view.VirtualRouterOfferingInventoryView
+	total, err := cli.Page("v1/instance-offerings/virtual-routers", params, &virtualRouterOfferings)
+	return virtualRouterOfferings, total, err
+}
+// CreateVirtualRouterOffering creates VirtualRouterOffering
+func (cli *ZSClient) CreateVirtualRouterOffering(params param.CreateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {
+	resp := view.InstanceOfferingInventoryView{}
+	if err := cli.Post("v1/instance-offerings/virtual-routers", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-// CreateVirtualRouterOffering creates VirtualRouterOffering
-func (cli *ZSClient) CreateVirtualRouterOffering(params param.CreateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {
-	var resp view.CreateInstanceOfferingEventView
-	if err := cli.Post("v1/instance-offerings/virtual-routers", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp.Inventory, nil
-}
 // UpdateVirtualRouterOffering updates VirtualRouterOffering
 func (cli *ZSClient) UpdateVirtualRouterOffering(uuid string, params param.UpdateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {
-	var resp view.UpdateInstanceOfferingEventView
+	resp := view.InstanceOfferingInventoryView{}
 	if err := cli.Put("v1/instance-offerings/virtual-routers", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

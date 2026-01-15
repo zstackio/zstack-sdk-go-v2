@@ -12,11 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateVpcHaGroup updates VpcHaGroup
 func (cli *ZSClient) UpdateVpcHaGroup(uuid string, params param.UpdateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
-	var resp view.UpdateVpcHaGroupEventView
+	resp := view.VpcHaGroupInventoryView{}
 	if err := cli.Put("v1/vpc/hagroups", uuid, params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteVpcHaGroup deletes VpcHaGroup
 func (cli *ZSClient) DeleteVpcHaGroup(uuid string, deleteMode param.DeleteMode) error {
@@ -24,11 +24,11 @@ func (cli *ZSClient) DeleteVpcHaGroup(uuid string, deleteMode param.DeleteMode) 
 }
 // CreateVpcHaGroup creates VpcHaGroup
 func (cli *ZSClient) CreateVpcHaGroup(params param.CreateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
-	var resp view.CreateVpcHaGroupEventView
+	resp := view.VpcHaGroupInventoryView{}
 	if err := cli.Post("v1/vpc/hagroups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryVpcHaGroup queries VpcHaGroup list
 func (cli *ZSClient) QueryVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGroupInventoryView, error) {
@@ -36,10 +36,9 @@ func (cli *ZSClient) QueryVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGrou
 	return resp, cli.List("v1/vpc/hagroups", params, &resp)
 }
 
-func (cli *ZSClient) GetVpcHaGroup(uuid string) (*view.VpcHaGroupInventoryView, error) {
-	var resp view.VpcHaGroupInventoryView
-	if err := cli.Get("v1/vpc/hagroups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageVpcHaGroup Pagination
+func (cli *ZSClient) PageVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGroupInventoryView, int, error) {
+	var vpcHaGroups []view.VpcHaGroupInventoryView
+	total, err := cli.Page("v1/vpc/hagroups", params, &vpcHaGroups)
+	return vpcHaGroups, total, err
 }

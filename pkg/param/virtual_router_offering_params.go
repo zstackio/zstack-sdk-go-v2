@@ -28,7 +28,7 @@ type CreateVirtualRouterOfferingParamDetail struct {
 // CreateVirtualRouterOfferingParam CreateVirtualRouterOffering request param
 type CreateVirtualRouterOfferingParam struct {
 	BaseParam
-	Params CreateVirtualRouterOfferingParamDetail `json:"params"`
+	CreateVirtualRouterOffering CreateVirtualRouterOfferingParamDetail `json:"createVirtualRouterOffering"`
 }
 // UpdateVirtualRouterOfferingParamDetail UpdateVirtualRouterOffering detail param
 type UpdateVirtualRouterOfferingParamDetail struct {
@@ -43,5 +43,5 @@ type UpdateVirtualRouterOfferingParamDetail struct {
 // UpdateVirtualRouterOfferingParam UpdateVirtualRouterOffering request param
 type UpdateVirtualRouterOfferingParam struct {
 	BaseParam
-	Params UpdateVirtualRouterOfferingParamDetail `json:"params"`
+	UpdateVirtualRouterOffering UpdateVirtualRouterOfferingParamDetail `json:"updateVirtualRouterOffering"`
 }

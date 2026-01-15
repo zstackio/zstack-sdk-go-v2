@@ -11,8 +11,11 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // ExpungeImageGroup operates on ImageGroup
-func (cli *ZSClient) ExpungeImageGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/imagegroups", uuid, string(deleteMode))
+func (cli *ZSClient) ExpungeImageGroup(uuid string) error {
+	params := map[string]interface{}{
+		"expungeImageGroup": map[string]interface{}{},
+	}
+	return cli.Put("v1/imagegroups", uuid, params, nil)
 }
 // QueryImageGroup queries ImageGroup list
 func (cli *ZSClient) QueryImageGroup(params *param.QueryParam) ([]view.ImageGroupInventoryView, error) {
@@ -20,10 +23,9 @@ func (cli *ZSClient) QueryImageGroup(params *param.QueryParam) ([]view.ImageGrou
 	return resp, cli.List("v1/imagegroups", params, &resp)
 }
 
-func (cli *ZSClient) GetImageGroup(uuid string) (*view.ImageGroupInventoryView, error) {
-	var resp view.ImageGroupInventoryView
-	if err := cli.Get("v1/imagegroups", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageImageGroup Pagination
+func (cli *ZSClient) PageImageGroup(params *param.QueryParam) ([]view.ImageGroupInventoryView, int, error) {
+	var imageGroups []view.ImageGroupInventoryView
+	total, err := cli.Page("v1/imagegroups", params, &imageGroups)
+	return imageGroups, total, err
 }

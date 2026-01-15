@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type VmSchedulingRuleGroupRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VmGroupUuid *string `json:"vmGroupUuid,omitempty"`
-	VmUuid *string `json:"vmUuid,omitempty"`
+	VmGroupUuid string `json:"vmGroupUuid,omitempty"`
+	VmUuid string `json:"vmUuid,omitempty"`
 }
 

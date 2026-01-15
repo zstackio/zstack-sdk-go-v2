@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type ActiveAlarmInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TemplateUuid *string `json:"templateUuid,omitempty"`
-	AlarmUuid *string `json:"alarmUuid,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
+	TemplateUuid string `json:"templateUuid,omitempty"`
+	AlarmUuid string `json:"alarmUuid,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
 }
 
 // QueryActiveAlarmView QueryActiveAlarm

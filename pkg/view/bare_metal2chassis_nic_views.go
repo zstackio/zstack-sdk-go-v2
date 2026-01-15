@@ -10,10 +10,10 @@ var _ = time.Now // avoid unused import
 type BareMetal2ChassisNicInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ChassisUuid *string `json:"chassisUuid,omitempty"`
-	Mac *string `json:"mac,omitempty"`
-	NicName *string `json:"nicName,omitempty"`
-	Speed *string `json:"speed,omitempty"`
-	IsProvisionNic *bool `json:"isProvisionNic,omitempty"`
+	ChassisUuid string `json:"chassisUuid,omitempty"`
+	Mac string `json:"mac,omitempty"`
+	NicName string `json:"nicName,omitempty"`
+	Speed string `json:"speed,omitempty"`
+	IsProvisionNic bool `json:"isProvisionNic,omitempty"`
 }
 

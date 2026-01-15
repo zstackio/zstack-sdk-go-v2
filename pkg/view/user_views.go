@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type UserInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccountUuid *string `json:"accountUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // QueryUserView QueryUser

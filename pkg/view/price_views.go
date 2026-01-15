@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type PriceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ResourceName *string `json:"resourceName,omitempty"`
-	ResourceUnit *string `json:"resourceUnit,omitempty"`
-	TimeUnit *string `json:"timeUnit,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	DateInLong *int64 `json:"dateInLong,omitempty"`
-	EndDateInLong *int64 `json:"endDateInLong,omitempty"`
-	TableUuid *string `json:"tableUuid,omitempty"`
+	ResourceName string `json:"resourceName,omitempty"`
+	ResourceUnit string `json:"resourceUnit,omitempty"`
+	TimeUnit string `json:"timeUnit,omitempty"`
+	Price float64 `json:"price,omitempty"`
+	DateInLong int64 `json:"dateInLong,omitempty"`
+	EndDateInLong int64 `json:"endDateInLong,omitempty"`
+	TableUuid string `json:"tableUuid,omitempty"`
 	PciDeviceOfferings []PricePciDeviceOfferingRefInventoryView `json:"pciDeviceOfferings,omitempty"`
 	BareMetal2VmOfferings []PriceBareMetal2ChassisOfferingRefInventoryView `json:"bareMetal2VmOfferings,omitempty"`
 }

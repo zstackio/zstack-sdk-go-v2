@@ -16,10 +16,9 @@ func (cli *ZSClient) QueryEventSubscription(params *param.QueryParam) ([]view.Ev
 	return resp, cli.List("v1/zwatch/events/subscriptions", params, &resp)
 }
 
-func (cli *ZSClient) GetEventSubscription(uuid string) (*view.EventSubscriptionInventoryView, error) {
-	var resp view.EventSubscriptionInventoryView
-	if err := cli.Get("v1/zwatch/events/subscriptions", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+// PageEventSubscription Pagination
+func (cli *ZSClient) PageEventSubscription(params *param.QueryParam) ([]view.EventSubscriptionInventoryView, int, error) {
+	var eventSubscriptions []view.EventSubscriptionInventoryView
+	total, err := cli.Page("v1/zwatch/events/subscriptions", params, &eventSubscriptions)
+	return eventSubscriptions, total, err
 }

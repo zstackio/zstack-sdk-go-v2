@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type VpcSnatStateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VpcUuid *string `json:"vpcUuid,omitempty"`
-	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
-	State *string `json:"state,omitempty"`
+	VpcUuid string `json:"vpcUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	State string `json:"state,omitempty"`
 }
 
 // QueryVpcSnatStateView QueryVpcSnatState
