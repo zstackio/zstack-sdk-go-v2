@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryV2VConversionHost(params *param.QueryParam) ([]view.V2
 	return resp, cli.List("v1/v2v-conversion-hosts", params, &resp)
 }
 
+func (cli *ZSClient) GetV2VConversionHost(uuid string) (*view.V2VConversionHostInventoryView, error) {
+	var resp view.V2VConversionHostInventoryView
+	if err := cli.Get("v1/v2v-conversion-hosts", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageV2VConversionHost Pagination
 func (cli *ZSClient) PageV2VConversionHost(params *param.QueryParam) ([]view.V2VConversionHostInventoryView, int, error) {
 	var v2VConversionHosts []view.V2VConversionHostInventoryView

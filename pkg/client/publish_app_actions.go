@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryPublishApp(params *param.QueryParam) ([]view.PublishAp
 	return resp, cli.List("v1/appcenter/app", params, &resp)
 }
 
+func (cli *ZSClient) GetPublishApp(uuid string) (*view.PublishAppInventoryView, error) {
+	var resp view.PublishAppInventoryView
+	if err := cli.Get("v1/appcenter/app", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePublishApp Pagination
 func (cli *ZSClient) PagePublishApp(params *param.QueryParam) ([]view.PublishAppInventoryView, int, error) {
 	var publishApps []view.PublishAppInventoryView

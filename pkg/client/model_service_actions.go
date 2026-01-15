@@ -59,6 +59,14 @@ func (cli *ZSClient) QueryModelService(params *param.QueryParam) ([]view.ModelSe
 	return resp, cli.List("v1/ai/model-services", params, &resp)
 }
 
+func (cli *ZSClient) GetModelService(uuid string) (*view.ModelServiceInventoryView, error) {
+	var resp view.ModelServiceInventoryView
+	if err := cli.Get("v1/ai/model-services", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageModelService Pagination
 func (cli *ZSClient) PageModelService(params *param.QueryParam) ([]view.ModelServiceInventoryView, int, error) {
 	var modelServices []view.ModelServiceInventoryView

@@ -17,6 +17,14 @@ func (cli *ZSClient) QuerySharedBlock(params *param.QueryParam) ([]view.SharedBl
 	return resp, cli.List("v1/sharedblock-group/sharedblocks", params, &resp)
 }
 
+func (cli *ZSClient) GetSharedBlock(uuid string) (*view.SharedBlockInventoryView, error) {
+	var resp view.SharedBlockInventoryView
+	if err := cli.Get("v1/sharedblock-group/sharedblocks", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSharedBlock Pagination
 func (cli *ZSClient) PageSharedBlock(params *param.QueryParam) ([]view.SharedBlockInventoryView, int, error) {
 	var sharedBlocks []view.SharedBlockInventoryView

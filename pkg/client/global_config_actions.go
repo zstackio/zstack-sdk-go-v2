@@ -34,6 +34,14 @@ func (cli *ZSClient) QueryGlobalConfig(params *param.QueryParam) ([]view.GlobalC
 	return resp, cli.List("v1/global-configurations", params, &resp)
 }
 
+func (cli *ZSClient) GetGlobalConfig(uuid string) (*view.GlobalConfigInventoryView, error) {
+	var resp view.GlobalConfigInventoryView
+	if err := cli.Get("v1/global-configurations", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageGlobalConfig Pagination
 func (cli *ZSClient) PageGlobalConfig(params *param.QueryParam) ([]view.GlobalConfigInventoryView, int, error) {
 	var globalConfigs []view.GlobalConfigInventoryView

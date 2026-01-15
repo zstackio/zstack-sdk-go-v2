@@ -36,6 +36,14 @@ func (cli *ZSClient) QuerySchedulerJob(params *param.QueryParam) ([]view.Schedul
 	return resp, cli.List("v1/scheduler/jobs", params, &resp)
 }
 
+func (cli *ZSClient) GetSchedulerJob(uuid string) (*view.SchedulerJobInventoryView, error) {
+	var resp view.SchedulerJobInventoryView
+	if err := cli.Get("v1/scheduler/jobs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSchedulerJob Pagination
 func (cli *ZSClient) PageSchedulerJob(params *param.QueryParam) ([]view.SchedulerJobInventoryView, int, error) {
 	var schedulerJobs []view.SchedulerJobInventoryView

@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryLdapServer(params *param.QueryParam) ([]view.LdapServe
 	return resp, cli.List("v1/ldap/servers", params, &resp)
 }
 
+func (cli *ZSClient) GetLdapServer(uuid string) (*view.LdapServerInventoryView, error) {
+	var resp view.LdapServerInventoryView
+	if err := cli.Get("v1/ldap/servers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageLdapServer Pagination
 func (cli *ZSClient) PageLdapServer(params *param.QueryParam) ([]view.LdapServerInventoryView, int, error) {
 	var ldapServers []view.LdapServerInventoryView

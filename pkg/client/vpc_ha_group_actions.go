@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGrou
 	return resp, cli.List("v1/vpc/hagroups", params, &resp)
 }
 
+func (cli *ZSClient) GetVpcHaGroup(uuid string) (*view.VpcHaGroupInventoryView, error) {
+	var resp view.VpcHaGroupInventoryView
+	if err := cli.Get("v1/vpc/hagroups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVpcHaGroup Pagination
 func (cli *ZSClient) PageVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGroupInventoryView, int, error) {
 	var vpcHaGroups []view.VpcHaGroupInventoryView

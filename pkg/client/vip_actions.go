@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVip(params *param.QueryParam) ([]view.VipInventoryView
 	return resp, cli.List("v1/vips", params, &resp)
 }
 
+func (cli *ZSClient) GetVip(uuid string) (*view.VipInventoryView, error) {
+	var resp view.VipInventoryView
+	if err := cli.Get("v1/vips", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVip Pagination
 func (cli *ZSClient) PageVip(params *param.QueryParam) ([]view.VipInventoryView, int, error) {
 	var vips []view.VipInventoryView

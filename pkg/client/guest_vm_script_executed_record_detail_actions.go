@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryGuestVmScriptExecutedRecordDetail(params *param.QueryP
 	return resp, cli.List("v1/scripts/records/details", params, &resp)
 }
 
+func (cli *ZSClient) GetGuestVmScriptExecutedRecordDetail(uuid string) (*view.GuestVmScriptExecutedRecordDetailInventoryView, error) {
+	var resp view.GuestVmScriptExecutedRecordDetailInventoryView
+	if err := cli.Get("v1/scripts/records/details", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageGuestVmScriptExecutedRecordDetail Pagination
 func (cli *ZSClient) PageGuestVmScriptExecutedRecordDetail(params *param.QueryParam) ([]view.GuestVmScriptExecutedRecordDetailInventoryView, int, error) {
 	var guestVmScriptExecutedRecordDetails []view.GuestVmScriptExecutedRecordDetailInventoryView

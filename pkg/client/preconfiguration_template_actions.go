@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryPreconfigurationTemplate(params *param.QueryParam) ([]
 	return resp, cli.List("v1/baremetal/preconfigurations", params, &resp)
 }
 
+func (cli *ZSClient) GetPreconfigurationTemplate(uuid string) (*view.PreconfigurationTemplateInventoryView, error) {
+	var resp view.PreconfigurationTemplateInventoryView
+	if err := cli.Get("v1/baremetal/preconfigurations", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePreconfigurationTemplate Pagination
 func (cli *ZSClient) PagePreconfigurationTemplate(params *param.QueryParam) ([]view.PreconfigurationTemplateInventoryView, int, error) {
 	var preconfigurationTemplates []view.PreconfigurationTemplateInventoryView

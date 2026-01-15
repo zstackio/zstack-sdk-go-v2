@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryAliyunProxyVpc(params *param.QueryParam) ([]view.Aliyu
 	return resp, cli.List("v1/aliyun-proxy/vpcs", params, &resp)
 }
 
+func (cli *ZSClient) GetAliyunProxyVpc(uuid string) (*view.AliyunProxyVpcInventoryView, error) {
+	var resp view.AliyunProxyVpcInventoryView
+	if err := cli.Get("v1/aliyun-proxy/vpcs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAliyunProxyVpc Pagination
 func (cli *ZSClient) PageAliyunProxyVpc(params *param.QueryParam) ([]view.AliyunProxyVpcInventoryView, int, error) {
 	var aliyunProxyVpcs []view.AliyunProxyVpcInventoryView

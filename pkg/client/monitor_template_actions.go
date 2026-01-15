@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryMonitorTemplate(params *param.QueryParam) ([]view.Moni
 	return resp, cli.List("v1/zwatch/monitortemplates", params, &resp)
 }
 
+func (cli *ZSClient) GetMonitorTemplate(uuid string) (*view.MonitorTemplateInventoryView, error) {
+	var resp view.MonitorTemplateInventoryView
+	if err := cli.Get("v1/zwatch/monitortemplates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMonitorTemplate Pagination
 func (cli *ZSClient) PageMonitorTemplate(params *param.QueryParam) ([]view.MonitorTemplateInventoryView, int, error) {
 	var monitorTemplates []view.MonitorTemplateInventoryView

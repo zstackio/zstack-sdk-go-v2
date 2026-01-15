@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryBaremetalChassis(params *param.QueryParam) ([]view.Bar
 	return resp, cli.List("v1/baremetal/chassis", params, &resp)
 }
 
+func (cli *ZSClient) GetBaremetalChassis(uuid string) (*view.BaremetalChassisInventoryView, error) {
+	var resp view.BaremetalChassisInventoryView
+	if err := cli.Get("v1/baremetal/chassis", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBaremetalChassis Pagination
 func (cli *ZSClient) PageBaremetalChassis(params *param.QueryParam) ([]view.BaremetalChassisInventoryView, int, error) {
 	var baremetalChassis []view.BaremetalChassisInventoryView

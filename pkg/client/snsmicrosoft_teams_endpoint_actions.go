@@ -32,6 +32,14 @@ func (cli *ZSClient) QuerySNSMicrosoftTeamsEndpoint(params *param.QueryParam) ([
 	return resp, cli.List("v1/sns/application-endpoints/microsoft-teams", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSMicrosoftTeamsEndpoint(uuid string) (*view.SNSMicrosoftTeamsEndpointInventoryView, error) {
+	var resp view.SNSMicrosoftTeamsEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/microsoft-teams", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSMicrosoftTeamsEndpoint Pagination
 func (cli *ZSClient) PageSNSMicrosoftTeamsEndpoint(params *param.QueryParam) ([]view.SNSMicrosoftTeamsEndpointInventoryView, int, error) {
 	var sNSMicrosoftTeamsEndpoints []view.SNSMicrosoftTeamsEndpointInventoryView

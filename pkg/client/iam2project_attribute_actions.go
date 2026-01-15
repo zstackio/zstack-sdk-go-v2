@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryIAM2ProjectAttribute(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/iam2/projects/attributes", params, &resp)
 }
 
+func (cli *ZSClient) GetIAM2ProjectAttribute(uuid string) (*view.IAM2ProjectAttributeInventoryView, error) {
+	var resp view.IAM2ProjectAttributeInventoryView
+	if err := cli.Get("v1/iam2/projects/attributes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIAM2ProjectAttribute Pagination
 func (cli *ZSClient) PageIAM2ProjectAttribute(params *param.QueryParam) ([]view.IAM2ProjectAttributeInventoryView, int, error) {
 	var iAM2ProjectAttributes []view.IAM2ProjectAttributeInventoryView

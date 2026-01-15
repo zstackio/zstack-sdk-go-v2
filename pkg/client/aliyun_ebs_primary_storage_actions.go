@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryAliyunEbsPrimaryStorage(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/primary-storage/aliyun/ebs", params, &resp)
 }
 
+func (cli *ZSClient) GetAliyunEbsPrimaryStorage(uuid string) (*view.PrimaryStorageInventoryView, error) {
+	var resp view.PrimaryStorageInventoryView
+	if err := cli.Get("v1/primary-storage/aliyun/ebs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAliyunEbsPrimaryStorage Pagination
 func (cli *ZSClient) PageAliyunEbsPrimaryStorage(params *param.QueryParam) ([]view.PrimaryStorageInventoryView, int, error) {
 	var aliyunEbsPrimaryStorages []view.PrimaryStorageInventoryView

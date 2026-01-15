@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryIAM2VirtualIDGroupAttribute(params *param.QueryParam) 
 	return resp, cli.List("v1/iam2/projects/groups/attributes/", params, &resp)
 }
 
+func (cli *ZSClient) GetIAM2VirtualIDGroupAttribute(uuid string) (*view.IAM2VirtualIDGroupAttributeInventoryView, error) {
+	var resp view.IAM2VirtualIDGroupAttributeInventoryView
+	if err := cli.Get("v1/iam2/projects/groups/attributes/", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIAM2VirtualIDGroupAttribute Pagination
 func (cli *ZSClient) PageIAM2VirtualIDGroupAttribute(params *param.QueryParam) ([]view.IAM2VirtualIDGroupAttributeInventoryView, int, error) {
 	var iAM2VirtualIDGroupAttributes []view.IAM2VirtualIDGroupAttributeInventoryView

@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryDirectory(params *param.QueryParam) ([]view.DirectoryI
 	return resp, cli.List("v1/directories", params, &resp)
 }
 
+func (cli *ZSClient) GetDirectory(uuid string) (*view.DirectoryInventoryView, error) {
+	var resp view.DirectoryInventoryView
+	if err := cli.Get("v1/directories", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageDirectory Pagination
 func (cli *ZSClient) PageDirectory(params *param.QueryParam) ([]view.DirectoryInventoryView, int, error) {
 	var directories []view.DirectoryInventoryView

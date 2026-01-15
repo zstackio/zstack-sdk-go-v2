@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryCluster(params *param.QueryParam) ([]view.ClusterInven
 	return resp, cli.List("v1/clusters", params, &resp)
 }
 
+func (cli *ZSClient) GetCluster(uuid string) (*view.ClusterInventoryView, error) {
+	var resp view.ClusterInventoryView
+	if err := cli.Get("v1/clusters", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageCluster Pagination
 func (cli *ZSClient) PageCluster(params *param.QueryParam) ([]view.ClusterInventoryView, int, error) {
 	var clusters []view.ClusterInventoryView

@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryAccessControlRule(params *param.QueryParam) ([]view.Ac
 	return resp, cli.List("v1/login-control/access-control/rules", params, &resp)
 }
 
+func (cli *ZSClient) GetAccessControlRule(uuid string) (*view.AccessControlRuleInventoryView, error) {
+	var resp view.AccessControlRuleInventoryView
+	if err := cli.Get("v1/login-control/access-control/rules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAccessControlRule Pagination
 func (cli *ZSClient) PageAccessControlRule(params *param.QueryParam) ([]view.AccessControlRuleInventoryView, int, error) {
 	var accessControlRules []view.AccessControlRuleInventoryView

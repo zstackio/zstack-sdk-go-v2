@@ -28,6 +28,14 @@ func (cli *ZSClient) QuerySNSTopic(params *param.QueryParam) ([]view.SNSTopicInv
 	return resp, cli.List("v1/sns/topics", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSTopic(uuid string) (*view.SNSTopicInventoryView, error) {
+	var resp view.SNSTopicInventoryView
+	if err := cli.Get("v1/sns/topics", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSTopic Pagination
 func (cli *ZSClient) PageSNSTopic(params *param.QueryParam) ([]view.SNSTopicInventoryView, int, error) {
 	var sNSTopics []view.SNSTopicInventoryView

@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVpcHaGroupNetworkServiceRef(params *param.QueryParam) 
 	return resp, cli.List("v1/vpc/hagroups/networkserviceref/", params, &resp)
 }
 
+func (cli *ZSClient) GetVpcHaGroupNetworkServiceRef(uuid string) (*view.VpcHaGroupNetworkServiceRefInventoryView, error) {
+	var resp view.VpcHaGroupNetworkServiceRefInventoryView
+	if err := cli.Get("v1/vpc/hagroups/networkserviceref/", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVpcHaGroupNetworkServiceRef Pagination
 func (cli *ZSClient) PageVpcHaGroupNetworkServiceRef(params *param.QueryParam) ([]view.VpcHaGroupNetworkServiceRefInventoryView, int, error) {
 	var vpcHaGroupNetworkServiceRefs []view.VpcHaGroupNetworkServiceRefInventoryView

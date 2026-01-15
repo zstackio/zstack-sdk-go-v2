@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryBareMetal2Bonding(params *param.QueryParam) ([]view.Ba
 	return resp, cli.List("v1/baremetal2/bonding", params, &resp)
 }
 
+func (cli *ZSClient) GetBareMetal2Bonding(uuid string) (*view.BareMetal2BondingInventoryView, error) {
+	var resp view.BareMetal2BondingInventoryView
+	if err := cli.Get("v1/baremetal2/bonding", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBareMetal2Bonding Pagination
 func (cli *ZSClient) PageBareMetal2Bonding(params *param.QueryParam) ([]view.BareMetal2BondingInventoryView, int, error) {
 	var bareMetal2Bondings []view.BareMetal2BondingInventoryView

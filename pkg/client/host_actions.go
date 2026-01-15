@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryHost(params *param.QueryParam) ([]view.HostInventoryVi
 	return resp, cli.List("v1/hosts", params, &resp)
 }
 
+func (cli *ZSClient) GetHost(uuid string) (*view.HostInventoryView, error) {
+	var resp view.HostInventoryView
+	if err := cli.Get("v1/hosts", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageHost Pagination
 func (cli *ZSClient) PageHost(params *param.QueryParam) ([]view.HostInventoryView, int, error) {
 	var hosts []view.HostInventoryView

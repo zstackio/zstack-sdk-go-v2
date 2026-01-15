@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryIAM2Project(params *param.QueryParam) ([]view.IAM2Proj
 	return resp, cli.List("v1/iam2/projects", params, &resp)
 }
 
+func (cli *ZSClient) GetIAM2Project(uuid string) (*view.IAM2ProjectInventoryView, error) {
+	var resp view.IAM2ProjectInventoryView
+	if err := cli.Get("v1/iam2/projects", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIAM2Project Pagination
 func (cli *ZSClient) PageIAM2Project(params *param.QueryParam) ([]view.IAM2ProjectInventoryView, int, error) {
 	var iAM2Projects []view.IAM2ProjectInventoryView

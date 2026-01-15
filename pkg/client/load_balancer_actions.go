@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryLoadBalancer(params *param.QueryParam) ([]view.LoadBal
 	return resp, cli.List("v1/load-balancers", params, &resp)
 }
 
+func (cli *ZSClient) GetLoadBalancer(uuid string) (*view.LoadBalancerInventoryView, error) {
+	var resp view.LoadBalancerInventoryView
+	if err := cli.Get("v1/load-balancers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageLoadBalancer Pagination
 func (cli *ZSClient) PageLoadBalancer(params *param.QueryParam) ([]view.LoadBalancerInventoryView, int, error) {
 	var loadBalancers []view.LoadBalancerInventoryView

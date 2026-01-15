@@ -40,6 +40,14 @@ func (cli *ZSClient) QuerySshKeyPair(params *param.QueryParam) ([]view.SshKeyPai
 	return resp, cli.List("v1/ssh-key-pair", params, &resp)
 }
 
+func (cli *ZSClient) GetSshKeyPair(uuid string) (*view.SshKeyPairInventoryView, error) {
+	var resp view.SshKeyPairInventoryView
+	if err := cli.Get("v1/ssh-key-pair", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSshKeyPair Pagination
 func (cli *ZSClient) PageSshKeyPair(params *param.QueryParam) ([]view.SshKeyPairInventoryView, int, error) {
 	var sshKeyPairs []view.SshKeyPairInventoryView

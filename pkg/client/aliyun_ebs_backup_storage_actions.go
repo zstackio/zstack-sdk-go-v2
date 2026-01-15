@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryAliyunEbsBackupStorage(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/backup-storage/aliyun/ebs", params, &resp)
 }
 
+func (cli *ZSClient) GetAliyunEbsBackupStorage(uuid string) (*view.BackupStorageInventoryView, error) {
+	var resp view.BackupStorageInventoryView
+	if err := cli.Get("v1/backup-storage/aliyun/ebs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAliyunEbsBackupStorage Pagination
 func (cli *ZSClient) PageAliyunEbsBackupStorage(params *param.QueryParam) ([]view.BackupStorageInventoryView, int, error) {
 	var aliyunEbsBackupStorages []view.BackupStorageInventoryView

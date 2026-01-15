@@ -16,6 +16,14 @@ func (cli *ZSClient) QuerySNSEndpointThirdpartyAlertHistory(params *param.QueryP
 	return resp, cli.List("v1/zwatch/third-party/alert-publish-histories", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSEndpointThirdpartyAlertHistory(uuid string) (*view.SNSEndpointThirdpartyAlertHistoryInventoryView, error) {
+	var resp view.SNSEndpointThirdpartyAlertHistoryInventoryView
+	if err := cli.Get("v1/zwatch/third-party/alert-publish-histories", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSEndpointThirdpartyAlertHistory Pagination
 func (cli *ZSClient) PageSNSEndpointThirdpartyAlertHistory(params *param.QueryParam) ([]view.SNSEndpointThirdpartyAlertHistoryInventoryView, int, error) {
 	var sNSEndpointThirdpartyAlertHistories []view.SNSEndpointThirdpartyAlertHistoryInventoryView

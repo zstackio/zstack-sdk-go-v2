@@ -44,6 +44,14 @@ func (cli *ZSClient) QueryNfvInstGroup(params *param.QueryParam) ([]view.NfvInst
 	return resp, cli.List("v1/nfvinstgroup/group", params, &resp)
 }
 
+func (cli *ZSClient) GetNfvInstGroup(uuid string) (*view.NfvInstGroupInventoryView, error) {
+	var resp view.NfvInstGroupInventoryView
+	if err := cli.Get("v1/nfvinstgroup/group", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageNfvInstGroup Pagination
 func (cli *ZSClient) PageNfvInstGroup(params *param.QueryParam) ([]view.NfvInstGroupInventoryView, int, error) {
 	var nfvInstGroups []view.NfvInstGroupInventoryView

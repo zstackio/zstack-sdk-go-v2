@@ -39,6 +39,14 @@ func (cli *ZSClient) QueryImage(params *param.QueryParam) ([]view.ImageInventory
 	return resp, cli.List("v1/images", params, &resp)
 }
 
+func (cli *ZSClient) GetImage(uuid string) (*view.ImageInventoryView, error) {
+	var resp view.ImageInventoryView
+	if err := cli.Get("v1/images", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageImage Pagination
 func (cli *ZSClient) PageImage(params *param.QueryParam) ([]view.ImageInventoryView, int, error) {
 	var images []view.ImageInventoryView

@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryVCenter(params *param.QueryParam) ([]view.VCenterInven
 	return resp, cli.List("v1/vcenters", params, &resp)
 }
 
+func (cli *ZSClient) GetVCenter(uuid string) (*view.VCenterInventoryView, error) {
+	var resp view.VCenterInventoryView
+	if err := cli.Get("v1/vcenters", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVCenter Pagination
 func (cli *ZSClient) PageVCenter(params *param.QueryParam) ([]view.VCenterInventoryView, int, error) {
 	var vCenters []view.VCenterInventoryView

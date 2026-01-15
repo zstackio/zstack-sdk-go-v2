@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryQuota(params *param.QueryParam) ([]view.QuotaInventory
 	return resp, cli.List("v1/accounts/quotas", params, &resp)
 }
 
+func (cli *ZSClient) GetQuota(uuid string) (*view.QuotaInventoryView, error) {
+	var resp view.QuotaInventoryView
+	if err := cli.Get("v1/accounts/quotas", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageQuota Pagination
 func (cli *ZSClient) PageQuota(params *param.QueryParam) ([]view.QuotaInventoryView, int, error) {
 	var quotas []view.QuotaInventoryView

@@ -20,6 +20,14 @@ func (cli *ZSClient) QueryVmSchedulingRuleGroup(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/query/vm/schedulingRule/group", params, &resp)
 }
 
+func (cli *ZSClient) GetVmSchedulingRuleGroup(uuid string) (*view.VmSchedulingRuleGroupInventoryView, error) {
+	var resp view.VmSchedulingRuleGroupInventoryView
+	if err := cli.Get("v1/query/vm/schedulingRule/group", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmSchedulingRuleGroup Pagination
 func (cli *ZSClient) PageVmSchedulingRuleGroup(params *param.QueryParam) ([]view.VmSchedulingRuleGroupInventoryView, int, error) {
 	var vmSchedulingRuleGroups []view.VmSchedulingRuleGroupInventoryView

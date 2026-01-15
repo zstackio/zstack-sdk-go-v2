@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryMetricRuleTemplate(params *param.QueryParam) ([]view.M
 	return resp, cli.List("v1/zwatch/monitortemplates/metricrules", params, &resp)
 }
 
+func (cli *ZSClient) GetMetricRuleTemplate(uuid string) (*view.MetricRuleTemplateInventoryView, error) {
+	var resp view.MetricRuleTemplateInventoryView
+	if err := cli.Get("v1/zwatch/monitortemplates/metricrules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMetricRuleTemplate Pagination
 func (cli *ZSClient) PageMetricRuleTemplate(params *param.QueryParam) ([]view.MetricRuleTemplateInventoryView, int, error) {
 	var metricRuleTemplates []view.MetricRuleTemplateInventoryView

@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryVpcFirewall(params *param.QueryParam) ([]view.VpcFirew
 	return resp, cli.List("v1/vpcfirewalls", params, &resp)
 }
 
+func (cli *ZSClient) GetVpcFirewall(uuid string) (*view.VpcFirewallInventoryView, error) {
+	var resp view.VpcFirewallInventoryView
+	if err := cli.Get("v1/vpcfirewalls", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVpcFirewall Pagination
 func (cli *ZSClient) PageVpcFirewall(params *param.QueryParam) ([]view.VpcFirewallInventoryView, int, error) {
 	var vpcFirewalls []view.VpcFirewallInventoryView

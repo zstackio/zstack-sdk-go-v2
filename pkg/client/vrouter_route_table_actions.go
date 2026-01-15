@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVRouterRouteTable(params *param.QueryParam) ([]view.VR
 	return resp, cli.List("v1/vrouter-route-tables", params, &resp)
 }
 
+func (cli *ZSClient) GetVRouterRouteTable(uuid string) (*view.VRouterRouteTableInventoryView, error) {
+	var resp view.VRouterRouteTableInventoryView
+	if err := cli.Get("v1/vrouter-route-tables", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVRouterRouteTable Pagination
 func (cli *ZSClient) PageVRouterRouteTable(params *param.QueryParam) ([]view.VRouterRouteTableInventoryView, int, error) {
 	var vRouterRouteTables []view.VRouterRouteTableInventoryView
@@ -25,14 +33,6 @@ func (cli *ZSClient) PageVRouterRouteTable(params *param.QueryParam) ([]view.VRo
 // DeleteVRouterRouteTable deletes VRouterRouteTable
 func (cli *ZSClient) DeleteVRouterRouteTable(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/vrouter-route-tables", uuid, string(deleteMode))
-}
-// GetVRouterRouteTable gets VRouterRouteTable by uuid
-func (cli *ZSClient) GetVRouterRouteTable(uuid string) (*view.VRouterRouteEntryAOView, error) {
-	var resp view.VRouterRouteEntryAOView
-	if err := cli.Get("v1/vrouter-route-tables/vrouter", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
 }
 // CreateVRouterRouteTable creates VRouterRouteTable
 func (cli *ZSClient) CreateVRouterRouteTable(params param.CreateVRouterRouteTableParam) (*view.VRouterRouteTableInventoryView, error) {

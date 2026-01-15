@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryDRSAdvice(params *param.QueryParam) ([]view.DRSAdviceI
 	return resp, cli.List("v1/clusters/drs/advice", params, &resp)
 }
 
+func (cli *ZSClient) GetDRSAdvice(uuid string) (*view.DRSAdviceInventoryView, error) {
+	var resp view.DRSAdviceInventoryView
+	if err := cli.Get("v1/clusters/drs/advice", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageDRSAdvice Pagination
 func (cli *ZSClient) PageDRSAdvice(params *param.QueryParam) ([]view.DRSAdviceInventoryView, int, error) {
 	var dRSAdvices []view.DRSAdviceInventoryView

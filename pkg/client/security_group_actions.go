@@ -16,6 +16,14 @@ func (cli *ZSClient) QuerySecurityGroup(params *param.QueryParam) ([]view.Securi
 	return resp, cli.List("v1/security-groups", params, &resp)
 }
 
+func (cli *ZSClient) GetSecurityGroup(uuid string) (*view.SecurityGroupInventoryView, error) {
+	var resp view.SecurityGroupInventoryView
+	if err := cli.Get("v1/security-groups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSecurityGroup Pagination
 func (cli *ZSClient) PageSecurityGroup(params *param.QueryParam) ([]view.SecurityGroupInventoryView, int, error) {
 	var securityGroups []view.SecurityGroupInventoryView

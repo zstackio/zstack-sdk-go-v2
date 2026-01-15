@@ -32,6 +32,14 @@ func (cli *ZSClient) QuerySystemTag(params *param.QueryParam) ([]view.SystemTagI
 	return resp, cli.List("v1/system-tags", params, &resp)
 }
 
+func (cli *ZSClient) GetSystemTag(uuid string) (*view.SystemTagInventoryView, error) {
+	var resp view.SystemTagInventoryView
+	if err := cli.Get("v1/system-tags", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSystemTag Pagination
 func (cli *ZSClient) PageSystemTag(params *param.QueryParam) ([]view.SystemTagInventoryView, int, error) {
 	var systemTags []view.SystemTagInventoryView

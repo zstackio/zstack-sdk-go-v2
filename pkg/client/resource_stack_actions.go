@@ -20,6 +20,14 @@ func (cli *ZSClient) QueryResourceStack(params *param.QueryParam) ([]view.Resour
 	return resp, cli.List("v1/cloudformation/stack", params, &resp)
 }
 
+func (cli *ZSClient) GetResourceStack(uuid string) (*view.ResourceStackInventoryView, error) {
+	var resp view.ResourceStackInventoryView
+	if err := cli.Get("v1/cloudformation/stack", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageResourceStack Pagination
 func (cli *ZSClient) PageResourceStack(params *param.QueryParam) ([]view.ResourceStackInventoryView, int, error) {
 	var resourceStacks []view.ResourceStackInventoryView

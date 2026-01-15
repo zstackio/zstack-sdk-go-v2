@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryAliyunSmsSNSTextTemplate(params *param.QueryParam) ([]
 	return resp, cli.List("v1/zwatch/alarms/sns/text-templates/aliyun-sms", params, &resp)
 }
 
+func (cli *ZSClient) GetAliyunSmsSNSTextTemplate(uuid string) (*view.AliyunSmsSNSTextTemplateInventoryView, error) {
+	var resp view.AliyunSmsSNSTextTemplateInventoryView
+	if err := cli.Get("v1/zwatch/alarms/sns/text-templates/aliyun-sms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAliyunSmsSNSTextTemplate Pagination
 func (cli *ZSClient) PageAliyunSmsSNSTextTemplate(params *param.QueryParam) ([]view.AliyunSmsSNSTextTemplateInventoryView, int, error) {
 	var aliyunSmsSNSTextTemplates []view.AliyunSmsSNSTextTemplateInventoryView

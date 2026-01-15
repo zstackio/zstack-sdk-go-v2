@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryIpRange(params *param.QueryParam) ([]view.IpRangeInven
 	return resp, cli.List("v1/l3-networks/ip-ranges", params, &resp)
 }
 
+func (cli *ZSClient) GetIpRange(uuid string) (*view.IpRangeInventoryView, error) {
+	var resp view.IpRangeInventoryView
+	if err := cli.Get("v1/l3-networks/ip-ranges", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIpRange Pagination
 func (cli *ZSClient) PageIpRange(params *param.QueryParam) ([]view.IpRangeInventoryView, int, error) {
 	var ipRanges []view.IpRangeInventoryView

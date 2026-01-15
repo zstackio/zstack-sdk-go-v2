@@ -52,6 +52,14 @@ func (cli *ZSClient) QuerySdnController(params *param.QueryParam) ([]view.SdnCon
 	return resp, cli.List("v1/sdn-controllers", params, &resp)
 }
 
+func (cli *ZSClient) GetSdnController(uuid string) (*view.SdnControllerInventoryView, error) {
+	var resp view.SdnControllerInventoryView
+	if err := cli.Get("v1/sdn-controllers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSdnController Pagination
 func (cli *ZSClient) PageSdnController(params *param.QueryParam) ([]view.SdnControllerInventoryView, int, error) {
 	var sdnControllers []view.SdnControllerInventoryView

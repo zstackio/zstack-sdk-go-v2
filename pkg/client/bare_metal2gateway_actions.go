@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryBareMetal2Gateway(params *param.QueryParam) ([]view.Ba
 	return resp, cli.List("v1/baremetal2/gateways", params, &resp)
 }
 
+func (cli *ZSClient) GetBareMetal2Gateway(uuid string) (*view.BareMetal2GatewayInventoryView, error) {
+	var resp view.BareMetal2GatewayInventoryView
+	if err := cli.Get("v1/baremetal2/gateways", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBareMetal2Gateway Pagination
 func (cli *ZSClient) PageBareMetal2Gateway(params *param.QueryParam) ([]view.BareMetal2GatewayInventoryView, int, error) {
 	var bareMetal2Gatewaies []view.BareMetal2GatewayInventoryView

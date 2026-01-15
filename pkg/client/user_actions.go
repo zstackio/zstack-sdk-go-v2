@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryUser(params *param.QueryParam) ([]view.UserInventoryVi
 	return resp, cli.List("v1/accounts/users", params, &resp)
 }
 
+func (cli *ZSClient) GetUser(uuid string) (*view.UserInventoryView, error) {
+	var resp view.UserInventoryView
+	if err := cli.Get("v1/accounts/users", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageUser Pagination
 func (cli *ZSClient) PageUser(params *param.QueryParam) ([]view.UserInventoryView, int, error) {
 	var users []view.UserInventoryView

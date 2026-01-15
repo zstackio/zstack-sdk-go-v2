@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryEventRuleTemplate(params *param.QueryParam) ([]view.Ev
 	return resp, cli.List("v1/zwatch/monitortemplates/evenrules", params, &resp)
 }
 
+func (cli *ZSClient) GetEventRuleTemplate(uuid string) (*view.EventRuleTemplateInventoryView, error) {
+	var resp view.EventRuleTemplateInventoryView
+	if err := cli.Get("v1/zwatch/monitortemplates/evenrules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageEventRuleTemplate Pagination
 func (cli *ZSClient) PageEventRuleTemplate(params *param.QueryParam) ([]view.EventRuleTemplateInventoryView, int, error) {
 	var eventRuleTemplates []view.EventRuleTemplateInventoryView

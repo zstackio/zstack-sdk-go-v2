@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryRole(params *param.QueryParam) ([]view.RoleInventoryVi
 	return resp, cli.List("v1/identities/roles", params, &resp)
 }
 
+func (cli *ZSClient) GetRole(uuid string) (*view.RoleInventoryView, error) {
+	var resp view.RoleInventoryView
+	if err := cli.Get("v1/identities/roles", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageRole Pagination
 func (cli *ZSClient) PageRole(params *param.QueryParam) ([]view.RoleInventoryView, int, error) {
 	var roles []view.RoleInventoryView

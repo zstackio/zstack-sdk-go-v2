@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryUserTag(params *param.QueryParam) ([]view.UserTagInven
 	return resp, cli.List("v1/user-tags", params, &resp)
 }
 
+func (cli *ZSClient) GetUserTag(uuid string) (*view.UserTagInventoryView, error) {
+	var resp view.UserTagInventoryView
+	if err := cli.Get("v1/user-tags", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageUserTag Pagination
 func (cli *ZSClient) PageUserTag(params *param.QueryParam) ([]view.UserTagInventoryView, int, error) {
 	var userTags []view.UserTagInventoryView

@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryIAM2VirtualIDGroup(params *param.QueryParam) ([]view.I
 	return resp, cli.List("v1/iam2/projects/groups", params, &resp)
 }
 
+func (cli *ZSClient) GetIAM2VirtualIDGroup(uuid string) (*view.IAM2VirtualIDGroupInventoryView, error) {
+	var resp view.IAM2VirtualIDGroupInventoryView
+	if err := cli.Get("v1/iam2/projects/groups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIAM2VirtualIDGroup Pagination
 func (cli *ZSClient) PageIAM2VirtualIDGroup(params *param.QueryParam) ([]view.IAM2VirtualIDGroupInventoryView, int, error) {
 	var iAM2VirtualIDGroups []view.IAM2VirtualIDGroupInventoryView

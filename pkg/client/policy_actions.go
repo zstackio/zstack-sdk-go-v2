@@ -20,6 +20,14 @@ func (cli *ZSClient) QueryPolicy(params *param.QueryParam) ([]view.PolicyInvento
 	return resp, cli.List("v1/accounts/policies", params, &resp)
 }
 
+func (cli *ZSClient) GetPolicy(uuid string) (*view.PolicyInventoryView, error) {
+	var resp view.PolicyInventoryView
+	if err := cli.Get("v1/accounts/policies", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePolicy Pagination
 func (cli *ZSClient) PagePolicy(params *param.QueryParam) ([]view.PolicyInventoryView, int, error) {
 	var policies []view.PolicyInventoryView

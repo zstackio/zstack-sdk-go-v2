@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryScsiLun(params *param.QueryParam) ([]view.ScsiLunInven
 	return resp, cli.List("v1/storage-devices/scsi-lun/luns", params, &resp)
 }
 
+func (cli *ZSClient) GetScsiLun(uuid string) (*view.ScsiLunInventoryView, error) {
+	var resp view.ScsiLunInventoryView
+	if err := cli.Get("v1/storage-devices/scsi-lun/luns", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageScsiLun Pagination
 func (cli *ZSClient) PageScsiLun(params *param.QueryParam) ([]view.ScsiLunInventoryView, int, error) {
 	var scsiLuns []view.ScsiLunInventoryView

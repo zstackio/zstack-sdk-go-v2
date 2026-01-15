@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryArchiveTicket(params *param.QueryParam) ([]view.Archiv
 	return resp, cli.List("v1/tickets/archives", params, &resp)
 }
 
+func (cli *ZSClient) GetArchiveTicket(uuid string) (*view.ArchiveTicketInventoryView, error) {
+	var resp view.ArchiveTicketInventoryView
+	if err := cli.Get("v1/tickets/archives", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageArchiveTicket Pagination
 func (cli *ZSClient) PageArchiveTicket(params *param.QueryParam) ([]view.ArchiveTicketInventoryView, int, error) {
 	var archiveTickets []view.ArchiveTicketInventoryView

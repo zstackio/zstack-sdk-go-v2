@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryAccessKey(params *param.QueryParam) ([]view.AccessKeyI
 	return resp, cli.List("v1/accesskeys", params, &resp)
 }
 
+func (cli *ZSClient) GetAccessKey(uuid string) (*view.AccessKeyInventoryView, error) {
+	var resp view.AccessKeyInventoryView
+	if err := cli.Get("v1/accesskeys", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAccessKey Pagination
 func (cli *ZSClient) PageAccessKey(params *param.QueryParam) ([]view.AccessKeyInventoryView, int, error) {
 	var accessKeies []view.AccessKeyInventoryView

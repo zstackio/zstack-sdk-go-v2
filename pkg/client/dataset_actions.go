@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryDataset(params *param.QueryParam) ([]view.DatasetInven
 	return resp, cli.List("v1/ai/datasets", params, &resp)
 }
 
+func (cli *ZSClient) GetDataset(uuid string) (*view.DatasetInventoryView, error) {
+	var resp view.DatasetInventoryView
+	if err := cli.Get("v1/ai/datasets", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageDataset Pagination
 func (cli *ZSClient) PageDataset(params *param.QueryParam) ([]view.DatasetInventoryView, int, error) {
 	var datasets []view.DatasetInventoryView

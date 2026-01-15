@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVmInstancePciDeviceSpecRef(params *param.QueryParam) (
 	return resp, cli.List("v1/vm-instances/{vmInstanceUuid}/pci-device-specs", params, &resp)
 }
 
+func (cli *ZSClient) GetVmInstancePciDeviceSpecRef(uuid string) (*view.VmInstancePciDeviceSpecRefInventoryView, error) {
+	var resp view.VmInstancePciDeviceSpecRefInventoryView
+	if err := cli.Get("v1/vm-instances/{vmInstanceUuid}/pci-device-specs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmInstancePciDeviceSpecRef Pagination
 func (cli *ZSClient) PageVmInstancePciDeviceSpecRef(params *param.QueryParam) ([]view.VmInstancePciDeviceSpecRefInventoryView, int, error) {
 	var vmInstancePciDeviceSpecRefs []view.VmInstancePciDeviceSpecRefInventoryView

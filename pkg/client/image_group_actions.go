@@ -23,6 +23,14 @@ func (cli *ZSClient) QueryImageGroup(params *param.QueryParam) ([]view.ImageGrou
 	return resp, cli.List("v1/imagegroups", params, &resp)
 }
 
+func (cli *ZSClient) GetImageGroup(uuid string) (*view.ImageGroupInventoryView, error) {
+	var resp view.ImageGroupInventoryView
+	if err := cli.Get("v1/imagegroups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageImageGroup Pagination
 func (cli *ZSClient) PageImageGroup(params *param.QueryParam) ([]view.ImageGroupInventoryView, int, error) {
 	var imageGroups []view.ImageGroupInventoryView

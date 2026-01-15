@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryCertificate(params *param.QueryParam) ([]view.Certific
 	return resp, cli.List("v1/certificates", params, &resp)
 }
 
+func (cli *ZSClient) GetCertificate(uuid string) (*view.CertificateInventoryView, error) {
+	var resp view.CertificateInventoryView
+	if err := cli.Get("v1/certificates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageCertificate Pagination
 func (cli *ZSClient) PageCertificate(params *param.QueryParam) ([]view.CertificateInventoryView, int, error) {
 	var certificates []view.CertificateInventoryView

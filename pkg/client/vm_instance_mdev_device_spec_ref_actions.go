@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVmInstanceMdevDeviceSpecRef(params *param.QueryParam) 
 	return resp, cli.List("v1/vm-instances/{vmInstanceUuid}/mdev-device-specs", params, &resp)
 }
 
+func (cli *ZSClient) GetVmInstanceMdevDeviceSpecRef(uuid string) (*view.VmInstanceMdevDeviceSpecRefInventoryView, error) {
+	var resp view.VmInstanceMdevDeviceSpecRefInventoryView
+	if err := cli.Get("v1/vm-instances/{vmInstanceUuid}/mdev-device-specs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmInstanceMdevDeviceSpecRef Pagination
 func (cli *ZSClient) PageVmInstanceMdevDeviceSpecRef(params *param.QueryParam) ([]view.VmInstanceMdevDeviceSpecRefInventoryView, int, error) {
 	var vmInstanceMdevDeviceSpecRefs []view.VmInstanceMdevDeviceSpecRefInventoryView

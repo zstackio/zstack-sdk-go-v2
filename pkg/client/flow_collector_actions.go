@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryFlowCollector(params *param.QueryParam) ([]view.FlowCo
 	return resp, cli.List("v1/flowmeters/collectors", params, &resp)
 }
 
+func (cli *ZSClient) GetFlowCollector(uuid string) (*view.FlowCollectorInventoryView, error) {
+	var resp view.FlowCollectorInventoryView
+	if err := cli.Get("v1/flowmeters/collectors", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageFlowCollector Pagination
 func (cli *ZSClient) PageFlowCollector(params *param.QueryParam) ([]view.FlowCollectorInventoryView, int, error) {
 	var flowCollectors []view.FlowCollectorInventoryView

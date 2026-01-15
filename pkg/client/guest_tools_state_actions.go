@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryGuestToolsState(params *param.QueryParam) ([]view.Gues
 	return resp, cli.List("v1/guesttools", params, &resp)
 }
 
+func (cli *ZSClient) GetGuestToolsState(uuid string) (*view.GuestToolsStateInventoryView, error) {
+	var resp view.GuestToolsStateInventoryView
+	if err := cli.Get("v1/guesttools", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageGuestToolsState Pagination
 func (cli *ZSClient) PageGuestToolsState(params *param.QueryParam) ([]view.GuestToolsStateInventoryView, int, error) {
 	var guestToolsStates []view.GuestToolsStateInventoryView

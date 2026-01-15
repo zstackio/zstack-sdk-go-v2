@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryAddressPool(params *param.QueryParam) ([]view.AddressP
 	return resp, cli.List("v1/l3-networks/address-pools", params, &resp)
 }
 
+func (cli *ZSClient) GetAddressPool(uuid string) (*view.AddressPoolInventoryView, error) {
+	var resp view.AddressPoolInventoryView
+	if err := cli.Get("v1/l3-networks/address-pools", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAddressPool Pagination
 func (cli *ZSClient) PageAddressPool(params *param.QueryParam) ([]view.AddressPoolInventoryView, int, error) {
 	var addressPools []view.AddressPoolInventoryView

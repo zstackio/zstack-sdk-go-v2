@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryExponBlockVolume(params *param.QueryParam) ([]view.Exp
 	return resp, cli.List("v1/expon/block-volumes", params, &resp)
 }
 
+func (cli *ZSClient) GetExponBlockVolume(uuid string) (*view.ExponBlockVolumeInventoryView, error) {
+	var resp view.ExponBlockVolumeInventoryView
+	if err := cli.Get("v1/expon/block-volumes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageExponBlockVolume Pagination
 func (cli *ZSClient) PageExponBlockVolume(params *param.QueryParam) ([]view.ExponBlockVolumeInventoryView, int, error) {
 	var exponBlockVolumes []view.ExponBlockVolumeInventoryView

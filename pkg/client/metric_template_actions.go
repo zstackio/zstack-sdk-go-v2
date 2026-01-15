@@ -20,6 +20,14 @@ func (cli *ZSClient) QueryMetricTemplate(params *param.QueryParam) ([]view.Metri
 	return resp, cli.List("v1/zwatch/metrics/httpreceivers/templates", params, &resp)
 }
 
+func (cli *ZSClient) GetMetricTemplate(uuid string) (*view.MetricDataHttpReceiverInventoryView, error) {
+	var resp view.MetricDataHttpReceiverInventoryView
+	if err := cli.Get("v1/zwatch/metrics/httpreceivers/templates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMetricTemplate Pagination
 func (cli *ZSClient) PageMetricTemplate(params *param.QueryParam) ([]view.MetricDataHttpReceiverInventoryView, int, error) {
 	var metricTemplates []view.MetricDataHttpReceiverInventoryView

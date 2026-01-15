@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryBareMetal2ProvisionNetwork(params *param.QueryParam) (
 	return resp, cli.List("v1/baremetal2/provision-networks", params, &resp)
 }
 
+func (cli *ZSClient) GetBareMetal2ProvisionNetwork(uuid string) (*view.BareMetal2ProvisionNetworkInventoryView, error) {
+	var resp view.BareMetal2ProvisionNetworkInventoryView
+	if err := cli.Get("v1/baremetal2/provision-networks", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBareMetal2ProvisionNetwork Pagination
 func (cli *ZSClient) PageBareMetal2ProvisionNetwork(params *param.QueryParam) ([]view.BareMetal2ProvisionNetworkInventoryView, int, error) {
 	var bareMetal2ProvisionNetworks []view.BareMetal2ProvisionNetworkInventoryView

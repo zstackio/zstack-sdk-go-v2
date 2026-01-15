@@ -44,6 +44,14 @@ func (cli *ZSClient) QueryPciDevicePciDeviceOffering(params *param.QueryParam) (
 	return resp, cli.List("v1/pci-devices/pci-devices/pci-device-offerings", params, &resp)
 }
 
+func (cli *ZSClient) GetPciDevicePciDeviceOffering(uuid string) (*view.PciDevicePciDeviceOfferingRefInventoryView, error) {
+	var resp view.PciDevicePciDeviceOfferingRefInventoryView
+	if err := cli.Get("v1/pci-devices/pci-devices/pci-device-offerings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePciDevicePciDeviceOffering Pagination
 func (cli *ZSClient) PagePciDevicePciDeviceOffering(params *param.QueryParam) ([]view.PciDevicePciDeviceOfferingRefInventoryView, int, error) {
 	var pciDevicePciDeviceOfferings []view.PciDevicePciDeviceOfferingRefInventoryView
@@ -158,6 +166,14 @@ func (cli *ZSClient) QueryLocalRaidController(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/storage-devices/local-raid/controllers", params, &resp)
 }
 
+func (cli *ZSClient) GetLocalRaidController(uuid string) (*view.RaidPhysicalDriveInventoryView, error) {
+	var resp view.RaidPhysicalDriveInventoryView
+	if err := cli.Get("v1/storage-devices/local-raid/controllers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageLocalRaidController Pagination
 func (cli *ZSClient) PageLocalRaidController(params *param.QueryParam) ([]view.RaidPhysicalDriveInventoryView, int, error) {
 	var localRaidControllers []view.RaidPhysicalDriveInventoryView
@@ -241,6 +257,14 @@ func (cli *ZSClient) GetPrometheusMetricLabelValue(uuid string) (*view.GetPromet
 func (cli *ZSClient) QueryConnectionAccessPointFromLocal(params *param.QueryParam) ([]view.ConnectionAccessPointInventoryView, error) {
 	var resp []view.ConnectionAccessPointInventoryView
 	return resp, cli.List("v1/hybrid/aliyun/access-point", params, &resp)
+}
+
+func (cli *ZSClient) GetConnectionAccessPointFromLocal(uuid string) (*view.ConnectionAccessPointInventoryView, error) {
+	var resp view.ConnectionAccessPointInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/access-point", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageConnectionAccessPointFromLocal Pagination
@@ -477,6 +501,14 @@ func (cli *ZSClient) SetVmBootOrder(uuid string, params param.SetVmBootOrderPara
 func (cli *ZSClient) QueryThirdpartyAlert(params *param.QueryParam) ([]view.ThirdpartyOriginalAlertInventoryView, error) {
 	var resp []view.ThirdpartyOriginalAlertInventoryView
 	return resp, cli.List("v1/zwatch/third-party/alerts", params, &resp)
+}
+
+func (cli *ZSClient) GetThirdpartyAlert(uuid string) (*view.ThirdpartyOriginalAlertInventoryView, error) {
+	var resp view.ThirdpartyOriginalAlertInventoryView
+	if err := cli.Get("v1/zwatch/third-party/alerts", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageThirdpartyAlert Pagination
@@ -825,6 +857,14 @@ func (cli *ZSClient) QueryIPSecConnection(params *param.QueryParam) ([]view.IPse
 	return resp, cli.List("v1/ipsec", params, &resp)
 }
 
+func (cli *ZSClient) GetIPSecConnection(uuid string) (*view.IPsecConnectionInventoryView, error) {
+	var resp view.IPsecConnectionInventoryView
+	if err := cli.Get("v1/ipsec", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIPSecConnection Pagination
 func (cli *ZSClient) PageIPSecConnection(params *param.QueryParam) ([]view.IPsecConnectionInventoryView, int, error) {
 	var iPSecConnections []view.IPsecConnectionInventoryView
@@ -932,6 +972,14 @@ func (cli *ZSClient) SyncEcsSecurityGroupRuleFromRemote(uuid string, params para
 func (cli *ZSClient) QueryFirewallRuleTemplate(params *param.QueryParam) ([]view.VpcFirewallRuleTemplateInventoryView, error) {
 	var resp []view.VpcFirewallRuleTemplateInventoryView
 	return resp, cli.List("v1/vpcfirewalls/rules/templates", params, &resp)
+}
+
+func (cli *ZSClient) GetFirewallRuleTemplate(uuid string) (*view.VpcFirewallRuleTemplateInventoryView, error) {
+	var resp view.VpcFirewallRuleTemplateInventoryView
+	if err := cli.Get("v1/vpcfirewalls/rules/templates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageFirewallRuleTemplate Pagination
@@ -1063,6 +1111,14 @@ func (cli *ZSClient) SyncAliyunVirtualRouterFromRemote(vpcUuid string, params pa
 func (cli *ZSClient) QueryEcsVpcFromLocal(params *param.QueryParam) ([]view.EcsVpcInventoryView, error) {
 	var resp []view.EcsVpcInventoryView
 	return resp, cli.List("v1/hybrid/aliyun/vpc", params, &resp)
+}
+
+func (cli *ZSClient) GetEcsVpcFromLocal(uuid string) (*view.EcsVpcInventoryView, error) {
+	var resp view.EcsVpcInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/vpc", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageEcsVpcFromLocal Pagination
@@ -1231,6 +1287,14 @@ func (cli *ZSClient) QueryIdentityZoneFromLocal(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/hybrid/identity-zone", params, &resp)
 }
 
+func (cli *ZSClient) GetIdentityZoneFromLocal(uuid string) (*view.IdentityZoneInventoryView, error) {
+	var resp view.IdentityZoneInventoryView
+	if err := cli.Get("v1/hybrid/identity-zone", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIdentityZoneFromLocal Pagination
 func (cli *ZSClient) PageIdentityZoneFromLocal(params *param.QueryParam) ([]view.IdentityZoneInventoryView, int, error) {
 	var identityZoneFromLocals []view.IdentityZoneInventoryView
@@ -1340,6 +1404,14 @@ func (cli *ZSClient) QueryAliyunDiskFromLocal(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/hybrid/aliyun/disk", params, &resp)
 }
 
+func (cli *ZSClient) GetAliyunDiskFromLocal(uuid string) (*view.AliyunDiskInventoryView, error) {
+	var resp view.AliyunDiskInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/disk", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAliyunDiskFromLocal Pagination
 func (cli *ZSClient) PageAliyunDiskFromLocal(params *param.QueryParam) ([]view.AliyunDiskInventoryView, int, error) {
 	var aliyunDiskFromLocals []view.AliyunDiskInventoryView
@@ -1351,6 +1423,14 @@ func (cli *ZSClient) PageAliyunDiskFromLocal(params *param.QueryParam) ([]view.A
 func (cli *ZSClient) QueryEcsSecurityGroupRuleFromLocal(params *param.QueryParam) ([]view.EcsSecurityGroupRuleInventoryView, error) {
 	var resp []view.EcsSecurityGroupRuleInventoryView
 	return resp, cli.List("v1/hybrid/aliyun/security-group-rule", params, &resp)
+}
+
+func (cli *ZSClient) GetEcsSecurityGroupRuleFromLocal(uuid string) (*view.EcsSecurityGroupRuleInventoryView, error) {
+	var resp view.EcsSecurityGroupRuleInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/security-group-rule", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageEcsSecurityGroupRuleFromLocal Pagination
@@ -1697,6 +1777,14 @@ func (cli *ZSClient) QueryEventRecord(params *param.QueryParam) ([]view.EventRec
 	return resp, cli.List("v1/zwatch/event-records", params, &resp)
 }
 
+func (cli *ZSClient) GetEventRecord(uuid string) (*view.EventRecordsInventoryView, error) {
+	var resp view.EventRecordsInventoryView
+	if err := cli.Get("v1/zwatch/event-records", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageEventRecord Pagination
 func (cli *ZSClient) PageEventRecord(params *param.QueryParam) ([]view.EventRecordsInventoryView, int, error) {
 	var eventRecords []view.EventRecordsInventoryView
@@ -1718,6 +1806,14 @@ func (cli *ZSClient) AttachBareMetal2ProvisionNetworkToCluster(clusterUuid strin
 func (cli *ZSClient) QueryIAM2LdapBinding(params *param.QueryParam) ([]view.LdapResourceRefInventoryView, error) {
 	var resp []view.LdapResourceRefInventoryView
 	return resp, cli.List("v1/iam2/ldap/bindings", params, &resp)
+}
+
+func (cli *ZSClient) GetIAM2LdapBinding(uuid string) (*view.LdapResourceRefInventoryView, error) {
+	var resp view.LdapResourceRefInventoryView
+	if err := cli.Get("v1/iam2/ldap/bindings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageIAM2LdapBinding Pagination
@@ -2088,6 +2184,14 @@ func (cli *ZSClient) QueryHybridKeySecret(params *param.QueryParam) ([]view.Hybr
 	return resp, cli.List("v1/hybrid/hybrid/key", params, &resp)
 }
 
+func (cli *ZSClient) GetHybridKeySecret(uuid string) (*view.HybridAccountInventoryView, error) {
+	var resp view.HybridAccountInventoryView
+	if err := cli.Get("v1/hybrid/hybrid/key", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageHybridKeySecret Pagination
 func (cli *ZSClient) PageHybridKeySecret(params *param.QueryParam) ([]view.HybridAccountInventoryView, int, error) {
 	var hybridKeySecrets []view.HybridAccountInventoryView
@@ -2108,6 +2212,14 @@ func (cli *ZSClient) UploadFileToVm(params param.UploadFileToVmParam) (*view.Upl
 func (cli *ZSClient) QueryVpcVpnGatewayFromLocal(params *param.QueryParam) ([]view.VpcVpnGatewayInventoryView, error) {
 	var resp []view.VpcVpnGatewayInventoryView
 	return resp, cli.List("v1/hybrid/vpc-vpn", params, &resp)
+}
+
+func (cli *ZSClient) GetVpcVpnGatewayFromLocal(uuid string) (*view.VpcVpnGatewayInventoryView, error) {
+	var resp view.VpcVpnGatewayInventoryView
+	if err := cli.Get("v1/hybrid/vpc-vpn", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageVpcVpnGatewayFromLocal Pagination
@@ -2159,6 +2271,14 @@ func (cli *ZSClient) QueryVmNicInSecurityGroup(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/security-groups/vm-instances/nics", params, &resp)
 }
 
+func (cli *ZSClient) GetVmNicInSecurityGroup(uuid string) (*view.VmNicSecurityGroupRefInventoryView, error) {
+	var resp view.VmNicSecurityGroupRefInventoryView
+	if err := cli.Get("v1/security-groups/vm-instances/nics", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmNicInSecurityGroup Pagination
 func (cli *ZSClient) PageVmNicInSecurityGroup(params *param.QueryParam) ([]view.VmNicSecurityGroupRefInventoryView, int, error) {
 	var vmNicInSecurityGroups []view.VmNicSecurityGroupRefInventoryView
@@ -2188,6 +2308,14 @@ func (cli *ZSClient) RecoveryImageFromImageStoreBackupStorage(uuid string, param
 func (cli *ZSClient) QueryEventFromResourceStack(params *param.QueryParam) ([]view.CloudFormationStackEventInventoryView, error) {
 	var resp []view.CloudFormationStackEventInventoryView
 	return resp, cli.List("v1/cloudformation/event", params, &resp)
+}
+
+func (cli *ZSClient) GetEventFromResourceStack(uuid string) (*view.CloudFormationStackEventInventoryView, error) {
+	var resp view.CloudFormationStackEventInventoryView
+	if err := cli.Get("v1/cloudformation/event", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageEventFromResourceStack Pagination
@@ -2686,6 +2814,14 @@ func (cli *ZSClient) QueryBuildApp(params *param.QueryParam) ([]view.BuildApplic
 	return resp, cli.List("v1/appcenter/buildapp", params, &resp)
 }
 
+func (cli *ZSClient) GetBuildApp(uuid string) (*view.BuildApplicationInventoryView, error) {
+	var resp view.BuildApplicationInventoryView
+	if err := cli.Get("v1/appcenter/buildapp", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBuildApp Pagination
 func (cli *ZSClient) PageBuildApp(params *param.QueryParam) ([]view.BuildApplicationInventoryView, int, error) {
 	var buildApps []view.BuildApplicationInventoryView
@@ -2803,6 +2939,14 @@ func (cli *ZSClient) QueryVirtualBorderRouterFromLocal(params *param.QueryParam)
 	return resp, cli.List("v1/hybrid/aliyun/border-router", params, &resp)
 }
 
+func (cli *ZSClient) GetVirtualBorderRouterFromLocal(uuid string) (*view.VirtualBorderRouterInventoryView, error) {
+	var resp view.VirtualBorderRouterInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/border-router", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVirtualBorderRouterFromLocal Pagination
 func (cli *ZSClient) PageVirtualBorderRouterFromLocal(params *param.QueryParam) ([]view.VirtualBorderRouterInventoryView, int, error) {
 	var virtualBorderRouterFromLocals []view.VirtualBorderRouterInventoryView
@@ -2915,6 +3059,14 @@ func (cli *ZSClient) QueryLocalRaidPhysicalDrive(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/storage-devices/local-raid/physical-drives", params, &resp)
 }
 
+func (cli *ZSClient) GetLocalRaidPhysicalDrive(uuid string) (*view.RaidPhysicalDriveInventoryView, error) {
+	var resp view.RaidPhysicalDriveInventoryView
+	if err := cli.Get("v1/storage-devices/local-raid/physical-drives", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageLocalRaidPhysicalDrive Pagination
 func (cli *ZSClient) PageLocalRaidPhysicalDrive(params *param.QueryParam) ([]view.RaidPhysicalDriveInventoryView, int, error) {
 	var localRaidPhysicalDrives []view.RaidPhysicalDriveInventoryView
@@ -2955,6 +3107,14 @@ func (cli *ZSClient) BackupStorageMigrateImageAsync(params param.BackupStorageMi
 func (cli *ZSClient) QueryArchiveTicketHistory(params *param.QueryParam) ([]view.ArchiveTicketStatusHistoryInventoryView, error) {
 	var resp []view.ArchiveTicketStatusHistoryInventoryView
 	return resp, cli.List("v1/tickets/histories/archives", params, &resp)
+}
+
+func (cli *ZSClient) GetArchiveTicketHistory(uuid string) (*view.ArchiveTicketStatusHistoryInventoryView, error) {
+	var resp view.ArchiveTicketStatusHistoryInventoryView
+	if err := cli.Get("v1/tickets/histories/archives", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageArchiveTicketHistory Pagination
@@ -3070,6 +3230,14 @@ func (cli *ZSClient) QueryTag(params *param.QueryParam) ([]view.TagPatternInvent
 	return resp, cli.List("v1/tags", params, &resp)
 }
 
+func (cli *ZSClient) GetTag(uuid string) (*view.TagPatternInventoryView, error) {
+	var resp view.TagPatternInventoryView
+	if err := cli.Get("v1/tags", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageTag Pagination
 func (cli *ZSClient) PageTag(params *param.QueryParam) ([]view.TagPatternInventoryView, int, error) {
 	var tags []view.TagPatternInventoryView
@@ -3180,6 +3348,14 @@ func (cli *ZSClient) QueryVRouterFlowMeterNetwork(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/flowmeters/networks", params, &resp)
 }
 
+func (cli *ZSClient) GetVRouterFlowMeterNetwork(uuid string) (*view.NetworkRouterFlowMeterRefInventoryView, error) {
+	var resp view.NetworkRouterFlowMeterRefInventoryView
+	if err := cli.Get("v1/flowmeters/networks", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVRouterFlowMeterNetwork Pagination
 func (cli *ZSClient) PageVRouterFlowMeterNetwork(params *param.QueryParam) ([]view.NetworkRouterFlowMeterRefInventoryView, int, error) {
 	var vRouterFlowMeterNetworks []view.NetworkRouterFlowMeterRefInventoryView
@@ -3209,6 +3385,14 @@ func (cli *ZSClient) GetGpuDeviceSpecCandidates(uuid string) (*view.GpuDeviceSpe
 func (cli *ZSClient) QueryFirewallRuleSetL3Ref(params *param.QueryParam) ([]view.VpcFirewallRuleSetL3RefInventoryView, error) {
 	var resp []view.VpcFirewallRuleSetL3RefInventoryView
 	return resp, cli.List("v1/vpcfirewalls/l3networks/rulesets/refs", params, &resp)
+}
+
+func (cli *ZSClient) GetFirewallRuleSetL3Ref(uuid string) (*view.VpcFirewallRuleSetL3RefInventoryView, error) {
+	var resp view.VpcFirewallRuleSetL3RefInventoryView
+	if err := cli.Get("v1/vpcfirewalls/l3networks/rulesets/refs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageFirewallRuleSetL3Ref Pagination
@@ -3454,6 +3638,14 @@ func (cli *ZSClient) QueryVpcIpSecConfigFromLocal(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/hybrid/vpn-connection/ipsec", params, &resp)
 }
 
+func (cli *ZSClient) GetVpcIpSecConfigFromLocal(uuid string) (*view.VpcVpnIpSecConfigInventoryView, error) {
+	var resp view.VpcVpnIpSecConfigInventoryView
+	if err := cli.Get("v1/hybrid/vpn-connection/ipsec", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVpcIpSecConfigFromLocal Pagination
 func (cli *ZSClient) PageVpcIpSecConfigFromLocal(params *param.QueryParam) ([]view.VpcVpnIpSecConfigInventoryView, int, error) {
 	var vpcIpSecConfigFromLocals []view.VpcVpnIpSecConfigInventoryView
@@ -3484,6 +3676,14 @@ func (cli *ZSClient) AttachSshKeyPairToVmInstance(sshKeyPairUuid string, vmInsta
 func (cli *ZSClient) QueryEmailTriggerAction(params *param.QueryParam) ([]view.MonitorTriggerActionInventoryView, error) {
 	var resp []view.MonitorTriggerActionInventoryView
 	return resp, cli.List("v1/monitoring/trigger-actions/emails", params, &resp)
+}
+
+func (cli *ZSClient) GetEmailTriggerAction(uuid string) (*view.MonitorTriggerActionInventoryView, error) {
+	var resp view.MonitorTriggerActionInventoryView
+	if err := cli.Get("v1/monitoring/trigger-actions/emails", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageEmailTriggerAction Pagination
@@ -3558,6 +3758,14 @@ func (cli *ZSClient) RestartResourceStack(uuid string, params param.RestartResou
 func (cli *ZSClient) QueryHygonDevice(params *param.QueryParam) ([]view.HygonCcpDeviceInventoryView, error) {
 	var resp []view.HygonCcpDeviceInventoryView
 	return resp, cli.List("v1/hygon-devices", params, &resp)
+}
+
+func (cli *ZSClient) GetHygonDevice(uuid string) (*view.HygonCcpDeviceInventoryView, error) {
+	var resp view.HygonCcpDeviceInventoryView
+	if err := cli.Get("v1/hygon-devices", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageHygonDevice Pagination
@@ -3673,6 +3881,14 @@ func (cli *ZSClient) QueryTicketHistory(params *param.QueryParam) ([]view.Ticket
 	return resp, cli.List("v1/tickets/histories", params, &resp)
 }
 
+func (cli *ZSClient) GetTicketHistory(uuid string) (*view.TicketStatusHistoryInventoryView, error) {
+	var resp view.TicketStatusHistoryInventoryView
+	if err := cli.Get("v1/tickets/histories", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageTicketHistory Pagination
 func (cli *ZSClient) PageTicketHistory(params *param.QueryParam) ([]view.TicketStatusHistoryInventoryView, int, error) {
 	var ticketHistories []view.TicketStatusHistoryInventoryView
@@ -3773,6 +3989,14 @@ func (cli *ZSClient) QueryFirewallIpSetTemplate(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/vpcfirewalls/ipset/templates", params, &resp)
 }
 
+func (cli *ZSClient) GetFirewallIpSetTemplate(uuid string) (*view.VpcFirewallIpSetTemplateInventoryView, error) {
+	var resp view.VpcFirewallIpSetTemplateInventoryView
+	if err := cli.Get("v1/vpcfirewalls/ipset/templates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageFirewallIpSetTemplate Pagination
 func (cli *ZSClient) PageFirewallIpSetTemplate(params *param.QueryParam) ([]view.VpcFirewallIpSetTemplateInventoryView, int, error) {
 	var firewallIpSetTemplates []view.VpcFirewallIpSetTemplateInventoryView
@@ -3844,20 +4068,20 @@ func (cli *ZSClient) UnlockIdentity(params param.UnlockIdentityParam) (*view.Unl
 	return &resp, nil
 }
 
-// ChangeVmSchedulingRuleState changes VmSchedulingRuleState
-func (cli *ZSClient) ChangeVmSchedulingRuleState(uuid string, params param.ChangeVmSchedulingRuleStateParam) (*view.VmSchedulingRuleInventoryView, error) {
-	resp := view.VmSchedulingRuleInventoryView{}
-	if err := cli.Put("v1/vmSchedulingRule", uuid, params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // GetCandidateVmNicsForPortMirror gets CandidateVmNicsForPortMirror by uuid
 func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, typeParam string) (*view.VmNicInventoryView, error) {
 	var resp view.VmNicInventoryView
 	err := cli.GetWithSpec("v1/port-mirrors", portMirrorUuid, fmt.Sprintf("vm-instances/candidate-nics/%s", typeParam), "", nil, &resp)
 	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeVmSchedulingRuleState changes VmSchedulingRuleState
+func (cli *ZSClient) ChangeVmSchedulingRuleState(uuid string, params param.ChangeVmSchedulingRuleStateParam) (*view.VmSchedulingRuleInventoryView, error) {
+	resp := view.VmSchedulingRuleInventoryView{}
+	if err := cli.Put("v1/vmSchedulingRule", uuid, params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4075,6 +4299,14 @@ func (cli *ZSClient) QueryAliyunRouterInterfaceFromLocal(params *param.QueryPara
 	return resp, cli.List("v1/hybrid/aliyun/router-interface", params, &resp)
 }
 
+func (cli *ZSClient) GetAliyunRouterInterfaceFromLocal(uuid string) (*view.AliyunRouterInterfaceInventoryView, error) {
+	var resp view.AliyunRouterInterfaceInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/router-interface", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAliyunRouterInterfaceFromLocal Pagination
 func (cli *ZSClient) PageAliyunRouterInterfaceFromLocal(params *param.QueryParam) ([]view.AliyunRouterInterfaceInventoryView, int, error) {
 	var aliyunRouterInterfaceFromLocals []view.AliyunRouterInterfaceInventoryView
@@ -4128,6 +4360,14 @@ func (cli *ZSClient) CreateVmInstanceFromOvfAsync(params param.CreateVmInstanceF
 func (cli *ZSClient) QueryLdapBinding(params *param.QueryParam) ([]view.LdapAccountRefInventoryView, error) {
 	var resp []view.LdapAccountRefInventoryView
 	return resp, cli.List("v1/ldap/bindings", params, &resp)
+}
+
+func (cli *ZSClient) GetLdapBinding(uuid string) (*view.LdapAccountRefInventoryView, error) {
+	var resp view.LdapAccountRefInventoryView
+	if err := cli.Get("v1/ldap/bindings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageLdapBinding Pagination
@@ -4232,6 +4472,14 @@ func (cli *ZSClient) GetMetricData(uuid string) (*view.GetMetricDataView, error)
 func (cli *ZSClient) QueryAliyunSnapshotFromLocal(params *param.QueryParam) ([]view.AliyunSnapshotInventoryView, error) {
 	var resp []view.AliyunSnapshotInventoryView
 	return resp, cli.List("v1/hybrid/aliyun/snapshot", params, &resp)
+}
+
+func (cli *ZSClient) GetAliyunSnapshotFromLocal(uuid string) (*view.AliyunSnapshotInventoryView, error) {
+	var resp view.AliyunSnapshotInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/snapshot", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageAliyunSnapshotFromLocal Pagination
@@ -4478,6 +4726,14 @@ func (cli *ZSClient) GetAccountQuotaUsage(uuid string) (*view.GetAccountQuotaUsa
 func (cli *ZSClient) QueryPluginDrivers(params *param.QueryParam) ([]view.PluginDriverInventoryView, error) {
 	var resp []view.PluginDriverInventoryView
 	return resp, cli.List("v1/external/plugins", params, &resp)
+}
+
+func (cli *ZSClient) GetPluginDrivers(uuid string) (*view.PluginDriverInventoryView, error) {
+	var resp view.PluginDriverInventoryView
+	if err := cli.Get("v1/external/plugins", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PagePluginDrivers Pagination
@@ -4801,6 +5057,14 @@ func (cli *ZSClient) QueryAccountBilling(params *param.QueryParam) ([]view.Billi
 	return resp, cli.List("v1/billing/billings", params, &resp)
 }
 
+func (cli *ZSClient) GetAccountBilling(uuid string) (*view.BillingInventoryView, error) {
+	var resp view.BillingInventoryView
+	if err := cli.Get("v1/billing/billings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAccountBilling Pagination
 func (cli *ZSClient) PageAccountBilling(params *param.QueryParam) ([]view.BillingInventoryView, int, error) {
 	var accountBillings []view.BillingInventoryView
@@ -5047,6 +5311,14 @@ func (cli *ZSClient) QueryPhysicalDriveSelfTestHistory(params *param.QueryParam)
 	return resp, cli.List("v1/storage-devices/local-raid/physical-drives/self-test", params, &resp)
 }
 
+func (cli *ZSClient) GetPhysicalDriveSelfTestHistory(uuid string) (*view.PhysicalDriveSmartSelfTestHistoryInventoryView, error) {
+	var resp view.PhysicalDriveSmartSelfTestHistoryInventoryView
+	if err := cli.Get("v1/storage-devices/local-raid/physical-drives/self-test", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePhysicalDriveSelfTestHistory Pagination
 func (cli *ZSClient) PagePhysicalDriveSelfTestHistory(params *param.QueryParam) ([]view.PhysicalDriveSmartSelfTestHistoryInventoryView, int, error) {
 	var physicalDriveSelfTestHistories []view.PhysicalDriveSmartSelfTestHistoryInventoryView
@@ -5226,6 +5498,14 @@ func (cli *ZSClient) QueryVpcIkeConfigFromLocal(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/hybrid/vpn-connection/ike", params, &resp)
 }
 
+func (cli *ZSClient) GetVpcIkeConfigFromLocal(uuid string) (*view.VpcVpnIkeConfigInventoryView, error) {
+	var resp view.VpcVpnIkeConfigInventoryView
+	if err := cli.Get("v1/hybrid/vpn-connection/ike", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVpcIkeConfigFromLocal Pagination
 func (cli *ZSClient) PageVpcIkeConfigFromLocal(params *param.QueryParam) ([]view.VpcVpnIkeConfigInventoryView, int, error) {
 	var vpcIkeConfigFromLocals []view.VpcVpnIkeConfigInventoryView
@@ -5312,6 +5592,14 @@ func (cli *ZSClient) QueryAudit(params *param.QueryParam) ([]view.AuditsInventor
 	return resp, cli.List("v1/zwatch/audit-records", params, &resp)
 }
 
+func (cli *ZSClient) GetAudit(uuid string) (*view.AuditsInventoryView, error) {
+	var resp view.AuditsInventoryView
+	if err := cli.Get("v1/zwatch/audit-records", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAudit Pagination
 func (cli *ZSClient) PageAudit(params *param.QueryParam) ([]view.AuditsInventoryView, int, error) {
 	var audits []view.AuditsInventoryView
@@ -5371,6 +5659,14 @@ func (cli *ZSClient) QueryVpcRouter(params *param.QueryParam) ([]view.VpcRouterV
 	return resp, cli.List("v1/vpc/virtual-routers", params, &resp)
 }
 
+func (cli *ZSClient) GetVpcRouter(uuid string) (*view.VpcRouterVmInventoryView, error) {
+	var resp view.VpcRouterVmInventoryView
+	if err := cli.Get("v1/vpc/virtual-routers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVpcRouter Pagination
 func (cli *ZSClient) PageVpcRouter(params *param.QueryParam) ([]view.VpcRouterVmInventoryView, int, error) {
 	var vpcRouters []view.VpcRouterVmInventoryView
@@ -5420,6 +5716,14 @@ func (cli *ZSClient) QueryHybridEipFromLocal(params *param.QueryParam) ([]view.H
 	return resp, cli.List("v1/hybrid/eip", params, &resp)
 }
 
+func (cli *ZSClient) GetHybridEipFromLocal(uuid string) (*view.HybridEipAddressInventoryView, error) {
+	var resp view.HybridEipAddressInventoryView
+	if err := cli.Get("v1/hybrid/eip", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageHybridEipFromLocal Pagination
 func (cli *ZSClient) PageHybridEipFromLocal(params *param.QueryParam) ([]view.HybridEipAddressInventoryView, int, error) {
 	var hybridEipFromLocals []view.HybridEipAddressInventoryView
@@ -5440,6 +5744,14 @@ func (cli *ZSClient) AddHybridKeySecret(params param.AddHybridKeySecretParam) (*
 func (cli *ZSClient) QueryAliyunRouteEntryFromLocal(params *param.QueryParam) ([]view.VpcVirtualRouteEntryInventoryView, error) {
 	var resp []view.VpcVirtualRouteEntryInventoryView
 	return resp, cli.List("v1/hybrid/aliyun/route-entry", params, &resp)
+}
+
+func (cli *ZSClient) GetAliyunRouteEntryFromLocal(uuid string) (*view.VpcVirtualRouteEntryInventoryView, error) {
+	var resp view.VpcVirtualRouteEntryInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/route-entry", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageAliyunRouteEntryFromLocal Pagination
@@ -5467,6 +5779,14 @@ func (cli *ZSClient) AddVRouterNetworksToOspfArea(params param.AddVRouterNetwork
 func (cli *ZSClient) QuerySNSSmsEndpoint(params *param.QueryParam) ([]view.SNSAliyunSmsEndpointInventoryView, error) {
 	var resp []view.SNSAliyunSmsEndpointInventoryView
 	return resp, cli.List("v1/sns/sms-endpoints", params, &resp)
+}
+
+func (cli *ZSClient) GetSNSSmsEndpoint(uuid string) (*view.SNSAliyunSmsEndpointInventoryView, error) {
+	var resp view.SNSAliyunSmsEndpointInventoryView
+	if err := cli.Get("v1/sns/sms-endpoints", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageSNSSmsEndpoint Pagination
@@ -5600,6 +5920,14 @@ func (cli *ZSClient) QueryEcsInstanceFromLocal(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/hybrid/aliyun/ecs", params, &resp)
 }
 
+func (cli *ZSClient) GetEcsInstanceFromLocal(uuid string) (*view.EcsInstanceInventoryView, error) {
+	var resp view.EcsInstanceInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/ecs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageEcsInstanceFromLocal Pagination
 func (cli *ZSClient) PageEcsInstanceFromLocal(params *param.QueryParam) ([]view.EcsInstanceInventoryView, int, error) {
 	var ecsInstanceFromLocals []view.EcsInstanceInventoryView
@@ -5701,6 +6029,14 @@ func (cli *ZSClient) SetVmNicSecurityGroup(vmNicUuid string, params param.SetVmN
 func (cli *ZSClient) QueryResourcePrice(params *param.QueryParam) ([]view.PriceInventoryView, error) {
 	var resp []view.PriceInventoryView
 	return resp, cli.List("v1/billings/prices", params, &resp)
+}
+
+func (cli *ZSClient) GetResourcePrice(uuid string) (*view.PriceInventoryView, error) {
+	var resp view.PriceInventoryView
+	if err := cli.Get("v1/billings/prices", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageResourcePrice Pagination
@@ -5836,6 +6172,14 @@ func (cli *ZSClient) GetDataCenterFromRemote(uuid string) (*view.DataCenterPrope
 func (cli *ZSClient) QueryGCJob(params *param.QueryParam) ([]view.GarbageCollectorInventoryView, error) {
 	var resp []view.GarbageCollectorInventoryView
 	return resp, cli.List("v1/gc-jobs", params, &resp)
+}
+
+func (cli *ZSClient) GetGCJob(uuid string) (*view.GarbageCollectorInventoryView, error) {
+	var resp view.GarbageCollectorInventoryView
+	if err := cli.Get("v1/gc-jobs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageGCJob Pagination
@@ -6160,6 +6504,14 @@ func (cli *ZSClient) QueryFirewallRuleSet(params *param.QueryParam) ([]view.VpcF
 	return resp, cli.List("v1/vpcfirewalls/ruleSets", params, &resp)
 }
 
+func (cli *ZSClient) GetFirewallRuleSet(uuid string) (*view.VpcFirewallRuleSetInventoryView, error) {
+	var resp view.VpcFirewallRuleSetInventoryView
+	if err := cli.Get("v1/vpcfirewalls/ruleSets", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageFirewallRuleSet Pagination
 func (cli *ZSClient) PageFirewallRuleSet(params *param.QueryParam) ([]view.VpcFirewallRuleSetInventoryView, int, error) {
 	var firewallRuleSets []view.VpcFirewallRuleSetInventoryView
@@ -6274,6 +6626,14 @@ func (cli *ZSClient) CalculateResourceSpending(uuid string, params param.Calcula
 func (cli *ZSClient) QueryAlarmRecord(params *param.QueryParam) ([]view.AlarmRecordsInventoryView, error) {
 	var resp []view.AlarmRecordsInventoryView
 	return resp, cli.List("v1/zwatch/alarm-records", params, &resp)
+}
+
+func (cli *ZSClient) GetAlarmRecord(uuid string) (*view.AlarmRecordsInventoryView, error) {
+	var resp view.AlarmRecordsInventoryView
+	if err := cli.Get("v1/zwatch/alarm-records", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageAlarmRecord Pagination
@@ -7446,6 +7806,14 @@ func (cli *ZSClient) QueryVmUserDefinedXmlHookScript(params *param.QueryParam) (
 	return resp, cli.List("v1/vm-instances/xml-hook-script", params, &resp)
 }
 
+func (cli *ZSClient) GetVmUserDefinedXmlHookScript(uuid string) (*view.XmlHookInventoryView, error) {
+	var resp view.XmlHookInventoryView
+	if err := cli.Get("v1/vm-instances/xml-hook-script", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmUserDefinedXmlHookScript Pagination
 func (cli *ZSClient) PageVmUserDefinedXmlHookScript(params *param.QueryParam) ([]view.XmlHookInventoryView, int, error) {
 	var vmUserDefinedXmlHookScripts []view.XmlHookInventoryView
@@ -7530,6 +7898,14 @@ func (cli *ZSClient) UpdateResourceConfigs(resourceUuid string, params param.Upd
 func (cli *ZSClient) QueryVpcUserVpnGatewayFromLocal(params *param.QueryParam) ([]view.VpcUserVpnGatewayInventoryView, error) {
 	var resp []view.VpcUserVpnGatewayInventoryView
 	return resp, cli.List("v1/hybrid/user-vpn", params, &resp)
+}
+
+func (cli *ZSClient) GetVpcUserVpnGatewayFromLocal(uuid string) (*view.VpcUserVpnGatewayInventoryView, error) {
+	var resp view.VpcUserVpnGatewayInventoryView
+	if err := cli.Get("v1/hybrid/user-vpn", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageVpcUserVpnGatewayFromLocal Pagination
@@ -7668,6 +8044,14 @@ func (cli *ZSClient) QueryIpAddress(params *param.QueryParam) ([]view.UsedIpInve
 	return resp, cli.List("v1/l3-networks/ip-address", params, &resp)
 }
 
+func (cli *ZSClient) GetIpAddress(uuid string) (*view.UsedIpInventoryView, error) {
+	var resp view.UsedIpInventoryView
+	if err := cli.Get("v1/l3-networks/ip-address", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIpAddress Pagination
 func (cli *ZSClient) PageIpAddress(params *param.QueryParam) ([]view.UsedIpInventoryView, int, error) {
 	var ipAddress []view.UsedIpInventoryView
@@ -7759,19 +8143,19 @@ func (cli *ZSClient) DeleteEcsSecurityGroupRuleRemote(uuid string, deleteMode pa
 	return cli.Delete("v1/hybrid/aliyun/security-group-rule/remote", uuid, string(deleteMode))
 }
 
-// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
-func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(uuid string) (*view.AffinityGroupInventoryView, error) {
-	var resp view.AffinityGroupInventoryView
-	if err := cli.Get("v1/affinityGroup/attachingVm", uuid, nil, &resp); err != nil {
+// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
+func (cli *ZSClient) DetachAliyunDiskFromEcs(params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
+	resp := view.DetachAliyunDiskFromEcsEventView{}
+	if err := cli.Post("v1/hybrid/aliyun/disk", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
-func (cli *ZSClient) DetachAliyunDiskFromEcs(params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
-	resp := view.DetachAliyunDiskFromEcsEventView{}
-	if err := cli.Post("v1/hybrid/aliyun/disk", params, &resp); err != nil {
+// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
+func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(uuid string) (*view.AffinityGroupInventoryView, error) {
+	var resp view.AffinityGroupInventoryView
+	if err := cli.Get("v1/affinityGroup/attachingVm", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8299,6 +8683,14 @@ func (cli *ZSClient) QueryDataCenterFromLocal(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/hybrid/data-center", params, &resp)
 }
 
+func (cli *ZSClient) GetDataCenterFromLocal(uuid string) (*view.DataCenterInventoryView, error) {
+	var resp view.DataCenterInventoryView
+	if err := cli.Get("v1/hybrid/data-center", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageDataCenterFromLocal Pagination
 func (cli *ZSClient) PageDataCenterFromLocal(params *param.QueryParam) ([]view.DataCenterInventoryView, int, error) {
 	var dataCenterFromLocals []view.DataCenterInventoryView
@@ -8405,6 +8797,14 @@ func (cli *ZSClient) DeleteIdentityZoneInLocal(uuid string, deleteMode param.Del
 func (cli *ZSClient) QueryVRouterOspfNetwork(params *param.QueryParam) ([]view.NetworkRouterAreaRefInventoryView, error) {
 	var resp []view.NetworkRouterAreaRefInventoryView
 	return resp, cli.List("v1/routerArea/network", params, &resp)
+}
+
+func (cli *ZSClient) GetVRouterOspfNetwork(uuid string) (*view.NetworkRouterAreaRefInventoryView, error) {
+	var resp view.NetworkRouterAreaRefInventoryView
+	if err := cli.Get("v1/routerArea/network", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageVRouterOspfNetwork Pagination
@@ -8521,6 +8921,14 @@ func (cli *ZSClient) QueryConnectionBetweenL3NetworkAndAliyunVSwitch(params *par
 	return resp, cli.List("v1/hybrid/aliyun/relationships", params, &resp)
 }
 
+func (cli *ZSClient) GetConnectionBetweenL3NetworkAndAliyunVSwitch(uuid string) (*view.ConnectionRelationShipInventoryView, error) {
+	var resp view.ConnectionRelationShipInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/relationships", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageConnectionBetweenL3NetworkAndAliyunVSwitch Pagination
 func (cli *ZSClient) PageConnectionBetweenL3NetworkAndAliyunVSwitch(params *param.QueryParam) ([]view.ConnectionRelationShipInventoryView, int, error) {
 	var connectionBetweenL3NetworkAndAliyunVSwitchs []view.ConnectionRelationShipInventoryView
@@ -8541,6 +8949,14 @@ func (cli *ZSClient) AddDnsToL3Network(params param.AddDnsToL3NetworkParam) (*vi
 func (cli *ZSClient) QueryPortMirrorNetworkUsedIp(params *param.QueryParam) ([]view.MirrorNetworkUsedIpInventoryView, error) {
 	var resp []view.MirrorNetworkUsedIpInventoryView
 	return resp, cli.List("v1/port-mirrors/networks/usedIps", params, &resp)
+}
+
+func (cli *ZSClient) GetPortMirrorNetworkUsedIp(uuid string) (*view.MirrorNetworkUsedIpInventoryView, error) {
+	var resp view.MirrorNetworkUsedIpInventoryView
+	if err := cli.Get("v1/port-mirrors/networks/usedIps", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PagePortMirrorNetworkUsedIp Pagination
@@ -8795,6 +9211,14 @@ func (cli *ZSClient) QueryVpcVpnConnectionFromLocal(params *param.QueryParam) ([
 	return resp, cli.List("v1/hybrid/vpn-connection", params, &resp)
 }
 
+func (cli *ZSClient) GetVpcVpnConnectionFromLocal(uuid string) (*view.VpcVpnConnectionInventoryView, error) {
+	var resp view.VpcVpnConnectionInventoryView
+	if err := cli.Get("v1/hybrid/vpn-connection", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVpcVpnConnectionFromLocal Pagination
 func (cli *ZSClient) PageVpcVpnConnectionFromLocal(params *param.QueryParam) ([]view.VpcVpnConnectionInventoryView, int, error) {
 	var vpcVpnConnectionFromLocals []view.VpcVpnConnectionInventoryView
@@ -8975,19 +9399,18 @@ func (cli *ZSClient) SetL3NetworkRouterInterfaceIp(params param.SetL3NetworkRout
 	return &resp, nil
 }
 
-// GetConnectionBetweenL3NetworkAndAliyunVSwitch gets ConnectionBetweenL3NetworkAndAliyunVSwitch by uuid
-func (cli *ZSClient) GetConnectionBetweenL3NetworkAndAliyunVSwitch(uuid string) (*view.ConnectionRelationShipPropertyView, error) {
-	var resp view.ConnectionRelationShipPropertyView
-	if err := cli.Get("v1/hybrid/aliyun/relationships", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // QueryEthernetVF queries EthernetVF list
 func (cli *ZSClient) QueryEthernetVF(params *param.QueryParam) ([]view.EthernetVfPciDeviceInventoryView, error) {
 	var resp []view.EthernetVfPciDeviceInventoryView
 	return resp, cli.List("v1/pci-device/ethernet-vfs", params, &resp)
+}
+
+func (cli *ZSClient) GetEthernetVF(uuid string) (*view.EthernetVfPciDeviceInventoryView, error) {
+	var resp view.EthernetVfPciDeviceInventoryView
+	if err := cli.Get("v1/pci-device/ethernet-vfs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageEthernetVF Pagination
@@ -9010,6 +9433,14 @@ func (cli *ZSClient) GetBareMetal2GatewayAllocatorStrategies(uuid string) (*view
 func (cli *ZSClient) QueryEcsSecurityGroupFromLocal(params *param.QueryParam) ([]view.EcsSecurityGroupInventoryView, error) {
 	var resp []view.EcsSecurityGroupInventoryView
 	return resp, cli.List("v1/hybrid/aliyun/security-group", params, &resp)
+}
+
+func (cli *ZSClient) GetEcsSecurityGroupFromLocal(uuid string) (*view.EcsSecurityGroupInventoryView, error) {
+	var resp view.EcsSecurityGroupInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/security-group", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageEcsSecurityGroupFromLocal Pagination
@@ -9066,6 +9497,14 @@ func (cli *ZSClient) QueryFirewallRule(params *param.QueryParam) ([]view.VpcFire
 	return resp, cli.List("v1/vpcfirewalls/rules", params, &resp)
 }
 
+func (cli *ZSClient) GetFirewallRule(uuid string) (*view.VpcFirewallRuleInventoryView, error) {
+	var resp view.VpcFirewallRuleInventoryView
+	if err := cli.Get("v1/vpcfirewalls/rules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageFirewallRule Pagination
 func (cli *ZSClient) PageFirewallRule(params *param.QueryParam) ([]view.VpcFirewallRuleInventoryView, int, error) {
 	var firewallRules []view.VpcFirewallRuleInventoryView
@@ -9097,6 +9536,14 @@ func (cli *ZSClient) QueryOssBucketFileName(params *param.QueryParam) ([]view.Os
 	return resp, cli.List("v1/hybrid/aliyun/oss-bucket", params, &resp)
 }
 
+func (cli *ZSClient) GetOssBucketFileName(uuid string) (*view.OssBucketInventoryView, error) {
+	var resp view.OssBucketInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/oss-bucket", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageOssBucketFileName Pagination
 func (cli *ZSClient) PageOssBucketFileName(params *param.QueryParam) ([]view.OssBucketInventoryView, int, error) {
 	var ossBucketFileNames []view.OssBucketInventoryView
@@ -9117,6 +9564,14 @@ func (cli *ZSClient) SetVmNuma(uuid string, params param.SetVmNumaParam) (*view.
 func (cli *ZSClient) QueryVRouterOspfArea(params *param.QueryParam) ([]view.RouterAreaInventoryView, error) {
 	var resp []view.RouterAreaInventoryView
 	return resp, cli.List("v1/routerArea", params, &resp)
+}
+
+func (cli *ZSClient) GetVRouterOspfArea(uuid string) (*view.RouterAreaInventoryView, error) {
+	var resp view.RouterAreaInventoryView
+	if err := cli.Get("v1/routerArea", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageVRouterOspfArea Pagination
@@ -9273,6 +9728,14 @@ func (cli *ZSClient) QuerySNSTopicSubscriber(params *param.QueryParam) ([]view.S
 	return resp, cli.List("v1/sns/topics/subscribers", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSTopicSubscriber(uuid string) (*view.SNSSubscriberInventoryView, error) {
+	var resp view.SNSSubscriberInventoryView
+	if err := cli.Get("v1/sns/topics/subscribers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSTopicSubscriber Pagination
 func (cli *ZSClient) PageSNSTopicSubscriber(params *param.QueryParam) ([]view.SNSSubscriberInventoryView, int, error) {
 	var sNSTopicSubscribers []view.SNSSubscriberInventoryView
@@ -9362,6 +9825,14 @@ func (cli *ZSClient) QueryEcsVSwitchFromLocal(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/hybrid/aliyun/vswitch", params, &resp)
 }
 
+func (cli *ZSClient) GetEcsVSwitchFromLocal(uuid string) (*view.EcsVSwitchInventoryView, error) {
+	var resp view.EcsVSwitchInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/vswitch", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageEcsVSwitchFromLocal Pagination
 func (cli *ZSClient) PageEcsVSwitchFromLocal(params *param.QueryParam) ([]view.EcsVSwitchInventoryView, int, error) {
 	var ecsVSwitchFromLocals []view.EcsVSwitchInventoryView
@@ -9413,6 +9884,14 @@ func (cli *ZSClient) QueryEcsImageFromLocal(params *param.QueryParam) ([]view.Ec
 	return resp, cli.List("v1/hybrid/aliyun/image", params, &resp)
 }
 
+func (cli *ZSClient) GetEcsImageFromLocal(uuid string) (*view.EcsImageInventoryView, error) {
+	var resp view.EcsImageInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/image", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageEcsImageFromLocal Pagination
 func (cli *ZSClient) PageEcsImageFromLocal(params *param.QueryParam) ([]view.EcsImageInventoryView, int, error) {
 	var ecsImageFromLocals []view.EcsImageInventoryView
@@ -9433,6 +9912,14 @@ func (cli *ZSClient) GetObservabilityServerServiceData(uuid string) (*view.Obser
 func (cli *ZSClient) QueryAliyunVirtualRouterFromLocal(params *param.QueryParam) ([]view.VpcVirtualRouterInventoryView, error) {
 	var resp []view.VpcVirtualRouterInventoryView
 	return resp, cli.List("v1/hybrid/aliyun/vrouter", params, &resp)
+}
+
+func (cli *ZSClient) GetAliyunVirtualRouterFromLocal(uuid string) (*view.VpcVirtualRouterInventoryView, error) {
+	var resp view.VpcVirtualRouterInventoryView
+	if err := cli.Get("v1/hybrid/aliyun/vrouter", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageAliyunVirtualRouterFromLocal Pagination
@@ -9873,6 +10360,14 @@ func (cli *ZSClient) ParseOvf(params param.ParseOvfParam) (*view.ParseOvfView, e
 func (cli *ZSClient) QueryFaultToleranceVm(params *param.QueryParam) ([]view.FaultToleranceVmGroupInventoryView, error) {
 	var resp []view.FaultToleranceVmGroupInventoryView
 	return resp, cli.List("v1/vm-instances/fault-tolerance", params, &resp)
+}
+
+func (cli *ZSClient) GetFaultToleranceVm(uuid string) (*view.FaultToleranceVmGroupInventoryView, error) {
+	var resp view.FaultToleranceVmGroupInventoryView
+	if err := cli.Get("v1/vm-instances/fault-tolerance", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // PageFaultToleranceVm Pagination

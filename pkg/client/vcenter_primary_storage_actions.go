@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVCenterPrimaryStorage(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/vcenters/primary-storage", params, &resp)
 }
 
+func (cli *ZSClient) GetVCenterPrimaryStorage(uuid string) (*view.VCenterPrimaryStorageInventoryView, error) {
+	var resp view.VCenterPrimaryStorageInventoryView
+	if err := cli.Get("v1/vcenters/primary-storage", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVCenterPrimaryStorage Pagination
 func (cli *ZSClient) PageVCenterPrimaryStorage(params *param.QueryParam) ([]view.VCenterPrimaryStorageInventoryView, int, error) {
 	var vCenterPrimaryStorages []view.VCenterPrimaryStorageInventoryView

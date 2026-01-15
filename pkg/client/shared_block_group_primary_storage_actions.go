@@ -16,6 +16,14 @@ func (cli *ZSClient) QuerySharedBlockGroupPrimaryStorage(params *param.QueryPara
 	return resp, cli.List("v1/primary-storage/sharedblockgroup", params, &resp)
 }
 
+func (cli *ZSClient) GetSharedBlockGroupPrimaryStorage(uuid string) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
+	var resp view.SharedBlockGroupPrimaryStorageInventoryView
+	if err := cli.Get("v1/primary-storage/sharedblockgroup", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSharedBlockGroupPrimaryStorage Pagination
 func (cli *ZSClient) PageSharedBlockGroupPrimaryStorage(params *param.QueryParam) ([]view.SharedBlockGroupPrimaryStorageInventoryView, int, error) {
 	var sharedBlockGroupPrimaryStorages []view.SharedBlockGroupPrimaryStorageInventoryView

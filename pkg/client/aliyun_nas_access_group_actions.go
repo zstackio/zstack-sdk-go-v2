@@ -44,6 +44,14 @@ func (cli *ZSClient) QueryAliyunNasAccessGroup(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/nas/aliyun/access", params, &resp)
 }
 
+func (cli *ZSClient) GetAliyunNasAccessGroup(uuid string) (*view.AliyunNasAccessGroupInventoryView, error) {
+	var resp view.AliyunNasAccessGroupInventoryView
+	if err := cli.Get("v1/nas/aliyun/access", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAliyunNasAccessGroup Pagination
 func (cli *ZSClient) PageAliyunNasAccessGroup(params *param.QueryParam) ([]view.AliyunNasAccessGroupInventoryView, int, error) {
 	var aliyunNasAccessGroups []view.AliyunNasAccessGroupInventoryView

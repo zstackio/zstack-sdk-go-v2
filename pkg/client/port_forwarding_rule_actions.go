@@ -21,6 +21,14 @@ func (cli *ZSClient) QueryPortForwardingRule(params *param.QueryParam) ([]view.P
 	return resp, cli.List("v1/port-forwarding", params, &resp)
 }
 
+func (cli *ZSClient) GetPortForwardingRule(uuid string) (*view.PortForwardingRuleInventoryView, error) {
+	var resp view.PortForwardingRuleInventoryView
+	if err := cli.Get("v1/port-forwarding", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePortForwardingRule Pagination
 func (cli *ZSClient) PagePortForwardingRule(params *param.QueryParam) ([]view.PortForwardingRuleInventoryView, int, error) {
 	var portForwardingRules []view.PortForwardingRuleInventoryView

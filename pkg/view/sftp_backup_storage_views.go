@@ -28,11 +28,6 @@ type QuerySftpBackupStorageView struct {
 	Inventories []SftpBackupStorageInventoryView `json:"inventories,omitempty"`
 }
 
-// UpdateBackupStorageEventView UpdateBackupStorageEvent
-type UpdateBackupStorageEventView struct {
-	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
-}
-
 // ReconnectSftpBackupStorageEventView ReconnectSftpBackupStorageEvent
 type ReconnectSftpBackupStorageEventView struct {
 	Inventory SftpBackupStorageInventoryView `json:"inventory,omitempty"`

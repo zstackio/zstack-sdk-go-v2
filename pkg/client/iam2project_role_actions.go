@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryIAM2ProjectRole(params *param.QueryParam) ([]view.IAM2
 	return resp, cli.List("v1/iam2/project-roles", params, &resp)
 }
 
+func (cli *ZSClient) GetIAM2ProjectRole(uuid string) (*view.IAM2ProjectRoleInventoryView, error) {
+	var resp view.IAM2ProjectRoleInventoryView
+	if err := cli.Get("v1/iam2/project-roles", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIAM2ProjectRole Pagination
 func (cli *ZSClient) PageIAM2ProjectRole(params *param.QueryParam) ([]view.IAM2ProjectRoleInventoryView, int, error) {
 	var iAM2ProjectRoles []view.IAM2ProjectRoleInventoryView

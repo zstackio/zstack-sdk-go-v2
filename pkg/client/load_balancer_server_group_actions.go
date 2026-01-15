@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryLoadBalancerServerGroup(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/load-balancers/servergroups", params, &resp)
 }
 
+func (cli *ZSClient) GetLoadBalancerServerGroup(uuid string) (*view.LoadBalancerServerGroupInventoryView, error) {
+	var resp view.LoadBalancerServerGroupInventoryView
+	if err := cli.Get("v1/load-balancers/servergroups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageLoadBalancerServerGroup Pagination
 func (cli *ZSClient) PageLoadBalancerServerGroup(params *param.QueryParam) ([]view.LoadBalancerServerGroupInventoryView, int, error) {
 	var loadBalancerServerGroups []view.LoadBalancerServerGroupInventoryView

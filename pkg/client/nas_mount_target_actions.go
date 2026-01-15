@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryNasMountTarget(params *param.QueryParam) ([]view.NasMo
 	return resp, cli.List("v1/primary-storage/nas/mount", params, &resp)
 }
 
+func (cli *ZSClient) GetNasMountTarget(uuid string) (*view.NasMountTargetInventoryView, error) {
+	var resp view.NasMountTargetInventoryView
+	if err := cli.Get("v1/primary-storage/nas/mount", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageNasMountTarget Pagination
 func (cli *ZSClient) PageNasMountTarget(params *param.QueryParam) ([]view.NasMountTargetInventoryView, int, error) {
 	var nasMountTargets []view.NasMountTargetInventoryView

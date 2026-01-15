@@ -25,6 +25,14 @@ func (cli *ZSClient) QuerySNSWeComAtPerson(params *param.QueryParam) ([]view.SNS
 	return resp, cli.List("v1/sns/application-endpoints/we-com/at-persons", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSWeComAtPerson(uuid string) (*view.SNSWeComAtPersonInventoryView, error) {
+	var resp view.SNSWeComAtPersonInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/we-com/at-persons", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSWeComAtPerson Pagination
 func (cli *ZSClient) PageSNSWeComAtPerson(params *param.QueryParam) ([]view.SNSWeComAtPersonInventoryView, int, error) {
 	var sNSWeComAtPersons []view.SNSWeComAtPersonInventoryView

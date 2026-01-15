@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryUserProxyConfig(params *param.QueryParam) ([]view.User
 	return resp, cli.List("v1/user-proxy-configs", params, &resp)
 }
 
+func (cli *ZSClient) GetUserProxyConfig(uuid string) (*view.UserProxyConfigInventoryView, error) {
+	var resp view.UserProxyConfigInventoryView
+	if err := cli.Get("v1/user-proxy-configs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageUserProxyConfig Pagination
 func (cli *ZSClient) PageUserProxyConfig(params *param.QueryParam) ([]view.UserProxyConfigInventoryView, int, error) {
 	var userProxyConfigs []view.UserProxyConfigInventoryView

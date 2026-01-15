@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryEmailMedia(params *param.QueryParam) ([]view.MediaInve
 	return resp, cli.List("v1/media/emails", params, &resp)
 }
 
+func (cli *ZSClient) GetEmailMedia(uuid string) (*view.MediaInventoryView, error) {
+	var resp view.MediaInventoryView
+	if err := cli.Get("v1/media/emails", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageEmailMedia Pagination
 func (cli *ZSClient) PageEmailMedia(params *param.QueryParam) ([]view.MediaInventoryView, int, error) {
 	var emailMedias []view.MediaInventoryView

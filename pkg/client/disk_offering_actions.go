@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryDiskOffering(params *param.QueryParam) ([]view.DiskOff
 	return resp, cli.List("v1/disk-offerings", params, &resp)
 }
 
+func (cli *ZSClient) GetDiskOffering(uuid string) (*view.DiskOfferingInventoryView, error) {
+	var resp view.DiskOfferingInventoryView
+	if err := cli.Get("v1/disk-offerings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageDiskOffering Pagination
 func (cli *ZSClient) PageDiskOffering(params *param.QueryParam) ([]view.DiskOfferingInventoryView, int, error) {
 	var diskOfferings []view.DiskOfferingInventoryView

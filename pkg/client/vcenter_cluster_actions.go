@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVCenterCluster(params *param.QueryParam) ([]view.VCent
 	return resp, cli.List("v1/vcenters/clusters", params, &resp)
 }
 
+func (cli *ZSClient) GetVCenterCluster(uuid string) (*view.VCenterClusterInventoryView, error) {
+	var resp view.VCenterClusterInventoryView
+	if err := cli.Get("v1/vcenters/clusters", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVCenterCluster Pagination
 func (cli *ZSClient) PageVCenterCluster(params *param.QueryParam) ([]view.VCenterClusterInventoryView, int, error) {
 	var vCenterClusters []view.VCenterClusterInventoryView

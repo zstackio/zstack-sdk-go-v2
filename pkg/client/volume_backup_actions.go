@@ -47,6 +47,14 @@ func (cli *ZSClient) QueryVolumeBackup(params *param.QueryParam) ([]view.VolumeB
 	return resp, cli.List("v1/volume-backups", params, &resp)
 }
 
+func (cli *ZSClient) GetVolumeBackup(uuid string) (*view.VolumeBackupInventoryView, error) {
+	var resp view.VolumeBackupInventoryView
+	if err := cli.Get("v1/volume-backups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVolumeBackup Pagination
 func (cli *ZSClient) PageVolumeBackup(params *param.QueryParam) ([]view.VolumeBackupInventoryView, int, error) {
 	var volumeBackups []view.VolumeBackupInventoryView

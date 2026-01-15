@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryAffinityGroup(params *param.QueryParam) ([]view.Affini
 	return resp, cli.List("v1/affinity-groups", params, &resp)
 }
 
+func (cli *ZSClient) GetAffinityGroup(uuid string) (*view.AffinityGroupInventoryView, error) {
+	var resp view.AffinityGroupInventoryView
+	if err := cli.Get("v1/affinity-groups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAffinityGroup Pagination
 func (cli *ZSClient) PageAffinityGroup(params *param.QueryParam) ([]view.AffinityGroupInventoryView, int, error) {
 	var affinityGroups []view.AffinityGroupInventoryView

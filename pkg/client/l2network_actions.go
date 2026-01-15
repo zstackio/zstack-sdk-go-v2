@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryL2Network(params *param.QueryParam) ([]view.L2NetworkI
 	return resp, cli.List("v1/l2-networks", params, &resp)
 }
 
+func (cli *ZSClient) GetL2Network(uuid string) (*view.L2NetworkInventoryView, error) {
+	var resp view.L2NetworkInventoryView
+	if err := cli.Get("v1/l2-networks", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageL2Network Pagination
 func (cli *ZSClient) PageL2Network(params *param.QueryParam) ([]view.L2NetworkInventoryView, int, error) {
 	var l2Networks []view.L2NetworkInventoryView

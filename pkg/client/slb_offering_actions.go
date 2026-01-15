@@ -24,6 +24,14 @@ func (cli *ZSClient) QuerySlbOffering(params *param.QueryParam) ([]view.SlbOffer
 	return resp, cli.List("v1/instance-offerings/slb", params, &resp)
 }
 
+func (cli *ZSClient) GetSlbOffering(uuid string) (*view.SlbOfferingInventoryView, error) {
+	var resp view.SlbOfferingInventoryView
+	if err := cli.Get("v1/instance-offerings/slb", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSlbOffering Pagination
 func (cli *ZSClient) PageSlbOffering(params *param.QueryParam) ([]view.SlbOfferingInventoryView, int, error) {
 	var slbOfferings []view.SlbOfferingInventoryView

@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryGuestVmScript(params *param.QueryParam) ([]view.GuestV
 	return resp, cli.List("v1/scripts", params, &resp)
 }
 
+func (cli *ZSClient) GetGuestVmScript(uuid string) (*view.GuestVmScriptInventoryView, error) {
+	var resp view.GuestVmScriptInventoryView
+	if err := cli.Get("v1/scripts", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageGuestVmScript Pagination
 func (cli *ZSClient) PageGuestVmScript(params *param.QueryParam) ([]view.GuestVmScriptInventoryView, int, error) {
 	var guestVmScripts []view.GuestVmScriptInventoryView

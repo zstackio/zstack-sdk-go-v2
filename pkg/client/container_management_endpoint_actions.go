@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryContainerManagementEndpoint(params *param.QueryParam) 
 	return resp, cli.List("v1/container/management/endpoint", params, &resp)
 }
 
+func (cli *ZSClient) GetContainerManagementEndpoint(uuid string) (*view.ContainerManagementEndpointInventoryView, error) {
+	var resp view.ContainerManagementEndpointInventoryView
+	if err := cli.Get("v1/container/management/endpoint", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageContainerManagementEndpoint Pagination
 func (cli *ZSClient) PageContainerManagementEndpoint(params *param.QueryParam) ([]view.ContainerManagementEndpointInventoryView, int, error) {
 	var containerManagementEndpoints []view.ContainerManagementEndpointInventoryView

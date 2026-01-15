@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryPolicyRouteRuleSetVRouterRef(params *param.QueryParam)
 	return resp, cli.List("v1/policy-routes/rulesets/vrouters/refs", params, &resp)
 }
 
+func (cli *ZSClient) GetPolicyRouteRuleSetVRouterRef(uuid string) (*view.PolicyRouteRuleSetVRouterRefInventoryView, error) {
+	var resp view.PolicyRouteRuleSetVRouterRefInventoryView
+	if err := cli.Get("v1/policy-routes/rulesets/vrouters/refs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePolicyRouteRuleSetVRouterRef Pagination
 func (cli *ZSClient) PagePolicyRouteRuleSetVRouterRef(params *param.QueryParam) ([]view.PolicyRouteRuleSetVRouterRefInventoryView, int, error) {
 	var policyRouteRuleSetVRouterRefs []view.PolicyRouteRuleSetVRouterRefInventoryView

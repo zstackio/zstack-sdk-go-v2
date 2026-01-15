@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVirtualRouterOffering(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/instance-offerings/virtual-routers", params, &resp)
 }
 
+func (cli *ZSClient) GetVirtualRouterOffering(uuid string) (*view.VirtualRouterOfferingInventoryView, error) {
+	var resp view.VirtualRouterOfferingInventoryView
+	if err := cli.Get("v1/instance-offerings/virtual-routers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVirtualRouterOffering Pagination
 func (cli *ZSClient) PageVirtualRouterOffering(params *param.QueryParam) ([]view.VirtualRouterOfferingInventoryView, int, error) {
 	var virtualRouterOfferings []view.VirtualRouterOfferingInventoryView

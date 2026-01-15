@@ -17,6 +17,14 @@ func (cli *ZSClient) QuerySNSFeiShuAtPerson(params *param.QueryParam) ([]view.SN
 	return resp, cli.List("v1/sns/application-endpoints/feishu/at-persons", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSFeiShuAtPerson(uuid string) (*view.SNSFeiShuAtPersonInventoryView, error) {
+	var resp view.SNSFeiShuAtPersonInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/feishu/at-persons", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSFeiShuAtPerson Pagination
 func (cli *ZSClient) PageSNSFeiShuAtPerson(params *param.QueryParam) ([]view.SNSFeiShuAtPersonInventoryView, int, error) {
 	var sNSFeiShuAtPersons []view.SNSFeiShuAtPersonInventoryView

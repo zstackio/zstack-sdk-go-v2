@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryBlockPrimaryStorage(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/primary-storage/block", params, &resp)
 }
 
+func (cli *ZSClient) GetBlockPrimaryStorage(uuid string) (*view.BlockPrimaryStorageInventoryView, error) {
+	var resp view.BlockPrimaryStorageInventoryView
+	if err := cli.Get("v1/primary-storage/block", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBlockPrimaryStorage Pagination
 func (cli *ZSClient) PageBlockPrimaryStorage(params *param.QueryParam) ([]view.BlockPrimaryStorageInventoryView, int, error) {
 	var blockPrimaryStorages []view.BlockPrimaryStorageInventoryView

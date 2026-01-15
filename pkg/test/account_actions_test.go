@@ -59,7 +59,7 @@ func TestUpdateAccount(t *testing.T) {
 	// Update with minimal params
 	updateParam := param.UpdateAccountParam{
 		BaseParam: param.BaseParam{},
-		Params:    param.UpdateAccountParamDetail{
+		UpdateAccount:    param.UpdateAccountParamDetail{
 			// Keep original values - just testing the API works
 		},
 	}

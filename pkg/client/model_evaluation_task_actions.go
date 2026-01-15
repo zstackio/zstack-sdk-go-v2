@@ -20,6 +20,14 @@ func (cli *ZSClient) QueryModelEvaluationTask(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/model-evaluation-tasks", params, &resp)
 }
 
+func (cli *ZSClient) GetModelEvaluationTask(uuid string) (*view.ModelEvaluationTaskInventoryView, error) {
+	var resp view.ModelEvaluationTaskInventoryView
+	if err := cli.Get("v1/model-evaluation-tasks", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageModelEvaluationTask Pagination
 func (cli *ZSClient) PageModelEvaluationTask(params *param.QueryParam) ([]view.ModelEvaluationTaskInventoryView, int, error) {
 	var modelEvaluationTasks []view.ModelEvaluationTaskInventoryView

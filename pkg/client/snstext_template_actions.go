@@ -36,6 +36,14 @@ func (cli *ZSClient) QuerySNSTextTemplate(params *param.QueryParam) ([]view.SNST
 	return resp, cli.List("v1/zwatch/alarms/sns/text-templates", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSTextTemplate(uuid string) (*view.SNSTextTemplateInventoryView, error) {
+	var resp view.SNSTextTemplateInventoryView
+	if err := cli.Get("v1/zwatch/alarms/sns/text-templates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSTextTemplate Pagination
 func (cli *ZSClient) PageSNSTextTemplate(params *param.QueryParam) ([]view.SNSTextTemplateInventoryView, int, error) {
 	var sNSTextTemplates []view.SNSTextTemplateInventoryView

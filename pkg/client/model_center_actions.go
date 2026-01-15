@@ -20,6 +20,14 @@ func (cli *ZSClient) QueryModelCenter(params *param.QueryParam) ([]view.ModelCen
 	return resp, cli.List("v1/ai/model-centers", params, &resp)
 }
 
+func (cli *ZSClient) GetModelCenter(uuid string) (*view.ModelCenterInventoryView, error) {
+	var resp view.ModelCenterInventoryView
+	if err := cli.Get("v1/ai/model-centers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageModelCenter Pagination
 func (cli *ZSClient) PageModelCenter(params *param.QueryParam) ([]view.ModelCenterInventoryView, int, error) {
 	var modelCenters []view.ModelCenterInventoryView

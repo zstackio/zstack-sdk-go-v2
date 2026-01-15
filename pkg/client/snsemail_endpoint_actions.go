@@ -24,6 +24,14 @@ func (cli *ZSClient) QuerySNSEmailEndpoint(params *param.QueryParam) ([]view.SNS
 	return resp, cli.List("v1/sns/application-endpoints/emails", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSEmailEndpoint(uuid string) (*view.SNSEmailEndpointInventoryView, error) {
+	var resp view.SNSEmailEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/emails", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSEmailEndpoint Pagination
 func (cli *ZSClient) PageSNSEmailEndpoint(params *param.QueryParam) ([]view.SNSEmailEndpointInventoryView, int, error) {
 	var sNSEmailEndpoints []view.SNSEmailEndpointInventoryView

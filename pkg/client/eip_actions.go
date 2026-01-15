@@ -42,6 +42,14 @@ func (cli *ZSClient) QueryEip(params *param.QueryParam) ([]view.EipInventoryView
 	return resp, cli.List("v1/eips", params, &resp)
 }
 
+func (cli *ZSClient) GetEip(uuid string) (*view.EipInventoryView, error) {
+	var resp view.EipInventoryView
+	if err := cli.Get("v1/eips", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageEip Pagination
 func (cli *ZSClient) PageEip(params *param.QueryParam) ([]view.EipInventoryView, int, error) {
 	var eips []view.EipInventoryView

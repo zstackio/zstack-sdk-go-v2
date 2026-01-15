@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryGlobalConfigTemplate(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/template-configurations/templates", params, &resp)
 }
 
+func (cli *ZSClient) GetGlobalConfigTemplate(uuid string) (*view.GlobalConfigTemplateInventoryView, error) {
+	var resp view.GlobalConfigTemplateInventoryView
+	if err := cli.Get("v1/template-configurations/templates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageGlobalConfigTemplate Pagination
 func (cli *ZSClient) PageGlobalConfigTemplate(params *param.QueryParam) ([]view.GlobalConfigTemplateInventoryView, int, error) {
 	var globalConfigTemplates []view.GlobalConfigTemplateInventoryView

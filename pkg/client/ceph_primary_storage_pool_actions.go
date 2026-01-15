@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryCephPrimaryStoragePool(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/primary-storage/ceph/pools", params, &resp)
 }
 
+func (cli *ZSClient) GetCephPrimaryStoragePool(uuid string) (*view.CephPrimaryStoragePoolInventoryView, error) {
+	var resp view.CephPrimaryStoragePoolInventoryView
+	if err := cli.Get("v1/primary-storage/ceph/pools", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageCephPrimaryStoragePool Pagination
 func (cli *ZSClient) PageCephPrimaryStoragePool(params *param.QueryParam) ([]view.CephPrimaryStoragePoolInventoryView, int, error) {
 	var cephPrimaryStoragePools []view.CephPrimaryStoragePoolInventoryView

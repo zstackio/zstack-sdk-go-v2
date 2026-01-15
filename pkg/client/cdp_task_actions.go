@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryCdpTask(params *param.QueryParam) ([]view.CdpTaskInven
 	return resp, cli.List("v1/cdp-task", params, &resp)
 }
 
+func (cli *ZSClient) GetCdpTask(uuid string) (*view.CdpTaskInventoryView, error) {
+	var resp view.CdpTaskInventoryView
+	if err := cli.Get("v1/cdp-task", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageCdpTask Pagination
 func (cli *ZSClient) PageCdpTask(params *param.QueryParam) ([]view.CdpTaskInventoryView, int, error) {
 	var cdpTasks []view.CdpTaskInventoryView

@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryMdevDeviceSpec(params *param.QueryParam) ([]view.MdevD
 	return resp, cli.List("v1/mdev-device-specs", params, &resp)
 }
 
+func (cli *ZSClient) GetMdevDeviceSpec(uuid string) (*view.MdevDeviceSpecInventoryView, error) {
+	var resp view.MdevDeviceSpecInventoryView
+	if err := cli.Get("v1/mdev-device-specs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMdevDeviceSpec Pagination
 func (cli *ZSClient) PageMdevDeviceSpec(params *param.QueryParam) ([]view.MdevDeviceSpecInventoryView, int, error) {
 	var mdevDeviceSpecs []view.MdevDeviceSpecInventoryView

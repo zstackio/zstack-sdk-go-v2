@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryPciDeviceSpec(params *param.QueryParam) ([]view.PciDev
 	return resp, cli.List("v1/pci-device-specs", params, &resp)
 }
 
+func (cli *ZSClient) GetPciDeviceSpec(uuid string) (*view.PciDeviceSpecInventoryView, error) {
+	var resp view.PciDeviceSpecInventoryView
+	if err := cli.Get("v1/pci-device-specs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePciDeviceSpec Pagination
 func (cli *ZSClient) PagePciDeviceSpec(params *param.QueryParam) ([]view.PciDeviceSpecInventoryView, int, error) {
 	var pciDeviceSpecs []view.PciDeviceSpecInventoryView

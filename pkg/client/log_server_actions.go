@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryLogServer(params *param.QueryParam) ([]view.LogServerI
 	return resp, cli.List("v1/log/servers", params, &resp)
 }
 
+func (cli *ZSClient) GetLogServer(uuid string) (*view.LogServerInventoryView, error) {
+	var resp view.LogServerInventoryView
+	if err := cli.Get("v1/log/servers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageLogServer Pagination
 func (cli *ZSClient) PageLogServer(params *param.QueryParam) ([]view.LogServerInventoryView, int, error) {
 	var logServers []view.LogServerInventoryView

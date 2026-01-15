@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryHuaweiIMasterVRouter(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/sdn-controller/huawei-imaster/vrouters", params, &resp)
 }
 
+func (cli *ZSClient) GetHuaweiIMasterVRouter(uuid string) (*view.HuaweiIMasterVRouterInventoryView, error) {
+	var resp view.HuaweiIMasterVRouterInventoryView
+	if err := cli.Get("v1/sdn-controller/huawei-imaster/vrouters", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageHuaweiIMasterVRouter Pagination
 func (cli *ZSClient) PageHuaweiIMasterVRouter(params *param.QueryParam) ([]view.HuaweiIMasterVRouterInventoryView, int, error) {
 	var huaweiIMasterVRouters []view.HuaweiIMasterVRouterInventoryView

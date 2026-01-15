@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryVolume(params *param.QueryParam) ([]view.VolumeInvento
 	return resp, cli.List("v1/volumes", params, &resp)
 }
 
+func (cli *ZSClient) GetVolume(uuid string) (*view.VolumeInventoryView, error) {
+	var resp view.VolumeInventoryView
+	if err := cli.Get("v1/volumes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVolume Pagination
 func (cli *ZSClient) PageVolume(params *param.QueryParam) ([]view.VolumeInventoryView, int, error) {
 	var volumes []view.VolumeInventoryView

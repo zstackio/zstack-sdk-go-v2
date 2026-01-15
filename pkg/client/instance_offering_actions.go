@@ -40,6 +40,14 @@ func (cli *ZSClient) QueryInstanceOffering(params *param.QueryParam) ([]view.Ins
 	return resp, cli.List("v1/instance-offerings", params, &resp)
 }
 
+func (cli *ZSClient) GetInstanceOffering(uuid string) (*view.InstanceOfferingInventoryView, error) {
+	var resp view.InstanceOfferingInventoryView
+	if err := cli.Get("v1/instance-offerings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageInstanceOffering Pagination
 func (cli *ZSClient) PageInstanceOffering(params *param.QueryParam) ([]view.InstanceOfferingInventoryView, int, error) {
 	var instanceOfferings []view.InstanceOfferingInventoryView

@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryManagementNode(params *param.QueryParam) ([]view.Manag
 	return resp, cli.List("v1/management-nodes", params, &resp)
 }
 
+func (cli *ZSClient) GetManagementNode(uuid string) (*view.ManagementNodeInventoryView, error) {
+	var resp view.ManagementNodeInventoryView
+	if err := cli.Get("v1/management-nodes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageManagementNode Pagination
 func (cli *ZSClient) PageManagementNode(params *param.QueryParam) ([]view.ManagementNodeInventoryView, int, error) {
 	var managementNodes []view.ManagementNodeInventoryView

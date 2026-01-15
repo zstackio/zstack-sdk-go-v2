@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryAppBuildSystem(params *param.QueryParam) ([]view.AppBu
 	return resp, cli.List("v1/appcenter/buildsystem", params, &resp)
 }
 
+func (cli *ZSClient) GetAppBuildSystem(uuid string) (*view.AppBuildSystemInventoryView, error) {
+	var resp view.AppBuildSystemInventoryView
+	if err := cli.Get("v1/appcenter/buildsystem", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAppBuildSystem Pagination
 func (cli *ZSClient) PageAppBuildSystem(params *param.QueryParam) ([]view.AppBuildSystemInventoryView, int, error) {
 	var appBuildSystems []view.AppBuildSystemInventoryView

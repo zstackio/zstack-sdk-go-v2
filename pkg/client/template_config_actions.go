@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryTemplateConfig(params *param.QueryParam) ([]view.Templ
 	return resp, cli.List("v1/template-configurations/configs", params, &resp)
 }
 
+func (cli *ZSClient) GetTemplateConfig(uuid string) (*view.TemplateConfigInventoryView, error) {
+	var resp view.TemplateConfigInventoryView
+	if err := cli.Get("v1/template-configurations/configs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageTemplateConfig Pagination
 func (cli *ZSClient) PageTemplateConfig(params *param.QueryParam) ([]view.TemplateConfigInventoryView, int, error) {
 	var templateConfigs []view.TemplateConfigInventoryView

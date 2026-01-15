@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryBlockVolume(params *param.QueryParam) ([]view.BlockVol
 	return resp, cli.List("v1/block-volumes", params, &resp)
 }
 
+func (cli *ZSClient) GetBlockVolume(uuid string) (*view.BlockVolumeInventoryView, error) {
+	var resp view.BlockVolumeInventoryView
+	if err := cli.Get("v1/block-volumes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBlockVolume Pagination
 func (cli *ZSClient) PageBlockVolume(params *param.QueryParam) ([]view.BlockVolumeInventoryView, int, error) {
 	var blockVolumes []view.BlockVolumeInventoryView

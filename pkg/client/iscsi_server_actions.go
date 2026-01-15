@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryIscsiServer(params *param.QueryParam) ([]view.IscsiSer
 	return resp, cli.List("v1/storage-devices/iscsi/servers", params, &resp)
 }
 
+func (cli *ZSClient) GetIscsiServer(uuid string) (*view.IscsiServerInventoryView, error) {
+	var resp view.IscsiServerInventoryView
+	if err := cli.Get("v1/storage-devices/iscsi/servers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIscsiServer Pagination
 func (cli *ZSClient) PageIscsiServer(params *param.QueryParam) ([]view.IscsiServerInventoryView, int, error) {
 	var iscsiServers []view.IscsiServerInventoryView

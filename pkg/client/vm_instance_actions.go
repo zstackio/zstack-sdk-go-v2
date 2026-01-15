@@ -48,6 +48,14 @@ func (cli *ZSClient) QueryVmInstance(params *param.QueryParam) ([]view.VmInstanc
 	return resp, cli.List("v1/vm-instances", params, &resp)
 }
 
+func (cli *ZSClient) GetVmInstance(uuid string) (*view.VmInstanceInventoryView, error) {
+	var resp view.VmInstanceInventoryView
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmInstance Pagination
 func (cli *ZSClient) PageVmInstance(params *param.QueryParam) ([]view.VmInstanceInventoryView, int, error) {
 	var vmInstances []view.VmInstanceInventoryView

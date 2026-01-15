@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryIAM2VirtualIDAttribute(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/iam2/virtual-ids/attributes", params, &resp)
 }
 
+func (cli *ZSClient) GetIAM2VirtualIDAttribute(uuid string) (*view.IAM2VirtualIDAttributeInventoryView, error) {
+	var resp view.IAM2VirtualIDAttributeInventoryView
+	if err := cli.Get("v1/iam2/virtual-ids/attributes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIAM2VirtualIDAttribute Pagination
 func (cli *ZSClient) PageIAM2VirtualIDAttribute(params *param.QueryParam) ([]view.IAM2VirtualIDAttributeInventoryView, int, error) {
 	var iAM2VirtualIDAttributes []view.IAM2VirtualIDAttributeInventoryView

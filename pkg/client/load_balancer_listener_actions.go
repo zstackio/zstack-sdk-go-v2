@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryLoadBalancerListener(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/load-balancers/listeners", params, &resp)
 }
 
+func (cli *ZSClient) GetLoadBalancerListener(uuid string) (*view.LoadBalancerListenerInventoryView, error) {
+	var resp view.LoadBalancerListenerInventoryView
+	if err := cli.Get("v1/load-balancers/listeners", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageLoadBalancerListener Pagination
 func (cli *ZSClient) PageLoadBalancerListener(params *param.QueryParam) ([]view.LoadBalancerListenerInventoryView, int, error) {
 	var loadBalancerListeners []view.LoadBalancerListenerInventoryView

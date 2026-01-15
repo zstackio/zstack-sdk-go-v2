@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryClusterDRS(params *param.QueryParam) ([]view.ClusterDR
 	return resp, cli.List("v1/clusters/drs", params, &resp)
 }
 
+func (cli *ZSClient) GetClusterDRS(uuid string) (*view.ClusterDRSInventoryView, error) {
+	var resp view.ClusterDRSInventoryView
+	if err := cli.Get("v1/clusters/drs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageClusterDRS Pagination
 func (cli *ZSClient) PageClusterDRS(params *param.QueryParam) ([]view.ClusterDRSInventoryView, int, error) {
 	var clusterDRSs []view.ClusterDRSInventoryView

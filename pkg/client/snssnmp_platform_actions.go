@@ -16,6 +16,14 @@ func (cli *ZSClient) QuerySNSSnmpPlatform(params *param.QueryParam) ([]view.SNSE
 	return resp, cli.List("v1/sns/application-platforms/snmp", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSSnmpPlatform(uuid string) (*view.SNSEmailPlatformInventoryView, error) {
+	var resp view.SNSEmailPlatformInventoryView
+	if err := cli.Get("v1/sns/application-platforms/snmp", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSSnmpPlatform Pagination
 func (cli *ZSClient) PageSNSSnmpPlatform(params *param.QueryParam) ([]view.SNSEmailPlatformInventoryView, int, error) {
 	var sNSSnmpPlatforms []view.SNSEmailPlatformInventoryView

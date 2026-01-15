@@ -40,6 +40,14 @@ func (cli *ZSClient) QuerySecurityGroupRule(params *param.QueryParam) ([]view.Se
 	return resp, cli.List("v1/security-groups/rules", params, &resp)
 }
 
+func (cli *ZSClient) GetSecurityGroupRule(uuid string) (*view.SecurityGroupRuleInventoryView, error) {
+	var resp view.SecurityGroupRuleInventoryView
+	if err := cli.Get("v1/security-groups/rules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSecurityGroupRule Pagination
 func (cli *ZSClient) PageSecurityGroupRule(params *param.QueryParam) ([]view.SecurityGroupRuleInventoryView, int, error) {
 	var securityGroupRules []view.SecurityGroupRuleInventoryView

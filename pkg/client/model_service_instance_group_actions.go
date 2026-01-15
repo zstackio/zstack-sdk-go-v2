@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryModelServiceInstanceGroup(params *param.QueryParam) ([
 	return resp, cli.List("v1/ai/model-services/instances/groups/", params, &resp)
 }
 
+func (cli *ZSClient) GetModelServiceInstanceGroup(uuid string) (*view.ModelServiceInstanceGroupInventoryView, error) {
+	var resp view.ModelServiceInstanceGroupInventoryView
+	if err := cli.Get("v1/ai/model-services/instances/groups/", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageModelServiceInstanceGroup Pagination
 func (cli *ZSClient) PageModelServiceInstanceGroup(params *param.QueryParam) ([]view.ModelServiceInstanceGroupInventoryView, int, error) {
 	var modelServiceInstanceGroups []view.ModelServiceInstanceGroupInventoryView

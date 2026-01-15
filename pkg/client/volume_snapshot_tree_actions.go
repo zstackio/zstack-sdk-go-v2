@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVolumeSnapshotTree(params *param.QueryParam) ([]view.V
 	return resp, cli.List("v1/volume-snapshots/trees", params, &resp)
 }
 
+func (cli *ZSClient) GetVolumeSnapshotTree(uuid string) (*view.VolumeSnapshotTreeInventoryView, error) {
+	var resp view.VolumeSnapshotTreeInventoryView
+	if err := cli.Get("v1/volume-snapshots/trees", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVolumeSnapshotTree Pagination
 func (cli *ZSClient) PageVolumeSnapshotTree(params *param.QueryParam) ([]view.VolumeSnapshotTreeInventoryView, int, error) {
 	var volumeSnapshotTrees []view.VolumeSnapshotTreeInventoryView

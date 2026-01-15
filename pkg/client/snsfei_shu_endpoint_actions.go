@@ -32,6 +32,14 @@ func (cli *ZSClient) QuerySNSFeiShuEndpoint(params *param.QueryParam) ([]view.SN
 	return resp, cli.List("v1/sns/application-endpoints/feishu", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSFeiShuEndpoint(uuid string) (*view.SNSFeiShuEndpointInventoryView, error) {
+	var resp view.SNSFeiShuEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/feishu", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSFeiShuEndpoint Pagination
 func (cli *ZSClient) PageSNSFeiShuEndpoint(params *param.QueryParam) ([]view.SNSFeiShuEndpointInventoryView, int, error) {
 	var sNSFeiShuEndpoints []view.SNSFeiShuEndpointInventoryView

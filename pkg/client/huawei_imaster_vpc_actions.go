@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryHuaweiIMasterVpc(params *param.QueryParam) ([]view.Hua
 	return resp, cli.List("v1/sdn-controller/huawei-imaster/vpcs", params, &resp)
 }
 
+func (cli *ZSClient) GetHuaweiIMasterVpc(uuid string) (*view.HuaweiIMasterVpcInventoryView, error) {
+	var resp view.HuaweiIMasterVpcInventoryView
+	if err := cli.Get("v1/sdn-controller/huawei-imaster/vpcs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageHuaweiIMasterVpc Pagination
 func (cli *ZSClient) PageHuaweiIMasterVpc(params *param.QueryParam) ([]view.HuaweiIMasterVpcInventoryView, int, error) {
 	var huaweiIMasterVpcs []view.HuaweiIMasterVpcInventoryView

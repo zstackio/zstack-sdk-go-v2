@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryAlarm(params *param.QueryParam) ([]view.AlarmInventory
 	return resp, cli.List("v1/zwatch/alarms", params, &resp)
 }
 
+func (cli *ZSClient) GetAlarm(uuid string) (*view.AlarmInventoryView, error) {
+	var resp view.AlarmInventoryView
+	if err := cli.Get("v1/zwatch/alarms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAlarm Pagination
 func (cli *ZSClient) PageAlarm(params *param.QueryParam) ([]view.AlarmInventoryView, int, error) {
 	var alarms []view.AlarmInventoryView

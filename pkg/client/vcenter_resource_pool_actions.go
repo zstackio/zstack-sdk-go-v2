@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVCenterResourcePool(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/vcenters/clusters/resourcepools", params, &resp)
 }
 
+func (cli *ZSClient) GetVCenterResourcePool(uuid string) (*view.VCenterResourcePoolInventoryView, error) {
+	var resp view.VCenterResourcePoolInventoryView
+	if err := cli.Get("v1/vcenters/clusters/resourcepools", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVCenterResourcePool Pagination
 func (cli *ZSClient) PageVCenterResourcePool(params *param.QueryParam) ([]view.VCenterResourcePoolInventoryView, int, error) {
 	var vCenterResourcePools []view.VCenterResourcePoolInventoryView

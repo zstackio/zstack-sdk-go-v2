@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryVniRange(params *param.QueryParam) ([]view.VniRangeInv
 	return resp, cli.List("v1/l2-networks/vxlan-pool/vni-range", params, &resp)
 }
 
+func (cli *ZSClient) GetVniRange(uuid string) (*view.VniRangeInventoryView, error) {
+	var resp view.VniRangeInventoryView
+	if err := cli.Get("v1/l2-networks/vxlan-pool/vni-range", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVniRange Pagination
 func (cli *ZSClient) PageVniRange(params *param.QueryParam) ([]view.VniRangeInventoryView, int, error) {
 	var vniRanges []view.VniRangeInventoryView

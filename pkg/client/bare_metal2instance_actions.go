@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryBareMetal2Instance(params *param.QueryParam) ([]view.B
 	return resp, cli.List("v1/baremetal2/bm-instances", params, &resp)
 }
 
+func (cli *ZSClient) GetBareMetal2Instance(uuid string) (*view.BareMetal2InstanceInventoryView, error) {
+	var resp view.BareMetal2InstanceInventoryView
+	if err := cli.Get("v1/baremetal2/bm-instances", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBareMetal2Instance Pagination
 func (cli *ZSClient) PageBareMetal2Instance(params *param.QueryParam) ([]view.BareMetal2InstanceInventoryView, int, error) {
 	var bareMetal2Instances []view.BareMetal2InstanceInventoryView

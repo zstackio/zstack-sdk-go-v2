@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryPolicyRouteTable(params *param.QueryParam) ([]view.Pol
 	return resp, cli.List("v1/policy-routes/tables", params, &resp)
 }
 
+func (cli *ZSClient) GetPolicyRouteTable(uuid string) (*view.PolicyRouteTableInventoryView, error) {
+	var resp view.PolicyRouteTableInventoryView
+	if err := cli.Get("v1/policy-routes/tables", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePolicyRouteTable Pagination
 func (cli *ZSClient) PagePolicyRouteTable(params *param.QueryParam) ([]view.PolicyRouteTableInventoryView, int, error) {
 	var policyRouteTables []view.PolicyRouteTableInventoryView

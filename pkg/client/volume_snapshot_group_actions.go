@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVolumeSnapshotGroup(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/volume-snapshots/group", params, &resp)
 }
 
+func (cli *ZSClient) GetVolumeSnapshotGroup(uuid string) (*view.VolumeSnapshotGroupInventoryView, error) {
+	var resp view.VolumeSnapshotGroupInventoryView
+	if err := cli.Get("v1/volume-snapshots/group", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVolumeSnapshotGroup Pagination
 func (cli *ZSClient) PageVolumeSnapshotGroup(params *param.QueryParam) ([]view.VolumeSnapshotGroupInventoryView, int, error) {
 	var volumeSnapshotGroups []view.VolumeSnapshotGroupInventoryView

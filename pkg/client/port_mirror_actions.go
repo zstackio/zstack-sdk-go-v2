@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryPortMirror(params *param.QueryParam) ([]view.PortMirro
 	return resp, cli.List("v1/port-mirrors", params, &resp)
 }
 
+func (cli *ZSClient) GetPortMirror(uuid string) (*view.PortMirrorInventoryView, error) {
+	var resp view.PortMirrorInventoryView
+	if err := cli.Get("v1/port-mirrors", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePortMirror Pagination
 func (cli *ZSClient) PagePortMirror(params *param.QueryParam) ([]view.PortMirrorInventoryView, int, error) {
 	var portMirrors []view.PortMirrorInventoryView

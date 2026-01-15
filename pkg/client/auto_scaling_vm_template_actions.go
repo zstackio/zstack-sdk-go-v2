@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryAutoScalingVmTemplate(params *param.QueryParam) ([]vie
 	return resp, cli.List("v1/autoscaling/vmtemplate", params, &resp)
 }
 
+func (cli *ZSClient) GetAutoScalingVmTemplate(uuid string) (*view.AutoScalingVmTemplateInventoryView, error) {
+	var resp view.AutoScalingVmTemplateInventoryView
+	if err := cli.Get("v1/autoscaling/vmtemplate", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAutoScalingVmTemplate Pagination
 func (cli *ZSClient) PageAutoScalingVmTemplate(params *param.QueryParam) ([]view.AutoScalingVmTemplateInventoryView, int, error) {
 	var autoScalingVmTemplates []view.AutoScalingVmTemplateInventoryView

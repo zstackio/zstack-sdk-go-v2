@@ -20,6 +20,14 @@ func (cli *ZSClient) QueryHuaweiIMasterTenant(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/sdn-controller/huawei-imaster/tenants", params, &resp)
 }
 
+func (cli *ZSClient) GetHuaweiIMasterTenant(uuid string) (*view.HuaweiIMasterTenantInventoryView, error) {
+	var resp view.HuaweiIMasterTenantInventoryView
+	if err := cli.Get("v1/sdn-controller/huawei-imaster/tenants", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageHuaweiIMasterTenant Pagination
 func (cli *ZSClient) PageHuaweiIMasterTenant(params *param.QueryParam) ([]view.HuaweiIMasterTenantInventoryView, int, error) {
 	var huaweiIMasterTenants []view.HuaweiIMasterTenantInventoryView

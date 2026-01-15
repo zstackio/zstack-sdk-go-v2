@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryTicketFlowCollection(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/tickets/flow-collections", params, &resp)
 }
 
+func (cli *ZSClient) GetTicketFlowCollection(uuid string) (*view.TicketFlowCollectionInventoryView, error) {
+	var resp view.TicketFlowCollectionInventoryView
+	if err := cli.Get("v1/tickets/flow-collections", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageTicketFlowCollection Pagination
 func (cli *ZSClient) PageTicketFlowCollection(params *param.QueryParam) ([]view.TicketFlowCollectionInventoryView, int, error) {
 	var ticketFlowCollections []view.TicketFlowCollectionInventoryView

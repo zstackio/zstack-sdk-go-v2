@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryOvnControllerVmInstance(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/vm-instances/appliances/ovn-controller", params, &resp)
 }
 
+func (cli *ZSClient) GetOvnControllerVmInstance(uuid string) (*view.OvnControllerVmInstanceInventoryView, error) {
+	var resp view.OvnControllerVmInstanceInventoryView
+	if err := cli.Get("v1/vm-instances/appliances/ovn-controller", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageOvnControllerVmInstance Pagination
 func (cli *ZSClient) PageOvnControllerVmInstance(params *param.QueryParam) ([]view.OvnControllerVmInstanceInventoryView, int, error) {
 	var ovnControllerVmInstances []view.OvnControllerVmInstanceInventoryView

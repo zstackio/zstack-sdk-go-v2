@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryCbtTask(params *param.QueryParam) ([]view.CbtTaskInven
 	return resp, cli.List("v1/cbt-task", params, &resp)
 }
 
+func (cli *ZSClient) GetCbtTask(uuid string) (*view.CbtTaskInventoryView, error) {
+	var resp view.CbtTaskInventoryView
+	if err := cli.Get("v1/cbt-task", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageCbtTask Pagination
 func (cli *ZSClient) PageCbtTask(params *param.QueryParam) ([]view.CbtTaskInventoryView, int, error) {
 	var cbtTasks []view.CbtTaskInventoryView

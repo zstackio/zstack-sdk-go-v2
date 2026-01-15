@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryMonitorGroup(params *param.QueryParam) ([]view.Monitor
 	return resp, cli.List("v1/zwatch/monitorgroups", params, &resp)
 }
 
+func (cli *ZSClient) GetMonitorGroup(uuid string) (*view.MonitorGroupInventoryView, error) {
+	var resp view.MonitorGroupInventoryView
+	if err := cli.Get("v1/zwatch/monitorgroups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMonitorGroup Pagination
 func (cli *ZSClient) PageMonitorGroup(params *param.QueryParam) ([]view.MonitorGroupInventoryView, int, error) {
 	var monitorGroups []view.MonitorGroupInventoryView

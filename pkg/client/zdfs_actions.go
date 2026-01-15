@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryZdfs(params *param.QueryParam) ([]view.ZdfsInventoryVi
 	return resp, cli.List("v1/zdfs", params, &resp)
 }
 
+func (cli *ZSClient) GetZdfs(uuid string) (*view.ZdfsInventoryView, error) {
+	var resp view.ZdfsInventoryView
+	if err := cli.Get("v1/zdfs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageZdfs Pagination
 func (cli *ZSClient) PageZdfs(params *param.QueryParam) ([]view.ZdfsInventoryView, int, error) {
 	var zdfs []view.ZdfsInventoryView

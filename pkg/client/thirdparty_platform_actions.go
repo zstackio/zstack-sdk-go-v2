@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryThirdpartyPlatform(params *param.QueryParam) ([]view.T
 	return resp, cli.List("v1/zwatch/third-party/platforms", params, &resp)
 }
 
+func (cli *ZSClient) GetThirdpartyPlatform(uuid string) (*view.ThirdpartyPlatformInventoryView, error) {
+	var resp view.ThirdpartyPlatformInventoryView
+	if err := cli.Get("v1/zwatch/third-party/platforms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageThirdpartyPlatform Pagination
 func (cli *ZSClient) PageThirdpartyPlatform(params *param.QueryParam) ([]view.ThirdpartyPlatformInventoryView, int, error) {
 	var thirdpartyPlatforms []view.ThirdpartyPlatformInventoryView

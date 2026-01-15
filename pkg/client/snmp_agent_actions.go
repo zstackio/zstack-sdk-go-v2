@@ -48,6 +48,14 @@ func (cli *ZSClient) QuerySnmpAgent(params *param.QueryParam) ([]view.SnmpAgentI
 	return resp, cli.List("v1/snmp/agent", params, &resp)
 }
 
+func (cli *ZSClient) GetSnmpAgent(uuid string) (*view.SnmpAgentInventoryView, error) {
+	var resp view.SnmpAgentInventoryView
+	if err := cli.Get("v1/snmp/agent", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSnmpAgent Pagination
 func (cli *ZSClient) PageSnmpAgent(params *param.QueryParam) ([]view.SnmpAgentInventoryView, int, error) {
 	var snmpAgents []view.SnmpAgentInventoryView

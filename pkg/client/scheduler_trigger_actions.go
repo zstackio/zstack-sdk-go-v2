@@ -16,6 +16,14 @@ func (cli *ZSClient) QuerySchedulerTrigger(params *param.QueryParam) ([]view.Sch
 	return resp, cli.List("v1/scheduler/triggers", params, &resp)
 }
 
+func (cli *ZSClient) GetSchedulerTrigger(uuid string) (*view.SchedulerTriggerInventoryView, error) {
+	var resp view.SchedulerTriggerInventoryView
+	if err := cli.Get("v1/scheduler/triggers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSchedulerTrigger Pagination
 func (cli *ZSClient) PageSchedulerTrigger(params *param.QueryParam) ([]view.SchedulerTriggerInventoryView, int, error) {
 	var schedulerTriggers []view.SchedulerTriggerInventoryView

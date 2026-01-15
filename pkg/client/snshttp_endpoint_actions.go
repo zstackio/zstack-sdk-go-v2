@@ -32,6 +32,14 @@ func (cli *ZSClient) QuerySNSHttpEndpoint(params *param.QueryParam) ([]view.SNSH
 	return resp, cli.List("v1/sns/application-endpoints/http", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSHttpEndpoint(uuid string) (*view.SNSHttpEndpointInventoryView, error) {
+	var resp view.SNSHttpEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/http", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSHttpEndpoint Pagination
 func (cli *ZSClient) PageSNSHttpEndpoint(params *param.QueryParam) ([]view.SNSHttpEndpointInventoryView, int, error) {
 	var sNSHttpEndpoints []view.SNSHttpEndpointInventoryView

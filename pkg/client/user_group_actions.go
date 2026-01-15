@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryUserGroup(params *param.QueryParam) ([]view.UserGroupI
 	return resp, cli.List("v1/accounts/groups", params, &resp)
 }
 
+func (cli *ZSClient) GetUserGroup(uuid string) (*view.UserGroupInventoryView, error) {
+	var resp view.UserGroupInventoryView
+	if err := cli.Get("v1/accounts/groups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageUserGroup Pagination
 func (cli *ZSClient) PageUserGroup(params *param.QueryParam) ([]view.UserGroupInventoryView, int, error) {
 	var userGroups []view.UserGroupInventoryView

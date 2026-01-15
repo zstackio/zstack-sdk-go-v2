@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryAccountResourceRef(params *param.QueryParam) ([]view.A
 	return resp, cli.List("v1/accounts/resources/refs", params, &resp)
 }
 
+func (cli *ZSClient) GetAccountResourceRef(uuid string) (*view.AccountResourceRefInventoryView, error) {
+	var resp view.AccountResourceRefInventoryView
+	if err := cli.Get("v1/accounts/resources/refs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAccountResourceRef Pagination
 func (cli *ZSClient) PageAccountResourceRef(params *param.QueryParam) ([]view.AccountResourceRefInventoryView, int, error) {
 	var accountResourceRefs []view.AccountResourceRefInventoryView

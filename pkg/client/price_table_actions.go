@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryPriceTable(params *param.QueryParam) ([]view.PriceTabl
 	return resp, cli.List("v1/billings/price-tables", params, &resp)
 }
 
+func (cli *ZSClient) GetPriceTable(uuid string) (*view.PriceTableInventoryView, error) {
+	var resp view.PriceTableInventoryView
+	if err := cli.Get("v1/billings/price-tables", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePriceTable Pagination
 func (cli *ZSClient) PagePriceTable(params *param.QueryParam) ([]view.PriceTableInventoryView, int, error) {
 	var priceTables []view.PriceTableInventoryView

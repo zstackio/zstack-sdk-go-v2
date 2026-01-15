@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryXskyBlockVolume(params *param.QueryParam) ([]view.Xsky
 	return resp, cli.List("v1/xksy/block-volumes", params, &resp)
 }
 
+func (cli *ZSClient) GetXskyBlockVolume(uuid string) (*view.XskyBlockVolumeInventoryView, error) {
+	var resp view.XskyBlockVolumeInventoryView
+	if err := cli.Get("v1/xksy/block-volumes", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageXskyBlockVolume Pagination
 func (cli *ZSClient) PageXskyBlockVolume(params *param.QueryParam) ([]view.XskyBlockVolumeInventoryView, int, error) {
 	var xskyBlockVolumes []view.XskyBlockVolumeInventoryView

@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVmSchedHistory(params *param.QueryParam) ([]view.VmSch
 	return resp, cli.List("v1/vm/sched-history", params, &resp)
 }
 
+func (cli *ZSClient) GetVmSchedHistory(uuid string) (*view.VmSchedHistoryInventoryView, error) {
+	var resp view.VmSchedHistoryInventoryView
+	if err := cli.Get("v1/vm/sched-history", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmSchedHistory Pagination
 func (cli *ZSClient) PageVmSchedHistory(params *param.QueryParam) ([]view.VmSchedHistoryInventoryView, int, error) {
 	var vmSchedHistories []view.VmSchedHistoryInventoryView

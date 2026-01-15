@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryMetricDataHttpReceiver(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/zwatch/metrics/httpreceivers", params, &resp)
 }
 
+func (cli *ZSClient) GetMetricDataHttpReceiver(uuid string) (*view.MetricDataHttpReceiverInventoryView, error) {
+	var resp view.MetricDataHttpReceiverInventoryView
+	if err := cli.Get("v1/zwatch/metrics/httpreceivers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMetricDataHttpReceiver Pagination
 func (cli *ZSClient) PageMetricDataHttpReceiver(params *param.QueryParam) ([]view.MetricDataHttpReceiverInventoryView, int, error) {
 	var metricDataHttpReceivers []view.MetricDataHttpReceiverInventoryView

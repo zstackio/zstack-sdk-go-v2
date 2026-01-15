@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryFlowMeter(params *param.QueryParam) ([]view.FlowMeterI
 	return resp, cli.List("v1/flowmeters", params, &resp)
 }
 
+func (cli *ZSClient) GetFlowMeter(uuid string) (*view.FlowMeterInventoryView, error) {
+	var resp view.FlowMeterInventoryView
+	if err := cli.Get("v1/flowmeters", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageFlowMeter Pagination
 func (cli *ZSClient) PageFlowMeter(params *param.QueryParam) ([]view.FlowMeterInventoryView, int, error) {
 	var flowMeters []view.FlowMeterInventoryView

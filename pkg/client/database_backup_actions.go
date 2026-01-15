@@ -43,6 +43,14 @@ func (cli *ZSClient) QueryDatabaseBackup(params *param.QueryParam) ([]view.Datab
 	return resp, cli.List("v1/database-backups", params, &resp)
 }
 
+func (cli *ZSClient) GetDatabaseBackup(uuid string) (*view.DatabaseBackupInventoryView, error) {
+	var resp view.DatabaseBackupInventoryView
+	if err := cli.Get("v1/database-backups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageDatabaseBackup Pagination
 func (cli *ZSClient) PageDatabaseBackup(params *param.QueryParam) ([]view.DatabaseBackupInventoryView, int, error) {
 	var databaseBackups []view.DatabaseBackupInventoryView

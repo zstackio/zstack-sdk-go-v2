@@ -32,6 +32,14 @@ func (cli *ZSClient) QueryAccessControlList(params *param.QueryParam) ([]view.Ac
 	return resp, cli.List("v1/access-control-lists", params, &resp)
 }
 
+func (cli *ZSClient) GetAccessControlList(uuid string) (*view.AccessControlListInventoryView, error) {
+	var resp view.AccessControlListInventoryView
+	if err := cli.Get("v1/access-control-lists", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAccessControlList Pagination
 func (cli *ZSClient) PageAccessControlList(params *param.QueryParam) ([]view.AccessControlListInventoryView, int, error) {
 	var accessControlLists []view.AccessControlListInventoryView

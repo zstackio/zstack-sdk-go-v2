@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryPciDeviceOffering(params *param.QueryParam) ([]view.Pc
 	return resp, cli.List("v1/pci-device/pci-device-offerings", params, &resp)
 }
 
+func (cli *ZSClient) GetPciDeviceOffering(uuid string) (*view.PciDeviceOfferingInventoryView, error) {
+	var resp view.PciDeviceOfferingInventoryView
+	if err := cli.Get("v1/pci-device/pci-device-offerings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePciDeviceOffering Pagination
 func (cli *ZSClient) PagePciDeviceOffering(params *param.QueryParam) ([]view.PciDeviceOfferingInventoryView, int, error) {
 	var pciDeviceOfferings []view.PciDeviceOfferingInventoryView

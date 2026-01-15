@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryNetworkServiceProvider(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/network-services/providers", params, &resp)
 }
 
+func (cli *ZSClient) GetNetworkServiceProvider(uuid string) (*view.NetworkServiceProviderInventoryView, error) {
+	var resp view.NetworkServiceProviderInventoryView
+	if err := cli.Get("v1/network-services/providers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageNetworkServiceProvider Pagination
 func (cli *ZSClient) PageNetworkServiceProvider(params *param.QueryParam) ([]view.NetworkServiceProviderInventoryView, int, error) {
 	var networkServiceProviders []view.NetworkServiceProviderInventoryView

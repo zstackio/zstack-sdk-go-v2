@@ -24,6 +24,14 @@ func (cli *ZSClient) QuerySNSWeComEndpoint(params *param.QueryParam) ([]view.SNS
 	return resp, cli.List("v1/sns/application-endpoints/we-com", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSWeComEndpoint(uuid string) (*view.SNSWeComEndpointInventoryView, error) {
+	var resp view.SNSWeComEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/we-com", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSWeComEndpoint Pagination
 func (cli *ZSClient) PageSNSWeComEndpoint(params *param.QueryParam) ([]view.SNSWeComEndpointInventoryView, int, error) {
 	var sNSWeComEndpoints []view.SNSWeComEndpointInventoryView

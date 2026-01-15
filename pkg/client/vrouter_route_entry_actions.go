@@ -29,6 +29,14 @@ func (cli *ZSClient) QueryVRouterRouteEntry(params *param.QueryParam) ([]view.VR
 	return resp, cli.List("v1/vrouter-route-tables/route-entries", params, &resp)
 }
 
+func (cli *ZSClient) GetVRouterRouteEntry(uuid string) (*view.VRouterRouteEntryInventoryView, error) {
+	var resp view.VRouterRouteEntryInventoryView
+	if err := cli.Get("v1/vrouter-route-tables/route-entries", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVRouterRouteEntry Pagination
 func (cli *ZSClient) PageVRouterRouteEntry(params *param.QueryParam) ([]view.VRouterRouteEntryInventoryView, int, error) {
 	var vRouterRouteEntries []view.VRouterRouteEntryInventoryView

@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryAutoScalingGroupInstance(params *param.QueryParam) ([]
 	return resp, cli.List("v1/autoscaling/groups/instances", params, &resp)
 }
 
+func (cli *ZSClient) GetAutoScalingGroupInstance(uuid string) (*view.AutoScalingGroupInstanceInventoryView, error) {
+	var resp view.AutoScalingGroupInstanceInventoryView
+	if err := cli.Get("v1/autoscaling/groups/instances", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAutoScalingGroupInstance Pagination
 func (cli *ZSClient) PageAutoScalingGroupInstance(params *param.QueryParam) ([]view.AutoScalingGroupInstanceInventoryView, int, error) {
 	var autoScalingGroupInstances []view.AutoScalingGroupInstanceInventoryView

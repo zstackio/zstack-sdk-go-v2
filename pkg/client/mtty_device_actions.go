@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryMttyDevice(params *param.QueryParam) ([]view.MttyDevic
 	return resp, cli.List("v1/mtty-devices", params, &resp)
 }
 
+func (cli *ZSClient) GetMttyDevice(uuid string) (*view.MttyDeviceInventoryView, error) {
+	var resp view.MttyDeviceInventoryView
+	if err := cli.Get("v1/mtty-devices", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMttyDevice Pagination
 func (cli *ZSClient) PageMttyDevice(params *param.QueryParam) ([]view.MttyDeviceInventoryView, int, error) {
 	var mttyDevices []view.MttyDeviceInventoryView

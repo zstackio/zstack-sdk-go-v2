@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryActiveAlarmTemplate(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/zwatch/activealarms/templates", params, &resp)
 }
 
+func (cli *ZSClient) GetActiveAlarmTemplate(uuid string) (*view.ActiveAlarmTemplateInventoryView, error) {
+	var resp view.ActiveAlarmTemplateInventoryView
+	if err := cli.Get("v1/zwatch/activealarms/templates", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageActiveAlarmTemplate Pagination
 func (cli *ZSClient) PageActiveAlarmTemplate(params *param.QueryParam) ([]view.ActiveAlarmTemplateInventoryView, int, error) {
 	var activeAlarmTemplates []view.ActiveAlarmTemplateInventoryView

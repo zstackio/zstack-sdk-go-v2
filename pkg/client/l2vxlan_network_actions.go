@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryL2VxlanNetwork(params *param.QueryParam) ([]view.L2Vxl
 	return resp, cli.List("v1/l2-networks/vxlan", params, &resp)
 }
 
+func (cli *ZSClient) GetL2VxlanNetwork(uuid string) (*view.L2VxlanNetworkInventoryView, error) {
+	var resp view.L2VxlanNetworkInventoryView
+	if err := cli.Get("v1/l2-networks/vxlan", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageL2VxlanNetwork Pagination
 func (cli *ZSClient) PageL2VxlanNetwork(params *param.QueryParam) ([]view.L2VxlanNetworkInventoryView, int, error) {
 	var l2VxlanNetworks []view.L2VxlanNetworkInventoryView

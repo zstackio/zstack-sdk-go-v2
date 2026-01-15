@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryAlertDataAck(params *param.QueryParam) ([]view.AlertDa
 	return resp, cli.List("v1/zwatch/alert-histories/acknowledgments", params, &resp)
 }
 
+func (cli *ZSClient) GetAlertDataAck(uuid string) (*view.AlertDataAckInventoryView, error) {
+	var resp view.AlertDataAckInventoryView
+	if err := cli.Get("v1/zwatch/alert-histories/acknowledgments", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAlertDataAck Pagination
 func (cli *ZSClient) PageAlertDataAck(params *param.QueryParam) ([]view.AlertDataAckInventoryView, int, error) {
 	var alertDataAcks []view.AlertDataAckInventoryView

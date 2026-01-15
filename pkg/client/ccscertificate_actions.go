@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryCCSCertificate(params *param.QueryParam) ([]view.CCSCe
 	return resp, cli.List("v1/crypto/ccs-certificate/certificates/", params, &resp)
 }
 
+func (cli *ZSClient) GetCCSCertificate(uuid string) (*view.CCSCertificateInventoryView, error) {
+	var resp view.CCSCertificateInventoryView
+	if err := cli.Get("v1/crypto/ccs-certificate/certificates/", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageCCSCertificate Pagination
 func (cli *ZSClient) PageCCSCertificate(params *param.QueryParam) ([]view.CCSCertificateInventoryView, int, error) {
 	var cCSCertificates []view.CCSCertificateInventoryView

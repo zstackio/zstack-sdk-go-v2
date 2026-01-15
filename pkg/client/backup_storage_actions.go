@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryBackupStorage(params *param.QueryParam) ([]view.Backup
 	return resp, cli.List("v1/backup-storage", params, &resp)
 }
 
+func (cli *ZSClient) GetBackupStorage(uuid string) (*view.BackupStorageInventoryView, error) {
+	var resp view.BackupStorageInventoryView
+	if err := cli.Get("v1/backup-storage", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBackupStorage Pagination
 func (cli *ZSClient) PageBackupStorage(params *param.QueryParam) ([]view.BackupStorageInventoryView, int, error) {
 	var backupStorages []view.BackupStorageInventoryView

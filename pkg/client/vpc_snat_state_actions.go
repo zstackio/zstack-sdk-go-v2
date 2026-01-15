@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryVpcSnatState(params *param.QueryParam) ([]view.VpcSnat
 	return resp, cli.List("v1/vpc/virtual-routers/networkservicestate/snat", params, &resp)
 }
 
+func (cli *ZSClient) GetVpcSnatState(uuid string) (*view.VpcSnatStateInventoryView, error) {
+	var resp view.VpcSnatStateInventoryView
+	if err := cli.Get("v1/vpc/virtual-routers/networkservicestate/snat", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVpcSnatState Pagination
 func (cli *ZSClient) PageVpcSnatState(params *param.QueryParam) ([]view.VpcSnatStateInventoryView, int, error) {
 	var vpcSnatStates []view.VpcSnatStateInventoryView

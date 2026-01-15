@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryNfvInst(params *param.QueryParam) ([]view.NfvInstInven
 	return resp, cli.List("v1/vm-instances/appliances/nfvinst", params, &resp)
 }
 
+func (cli *ZSClient) GetNfvInst(uuid string) (*view.NfvInstInventoryView, error) {
+	var resp view.NfvInstInventoryView
+	if err := cli.Get("v1/vm-instances/appliances/nfvinst", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageNfvInst Pagination
 func (cli *ZSClient) PageNfvInst(params *param.QueryParam) ([]view.NfvInstInventoryView, int, error) {
 	var nfvInsts []view.NfvInstInventoryView

@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryL3Network(params *param.QueryParam) ([]view.L3NetworkI
 	return resp, cli.List("v1/l3-networks", params, &resp)
 }
 
+func (cli *ZSClient) GetL3Network(uuid string) (*view.L3NetworkInventoryView, error) {
+	var resp view.L3NetworkInventoryView
+	if err := cli.Get("v1/l3-networks", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageL3Network Pagination
 func (cli *ZSClient) PageL3Network(params *param.QueryParam) ([]view.L3NetworkInventoryView, int, error) {
 	var l3Networks []view.L3NetworkInventoryView

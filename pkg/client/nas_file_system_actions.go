@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryNasFileSystem(params *param.QueryParam) ([]view.NasFil
 	return resp, cli.List("v1/primary-storage/nas", params, &resp)
 }
 
+func (cli *ZSClient) GetNasFileSystem(uuid string) (*view.NasFileSystemInventoryView, error) {
+	var resp view.NasFileSystemInventoryView
+	if err := cli.Get("v1/primary-storage/nas", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageNasFileSystem Pagination
 func (cli *ZSClient) PageNasFileSystem(params *param.QueryParam) ([]view.NasFileSystemInventoryView, int, error) {
 	var nasFileSystems []view.NasFileSystemInventoryView

@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryHostNetworkInterface(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/hosts/nics", params, &resp)
 }
 
+func (cli *ZSClient) GetHostNetworkInterface(uuid string) (*view.HostNetworkInterfaceInventoryView, error) {
+	var resp view.HostNetworkInterfaceInventoryView
+	if err := cli.Get("v1/hosts/nics", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageHostNetworkInterface Pagination
 func (cli *ZSClient) PageHostNetworkInterface(params *param.QueryParam) ([]view.HostNetworkInterfaceInventoryView, int, error) {
 	var hostNetworkInterfaces []view.HostNetworkInterfaceInventoryView

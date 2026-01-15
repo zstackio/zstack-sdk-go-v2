@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryStackTemplate(params *param.QueryParam) ([]view.StackT
 	return resp, cli.List("v1/cloudformation/template", params, &resp)
 }
 
+func (cli *ZSClient) GetStackTemplate(uuid string) (*view.StackTemplateInventoryView, error) {
+	var resp view.StackTemplateInventoryView
+	if err := cli.Get("v1/cloudformation/template", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageStackTemplate Pagination
 func (cli *ZSClient) PageStackTemplate(params *param.QueryParam) ([]view.StackTemplateInventoryView, int, error) {
 	var stackTemplates []view.StackTemplateInventoryView

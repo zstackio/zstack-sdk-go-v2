@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryHostSchedulingRuleGroup(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/query/host/schedulingRule/group", params, &resp)
 }
 
+func (cli *ZSClient) GetHostSchedulingRuleGroup(uuid string) (*view.HostSchedulingRuleGroupInventoryView, error) {
+	var resp view.HostSchedulingRuleGroupInventoryView
+	if err := cli.Get("v1/query/host/schedulingRule/group", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageHostSchedulingRuleGroup Pagination
 func (cli *ZSClient) PageHostSchedulingRuleGroup(params *param.QueryParam) ([]view.HostSchedulingRuleGroupInventoryView, int, error) {
 	var hostSchedulingRuleGroups []view.HostSchedulingRuleGroupInventoryView

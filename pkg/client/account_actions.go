@@ -36,6 +36,14 @@ func (cli *ZSClient) QueryAccount(params *param.QueryParam) ([]view.AccountInven
 	return resp, cli.List("v1/accounts", params, &resp)
 }
 
+func (cli *ZSClient) GetAccount(uuid string) (*view.AccountInventoryView, error) {
+	var resp view.AccountInventoryView
+	if err := cli.Get("v1/accounts", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAccount Pagination
 func (cli *ZSClient) PageAccount(params *param.QueryParam) ([]view.AccountInventoryView, int, error) {
 	var accounts []view.AccountInventoryView

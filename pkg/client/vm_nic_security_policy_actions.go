@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryVmNicSecurityPolicy(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/security-groups/nics/security-policy", params, &resp)
 }
 
+func (cli *ZSClient) GetVmNicSecurityPolicy(uuid string) (*view.VmNicSecurityPolicyInventoryView, error) {
+	var resp view.VmNicSecurityPolicyInventoryView
+	if err := cli.Get("v1/security-groups/nics/security-policy", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmNicSecurityPolicy Pagination
 func (cli *ZSClient) PageVmNicSecurityPolicy(params *param.QueryParam) ([]view.VmNicSecurityPolicyInventoryView, int, error) {
 	var vmNicSecurityPolicies []view.VmNicSecurityPolicyInventoryView

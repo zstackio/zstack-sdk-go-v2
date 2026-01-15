@@ -24,6 +24,14 @@ func (cli *ZSClient) QuerySNSDingTalkEndpoint(params *param.QueryParam) ([]view.
 	return resp, cli.List("v1/sns/application-endpoints/ding-talk", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSDingTalkEndpoint(uuid string) (*view.SNSDingTalkEndpointInventoryView, error) {
+	var resp view.SNSDingTalkEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/ding-talk", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSDingTalkEndpoint Pagination
 func (cli *ZSClient) PageSNSDingTalkEndpoint(params *param.QueryParam) ([]view.SNSDingTalkEndpointInventoryView, int, error) {
 	var sNSDingTalkEndpoints []view.SNSDingTalkEndpointInventoryView

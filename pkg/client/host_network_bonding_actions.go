@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryHostNetworkBonding(params *param.QueryParam) ([]view.H
 	return resp, cli.List("v1/hosts/bondings", params, &resp)
 }
 
+func (cli *ZSClient) GetHostNetworkBonding(uuid string) (*view.HostNetworkBondingInventoryView, error) {
+	var resp view.HostNetworkBondingInventoryView
+	if err := cli.Get("v1/hosts/bondings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageHostNetworkBonding Pagination
 func (cli *ZSClient) PageHostNetworkBonding(params *param.QueryParam) ([]view.HostNetworkBondingInventoryView, int, error) {
 	var hostNetworkBondings []view.HostNetworkBondingInventoryView

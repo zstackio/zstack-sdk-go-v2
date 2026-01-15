@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryFcHbaDevice(params *param.QueryParam) ([]view.HbaDevic
 	return resp, cli.List("v1/storage-devices/hba", params, &resp)
 }
 
+func (cli *ZSClient) GetFcHbaDevice(uuid string) (*view.HbaDeviceInventoryView, error) {
+	var resp view.HbaDeviceInventoryView
+	if err := cli.Get("v1/storage-devices/hba", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageFcHbaDevice Pagination
 func (cli *ZSClient) PageFcHbaDevice(params *param.QueryParam) ([]view.HbaDeviceInventoryView, int, error) {
 	var fcHbaDevices []view.HbaDeviceInventoryView

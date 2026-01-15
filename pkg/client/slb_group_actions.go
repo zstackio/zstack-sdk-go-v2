@@ -16,6 +16,14 @@ func (cli *ZSClient) QuerySlbGroup(params *param.QueryParam) ([]view.SlbGroupInv
 	return resp, cli.List("v1/load-balancers/slb/groups", params, &resp)
 }
 
+func (cli *ZSClient) GetSlbGroup(uuid string) (*view.SlbGroupInventoryView, error) {
+	var resp view.SlbGroupInventoryView
+	if err := cli.Get("v1/load-balancers/slb/groups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSlbGroup Pagination
 func (cli *ZSClient) PageSlbGroup(params *param.QueryParam) ([]view.SlbGroupInventoryView, int, error) {
 	var slbGroups []view.SlbGroupInventoryView

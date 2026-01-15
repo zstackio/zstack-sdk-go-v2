@@ -28,6 +28,14 @@ func (cli *ZSClient) QuerySecurityMachine(params *param.QueryParam) ([]view.Secu
 	return resp, cli.List("v1/security-machines", params, &resp)
 }
 
+func (cli *ZSClient) GetSecurityMachine(uuid string) (*view.SecurityMachineInventoryView, error) {
+	var resp view.SecurityMachineInventoryView
+	if err := cli.Get("v1/security-machines", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSecurityMachine Pagination
 func (cli *ZSClient) PageSecurityMachine(params *param.QueryParam) ([]view.SecurityMachineInventoryView, int, error) {
 	var securityMachines []view.SecurityMachineInventoryView

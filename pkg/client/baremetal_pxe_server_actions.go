@@ -52,6 +52,14 @@ func (cli *ZSClient) QueryBaremetalPxeServer(params *param.QueryParam) ([]view.B
 	return resp, cli.List("v1/baremetal/pxeservers", params, &resp)
 }
 
+func (cli *ZSClient) GetBaremetalPxeServer(uuid string) (*view.BaremetalPxeServerInventoryView, error) {
+	var resp view.BaremetalPxeServerInventoryView
+	if err := cli.Get("v1/baremetal/pxeservers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageBaremetalPxeServer Pagination
 func (cli *ZSClient) PageBaremetalPxeServer(params *param.QueryParam) ([]view.BaremetalPxeServerInventoryView, int, error) {
 	var baremetalPxeServers []view.BaremetalPxeServerInventoryView

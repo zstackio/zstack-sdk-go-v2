@@ -16,19 +16,19 @@ func (cli *ZSClient) QueryZone(params *param.QueryParam) ([]view.ZoneInventoryVi
 	return resp, cli.List("v1/zones", params, &resp)
 }
 
-// PageZone Pagination
-func (cli *ZSClient) PageZone(params *param.QueryParam) ([]view.ZoneInventoryView, int, error) {
-	var zones []view.ZoneInventoryView
-	total, err := cli.Page("v1/zones", params, &zones)
-	return zones, total, err
-}
-// GetZone gets Zone by uuid
 func (cli *ZSClient) GetZone(uuid string) (*view.ZoneInventoryView, error) {
 	var resp view.ZoneInventoryView
 	if err := cli.Get("v1/zones", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// PageZone Pagination
+func (cli *ZSClient) PageZone(params *param.QueryParam) ([]view.ZoneInventoryView, int, error) {
+	var zones []view.ZoneInventoryView
+	total, err := cli.Page("v1/zones", params, &zones)
+	return zones, total, err
 }
 // CreateZone creates Zone
 func (cli *ZSClient) CreateZone(params param.CreateZoneParam) (*view.ZoneInventoryView, error) {

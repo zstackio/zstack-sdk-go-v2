@@ -59,7 +59,7 @@ func TestUpdateAccessControlRule(t *testing.T) {
 	// Update with minimal params
 	updateParam := param.UpdateAccessControlRuleParam{
 		BaseParam: param.BaseParam{},
-		Params:    param.UpdateAccessControlRuleParamDetail{
+		UpdateAccessControlRule:    param.UpdateAccessControlRuleParamDetail{
 			// Keep original values - just testing the API works
 		},
 	}

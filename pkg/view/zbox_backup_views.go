@@ -24,3 +24,8 @@ type QueryZBoxBackupView struct {
 	Inventories []ZBoxBackupInventoryView `json:"inventories,omitempty"`
 }
 
+// CreateExternalBackupEventView CreateExternalBackupEvent
+type CreateExternalBackupEventView struct {
+	Inventory ExternalBackupInventoryView `json:"inventory,omitempty"`
+}
+

@@ -16,6 +16,14 @@ func (cli *ZSClient) QuerySNSUniversalSmsEndpoint(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/sns/application-endpoints/universal-sms", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSUniversalSmsEndpoint(uuid string) (*view.SNSUniversalSmsEndpointInventoryView, error) {
+	var resp view.SNSUniversalSmsEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/universal-sms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSUniversalSmsEndpoint Pagination
 func (cli *ZSClient) PageSNSUniversalSmsEndpoint(params *param.QueryParam) ([]view.SNSUniversalSmsEndpointInventoryView, int, error) {
 	var sNSUniversalSmsEndpoints []view.SNSUniversalSmsEndpointInventoryView

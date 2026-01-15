@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryPolicyRouteRuleSetL3Ref(params *param.QueryParam) ([]v
 	return resp, cli.List("v1/policy-routes/rulesets/l3networdks/refs", params, &resp)
 }
 
+func (cli *ZSClient) GetPolicyRouteRuleSetL3Ref(uuid string) (*view.PolicyRouteRuleSetL3RefInventoryView, error) {
+	var resp view.PolicyRouteRuleSetL3RefInventoryView
+	if err := cli.Get("v1/policy-routes/rulesets/l3networdks/refs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PagePolicyRouteRuleSetL3Ref Pagination
 func (cli *ZSClient) PagePolicyRouteRuleSetL3Ref(params *param.QueryParam) ([]view.PolicyRouteRuleSetL3RefInventoryView, int, error) {
 	var policyRouteRuleSetL3Refs []view.PolicyRouteRuleSetL3RefInventoryView

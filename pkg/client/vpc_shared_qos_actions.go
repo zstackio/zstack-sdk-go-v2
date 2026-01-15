@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryVpcSharedQos(params *param.QueryParam) ([]view.VpcShar
 	return resp, cli.List("v1/vips/sharedqos", params, &resp)
 }
 
+func (cli *ZSClient) GetVpcSharedQos(uuid string) (*view.VpcSharedQosInventoryView, error) {
+	var resp view.VpcSharedQosInventoryView
+	if err := cli.Get("v1/vips/sharedqos", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVpcSharedQos Pagination
 func (cli *ZSClient) PageVpcSharedQos(params *param.QueryParam) ([]view.VpcSharedQosInventoryView, int, error) {
 	var vpcSharedQos []view.VpcSharedQosInventoryView

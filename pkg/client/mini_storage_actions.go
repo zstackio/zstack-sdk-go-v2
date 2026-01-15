@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryMiniStorage(params *param.QueryParam) ([]view.MiniStor
 	return resp, cli.List("v1/primary-storage/mini", params, &resp)
 }
 
+func (cli *ZSClient) GetMiniStorage(uuid string) (*view.MiniStorageInventoryView, error) {
+	var resp view.MiniStorageInventoryView
+	if err := cli.Get("v1/primary-storage/mini", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMiniStorage Pagination
 func (cli *ZSClient) PageMiniStorage(params *param.QueryParam) ([]view.MiniStorageInventoryView, int, error) {
 	var miniStorages []view.MiniStorageInventoryView

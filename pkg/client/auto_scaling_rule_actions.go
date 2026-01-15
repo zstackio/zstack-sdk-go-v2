@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryAutoScalingRule(params *param.QueryParam) ([]view.Auto
 	return resp, cli.List("v1/autoscaling/groups/rules", params, &resp)
 }
 
+func (cli *ZSClient) GetAutoScalingRule(uuid string) (*view.AutoScalingRuleInventoryView, error) {
+	var resp view.AutoScalingRuleInventoryView
+	if err := cli.Get("v1/autoscaling/groups/rules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAutoScalingRule Pagination
 func (cli *ZSClient) PageAutoScalingRule(params *param.QueryParam) ([]view.AutoScalingRuleInventoryView, int, error) {
 	var autoScalingRules []view.AutoScalingRuleInventoryView

@@ -20,6 +20,14 @@ func (cli *ZSClient) QueryExternalBackup(params *param.QueryParam) ([]view.Exter
 	return resp, cli.List("v1/externalbackup", params, &resp)
 }
 
+func (cli *ZSClient) GetExternalBackup(uuid string) (*view.ExternalBackupInventoryView, error) {
+	var resp view.ExternalBackupInventoryView
+	if err := cli.Get("v1/externalbackup", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageExternalBackup Pagination
 func (cli *ZSClient) PageExternalBackup(params *param.QueryParam) ([]view.ExternalBackupInventoryView, int, error) {
 	var externalBackups []view.ExternalBackupInventoryView

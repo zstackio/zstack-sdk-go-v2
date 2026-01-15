@@ -24,6 +24,14 @@ func (cli *ZSClient) QueryMulticastRouter(params *param.QueryParam) ([]view.Mult
 	return resp, cli.List("v1/multicast/virtual-routers", params, &resp)
 }
 
+func (cli *ZSClient) GetMulticastRouter(uuid string) (*view.MulticastRouterInventoryView, error) {
+	var resp view.MulticastRouterInventoryView
+	if err := cli.Get("v1/multicast/virtual-routers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMulticastRouter Pagination
 func (cli *ZSClient) PageMulticastRouter(params *param.QueryParam) ([]view.MulticastRouterInventoryView, int, error) {
 	var multicastRouters []view.MulticastRouterInventoryView

@@ -16,6 +16,14 @@ func (cli *ZSClient) QuerySftpBackupStorage(params *param.QueryParam) ([]view.Sf
 	return resp, cli.List("v1/backup-storage/sftp", params, &resp)
 }
 
+func (cli *ZSClient) GetSftpBackupStorage(uuid string) (*view.SftpBackupStorageInventoryView, error) {
+	var resp view.SftpBackupStorageInventoryView
+	if err := cli.Get("v1/backup-storage/sftp", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSftpBackupStorage Pagination
 func (cli *ZSClient) PageSftpBackupStorage(params *param.QueryParam) ([]view.SftpBackupStorageInventoryView, int, error) {
 	var sftpBackupStorages []view.SftpBackupStorageInventoryView

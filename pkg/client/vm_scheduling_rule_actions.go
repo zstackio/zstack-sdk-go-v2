@@ -44,6 +44,14 @@ func (cli *ZSClient) QueryVmSchedulingRule(params *param.QueryParam) ([]view.VmS
 	return resp, cli.List("v1/query/vm/schedulingRule", params, &resp)
 }
 
+func (cli *ZSClient) GetVmSchedulingRule(uuid string) (*view.VmSchedulingRuleInventoryView, error) {
+	var resp view.VmSchedulingRuleInventoryView
+	if err := cli.Get("v1/query/vm/schedulingRule", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmSchedulingRule Pagination
 func (cli *ZSClient) PageVmSchedulingRule(params *param.QueryParam) ([]view.VmSchedulingRuleInventoryView, int, error) {
 	var vmSchedulingRules []view.VmSchedulingRuleInventoryView

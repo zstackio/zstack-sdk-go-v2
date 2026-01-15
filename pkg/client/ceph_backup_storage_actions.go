@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryCephBackupStorage(params *param.QueryParam) ([]view.Ba
 	return resp, cli.List("v1/backup-storage/ceph", params, &resp)
 }
 
+func (cli *ZSClient) GetCephBackupStorage(uuid string) (*view.BackupStorageInventoryView, error) {
+	var resp view.BackupStorageInventoryView
+	if err := cli.Get("v1/backup-storage/ceph", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageCephBackupStorage Pagination
 func (cli *ZSClient) PageCephBackupStorage(params *param.QueryParam) ([]view.BackupStorageInventoryView, int, error) {
 	var cephBackupStorages []view.BackupStorageInventoryView

@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryOvnController(params *param.QueryParam) ([]view.OvnCon
 	return resp, cli.List("v1/ovn-controllers", params, &resp)
 }
 
+func (cli *ZSClient) GetOvnController(uuid string) (*view.OvnControllerInventoryView, error) {
+	var resp view.OvnControllerInventoryView
+	if err := cli.Get("v1/ovn-controllers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageOvnController Pagination
 func (cli *ZSClient) PageOvnController(params *param.QueryParam) ([]view.OvnControllerInventoryView, int, error) {
 	var ovnControllers []view.OvnControllerInventoryView

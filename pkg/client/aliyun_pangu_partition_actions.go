@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryAliyunPanguPartition(params *param.QueryParam) ([]view
 	return resp, cli.List("v1/aliyun/pangu", params, &resp)
 }
 
+func (cli *ZSClient) GetAliyunPanguPartition(uuid string) (*view.AliyunPanguPartitionInventoryView, error) {
+	var resp view.AliyunPanguPartitionInventoryView
+	if err := cli.Get("v1/aliyun/pangu", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageAliyunPanguPartition Pagination
 func (cli *ZSClient) PageAliyunPanguPartition(params *param.QueryParam) ([]view.AliyunPanguPartitionInventoryView, int, error) {
 	var aliyunPanguPartitions []view.AliyunPanguPartitionInventoryView

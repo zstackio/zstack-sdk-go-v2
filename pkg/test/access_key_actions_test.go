@@ -86,7 +86,7 @@ func TestCreateAccessKey(t *testing.T) {
 
 	createParam := param.CreateAccessKeyParam{
 		BaseParam: param.BaseParam{},
-		Params: param.CreateAccessKeyParamDetail{
+		CreateAccessKey: param.CreateAccessKeyParamDetail{
 			AccountUuid: sess.AccountUuid,
 			UserUuid:    sess.UserUuid,
 			Description: "Chi-test",
@@ -120,7 +120,7 @@ func TestCreateGetDeleteAccessKeyFlow(t *testing.T) {
 
 	createParam := param.CreateAccessKeyParam{
 		BaseParam: param.BaseParam{},
-		Params: param.CreateAccessKeyParamDetail{
+		CreateAccessKey: param.CreateAccessKeyParamDetail{
 			AccountUuid:     sess.AccountUuid,
 			UserUuid:        sess.UserUuid,
 			Description:     "Chi-test",

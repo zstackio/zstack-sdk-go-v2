@@ -20,6 +20,14 @@ func (cli *ZSClient) QueryMedia(params *param.QueryParam) ([]view.MediaInventory
 	return resp, cli.List("v1/media", params, &resp)
 }
 
+func (cli *ZSClient) GetMedia(uuid string) (*view.MediaInventoryView, error) {
+	var resp view.MediaInventoryView
+	if err := cli.Get("v1/media", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageMedia Pagination
 func (cli *ZSClient) PageMedia(params *param.QueryParam) ([]view.MediaInventoryView, int, error) {
 	var medias []view.MediaInventoryView

@@ -17,20 +17,19 @@ func (cli *ZSClient) QueryResourceConfig(params *param.QueryParam) ([]view.Resou
 	return resp, cli.List("v1/resource-configurations", params, &resp)
 }
 
+func (cli *ZSClient) GetResourceConfig(uuid string) (*view.ResourceConfigInventoryView, error) {
+	var resp view.ResourceConfigInventoryView
+	if err := cli.Get("v1/resource-configurations", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageResourceConfig Pagination
 func (cli *ZSClient) PageResourceConfig(params *param.QueryParam) ([]view.ResourceConfigInventoryView, int, error) {
 	var resourceConfigs []view.ResourceConfigInventoryView
 	total, err := cli.Page("v1/resource-configurations", params, &resourceConfigs)
 	return resourceConfigs, total, err
-}
-// GetResourceConfig gets ResourceConfig by uuid
-func (cli *ZSClient) GetResourceConfig(resourceUuid string, category string, name string) (*view.ResourceConfigInventoryView, error) {
-	var resp view.ResourceConfigInventoryView
-	err := cli.GetWithSpec("v1/resource-configurations", resourceUuid, fmt.Sprintf("%s/%s", category, name), "", nil, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return &resp, nil
 }
 // UpdateResourceConfig updates ResourceConfig
 func (cli *ZSClient) UpdateResourceConfig(category string, name string, resourceUuid string, params param.UpdateResourceConfigParam) (*view.ResourceConfigInventoryView, error) {

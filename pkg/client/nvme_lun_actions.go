@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryNvmeLun(params *param.QueryParam) ([]view.NvmeLunInven
 	return resp, cli.List("v1/storage-devices/nvme/luns", params, &resp)
 }
 
+func (cli *ZSClient) GetNvmeLun(uuid string) (*view.NvmeLunInventoryView, error) {
+	var resp view.NvmeLunInventoryView
+	if err := cli.Get("v1/storage-devices/nvme/luns", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageNvmeLun Pagination
 func (cli *ZSClient) PageNvmeLun(params *param.QueryParam) ([]view.NvmeLunInventoryView, int, error) {
 	var nvmeLuns []view.NvmeLunInventoryView

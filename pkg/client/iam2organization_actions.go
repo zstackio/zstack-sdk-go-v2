@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryIAM2Organization(params *param.QueryParam) ([]view.IAM
 	return resp, cli.List("v1/iam2/organizations", params, &resp)
 }
 
+func (cli *ZSClient) GetIAM2Organization(uuid string) (*view.IAM2OrganizationInventoryView, error) {
+	var resp view.IAM2OrganizationInventoryView
+	if err := cli.Get("v1/iam2/organizations", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageIAM2Organization Pagination
 func (cli *ZSClient) PageIAM2Organization(params *param.QueryParam) ([]view.IAM2OrganizationInventoryView, int, error) {
 	var iAM2Organizations []view.IAM2OrganizationInventoryView

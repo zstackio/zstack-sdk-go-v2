@@ -16,6 +16,14 @@ func (cli *ZSClient) QueryWebhook(params *param.QueryParam) ([]view.WebhookInven
 	return resp, cli.List("v1/web-hooks", params, &resp)
 }
 
+func (cli *ZSClient) GetWebhook(uuid string) (*view.WebhookInventoryView, error) {
+	var resp view.WebhookInventoryView
+	if err := cli.Get("v1/web-hooks", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageWebhook Pagination
 func (cli *ZSClient) PageWebhook(params *param.QueryParam) ([]view.WebhookInventoryView, int, error) {
 	var webhooks []view.WebhookInventoryView

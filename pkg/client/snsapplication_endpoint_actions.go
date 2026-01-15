@@ -16,6 +16,14 @@ func (cli *ZSClient) QuerySNSApplicationEndpoint(params *param.QueryParam) ([]vi
 	return resp, cli.List("v1/sns/application-endpoints", params, &resp)
 }
 
+func (cli *ZSClient) GetSNSApplicationEndpoint(uuid string) (*view.SNSApplicationEndpointInventoryView, error) {
+	var resp view.SNSApplicationEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageSNSApplicationEndpoint Pagination
 func (cli *ZSClient) PageSNSApplicationEndpoint(params *param.QueryParam) ([]view.SNSApplicationEndpointInventoryView, int, error) {
 	var sNSApplicationEndpoints []view.SNSApplicationEndpointInventoryView

@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryVmCdRom(params *param.QueryParam) ([]view.VmCdRomInven
 	return resp, cli.List("v1/vm-instances/cdroms", params, &resp)
 }
 
+func (cli *ZSClient) GetVmCdRom(uuid string) (*view.VmCdRomInventoryView, error) {
+	var resp view.VmCdRomInventoryView
+	if err := cli.Get("v1/vm-instances/cdroms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageVmCdRom Pagination
 func (cli *ZSClient) PageVmCdRom(params *param.QueryParam) ([]view.VmCdRomInventoryView, int, error) {
 	var vmCdRoms []view.VmCdRomInventoryView

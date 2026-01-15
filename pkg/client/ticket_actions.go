@@ -28,6 +28,14 @@ func (cli *ZSClient) QueryTicket(params *param.QueryParam) ([]view.TicketInvento
 	return resp, cli.List("v1/tickets", params, &resp)
 }
 
+func (cli *ZSClient) GetTicket(uuid string) (*view.TicketInventoryView, error) {
+	var resp view.TicketInventoryView
+	if err := cli.Get("v1/tickets", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // PageTicket Pagination
 func (cli *ZSClient) PageTicket(params *param.QueryParam) ([]view.TicketInventoryView, int, error) {
 	var tickets []view.TicketInventoryView

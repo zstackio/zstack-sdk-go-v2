@@ -19,6 +19,11 @@ type CreateSshKeyPairEventView struct {
 	Inventory SshKeyPairInventoryView `json:"inventory,omitempty"`
 }
 
+// GenerateSshKeyPairView GenerateSshKeyPair
+type GenerateSshKeyPairView struct {
+	Inventory SshPrivateKeyPairInventoryView `json:"inventory,omitempty"`
+}
+
 // UpdateSshKeyPairEventView UpdateSshKeyPairEvent
 type UpdateSshKeyPairEventView struct {
 	Inventory SshKeyPairInventoryView `json:"inventory,omitempty"`
