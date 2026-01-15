@@ -3,4 +3,3 @@
 .vscode
 
 # Ignore provider test file
-/pkg/test/base_actions_test.go
