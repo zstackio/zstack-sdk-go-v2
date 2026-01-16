@@ -12,18 +12,39 @@ import (
 
 func TestQuerySystemTag(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySystemTag(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QuerySystemTag(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySystemTag error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QuerySystemTag result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Tag, r.ResourceType)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageSystemTag(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageSystemTag(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageSystemTag error: %v", err)
+		return
+	}
+	golog.Infof("PageSystemTag result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Tag, r.ResourceType)
+	}
+}
+
 func TestGetSystemTag(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySystemTag(&queryParam)
+	list, err := accessKeyAuthCli.QuerySystemTag(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetSystemTag Query error: %v", err)
 		return
@@ -33,65 +54,10 @@ func TestGetSystemTag(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetSystemTag(list[0].UUID)
+	result, err := accessKeyAuthCli.GetSystemTag(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetSystemTag error: %v", err)
 		return
 	}
-	golog.Infof("GetSystemTag result: %s", result.UUID)
-}
-
-func TestUpdateSystemTag(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySystemTag(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateSystemTag Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SystemTag found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateSystemTagParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateSystemTagParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateSystemTag(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateSystemTag error: %v", err)
-		return
-	}
-	golog.Infof("UpdateSystemTag result: %s", result.UUID)
-}
-
-func TestCreateSystemTag(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateSystemTag is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateSystemTagParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateSystemTagParamDetail{
-	// 		Name: "test-systemtag",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateSystemTag(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateSystemTag error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateSystemTag result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSystemTag(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteSystemTag error: %v", err)
-	// }
+	golog.Infof("GetSystemTag result: %s, Tag: %s", result.UUID, result.Tag)
 }

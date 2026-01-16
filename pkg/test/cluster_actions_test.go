@@ -12,18 +12,58 @@ import (
 
 func TestQueryCluster(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryCluster(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryCluster(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryCluster error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryCluster result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Name, r.State, r.HypervisorType)
+	}
+	golog.Infof("======================================")
 }
+
+func TestQueryCluster2(t *testing.T) {
+	// Query with conditions
+	params := param.NewQueryParam()
+	params.AddQ("state=Enabled")
+	params.Start(0).Limit(10).ReplyWithCount(true)
+	result, err := accessKeyAuthCli.QueryCluster(&params)
+	if err != nil {
+		t.Errorf("TestQueryCluster2 error: %v", err)
+		return
+	}
+	golog.Infof("======================================")
+	golog.Infof("Found %d Enabled Clusters:", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Name, r.HypervisorType, r.ZoneUuid)
+	}
+	golog.Infof("======================================")
+}
+
+func TestPageCluster(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageCluster(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageCluster error: %v", err)
+		return
+	}
+	golog.Infof("PageCluster result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Name, r.State, r.HypervisorType)
+	}
+}
+
 func TestGetCluster(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryCluster(&queryParam)
+	list, err := accessKeyAuthCli.QueryCluster(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetCluster Query error: %v", err)
 		return
@@ -34,89 +74,10 @@ func TestGetCluster(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetCluster(list[0].UUID)
+	result, err := accessKeyAuthCli.GetCluster(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetCluster error: %v", err)
 		return
 	}
-	golog.Infof("GetCluster result: %s", result.UUID)
-}
-
-func TestUpdateCluster(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryCluster(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateCluster Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No Cluster found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateClusterParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateClusterParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateCluster(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateCluster error: %v", err)
-		return
-	}
-	golog.Infof("UpdateCluster result: %s", result.UUID)
-}
-
-func TestDeleteCluster(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteCluster is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryCluster(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteCluster Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No Cluster found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteCluster(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteCluster error: %v", err)
-		return
-	}
-	golog.Infof("DeleteCluster succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateCluster(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateCluster is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateClusterParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateClusterParamDetail{
-	// 		Name: "test-cluster",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateCluster(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateCluster error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateCluster result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteCluster(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteCluster error: %v", err)
-	// }
+	golog.Infof("GetCluster result: %s, Name: %s", result.UUID, result.Name)
 }

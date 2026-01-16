@@ -35,7 +35,7 @@ func TestGetAccountResourceRef(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetAccountResourceRef(list[0].UUID)
+	result, err := accountLoginCli.GetAccountResourceRef("36c27e8ff05c4780bf6d2fa65700f22e")
 	if err != nil {
 		t.Errorf("TestGetAccountResourceRef error: %v", err)
 		return

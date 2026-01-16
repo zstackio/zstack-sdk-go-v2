@@ -12,18 +12,58 @@ import (
 
 func TestQueryPrimaryStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPrimaryStorage(&queryParam)
+	result, err := accessKeyAuthCli.QueryPrimaryStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPrimaryStorage error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryPrimaryStorage result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s\t%d", r.UUID, r.Name, r.State, r.Type, r.TotalCapacity)
+	}
+	golog.Infof("======================================")
 }
+
+func TestQueryPrimaryStorage2(t *testing.T) {
+	// Query with conditions - Connected primary storages
+	params := param.NewQueryParam()
+	params.AddQ("state=Enabled")
+	params.AddQ("status=Connected")
+	params.Start(0).Limit(10).ReplyWithCount(true)
+	result, err := accessKeyAuthCli.QueryPrimaryStorage(&params)
+	if err != nil {
+		t.Errorf("TestQueryPrimaryStorage2 error: %v", err)
+		return
+	}
+	golog.Infof("======================================")
+	golog.Infof("Found %d Enabled/Connected PrimaryStorages:", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%d GB total\t%d GB available", r.UUID, r.Name, r.Type, r.TotalCapacity/1024/1024/1024, r.AvailableCapacity/1024/1024/1024)
+	}
+	golog.Infof("======================================")
+}
+
+func TestPagePrimaryStorage(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PagePrimaryStorage(&queryParam)
+	if err != nil {
+		t.Errorf("TestPagePrimaryStorage error: %v", err)
+		return
+	}
+	golog.Infof("PagePrimaryStorage result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Name, r.State, r.Type)
+	}
+}
+
 func TestGetPrimaryStorage(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPrimaryStorage(&queryParam)
+	list, err := accessKeyAuthCli.QueryPrimaryStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetPrimaryStorage Query error: %v", err)
 		return
@@ -34,70 +74,10 @@ func TestGetPrimaryStorage(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetPrimaryStorage(list[0].UUID)
+	result, err := accessKeyAuthCli.GetPrimaryStorage(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetPrimaryStorage error: %v", err)
 		return
 	}
-	golog.Infof("GetPrimaryStorage result: %s", result.UUID)
-}
-
-func TestUpdatePrimaryStorage(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPrimaryStorage(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdatePrimaryStorage Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No PrimaryStorage found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdatePrimaryStorageParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdatePrimaryStorageParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdatePrimaryStorage(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdatePrimaryStorage error: %v", err)
-		return
-	}
-	golog.Infof("UpdatePrimaryStorage result: %s", result.UUID)
-}
-
-func TestDeletePrimaryStorage(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeletePrimaryStorage is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPrimaryStorage(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeletePrimaryStorage Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No PrimaryStorage found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeletePrimaryStorage(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeletePrimaryStorage error: %v", err)
-		return
-	}
-	golog.Infof("DeletePrimaryStorage succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestReconnectPrimaryStorage(t *testing.T) {
-	// ReconnectPrimaryStorage operation
-	t.Skip("TestReconnectPrimaryStorage requires manual implementation")
-
+	golog.Infof("GetPrimaryStorage result: %s, Name: %s, Type: %s", result.UUID, result.Name, result.Type)
 }

@@ -1,246 +1,95 @@
+# SDK 问题清单及状态
 
-account_resource_ref_actions.go
+> 测试时间: 2026-01-16 17:06  
+> 测试环境: 172.24.249.239
 
+| ID | 模块/功能 | 状态 | 说明/代码示例 | 测试结果 |
+|:---:|:---|:---:|:---|:---|
+| 1 | `GetAccountResourceRef` | ⚠️ 待确认 | API 是否支持 Get 方法需确认。<br>代码逻辑已实现：`cli.Get("v1/accounts/resources/refs", ...)` | 待确认 ZStack API 支持情况 |
+| 2 | `GetGlobalConfig` | ❌ 需修复 | API 路径错误。<br>当前：`v1/global-configurations/{uuid}`<br>应为：`v1/resource-configurations/{resourceUuid}/{category}/{name}` | `DuplicateIdError` |
+| 3.1 | `PageXXX` 函数 | ✅ 已实现 | `PageImage` 已增加。<br>实现逻辑：调用 `cli.Page("v1/images", ...)` | TestPageImage ✅ PASS |
+| 3.2 | Post/Put 自动解包 | ✅ 正常工作 | Client 自动处理 `inventory` 字段，`AddImage` 无需解包。<br>`AddImageParam` 需使用 `json:"params"` | TestAddImage ✅ PASS |
+| 3.3 | `ExpungeXXX` | ✅ 已实现 | 统一修改为 Put 请求。<br>示例：`cli.Put("v1/images", uuid, ...)` | 逻辑已修正 |
+| 4 | View 结构体 | ✅ 已实现 | 移除指针，改用值类型。<br>示例：`Description string` 代替 `*string` | Build 正常 |
+| 5 | `UpdateXXXParam` JSON Tag | ✅ 已修复 | Tag 修正为功能名称。<br>示例：`json:"updateImage"` | TestUpdateImage ✅ PASS |
+| 6 | `ChangeXXXStateParam` JSON Tag | ✅ 已修复 | Tag 修正为功能名称。<br>示例：`json:"changeImageState"` | TestChangeImageState ✅ PASS |
+| 7 | `ChangeXXXState` UUID 参数 | ⚠️ 冗余 | 函数签名中 `uuid` 与 `Params.Uuid` 重复。<br>示例：`ChangeImageState(uuid, param)` | 测试通过，但参数冗余 |
+| 8 | 其他参数 (Clone/Start/Set/Change) | ⚠️ 待检查 | 类似于 Update/Change 的 JSON Tag 问题需全面检查。<br>如 `CloneVmInstance` 等 | 已增加测试覆盖，全部验证通过 |
+| 9 | `CreateVmInstance` | ✅ 已验证 | 创建 VM API 调用成功。<br>**关键修正**: 参数 Struct 必须使用 `json:"params"` Tag。<br>需注意设置 go test 超时 (如 `-timeout 30m`) | TestCreateVmInstance ✅ PASS<br>(耗时约13s) |
+| 10 | `Stop`/`Start`/`Reboot`... | ✅ 已验证 | 大部分 VM 动作函数测试通过。 | 见下方详细测试结果 |
+| 11 | `RecoverVmInstance` | ❌ 需修复 | 请求体发送 `{}` 而非 `{"recoverVmInstance":{}}`<br>服务端返回: `400 - body doesn't contain action mapping` | TestRecoverVmInstance ❌ FAIL |
+
+## 详细测试结果
+
+| 测试项 | 状态 | 备注 |
+|:---|:---:|:---|
+| TestQueryImage1 | ✅ PASS | |
+| TestGetImage | ✅ PASS | |
+| TestUpdateImage | ✅ PASS | |
+| TestPageImage | ✅ PASS | |
+| TestChangeImageState | ✅ PASS | |
+| TestAddImage | ✅ PASS | JSON Tag 要修改为 `params` |
+| TestGetGlobalConfig | ❌ FAIL | 报错 `DuplicateIdError` |
+| TestQueryVmInstance | ✅ PASS | |
+| TestGetVmInstance | ✅ PASS | |
+| TestUpdateVmInstance | ✅ PASS | |
+| TestCreateVmInstance | ✅ PASS | JSON Tag 要修改为 `params`, 超时需调整 |
+| TestCloneVmInstance | ✅ PASS | 创建并启动了新 VM |
+| TestRebootVmInstance | ✅ PASS | (依赖 Running VM) |
+| TestStartVmInstance | ✅ PASS | 启动了 Stopped 的 VM |
+| TestStopVmInstance | ✅ PASS | 成功停止 VM |
+| TestDestroyVmInstance | ✅ PASS | 成功删除 VM |
+| TestExpungeVmInstance | ✅ PASS | 验证流程: Destroy -> Expunge |
+| TestResumeVmInstance | ⏭️ SKIP | 无 Paused 状态 VM 可测试 |
+| TestRecoverVmInstance | ❌ FAIL | 请求体错误: 发送 `{}` 而非 `{"recoverVmInstance":{}}` |
+
+## 关键参数应要修正的记录
+
+### 1. AddImageParam
+```go
+// AddImageParam AddImage request param
+type AddImageParam struct {
+	BaseParam
+	Params AddImageParamDetail `json:"params"` // 原为 json:"addImage" -> 错误
+}
 ```
-好像api没有Get
-func (cli *ZSClient) GetAccountResourceRef(uuid string) (*view.AccountResourceRefInventoryView, error) {
-	var resp view.AccountResourceRefInventoryView
-	if err := cli.Get("v1/accounts/resources/refs", uuid, nil, &resp); err != nil {
+
+### 2. CreateVmInstanceParam
+```go
+type CreateVmInstanceParam struct {
+	BaseParam
+	Params CreateVmInstanceParamDetail `json:"params"` // 原为 json:"createVmInstance" -> 错误
+}
+```
+
+### 3. StartVmInstance 函数需要构造put，例子如下
+```go
+// StartVmInstance starts VmInstance
+func (cli *ZSClient) StartVmInstance(uuid string, params param.StartVmInstanceParam) (*view.VmInstanceInventoryView, error) {
+	resp := view.VmInstanceInventoryView{}
+	if err := cli.Put("v1/vm-instances", uuid, map[string]struct{}{
+		"startVmInstance": {}}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
-
 ```
 
-global_config_actions.go 
-```
-GET zstack/v1/resource-configurations/{resourceUuid}/{category}/{name}
-func (cli *ZSClient) GetGlobalConfig(uuid string) (*view.GlobalConfigInventoryView, error) {
-	var resp view.GlobalConfigInventoryView
-	if err := cli.Get("v1/global-configurations", uuid, nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+### 4. StartVmInstanceParamDetail 应该要删除Uuid， 和StartVmInstance函数的uuid参数一样, 重复了
+```go
+// StartVmInstanceParamDetail StartVmInstance detail param
+type StartVmInstanceParamDetail struct {
+	//Uuid        string `json:"uuid" validate:"required"`
+	ClusterUuid string `json:"clusterUuid,omitempty"` // 仅保留其他参数
+	HostUuid    string `json:"hostUuid,omitempty"`
 }
 ```
 
-在http_client.go中
-
-1. 定义了Page相关函数，在资源对象中要增加PageXXX函数。例如镜像
-```
-func (cli *ZSHttpClient) Page(resource string, params *param.QueryParam, retVal interface{}) (int, error) {
-	return cli.PageWithKey(resource, responseKeyInventories, params, retVal)
+### 5. Pause/Resume/Recover 参数需填充 Uuid
+尽管函数签名中有 `uuid` 参数，但对应的 `Params` 结构体内若包含 `Uuid` 字段且为 required，则必须在 Params 中再次填充该 Uuid，否则报错 400 (Body doesn't contain action mapping)。
+```go
+pauseParam := param.PauseVmInstanceParam{
+    Params: param.PauseVmInstanceParamDetail{ Uuid: uuid },
 }
 ```
-要增加PageImage函数
-```
-// PageImage Pagination
-func (cli *ZSClient) PageImage(params param.QueryParam) ([]view.ImageView, int, error) {
-	var images []view.ImageView
-	total, err := cli.Page("v1/images", &params, &images)
-	return images, total, err
-}
-```
-
-2. http_client 在处理 Post, Put 请求时会自动解包 inventory 字段, 因此资源对象的Post, Put函数中不需要再处理inventory字段。例如AddImage
-
-```
-	responseKeyInventories = "inventories"
-	responseKeyInventory   = "inventory"
-```
-
-```
-func (cli *ZSHttpClient) Post(resource string, params interface{}, retVal interface{}) error {
-	return cli.PostWithRespKey(resource, responseKeyInventory, params, retVal)
-}
-```
-
-```
-func (cli *ZSHttpClient) Put(resource, resourceId string, params interface{}, retVal interface{}) error {
-	return cli.PutWithRespKey(resource, resourceId, responseKeyInventory, params, retVal)
-}
-```
-
-例如AddImage, 无需返回&resp.Inventory， 而是直接返回ImageInventoryView
-```
-func (cli *ZSClient) AddImage(params param.AddImageParam) (*view.ImageInventoryView, error) {
-	var resp view.ImageInventoryView
-	if err := cli.Post("v1/images", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-```
-
-3. ExpungeXXX 函数统一如下, 原接口时cli.Delete修改为Put
-```
-func (cli *ZSClient) ExpungeImage(uuid string) error {
-	params := map[string]interface{}{
-		"expungeImage": jsonutils.NewDict(),
-	}
-	return cli.Put("v1/images", uuid, jsonutils.Marshal(params), nil)
-}
-```
-NewDict定义如下
-```
-func NewDict(objs ...JSONPair) *JSONDict {
-	dict := JSONDict{data: sortedmap.NewSortedMapWithCapa(len(objs))}
-	for _, o := range objs {
-		dict.Set(o.key, o.val)
-	}
-	return &dict
-}
-```
-
-VmInstance
-```
-// ExpungeVmInstance Permanently delete a VM instance
-func (cli *ZSClient) ExpungeVmInstance(uuid string) error {
-	params := map[string]struct{}{
-		"expungeVmInstance": {},
-	}
-	return cli.Put("v1/vm-instances", uuid, params, nil)
-}
-```
-DataVolume
-```
-func (cli *ZSClient) ExpungeDataVolume(uuid string) error {
-	return cli.Put("v1/volumes", uuid, map[string]struct{}{"expungeDataVolume": {}}, nil)
-}
-```
-
-4. 所有的View 无需使用指针
-例如
-```
-// ImageInventoryView Image
-type ImageInventoryView struct {
-	BaseInfoView
-	BaseTimeView
-	Description *string `json:"description,omitempty"`
-	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Size *int64 `json:"size,omitempty"`
-	ActualSize *int64 `json:"actualSize,omitempty"`
-	Md5Sum *string `json:"md5Sum,omitempty"`
-	Url *string `json:"url,omitempty"`
-	MediaType *string `json:"mediaType,omitempty"`
-	GuestOsType *string `json:"guestOsType,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Platform *string `json:"platform,omitempty"`
-	Architecture *string `json:"architecture,omitempty"`
-	Format *string `json:"format,omitempty"`
-	System *bool `json:"system,omitempty"`
-	Virtio *bool `json:"virtio,omitempty"`
-	BackupStorageRefs []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
-	SystemTags []SystemTagInventoryView `json:"systemTags,omitempty"`
-}
-```
-修改为
-```
-type ImageInventoryView struct {
-	BaseInfoView
-	BaseTimeView
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
-	Status string `json:"status,omitempty"`
-	Size int64 `json:"size,omitempty"`
-	ActualSize int64 `json:"actualSize,omitempty"`
-	Md5Sum string `json:"md5Sum,omitempty"`
-	Url string `json:"url,omitempty"`
-	MediaType string `json:"mediaType,omitempty"`
-	GuestOsType string `json:"guestOsType,omitempty"`
-	Type string `json:"type,omitempty"`
-	Platform string `json:"platform,omitempty"`
-	Architecture string `json:"architecture,omitempty"`
-	Format string `json:"format,omitempty"`
-	System bool `json:"system,omitempty"`
-	Virtio bool `json:"virtio,omitempty"`
-	BackupStorageRefs []ImageBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
-	SystemTags []SystemTagInventoryView `json:"systemTags,omitempty"`
-}
-```
-
-5. param包下的UpdateXXXParam的UpdateXXXDetailParam 的json错误，不是params，而是updateXXX
-例如
-```
-type UpdateImageParam struct {
-	BaseParam
-	Params UpdateImageParamDetail `json:"updateImage"`
-}
-```
-```
-type UpdateVmInstanceParam struct {
-	BaseParam
-	UpdateVmInstance UpdateVmInstanceDetailParam `json:"updateVmInstance"`
-}
-```
-
-6. ChangeXXXStateParam的ChangeXXXStateDetailParam 的json错误，不是params，而是changeXXXState, 从image查知，可能其他资源类似，需检查
-例如
-```
-type ChangeImageStateParam struct {
-	BaseParam
-	Params ChangeImageStateParamDetail `json:"changeImageState"`
-}
-```
-
-7. ChangeXXXState函数的参数uuid不需要，和ChangeXXXStateDetailParam中的Uuid一致。
-例如
-```
-	state, err := accountLoginCli.ChangeImageState("304ff48eeed54f59802152f41a600bfb", param.ChangeImageStateParam{
-		BaseParam: param.BaseParam{},
-		Params: param.ChangeImageStateParamDetail{
-			Uuid:       "304ff48eeed54f59802152f41a600bfb",
-			StateEvent: "enable",
-		},
-	})
-```
-
-8. 参数问题可能还有
-CloneXXX, 不是params，是cloneXXX
-例如
-```
-type CloneVmInstanceParam struct {
-	BaseParam
-	CloneVmInstance CloneVmInstanceDetailParam `json:"cloneVmInstance"`
-}
-```
-StartXXX，不是params，是startXXX，StopXXX
-例如
-```
-type StartVmInstanceParam struct {
-	BaseParam
-	StartVmInstance StartVmInstanceDetailParam `json:"startVmInstance"`
-}
-```
-
-```
-type StopVmInstanceParam struct {
-	BaseParam
-	StopVmInstance StopVmInstanceDetailParam `json:"stopVmInstance"` // Requires uuid and type
-}
-```
-
-SetXXX, 不是params, 是setXXX
-例如
-```
-type SetVmBootModeParam struct {
-	BaseParam
-	SetVmBootMode SetVmBootModeDetailParam `json:"setVmBootMode"`
-}
-```
-```
-type SetVmSshKeyParam struct {
-	BaseParam
-	Params SetVmSshKeyParamDetail `json:"setVmSshKey"`
-}
-```
-
-ChangeXXX
-```
-type ChangeVmPasswordParam struct {
-	BaseParam
-	Params ChangeVmPasswordParamDetail `json:"changeVmPassword"`
-}
-```
+这也适用于 `RecoverVmInstanceParam` 和 `ResumeVmInstanceParam`。

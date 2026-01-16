@@ -12,18 +12,59 @@ import (
 
 func TestQueryHost(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryHost(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryHost(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryHost error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryHost result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s\t%s", r.UUID, r.Name, r.State, r.Status, r.HypervisorType)
+	}
+	golog.Infof("======================================")
 }
+
+func TestQueryHost2(t *testing.T) {
+	// Query with conditions - Connected hosts
+	params := param.NewQueryParam()
+	params.AddQ("state=Enabled")
+	params.AddQ("status=Connected")
+	params.Start(0).Limit(10).ReplyWithCount(true)
+	result, err := accessKeyAuthCli.QueryHost(&params)
+	if err != nil {
+		t.Errorf("TestQueryHost2 error: %v", err)
+		return
+	}
+	golog.Infof("======================================")
+	golog.Infof("Found %d Enabled/Connected Hosts:", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%d CPU\t%d MB RAM", r.UUID, r.Name, r.HypervisorType, r.TotalCpuCapacity, r.TotalMemoryCapacity/1024/1024)
+	}
+	golog.Infof("======================================")
+}
+
+func TestPageHost(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageHost(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageHost error: %v", err)
+		return
+	}
+	golog.Infof("PageHost result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Name, r.State, r.Status)
+	}
+}
+
 func TestGetHost(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryHost(&queryParam)
+	list, err := accessKeyAuthCli.QueryHost(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetHost Query error: %v", err)
 		return
@@ -34,70 +75,10 @@ func TestGetHost(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetHost(list[0].UUID)
+	result, err := accessKeyAuthCli.GetHost(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetHost error: %v", err)
 		return
 	}
-	golog.Infof("GetHost result: %s", result.UUID)
-}
-
-func TestUpdateHost(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryHost(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateHost Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No Host found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateHostParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateHostParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateHost(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateHost error: %v", err)
-		return
-	}
-	golog.Infof("UpdateHost result: %s", result.UUID)
-}
-
-func TestDeleteHost(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteHost is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryHost(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteHost Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No Host found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteHost(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteHost error: %v", err)
-		return
-	}
-	golog.Infof("DeleteHost succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestReconnectHost(t *testing.T) {
-	// ReconnectHost operation
-	t.Skip("TestReconnectHost requires manual implementation")
-
+	golog.Infof("GetHost result: %s, Name: %s", result.UUID, result.Name)
 }

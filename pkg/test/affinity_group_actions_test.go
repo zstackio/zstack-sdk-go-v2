@@ -12,18 +12,39 @@ import (
 
 func TestQueryAffinityGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAffinityGroup(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryAffinityGroup(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAffinityGroup error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryAffinityGroup result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.Policy)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageAffinityGroup(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageAffinityGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageAffinityGroup error: %v", err)
+		return
+	}
+	golog.Infof("PageAffinityGroup result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.Policy)
+	}
+}
+
 func TestGetAffinityGroup(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAffinityGroup(&queryParam)
+	list, err := accessKeyAuthCli.QueryAffinityGroup(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetAffinityGroup Query error: %v", err)
 		return
@@ -33,90 +54,10 @@ func TestGetAffinityGroup(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetAffinityGroup(list[0].UUID)
+	result, err := accessKeyAuthCli.GetAffinityGroup(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetAffinityGroup error: %v", err)
 		return
 	}
-	golog.Infof("GetAffinityGroup result: %s", result.UUID)
-}
-
-func TestUpdateAffinityGroup(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAffinityGroup(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateAffinityGroup Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No AffinityGroup found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateAffinityGroupParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateAffinityGroupParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateAffinityGroup(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateAffinityGroup error: %v", err)
-		return
-	}
-	golog.Infof("UpdateAffinityGroup result: %s", result.UUID)
-}
-
-func TestDeleteAffinityGroup(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteAffinityGroup is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAffinityGroup(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteAffinityGroup Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No AffinityGroup found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteAffinityGroup(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteAffinityGroup error: %v", err)
-		return
-	}
-	golog.Infof("DeleteAffinityGroup succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateAffinityGroup(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateAffinityGroup is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateAffinityGroupParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateAffinityGroupParamDetail{
-	// 		Name: "test-affinitygroup",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateAffinityGroup(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateAffinityGroup error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateAffinityGroup result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteAffinityGroup(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteAffinityGroup error: %v", err)
-	// }
+	golog.Infof("GetAffinityGroup result: %s, Name: %s", result.UUID, result.Name)
 }

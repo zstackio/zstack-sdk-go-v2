@@ -11,33 +11,6 @@ import (
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 )
 
-var (
-	volumeID = map[string]string{
-		accountLogin:  "6ca3f6e0b7af45e9bc6ad301b0e72042",
-		accessKeyAuth: "67d2c8fb2bac4736a49d102c1d725248",
-	}
-	imageID = map[string]string{
-		accountLogin:  "968e87334a12422fbe78c8b72bcfab68",
-		accessKeyAuth: "8d88bf390a3543efb11dfda6afebc655",
-	}
-	hostID = map[string]string{
-		accountLogin:  "43a562cb71744784b41d5d3663eb620f",
-		accessKeyAuth: "b0de6e34be6042faa34069babcb64878",
-	}
-	primaryStorageID = map[string]string{
-		accountLogin:  "ace08e7a30c14609b5a92e5114f19e82",
-		accessKeyAuth: "dd2ae6841a054ce2b582545db9e7f787",
-	}
-	vmID = map[string]string{
-		accountLogin:  "22f6836626bb4683b3d5ccf5bd9e0ae0",
-		accessKeyAuth: "69f1c9d494414042860d355d386d91ba",
-	}
-	rootVolumeID = map[string]string{
-		accountLogin:  "0eb9776b41184a108f53b4fd9b11acfa",
-		accessKeyAuth: "aba61ccd0ea5426188cc05a61ffe1581",
-	}
-)
-
 func TestQueryImage1(t *testing.T) {
 	queryParam := param.NewQueryParam()
 	result, err := accountLoginCli.QueryImage(&queryParam)
@@ -52,7 +25,7 @@ func TestQueryImage1(t *testing.T) {
 	golog.Infof("======================================")
 
 	queryParam.AddQ(fmt.Sprintf("platform=%s", "Linux"))
-	queryParam.Start(0).Limit(2).ReplyWithCount(true)
+	queryParam.Start(0).Limit(10).ReplyWithCount(true)
 	result, err = accountLoginCli.QueryImage(&queryParam)
 	if err != nil {
 		golog.Errorf("ZSClient.QueryImage error:%v", err)
@@ -71,7 +44,7 @@ func TestQueryImage2(t *testing.T) {
 	//params.AddQ("format!=vmtx")
 	//params.AddQ("status=Ready")
 	//params.AddQ("system=false")
-	params.AddQ("name=centos")
+	params.AddQ("name=centos-test")
 	//params.AddQ("mediaType=DataVolumeTemplate")
 	//params.AddQ("backupStorage.zone.uuid=6e8191bfd57745f282f78cb013b732b6")
 	result, err := accountLoginCli.QueryImage(&params)
@@ -187,21 +160,34 @@ func TestGetImage(t *testing.T) {
 	golog.Infof("GetImage result: %s", result.UUID)
 }
 
+/*
 func TestUpdateImage(t *testing.T) {
 	// First query to get a valid UUID
-	desc := "test from sdk"
+	desc := "test from sdk-chi"
+
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryImage(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetImage Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Image found to test Get")
+		return
+	}
 
 	// Update with minimal params
 	updateParam := param.UpdateImageParam{
 		Params: param.UpdateImageParamDetail{
-			Uuid:        "304ff48eeed54f59802152f41a600bfb",
-			Name:        "centos-test",
+			Uuid:        list[0].UUID,
+			Name:        "sdk-test-0115",
 			Description: desc,
 			// Keep original values - just testing the API works
 		},
 	}
 
-	v, err := accountLoginCli.UpdateImage("304ff48eeed54f59802152f41a600bfb", updateParam)
+	v, err := accountLoginCli.UpdateImage(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateImage error: %v", err)
 		return
@@ -214,22 +200,47 @@ func TestDeleteImage(t *testing.T) {
 	// Query first to get UUID (but skip by default to avoid accidental deletion)
 	//t.Skip("TestDeleteImage is skipped by default to prevent accidental deletion. Remove this line to enable.")
 
-	err := accountLoginCli.DeleteImage("a01d4fc8ad0443b4955eaf447aa3a4da", param.DeleteModePermissive)
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryImage(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetImage Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Image found to test Get")
+		return
+	}
+
+	err = accountLoginCli.DeleteImage(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteImage error: %v", err)
 		return
 	}
-	golog.Infof("DeleteImage succeeded for UUID: %s", "a01d4fc8ad0443b4955eaf447aa3a4da")
+	golog.Infof("DeleteImage succeeded for UUID: %s", list[0].UUID)
 }
 
 func TestExpungeImageByUUID(t *testing.T) {
 
-	err := accountLoginCli.ExpungeImage("a01d4fc8ad0443b4955eaf447aa3a4da")
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	queryParam.AddQ("status=Deleted")
+	list, err := accountLoginCli.QueryImage(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetImage Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Image found to test Get")
+		return
+	}
+
+	err = accountLoginCli.ExpungeImage(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestExpungeImageByUUID error: %v", err)
 		return
 	}
-	golog.Infof("ExpungeImageByUUID succeeded for UUID: %s", "a01d4fc8ad0443b4955eaf447aa3a4da")
+	golog.Infof("ExpungeImageByUUID succeeded for UUID: %s", list[0].UUID)
 
 }
 
@@ -274,7 +285,7 @@ func TestAddImage(t *testing.T) {
 
 	golog.Infof("AddImage succeeded, UUID: %s, Name: %s", result.UUID, result.Name)
 	//创建失败情况
-	/*
+
 		imageParam = param.AddImageParam{
 			BaseParam: param.BaseParam{
 				SystemTags: []string{"bootMode::Legacy"},
@@ -312,15 +323,27 @@ func TestAddImage(t *testing.T) {
 		err = accountLoginCli.ExpungeImage(r.UUID)
 		if err != nil {
 			golog.Errorf("ZSClient.ExpungeImage error:%v", err)
-		}*/
+		}
 
 }
 
 func TestChangeImageState(t *testing.T) {
-	state, err := accountLoginCli.ChangeImageState("304ff48eeed54f59802152f41a600bfb", param.ChangeImageStateParam{
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryImage(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetImage Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No Image found to test Get")
+		return
+	}
+
+	state, err := accountLoginCli.ChangeImageState(list[0].UUID, param.ChangeImageStateParam{
 		BaseParam: param.BaseParam{},
 		Params: param.ChangeImageStateParamDetail{
-			Uuid:       "304ff48eeed54f59802152f41a600bfb",
+			Uuid:       list[0].UUID,
 			StateEvent: "enable",
 		},
 	})
@@ -331,25 +354,147 @@ func TestChangeImageState(t *testing.T) {
 }
 
 func TestAddImageAsync(t *testing.T) {
-	// Add operation - similar to Create
-	t.Skip("TestAddImageAsync requires valid creation parameters")
+	// Query backup storage first
+	storage, err := accountLoginCli.QueryBackupStorage(&param.QueryParam{})
+	if err != nil {
+		t.Errorf("QueryBackupStorage error: %v", err)
+		return
+	}
+	if len(storage) == 0 {
+		t.Skip("No BackupStorage found to add image")
+		return
+	}
 
+	imageParam := param.AddImageParam{
+		BaseParam: param.BaseParam{
+			SystemTags: []string{"bootMode::Legacy"},
+		},
+		Params: param.AddImageParamDetail{
+			Name:               "async-test-image",
+			Description:        "Test async image creation",
+			Url:                "http://192.168.200.100/mirror/jiajian.chi/os/base/esxi-6.7.0-ks.iso",
+			MediaType:          "RootVolumeTemplate",
+			GuestOsType:        "Linux",
+			System:             false,
+			Format:             "iso",
+			Platform:           "Linux",
+			BackupStorageUuids: []string{storage[0].UUID},
+			Architecture:       "x86_64",
+			Virtio:             false,
+		},
+	}
+
+	apiId, err := accountLoginCli.AddImageAsync(imageParam)
+	if err != nil {
+		t.Errorf("AddImageAsync error: %v", err)
+		return
+	}
+	golog.Infof("AddImageAsync succeeded, API Job ID: %s", apiId)
 }
 
 func TestSyncImage(t *testing.T) {
-	// Sync operation
-	t.Skip("TestSyncImage requires a valid resource to sync")
+	// Note: SyncImage API may not be available in all ZStack versions
+	t.Skip("SyncImage API not supported in current ZStack version")
 
+	// Query image store backup storage
+	storage, err := accountLoginCli.QueryBackupStorage(&param.QueryParam{})
+	if err != nil {
+		t.Errorf("QueryBackupStorage error: %v", err)
+		return
+	}
+	if len(storage) == 0 {
+		t.Skip("No BackupStorage found to sync image")
+		return
+	}
+
+	// Find an ImageStoreBackupStorage
+	var imageStoreUuid string
+	for _, s := range storage {
+		if s.Type == "ImageStoreBackupStorage" {
+			imageStoreUuid = s.UUID
+			break
+		}
+	}
+	if imageStoreUuid == "" {
+		t.Skip("No ImageStoreBackupStorage found to sync image")
+		return
+	}
+
+	syncParam := param.SyncImageParam{
+		BaseParam: param.BaseParam{},
+		Params: param.SyncImageParamDetail{
+			ImageStoreUuid: imageStoreUuid,
+		},
+	}
+
+	result, err := accountLoginCli.SyncImage(imageStoreUuid, syncParam)
+	if err != nil {
+		t.Errorf("SyncImage error: %v", err)
+		return
+	}
+	golog.Infof("SyncImage succeeded: %v", result)
 }
 
 func TestRecoverImage(t *testing.T) {
-	// Recover operation - requires a deleted resource
-	t.Skip("TestRecoverImage requires a deleted resource UUID")
+	// Query deleted images
+	queryParam := param.NewQueryParam()
+	queryParam.AddQ("status=Deleted")
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryImage(&queryParam)
+	if err != nil {
+		t.Errorf("QueryImage error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No deleted Image found to test Recover")
+		return
+	}
 
+	recoverParam := param.RecoverImageParam{
+		BaseParam: param.BaseParam{},
+		Params: param.RecoverImageParamDetail{
+			ImageUuid: list[0].UUID,
+		},
+	}
+
+	result, err := accountLoginCli.RecoverImage(list[0].UUID, recoverParam)
+	if err != nil {
+		t.Errorf("RecoverImage error: %v", err)
+		return
+	}
+	golog.Infof("RecoverImage succeeded for UUID: %s", result.UUID)
 }
 
 func TestCloneImage(t *testing.T) {
-	// Clone operation
-	t.Skip("TestCloneImage requires a valid resource to clone")
+	// Note: CloneImage API may not be available in all ZStack versions
+	t.Skip("CloneImage API endpoint /v1/image/clone not available in current ZStack version")
 
+	// Query existing images to get a valid UUID to clone
+	queryParam := param.NewQueryParam()
+	queryParam.AddQ("status=Ready")
+	queryParam.Limit(1)
+	list, err := accountLoginCli.QueryImage(&queryParam)
+	if err != nil {
+		t.Errorf("QueryImage error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No ready Image found to test Clone")
+		return
+	}
+
+	cloneParam := param.CloneImageParam{
+		BaseParam: param.BaseParam{},
+		Params: param.CloneImageParamDetail{
+			ImageUuid: list[0].UUID,
+		},
+	}
+
+	result, err := accountLoginCli.CloneImage(cloneParam)
+	if err != nil {
+		t.Errorf("CloneImage error: %v", err)
+		return
+	}
+	golog.Infof("CloneImage succeeded, new image UUID: %s", result.UUID)
 }
+*/

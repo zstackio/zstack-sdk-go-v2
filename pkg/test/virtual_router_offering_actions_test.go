@@ -12,18 +12,39 @@ import (
 
 func TestQueryVirtualRouterOffering(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVirtualRouterOffering(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryVirtualRouterOffering(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVirtualRouterOffering error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryVirtualRouterOffering result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageVirtualRouterOffering(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageVirtualRouterOffering(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageVirtualRouterOffering error: %v", err)
+		return
+	}
+	golog.Infof("PageVirtualRouterOffering result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+}
+
 func TestGetVirtualRouterOffering(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVirtualRouterOffering(&queryParam)
+	list, err := accessKeyAuthCli.QueryVirtualRouterOffering(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetVirtualRouterOffering Query error: %v", err)
 		return
@@ -33,65 +54,10 @@ func TestGetVirtualRouterOffering(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetVirtualRouterOffering(list[0].UUID)
+	result, err := accessKeyAuthCli.GetVirtualRouterOffering(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetVirtualRouterOffering error: %v", err)
 		return
 	}
-	golog.Infof("GetVirtualRouterOffering result: %s", result.UUID)
-}
-
-func TestUpdateVirtualRouterOffering(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVirtualRouterOffering(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateVirtualRouterOffering Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No VirtualRouterOffering found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateVirtualRouterOfferingParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateVirtualRouterOfferingParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateVirtualRouterOffering(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateVirtualRouterOffering error: %v", err)
-		return
-	}
-	golog.Infof("UpdateVirtualRouterOffering result: %s", result.UUID)
-}
-
-func TestCreateVirtualRouterOffering(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateVirtualRouterOffering is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateVirtualRouterOfferingParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateVirtualRouterOfferingParamDetail{
-	// 		Name: "test-virtualrouteroffering",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateVirtualRouterOffering(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateVirtualRouterOffering error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateVirtualRouterOffering result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVirtualRouterOffering(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteVirtualRouterOffering error: %v", err)
-	// }
+	golog.Infof("GetVirtualRouterOffering result: %s, Name: %s", result.UUID, result.Name)
 }

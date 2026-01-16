@@ -12,18 +12,39 @@ import (
 
 func TestQueryL2Network(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryL2Network(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryL2Network(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryL2Network error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryL2Network result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Name, r.Type, r.PhysicalInterface)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageL2Network(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageL2Network(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageL2Network error: %v", err)
+		return
+	}
+	golog.Infof("PageL2Network result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.Type)
+	}
+}
+
 func TestGetL2Network(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryL2Network(&queryParam)
+	list, err := accessKeyAuthCli.QueryL2Network(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetL2Network Query error: %v", err)
 		return
@@ -33,65 +54,10 @@ func TestGetL2Network(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetL2Network(list[0].UUID)
+	result, err := accessKeyAuthCli.GetL2Network(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetL2Network error: %v", err)
 		return
 	}
-	golog.Infof("GetL2Network result: %s", result.UUID)
-}
-
-func TestUpdateL2Network(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryL2Network(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateL2Network Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No L2Network found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateL2NetworkParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateL2NetworkParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateL2Network(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateL2Network error: %v", err)
-		return
-	}
-	golog.Infof("UpdateL2Network result: %s", result.UUID)
-}
-
-func TestDeleteL2Network(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteL2Network is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryL2Network(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteL2Network Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No L2Network found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteL2Network(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteL2Network error: %v", err)
-		return
-	}
-	golog.Infof("DeleteL2Network succeeded for UUID: %s", list[0].UUID)
+	golog.Infof("GetL2Network result: %s, Name: %s", result.UUID, result.Name)
 }

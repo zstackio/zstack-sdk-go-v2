@@ -4,7 +4,6 @@ import (
 	"os"
 	"testing"
 
-	"github.com/kataras/golog"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/client"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -21,9 +20,9 @@ const (
 	accountLoginMasterHostname = "IPOfCloudAPIEndpoint"
 	accountLoginSlaveHostname  = "IPOfCloudAPIEndpoint"
 
-	accessKeyAuthHostname        = ""
-	accessKeyAuthAccessKeyId     = "3YWXy79yktjCzUaY3Xfz"
-	accessKeyAuthAccessKeySecret = "secret"
+	accessKeyAuthHostname        = "172.26.100.254"
+	accessKeyAuthAccessKeyId     = "ornex9AmHn1fHPKctXIz"
+	accessKeyAuthAccessKeySecret = "ACkkmXII1xrGDlDnoNAKEUbkSkniAUydo16ROwrw"
 
 	contextPath = "zstack"
 
@@ -48,13 +47,15 @@ var accessKeyAuthCli = client.NewZSClient(
 var loginSession *view.SessionInventoryView
 
 func TestMain(m *testing.M) {
-	var err error
-	loginSession, err = accountLoginCli.Login()
-	if err != nil {
-		golog.Errorf("TestMain err %v", err)
-	}
-	defer accountLoginCli.Logout()
-
-	m.Run()
-	os.Exit(0)
+	/*
+		var err error
+		loginSession, err = accountLoginCli.Login()
+		if err != nil {
+			golog.Errorf("TestMain login failed: %v", err)
+			os.Exit(1) // 登录失败直接退出，不运行测试
+		}
+		defer accountLoginCli.Logout()
+	*/
+	code := m.Run()
+	os.Exit(code)
 }

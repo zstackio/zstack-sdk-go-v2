@@ -12,18 +12,39 @@ import (
 
 func TestQueryVmNic(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVmNic(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryVmNic(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVmNic error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryVmNic result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Mac, r.L3NetworkUuid, r.VmInstanceUuid)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageVmNic(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageVmNic(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageVmNic error: %v", err)
+		return
+	}
+	golog.Infof("PageVmNic result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Mac, r.L3NetworkUuid)
+	}
+}
+
 func TestGetVmNic(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVmNic(&queryParam)
+	list, err := accessKeyAuthCli.QueryVmNic(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetVmNic Query error: %v", err)
 		return
@@ -33,61 +54,10 @@ func TestGetVmNic(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetVmNic(list[0].UUID)
+	result, err := accessKeyAuthCli.GetVmNic(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetVmNic error: %v", err)
 		return
 	}
-	golog.Infof("GetVmNic result: %s", result.UUID)
-}
-
-func TestDeleteVmNic(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteVmNic is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVmNic(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteVmNic Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No VmNic found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteVmNic(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteVmNic error: %v", err)
-		return
-	}
-	golog.Infof("DeleteVmNic succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateVmNic(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateVmNic is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateVmNicParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateVmNicParamDetail{
-	// 		Name: "test-vmnic",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateVmNic(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateVmNic error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateVmNic result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVmNic(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteVmNic error: %v", err)
-	// }
+	golog.Infof("GetVmNic result: %s, MAC: %s", result.UUID, result.Mac)
 }

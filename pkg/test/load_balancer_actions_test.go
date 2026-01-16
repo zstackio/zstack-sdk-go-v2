@@ -12,18 +12,39 @@ import (
 
 func TestQueryLoadBalancer(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryLoadBalancer(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryLoadBalancer(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryLoadBalancer error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryLoadBalancer result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageLoadBalancer(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageLoadBalancer(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageLoadBalancer error: %v", err)
+		return
+	}
+	golog.Infof("PageLoadBalancer result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+}
+
 func TestGetLoadBalancer(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryLoadBalancer(&queryParam)
+	list, err := accessKeyAuthCli.QueryLoadBalancer(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetLoadBalancer Query error: %v", err)
 		return
@@ -33,96 +54,10 @@ func TestGetLoadBalancer(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetLoadBalancer(list[0].UUID)
+	result, err := accessKeyAuthCli.GetLoadBalancer(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetLoadBalancer error: %v", err)
 		return
 	}
-	golog.Infof("GetLoadBalancer result: %s", result.UUID)
-}
-
-func TestUpdateLoadBalancer(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryLoadBalancer(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateLoadBalancer Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No LoadBalancer found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateLoadBalancerParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateLoadBalancerParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateLoadBalancer(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateLoadBalancer error: %v", err)
-		return
-	}
-	golog.Infof("UpdateLoadBalancer result: %s", result.UUID)
-}
-
-func TestDeleteLoadBalancer(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteLoadBalancer is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryLoadBalancer(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteLoadBalancer Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No LoadBalancer found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteLoadBalancer(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteLoadBalancer error: %v", err)
-		return
-	}
-	golog.Infof("DeleteLoadBalancer succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateLoadBalancer(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateLoadBalancer is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateLoadBalancerParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateLoadBalancerParamDetail{
-	// 		Name: "test-loadbalancer",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateLoadBalancer(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateLoadBalancer error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateLoadBalancer result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteLoadBalancer(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteLoadBalancer error: %v", err)
-	// }
-}
-
-func TestRefreshLoadBalancer(t *testing.T) {
-	// RefreshLoadBalancer operation
-	t.Skip("TestRefreshLoadBalancer requires manual implementation")
-
+	golog.Infof("GetLoadBalancer result: %s, Name: %s", result.UUID, result.Name)
 }

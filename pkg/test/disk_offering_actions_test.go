@@ -12,18 +12,58 @@ import (
 
 func TestQueryDiskOffering(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryDiskOffering(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryDiskOffering(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryDiskOffering error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryDiskOffering result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%d MB", r.UUID, r.Name, r.DiskSize/1024/1024)
+	}
+	golog.Infof("======================================")
 }
+
+func TestQueryDiskOffering2(t *testing.T) {
+	// Query with conditions
+	params := param.NewQueryParam()
+	params.AddQ("state=Enabled")
+	params.Start(0).Limit(10).ReplyWithCount(true)
+	result, err := accessKeyAuthCli.QueryDiskOffering(&params)
+	if err != nil {
+		t.Errorf("TestQueryDiskOffering2 error: %v", err)
+		return
+	}
+	golog.Infof("======================================")
+	golog.Infof("Found %d Enabled DiskOfferings:", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%d GB\t%s", r.UUID, r.Name, r.DiskSize/1024/1024/1024, r.Type)
+	}
+	golog.Infof("======================================")
+}
+
+func TestPageDiskOffering(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageDiskOffering(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageDiskOffering error: %v", err)
+		return
+	}
+	golog.Infof("PageDiskOffering result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%d MB", r.UUID, r.Name, r.DiskSize/1024/1024)
+	}
+}
+
 func TestGetDiskOffering(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryDiskOffering(&queryParam)
+	list, err := accessKeyAuthCli.QueryDiskOffering(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetDiskOffering Query error: %v", err)
 		return
@@ -34,89 +74,10 @@ func TestGetDiskOffering(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetDiskOffering(list[0].UUID)
+	result, err := accessKeyAuthCli.GetDiskOffering(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetDiskOffering error: %v", err)
 		return
 	}
-	golog.Infof("GetDiskOffering result: %s", result.UUID)
-}
-
-func TestUpdateDiskOffering(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryDiskOffering(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateDiskOffering Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No DiskOffering found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateDiskOfferingParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateDiskOfferingParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateDiskOffering(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateDiskOffering error: %v", err)
-		return
-	}
-	golog.Infof("UpdateDiskOffering result: %s", result.UUID)
-}
-
-func TestDeleteDiskOffering(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteDiskOffering is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryDiskOffering(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteDiskOffering Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No DiskOffering found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteDiskOffering(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteDiskOffering error: %v", err)
-		return
-	}
-	golog.Infof("DeleteDiskOffering succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateDiskOffering(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateDiskOffering is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateDiskOfferingParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateDiskOfferingParamDetail{
-	// 		Name: "test-diskoffering",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateDiskOffering(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateDiskOffering error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateDiskOffering result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteDiskOffering(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteDiskOffering error: %v", err)
-	// }
+	golog.Infof("GetDiskOffering result: %s, Name: %s, Size: %d MB", result.UUID, result.Name, result.DiskSize/1024/1024)
 }

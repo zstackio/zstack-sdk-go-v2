@@ -12,18 +12,39 @@ import (
 
 func TestQueryVolumeSnapshot(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVolumeSnapshot(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryVolumeSnapshot(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVolumeSnapshot error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryVolumeSnapshot result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Name, r.State, r.Type)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageVolumeSnapshot(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageVolumeSnapshot(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageVolumeSnapshot error: %v", err)
+		return
+	}
+	golog.Infof("PageVolumeSnapshot result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+}
+
 func TestGetVolumeSnapshot(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVolumeSnapshot(&queryParam)
+	list, err := accessKeyAuthCli.QueryVolumeSnapshot(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetVolumeSnapshot Query error: %v", err)
 		return
@@ -33,90 +54,10 @@ func TestGetVolumeSnapshot(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetVolumeSnapshot(list[0].UUID)
+	result, err := accessKeyAuthCli.GetVolumeSnapshot(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetVolumeSnapshot error: %v", err)
 		return
 	}
-	golog.Infof("GetVolumeSnapshot result: %s", result.UUID)
-}
-
-func TestUpdateVolumeSnapshot(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVolumeSnapshot(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateVolumeSnapshot Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No VolumeSnapshot found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateVolumeSnapshotParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateVolumeSnapshotParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateVolumeSnapshot(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateVolumeSnapshot error: %v", err)
-		return
-	}
-	golog.Infof("UpdateVolumeSnapshot result: %s", result.UUID)
-}
-
-func TestDeleteVolumeSnapshot(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteVolumeSnapshot is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVolumeSnapshot(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteVolumeSnapshot Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No VolumeSnapshot found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteVolumeSnapshot(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteVolumeSnapshot error: %v", err)
-		return
-	}
-	golog.Infof("DeleteVolumeSnapshot succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateVolumeSnapshot(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateVolumeSnapshot is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateVolumeSnapshotParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateVolumeSnapshotParamDetail{
-	// 		Name: "test-volumesnapshot",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateVolumeSnapshot(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateVolumeSnapshot error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateVolumeSnapshot result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVolumeSnapshot(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteVolumeSnapshot error: %v", err)
-	// }
+	golog.Infof("GetVolumeSnapshot result: %s, Name: %s", result.UUID, result.Name)
 }

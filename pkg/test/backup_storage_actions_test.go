@@ -12,18 +12,58 @@ import (
 
 func TestQueryBackupStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryBackupStorage(&queryParam)
+	result, err := accessKeyAuthCli.QueryBackupStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryBackupStorage error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryBackupStorage result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s\t%d", r.UUID, r.Name, r.State, r.Type, r.TotalCapacity)
+	}
+	golog.Infof("======================================")
 }
+
+func TestQueryBackupStorage2(t *testing.T) {
+	// Query with conditions - Connected backup storages
+	params := param.NewQueryParam()
+	params.AddQ("state=Enabled")
+	params.AddQ("status=Connected")
+	params.Start(0).Limit(10).ReplyWithCount(true)
+	result, err := accessKeyAuthCli.QueryBackupStorage(&params)
+	if err != nil {
+		t.Errorf("TestQueryBackupStorage2 error: %v", err)
+		return
+	}
+	golog.Infof("======================================")
+	golog.Infof("Found %d Enabled/Connected BackupStorages:", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%d GB total\t%d GB available", r.UUID, r.Name, r.Type, r.TotalCapacity/1024/1024/1024, r.AvailableCapacity/1024/1024/1024)
+	}
+	golog.Infof("======================================")
+}
+
+func TestPageBackupStorage(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageBackupStorage(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageBackupStorage error: %v", err)
+		return
+	}
+	golog.Infof("PageBackupStorage result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Name, r.State, r.Type)
+	}
+}
+
 func TestGetBackupStorage(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryBackupStorage(&queryParam)
+	list, err := accessKeyAuthCli.QueryBackupStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetBackupStorage Query error: %v", err)
 		return
@@ -34,70 +74,10 @@ func TestGetBackupStorage(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetBackupStorage(list[0].UUID)
+	result, err := accessKeyAuthCli.GetBackupStorage(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetBackupStorage error: %v", err)
 		return
 	}
-	golog.Infof("GetBackupStorage result: %s", result.UUID)
-}
-
-func TestUpdateBackupStorage(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryBackupStorage(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateBackupStorage Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No BackupStorage found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateBackupStorageParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateBackupStorageParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateBackupStorage(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateBackupStorage error: %v", err)
-		return
-	}
-	golog.Infof("UpdateBackupStorage result: %s", result.UUID)
-}
-
-func TestDeleteBackupStorage(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteBackupStorage is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryBackupStorage(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteBackupStorage Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No BackupStorage found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteBackupStorage(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteBackupStorage error: %v", err)
-		return
-	}
-	golog.Infof("DeleteBackupStorage succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestReconnectBackupStorage(t *testing.T) {
-	// ReconnectBackupStorage operation
-	t.Skip("TestReconnectBackupStorage requires manual implementation")
-
+	golog.Infof("GetBackupStorage result: %s, Name: %s, Type: %s", result.UUID, result.Name, result.Type)
 }

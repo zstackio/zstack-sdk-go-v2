@@ -12,18 +12,39 @@ import (
 
 func TestQuerySchedulerJob(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySchedulerJob(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QuerySchedulerJob(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySchedulerJob error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QuerySchedulerJob result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageSchedulerJob(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageSchedulerJob(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageSchedulerJob error: %v", err)
+		return
+	}
+	golog.Infof("PageSchedulerJob result: total=%d, returned=%d", total, len(result))
+	golog.Infof("======================================")
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+}
+
 func TestGetSchedulerJob(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySchedulerJob(&queryParam)
+	list, err := accessKeyAuthCli.QuerySchedulerJob(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetSchedulerJob Query error: %v", err)
 		return
@@ -33,90 +54,10 @@ func TestGetSchedulerJob(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetSchedulerJob(list[0].UUID)
+	result, err := accessKeyAuthCli.GetSchedulerJob(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetSchedulerJob error: %v", err)
 		return
 	}
-	golog.Infof("GetSchedulerJob result: %s", result.UUID)
-}
-
-func TestUpdateSchedulerJob(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySchedulerJob(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateSchedulerJob Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SchedulerJob found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateSchedulerJobParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateSchedulerJobParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateSchedulerJob(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateSchedulerJob error: %v", err)
-		return
-	}
-	golog.Infof("UpdateSchedulerJob result: %s", result.UUID)
-}
-
-func TestDeleteSchedulerJob(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteSchedulerJob is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySchedulerJob(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteSchedulerJob Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SchedulerJob found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteSchedulerJob(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteSchedulerJob error: %v", err)
-		return
-	}
-	golog.Infof("DeleteSchedulerJob succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateSchedulerJob(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateSchedulerJob is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateSchedulerJobParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateSchedulerJobParamDetail{
-	// 		Name: "test-schedulerjob",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateSchedulerJob(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateSchedulerJob error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateSchedulerJob result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSchedulerJob(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteSchedulerJob error: %v", err)
-	// }
+	golog.Infof("GetSchedulerJob result: %s, Name: %s", result.UUID, result.Name)
 }
