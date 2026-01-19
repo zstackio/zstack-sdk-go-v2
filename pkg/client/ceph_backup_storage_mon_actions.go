@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateCephBackupStorageMon updates CephBackupStorageMon
 func (cli *ZSClient) UpdateCephBackupStorageMon(monUuid string, params param.UpdateCephBackupStorageMonParam) (*view.CephBackupStorageInventoryView, error) {
 	resp := view.CephBackupStorageInventoryView{}
-	if err := cli.Put("v1/backup-storage/ceph/mons", monUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/backup-storage/ceph/mons", monUuid, map[string]interface{}{
+		"updateCephBackupStorageMon": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // UpdateIAM2VirtualIDGroupAttributeParamDetail UpdateIAM2VirtualIDGroupAttribute detail param
 type UpdateIAM2VirtualIDGroupAttributeParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Value string `json:"value" validate:"required"`
 }
 

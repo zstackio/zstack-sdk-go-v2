@@ -10,22 +10,21 @@ var _ = time.Now // avoid unused import
 type CreateVolumeSnapshotGroupParamDetail struct {
 	RootVolumeUuid string `json:"rootVolumeUuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	WithMemory bool `json:"withMemory,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	WithMemory *bool `json:"withMemory,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateVolumeSnapshotGroupParam CreateVolumeSnapshotGroup request param
 type CreateVolumeSnapshotGroupParam struct {
 	BaseParam
-	Params CreateVolumeSnapshotGroupParamDetail `json:"createVolumeSnapshotGroup"`
+	Params CreateVolumeSnapshotGroupParamDetail `json:"params"`
 }
 // UpdateVolumeSnapshotGroupParamDetail UpdateVolumeSnapshotGroup detail param
 type UpdateVolumeSnapshotGroupParamDetail struct {
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Uuid string `json:"uuid" validate:"required"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateVolumeSnapshotGroupParam UpdateVolumeSnapshotGroup request param
@@ -35,10 +34,9 @@ type UpdateVolumeSnapshotGroupParam struct {
 }
 // DeleteVolumeSnapshotGroupParamDetail DeleteVolumeSnapshotGroup detail param
 type DeleteVolumeSnapshotGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	Direction string `json:"direction,omitempty"`
-	Scope string `json:"scope,omitempty"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	Direction *string `json:"direction,omitempty"`
+	Scope *string `json:"scope,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteVolumeSnapshotGroupParam DeleteVolumeSnapshotGroup request param

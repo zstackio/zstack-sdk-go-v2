@@ -17,7 +17,9 @@ func (cli *ZSClient) DeleteCluster(uuid string, deleteMode param.DeleteMode) err
 // UpdateCluster updates Cluster
 func (cli *ZSClient) UpdateCluster(uuid string, params param.UpdateClusterParam) (*view.ClusterInventoryView, error) {
 	resp := view.ClusterInventoryView{}
-	if err := cli.Put("v1/clusters", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/clusters", uuid, map[string]interface{}{
+		"updateCluster": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

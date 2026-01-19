@@ -33,7 +33,9 @@ func (cli *ZSClient) PageModelServiceInstanceGroup(params *param.QueryParam) ([]
 // UpdateModelServiceInstanceGroup updates ModelServiceInstanceGroup
 func (cli *ZSClient) UpdateModelServiceInstanceGroup(uuid string, params param.UpdateModelServiceInstanceGroupParam) (*view.ModelServiceInstanceGroupInventoryView, error) {
 	resp := view.ModelServiceInstanceGroupInventoryView{}
-	if err := cli.Put("v1/model-service-instance-groups", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/model-service-instance-groups", uuid, map[string]interface{}{
+		"updateModelServiceInstanceGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

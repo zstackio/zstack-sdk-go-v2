@@ -29,3 +29,8 @@ type AliyunEbsPrimaryStorageInventoryView struct {
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 
+// UpdatePrimaryStorageEventView UpdatePrimaryStorageEvent
+type UpdatePrimaryStorageEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+

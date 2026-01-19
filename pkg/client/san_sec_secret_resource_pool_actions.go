@@ -21,7 +21,9 @@ func (cli *ZSClient) CreateSanSecSecretResourcePool(params param.CreateSanSecSec
 // UpdateSanSecSecretResourcePool updates SanSecSecretResourcePool
 func (cli *ZSClient) UpdateSanSecSecretResourcePool(uuid string, params param.UpdateSanSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Put("v1/secret-resource-pools/sanSec", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/secret-resource-pools/sanSec", uuid, map[string]interface{}{
+		"updateSanSecSecretResourcePool": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

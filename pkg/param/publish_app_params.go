@@ -10,22 +10,21 @@ var _ = time.Now // avoid unused import
 type PublishAppParamDetail struct {
 	BuildAppUuid string `json:"buildAppUuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	Parameters string `json:"parameters,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Parameters *string `json:"parameters,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // PublishAppParam PublishApp request param
 type PublishAppParam struct {
 	BaseParam
-	Params PublishAppParamDetail `json:"publishApp"`
+	Params PublishAppParamDetail `json:"params"`
 }
 // UpdatePublishAppParamDetail UpdatePublishApp detail param
 type UpdatePublishAppParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdatePublishAppParam UpdatePublishApp request param
@@ -35,8 +34,7 @@ type UpdatePublishAppParam struct {
 }
 // DeletePublishAppParamDetail DeletePublishApp detail param
 type DeletePublishAppParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeletePublishAppParam DeletePublishApp request param

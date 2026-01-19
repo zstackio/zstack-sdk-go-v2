@@ -25,7 +25,9 @@ func (cli *ZSClient) DeleteSchedulerJobGroup(uuid string, deleteMode param.Delet
 // UpdateSchedulerJobGroup updates SchedulerJobGroup
 func (cli *ZSClient) UpdateSchedulerJobGroup(uuid string, params param.UpdateSchedulerJobGroupParam) (*view.SchedulerJobGroupInventoryView, error) {
 	resp := view.SchedulerJobGroupInventoryView{}
-	if err := cli.Put("v1/scheduler/jobgroups", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/scheduler/jobgroups", uuid, map[string]interface{}{
+		"updateSchedulerJobGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

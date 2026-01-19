@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateIAM2OrganizationAttribute updates IAM2OrganizationAttribute
 func (cli *ZSClient) UpdateIAM2OrganizationAttribute(uuid string, params param.UpdateIAM2OrganizationAttributeParam) (*view.IAM2OrganizationAttributeInventoryView, error) {
 	resp := view.IAM2OrganizationAttributeInventoryView{}
-	if err := cli.Put("v1/iam2/organizations/attributes", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/iam2/organizations/attributes", uuid, map[string]interface{}{
+		"updateIAM2OrganizationAttribute": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

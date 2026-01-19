@@ -31,7 +31,9 @@ func (cli *ZSClient) AttachEip(eipUuid string, vmNicUuid string, params param.At
 // UpdateEip updates Eip
 func (cli *ZSClient) UpdateEip(uuid string, params param.UpdateEipParam) (*view.EipInventoryView, error) {
 	resp := view.EipInventoryView{}
-	if err := cli.Put("v1/eips", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/eips", uuid, map[string]interface{}{
+		"updateEip": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

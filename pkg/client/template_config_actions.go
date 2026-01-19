@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateTemplateConfig updates TemplateConfig
 func (cli *ZSClient) UpdateTemplateConfig(templateUuid string, params param.UpdateTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
 	resp := view.TemplateConfigInventoryView{}
-	if err := cli.Put("v1/template-configurations", templateUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/template-configurations", templateUuid, map[string]interface{}{
+		"updateTemplateConfig": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -41,7 +43,9 @@ func (cli *ZSClient) PageTemplateConfig(params *param.QueryParam) ([]view.Templa
 // RevertTemplateConfig operates on TemplateConfig
 func (cli *ZSClient) RevertTemplateConfig(templateUuid string, params param.RevertTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
 	resp := view.TemplateConfigInventoryView{}
-	if err := cli.Put("v1/template-configurations", templateUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/template-configurations", templateUuid, map[string]interface{}{
+		"revertTemplateConfig": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -49,7 +53,9 @@ func (cli *ZSClient) RevertTemplateConfig(templateUuid string, params param.Reve
 // ApplyTemplateConfig operates on TemplateConfig
 func (cli *ZSClient) ApplyTemplateConfig(templateUuid string, params param.ApplyTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
 	resp := view.TemplateConfigInventoryView{}
-	if err := cli.Put("v1/template-configurations", templateUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/template-configurations", templateUuid, map[string]interface{}{
+		"applyTemplateConfig": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -57,7 +63,9 @@ func (cli *ZSClient) ApplyTemplateConfig(templateUuid string, params param.Apply
 // ResetTemplateConfig operates on TemplateConfig
 func (cli *ZSClient) ResetTemplateConfig(templateUuid string, params param.ResetTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
 	resp := view.TemplateConfigInventoryView{}
-	if err := cli.Put("v1/template-configurations", templateUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/template-configurations", templateUuid, map[string]interface{}{
+		"resetTemplateConfig": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

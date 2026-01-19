@@ -8,9 +8,7 @@ var _ = time.Now // avoid unused import
 
 // UpdateGlobalConfigParamDetail UpdateGlobalConfig detail param
 type UpdateGlobalConfigParamDetail struct {
-	Category string `json:"category" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	Value string `json:"value,omitempty"`
+	Value *string `json:"value,omitempty"`
 }
 
 // UpdateGlobalConfigParam UpdateGlobalConfig request param

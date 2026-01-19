@@ -45,7 +45,9 @@ func (cli *ZSClient) DeletePortMirror(uuid string, deleteMode param.DeleteMode) 
 // UpdatePortMirror updates PortMirror
 func (cli *ZSClient) UpdatePortMirror(uuid string, params param.UpdatePortMirrorParam) (*view.PortMirrorInventoryView, error) {
 	resp := view.PortMirrorInventoryView{}
-	if err := cli.Put("v1/port-mirrors", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/port-mirrors", uuid, map[string]interface{}{
+		"updatePortMirror": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

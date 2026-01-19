@@ -12,19 +12,19 @@ type CreateNfvInstOfferingParamDetail struct {
 	ManagementNetworkUuid string `json:"managementNetworkUuid" validate:"required"`
 	ImageUuid string `json:"imageUuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	CpuNum int `json:"cpuNum" validate:"required"`
 	MemorySize int64 `json:"memorySize" validate:"required"`
-	ReservedMemorySize int64 `json:"reservedMemorySize,omitempty"`
-	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
+	ReservedMemorySize *int64 `json:"reservedMemorySize,omitempty"`
+	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
 	SortKey int `json:"sortKey,omitempty"`
-	Type string `json:"type,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Type *string `json:"type,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateNfvInstOfferingParam CreateNfvInstOffering request param
 type CreateNfvInstOfferingParam struct {
 	BaseParam
-	Params CreateNfvInstOfferingParamDetail `json:"createNfvInstOffering"`
+	Params CreateNfvInstOfferingParamDetail `json:"params"`
 }

@@ -8,10 +8,10 @@ var _ = time.Now // avoid unused import
 
 // DeleteBillingParamDetail DeleteBilling detail param
 type DeleteBillingParamDetail struct {
-	AccountUuid string `json:"accountUuid,omitempty"`
-	StartTime int64 `json:"startTime,omitempty"`
-	EndTime int64 `json:"endTime,omitempty"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	AccountUuid *string `json:"accountUuid,omitempty"`
+	StartTime *int64 `json:"startTime,omitempty"`
+	EndTime *int64 `json:"endTime,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteBillingParam DeleteBilling request param

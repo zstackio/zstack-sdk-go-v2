@@ -37,7 +37,9 @@ func (cli *ZSClient) DeleteUser(uuid string, deleteMode param.DeleteMode) error 
 // UpdateUser updates User
 func (cli *ZSClient) UpdateUser(uuid string, params param.UpdateUserParam) (*view.UserInventoryView, error) {
 	resp := view.UserInventoryView{}
-	if err := cli.Put("v1/accounts/users/actions", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/accounts/users/actions", uuid, map[string]interface{}{
+		"updateUser": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

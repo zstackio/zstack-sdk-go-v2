@@ -41,7 +41,9 @@ func (cli *ZSClient) PageLdapServer(params *param.QueryParam) ([]view.LdapServer
 // SyncLdapServer operates on LdapServer
 func (cli *ZSClient) SyncLdapServer(uuid string, params param.SyncLdapServerParam) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Put("v1/ldap/servers", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/ldap/servers", uuid, map[string]interface{}{
+		"syncLdapServer": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -68,7 +70,9 @@ func (cli *ZSClient) DeleteLdapServer(uuid string, deleteMode param.DeleteMode) 
 // UpdateLdapServer updates LdapServer
 func (cli *ZSClient) UpdateLdapServer(ldapServerUuid string, params param.UpdateLdapServerParam) (*view.LdapServerInventoryView, error) {
 	resp := view.LdapServerInventoryView{}
-	if err := cli.Put("v1/ldap/servers", ldapServerUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/ldap/servers", ldapServerUuid, map[string]interface{}{
+		"updateLdapServer": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

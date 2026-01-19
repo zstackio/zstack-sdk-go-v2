@@ -8,20 +8,18 @@ var _ = time.Now // avoid unused import
 
 // UpdateHostNetworkInterfaceParamDetail UpdateHostNetworkInterface detail param
 type UpdateHostNetworkInterfaceParamDetail struct {
-	InterfaceUuid string `json:"interfaceUuid" validate:"required"`
-	Description string `json:"description" validate:"required"`
+	Description *string `json:"description" validate:"required"`
 }
 
 // UpdateHostNetworkInterfaceParam UpdateHostNetworkInterface request param
 type UpdateHostNetworkInterfaceParam struct {
 	BaseParam
-	Params UpdateHostNetworkInterfaceParamDetail `json:"updateHostNetworkInterface"`
+	Params UpdateHostNetworkInterfaceParamDetail `json:"params"`
 }
 // LocateHostNetworkInterfaceParamDetail LocateHostNetworkInterface detail param
 type LocateHostNetworkInterfaceParamDetail struct {
-	HostUuid string `json:"hostUuid" validate:"required"`
 	NetworkInterfaceName string `json:"networkInterfaceName" validate:"required"`
-	Interval int64 `json:"interval,omitempty"`
+	Interval *int64 `json:"interval,omitempty"`
 }
 
 // LocateHostNetworkInterfaceParam LocateHostNetworkInterface request param

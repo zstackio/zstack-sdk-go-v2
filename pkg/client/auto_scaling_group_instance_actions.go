@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAutoScalingGroupInstance updates AutoScalingGroupInstance
 func (cli *ZSClient) UpdateAutoScalingGroupInstance(instanceUuid string, params param.UpdateAutoScalingGroupInstanceParam) (*view.AutoScalingGroupInstanceInventoryView, error) {
 	resp := view.AutoScalingGroupInstanceInventoryView{}
-	if err := cli.Put("v1/autoscaling/groups/instances", instanceUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/autoscaling/groups/instances", instanceUuid, map[string]interface{}{
+		"updateAutoScalingGroupInstance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

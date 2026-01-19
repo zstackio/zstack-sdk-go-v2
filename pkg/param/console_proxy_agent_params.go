@@ -18,9 +18,8 @@ type ReconnectConsoleProxyAgentParam struct {
 }
 // UpdateConsoleProxyAgentParamDetail UpdateConsoleProxyAgent detail param
 type UpdateConsoleProxyAgentParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	ConsoleProxyOverriddenIp string `json:"consoleProxyOverriddenIp" validate:"required"`
-	ConsoleProxyPort int `json:"consoleProxyPort,omitempty"`
+	ConsoleProxyPort *int `json:"consoleProxyPort,omitempty"`
 }
 
 // UpdateConsoleProxyAgentParam UpdateConsoleProxyAgent request param

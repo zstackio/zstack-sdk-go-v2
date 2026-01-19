@@ -41,7 +41,9 @@ func (cli *ZSClient) PageVpcSharedQos(params *param.QueryParam) ([]view.VpcShare
 // UpdateVpcSharedQos updates VpcSharedQos
 func (cli *ZSClient) UpdateVpcSharedQos(uuid string, params param.UpdateVpcSharedQosParam) (*view.VpcSharedQosInventoryView, error) {
 	resp := view.VpcSharedQosInventoryView{}
-	if err := cli.Put("v1/vips/sharedqos", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/vips/sharedqos", uuid, map[string]interface{}{
+		"updateVpcSharedQos": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdatePciDevice updates PciDevice
 func (cli *ZSClient) UpdatePciDevice(uuid string, params param.UpdatePciDeviceParam) (*view.PciDeviceInventoryView, error) {
 	resp := view.PciDeviceInventoryView{}
-	if err := cli.Put("v1/pci-device/pci-devices", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/pci-device/pci-devices", uuid, map[string]interface{}{
+		"updatePciDevice": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

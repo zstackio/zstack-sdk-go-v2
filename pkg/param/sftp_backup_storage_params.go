@@ -8,13 +8,12 @@ var _ = time.Now // avoid unused import
 
 // UpdateSftpBackupStorageParamDetail UpdateSftpBackupStorage detail param
 type UpdateSftpBackupStorageParamDetail struct {
-	Username string `json:"username,omitempty"`
-	Password string `json:"password,omitempty"`
-	Hostname string `json:"hostname,omitempty"`
-	SshPort int `json:"sshPort,omitempty"`
-	Uuid string `json:"uuid" validate:"required"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	Hostname *string `json:"hostname,omitempty"`
+	SshPort *int `json:"sshPort,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateSftpBackupStorageParam UpdateSftpBackupStorage request param
@@ -24,7 +23,6 @@ type UpdateSftpBackupStorageParam struct {
 }
 // ReconnectSftpBackupStorageParamDetail ReconnectSftpBackupStorage detail param
 type ReconnectSftpBackupStorageParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // ReconnectSftpBackupStorageParam ReconnectSftpBackupStorage request param
@@ -37,18 +35,18 @@ type AddSftpBackupStorageParamDetail struct {
 	Hostname string `json:"hostname" validate:"required"`
 	Username string `json:"username" validate:"required"`
 	Password string `json:"password" validate:"required"`
-	SshPort int `json:"sshPort,omitempty"`
+	SshPort *int `json:"sshPort,omitempty"`
 	Url string `json:"url" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	ImportImages bool `json:"importImages,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Type *string `json:"type,omitempty"`
+	ImportImages *bool `json:"importImages,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // AddSftpBackupStorageParam AddSftpBackupStorage request param
 type AddSftpBackupStorageParam struct {
 	BaseParam
-	Params AddSftpBackupStorageParamDetail `json:"addSftpBackupStorage"`
+	Params AddSftpBackupStorageParamDetail `json:"params"`
 }

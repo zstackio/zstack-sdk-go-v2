@@ -8,9 +8,8 @@ var _ = time.Now // avoid unused import
 
 // UpdateAliyunSnapshotParamDetail UpdateAliyunSnapshot detail param
 type UpdateAliyunSnapshotParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateAliyunSnapshotParam UpdateAliyunSnapshot request param

@@ -33,7 +33,9 @@ func (cli *ZSClient) PagePciDeviceSpec(params *param.QueryParam) ([]view.PciDevi
 // UpdatePciDeviceSpec updates PciDeviceSpec
 func (cli *ZSClient) UpdatePciDeviceSpec(uuid string, params param.UpdatePciDeviceSpecParam) (*view.PciDeviceSpecInventoryView, error) {
 	resp := view.PciDeviceSpecInventoryView{}
-	if err := cli.Put("v1/pci-device-specs", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/pci-device-specs", uuid, map[string]interface{}{
+		"updatePciDeviceSpec": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

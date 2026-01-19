@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateMonitorTemplate updates MonitorTemplate
 func (cli *ZSClient) UpdateMonitorTemplate(uuid string, params param.UpdateMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	resp := view.MonitorTemplateInventoryView{}
-	if err := cli.Put("v1/zwatch/monitortemplates", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/zwatch/monitortemplates", uuid, map[string]interface{}{
+		"updateMonitorTemplate": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

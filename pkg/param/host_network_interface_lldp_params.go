@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // GetHostNetworkInterfaceLldpParamDetail GetHostNetworkInterfaceLldp detail param
 type GetHostNetworkInterfaceLldpParamDetail struct {
-	InterfaceUuid string `json:"interfaceUuid" validate:"required"`
 }
 
 // GetHostNetworkInterfaceLldpParam GetHostNetworkInterfaceLldp request param

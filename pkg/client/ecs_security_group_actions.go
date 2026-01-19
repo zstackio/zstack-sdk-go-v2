@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateEcsSecurityGroup updates EcsSecurityGroup
 func (cli *ZSClient) UpdateEcsSecurityGroup(uuid string, params param.UpdateEcsSecurityGroupParam) (*view.EcsSecurityGroupInventoryView, error) {
 	resp := view.EcsSecurityGroupInventoryView{}
-	if err := cli.Put("v1/hybrid/aliyun/security-group", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/security-group", uuid, map[string]interface{}{
+		"updateEcsSecurityGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

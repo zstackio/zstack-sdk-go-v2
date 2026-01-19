@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAliyunProxyVSwitch updates AliyunProxyVSwitch
 func (cli *ZSClient) UpdateAliyunProxyVSwitch(uuid string, params param.UpdateAliyunProxyVSwitchParam) (*view.AliyunProxyVSwitchInventoryView, error) {
 	resp := view.AliyunProxyVSwitchInventoryView{}
-	if err := cli.Put("v1/aliyun-proxy/vswitches", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/aliyun-proxy/vswitches", uuid, map[string]interface{}{
+		"updateAliyunProxyVSwitch": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

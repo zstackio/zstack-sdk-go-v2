@@ -45,7 +45,9 @@ func (cli *ZSClient) CreateClusterDRS(params param.CreateClusterDRSParam) (*view
 // UpdateClusterDRS updates ClusterDRS
 func (cli *ZSClient) UpdateClusterDRS(uuid string, params param.UpdateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
 	resp := view.ClusterDRSInventoryView{}
-	if err := cli.Put("v1/clusters/drs", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/clusters/drs", uuid, map[string]interface{}{
+		"updateClusterDRS": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

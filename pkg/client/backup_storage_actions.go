@@ -33,7 +33,9 @@ func (cli *ZSClient) PageBackupStorage(params *param.QueryParam) ([]view.BackupS
 // UpdateBackupStorage updates BackupStorage
 func (cli *ZSClient) UpdateBackupStorage(uuid string, params param.UpdateBackupStorageParam) (*view.BackupStorageInventoryView, error) {
 	resp := view.BackupStorageInventoryView{}
-	if err := cli.Put("v1/backup-storage", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/backup-storage", uuid, map[string]interface{}{
+		"updateBackupStorage": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -45,7 +47,9 @@ func (cli *ZSClient) DeleteBackupStorage(uuid string, deleteMode param.DeleteMod
 // ReconnectBackupStorage operates on BackupStorage
 func (cli *ZSClient) ReconnectBackupStorage(uuid string, params param.ReconnectBackupStorageParam) (*view.BackupStorageInventoryView, error) {
 	resp := view.BackupStorageInventoryView{}
-	if err := cli.Put("v1/backup-storage", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/backup-storage", uuid, map[string]interface{}{
+		"reconnectBackupStorage": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

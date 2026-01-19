@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // ReconnectHost operates on Host
 func (cli *ZSClient) ReconnectHost(uuid string, params param.ReconnectHostParam) (*view.HostInventoryView, error) {
 	resp := view.HostInventoryView{}
-	if err := cli.Put("v1/hosts", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hosts", uuid, map[string]interface{}{
+		"reconnectHost": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -21,7 +23,9 @@ func (cli *ZSClient) ReconnectHost(uuid string, params param.ReconnectHostParam)
 // UpdateHost updates Host
 func (cli *ZSClient) UpdateHost(uuid string, params param.UpdateHostParam) (*view.HostInventoryView, error) {
 	resp := view.HostInventoryView{}
-	if err := cli.Put("v1/hosts", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hosts", uuid, map[string]interface{}{
+		"updateHost": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

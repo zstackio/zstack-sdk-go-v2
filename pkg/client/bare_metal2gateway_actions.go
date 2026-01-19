@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // ReconnectBareMetal2Gateway operates on BareMetal2Gateway
 func (cli *ZSClient) ReconnectBareMetal2Gateway(uuid string, params param.ReconnectBareMetal2GatewayParam) (*view.BareMetal2GatewayInventoryView, error) {
 	resp := view.BareMetal2GatewayInventoryView{}
-	if err := cli.Put("v1/baremetal2/gateways", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal2/gateways", uuid, map[string]interface{}{
+		"reconnectBareMetal2Gateway": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -21,7 +23,9 @@ func (cli *ZSClient) ReconnectBareMetal2Gateway(uuid string, params param.Reconn
 // UpdateBareMetal2Gateway updates BareMetal2Gateway
 func (cli *ZSClient) UpdateBareMetal2Gateway(uuid string, params param.UpdateBareMetal2GatewayParam) (*view.BareMetal2GatewayInventoryView, error) {
 	resp := view.BareMetal2GatewayInventoryView{}
-	if err := cli.Put("v1/baremetal2/gateways", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal2/gateways", uuid, map[string]interface{}{
+		"updateBareMetal2Gateway": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

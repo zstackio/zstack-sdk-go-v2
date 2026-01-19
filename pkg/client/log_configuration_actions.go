@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateLogConfiguration updates LogConfiguration
 func (cli *ZSClient) UpdateLogConfiguration(uuid string, params param.UpdateLogConfigurationParam) (*view.JsonLabelInventoryView, error) {
 	resp := view.JsonLabelInventoryView{}
-	if err := cli.Put("v1/log/configurations", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/log/configurations", uuid, map[string]interface{}{
+		"updateLogConfiguration": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

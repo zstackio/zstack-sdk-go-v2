@@ -45,7 +45,9 @@ func (cli *ZSClient) DeleteLoadBalancerServerGroup(uuid string, deleteMode param
 // UpdateLoadBalancerServerGroup updates LoadBalancerServerGroup
 func (cli *ZSClient) UpdateLoadBalancerServerGroup(uuid string, params param.UpdateLoadBalancerServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
 	resp := view.LoadBalancerServerGroupInventoryView{}
-	if err := cli.Put("v1/load-balancers/servergroups", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/load-balancers/servergroups", uuid, map[string]interface{}{
+		"updateLoadBalancerServerGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

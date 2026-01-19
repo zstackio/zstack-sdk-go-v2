@@ -37,7 +37,9 @@ func (cli *ZSClient) DeleteVip(uuid string, deleteMode param.DeleteMode) error {
 // UpdateVip updates Vip
 func (cli *ZSClient) UpdateVip(uuid string, params param.UpdateVipParam) (*view.VipInventoryView, error) {
 	resp := view.VipInventoryView{}
-	if err := cli.Put("v1/vips", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/vips", uuid, map[string]interface{}{
+		"updateVip": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

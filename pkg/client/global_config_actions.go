@@ -23,7 +23,9 @@ func (cli *ZSClient) UpdateGlobalConfig(category string, name string, params par
 // ResetGlobalConfig operates on GlobalConfig
 func (cli *ZSClient) ResetGlobalConfig(uuid string, params param.ResetGlobalConfigParam) (*view.GlobalConfigInventoryView, error) {
 	resp := view.GlobalConfigInventoryView{}
-	if err := cli.Put("v1/global-configurations/actions", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/global-configurations/actions", uuid, map[string]interface{}{
+		"resetGlobalConfig": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

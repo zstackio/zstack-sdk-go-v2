@@ -36,7 +36,9 @@ func (cli *ZSClient) CreateVolumeBackupAsync(params param.CreateVolumeBackupPara
 // SyncVolumeBackup operates on VolumeBackup
 func (cli *ZSClient) SyncVolumeBackup(imageStoreUuid string, params param.SyncVolumeBackupParam) (*view.VolumeBackupInventoryView, error) {
 	resp := view.VolumeBackupInventoryView{}
-	if err := cli.Put("v1/volume-backups/imageStore", imageStoreUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/volume-backups/imageStore", imageStoreUuid, map[string]interface{}{
+		"syncVolumeBackup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

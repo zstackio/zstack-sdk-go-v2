@@ -21,7 +21,9 @@ func (cli *ZSClient) AddAccessControlRule(params param.AddAccessControlRuleParam
 // UpdateAccessControlRule updates AccessControlRule
 func (cli *ZSClient) UpdateAccessControlRule(uuid string, params param.UpdateAccessControlRuleParam) (*view.AccessControlRuleInventoryView, error) {
 	resp := view.AccessControlRuleInventoryView{}
-	if err := cli.Put("v1/login-control/access-control/rules", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/login-control/access-control/rules", uuid, map[string]interface{}{
+		"updateAccessControlRule": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

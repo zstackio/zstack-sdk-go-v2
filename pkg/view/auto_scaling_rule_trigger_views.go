@@ -26,8 +26,3 @@ type DeleteAutoScalingRuleTriggerEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// CreateAutoScalingRuleTriggerEventView CreateAutoScalingRuleTriggerEvent
-type CreateAutoScalingRuleTriggerEventView struct {
-	Inventory AutoScalingRuleTriggerInventoryView `json:"inventory,omitempty"`
-}
-

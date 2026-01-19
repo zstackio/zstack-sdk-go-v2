@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // UpdateEventSubscriptionLabelParamDetail UpdateEventSubscriptionLabel detail param
 type UpdateEventSubscriptionLabelParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Key string `json:"key" validate:"required"`
 	Value string `json:"value" validate:"required"`
 	Operator string `json:"operator" validate:"required"`

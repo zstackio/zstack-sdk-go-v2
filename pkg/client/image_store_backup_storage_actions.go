@@ -21,7 +21,9 @@ func (cli *ZSClient) AddImageStoreBackupStorage(params param.AddImageStoreBackup
 // UpdateImageStoreBackupStorage updates ImageStoreBackupStorage
 func (cli *ZSClient) UpdateImageStoreBackupStorage(uuid string, params param.UpdateImageStoreBackupStorageParam) (*view.BackupStorageInventoryView, error) {
 	resp := view.BackupStorageInventoryView{}
-	if err := cli.Put("v1/backup-storage/image-store", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/backup-storage/image-store", uuid, map[string]interface{}{
+		"updateImageStoreBackupStorage": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -49,7 +51,9 @@ func (cli *ZSClient) PageImageStoreBackupStorage(params *param.QueryParam) ([]vi
 // ReconnectImageStoreBackupStorage operates on ImageStoreBackupStorage
 func (cli *ZSClient) ReconnectImageStoreBackupStorage(uuid string, params param.ReconnectImageStoreBackupStorageParam) (*view.ImageStoreBackupStorageInventoryView, error) {
 	resp := view.ImageStoreBackupStorageInventoryView{}
-	if err := cli.Put("v1/backup-storage/image-store", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/backup-storage/image-store", uuid, map[string]interface{}{
+		"reconnectImageStoreBackupStorage": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

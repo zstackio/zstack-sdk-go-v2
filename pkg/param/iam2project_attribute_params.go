@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // UpdateIAM2ProjectAttributeParamDetail UpdateIAM2ProjectAttribute detail param
 type UpdateIAM2ProjectAttributeParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Value string `json:"value" validate:"required"`
 }
 

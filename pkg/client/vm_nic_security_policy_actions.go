@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // ChangeVmNicSecurityPolicy changes VmNicSecurityPolicy
 func (cli *ZSClient) ChangeVmNicSecurityPolicy(vmNicUuid string, params param.ChangeVmNicSecurityPolicyParam) (*view.VmNicSecurityPolicyInventoryView, error) {
 	resp := view.VmNicSecurityPolicyInventoryView{}
-	if err := cli.Put("v1/security-groups/nics", vmNicUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/security-groups/nics", vmNicUuid, map[string]interface{}{
+		"changeVmNicSecurityPolicy": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

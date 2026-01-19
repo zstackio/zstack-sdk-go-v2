@@ -25,7 +25,9 @@ func (cli *ZSClient) AddPreconfigurationTemplate(params param.AddPreconfiguratio
 // UpdatePreconfigurationTemplate updates PreconfigurationTemplate
 func (cli *ZSClient) UpdatePreconfigurationTemplate(uuid string, params param.UpdatePreconfigurationTemplateParam) (*view.PreconfigurationTemplateInventoryView, error) {
 	resp := view.PreconfigurationTemplateInventoryView{}
-	if err := cli.Put("v1/baremetal/preconfigurations", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/preconfigurations", uuid, map[string]interface{}{
+		"updatePreconfigurationTemplate": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

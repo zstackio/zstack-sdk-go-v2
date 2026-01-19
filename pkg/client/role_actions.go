@@ -45,7 +45,9 @@ func (cli *ZSClient) DeleteRole(uuid string, deleteMode param.DeleteMode) error 
 // UpdateRole updates Role
 func (cli *ZSClient) UpdateRole(uuid string, params param.UpdateRoleParam) (*view.RoleInventoryView, error) {
 	resp := view.RoleInventoryView{}
-	if err := cli.Put("v1/identities/roles", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/identities/roles", uuid, map[string]interface{}{
+		"updateRole": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

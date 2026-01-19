@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // RebootBaremetalInstance operates on BaremetalInstance
 func (cli *ZSClient) RebootBaremetalInstance(uuid string, params param.RebootBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	resp := view.BaremetalInstanceInventoryView{}
-	if err := cli.Put("v1/baremetal/instances", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/instances", uuid, map[string]interface{}{
+		"rebootBaremetalInstance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -21,7 +23,9 @@ func (cli *ZSClient) RebootBaremetalInstance(uuid string, params param.RebootBar
 // StartBaremetalInstance starts BaremetalInstance
 func (cli *ZSClient) StartBaremetalInstance(uuid string, params param.StartBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	resp := view.BaremetalInstanceInventoryView{}
-	if err := cli.Put("v1/baremetal/instances", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/instances", uuid, map[string]interface{}{
+		"startBaremetalInstance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -48,7 +52,9 @@ func (cli *ZSClient) ExpungeBaremetalInstance(uuid string) error {
 // UpdateBaremetalInstance updates BaremetalInstance
 func (cli *ZSClient) UpdateBaremetalInstance(uuid string, params param.UpdateBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	resp := view.BaremetalInstanceInventoryView{}
-	if err := cli.Put("v1/baremetal/instances", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/instances", uuid, map[string]interface{}{
+		"updateBaremetalInstance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -56,7 +62,9 @@ func (cli *ZSClient) UpdateBaremetalInstance(uuid string, params param.UpdateBar
 // StopBaremetalInstance stops BaremetalInstance
 func (cli *ZSClient) StopBaremetalInstance(uuid string, params param.StopBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	resp := view.BaremetalInstanceInventoryView{}
-	if err := cli.Put("v1/baremetal/instances", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/instances", uuid, map[string]interface{}{
+		"stopBaremetalInstance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -84,7 +92,9 @@ func (cli *ZSClient) PageBaremetalInstance(params *param.QueryParam) ([]view.Bar
 // RecoverBaremetalInstance operates on BaremetalInstance
 func (cli *ZSClient) RecoverBaremetalInstance(uuid string, params param.RecoverBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	resp := view.BaremetalInstanceInventoryView{}
-	if err := cli.Put("v1/baremetal/instances", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/instances", uuid, map[string]interface{}{
+		"recoverBaremetalInstance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

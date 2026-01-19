@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateCSPSecretResourcePool updates CSPSecretResourcePool
 func (cli *ZSClient) UpdateCSPSecretResourcePool(uuid string, params param.UpdateCSPSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Put("v1/secret-resource-pools/csp", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/secret-resource-pools/csp", uuid, map[string]interface{}{
+		"updateCSPSecretResourcePool": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

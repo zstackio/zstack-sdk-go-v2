@@ -45,7 +45,9 @@ func (cli *ZSClient) DeleteZone(uuid string, deleteMode param.DeleteMode) error 
 // UpdateZone updates Zone
 func (cli *ZSClient) UpdateZone(uuid string, params param.UpdateZoneParam) (*view.ZoneInventoryView, error) {
 	resp := view.ZoneInventoryView{}
-	if err := cli.Put("v1/zones", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/zones", uuid, map[string]interface{}{
+		"updateZone": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

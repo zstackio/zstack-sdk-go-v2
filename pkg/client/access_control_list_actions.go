@@ -21,7 +21,9 @@ func (cli *ZSClient) CreateAccessControlList(params param.CreateAccessControlLis
 // UpdateAccessControlList updates AccessControlList
 func (cli *ZSClient) UpdateAccessControlList(uuid string, params param.UpdateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
 	resp := view.AccessControlListInventoryView{}
-	if err := cli.Put("v1/access-control-lists", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/access-control-lists", uuid, map[string]interface{}{
+		"updateAccessControlList": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

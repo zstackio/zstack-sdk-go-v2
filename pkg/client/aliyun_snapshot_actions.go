@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAliyunSnapshot updates AliyunSnapshot
 func (cli *ZSClient) UpdateAliyunSnapshot(uuid string, params param.UpdateAliyunSnapshotParam) (*view.AliyunSnapshotInventoryView, error) {
 	resp := view.AliyunSnapshotInventoryView{}
-	if err := cli.Put("v1/hybrid/aliyun/snapshot", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/snapshot", uuid, map[string]interface{}{
+		"updateAliyunSnapshot": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

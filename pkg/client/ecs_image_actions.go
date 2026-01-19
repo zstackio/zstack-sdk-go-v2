@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateEcsImage updates EcsImage
 func (cli *ZSClient) UpdateEcsImage(uuid string, params param.UpdateEcsImageParam) (*view.EcsImageInventoryView, error) {
 	resp := view.EcsImageInventoryView{}
-	if err := cli.Put("v1/hybrid/aliyun/image", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/image", uuid, map[string]interface{}{
+		"updateEcsImage": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

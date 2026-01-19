@@ -33,7 +33,9 @@ func (cli *ZSClient) PageSftpBackupStorage(params *param.QueryParam) ([]view.Sft
 // UpdateSftpBackupStorage updates SftpBackupStorage
 func (cli *ZSClient) UpdateSftpBackupStorage(uuid string, params param.UpdateSftpBackupStorageParam) (*view.BackupStorageInventoryView, error) {
 	resp := view.BackupStorageInventoryView{}
-	if err := cli.Put("v1/backup-storage/sftp", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/backup-storage/sftp", uuid, map[string]interface{}{
+		"updateSftpBackupStorage": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -41,7 +43,9 @@ func (cli *ZSClient) UpdateSftpBackupStorage(uuid string, params param.UpdateSft
 // ReconnectSftpBackupStorage operates on SftpBackupStorage
 func (cli *ZSClient) ReconnectSftpBackupStorage(uuid string, params param.ReconnectSftpBackupStorageParam) (*view.SftpBackupStorageInventoryView, error) {
 	resp := view.SftpBackupStorageInventoryView{}
-	if err := cli.Put("v1/backup-storage/sftp", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/backup-storage/sftp", uuid, map[string]interface{}{
+		"reconnectSftpBackupStorage": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

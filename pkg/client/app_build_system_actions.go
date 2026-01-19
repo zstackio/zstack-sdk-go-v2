@@ -41,7 +41,9 @@ func (cli *ZSClient) PageAppBuildSystem(params *param.QueryParam) ([]view.AppBui
 // ReconnectAppBuildSystem operates on AppBuildSystem
 func (cli *ZSClient) ReconnectAppBuildSystem(uuid string, params param.ReconnectAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
 	resp := view.AppBuildSystemInventoryView{}
-	if err := cli.Put("v1/appcenter/buildsystem", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/appcenter/buildsystem", uuid, map[string]interface{}{
+		"reconnectAppBuildSystem": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -49,7 +51,9 @@ func (cli *ZSClient) ReconnectAppBuildSystem(uuid string, params param.Reconnect
 // UpdateAppBuildSystem updates AppBuildSystem
 func (cli *ZSClient) UpdateAppBuildSystem(uuid string, params param.UpdateAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
 	resp := view.AppBuildSystemInventoryView{}
-	if err := cli.Put("v1/appcenter/buildsystem", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/appcenter/buildsystem", uuid, map[string]interface{}{
+		"updateAppBuildSystem": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

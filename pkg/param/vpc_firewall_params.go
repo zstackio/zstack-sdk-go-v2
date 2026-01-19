@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // UpdateVpcFirewallParamDetail UpdateVpcFirewall detail param
 type UpdateVpcFirewallParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Name string `json:"name,omitempty"`
 }
 
@@ -21,14 +20,14 @@ type UpdateVpcFirewallParam struct {
 // CreateVpcFirewallParamDetail CreateVpcFirewall detail param
 type CreateVpcFirewallParamDetail struct {
 	VpcUuid string `json:"vpcUuid" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Name string `json:"name" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateVpcFirewallParam CreateVpcFirewall request param
 type CreateVpcFirewallParam struct {
 	BaseParam
-	Params CreateVpcFirewallParamDetail `json:"createVpcFirewall"`
+	Params CreateVpcFirewallParamDetail `json:"params"`
 }

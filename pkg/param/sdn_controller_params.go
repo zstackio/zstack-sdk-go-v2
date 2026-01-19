@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // RemoveSdnControllerParamDetail RemoveSdnController detail param
 type RemoveSdnControllerParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // RemoveSdnControllerParam RemoveSdnController request param
@@ -20,26 +19,25 @@ type RemoveSdnControllerParam struct {
 // AddSdnControllerParamDetail AddSdnController detail param
 type AddSdnControllerParamDetail struct {
 	VendorType string `json:"vendorType" validate:"required"`
-	VendorVersion string `json:"vendorVersion,omitempty"`
+	VendorVersion *string `json:"vendorVersion,omitempty"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Ip string `json:"ip" validate:"required"`
-	UserName string `json:"userName,omitempty"`
-	Password string `json:"password,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	Password *string `json:"password,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // AddSdnControllerParam AddSdnController request param
 type AddSdnControllerParam struct {
 	BaseParam
-	Params AddSdnControllerParamDetail `json:"addSdnController"`
+	Params AddSdnControllerParamDetail `json:"params"`
 }
 // UpdateSdnControllerParamDetail UpdateSdnController detail param
 type UpdateSdnControllerParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateSdnControllerParam UpdateSdnController request param
@@ -49,9 +47,8 @@ type UpdateSdnControllerParam struct {
 }
 // ChangeSdnControllerParamDetail ChangeSdnController detail param
 type ChangeSdnControllerParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	UserName string `json:"userName,omitempty"`
-	Password string `json:"password,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	Password *string `json:"password,omitempty"`
 	VlanRanges []string `json:"vlanRanges,omitempty"`
 }
 
@@ -62,7 +59,6 @@ type ChangeSdnControllerParam struct {
 }
 // ReconnectSdnControllerParamDetail ReconnectSdnController detail param
 type ReconnectSdnControllerParamDetail struct {
-	SdnControllerUuid string `json:"sdnControllerUuid" validate:"required"`
 }
 
 // ReconnectSdnControllerParam ReconnectSdnController request param

@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // UpdateEcsSecurityGroupParamDetail UpdateEcsSecurityGroup detail param
 type UpdateEcsSecurityGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Name string `json:"name,omitempty"`
 }
 

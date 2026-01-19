@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // InspectBareMetal2Chassis operates on BareMetal2Chassis
 func (cli *ZSClient) InspectBareMetal2Chassis(uuid string, params param.InspectBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	resp := view.BareMetal2ChassisInventoryView{}
-	if err := cli.Put("v1/baremetal2/chassis", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal2/chassis", uuid, map[string]interface{}{
+		"inspectBareMetal2Chassis": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -21,7 +23,9 @@ func (cli *ZSClient) InspectBareMetal2Chassis(uuid string, params param.InspectB
 // UpdateBareMetal2Chassis updates BareMetal2Chassis
 func (cli *ZSClient) UpdateBareMetal2Chassis(uuid string, params param.UpdateBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	resp := view.BareMetal2ChassisInventoryView{}
-	if err := cli.Put("v1/baremetal2/chassis", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal2/chassis", uuid, map[string]interface{}{
+		"updateBareMetal2Chassis": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

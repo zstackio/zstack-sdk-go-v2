@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // ChangeInstanceOffering changes InstanceOffering
 func (cli *ZSClient) ChangeInstanceOffering(vmInstanceUuid string, params param.ChangeInstanceOfferingParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Put("v1/vm-instances", vmInstanceUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/vm-instances", vmInstanceUuid, map[string]interface{}{
+		"changeInstanceOffering": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -21,7 +23,9 @@ func (cli *ZSClient) ChangeInstanceOffering(vmInstanceUuid string, params param.
 // UpdateInstanceOffering updates InstanceOffering
 func (cli *ZSClient) UpdateInstanceOffering(uuid string, params param.UpdateInstanceOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.Put("v1/instance-offerings", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/instance-offerings", uuid, map[string]interface{}{
+		"updateInstanceOffering": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

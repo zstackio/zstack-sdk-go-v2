@@ -32,6 +32,11 @@ type UpdateBlockPrimaryStorageEventView struct {
 	Inventory BlockPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
+// AddPrimaryStorageEventView AddPrimaryStorageEvent
+type AddPrimaryStorageEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
 // QueryBlockPrimaryStorageView QueryBlockPrimaryStorage
 type QueryBlockPrimaryStorageView struct {
 	Inventories []BlockPrimaryStorageInventoryView `json:"inventories,omitempty"`

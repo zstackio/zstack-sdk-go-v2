@@ -38,7 +38,9 @@ func (cli *ZSClient) PagePortForwardingRule(params *param.QueryParam) ([]view.Po
 // UpdatePortForwardingRule updates PortForwardingRule
 func (cli *ZSClient) UpdatePortForwardingRule(uuid string, params param.UpdatePortForwardingRuleParam) (*view.PortForwardingRuleInventoryView, error) {
 	resp := view.PortForwardingRuleInventoryView{}
-	if err := cli.Put("v1/port-forwarding", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/port-forwarding", uuid, map[string]interface{}{
+		"updatePortForwardingRule": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

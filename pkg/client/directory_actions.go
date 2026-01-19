@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateDirectory updates Directory
 func (cli *ZSClient) UpdateDirectory(uuid string, params param.UpdateDirectoryParam) (*view.DirectoryInventoryView, error) {
 	resp := view.DirectoryInventoryView{}
-	if err := cli.Put("v1/update/directory", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/update/directory", uuid, map[string]interface{}{
+		"updateDirectory": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

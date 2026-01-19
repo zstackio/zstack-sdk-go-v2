@@ -21,7 +21,9 @@ func (cli *ZSClient) AddBareMetal2IpmiChassis(params param.AddBareMetal2IpmiChas
 // UpdateBareMetal2IpmiChassis updates BareMetal2IpmiChassis
 func (cli *ZSClient) UpdateBareMetal2IpmiChassis(uuid string, params param.UpdateBareMetal2IpmiChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	resp := view.BareMetal2ChassisInventoryView{}
-	if err := cli.Put("v1/baremetal2/chassis/ipmi", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal2/chassis/ipmi", uuid, map[string]interface{}{
+		"updateBareMetal2IpmiChassis": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

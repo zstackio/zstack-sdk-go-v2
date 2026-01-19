@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateLogServer updates LogServer
 func (cli *ZSClient) UpdateLogServer(uuid string, params param.UpdateLogServerParam) (*view.LogServerInventoryView, error) {
 	resp := view.LogServerInventoryView{}
-	if err := cli.Put("v1/log/servers", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/log/servers", uuid, map[string]interface{}{
+		"updateLogServer": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

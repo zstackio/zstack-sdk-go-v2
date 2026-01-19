@@ -20,22 +20,22 @@ type UpdateDirectoryParam struct {
 // CreateDirectoryParamDetail CreateDirectory detail param
 type CreateDirectoryParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	ParentUuid string `json:"parentUuid,omitempty"`
+	ParentUuid *string `json:"parentUuid,omitempty"`
 	ZoneUuid string `json:"zoneUuid" validate:"required"`
 	Type string `json:"type" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateDirectoryParam CreateDirectory request param
 type CreateDirectoryParam struct {
 	BaseParam
-	Params CreateDirectoryParamDetail `json:"createDirectory"`
+	Params CreateDirectoryParamDetail `json:"params"`
 }
 // DeleteDirectoryParamDetail DeleteDirectory detail param
 type DeleteDirectoryParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteDirectoryParam DeleteDirectory request param

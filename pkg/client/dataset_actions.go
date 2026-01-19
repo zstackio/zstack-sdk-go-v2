@@ -60,7 +60,9 @@ func (cli *ZSClient) DeleteDataset(uuid string, deleteMode param.DeleteMode) err
 // UpdateDataset updates Dataset
 func (cli *ZSClient) UpdateDataset(uuid string, params param.UpdateDatasetParam) (*view.DatasetInventoryView, error) {
 	resp := view.DatasetInventoryView{}
-	if err := cli.Put("v1/ai/datasets", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/ai/datasets", uuid, map[string]interface{}{
+		"updateDataset": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

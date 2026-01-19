@@ -37,7 +37,9 @@ func (cli *ZSClient) PageModelEvaluationTask(params *param.QueryParam) ([]view.M
 // UpdateModelEvaluationTask updates ModelEvaluationTask
 func (cli *ZSClient) UpdateModelEvaluationTask(uuid string, params param.UpdateModelEvaluationTaskParam) (*view.ModelEvaluationTaskInventoryView, error) {
 	resp := view.ModelEvaluationTaskInventoryView{}
-	if err := cli.Put("v1/model-evaluation-tasks", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/model-evaluation-tasks", uuid, map[string]interface{}{
+		"updateModelEvaluationTask": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

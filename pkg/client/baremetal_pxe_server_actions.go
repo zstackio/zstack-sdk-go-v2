@@ -17,7 +17,9 @@ func (cli *ZSClient) DeleteBaremetalPxeServer(uuid string, deleteMode param.Dele
 // UpdateBaremetalPxeServer updates BaremetalPxeServer
 func (cli *ZSClient) UpdateBaremetalPxeServer(uuid string, params param.UpdateBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
 	resp := view.BaremetalPxeServerInventoryView{}
-	if err := cli.Put("v1/baremetal/pxeservers", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/pxeservers", uuid, map[string]interface{}{
+		"updateBaremetalPxeServer": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -25,7 +27,9 @@ func (cli *ZSClient) UpdateBaremetalPxeServer(uuid string, params param.UpdateBa
 // StartBaremetalPxeServer starts BaremetalPxeServer
 func (cli *ZSClient) StartBaremetalPxeServer(uuid string, params param.StartBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
 	resp := view.BaremetalPxeServerInventoryView{}
-	if err := cli.Put("v1/baremetal/pxeservers", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/pxeservers", uuid, map[string]interface{}{
+		"startBaremetalPxeServer": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -33,7 +37,9 @@ func (cli *ZSClient) StartBaremetalPxeServer(uuid string, params param.StartBare
 // ReconnectBaremetalPxeServer operates on BaremetalPxeServer
 func (cli *ZSClient) ReconnectBaremetalPxeServer(uuid string, params param.ReconnectBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
 	resp := view.BaremetalPxeServerInventoryView{}
-	if err := cli.Put("v1/baremetal/pxeservers", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/pxeservers", uuid, map[string]interface{}{
+		"reconnectBaremetalPxeServer": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -41,7 +47,9 @@ func (cli *ZSClient) ReconnectBaremetalPxeServer(uuid string, params param.Recon
 // StopBaremetalPxeServer stops BaremetalPxeServer
 func (cli *ZSClient) StopBaremetalPxeServer(uuid string, params param.StopBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
 	resp := view.BaremetalPxeServerInventoryView{}
-	if err := cli.Put("v1/baremetal/pxeservers", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/baremetal/pxeservers", uuid, map[string]interface{}{
+		"stopBaremetalPxeServer": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

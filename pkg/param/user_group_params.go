@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // DeleteUserGroupParamDetail DeleteUserGroup detail param
 type DeleteUserGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteUserGroupParam DeleteUserGroup request param
@@ -20,21 +19,21 @@ type DeleteUserGroupParam struct {
 // CreateUserGroupParamDetail CreateUserGroup detail param
 type CreateUserGroupParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateUserGroupParam CreateUserGroup request param
 type CreateUserGroupParam struct {
 	BaseParam
-	Params CreateUserGroupParamDetail `json:"createUserGroup"`
+	Params CreateUserGroupParamDetail `json:"params"`
 }
 // UpdateUserGroupParamDetail UpdateUserGroup detail param
 type UpdateUserGroupParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateUserGroupParam UpdateUserGroup request param

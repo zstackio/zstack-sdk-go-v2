@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // DeleteTicketFlowCollectionParamDetail DeleteTicketFlowCollection detail param
 type DeleteTicketFlowCollectionParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteTicketFlowCollectionParam DeleteTicketFlowCollection request param

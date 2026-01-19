@@ -8,9 +8,7 @@ var _ = time.Now // avoid unused import
 
 // RemoveAccessControlListEntryParamDetail RemoveAccessControlListEntry detail param
 type RemoveAccessControlListEntryParamDetail struct {
-	AclUuid string `json:"aclUuid" validate:"required"`
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // RemoveAccessControlListEntryParam RemoveAccessControlListEntry request param
@@ -20,15 +18,14 @@ type RemoveAccessControlListEntryParam struct {
 }
 // AddAccessControlListEntryParamDetail AddAccessControlListEntry detail param
 type AddAccessControlListEntryParamDetail struct {
-	AclUuid string `json:"aclUuid" validate:"required"`
 	Entries string `json:"entries" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // AddAccessControlListEntryParam AddAccessControlListEntry request param
 type AddAccessControlListEntryParam struct {
 	BaseParam
-	Params AddAccessControlListEntryParamDetail `json:"addAccessControlListEntry"`
+	Params AddAccessControlListEntryParamDetail `json:"params"`
 }

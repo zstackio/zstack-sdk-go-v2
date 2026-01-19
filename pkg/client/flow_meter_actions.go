@@ -45,7 +45,9 @@ func (cli *ZSClient) DeleteFlowMeter(uuid string, deleteMode param.DeleteMode) e
 // UpdateFlowMeter updates FlowMeter
 func (cli *ZSClient) UpdateFlowMeter(uuid string, params param.UpdateFlowMeterParam) (*view.FlowMeterInventoryView, error) {
 	resp := view.FlowMeterInventoryView{}
-	if err := cli.Put("v1/flowmeters", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/flowmeters", uuid, map[string]interface{}{
+		"updateFlowMeter": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

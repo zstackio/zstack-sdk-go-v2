@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateHostNetworkInterface updates HostNetworkInterface
 func (cli *ZSClient) UpdateHostNetworkInterface(interfaceUuid string, params param.UpdateHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
 	resp := view.HostNetworkInterfaceInventoryView{}
-	if err := cli.Put("v1/hosts/nics", interfaceUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hosts/nics", interfaceUuid, map[string]interface{}{
+		"params": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -41,7 +43,9 @@ func (cli *ZSClient) PageHostNetworkInterface(params *param.QueryParam) ([]view.
 // LocateHostNetworkInterface operates on HostNetworkInterface
 func (cli *ZSClient) LocateHostNetworkInterface(hostUuid string, params param.LocateHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
 	resp := view.HostNetworkInterfaceInventoryView{}
-	if err := cli.Put("v1/hosts", hostUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hosts", hostUuid, map[string]interface{}{
+		"locateHostNetworkInterface": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

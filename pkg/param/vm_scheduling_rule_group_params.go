@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // DeleteVmSchedulingRuleGroupParamDetail DeleteVmSchedulingRuleGroup detail param
 type DeleteVmSchedulingRuleGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // DeleteVmSchedulingRuleGroupParam DeleteVmSchedulingRuleGroup request param
@@ -18,9 +17,8 @@ type DeleteVmSchedulingRuleGroupParam struct {
 }
 // UpdateVmSchedulingRuleGroupParamDetail UpdateVmSchedulingRuleGroup detail param
 type UpdateVmSchedulingRuleGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateVmSchedulingRuleGroupParam UpdateVmSchedulingRuleGroup request param
@@ -32,13 +30,13 @@ type UpdateVmSchedulingRuleGroupParam struct {
 type CreateVmSchedulingRuleGroupParamDetail struct {
 	ZoneUuid string `json:"zoneUuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateVmSchedulingRuleGroupParam CreateVmSchedulingRuleGroup request param
 type CreateVmSchedulingRuleGroupParam struct {
 	BaseParam
-	Params CreateVmSchedulingRuleGroupParamDetail `json:"createVmSchedulingRuleGroup"`
+	Params CreateVmSchedulingRuleGroupParamDetail `json:"params"`
 }

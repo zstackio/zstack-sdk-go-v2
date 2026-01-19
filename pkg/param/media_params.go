@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // DeleteMediaParamDetail DeleteMedia detail param
 type DeleteMediaParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteMediaParam DeleteMedia request param

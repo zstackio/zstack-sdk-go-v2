@@ -45,7 +45,9 @@ func (cli *ZSClient) DeleteIAM2VirtualIDGroup(uuid string, deleteMode param.Dele
 // UpdateIAM2VirtualIDGroup updates IAM2VirtualIDGroup
 func (cli *ZSClient) UpdateIAM2VirtualIDGroup(uuid string, params param.UpdateIAM2VirtualIDGroupParam) (*view.IAM2VirtualIDGroupInventoryView, error) {
 	resp := view.IAM2VirtualIDGroupInventoryView{}
-	if err := cli.Put("v1/iam2/projects/groups", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/iam2/projects/groups", uuid, map[string]interface{}{
+		"updateIAM2VirtualIDGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -21,7 +21,9 @@ func (cli *ZSClient) AddAliyunNasAccessGroup(params param.AddAliyunNasAccessGrou
 // UpdateAliyunNasAccessGroup updates AliyunNasAccessGroup
 func (cli *ZSClient) UpdateAliyunNasAccessGroup(uuid string, params param.UpdateAliyunNasAccessGroupParam) (*view.AliyunNasAccessGroupInventoryView, error) {
 	resp := view.AliyunNasAccessGroupInventoryView{}
-	if err := cli.Put("v1/nas/aliyun/access", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/nas/aliyun/access", uuid, map[string]interface{}{
+		"updateAliyunNasAccessGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

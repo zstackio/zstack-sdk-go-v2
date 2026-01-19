@@ -45,7 +45,9 @@ func (cli *ZSClient) PageVmCdRom(params *param.QueryParam) ([]view.VmCdRomInvent
 // UpdateVmCdRom updates VmCdRom
 func (cli *ZSClient) UpdateVmCdRom(uuid string, params param.UpdateVmCdRomParam) (*view.VmCdRomInventoryView, error) {
 	resp := view.VmCdRomInventoryView{}
-	if err := cli.Put("v1/vm-instances/cdroms", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/vm-instances/cdroms", uuid, map[string]interface{}{
+		"updateVmCdRom": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

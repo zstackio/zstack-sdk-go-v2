@@ -21,7 +21,9 @@ func (cli *ZSClient) CreateAliyunProxyVpc(params param.CreateAliyunProxyVpcParam
 // UpdateAliyunProxyVpc updates AliyunProxyVpc
 func (cli *ZSClient) UpdateAliyunProxyVpc(uuid string, params param.UpdateAliyunProxyVpcParam) (*view.AliyunProxyVpcInventoryView, error) {
 	resp := view.AliyunProxyVpcInventoryView{}
-	if err := cli.Put("v1/aliyun-proxy/vpcs", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/aliyun-proxy/vpcs", uuid, map[string]interface{}{
+		"updateAliyunProxyVpc": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

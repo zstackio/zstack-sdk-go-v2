@@ -37,7 +37,9 @@ func (cli *ZSClient) PageVmSchedulingRuleGroup(params *param.QueryParam) ([]view
 // UpdateVmSchedulingRuleGroup updates VmSchedulingRuleGroup
 func (cli *ZSClient) UpdateVmSchedulingRuleGroup(uuid string, params param.UpdateVmSchedulingRuleGroupParam) (*view.VmSchedulingRuleGroupInventoryView, error) {
 	resp := view.VmSchedulingRuleGroupInventoryView{}
-	if err := cli.Put("v1/vmSchedulingRuleGroup", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/vmSchedulingRuleGroup", uuid, map[string]interface{}{
+		"updateVmSchedulingRuleGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

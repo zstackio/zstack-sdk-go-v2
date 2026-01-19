@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // StartEcsInstance starts EcsInstance
 func (cli *ZSClient) StartEcsInstance(uuid string, params param.StartEcsInstanceParam) (*view.EcsInstanceInventoryView, error) {
 	resp := view.EcsInstanceInventoryView{}
-	if err := cli.Put("v1/hybrid/aliyun/ecs", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/ecs", uuid, map[string]interface{}{
+		"startEcsInstance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -25,7 +27,9 @@ func (cli *ZSClient) DeleteEcsInstance(uuid string, deleteMode param.DeleteMode)
 // StopEcsInstance stops EcsInstance
 func (cli *ZSClient) StopEcsInstance(uuid string, params param.StopEcsInstanceParam) (*view.EcsInstanceInventoryView, error) {
 	resp := view.EcsInstanceInventoryView{}
-	if err := cli.Put("v1/hybrid/aliyun/ecs", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/ecs", uuid, map[string]interface{}{
+		"stopEcsInstance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -33,7 +37,9 @@ func (cli *ZSClient) StopEcsInstance(uuid string, params param.StopEcsInstancePa
 // RebootEcsInstance operates on EcsInstance
 func (cli *ZSClient) RebootEcsInstance(uuid string, params param.RebootEcsInstanceParam) (*view.EcsInstanceInventoryView, error) {
 	resp := view.EcsInstanceInventoryView{}
-	if err := cli.Put("v1/hybrid/aliyun/ecs", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/hybrid/aliyun/ecs", uuid, map[string]interface{}{
+		"rebootEcsInstance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // ReconnectIPsecConnectionParamDetail ReconnectIPsecConnection detail param
 type ReconnectIPsecConnectionParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // ReconnectIPsecConnectionParam ReconnectIPsecConnection request param
@@ -18,9 +17,8 @@ type ReconnectIPsecConnectionParam struct {
 }
 // UpdateIPsecConnectionParamDetail UpdateIPsecConnection detail param
 type UpdateIPsecConnectionParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateIPsecConnectionParam UpdateIPsecConnection request param
@@ -30,8 +28,7 @@ type UpdateIPsecConnectionParam struct {
 }
 // DeleteIPsecConnectionParamDetail DeleteIPsecConnection detail param
 type DeleteIPsecConnectionParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteIPsecConnectionParam DeleteIPsecConnection request param
@@ -42,56 +39,55 @@ type DeleteIPsecConnectionParam struct {
 // CreateIPsecConnectionParamDetail CreateIPsecConnection detail param
 type CreateIPsecConnectionParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	VipUuid string `json:"vipUuid" validate:"required"`
 	PeerAddress string `json:"peerAddress" validate:"required"`
-	AuthMode string `json:"authMode,omitempty"`
+	AuthMode *string `json:"authMode,omitempty"`
 	AuthKey string `json:"authKey" validate:"required"`
-	IdType string `json:"idType,omitempty"`
-	LocalId string `json:"localId,omitempty"`
-	RemoteId string `json:"remoteId,omitempty"`
-	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	IdType *string `json:"idType,omitempty"`
+	LocalId *string `json:"localId,omitempty"`
+	RemoteId *string `json:"remoteId,omitempty"`
+	L3NetworkUuid *string `json:"l3NetworkUuid,omitempty"`
 	PeerCidrs []string `json:"peerCidrs,omitempty"`
-	IkeVersion string `json:"ikeVersion,omitempty"`
-	IkeAuthAlgorithm string `json:"ikeAuthAlgorithm,omitempty"`
-	IkeEncryptionAlgorithm string `json:"ikeEncryptionAlgorithm,omitempty"`
+	IkeVersion *string `json:"ikeVersion,omitempty"`
+	IkeAuthAlgorithm *string `json:"ikeAuthAlgorithm,omitempty"`
+	IkeEncryptionAlgorithm *string `json:"ikeEncryptionAlgorithm,omitempty"`
 	IkeDhGroup int `json:"ikeDhGroup,omitempty"`
-	IkeLifeTime int `json:"ikeLifeTime,omitempty"`
-	PolicyAuthAlgorithm string `json:"policyAuthAlgorithm,omitempty"`
-	PolicyEncryptionAlgorithm string `json:"policyEncryptionAlgorithm,omitempty"`
-	Pfs string `json:"pfs,omitempty"`
-	PolicyMode string `json:"policyMode,omitempty"`
-	TransformProtocol string `json:"transformProtocol,omitempty"`
-	LifeTime int `json:"lifeTime,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	IkeLifeTime *int `json:"ikeLifeTime,omitempty"`
+	PolicyAuthAlgorithm *string `json:"policyAuthAlgorithm,omitempty"`
+	PolicyEncryptionAlgorithm *string `json:"policyEncryptionAlgorithm,omitempty"`
+	Pfs *string `json:"pfs,omitempty"`
+	PolicyMode *string `json:"policyMode,omitempty"`
+	TransformProtocol *string `json:"transformProtocol,omitempty"`
+	LifeTime *int `json:"lifeTime,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateIPsecConnectionParam CreateIPsecConnection request param
 type CreateIPsecConnectionParam struct {
 	BaseParam
-	Params CreateIPsecConnectionParamDetail `json:"createIPsecConnection"`
+	Params CreateIPsecConnectionParamDetail `json:"params"`
 }
 // ChangeIPsecConnectionParamDetail ChangeIPsecConnection detail param
 type ChangeIPsecConnectionParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	PeerAddress string `json:"peerAddress" validate:"required"`
-	AuthMode string `json:"authMode,omitempty"`
+	AuthMode *string `json:"authMode,omitempty"`
 	AuthKey string `json:"authKey" validate:"required"`
-	IdType string `json:"idType,omitempty"`
-	LocalId string `json:"localId,omitempty"`
-	RemoteId string `json:"remoteId,omitempty"`
-	IkeVersion string `json:"ikeVersion,omitempty"`
-	IkeAuthAlgorithm string `json:"ikeAuthAlgorithm,omitempty"`
-	IkeEncryptionAlgorithm string `json:"ikeEncryptionAlgorithm,omitempty"`
+	IdType *string `json:"idType,omitempty"`
+	LocalId *string `json:"localId,omitempty"`
+	RemoteId *string `json:"remoteId,omitempty"`
+	IkeVersion *string `json:"ikeVersion,omitempty"`
+	IkeAuthAlgorithm *string `json:"ikeAuthAlgorithm,omitempty"`
+	IkeEncryptionAlgorithm *string `json:"ikeEncryptionAlgorithm,omitempty"`
 	IkeDhGroup int `json:"ikeDhGroup,omitempty"`
-	IkeLifeTime int `json:"ikeLifeTime,omitempty"`
-	PolicyAuthAlgorithm string `json:"policyAuthAlgorithm,omitempty"`
-	PolicyEncryptionAlgorithm string `json:"policyEncryptionAlgorithm,omitempty"`
-	Pfs string `json:"pfs,omitempty"`
-	PolicyMode string `json:"policyMode,omitempty"`
-	TransformProtocol string `json:"transformProtocol,omitempty"`
-	LifeTime int `json:"lifeTime,omitempty"`
+	IkeLifeTime *int `json:"ikeLifeTime,omitempty"`
+	PolicyAuthAlgorithm *string `json:"policyAuthAlgorithm,omitempty"`
+	PolicyEncryptionAlgorithm *string `json:"policyEncryptionAlgorithm,omitempty"`
+	Pfs *string `json:"pfs,omitempty"`
+	PolicyMode *string `json:"policyMode,omitempty"`
+	TransformProtocol *string `json:"transformProtocol,omitempty"`
+	LifeTime *int `json:"lifeTime,omitempty"`
 }
 
 // ChangeIPsecConnectionParam ChangeIPsecConnection request param

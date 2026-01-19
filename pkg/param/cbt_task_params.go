@@ -9,22 +9,21 @@ var _ = time.Now // avoid unused import
 // CreateCbtTaskParamDetail CreateCbtTask detail param
 type CreateCbtTaskParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateCbtTaskParam CreateCbtTask request param
 type CreateCbtTaskParam struct {
 	BaseParam
-	Params CreateCbtTaskParamDetail `json:"createCbtTask"`
+	Params CreateCbtTaskParamDetail `json:"params"`
 }
 // DeleteCbtTaskParamDetail DeleteCbtTask detail param
 type DeleteCbtTaskParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	Force bool `json:"force,omitempty"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	Force *bool `json:"force,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteCbtTaskParam DeleteCbtTask request param

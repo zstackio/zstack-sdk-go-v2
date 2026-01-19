@@ -25,7 +25,9 @@ func (cli *ZSClient) CreateAutoScalingGroup(params param.CreateAutoScalingGroupP
 // UpdateAutoScalingGroup updates AutoScalingGroup
 func (cli *ZSClient) UpdateAutoScalingGroup(uuid string, params param.UpdateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
 	resp := view.AutoScalingGroupInventoryView{}
-	if err := cli.Put("v1/autoscaling/groups", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/autoscaling/groups", uuid, map[string]interface{}{
+		"updateAutoScalingGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

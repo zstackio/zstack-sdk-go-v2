@@ -9,21 +9,21 @@ var _ = time.Now // avoid unused import
 // CreateSnmpAgentParamDetail CreateSnmpAgent detail param
 type CreateSnmpAgentParamDetail struct {
 	Version string `json:"version" validate:"required"`
-	ReadCommunity string `json:"readCommunity,omitempty"`
-	UserName string `json:"userName,omitempty"`
-	AuthAlgorithm string `json:"authAlgorithm,omitempty"`
-	AuthPassword string `json:"authPassword,omitempty"`
-	PrivacyAlgorithm string `json:"privacyAlgorithm,omitempty"`
-	PrivacyPassword string `json:"privacyPassword,omitempty"`
+	ReadCommunity *string `json:"readCommunity,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	AuthAlgorithm *string `json:"authAlgorithm,omitempty"`
+	AuthPassword *string `json:"authPassword,omitempty"`
+	PrivacyAlgorithm *string `json:"privacyAlgorithm,omitempty"`
+	PrivacyPassword *string `json:"privacyPassword,omitempty"`
 	Port int `json:"port" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateSnmpAgentParam CreateSnmpAgent request param
 type CreateSnmpAgentParam struct {
 	BaseParam
-	Params CreateSnmpAgentParamDetail `json:"createSnmpAgent"`
+	Params CreateSnmpAgentParamDetail `json:"params"`
 }
 // StartSnmpAgentParamDetail StartSnmpAgent detail param
 type StartSnmpAgentParamDetail struct {
@@ -49,12 +49,12 @@ type StopSnmpAgentParam struct {
 type UpdateSnmpAgentParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
 	Version string `json:"version" validate:"required"`
-	ReadCommunity string `json:"readCommunity,omitempty"`
-	UserName string `json:"userName,omitempty"`
-	AuthAlgorithm string `json:"authAlgorithm,omitempty"`
-	AuthPassword string `json:"authPassword,omitempty"`
-	PrivacyAlgorithm string `json:"privacyAlgorithm,omitempty"`
-	PrivacyPassword string `json:"privacyPassword,omitempty"`
+	ReadCommunity *string `json:"readCommunity,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	AuthAlgorithm *string `json:"authAlgorithm,omitempty"`
+	AuthPassword *string `json:"authPassword,omitempty"`
+	PrivacyAlgorithm *string `json:"privacyAlgorithm,omitempty"`
+	PrivacyPassword *string `json:"privacyPassword,omitempty"`
 	Port int `json:"port" validate:"required"`
 }
 

@@ -8,9 +8,8 @@ var _ = time.Now // avoid unused import
 
 // UpdateNasMountTargetParamDetail UpdateNasMountTarget detail param
 type UpdateNasMountTargetParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateNasMountTargetParam UpdateNasMountTarget request param
@@ -20,8 +19,7 @@ type UpdateNasMountTargetParam struct {
 }
 // DeleteNasMountTargetParamDetail DeleteNasMountTarget detail param
 type DeleteNasMountTargetParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteNasMountTargetParam DeleteNasMountTarget request param

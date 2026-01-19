@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // SyncPrimaryStorageCapacityParamDetail SyncPrimaryStorageCapacity detail param
 type SyncPrimaryStorageCapacityParamDetail struct {
-	PrimaryStorageUuid string `json:"primaryStorageUuid" validate:"required"`
 }
 
 // SyncPrimaryStorageCapacityParam SyncPrimaryStorageCapacity request param

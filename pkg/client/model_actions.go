@@ -37,7 +37,9 @@ func (cli *ZSClient) DeleteModel(uuid string, deleteMode param.DeleteMode) error
 // UpdateModel updates Model
 func (cli *ZSClient) UpdateModel(uuid string, params param.UpdateModelParam) (*view.ModelInventoryView, error) {
 	resp := view.ModelInventoryView{}
-	if err := cli.Put("v1/ai/models", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/ai/models", uuid, map[string]interface{}{
+		"updateModel": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -47,15 +47,12 @@ var accessKeyAuthCli = client.NewZSClient(
 var loginSession *view.SessionInventoryView
 
 func TestMain(m *testing.M) {
-	/*
-		var err error
-		loginSession, err = accountLoginCli.Login()
-		if err != nil {
-			golog.Errorf("TestMain login failed: %v", err)
-			os.Exit(1) // 登录失败直接退出，不运行测试
-		}
-		defer accountLoginCli.Logout()
-	*/
+	var err error
+	loginSession, err = accountLoginCli.Login()
+	if err != nil {
+		os.Exit(1) // 登录失败直接退出，不运行测试
+	}
+	defer accountLoginCli.Logout()
 	code := m.Run()
 	os.Exit(code)
 }

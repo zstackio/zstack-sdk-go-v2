@@ -15,5 +15,5 @@ type RefreshNvmeTargetParamDetail struct {
 // RefreshNvmeTargetParam RefreshNvmeTarget request param
 type RefreshNvmeTargetParam struct {
 	BaseParam
-	Params RefreshNvmeTargetParamDetail `json:"refreshNvmeTarget"`
+	Params RefreshNvmeTargetParamDetail `json:"params"`
 }

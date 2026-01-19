@@ -25,7 +25,9 @@ func (cli *ZSClient) DeleteEventRuleTemplate(uuid string, deleteMode param.Delet
 // UpdateEventRuleTemplate updates EventRuleTemplate
 func (cli *ZSClient) UpdateEventRuleTemplate(uuid string, params param.UpdateEventRuleTemplateParam) (*view.EventRuleTemplateInventoryView, error) {
 	resp := view.EventRuleTemplateInventoryView{}
-	if err := cli.Put("v1/zwatch/monitortemplates/evenrules", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/zwatch/monitortemplates/evenrules", uuid, map[string]interface{}{
+		"updateEventRuleTemplate": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

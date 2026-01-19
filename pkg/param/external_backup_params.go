@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // DeleteExternalBackupParamDetail DeleteExternalBackup detail param
 type DeleteExternalBackupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteExternalBackupParam DeleteExternalBackup request param

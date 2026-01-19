@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateFlkSecSecretResourcePool updates FlkSecSecretResourcePool
 func (cli *ZSClient) UpdateFlkSecSecretResourcePool(uuid string, params param.UpdateFlkSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Put("v1/secret-resource-pools/flkSec", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/secret-resource-pools/flkSec", uuid, map[string]interface{}{
+		"updateFlkSecSecretResourcePool": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

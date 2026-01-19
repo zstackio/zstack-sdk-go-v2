@@ -12,21 +12,20 @@ type AddEventRuleTemplateParamDetail struct {
 	MonitorTemplateUuid string `json:"monitorTemplateUuid" validate:"required"`
 	Namespace string `json:"namespace" validate:"required"`
 	EventName string `json:"eventName" validate:"required"`
-	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+	EmergencyLevel *string `json:"emergencyLevel,omitempty"`
 	Labels []LabelParam `json:"labels,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // AddEventRuleTemplateParam AddEventRuleTemplate request param
 type AddEventRuleTemplateParam struct {
 	BaseParam
-	Params AddEventRuleTemplateParamDetail `json:"addEventRuleTemplate"`
+	Params AddEventRuleTemplateParamDetail `json:"params"`
 }
 // DeleteEventRuleTemplateParamDetail DeleteEventRuleTemplate detail param
 type DeleteEventRuleTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteEventRuleTemplateParam DeleteEventRuleTemplate request param
@@ -36,9 +35,8 @@ type DeleteEventRuleTemplateParam struct {
 }
 // UpdateEventRuleTemplateParamDetail UpdateEventRuleTemplate detail param
 type UpdateEventRuleTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+	EmergencyLevel *string `json:"emergencyLevel,omitempty"`
 	Labels []LabelParam `json:"labels,omitempty"`
 }
 

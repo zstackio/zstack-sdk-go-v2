@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // UpdateTemplateConfigParamDetail UpdateTemplateConfig detail param
 type UpdateTemplateConfigParamDetail struct {
-	TemplateUuid string `json:"templateUuid" validate:"required"`
 	Category string `json:"category" validate:"required"`
 	Name string `json:"name" validate:"required"`
 	Value string `json:"value" validate:"required"`
@@ -21,7 +20,6 @@ type UpdateTemplateConfigParam struct {
 }
 // RevertTemplateConfigParamDetail RevertTemplateConfig detail param
 type RevertTemplateConfigParamDetail struct {
-	TemplateUuid string `json:"templateUuid" validate:"required"`
 }
 
 // RevertTemplateConfigParam RevertTemplateConfig request param
@@ -31,7 +29,6 @@ type RevertTemplateConfigParam struct {
 }
 // ApplyTemplateConfigParamDetail ApplyTemplateConfig detail param
 type ApplyTemplateConfigParamDetail struct {
-	TemplateUuid string `json:"templateUuid" validate:"required"`
 }
 
 // ApplyTemplateConfigParam ApplyTemplateConfig request param
@@ -41,7 +38,6 @@ type ApplyTemplateConfigParam struct {
 }
 // ResetTemplateConfigParamDetail ResetTemplateConfig detail param
 type ResetTemplateConfigParamDetail struct {
-	TemplateUuid string `json:"templateUuid" validate:"required"`
 }
 
 // ResetTemplateConfigParam ResetTemplateConfig request param

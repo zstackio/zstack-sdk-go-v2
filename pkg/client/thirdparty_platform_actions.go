@@ -33,7 +33,9 @@ func (cli *ZSClient) PageThirdpartyPlatform(params *param.QueryParam) ([]view.Th
 // UpdateThirdpartyPlatform updates ThirdpartyPlatform
 func (cli *ZSClient) UpdateThirdpartyPlatform(uuid string, params param.UpdateThirdpartyPlatformParam) (*view.ThirdpartyPlatformInventoryView, error) {
 	resp := view.ThirdpartyPlatformInventoryView{}
-	if err := cli.Put("v1/zwatch/third-party/platforms", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/zwatch/third-party/platforms", uuid, map[string]interface{}{
+		"updateThirdpartyPlatform": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

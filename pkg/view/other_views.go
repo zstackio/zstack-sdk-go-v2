@@ -6,14 +6,14 @@ import "time"
 
 var _ = time.Now // avoid unused import
 
-// GetCreateEcsImageProgressView GetCreateEcsImageProgress
-type GetCreateEcsImageProgressView struct {
-	Progress ProgressPropertyView `json:"progress,omitempty"`
-}
-
 // AddAttributesToIAM2OrganizationEventView AddAttributesToIAM2OrganizationEvent
 type AddAttributesToIAM2OrganizationEventView struct {
 	Success bool `json:"success,omitempty"`
+}
+
+// GetCreateEcsImageProgressView GetCreateEcsImageProgress
+type GetCreateEcsImageProgressView struct {
+	Progress ProgressPropertyView `json:"progress,omitempty"`
 }
 
 // LogOutView LogOut

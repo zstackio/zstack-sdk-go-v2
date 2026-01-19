@@ -21,7 +21,9 @@ func (cli *ZSClient) AddIpRange(params param.AddIpRangeParam) (*view.IpRangeInve
 // UpdateIpRange updates IpRange
 func (cli *ZSClient) UpdateIpRange(uuid string, params param.UpdateIpRangeParam) (*view.IpRangeInventoryView, error) {
 	resp := view.IpRangeInventoryView{}
-	if err := cli.Put("v1/l3-networks/ip-ranges", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/l3-networks/ip-ranges", uuid, map[string]interface{}{
+		"updateIpRange": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

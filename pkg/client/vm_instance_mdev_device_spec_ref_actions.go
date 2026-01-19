@@ -18,7 +18,7 @@ func (cli *ZSClient) QueryVmInstanceMdevDeviceSpecRef(params *param.QueryParam) 
 
 func (cli *ZSClient) GetVmInstanceMdevDeviceSpecRef(uuid string) (*view.VmInstanceMdevDeviceSpecRefInventoryView, error) {
 	var resp view.VmInstanceMdevDeviceSpecRefInventoryView
-	if err := cli.Get("v1/vm-instances/{vmInstanceUuid}/mdev-device-specs", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/vm-instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

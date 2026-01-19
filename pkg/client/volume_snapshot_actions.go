@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateVolumeSnapshot updates VolumeSnapshot
 func (cli *ZSClient) UpdateVolumeSnapshot(uuid string, params param.UpdateVolumeSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
 	resp := view.VolumeSnapshotInventoryView{}
-	if err := cli.Put("v1/volume-snapshots", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/volume-snapshots", uuid, map[string]interface{}{
+		"updateVolumeSnapshot": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

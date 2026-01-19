@@ -28,11 +28,6 @@ type QueryLdapServerView struct {
 	Inventories []LdapServerInventoryView `json:"inventories,omitempty"`
 }
 
-// SyncLdapServerEventView SyncLdapServerEvent
-type SyncLdapServerEventView struct {
-	Inventory LongJobInventoryView `json:"inventory,omitempty"`
-}
-
 // DeleteLdapServerEventView DeleteLdapServerEvent
 type DeleteLdapServerEventView struct {
 	Success bool `json:"success,omitempty"`

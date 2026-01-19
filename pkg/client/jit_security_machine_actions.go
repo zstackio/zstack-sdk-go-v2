@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateJitSecurityMachine updates JitSecurityMachine
 func (cli *ZSClient) UpdateJitSecurityMachine(uuid string, params param.UpdateJitSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Put("v1/security-machines/jida/auth-gateway", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/security-machines/jida/auth-gateway", uuid, map[string]interface{}{
+		"updateJitSecurityMachine": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

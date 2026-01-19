@@ -8,9 +8,8 @@ var _ = time.Now // avoid unused import
 
 // UpdateAffinityGroupParamDetail UpdateAffinityGroup detail param
 type UpdateAffinityGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateAffinityGroupParam UpdateAffinityGroup request param
@@ -20,8 +19,7 @@ type UpdateAffinityGroupParam struct {
 }
 // DeleteAffinityGroupParamDetail DeleteAffinityGroup detail param
 type DeleteAffinityGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteAffinityGroupParam DeleteAffinityGroup request param
@@ -32,17 +30,17 @@ type DeleteAffinityGroupParam struct {
 // CreateAffinityGroupParamDetail CreateAffinityGroup detail param
 type CreateAffinityGroupParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	Policy string `json:"policy,omitempty"`
-	Type string `json:"type,omitempty"`
-	ZoneUuid string `json:"zoneUuid,omitempty"`
-	SubType string `json:"subType,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Policy *string `json:"policy,omitempty"`
+	Type *string `json:"type,omitempty"`
+	ZoneUuid *string `json:"zoneUuid,omitempty"`
+	SubType *string `json:"subType,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateAffinityGroupParam CreateAffinityGroup request param
 type CreateAffinityGroupParam struct {
 	BaseParam
-	Params CreateAffinityGroupParamDetail `json:"createAffinityGroup"`
+	Params CreateAffinityGroupParamDetail `json:"params"`
 }

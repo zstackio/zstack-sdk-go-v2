@@ -21,7 +21,9 @@ func (cli *ZSClient) CreateSnmpAgent(params param.CreateSnmpAgentParam) (*view.S
 // StartSnmpAgent starts SnmpAgent
 func (cli *ZSClient) StartSnmpAgent(uuid string, params param.StartSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.Put("v1/snmp/agent/actions", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/snmp/agent/actions", uuid, map[string]interface{}{
+		"startSnmpAgent": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -29,7 +31,9 @@ func (cli *ZSClient) StartSnmpAgent(uuid string, params param.StartSnmpAgentPara
 // StopSnmpAgent stops SnmpAgent
 func (cli *ZSClient) StopSnmpAgent(uuid string, params param.StopSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.Put("v1/snmp/agent/actions", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/snmp/agent/actions", uuid, map[string]interface{}{
+		"stopSnmpAgent": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -37,7 +41,9 @@ func (cli *ZSClient) StopSnmpAgent(uuid string, params param.StopSnmpAgentParam)
 // UpdateSnmpAgent updates SnmpAgent
 func (cli *ZSClient) UpdateSnmpAgent(uuid string, params param.UpdateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.Put("v1/snmp/agent/actions", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/snmp/agent/actions", uuid, map[string]interface{}{
+		"updateSnmpAgent": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

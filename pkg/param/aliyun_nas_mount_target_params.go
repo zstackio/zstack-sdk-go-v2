@@ -11,7 +11,7 @@ type AddAliyunNasMountTargetParamDetail struct {
 	NasFSUuid string `json:"nasFSUuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
 	MountDomain string `json:"mountDomain" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -23,16 +23,16 @@ type AddAliyunNasMountTargetParam struct {
 // CreateAliyunNasMountTargetParamDetail CreateAliyunNasMountTarget detail param
 type CreateAliyunNasMountTargetParamDetail struct {
 	NasAccessGroupUuid string `json:"nasAccessGroupUuid" validate:"required"`
-	VSwitchUuid string `json:"vSwitchUuid,omitempty"`
+	VSwitchUuid *string `json:"vSwitchUuid,omitempty"`
 	NasFSUuid string `json:"nasFSUuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateAliyunNasMountTargetParam CreateAliyunNasMountTarget request param
 type CreateAliyunNasMountTargetParam struct {
 	BaseParam
-	Params CreateAliyunNasMountTargetParamDetail `json:"createAliyunNasMountTarget"`
+	Params CreateAliyunNasMountTargetParamDetail `json:"params"`
 }

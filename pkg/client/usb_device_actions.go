@@ -33,7 +33,9 @@ func (cli *ZSClient) PageUsbDevice(params *param.QueryParam) ([]view.UsbDeviceIn
 // UpdateUsbDevice updates UsbDevice
 func (cli *ZSClient) UpdateUsbDevice(uuid string, params param.UpdateUsbDeviceParam) (*view.UsbDeviceInventoryView, error) {
 	resp := view.UsbDeviceInventoryView{}
-	if err := cli.Put("v1/usb-device/usb-devices", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/usb-device/usb-devices", uuid, map[string]interface{}{
+		"updateUsbDevice": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

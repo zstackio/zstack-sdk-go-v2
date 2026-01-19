@@ -21,7 +21,9 @@ func (cli *ZSClient) AddSanSecSecurityMachine(params param.AddSanSecSecurityMach
 // UpdateSanSecSecurityMachine updates SanSecSecurityMachine
 func (cli *ZSClient) UpdateSanSecSecurityMachine(uuid string, params param.UpdateSanSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Put("v1/security-machines/sanSec", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/security-machines/sanSec", uuid, map[string]interface{}{
+		"updateSanSecSecurityMachine": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

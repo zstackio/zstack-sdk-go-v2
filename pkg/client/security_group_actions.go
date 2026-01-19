@@ -45,7 +45,9 @@ func (cli *ZSClient) DeleteSecurityGroup(uuid string, deleteMode param.DeleteMod
 // UpdateSecurityGroup updates SecurityGroup
 func (cli *ZSClient) UpdateSecurityGroup(uuid string, params param.UpdateSecurityGroupParam) (*view.SecurityGroupInventoryView, error) {
 	resp := view.SecurityGroupInventoryView{}
-	if err := cli.Put("v1/security-groups", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/security-groups", uuid, map[string]interface{}{
+		"updateSecurityGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

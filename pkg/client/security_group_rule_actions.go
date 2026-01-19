@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // ChangeSecurityGroupRule changes SecurityGroupRule
 func (cli *ZSClient) ChangeSecurityGroupRule(uuid string, params param.ChangeSecurityGroupRuleParam) (*view.SecurityGroupRuleInventoryView, error) {
 	resp := view.SecurityGroupRuleInventoryView{}
-	if err := cli.Put("v1/security-groups/rules", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/security-groups/rules", uuid, map[string]interface{}{
+		"changeSecurityGroupRule": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -41,7 +41,9 @@ func (cli *ZSClient) CreateVolumeSnapshotGroup(params param.CreateVolumeSnapshot
 // UpdateVolumeSnapshotGroup updates VolumeSnapshotGroup
 func (cli *ZSClient) UpdateVolumeSnapshotGroup(uuid string, params param.UpdateVolumeSnapshotGroupParam) (*view.VolumeSnapshotGroupInventoryView, error) {
 	resp := view.VolumeSnapshotGroupInventoryView{}
-	if err := cli.Put("v1/volume-snapshots/group", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/volume-snapshots/group", uuid, map[string]interface{}{
+		"updateVolumeSnapshotGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

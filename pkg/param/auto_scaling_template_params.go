@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // DeleteAutoScalingTemplateParamDetail DeleteAutoScalingTemplate detail param
 type DeleteAutoScalingTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteAutoScalingTemplateParam DeleteAutoScalingTemplate request param

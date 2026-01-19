@@ -104,7 +104,6 @@ func TestGetVmInstance(t *testing.T) {
 	golog.Info(jsonutils.Marshal(result))
 }
 
-/*
 func TestUpdateVmInstance(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
@@ -134,6 +133,7 @@ func TestUpdateVmInstance(t *testing.T) {
 	golog.Infof("UpdateVmInstance result: %s", result.UUID)
 }
 
+/*
 func TestCreateVmInstance(t *testing.T) {
 	// WARNING: This test will create a real resource!
 	//	t.Skip("TestCreateVmInstance is skipped by default. Implement with valid params to test creation.")
@@ -147,7 +147,8 @@ func TestCreateVmInstance(t *testing.T) {
 		golog.Errorf("TestZSClient_QueryImage %v: %v", images, err)
 	}
 	rootDiskSize := int64(1073741824)
-
+	memSize := int64(1073741824)
+	cpuNum := 1
 	instance, err := accessKeyAuthCli.CreateVmInstance(param.CreateVmInstanceParam{
 		BaseParam: param.BaseParam{
 			SystemTags: []string{"resourceConfig::vm::vm.clock.track::guest", "cdroms::Empty::None::None"},
@@ -157,24 +158,14 @@ func TestCreateVmInstance(t *testing.T) {
 		Params: param.CreateVmInstanceParamDetail{
 			Name: "test-uuid",
 			//InstanceOfferingUUID:            "",
-			ImageUuid:            images[0].UUID,
+			ImageUuid:            &images[0].UUID,
 			L3NetworkUuids:       []string{network[0].UUID},
-			Type:                 "",
-			RootDiskOfferingUuid: "",
-			RootDiskSize:         rootDiskSize,
-			//	DataDiskOfferingUuids:           []string{"04229f19712d41cb990ab4b9252d9f93"},
+			RootDiskSize:         &rootDiskSize,
 			DataDiskSizes:                   []int64{10240},
-			ZoneUuid:                        "",
-			ClusterUuid:                     "",
-			HostUuid:                        "",
-			PrimaryStorageUuidForRootVolume: "",
-			Description:                     "Description- create form sdk test",
-			DefaultL3NetworkUuid:            network[0].UUID,
-			//ResourceUuid:                    "56644230e0384ef6b84764530ef306cd",
+			DefaultL3NetworkUuid:            &network[0].UUID,
 			TagUuids:   nil,
-			Strategy:   "",
-			MemorySize: 1073741824,
-			CpuNum:     1,
+			MemorySize: &memSize,
+			CpuNum:     &cpuNum,
 		},
 	})
 	if err != nil {
@@ -203,7 +194,6 @@ func TestCloneVmInstance(t *testing.T) {
 	cloneParam := param.CloneVmInstanceParam{
 		Params: param.CloneVmInstanceParamDetail{
 			Names:    []string{"cloned-vm-" + list[0].UUID[:8]},
-			Strategy: "InstantStart",
 		},
 	}
 	result, err := accessKeyAuthCli.CloneVmInstance(list[0].UUID, cloneParam)
@@ -213,6 +203,7 @@ func TestCloneVmInstance(t *testing.T) {
 	}
 	golog.Infof("CloneVmInstance result: %s", result.UUID)
 }
+*/
 
 func TestResumeVmInstance(t *testing.T) {
 	// ResumeVmInstance operation
@@ -413,4 +404,3 @@ func TestRecoverVmInstance(t *testing.T) {
 	}
 	golog.Infof("RecoverVmInstance result: %s", result.UUID)
 }
-*/

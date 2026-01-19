@@ -41,7 +41,9 @@ func (cli *ZSClient) CreateLoadBalancer(params param.CreateLoadBalancerParam) (*
 // UpdateLoadBalancer updates LoadBalancer
 func (cli *ZSClient) UpdateLoadBalancer(uuid string, params param.UpdateLoadBalancerParam) (*view.LoadBalancerInventoryView, error) {
 	resp := view.LoadBalancerInventoryView{}
-	if err := cli.Put("v1/load-balancers", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/load-balancers", uuid, map[string]interface{}{
+		"updateLoadBalancer": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -53,7 +55,9 @@ func (cli *ZSClient) DeleteLoadBalancer(uuid string, deleteMode param.DeleteMode
 // RefreshLoadBalancer operates on LoadBalancer
 func (cli *ZSClient) RefreshLoadBalancer(uuid string, params param.RefreshLoadBalancerParam) (*view.LoadBalancerInventoryView, error) {
 	resp := view.LoadBalancerInventoryView{}
-	if err := cli.Put("v1/load-balancers", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/load-balancers", uuid, map[string]interface{}{
+		"refreshLoadBalancer": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

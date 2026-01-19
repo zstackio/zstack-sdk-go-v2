@@ -21,7 +21,9 @@ func (cli *ZSClient) AddV2VConversionHost(params param.AddV2VConversionHostParam
 // UpdateV2VConversionHost updates V2VConversionHost
 func (cli *ZSClient) UpdateV2VConversionHost(uuid string, params param.UpdateV2VConversionHostParam) (*view.V2VConversionHostInventoryView, error) {
 	resp := view.V2VConversionHostInventoryView{}
-	if err := cli.Put("v1/v2v-conversion-hosts", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/v2v-conversion-hosts", uuid, map[string]interface{}{
+		"updateV2VConversionHost": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

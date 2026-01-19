@@ -12,23 +12,22 @@ type CreateSlbGroupParamDetail struct {
 	SlbOfferingUuid string `json:"slbOfferingUuid" validate:"required"`
 	FrontEndL3NetworkUuid string `json:"frontEndL3NetworkUuid" validate:"required"`
 	BackendL3NetworkUuids []string `json:"backendL3NetworkUuids,omitempty"`
-	BackendType string `json:"backendType,omitempty"`
-	DeployType string `json:"deployType,omitempty"`
-	Description string `json:"description,omitempty"`
+	BackendType *string `json:"backendType,omitempty"`
+	DeployType *string `json:"deployType,omitempty"`
+	Description *string `json:"description,omitempty"`
 	MonitorIps []string `json:"monitorIps,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateSlbGroupParam CreateSlbGroup request param
 type CreateSlbGroupParam struct {
 	BaseParam
-	Params CreateSlbGroupParamDetail `json:"createSlbGroup"`
+	Params CreateSlbGroupParamDetail `json:"params"`
 }
 // DeleteSlbGroupParamDetail DeleteSlbGroup detail param
 type DeleteSlbGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteSlbGroupParam DeleteSlbGroup request param
@@ -38,10 +37,9 @@ type DeleteSlbGroupParam struct {
 }
 // UpdateSlbGroupParamDetail UpdateSlbGroup detail param
 type UpdateSlbGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	SlbOfferingUuid string `json:"slbOfferingUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	SlbOfferingUuid *string `json:"slbOfferingUuid,omitempty"`
 }
 
 // UpdateSlbGroupParam UpdateSlbGroup request param

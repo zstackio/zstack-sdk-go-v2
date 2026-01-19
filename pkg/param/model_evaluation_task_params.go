@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // DeleteModelEvaluationTaskParamDetail DeleteModelEvaluationTask detail param
 type DeleteModelEvaluationTaskParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // DeleteModelEvaluationTaskParam DeleteModelEvaluationTask request param
@@ -18,9 +17,8 @@ type DeleteModelEvaluationTaskParam struct {
 }
 // UpdateModelEvaluationTaskParamDetail UpdateModelEvaluationTask detail param
 type UpdateModelEvaluationTaskParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateModelEvaluationTaskParam UpdateModelEvaluationTask request param

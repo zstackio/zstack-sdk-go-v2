@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAlarm updates Alarm
 func (cli *ZSClient) UpdateAlarm(uuid string, params param.UpdateAlarmParam) (*view.AlarmInventoryView, error) {
 	resp := view.AlarmInventoryView{}
-	if err := cli.Put("v1/zwatch/alarms", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/zwatch/alarms", uuid, map[string]interface{}{
+		"updateAlarm": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

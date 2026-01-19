@@ -10,21 +10,19 @@ var _ = time.Now // avoid unused import
 type AddSNSWeComAtPersonParamDetail struct {
 	UserId string `json:"userId" validate:"required"`
 	EndpointUuid string `json:"endpointUuid" validate:"required"`
-	Remark string `json:"remark,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Remark *string `json:"remark,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // AddSNSWeComAtPersonParam AddSNSWeComAtPerson request param
 type AddSNSWeComAtPersonParam struct {
 	BaseParam
-	Params AddSNSWeComAtPersonParamDetail `json:"addSNSWeComAtPerson"`
+	Params AddSNSWeComAtPersonParamDetail `json:"params"`
 }
 // RemoveSNSWeComAtPersonParamDetail RemoveSNSWeComAtPerson detail param
 type RemoveSNSWeComAtPersonParamDetail struct {
-	EndpointUuid string `json:"endpointUuid" validate:"required"`
-	UserId string `json:"userId" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // RemoveSNSWeComAtPersonParam RemoveSNSWeComAtPerson request param

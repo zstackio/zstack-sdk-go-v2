@@ -8,9 +8,8 @@ var _ = time.Now // avoid unused import
 
 // ChangeVmNicSecurityPolicyParamDetail ChangeVmNicSecurityPolicy detail param
 type ChangeVmNicSecurityPolicyParamDetail struct {
-	VmNicUuid string `json:"vmNicUuid" validate:"required"`
-	IngressPolicy string `json:"ingressPolicy,omitempty"`
-	EgressPolicy string `json:"egressPolicy,omitempty"`
+	IngressPolicy *string `json:"ingressPolicy,omitempty"`
+	EgressPolicy *string `json:"egressPolicy,omitempty"`
 }
 
 // ChangeVmNicSecurityPolicyParam ChangeVmNicSecurityPolicy request param

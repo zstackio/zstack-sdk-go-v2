@@ -41,7 +41,9 @@ func (cli *ZSClient) PageCdpTask(params *param.QueryParam) ([]view.CdpTaskInvent
 // UpdateCdpTask updates CdpTask
 func (cli *ZSClient) UpdateCdpTask(uuid string, params param.UpdateCdpTaskParam) (*view.CdpTaskInventoryView, error) {
 	resp := view.CdpTaskInventoryView{}
-	if err := cli.Put("v1/cdp-backup-storage/task", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/cdp-backup-storage/task", uuid, map[string]interface{}{
+		"updateCdpTask": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

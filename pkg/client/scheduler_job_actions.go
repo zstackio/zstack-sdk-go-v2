@@ -21,7 +21,9 @@ func (cli *ZSClient) CreateSchedulerJob(params param.CreateSchedulerJobParam) (*
 // UpdateSchedulerJob updates SchedulerJob
 func (cli *ZSClient) UpdateSchedulerJob(uuid string, params param.UpdateSchedulerJobParam) (*view.SchedulerJobInventoryView, error) {
 	resp := view.SchedulerJobInventoryView{}
-	if err := cli.Put("v1/scheduler/jobs", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/scheduler/jobs", uuid, map[string]interface{}{
+		"updateSchedulerJob": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -16,5 +16,5 @@ type CreateUserTagParamDetail struct {
 // CreateUserTagParam CreateUserTag request param
 type CreateUserTagParam struct {
 	BaseParam
-	Params CreateUserTagParamDetail `json:"createUserTag"`
+	Params CreateUserTagParamDetail `json:"params"`
 }

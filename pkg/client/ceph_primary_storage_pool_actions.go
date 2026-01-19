@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateCephPrimaryStoragePool updates CephPrimaryStoragePool
 func (cli *ZSClient) UpdateCephPrimaryStoragePool(uuid string, params param.UpdateCephPrimaryStoragePoolParam) (*view.CephPrimaryStoragePoolInventoryView, error) {
 	resp := view.CephPrimaryStoragePoolInventoryView{}
-	if err := cli.Put("v1/primary-storage/ceph/pools", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/primary-storage/ceph/pools", uuid, map[string]interface{}{
+		"updateCephPrimaryStoragePool": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

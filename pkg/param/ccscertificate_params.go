@@ -18,8 +18,7 @@ type AddCCSCertificateParam struct {
 }
 // DeleteCCSCertificateParamDetail DeleteCCSCertificate detail param
 type DeleteCCSCertificateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteCCSCertificateParam DeleteCCSCertificate request param

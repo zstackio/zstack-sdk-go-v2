@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateNasMountTarget updates NasMountTarget
 func (cli *ZSClient) UpdateNasMountTarget(uuid string, params param.UpdateNasMountTargetParam) (*view.NasMountTargetInventoryView, error) {
 	resp := view.NasMountTargetInventoryView{}
-	if err := cli.Put("v1/primary-storage/nas/mount", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/primary-storage/nas/mount", uuid, map[string]interface{}{
+		"updateNasMountTarget": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

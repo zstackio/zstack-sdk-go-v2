@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAlertDataAck updates AlertDataAck
 func (cli *ZSClient) UpdateAlertDataAck(alertDataUuid string, params param.UpdateAlertDataAckParam) (*view.AlertDataAckInventoryView, error) {
 	resp := view.AlertDataAckInventoryView{}
-	if err := cli.Put("v1/zwatch/alert-histories/acknowledgments", alertDataUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/zwatch/alert-histories/acknowledgments", alertDataUuid, map[string]interface{}{
+		"updateAlertDataAck": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

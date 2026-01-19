@@ -8,9 +8,8 @@ var _ = time.Now // avoid unused import
 
 // UpdateHaStrategyConditionParamDetail UpdateHaStrategyCondition detail param
 type UpdateHaStrategyConditionParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	State string `json:"state,omitempty"`
+	State *string `json:"state,omitempty"`
 }
 
 // UpdateHaStrategyConditionParam UpdateHaStrategyCondition request param

@@ -37,7 +37,9 @@ func (cli *ZSClient) DeleteMetricRuleTemplate(uuid string, deleteMode param.Dele
 // UpdateMetricRuleTemplate updates MetricRuleTemplate
 func (cli *ZSClient) UpdateMetricRuleTemplate(uuid string, params param.UpdateMetricRuleTemplateParam) (*view.MetricRuleTemplateInventoryView, error) {
 	resp := view.MetricRuleTemplateInventoryView{}
-	if err := cli.Put("v1/zwatch/monitortemplates/metricrules", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/zwatch/monitortemplates/metricrules", uuid, map[string]interface{}{
+		"updateMetricRuleTemplate": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

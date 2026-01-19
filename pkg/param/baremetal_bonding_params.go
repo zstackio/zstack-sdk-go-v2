@@ -12,13 +12,13 @@ type CreateBaremetalBondingParamDetail struct {
 	Name string `json:"name" validate:"required"`
 	Mode int `json:"mode" validate:"required"`
 	Slaves string `json:"slaves" validate:"required"`
-	Opts string `json:"opts,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Opts *string `json:"opts,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
 // CreateBaremetalBondingParam CreateBaremetalBonding request param
 type CreateBaremetalBondingParam struct {
 	BaseParam
-	Params CreateBaremetalBondingParamDetail `json:"createBaremetalBonding"`
+	Params CreateBaremetalBondingParamDetail `json:"params"`
 }

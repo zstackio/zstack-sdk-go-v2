@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // ReconnectPrimaryStorageParamDetail ReconnectPrimaryStorage detail param
 type ReconnectPrimaryStorageParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // ReconnectPrimaryStorageParam ReconnectPrimaryStorage request param
@@ -18,10 +17,9 @@ type ReconnectPrimaryStorageParam struct {
 }
 // UpdatePrimaryStorageParamDetail UpdatePrimaryStorage detail param
 type UpdatePrimaryStorageParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Url string `json:"url,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // UpdatePrimaryStorageParam UpdatePrimaryStorage request param
@@ -31,8 +29,7 @@ type UpdatePrimaryStorageParam struct {
 }
 // DeletePrimaryStorageParamDetail DeletePrimaryStorage detail param
 type DeletePrimaryStorageParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeletePrimaryStorageParam DeletePrimaryStorage request param

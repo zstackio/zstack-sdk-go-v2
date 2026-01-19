@@ -45,7 +45,9 @@ func (cli *ZSClient) CreateGuestVmScript(params param.CreateGuestVmScriptParam) 
 // UpdateGuestVmScript updates GuestVmScript
 func (cli *ZSClient) UpdateGuestVmScript(uuid string, params param.UpdateGuestVmScriptParam) (*view.GuestVmScriptInventoryView, error) {
 	resp := view.GuestVmScriptInventoryView{}
-	if err := cli.Put("v1/scripts", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/scripts", uuid, map[string]interface{}{
+		"updateGuestVmScript": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

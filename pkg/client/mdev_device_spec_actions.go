@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // UpdateMdevDeviceSpec updates MdevDeviceSpec
 func (cli *ZSClient) UpdateMdevDeviceSpec(uuid string, params param.UpdateMdevDeviceSpecParam) (*view.MdevDeviceSpecInventoryView, error) {
 	resp := view.MdevDeviceSpecInventoryView{}
-	if err := cli.Put("v1/mdev-device-specs", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/mdev-device-specs", uuid, map[string]interface{}{
+		"updateMdevDeviceSpec": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -33,7 +33,9 @@ func (cli *ZSClient) PageGuestToolsState(params *param.QueryParam) ([]view.Guest
 // UpdateGuestToolsState updates GuestToolsState
 func (cli *ZSClient) UpdateGuestToolsState(vmInstanceUuid string, params param.UpdateGuestToolsStateParam) (*view.GuestToolsStateInventoryView, error) {
 	resp := view.GuestToolsStateInventoryView{}
-	if err := cli.Put("v1/vm-instances", vmInstanceUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/vm-instances", vmInstanceUuid, map[string]interface{}{
+		"updateGuestToolsState": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -29,7 +29,9 @@ func (cli *ZSClient) GenerateSshKeyPair(params param.GenerateSshKeyPairParam) (*
 // UpdateSshKeyPair updates SshKeyPair
 func (cli *ZSClient) UpdateSshKeyPair(uuid string, params param.UpdateSshKeyPairParam) (*view.SshKeyPairInventoryView, error) {
 	resp := view.SshKeyPairInventoryView{}
-	if err := cli.Put("v1/ssh-key-pair", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/ssh-key-pair", uuid, map[string]interface{}{
+		"updateSshKeyPair": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -17,7 +17,9 @@ func (cli *ZSClient) DeleteLicense(uuid string, deleteMode param.DeleteMode) err
 // UpdateLicense updates License
 func (cli *ZSClient) UpdateLicense(managementNodeUuid string, params param.UpdateLicenseParam) (*view.LicenseInventoryView, error) {
 	resp := view.LicenseInventoryView{}
-	if err := cli.Put("v1/licenses/mn", managementNodeUuid, params, &resp); err != nil {
+	if err := cli.Put("v1/licenses/mn", managementNodeUuid, map[string]interface{}{
+		"updateLicense": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

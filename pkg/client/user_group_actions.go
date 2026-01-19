@@ -45,7 +45,9 @@ func (cli *ZSClient) PageUserGroup(params *param.QueryParam) ([]view.UserGroupIn
 // UpdateUserGroup updates UserGroup
 func (cli *ZSClient) UpdateUserGroup(uuid string, params param.UpdateUserGroupParam) (*view.UserGroupInventoryView, error) {
 	resp := view.UserGroupInventoryView{}
-	if err := cli.Put("v1/accounts/groups/actions", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/accounts/groups/actions", uuid, map[string]interface{}{
+		"updateUserGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

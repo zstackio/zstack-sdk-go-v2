@@ -21,7 +21,9 @@ func (cli *ZSClient) CreateSNSEmailPlatform(params param.CreateSNSEmailPlatformP
 // ValidateSNSEmailPlatform operates on SNSEmailPlatform
 func (cli *ZSClient) ValidateSNSEmailPlatform(uuid string, params param.ValidateSNSEmailPlatformParam) (*view.SNSEmailPlatformInventoryView, error) {
 	resp := view.SNSEmailPlatformInventoryView{}
-	if err := cli.Put("v1/sns/application-platforms/email", uuid, params, &resp); err != nil {
+	if err := cli.Put("v1/sns/application-platforms/email", uuid, map[string]interface{}{
+		"validateSNSEmailPlatform": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

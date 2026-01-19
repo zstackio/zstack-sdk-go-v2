@@ -8,8 +8,7 @@ var _ = time.Now // avoid unused import
 
 // DeleteSecurityMachineParamDetail DeleteSecurityMachine detail param
 type DeleteSecurityMachineParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteSecurityMachineParam DeleteSecurityMachine request param
@@ -19,11 +18,10 @@ type DeleteSecurityMachineParam struct {
 }
 // UpdateSecurityMachineParamDetail UpdateSecurityMachine detail param
 type UpdateSecurityMachineParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	ManagementIp string `json:"managementIp,omitempty"`
-	Model string `json:"model,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ManagementIp *string `json:"managementIp,omitempty"`
+	Model *string `json:"model,omitempty"`
 }
 
 // UpdateSecurityMachineParam UpdateSecurityMachine request param
