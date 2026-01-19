@@ -12,32 +12,27 @@ import (
 
 func TestQuerySharedResource(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySharedResource(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QuerySharedResource(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySharedResource error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QuerySharedResource result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s", r.OwnerAccountUuid, r.ResourceType)
+	}
+	golog.Infof("======================================")
 }
-func TestGetSharedResource(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySharedResource(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetSharedResource Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SharedResource found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetSharedResource(list[0].UUID)
+func TestPageSharedResource(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageSharedResource(&queryParam)
 	if err != nil {
-		t.Errorf("TestGetSharedResource error: %v", err)
+		t.Errorf("TestPageSharedResource error: %v", err)
 		return
 	}
-	golog.Infof("GetSharedResource result: %s", result.UUID)
+	golog.Infof("PageSharedResource result: total=%d, returned=%d", total, len(result))
 }

@@ -12,18 +12,35 @@ import (
 
 func TestQueryCephBackupStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryCephBackupStorage(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryCephBackupStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryCephBackupStorage error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryCephBackupStorage result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageCephBackupStorage(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageCephBackupStorage(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageCephBackupStorage error: %v", err)
+		return
+	}
+	golog.Infof("PageCephBackupStorage result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetCephBackupStorage(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryCephBackupStorage(&queryParam)
+	list, err := accessKeyAuthCli.QueryCephBackupStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetCephBackupStorage Query error: %v", err)
 		return
@@ -33,17 +50,10 @@ func TestGetCephBackupStorage(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetCephBackupStorage(list[0].UUID)
+	result, err := accessKeyAuthCli.GetCephBackupStorage(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetCephBackupStorage error: %v", err)
 		return
 	}
-	golog.Infof("GetCephBackupStorage result: %s", result.UUID)
-}
-
-func TestAddCephBackupStorage(t *testing.T) {
-	// Add operation - similar to Create
-	t.Skip("TestAddCephBackupStorage requires valid creation parameters")
-
+	golog.Infof("GetCephBackupStorage result: %s, Name: %s", result.UUID, result.Name)
 }

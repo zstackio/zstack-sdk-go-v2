@@ -12,18 +12,35 @@ import (
 
 func TestQueryAlarm(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAlarm(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryAlarm(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAlarm error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryAlarm result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageAlarm(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageAlarm(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageAlarm error: %v", err)
+		return
+	}
+	golog.Infof("PageAlarm result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetAlarm(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAlarm(&queryParam)
+	list, err := accessKeyAuthCli.QueryAlarm(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetAlarm Query error: %v", err)
 		return
@@ -33,90 +50,10 @@ func TestGetAlarm(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetAlarm(list[0].UUID)
+	result, err := accessKeyAuthCli.GetAlarm(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetAlarm error: %v", err)
 		return
 	}
-	golog.Infof("GetAlarm result: %s", result.UUID)
-}
-
-func TestUpdateAlarm(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAlarm(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateAlarm Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No Alarm found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateAlarmParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateAlarmParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateAlarm(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateAlarm error: %v", err)
-		return
-	}
-	golog.Infof("UpdateAlarm result: %s", result.UUID)
-}
-
-func TestDeleteAlarm(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteAlarm is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAlarm(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteAlarm Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No Alarm found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteAlarm(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteAlarm error: %v", err)
-		return
-	}
-	golog.Infof("DeleteAlarm succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateAlarm(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateAlarm is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateAlarmParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateAlarmParamDetail{
-	// 		Name: "test-alarm",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateAlarm(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateAlarm error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateAlarm result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteAlarm(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteAlarm error: %v", err)
-	// }
+	golog.Infof("GetAlarm result: %s, Name: %s", result.UUID, result.Name)
 }

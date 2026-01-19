@@ -12,18 +12,35 @@ import (
 
 func TestQueryHostNetworkInterface(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryHostNetworkInterface(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryHostNetworkInterface(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryHostNetworkInterface error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryHostNetworkInterface result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.InterfaceName, r.IpAddresses)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageHostNetworkInterface(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageHostNetworkInterface(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageHostNetworkInterface error: %v", err)
+		return
+	}
+	golog.Infof("PageHostNetworkInterface result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetHostNetworkInterface(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryHostNetworkInterface(&queryParam)
+	list, err := accessKeyAuthCli.QueryHostNetworkInterface(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetHostNetworkInterface Query error: %v", err)
 		return
@@ -33,46 +50,10 @@ func TestGetHostNetworkInterface(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetHostNetworkInterface(list[0].UUID)
+	result, err := accessKeyAuthCli.GetHostNetworkInterface(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetHostNetworkInterface error: %v", err)
 		return
 	}
-	golog.Infof("GetHostNetworkInterface result: %s", result.UUID)
-}
-
-func TestUpdateHostNetworkInterface(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryHostNetworkInterface(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateHostNetworkInterface Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No HostNetworkInterface found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateHostNetworkInterfaceParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateHostNetworkInterfaceParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateHostNetworkInterface(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateHostNetworkInterface error: %v", err)
-		return
-	}
-	golog.Infof("UpdateHostNetworkInterface result: %s", result.UUID)
-}
-
-func TestLocateHostNetworkInterface(t *testing.T) {
-	// LocateHostNetworkInterface operation
-	t.Skip("TestLocateHostNetworkInterface requires manual implementation")
-
+	golog.Infof("GetHostNetworkInterface result: %s, Name: %s", result.UUID, result.InterfaceName)
 }

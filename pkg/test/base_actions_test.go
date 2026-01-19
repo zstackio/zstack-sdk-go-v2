@@ -20,9 +20,9 @@ const (
 	accountLoginMasterHostname = "IPOfCloudAPIEndpoint"
 	accountLoginSlaveHostname  = "IPOfCloudAPIEndpoint"
 
-	accessKeyAuthHostname        = "172.26.100.254"
-	accessKeyAuthAccessKeyId     = "ornex9AmHn1fHPKctXIz"
-	accessKeyAuthAccessKeySecret = "ACkkmXII1xrGDlDnoNAKEUbkSkniAUydo16ROwrw"
+	accessKeyAuthHostname        = "MN IP"
+	accessKeyAuthAccessKeyId     = "ak"
+	accessKeyAuthAccessKeySecret = "sk"
 
 	contextPath = "zstack"
 

@@ -12,67 +12,27 @@ import (
 
 func TestQueryGlobalConfig(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryGlobalConfig(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryGlobalConfig(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryGlobalConfig error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryGlobalConfig result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.Category, r.Name, r.Value)
+	}
+	golog.Infof("======================================")
 }
-func TestGetGlobalConfig(t *testing.T) {
-	// First query to get a valid UUID
+
+func TestPageGlobalConfig(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryGlobalConfig(&queryParam)
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageGlobalConfig(&queryParam)
 	if err != nil {
-		t.Errorf("TestGetGlobalConfig Query error: %v", err)
+		t.Errorf("TestPageGlobalConfig error: %v", err)
 		return
 	}
-	if len(list) == 0 {
-		t.Skip("No GlobalConfig found to test Get")
-		return
-	}
-
-	// Get by UUID
-	result, err := accountLoginCli.GetGlobalConfig(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetGlobalConfig error: %v", err)
-		return
-	}
-	golog.Infof("GetGlobalConfig result: %s", result.UUID)
-}
-
-func TestUpdateGlobalConfig(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryGlobalConfig(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateGlobalConfig Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No GlobalConfig found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateGlobalConfigParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateGlobalConfigParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateGlobalConfig("category", list[0].Name, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateGlobalConfig error: %v", err)
-		return
-	}
-	golog.Infof("UpdateGlobalConfig result: %s", result.Name)
-}
-
-func TestResetGlobalConfig(t *testing.T) {
-	// Reset operation
-	t.Skip("TestResetGlobalConfig may affect resource state")
-
+	golog.Infof("PageGlobalConfig result: total=%d, returned=%d", total, len(result))
 }

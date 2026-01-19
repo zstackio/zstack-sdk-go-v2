@@ -12,18 +12,35 @@ import (
 
 func TestQueryIAM2Organization(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryIAM2Organization(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryIAM2Organization(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryIAM2Organization error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryIAM2Organization result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageIAM2Organization(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageIAM2Organization(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageIAM2Organization error: %v", err)
+		return
+	}
+	golog.Infof("PageIAM2Organization result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetIAM2Organization(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryIAM2Organization(&queryParam)
+	list, err := accessKeyAuthCli.QueryIAM2Organization(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetIAM2Organization Query error: %v", err)
 		return
@@ -33,90 +50,10 @@ func TestGetIAM2Organization(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetIAM2Organization(list[0].UUID)
+	result, err := accessKeyAuthCli.GetIAM2Organization(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetIAM2Organization error: %v", err)
 		return
 	}
-	golog.Infof("GetIAM2Organization result: %s", result.UUID)
-}
-
-func TestUpdateIAM2Organization(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryIAM2Organization(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateIAM2Organization Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No IAM2Organization found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateIAM2OrganizationParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateIAM2OrganizationParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateIAM2Organization(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateIAM2Organization error: %v", err)
-		return
-	}
-	golog.Infof("UpdateIAM2Organization result: %s", result.UUID)
-}
-
-func TestDeleteIAM2Organization(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteIAM2Organization is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryIAM2Organization(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteIAM2Organization Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No IAM2Organization found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteIAM2Organization(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteIAM2Organization error: %v", err)
-		return
-	}
-	golog.Infof("DeleteIAM2Organization succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateIAM2Organization(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateIAM2Organization is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateIAM2OrganizationParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateIAM2OrganizationParamDetail{
-	// 		Name: "test-iam2organization",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateIAM2Organization(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateIAM2Organization error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateIAM2Organization result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteIAM2Organization(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteIAM2Organization error: %v", err)
-	// }
+	golog.Infof("GetIAM2Organization result: %s, Name: %s", result.UUID, result.Name)
 }

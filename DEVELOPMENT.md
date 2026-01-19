@@ -256,9 +256,59 @@ type VmInstanceInventoryView struct {
 
 ---
 
-## 6. Error Handling Conventions
+## 6. Pointer Parameter Helper Functions
 
-### 6.1 Error Definition
+Many parameter structs use pointer types (e.g., `*int`, `*string`) to distinguish between zero values and unset values. To simplify usage for callers, the SDK provides generic helper functions in the `ptr` package.
+
+### 6.1 Using ptr.Of Function
+
+`ptr.Of` is a generic function that converts any value to a pointer:
+
+```go
+import "github.com/zstackio/zstack-sdk-go-v2/pkg/util/ptr"
+
+// Before (verbose approach)
+cpuNum := 4
+memorySize := int64(8589934592)
+name := "my-vm"
+
+params := param.CreateVmInstanceDetailParam{
+    CpuNum:     &cpuNum,
+    MemorySize: &memorySize,
+    Name:       &name,
+}
+
+// Now (using ptr.Of, clean and concise)
+params := param.CreateVmInstanceDetailParam{
+    CpuNum:     ptr.Of(4),
+    MemorySize: ptr.Of(int64(8589934592)),
+    Name:       ptr.Of("my-vm"),
+    Platform:   ptr.Of("Linux"),
+    Tags:       ptr.Of([]string{"tag1", "tag2"}),
+}
+```
+
+### 6.2 Available Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `ptr.Of(v)` | Convert value to pointer | `ptr.Of(4)` → `*int` |
+| `ptr.ValueOr(p, default)` | Get pointer value, returns default if nil | `ptr.ValueOr(p, 0)` |
+| `ptr.Value(p)` | Get pointer value, returns zero value if nil | `ptr.Value(p)` |
+
+### 6.3 Supported Types
+
+`ptr.Of` supports all Go types, including:
+
+- Primitive types: `int`, `int64`, `string`, `bool`, `float64`, etc.
+- Composite types: `[]string`, `map[string]int`, etc.
+- Custom types: any struct
+
+---
+
+## 7. Error Handling Conventions
+
+### 7.1 Error Definition
 
 ```go
 // Use custom error type
@@ -276,7 +326,7 @@ const (
 )
 ```
 
-### 6.2 Error Wrapping
+### 7.2 Error Wrapping
 
 ```go
 import "github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
@@ -292,7 +342,7 @@ if err != nil {
 }
 ```
 
-### 6.3 API Method Error Handling
+### 7.3 API Method Error Handling
 
 ```go
 func (cli *ZSClient) GetVmInstance(uuid string) (*view.VmInstanceInventoryView, error) {
@@ -306,9 +356,9 @@ func (cli *ZSClient) GetVmInstance(uuid string) (*view.VmInstanceInventoryView, 
 
 ---
 
-## 7. API Method Implementation Standards
+## 8. API Method Implementation Standards
 
-### 7.1 Standard Method Template
+### 8.1 Standard Method Template
 
 ```go
 // {Description} Method description
@@ -321,7 +371,7 @@ func (cli *ZSClient) {MethodName}(params...) (*view.{ReturnType}, error) {
 }
 ```
 
-### 7.2 Complete Examples
+### 8.2 Complete Examples
 
 ```go
 // CreateVmInstance creates a VM instance
@@ -347,13 +397,13 @@ func (cli *ZSClient) DestroyVmInstance(uuid string, deleteMode param.DeleteMode)
 
 ---
 
-## 8. Testing Standards
+## 9. Testing Standards
 
-### 8.1 Test File Location
+### 9.1 Test File Location
 
 Test files are placed in the `pkg/test/` directory with naming format: `{resource}_test.go`
 
-### 8.2 Test Function Naming
+### 9.2 Test Function Naming
 
 ```go
 func Test{MethodName}(t *testing.T) {
@@ -361,7 +411,7 @@ func Test{MethodName}(t *testing.T) {
 }
 ```
 
-### 8.3 Test Template
+### 9.3 Test Template
 
 ```go
 // Copyright (c) ZStack.io, Inc.
@@ -395,7 +445,7 @@ func TestGetVmInstance(t *testing.T) {
 ```
 
 
-### 8.4 Running Tests with Reports
+### 9.4 Running Tests with Reports
 
 We provide scripts to run tests and generate HTML reports using `go-test-report`.
 
@@ -414,7 +464,7 @@ The report will be generated as `test_report.html` in the root directory.
 
 ---
 
-## 9. Adding New Resource Support
+## 10. Adding New Resource Support
 
 
 When adding support for a new ZStack resource, follow these steps:
@@ -509,7 +559,7 @@ Create integration tests in `pkg/test/{resource}_test.go`.
 
 ---
 
-## 10. Code Review Checklist
+## 11. Code Review Checklist
 
 Before submitting code, ensure:
 
@@ -524,7 +574,7 @@ Before submitting code, ensure:
 
 ---
 
-## 11. Go Version and Dependencies
+## 12. Go Version and Dependencies
 
 - **Go Version**: 1.22.0+
 - **Main Dependencies**:

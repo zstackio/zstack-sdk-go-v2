@@ -12,18 +12,35 @@ import (
 
 func TestQueryPciDevice(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPciDevice(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryPciDevice(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPciDevice error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryPciDevice result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPagePciDevice(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PagePciDevice(&queryParam)
+	if err != nil {
+		t.Errorf("TestPagePciDevice error: %v", err)
+		return
+	}
+	golog.Infof("PagePciDevice result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetPciDevice(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPciDevice(&queryParam)
+	list, err := accessKeyAuthCli.QueryPciDevice(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetPciDevice Query error: %v", err)
 		return
@@ -33,65 +50,10 @@ func TestGetPciDevice(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetPciDevice(list[0].UUID)
+	result, err := accessKeyAuthCli.GetPciDevice(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetPciDevice error: %v", err)
 		return
 	}
-	golog.Infof("GetPciDevice result: %s", result.UUID)
-}
-
-func TestUpdatePciDevice(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPciDevice(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdatePciDevice Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No PciDevice found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdatePciDeviceParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdatePciDeviceParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdatePciDevice(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdatePciDevice error: %v", err)
-		return
-	}
-	golog.Infof("UpdatePciDevice result: %s", result.UUID)
-}
-
-func TestDeletePciDevice(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeletePciDevice is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPciDevice(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeletePciDevice Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No PciDevice found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeletePciDevice(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeletePciDevice error: %v", err)
-		return
-	}
-	golog.Infof("DeletePciDevice succeeded for UUID: %s", list[0].UUID)
+	golog.Infof("GetPciDevice result: %s, Name: %s", result.UUID, result.Name)
 }

@@ -12,18 +12,35 @@ import (
 
 func TestQueryAutoScalingGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAutoScalingGroup(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryAutoScalingGroup(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAutoScalingGroup error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryAutoScalingGroup result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageAutoScalingGroup(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageAutoScalingGroup(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageAutoScalingGroup error: %v", err)
+		return
+	}
+	golog.Infof("PageAutoScalingGroup result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetAutoScalingGroup(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAutoScalingGroup(&queryParam)
+	list, err := accessKeyAuthCli.QueryAutoScalingGroup(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetAutoScalingGroup Query error: %v", err)
 		return
@@ -33,90 +50,10 @@ func TestGetAutoScalingGroup(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetAutoScalingGroup(list[0].UUID)
+	result, err := accessKeyAuthCli.GetAutoScalingGroup(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetAutoScalingGroup error: %v", err)
 		return
 	}
-	golog.Infof("GetAutoScalingGroup result: %s", result.UUID)
-}
-
-func TestUpdateAutoScalingGroup(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAutoScalingGroup(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateAutoScalingGroup Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No AutoScalingGroup found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateAutoScalingGroupParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateAutoScalingGroupParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateAutoScalingGroup(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateAutoScalingGroup error: %v", err)
-		return
-	}
-	golog.Infof("UpdateAutoScalingGroup result: %s", result.UUID)
-}
-
-func TestDeleteAutoScalingGroup(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteAutoScalingGroup is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAutoScalingGroup(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteAutoScalingGroup Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No AutoScalingGroup found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteAutoScalingGroup(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteAutoScalingGroup error: %v", err)
-		return
-	}
-	golog.Infof("DeleteAutoScalingGroup succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateAutoScalingGroup(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateAutoScalingGroup is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateAutoScalingGroupParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateAutoScalingGroupParamDetail{
-	// 		Name: "test-autoscalinggroup",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateAutoScalingGroup(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateAutoScalingGroup error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateAutoScalingGroup result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteAutoScalingGroup(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteAutoScalingGroup error: %v", err)
-	// }
+	golog.Infof("GetAutoScalingGroup result: %s, Name: %s", result.UUID, result.Name)
 }

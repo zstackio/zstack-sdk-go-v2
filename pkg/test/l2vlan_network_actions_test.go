@@ -12,18 +12,35 @@ import (
 
 func TestQueryL2VlanNetwork(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryL2VlanNetwork(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryL2VlanNetwork(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryL2VlanNetwork error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryL2VlanNetwork result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%d", r.UUID, r.Name, r.Vlan)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageL2VlanNetwork(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageL2VlanNetwork(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageL2VlanNetwork error: %v", err)
+		return
+	}
+	golog.Infof("PageL2VlanNetwork result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetL2VlanNetwork(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryL2VlanNetwork(&queryParam)
+	list, err := accessKeyAuthCli.QueryL2VlanNetwork(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetL2VlanNetwork Query error: %v", err)
 		return
@@ -33,36 +50,10 @@ func TestGetL2VlanNetwork(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetL2VlanNetwork(list[0].UUID)
+	result, err := accessKeyAuthCli.GetL2VlanNetwork(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetL2VlanNetwork error: %v", err)
 		return
 	}
-	golog.Infof("GetL2VlanNetwork result: %s", result.UUID)
-}
-
-func TestCreateL2VlanNetwork(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateL2VlanNetwork is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateL2VlanNetworkParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateL2VlanNetworkParamDetail{
-	// 		Name: "test-l2vlannetwork",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateL2VlanNetwork(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateL2VlanNetwork error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateL2VlanNetwork result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteL2VlanNetwork(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteL2VlanNetwork error: %v", err)
-	// }
+	golog.Infof("GetL2VlanNetwork result: %s, Name: %s", result.UUID, result.Name)
 }

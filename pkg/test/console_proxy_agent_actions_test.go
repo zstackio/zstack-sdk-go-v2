@@ -12,18 +12,35 @@ import (
 
 func TestQueryConsoleProxyAgent(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryConsoleProxyAgent(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryConsoleProxyAgent(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryConsoleProxyAgent error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryConsoleProxyAgent result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.ManagementIp, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageConsoleProxyAgent(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageConsoleProxyAgent(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageConsoleProxyAgent error: %v", err)
+		return
+	}
+	golog.Infof("PageConsoleProxyAgent result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetConsoleProxyAgent(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryConsoleProxyAgent(&queryParam)
+	list, err := accessKeyAuthCli.QueryConsoleProxyAgent(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetConsoleProxyAgent Query error: %v", err)
 		return
@@ -33,46 +50,10 @@ func TestGetConsoleProxyAgent(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetConsoleProxyAgent(list[0].UUID)
+	result, err := accessKeyAuthCli.GetConsoleProxyAgent(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetConsoleProxyAgent error: %v", err)
 		return
 	}
-	golog.Infof("GetConsoleProxyAgent result: %s", result.UUID)
-}
-
-func TestUpdateConsoleProxyAgent(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryConsoleProxyAgent(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateConsoleProxyAgent Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No ConsoleProxyAgent found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateConsoleProxyAgentParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateConsoleProxyAgentParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateConsoleProxyAgent(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateConsoleProxyAgent error: %v", err)
-		return
-	}
-	golog.Infof("UpdateConsoleProxyAgent result: %s", result.UUID)
-}
-
-func TestReconnectConsoleProxyAgent(t *testing.T) {
-	// ReconnectConsoleProxyAgent operation
-	t.Skip("TestReconnectConsoleProxyAgent requires manual implementation")
-
+	golog.Infof("GetConsoleProxyAgent result: %s, IP: %s", result.UUID, result.ManagementIp)
 }

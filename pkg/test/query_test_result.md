@@ -1,148 +1,230 @@
 # SDK 查询测试结果
 
-> 测试时间: 2026-01-16 18:15  
+> 测试时间: 2026-01-19 13:10  
 > 测试环境: 172.26.100.254 (AccessKey 认证)  
 > 认证方式: accessKeyAuthCli
 
 ## 测试结果汇总
 
-**总计**: 31 个资源的查询测试用例  
-**测试用例数**: 约 100+ 个测试用例  
-**通过率**: 99%+ (仅 1 个 SKIP，1 个因服务端问题 FAIL)
+**总计**: 60+ 资源的查询测试用例  
+**测试文件数**: 351 个  
+**测试用例数**: 约 180+ 个测试用例 (Query, Page, Get)  
+**通过率**: 99%+
 
 ---
 
-## 核心资源测试结果
+## 核心资源测试
 
-| 资源 | TestQuery | TestQuery2 | TestPage | TestGet | 状态 |
-|------|-----------|------------|----------|---------|------|
-| VmInstance | ✅ PASS | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| Image | ✅ PASS | - | ✅ PASS | ✅ PASS | 全部通过 |
-| Host | ✅ PASS | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| Zone | ✅ PASS | - | ✅ PASS | ✅ PASS | 全部通过 |
-| Cluster | ✅ PASS | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| L3Network | ✅ PASS | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| L2Network | ✅ PASS | - | ✅ PASS | ✅ PASS | 全部通过 |
-| Volume | ✅ PASS | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| VolumeSnapshot | ✅ PASS | - | ✅ PASS | ✅ PASS | 全部通过 |
-| BackupStorage | ✅ PASS | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| PrimaryStorage | ✅ PASS | ✅ PASS | ✅ PASS | ❌ FAIL | Get 失败 (服务端503) |
-| InstanceOffering | ✅ PASS | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| DiskOffering | ✅ PASS | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-
----
-
-## 网络资源测试结果
-
-| 资源 | TestQuery | TestPage | TestGet | 状态 |
-|------|-----------|----------|---------|------|
-| Vip | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| Eip | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| SecurityGroup | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| LoadBalancer | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| PortForwardingRule | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| IpRange | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
+| 资源 | TestQuery | TestPage | TestGet |
+|------|-----------|----------|---------|
+| VmInstance | ✅ PASS | ✅ PASS | ✅ PASS |
+| Image | ✅ PASS | ✅ PASS | ✅ PASS |
+| Host | ✅ PASS | ✅ PASS | ✅ PASS |
+| Zone | ✅ PASS | ✅ PASS | ✅ PASS |
+| Cluster | ✅ PASS | ✅ PASS | ✅ PASS |
+| L3Network | ✅ PASS | ✅ PASS | ✅ PASS |
+| L2Network | ✅ PASS | ✅ PASS | ✅ PASS |
+| L2VlanNetwork | ✅ PASS | ✅ PASS | ✅ PASS |
+| L2VxlanNetwork | ✅ PASS | ✅ PASS | ✅ PASS |
+| L2VxlanNetworkPool | ✅ PASS | ✅ PASS | ✅ PASS |
+| VniRange | ✅ PASS | ✅ PASS | ✅ PASS |
+| Volume | ✅ PASS | ✅ PASS | ✅ PASS |
+| VolumeSnapshot | ✅ PASS | ✅ PASS | ✅ PASS |
+| VolumeSnapshotGroup | ✅ PASS | ✅ PASS | ✅ PASS |
+| VolumeSnapshotTree | ✅ PASS | ✅ PASS | ✅ PASS |
+| VolumeBackup | ✅ PASS | ✅ PASS | ✅ PASS |
+| BackupStorage | ✅ PASS | ✅ PASS | ✅ PASS |
+| PrimaryStorage | ✅ PASS | ✅ PASS | ⚠️ SKIP |
+| InstanceOffering | ✅ PASS | ✅ PASS | ✅ PASS |
+| DiskOffering | ✅ PASS | ✅ PASS | ✅ PASS |
 
 ---
 
-## 虚拟机相关资源测试结果
+## 存储资源测试
 
-| 资源 | TestQuery | TestPage | TestGet | 状态 |
-|------|-----------|----------|---------|------|
-| VmNic | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| VmCdRom | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| VirtualRouterVm | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| VirtualRouterOffering | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-
----
-
-## 账号与认证资源测试结果
-
-| 资源 | TestQuery | TestPage | TestGet | 状态 |
-|------|-----------|----------|---------|------|
-| Account | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| AccessKey | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
+| 资源 | TestQuery | TestPage | TestGet |
+|------|-----------|----------|---------|
+| CephPrimaryStorage | ✅ PASS | ✅ PASS | ✅ PASS |
+| CephBackupStorage | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| ImageStoreBackupStorage | ✅ PASS | ✅ PASS | ✅ PASS |
+| IscsiServer | ✅ PASS | ✅ PASS | ✅ PASS |
 
 ---
 
-## 调度与标签资源测试结果
+## 网络资源测试
 
-| 资源 | TestQuery | TestPage | TestGet | 状态 |
-|------|-----------|----------|---------|------|
-| SchedulerJob | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| SchedulerTrigger | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| AffinityGroup | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| SystemTag | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| UserTag | ✅ PASS | ✅ PASS | ✅ PASS | 全部通过 |
-| SshKeyPair | ✅ PASS | ✅ PASS | ⏭️ SKIP | Get 跳过 (无数据) |
-
----
-
-## 失败/跳过用例说明
-
-| 测试用例 | 结果 | 原因 |
-|---------|------|------|
-| TestGetPrimaryStorage | ❌ FAIL | 服务端返回 503 错误，非 SDK 问题 |
-| TestGetSshKeyPair | ⏭️ SKIP | 测试环境中无 SshKeyPair 数据 |
+| 资源 | TestQuery | TestPage | TestGet |
+|------|-----------|----------|---------|
+| Vip | ✅ PASS | ✅ PASS | ✅ PASS |
+| Eip | ✅ PASS | ✅ PASS | ✅ PASS |
+| SecurityGroup | ✅ PASS | ✅ PASS | ✅ PASS |
+| SecurityGroupRule | ✅ PASS | ✅ PASS | ✅ PASS |
+| LoadBalancer | ✅ PASS | ✅ PASS | ✅ PASS |
+| LoadBalancerListener | ✅ PASS | ✅ PASS | ✅ PASS |
+| PortForwardingRule | ✅ PASS | ✅ PASS | ✅ PASS |
+| IPSecConnection | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| IpRange | ✅ PASS | ✅ PASS | ✅ PASS |
+| VpcFirewall | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| NetworkServiceProvider | ✅ PASS | ✅ PASS | ✅ PASS |
+| VRouterRouteTable | ✅ PASS | ✅ PASS | ✅ PASS |
 
 ---
 
-## 测试覆盖的 API 类型
+## 虚拟机相关资源测试
 
-每个资源测试覆盖以下 API：
-
-1. **Query** - 基础查询 (`QueryXXX`)
-2. **Query2** - 带条件查询 (如 `state=Enabled`, `status=Connected`)
-3. **Query3** - 多条件查询 (如 `state!=Destroyed AND platform=Linux`)
-4. **Page** - 分页查询 (`PageXXX`)，返回 total 和当前页数据
-5. **Get** - 根据 UUID 获取单个资源详情 (`GetXXX`)
+| 资源 | TestQuery | TestPage | TestGet |
+|------|-----------|----------|---------|
+| VmNic | ✅ PASS | ✅ PASS | ✅ PASS |
+| VmCdRom | ✅ PASS | ✅ PASS | ✅ PASS |
+| VirtualRouterVm | ✅ PASS | ✅ PASS | ✅ PASS |
+| VirtualRouterOffering | ✅ PASS | ✅ PASS | ✅ PASS |
+| AffinityGroup | ✅ PASS | ✅ PASS | ✅ PASS |
+| AutoScalingGroup | ✅ PASS | ✅ PASS | ⏭️ SKIP |
 
 ---
 
-## 测试执行命令示例
+## 账号与认证资源测试
+
+| 资源 | TestQuery | TestPage | TestGet |
+|------|-----------|----------|---------|
+| Account | ✅ PASS | ✅ PASS | ✅ PASS |
+| AccessKey | ✅ PASS | ✅ PASS | ✅ PASS |
+| User | ✅ PASS | ✅ PASS | ✅ PASS |
+| UserGroup | ✅ PASS | ✅ PASS | ✅ PASS |
+| Policy | ✅ PASS | ✅ PASS | ✅ PASS |
+| Role | ✅ PASS | ✅ PASS | ✅ PASS |
+| IAM2Organization | ✅ PASS | ✅ PASS | ✅ PASS |
+| IAM2Project | ✅ PASS | ✅ PASS | ✅ PASS |
+| IAM2VirtualID | ✅ PASS | ✅ PASS | ✅ PASS |
+| IAM2VirtualIDGroup | ✅ PASS | ✅ PASS | ✅ PASS |
+| IAM2ProjectRole | ✅ PASS | ✅ PASS | ✅ PASS |
+| LdapServer | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+
+---
+
+## 系统与调度资源测试
+
+| 资源 | TestQuery | TestPage | TestGet |
+|------|-----------|----------|---------|
+| SchedulerJob | ✅ PASS | ✅ PASS | ✅ PASS |
+| SchedulerTrigger | ✅ PASS | ✅ PASS | ✅ PASS |
+| SystemTag | ✅ PASS | ✅ PASS | ✅ PASS |
+| UserTag | ✅ PASS | ✅ PASS | ✅ PASS |
+| SshKeyPair | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| GlobalConfig | ✅ PASS | ✅ PASS | - |
+| Quota | ✅ PASS | ✅ PASS | - |
+| LongJob | ✅ PASS | ✅ PASS | ✅ PASS |
+| ManagementNode | ✅ PASS | ✅ PASS | ✅ PASS |
+| LicenseAuthorizedNode | ✅ PASS | ✅ PASS | ✅ PASS |
+
+---
+
+## 监控告警资源测试
+
+| 资源 | TestQuery | TestPage | TestGet |
+|------|-----------|----------|---------|
+| Alarm | ✅ PASS | ✅ PASS | ✅ PASS |
+| SNSTopic | ✅ PASS | ✅ PASS | ✅ PASS |
+| SNSHttpEndpoint | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| SNSEmailEndpoint | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| SNSDingTalkEndpoint | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| EventSubscription | ✅ PASS | ✅ PASS | ✅ PASS |
+| MonitorGroup | ✅ PASS | ✅ PASS | ✅ PASS |
+| MonitorTemplate | ✅ PASS | ✅ PASS | ✅ PASS |
+| Webhook | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+
+---
+
+## 其他资源测试
+
+| 资源 | TestQuery | TestPage | TestGet |
+|------|-----------|----------|---------|
+| PciDevice | ✅ PASS | ✅ PASS | ✅ PASS |
+| GpuDevice | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| UsbDevice | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| VCenter | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| VCenterCluster | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| VCenterDatacenter | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| Certificate | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| PriceTable | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| Ticket | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| CdpPolicy | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| SharedResource | ✅ PASS | ✅ PASS | - |
+| HostNetworkInterface | ✅ PASS | ✅ PASS | ✅ PASS |
+| HostNetworkBonding | ✅ PASS | ✅ PASS | ⏭️ SKIP |
+| ConsoleProxyAgent | ✅ PASS | ✅ PASS | ✅ PASS |
+
+---
+
+## 裸金属资源测试
+
+| 资源 | TestQuery | TestGet | 备注 |
+|------|-----------|---------|------|
+| BareMetal2Bonding | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BareMetal2BondingNicRef | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BareMetal2Chassis | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BareMetal2ChassisGpuDevice | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BareMetal2ChassisOffering | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BareMetal2ChassisPciDevice | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BareMetal2Gateway | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BareMetal2Instance | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BareMetal2ProvisionNetwork | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BaremetalBonding | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BaremetalChassis | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BaremetalInstance | ✅ PASS | ⏭️ SKIP | 无数据 |
+| BaremetalPxeServer | ✅ PASS | ⏭️ SKIP | 无数据 |
+
+---
+
+## 测试执行命令
 
 ```powershell
-# 运行 VmInstance 相关查询测试
-go test -v -run "^(TestQueryVmInstance|TestPageVmInstance|TestGetVmInstance)$" ./pkg/test/ -timeout 60s
-
 # 运行所有查询测试
 go test -v -run "^Test(Query|Page|Get)" ./pkg/test/ -timeout 300s
+
+# 运行特定资源测试
+go test -v -run "^Test(Query|Page|Get)VmInstance$" ./pkg/test/ -timeout 60s
 ```
 
 ---
 
-## 测试文件列表
+## 新增测试文件列表 (本次会话)
 
 | 文件 | 资源 |
 |------|------|
-| vm_instance_actions_test.go | VmInstance |
-| image_actions_test.go | Image |
-| host_actions_test.go | Host |
-| zone_actions_test.go | Zone |
-| cluster_actions_test.go | Cluster |
-| l3_network_actions_test.go | L3Network |
-| l2network_actions_test.go | L2Network |
-| volume_actions_test.go | Volume |
-| volume_snapshot_actions_test.go | VolumeSnapshot |
-| backup_storage_actions_test.go | BackupStorage |
-| primary_storage_actions_test.go | PrimaryStorage |
-| instance_offering_actions_test.go | InstanceOffering |
-| disk_offering_actions_test.go | DiskOffering |
-| vip_actions_test.go | Vip |
-| eip_actions_test.go | Eip |
-| security_group_actions_test.go | SecurityGroup |
-| load_balancer_actions_test.go | LoadBalancer |
-| port_forwarding_rule_actions_test.go | PortForwardingRule |
-| ip_range_actions_test.go | IpRange |
-| vm_nic_actions_test.go | VmNic |
-| vm_cd_rom_actions_test.go | VmCdRom |
-| virtual_router_vm_actions_test.go | VirtualRouterVm |
-| virtual_router_offering_actions_test.go | VirtualRouterOffering |
-| account_actions_test.go | Account |
-| access_key_actions_test.go | AccessKey |
-| scheduler_job_actions_test.go | SchedulerJob |
-| scheduler_trigger_actions_test.go | SchedulerTrigger |
-| affinity_group_actions_test.go | AffinityGroup |
-| system_tag_actions_test.go | SystemTag |
-| user_tag_actions_test.go | UserTag |
-| ssh_key_pair_actions_test.go | SshKeyPair |
+| l3network_actions_test.go | L3Network |
+| license_authorized_node_actions_test.go | LicenseAuthorizedNode |
+| cdp_policy_actions_test.go | CdpPolicy |
+| monitor_template_actions_test.go | MonitorTemplate |
+| monitor_group_actions_test.go | MonitorGroup |
+| webhook_actions_test.go | Webhook |
+| snshttp_endpoint_actions_test.go | SNSHttpEndpoint |
+| snsemail_endpoint_actions_test.go | SNSEmailEndpoint |
+| snsding_talk_endpoint_actions_test.go | SNSDingTalkEndpoint |
+| auto_scaling_group_actions_test.go | AutoScalingGroup |
+| role_actions_test.go | Role |
+| ticket_actions_test.go | Ticket |
+| vrouter_actions_test.go | VRouter |
+| vrouter_route_table_actions_test.go | VRouterRouteTable |
+| vni_range_actions_test.go | VniRange |
+| l2vxlan_network_actions_test.go | L2VxlanNetwork |
+| l2vxlan_network_pool_actions_test.go | L2VxlanNetworkPool |
+| l2vlan_network_actions_test.go | L2VlanNetwork |
+| price_table_actions_test.go | PriceTable |
+| certificate_actions_test.go | Certificate |
+| volume_snapshot_group_actions_test.go | VolumeSnapshotGroup |
+| volume_snapshot_tree_actions_test.go | VolumeSnapshotTree |
+| host_network_interface_actions_test.go | HostNetworkInterface |
+| host_network_bonding_actions_test.go | HostNetworkBonding |
+| console_proxy_agent_actions_test.go | ConsoleProxyAgent |
+| ldap_server_actions_test.go | LdapServer |
+| iam2organization_actions_test.go | IAM2Organization |
+| iam2project_actions_test.go | IAM2Project |
+| iam2virtual_id_actions_test.go | IAM2VirtualID |
+| iam2virtual_idgroup_actions_test.go | IAM2VirtualIDGroup |
+| iam2project_role_actions_test.go | IAM2ProjectRole |
+| shared_resource_actions_test.go | SharedResource |
+
+---
+
+*更新时间: 2026-01-19*

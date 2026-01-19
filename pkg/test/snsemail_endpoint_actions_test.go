@@ -12,18 +12,35 @@ import (
 
 func TestQuerySNSEmailEndpoint(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySNSEmailEndpoint(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QuerySNSEmailEndpoint(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySNSEmailEndpoint error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QuerySNSEmailEndpoint result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageSNSEmailEndpoint(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageSNSEmailEndpoint(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageSNSEmailEndpoint error: %v", err)
+		return
+	}
+	golog.Infof("PageSNSEmailEndpoint result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetSNSEmailEndpoint(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySNSEmailEndpoint(&queryParam)
+	list, err := accessKeyAuthCli.QuerySNSEmailEndpoint(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetSNSEmailEndpoint Query error: %v", err)
 		return
@@ -33,36 +50,10 @@ func TestGetSNSEmailEndpoint(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetSNSEmailEndpoint(list[0].UUID)
+	result, err := accessKeyAuthCli.GetSNSEmailEndpoint(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetSNSEmailEndpoint error: %v", err)
 		return
 	}
-	golog.Infof("GetSNSEmailEndpoint result: %s", result.UUID)
-}
-
-func TestCreateSNSEmailEndpoint(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateSNSEmailEndpoint is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateSNSEmailEndpointParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateSNSEmailEndpointParamDetail{
-	// 		Name: "test-snsemailendpoint",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateSNSEmailEndpoint(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateSNSEmailEndpoint error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateSNSEmailEndpoint result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSEmailEndpoint(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteSNSEmailEndpoint error: %v", err)
-	// }
+	golog.Infof("GetSNSEmailEndpoint result: %s, Name: %s", result.UUID, result.Name)
 }

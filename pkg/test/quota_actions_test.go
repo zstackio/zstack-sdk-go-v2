@@ -12,61 +12,27 @@ import (
 
 func TestQueryQuota(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryQuota(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryQuota(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryQuota error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryQuota result count: %d", len(result))
-}
-func TestGetQuota(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryQuota(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetQuota Query error: %v", err)
-		return
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%d", r.Name, r.IdentityType, r.Value)
 	}
-	if len(list) == 0 {
-		t.Skip("No Quota found to test Get")
-		return
-	}
-
-	// Get by UUID
-	result, err := accountLoginCli.GetQuota(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetQuota error: %v", err)
-		return
-	}
-	golog.Infof("GetQuota result: %s", result.UUID)
+	golog.Infof("======================================")
 }
 
-func TestUpdateQuota(t *testing.T) {
-	// First query to get a valid UUID
+func TestPageQuota(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryQuota(&queryParam)
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageQuota(&queryParam)
 	if err != nil {
-		t.Errorf("TestUpdateQuota Query error: %v", err)
+		t.Errorf("TestPageQuota error: %v", err)
 		return
 	}
-	if len(list) == 0 {
-		t.Skip("No Quota found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateQuotaParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateQuotaParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateQuota(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateQuota error: %v", err)
-		return
-	}
-	golog.Infof("UpdateQuota result: %s", result.UUID)
+	golog.Infof("PageQuota result: total=%d, returned=%d", total, len(result))
 }

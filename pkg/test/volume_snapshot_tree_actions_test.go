@@ -12,18 +12,35 @@ import (
 
 func TestQueryVolumeSnapshotTree(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVolumeSnapshotTree(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryVolumeSnapshotTree(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVolumeSnapshotTree error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryVolumeSnapshotTree result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s", r.UUID, r.VolumeUuid)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageVolumeSnapshotTree(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageVolumeSnapshotTree(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageVolumeSnapshotTree error: %v", err)
+		return
+	}
+	golog.Infof("PageVolumeSnapshotTree result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetVolumeSnapshotTree(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVolumeSnapshotTree(&queryParam)
+	list, err := accessKeyAuthCli.QueryVolumeSnapshotTree(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetVolumeSnapshotTree Query error: %v", err)
 		return
@@ -33,8 +50,7 @@ func TestGetVolumeSnapshotTree(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetVolumeSnapshotTree(list[0].UUID)
+	result, err := accessKeyAuthCli.GetVolumeSnapshotTree(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetVolumeSnapshotTree error: %v", err)
 		return

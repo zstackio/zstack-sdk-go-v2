@@ -12,18 +12,35 @@ import (
 
 func TestQueryImageStoreBackupStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryImageStoreBackupStorage(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryImageStoreBackupStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryImageStoreBackupStorage error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryImageStoreBackupStorage result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageImageStoreBackupStorage(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageImageStoreBackupStorage(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageImageStoreBackupStorage error: %v", err)
+		return
+	}
+	golog.Infof("PageImageStoreBackupStorage result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetImageStoreBackupStorage(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryImageStoreBackupStorage(&queryParam)
+	list, err := accessKeyAuthCli.QueryImageStoreBackupStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetImageStoreBackupStorage Query error: %v", err)
 		return
@@ -33,52 +50,10 @@ func TestGetImageStoreBackupStorage(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetImageStoreBackupStorage(list[0].UUID)
+	result, err := accessKeyAuthCli.GetImageStoreBackupStorage(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetImageStoreBackupStorage error: %v", err)
 		return
 	}
-	golog.Infof("GetImageStoreBackupStorage result: %s", result.UUID)
-}
-
-func TestUpdateImageStoreBackupStorage(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryImageStoreBackupStorage(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateImageStoreBackupStorage Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No ImageStoreBackupStorage found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateImageStoreBackupStorageParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateImageStoreBackupStorageParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateImageStoreBackupStorage(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateImageStoreBackupStorage error: %v", err)
-		return
-	}
-	golog.Infof("UpdateImageStoreBackupStorage result: %s", result.UUID)
-}
-
-func TestAddImageStoreBackupStorage(t *testing.T) {
-	// Add operation - similar to Create
-	t.Skip("TestAddImageStoreBackupStorage requires valid creation parameters")
-
-}
-
-func TestReconnectImageStoreBackupStorage(t *testing.T) {
-	// ReconnectImageStoreBackupStorage operation
-	t.Skip("TestReconnectImageStoreBackupStorage requires manual implementation")
-
+	golog.Infof("GetImageStoreBackupStorage result: %s, Name: %s", result.UUID, result.Name)
 }

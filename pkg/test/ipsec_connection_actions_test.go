@@ -4,41 +4,56 @@ package test
 
 import (
 	"testing"
+
+	"github.com/kataras/golog"
+
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 )
 
-func TestCreateIPsecConnection(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateIPsecConnection is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateIPsecConnectionParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateIPsecConnectionParamDetail{
-	// 		Name: "test-ipsecconnection",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateIPsecConnection(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateIPsecConnection error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateIPsecConnection result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteIPsecConnection(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteIPsecConnection error: %v", err)
-	// }
+func TestQueryIPSecConnection(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryIPSecConnection(&queryParam)
+	if err != nil {
+		t.Errorf("TestQueryIPSecConnection error: %v", err)
+		return
+	}
+	golog.Infof("======================================")
+	golog.Infof("QueryIPSecConnection result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
 
-func TestReconnectIPsecConnection(t *testing.T) {
-	// ReconnectIPsecConnection operation
-	t.Skip("TestReconnectIPsecConnection requires manual implementation")
-
+func TestPageIPSecConnection(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageIPSecConnection(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageIPSecConnection error: %v", err)
+		return
+	}
+	golog.Infof("PageIPSecConnection result: total=%d, returned=%d", total, len(result))
 }
 
-func TestChangeIPsecConnection(t *testing.T) {
-	// Change operation
-	t.Skip("TestChangeIPsecConnection requires specific parameters")
+func TestGetIPSecConnection(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(1)
+	list, err := accessKeyAuthCli.QueryIPSecConnection(&queryParam)
+	if err != nil {
+		t.Errorf("TestGetIPSecConnection Query error: %v", err)
+		return
+	}
+	if len(list) == 0 {
+		t.Skip("No IPSecConnection found to test Get")
+		return
+	}
 
+	result, err := accessKeyAuthCli.GetIPSecConnection(list[0].UUID)
+	if err != nil {
+		t.Errorf("TestGetIPSecConnection error: %v", err)
+		return
+	}
+	golog.Infof("GetIPSecConnection result: %s, Name: %s", result.UUID, result.Name)
 }

@@ -256,9 +256,59 @@ type VmInstanceInventoryView struct {
 
 ---
 
-## 6. 错误处理规范
+## 6. 指针参数辅助函数
 
-### 6.1 错误定义
+许多参数结构体中使用指针类型（如 `*int`, `*string`）来区分零值和未设置的情况。为了简化调用者的使用，SDK 提供了 `ptr` 包中的泛型辅助函数。
+
+### 6.1 使用 ptr.Of 函数
+
+`ptr.Of` 是一个泛型函数，可以将任意类型的值转换为指针：
+
+```go
+import "github.com/zstackio/zstack-sdk-go-v2/pkg/util/ptr"
+
+// 之前（繁琐的写法）
+cpuNum := 4
+memorySize := int64(8589934592)
+name := "my-vm"
+
+params := param.CreateVmInstanceDetailParam{
+    CpuNum:     &cpuNum,
+    MemorySize: &memorySize,
+    Name:       &name,
+}
+
+// 现在（使用 ptr.Of，简洁明了）
+params := param.CreateVmInstanceDetailParam{
+    CpuNum:     ptr.Of(4),
+    MemorySize: ptr.Of(int64(8589934592)),
+    Name:       ptr.Of("my-vm"),
+    Platform:   ptr.Of("Linux"),
+    Tags:       ptr.Of([]string{"tag1", "tag2"}),
+}
+```
+
+### 6.2 可用函数
+
+| 函数 | 用途 | 示例 |
+|------|------|------|
+| `ptr.Of(v)` | 将值转换为指针 | `ptr.Of(4)` → `*int` |
+| `ptr.ValueOr(p, default)` | 获取指针值，nil 时返回默认值 | `ptr.ValueOr(p, 0)` |
+| `ptr.Value(p)` | 获取指针值，nil 时返回零值 | `ptr.Value(p)` |
+
+### 6.3 支持的类型
+
+`ptr.Of` 支持所有 Go 类型，包括：
+
+- 基础类型：`int`, `int64`, `string`, `bool`, `float64` 等
+- 复合类型：`[]string`, `map[string]int` 等
+- 自定义类型：任意结构体
+
+---
+
+## 7. 错误处理规范
+
+### 7.1 错误定义
 
 ```go
 // 使用自定义错误类型
@@ -276,7 +326,7 @@ const (
 )
 ```
 
-### 6.2 错误包装
+### 7.2 错误包装
 
 ```go
 import "github.com/zstackio/zstack-sdk-go-v2/pkg/errors"
@@ -292,7 +342,7 @@ if err != nil {
 }
 ```
 
-### 6.3 API 方法错误处理
+### 7.3 API 方法错误处理
 
 ```go
 func (cli *ZSClient) GetVmInstance(uuid string) (*view.VmInstanceInventoryView, error) {
@@ -306,9 +356,9 @@ func (cli *ZSClient) GetVmInstance(uuid string) (*view.VmInstanceInventoryView, 
 
 ---
 
-## 7. API 方法实现规范
+## 8. API 方法实现规范
 
-### 7.1 标准方法模板
+### 8.1 标准方法模板
 
 ```go
 // {Description} 方法描述
@@ -321,7 +371,7 @@ func (cli *ZSClient) {MethodName}(params...) (*view.{ReturnType}, error) {
 }
 ```
 
-### 7.2 完整示例
+### 8.2 完整示例
 
 ```go
 // CreateVmInstance 创建虚拟机实例
@@ -347,13 +397,13 @@ func (cli *ZSClient) DestroyVmInstance(uuid string, deleteMode param.DeleteMode)
 
 ---
 
-## 8. 测试规范
+## 9. 测试规范
 
-### 8.1 测试文件位置
+### 9.1 测试文件位置
 
 测试文件放在 `pkg/test1/` 目录下，命名格式：`{resource}_test.go`
 
-### 8.2 测试函数命名
+### 9.2 测试函数命名
 
 ```go
 func Test{MethodName}(t *testing.T) {
@@ -361,7 +411,7 @@ func Test{MethodName}(t *testing.T) {
 }
 ```
 
-### 8.3 测试模板
+### 9.3 测试模板
 
 ```go
 // Copyright (c) ZStack.io, Inc.
@@ -396,7 +446,7 @@ func TestGetVmInstance(t *testing.T) {
 
 ---
 
-## 9. 新增资源开发流程
+## 10. 新增资源开发流程
 
 当需要添加新的 ZStack 资源支持时，按以下步骤进行：
 
@@ -490,7 +540,7 @@ func (cli *ZSClient) Destroy{Resource}(uuid string, deleteMode param.DeleteMode)
 
 ---
 
-## 10. 代码审查清单
+## 11. 代码审查清单
 
 在提交代码前，请确保：
 
@@ -505,7 +555,7 @@ func (cli *ZSClient) Destroy{Resource}(uuid string, deleteMode param.DeleteMode)
 
 ---
 
-## 11. Go 版本和依赖
+## 12. Go 版本和依赖
 
 - **Go 版本**: 1.22.0+
 - **主要依赖**:

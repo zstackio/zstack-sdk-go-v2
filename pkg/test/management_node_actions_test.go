@@ -12,18 +12,35 @@ import (
 
 func TestQueryManagementNode(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryManagementNode(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryManagementNode(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryManagementNode error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryManagementNode result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s", r.UUID, r.HostName)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageManagementNode(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageManagementNode(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageManagementNode error: %v", err)
+		return
+	}
+	golog.Infof("PageManagementNode result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetManagementNode(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryManagementNode(&queryParam)
+	list, err := accessKeyAuthCli.QueryManagementNode(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetManagementNode Query error: %v", err)
 		return
@@ -33,11 +50,10 @@ func TestGetManagementNode(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetManagementNode(list[0].UUID)
+	result, err := accessKeyAuthCli.GetManagementNode(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetManagementNode error: %v", err)
 		return
 	}
-	golog.Infof("GetManagementNode result: %s", result.UUID)
+	golog.Infof("GetManagementNode result: %s, HostName: %s", result.UUID, result.HostName)
 }

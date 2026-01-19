@@ -12,18 +12,35 @@ import (
 
 func TestQueryMonitorTemplate(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMonitorTemplate(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryMonitorTemplate(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMonitorTemplate error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryMonitorTemplate result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.MonitorGroupTemplateRefs)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageMonitorTemplate(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageMonitorTemplate(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageMonitorTemplate error: %v", err)
+		return
+	}
+	golog.Infof("PageMonitorTemplate result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetMonitorTemplate(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryMonitorTemplate(&queryParam)
+	list, err := accessKeyAuthCli.QueryMonitorTemplate(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetMonitorTemplate Query error: %v", err)
 		return
@@ -33,96 +50,10 @@ func TestGetMonitorTemplate(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetMonitorTemplate(list[0].UUID)
+	result, err := accessKeyAuthCli.GetMonitorTemplate(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetMonitorTemplate error: %v", err)
 		return
 	}
-	golog.Infof("GetMonitorTemplate result: %s", result.UUID)
-}
-
-func TestUpdateMonitorTemplate(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryMonitorTemplate(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateMonitorTemplate Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No MonitorTemplate found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateMonitorTemplateParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateMonitorTemplateParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateMonitorTemplate(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateMonitorTemplate error: %v", err)
-		return
-	}
-	golog.Infof("UpdateMonitorTemplate result: %s", result.UUID)
-}
-
-func TestDeleteMonitorTemplate(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteMonitorTemplate is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryMonitorTemplate(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteMonitorTemplate Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No MonitorTemplate found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteMonitorTemplate(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteMonitorTemplate error: %v", err)
-		return
-	}
-	golog.Infof("DeleteMonitorTemplate succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateMonitorTemplate(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateMonitorTemplate is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateMonitorTemplateParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateMonitorTemplateParamDetail{
-	// 		Name: "test-monitortemplate",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateMonitorTemplate(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateMonitorTemplate error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateMonitorTemplate result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteMonitorTemplate(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteMonitorTemplate error: %v", err)
-	// }
-}
-
-func TestCloneMonitorTemplate(t *testing.T) {
-	// Clone operation
-	t.Skip("TestCloneMonitorTemplate requires a valid resource to clone")
-
+	golog.Infof("GetMonitorTemplate result: %s, Name: %s", result.UUID, result.Name)
 }

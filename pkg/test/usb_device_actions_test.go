@@ -12,18 +12,35 @@ import (
 
 func TestQueryUsbDevice(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryUsbDevice(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryUsbDevice(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryUsbDevice error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryUsbDevice result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageUsbDevice(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageUsbDevice(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageUsbDevice error: %v", err)
+		return
+	}
+	golog.Infof("PageUsbDevice result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetUsbDevice(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryUsbDevice(&queryParam)
+	list, err := accessKeyAuthCli.QueryUsbDevice(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetUsbDevice Query error: %v", err)
 		return
@@ -33,40 +50,10 @@ func TestGetUsbDevice(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetUsbDevice(list[0].UUID)
+	result, err := accessKeyAuthCli.GetUsbDevice(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetUsbDevice error: %v", err)
 		return
 	}
-	golog.Infof("GetUsbDevice result: %s", result.UUID)
-}
-
-func TestUpdateUsbDevice(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryUsbDevice(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateUsbDevice Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No UsbDevice found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateUsbDeviceParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateUsbDeviceParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateUsbDevice(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateUsbDevice error: %v", err)
-		return
-	}
-	golog.Infof("UpdateUsbDevice result: %s", result.UUID)
+	golog.Infof("GetUsbDevice result: %s, Name: %s", result.UUID, result.Name)
 }

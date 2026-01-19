@@ -12,18 +12,35 @@ import (
 
 func TestQuerySNSDingTalkEndpoint(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySNSDingTalkEndpoint(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QuerySNSDingTalkEndpoint(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySNSDingTalkEndpoint error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QuerySNSDingTalkEndpoint result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageSNSDingTalkEndpoint(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageSNSDingTalkEndpoint(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageSNSDingTalkEndpoint error: %v", err)
+		return
+	}
+	golog.Infof("PageSNSDingTalkEndpoint result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetSNSDingTalkEndpoint(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySNSDingTalkEndpoint(&queryParam)
+	list, err := accessKeyAuthCli.QuerySNSDingTalkEndpoint(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetSNSDingTalkEndpoint Query error: %v", err)
 		return
@@ -33,65 +50,10 @@ func TestGetSNSDingTalkEndpoint(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetSNSDingTalkEndpoint(list[0].UUID)
+	result, err := accessKeyAuthCli.GetSNSDingTalkEndpoint(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetSNSDingTalkEndpoint error: %v", err)
 		return
 	}
-	golog.Infof("GetSNSDingTalkEndpoint result: %s", result.UUID)
-}
-
-func TestUpdateSNSDingTalkEndpoint(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySNSDingTalkEndpoint(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateSNSDingTalkEndpoint Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SNSDingTalkEndpoint found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateSNSDingTalkEndpointParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateSNSDingTalkEndpointParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateSNSDingTalkEndpoint(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateSNSDingTalkEndpoint error: %v", err)
-		return
-	}
-	golog.Infof("UpdateSNSDingTalkEndpoint result: %s", result.UUID)
-}
-
-func TestCreateSNSDingTalkEndpoint(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateSNSDingTalkEndpoint is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateSNSDingTalkEndpointParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateSNSDingTalkEndpointParamDetail{
-	// 		Name: "test-snsdingtalkendpoint",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateSNSDingTalkEndpoint(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateSNSDingTalkEndpoint error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateSNSDingTalkEndpoint result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSDingTalkEndpoint(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteSNSDingTalkEndpoint error: %v", err)
-	// }
+	golog.Infof("GetSNSDingTalkEndpoint result: %s, Name: %s", result.UUID, result.Name)
 }

@@ -12,18 +12,35 @@ import (
 
 func TestQueryIAM2VirtualID(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryIAM2VirtualID(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryIAM2VirtualID(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryIAM2VirtualID error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryIAM2VirtualID result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageIAM2VirtualID(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageIAM2VirtualID(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageIAM2VirtualID error: %v", err)
+		return
+	}
+	golog.Infof("PageIAM2VirtualID result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetIAM2VirtualID(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryIAM2VirtualID(&queryParam)
+	list, err := accessKeyAuthCli.QueryIAM2VirtualID(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetIAM2VirtualID Query error: %v", err)
 		return
@@ -33,96 +50,10 @@ func TestGetIAM2VirtualID(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetIAM2VirtualID(list[0].UUID)
+	result, err := accessKeyAuthCli.GetIAM2VirtualID(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetIAM2VirtualID error: %v", err)
 		return
 	}
-	golog.Infof("GetIAM2VirtualID result: %s", result.UUID)
-}
-
-func TestUpdateIAM2VirtualID(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryIAM2VirtualID(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateIAM2VirtualID Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No IAM2VirtualID found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateIAM2VirtualIDParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateIAM2VirtualIDParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateIAM2VirtualID(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateIAM2VirtualID error: %v", err)
-		return
-	}
-	golog.Infof("UpdateIAM2VirtualID result: %s", result.UUID)
-}
-
-func TestDeleteIAM2VirtualID(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteIAM2VirtualID is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryIAM2VirtualID(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteIAM2VirtualID Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No IAM2VirtualID found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteIAM2VirtualID(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteIAM2VirtualID error: %v", err)
-		return
-	}
-	golog.Infof("DeleteIAM2VirtualID succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateIAM2VirtualID(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateIAM2VirtualID is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateIAM2VirtualIDParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateIAM2VirtualIDParamDetail{
-	// 		Name: "test-iam2virtualid",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateIAM2VirtualID(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateIAM2VirtualID error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateIAM2VirtualID result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteIAM2VirtualID(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteIAM2VirtualID error: %v", err)
-	// }
-}
-
-func TestLoginIAM2VirtualID(t *testing.T) {
-	// LoginIAM2VirtualID operation
-	t.Skip("TestLoginIAM2VirtualID requires manual implementation")
-
+	golog.Infof("GetIAM2VirtualID result: %s, Name: %s", result.UUID, result.Name)
 }

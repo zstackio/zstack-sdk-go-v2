@@ -12,18 +12,35 @@ import (
 
 func TestQueryIAM2ProjectRole(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryIAM2ProjectRole(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryIAM2ProjectRole(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryIAM2ProjectRole error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryIAM2ProjectRole result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPageIAM2ProjectRole(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PageIAM2ProjectRole(&queryParam)
+	if err != nil {
+		t.Errorf("TestPageIAM2ProjectRole error: %v", err)
+		return
+	}
+	golog.Infof("PageIAM2ProjectRole result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetIAM2ProjectRole(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryIAM2ProjectRole(&queryParam)
+	list, err := accessKeyAuthCli.QueryIAM2ProjectRole(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetIAM2ProjectRole Query error: %v", err)
 		return
@@ -33,36 +50,10 @@ func TestGetIAM2ProjectRole(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetIAM2ProjectRole(list[0].UUID)
+	result, err := accessKeyAuthCli.GetIAM2ProjectRole(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetIAM2ProjectRole error: %v", err)
 		return
 	}
-	golog.Infof("GetIAM2ProjectRole result: %s", result.UUID)
-}
-
-func TestCreateIAM2ProjectRole(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateIAM2ProjectRole is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateIAM2ProjectRoleParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateIAM2ProjectRoleParamDetail{
-	// 		Name: "test-iam2projectrole",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateIAM2ProjectRole(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateIAM2ProjectRole error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateIAM2ProjectRole result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteIAM2ProjectRole(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteIAM2ProjectRole error: %v", err)
-	// }
+	golog.Infof("GetIAM2ProjectRole result: %s, Name: %s", result.UUID, result.Name)
 }

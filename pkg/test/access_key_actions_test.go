@@ -8,6 +8,7 @@ import (
 	"github.com/kataras/golog"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/ptr"
 )
 
 func TestQueryAccessKey(t *testing.T) {
@@ -60,4 +61,83 @@ func TestGetAccessKey(t *testing.T) {
 		return
 	}
 	golog.Infof("GetAccessKey result: %s, AccessKeyId: %s", result.UUID, result.AccessKeyID)
+}
+
+func TestCreateAccessKey(t *testing.T) {
+	if loginSession == nil {
+		t.Skip("Skipping CreateAccessKey: loginSession is nil")
+		return
+	}
+
+	// 1. Create AccessKey using current login session info
+	result, err := accountLoginCli.CreateAccessKey(param.CreateAccessKeyParam{
+		Params: param.CreateAccessKeyParamDetail{
+			UserUuid:    loginSession.UserUuid,
+			AccountUuid: loginSession.AccountUuid,
+			Description: ptr.Of("Created by SDK Test"),
+		},
+	})
+	if err != nil {
+		t.Errorf("CreateAccessKey error: %v", err)
+		return
+	}
+	golog.Infof("Created AccessKey: UUID=%s, ID=%s", result.UUID, result.AccessKeyID)
+
+	// Clean up
+	defer func() {
+		err := accountLoginCli.DeleteAccessKey(result.UUID, param.DeleteModePermissive)
+		if err != nil {
+			golog.Errorf("Failed to delete AccessKey %s: %v", result.UUID, err)
+		} else {
+			golog.Infof("Deleted AccessKey %s", result.UUID)
+		}
+	}()
+}
+
+func TestCreateGetDeleteAccessKeyFlow(t *testing.T) {
+	if loginSession == nil {
+		t.Skip("Skipping Flow: loginSession is nil")
+		return
+	}
+
+	// 1. Create
+	createResp, err := accountLoginCli.CreateAccessKey(param.CreateAccessKeyParam{
+		Params: param.CreateAccessKeyParamDetail{
+			UserUuid:    loginSession.UserUuid,
+			AccountUuid: loginSession.AccountUuid,
+			Description: ptr.Of("Flow Test Key"),
+		},
+	})
+	if err != nil {
+		t.Fatalf("CreateAccessKey error: %v", err)
+	}
+	golog.Infof("Step 1: Created AccessKey %s", createResp.UUID)
+
+	// 2. Get
+	getResp, err := accountLoginCli.GetAccessKey(createResp.UUID)
+	if err != nil {
+		t.Errorf("GetAccessKey error: %v", err)
+	} else {
+		golog.Infof("Step 2: Get AccessKey success, ID=%s", getResp.AccessKeyID)
+		if getResp.UUID != createResp.UUID {
+			t.Errorf("Get UUID mismatch: expected %s, got %s", createResp.UUID, getResp.UUID)
+		}
+	}
+
+	// 3. Delete
+	err = accountLoginCli.DeleteAccessKey(createResp.UUID, param.DeleteModePermissive)
+	if err != nil {
+		t.Errorf("DeleteAccessKey error: %v", err)
+	} else {
+		golog.Infof("Step 3: Deleted AccessKey %s", createResp.UUID)
+	}
+
+	// 4. Verify Delete (Get should fail or return error)
+	// Note: GetAccessKey might return 404 error here, which is expected
+	_, err = accountLoginCli.GetAccessKey(createResp.UUID)
+	if err == nil {
+		t.Errorf("Expected error when getting deleted AccessKey, but got nil")
+	} else {
+		golog.Infof("Step 4: Verify delete success (got expected error: %v)", err)
+	}
 }

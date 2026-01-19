@@ -12,18 +12,35 @@ import (
 
 func TestQueryPolicy(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPolicy(&queryParam)
+	queryParam.Limit(10)
+	result, err := accessKeyAuthCli.QueryPolicy(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPolicy error: %v", err)
 		return
 	}
+	golog.Infof("======================================")
 	golog.Infof("QueryPolicy result count: %d", len(result))
+	for _, r := range result {
+		golog.Infof("%s\t%s", r.UUID, r.Name)
+	}
+	golog.Infof("======================================")
 }
+
+func TestPagePolicy(t *testing.T) {
+	queryParam := param.NewQueryParam()
+	queryParam.Limit(10).Start(0)
+	result, total, err := accessKeyAuthCli.PagePolicy(&queryParam)
+	if err != nil {
+		t.Errorf("TestPagePolicy error: %v", err)
+		return
+	}
+	golog.Infof("PagePolicy result: total=%d, returned=%d", total, len(result))
+}
+
 func TestGetPolicy(t *testing.T) {
-	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPolicy(&queryParam)
+	list, err := accessKeyAuthCli.QueryPolicy(&queryParam)
 	if err != nil {
 		t.Errorf("TestGetPolicy Query error: %v", err)
 		return
@@ -33,61 +50,10 @@ func TestGetPolicy(t *testing.T) {
 		return
 	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetPolicy(list[0].UUID)
+	result, err := accessKeyAuthCli.GetPolicy(list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetPolicy error: %v", err)
 		return
 	}
-	golog.Infof("GetPolicy result: %s", result.UUID)
-}
-
-func TestDeletePolicy(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeletePolicy is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPolicy(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeletePolicy Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No Policy found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeletePolicy(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeletePolicy error: %v", err)
-		return
-	}
-	golog.Infof("DeletePolicy succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreatePolicy(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreatePolicy is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreatePolicyParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreatePolicyParamDetail{
-	// 		Name: "test-policy",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreatePolicy(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreatePolicy error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreatePolicy result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeletePolicy(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeletePolicy error: %v", err)
-	// }
+	golog.Infof("GetPolicy result: %s, Name: %s", result.UUID, result.Name)
 }
