@@ -32,3 +32,21 @@ func TestGetLicenseAuthorizedCapacity(t *testing.T) {
 	}
 	golog.Infof("GetLicenseAuthorizedCapacity result: %s", result.Id)
 }
+
+func TestGetLincenseInfo(t *testing.T) {
+	result, err := accountLoginCli.GetLicenseInfo(&param.QueryParam{})
+	if err != nil {
+		t.Errorf("TestGetLicenseInfo error: %v", err)
+		return
+	}
+	golog.Infof("GetLicenseInfo result: %s", result)
+}
+
+func TestGetVersion(t *testing.T) {
+	result, err := accountLoginCli.GetVersion()
+	if err != nil {
+		t.Errorf("TestGetVersion error: %v", err)
+		return
+	}
+	golog.Infof("GetVersion result: %s", result)
+}

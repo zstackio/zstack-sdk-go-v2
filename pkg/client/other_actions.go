@@ -4,12 +4,13 @@ package client
 
 import (
 	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
-var _ = view.MapView{} // avoid unused import
+var _ = view.MapView{}    // avoid unused import
 
 // ChangeIAM2OrganizationState changes IAM2OrganizationState
 func (cli *ZSClient) ChangeIAM2OrganizationState(uuid string, params param.ChangeIAM2OrganizationStateParam) (*view.IAM2OrganizationInventoryView, error) {
@@ -2226,10 +2227,12 @@ func (cli *ZSClient) DeleteAliyunDiskFromRemote(uuid string, deleteMode param.De
 	return cli.Delete("v1/hybrid/aliyun/disk", uuid, string(deleteMode))
 }
 
-// GetVersion gets Version by uuid
-func (cli *ZSClient) GetVersion(uuid string) (*view.GetVersionView, error) {
+// GetVersion gets Version
+func (cli *ZSClient) GetVersion() (*view.GetVersionView, error) {
 	var resp view.GetVersionView
-	if err := cli.Get("v1/management-nodes/actions", uuid, nil, &resp); err != nil {
+	if err := cli.PutWithRespKey("v1/management-nodes/actions", "", "", map[string]interface{}{
+		"getVersion": map[string]interface{}{},
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8856,9 +8859,9 @@ func (cli *ZSClient) GetHostPhysicalMemoryFacts(uuid string) (*view.HostPhysical
 }
 
 // GetLicenseInfo gets LicenseInfo by uuid
-func (cli *ZSClient) GetLicenseInfo(uuid string) (*view.LicenseInventoryView, error) {
+func (cli *ZSClient) GetLicenseInfo(params *param.QueryParam) (*view.LicenseInventoryView, error) {
 	var resp view.GetLicenseInfoView
-	if err := cli.Get("v1/licenses", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithSpec("v1/licenses", "", "", responseKeyInventory, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
@@ -11110,4 +11113,3 @@ func (cli *ZSClient) SyncVpcVpnGatewayFromRemote(dataCenterUuid string, params p
 func (cli *ZSClient) DeleteEcsVpcInLocal(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/hybrid/aliyun/vpc", uuid, string(deleteMode))
 }
-

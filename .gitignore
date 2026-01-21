@@ -1,5 +1,5 @@
 .idea
 .gradle
 .vscode
-
+.test.test.exe
 # Ignore provider test file

@@ -8,12 +8,13 @@ import (
 	"github.com/kataras/golog"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/ptr"
 )
 
 func TestQueryGlobalConfig(t *testing.T) {
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(10)
-	result, err := accessKeyAuthCli.QueryGlobalConfig(&queryParam)
+	result, err := accountLoginCli.QueryGlobalConfig(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryGlobalConfig error: %v", err)
 		return
@@ -29,10 +30,21 @@ func TestQueryGlobalConfig(t *testing.T) {
 func TestPageGlobalConfig(t *testing.T) {
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(10).Start(0)
-	result, total, err := accessKeyAuthCli.PageGlobalConfig(&queryParam)
+	result, total, err := accountLoginCli.PageGlobalConfig(&queryParam)
 	if err != nil {
 		t.Errorf("TestPageGlobalConfig error: %v", err)
 		return
 	}
 	golog.Infof("PageGlobalConfig result: total=%d, returned=%d", total, len(result))
+}
+
+func TestUpdateGlobalConfig(t *testing.T) {
+	enableRemoteWrite := param.UpdateGlobalConfigParam{
+		Params: param.UpdateGlobalConfigParamDetail{
+			Value: ptr.Of("true"),
+		},
+	}
+	if _, err := accountLoginCli.UpdateGlobalConfig("prometheus", "enable.remote.write", enableRemoteWrite); err != nil {
+		t.Errorf("failed to update global config: %v", err)
+	}
 }
