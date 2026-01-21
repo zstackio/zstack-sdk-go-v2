@@ -17,7 +17,7 @@ func (cli *ZSClient) DeleteSNSApplicationPlatform(uuid string, deleteMode param.
 // UpdateSNSApplicationPlatform updates SNSApplicationPlatform
 func (cli *ZSClient) UpdateSNSApplicationPlatform(uuid string, params param.UpdateSNSApplicationPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
 	resp := view.SNSApplicationPlatformInventoryView{}
-	if err := cli.Put("v1/sns/application-platforms", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sns/application-platforms", uuid, "", map[string]interface{}{
 		"updateSNSApplicationPlatform": params.Params,
 	}, &resp); err != nil {
 		return nil, err

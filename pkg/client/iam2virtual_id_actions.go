@@ -43,9 +43,9 @@ func (cli *ZSClient) DeleteIAM2VirtualID(uuid string, deleteMode param.DeleteMod
 	return cli.Delete("v1/iam2/virtual-ids", uuid, string(deleteMode))
 }
 // LoginIAM2VirtualID operates on IAM2VirtualID
-func (cli *ZSClient) LoginIAM2VirtualID(uuid string, params param.LoginIAM2VirtualIDParam) (*view.SessionInventoryView, error) {
+func (cli *ZSClient) LoginIAM2VirtualID(params param.LoginIAM2VirtualIDParam) (*view.SessionInventoryView, error) {
 	resp := view.SessionInventoryView{}
-	if err := cli.Put("v1/iam2/virtual-ids/login", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/iam2/virtual-ids/login", "", "", map[string]interface{}{
 		"loginIAM2VirtualID": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -55,7 +55,7 @@ func (cli *ZSClient) LoginIAM2VirtualID(uuid string, params param.LoginIAM2Virtu
 // UpdateIAM2VirtualID updates IAM2VirtualID
 func (cli *ZSClient) UpdateIAM2VirtualID(uuid string, params param.UpdateIAM2VirtualIDParam) (*view.IAM2VirtualIDInventoryView, error) {
 	resp := view.IAM2VirtualIDInventoryView{}
-	if err := cli.Put("v1/iam2/virtual-ids", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/iam2/virtual-ids", uuid, "", map[string]interface{}{
 		"updateIAM2VirtualID": params.Params,
 	}, &resp); err != nil {
 		return nil, err

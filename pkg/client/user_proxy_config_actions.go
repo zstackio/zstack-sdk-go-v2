@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateUserProxyConfig updates UserProxyConfig
 func (cli *ZSClient) UpdateUserProxyConfig(uuid string, params param.UpdateUserProxyConfigParam) (*view.UserProxyConfigInventoryView, error) {
 	resp := view.UserProxyConfigInventoryView{}
-	if err := cli.Put("v1/user-proxy-configs", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/user-proxy-configs", uuid, "", map[string]interface{}{
 		"updateUserProxyConfig": params.Params,
 	}, &resp); err != nil {
 		return nil, err

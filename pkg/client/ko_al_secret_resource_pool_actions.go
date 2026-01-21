@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateKoAlSecretResourcePool updates KoAlSecretResourcePool
 func (cli *ZSClient) UpdateKoAlSecretResourcePool(uuid string, params param.UpdateKoAlSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Put("v1/secret-resource-pools/koal", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/secret-resource-pools/koal", uuid, "", map[string]interface{}{
 		"updateKoAlSecretResourcePool": params.Params,
 	}, &resp); err != nil {
 		return nil, err

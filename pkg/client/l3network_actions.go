@@ -33,7 +33,7 @@ func (cli *ZSClient) PageL3Network(params *param.QueryParam) ([]view.L3NetworkIn
 // UpdateL3Network updates L3Network
 func (cli *ZSClient) UpdateL3Network(uuid string, params param.UpdateL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	resp := view.L3NetworkInventoryView{}
-	if err := cli.Put("v1/l3-networks", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/l3-networks", uuid, "", map[string]interface{}{
 		"updateL3Network": params.Params,
 	}, &resp); err != nil {
 		return nil, err

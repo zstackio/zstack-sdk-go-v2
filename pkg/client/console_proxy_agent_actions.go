@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // ReconnectConsoleProxyAgent operates on ConsoleProxyAgent
-func (cli *ZSClient) ReconnectConsoleProxyAgent(uuid string, params param.ReconnectConsoleProxyAgentParam) (*view.ReconnectConsoleProxyAgentEventView, error) {
+func (cli *ZSClient) ReconnectConsoleProxyAgent(params param.ReconnectConsoleProxyAgentParam) (*view.ReconnectConsoleProxyAgentEventView, error) {
 	resp := view.ReconnectConsoleProxyAgentEventView{}
-	if err := cli.Put("v1/consoles/agents", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/consoles/agents", "", "", map[string]interface{}{
 		"reconnectConsoleProxyAgent": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -43,7 +43,7 @@ func (cli *ZSClient) PageConsoleProxyAgent(params *param.QueryParam) ([]view.Con
 // UpdateConsoleProxyAgent updates ConsoleProxyAgent
 func (cli *ZSClient) UpdateConsoleProxyAgent(uuid string, params param.UpdateConsoleProxyAgentParam) (*view.ConsoleProxyAgentInventoryView, error) {
 	resp := view.ConsoleProxyAgentInventoryView{}
-	if err := cli.Put("v1/consoles/agents", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/consoles/agents", uuid, "", map[string]interface{}{
 		"updateConsoleProxyAgent": params.Params,
 	}, &resp); err != nil {
 		return nil, err

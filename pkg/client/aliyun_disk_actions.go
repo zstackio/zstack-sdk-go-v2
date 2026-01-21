@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAliyunDisk updates AliyunDisk
 func (cli *ZSClient) UpdateAliyunDisk(uuid string, params param.UpdateAliyunDiskParam) (*view.AliyunDiskInventoryView, error) {
 	resp := view.AliyunDiskInventoryView{}
-	if err := cli.Put("v1/hybrid/aliyun/disk", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/hybrid/aliyun/disk", uuid, "", map[string]interface{}{
 		"updateAliyunDisk": params.Params,
 	}, &resp); err != nil {
 		return nil, err

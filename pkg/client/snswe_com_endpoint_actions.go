@@ -41,7 +41,7 @@ func (cli *ZSClient) PageSNSWeComEndpoint(params *param.QueryParam) ([]view.SNSW
 // UpdateSNSWeComEndpoint updates SNSWeComEndpoint
 func (cli *ZSClient) UpdateSNSWeComEndpoint(uuid string, params param.UpdateSNSWeComEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	resp := view.SNSApplicationEndpointInventoryView{}
-	if err := cli.Put("v1/sns/application-endpoints/we-com", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints/we-com", uuid, "", map[string]interface{}{
 		"updateSNSWeComEndpoint": params.Params,
 	}, &resp); err != nil {
 		return nil, err

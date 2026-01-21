@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateSystemTag updates SystemTag
 func (cli *ZSClient) UpdateSystemTag(uuid string, params param.UpdateSystemTagParam) (*view.SystemTagInventoryView, error) {
 	resp := view.SystemTagInventoryView{}
-	if err := cli.Put("v1/system-tags", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/system-tags", uuid, "", map[string]interface{}{
 		"updateSystemTag": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,9 +21,9 @@ func (cli *ZSClient) UpdateSystemTag(uuid string, params param.UpdateSystemTagPa
 	return &resp, nil
 }
 // CreateSystemTag creates SystemTag
-func (cli *ZSClient) CreateSystemTag(params param.CreateSystemTagParam) (*view.SystemTagInventoryView, error) {
+func (cli *ZSClient) CreateSystemTag() (*view.SystemTagInventoryView, error) {
 	resp := view.SystemTagInventoryView{}
-	if err := cli.Post("v1/system-tags", params, &resp); err != nil {
+	if err := cli.Post("v1/system-tags", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

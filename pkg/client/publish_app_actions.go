@@ -41,7 +41,7 @@ func (cli *ZSClient) PublishApp(params param.PublishAppParam) (*view.PublishAppI
 // UpdatePublishApp updates PublishApp
 func (cli *ZSClient) UpdatePublishApp(uuid string, params param.UpdatePublishAppParam) (*view.PublishAppInventoryView, error) {
 	resp := view.PublishAppInventoryView{}
-	if err := cli.Put("v1/appcenter/app", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/appcenter/app", uuid, "", map[string]interface{}{
 		"updatePublishApp": params.Params,
 	}, &resp); err != nil {
 		return nil, err

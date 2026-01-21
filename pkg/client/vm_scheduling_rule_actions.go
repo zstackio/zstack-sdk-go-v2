@@ -23,9 +23,9 @@ func (cli *ZSClient) CreateVmSchedulingRule(params param.CreateVmSchedulingRuleP
 	return &resp, nil
 }
 // ValidateVmSchedulingRule operates on VmSchedulingRule
-func (cli *ZSClient) ValidateVmSchedulingRule(uuid string, params param.ValidateVmSchedulingRuleParam) (*view.VmSchedulingRuleInventoryView, error) {
+func (cli *ZSClient) ValidateVmSchedulingRule(params param.ValidateVmSchedulingRuleParam) (*view.VmSchedulingRuleInventoryView, error) {
 	resp := view.VmSchedulingRuleInventoryView{}
-	if err := cli.Put("v1/validate/vmSchedulingRule", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/validate/vmSchedulingRule", "", "", map[string]interface{}{
 		"validateVmSchedulingRule": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -35,7 +35,7 @@ func (cli *ZSClient) ValidateVmSchedulingRule(uuid string, params param.Validate
 // UpdateVmSchedulingRule updates VmSchedulingRule
 func (cli *ZSClient) UpdateVmSchedulingRule(uuid string, params param.UpdateVmSchedulingRuleParam) (*view.VmSchedulingRuleInventoryView, error) {
 	resp := view.VmSchedulingRuleInventoryView{}
-	if err := cli.Put("v1/vmSchedulingRule", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/vmSchedulingRule", uuid, "", map[string]interface{}{
 		"updateVmSchedulingRule": params.Params,
 	}, &resp); err != nil {
 		return nil, err

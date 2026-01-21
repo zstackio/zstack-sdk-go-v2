@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateSAML2Client updates SAML2Client
-func (cli *ZSClient) UpdateSAML2Client(uuid string, params param.UpdateSAML2ClientParam) (*view.SAML2ClientInventoryView, error) {
+func (cli *ZSClient) UpdateSAML2Client(params param.UpdateSAML2ClientParam) (*view.SAML2ClientInventoryView, error) {
 	resp := view.SAML2ClientInventoryView{}
-	if err := cli.Put("v1/update/saml2/client", uuid, params, &resp); err != nil {
+	if err := cli.Post("v1/update/saml2/client", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateMonitorTemplate updates MonitorTemplate
 func (cli *ZSClient) UpdateMonitorTemplate(uuid string, params param.UpdateMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	resp := view.MonitorTemplateInventoryView{}
-	if err := cli.Put("v1/zwatch/monitortemplates", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/zwatch/monitortemplates", uuid, "", map[string]interface{}{
 		"updateMonitorTemplate": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateMonitorTemplate(uuid string, params param.UpdateMonit
 // CloneMonitorTemplate operates on MonitorTemplate
 func (cli *ZSClient) CloneMonitorTemplate(params param.CloneMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	resp := view.MonitorTemplateInventoryView{}
-	if err := cli.Post("v1/zwatch/monitortemplates", params, &resp); err != nil {
+	if err := cli.Post("v1/zwatch/monitortemplates/{uuid}/actions", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

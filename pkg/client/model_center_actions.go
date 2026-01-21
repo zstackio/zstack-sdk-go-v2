@@ -45,7 +45,7 @@ func (cli *ZSClient) AddModelCenter(params param.AddModelCenterParam) (*view.Mod
 // UpdateModelCenter updates ModelCenter
 func (cli *ZSClient) UpdateModelCenter(uuid string, params param.UpdateModelCenterParam) (*view.ModelCenterInventoryView, error) {
 	resp := view.ModelCenterInventoryView{}
-	if err := cli.Put("v1/ai/model-centers", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/ai/model-centers", uuid, "", map[string]interface{}{
 		"updateModelCenter": params.Params,
 	}, &resp); err != nil {
 		return nil, err

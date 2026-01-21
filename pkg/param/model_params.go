@@ -26,6 +26,7 @@ type UpdateModelParamDetail struct {
 	ModelClassifications []string `json:"modelClassifications,omitempty"`
 	RecommendedGpuNum *string `json:"recommendedGpuNum,omitempty"`
 	GpuConstraintDescription *string `json:"gpuConstraintDescription,omitempty"`
+	ModelId *string `json:"modelId,omitempty"`
 }
 
 // UpdateModelParam UpdateModel request param
@@ -49,6 +50,7 @@ type AddModelParamDetail struct {
 	ModelServiceUuids []string `json:"modelServiceUuids,omitempty"`
 	RecommendedGpuNum *string `json:"recommendedGpuNum,omitempty"`
 	GpuConstraintDescription *string `json:"gpuConstraintDescription,omitempty"`
+	ModelId *string `json:"modelId,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

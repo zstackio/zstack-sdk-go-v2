@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateBareMetal2ProvisionNetwork updates BareMetal2ProvisionNetwork
 func (cli *ZSClient) UpdateBareMetal2ProvisionNetwork(uuid string, params param.UpdateBareMetal2ProvisionNetworkParam) (*view.BareMetal2ProvisionNetworkInventoryView, error) {
 	resp := view.BareMetal2ProvisionNetworkInventoryView{}
-	if err := cli.Put("v1/baremetal2/provision-networks", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal2/provision-networks", uuid, "", map[string]interface{}{
 		"updateBareMetal2ProvisionNetwork": params.Params,
 	}, &resp); err != nil {
 		return nil, err

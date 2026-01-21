@@ -42,6 +42,15 @@ type SetServiceTypeOnHostNetworkBondingParam struct {
 	BaseParam
 	Params SetServiceTypeOnHostNetworkBondingParamDetail `json:"params"`
 }
+// GetCreateEcsImageProgressParamDetail GetCreateEcsImageProgress detail param
+type GetCreateEcsImageProgressParamDetail struct {
+}
+
+// GetCreateEcsImageProgressParam GetCreateEcsImageProgress request param
+type GetCreateEcsImageProgressParam struct {
+	BaseParam
+	Params GetCreateEcsImageProgressParamDetail `json:"getCreateEcsImageProgress"`
+}
 // AddAttributesToIAM2OrganizationParamDetail AddAttributesToIAM2Organization detail param
 type AddAttributesToIAM2OrganizationParamDetail struct {
 	Attributes []AttributeParam `json:"attributes" validate:"required"`
@@ -51,15 +60,6 @@ type AddAttributesToIAM2OrganizationParamDetail struct {
 type AddAttributesToIAM2OrganizationParam struct {
 	BaseParam
 	Params AddAttributesToIAM2OrganizationParamDetail `json:"params"`
-}
-// GetCreateEcsImageProgressParamDetail GetCreateEcsImageProgress detail param
-type GetCreateEcsImageProgressParamDetail struct {
-}
-
-// GetCreateEcsImageProgressParam GetCreateEcsImageProgress request param
-type GetCreateEcsImageProgressParam struct {
-	BaseParam
-	Params GetCreateEcsImageProgressParamDetail `json:"getCreateEcsImageProgress"`
 }
 // AddAccessControlListToLoadBalancerParamDetail AddAccessControlListToLoadBalancer detail param
 type AddAccessControlListToLoadBalancerParamDetail struct {
@@ -4520,15 +4520,6 @@ type UnlockIdentityParam struct {
 	BaseParam
 	Params UnlockIdentityParamDetail `json:"unlockIdentity"`
 }
-// GetCandidateVmNicsForPortMirrorParamDetail GetCandidateVmNicsForPortMirror detail param
-type GetCandidateVmNicsForPortMirrorParamDetail struct {
-}
-
-// GetCandidateVmNicsForPortMirrorParam GetCandidateVmNicsForPortMirror request param
-type GetCandidateVmNicsForPortMirrorParam struct {
-	BaseParam
-	Params GetCandidateVmNicsForPortMirrorParamDetail `json:"getCandidateVmNicsForPortMirror"`
-}
 // ChangeVmSchedulingRuleStateParamDetail ChangeVmSchedulingRuleState detail param
 type ChangeVmSchedulingRuleStateParamDetail struct {
 	State string `json:"state" validate:"required"`
@@ -4538,6 +4529,15 @@ type ChangeVmSchedulingRuleStateParamDetail struct {
 type ChangeVmSchedulingRuleStateParam struct {
 	BaseParam
 	Params ChangeVmSchedulingRuleStateParamDetail `json:"changeVmSchedulingRuleState"`
+}
+// GetCandidateVmNicsForPortMirrorParamDetail GetCandidateVmNicsForPortMirror detail param
+type GetCandidateVmNicsForPortMirrorParamDetail struct {
+}
+
+// GetCandidateVmNicsForPortMirrorParam GetCandidateVmNicsForPortMirror request param
+type GetCandidateVmNicsForPortMirrorParam struct {
+	BaseParam
+	Params GetCandidateVmNicsForPortMirrorParamDetail `json:"getCandidateVmNicsForPortMirror"`
 }
 // CreateFirewallRuleParamDetail CreateFirewallRule detail param
 type CreateFirewallRuleParamDetail struct {

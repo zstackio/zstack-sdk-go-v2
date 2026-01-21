@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateFlkSecSecurityMachine updates FlkSecSecurityMachine
 func (cli *ZSClient) UpdateFlkSecSecurityMachine(uuid string, params param.UpdateFlkSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Put("v1/security-machines/flkSec", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/security-machines/flkSec", uuid, "", map[string]interface{}{
 		"updateFlkSecSecurityMachine": params.Params,
 	}, &resp); err != nil {
 		return nil, err

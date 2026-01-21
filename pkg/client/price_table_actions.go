@@ -21,7 +21,7 @@ func (cli *ZSClient) CreatePriceTable(params param.CreatePriceTableParam) (*view
 // UpdatePriceTable updates PriceTable
 func (cli *ZSClient) UpdatePriceTable(uuid string, params param.UpdatePriceTableParam) (*view.PriceTableInventoryView, error) {
 	resp := view.PriceTableInventoryView{}
-	if err := cli.Put("v1/billings/price-tables", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/billings/price-tables", uuid, "", map[string]interface{}{
 		"updatePriceTable": params.Params,
 	}, &resp); err != nil {
 		return nil, err

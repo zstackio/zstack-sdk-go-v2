@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateIAM2ProjectRole creates IAM2ProjectRole
-func (cli *ZSClient) CreateIAM2ProjectRole(params param.CreateIAM2ProjectRoleParam) (*view.RoleInventoryView, error) {
+func (cli *ZSClient) CreateIAM2ProjectRole() (*view.RoleInventoryView, error) {
 	resp := view.RoleInventoryView{}
-	if err := cli.Post("v1/iam2/project-roles", params, &resp); err != nil {
+	if err := cli.Post("v1/iam2/project-roles", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -17,7 +17,7 @@ func (cli *ZSClient) DeleteSNSTopic(uuid string, deleteMode param.DeleteMode) er
 // UpdateSNSTopic updates SNSTopic
 func (cli *ZSClient) UpdateSNSTopic(uuid string, params param.UpdateSNSTopicParam) (*view.SNSTopicInventoryView, error) {
 	resp := view.SNSTopicInventoryView{}
-	if err := cli.Put("v1/sns/topics", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sns/topics", uuid, "", map[string]interface{}{
 		"updateSNSTopic": params.Params,
 	}, &resp); err != nil {
 		return nil, err

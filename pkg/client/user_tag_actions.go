@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateUserTag creates UserTag
-func (cli *ZSClient) CreateUserTag(params param.CreateUserTagParam) (*view.UserTagInventoryView, error) {
+func (cli *ZSClient) CreateUserTag() (*view.UserTagInventoryView, error) {
 	resp := view.UserTagInventoryView{}
-	if err := cli.Post("v1/user-tags", params, &resp); err != nil {
+	if err := cli.Post("v1/user-tags", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

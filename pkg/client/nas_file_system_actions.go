@@ -33,7 +33,7 @@ func (cli *ZSClient) PageNasFileSystem(params *param.QueryParam) ([]view.NasFile
 // UpdateNasFileSystem updates NasFileSystem
 func (cli *ZSClient) UpdateNasFileSystem(uuid string, params param.UpdateNasFileSystemParam) (*view.NasFileSystemInventoryView, error) {
 	resp := view.NasFileSystemInventoryView{}
-	if err := cli.Put("v1/primary-storage/nas", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/primary-storage/nas", uuid, "", map[string]interface{}{
 		"updateNasFileSystem": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -33,7 +33,7 @@ func (cli *ZSClient) PageBareMetal2ChassisPciDevice(params *param.QueryParam) ([
 // UpdateBareMetal2ChassisPciDevice updates BareMetal2ChassisPciDevice
 func (cli *ZSClient) UpdateBareMetal2ChassisPciDevice(uuid string, params param.UpdateBareMetal2ChassisPciDeviceParam) (*view.BareMetal2ChassisPciDeviceInventoryView, error) {
 	resp := view.BareMetal2ChassisPciDeviceInventoryView{}
-	if err := cli.Put("v1/baremetal2/chassis/pci-devices", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal2/chassis/pci-devices", uuid, "", map[string]interface{}{
 		"updateBareMetal2ChassisPciDevice": params.Params,
 	}, &resp); err != nil {
 		return nil, err

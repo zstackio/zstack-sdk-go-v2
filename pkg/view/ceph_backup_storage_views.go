@@ -28,6 +28,16 @@ type CephBackupStorageInventoryView struct {
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 
+// QueryBackupStorageView QueryBackupStorage
+type QueryBackupStorageView struct {
+	Inventories []BackupStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// AddBackupStorageEventView AddBackupStorageEvent
+type AddBackupStorageEventView struct {
+	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
 // AddMonToCephBackupStorageEventView AddMonToCephBackupStorageEvent
 type AddMonToCephBackupStorageEventView struct {
 	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
@@ -35,6 +45,11 @@ type AddMonToCephBackupStorageEventView struct {
 
 // RemoveMonFromCephBackupStorageEventView RemoveMonFromCephBackupStorageEvent
 type RemoveMonFromCephBackupStorageEventView struct {
+	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateCephBackupStorageMonEventView UpdateCephBackupStorageMonEvent
+type UpdateCephBackupStorageMonEventView struct {
 	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
 }
 

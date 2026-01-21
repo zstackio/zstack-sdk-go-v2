@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CleanLongJob operates on LongJob
 func (cli *ZSClient) CleanLongJob(uuid string, params param.CleanLongJobParam) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Put("v1/longjobs", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/longjobs", uuid, "", map[string]interface{}{
 		"cleanLongJob": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -23,7 +23,7 @@ func (cli *ZSClient) CleanLongJob(uuid string, params param.CleanLongJobParam) (
 // ResumeLongJob operates on LongJob
 func (cli *ZSClient) ResumeLongJob(uuid string, params param.ResumeLongJobParam) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Put("v1/longjobs", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/longjobs", uuid, "", map[string]interface{}{
 		"resumeLongJob": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -37,7 +37,7 @@ func (cli *ZSClient) DeleteLongJob(uuid string, deleteMode param.DeleteMode) err
 // UpdateLongJob updates LongJob
 func (cli *ZSClient) UpdateLongJob(uuid string, params param.UpdateLongJobParam) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Put("v1/longjobs", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/longjobs", uuid, "", map[string]interface{}{
 		"updateLongJob": params.Params,
 	}, &resp); err != nil {
 		return nil, err

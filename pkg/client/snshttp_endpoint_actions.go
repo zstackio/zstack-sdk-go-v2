@@ -21,7 +21,7 @@ func (cli *ZSClient) CreateSNSHttpEndpoint(params param.CreateSNSHttpEndpointPar
 // UpdateSNSHttpEndpoint updates SNSHttpEndpoint
 func (cli *ZSClient) UpdateSNSHttpEndpoint(uuid string, params param.UpdateSNSHttpEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	resp := view.SNSApplicationEndpointInventoryView{}
-	if err := cli.Put("v1/sns/application-endpoints/http", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints/http", uuid, "", map[string]interface{}{
 		"updateSNSHttpEndpoint": params.Params,
 	}, &resp); err != nil {
 		return nil, err

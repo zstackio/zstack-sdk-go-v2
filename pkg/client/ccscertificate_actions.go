@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // AddCCSCertificate adds CCSCertificate
 func (cli *ZSClient) AddCCSCertificate(params param.AddCCSCertificateParam) (*view.CCSCertificateInventoryView, error) {
 	resp := view.CCSCertificateInventoryView{}
-	if err := cli.Post("v1/crypto/ccs-certificate/add", params, &resp); err != nil {
+	if err := cli.PutWithRespKey("v1/crypto/ccs-certificate/add", "", "", map[string]interface{}{
+		"addCCSCertificate": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

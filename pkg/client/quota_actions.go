@@ -31,9 +31,9 @@ func (cli *ZSClient) PageQuota(params *param.QueryParam) ([]view.QuotaInventoryV
 	return quotas, total, err
 }
 // UpdateQuota updates Quota
-func (cli *ZSClient) UpdateQuota(uuid string, params param.UpdateQuotaParam) (*view.QuotaInventoryView, error) {
+func (cli *ZSClient) UpdateQuota(params param.UpdateQuotaParam) (*view.QuotaInventoryView, error) {
 	resp := view.QuotaInventoryView{}
-	if err := cli.Put("v1/accounts/quotas/actions", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/accounts/quotas/actions", "", "", map[string]interface{}{
 		"updateQuota": params.Params,
 	}, &resp); err != nil {
 		return nil, err

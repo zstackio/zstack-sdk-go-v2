@@ -33,7 +33,7 @@ func (cli *ZSClient) PageIAM2ProjectAttribute(params *param.QueryParam) ([]view.
 // UpdateIAM2ProjectAttribute updates IAM2ProjectAttribute
 func (cli *ZSClient) UpdateIAM2ProjectAttribute(uuid string, params param.UpdateIAM2ProjectAttributeParam) (*view.IAM2ProjectAttributeInventoryView, error) {
 	resp := view.IAM2ProjectAttributeInventoryView{}
-	if err := cli.Put("v1/iam2/projects/attributes", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/iam2/projects/attributes", uuid, "", map[string]interface{}{
 		"updateIAM2ProjectAttribute": params.Params,
 	}, &resp); err != nil {
 		return nil, err

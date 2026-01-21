@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // ReconnectZdfs operates on Zdfs
 func (cli *ZSClient) ReconnectZdfs(uuid string, params param.ReconnectZdfsParam) (*view.ZdfsInventoryView, error) {
 	resp := view.ZdfsInventoryView{}
-	if err := cli.Put("v1/zdfs", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/zdfs", uuid, "", map[string]interface{}{
 		"reconnectZdfs": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -41,7 +41,7 @@ func (cli *ZSClient) CreateVirtualRouterOffering(params param.CreateVirtualRoute
 // UpdateVirtualRouterOffering updates VirtualRouterOffering
 func (cli *ZSClient) UpdateVirtualRouterOffering(uuid string, params param.UpdateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.Put("v1/instance-offerings/virtual-routers", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/instance-offerings/virtual-routers", uuid, "", map[string]interface{}{
 		"updateVirtualRouterOffering": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -17,7 +17,7 @@ func (cli *ZSClient) DeleteSecurityMachine(uuid string, deleteMode param.DeleteM
 // UpdateSecurityMachine updates SecurityMachine
 func (cli *ZSClient) UpdateSecurityMachine(uuid string, params param.UpdateSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Put("v1/security-machines", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/security-machines", uuid, "", map[string]interface{}{
 		"updateSecurityMachine": params.Params,
 	}, &resp); err != nil {
 		return nil, err

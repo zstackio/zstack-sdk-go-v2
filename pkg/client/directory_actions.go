@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateDirectory updates Directory
-func (cli *ZSClient) UpdateDirectory(uuid string, params param.UpdateDirectoryParam) (*view.DirectoryInventoryView, error) {
+func (cli *ZSClient) UpdateDirectory(params param.UpdateDirectoryParam) (*view.DirectoryInventoryView, error) {
 	resp := view.DirectoryInventoryView{}
-	if err := cli.Put("v1/update/directory", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/update/directory", "", "", map[string]interface{}{
 		"updateDirectory": params.Params,
 	}, &resp); err != nil {
 		return nil, err

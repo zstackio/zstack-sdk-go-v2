@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // SyncPrimaryStorageCapacity operates on PrimaryStorageCapacity
 func (cli *ZSClient) SyncPrimaryStorageCapacity(primaryStorageUuid string, params param.SyncPrimaryStorageCapacityParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Put("v1/primary-storage", primaryStorageUuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/primary-storage", primaryStorageUuid, "", map[string]interface{}{
 		"syncPrimaryStorageCapacity": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,9 +21,9 @@ func (cli *ZSClient) SyncPrimaryStorageCapacity(primaryStorageUuid string, param
 	return &resp, nil
 }
 // GetPrimaryStorageCapacity gets PrimaryStorageCapacity by uuid
-func (cli *ZSClient) GetPrimaryStorageCapacity(uuid string) (*view.PrimaryStorageCapacityInventoryView, error) {
+func (cli *ZSClient) GetPrimaryStorageCapacity() (*view.PrimaryStorageCapacityInventoryView, error) {
 	var resp view.PrimaryStorageCapacityInventoryView
-	if err := cli.Get("v1/primary-storage/capacities", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/primary-storage/capacities", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CloneModelService operates on ModelService
 func (cli *ZSClient) CloneModelService(params param.CloneModelServiceParam) (*view.ModelServiceInventoryView, error) {
 	resp := view.ModelServiceInventoryView{}
-	if err := cli.Post("v1/ai/model-services", params, &resp); err != nil {
+	if err := cli.Post("v1/ai/model-services/{uuid}", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -21,7 +21,7 @@ func (cli *ZSClient) CloneModelService(params param.CloneModelServiceParam) (*vi
 // UpdateModelService updates ModelService
 func (cli *ZSClient) UpdateModelService(uuid string, params param.UpdateModelServiceParam) (*view.ModelServiceInventoryView, error) {
 	resp := view.ModelServiceInventoryView{}
-	if err := cli.Put("v1/ai/model-services", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/ai/model-services", uuid, "", map[string]interface{}{
 		"updateModelService": params.Params,
 	}, &resp); err != nil {
 		return nil, err

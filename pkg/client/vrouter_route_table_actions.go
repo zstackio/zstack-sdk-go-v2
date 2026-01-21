@@ -45,7 +45,7 @@ func (cli *ZSClient) CreateVRouterRouteTable(params param.CreateVRouterRouteTabl
 // UpdateVRouterRouteTable updates VRouterRouteTable
 func (cli *ZSClient) UpdateVRouterRouteTable(uuid string, params param.UpdateVRouterRouteTableParam) (*view.VRouterRouteTableInventoryView, error) {
 	resp := view.VRouterRouteTableInventoryView{}
-	if err := cli.Put("v1/vrouter-route-tables", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/vrouter-route-tables", uuid, "", map[string]interface{}{
 		"updateVRouterRouteTable": params.Params,
 	}, &resp); err != nil {
 		return nil, err

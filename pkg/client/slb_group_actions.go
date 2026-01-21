@@ -45,7 +45,7 @@ func (cli *ZSClient) DeleteSlbGroup(uuid string, deleteMode param.DeleteMode) er
 // UpdateSlbGroup updates SlbGroup
 func (cli *ZSClient) UpdateSlbGroup(uuid string, params param.UpdateSlbGroupParam) (*view.SlbGroupInventoryView, error) {
 	resp := view.SlbGroupInventoryView{}
-	if err := cli.Put("v1/load-balancers/slb/group", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/load-balancers/slb/group", uuid, "", map[string]interface{}{
 		"updateSlbGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

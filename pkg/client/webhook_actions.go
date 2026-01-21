@@ -33,7 +33,7 @@ func (cli *ZSClient) PageWebhook(params *param.QueryParam) ([]view.WebhookInvent
 // UpdateWebhook updates Webhook
 func (cli *ZSClient) UpdateWebhook(uuid string, params param.UpdateWebhookParam) (*view.WebhookInventoryView, error) {
 	resp := view.WebhookInventoryView{}
-	if err := cli.Put("v1/web-hooks", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/web-hooks", uuid, "", map[string]interface{}{
 		"updateWebhook": params.Params,
 	}, &resp); err != nil {
 		return nil, err

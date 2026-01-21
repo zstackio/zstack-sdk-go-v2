@@ -21,7 +21,7 @@ func (cli *ZSClient) AddVCenter(params param.AddVCenterParam) (*view.VCenterInve
 // SyncVCenter operates on VCenter
 func (cli *ZSClient) SyncVCenter(uuid string, params param.SyncVCenterParam) (*view.VCenterInventoryView, error) {
 	resp := view.VCenterInventoryView{}
-	if err := cli.Put("v1/vcenters", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/vcenters", uuid, "", map[string]interface{}{
 		"syncVCenter": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (cli *ZSClient) PageVCenter(params *param.QueryParam) ([]view.VCenterInvent
 // UpdateVCenter updates VCenter
 func (cli *ZSClient) UpdateVCenter(uuid string, params param.UpdateVCenterParam) (*view.VCenterInventoryView, error) {
 	resp := view.VCenterInventoryView{}
-	if err := cli.Put("v1/vcenters", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/vcenters", uuid, "", map[string]interface{}{
 		"updateVCenter": params.Params,
 	}, &resp); err != nil {
 		return nil, err

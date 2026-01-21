@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateOssBucket updates OssBucket
 func (cli *ZSClient) UpdateOssBucket(uuid string, params param.UpdateOssBucketParam) (*view.OssBucketInventoryView, error) {
 	resp := view.OssBucketInventoryView{}
-	if err := cli.Put("v1/hybrid/aliyun/oss-bucket", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/hybrid/aliyun/oss-bucket", uuid, "", map[string]interface{}{
 		"updateOssBucket": params.Params,
 	}, &resp); err != nil {
 		return nil, err

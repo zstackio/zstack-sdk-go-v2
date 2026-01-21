@@ -17,7 +17,7 @@ func (cli *ZSClient) DeleteL2Network(uuid string, deleteMode param.DeleteMode) e
 // UpdateL2Network updates L2Network
 func (cli *ZSClient) UpdateL2Network(uuid string, params param.UpdateL2NetworkParam) (*view.L2NetworkInventoryView, error) {
 	resp := view.L2NetworkInventoryView{}
-	if err := cli.Put("v1/l2-networks", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/l2-networks", uuid, "", map[string]interface{}{
 		"updateL2Network": params.Params,
 	}, &resp); err != nil {
 		return nil, err

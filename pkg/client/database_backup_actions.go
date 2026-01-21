@@ -60,7 +60,7 @@ func (cli *ZSClient) PageDatabaseBackup(params *param.QueryParam) ([]view.Databa
 // SyncDatabaseBackup operates on DatabaseBackup
 func (cli *ZSClient) SyncDatabaseBackup(imageStoreUuid string, params param.SyncDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
 	resp := view.DatabaseBackupInventoryView{}
-	if err := cli.Put("v1/database-backups/imageStore", imageStoreUuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/database-backups/imageStore", imageStoreUuid, "", map[string]interface{}{
 		"syncDatabaseBackup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

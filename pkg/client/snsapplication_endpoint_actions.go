@@ -33,7 +33,7 @@ func (cli *ZSClient) PageSNSApplicationEndpoint(params *param.QueryParam) ([]vie
 // UpdateSNSApplicationEndpoint updates SNSApplicationEndpoint
 func (cli *ZSClient) UpdateSNSApplicationEndpoint(uuid string, params param.UpdateSNSApplicationEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	resp := view.SNSApplicationEndpointInventoryView{}
-	if err := cli.Put("v1/sns/application-endpoints", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints", uuid, "", map[string]interface{}{
 		"updateSNSApplicationEndpoint": params.Params,
 	}, &resp); err != nil {
 		return nil, err

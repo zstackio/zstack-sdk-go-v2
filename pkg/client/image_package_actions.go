@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateImagePackage updates ImagePackage
 func (cli *ZSClient) UpdateImagePackage(uuid string, params param.UpdateImagePackageParam) (*view.ImagePackageInventoryView, error) {
 	resp := view.ImagePackageInventoryView{}
-	if err := cli.Put("v1/image-packages", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/image-packages", uuid, "", map[string]interface{}{
 		"updateImagePackage": params.Params,
 	}, &resp); err != nil {
 		return nil, err

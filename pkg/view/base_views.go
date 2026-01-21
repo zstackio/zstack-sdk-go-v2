@@ -4,15 +4,15 @@ package view
 
 import "time"
 
-// BaseInfoView 基础信息视图（仅包含通用标识字段）
+// BaseInfoView holds common identity fields
 type BaseInfoView struct {
-	UUID string `json:"uuid"`           // 资源唯一标识
-	Name string `json:"name,omitempty"` // 资源名称
+	UUID string `json:"uuid"`           // Unique resource identifier
+	Name string `json:"name,omitempty"` // Resource name
 }
 
 type BaseTimeView struct {
-	CreateDate time.Time `json:"createDate,omitempty"` // 创建时间
-	LastOpDate time.Time `json:"lastOpDate,omitempty"` // 最后操作时间
+	CreateDate time.Time `json:"createDate,omitempty"` // Creation time
+	LastOpDate time.Time `json:"lastOpDate,omitempty"` // Last operation time
 }
 
 // Generic wrapper types for APIs that return simple data types

@@ -25,7 +25,7 @@ func (cli *ZSClient) DeleteIAM2Project(uuid string, deleteMode param.DeleteMode)
 // RecoverIAM2Project operates on IAM2Project
 func (cli *ZSClient) RecoverIAM2Project(uuid string, params param.RecoverIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
 	resp := view.IAM2ProjectInventoryView{}
-	if err := cli.Put("v1/iam2/projects", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/iam2/projects", uuid, "", map[string]interface{}{
 		"recoverIAM2Project": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -60,9 +60,9 @@ func (cli *ZSClient) ExpungeIAM2Project(uuid string) error {
 	return cli.Put("v1/iam2/projects", uuid, params, nil)
 }
 // LoginIAM2Project operates on IAM2Project
-func (cli *ZSClient) LoginIAM2Project(uuid string, params param.LoginIAM2ProjectParam) (*view.SessionInventoryView, error) {
+func (cli *ZSClient) LoginIAM2Project(params param.LoginIAM2ProjectParam) (*view.SessionInventoryView, error) {
 	resp := view.SessionInventoryView{}
-	if err := cli.Put("v1/iam2/projects/login", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/iam2/projects/login", "", "", map[string]interface{}{
 		"loginIAM2Project": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -72,7 +72,7 @@ func (cli *ZSClient) LoginIAM2Project(uuid string, params param.LoginIAM2Project
 // UpdateIAM2Project updates IAM2Project
 func (cli *ZSClient) UpdateIAM2Project(uuid string, params param.UpdateIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
 	resp := view.IAM2ProjectInventoryView{}
-	if err := cli.Put("v1/iam2/projects", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/iam2/projects", uuid, "", map[string]interface{}{
 		"updateIAM2Project": params.Params,
 	}, &resp); err != nil {
 		return nil, err

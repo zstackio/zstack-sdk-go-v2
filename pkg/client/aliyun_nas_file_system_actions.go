@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // AddAliyunNasFileSystem adds AliyunNasFileSystem
 func (cli *ZSClient) AddAliyunNasFileSystem(params param.AddAliyunNasFileSystemParam) (*view.AliyunNasFileSystemInventoryView, error) {
 	resp := view.AliyunNasFileSystemInventoryView{}
-	if err := cli.Post("v1/nas/aliyun", params, &resp); err != nil {
+	if err := cli.PutWithRespKey("v1/nas/aliyun", "", "", map[string]interface{}{
+		"addAliyunNasFileSystem": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

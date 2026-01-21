@@ -56,7 +56,7 @@ func (cli *ZSClient) PageImage(params *param.QueryParam) ([]view.ImageInventoryV
 // SyncImage operates on Image
 func (cli *ZSClient) SyncImage(imageStoreUuid string, params param.SyncImageParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Put("v1/backup-storage/image-store", imageStoreUuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/backup-storage/image-store", imageStoreUuid, "", map[string]interface{}{
 		"syncImage": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -66,7 +66,7 @@ func (cli *ZSClient) SyncImage(imageStoreUuid string, params param.SyncImagePara
 // RecoverImage operates on Image
 func (cli *ZSClient) RecoverImage(imageUuid string, params param.RecoverImageParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Put("v1/images", imageUuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/images", imageUuid, "", map[string]interface{}{
 		"recoverImage": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -76,7 +76,7 @@ func (cli *ZSClient) RecoverImage(imageUuid string, params param.RecoverImagePar
 // CloneImage operates on Image
 func (cli *ZSClient) CloneImage(params param.CloneImageParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Post("v1/image/clone", params, &resp); err != nil {
+	if err := cli.Post("v1/image/clone/{imageUuid}", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -88,7 +88,7 @@ func (cli *ZSClient) DeleteImage(uuid string, deleteMode param.DeleteMode) error
 // UpdateImage updates Image
 func (cli *ZSClient) UpdateImage(uuid string, params param.UpdateImageParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Put("v1/images", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/images", uuid, "", map[string]interface{}{
 		"updateImage": params.Params,
 	}, &resp); err != nil {
 		return nil, err
