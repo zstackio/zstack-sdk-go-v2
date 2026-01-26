@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type MonitorGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	State                    string                          `json:"state,omitempty"`
-	Actions                  string                          `json:"actions,omitempty"`
+	State string `json:"state,omitempty"`
+	Actions string `json:"actions,omitempty"`
+	Description string `json:"description,omitempty"`
 	MonitorGroupTemplateRefs []MonitorGroupTemplateRefVOView `json:"monitorGroupTemplateRefs,omitempty"`
 }
 
@@ -34,3 +35,4 @@ type QueryMonitorGroupView struct {
 type UpdateMonitorGroupEventView struct {
 	Inventory MonitorGroupInventoryView `json:"inventory,omitempty"`
 }
+

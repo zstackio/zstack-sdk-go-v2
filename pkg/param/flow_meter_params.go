@@ -8,15 +8,15 @@ var _ = time.Now // avoid unused import
 
 // CreateFlowMeterParamDetail CreateFlowMeter detail param
 type CreateFlowMeterParamDetail struct {
-	Version string `json:"version,omitempty"`
+	Version *string `json:"version,omitempty"`
 	Type string `json:"type" validate:"required"`
-	Sample int `json:"sample,omitempty"`
-	GenerateInterval int `json:"generateInterval,omitempty"`
+	Sample *int `json:"sample,omitempty"`
+	GenerateInterval *int `json:"generateInterval,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Server string `json:"server,omitempty"`
-	Port int64 `json:"port,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Server *string `json:"server,omitempty"`
+	Port *int64 `json:"port,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -27,27 +27,25 @@ type CreateFlowMeterParam struct {
 }
 // DeleteFlowMeterParamDetail DeleteFlowMeter detail param
 type DeleteFlowMeterParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteFlowMeterParam DeleteFlowMeter request param
 type DeleteFlowMeterParam struct {
 	BaseParam
-	Params DeleteFlowMeterParamDetail `json:"params"`
+	Params DeleteFlowMeterParamDetail `json:"deleteFlowMeter"`
 }
 // UpdateFlowMeterParamDetail UpdateFlowMeter detail param
 type UpdateFlowMeterParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	Version string `json:"version,omitempty"`
-	Sample int64 `json:"sample,omitempty"`
+	Version *string `json:"version,omitempty"`
+	Sample *int64 `json:"sample,omitempty"`
 	Name string `json:"name,omitempty"`
-	ExpireInterval int64 `json:"expireInterval,omitempty"`
-	Description string `json:"description,omitempty"`
+	ExpireInterval *int64 `json:"expireInterval,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateFlowMeterParam UpdateFlowMeter request param
 type UpdateFlowMeterParam struct {
 	BaseParam
-	Params UpdateFlowMeterParamDetail `json:"params"`
+	Params UpdateFlowMeterParamDetail `json:"updateFlowMeter"`
 }

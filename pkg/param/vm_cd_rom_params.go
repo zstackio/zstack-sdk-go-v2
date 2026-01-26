@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type CreateVmCdRomParamDetail struct {
 	Name string `json:"name" validate:"required"`
 	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
-	IsoUuid string `json:"isoUuid,omitempty"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	IsoUuid *string `json:"isoUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -23,24 +23,22 @@ type CreateVmCdRomParam struct {
 }
 // DeleteVmCdRomParamDetail DeleteVmCdRom detail param
 type DeleteVmCdRomParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteVmCdRomParam DeleteVmCdRom request param
 type DeleteVmCdRomParam struct {
 	BaseParam
-	Params DeleteVmCdRomParamDetail `json:"params"`
+	Params DeleteVmCdRomParamDetail `json:"deleteVmCdRom"`
 }
 // UpdateVmCdRomParamDetail UpdateVmCdRom detail param
 type UpdateVmCdRomParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Name string `json:"name,omitempty"`
 }
 
 // UpdateVmCdRomParam UpdateVmCdRom request param
 type UpdateVmCdRomParam struct {
 	BaseParam
-	Params UpdateVmCdRomParamDetail `json:"params"`
+	Params UpdateVmCdRomParamDetail `json:"updateVmCdRom"`
 }

@@ -8,8 +8,9 @@ var _ = time.Now // avoid unused import
 
 // L3NetworkDnsInventoryView L3NetworkDns
 type L3NetworkDnsInventoryView struct {
-	L3NetworkUuid string    `json:"l3NetworkUuid,omitempty"`
-	Dns           string    `json:"dns,omitempty"`
-	CreateDate    time.Time `json:"createDate,omitempty"`
-	LastOpDate    time.Time `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Dns string `json:"dns,omitempty"`
 }
+

@@ -8,8 +8,9 @@ var _ = time.Now // avoid unused import
 
 // LogConfigurationInventoryView LogConfiguration
 type LogConfigurationInventoryView struct {
-	Uuid                string   `json:"uuid,omitempty"`
-	Type                string   `json:"type,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Type string `json:"type,omitempty"`
 	ManagementNodeUuids []string `json:"managementNodeUuids,omitempty"`
 }
 
@@ -32,3 +33,4 @@ type DeleteLogConfigurationEventView struct {
 type AddLogConfigurationEventView struct {
 	Inventory JsonLabelInventoryView `json:"inventory,omitempty"`
 }
+

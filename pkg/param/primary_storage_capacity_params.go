@@ -8,13 +8,12 @@ var _ = time.Now // avoid unused import
 
 // SyncPrimaryStorageCapacityParamDetail SyncPrimaryStorageCapacity detail param
 type SyncPrimaryStorageCapacityParamDetail struct {
-	PrimaryStorageUuid string `json:"primaryStorageUuid" validate:"required"`
 }
 
 // SyncPrimaryStorageCapacityParam SyncPrimaryStorageCapacity request param
 type SyncPrimaryStorageCapacityParam struct {
 	BaseParam
-	Params SyncPrimaryStorageCapacityParamDetail `json:"params"`
+	Params SyncPrimaryStorageCapacityParamDetail `json:"syncPrimaryStorageCapacity"`
 }
 // GetPrimaryStorageCapacityParamDetail GetPrimaryStorageCapacity detail param
 type GetPrimaryStorageCapacityParamDetail struct {
@@ -27,5 +26,5 @@ type GetPrimaryStorageCapacityParamDetail struct {
 // GetPrimaryStorageCapacityParam GetPrimaryStorageCapacity request param
 type GetPrimaryStorageCapacityParam struct {
 	BaseParam
-	Params GetPrimaryStorageCapacityParamDetail `json:"params"`
+	Params GetPrimaryStorageCapacityParamDetail `json:"getPrimaryStorageCapacity"`
 }

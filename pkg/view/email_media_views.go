@@ -11,13 +11,25 @@ type EmailMediaInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	SmtpServer string `json:"smtpServer,omitempty"`
-	SmtpPort   int    `json:"smtpPort,omitempty"`
-	Username   string `json:"username,omitempty"`
-	Type       string `json:"type,omitempty"`
-	State      string `json:"state,omitempty"`
+	SmtpPort int `json:"smtpPort,omitempty"`
+	Username string `json:"username,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+}
+
+// QueryMediaView QueryMedia
+type QueryMediaView struct {
+	Inventories []MediaInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateMediaEventView CreateMediaEvent
+type CreateMediaEventView struct {
+	Inventory MediaInventoryView `json:"inventory,omitempty"`
 }
 
 // UpdateEmailMediaEventView UpdateEmailMediaEvent
 type UpdateEmailMediaEventView struct {
 	Inventory EmailMediaInventoryView `json:"inventory,omitempty"`
 }
+

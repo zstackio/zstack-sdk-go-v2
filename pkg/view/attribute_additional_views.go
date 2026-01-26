@@ -8,7 +8,8 @@ var _ = time.Now // avoid unused import
 
 // AttributeView Attribute
 type AttributeView struct {
-	Uuid  string `json:"uuid,omitempty"`
-	Name  string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
 	Value string `json:"value,omitempty"`
 }
+

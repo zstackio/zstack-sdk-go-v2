@@ -9,8 +9,8 @@ var _ = time.Now // avoid unused import
 // CreateMulticastRouterParamDetail CreateMulticastRouter detail param
 type CreateMulticastRouterParamDetail struct {
 	VpcRouterVmUuid string `json:"vpcRouterVmUuid" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -21,12 +21,11 @@ type CreateMulticastRouterParam struct {
 }
 // DeleteMulticastRouterParamDetail DeleteMulticastRouter detail param
 type DeleteMulticastRouterParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteMulticastRouterParam DeleteMulticastRouter request param
 type DeleteMulticastRouterParam struct {
 	BaseParam
-	Params DeleteMulticastRouterParamDetail `json:"params"`
+	Params DeleteMulticastRouterParamDetail `json:"deleteMulticastRouter"`
 }

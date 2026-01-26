@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,22 +12,39 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateAliyunSmsSNSTextTemplate updates AliyunSmsSNSTextTemplate
 func (cli *ZSClient) UpdateAliyunSmsSNSTextTemplate(uuid string, params param.UpdateAliyunSmsSNSTextTemplateParam) (*view.AliyunSmsSNSTextTemplateInventoryView, error) {
-	var resp view.UpdateAliyunSmsSNSTextTemplateEventView
-	if err := cli.Put("v1/zwatch/alarms/sns/text-templates/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.AliyunSmsSNSTextTemplateInventoryView{}
+	if err := cli.PutWithRespKey("v1/zwatch/alarms/sns/text-templates", uuid, "", map[string]interface{}{
+		"updateAliyunSmsSNSTextTemplate": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateAliyunSmsSNSTextTemplate creates AliyunSmsSNSTextTemplate
 func (cli *ZSClient) CreateAliyunSmsSNSTextTemplate(params param.CreateAliyunSmsSNSTextTemplateParam) (*view.SNSTextTemplateInventoryView, error) {
-	var resp view.CreateSNSTextTemplateEventView
+	resp := view.SNSTextTemplateInventoryView{}
 	if err := cli.Post("v1/zwatch/alarms/sns/text-templates/aliyun-sms", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryAliyunSmsSNSTextTemplate queries AliyunSmsSNSTextTemplate list
 func (cli *ZSClient) QueryAliyunSmsSNSTextTemplate(params *param.QueryParam) ([]view.AliyunSmsSNSTextTemplateInventoryView, error) {
 	var resp []view.AliyunSmsSNSTextTemplateInventoryView
 	return resp, cli.List("v1/zwatch/alarms/sns/text-templates/aliyun-sms", params, &resp)
+}
+
+func (cli *ZSClient) GetAliyunSmsSNSTextTemplate(uuid string) (*view.AliyunSmsSNSTextTemplateInventoryView, error) {
+	var resp view.AliyunSmsSNSTextTemplateInventoryView
+	if err := cli.Get("v1/zwatch/alarms/sns/text-templates/aliyun-sms", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageAliyunSmsSNSTextTemplate Pagination
+func (cli *ZSClient) PageAliyunSmsSNSTextTemplate(params *param.QueryParam) ([]view.AliyunSmsSNSTextTemplateInventoryView, int, error) {
+	var aliyunSmsSNSTextTemplates []view.AliyunSmsSNSTextTemplateInventoryView
+	total, err := cli.Page("v1/zwatch/alarms/sns/text-templates/aliyun-sms", params, &aliyunSmsSNSTextTemplates)
+	return aliyunSmsSNSTextTemplates, total, err
 }

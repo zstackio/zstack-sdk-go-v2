@@ -8,6 +8,7 @@ var _ = time.Now // avoid unused import
 
 // TemplateView Template
 type TemplateView struct {
-	Attributes []AttributeView  `json:"attributes,omitempty"`
-	Quota      map[string]int64 `json:"quota,omitempty"`
+	Attributes []AttributeView `json:"attributes,omitempty"`
+	Quota map[string]int64 `json:"quota,omitempty"`
 }
+

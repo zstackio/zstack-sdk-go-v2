@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,38 +12,59 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateSnmpAgent creates SnmpAgent
 func (cli *ZSClient) CreateSnmpAgent(params param.CreateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
-	var resp view.CreateSnmpAgentEventView
+	resp := view.SnmpAgentInventoryView{}
 	if err := cli.Post("v1/snmp/agent", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // StartSnmpAgent starts SnmpAgent
-func (cli *ZSClient) StartSnmpAgent(uuid string, params param.StartSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
-	var resp view.StartSnmpAgentEventView
-	if err := cli.Put("v1/snmp/agent/actions", uuid, params, &resp); err != nil {
+func (cli *ZSClient) StartSnmpAgent(params param.StartSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+	resp := view.SnmpAgentInventoryView{}
+	if err := cli.PutWithRespKey("v1/snmp/agent/actions", "", "", map[string]interface{}{
+		"startSnmpAgent": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // StopSnmpAgent stops SnmpAgent
-func (cli *ZSClient) StopSnmpAgent(uuid string, params param.StopSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
-	var resp view.StopSnmpAgentEventView
-	if err := cli.Put("v1/snmp/agent/actions", uuid, params, &resp); err != nil {
+func (cli *ZSClient) StopSnmpAgent(params param.StopSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+	resp := view.SnmpAgentInventoryView{}
+	if err := cli.PutWithRespKey("v1/snmp/agent/actions", "", "", map[string]interface{}{
+		"stopSnmpAgent": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateSnmpAgent updates SnmpAgent
-func (cli *ZSClient) UpdateSnmpAgent(uuid string, params param.UpdateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
-	var resp view.UpdateSnmpAgentEventView
-	if err := cli.Put("v1/snmp/agent/actions", uuid, params, &resp); err != nil {
+func (cli *ZSClient) UpdateSnmpAgent(params param.UpdateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+	resp := view.SnmpAgentInventoryView{}
+	if err := cli.PutWithRespKey("v1/snmp/agent/actions", "", "", map[string]interface{}{
+		"updateSnmpAgent": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QuerySnmpAgent queries SnmpAgent list
 func (cli *ZSClient) QuerySnmpAgent(params *param.QueryParam) ([]view.SnmpAgentInventoryView, error) {
 	var resp []view.SnmpAgentInventoryView
 	return resp, cli.List("v1/snmp/agent", params, &resp)
+}
+
+func (cli *ZSClient) GetSnmpAgent(uuid string) (*view.SnmpAgentInventoryView, error) {
+	var resp view.SnmpAgentInventoryView
+	if err := cli.Get("v1/snmp/agent", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageSnmpAgent Pagination
+func (cli *ZSClient) PageSnmpAgent(params *param.QueryParam) ([]view.SnmpAgentInventoryView, int, error) {
+	var snmpAgents []view.SnmpAgentInventoryView
+	total, err := cli.Page("v1/snmp/agent", params, &snmpAgents)
+	return snmpAgents, total, err
 }

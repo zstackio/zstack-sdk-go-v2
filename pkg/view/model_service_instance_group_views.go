@@ -10,15 +10,21 @@ var _ = time.Now // avoid unused import
 type ModelServiceInstanceGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ModelServiceUuid      string                                     `json:"modelServiceUuid,omitempty"`
-	ModelUuid             string                                     `json:"modelUuid,omitempty"`
-	Instances             []ModelServiceInstanceInventoryView        `json:"instances,omitempty"`
+	ModelServiceUuid string `json:"modelServiceUuid,omitempty"`
+	ModelUuid string `json:"modelUuid,omitempty"`
+	Instances []ModelServiceInstanceInventoryView `json:"instances,omitempty"`
 	DatasetRefInventories []ModelServiceGroupDatasetRefInventoryView `json:"datasetRefInventories,omitempty"`
-	Status                string                                     `json:"status,omitempty"`
-	ModelServiceType      string                                     `json:"modelServiceType,omitempty"`
-	Type                  string                                     `json:"type,omitempty"`
-	Yaml                  string                                     `json:"yaml,omitempty"`
-	SupportMetrics        []string                                   `json:"supportMetrics,omitempty"`
+	Status string `json:"status,omitempty"`
+	ModelServiceType string `json:"modelServiceType,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	Yaml string `json:"yaml,omitempty"`
+	SupportMetrics []string `json:"supportMetrics,omitempty"`
+}
+
+// QueryModelServiceInstanceGroupView QueryModelServiceInstanceGroup
+type QueryModelServiceInstanceGroupView struct {
+	Inventories []ModelServiceInstanceGroupInventoryView `json:"inventories,omitempty"`
 }
 
 // UpdateModelServiceInstanceGroupEventView UpdateModelServiceInstanceGroupEvent
@@ -30,3 +36,4 @@ type UpdateModelServiceInstanceGroupEventView struct {
 type DeleteModelServiceInstanceGroupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

@@ -10,6 +10,8 @@ var _ = time.Now // avoid unused import
 type SshPrivateKeyPairInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PublicKey  string `json:"publicKey,omitempty"`
+	Description string `json:"description,omitempty"`
+	PublicKey string `json:"publicKey,omitempty"`
 	PrivateKey string `json:"privateKey,omitempty"`
 }
+

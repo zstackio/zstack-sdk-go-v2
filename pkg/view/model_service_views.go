@@ -10,28 +10,29 @@ var _ = time.Now // avoid unused import
 type ModelServiceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Readme               string                              `json:"readme,omitempty"`
-	Yaml                 string                              `json:"yaml,omitempty"`
-	RequestCpu           int                                 `json:"requestCpu,omitempty"`
-	RequestMemory        int64                               `json:"requestMemory,omitempty"`
-	ModelCenterUuid      string                              `json:"modelCenterUuid,omitempty"`
-	Type                 string                              `json:"type,omitempty"`
-	Framework            string                              `json:"framework,omitempty"`
-	Source               string                              `json:"source,omitempty"`
-	Size                 int64                               `json:"size,omitempty"`
-	System               bool                                `json:"system,omitempty"`
-	GpuComputeCapability string                              `json:"gpuComputeCapability,omitempty"`
-	InstallPath          string                              `json:"installPath,omitempty"`
-	PythonVersion        string                              `json:"pythonVersion,omitempty"`
-	CondaVersion         string                              `json:"condaVersion,omitempty"`
-	StartCommand         string                              `json:"startCommand,omitempty"`
-	ContainerCommand     string                              `json:"containerCommand,omitempty"`
-	ContainerArgs        string                              `json:"containerArgs,omitempty"`
-	SupportDistributed   bool                                `json:"supportDistributed,omitempty"`
-	CpuArchitectures     []string                            `json:"cpuArchitectures,omitempty"`
-	VendorToSpecUuidsMap map[string]interface{}              `json:"vendorToSpecUuidsMap,omitempty"`
-	ModelServiceRefs     []ModelServiceRefInventoryView      `json:"modelServiceRefs,omitempty"`
-	ModelServiceImages   []ModelServiceTemplateInventoryView `json:"modelServiceImages,omitempty"`
+	Description string `json:"description,omitempty"`
+	Readme string `json:"readme,omitempty"`
+	Yaml string `json:"yaml,omitempty"`
+	RequestCpu int `json:"requestCpu,omitempty"`
+	RequestMemory int64 `json:"requestMemory,omitempty"`
+	ModelCenterUuid string `json:"modelCenterUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	Framework string `json:"framework,omitempty"`
+	Source string `json:"source,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	System bool `json:"system,omitempty"`
+	GpuComputeCapability string `json:"gpuComputeCapability,omitempty"`
+	InstallPath string `json:"installPath,omitempty"`
+	PythonVersion string `json:"pythonVersion,omitempty"`
+	CondaVersion string `json:"condaVersion,omitempty"`
+	StartCommand string `json:"startCommand,omitempty"`
+	ContainerCommand string `json:"containerCommand,omitempty"`
+	ContainerArgs string `json:"containerArgs,omitempty"`
+	SupportDistributed bool `json:"supportDistributed,omitempty"`
+	CpuArchitectures []string `json:"cpuArchitectures,omitempty"`
+	VendorToSpecUuidsMap map[string]interface{} `json:"vendorToSpecUuidsMap,omitempty"`
+	ModelServiceRefs []ModelServiceRefInventoryView `json:"modelServiceRefs,omitempty"`
+	ModelServiceImages []ModelServiceTemplateInventoryView `json:"modelServiceImages,omitempty"`
 }
 
 // CloneModelServiceEventView CloneModelServiceEvent
@@ -58,3 +59,4 @@ type AddModelServiceEventView struct {
 type QueryModelServiceView struct {
 	Inventories []ModelServiceInventoryView `json:"inventories,omitempty"`
 }
+

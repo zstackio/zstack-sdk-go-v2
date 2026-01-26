@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,26 +12,43 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateSchedulerJobGroup creates SchedulerJobGroup
 func (cli *ZSClient) CreateSchedulerJobGroup(params param.CreateSchedulerJobGroupParam) (*view.SchedulerJobGroupInventoryView, error) {
-	var resp view.CreateSchedulerJobGroupEventView
+	resp := view.SchedulerJobGroupInventoryView{}
 	if err := cli.Post("v1/scheduler/jobgroups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteSchedulerJobGroup deletes SchedulerJobGroup
 func (cli *ZSClient) DeleteSchedulerJobGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/scheduler/jobgroups/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/scheduler/jobgroups", uuid, string(deleteMode))
 }
 // UpdateSchedulerJobGroup updates SchedulerJobGroup
 func (cli *ZSClient) UpdateSchedulerJobGroup(uuid string, params param.UpdateSchedulerJobGroupParam) (*view.SchedulerJobGroupInventoryView, error) {
-	var resp view.UpdateSchedulerJobGroupEventView
-	if err := cli.Put("v1/scheduler/jobgroups/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.SchedulerJobGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/scheduler/jobgroups", uuid, "", map[string]interface{}{
+		"updateSchedulerJobGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QuerySchedulerJobGroup queries SchedulerJobGroup list
 func (cli *ZSClient) QuerySchedulerJobGroup(params *param.QueryParam) ([]view.SchedulerJobGroupInventoryView, error) {
 	var resp []view.SchedulerJobGroupInventoryView
 	return resp, cli.List("v1/scheduler/jobgroups", params, &resp)
+}
+
+func (cli *ZSClient) GetSchedulerJobGroup(uuid string) (*view.SchedulerJobGroupInventoryView, error) {
+	var resp view.SchedulerJobGroupInventoryView
+	if err := cli.Get("v1/scheduler/jobgroups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageSchedulerJobGroup Pagination
+func (cli *ZSClient) PageSchedulerJobGroup(params *param.QueryParam) ([]view.SchedulerJobGroupInventoryView, int, error) {
+	var schedulerJobGroups []view.SchedulerJobGroupInventoryView
+	total, err := cli.Page("v1/scheduler/jobgroups", params, &schedulerJobGroups)
+	return schedulerJobGroups, total, err
 }

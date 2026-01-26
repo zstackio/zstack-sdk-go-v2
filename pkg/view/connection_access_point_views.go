@@ -10,11 +10,12 @@ var _ = time.Now // avoid unused import
 type ConnectionAccessPointInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccessPointId  string `json:"accessPointId,omitempty"`
-	Type           string `json:"type,omitempty"`
+	AccessPointId string `json:"accessPointId,omitempty"`
+	Type string `json:"type,omitempty"`
 	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
-	Status         string `json:"status,omitempty"`
-	HostOperator   string `json:"hostOperator,omitempty"`
+	Description string `json:"description,omitempty"`
+	Status string `json:"status,omitempty"`
+	HostOperator string `json:"hostOperator,omitempty"`
 }
 
 // QueryConnectionAccessPointFromLocalView QueryConnectionAccessPointFromLocal
@@ -36,3 +37,4 @@ type AddConnectionAccessPointFromRemoteEventView struct {
 type SyncConnectionAccessPointFromRemoteEventView struct {
 	Inventories []ConnectionAccessPointInventoryView `json:"inventories,omitempty"`
 }
+

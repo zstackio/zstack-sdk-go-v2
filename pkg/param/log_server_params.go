@@ -10,13 +10,13 @@ var _ = time.Now // avoid unused import
 type UpdateLogServerParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateLogServerParam UpdateLogServer request param
 type UpdateLogServerParam struct {
 	BaseParam
-	Params UpdateLogServerParamDetail `json:"params"`
+	Params UpdateLogServerParamDetail `json:"updateLogServer"`
 }
 // DeleteLogServerParamDetail DeleteLogServer detail param
 type DeleteLogServerParamDetail struct {
@@ -26,17 +26,17 @@ type DeleteLogServerParamDetail struct {
 // DeleteLogServerParam DeleteLogServer request param
 type DeleteLogServerParam struct {
 	BaseParam
-	Params DeleteLogServerParamDetail `json:"params"`
+	Params DeleteLogServerParamDetail `json:"deleteLogServer"`
 }
 // AddLogServerParamDetail AddLogServer detail param
 type AddLogServerParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Category string `json:"category" validate:"required"`
 	Type string `json:"type" validate:"required"`
-	Level string `json:"level,omitempty"`
+	Level *string `json:"level,omitempty"`
 	Configuration string `json:"configuration" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 

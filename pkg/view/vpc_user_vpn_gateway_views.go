@@ -10,11 +10,12 @@ var _ = time.Now // avoid unused import
 type VpcUserVpnGatewayInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccountName    string `json:"accountName,omitempty"`
+	AccountName string `json:"accountName,omitempty"`
 	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
-	Type           string `json:"type,omitempty"`
-	GatewayId      string `json:"gatewayId,omitempty"`
-	Ip             string `json:"ip,omitempty"`
+	Type string `json:"type,omitempty"`
+	GatewayId string `json:"gatewayId,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // SyncVpcUserVpnGatewayFromRemoteEventView SyncVpcUserVpnGatewayFromRemoteEvent
@@ -36,3 +37,4 @@ type CreateVpcUserVpnGatewayRemoteEventView struct {
 type UpdateVpcUserVpnGatewayEventView struct {
 	Inventory VpcUserVpnGatewayInventoryView `json:"inventory,omitempty"`
 }
+

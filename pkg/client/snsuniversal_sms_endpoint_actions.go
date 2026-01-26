@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,26 +15,45 @@ func (cli *ZSClient) QuerySNSUniversalSmsEndpoint(params *param.QueryParam) ([]v
 	var resp []view.SNSUniversalSmsEndpointInventoryView
 	return resp, cli.List("v1/sns/application-endpoints/universal-sms", params, &resp)
 }
-// UpdateSNSUniversalSmsEndpoint updates SNSUniversalSmsEndpoint
-func (cli *ZSClient) UpdateSNSUniversalSmsEndpoint(uuid string, params param.UpdateSNSUniversalSmsEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
-	var resp view.UpdateSNSApplicationEndpointEventView
-	if err := cli.Put("v1/sns/application-endpoints/universal-sms/{uuid}/actions", uuid, params, &resp); err != nil {
+
+func (cli *ZSClient) GetSNSUniversalSmsEndpoint(uuid string) (*view.SNSUniversalSmsEndpointInventoryView, error) {
+	var resp view.SNSUniversalSmsEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/universal-sms", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
+}
+
+// PageSNSUniversalSmsEndpoint Pagination
+func (cli *ZSClient) PageSNSUniversalSmsEndpoint(params *param.QueryParam) ([]view.SNSUniversalSmsEndpointInventoryView, int, error) {
+	var sNSUniversalSmsEndpoints []view.SNSUniversalSmsEndpointInventoryView
+	total, err := cli.Page("v1/sns/application-endpoints/universal-sms", params, &sNSUniversalSmsEndpoints)
+	return sNSUniversalSmsEndpoints, total, err
+}
+// UpdateSNSUniversalSmsEndpoint updates SNSUniversalSmsEndpoint
+func (cli *ZSClient) UpdateSNSUniversalSmsEndpoint(uuid string, params param.UpdateSNSUniversalSmsEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
+	resp := view.SNSApplicationEndpointInventoryView{}
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints/universal-sms", uuid, "", map[string]interface{}{
+		"updateSNSUniversalSmsEndpoint": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // CreateSNSUniversalSmsEndpoint creates SNSUniversalSmsEndpoint
 func (cli *ZSClient) CreateSNSUniversalSmsEndpoint(params param.CreateSNSUniversalSmsEndpointParam) (*view.SNSUniversalSmsEndpointInventoryView, error) {
-	var resp view.CreateSNSUniversalSmsEndpointEventView
+	resp := view.SNSUniversalSmsEndpointInventoryView{}
 	if err := cli.Post("v1/sns/application-endpoints/universal-sms", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // ValidateSNSUniversalSmsEndpoint operates on SNSUniversalSmsEndpoint
 func (cli *ZSClient) ValidateSNSUniversalSmsEndpoint(uuid string, params param.ValidateSNSUniversalSmsEndpointParam) (*view.SNSUniversalSmsEndpointInventoryView, error) {
 	resp := view.SNSUniversalSmsEndpointInventoryView{}
-	if err := cli.Put("v1/sns/application-endpoints/universal-sms/{uuid}/validate", uuid, params, &resp); err != nil {
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints/universal-sms", uuid, "", map[string]interface{}{
+		"validateSNSUniversalSmsEndpoint": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

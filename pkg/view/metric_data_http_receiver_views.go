@@ -10,7 +10,8 @@ var _ = time.Now // avoid unused import
 type MetricDataHttpReceiverInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Url   string `json:"url,omitempty"`
+	Url string `json:"url,omitempty"`
+	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
 }
 
@@ -23,3 +24,4 @@ type DeleteMetricDataHttpReceiverEventView struct {
 type CreateMetricDataHttpReceiverEventView struct {
 	Inventory MetricDataHttpReceiverInventoryView `json:"inventory,omitempty"`
 }
+

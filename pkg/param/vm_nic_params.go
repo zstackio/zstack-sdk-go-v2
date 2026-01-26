@@ -9,8 +9,8 @@ var _ = time.Now // avoid unused import
 // CreateVmNicParamDetail CreateVmNic detail param
 type CreateVmNicParamDetail struct {
 	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
-	Ip string `json:"ip,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Ip *string `json:"ip,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -21,12 +21,11 @@ type CreateVmNicParam struct {
 }
 // DeleteVmNicParamDetail DeleteVmNic detail param
 type DeleteVmNicParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteVmNicParam DeleteVmNic request param
 type DeleteVmNicParam struct {
 	BaseParam
-	Params DeleteVmNicParamDetail `json:"params"`
+	Params DeleteVmNicParamDetail `json:"deleteVmNic"`
 }

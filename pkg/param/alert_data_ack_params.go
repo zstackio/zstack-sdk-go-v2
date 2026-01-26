@@ -8,12 +8,11 @@ var _ = time.Now // avoid unused import
 
 // UpdateAlertDataAckParamDetail UpdateAlertDataAck detail param
 type UpdateAlertDataAckParamDetail struct {
-	AlertDataUuid string `json:"alertDataUuid" validate:"required"`
-	ResumeAlert bool `json:"resumeAlert,omitempty"`
+	ResumeAlert *bool `json:"resumeAlert,omitempty"`
 }
 
 // UpdateAlertDataAckParam UpdateAlertDataAck request param
 type UpdateAlertDataAckParam struct {
 	BaseParam
-	Params UpdateAlertDataAckParamDetail `json:"params"`
+	Params UpdateAlertDataAckParamDetail `json:"updateAlertDataAck"`
 }

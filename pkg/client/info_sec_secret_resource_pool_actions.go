@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,17 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateInfoSecSecretResourcePool creates InfoSecSecretResourcePool
 func (cli *ZSClient) CreateInfoSecSecretResourcePool(params param.CreateInfoSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.CreateSecretResourcePoolEventView
+	resp := view.SecretResourcePoolInventoryView{}
 	if err := cli.Post("v1/secret-resource-pool/infoSec", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateInfoSecSecretResourcePool updates InfoSecSecretResourcePool
 func (cli *ZSClient) UpdateInfoSecSecretResourcePool(uuid string, params param.UpdateInfoSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
-	var resp view.UpdateSecretResourcePoolEventView
-	if err := cli.Put("v1/secret-resource-pools/infoSec/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.SecretResourcePoolInventoryView{}
+	if err := cli.PutWithRespKey("v1/secret-resource-pools/infoSec", uuid, "", map[string]interface{}{
+		"updateInfoSecSecretResourcePool": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

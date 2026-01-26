@@ -11,3 +11,4 @@ type ChainInfoView struct {
 	RunningTask []RunningTaskInfoView `json:"runningTask,omitempty"`
 	PendingTask []PendingTaskInfoView `json:"pendingTask,omitempty"`
 }
+

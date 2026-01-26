@@ -11,8 +11,8 @@ type CreatePolicyRouteTableRouteEntryParamDetail struct {
 	TableUuid string `json:"tableUuid" validate:"required"`
 	DestinationCidr string `json:"destinationCidr" validate:"required"`
 	NextHopIp string `json:"nextHopIp" validate:"required"`
-	Distance int `json:"distance,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Distance *int `json:"distance,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -23,12 +23,11 @@ type CreatePolicyRouteTableRouteEntryParam struct {
 }
 // DeletePolicyRouteTableRouteEntryParamDetail DeletePolicyRouteTableRouteEntry detail param
 type DeletePolicyRouteTableRouteEntryParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeletePolicyRouteTableRouteEntryParam DeletePolicyRouteTableRouteEntry request param
 type DeletePolicyRouteTableRouteEntryParam struct {
 	BaseParam
-	Params DeletePolicyRouteTableRouteEntryParamDetail `json:"params"`
+	Params DeletePolicyRouteTableRouteEntryParamDetail `json:"deletePolicyRouteTableRouteEntry"`
 }

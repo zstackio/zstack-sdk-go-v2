@@ -10,17 +10,18 @@ var _ = time.Now // avoid unused import
 type CdpTaskInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	PolicyUuid        string                            `json:"policyUuid,omitempty"`
-	BackupStorageUuid string                            `json:"backupStorageUuid,omitempty"`
-	Status            string                            `json:"status,omitempty"`
-	State             string                            `json:"state,omitempty"`
-	TaskType          string                            `json:"taskType,omitempty"`
-	BackupBandwidth   int64                             `json:"backupBandwidth,omitempty"`
-	MaxCapacity       int64                             `json:"maxCapacity,omitempty"`
-	UsedCapacity      int64                             `json:"usedCapacity,omitempty"`
-	MaxLatency        int64                             `json:"maxLatency,omitempty"`
-	LastLatency       int64                             `json:"lastLatency,omitempty"`
-	ResourceRefs      []CdpTaskResourceRefInventoryView `json:"resourceRefs,omitempty"`
+	Description string `json:"description,omitempty"`
+	PolicyUuid string `json:"policyUuid,omitempty"`
+	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
+	Status string `json:"status,omitempty"`
+	State string `json:"state,omitempty"`
+	TaskType string `json:"taskType,omitempty"`
+	BackupBandwidth int64 `json:"backupBandwidth,omitempty"`
+	MaxCapacity int64 `json:"maxCapacity,omitempty"`
+	UsedCapacity int64 `json:"usedCapacity,omitempty"`
+	MaxLatency int64 `json:"maxLatency,omitempty"`
+	LastLatency int64 `json:"lastLatency,omitempty"`
+	ResourceRefs []CdpTaskResourceRefInventoryView `json:"resourceRefs,omitempty"`
 }
 
 // CreateCdpTaskEventView CreateCdpTaskEvent
@@ -42,3 +43,4 @@ type UpdateCdpTaskEventView struct {
 type DeleteCdpTaskEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,23 +15,40 @@ func (cli *ZSClient) QuerySecurityGroup(params *param.QueryParam) ([]view.Securi
 	var resp []view.SecurityGroupInventoryView
 	return resp, cli.List("v1/security-groups", params, &resp)
 }
+
+func (cli *ZSClient) GetSecurityGroup(uuid string) (*view.SecurityGroupInventoryView, error) {
+	var resp view.SecurityGroupInventoryView
+	if err := cli.Get("v1/security-groups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageSecurityGroup Pagination
+func (cli *ZSClient) PageSecurityGroup(params *param.QueryParam) ([]view.SecurityGroupInventoryView, int, error) {
+	var securityGroups []view.SecurityGroupInventoryView
+	total, err := cli.Page("v1/security-groups", params, &securityGroups)
+	return securityGroups, total, err
+}
 // CreateSecurityGroup creates SecurityGroup
 func (cli *ZSClient) CreateSecurityGroup(params param.CreateSecurityGroupParam) (*view.SecurityGroupInventoryView, error) {
-	var resp view.CreateSecurityGroupEventView
+	resp := view.SecurityGroupInventoryView{}
 	if err := cli.Post("v1/security-groups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteSecurityGroup deletes SecurityGroup
 func (cli *ZSClient) DeleteSecurityGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/security-groups/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/security-groups", uuid, string(deleteMode))
 }
 // UpdateSecurityGroup updates SecurityGroup
 func (cli *ZSClient) UpdateSecurityGroup(uuid string, params param.UpdateSecurityGroupParam) (*view.SecurityGroupInventoryView, error) {
-	var resp view.UpdateSecurityGroupEventView
-	if err := cli.Put("v1/security-groups/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.SecurityGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/security-groups", uuid, "", map[string]interface{}{
+		"updateSecurityGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

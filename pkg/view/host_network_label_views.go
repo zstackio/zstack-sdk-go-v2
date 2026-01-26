@@ -8,11 +8,10 @@ var _ = time.Now // avoid unused import
 
 // HostNetworkLabelInventoryView HostNetworkLabel
 type HostNetworkLabelInventoryView struct {
-	Uuid        string    `json:"uuid,omitempty"`
-	ServiceType string    `json:"serviceType,omitempty"`
-	System      bool      `json:"system,omitempty"`
-	CreateDate  time.Time `json:"createDate,omitempty"`
-	LastOpDate  time.Time `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	ServiceType string `json:"serviceType,omitempty"`
+	System bool `json:"system,omitempty"`
 }
 
 // CreateHostNetworkServiceTypeEventView CreateHostNetworkServiceTypeEvent
@@ -24,3 +23,4 @@ type CreateHostNetworkServiceTypeEventView struct {
 type UpdateHostNetworkServiceTypeEventView struct {
 	Inventory HostNetworkLabelInventoryView `json:"inventory,omitempty"`
 }
+

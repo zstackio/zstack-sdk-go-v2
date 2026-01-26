@@ -8,49 +8,46 @@ var _ = time.Now // avoid unused import
 
 // DeleteMetricRuleTemplateParamDetail DeleteMetricRuleTemplate detail param
 type DeleteMetricRuleTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteMetricRuleTemplateParam DeleteMetricRuleTemplate request param
 type DeleteMetricRuleTemplateParam struct {
 	BaseParam
-	Params DeleteMetricRuleTemplateParamDetail `json:"params"`
+	Params DeleteMetricRuleTemplateParamDetail `json:"deleteMetricRuleTemplate"`
 }
 // UpdateMetricRuleTemplateParamDetail UpdateMetricRuleTemplate detail param
 type UpdateMetricRuleTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	ComparisonOperator string `json:"comparisonOperator,omitempty"`
-	Period int `json:"period,omitempty"`
-	Threshold float64 `json:"threshold,omitempty"`
-	RepeatInterval int `json:"repeatInterval,omitempty"`
+	ComparisonOperator *string `json:"comparisonOperator,omitempty"`
+	Period *int `json:"period,omitempty"`
+	Threshold *float64 `json:"threshold,omitempty"`
+	RepeatInterval *int `json:"repeatInterval,omitempty"`
 	Labels []LabelParam `json:"labels,omitempty"`
-	RepeatCount int `json:"repeatCount,omitempty"`
-	EnableRecovery bool `json:"enableRecovery,omitempty"`
-	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+	RepeatCount *int `json:"repeatCount,omitempty"`
+	EnableRecovery *bool `json:"enableRecovery,omitempty"`
+	EmergencyLevel *string `json:"emergencyLevel,omitempty"`
 }
 
 // UpdateMetricRuleTemplateParam UpdateMetricRuleTemplate request param
 type UpdateMetricRuleTemplateParam struct {
 	BaseParam
-	Params UpdateMetricRuleTemplateParamDetail `json:"params"`
+	Params UpdateMetricRuleTemplateParamDetail `json:"updateMetricRuleTemplate"`
 }
 // AddMetricRuleTemplateParamDetail AddMetricRuleTemplate detail param
 type AddMetricRuleTemplateParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	MonitorTemplateUuid string `json:"monitorTemplateUuid" validate:"required"`
 	ComparisonOperator string `json:"comparisonOperator" validate:"required"`
-	Period int `json:"period,omitempty"`
+	Period *int `json:"period,omitempty"`
 	Namespace string `json:"namespace" validate:"required"`
 	MetricName string `json:"metricName" validate:"required"`
 	Threshold float64 `json:"threshold" validate:"required"`
-	RepeatInterval int `json:"repeatInterval,omitempty"`
+	RepeatInterval *int `json:"repeatInterval,omitempty"`
 	Labels []LabelParam `json:"labels,omitempty"`
-	RepeatCount int `json:"repeatCount,omitempty"`
-	EnableRecovery bool `json:"enableRecovery,omitempty"`
-	EmergencyLevel string `json:"emergencyLevel,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	RepeatCount *int `json:"repeatCount,omitempty"`
+	EnableRecovery *bool `json:"enableRecovery,omitempty"`
+	EmergencyLevel *string `json:"emergencyLevel,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 

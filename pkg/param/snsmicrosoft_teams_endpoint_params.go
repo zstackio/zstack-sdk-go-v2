@@ -8,25 +8,24 @@ var _ = time.Now // avoid unused import
 
 // UpdateSNSMicrosoftTeamsEndpointParamDetail UpdateSNSMicrosoftTeamsEndpoint detail param
 type UpdateSNSMicrosoftTeamsEndpointParamDetail struct {
-	Url string `json:"url,omitempty"`
-	Uuid string `json:"uuid" validate:"required"`
+	Url *string `json:"url,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	PlatformUuid string `json:"platformUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	PlatformUuid *string `json:"platformUuid,omitempty"`
 }
 
 // UpdateSNSMicrosoftTeamsEndpointParam UpdateSNSMicrosoftTeamsEndpoint request param
 type UpdateSNSMicrosoftTeamsEndpointParam struct {
 	BaseParam
-	Params UpdateSNSMicrosoftTeamsEndpointParamDetail `json:"params"`
+	Params UpdateSNSMicrosoftTeamsEndpointParamDetail `json:"updateSNSMicrosoftTeamsEndpoint"`
 }
 // CreateSNSMicrosoftTeamsEndpointParamDetail CreateSNSMicrosoftTeamsEndpoint detail param
 type CreateSNSMicrosoftTeamsEndpointParamDetail struct {
 	Url string `json:"url" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	PlatformUuid string `json:"platformUuid,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	PlatformUuid *string `json:"platformUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 

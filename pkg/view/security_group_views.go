@@ -10,12 +10,13 @@ var _ = time.Now // avoid unused import
 type SecurityGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	State                  string                           `json:"state,omitempty"`
-	IpVersion              int                              `json:"ipVersion,omitempty"`
-	VSwitchType            string                           `json:"vSwitchType,omitempty"`
-	InternalId             int64                            `json:"internalId,omitempty"`
-	Rules                  []SecurityGroupRuleInventoryView `json:"rules,omitempty"`
-	AttachedL3NetworkUuids []string                         `json:"attachedL3NetworkUuids,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	VSwitchType string `json:"vSwitchType,omitempty"`
+	InternalId int64 `json:"internalId,omitempty"`
+	Rules []SecurityGroupRuleInventoryView `json:"rules,omitempty"`
+	AttachedL3NetworkUuids []string `json:"attachedL3NetworkUuids,omitempty"`
 }
 
 // ChangeSecurityGroupStateEventView ChangeSecurityGroupStateEvent
@@ -72,3 +73,4 @@ type DeleteSecurityGroupRuleEventView struct {
 type UpdateSecurityGroupEventView struct {
 	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
 }
+

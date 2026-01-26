@@ -8,14 +8,13 @@ var _ = time.Now // avoid unused import
 
 // UpdateSystemTagParamDetail UpdateSystemTag detail param
 type UpdateSystemTagParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Tag string `json:"tag" validate:"required"`
 }
 
 // UpdateSystemTagParam UpdateSystemTag request param
 type UpdateSystemTagParam struct {
 	BaseParam
-	Params UpdateSystemTagParamDetail `json:"params"`
+	Params UpdateSystemTagParamDetail `json:"updateSystemTag"`
 }
 // CreateSystemTagParamDetail CreateSystemTag detail param
 type CreateSystemTagParamDetail struct {

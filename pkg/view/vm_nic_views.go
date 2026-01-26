@@ -8,24 +8,23 @@ var _ = time.Now // avoid unused import
 
 // VmNicInventoryView VmNic
 type VmNicInventoryView struct {
-	Uuid           string                `json:"uuid,omitempty"`
-	VmInstanceUuid string                `json:"vmInstanceUuid,omitempty"`
-	L3NetworkUuid  string                `json:"l3NetworkUuid,omitempty"`
-	Ip             string                `json:"ip,omitempty"`
-	Mac            string                `json:"mac,omitempty"`
-	HypervisorType string                `json:"hypervisorType,omitempty"`
-	Netmask        string                `json:"netmask,omitempty"`
-	Gateway        string                `json:"gateway,omitempty"`
-	MetaData       string                `json:"metaData,omitempty"`
-	IpVersion      int                   `json:"ipVersion,omitempty"`
-	DriverType     string                `json:"driverType,omitempty"`
-	UsedIps        []UsedIpInventoryView `json:"usedIps,omitempty"`
-	InternalName   string                `json:"internalName,omitempty"`
-	DeviceId       int                   `json:"deviceId,omitempty"`
-	Type           string                `json:"type,omitempty"`
-	State          string                `json:"state,omitempty"`
-	CreateDate     time.Time             `json:"createDate,omitempty"`
-	LastOpDate     time.Time             `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Mac string `json:"mac,omitempty"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
+	Netmask string `json:"netmask,omitempty"`
+	Gateway string `json:"gateway,omitempty"`
+	MetaData string `json:"metaData,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	DriverType string `json:"driverType,omitempty"`
+	UsedIps []UsedIpInventoryView `json:"usedIps,omitempty"`
+	InternalName string `json:"internalName,omitempty"`
+	DeviceId int `json:"deviceId,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
 }
 
 // ChangeVmNicTypeEventView ChangeVmNicTypeEvent
@@ -71,9 +70,9 @@ type GetCandidateVmNicsForLoadBalancerView struct {
 // GetEipAttachableVmNicsView GetEipAttachableVmNics
 type GetEipAttachableVmNicsView struct {
 	Inventories []VmNicInventoryView `json:"inventories,omitempty"`
-	Start       int                  `json:"start,omitempty"`
-	More        bool                 `json:"more,omitempty"`
-	Success     bool                 `json:"success,omitempty"`
+	Start int `json:"start,omitempty"`
+	More bool `json:"more,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // AttachL3NetworkToVmNicEventView AttachL3NetworkToVmNicEvent
@@ -100,3 +99,4 @@ type ChangeVmNicNetworkEventView struct {
 type DeleteVmNicEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

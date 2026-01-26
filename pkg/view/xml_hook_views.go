@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type XmlHookInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Type           string `json:"type,omitempty"`
-	HookScript     string `json:"hookScript,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	HookScript string `json:"hookScript,omitempty"`
 	LibvirtVersion string `json:"libvirtVersion,omitempty"`
 }
 
@@ -29,3 +30,4 @@ type QueryVmUserDefinedXmlHookScriptView struct {
 type CreateVmUserDefinedXmlHookScriptEventView struct {
 	Inventory XmlHookInventoryView `json:"inventory,omitempty"`
 }
+

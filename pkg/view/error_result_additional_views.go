@@ -8,6 +8,7 @@ var _ = time.Now // avoid unused import
 
 // ErrorResultView ErrorResult
 type ErrorResultView struct {
-	Line   int    `json:"line,omitempty"`
+	Line int `json:"line,omitempty"`
 	Detail string `json:"detail,omitempty"`
 }
+

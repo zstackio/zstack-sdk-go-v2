@@ -10,6 +10,7 @@ var _ = time.Now // avoid unused import
 type PriceTableInventoryView struct {
 	BaseInfoView
 	BaseTimeView
+	Description string `json:"description,omitempty"`
 }
 
 // CreatePriceTableEventView CreatePriceTableEvent
@@ -46,3 +47,4 @@ type QueryPriceTableRelyView struct {
 type AttachPriceTableToAccountEventView struct {
 	Inventory PriceTableInventoryView `json:"inventory,omitempty"`
 }
+

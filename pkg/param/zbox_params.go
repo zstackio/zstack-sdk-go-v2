@@ -10,7 +10,7 @@ var _ = time.Now // avoid unused import
 type AddZBoxParamDetail struct {
 	UsbDeviceUuid string `json:"usbDeviceUuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	SkipFormat bool `json:"skipFormat,omitempty"`
+	SkipFormat *bool `json:"skipFormat,omitempty"`
 }
 
 // AddZBoxParam AddZBox request param

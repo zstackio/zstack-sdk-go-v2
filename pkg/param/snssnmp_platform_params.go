@@ -10,23 +10,22 @@ var _ = time.Now // avoid unused import
 type UpdateSNSSnmpPlatformParamDetail struct {
 	SnmpAddress string `json:"snmpAddress" validate:"required"`
 	SnmpPort int `json:"snmpPort" validate:"required"`
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateSNSSnmpPlatformParam UpdateSNSSnmpPlatform request param
 type UpdateSNSSnmpPlatformParam struct {
 	BaseParam
-	Params UpdateSNSSnmpPlatformParamDetail `json:"params"`
+	Params UpdateSNSSnmpPlatformParamDetail `json:"updateSNSSnmpPlatform"`
 }
 // CreateSNSSnmpPlatformParamDetail CreateSNSSnmpPlatform detail param
 type CreateSNSSnmpPlatformParamDetail struct {
 	SnmpAddress string `json:"snmpAddress" validate:"required"`
 	SnmpPort int `json:"snmpPort" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 

@@ -9,10 +9,9 @@ var _ = time.Now // avoid unused import
 // CreateLoadBalancerServerGroupParamDetail CreateLoadBalancerServerGroup detail param
 type CreateLoadBalancerServerGroupParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	LoadBalancerUuid string `json:"loadBalancerUuid" validate:"required"`
-	IpVersion int `json:"ipVersion,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	IpVersion *int `json:"ipVersion,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -23,23 +22,21 @@ type CreateLoadBalancerServerGroupParam struct {
 }
 // DeleteLoadBalancerServerGroupParamDetail DeleteLoadBalancerServerGroup detail param
 type DeleteLoadBalancerServerGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // DeleteLoadBalancerServerGroupParam DeleteLoadBalancerServerGroup request param
 type DeleteLoadBalancerServerGroupParam struct {
 	BaseParam
-	Params DeleteLoadBalancerServerGroupParamDetail `json:"params"`
+	Params DeleteLoadBalancerServerGroupParamDetail `json:"deleteLoadBalancerServerGroup"`
 }
 // UpdateLoadBalancerServerGroupParamDetail UpdateLoadBalancerServerGroup detail param
 type UpdateLoadBalancerServerGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateLoadBalancerServerGroupParam UpdateLoadBalancerServerGroup request param
 type UpdateLoadBalancerServerGroupParam struct {
 	BaseParam
-	Params UpdateLoadBalancerServerGroupParamDetail `json:"params"`
+	Params UpdateLoadBalancerServerGroupParamDetail `json:"updateLoadBalancerServerGroup"`
 }

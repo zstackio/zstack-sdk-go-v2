@@ -10,39 +10,40 @@ var _ = time.Now // avoid unused import
 type BareMetal2InstanceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ChassisUuid              string                                      `json:"chassisUuid,omitempty"`
-	LastChassisUuid          string                                      `json:"lastChassisUuid,omitempty"`
-	GatewayUuid              string                                      `json:"gatewayUuid,omitempty"`
-	LastGatewayUuid          string                                      `json:"lastGatewayUuid,omitempty"`
-	ChassisOfferingUuid      string                                      `json:"chassisOfferingUuid,omitempty"`
-	GatewayAllocatorStrategy string                                      `json:"gatewayAllocatorStrategy,omitempty"`
-	Status                   string                                      `json:"status,omitempty"`
-	ProvisionType            string                                      `json:"provisionType,omitempty"`
-	AgentVersion             string                                      `json:"agentVersion,omitempty"`
-	IsLatestAgent            bool                                        `json:"isLatestAgent,omitempty"`
-	ProvisionNic             BareMetal2InstanceProvisionNicInventoryView `json:"provisionNic,omitempty"`
-	ZoneUuid                 string                                      `json:"zoneUuid,omitempty"`
-	ClusterUuid              string                                      `json:"clusterUuid,omitempty"`
-	ImageUuid                string                                      `json:"imageUuid,omitempty"`
-	HostUuid                 string                                      `json:"hostUuid,omitempty"`
-	LastHostUuid             string                                      `json:"lastHostUuid,omitempty"`
-	InstanceOfferingUuid     string                                      `json:"instanceOfferingUuid,omitempty"`
-	RootVolumeUuid           string                                      `json:"rootVolumeUuid,omitempty"`
-	Platform                 string                                      `json:"platform,omitempty"`
-	Architecture             string                                      `json:"architecture,omitempty"`
-	DefaultL3NetworkUuid     string                                      `json:"defaultL3NetworkUuid,omitempty"`
-	Type                     string                                      `json:"type,omitempty"`
-	HypervisorType           string                                      `json:"hypervisorType,omitempty"`
-	MemorySize               int64                                       `json:"memorySize,omitempty"`
-	ReservedMemorySize       int64                                       `json:"reservedMemorySize,omitempty"`
-	CpuNum                   int                                         `json:"cpuNum,omitempty"`
-	CpuSpeed                 int64                                       `json:"cpuSpeed,omitempty"`
-	AllocatorStrategy        string                                      `json:"allocatorStrategy,omitempty"`
-	State                    string                                      `json:"state,omitempty"`
-	VmNics                   []VmNicInventoryView                        `json:"vmNics,omitempty"`
-	AllVolumes               []VolumeInventoryView                       `json:"allVolumes,omitempty"`
-	VmCdRoms                 []VmCdRomInventoryView                      `json:"vmCdRoms,omitempty"`
-	GuestOsType              string                                      `json:"guestOsType,omitempty"`
+	ChassisUuid string `json:"chassisUuid,omitempty"`
+	LastChassisUuid string `json:"lastChassisUuid,omitempty"`
+	GatewayUuid string `json:"gatewayUuid,omitempty"`
+	LastGatewayUuid string `json:"lastGatewayUuid,omitempty"`
+	ChassisOfferingUuid string `json:"chassisOfferingUuid,omitempty"`
+	GatewayAllocatorStrategy string `json:"gatewayAllocatorStrategy,omitempty"`
+	Status string `json:"status,omitempty"`
+	ProvisionType string `json:"provisionType,omitempty"`
+	AgentVersion string `json:"agentVersion,omitempty"`
+	IsLatestAgent bool `json:"isLatestAgent,omitempty"`
+	ProvisionNic BareMetal2InstanceProvisionNicInventoryView `json:"provisionNic,omitempty"`
+	Description string `json:"description,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	ClusterUuid string `json:"clusterUuid,omitempty"`
+	ImageUuid string `json:"imageUuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	LastHostUuid string `json:"lastHostUuid,omitempty"`
+	InstanceOfferingUuid string `json:"instanceOfferingUuid,omitempty"`
+	RootVolumeUuid string `json:"rootVolumeUuid,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	DefaultL3NetworkUuid string `json:"defaultL3NetworkUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty"`
+	ReservedMemorySize int64 `json:"reservedMemorySize,omitempty"`
+	CpuNum int `json:"cpuNum,omitempty"`
+	CpuSpeed int64 `json:"cpuSpeed,omitempty"`
+	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
+	State string `json:"state,omitempty"`
+	VmNics []VmNicInventoryView `json:"vmNics,omitempty"`
+	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
+	VmCdRoms []VmCdRomInventoryView `json:"vmCdRoms,omitempty"`
+	GuestOsType string `json:"guestOsType,omitempty"`
 }
 
 // AttachProvisionNicToBondingEventView AttachProvisionNicToBondingEvent
@@ -84,3 +85,4 @@ type StartBareMetal2InstanceEventView struct {
 type UpdateBareMetal2InstanceEventView struct {
 	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
 }
+

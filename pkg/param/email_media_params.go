@@ -10,11 +10,11 @@ var _ = time.Now // avoid unused import
 type CreateEmailMediaParamDetail struct {
 	SmtpServer string `json:"smtpServer" validate:"required"`
 	SmtpPort int `json:"smtpPort" validate:"required"`
-	Username string `json:"username,omitempty"`
-	Password string `json:"password,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -25,17 +25,16 @@ type CreateEmailMediaParam struct {
 }
 // UpdateEmailMediaParamDetail UpdateEmailMedia detail param
 type UpdateEmailMediaParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	SmtpServer string `json:"smtpServer,omitempty"`
-	SmtpPort int `json:"smtpPort,omitempty"`
-	Username string `json:"username,omitempty"`
-	Password string `json:"password,omitempty"`
+	Description *string `json:"description,omitempty"`
+	SmtpServer *string `json:"smtpServer,omitempty"`
+	SmtpPort *int `json:"smtpPort,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
 }
 
 // UpdateEmailMediaParam UpdateEmailMedia request param
 type UpdateEmailMediaParam struct {
 	BaseParam
-	Params UpdateEmailMediaParamDetail `json:"params"`
+	Params UpdateEmailMediaParamDetail `json:"updateEmailMedia"`
 }

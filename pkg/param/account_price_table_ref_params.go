@@ -8,12 +8,12 @@ var _ = time.Now // avoid unused import
 
 // GetAccountPriceTableRefParamDetail GetAccountPriceTableRef detail param
 type GetAccountPriceTableRefParamDetail struct {
-	TableUuid string `json:"tableUuid,omitempty"`
-	AccountUuid string `json:"accountUuid,omitempty"`
+	TableUuid *string `json:"tableUuid,omitempty"`
+	AccountUuid *string `json:"accountUuid,omitempty"`
 }
 
 // GetAccountPriceTableRefParam GetAccountPriceTableRef request param
 type GetAccountPriceTableRefParam struct {
 	BaseParam
-	Params GetAccountPriceTableRefParamDetail `json:"params"`
+	Params GetAccountPriceTableRefParamDetail `json:"getAccountPriceTableRef"`
 }

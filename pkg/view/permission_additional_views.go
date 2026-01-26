@@ -10,3 +10,4 @@ var _ = time.Now // avoid unused import
 type PermissionView struct {
 	Allow bool `json:"allow,omitempty"`
 }
+

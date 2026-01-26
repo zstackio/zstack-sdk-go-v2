@@ -9,7 +9,7 @@ var _ = time.Now // avoid unused import
 // DeleteSSOClientParamDetail DeleteSSOClient detail param
 type DeleteSSOClientParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteSSOClientParam DeleteSSOClient request param
@@ -24,5 +24,5 @@ type GetSSOClientParamDetail struct {
 // GetSSOClientParam GetSSOClient request param
 type GetSSOClientParam struct {
 	BaseParam
-	Params GetSSOClientParamDetail `json:"params"`
+	Params GetSSOClientParamDetail `json:"getSSOClient"`
 }

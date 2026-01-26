@@ -9,9 +9,9 @@ var _ = time.Now // avoid unused import
 // CreateSshKeyPairParamDetail CreateSshKeyPair detail param
 type CreateSshKeyPairParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	PublicKey string `json:"publicKey" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -23,7 +23,7 @@ type CreateSshKeyPairParam struct {
 // GenerateSshKeyPairParamDetail GenerateSshKeyPair detail param
 type GenerateSshKeyPairParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // GenerateSshKeyPairParam GenerateSshKeyPair request param
@@ -33,23 +33,21 @@ type GenerateSshKeyPairParam struct {
 }
 // UpdateSshKeyPairParamDetail UpdateSshKeyPair detail param
 type UpdateSshKeyPairParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateSshKeyPairParam UpdateSshKeyPair request param
 type UpdateSshKeyPairParam struct {
 	BaseParam
-	Params UpdateSshKeyPairParamDetail `json:"params"`
+	Params UpdateSshKeyPairParamDetail `json:"updateSshKeyPair"`
 }
 // DeleteSshKeyPairParamDetail DeleteSshKeyPair detail param
 type DeleteSshKeyPairParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // DeleteSshKeyPairParam DeleteSshKeyPair request param
 type DeleteSshKeyPairParam struct {
 	BaseParam
-	Params DeleteSshKeyPairParamDetail `json:"params"`
+	Params DeleteSshKeyPairParamDetail `json:"deleteSshKeyPair"`
 }

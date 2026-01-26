@@ -10,17 +10,23 @@ var _ = time.Now // avoid unused import
 type SNSTextTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
+	Description string `json:"description,omitempty"`
 	ApplicationPlatformType string `json:"applicationPlatformType,omitempty"`
-	Subject                 string `json:"subject,omitempty"`
-	RecoverySubject         string `json:"recoverySubject,omitempty"`
-	Template                string `json:"template,omitempty"`
-	RecoveryTemplate        string `json:"recoveryTemplate,omitempty"`
-	DefaultTemplate         bool   `json:"defaultTemplate,omitempty"`
-	Type                    string `json:"type,omitempty"`
+	Subject string `json:"subject,omitempty"`
+	RecoverySubject string `json:"recoverySubject,omitempty"`
+	Template string `json:"template,omitempty"`
+	RecoveryTemplate string `json:"recoveryTemplate,omitempty"`
+	DefaultTemplate bool `json:"defaultTemplate,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // UpdateSNSTextTemplateEventView UpdateSNSTextTemplateEvent
 type UpdateSNSTextTemplateEventView struct {
+	Inventory SNSTextTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateSNSTextTemplateEventView CreateSNSTextTemplateEvent
+type CreateSNSTextTemplateEventView struct {
 	Inventory SNSTextTemplateInventoryView `json:"inventory,omitempty"`
 }
 
@@ -33,3 +39,4 @@ type DeleteSNSTextTemplateEventView struct {
 type QuerySNSTextTemplateView struct {
 	Inventories []SNSTextTemplateInventoryView `json:"inventories,omitempty"`
 }
+

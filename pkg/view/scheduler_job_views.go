@@ -10,11 +10,12 @@ var _ = time.Now // avoid unused import
 type SchedulerJobInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TargetResourceUuid     string   `json:"targetResourceUuid,omitempty"`
-	State                  string   `json:"state,omitempty"`
-	JobData                string   `json:"jobData,omitempty"`
-	JobClassName           string   `json:"jobClassName,omitempty"`
-	TriggersUuid           []string `json:"triggersUuid,omitempty"`
+	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	JobData string `json:"jobData,omitempty"`
+	JobClassName string `json:"jobClassName,omitempty"`
+	TriggersUuid []string `json:"triggersUuid,omitempty"`
 	SchedulerJobGroupUuids []string `json:"schedulerJobGroupUuids,omitempty"`
 }
 
@@ -47,3 +48,4 @@ type DeleteSchedulerJobEventView struct {
 type QuerySchedulerJobView struct {
 	Inventories []SchedulerJobInventoryView `json:"inventories,omitempty"`
 }
+

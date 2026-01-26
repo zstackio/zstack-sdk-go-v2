@@ -10,9 +10,10 @@ var _ = time.Now // avoid unused import
 type IAM2ProjectInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	State             string                       `json:"state,omitempty"`
-	Attributes        []IAM2AttributeInventoryView `json:"attributes,omitempty"`
-	LinkedAccountUuid string                       `json:"linkedAccountUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
+	LinkedAccountUuid string `json:"linkedAccountUuid,omitempty"`
 }
 
 // CreateIAM2ProjectEventView CreateIAM2ProjectEvent
@@ -74,3 +75,4 @@ type LoginIAM2ProjectView struct {
 type UpdateIAM2ProjectEventView struct {
 	Inventory IAM2ProjectInventoryView `json:"inventory,omitempty"`
 }
+

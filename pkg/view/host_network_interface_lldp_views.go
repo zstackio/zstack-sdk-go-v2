@@ -8,18 +8,17 @@ var _ = time.Now // avoid unused import
 
 // HostNetworkInterfaceLldpInventoryView HostNetworkInterfaceLldp
 type HostNetworkInterfaceLldpInventoryView struct {
-	Uuid           string                                   `json:"uuid,omitempty"`
-	InterfaceUuid  string                                   `json:"interfaceUuid,omitempty"`
-	Mode           string                                   `json:"mode,omitempty"`
-	CreateDate     time.Time                                `json:"createDate,omitempty"`
-	LastOpDate     time.Time                                `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	InterfaceUuid string `json:"interfaceUuid,omitempty"`
+	Mode string `json:"mode,omitempty"`
 	NeighborDevice HostNetworkInterfaceLldpRefInventoryView `json:"neighborDevice,omitempty"`
 }
 
 // GetHostNetworkInterfaceLldpView GetHostNetworkInterfaceLldp
 type GetHostNetworkInterfaceLldpView struct {
-	Lldp    HostNetworkInterfaceLldpRefInventoryView `json:"lldp,omitempty"`
-	Success bool                                     `json:"success,omitempty"`
+	Lldp HostNetworkInterfaceLldpRefInventoryView `json:"lldp,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ChangeHostNetworkInterfaceLldpModeEventView ChangeHostNetworkInterfaceLldpModeEvent
@@ -31,3 +30,4 @@ type ChangeHostNetworkInterfaceLldpModeEventView struct {
 type QueryHostNetworkInterfaceLldpView struct {
 	Inventories []HostNetworkInterfaceLldpInventoryView `json:"inventories,omitempty"`
 }
+

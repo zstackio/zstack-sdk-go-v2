@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type NasFileSystemInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Protocol     string `json:"protocol,omitempty"`
-	Type         string `json:"type,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
 	FileSystemId string `json:"fileSystemId,omitempty"`
 }
 
@@ -29,3 +30,4 @@ type UpdateNasFileSystemEventView struct {
 type DeleteNasFileSystemEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

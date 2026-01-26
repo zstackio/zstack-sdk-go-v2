@@ -11,3 +11,4 @@ type ChronyServerInfoPairView struct {
 	Internal ChronyServerInfoView `json:"internal,omitempty"`
 	External ChronyServerInfoView `json:"external,omitempty"`
 }
+

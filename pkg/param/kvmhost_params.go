@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type AddKVMHostParamDetail struct {
 	Username string `json:"username" validate:"required"`
 	Password string `json:"password" validate:"required"`
-	SshPort int `json:"sshPort,omitempty"`
+	SshPort *int `json:"sshPort,omitempty"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	ManagementIp string `json:"managementIp" validate:"required"`
 	ClusterUuid string `json:"clusterUuid" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -26,17 +26,16 @@ type AddKVMHostParam struct {
 }
 // UpdateKVMHostParamDetail UpdateKVMHost detail param
 type UpdateKVMHostParamDetail struct {
-	Username string `json:"username,omitempty"`
-	Password string `json:"password,omitempty"`
-	SshPort int `json:"sshPort,omitempty"`
-	Uuid string `json:"uuid" validate:"required"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	SshPort *int `json:"sshPort,omitempty"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	ManagementIp string `json:"managementIp,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ManagementIp *string `json:"managementIp,omitempty"`
 }
 
 // UpdateKVMHostParam UpdateKVMHost request param
 type UpdateKVMHostParam struct {
 	BaseParam
-	Params UpdateKVMHostParamDetail `json:"params"`
+	Params UpdateKVMHostParamDetail `json:"updateKVMHost"`
 }

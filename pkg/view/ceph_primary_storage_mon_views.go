@@ -8,15 +8,16 @@ var _ = time.Now // avoid unused import
 
 // CephPrimaryStorageMonInventoryView CephPrimaryStorageMon
 type CephPrimaryStorageMonInventoryView struct {
-	Hostname           string    `json:"hostname,omitempty"`
-	MonPort            int       `json:"monPort,omitempty"`
-	CreateDate         time.Time `json:"createDate,omitempty"`
-	LastOpDate         time.Time `json:"lastOpDate,omitempty"`
-	PrimaryStorageUuid string    `json:"primaryStorageUuid,omitempty"`
-	MonAddr            string    `json:"monAddr,omitempty"`
-	SshUsername        string    `json:"sshUsername,omitempty"`
-	SshPassword        string    `json:"sshPassword,omitempty"`
-	SshPort            int       `json:"sshPort,omitempty"`
-	Status             string    `json:"status,omitempty"`
-	MonUuid            string    `json:"monUuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Hostname string `json:"hostname,omitempty"`
+	MonPort int `json:"monPort,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	MonAddr string `json:"monAddr,omitempty"`
+	SshUsername string `json:"sshUsername,omitempty"`
+	SshPassword string `json:"sshPassword,omitempty"`
+	SshPort int `json:"sshPort,omitempty"`
+	Status string `json:"status,omitempty"`
+	MonUuid string `json:"monUuid,omitempty"`
 }
+

@@ -8,51 +8,48 @@ var _ = time.Now // avoid unused import
 
 // InspectBaremetalChassisParamDetail InspectBaremetalChassis detail param
 type InspectBaremetalChassisParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // InspectBaremetalChassisParam InspectBaremetalChassis request param
 type InspectBaremetalChassisParam struct {
 	BaseParam
-	Params InspectBaremetalChassisParamDetail `json:"params"`
+	Params InspectBaremetalChassisParamDetail `json:"inspectBaremetalChassis"`
 }
 // UpdateBaremetalChassisParamDetail UpdateBaremetalChassis detail param
 type UpdateBaremetalChassisParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	IpmiAddress string `json:"ipmiAddress,omitempty"`
-	IpmiPort int `json:"ipmiPort,omitempty"`
-	IpmiUsername string `json:"ipmiUsername,omitempty"`
-	IpmiPassword string `json:"ipmiPassword,omitempty"`
+	Description *string `json:"description,omitempty"`
+	IpmiAddress *string `json:"ipmiAddress,omitempty"`
+	IpmiPort *int `json:"ipmiPort,omitempty"`
+	IpmiUsername *string `json:"ipmiUsername,omitempty"`
+	IpmiPassword *string `json:"ipmiPassword,omitempty"`
 }
 
 // UpdateBaremetalChassisParam UpdateBaremetalChassis request param
 type UpdateBaremetalChassisParam struct {
 	BaseParam
-	Params UpdateBaremetalChassisParamDetail `json:"params"`
+	Params UpdateBaremetalChassisParamDetail `json:"updateBaremetalChassis"`
 }
 // DeleteBaremetalChassisParamDetail DeleteBaremetalChassis detail param
 type DeleteBaremetalChassisParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteBaremetalChassisParam DeleteBaremetalChassis request param
 type DeleteBaremetalChassisParam struct {
 	BaseParam
-	Params DeleteBaremetalChassisParamDetail `json:"params"`
+	Params DeleteBaremetalChassisParamDetail `json:"deleteBaremetalChassis"`
 }
 // CreateBaremetalChassisParamDetail CreateBaremetalChassis detail param
 type CreateBaremetalChassisParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	ClusterUuid string `json:"clusterUuid" validate:"required"`
 	IpmiAddress string `json:"ipmiAddress" validate:"required"`
-	IpmiPort int `json:"ipmiPort,omitempty"`
+	IpmiPort *int `json:"ipmiPort,omitempty"`
 	IpmiUsername string `json:"ipmiUsername" validate:"required"`
 	IpmiPassword string `json:"ipmiPassword" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 

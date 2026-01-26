@@ -8,7 +8,6 @@ var _ = time.Now // avoid unused import
 
 // UpdateAlarmLabelParamDetail UpdateAlarmLabel detail param
 type UpdateAlarmLabelParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Key string `json:"key" validate:"required"`
 	Value string `json:"value" validate:"required"`
 	Operator string `json:"operator" validate:"required"`
@@ -17,5 +16,5 @@ type UpdateAlarmLabelParamDetail struct {
 // UpdateAlarmLabelParam UpdateAlarmLabel request param
 type UpdateAlarmLabelParam struct {
 	BaseParam
-	Params UpdateAlarmLabelParamDetail `json:"params"`
+	Params UpdateAlarmLabelParamDetail `json:"updateAlarmLabel"`
 }

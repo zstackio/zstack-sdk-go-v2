@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,19 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryTwoFactorAuthentication(params *param.QueryParam) ([]view.TwoFactorAuthenticationInventoryView, error) {
 	var resp []view.TwoFactorAuthenticationInventoryView
 	return resp, cli.List("v1/twofactorauthentication/secrets", params, &resp)
+}
+
+func (cli *ZSClient) GetTwoFactorAuthentication(uuid string) (*view.TwoFactorAuthenticationInventoryView, error) {
+	var resp view.TwoFactorAuthenticationInventoryView
+	if err := cli.Get("v1/twofactorauthentication/secrets", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageTwoFactorAuthentication Pagination
+func (cli *ZSClient) PageTwoFactorAuthentication(params *param.QueryParam) ([]view.TwoFactorAuthenticationInventoryView, int, error) {
+	var twoFactorAuthentications []view.TwoFactorAuthenticationInventoryView
+	total, err := cli.Page("v1/twofactorauthentication/secrets", params, &twoFactorAuthentications)
+	return twoFactorAuthentications, total, err
 }

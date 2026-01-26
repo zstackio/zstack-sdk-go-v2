@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,26 +12,43 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateVpcHaGroup updates VpcHaGroup
 func (cli *ZSClient) UpdateVpcHaGroup(uuid string, params param.UpdateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
-	var resp view.UpdateVpcHaGroupEventView
-	if err := cli.Put("v1/vpc/hagroups/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.VpcHaGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/vpc/hagroups", uuid, "", map[string]interface{}{
+		"updateVpcHaGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteVpcHaGroup deletes VpcHaGroup
 func (cli *ZSClient) DeleteVpcHaGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vpc/hagroups/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/vpc/hagroups", uuid, string(deleteMode))
 }
 // CreateVpcHaGroup creates VpcHaGroup
 func (cli *ZSClient) CreateVpcHaGroup(params param.CreateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
-	var resp view.CreateVpcHaGroupEventView
+	resp := view.VpcHaGroupInventoryView{}
 	if err := cli.Post("v1/vpc/hagroups", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryVpcHaGroup queries VpcHaGroup list
 func (cli *ZSClient) QueryVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGroupInventoryView, error) {
 	var resp []view.VpcHaGroupInventoryView
 	return resp, cli.List("v1/vpc/hagroups", params, &resp)
+}
+
+func (cli *ZSClient) GetVpcHaGroup(uuid string) (*view.VpcHaGroupInventoryView, error) {
+	var resp view.VpcHaGroupInventoryView
+	if err := cli.Get("v1/vpc/hagroups", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageVpcHaGroup Pagination
+func (cli *ZSClient) PageVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGroupInventoryView, int, error) {
+	var vpcHaGroups []view.VpcHaGroupInventoryView
+	total, err := cli.Page("v1/vpc/hagroups", params, &vpcHaGroups)
+	return vpcHaGroups, total, err
 }

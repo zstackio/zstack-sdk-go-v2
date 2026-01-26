@@ -10,10 +10,11 @@ var _ = time.Now // avoid unused import
 type DatabaseBackupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	State             string                                  `json:"state,omitempty"`
-	Status            string                                  `json:"status,omitempty"`
-	Size              int64                                   `json:"size,omitempty"`
-	Metadata          string                                  `json:"metadata,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	Metadata string `json:"metadata,omitempty"`
 	BackupStorageRefs []DatabaseBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
 }
 
@@ -41,3 +42,4 @@ type QueryDatabaseBackupView struct {
 type SyncDatabaseBackupEventView struct {
 	Result SyncBackupResultView `json:"result,omitempty"`
 }
+

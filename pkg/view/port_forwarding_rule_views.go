@@ -10,17 +10,18 @@ var _ = time.Now // avoid unused import
 type PortForwardingRuleInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VipIp            string `json:"vipIp,omitempty"`
-	GuestIp          string `json:"guestIp,omitempty"`
-	VipUuid          string `json:"vipUuid,omitempty"`
-	VipPortStart     int    `json:"vipPortStart,omitempty"`
-	VipPortEnd       int    `json:"vipPortEnd,omitempty"`
-	PrivatePortStart int    `json:"privatePortStart,omitempty"`
-	PrivatePortEnd   int    `json:"privatePortEnd,omitempty"`
-	VmNicUuid        string `json:"vmNicUuid,omitempty"`
-	ProtocolType     string `json:"protocolType,omitempty"`
-	State            string `json:"state,omitempty"`
-	AllowedCidr      string `json:"allowedCidr,omitempty"`
+	Description string `json:"description,omitempty"`
+	VipIp string `json:"vipIp,omitempty"`
+	GuestIp string `json:"guestIp,omitempty"`
+	VipUuid string `json:"vipUuid,omitempty"`
+	VipPortStart int `json:"vipPortStart,omitempty"`
+	VipPortEnd int `json:"vipPortEnd,omitempty"`
+	PrivatePortStart int `json:"privatePortStart,omitempty"`
+	PrivatePortEnd int `json:"privatePortEnd,omitempty"`
+	VmNicUuid string `json:"vmNicUuid,omitempty"`
+	ProtocolType string `json:"protocolType,omitempty"`
+	State string `json:"state,omitempty"`
+	AllowedCidr string `json:"allowedCidr,omitempty"`
 }
 
 // DeletePortForwardingRuleEventView DeletePortForwardingRuleEvent
@@ -62,3 +63,4 @@ type AttachPortForwardingRuleEventView struct {
 type CreatePortForwardingRuleEventView struct {
 	Inventory PortForwardingRuleInventoryView `json:"inventory,omitempty"`
 }
+

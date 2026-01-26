@@ -10,13 +10,14 @@ var _ = time.Now // avoid unused import
 type SdnControllerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VendorType    string                              `json:"vendorType,omitempty"`
-	VendorVersion string                              `json:"vendorVersion,omitempty"`
-	Ip            string                              `json:"ip,omitempty"`
-	Username      string                              `json:"username,omitempty"`
-	Password      string                              `json:"password,omitempty"`
-	Status        string                              `json:"status,omitempty"`
-	HostRefs      []SdnControllerHostRefInventoryView `json:"hostRefs,omitempty"`
+	VendorType string `json:"vendorType,omitempty"`
+	VendorVersion string `json:"vendorVersion,omitempty"`
+	Description string `json:"description,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Status string `json:"status,omitempty"`
+	HostRefs []SdnControllerHostRefInventoryView `json:"hostRefs,omitempty"`
 }
 
 // RemoveSdnControllerEventView RemoveSdnControllerEvent
@@ -48,3 +49,4 @@ type ReconnectSdnControllerEventView struct {
 type QuerySdnControllerView struct {
 	Inventories []SdnControllerInventoryView `json:"inventories,omitempty"`
 }
+

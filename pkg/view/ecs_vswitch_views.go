@@ -10,12 +10,13 @@ var _ = time.Now // avoid unused import
 type EcsVSwitchInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VSwitchId               string `json:"vSwitchId,omitempty"`
-	Status                  string `json:"status,omitempty"`
-	CidrBlock               string `json:"cidrBlock,omitempty"`
-	AvailableIpAddressCount int    `json:"availableIpAddressCount,omitempty"`
-	EcsVpcUuid              string `json:"ecsVpcUuid,omitempty"`
-	IdentityZoneUuid        string `json:"identityZoneUuid,omitempty"`
+	VSwitchId string `json:"vSwitchId,omitempty"`
+	Status string `json:"status,omitempty"`
+	CidrBlock string `json:"cidrBlock,omitempty"`
+	AvailableIpAddressCount int `json:"availableIpAddressCount,omitempty"`
+	Description string `json:"description,omitempty"`
+	EcsVpcUuid string `json:"ecsVpcUuid,omitempty"`
+	IdentityZoneUuid string `json:"identityZoneUuid,omitempty"`
 }
 
 // SyncEcsVSwitchFromRemoteEventView SyncEcsVSwitchFromRemoteEvent
@@ -37,3 +38,4 @@ type CreateEcsVSwitchRemoteEventView struct {
 type QueryEcsVSwitchFromLocalView struct {
 	Inventories []EcsVSwitchInventoryView `json:"inventories,omitempty"`
 }
+

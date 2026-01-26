@@ -10,6 +10,7 @@ var _ = time.Now // avoid unused import
 type MonitorTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
+	Description string `json:"description,omitempty"`
 	MonitorGroupTemplateRefs []MonitorGroupTemplateRefVOView `json:"monitorGroupTemplateRefs,omitempty"`
 }
 
@@ -37,3 +38,4 @@ type CreateMonitorTemplateEventView struct {
 type DeleteMonitorTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

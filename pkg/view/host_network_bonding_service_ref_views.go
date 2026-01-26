@@ -8,14 +8,15 @@ var _ = time.Now // avoid unused import
 
 // HostNetworkBondingServiceRefInventoryView HostNetworkBondingServiceRef
 type HostNetworkBondingServiceRefInventoryView struct {
-	BondingUuid string    `json:"bondingUuid,omitempty"`
-	VlanId      int       `json:"vlanId,omitempty"`
-	ServiceType string    `json:"serviceType,omitempty"`
-	CreateDate  time.Time `json:"createDate,omitempty"`
-	LastOpDate  time.Time `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	BondingUuid string `json:"bondingUuid,omitempty"`
+	VlanId int `json:"vlanId,omitempty"`
+	ServiceType string `json:"serviceType,omitempty"`
 }
 
 // SetServiceTypeOnHostNetworkBondingEventView SetServiceTypeOnHostNetworkBondingEvent
 type SetServiceTypeOnHostNetworkBondingEventView struct {
 	Inventory []HostNetworkBondingServiceRefInventoryView `json:"inventory,omitempty"`
 }
+

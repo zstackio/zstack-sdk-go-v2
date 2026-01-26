@@ -8,8 +8,9 @@ var _ = time.Now // avoid unused import
 
 // TicketTypeTicketFlowCollectionRefInventoryView TicketTypeTicketFlowCollectionRef
 type TicketTypeTicketFlowCollectionRefInventoryView struct {
-	TicketTypeUuid           string    `json:"ticketTypeUuid,omitempty"`
-	TicketFlowCollectionUuid string    `json:"ticketFlowCollectionUuid,omitempty"`
-	CreateDate               time.Time `json:"createDate,omitempty"`
-	LastOpDate               time.Time `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	TicketTypeUuid string `json:"ticketTypeUuid,omitempty"`
+	TicketFlowCollectionUuid string `json:"ticketFlowCollectionUuid,omitempty"`
 }
+

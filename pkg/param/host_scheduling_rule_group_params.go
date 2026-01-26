@@ -8,22 +8,21 @@ var _ = time.Now // avoid unused import
 
 // UpdateHostSchedulingRuleGroupParamDetail UpdateHostSchedulingRuleGroup detail param
 type UpdateHostSchedulingRuleGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateHostSchedulingRuleGroupParam UpdateHostSchedulingRuleGroup request param
 type UpdateHostSchedulingRuleGroupParam struct {
 	BaseParam
-	Params UpdateHostSchedulingRuleGroupParamDetail `json:"params"`
+	Params UpdateHostSchedulingRuleGroupParamDetail `json:"updateHostSchedulingRuleGroup"`
 }
 // CreateHostSchedulingRuleGroupParamDetail CreateHostSchedulingRuleGroup detail param
 type CreateHostSchedulingRuleGroupParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	ZoneUuid string `json:"zoneUuid" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -34,11 +33,10 @@ type CreateHostSchedulingRuleGroupParam struct {
 }
 // DeleteHostSchedulingRuleGroupParamDetail DeleteHostSchedulingRuleGroup detail param
 type DeleteHostSchedulingRuleGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // DeleteHostSchedulingRuleGroupParam DeleteHostSchedulingRuleGroup request param
 type DeleteHostSchedulingRuleGroupParam struct {
 	BaseParam
-	Params DeleteHostSchedulingRuleGroupParamDetail `json:"params"`
+	Params DeleteHostSchedulingRuleGroupParamDetail `json:"deleteHostSchedulingRuleGroup"`
 }

@@ -9,9 +9,9 @@ var _ = time.Now // avoid unused import
 // CreateHuaweiIMasterVRouterParamDetail CreateHuaweiIMasterVRouter detail param
 type CreateHuaweiIMasterVRouterParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	HuaweiVpcUuid string `json:"huaweiVpcUuid" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -22,13 +22,12 @@ type CreateHuaweiIMasterVRouterParam struct {
 }
 // DeleteHuaweiIMasterVRouterParamDetail DeleteHuaweiIMasterVRouter detail param
 type DeleteHuaweiIMasterVRouterParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	SdnControllerUuid *string `json:"sdnControllerUuid,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteHuaweiIMasterVRouterParam DeleteHuaweiIMasterVRouter request param
 type DeleteHuaweiIMasterVRouterParam struct {
 	BaseParam
-	Params DeleteHuaweiIMasterVRouterParamDetail `json:"params"`
+	Params DeleteHuaweiIMasterVRouterParamDetail `json:"deleteHuaweiIMasterVRouter"`
 }

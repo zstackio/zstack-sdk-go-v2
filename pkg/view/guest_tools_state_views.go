@@ -8,14 +8,14 @@ var _ = time.Now // avoid unused import
 
 // GuestToolsStateInventoryView GuestToolsState
 type GuestToolsStateInventoryView struct {
-	VmInstanceUuid string    `json:"vmInstanceUuid,omitempty"`
-	QgaState       string    `json:"qgaState,omitempty"`
-	ZwatchState    string    `json:"zwatchState,omitempty"`
-	Version        string    `json:"version,omitempty"`
-	Platform       string    `json:"platform,omitempty"`
-	OsType         string    `json:"osType,omitempty"`
-	CreateDate     time.Time `json:"createDate,omitempty"`
-	LastOpDate     time.Time `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
+	QgaState string `json:"qgaState,omitempty"`
+	ZwatchState string `json:"zwatchState,omitempty"`
+	Version string `json:"version,omitempty"`
+	Platform string `json:"platform,omitempty"`
+	OsType string `json:"osType,omitempty"`
 }
 
 // QueryGuestToolsStateView QueryGuestToolsState
@@ -27,3 +27,4 @@ type QueryGuestToolsStateView struct {
 type UpdateGuestToolsStateView struct {
 	Inventory GuestToolsStateInventoryView `json:"inventory,omitempty"`
 }
+

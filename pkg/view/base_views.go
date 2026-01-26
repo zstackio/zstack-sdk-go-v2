@@ -2,27 +2,17 @@
 
 package view
 
-import (
-	"time"
-)
+import "time"
 
-// BaseInfoView base info view
+// BaseInfoView holds common identity fields
 type BaseInfoView struct {
-	UUID        string `json:"uuid"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
+	UUID string `json:"uuid"`           // Unique resource identifier
+	Name string `json:"name,omitempty"` // Resource name
 }
 
-// BaseTimeView time info view
 type BaseTimeView struct {
-	CreateDate time.Time `json:"createDate"`
-	LastOpDate time.Time `json:"lastOpDate"`
-}
-
-// BaseResourceView resource base view
-type BaseResourceView struct {
-	BaseInfoView
-	BaseTimeView
+	CreateDate time.Time `json:"createDate,omitempty"` // Creation time
+	LastOpDate time.Time `json:"lastOpDate,omitempty"` // Last operation time
 }
 
 // Generic wrapper types for APIs that return simple data types

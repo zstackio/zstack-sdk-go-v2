@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type EventSubscriptionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Namespace      string                                 `json:"namespace,omitempty"`
-	EventName      string                                 `json:"eventName,omitempty"`
-	State          string                                 `json:"state,omitempty"`
-	Actions        []EventSubscriptionActionInventoryView `json:"actions,omitempty"`
-	Labels         []EventSubscriptionLabelInventoryView  `json:"labels,omitempty"`
-	EmergencyLevel string                                 `json:"emergencyLevel,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	EventName string `json:"eventName,omitempty"`
+	State string `json:"state,omitempty"`
+	Actions []EventSubscriptionActionInventoryView `json:"actions,omitempty"`
+	Labels []EventSubscriptionLabelInventoryView `json:"labels,omitempty"`
+	EmergencyLevel string `json:"emergencyLevel,omitempty"`
 }
 
 // QueryEventSubscriptionView QueryEventSubscription
@@ -37,3 +37,4 @@ type AddActionToEventSubscriptionEventView struct {
 type UpdateSubscribeEventEventView struct {
 	Inventory EventSubscriptionInventoryView `json:"inventory,omitempty"`
 }
+

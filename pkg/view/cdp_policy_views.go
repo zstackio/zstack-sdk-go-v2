@@ -10,13 +10,14 @@ var _ = time.Now // avoid unused import
 type CdpPolicyInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	State                   string `json:"state,omitempty"`
-	RetentionTimePerDay     int    `json:"retentionTimePerDay,omitempty"`
-	HourlyRpSinceDay        int    `json:"hourlyRpSinceDay,omitempty"`
-	DailyRpSinceDay         int    `json:"dailyRpSinceDay,omitempty"`
-	ExpireTimeInDay         int    `json:"expireTimeInDay,omitempty"`
-	FullBackupIntervalInDay int    `json:"fullBackupIntervalInDay,omitempty"`
-	RecoveryPointPerSecond  int    `json:"recoveryPointPerSecond,omitempty"`
+	State string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	RetentionTimePerDay int `json:"retentionTimePerDay,omitempty"`
+	HourlyRpSinceDay int `json:"hourlyRpSinceDay,omitempty"`
+	DailyRpSinceDay int `json:"dailyRpSinceDay,omitempty"`
+	ExpireTimeInDay int `json:"expireTimeInDay,omitempty"`
+	FullBackupIntervalInDay int `json:"fullBackupIntervalInDay,omitempty"`
+	RecoveryPointPerSecond int `json:"recoveryPointPerSecond,omitempty"`
 }
 
 // CreateCdpPolicyEventView CreateCdpPolicyEvent
@@ -38,3 +39,4 @@ type QueryCdpPolicyView struct {
 type UpdateCdpPolicyEventView struct {
 	Inventory CdpPolicyInventoryView `json:"inventory,omitempty"`
 }
+

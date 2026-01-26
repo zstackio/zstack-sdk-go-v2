@@ -10,9 +10,9 @@ var _ = time.Now // avoid unused import
 type CreatePortMirrorParamDetail struct {
 	MirrorNetworkUuid string `json:"mirrorNetworkUuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	StateEvent string `json:"stateEvent,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	StateEvent *string `json:"stateEvent,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -23,24 +23,22 @@ type CreatePortMirrorParam struct {
 }
 // DeletePortMirrorParamDetail DeletePortMirror detail param
 type DeletePortMirrorParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeletePortMirrorParam DeletePortMirror request param
 type DeletePortMirrorParam struct {
 	BaseParam
-	Params DeletePortMirrorParamDetail `json:"params"`
+	Params DeletePortMirrorParamDetail `json:"deletePortMirror"`
 }
 // UpdatePortMirrorParamDetail UpdatePortMirror detail param
 type UpdatePortMirrorParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdatePortMirrorParam UpdatePortMirror request param
 type UpdatePortMirrorParam struct {
 	BaseParam
-	Params UpdatePortMirrorParamDetail `json:"params"`
+	Params UpdatePortMirrorParamDetail `json:"updatePortMirror"`
 }

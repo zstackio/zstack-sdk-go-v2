@@ -9,9 +9,9 @@ var _ = time.Now // avoid unused import
 // CreateMonitorGroupParamDetail CreateMonitorGroup detail param
 type CreateMonitorGroupParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Actions []CreateAlarm_ActionParamParam `json:"actions,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -22,26 +22,24 @@ type CreateMonitorGroupParam struct {
 }
 // DeleteMonitorGroupParamDetail DeleteMonitorGroup detail param
 type DeleteMonitorGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteMonitorGroupParam DeleteMonitorGroup request param
 type DeleteMonitorGroupParam struct {
 	BaseParam
-	Params DeleteMonitorGroupParamDetail `json:"params"`
+	Params DeleteMonitorGroupParamDetail `json:"deleteMonitorGroup"`
 }
 // UpdateMonitorGroupParamDetail UpdateMonitorGroup detail param
 type UpdateMonitorGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Actions []CreateAlarm_ActionParamParam `json:"actions,omitempty"`
-	StateEvent string `json:"stateEvent,omitempty"`
+	StateEvent *string `json:"stateEvent,omitempty"`
 }
 
 // UpdateMonitorGroupParam UpdateMonitorGroup request param
 type UpdateMonitorGroupParam struct {
 	BaseParam
-	Params UpdateMonitorGroupParamDetail `json:"params"`
+	Params UpdateMonitorGroupParamDetail `json:"updateMonitorGroup"`
 }

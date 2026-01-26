@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type VolumeSnapshotGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	SnapshotCount      int                                   `json:"snapshotCount,omitempty"`
-	VmInstanceUuid     string                                `json:"vmInstanceUuid,omitempty"`
+	SnapshotCount int `json:"snapshotCount,omitempty"`
+	Description string `json:"description,omitempty"`
+	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	VolumeSnapshotRefs []VolumeSnapshotGroupRefInventoryView `json:"volumeSnapshotRefs,omitempty"`
 }
 
@@ -22,9 +23,9 @@ type QueryVolumeSnapshotGroupView struct {
 
 // GetMemorySnapshotGroupReferenceView GetMemorySnapshotGroupReference
 type GetMemorySnapshotGroupReferenceView struct {
-	Inventories  []VolumeSnapshotGroupInventoryView `json:"inventories,omitempty"`
-	ResourceUuid string                             `json:"resourceUuid,omitempty"`
-	Success      bool                               `json:"success,omitempty"`
+	Inventories []VolumeSnapshotGroupInventoryView `json:"inventories,omitempty"`
+	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // CreateVolumeSnapshotGroupEventView CreateVolumeSnapshotGroupEvent
@@ -41,3 +42,4 @@ type UpdateVolumeSnapshotGroupEventView struct {
 type DeleteVolumeSnapshotGroupEventView struct {
 	Results []DeleteSnapshotGroupResultView `json:"results,omitempty"`
 }
+

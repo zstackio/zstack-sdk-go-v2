@@ -8,20 +8,19 @@ var _ = time.Now // avoid unused import
 
 // DeleteImageReplicationGroupParamDetail DeleteImageReplicationGroup detail param
 type DeleteImageReplicationGroupParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteImageReplicationGroupParam DeleteImageReplicationGroup request param
 type DeleteImageReplicationGroupParam struct {
 	BaseParam
-	Params DeleteImageReplicationGroupParamDetail `json:"params"`
+	Params DeleteImageReplicationGroupParamDetail `json:"deleteImageReplicationGroup"`
 }
 // CreateImageReplicationGroupParamDetail CreateImageReplicationGroup detail param
 type CreateImageReplicationGroupParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 

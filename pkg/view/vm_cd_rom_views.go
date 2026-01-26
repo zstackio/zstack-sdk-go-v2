@@ -11,15 +11,22 @@ type VmCdRomInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
-	DeviceId       int    `json:"deviceId,omitempty"`
-	IsoUuid        string `json:"isoUuid,omitempty"`
+	DeviceId int `json:"deviceId,omitempty"`
+	IsoUuid string `json:"isoUuid,omitempty"`
 	IsoInstallPath string `json:"isoInstallPath,omitempty"`
-	Protocol       string `json:"protocol,omitempty"`
+	Description string `json:"description,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
 }
 
 // CreateVmCdRomEventView CreateVmCdRomEvent
 type CreateVmCdRomEventView struct {
 	Inventory VmCdRomInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteVmCdRomEventView DeleteVmCdRomEvent
+type DeleteVmCdRomEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // QueryVmCdRomView QueryVmCdRom
@@ -36,3 +43,4 @@ type UpdateVmCdRomEventView struct {
 type SetVmInstanceDefaultCdRomEventView struct {
 	Inventory VmCdRomInventoryView `json:"inventory,omitempty"`
 }
+

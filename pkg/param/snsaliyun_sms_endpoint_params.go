@@ -11,9 +11,9 @@ type CreateSNSAliyunSmsEndpointParamDetail struct {
 	AccessKeyUuid string `json:"accessKeyUuid" validate:"required"`
 	Receivers []string `json:"receivers,omitempty"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	PlatformUuid string `json:"platformUuid,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	PlatformUuid *string `json:"platformUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -24,12 +24,11 @@ type CreateSNSAliyunSmsEndpointParam struct {
 }
 // ValidateSNSAliyunSmsEndpointParamDetail ValidateSNSAliyunSmsEndpoint detail param
 type ValidateSNSAliyunSmsEndpointParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	PhoneNumbers []string `json:"phoneNumbers" validate:"required"`
 }
 
 // ValidateSNSAliyunSmsEndpointParam ValidateSNSAliyunSmsEndpoint request param
 type ValidateSNSAliyunSmsEndpointParam struct {
 	BaseParam
-	Params ValidateSNSAliyunSmsEndpointParamDetail `json:"params"`
+	Params ValidateSNSAliyunSmsEndpointParamDetail `json:"validateSNSAliyunSmsEndpoint"`
 }

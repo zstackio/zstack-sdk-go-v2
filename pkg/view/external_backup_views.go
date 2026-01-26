@@ -10,11 +10,12 @@ var _ = time.Now // avoid unused import
 type ExternalBackupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	State       string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
 	InstallPath string `json:"installPath,omitempty"`
-	TotalSize   int64  `json:"totalSize,omitempty"`
-	Version     string `json:"version,omitempty"`
-	Type        string `json:"type,omitempty"`
+	TotalSize int64 `json:"totalSize,omitempty"`
+	Version string `json:"version,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // DeleteExternalBackupEventView DeleteExternalBackupEvent
@@ -22,12 +23,8 @@ type DeleteExternalBackupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// CreateExternalBackupEventView CreateExternalBackupEvent
-type CreateExternalBackupEventView struct {
-	Inventory ExternalBackupInventoryView `json:"inventory,omitempty"`
-}
-
 // QueryExternalBackupView QueryExternalBackup
 type QueryExternalBackupView struct {
 	Inventories []ExternalBackupInventoryView `json:"inventories,omitempty"`
 }
+

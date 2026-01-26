@@ -8,7 +8,9 @@ var _ = time.Now // avoid unused import
 
 // ModelCenterServiceInventoryView ModelCenterService
 type ModelCenterServiceInventoryView struct {
-	Uuid            string              `json:"uuid,omitempty"`
+	BaseInfoView
+	BaseTimeView
 	ServiceStatuses []ServiceStatusView `json:"serviceStatuses,omitempty"`
-	Zdfs            ZdfsServiceView     `json:"zdfs,omitempty"`
+	Zdfs ZdfsServiceView `json:"zdfs,omitempty"`
 }
+

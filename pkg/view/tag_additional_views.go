@@ -8,6 +8,7 @@ var _ = time.Now // avoid unused import
 
 // TagView Tag
 type TagView struct {
-	Name  string `json:"name,omitempty"`
+	Name string `json:"name,omitempty"`
 	Value string `json:"value,omitempty"`
 }
+

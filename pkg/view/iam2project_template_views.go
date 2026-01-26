@@ -10,6 +10,7 @@ var _ = time.Now // avoid unused import
 type IAM2ProjectTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
+	Description string `json:"description,omitempty"`
 	Template TemplateView `json:"template,omitempty"`
 }
 
@@ -37,3 +38,4 @@ type UpdateIAM2ProjectTemplateEventView struct {
 type DeleteIAM2ProjectTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,14 +12,31 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateScsiLun updates ScsiLun
 func (cli *ZSClient) UpdateScsiLun(uuid string, params param.UpdateScsiLunParam) (*view.ScsiLunInventoryView, error) {
-	var resp view.UpdateScsiLunEventView
-	if err := cli.Put("v1/storage-devices/scsi-lun/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.ScsiLunInventoryView{}
+	if err := cli.PutWithRespKey("v1/storage-devices/scsi-lun", uuid, "", map[string]interface{}{
+		"updateScsiLun": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryScsiLun queries ScsiLun list
 func (cli *ZSClient) QueryScsiLun(params *param.QueryParam) ([]view.ScsiLunInventoryView, error) {
 	var resp []view.ScsiLunInventoryView
 	return resp, cli.List("v1/storage-devices/scsi-lun/luns", params, &resp)
+}
+
+func (cli *ZSClient) GetScsiLun(uuid string) (*view.ScsiLunInventoryView, error) {
+	var resp view.ScsiLunInventoryView
+	if err := cli.Get("v1/storage-devices/scsi-lun/luns", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageScsiLun Pagination
+func (cli *ZSClient) PageScsiLun(params *param.QueryParam) ([]view.ScsiLunInventoryView, int, error) {
+	var scsiLuns []view.ScsiLunInventoryView
+	total, err := cli.Page("v1/storage-devices/scsi-lun/luns", params, &scsiLuns)
+	return scsiLuns, total, err
 }

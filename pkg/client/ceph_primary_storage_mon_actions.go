@@ -3,18 +3,20 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateCephPrimaryStorageMon updates CephPrimaryStorageMon
-func (cli *ZSClient) UpdateCephPrimaryStorageMon(uuid string, params param.UpdateCephPrimaryStorageMonParam) (*view.CephPrimaryStorageInventoryView, error) {
-	var resp view.UpdateCephPrimaryStorageMonEventView
-	if err := cli.Put("v1/primary-storage/ceph/mons/{monUuid}/actions", uuid, params, &resp); err != nil {
+func (cli *ZSClient) UpdateCephPrimaryStorageMon(monUuid string, params param.UpdateCephPrimaryStorageMonParam) (*view.CephPrimaryStorageInventoryView, error) {
+	resp := view.CephPrimaryStorageInventoryView{}
+	if err := cli.PutWithRespKey("v1/primary-storage/ceph/mons", monUuid, "", map[string]interface{}{
+		"updateCephPrimaryStorageMon": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

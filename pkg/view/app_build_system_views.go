@@ -10,15 +10,16 @@ var _ = time.Now // avoid unused import
 type AppBuildSystemInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	StorageType       string `json:"storageType,omitempty"`
-	Url               string `json:"url,omitempty"`
-	Hostname          string `json:"hostname,omitempty"`
-	Username          string `json:"username,omitempty"`
-	SshPort           int    `json:"sshPort,omitempty"`
-	Status            string `json:"status,omitempty"`
-	State             string `json:"state,omitempty"`
-	TotalCapacity     int64  `json:"totalCapacity,omitempty"`
-	AvailableCapacity int64  `json:"availableCapacity,omitempty"`
+	Description string `json:"description,omitempty"`
+	StorageType string `json:"storageType,omitempty"`
+	Url string `json:"url,omitempty"`
+	Hostname string `json:"hostname,omitempty"`
+	Username string `json:"username,omitempty"`
+	SshPort int `json:"sshPort,omitempty"`
+	Status string `json:"status,omitempty"`
+	State string `json:"state,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
 }
 
 // AddAppBuildSystemEventView AddAppBuildSystemEvent
@@ -50,3 +51,4 @@ type UpdateAppBuildSystemEventView struct {
 type DeleteAppBuildSystemEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

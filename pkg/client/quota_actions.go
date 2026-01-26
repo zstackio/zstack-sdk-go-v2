@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,11 +15,28 @@ func (cli *ZSClient) QueryQuota(params *param.QueryParam) ([]view.QuotaInventory
 	var resp []view.QuotaInventoryView
 	return resp, cli.List("v1/accounts/quotas", params, &resp)
 }
-// UpdateQuota updates Quota
-func (cli *ZSClient) UpdateQuota(uuid string, params param.UpdateQuotaParam) (*view.QuotaInventoryView, error) {
-	var resp view.UpdateQuotaEventView
-	if err := cli.Put("v1/accounts/quotas/actions", uuid, params, &resp); err != nil {
+
+func (cli *ZSClient) GetQuota(uuid string) (*view.QuotaInventoryView, error) {
+	var resp view.QuotaInventoryView
+	if err := cli.Get("v1/accounts/quotas", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
+}
+
+// PageQuota Pagination
+func (cli *ZSClient) PageQuota(params *param.QueryParam) ([]view.QuotaInventoryView, int, error) {
+	var quotas []view.QuotaInventoryView
+	total, err := cli.Page("v1/accounts/quotas", params, &quotas)
+	return quotas, total, err
+}
+// UpdateQuota updates Quota
+func (cli *ZSClient) UpdateQuota(params param.UpdateQuotaParam) (*view.QuotaInventoryView, error) {
+	resp := view.QuotaInventoryView{}
+	if err := cli.PutWithRespKey("v1/accounts/quotas/actions", "", "", map[string]interface{}{
+		"updateQuota": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,9 +12,9 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateObservabilityServerOffering creates ObservabilityServerOffering
 func (cli *ZSClient) CreateObservabilityServerOffering(params param.CreateObservabilityServerOfferingParam) (*view.InstanceOfferingInventoryView, error) {
-	var resp view.CreateInstanceOfferingEventView
+	resp := view.InstanceOfferingInventoryView{}
 	if err := cli.Post("v1/instance-offerings/observability-servers", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

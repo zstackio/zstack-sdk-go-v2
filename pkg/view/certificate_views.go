@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type CertificateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Certificate string                                            `json:"certificate,omitempty"`
-	Listeners   []LoadBalancerListenerCertificateRefInventoryView `json:"listeners,omitempty"`
+	Certificate string `json:"certificate,omitempty"`
+	Description string `json:"description,omitempty"`
+	Listeners []LoadBalancerListenerCertificateRefInventoryView `json:"listeners,omitempty"`
 }
 
 // UpdateCertificateEventView UpdateCertificateEvent
@@ -33,3 +34,4 @@ type DeleteCertificateEventView struct {
 type QueryCertificateView struct {
 	Inventories []CertificateInventoryView `json:"inventories,omitempty"`
 }
+

@@ -11,10 +11,10 @@ type EventRuleTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	MonitorTemplateUuid string `json:"monitorTemplateUuid,omitempty"`
-	Namespace           string `json:"namespace,omitempty"`
-	EventName           string `json:"eventName,omitempty"`
-	EmergencyLevel      string `json:"emergencyLevel,omitempty"`
-	Labels              string `json:"labels,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	EventName string `json:"eventName,omitempty"`
+	EmergencyLevel string `json:"emergencyLevel,omitempty"`
+	Labels string `json:"labels,omitempty"`
 }
 
 // AddEventRuleTemplateEventView AddEventRuleTemplateEvent
@@ -36,3 +36,4 @@ type UpdateEventRuleTemplateEventView struct {
 type QueryEventRuleTemplateView struct {
 	Inventories []EventRuleTemplateInventoryView `json:"inventories,omitempty"`
 }
+

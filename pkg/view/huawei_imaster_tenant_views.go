@@ -10,9 +10,10 @@ var _ = time.Now // avoid unused import
 type HuaweiIMasterTenantInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	FabricIds         []string `json:"fabricIds,omitempty"`
-	SdnControllerUuid string   `json:"sdnControllerUuid,omitempty"`
-	State             string   `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	FabricIds []string `json:"fabricIds,omitempty"`
+	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
+	State string `json:"state,omitempty"`
 }
 
 // DeleteHuaweiIMasterTenantEventView DeleteHuaweiIMasterTenantEvent
@@ -24,3 +25,4 @@ type DeleteHuaweiIMasterTenantEventView struct {
 type QueryHuaweiIMasterTenantView struct {
 	Inventories []HuaweiIMasterTenantInventoryView `json:"inventories,omitempty"`
 }
+

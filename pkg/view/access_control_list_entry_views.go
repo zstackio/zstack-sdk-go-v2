@@ -10,11 +10,12 @@ var _ = time.Now // avoid unused import
 type AccessControlListEntryInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AclUuid   string `json:"aclUuid,omitempty"`
-	Type      string `json:"type,omitempty"`
-	Domain    string `json:"domain,omitempty"`
-	Url       string `json:"url,omitempty"`
+	AclUuid string `json:"aclUuid,omitempty"`
+	Type string `json:"type,omitempty"`
+	Domain string `json:"domain,omitempty"`
+	Url string `json:"url,omitempty"`
 	IpEntries string `json:"ipEntries,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // RemoveAccessControlListEntryEventView RemoveAccessControlListEntryEvent
@@ -31,3 +32,4 @@ type ChangeAccessControlListRedirectRuleEventView struct {
 type AddAccessControlListEntryEventView struct {
 	Inventory AccessControlListEntryInventoryView `json:"inventory,omitempty"`
 }
+

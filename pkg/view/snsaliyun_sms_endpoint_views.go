@@ -10,15 +10,16 @@ var _ = time.Now // avoid unused import
 type SNSAliyunSmsEndpointInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Receivers          []SNSSmsReceiverInventoryView       `json:"receivers,omitempty"`
-	SmsAccessKeyId     string                              `json:"smsAccessKeyId,omitempty"`
-	SmsAccessKeySecret string                              `json:"smsAccessKeySecret,omitempty"`
-	Supplier           string                              `json:"supplier,omitempty"`
-	Type               string                              `json:"type,omitempty"`
-	State              string                              `json:"state,omitempty"`
-	PlatformUuid       string                              `json:"platformUuid,omitempty"`
-	ConnectionStatus   string                              `json:"connectionStatus,omitempty"`
-	Platform           SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
+	Receivers []SNSSmsReceiverInventoryView `json:"receivers,omitempty"`
+	SmsAccessKeyId string `json:"smsAccessKeyId,omitempty"`
+	SmsAccessKeySecret string `json:"smsAccessKeySecret,omitempty"`
+	Supplier string `json:"supplier,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	PlatformUuid string `json:"platformUuid,omitempty"`
+	ConnectionStatus string `json:"connectionStatus,omitempty"`
+	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
 
 // CreateSNSAliyunSmsEndpointEventView CreateSNSAliyunSmsEndpointEvent
@@ -35,3 +36,4 @@ type ValidateSNSAliyunSmsEndpointEventView struct {
 type QuerySNSSmsEndpointView struct {
 	Inventories []SNSAliyunSmsEndpointInventoryView `json:"inventories,omitempty"`
 }
+

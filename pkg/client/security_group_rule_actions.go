@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,32 +12,49 @@ var _ = view.MapView{} // avoid unused import
 
 // ChangeSecurityGroupRule changes SecurityGroupRule
 func (cli *ZSClient) ChangeSecurityGroupRule(uuid string, params param.ChangeSecurityGroupRuleParam) (*view.SecurityGroupRuleInventoryView, error) {
-	var resp view.ChangeSecurityGroupRuleEventView
-	if err := cli.Put("v1/security-groups/rules/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.SecurityGroupRuleInventoryView{}
+	if err := cli.PutWithRespKey("v1/security-groups/rules", uuid, "", map[string]interface{}{
+		"changeSecurityGroupRule": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // ValidateSecurityGroupRule operates on SecurityGroupRule
-func (cli *ZSClient) ValidateSecurityGroupRule(params param.ValidateSecurityGroupRuleParam) (*view.SecurityGroupRuleInventoryView, error) {
+func (cli *ZSClient) ValidateSecurityGroupRule(uuid string) (*view.SecurityGroupRuleInventoryView, error) {
 	var resp view.SecurityGroupRuleInventoryView
-	if err := cli.Get("v1/security-groups/{securityGroupUuid}/rules/validation", "", params, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/security-groups", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // AddSecurityGroupRule adds SecurityGroupRule
 func (cli *ZSClient) AddSecurityGroupRule(params param.AddSecurityGroupRuleParam) (*view.SecurityGroupInventoryView, error) {
-	var resp view.AddSecurityGroupRuleEventView
+	resp := view.SecurityGroupInventoryView{}
 	if err := cli.Post("v1/security-groups/{securityGroupUuid}/rules", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QuerySecurityGroupRule queries SecurityGroupRule list
 func (cli *ZSClient) QuerySecurityGroupRule(params *param.QueryParam) ([]view.SecurityGroupRuleInventoryView, error) {
 	var resp []view.SecurityGroupRuleInventoryView
 	return resp, cli.List("v1/security-groups/rules", params, &resp)
+}
+
+func (cli *ZSClient) GetSecurityGroupRule(uuid string) (*view.SecurityGroupRuleInventoryView, error) {
+	var resp view.SecurityGroupRuleInventoryView
+	if err := cli.Get("v1/security-groups/rules", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageSecurityGroupRule Pagination
+func (cli *ZSClient) PageSecurityGroupRule(params *param.QueryParam) ([]view.SecurityGroupRuleInventoryView, int, error) {
+	var securityGroupRules []view.SecurityGroupRuleInventoryView
+	total, err := cli.Page("v1/security-groups/rules", params, &securityGroupRules)
+	return securityGroupRules, total, err
 }
 // DeleteSecurityGroupRule deletes SecurityGroupRule
 func (cli *ZSClient) DeleteSecurityGroupRule(uuid string, deleteMode param.DeleteMode) error {

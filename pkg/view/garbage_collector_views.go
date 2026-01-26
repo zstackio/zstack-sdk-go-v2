@@ -10,14 +10,15 @@ var _ = time.Now // avoid unused import
 type GarbageCollectorInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	RunnerClass        string `json:"runnerClass,omitempty"`
-	Context            string `json:"context,omitempty"`
-	Status             string `json:"status,omitempty"`
+	RunnerClass string `json:"runnerClass,omitempty"`
+	Context string `json:"context,omitempty"`
+	Status string `json:"status,omitempty"`
 	ManagementNodeUuid string `json:"managementNodeUuid,omitempty"`
-	Type               string `json:"type,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // QueryGCJobView QueryGCJob
 type QueryGCJobView struct {
 	Inventories []GarbageCollectorInventoryView `json:"inventories,omitempty"`
 }
+

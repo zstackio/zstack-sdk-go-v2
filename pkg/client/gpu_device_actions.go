@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,19 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryGpuDevice(params *param.QueryParam) ([]view.GpuDeviceInventoryView, error) {
 	var resp []view.GpuDeviceInventoryView
 	return resp, cli.List("v1/gpu-device/gpu-devices", params, &resp)
+}
+
+func (cli *ZSClient) GetGpuDevice(uuid string) (*view.GpuDeviceInventoryView, error) {
+	var resp view.GpuDeviceInventoryView
+	if err := cli.Get("v1/gpu-device/gpu-devices", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageGpuDevice Pagination
+func (cli *ZSClient) PageGpuDevice(params *param.QueryParam) ([]view.GpuDeviceInventoryView, int, error) {
+	var gpuDevices []view.GpuDeviceInventoryView
+	total, err := cli.Page("v1/gpu-device/gpu-devices", params, &gpuDevices)
+	return gpuDevices, total, err
 }

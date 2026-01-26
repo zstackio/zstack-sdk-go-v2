@@ -8,11 +8,10 @@ var _ = time.Now // avoid unused import
 
 // ApplyDRSAdviceParamDetail ApplyDRSAdvice detail param
 type ApplyDRSAdviceParamDetail struct {
-	AdviceUuid string `json:"adviceUuid" validate:"required"`
 }
 
 // ApplyDRSAdviceParam ApplyDRSAdvice request param
 type ApplyDRSAdviceParam struct {
 	BaseParam
-	Params ApplyDRSAdviceParamDetail `json:"params"`
+	Params ApplyDRSAdviceParamDetail `json:"applyDRSAdvice"`
 }

@@ -8,8 +8,9 @@ var _ = time.Now // avoid unused import
 
 // SupportedResourceStructView SupportedResourceStruct
 type SupportedResourceStructView struct {
-	Name       string   `json:"name,omitempty"`
-	Type       string   `json:"type,omitempty"`
-	ActionName string   `json:"actionName,omitempty"`
-	Resources  []string `json:"resources,omitempty"`
+	Name string `json:"name,omitempty"`
+	Type string `json:"type,omitempty"`
+	ActionName string `json:"actionName,omitempty"`
+	Resources []string `json:"resources,omitempty"`
 }
+

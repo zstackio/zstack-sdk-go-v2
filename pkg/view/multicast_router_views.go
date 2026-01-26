@@ -8,13 +8,12 @@ var _ = time.Now // avoid unused import
 
 // MulticastRouterInventoryView MulticastRouter
 type MulticastRouterInventoryView struct {
-	Uuid        string                                        `json:"uuid,omitempty"`
-	Description string                                        `json:"description,omitempty"`
-	State       string                                        `json:"state,omitempty"`
-	CreateDate  time.Time                                     `json:"createDate,omitempty"`
-	LastOpDate  time.Time                                     `json:"lastOpDate,omitempty"`
-	RpGroups    []MulticastRouterRendezvousPointInventoryView `json:"rpGroups,omitempty"`
-	VpcVrs      []MulticastRouterVpcVRouterRefInventoryView   `json:"vpcVrs,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	RpGroups []MulticastRouterRendezvousPointInventoryView `json:"rpGroups,omitempty"`
+	VpcVrs []MulticastRouterVpcVRouterRefInventoryView `json:"vpcVrs,omitempty"`
 }
 
 // RemoveRendezvousPointFromMulticastRouterEventView RemoveRendezvousPointFromMulticastRouterEvent
@@ -46,3 +45,4 @@ type DeleteMulticastRouterEventView struct {
 type AddRendezvousPointToMulticastRouterEventView struct {
 	Inventory MulticastRouterInventoryView `json:"inventory,omitempty"`
 }
+

@@ -8,13 +8,12 @@ var _ = time.Now // avoid unused import
 
 // UpdateEcsVpcParamDetail UpdateEcsVpc detail param
 type UpdateEcsVpcParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateEcsVpcParam UpdateEcsVpc request param
 type UpdateEcsVpcParam struct {
 	BaseParam
-	Params UpdateEcsVpcParamDetail `json:"params"`
+	Params UpdateEcsVpcParamDetail `json:"updateEcsVpc"`
 }

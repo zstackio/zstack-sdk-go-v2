@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,19 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryTicketFlow(params *param.QueryParam) ([]view.TicketFlowInventoryView, error) {
 	var resp []view.TicketFlowInventoryView
 	return resp, cli.List("v1/tickets/flow", params, &resp)
+}
+
+func (cli *ZSClient) GetTicketFlow(uuid string) (*view.TicketFlowInventoryView, error) {
+	var resp view.TicketFlowInventoryView
+	if err := cli.Get("v1/tickets/flow", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageTicketFlow Pagination
+func (cli *ZSClient) PageTicketFlow(params *param.QueryParam) ([]view.TicketFlowInventoryView, int, error) {
+	var ticketFlows []view.TicketFlowInventoryView
+	total, err := cli.Page("v1/tickets/flow", params, &ticketFlows)
+	return ticketFlows, total, err
 }

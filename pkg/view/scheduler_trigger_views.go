@@ -10,14 +10,15 @@ var _ = time.Now // avoid unused import
 type SchedulerTriggerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Cron              string    `json:"cron,omitempty"`
-	SchedulerType     string    `json:"schedulerType,omitempty"`
-	SchedulerInterval int       `json:"schedulerInterval,omitempty"`
-	RepeatCount       int       `json:"repeatCount,omitempty"`
-	StartTime         time.Time `json:"startTime,omitempty"`
-	StopTime          time.Time `json:"stopTime,omitempty"`
-	JobsUuid          []string  `json:"jobsUuid,omitempty"`
-	JobGroupsUuid     []string  `json:"jobGroupsUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Cron string `json:"cron,omitempty"`
+	SchedulerType string `json:"schedulerType,omitempty"`
+	SchedulerInterval int `json:"schedulerInterval,omitempty"`
+	RepeatCount int `json:"repeatCount,omitempty"`
+	StartTime time.Time `json:"startTime,omitempty"`
+	StopTime time.Time `json:"stopTime,omitempty"`
+	JobsUuid []string `json:"jobsUuid,omitempty"`
+	JobGroupsUuid []string `json:"jobGroupsUuid,omitempty"`
 }
 
 // GetAvailableTriggersView GetAvailableTriggers
@@ -44,3 +45,4 @@ type DeleteSchedulerTriggerEventView struct {
 type CreateSchedulerTriggerEventView struct {
 	Inventory SchedulerTriggerInventoryView `json:"inventory,omitempty"`
 }
+

@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type ImageGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ImageCount int    `json:"imageCount,omitempty"`
-	Status     string `json:"status,omitempty"`
+	ImageCount int `json:"imageCount,omitempty"`
+	Description string `json:"description,omitempty"`
+	Status string `json:"status,omitempty"`
 }
 
 // CreateImageGroupFromVmInstanceEventView CreateImageGroupFromVmInstanceEvent
@@ -38,3 +39,4 @@ type QueryImageGroupView struct {
 type CreateImageGroupFromSnapshotEventView struct {
 	Inventory ImageGroupInventoryView `json:"inventory,omitempty"`
 }
+

@@ -10,10 +10,11 @@ var _ = time.Now // avoid unused import
 type RaidControllerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ProductName        string                           `json:"productName,omitempty"`
-	SasAddress         string                           `json:"sasAddress,omitempty"`
-	HostUuid           string                           `json:"hostUuid,omitempty"`
-	AdapterNumber      int                              `json:"adapterNumber,omitempty"`
+	Description string `json:"description,omitempty"`
+	ProductName string `json:"productName,omitempty"`
+	SasAddress string `json:"sasAddress,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
+	AdapterNumber int `json:"adapterNumber,omitempty"`
 	RaidPhysicalDrives []RaidPhysicalDriveInventoryView `json:"raidPhysicalDrives,omitempty"`
 }
 
@@ -21,3 +22,4 @@ type RaidControllerInventoryView struct {
 type RefreshLocalRaidEventView struct {
 	Inventories []RaidControllerInventoryView `json:"inventories,omitempty"`
 }
+

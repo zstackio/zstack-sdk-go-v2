@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,11 +15,28 @@ func (cli *ZSClient) QueryUsbDevice(params *param.QueryParam) ([]view.UsbDeviceI
 	var resp []view.UsbDeviceInventoryView
 	return resp, cli.List("v1/usb-device/usb-devices", params, &resp)
 }
-// UpdateUsbDevice updates UsbDevice
-func (cli *ZSClient) UpdateUsbDevice(uuid string, params param.UpdateUsbDeviceParam) (*view.UsbDeviceInventoryView, error) {
-	var resp view.UpdateUsbDeviceEventView
-	if err := cli.Put("v1/usb-device/usb-devices/{uuid}/actions", uuid, params, &resp); err != nil {
+
+func (cli *ZSClient) GetUsbDevice(uuid string) (*view.UsbDeviceInventoryView, error) {
+	var resp view.UsbDeviceInventoryView
+	if err := cli.Get("v1/usb-device/usb-devices", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
+}
+
+// PageUsbDevice Pagination
+func (cli *ZSClient) PageUsbDevice(params *param.QueryParam) ([]view.UsbDeviceInventoryView, int, error) {
+	var usbDevices []view.UsbDeviceInventoryView
+	total, err := cli.Page("v1/usb-device/usb-devices", params, &usbDevices)
+	return usbDevices, total, err
+}
+// UpdateUsbDevice updates UsbDevice
+func (cli *ZSClient) UpdateUsbDevice(uuid string, params param.UpdateUsbDeviceParam) (*view.UsbDeviceInventoryView, error) {
+	resp := view.UsbDeviceInventoryView{}
+	if err := cli.PutWithRespKey("v1/usb-device/usb-devices", uuid, "", map[string]interface{}{
+		"updateUsbDevice": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

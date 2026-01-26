@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,15 +15,30 @@ func (cli *ZSClient) QueryMetricDataHttpReceiver(params *param.QueryParam) ([]vi
 	var resp []view.MetricDataHttpReceiverInventoryView
 	return resp, cli.List("v1/zwatch/metrics/httpreceivers", params, &resp)
 }
+
+func (cli *ZSClient) GetMetricDataHttpReceiver(uuid string) (*view.MetricDataHttpReceiverInventoryView, error) {
+	var resp view.MetricDataHttpReceiverInventoryView
+	if err := cli.Get("v1/zwatch/metrics/httpreceivers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageMetricDataHttpReceiver Pagination
+func (cli *ZSClient) PageMetricDataHttpReceiver(params *param.QueryParam) ([]view.MetricDataHttpReceiverInventoryView, int, error) {
+	var metricDataHttpReceivers []view.MetricDataHttpReceiverInventoryView
+	total, err := cli.Page("v1/zwatch/metrics/httpreceivers", params, &metricDataHttpReceivers)
+	return metricDataHttpReceivers, total, err
+}
 // DeleteMetricDataHttpReceiver deletes MetricDataHttpReceiver
 func (cli *ZSClient) DeleteMetricDataHttpReceiver(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/metrics/httpreceivers/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/zwatch/metrics/httpreceivers", uuid, string(deleteMode))
 }
 // CreateMetricDataHttpReceiver creates MetricDataHttpReceiver
 func (cli *ZSClient) CreateMetricDataHttpReceiver(params param.CreateMetricDataHttpReceiverParam) (*view.MetricDataHttpReceiverInventoryView, error) {
-	var resp view.CreateMetricDataHttpReceiverEventView
+	resp := view.MetricDataHttpReceiverInventoryView{}
 	if err := cli.Post("v1/zwatch/metrics/httpreceivers", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

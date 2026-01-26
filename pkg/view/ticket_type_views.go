@@ -10,12 +10,14 @@ var _ = time.Now // avoid unused import
 type TicketTypeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Type      string `json:"type,omitempty"`
-	Requests  string `json:"requests,omitempty"`
-	AdminOnly bool   `json:"adminOnly,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	Requests string `json:"requests,omitempty"`
+	AdminOnly bool `json:"adminOnly,omitempty"`
 }
 
 // QueryTicketTypeView QueryTicketType
 type QueryTicketTypeView struct {
 	Inventories []TicketTypeInventoryView `json:"inventories,omitempty"`
 }
+

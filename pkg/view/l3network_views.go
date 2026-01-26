@@ -10,22 +10,23 @@ var _ = time.Now // avoid unused import
 type L3NetworkInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	InternalId       int                                       `json:"internalId,omitempty"`
-	Type             string                                    `json:"type,omitempty"`
-	ZoneUuid         string                                    `json:"zoneUuid,omitempty"`
-	L2NetworkUuid    string                                    `json:"l2NetworkUuid,omitempty"`
-	State            string                                    `json:"state,omitempty"`
-	DnsDomain        string                                    `json:"dnsDomain,omitempty"`
-	System           bool                                      `json:"system,omitempty"`
-	Category         string                                    `json:"category,omitempty"`
-	IpVersion        int                                       `json:"ipVersion,omitempty"`
-	EnableIPAM       bool                                      `json:"enableIPAM,omitempty"`
-	Isolated         bool                                      `json:"isolated,omitempty"`
-	Dns              []string                                  `json:"dns,omitempty"`
-	IpRanges         []IpRangeInventoryView                    `json:"ipRanges,omitempty"`
-	NetworkServices  []NetworkServiceL3NetworkRefInventoryView `json:"networkServices,omitempty"`
-	HostRoute        []L3NetworkHostRouteInventoryView         `json:"hostRoute,omitempty"`
-	ReservedIpRanges []ReservedIpRangeInventoryView            `json:"reservedIpRanges,omitempty"`
+	InternalId int `json:"internalId,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	L2NetworkUuid string `json:"l2NetworkUuid,omitempty"`
+	State string `json:"state,omitempty"`
+	DnsDomain string `json:"dnsDomain,omitempty"`
+	System bool `json:"system,omitempty"`
+	Category string `json:"category,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	EnableIPAM bool `json:"enableIPAM,omitempty"`
+	Isolated bool `json:"isolated,omitempty"`
+	Dns []string `json:"dns,omitempty"`
+	IpRanges []IpRangeInventoryView `json:"ipRanges,omitempty"`
+	NetworkServices []NetworkServiceL3NetworkRefInventoryView `json:"networkServices,omitempty"`
+	HostRoute []L3NetworkHostRouteInventoryView `json:"hostRoute,omitempty"`
+	ReservedIpRanges []ReservedIpRangeInventoryView `json:"reservedIpRanges,omitempty"`
 }
 
 // RemoveHostRouteFromL3NetworkEventView RemoveHostRouteFromL3NetworkEvent
@@ -117,3 +118,4 @@ type GetVmAttachableL3NetworkView struct {
 type GetCandidateL3NetworksForLoadBalancerView struct {
 	Inventories []L3NetworkInventoryView `json:"inventories,omitempty"`
 }
+

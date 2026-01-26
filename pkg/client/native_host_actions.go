@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,19 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryNativeHost(params *param.QueryParam) ([]view.NativeHostInventoryView, error) {
 	var resp []view.NativeHostInventoryView
 	return resp, cli.List("v1/container/native/host", params, &resp)
+}
+
+func (cli *ZSClient) GetNativeHost(uuid string) (*view.NativeHostInventoryView, error) {
+	var resp view.NativeHostInventoryView
+	if err := cli.Get("v1/container/native/host", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageNativeHost Pagination
+func (cli *ZSClient) PageNativeHost(params *param.QueryParam) ([]view.NativeHostInventoryView, int, error) {
+	var nativeHosts []view.NativeHostInventoryView
+	total, err := cli.Page("v1/container/native/host", params, &nativeHosts)
+	return nativeHosts, total, err
 }

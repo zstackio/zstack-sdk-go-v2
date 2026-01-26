@@ -10,10 +10,12 @@ var _ = time.Now // avoid unused import
 type IAM2TicketFlowCollectionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ProjectUuid     string                    `json:"projectUuid,omitempty"`
-	State           string                    `json:"state,omitempty"`
-	Status          string                    `json:"status,omitempty"`
-	IsDefault       bool                      `json:"isDefault,omitempty"`
-	Flows           []TicketFlowInventoryView `json:"flows,omitempty"`
-	TicketTypeUuids []string                  `json:"ticketTypeUuids,omitempty"`
+	ProjectUuid string `json:"projectUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	IsDefault bool `json:"isDefault,omitempty"`
+	Flows []TicketFlowInventoryView `json:"flows,omitempty"`
+	TicketTypeUuids []string `json:"ticketTypeUuids,omitempty"`
 }
+

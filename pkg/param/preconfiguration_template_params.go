@@ -8,23 +8,22 @@ var _ = time.Now // avoid unused import
 
 // DeletePreconfigurationTemplateParamDetail DeletePreconfigurationTemplate detail param
 type DeletePreconfigurationTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeletePreconfigurationTemplateParam DeletePreconfigurationTemplate request param
 type DeletePreconfigurationTemplateParam struct {
 	BaseParam
-	Params DeletePreconfigurationTemplateParamDetail `json:"params"`
+	Params DeletePreconfigurationTemplateParamDetail `json:"deletePreconfigurationTemplate"`
 }
 // AddPreconfigurationTemplateParamDetail AddPreconfigurationTemplate detail param
 type AddPreconfigurationTemplateParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Distribution string `json:"distribution" validate:"required"`
 	Type string `json:"type" validate:"required"`
 	Content string `json:"content" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -35,16 +34,15 @@ type AddPreconfigurationTemplateParam struct {
 }
 // UpdatePreconfigurationTemplateParamDetail UpdatePreconfigurationTemplate detail param
 type UpdatePreconfigurationTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Distribution string `json:"distribution,omitempty"`
-	Type string `json:"type,omitempty"`
-	Content string `json:"content,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Distribution *string `json:"distribution,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Content *string `json:"content,omitempty"`
 }
 
 // UpdatePreconfigurationTemplateParam UpdatePreconfigurationTemplate request param
 type UpdatePreconfigurationTemplateParam struct {
 	BaseParam
-	Params UpdatePreconfigurationTemplateParamDetail `json:"params"`
+	Params UpdatePreconfigurationTemplateParamDetail `json:"updatePreconfigurationTemplate"`
 }

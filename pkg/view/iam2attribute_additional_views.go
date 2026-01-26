@@ -11,5 +11,6 @@ type IAM2AttributeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Value string `json:"value,omitempty"`
-	Type  string `json:"type,omitempty"`
+	Type string `json:"type,omitempty"`
 }
+

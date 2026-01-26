@@ -10,10 +10,11 @@ var _ = time.Now // avoid unused import
 type VpcHaGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Monitors []VpcHaGroupMonitorIpInventoryView         `json:"monitors,omitempty"`
-	VrRefs   []VpcHaGroupApplianceVmRefInventoryView    `json:"vrRefs,omitempty"`
+	Description string `json:"description,omitempty"`
+	Monitors []VpcHaGroupMonitorIpInventoryView `json:"monitors,omitempty"`
+	VrRefs []VpcHaGroupApplianceVmRefInventoryView `json:"vrRefs,omitempty"`
 	Services []VpcHaGroupNetworkServiceRefInventoryView `json:"services,omitempty"`
-	UsedIps  []VpcHaGroupVipRefInventoryView            `json:"usedIps,omitempty"`
+	UsedIps []VpcHaGroupVipRefInventoryView `json:"usedIps,omitempty"`
 }
 
 // UpdateVpcHaGroupEventView UpdateVpcHaGroupEvent
@@ -40,3 +41,4 @@ type ChangeVpcHaGroupMonitorIpsEventView struct {
 type QueryVpcHaGroupView struct {
 	Inventories []VpcHaGroupInventoryView `json:"inventories,omitempty"`
 }
+

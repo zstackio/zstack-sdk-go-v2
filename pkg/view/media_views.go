@@ -10,7 +10,8 @@ var _ = time.Now // avoid unused import
 type MediaInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Type  string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 }
 
@@ -24,12 +25,3 @@ type DeleteMediaEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// QueryMediaView QueryMedia
-type QueryMediaView struct {
-	Inventories []MediaInventoryView `json:"inventories,omitempty"`
-}
-
-// CreateMediaEventView CreateMediaEvent
-type CreateMediaEventView struct {
-	Inventory MediaInventoryView `json:"inventory,omitempty"`
-}

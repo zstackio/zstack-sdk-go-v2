@@ -10,16 +10,18 @@ var _ = time.Now // avoid unused import
 type HuaweiIMasterSdnControllerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Fabrics       []HuaweiIMasterFabricInventoryView  `json:"fabrics,omitempty"`
-	Tenants       []HuaweiIMasterTenantInventoryView  `json:"tenants,omitempty"`
-	Vpcs          []HuaweiIMasterVpcInventoryView     `json:"vpcs,omitempty"`
-	Vrouters      []HuaweiIMasterVRouterInventoryView `json:"vrouters,omitempty"`
-	VlanRanges    []SdnVlanRangeView                  `json:"vlanRanges,omitempty"`
-	VendorType    string                              `json:"vendorType,omitempty"`
-	VendorVersion string                              `json:"vendorVersion,omitempty"`
-	Ip            string                              `json:"ip,omitempty"`
-	Username      string                              `json:"username,omitempty"`
-	Password      string                              `json:"password,omitempty"`
-	Status        string                              `json:"status,omitempty"`
-	HostRefs      []SdnControllerHostRefInventoryView `json:"hostRefs,omitempty"`
+	Fabrics []HuaweiIMasterFabricInventoryView `json:"fabrics,omitempty"`
+	Tenants []HuaweiIMasterTenantInventoryView `json:"tenants,omitempty"`
+	Vpcs []HuaweiIMasterVpcInventoryView `json:"vpcs,omitempty"`
+	Vrouters []HuaweiIMasterVRouterInventoryView `json:"vrouters,omitempty"`
+	VlanRanges []SdnVlanRangeView `json:"vlanRanges,omitempty"`
+	VendorType string `json:"vendorType,omitempty"`
+	VendorVersion string `json:"vendorVersion,omitempty"`
+	Description string `json:"description,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Status string `json:"status,omitempty"`
+	HostRefs []SdnControllerHostRefInventoryView `json:"hostRefs,omitempty"`
 }
+

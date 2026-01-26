@@ -11,8 +11,8 @@ type IAM2VirtualIDGroupAttributeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	GroupUuid string `json:"groupUuid,omitempty"`
-	Value     string `json:"value,omitempty"`
-	Type      string `json:"type,omitempty"`
+	Value string `json:"value,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // UpdateIAM2VirtualIDGroupAttributeEventView UpdateIAM2VirtualIDGroupAttributeEvent
@@ -24,3 +24,4 @@ type UpdateIAM2VirtualIDGroupAttributeEventView struct {
 type QueryIAM2VirtualIDGroupAttributeView struct {
 	Inventories []IAM2VirtualIDGroupAttributeInventoryView `json:"inventories,omitempty"`
 }
+

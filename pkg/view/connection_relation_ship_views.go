@@ -11,6 +11,7 @@ type ConnectionRelationShipInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	RelationShips string `json:"relationShips,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchEventView UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchEvent
@@ -27,3 +28,4 @@ type CreateConnectionBetweenL3NetworkAndAliyunVSwitchEventView struct {
 type QueryConnectionBetweenL3NetworkAndAliyunVSwitchView struct {
 	Inventories []ConnectionRelationShipInventoryView `json:"inventories,omitempty"`
 }
+

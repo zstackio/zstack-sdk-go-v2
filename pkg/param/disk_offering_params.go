@@ -8,24 +8,23 @@ var _ = time.Now // avoid unused import
 
 // DeleteDiskOfferingParamDetail DeleteDiskOffering detail param
 type DeleteDiskOfferingParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteDiskOfferingParam DeleteDiskOffering request param
 type DeleteDiskOfferingParam struct {
 	BaseParam
-	Params DeleteDiskOfferingParamDetail `json:"params"`
+	Params DeleteDiskOfferingParamDetail `json:"deleteDiskOffering"`
 }
 // CreateDiskOfferingParamDetail CreateDiskOffering detail param
 type CreateDiskOfferingParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	DiskSize int64 `json:"diskSize" validate:"required"`
 	SortKey int `json:"sortKey,omitempty"`
-	AllocationStrategy string `json:"allocationStrategy,omitempty"`
-	Type string `json:"type,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	AllocationStrategy *string `json:"allocationStrategy,omitempty"`
+	Type *string `json:"type,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -36,13 +35,12 @@ type CreateDiskOfferingParam struct {
 }
 // UpdateDiskOfferingParamDetail UpdateDiskOffering detail param
 type UpdateDiskOfferingParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateDiskOfferingParam UpdateDiskOffering request param
 type UpdateDiskOfferingParam struct {
 	BaseParam
-	Params UpdateDiskOfferingParamDetail `json:"params"`
+	Params UpdateDiskOfferingParamDetail `json:"updateDiskOffering"`
 }

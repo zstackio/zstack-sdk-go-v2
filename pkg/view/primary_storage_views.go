@@ -10,18 +10,19 @@ var _ = time.Now // avoid unused import
 type PrimaryStorageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ZoneUuid                  string   `json:"zoneUuid,omitempty"`
-	Url                       string   `json:"url,omitempty"`
-	TotalCapacity             int64    `json:"totalCapacity,omitempty"`
-	AvailableCapacity         int64    `json:"availableCapacity,omitempty"`
-	TotalPhysicalCapacity     int64    `json:"totalPhysicalCapacity,omitempty"`
-	AvailablePhysicalCapacity int64    `json:"availablePhysicalCapacity,omitempty"`
-	SystemUsedCapacity        int64    `json:"systemUsedCapacity,omitempty"`
-	Type                      string   `json:"type,omitempty"`
-	State                     string   `json:"state,omitempty"`
-	Status                    string   `json:"status,omitempty"`
-	MountPath                 string   `json:"mountPath,omitempty"`
-	AttachedClusterUuids      []string `json:"attachedClusterUuids,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Url string `json:"url,omitempty"`
+	Description string `json:"description,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
+	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
+	SystemUsedCapacity int64 `json:"systemUsedCapacity,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	MountPath string `json:"mountPath,omitempty"`
+	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 
 // AttachPrimaryStorageToClusterEventView AttachPrimaryStorageToClusterEvent
@@ -44,11 +45,6 @@ type GetPrimaryStorageCandidatesForVolumeMigrationView struct {
 	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
 }
 
-// SyncPrimaryStorageCapacityEventView SyncPrimaryStorageCapacityEvent
-type SyncPrimaryStorageCapacityEventView struct {
-	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-
 // ChangePrimaryStorageStateEventView ChangePrimaryStorageStateEvent
 type ChangePrimaryStorageStateEventView struct {
 	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
@@ -68,3 +64,4 @@ type DetachPrimaryStorageFromClusterEventView struct {
 type DeletePrimaryStorageEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

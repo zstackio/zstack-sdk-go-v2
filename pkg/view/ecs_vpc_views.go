@@ -10,12 +10,13 @@ var _ = time.Now // avoid unused import
 type EcsVpcInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	EcsVpcId       string `json:"ecsVpcId,omitempty"`
+	EcsVpcId string `json:"ecsVpcId,omitempty"`
 	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
-	Status         string `json:"status,omitempty"`
-	Deleted        string `json:"deleted,omitempty"`
-	CidrBlock      string `json:"cidrBlock,omitempty"`
-	VRouterId      string `json:"vRouterId,omitempty"`
+	Status string `json:"status,omitempty"`
+	Deleted string `json:"deleted,omitempty"`
+	CidrBlock string `json:"cidrBlock,omitempty"`
+	VRouterId string `json:"vRouterId,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // QueryEcsVpcFromLocalView QueryEcsVpcFromLocal
@@ -37,3 +38,4 @@ type UpdateEcsVpcEventView struct {
 type SyncEcsVpcFromRemoteEventView struct {
 	Inventories []EcsVpcInventoryView `json:"inventories,omitempty"`
 }
+

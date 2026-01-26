@@ -3,22 +3,23 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"fmt"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // RemoveAccessControlListEntry removes AccessControlListEntry
-func (cli *ZSClient) RemoveAccessControlListEntry(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/access-control-lists/{aclUuid}/ipentries/{uuid}", uuid, string(deleteMode))
+func (cli *ZSClient) RemoveAccessControlListEntry(aclUuid string, uuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/access-control-lists", aclUuid, fmt.Sprintf("ipentries/%s", uuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 // AddAccessControlListEntry adds AccessControlListEntry
 func (cli *ZSClient) AddAccessControlListEntry(params param.AddAccessControlListEntryParam) (*view.AccessControlListEntryInventoryView, error) {
-	var resp view.AddAccessControlListEntryEventView
+	resp := view.AccessControlListEntryInventoryView{}
 	if err := cli.Post("v1/access-control-lists/{aclUuid}/ipentries", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

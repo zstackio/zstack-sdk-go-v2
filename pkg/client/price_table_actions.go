@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,26 +12,43 @@ var _ = view.MapView{} // avoid unused import
 
 // CreatePriceTable creates PriceTable
 func (cli *ZSClient) CreatePriceTable(params param.CreatePriceTableParam) (*view.PriceTableInventoryView, error) {
-	var resp view.CreatePriceTableEventView
+	resp := view.PriceTableInventoryView{}
 	if err := cli.Post("v1/billings/price-tables", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdatePriceTable updates PriceTable
 func (cli *ZSClient) UpdatePriceTable(uuid string, params param.UpdatePriceTableParam) (*view.PriceTableInventoryView, error) {
-	var resp view.UpdatePriceTableEventView
-	if err := cli.Put("v1/billings/price-tables/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.PriceTableInventoryView{}
+	if err := cli.PutWithRespKey("v1/billings/price-tables", uuid, "", map[string]interface{}{
+		"updatePriceTable": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeletePriceTable deletes PriceTable
 func (cli *ZSClient) DeletePriceTable(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/billings/price-tables/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/billings/price-tables", uuid, string(deleteMode))
 }
 // QueryPriceTable queries PriceTable list
 func (cli *ZSClient) QueryPriceTable(params *param.QueryParam) ([]view.PriceTableInventoryView, error) {
 	var resp []view.PriceTableInventoryView
 	return resp, cli.List("v1/billings/price-tables", params, &resp)
+}
+
+func (cli *ZSClient) GetPriceTable(uuid string) (*view.PriceTableInventoryView, error) {
+	var resp view.PriceTableInventoryView
+	if err := cli.Get("v1/billings/price-tables", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PagePriceTable Pagination
+func (cli *ZSClient) PagePriceTable(params *param.QueryParam) ([]view.PriceTableInventoryView, int, error) {
+	var priceTables []view.PriceTableInventoryView
+	total, err := cli.Page("v1/billings/price-tables", params, &priceTables)
+	return priceTables, total, err
 }

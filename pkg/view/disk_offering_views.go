@@ -10,10 +10,11 @@ var _ = time.Now // avoid unused import
 type DiskOfferingInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	DiskSize          int64  `json:"diskSize,omitempty"`
-	SortKey           int    `json:"sortKey,omitempty"`
-	State             string `json:"state,omitempty"`
-	Type              string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	DiskSize int64 `json:"diskSize,omitempty"`
+	SortKey int `json:"sortKey,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 }
 
@@ -41,3 +42,4 @@ type UpdateDiskOfferingEventView struct {
 type QueryDiskOfferingView struct {
 	Inventories []DiskOfferingInventoryView `json:"inventories,omitempty"`
 }
+

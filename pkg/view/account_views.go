@@ -10,6 +10,7 @@ var _ = time.Now // avoid unused import
 type AccountInventoryView struct {
 	BaseInfoView
 	BaseTimeView
+	Description string `json:"description,omitempty"`
 	Type string `json:"type,omitempty"`
 }
 
@@ -37,3 +38,4 @@ type CreateAccountEventView struct {
 type QueryAccountView struct {
 	Inventories []AccountInventoryView `json:"inventories,omitempty"`
 }
+

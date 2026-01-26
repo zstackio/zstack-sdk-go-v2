@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,22 +12,39 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateSNSMicrosoftTeamsEndpoint updates SNSMicrosoftTeamsEndpoint
 func (cli *ZSClient) UpdateSNSMicrosoftTeamsEndpoint(uuid string, params param.UpdateSNSMicrosoftTeamsEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
-	var resp view.UpdateSNSApplicationEndpointEventView
-	if err := cli.Put("v1/sns/application-endpoints/microsoft-teams/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.SNSApplicationEndpointInventoryView{}
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints/microsoft-teams", uuid, "", map[string]interface{}{
+		"updateSNSMicrosoftTeamsEndpoint": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateSNSMicrosoftTeamsEndpoint creates SNSMicrosoftTeamsEndpoint
 func (cli *ZSClient) CreateSNSMicrosoftTeamsEndpoint(params param.CreateSNSMicrosoftTeamsEndpointParam) (*view.SNSMicrosoftTeamsEndpointInventoryView, error) {
-	var resp view.CreateSNSMicrosoftTeamsEndpointEventView
+	resp := view.SNSMicrosoftTeamsEndpointInventoryView{}
 	if err := cli.Post("v1/sns/application-endpoints/microsoft-teams", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QuerySNSMicrosoftTeamsEndpoint queries SNSMicrosoftTeamsEndpoint list
 func (cli *ZSClient) QuerySNSMicrosoftTeamsEndpoint(params *param.QueryParam) ([]view.SNSMicrosoftTeamsEndpointInventoryView, error) {
 	var resp []view.SNSMicrosoftTeamsEndpointInventoryView
 	return resp, cli.List("v1/sns/application-endpoints/microsoft-teams", params, &resp)
+}
+
+func (cli *ZSClient) GetSNSMicrosoftTeamsEndpoint(uuid string) (*view.SNSMicrosoftTeamsEndpointInventoryView, error) {
+	var resp view.SNSMicrosoftTeamsEndpointInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/microsoft-teams", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageSNSMicrosoftTeamsEndpoint Pagination
+func (cli *ZSClient) PageSNSMicrosoftTeamsEndpoint(params *param.QueryParam) ([]view.SNSMicrosoftTeamsEndpointInventoryView, int, error) {
+	var sNSMicrosoftTeamsEndpoints []view.SNSMicrosoftTeamsEndpointInventoryView
+	total, err := cli.Page("v1/sns/application-endpoints/microsoft-teams", params, &sNSMicrosoftTeamsEndpoints)
+	return sNSMicrosoftTeamsEndpoints, total, err
 }

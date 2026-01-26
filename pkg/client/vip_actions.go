@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,23 +15,40 @@ func (cli *ZSClient) QueryVip(params *param.QueryParam) ([]view.VipInventoryView
 	var resp []view.VipInventoryView
 	return resp, cli.List("v1/vips", params, &resp)
 }
+
+func (cli *ZSClient) GetVip(uuid string) (*view.VipInventoryView, error) {
+	var resp view.VipInventoryView
+	if err := cli.Get("v1/vips", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageVip Pagination
+func (cli *ZSClient) PageVip(params *param.QueryParam) ([]view.VipInventoryView, int, error) {
+	var vips []view.VipInventoryView
+	total, err := cli.Page("v1/vips", params, &vips)
+	return vips, total, err
+}
 // DeleteVip deletes Vip
 func (cli *ZSClient) DeleteVip(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vips/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/vips", uuid, string(deleteMode))
 }
 // UpdateVip updates Vip
 func (cli *ZSClient) UpdateVip(uuid string, params param.UpdateVipParam) (*view.VipInventoryView, error) {
-	var resp view.UpdateVipEventView
-	if err := cli.Put("v1/vips/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.VipInventoryView{}
+	if err := cli.PutWithRespKey("v1/vips", uuid, "", map[string]interface{}{
+		"updateVip": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // CreateVip creates Vip
 func (cli *ZSClient) CreateVip(params param.CreateVipParam) (*view.VipInventoryView, error) {
-	var resp view.CreateVipEventView
+	resp := view.VipInventoryView{}
 	if err := cli.Post("v1/vips", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

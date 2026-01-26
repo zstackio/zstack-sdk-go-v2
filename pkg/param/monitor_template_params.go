@@ -8,22 +8,20 @@ var _ = time.Now // avoid unused import
 
 // UpdateMonitorTemplateParamDetail UpdateMonitorTemplate detail param
 type UpdateMonitorTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateMonitorTemplateParam UpdateMonitorTemplate request param
 type UpdateMonitorTemplateParam struct {
 	BaseParam
-	Params UpdateMonitorTemplateParamDetail `json:"params"`
+	Params UpdateMonitorTemplateParamDetail `json:"updateMonitorTemplate"`
 }
 // CloneMonitorTemplateParamDetail CloneMonitorTemplate detail param
 type CloneMonitorTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -35,8 +33,8 @@ type CloneMonitorTemplateParam struct {
 // CreateMonitorTemplateParamDetail CreateMonitorTemplate detail param
 type CreateMonitorTemplateParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -47,12 +45,11 @@ type CreateMonitorTemplateParam struct {
 }
 // DeleteMonitorTemplateParamDetail DeleteMonitorTemplate detail param
 type DeleteMonitorTemplateParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteMonitorTemplateParam DeleteMonitorTemplate request param
 type DeleteMonitorTemplateParam struct {
 	BaseParam
-	Params DeleteMonitorTemplateParamDetail `json:"params"`
+	Params DeleteMonitorTemplateParamDetail `json:"deleteMonitorTemplate"`
 }

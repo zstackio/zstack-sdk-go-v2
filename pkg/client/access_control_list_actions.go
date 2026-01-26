@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,26 +12,43 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateAccessControlList creates AccessControlList
 func (cli *ZSClient) CreateAccessControlList(params param.CreateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
-	var resp view.CreateAccessControlListEventView
+	resp := view.AccessControlListInventoryView{}
 	if err := cli.Post("v1/access-control-lists", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateAccessControlList updates AccessControlList
 func (cli *ZSClient) UpdateAccessControlList(uuid string, params param.UpdateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
-	var resp view.UpdateAccessControlListEventView
-	if err := cli.Put("v1/access-control-lists/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.AccessControlListInventoryView{}
+	if err := cli.PutWithRespKey("v1/access-control-lists", uuid, "", map[string]interface{}{
+		"updateAccessControlList": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryAccessControlList queries AccessControlList list
 func (cli *ZSClient) QueryAccessControlList(params *param.QueryParam) ([]view.AccessControlListInventoryView, error) {
 	var resp []view.AccessControlListInventoryView
 	return resp, cli.List("v1/access-control-lists", params, &resp)
 }
+
+func (cli *ZSClient) GetAccessControlList(uuid string) (*view.AccessControlListInventoryView, error) {
+	var resp view.AccessControlListInventoryView
+	if err := cli.Get("v1/access-control-lists", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageAccessControlList Pagination
+func (cli *ZSClient) PageAccessControlList(params *param.QueryParam) ([]view.AccessControlListInventoryView, int, error) {
+	var accessControlLists []view.AccessControlListInventoryView
+	total, err := cli.Page("v1/access-control-lists", params, &accessControlLists)
+	return accessControlLists, total, err
+}
 // DeleteAccessControlList deletes AccessControlList
 func (cli *ZSClient) DeleteAccessControlList(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/access-control-lists/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/access-control-lists", uuid, string(deleteMode))
 }

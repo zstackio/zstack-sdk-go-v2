@@ -10,9 +10,10 @@ var _ = time.Now // avoid unused import
 type AutoScalingRuleTriggerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Type     string `json:"type,omitempty"`
+	Type string `json:"type,omitempty"`
 	RuleUuid string `json:"ruleUuid,omitempty"`
-	State    string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
 }
 
 // QueryAutoScalingRuleTriggerView QueryAutoScalingRuleTrigger
@@ -29,3 +30,4 @@ type DeleteAutoScalingRuleTriggerEventView struct {
 type CreateAutoScalingRuleTriggerEventView struct {
 	Inventory AutoScalingRuleTriggerInventoryView `json:"inventory,omitempty"`
 }
+

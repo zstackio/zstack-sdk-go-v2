@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,16 +12,18 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateSNSEmailPlatform creates SNSEmailPlatform
 func (cli *ZSClient) CreateSNSEmailPlatform(params param.CreateSNSEmailPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
-	var resp view.CreateSNSApplicationPlatformEventView
+	resp := view.SNSApplicationPlatformInventoryView{}
 	if err := cli.Post("v1/sns/application-platforms/email", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // ValidateSNSEmailPlatform operates on SNSEmailPlatform
 func (cli *ZSClient) ValidateSNSEmailPlatform(uuid string, params param.ValidateSNSEmailPlatformParam) (*view.SNSEmailPlatformInventoryView, error) {
 	resp := view.SNSEmailPlatformInventoryView{}
-	if err := cli.Put("v1/sns/application-platforms/email/{uuid}/actions", uuid, params, &resp); err != nil {
+	if err := cli.PutWithRespKey("v1/sns/application-platforms/email", uuid, "", map[string]interface{}{
+		"validateSNSEmailPlatform": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -30,4 +32,19 @@ func (cli *ZSClient) ValidateSNSEmailPlatform(uuid string, params param.Validate
 func (cli *ZSClient) QuerySNSEmailPlatform(params *param.QueryParam) ([]view.SNSEmailPlatformInventoryView, error) {
 	var resp []view.SNSEmailPlatformInventoryView
 	return resp, cli.List("v1/sns/application-platforms/email", params, &resp)
+}
+
+func (cli *ZSClient) GetSNSEmailPlatform(uuid string) (*view.SNSEmailPlatformInventoryView, error) {
+	var resp view.SNSEmailPlatformInventoryView
+	if err := cli.Get("v1/sns/application-platforms/email", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageSNSEmailPlatform Pagination
+func (cli *ZSClient) PageSNSEmailPlatform(params *param.QueryParam) ([]view.SNSEmailPlatformInventoryView, int, error) {
+	var sNSEmailPlatforms []view.SNSEmailPlatformInventoryView
+	total, err := cli.Page("v1/sns/application-platforms/email", params, &sNSEmailPlatforms)
+	return sNSEmailPlatforms, total, err
 }

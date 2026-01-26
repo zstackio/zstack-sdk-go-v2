@@ -10,3 +10,4 @@ var _ = time.Now // avoid unused import
 type ExternalServiceCapabilitiesView struct {
 	ReloadConfig bool `json:"reloadConfig,omitempty"`
 }
+

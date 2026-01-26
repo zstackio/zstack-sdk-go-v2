@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,9 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateSSOClientAttribute updates SSOClientAttribute
 func (cli *ZSClient) UpdateSSOClientAttribute(uuid string, params param.UpdateSSOClientAttributeParam) (*view.SSOClientAttributeInventoryView, error) {
-	var resp view.UpdateSSOClientAttributeEventView
-	if err := cli.Put("v1/sso/client/attributes/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.SSOClientAttributeInventoryView{}
+	if err := cli.PutWithRespKey("v1/sso/client/attributes", uuid, "", map[string]interface{}{
+		"updateSSOClientAttribute": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

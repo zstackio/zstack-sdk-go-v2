@@ -11,9 +11,10 @@ type ReservedIpRangeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
-	StartIp       string `json:"startIp,omitempty"`
-	EndIp         string `json:"endIp,omitempty"`
-	IpVersion     int    `json:"ipVersion,omitempty"`
+	Description string `json:"description,omitempty"`
+	StartIp string `json:"startIp,omitempty"`
+	EndIp string `json:"endIp,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
 }
 
 // DeleteReservedIpRangeEventView DeleteReservedIpRangeEvent
@@ -25,3 +26,4 @@ type DeleteReservedIpRangeEventView struct {
 type AddReservedIpRangeEventView struct {
 	Inventory ReservedIpRangeInventoryView `json:"inventory,omitempty"`
 }
+

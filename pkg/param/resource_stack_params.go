@@ -8,25 +8,24 @@ var _ = time.Now // avoid unused import
 
 // DeleteResourceStackParamDetail DeleteResourceStack detail param
 type DeleteResourceStackParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteResourceStackParam DeleteResourceStack request param
 type DeleteResourceStackParam struct {
 	BaseParam
-	Params DeleteResourceStackParamDetail `json:"params"`
+	Params DeleteResourceStackParamDetail `json:"deleteResourceStack"`
 }
 // CreateResourceStackParamDetail CreateResourceStack detail param
 type CreateResourceStackParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
-	Rollback bool `json:"rollback,omitempty"`
-	TemplateContent string `json:"templateContent,omitempty"`
-	TemplateUuid string `json:"templateUuid,omitempty"`
-	Parameters string `json:"parameters,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Rollback *bool `json:"rollback,omitempty"`
+	TemplateContent *string `json:"templateContent,omitempty"`
+	TemplateUuid *string `json:"templateUuid,omitempty"`
+	Parameters *string `json:"parameters,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -37,16 +36,15 @@ type CreateResourceStackParam struct {
 }
 // UpdateResourceStackParamDetail UpdateResourceStack detail param
 type UpdateResourceStackParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Rollback bool `json:"rollback,omitempty"`
-	TemplateContent string `json:"templateContent,omitempty"`
-	Parameters string `json:"parameters,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Rollback *bool `json:"rollback,omitempty"`
+	TemplateContent *string `json:"templateContent,omitempty"`
+	Parameters *string `json:"parameters,omitempty"`
 }
 
 // UpdateResourceStackParam UpdateResourceStack request param
 type UpdateResourceStackParam struct {
 	BaseParam
-	Params UpdateResourceStackParamDetail `json:"params"`
+	Params UpdateResourceStackParamDetail `json:"updateResourceStack"`
 }

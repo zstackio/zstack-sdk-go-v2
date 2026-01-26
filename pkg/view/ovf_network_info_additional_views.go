@@ -10,3 +10,4 @@ var _ = time.Now // avoid unused import
 type OvfNetworkInfoView struct {
 	Name string `json:"name,omitempty"`
 }
+

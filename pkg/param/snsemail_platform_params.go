@@ -10,12 +10,12 @@ var _ = time.Now // avoid unused import
 type CreateSNSEmailPlatformParamDetail struct {
 	SmtpServer string `json:"smtpServer" validate:"required"`
 	SmtpPort int `json:"smtpPort" validate:"required"`
-	Username string `json:"username,omitempty"`
-	Password string `json:"password,omitempty"`
-	EncryptType string `json:"encryptType,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	EncryptType *string `json:"encryptType,omitempty"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -26,16 +26,15 @@ type CreateSNSEmailPlatformParam struct {
 }
 // ValidateSNSEmailPlatformParamDetail ValidateSNSEmailPlatform detail param
 type ValidateSNSEmailPlatformParamDetail struct {
-	Uuid string `json:"uuid,omitempty"`
-	SmtpServer string `json:"smtpServer,omitempty"`
-	SmtpPort int `json:"smtpPort,omitempty"`
-	Username string `json:"username,omitempty"`
-	Password string `json:"password,omitempty"`
-	EncryptType string `json:"encryptType,omitempty"`
+	SmtpServer *string `json:"smtpServer,omitempty"`
+	SmtpPort *int `json:"smtpPort,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	EncryptType *string `json:"encryptType,omitempty"`
 }
 
 // ValidateSNSEmailPlatformParam ValidateSNSEmailPlatform request param
 type ValidateSNSEmailPlatformParam struct {
 	BaseParam
-	Params ValidateSNSEmailPlatformParamDetail `json:"params"`
+	Params ValidateSNSEmailPlatformParamDetail `json:"validateSNSEmailPlatform"`
 }

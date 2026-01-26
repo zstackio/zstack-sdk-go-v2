@@ -10,13 +10,14 @@ var _ = time.Now // avoid unused import
 type ImagePackageInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VmUuid            string `json:"vmUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	VmUuid string `json:"vmUuid,omitempty"`
 	BackupStorageUuid string `json:"backupStorageUuid,omitempty"`
-	State             string `json:"state,omitempty"`
-	ExportUrl         string `json:"exportUrl,omitempty"`
-	Md5Sum            string `json:"md5Sum,omitempty"`
-	Format            string `json:"format,omitempty"`
-	Size              int64  `json:"size,omitempty"`
+	State string `json:"state,omitempty"`
+	ExportUrl string `json:"exportUrl,omitempty"`
+	Md5Sum string `json:"md5Sum,omitempty"`
+	Format string `json:"format,omitempty"`
+	Size int64 `json:"size,omitempty"`
 }
 
 // UpdateImagePackageEventView UpdateImagePackageEvent
@@ -38,3 +39,4 @@ type QueryImagePackageView struct {
 type DeleteImagePackageEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

@@ -8,6 +8,7 @@ var _ = time.Now // avoid unused import
 
 // DataCenterPropertyView DataCenterProperty
 type DataCenterPropertyView struct {
-	RegionId   string `json:"regionId,omitempty"`
+	RegionId string `json:"regionId,omitempty"`
 	RegionName string `json:"regionName,omitempty"`
 }
+

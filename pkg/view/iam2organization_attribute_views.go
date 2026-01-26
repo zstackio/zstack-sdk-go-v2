@@ -11,8 +11,8 @@ type IAM2OrganizationAttributeInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	OrganizationUuid string `json:"organizationUuid,omitempty"`
-	Value            string `json:"value,omitempty"`
-	Type             string `json:"type,omitempty"`
+	Value string `json:"value,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // UpdateIAM2OrganizationAttributeEventView UpdateIAM2OrganizationAttributeEvent
@@ -24,3 +24,4 @@ type UpdateIAM2OrganizationAttributeEventView struct {
 type QueryIAM2OrganizationAttributeView struct {
 	Inventories []IAM2OrganizationAttributeInventoryView `json:"inventories,omitempty"`
 }
+

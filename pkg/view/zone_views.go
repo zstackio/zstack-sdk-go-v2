@@ -10,9 +10,10 @@ var _ = time.Now // avoid unused import
 type ZoneInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	State     string `json:"state,omitempty"`
-	Type      string `json:"type,omitempty"`
-	IsDefault bool   `json:"isDefault,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
+	IsDefault bool `json:"isDefault,omitempty"`
 }
 
 // QueryZoneView QueryZone
@@ -44,3 +45,4 @@ type ChangeZoneStateEventView struct {
 type UpdateZoneEventView struct {
 	Inventory ZoneInventoryView `json:"inventory,omitempty"`
 }
+

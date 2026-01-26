@@ -8,14 +8,13 @@ var _ = time.Now // avoid unused import
 
 // RouterAreaInventoryView RouterArea
 type RouterAreaInventoryView struct {
-	Uuid           string    `json:"uuid,omitempty"`
-	AreaId         string    `json:"areaId,omitempty"`
-	Type           string    `json:"type,omitempty"`
-	Authentication string    `json:"authentication,omitempty"`
-	Password       string    `json:"password,omitempty"`
-	KeyId          int       `json:"keyId,omitempty"`
-	CreateDate     time.Time `json:"createDate,omitempty"`
-	LastOpDate     time.Time `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	AreaId string `json:"areaId,omitempty"`
+	Type string `json:"type,omitempty"`
+	Authentication string `json:"authentication,omitempty"`
+	Password string `json:"password,omitempty"`
+	KeyId int `json:"keyId,omitempty"`
 }
 
 // UpdateVRouterOspfAreaEventView UpdateVRouterOspfAreaEvent
@@ -32,3 +31,4 @@ type CreateVRouterOspfAreaEventView struct {
 type QueryVRouterOspfAreaView struct {
 	Inventories []RouterAreaInventoryView `json:"inventories,omitempty"`
 }
+

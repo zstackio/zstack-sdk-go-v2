@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,11 +15,28 @@ func (cli *ZSClient) QueryGuestToolsState(params *param.QueryParam) ([]view.Gues
 	var resp []view.GuestToolsStateInventoryView
 	return resp, cli.List("v1/guesttools", params, &resp)
 }
-// UpdateGuestToolsState updates GuestToolsState
-func (cli *ZSClient) UpdateGuestToolsState(uuid string, params param.UpdateGuestToolsStateParam) (*view.GuestToolsStateInventoryView, error) {
-	var resp view.UpdateGuestToolsStateView
-	if err := cli.Put("v1/vm-instances/{vmInstanceUuid}/guesttools-state", uuid, params, &resp); err != nil {
+
+func (cli *ZSClient) GetGuestToolsState(uuid string) (*view.GuestToolsStateInventoryView, error) {
+	var resp view.GuestToolsStateInventoryView
+	if err := cli.Get("v1/guesttools", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
+}
+
+// PageGuestToolsState Pagination
+func (cli *ZSClient) PageGuestToolsState(params *param.QueryParam) ([]view.GuestToolsStateInventoryView, int, error) {
+	var guestToolsStates []view.GuestToolsStateInventoryView
+	total, err := cli.Page("v1/guesttools", params, &guestToolsStates)
+	return guestToolsStates, total, err
+}
+// UpdateGuestToolsState updates GuestToolsState
+func (cli *ZSClient) UpdateGuestToolsState(vmInstanceUuid string, params param.UpdateGuestToolsStateParam) (*view.GuestToolsStateInventoryView, error) {
+	resp := view.GuestToolsStateInventoryView{}
+	if err := cli.PutWithRespKey("v1/vm-instances", vmInstanceUuid, "", map[string]interface{}{
+		"updateGuestToolsState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

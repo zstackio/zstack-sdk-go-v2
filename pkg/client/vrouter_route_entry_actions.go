@@ -3,27 +3,43 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"fmt"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteVRouterRouteEntry deletes VRouterRouteEntry
-func (cli *ZSClient) DeleteVRouterRouteEntry(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vrouter-route-tables/{routeTableUuid}/route-entries/{uuid}", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteVRouterRouteEntry(routeTableUuid string, uuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/vrouter-route-tables", routeTableUuid, fmt.Sprintf("route-entries/%s", uuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 // AddVRouterRouteEntry adds VRouterRouteEntry
 func (cli *ZSClient) AddVRouterRouteEntry(params param.AddVRouterRouteEntryParam) (*view.VRouterRouteEntryInventoryView, error) {
-	var resp view.AddVRouterRouteEntryEventView
+	resp := view.VRouterRouteEntryInventoryView{}
 	if err := cli.Post("v1/vrouter-route-tables/{routeTableUuid}/route-entries", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryVRouterRouteEntry queries VRouterRouteEntry list
 func (cli *ZSClient) QueryVRouterRouteEntry(params *param.QueryParam) ([]view.VRouterRouteEntryInventoryView, error) {
 	var resp []view.VRouterRouteEntryInventoryView
 	return resp, cli.List("v1/vrouter-route-tables/route-entries", params, &resp)
+}
+
+func (cli *ZSClient) GetVRouterRouteEntry(uuid string) (*view.VRouterRouteEntryInventoryView, error) {
+	var resp view.VRouterRouteEntryInventoryView
+	if err := cli.Get("v1/vrouter-route-tables/route-entries", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageVRouterRouteEntry Pagination
+func (cli *ZSClient) PageVRouterRouteEntry(params *param.QueryParam) ([]view.VRouterRouteEntryInventoryView, int, error) {
+	var vRouterRouteEntries []view.VRouterRouteEntryInventoryView
+	total, err := cli.Page("v1/vrouter-route-tables/route-entries", params, &vRouterRouteEntries)
+	return vRouterRouteEntries, total, err
 }

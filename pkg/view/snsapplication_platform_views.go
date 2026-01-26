@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type SNSApplicationPlatformInventoryView struct {
 	BaseInfoView
 	BaseTimeView
+	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
-	Type  string `json:"type,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // DeleteSNSApplicationPlatformEventView DeleteSNSApplicationPlatformEvent
@@ -28,3 +29,4 @@ type ChangeSNSApplicationPlatformStateEventView struct {
 type QuerySNSApplicationPlatformView struct {
 	Inventories []SNSApplicationPlatformInventoryView `json:"inventories,omitempty"`
 }
+

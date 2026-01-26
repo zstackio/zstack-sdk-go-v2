@@ -11,8 +11,8 @@ type VpcFirewallIpSetTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	SourceValue string `json:"sourceValue,omitempty"`
-	DestValue   string `json:"destValue,omitempty"`
-	Type        string `json:"type,omitempty"`
+	DestValue string `json:"destValue,omitempty"`
+	Type string `json:"type,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
 }
 
@@ -30,3 +30,4 @@ type QueryFirewallIpSetTemplateView struct {
 type UpdateFirewallIpSetTemplateEventView struct {
 	Inventory VpcFirewallIpSetTemplateInventoryView `json:"inventory,omitempty"`
 }
+

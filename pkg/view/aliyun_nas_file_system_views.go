@@ -11,10 +11,11 @@ type AliyunNasFileSystemInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
-	StorageType    string `json:"storageType,omitempty"`
-	Protocol       string `json:"protocol,omitempty"`
-	Type           string `json:"type,omitempty"`
-	FileSystemId   string `json:"fileSystemId,omitempty"`
+	StorageType string `json:"storageType,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	Type string `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	FileSystemId string `json:"fileSystemId,omitempty"`
 }
 
 // AddAliyunNasFileSystemEventView AddAliyunNasFileSystemEvent
@@ -26,3 +27,4 @@ type AddAliyunNasFileSystemEventView struct {
 type CreateNasFileSystemEventView struct {
 	Inventory NasFileSystemInventoryView `json:"inventory,omitempty"`
 }
+

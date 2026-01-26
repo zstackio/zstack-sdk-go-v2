@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,19 +15,36 @@ func (cli *ZSClient) QuerySNSSnmpPlatform(params *param.QueryParam) ([]view.SNSE
 	var resp []view.SNSEmailPlatformInventoryView
 	return resp, cli.List("v1/sns/application-platforms/snmp", params, &resp)
 }
-// UpdateSNSSnmpPlatform updates SNSSnmpPlatform
-func (cli *ZSClient) UpdateSNSSnmpPlatform(uuid string, params param.UpdateSNSSnmpPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
-	var resp view.UpdateSNSApplicationPlatformEventView
-	if err := cli.Put("v1/sns/application-platforms/snmp/{uuid}", uuid, params, &resp); err != nil {
+
+func (cli *ZSClient) GetSNSSnmpPlatform(uuid string) (*view.SNSEmailPlatformInventoryView, error) {
+	var resp view.SNSEmailPlatformInventoryView
+	if err := cli.Get("v1/sns/application-platforms/snmp", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
+}
+
+// PageSNSSnmpPlatform Pagination
+func (cli *ZSClient) PageSNSSnmpPlatform(params *param.QueryParam) ([]view.SNSEmailPlatformInventoryView, int, error) {
+	var sNSSnmpPlatforms []view.SNSEmailPlatformInventoryView
+	total, err := cli.Page("v1/sns/application-platforms/snmp", params, &sNSSnmpPlatforms)
+	return sNSSnmpPlatforms, total, err
+}
+// UpdateSNSSnmpPlatform updates SNSSnmpPlatform
+func (cli *ZSClient) UpdateSNSSnmpPlatform(uuid string, params param.UpdateSNSSnmpPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
+	resp := view.SNSApplicationPlatformInventoryView{}
+	if err := cli.PutWithRespKey("v1/sns/application-platforms/snmp", uuid, "", map[string]interface{}{
+		"updateSNSSnmpPlatform": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // CreateSNSSnmpPlatform creates SNSSnmpPlatform
 func (cli *ZSClient) CreateSNSSnmpPlatform(params param.CreateSNSSnmpPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
-	var resp view.CreateSNSApplicationPlatformEventView
+	resp := view.SNSApplicationPlatformInventoryView{}
 	if err := cli.Post("v1/sns/application-platforms/snmp", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

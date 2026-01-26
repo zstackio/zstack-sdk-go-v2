@@ -11,6 +11,7 @@ type UserInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	AccountUuid string `json:"accountUuid,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // QueryUserView QueryUser
@@ -32,3 +33,4 @@ type UpdateUserEventView struct {
 type CreateUserEventView struct {
 	Inventory UserInventoryView `json:"inventory,omitempty"`
 }
+

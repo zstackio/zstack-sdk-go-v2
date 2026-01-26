@@ -10,16 +10,15 @@ var _ = time.Now // avoid unused import
 type UpdateSNSUniversalSmsEndpointParamDetail struct {
 	SmsAccessKeyId string `json:"smsAccessKeyId" validate:"required"`
 	SmsAccessKeySecret string `json:"smsAccessKeySecret" validate:"required"`
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	PlatformUuid string `json:"platformUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	PlatformUuid *string `json:"platformUuid,omitempty"`
 }
 
 // UpdateSNSUniversalSmsEndpointParam UpdateSNSUniversalSmsEndpoint request param
 type UpdateSNSUniversalSmsEndpointParam struct {
 	BaseParam
-	Params UpdateSNSUniversalSmsEndpointParamDetail `json:"params"`
+	Params UpdateSNSUniversalSmsEndpointParamDetail `json:"updateSNSUniversalSmsEndpoint"`
 }
 // CreateSNSUniversalSmsEndpointParamDetail CreateSNSUniversalSmsEndpoint detail param
 type CreateSNSUniversalSmsEndpointParamDetail struct {
@@ -28,9 +27,9 @@ type CreateSNSUniversalSmsEndpointParamDetail struct {
 	Supplier string `json:"supplier" validate:"required"`
 	AdditionParam map[string]string `json:"additionParam,omitempty"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	PlatformUuid string `json:"platformUuid,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	PlatformUuid *string `json:"platformUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -42,12 +41,11 @@ type CreateSNSUniversalSmsEndpointParam struct {
 // ValidateSNSUniversalSmsEndpointParamDetail ValidateSNSUniversalSmsEndpoint detail param
 type ValidateSNSUniversalSmsEndpointParamDetail struct {
 	TestMsg string `json:"testMsg" validate:"required"`
-	Uuid string `json:"uuid" validate:"required"`
 	PhoneNumbers []string `json:"phoneNumbers" validate:"required"`
 }
 
 // ValidateSNSUniversalSmsEndpointParam ValidateSNSUniversalSmsEndpoint request param
 type ValidateSNSUniversalSmsEndpointParam struct {
 	BaseParam
-	Params ValidateSNSUniversalSmsEndpointParamDetail `json:"params"`
+	Params ValidateSNSUniversalSmsEndpointParamDetail `json:"validateSNSUniversalSmsEndpoint"`
 }

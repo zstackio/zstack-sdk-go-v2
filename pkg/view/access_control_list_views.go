@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type AccessControlListInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	IpVersion int                                   `json:"ipVersion,omitempty"`
-	Entries   []AccessControlListEntryInventoryView `json:"entries,omitempty"`
+	IpVersion int `json:"ipVersion,omitempty"`
+	Description string `json:"description,omitempty"`
+	Entries []AccessControlListEntryInventoryView `json:"entries,omitempty"`
 }
 
 // CreateAccessControlListEventView CreateAccessControlListEvent
@@ -33,3 +34,4 @@ type QueryAccessControlListView struct {
 type DeleteAccessControlListEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

@@ -19,13 +19,13 @@ type GetCreateEcsImageProgressView struct {
 // LogOutView LogOut
 type LogOutView struct {
 	Inventory SessionInventoryView `json:"inventory,omitempty"`
-	Success   bool                 `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVmXmlHookScriptView GetVmXmlHookScript
 type GetVmXmlHookScriptView struct {
 	UserDefinedXmlHookScript string `json:"userDefinedXmlHookScript,omitempty"`
-	Success                  bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // AttachHybridKeyEventView AttachHybridKeyEvent
@@ -58,11 +58,6 @@ type SyncDataCenterFromRemoteEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// SetVmInstanceHygonMdevEventView SetVmInstanceHygonMdevEvent
-type SetVmInstanceHygonMdevEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // SecurityMachineDetectSyncEventView SecurityMachineDetectSyncEvent
 type SecurityMachineDetectSyncEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -85,7 +80,7 @@ type LoginIAM2VirtualIDWithLdapView struct {
 
 // SNSEmailTestConnectionEventView SNSEmailTestConnectionEvent
 type SNSEmailTestConnectionEventView struct {
-	Connected   bool                   `json:"connected,omitempty"`
+	Connected bool `json:"connected,omitempty"`
 	WebhookResp map[string]interface{} `json:"webhookResp,omitempty"`
 }
 
@@ -93,13 +88,13 @@ type SNSEmailTestConnectionEventView struct {
 type RegisterLicenseServerEventView struct {
 	LicenseClient LicenseAuthorizedNodeInventoryView `json:"licenseClient,omitempty"`
 	LicenseServer LicenseAuthorizedNodeInventoryView `json:"licenseServer,omitempty"`
-	Success       bool                               `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteModelEvaluationTasksEventView DeleteModelEvaluationTasksEvent
 type DeleteModelEvaluationTasksEventView struct {
 	Results []BatchOperationResultView `json:"results,omitempty"`
-	Success bool                       `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetTwoFactorAuthenticationStateView GetTwoFactorAuthenticationState
@@ -109,8 +104,8 @@ type GetTwoFactorAuthenticationStateView struct {
 
 // BootstrapMiniHostEventView BootstrapMiniHostEvent
 type BootstrapMiniHostEventView struct {
-	Stage   string `json:"stage,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Stage string `json:"stage,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DetachSshKeyPairFromVmInstanceEventView DetachSshKeyPairFromVmInstanceEvent
@@ -131,7 +126,7 @@ type DeleteHybridEipRemoteEventView struct {
 // DeleteModelServiceInstanceGroupsEventView DeleteModelServiceInstanceGroupsEvent
 type DeleteModelServiceInstanceGroupsEventView struct {
 	Results []BatchOperationResultView `json:"results,omitempty"`
-	Success bool                       `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVmBootOrderView GetVmBootOrder
@@ -142,7 +137,7 @@ type GetVmBootOrderView struct {
 // GetDatabaseBackupFromImageStoreView GetDatabaseBackupFromImageStore
 type GetDatabaseBackupFromImageStoreView struct {
 	Backups []DatabaseBackupStructView `json:"backups,omitempty"`
-	Success bool                       `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // CleanUpBaremetalChassisBondingEventView CleanUpBaremetalChassisBondingEvent
@@ -163,8 +158,8 @@ type AddIAM2VirtualIDGroupToProjectsEventView struct {
 // RefreshCaptchaView RefreshCaptcha
 type RefreshCaptchaView struct {
 	CaptchaUuid string `json:"captchaUuid,omitempty"`
-	Captcha     string `json:"captcha,omitempty"`
-	Success     bool   `json:"success,omitempty"`
+	Captcha string `json:"captcha,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteEcsVSwitchInLocalEventView DeleteEcsVSwitchInLocalEvent
@@ -185,13 +180,13 @@ type AddIAM2VirtualIDsToOrganizationEventView struct {
 // ExportNbdVolumesEventView ExportNbdVolumesEvent
 type ExportNbdVolumesEventView struct {
 	VolumeInfos []VolumeCbtBackupInfoView `json:"volumeInfos,omitempty"`
-	Success     bool                      `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SelfTestLocalRaidEventView SelfTestLocalRaidEvent
 type SelfTestLocalRaidEventView struct {
-	Result  string `json:"result,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Result string `json:"result,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // PowerOffBareMetal2ChassisEventView PowerOffBareMetal2ChassisEvent
@@ -236,17 +231,17 @@ type RevertVmFromCdpBackupEventView struct {
 
 // SNSFeiShuTestConnectionEventView SNSFeiShuTestConnectionEvent
 type SNSFeiShuTestConnectionEventView struct {
-	Connected   bool                   `json:"connected,omitempty"`
+	Connected bool `json:"connected,omitempty"`
 	WebhookResp map[string]interface{} `json:"webhookResp,omitempty"`
 }
 
 // GetSchedulerExecutionReportView GetSchedulerExecutionReport
 type GetSchedulerExecutionReportView struct {
-	SuccessRecords        []int `json:"successRecords,omitempty"`
-	FailureRecords        []int `json:"failureRecords,omitempty"`
+	SuccessRecords []int `json:"successRecords,omitempty"`
+	FailureRecords []int `json:"failureRecords,omitempty"`
 	PartialSuccessRecords []int `json:"partialSuccessRecords,omitempty"`
-	WaitingRecords        []int `json:"waitingRecords,omitempty"`
-	Success               bool  `json:"success,omitempty"`
+	WaitingRecords []int `json:"waitingRecords,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetSupportedIdentityModelsView GetSupportedIdentityModels
@@ -267,7 +262,7 @@ type GetPrimaryStorageTypesView struct {
 // BatchDeleteVolumeSnapshotEventView BatchDeleteVolumeSnapshotEvent
 type BatchDeleteVolumeSnapshotEventView struct {
 	Results []BatchDeleteVolumeSnapshotStructView `json:"results,omitempty"`
-	Success bool                                  `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ReloadLicenseView ReloadLicense
@@ -317,9 +312,9 @@ type SetImageStoreBackupStorageQuotaEventView struct {
 
 // GetIAM2OrganizationVirtualIDNumberView GetIAM2OrganizationVirtualIDNumber
 type GetIAM2OrganizationVirtualIDNumberView struct {
-	VirtualTotalNumber  int  `json:"virtualTotalNumber,omitempty"`
-	VirtualDirectNumber int  `json:"virtualDirectNumber,omitempty"`
-	Success             bool `json:"success,omitempty"`
+	VirtualTotalNumber int `json:"virtualTotalNumber,omitempty"`
+	VirtualDirectNumber int `json:"virtualDirectNumber,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteEcsInstanceLocalEventView DeleteEcsInstanceLocalEvent
@@ -350,8 +345,8 @@ type GenerateAccountBillingEventView struct {
 // GetInvocationRecordsView GetInvocationRecords
 type GetInvocationRecordsView struct {
 	Inventories []InvocationRecordView `json:"inventories,omitempty"`
-	Total       int64                  `json:"total,omitempty"`
-	Success     bool                   `json:"success,omitempty"`
+	Total int64 `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVRouterFlowCounterView GetVRouterFlowCounter
@@ -362,13 +357,13 @@ type GetVRouterFlowCounterView struct {
 // GetBareMetal2SupportedBootModeView GetBareMetal2SupportedBootMode
 type GetBareMetal2SupportedBootModeView struct {
 	SupportedBootMode string `json:"supportedBootMode,omitempty"`
-	Success           bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetChainTaskView GetChainTask
 type GetChainTaskView struct {
 	Results map[string]ChainInfoView `json:"results,omitempty"`
-	Success bool                     `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ChangeHostPasswordEventView ChangeHostPasswordEvent
@@ -379,7 +374,7 @@ type ChangeHostPasswordEventView struct {
 // IsLicenseServerView IsLicenseServer
 type IsLicenseServerView struct {
 	LicenseServer bool `json:"licenseServer,omitempty"`
-	Success       bool `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // PrometheusQueryLabelValuesView PrometheusQueryLabelValues
@@ -389,9 +384,9 @@ type PrometheusQueryLabelValuesView struct {
 
 // ValidateClusterSupportDRSView ValidateClusterSupportDRS
 type ValidateClusterSupportDRSView struct {
-	Supported bool          `json:"supported,omitempty"`
-	Reason    ErrorCodeView `json:"reason,omitempty"`
-	Success   bool          `json:"success,omitempty"`
+	Supported bool `json:"supported,omitempty"`
+	Reason ErrorCodeView `json:"reason,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ShrinkVolumeSnapshotEventView ShrinkVolumeSnapshotEvent
@@ -456,10 +451,10 @@ type GetVmSshKeyView struct {
 
 // GetVmGuestToolsInfoView GetVmGuestToolsInfo
 type GetVmGuestToolsInfoView struct {
-	Version  string            `json:"version,omitempty"`
-	Status   string            `json:"status,omitempty"`
+	Version string `json:"version,omitempty"`
+	Status string `json:"status,omitempty"`
 	Features map[string]string `json:"features,omitempty"`
-	Success  bool              `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ValidateDiskOfferingUserConfigEventView ValidateDiskOfferingUserConfigEvent
@@ -485,7 +480,7 @@ type RunSchedulerTriggerEventView struct {
 // PowerOnHostEventView PowerOnHostEvent
 type PowerOnHostEventView struct {
 	Inventory HostInventoryView `json:"inventory,omitempty"`
-	Success   bool              `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteAliyunSnapshotFromRemoteEventView DeleteAliyunSnapshotFromRemoteEvent
@@ -511,8 +506,8 @@ type UpgradeBackupStorageCdpTasksEventView struct {
 // SetVolumeIoThreadPinEventView SetVolumeIoThreadPinEvent
 type SetVolumeIoThreadPinEventView struct {
 	VolumeUuid string `json:"volumeUuid,omitempty"`
-	IoThreadId int    `json:"ioThreadId,omitempty"`
-	Pin        string `json:"pin,omitempty"`
+	IoThreadId int `json:"ioThreadId,omitempty"`
+	Pin string `json:"pin,omitempty"`
 }
 
 // UpdatePriorityConfigEventView UpdatePriorityConfigEvent
@@ -532,12 +527,12 @@ type CheckFirewallRuleConfigFileView struct {
 
 // GetVmConsoleAddressView GetVmConsoleAddress
 type GetVmConsoleAddressView struct {
-	HostIp      string          `json:"hostIp,omitempty"`
-	Port        int             `json:"port,omitempty"`
-	Path        string          `json:"path,omitempty"`
-	Protocol    string          `json:"protocol,omitempty"`
+	HostIp string `json:"hostIp,omitempty"`
+	Port int `json:"port,omitempty"`
+	Path string `json:"path,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
 	VdiPortInfo VdiPortInfoView `json:"vdiPortInfo,omitempty"`
-	Success     bool            `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetLoadBalancerListenerACLEntriesView GetLoadBalancerListenerACLEntries
@@ -588,7 +583,7 @@ type ProvisionSlbGroupInstanceEventView struct {
 // SetVmUserDefinedXmlHookScriptEventView SetVmUserDefinedXmlHookScriptEvent
 type SetVmUserDefinedXmlHookScriptEventView struct {
 	VmUserDefinedXmlHookScript string `json:"vmUserDefinedXmlHookScript,omitempty"`
-	Success                    bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // LoginIAM2PlatformView LoginIAM2Platform
@@ -604,14 +599,14 @@ type GetHostAllocatorStrategiesView struct {
 // GetInterfaceServiceTypeStatisticView GetInterfaceServiceTypeStatistic
 type GetInterfaceServiceTypeStatisticView struct {
 	ServiceTypeStatistics []ServiceTypeStatisticDataView `json:"serviceTypeStatistics,omitempty"`
-	Total                 int64                          `json:"total,omitempty"`
-	Success               bool                           `json:"success,omitempty"`
+	Total int64 `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteModelsEventView DeleteModelsEvent
 type DeleteModelsEventView struct {
 	Results []BatchOperationResultView `json:"results,omitempty"`
-	Success bool                       `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ListVmsFromSchedulingStateView ListVmsFromSchedulingState
@@ -621,8 +616,8 @@ type ListVmsFromSchedulingStateView struct {
 
 // AllocateHostResourceEventView AllocateHostResourceEvent
 type AllocateHostResourceEventView struct {
-	Name    string        `json:"name,omitempty"`
-	Uuid    string        `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 	VCPUPin []interface{} `json:"vCPUPin,omitempty"`
 }
 
@@ -638,16 +633,16 @@ type CheckElaborationContentView struct {
 
 // GetPrimaryStorageLicenseInfoView GetPrimaryStorageLicenseInfo
 type GetPrimaryStorageLicenseInfoView struct {
-	Uuid       string `json:"uuid,omitempty"`
-	Name       string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
 	ExpireTime string `json:"expireTime,omitempty"`
-	Success    bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetEncryptedFieldView GetEncryptedField
 type GetEncryptedFieldView struct {
 	EncryptedFields []string `json:"encryptedFields,omitempty"`
-	Success         bool     `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RemoveIAM2ProjectLoginExpiredEventView RemoveIAM2ProjectLoginExpiredEvent
@@ -657,7 +652,7 @@ type RemoveIAM2ProjectLoginExpiredEventView struct {
 
 // GetVmStartingCandidateClustersHostsView GetVmStartingCandidateClustersHosts
 type GetVmStartingCandidateClustersHostsView struct {
-	Hosts    []HostInventoryView    `json:"hosts,omitempty"`
+	Hosts []HostInventoryView `json:"hosts,omitempty"`
 	Clusters []ClusterInventoryView `json:"clusters,omitempty"`
 }
 
@@ -670,13 +665,13 @@ type DiscoverExternalPrimaryStorageEventView struct {
 type GetVolumeIoThreadPinView struct {
 	VolumeUuid string `json:"volumeUuid,omitempty"`
 	IoThreadId string `json:"ioThreadId,omitempty"`
-	Pin        string `json:"pin,omitempty"`
+	Pin string `json:"pin,omitempty"`
 }
 
 // PowerOffHostEventView PowerOffHostEvent
 type PowerOffHostEventView struct {
 	Results []PowerOffHardwareResultView `json:"results,omitempty"`
-	Success bool                         `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RemoveIAM2VirtualIDGroupFromProjectsEventView RemoveIAM2VirtualIDGroupFromProjectsEvent
@@ -687,8 +682,8 @@ type RemoveIAM2VirtualIDGroupFromProjectsEventView struct {
 // GetIAM2ProjectContainerImageTagsView GetIAM2ProjectContainerImageTags
 type GetIAM2ProjectContainerImageTagsView struct {
 	Inventories []ContainerImageTagInventoryView `json:"inventories,omitempty"`
-	Total       int                              `json:"total,omitempty"`
-	Success     bool                             `json:"success,omitempty"`
+	Total int `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteAliyunDiskFromRemoteEventView DeleteAliyunDiskFromRemoteEvent
@@ -699,19 +694,19 @@ type DeleteAliyunDiskFromRemoteEventView struct {
 // GetVersionView GetVersion
 type GetVersionView struct {
 	Version string `json:"version,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetCpuMemoryCapacityView GetCpuMemoryCapacity
 type GetCpuMemoryCapacityView struct {
-	TotalCpu        int64                       `json:"totalCpu,omitempty"`
-	AvailableCpu    int64                       `json:"availableCpu,omitempty"`
-	TotalMemory     int64                       `json:"totalMemory,omitempty"`
-	AvailableMemory int64                       `json:"availableMemory,omitempty"`
-	ManagedCpuNum   int64                       `json:"managedCpuNum,omitempty"`
-	CapacityData    []CpuMemoryCapacityDataView `json:"capacityData,omitempty"`
-	ResourceType    string                      `json:"resourceType,omitempty"`
-	Success         bool                        `json:"success,omitempty"`
+	TotalCpu int64 `json:"totalCpu,omitempty"`
+	AvailableCpu int64 `json:"availableCpu,omitempty"`
+	TotalMemory int64 `json:"totalMemory,omitempty"`
+	AvailableMemory int64 `json:"availableMemory,omitempty"`
+	ManagedCpuNum int64 `json:"managedCpuNum,omitempty"`
+	CapacityData []CpuMemoryCapacityDataView `json:"capacityData,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // AddIntegrityResourceEventView AddIntegrityResourceEvent
@@ -722,7 +717,7 @@ type AddIntegrityResourceEventView struct {
 // CheckVipPortAvailabilityView CheckVipPortAvailability
 type CheckVipPortAvailabilityView struct {
 	Available bool `json:"available,omitempty"`
-	Success   bool `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // CheckScsiLunClusterStatusView CheckScsiLunClusterStatus
@@ -733,7 +728,7 @@ type CheckScsiLunClusterStatusView struct {
 // CheckBatchDataIntegrityView CheckBatchDataIntegrity
 type CheckBatchDataIntegrityView struct {
 	ResourceMap map[string]bool `json:"resourceMap,omitempty"`
-	Success     bool            `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // UploadFileToVmEventView UploadFileToVmEvent
@@ -743,9 +738,9 @@ type UploadFileToVmEventView struct {
 
 // ChangeL3NetworkDhcpIpAddressEventView ChangeL3NetworkDhcpIpAddressEvent
 type ChangeL3NetworkDhcpIpAddressEventView struct {
-	DhcpServerIp   string `json:"dhcpServerIp,omitempty"`
+	DhcpServerIp string `json:"dhcpServerIp,omitempty"`
 	Dhcpv6ServerIp string `json:"dhcpv6ServerIp,omitempty"`
-	Success        bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // CheckVolumeSnapshotGroupAvailabilityView CheckVolumeSnapshotGroupAvailability
@@ -760,8 +755,8 @@ type SsoClientPushDataEventView struct {
 
 // BackupDatabaseToPublicCloudEventView BackupDatabaseToPublicCloudEvent
 type BackupDatabaseToPublicCloudEventView struct {
-	Local    string `json:"local,omitempty"`
-	Remote   string `json:"remote,omitempty"`
+	Local string `json:"local,omitempty"`
+	Remote string `json:"remote,omitempty"`
 	RegionId string `json:"regionId,omitempty"`
 }
 
@@ -783,8 +778,8 @@ type DetachFirewallRuleSetFromL3EventView struct {
 // GetLoginCaptchaView GetLoginCaptcha
 type GetLoginCaptchaView struct {
 	CaptchaUuid string `json:"captchaUuid,omitempty"`
-	Captcha     string `json:"captcha,omitempty"`
-	Success     bool   `json:"success,omitempty"`
+	Captcha string `json:"captcha,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ListVmSchedulingRulesFromExecuteStateView ListVmSchedulingRulesFromExecuteState
@@ -795,7 +790,7 @@ type ListVmSchedulingRulesFromExecuteStateView struct {
 // SetVmUserDefinedXmlEventView SetVmUserDefinedXmlEvent
 type SetVmUserDefinedXmlEventView struct {
 	VmUserDefinedXml string `json:"vmUserDefinedXml,omitempty"`
-	Success          bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SetImageQgaEventView SetImageQgaEvent
@@ -805,11 +800,11 @@ type SetImageQgaEventView struct {
 
 // ListVMsFromKVMHostEventView ListVMsFromKVMHostEvent
 type ListVMsFromKVMHostEventView struct {
-	Inventories    []VmInstanceInventoryView `json:"inventories,omitempty"`
-	LibvirtVersion string                    `json:"libvirtVersion,omitempty"`
-	QemuVersion    string                    `json:"qemuVersion,omitempty"`
-	V2vCaps        map[string]bool           `json:"v2vCaps,omitempty"`
-	Success        bool                      `json:"success,omitempty"`
+	Inventories []VmInstanceInventoryView `json:"inventories,omitempty"`
+	LibvirtVersion string `json:"libvirtVersion,omitempty"`
+	QemuVersion string `json:"qemuVersion,omitempty"`
+	V2vCaps map[string]bool `json:"v2vCaps,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // TakeVmConsoleScreenshotEventView TakeVmConsoleScreenshotEvent
@@ -895,7 +890,7 @@ type GetIAM2ProjectContainerClusterCandidatesView struct {
 // AttachTagToResourcesEventView AttachTagToResourcesEvent
 type AttachTagToResourcesEventView struct {
 	Results []AttachTagResultView `json:"results,omitempty"`
-	Success bool                  `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetAuditDataView GetAuditData
@@ -925,15 +920,15 @@ type DeleteFirewallIpSetTemplateEventView struct {
 
 // SNSDingTalkTestConnectionEventView SNSDingTalkTestConnectionEvent
 type SNSDingTalkTestConnectionEventView struct {
-	Connected   bool                   `json:"connected,omitempty"`
+	Connected bool `json:"connected,omitempty"`
 	WebhookResp map[string]interface{} `json:"webhookResp,omitempty"`
 }
 
 // ExportImageFromBackupStorageEventView ExportImageFromBackupStorageEvent
 type ExportImageFromBackupStorageEventView struct {
-	ImageUrl     string `json:"imageUrl,omitempty"`
+	ImageUrl string `json:"imageUrl,omitempty"`
 	ExportMd5Sum string `json:"exportMd5Sum,omitempty"`
-	Success      bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetModelCenterServicesView GetModelCenterServices
@@ -1023,9 +1018,9 @@ type GetIAM2SystemAttributesView struct {
 
 // GetBackupStorageCapacityView GetBackupStorageCapacity
 type GetBackupStorageCapacityView struct {
-	TotalCapacity     int64 `json:"totalCapacity,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
-	Success           bool  `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GenerateSeMdevDevicesEventView GenerateSeMdevDevicesEvent
@@ -1045,7 +1040,7 @@ type GetIdentityZoneFromRemoteView struct {
 
 // GetEcsInstanceVncUrlView GetEcsInstanceVncUrl
 type GetEcsInstanceVncUrlView struct {
-	EcsId  string `json:"ecsId,omitempty"`
+	EcsId string `json:"ecsId,omitempty"`
 	VncUrl string `json:"vncUrl,omitempty"`
 }
 
@@ -1061,8 +1056,8 @@ type DeleteOssBucketFileRemoteEventView struct {
 
 // GetMaaSUsageView GetMaaSUsage
 type GetMaaSUsageView struct {
-	Usages  []MaaSUsageView `json:"usages,omitempty"`
-	Success bool            `json:"success,omitempty"`
+	Usages []MaaSUsageView `json:"usages,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetFreeIpView GetFreeIp
@@ -1077,9 +1072,9 @@ type DeleteOssBucketRemoteEventView struct {
 
 // LogInByLdapView LogInByLdap
 type LogInByLdapView struct {
-	Inventory        SessionInventoryView `json:"inventory,omitempty"`
+	Inventory SessionInventoryView `json:"inventory,omitempty"`
 	AccountInventory AccountInventoryView `json:"accountInventory,omitempty"`
-	Success          bool                 `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // CreateL2PortGroupEventView CreateL2PortGroupEvent
@@ -1124,15 +1119,15 @@ type GetVipUsedPortsView struct {
 
 // CleanUpStorageTrashOnPrimaryStorageEventView CleanUpStorageTrashOnPrimaryStorageEvent
 type CleanUpStorageTrashOnPrimaryStorageEventView struct {
-	Result  map[string]interface{} `json:"result,omitempty"`
-	Total   int                    `json:"total,omitempty"`
-	Success bool                   `json:"success,omitempty"`
+	Result map[string]interface{} `json:"result,omitempty"`
+	Total int `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetManagementNodeDirCapacityView GetManagementNodeDirCapacity
 type GetManagementNodeDirCapacityView struct {
-	Result  map[string]interface{} `json:"result,omitempty"`
-	Success bool                   `json:"success,omitempty"`
+	Result map[string]interface{} `json:"result,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // UngroupVolumeSnapshotGroupEventView UngroupVolumeSnapshotGroupEvent
@@ -1158,7 +1153,7 @@ type CleanupBillingUsageEventView struct {
 // GetCandidateL2NetworksForAttachingClusterView GetCandidateL2NetworksForAttachingCluster
 type GetCandidateL2NetworksForAttachingClusterView struct {
 	Inventories []L2NetworkDataView `json:"inventories,omitempty"`
-	Success     bool                `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // IsVfNicAvailableInL3NetworkView IsVfNicAvailableInL3Network
@@ -1211,6 +1206,11 @@ type DeleteHostNetworkServiceTypeEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// SubscribeResNotifyEventView SubscribeResNotifyEvent
+type SubscribeResNotifyEventView struct {
+	Inventory ResNotifySubscriptionInventoryView `json:"inventory,omitempty"`
+}
+
 // ReloadElaborationEventView ReloadElaborationEvent
 type ReloadElaborationEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -1238,13 +1238,13 @@ type AttachPoliciesToUserEventView struct {
 
 // GetVpcVpnConfigurationFromRemoteView GetVpcVpnConfigurationFromRemote
 type GetVpcVpnConfigurationFromRemoteView struct {
-	IkeConf   VpcVpnIkeConfigStructView   `json:"ikeConf,omitempty"`
+	IkeConf VpcVpnIkeConfigStructView `json:"ikeConf,omitempty"`
 	IpSecConf VpcVpnIpSecConfigStructView `json:"ipSecConf,omitempty"`
 }
 
 // TokenIntrospectionView TokenIntrospection
 type TokenIntrospectionView struct {
-	Active  bool `json:"active,omitempty"`
+	Active bool `json:"active,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 
@@ -1255,10 +1255,10 @@ type AddRolesToIAM2VirtualIDEventView struct {
 
 // CreateFaultToleranceVmInstanceEventView CreateFaultToleranceVmInstanceEvent
 type CreateFaultToleranceVmInstanceEventView struct {
-	PrimaryVmInventory             VmInstanceInventoryView `json:"primaryVmInventory,omitempty"`
-	SecondaryVmInventory           VmInstanceInventoryView `json:"secondaryVmInventory,omitempty"`
+	PrimaryVmInventory VmInstanceInventoryView `json:"primaryVmInventory,omitempty"`
+	SecondaryVmInventory VmInstanceInventoryView `json:"secondaryVmInventory,omitempty"`
 	FaultToleranceVmGroupInventory VmInstanceInventoryView `json:"faultToleranceVmGroupInventory,omitempty"`
-	Success                        bool                    `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteResourceStackVmPortMonitorEventView DeleteResourceStackVmPortMonitorEvent
@@ -1298,16 +1298,16 @@ type DeleteEcsImageRemoteEventView struct {
 
 // GetHostNetworkFactsView GetHostNetworkFacts
 type GetHostNetworkFactsView struct {
-	Bondings []HostNetworkBondingInventoryView   `json:"bondings,omitempty"`
-	Nics     []HostNetworkInterfaceInventoryView `json:"nics,omitempty"`
-	Success  bool                                `json:"success,omitempty"`
+	Bondings []HostNetworkBondingInventoryView `json:"bondings,omitempty"`
+	Nics []HostNetworkInterfaceInventoryView `json:"nics,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // CleanUpTrashOnBackupStorageEventView CleanUpTrashOnBackupStorageEvent
 type CleanUpTrashOnBackupStorageEventView struct {
-	Result  CleanTrashResultView     `json:"result,omitempty"`
+	Result CleanTrashResultView `json:"result,omitempty"`
 	Results []TrashCleanupResultView `json:"results,omitempty"`
-	Success bool                     `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // UnlockIdentityView UnlockIdentity
@@ -1332,9 +1332,9 @@ type DeleteAliyunDiskFromLocalEventView struct {
 
 // GetIAM2VirtualIDAPIPermissionView GetIAM2VirtualIDPermission
 type GetIAM2VirtualIDAPIPermissionView struct {
-	Permissions  map[string]PermissionView `json:"permissions,omitempty"`
-	NoPermission bool                      `json:"noPermission,omitempty"`
-	Success      bool                      `json:"success,omitempty"`
+	Permissions map[string]PermissionView `json:"permissions,omitempty"`
+	NoPermission bool `json:"noPermission,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetOrganizationQuotaUsageView GetOrganizationQuotaUsage
@@ -1349,33 +1349,33 @@ type GetResourceConfigsView struct {
 
 // CheckStackTemplateParametersView CheckStackTemplateParameters
 type CheckStackTemplateParametersView struct {
-	Parameters    []StackParametersView `json:"parameters,omitempty"`
+	Parameters []StackParametersView `json:"parameters,omitempty"`
 	Preparameters []StackParametersView `json:"preparameters,omitempty"`
 }
 
 // GetFactoryModeStateView GetFactoryModeState
 type GetFactoryModeStateView struct {
 	FactoryModeState bool `json:"factoryModeState,omitempty"`
-	Success          bool `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetActiveAlarmStatusView GetActiveAlarmStatus
 type GetActiveAlarmStatusView struct {
 	Statuses []ActiveAlarmStatusView `json:"statuses,omitempty"`
-	Success  bool                    `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeployModelEvalServiceEventView DeployModelEvalServiceEvent
 type DeployModelEvalServiceEventView struct {
 	Inventory ModelEvalServiceInstanceGroupInventoryView `json:"inventory,omitempty"`
-	Tasks     []ModelEvaluationTaskInventoryView         `json:"tasks,omitempty"`
-	Success   bool                                       `json:"success,omitempty"`
+	Tasks []ModelEvaluationTaskInventoryView `json:"tasks,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetHostResourceAllocationEventView GetHostResourceAllocationEvent
 type GetHostResourceAllocationEventView struct {
-	Name    string        `json:"name,omitempty"`
-	Uuid    string        `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 	VCPUPin []interface{} `json:"vCPUPin,omitempty"`
 }
 
@@ -1387,7 +1387,7 @@ type GetLicenseAddOnsView struct {
 // GetVpcIPsecLogView GetVpcIPsecLog
 type GetVpcIPsecLogView struct {
 	IpsecLog string `json:"ipsecLog,omitempty"`
-	Success  bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // AddResourcesToDirectoryEventView AddResourcesToDirectoryEvent
@@ -1417,8 +1417,8 @@ type GetResourceFromPublishAppView struct {
 
 // GetHostIommuStateView GetHostIommuState
 type GetHostIommuStateView struct {
-	State   string `json:"state,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	State string `json:"state,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteVirtualBorderRouterLocalEventView DeleteVirtualBorderRouterLocalEvent
@@ -1434,7 +1434,7 @@ type GetMetricDataView struct {
 // EnableCbtTaskEventView EnableCbtTaskEvent
 type EnableCbtTaskEventView struct {
 	VolumeCbtBackupInfos []VolumeCbtBackupInfoView `json:"volumeCbtBackupInfos,omitempty"`
-	Success              bool                      `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetAliyunNasAccessGroupRemoteView GetAliyunNasAccessGroupRemote
@@ -1462,11 +1462,6 @@ type PullSdnControllerTenantEventView struct {
 	Inventories []H3cSdnControllerTenantInventoryView `json:"inventories,omitempty"`
 }
 
-// GenerateHygonMdevDevicesEventView GenerateHygonMdevDevicesEvent
-type GenerateHygonMdevDevicesEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // SetVmUsbRedirectEventView SetVmUsbRedirectEvent
 type SetVmUsbRedirectEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -1490,7 +1485,7 @@ type AttachPolicyRouteRuleSetToL3EventView struct {
 // GetZWatchAlertHistogramView GetZWatchAlertHistogram
 type GetZWatchAlertHistogramView struct {
 	Histograms []HistogramView `json:"histograms,omitempty"`
-	Success    bool            `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteAliyunRouterInterfaceRemoteEventView DeleteAliyunRouterInterfaceRemoteEvent
@@ -1565,8 +1560,8 @@ type AttachDataVolumeToHostEventView struct {
 
 // SecurityMachineEncryptEventView SecurityMachineEncryptEvent
 type SecurityMachineEncryptEventView struct {
-	Text    string `json:"text,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Text string `json:"text,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVpcVRouterNetworkServiceStateView GetVpcVRouterNetworkServiceState
@@ -1582,7 +1577,7 @@ type DeleteContainerResourceFromEndpointEventView struct {
 // GetSupportAPIsView GetSupports
 type GetSupportAPIsView struct {
 	SupportApis []string `json:"supportApis,omitempty"`
-	Success     bool     `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteVpcUserVpnGatewayRemoteEventView DeleteVpcUserVpnGatewayRemoteEvent
@@ -1602,10 +1597,10 @@ type SetVpcVRouterNetworkServiceStateEventView struct {
 
 // GetVmXmlView GetVmXml
 type GetVmXmlView struct {
-	Match          bool   `json:"match,omitempty"`
-	RunningXml     string `json:"runningXml,omitempty"`
+	Match bool `json:"match,omitempty"`
+	RunningXml string `json:"runningXml,omitempty"`
 	UserDefinedXml string `json:"userDefinedXml,omitempty"`
-	Success        bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVmInstanceFirstBootDeviceView GetVmInstanceFirstBootDevice
@@ -1625,7 +1620,7 @@ type DeleteVpcVpnConnectionRemoteEventView struct {
 
 // CheckIAM2OrganizationAvailabilityView CheckIAM2OrganizationAvailability
 type CheckIAM2OrganizationAvailabilityView struct {
-	Exists  bool `json:"exists,omitempty"`
+	Exists bool `json:"exists,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 
@@ -1647,27 +1642,27 @@ type GenerateModelMetadataEventView struct {
 // IsReadyToGoView IsReadyToGo
 type IsReadyToGoView struct {
 	ManagementNodeId string `json:"managementNodeId,omitempty"`
-	Success          bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetHostIommuStatusView GetHostIommuStatus
 type GetHostIommuStatusView struct {
-	Status  string `json:"status,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Status string `json:"status,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DescribeVmInstanceRecoveryPointView DescribeVmInstanceRecoveryPoint
 type DescribeVmInstanceRecoveryPointView struct {
-	RealSizes    map[string]int64 `json:"realSizes,omitempty"`
+	RealSizes map[string]int64 `json:"realSizes,omitempty"`
 	VirtualSizes map[string]int64 `json:"virtualSizes,omitempty"`
-	Timestamp    string           `json:"timestamp,omitempty"`
-	Success      bool             `json:"success,omitempty"`
+	Timestamp string `json:"timestamp,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetBareMetal2ChassisPowerStatusView GetBareMetal2ChassisPowerStatus
 type GetBareMetal2ChassisPowerStatusView struct {
-	Status  string `json:"status,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Status string `json:"status,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetTaskProgressView GetTaskProgress
@@ -1743,7 +1738,7 @@ type DeleteDataVolumeEventView struct {
 // GetUploadImageJobDetailsView GetUploadImageJobDetails
 type GetUploadImageJobDetailsView struct {
 	ExistingJobDetails []JobDetailsView `json:"existingJobDetails,omitempty"`
-	Success            bool             `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DetachHybridEipFromEcsEventView DetachHybridEipFromEcsEvent
@@ -1774,8 +1769,8 @@ type DeleteHybridKeySecretEventView struct {
 // GetCandidatePrimaryStoragesForCreatingVmView GetCandidatePrimaryStoragesForCreatingVm
 type GetCandidatePrimaryStoragesForCreatingVmView struct {
 	RootVolumePrimaryStorages []PrimaryStorageInventoryView `json:"rootVolumePrimaryStorages,omitempty"`
-	DataVolumePrimaryStorages map[string]interface{}        `json:"dataVolumePrimaryStorages,omitempty"`
-	Success                   bool                          `json:"success,omitempty"`
+	DataVolumePrimaryStorages map[string]interface{} `json:"dataVolumePrimaryStorages,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVmConsolePasswordView GetVmConsolePassword
@@ -1790,8 +1785,8 @@ type GetResourceBindableConfigView struct {
 
 // GetVmInstanceHaLevelView GetVmInstanceHaLevel
 type GetVmInstanceHaLevelView struct {
-	Level   string `json:"level,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Level string `json:"level,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RemoveResourcesFromDirectoryEventView RemoveResourcesFromDirectoryEvent
@@ -1817,12 +1812,12 @@ type RecoveryVirtualBorderRouterRemoteEventView struct {
 // ExecuteAutoScalingRuleEventView ExecuteAutoScalingRuleEvent
 type ExecuteAutoScalingRuleEventView struct {
 	ScalingActivityUuid string `json:"scalingActivityUuid,omitempty"`
-	Success             bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SNSHttpTestConnectionEventView SNSHttpTestConnectionEvent
 type SNSHttpTestConnectionEventView struct {
-	Connected   bool   `json:"connected,omitempty"`
+	Connected bool `json:"connected,omitempty"`
 	WebhookResp string `json:"webhookResp,omitempty"`
 }
 
@@ -1854,7 +1849,7 @@ type PushLicenseAddOnsUsageEventView struct {
 // GetBareMetal2ProvisionNetworkIpAddressCapacityView GetBareMetal2ProvisionNetworkIpAddressCapacity
 type GetBareMetal2ProvisionNetworkIpAddressCapacityView struct {
 	CapacityData []BareMetal2ProvisionNetworkIpCapacityView `json:"capacityData,omitempty"`
-	Success      bool                                       `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DecodeStackTemplateView DecodeStackTemplate
@@ -1894,16 +1889,16 @@ type AddIAM2VirtualIDToGroupEventView struct {
 
 // GetVolumeSnapshotSizeEventView GetVolumeSnapshotSizeEvent
 type GetVolumeSnapshotSizeEventView struct {
-	Size       int64 `json:"size,omitempty"`
+	Size int64 `json:"size,omitempty"`
 	ActualSize int64 `json:"actualSize,omitempty"`
-	Success    bool  `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // BatchSyncVolumeSizeView BatchSyncVolumeSize
 type BatchSyncVolumeSizeView struct {
-	SuccessCount int  `json:"successCount,omitempty"`
-	FailCount    int  `json:"failCount,omitempty"`
-	Success      bool `json:"success,omitempty"`
+	SuccessCount int `json:"successCount,omitempty"`
+	FailCount int `json:"failCount,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetHypervisorTypesView GetHypervisorTypes
@@ -1933,13 +1928,13 @@ type CheckHostConfigFileView struct {
 
 // GetContainerUsageView GetContainerUsage
 type GetContainerUsageView struct {
-	Usages  []ContainerUsageView `json:"usages,omitempty"`
-	Success bool                 `json:"success,omitempty"`
+	Usages []ContainerUsageView `json:"usages,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SNSSnmpTestConnectionEventView SNSSnmpTestConnectionEvent
 type SNSSnmpTestConnectionEventView struct {
-	Connected   bool                   `json:"connected,omitempty"`
+	Connected bool `json:"connected,omitempty"`
 	WebhookResp map[string]interface{} `json:"webhookResp,omitempty"`
 }
 
@@ -1960,20 +1955,20 @@ type GetBackupStorageTypesView struct {
 
 // GetVolumeQosView GetVolumeQos
 type GetVolumeQosView struct {
-	VolumeUuid                      string `json:"volumeUuid,omitempty"`
-	VolumeBandwidth                 int64  `json:"volumeBandwidth,omitempty"`
-	VolumeBandwidthRead             int64  `json:"volumeBandwidthRead,omitempty"`
-	VolumeBandwidthWrite            int64  `json:"volumeBandwidthWrite,omitempty"`
-	IopsTotal                       int64  `json:"iopsTotal,omitempty"`
-	IopsRead                        int64  `json:"iopsRead,omitempty"`
-	IopsWrite                       int64  `json:"iopsWrite,omitempty"`
-	VolumeBandwidthUpthreshold      int64  `json:"volumeBandwidthUpthreshold,omitempty"`
-	VolumeBandwidthReadUpthreshold  int64  `json:"volumeBandwidthReadUpthreshold,omitempty"`
-	VolumeBandwidthWriteUpthreshold int64  `json:"volumeBandwidthWriteUpthreshold,omitempty"`
-	IopsTotalUpthreshold            int64  `json:"iopsTotalUpthreshold,omitempty"`
-	IopsReadUpthreshold             int64  `json:"iopsReadUpthreshold,omitempty"`
-	IopsWriteUpthreshold            int64  `json:"iopsWriteUpthreshold,omitempty"`
-	Success                         bool   `json:"success,omitempty"`
+	VolumeUuid string `json:"volumeUuid,omitempty"`
+	VolumeBandwidth int64 `json:"volumeBandwidth,omitempty"`
+	VolumeBandwidthRead int64 `json:"volumeBandwidthRead,omitempty"`
+	VolumeBandwidthWrite int64 `json:"volumeBandwidthWrite,omitempty"`
+	IopsTotal int64 `json:"iopsTotal,omitempty"`
+	IopsRead int64 `json:"iopsRead,omitempty"`
+	IopsWrite int64 `json:"iopsWrite,omitempty"`
+	VolumeBandwidthUpthreshold int64 `json:"volumeBandwidthUpthreshold,omitempty"`
+	VolumeBandwidthReadUpthreshold int64 `json:"volumeBandwidthReadUpthreshold,omitempty"`
+	VolumeBandwidthWriteUpthreshold int64 `json:"volumeBandwidthWriteUpthreshold,omitempty"`
+	IopsTotalUpthreshold int64 `json:"iopsTotalUpthreshold,omitempty"`
+	IopsReadUpthreshold int64 `json:"iopsReadUpthreshold,omitempty"`
+	IopsWriteUpthreshold int64 `json:"iopsWriteUpthreshold,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // PowerOnBaremetalChassisEventView PowerOnBaremetalChassisEvent
@@ -1984,7 +1979,6 @@ type PowerOnBaremetalChassisEventView struct {
 // RequestLicenseCapacityEventView RequestLicenseCapacityEvent
 type RequestLicenseCapacityEventView struct {
 	Inventory LicenseAuthorizedCapacityInventoryView `json:"inventory,omitempty"`
-	Success   bool                                   `json:"success,omitempty"`
 }
 
 // GetVirtualizerInfoView GetVirtualizerInfo
@@ -1995,8 +1989,8 @@ type GetVirtualizerInfoView struct {
 // GetL3NetworkIpStatisticView GetL3NetworkIpStatistic
 type GetL3NetworkIpStatisticView struct {
 	IpStatistics []IpStatisticDataView `json:"ipStatistics,omitempty"`
-	Total        int64                 `json:"total,omitempty"`
-	Success      bool                  `json:"success,omitempty"`
+	Total int64 `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // KvmRunShellEventView KvmRunShellEvent
@@ -2016,11 +2010,11 @@ type GetVRouterRouterIdView struct {
 
 // GetZBoxBackupDetailsView GetZBoxBackupDetails
 type GetZBoxBackupDetailsView struct {
-	VmBackupInfos            []VmExternalBackupInfoView            `json:"vmBackupInfos,omitempty"`
-	VolumeBackupInfos        []VolumeExternalBackupInfoView        `json:"volumeBackupInfos,omitempty"`
+	VmBackupInfos []VmExternalBackupInfoView `json:"vmBackupInfos,omitempty"`
+	VolumeBackupInfos []VolumeExternalBackupInfoView `json:"volumeBackupInfos,omitempty"`
 	BackupStorageBackupInfos []BackupStorageExternalBackupInfoView `json:"backupStorageBackupInfos,omitempty"`
-	Version                  string                                `json:"version,omitempty"`
-	Success                  bool                                  `json:"success,omitempty"`
+	Version string `json:"version,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetExternalServicesView GetExternalServices
@@ -2035,9 +2029,9 @@ type GetIAM2ProjectRepositoryView struct {
 
 // GetCandidateNetworkInterfacesView GetCandidateNetworkInterfaces
 type GetCandidateNetworkInterfacesView struct {
-	SlaveNames    []string                            `json:"slaveNames,omitempty"`
+	SlaveNames []string `json:"slaveNames,omitempty"`
 	CandidateNics []HostNetworkInterfaceInventoryView `json:"candidateNics,omitempty"`
-	Success       bool                                `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ChangeAccessControlListServerGroupEventView ChangeAccessControlListServerGroupEvent
@@ -2087,16 +2081,16 @@ type AttachVipToVpcSharedQosEventView struct {
 
 // GetEventDataView GetEventData
 type GetEventDataView struct {
-	Events  []EventDataView `json:"events,omitempty"`
-	Total   int64           `json:"total,omitempty"`
-	Success bool            `json:"success,omitempty"`
+	Events []EventDataView `json:"events,omitempty"`
+	Total int64 `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // CheckIpAvailabilityView CheckIpAvailability
 type CheckIpAvailabilityView struct {
-	Available bool   `json:"available,omitempty"`
-	Reason    string `json:"reason,omitempty"`
-	Success   bool   `json:"success,omitempty"`
+	Available bool `json:"available,omitempty"`
+	Reason string `json:"reason,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RemoveRolesFromIAM2VirtualIDEventView RemoveRolesFromIAM2VirtualIDEvent
@@ -2106,9 +2100,9 @@ type RemoveRolesFromIAM2VirtualIDEventView struct {
 
 // CalculateResourceSpendingView CalculateResourceSpending
 type CalculateResourceSpendingView struct {
-	Spending   []ResourceSpendingView `json:"spending,omitempty"`
-	Pagination PaginationView         `json:"pagination,omitempty"`
-	Success    bool                   `json:"success,omitempty"`
+	Spending []ResourceSpendingView `json:"spending,omitempty"`
+	Pagination PaginationView `json:"pagination,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // PowerResetBaremetalChassisEventView PowerResetBaremetalChassisEvent
@@ -2118,9 +2112,9 @@ type PowerResetBaremetalChassisEventView struct {
 
 // CleanUpTrashOnPrimaryStorageEventView CleanUpTrashOnPrimaryStorageEvent
 type CleanUpTrashOnPrimaryStorageEventView struct {
-	Result  CleanTrashResultView     `json:"result,omitempty"`
+	Result CleanTrashResultView `json:"result,omitempty"`
 	Results []TrashCleanupResultView `json:"results,omitempty"`
-	Success bool                     `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVmSchedulingRulesExecuteStateView GetVmSchedulingRulesExecuteState
@@ -2130,18 +2124,18 @@ type GetVmSchedulingRulesExecuteStateView struct {
 
 // GetIpAddressCapacityView GetIpAddressCapacity
 type GetIpAddressCapacityView struct {
-	TotalCapacity           int64                `json:"totalCapacity,omitempty"`
-	AvailableCapacity       int64                `json:"availableCapacity,omitempty"`
-	UsedIpAddressNumber     int64                `json:"usedIpAddressNumber,omitempty"`
-	Ipv4TotalCapacity       int64                `json:"ipv4TotalCapacity,omitempty"`
-	Ipv4AvailableCapacity   int64                `json:"ipv4AvailableCapacity,omitempty"`
-	Ipv4UsedIpAddressNumber int64                `json:"ipv4UsedIpAddressNumber,omitempty"`
-	Ipv6TotalCapacity       int64                `json:"ipv6TotalCapacity,omitempty"`
-	Ipv6AvailableCapacity   int64                `json:"ipv6AvailableCapacity,omitempty"`
-	Ipv6UsedIpAddressNumber int64                `json:"ipv6UsedIpAddressNumber,omitempty"`
-	CapacityData            []IpCapacityDataView `json:"capacityData,omitempty"`
-	ResourceType            string               `json:"resourceType,omitempty"`
-	Success                 bool                 `json:"success,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
+	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
+	UsedIpAddressNumber int64 `json:"usedIpAddressNumber,omitempty"`
+	Ipv4TotalCapacity int64 `json:"ipv4TotalCapacity,omitempty"`
+	Ipv4AvailableCapacity int64 `json:"ipv4AvailableCapacity,omitempty"`
+	Ipv4UsedIpAddressNumber int64 `json:"ipv4UsedIpAddressNumber,omitempty"`
+	Ipv6TotalCapacity int64 `json:"ipv6TotalCapacity,omitempty"`
+	Ipv6AvailableCapacity int64 `json:"ipv6AvailableCapacity,omitempty"`
+	Ipv6UsedIpAddressNumber int64 `json:"ipv6UsedIpAddressNumber,omitempty"`
+	CapacityData []IpCapacityDataView `json:"capacityData,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SetIAM2ProjectContainerClusterEventView SetIAM2ProjectContainerClusterEvent
@@ -2151,9 +2145,9 @@ type SetIAM2ProjectContainerClusterEventView struct {
 
 // DeployAppDevelopmentServiceEventView DeployAppDevelopmentServiceEvent
 type DeployAppDevelopmentServiceEventView struct {
-	Inventory ModelServiceInstanceGroupInventoryView     `json:"inventory,omitempty"`
-	App       ApplicationDevelopmentServiceInventoryView `json:"app,omitempty"`
-	Success   bool                                       `json:"success,omitempty"`
+	Inventory ModelServiceInstanceGroupInventoryView `json:"inventory,omitempty"`
+	App ApplicationDevelopmentServiceInventoryView `json:"app,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RefreshPluginDriversEventView RefreshPluginDriversEvent
@@ -2199,7 +2193,7 @@ type RemoveIAM2VirtualIDsFromOrganizationEventView struct {
 // ExportDatabaseBackupFromBackupStorageEventView ExportDatabaseBackupFromBackupStorageEvent
 type ExportDatabaseBackupFromBackupStorageEventView struct {
 	DatabaseBackupUrl string `json:"databaseBackupUrl,omitempty"`
-	Success           bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SetVpcVRouterDistributedRoutingEnabledEventView SetVpcVRouterDistributedRoutingEnabledEvent
@@ -2234,7 +2228,7 @@ type ChangeIAM2OrganizationParentEventView struct {
 
 // SNSWeComTestConnectionEventView SNSWeComTestConnectionEvent
 type SNSWeComTestConnectionEventView struct {
-	Connected   bool                   `json:"connected,omitempty"`
+	Connected bool `json:"connected,omitempty"`
 	WebhookResp map[string]interface{} `json:"webhookResp,omitempty"`
 }
 
@@ -2251,13 +2245,13 @@ type SetVmQgaEventView struct {
 // ValidatePasswordView ValidatePassword
 type ValidatePasswordView struct {
 	Available bool `json:"available,omitempty"`
-	Success   bool `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetChronyServersView GetChronyServers
 type GetChronyServersView struct {
 	Servers []ChronyServerInfoPairView `json:"servers,omitempty"`
-	Success bool                       `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SetVmQxlMemoryEventView SetVmQxlMemoryEvent
@@ -2283,7 +2277,7 @@ type BindModelToServiceEventView struct {
 // CheckNetworkReachableView CheckNetworkReachable
 type CheckNetworkReachableView struct {
 	Results []NetworkReachablePairView `json:"results,omitempty"`
-	Success bool                       `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SetFlowMeterRouterIdEventView SetFlowMeterRouterIdEvent
@@ -2311,11 +2305,6 @@ type UnregisterLicenseRequestedApplicationEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// ProvisionNfvInstGroupEventView ProvisionNfvInstGroupEvent
-type ProvisionNfvInstGroupEventView struct {
-	Inventory NfvInstGroupInventoryView `json:"inventory,omitempty"`
-}
-
 // ChangeVmPasswordEventView ChangeVmPasswordEvent
 type ChangeVmPasswordEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2341,19 +2330,9 @@ type DeleteVmUserDefinedXmlHookScriptEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// AddL3NetworkToGroupEventView AddL3NetworkToGroupEvent
-type AddL3NetworkToGroupEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // CheckResourcePermissionView CheckResourcePermission
 type CheckResourcePermissionView struct {
 	Apis []string `json:"apis,omitempty"`
-}
-
-// ProvisionNfvInstConfigEventView ProvisionNfvInstConfigEvent
-type ProvisionNfvInstConfigEventView struct {
-	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
 }
 
 // GetCandidateMiniHostsView GetCandidateMiniHosts
@@ -2364,7 +2343,7 @@ type GetCandidateMiniHostsView struct {
 // DeleteDatasetsEventView DeleteDatasetsEvent
 type DeleteDatasetsEventView struct {
 	Results []BatchOperationResultView `json:"results,omitempty"`
-	Success bool                       `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RevokeResourceSharingEventView RevokeResourceSharingEvent
@@ -2379,8 +2358,8 @@ type DeleteModelServicesEventView struct {
 
 // GetHostNUMATopologyEventView GetHostNUMATopologyEvent
 type GetHostNUMATopologyEventView struct {
-	Name     string                      `json:"name,omitempty"`
-	Uuid     string                      `json:"uuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 	Topology map[string]HostNUMANodeView `json:"topology,omitempty"`
 }
 
@@ -2392,17 +2371,12 @@ type CreateL2VirtualSwitchEventView struct {
 // GetClusterDRSStatusView GetClusterDRSStatus
 type GetClusterDRSStatusView struct {
 	HostLoadOverThreshold []HostLoadView `json:"hostLoadOverThreshold,omitempty"`
-	Success               bool           `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVmNumaView GetVmNuma
 type GetVmNumaView struct {
 	Enable bool `json:"enable,omitempty"`
-}
-
-// UngenerateHygonMdevDevicesEventView UngenerateHygonMdevDevicesEvent
-type UngenerateHygonMdevDevicesEventView struct {
-	Success bool `json:"success,omitempty"`
 }
 
 // DeletePluginDriversEventView DeletePluginDriversEvent
@@ -2422,20 +2396,20 @@ type RestartModelServiceGroupsEventView struct {
 
 // GetLoadBalancerOwnerView GetLoadBalancerOwner
 type GetLoadBalancerOwnerView struct {
-	Type    string                   `json:"type,omitempty"`
-	Vpc     VpcRouterVmInventoryView `json:"vpc,omitempty"`
-	VpcHa   VpcHaGroupInventoryView  `json:"vpcHa,omitempty"`
-	Slb     SlbGroupInventoryView    `json:"slb,omitempty"`
-	Success bool                     `json:"success,omitempty"`
+	Type string `json:"type,omitempty"`
+	Vpc VpcRouterVmInventoryView `json:"vpc,omitempty"`
+	VpcHa VpcHaGroupInventoryView `json:"vpcHa,omitempty"`
+	Slb SlbGroupInventoryView `json:"slb,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetNicQosView GetNicQos
 type GetNicQosView struct {
-	OutboundBandwidth            int64 `json:"outboundBandwidth,omitempty"`
-	InboundBandwidth             int64 `json:"inboundBandwidth,omitempty"`
+	OutboundBandwidth int64 `json:"outboundBandwidth,omitempty"`
+	InboundBandwidth int64 `json:"inboundBandwidth,omitempty"`
 	OutboundBandwidthUpthreshold int64 `json:"outboundBandwidthUpthreshold,omitempty"`
-	InboundBandwidthUpthreshold  int64 `json:"inboundBandwidthUpthreshold,omitempty"`
-	Success                      bool  `json:"success,omitempty"`
+	InboundBandwidthUpthreshold int64 `json:"inboundBandwidthUpthreshold,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // CreateBareMetal2ChassisHardwareView CreateBareMetal2ChassisHardware
@@ -2475,10 +2449,10 @@ type MergeDataOnBackupStorageEventView struct {
 
 // GetCdpBackupStorageRequirementView GetCdpBackupStorageRequirement
 type GetCdpBackupStorageRequirementView struct {
-	NextStep string            `json:"nextStep,omitempty"`
+	NextStep string `json:"nextStep,omitempty"`
 	Required map[string]string `json:"required,omitempty"`
-	Current  map[string]string `json:"current,omitempty"`
-	Success  bool              `json:"success,omitempty"`
+	Current map[string]string `json:"current,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // AddAttributesToIAM2VirtualIDGroupEventView AddAttributesToIAM2VirtualIDGroupEvent
@@ -2498,10 +2472,10 @@ type GetMetricLabelValueView struct {
 
 // GetCandidateZonesClustersHostsForCreatingVmView GetCandidateZonesClustersHostsForCreatingVm
 type GetCandidateZonesClustersHostsForCreatingVmView struct {
-	Zones    []ZoneInventoryView    `json:"zones,omitempty"`
+	Zones []ZoneInventoryView `json:"zones,omitempty"`
 	Clusters []ClusterInventoryView `json:"clusters,omitempty"`
-	Hosts    []HostInventoryView    `json:"hosts,omitempty"`
-	Success  bool                   `json:"success,omitempty"`
+	Hosts []HostInventoryView `json:"hosts,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RemoveSchedulerJobGroupFromSchedulerTriggerEventView RemoveSchedulerJobGroupFromSchedulerTriggerEvent
@@ -2511,22 +2485,22 @@ type RemoveSchedulerJobGroupFromSchedulerTriggerEventView struct {
 
 // GetL3NetworkDhcpIpAddressView GetL3NetworkDhcpIpAddress
 type GetL3NetworkDhcpIpAddressView struct {
-	Ip      string `json:"ip,omitempty"`
-	Ip6     string `json:"ip6,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Ip string `json:"ip,omitempty"`
+	Ip6 string `json:"ip6,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetBaremetalChassisPowerStatusView GetBaremetalChassisPowerStatus
 type GetBaremetalChassisPowerStatusView struct {
-	Status  string `json:"status,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Status string `json:"status,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetFaultToleranceVmsView GetFaultToleranceVms
 type GetFaultToleranceVmsView struct {
-	PrimaryVmInventory   VmInstanceInventoryView `json:"primaryVmInventory,omitempty"`
+	PrimaryVmInventory VmInstanceInventoryView `json:"primaryVmInventory,omitempty"`
 	SecondaryVmInventory VmInstanceInventoryView `json:"secondaryVmInventory,omitempty"`
-	Success              bool                    `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteAliyunKeySecretEventView DeleteAliyunKeySecretEvent
@@ -2557,7 +2531,7 @@ type RevertVolumeFromSnapshotEventView struct {
 // GetManagementNodeArchView GetManagementNodeArch
 type GetManagementNodeArchView struct {
 	Architecture string `json:"architecture,omitempty"`
-	Success      bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DisableCbtTaskEventView DisableCbtTaskEvent
@@ -2568,7 +2542,7 @@ type DisableCbtTaskEventView struct {
 // FailoverFaultToleranceVmEventView FailoverFaultToleranceVmEvent
 type FailoverFaultToleranceVmEventView struct {
 	PrimaryVmInventory VmInstanceInventoryView `json:"primaryVmInventory,omitempty"`
-	Success            bool                    `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // EjectZBoxEventView EjectZBoxEvent
@@ -2588,7 +2562,7 @@ type DeleteFirewallRuleTemplateEventView struct {
 
 // ExecuteGuestVmCommandEventView ExecuteGuestVmCommandEvent
 type ExecuteGuestVmCommandEventView struct {
-	Stream     string                  `json:"stream,omitempty"`
+	Stream string `json:"stream,omitempty"`
 	VmInstance VmInstanceInventoryView `json:"vmInstance,omitempty"`
 }
 
@@ -2635,7 +2609,7 @@ type PrometheusQueryPassThroughView struct {
 // GetVmDeviceAddressView GetVmDeviceAddress
 type GetVmDeviceAddressView struct {
 	Addresses map[string]interface{} `json:"addresses,omitempty"`
-	Success   bool                   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RemoveInstanceFromMonitorGroupEventView RemoveInstanceFromMonitorGroupEvent
@@ -2665,9 +2639,9 @@ type DetachCCSCertificateFromUserEventView struct {
 
 // GetManagementNodeOSView GetManagementNodeOS
 type GetManagementNodeOSView struct {
-	Name    string `json:"name,omitempty"`
+	Name string `json:"name,omitempty"`
 	Version string `json:"version,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ExecuteDRSSchedulingEventView ExecuteDRSSchedulingEvent
@@ -2687,9 +2661,9 @@ type PreviewResourceStackView struct {
 
 // GetVmvNUMATopologyView GetVmvNUMATopology
 type GetVmvNUMATopologyView struct {
-	Name     string        `json:"name,omitempty"`
-	Uuid     string        `json:"uuid,omitempty"`
-	HostUuid string        `json:"hostUuid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+	HostUuid string `json:"hostUuid,omitempty"`
 	Topology []interface{} `json:"topology,omitempty"`
 }
 
@@ -2711,8 +2685,8 @@ type GetPrimaryStorageAllocatorStrategiesView struct {
 // GetPlatformTimeZoneView GetPlatformTimeZone
 type GetPlatformTimeZoneView struct {
 	Timezone string `json:"timezone,omitempty"`
-	Offset   string `json:"offset,omitempty"`
-	Success  bool   `json:"success,omitempty"`
+	Offset string `json:"offset,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DetachPolicyFromUserEventView DetachPolicyFromUserEvent
@@ -2728,13 +2702,13 @@ type FstrimVmEventView struct {
 // SyncAINginxConfigurationView SyncAINginxConfiguration
 type SyncAINginxConfigurationView struct {
 	UnSyncedRules []NginxRedirectRuleView `json:"unSyncedRules,omitempty"`
-	Success       bool                    `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // MatchModelServiceTemplateWithModelEventView MatchModelServiceTemplateWithModelEvent
 type MatchModelServiceTemplateWithModelEventView struct {
-	Result  map[string]interface{} `json:"result,omitempty"`
-	Success bool                   `json:"success,omitempty"`
+	Result map[string]interface{} `json:"result,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // AddPolicyStatementsToRoleEventView AddPolicyStatementsToRoleEvent
@@ -2759,8 +2733,8 @@ type PrimaryStorageMigrateVmEventView struct {
 
 // RecoverDatabaseFromBackupEventView RecoverDatabaseFromBackupEvent
 type RecoverDatabaseFromBackupEventView struct {
-	LogListenPort int  `json:"logListenPort,omitempty"`
-	Success       bool `json:"success,omitempty"`
+	LogListenPort int `json:"logListenPort,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // MoveDirectoryEventView MoveDirectoryEvent
@@ -2786,8 +2760,8 @@ type AddResourceToIAM2ProjectEventView struct {
 // GetAlarmDataView GetAlarmData
 type GetAlarmDataView struct {
 	Histories []AlarmDataView `json:"histories,omitempty"`
-	Total     int64           `json:"total,omitempty"`
-	Success   bool            `json:"success,omitempty"`
+	Total int64 `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RecoverResourceSplitBrainEventView RecoverResourceSplitBrainEvent
@@ -2798,7 +2772,7 @@ type RecoverResourceSplitBrainEventView struct {
 // IsOpensourceVersionView IsOpensourceVersion
 type IsOpensourceVersionView struct {
 	Opensource bool `json:"opensource,omitempty"`
-	Success    bool `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetResourceFromResourceStackView GetResourceFromResourceStack
@@ -2829,7 +2803,7 @@ type UnregisterLicenseServerEventView struct {
 // UpgradeToLicenseServerEventView UpgradeToLicenseServerEvent
 type UpgradeToLicenseServerEventView struct {
 	Inventory LicenseAuthorizedNodeInventoryView `json:"inventory,omitempty"`
-	Success   bool                               `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DetachAppBuildSystemToZoneEventView DetachAppBuildSystemToZoneEvent
@@ -2839,14 +2813,14 @@ type DetachAppBuildSystemToZoneEventView struct {
 
 // GetAppBuildSystemCapacityView GetAppBuildSystemCapacity
 type GetAppBuildSystemCapacityView struct {
-	TotalCapacity     int64 `json:"totalCapacity,omitempty"`
+	TotalCapacity int64 `json:"totalCapacity,omitempty"`
 	AvailableCapacity int64 `json:"availableCapacity,omitempty"`
-	Success           bool  `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetL3NetworkMtuView GetL3NetworkMtu
 type GetL3NetworkMtuView struct {
-	Mtu     int  `json:"mtu,omitempty"`
+	Mtu int `json:"mtu,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 
@@ -2857,14 +2831,14 @@ type SetVmMonitorNumberEventView struct {
 
 // SNSMicrosoftTeamsTestConnectionEventView SNSMicrosoftTeamsTestConnectionEvent
 type SNSMicrosoftTeamsTestConnectionEventView struct {
-	Connected   bool                   `json:"connected,omitempty"`
+	Connected bool `json:"connected,omitempty"`
 	WebhookResp map[string]interface{} `json:"webhookResp,omitempty"`
 }
 
 // CreateOssBackupBucketRemoteEventView CreateOssBackupBucketRemoteEvent
 type CreateOssBackupBucketRemoteEventView struct {
 	BucketName string `json:"bucketName,omitempty"`
-	Success    bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // PowerOffBaremetalChassisEventView PowerOffBaremetalChassisEvent
@@ -2875,7 +2849,7 @@ type PowerOffBaremetalChassisEventView struct {
 // GetCandidateInterfaceVlanIdsView GetCandidateInterfaceVlanIds
 type GetCandidateInterfaceVlanIdsView struct {
 	VlanIds []int `json:"vlanIds,omitempty"`
-	Success bool  `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetNetworkServiceTypesView GetNetworkServiceTypes
@@ -2896,14 +2870,14 @@ type GetAvailableVpcL3NetworkView struct {
 // GetCurrentTimeView GetCurrentTime
 type GetCurrentTimeView struct {
 	CurrentTime map[string]int64 `json:"currentTime,omitempty"`
-	Success     bool             `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // CalculateAccountSpendingView CalculateAccountSpending
 type CalculateAccountSpendingView struct {
-	Total    float64        `json:"total,omitempty"`
+	Total float64 `json:"total,omitempty"`
 	Spending []SpendingView `json:"spending,omitempty"`
-	Success  bool           `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // UpdateEcsInstanceVncPasswordEventView UpdateEcsInstanceVncPasswordEvent
@@ -2919,7 +2893,7 @@ type SyncChronyServersEventView struct {
 // GetVmInstanceProtectedRecoveryPointsView GetVmInstanceProtectedRecoveryPoints
 type GetVmInstanceProtectedRecoveryPointsView struct {
 	RecoveryPoints map[string]interface{} `json:"recoveryPoints,omitempty"`
-	Success        bool                   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // AddVmToVmSchedulingRuleGroupEventView AddVmToVmSchedulingRuleGroupEvent
@@ -2929,8 +2903,8 @@ type AddVmToVmSchedulingRuleGroupEventView struct {
 
 // GetHostWebSshUrlEventView GetHostWebSshUrlEvent
 type GetHostWebSshUrlEventView struct {
-	Url     string `json:"url,omitempty"`
-	Success bool   `json:"success,omitempty"`
+	Url string `json:"url,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SetL3NetworkMtuEventView SetL3NetworkMtuEvent
@@ -2941,7 +2915,7 @@ type SetL3NetworkMtuEventView struct {
 // GetL3NetworkRouterInterfaceIpView GetL3NetworkRouterInterfaceIp
 type GetL3NetworkRouterInterfaceIpView struct {
 	RouterInterfaceIp string `json:"routerInterfaceIp,omitempty"`
-	Success           bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SyncVmClockEventView SyncVmClockEvent
@@ -2952,14 +2926,6 @@ type SyncVmClockEventView struct {
 // SdnControllerAddHostEventView SdnControllerAddHostEvent
 type SdnControllerAddHostEventView struct {
 	Inventory SdnControllerInventoryView `json:"inventory,omitempty"`
-}
-
-// GetLicenseNodeUsageDetailsView GetLicenseNodeUsageDetails
-type GetLicenseNodeUsageDetailsView struct {
-	NodeInventory   LicenseAuthorizedNodeInventoryView `json:"nodeInventory,omitempty"`
-	PlatformLicense LicenseInventoryView               `json:"platformLicense,omitempty"`
-	AddOns          []LicenseAddOnInventoryView        `json:"addOns,omitempty"`
-	Success         bool                               `json:"success,omitempty"`
 }
 
 // RenewSessionEventView RenewSessionEvent
@@ -3045,7 +3011,7 @@ type WithdrawLicenseCapacityApplicationEventView struct {
 // PowerResetHostEventView PowerResetHostEvent
 type PowerResetHostEventView struct {
 	Inventory HostInventoryView `json:"inventory,omitempty"`
-	Success   bool              `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RevertVmFromVmBackupEventView RevertVmFromVmBackupEvent
@@ -3081,7 +3047,7 @@ type GetL2NetworkTypesView struct {
 // ShutdownHostEventView ShutdownHostEvent
 type ShutdownHostEventView struct {
 	Inventory HostInventoryView `json:"inventory,omitempty"`
-	Success   bool              `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DisableCdpTaskEventView DisableCdpTaskEvent
@@ -3127,8 +3093,8 @@ type DeleteAliyunSnapshotFromLocalEventView struct {
 // GetIAM2ProjectContainerImagesView GetIAM2ProjectContainerImages
 type GetIAM2ProjectContainerImagesView struct {
 	Inventories []ZakuImageInventoryView `json:"inventories,omitempty"`
-	Total       int                      `json:"total,omitempty"`
-	Success     bool                     `json:"success,omitempty"`
+	Total int `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteOssBucketNameLocalEventView DeleteOssBucketNameLocalEvent
@@ -3139,17 +3105,17 @@ type DeleteOssBucketNameLocalEventView struct {
 // GetObservabilityServerServiceDataView GetObservabilityServerServiceData
 type GetObservabilityServerServiceDataView struct {
 	Inventories []ObservabilityServerServiceDataInventoryView `json:"inventories,omitempty"`
-	Total       int                                           `json:"total,omitempty"`
-	Success     bool                                          `json:"success,omitempty"`
+	Total int `json:"total,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // VerifyLicenseServerEventView VerifyLicenseServerEvent
 type VerifyLicenseServerEventView struct {
-	AccessKeyId     string                             `json:"accessKeyId,omitempty"`
-	AccessKeySecret string                             `json:"accessKeySecret,omitempty"`
-	LicenseClient   LicenseAuthorizedNodeInventoryView `json:"licenseClient,omitempty"`
-	LicenseServer   LicenseAuthorizedNodeInventoryView `json:"licenseServer,omitempty"`
-	Success         bool                               `json:"success,omitempty"`
+	AccessKeyId string `json:"accessKeyId,omitempty"`
+	AccessKeySecret string `json:"accessKeySecret,omitempty"`
+	LicenseClient LicenseAuthorizedNodeInventoryView `json:"licenseClient,omitempty"`
+	LicenseServer LicenseAuthorizedNodeInventoryView `json:"licenseServer,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteEcsSecurityGroupInLocalEventView DeleteEcsSecurityGroupInLocalEvent
@@ -3165,13 +3131,13 @@ type DetachDataVolumeFromHostEventView struct {
 // GetVmInstanceRecoveryPointsView GetVmInstanceRecoveryPoints
 type GetVmInstanceRecoveryPointsView struct {
 	RecoveryPoints map[string]interface{} `json:"recoveryPoints,omitempty"`
-	Success        bool                   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetOssBackupBucketFromRemoteView GetOssBackupBucketFromRemote
 type GetOssBackupBucketFromRemoteView struct {
 	Buckets []OssBucketFilesPropertyView `json:"buckets,omitempty"`
-	Success bool                         `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetL3NetworkTypesView GetL3NetworkTypes
@@ -3192,7 +3158,7 @@ type CleanUpImageCacheOnPrimaryStorageEventView struct {
 // AddHostFromConfigFileEventView AddHostFromConfigFileEvent
 type AddHostFromConfigFileEventView struct {
 	Results []AddHostFromFileResultView `json:"results,omitempty"`
-	Success bool                        `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteVmBootModeEventView DeleteVmBootModeEvent
@@ -3223,14 +3189,14 @@ type GetElaborationsView struct {
 // GetAccessPathView GetAccessPath
 type GetAccessPathView struct {
 	PathInfos []AccessPathInfoView `json:"pathInfos,omitempty"`
-	Success   bool                 `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetPrimaryStorageUsageReportView GetPrimaryStorageUsageReport
 type GetPrimaryStorageUsageReportView struct {
 	UriUsageForecast map[string]UsageReportView `json:"uriUsageForecast,omitempty"`
-	UsageReport      UsageReportView            `json:"usageReport,omitempty"`
-	Success          bool                       `json:"success,omitempty"`
+	UsageReport UsageReportView `json:"usageReport,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RevertVolumeFromVolumeBackupEventView RevertVolumeFromVolumeBackupEvent
@@ -3265,9 +3231,9 @@ type DeleteVpcIpSecConfigLocalEventView struct {
 
 // CalculateAccountBillingSpendingView CalculateAccountBillingSpending
 type CalculateAccountBillingSpendingView struct {
-	Total    float64        `json:"total,omitempty"`
+	Total float64 `json:"total,omitempty"`
 	Spending []SpendingView `json:"spending,omitempty"`
-	Success  bool           `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteVRouterOspfAreaEventView DeleteVRouterOspfAreaEvent
@@ -3278,14 +3244,14 @@ type DeleteVRouterOspfAreaEventView struct {
 // GetVipAvailablePortView GetVipAvailablePort
 type GetVipAvailablePortView struct {
 	AvailablePort []int `json:"availablePort,omitempty"`
-	Success       bool  `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // MountVmInstanceRecoveryPointEventView MountVmInstanceRecoveryPointEvent
 type MountVmInstanceRecoveryPointEventView struct {
-	ResourcePath  string            `json:"resourcePath,omitempty"`
+	ResourcePath string `json:"resourcePath,omitempty"`
 	FailedVolumes map[string]string `json:"failedVolumes,omitempty"`
-	Success       bool              `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetResourceStackFromResourceView GetResourceStackFromResource
@@ -3300,9 +3266,9 @@ type CheckIAM2VirtualIDConfigFileView struct {
 
 // GetClusterHostNetworkFactsView GetClusterHostNetworkFacts
 type GetClusterHostNetworkFactsView struct {
-	Bondings []HostNetworkBondingInventoryView   `json:"bondings,omitempty"`
-	Nics     []HostNetworkInterfaceInventoryView `json:"nics,omitempty"`
-	Success  bool                                `json:"success,omitempty"`
+	Bondings []HostNetworkBondingInventoryView `json:"bondings,omitempty"`
+	Nics []HostNetworkInterfaceInventoryView `json:"nics,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // ParseOvfView ParseOvf
@@ -3342,12 +3308,13 @@ type EnableCdpTaskEventView struct {
 
 // RegisterLicenseRequestedApplicationEventView RegisterLicenseRequestedApplicationEvent
 type RegisterLicenseRequestedApplicationEventView struct {
-	AppId         string `json:"appId,omitempty"`
+	AppId string `json:"appId,omitempty"`
 	ServicePubKey string `json:"servicePubKey,omitempty"`
-	Success       bool   `json:"success,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteEcsVpcInLocalEventView DeleteEcsVpcInLocalEvent
 type DeleteEcsVpcInLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

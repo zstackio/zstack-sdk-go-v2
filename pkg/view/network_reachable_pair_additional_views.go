@@ -10,5 +10,6 @@ var _ = time.Now // avoid unused import
 type NetworkReachablePairView struct {
 	SourceHostname string `json:"sourceHostname,omitempty"`
 	TargetHostname string `json:"targetHostname,omitempty"`
-	Status         string `json:"status,omitempty"`
+	Status string `json:"status,omitempty"`
 }
+

@@ -10,27 +10,29 @@ var _ = time.Now // avoid unused import
 type GpuDeviceSpecInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Memory                                 int64  `json:"memory,omitempty"`
-	GpuType                                string `json:"gpuType,omitempty"`
-	Isolated                               bool   `json:"isolated,omitempty"`
-	VendorId                               string `json:"vendorId,omitempty"`
-	Vendor                                 string `json:"vendor,omitempty"`
-	DeviceId                               string `json:"deviceId,omitempty"`
-	Device                                 string `json:"device,omitempty"`
-	SubvendorId                            string `json:"subvendorId,omitempty"`
-	SubdeviceId                            string `json:"subdeviceId,omitempty"`
-	RamSize                                string `json:"ramSize,omitempty"`
-	MaxPartNum                             int    `json:"maxPartNum,omitempty"`
-	Type                                   string `json:"type,omitempty"`
-	State                                  string `json:"state,omitempty"`
-	IsVirtual                              bool   `json:"isVirtual,omitempty"`
-	AllowResourceConfigWithMultipleDevices bool   `json:"allowResourceConfigWithMultipleDevices,omitempty"`
-	RomVersion                             string `json:"romVersion,omitempty"`
-	RomMd5sum                              string `json:"romMd5sum,omitempty"`
-	MaxAvailableDevicesPerHost             int    `json:"maxAvailableDevicesPerHost,omitempty"`
+	Memory int64 `json:"memory,omitempty"`
+	GpuType string `json:"gpuType,omitempty"`
+	Isolated bool `json:"isolated,omitempty"`
+	Description string `json:"description,omitempty"`
+	VendorId string `json:"vendorId,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	Device string `json:"device,omitempty"`
+	SubvendorId string `json:"subvendorId,omitempty"`
+	SubdeviceId string `json:"subdeviceId,omitempty"`
+	RamSize string `json:"ramSize,omitempty"`
+	MaxPartNum int `json:"maxPartNum,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	IsVirtual bool `json:"isVirtual,omitempty"`
+	AllowResourceConfigWithMultipleDevices bool `json:"allowResourceConfigWithMultipleDevices,omitempty"`
+	RomVersion string `json:"romVersion,omitempty"`
+	RomMd5sum string `json:"romMd5sum,omitempty"`
+	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
 }
 
 // GetGpuDeviceSpecCandidatesView GetGpuDeviceSpecCandidates
 type GetGpuDeviceSpecCandidatesView struct {
 	Inventories []GpuDeviceSpecInventoryView `json:"inventories,omitempty"`
 }
+

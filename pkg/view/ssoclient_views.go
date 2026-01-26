@@ -10,12 +10,13 @@ var _ = time.Now // avoid unused import
 type SSOClientInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ClientType  string                            `json:"clientType,omitempty"`
-	LoginType   string                            `json:"loginType,omitempty"`
-	LoginMNUrl  string                            `json:"loginMNUrl,omitempty"`
-	RedirectUrl string                            `json:"redirectUrl,omitempty"`
-	AccountUuid string                            `json:"accountUuid,omitempty"`
-	Attributes  []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
+	Description string `json:"description,omitempty"`
+	ClientType string `json:"clientType,omitempty"`
+	LoginType string `json:"loginType,omitempty"`
+	LoginMNUrl string `json:"loginMNUrl,omitempty"`
+	RedirectUrl string `json:"redirectUrl,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
+	Attributes []SSOClientAttributeInventoryView `json:"attributes,omitempty"`
 }
 
 // DeleteSSOClientEventView DeleteSSOClientEvent
@@ -27,3 +28,4 @@ type DeleteSSOClientEventView struct {
 type GetSSOClientView struct {
 	Inventories []SSOClientInventoryView `json:"inventories,omitempty"`
 }
+

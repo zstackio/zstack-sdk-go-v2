@@ -10,11 +10,12 @@ var _ = time.Now // avoid unused import
 type HuaweiIMasterVpcInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	TenantId          string `json:"tenantId,omitempty"`
-	FabricId          string `json:"fabricId,omitempty"`
+	Description string `json:"description,omitempty"`
+	TenantId string `json:"tenantId,omitempty"`
+	FabricId string `json:"fabricId,omitempty"`
 	SdnControllerUuid string `json:"sdnControllerUuid,omitempty"`
-	State             string `json:"state,omitempty"`
-	IsVpcDeployed     bool   `json:"isVpcDeployed,omitempty"`
+	State string `json:"state,omitempty"`
+	IsVpcDeployed bool `json:"isVpcDeployed,omitempty"`
 }
 
 // QueryHuaweiIMasterVpcView QueryHuaweiIMasterVpc
@@ -26,3 +27,4 @@ type QueryHuaweiIMasterVpcView struct {
 type DeleteHuaweiIMasterVpcEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

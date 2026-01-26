@@ -8,13 +8,12 @@ var _ = time.Now // avoid unused import
 
 // UpdateVolumeParamDetail UpdateVolume detail param
 type UpdateVolumeParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateVolumeParam UpdateVolume request param
 type UpdateVolumeParam struct {
 	BaseParam
-	Params UpdateVolumeParamDetail `json:"params"`
+	Params UpdateVolumeParamDetail `json:"updateVolume"`
 }

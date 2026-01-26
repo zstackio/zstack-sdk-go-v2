@@ -11,10 +11,10 @@ type CreateMonitorTriggerParamDetail struct {
 	Name string `json:"name" validate:"required"`
 	Expression string `json:"expression" validate:"required"`
 	Duration int `json:"duration" validate:"required"`
-	RecoveryExpression string `json:"recoveryExpression,omitempty"`
-	Description string `json:"description,omitempty"`
+	RecoveryExpression *string `json:"recoveryExpression,omitempty"`
+	Description *string `json:"description,omitempty"`
 	TargetResourceUuid string `json:"targetResourceUuid" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -25,37 +25,34 @@ type CreateMonitorTriggerParam struct {
 }
 // DeleteMonitorTriggerActionParamDetail DeleteMonitorTriggerAction detail param
 type DeleteMonitorTriggerActionParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteMonitorTriggerActionParam DeleteMonitorTriggerAction request param
 type DeleteMonitorTriggerActionParam struct {
 	BaseParam
-	Params DeleteMonitorTriggerActionParamDetail `json:"params"`
+	Params DeleteMonitorTriggerActionParamDetail `json:"deleteMonitorTriggerAction"`
 }
 // DeleteMonitorTriggerParamDetail DeleteMonitorTrigger detail param
 type DeleteMonitorTriggerParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteMonitorTriggerParam DeleteMonitorTrigger request param
 type DeleteMonitorTriggerParam struct {
 	BaseParam
-	Params DeleteMonitorTriggerParamDetail `json:"params"`
+	Params DeleteMonitorTriggerParamDetail `json:"deleteMonitorTrigger"`
 }
 // UpdateMonitorTriggerParamDetail UpdateMonitorTrigger detail param
 type UpdateMonitorTriggerParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Expression string `json:"expression,omitempty"`
-	Duration int `json:"duration,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Expression *string `json:"expression,omitempty"`
+	Duration *int `json:"duration,omitempty"`
 }
 
 // UpdateMonitorTriggerParam UpdateMonitorTrigger request param
 type UpdateMonitorTriggerParam struct {
 	BaseParam
-	Params UpdateMonitorTriggerParamDetail `json:"params"`
+	Params UpdateMonitorTriggerParamDetail `json:"updateMonitorTrigger"`
 }

@@ -3,8 +3,9 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"fmt"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,11 +16,27 @@ func (cli *ZSClient) QuerySharedBlock(params *param.QueryParam) ([]view.SharedBl
 	var resp []view.SharedBlockInventoryView
 	return resp, cli.List("v1/sharedblock-group/sharedblocks", params, &resp)
 }
-// UpdateSharedBlock updates SharedBlock
-func (cli *ZSClient) UpdateSharedBlock(uuid string, params param.UpdateSharedBlockParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
-	var resp view.UpdateSharedBlockEventView
-	if err := cli.Put("v1/primary-storage/sharedblockgroup/{sharedBlockGroupUuid}/sharedblocks/{uuid}/actions", uuid, params, &resp); err != nil {
+
+func (cli *ZSClient) GetSharedBlock(uuid string) (*view.SharedBlockInventoryView, error) {
+	var resp view.SharedBlockInventoryView
+	if err := cli.Get("v1/sharedblock-group/sharedblocks", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
+}
+
+// PageSharedBlock Pagination
+func (cli *ZSClient) PageSharedBlock(params *param.QueryParam) ([]view.SharedBlockInventoryView, int, error) {
+	var sharedBlocks []view.SharedBlockInventoryView
+	total, err := cli.Page("v1/sharedblock-group/sharedblocks", params, &sharedBlocks)
+	return sharedBlocks, total, err
+}
+// UpdateSharedBlock updates SharedBlock
+func (cli *ZSClient) UpdateSharedBlock(sharedBlockGroupUuid string, uuid string, params param.UpdateSharedBlockParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
+	resp := view.SharedBlockGroupPrimaryStorageInventoryView{}
+	err := cli.PutWithSpec("v1/primary-storage/sharedblockgroup", sharedBlockGroupUuid, fmt.Sprintf("sharedblocks/%s/actions", uuid), "", params, &resp)
+	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

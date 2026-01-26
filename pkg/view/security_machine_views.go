@@ -10,13 +10,14 @@ var _ = time.Now // avoid unused import
 type SecurityMachineInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ZoneUuid               string `json:"zoneUuid,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
 	SecretResourcePoolUuid string `json:"secretResourcePoolUuid,omitempty"`
-	ManagementIp           string `json:"managementIp,omitempty"`
-	Type                   string `json:"type,omitempty"`
-	Model                  string `json:"model,omitempty"`
-	State                  string `json:"state,omitempty"`
-	Status                 string `json:"status,omitempty"`
+	Description string `json:"description,omitempty"`
+	ManagementIp string `json:"managementIp,omitempty"`
+	Type string `json:"type,omitempty"`
+	Model string `json:"model,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
 }
 
 // SetSecurityMachineKeyEventView SetSecurityMachineKeyEvent
@@ -38,3 +39,4 @@ type QuerySecurityMachineView struct {
 type ChangeSecurityMachineStateEventView struct {
 	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
 }
+

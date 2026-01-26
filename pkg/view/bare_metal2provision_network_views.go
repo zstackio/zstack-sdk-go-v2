@@ -10,14 +10,15 @@ var _ = time.Now // avoid unused import
 type BareMetal2ProvisionNetworkInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ZoneUuid             string   `json:"zoneUuid,omitempty"`
-	DhcpInterface        string   `json:"dhcpInterface,omitempty"`
-	DhcpRangeStartIp     string   `json:"dhcpRangeStartIp,omitempty"`
-	DhcpRangeEndIp       string   `json:"dhcpRangeEndIp,omitempty"`
-	DhcpRangeNetmask     string   `json:"dhcpRangeNetmask,omitempty"`
-	DhcpRangeGateway     string   `json:"dhcpRangeGateway,omitempty"`
-	DhcpRangeNetworkCidr string   `json:"dhcpRangeNetworkCidr,omitempty"`
-	State                string   `json:"state,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	DhcpInterface string `json:"dhcpInterface,omitempty"`
+	DhcpRangeStartIp string `json:"dhcpRangeStartIp,omitempty"`
+	DhcpRangeEndIp string `json:"dhcpRangeEndIp,omitempty"`
+	DhcpRangeNetmask string `json:"dhcpRangeNetmask,omitempty"`
+	DhcpRangeGateway string `json:"dhcpRangeGateway,omitempty"`
+	DhcpRangeNetworkCidr string `json:"dhcpRangeNetworkCidr,omitempty"`
+	State string `json:"state,omitempty"`
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 
@@ -55,3 +56,4 @@ type DetachBareMetal2ProvisionNetworkFromClusterEventView struct {
 type ChangeBareMetal2ProvisionNetworkStateEventView struct {
 	Inventory BareMetal2ProvisionNetworkInventoryView `json:"inventory,omitempty"`
 }
+

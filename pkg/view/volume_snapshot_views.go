@@ -10,21 +10,22 @@ var _ = time.Now // avoid unused import
 type VolumeSnapshotInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Type                      string                                        `json:"type,omitempty"`
-	VolumeUuid                string                                        `json:"volumeUuid,omitempty"`
-	TreeUuid                  string                                        `json:"treeUuid,omitempty"`
-	ParentUuid                string                                        `json:"parentUuid,omitempty"`
-	PrimaryStorageUuid        string                                        `json:"primaryStorageUuid,omitempty"`
-	PrimaryStorageInstallPath string                                        `json:"primaryStorageInstallPath,omitempty"`
-	VolumeType                string                                        `json:"volumeType,omitempty"`
-	Format                    string                                        `json:"format,omitempty"`
-	Latest                    bool                                          `json:"latest,omitempty"`
-	Size                      int64                                         `json:"size,omitempty"`
-	Distance                  int                                           `json:"distance,omitempty"`
-	State                     string                                        `json:"state,omitempty"`
-	Status                    string                                        `json:"status,omitempty"`
-	BackupStorageRefs         []VolumeSnapshotBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
-	GroupUuid                 string                                        `json:"groupUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	VolumeUuid string `json:"volumeUuid,omitempty"`
+	TreeUuid string `json:"treeUuid,omitempty"`
+	ParentUuid string `json:"parentUuid,omitempty"`
+	PrimaryStorageUuid string `json:"primaryStorageUuid,omitempty"`
+	PrimaryStorageInstallPath string `json:"primaryStorageInstallPath,omitempty"`
+	VolumeType string `json:"volumeType,omitempty"`
+	Format string `json:"format,omitempty"`
+	Latest bool `json:"latest,omitempty"`
+	Size int64 `json:"size,omitempty"`
+	Distance int `json:"distance,omitempty"`
+	State string `json:"state,omitempty"`
+	Status string `json:"status,omitempty"`
+	BackupStorageRefs []VolumeSnapshotBackupStorageRefInventoryView `json:"backupStorageRefs,omitempty"`
+	GroupUuid string `json:"groupUuid,omitempty"`
 }
 
 // UpdateVolumeSnapshotEventView UpdateVolumeSnapshotEvent
@@ -51,3 +52,4 @@ type CreateVolumesSnapshotEventView struct {
 type CreateVolumeSnapshotEventView struct {
 	Inventory VolumeSnapshotInventoryView `json:"inventory,omitempty"`
 }
+

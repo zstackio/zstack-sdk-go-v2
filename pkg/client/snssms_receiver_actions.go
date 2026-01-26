@@ -3,8 +3,9 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"fmt"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -19,6 +20,6 @@ func (cli *ZSClient) AddSNSSmsReceiver(params param.AddSNSSmsReceiverParam) (*vi
 	return &resp, nil
 }
 // RemoveSNSSmsReceiver removes SNSSmsReceiver
-func (cli *ZSClient) RemoveSNSSmsReceiver(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sns/sms-endpoints/{endpointUuid}/receivers/{phoneNumber}", uuid, string(deleteMode))
+func (cli *ZSClient) RemoveSNSSmsReceiver(endpointUuid string, phoneNumber string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/sns/sms-endpoints", endpointUuid, fmt.Sprintf("receivers/%s", phoneNumber), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }

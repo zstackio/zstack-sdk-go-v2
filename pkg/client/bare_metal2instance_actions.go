@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,35 +15,71 @@ func (cli *ZSClient) QueryBareMetal2Instance(params *param.QueryParam) ([]view.B
 	var resp []view.BareMetal2InstanceInventoryView
 	return resp, cli.List("v1/baremetal2/bm-instances", params, &resp)
 }
+
+func (cli *ZSClient) GetBareMetal2Instance(uuid string) (*view.BareMetal2InstanceInventoryView, error) {
+	var resp view.BareMetal2InstanceInventoryView
+	if err := cli.Get("v1/baremetal2/bm-instances", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageBareMetal2Instance Pagination
+func (cli *ZSClient) PageBareMetal2Instance(params *param.QueryParam) ([]view.BareMetal2InstanceInventoryView, int, error) {
+	var bareMetal2Instances []view.BareMetal2InstanceInventoryView
+	total, err := cli.Page("v1/baremetal2/bm-instances", params, &bareMetal2Instances)
+	return bareMetal2Instances, total, err
+}
 // CreateBareMetal2Instance creates BareMetal2Instance
 func (cli *ZSClient) CreateBareMetal2Instance(params param.CreateBareMetal2InstanceParam) (*view.BareMetal2InstanceInventoryView, error) {
-	var resp view.CreateBareMetal2InstanceEventView
+	resp := view.BareMetal2InstanceInventoryView{}
 	if err := cli.Post("v1/baremetal2/bm-instances", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
+}
+
+// CreateBareMetal2InstanceAsync Async
+func (cli *ZSClient) CreateBareMetal2InstanceAsync(params param.CreateBareMetal2InstanceParam) (string, error) {
+
+	resource := "v1/baremetal2/bm-instances"
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
 }
 // ReconnectBareMetal2Instance operates on BareMetal2Instance
 func (cli *ZSClient) ReconnectBareMetal2Instance(uuid string, params param.ReconnectBareMetal2InstanceParam) (*view.BareMetal2InstanceInventoryView, error) {
-	var resp view.ReconnectBareMetal2InstanceEventView
-	if err := cli.Put("v1/baremetal2/bm-instances/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.BareMetal2InstanceInventoryView{}
+	if err := cli.PutWithRespKey("v1/baremetal2/bm-instances", uuid, "", map[string]interface{}{
+		"reconnectBareMetal2Instance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // StartBareMetal2Instance starts BareMetal2Instance
 func (cli *ZSClient) StartBareMetal2Instance(uuid string, params param.StartBareMetal2InstanceParam) (*view.BareMetal2InstanceInventoryView, error) {
-	var resp view.StartBareMetal2InstanceEventView
-	if err := cli.Put("v1/baremetal2/bm-instances/{uuid}/action", uuid, params, &resp); err != nil {
+	resp := view.BareMetal2InstanceInventoryView{}
+	if err := cli.PutWithRespKey("v1/baremetal2/bm-instances", uuid, "", map[string]interface{}{
+		"startBareMetal2Instance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateBareMetal2Instance updates BareMetal2Instance
 func (cli *ZSClient) UpdateBareMetal2Instance(uuid string, params param.UpdateBareMetal2InstanceParam) (*view.BareMetal2InstanceInventoryView, error) {
-	var resp view.UpdateBareMetal2InstanceEventView
-	if err := cli.Put("v1/baremetal2/bm-instances/{uuid}/action", uuid, params, &resp); err != nil {
+	resp := view.BareMetal2InstanceInventoryView{}
+	if err := cli.PutWithRespKey("v1/baremetal2/bm-instances", uuid, "", map[string]interface{}{
+		"updateBareMetal2Instance": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

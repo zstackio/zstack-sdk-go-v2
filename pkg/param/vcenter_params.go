@@ -12,11 +12,11 @@ type AddVCenterParamDetail struct {
 	Password string `json:"password" validate:"required"`
 	ZoneUuid string `json:"zoneUuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Https bool `json:"https,omitempty"`
-	Port int `json:"port,omitempty"`
+	Https *bool `json:"https,omitempty"`
+	Port *int `json:"port,omitempty"`
 	DomainName string `json:"domainName" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -27,39 +27,36 @@ type AddVCenterParam struct {
 }
 // SyncVCenterParamDetail SyncVCenter detail param
 type SyncVCenterParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 }
 
 // SyncVCenterParam SyncVCenter request param
 type SyncVCenterParam struct {
 	BaseParam
-	Params SyncVCenterParamDetail `json:"params"`
+	Params SyncVCenterParamDetail `json:"syncVCenter"`
 }
 // UpdateVCenterParamDetail UpdateVCenter detail param
 type UpdateVCenterParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Username string `json:"username,omitempty"`
-	Password string `json:"password,omitempty"`
-	DomainName string `json:"domainName,omitempty"`
-	Port int `json:"port,omitempty"`
-	State string `json:"state,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	DomainName *string `json:"domainName,omitempty"`
+	Port *int `json:"port,omitempty"`
+	State *string `json:"state,omitempty"`
 }
 
 // UpdateVCenterParam UpdateVCenter request param
 type UpdateVCenterParam struct {
 	BaseParam
-	Params UpdateVCenterParamDetail `json:"params"`
+	Params UpdateVCenterParamDetail `json:"updateVCenter"`
 }
 // DeleteVCenterParamDetail DeleteVCenter detail param
 type DeleteVCenterParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteVCenterParam DeleteVCenter request param
 type DeleteVCenterParam struct {
 	BaseParam
-	Params DeleteVCenterParamDetail `json:"params"`
+	Params DeleteVCenterParamDetail `json:"deleteVCenter"`
 }

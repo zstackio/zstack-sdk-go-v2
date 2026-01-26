@@ -9,5 +9,6 @@ var _ = time.Now // avoid unused import
 // SyncBackupResultView SyncBackupResult
 type SyncBackupResultView struct {
 	DeletedBackupCount int `json:"deletedBackupCount,omitempty"`
-	NewBackupCount     int `json:"newBackupCount,omitempty"`
+	NewBackupCount int `json:"newBackupCount,omitempty"`
 }
+

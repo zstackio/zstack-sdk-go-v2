@@ -11,8 +11,9 @@ type TagPatternInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Value string `json:"value,omitempty"`
+	Description string `json:"description,omitempty"`
 	Color string `json:"color,omitempty"`
-	Type  string `json:"type,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // QueryTagView QueryTag
@@ -29,3 +30,4 @@ type CreateTagEventView struct {
 type UpdateTagEventView struct {
 	Inventory TagPatternInventoryView `json:"inventory,omitempty"`
 }
+

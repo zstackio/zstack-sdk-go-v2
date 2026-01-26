@@ -10,12 +10,13 @@ var _ = time.Now // avoid unused import
 type ZdfsInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ZoneUuid string                   `json:"zoneUuid,omitempty"`
-	Url      string                   `json:"url,omitempty"`
-	Status   string                   `json:"status,omitempty"`
-	HostName string                   `json:"hostName,omitempty"`
-	SshPort  int                      `json:"sshPort,omitempty"`
-	Storage  ZdfsStorageInventoryView `json:"storage,omitempty"`
+	Description string `json:"description,omitempty"`
+	ZoneUuid string `json:"zoneUuid,omitempty"`
+	Url string `json:"url,omitempty"`
+	Status string `json:"status,omitempty"`
+	HostName string `json:"hostName,omitempty"`
+	SshPort int `json:"sshPort,omitempty"`
+	Storage ZdfsStorageInventoryView `json:"storage,omitempty"`
 }
 
 // ReconnectZdfsEventView ReconnectZdfsEvent
@@ -27,3 +28,4 @@ type ReconnectZdfsEventView struct {
 type QueryZdfsView struct {
 	Inventories []ZdfsInventoryView `json:"inventories,omitempty"`
 }
+

@@ -10,13 +10,14 @@ var _ = time.Now // avoid unused import
 type BuildApplicationInventoryView struct {
 	BaseInfoView
 	BaseTimeView
+	Description string `json:"description,omitempty"`
 	BuildSystemUuid string `json:"buildSystemUuid,omitempty"`
 	TemplateContent string `json:"templateContent,omitempty"`
-	InstallPath     string `json:"installPath,omitempty"`
-	AppMetaData     string `json:"appMetaData,omitempty"`
-	AppId           string `json:"appId,omitempty"`
-	Version         string `json:"version,omitempty"`
-	Status          string `json:"status,omitempty"`
+	InstallPath string `json:"installPath,omitempty"`
+	AppMetaData string `json:"appMetaData,omitempty"`
+	AppId string `json:"appId,omitempty"`
+	Version string `json:"version,omitempty"`
+	Status string `json:"status,omitempty"`
 }
 
 // CreateBuildAppEventView CreateBuildAppEvent
@@ -38,3 +39,4 @@ type AddBuildAppEventView struct {
 type UpdateBuildAppEventView struct {
 	Inventory BuildApplicationInventoryView `json:"inventory,omitempty"`
 }
+

@@ -10,14 +10,14 @@ var _ = time.Now // avoid unused import
 type CreateL2VlanNetworkParamDetail struct {
 	Vlan int `json:"vlan" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	ZoneUuid string `json:"zoneUuid" validate:"required"`
-	PhysicalInterface string `json:"physicalInterface,omitempty"`
-	Type string `json:"type,omitempty"`
-	VSwitchType string `json:"vSwitchType,omitempty"`
-	Isolated bool `json:"isolated,omitempty"`
-	Pvlan string `json:"pvlan,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	PhysicalInterface *string `json:"physicalInterface,omitempty"`
+	Type *string `json:"type,omitempty"`
+	VSwitchType *string `json:"vSwitchType,omitempty"`
+	Isolated *bool `json:"isolated,omitempty"`
+	Pvlan *string `json:"pvlan,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 

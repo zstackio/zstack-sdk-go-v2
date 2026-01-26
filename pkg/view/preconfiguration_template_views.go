@@ -10,12 +10,13 @@ var _ = time.Now // avoid unused import
 type PreconfigurationTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Distribution string   `json:"distribution,omitempty"`
-	Type         string   `json:"type,omitempty"`
-	Content      string   `json:"content,omitempty"`
-	Md5sum       string   `json:"md5sum,omitempty"`
-	IsPredefined bool     `json:"isPredefined,omitempty"`
-	State        string   `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	Distribution string `json:"distribution,omitempty"`
+	Type string `json:"type,omitempty"`
+	Content string `json:"content,omitempty"`
+	Md5sum string `json:"md5sum,omitempty"`
+	IsPredefined bool `json:"isPredefined,omitempty"`
+	State string `json:"state,omitempty"`
 	CustomParams []string `json:"customParams,omitempty"`
 }
 
@@ -43,3 +44,4 @@ type UpdatePreconfigurationTemplateEventView struct {
 type QueryPreconfigurationTemplatesView struct {
 	Inventories []PreconfigurationTemplateInventoryView `json:"inventories,omitempty"`
 }
+

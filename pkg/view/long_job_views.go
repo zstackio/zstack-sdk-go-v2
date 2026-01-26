@@ -10,14 +10,15 @@ var _ = time.Now // avoid unused import
 type LongJobInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ApiId              string `json:"apiId,omitempty"`
-	JobName            string `json:"jobName,omitempty"`
-	JobData            string `json:"jobData,omitempty"`
-	JobResult          string `json:"jobResult,omitempty"`
-	State              string `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	ApiId string `json:"apiId,omitempty"`
+	JobName string `json:"jobName,omitempty"`
+	JobData string `json:"jobData,omitempty"`
+	JobResult string `json:"jobResult,omitempty"`
+	State string `json:"state,omitempty"`
 	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
 	ManagementNodeUuid string `json:"managementNodeUuid,omitempty"`
-	ExecuteTime        int64  `json:"executeTime,omitempty"`
+	ExecuteTime int64 `json:"executeTime,omitempty"`
 }
 
 // CleanLongJobEventView CleanLongJobEvent
@@ -64,3 +65,4 @@ type SyncLdapServerEventView struct {
 type QueryLongJobView struct {
 	Inventories []LongJobInventoryView `json:"inventories,omitempty"`
 }
+

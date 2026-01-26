@@ -14,17 +14,16 @@ type ReconnectConsoleProxyAgentParamDetail struct {
 // ReconnectConsoleProxyAgentParam ReconnectConsoleProxyAgent request param
 type ReconnectConsoleProxyAgentParam struct {
 	BaseParam
-	Params ReconnectConsoleProxyAgentParamDetail `json:"params"`
+	Params ReconnectConsoleProxyAgentParamDetail `json:"reconnectConsoleProxyAgent"`
 }
 // UpdateConsoleProxyAgentParamDetail UpdateConsoleProxyAgent detail param
 type UpdateConsoleProxyAgentParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	ConsoleProxyOverriddenIp string `json:"consoleProxyOverriddenIp" validate:"required"`
-	ConsoleProxyPort int `json:"consoleProxyPort,omitempty"`
+	ConsoleProxyPort *int `json:"consoleProxyPort,omitempty"`
 }
 
 // UpdateConsoleProxyAgentParam UpdateConsoleProxyAgent request param
 type UpdateConsoleProxyAgentParam struct {
 	BaseParam
-	Params UpdateConsoleProxyAgentParamDetail `json:"params"`
+	Params UpdateConsoleProxyAgentParamDetail `json:"updateConsoleProxyAgent"`
 }

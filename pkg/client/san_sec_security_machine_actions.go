@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,17 +12,19 @@ var _ = view.MapView{} // avoid unused import
 
 // AddSanSecSecurityMachine adds SanSecSecurityMachine
 func (cli *ZSClient) AddSanSecSecurityMachine(params param.AddSanSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
-	var resp view.AddSecurityMachineEventView
+	resp := view.SecurityMachineInventoryView{}
 	if err := cli.Post("v1/security-machine/sanSec", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateSanSecSecurityMachine updates SanSecSecurityMachine
 func (cli *ZSClient) UpdateSanSecSecurityMachine(uuid string, params param.UpdateSanSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
-	var resp view.UpdateSecurityMachineEventView
-	if err := cli.Put("v1/security-machines/sanSec/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.SecurityMachineInventoryView{}
+	if err := cli.PutWithRespKey("v1/security-machines/sanSec", uuid, "", map[string]interface{}{
+		"updateSanSecSecurityMachine": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

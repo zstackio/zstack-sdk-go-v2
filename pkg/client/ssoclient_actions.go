@@ -3,21 +3,25 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteSSOClient deletes SSOClient
-func (cli *ZSClient) DeleteSSOClient(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/delete/sso/client", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteSSOClient(params param.DeleteSSOClientParam) (*view.SSOClientInventoryView, error) {
+	resp := view.SSOClientInventoryView{}
+	if err := cli.Post("v1/delete/sso/client", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // GetSSOClient gets SSOClient by uuid
-func (cli *ZSClient) GetSSOClient(uuid string) (*view.SSOClientInventoryView, error) {
+func (cli *ZSClient) GetSSOClient() (*view.SSOClientInventoryView, error) {
 	var resp view.SSOClientInventoryView
-	if err := cli.Get("v1/get/sso/client", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/get/sso/client", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

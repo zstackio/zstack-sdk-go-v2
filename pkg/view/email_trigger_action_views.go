@@ -10,9 +10,11 @@ var _ = time.Now // avoid unused import
 type EmailTriggerActionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Email        string   `json:"email,omitempty"`
-	MediaUuid    string   `json:"mediaUuid,omitempty"`
-	State        string   `json:"state,omitempty"`
-	Type         string   `json:"type,omitempty"`
+	Email string `json:"email,omitempty"`
+	MediaUuid string `json:"mediaUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
 	TriggerUuids []string `json:"triggerUuids,omitempty"`
 }
+

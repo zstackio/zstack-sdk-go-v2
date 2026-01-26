@@ -10,17 +10,16 @@ var _ = time.Now // avoid unused import
 type GetVirtualRouterSoftwareVersionParamDetail struct {
 	Uuid string `json:"uuid,omitempty"`
 	SoftwareName string `json:"softwareName" validate:"required"`
-	NeedUpdate bool `json:"needUpdate,omitempty"`
+	NeedUpdate *bool `json:"needUpdate,omitempty"`
 }
 
 // GetVirtualRouterSoftwareVersionParam GetVirtualRouterSoftwareVersion request param
 type GetVirtualRouterSoftwareVersionParam struct {
 	BaseParam
-	Params GetVirtualRouterSoftwareVersionParamDetail `json:"params"`
+	Params GetVirtualRouterSoftwareVersionParamDetail `json:"getVirtualRouterSoftwareVersion"`
 }
 // UpdateVirtualRouterSoftwareVersionParamDetail UpdateVirtualRouterSoftwareVersion detail param
 type UpdateVirtualRouterSoftwareVersionParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	SoftwareName string `json:"softwareName" validate:"required"`
 	TargetVersion string `json:"targetVersion" validate:"required"`
 }

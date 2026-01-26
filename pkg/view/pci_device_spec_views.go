@@ -10,21 +10,22 @@ var _ = time.Now // avoid unused import
 type PciDeviceSpecInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	VendorId                               string `json:"vendorId,omitempty"`
-	Vendor                                 string `json:"vendor,omitempty"`
-	DeviceId                               string `json:"deviceId,omitempty"`
-	Device                                 string `json:"device,omitempty"`
-	SubvendorId                            string `json:"subvendorId,omitempty"`
-	SubdeviceId                            string `json:"subdeviceId,omitempty"`
-	RamSize                                string `json:"ramSize,omitempty"`
-	MaxPartNum                             int    `json:"maxPartNum,omitempty"`
-	Type                                   string `json:"type,omitempty"`
-	State                                  string `json:"state,omitempty"`
-	IsVirtual                              bool   `json:"isVirtual,omitempty"`
-	AllowResourceConfigWithMultipleDevices bool   `json:"allowResourceConfigWithMultipleDevices,omitempty"`
-	RomVersion                             string `json:"romVersion,omitempty"`
-	RomMd5sum                              string `json:"romMd5sum,omitempty"`
-	MaxAvailableDevicesPerHost             int    `json:"maxAvailableDevicesPerHost,omitempty"`
+	Description string `json:"description,omitempty"`
+	VendorId string `json:"vendorId,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	Device string `json:"device,omitempty"`
+	SubvendorId string `json:"subvendorId,omitempty"`
+	SubdeviceId string `json:"subdeviceId,omitempty"`
+	RamSize string `json:"ramSize,omitempty"`
+	MaxPartNum int `json:"maxPartNum,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	IsVirtual bool `json:"isVirtual,omitempty"`
+	AllowResourceConfigWithMultipleDevices bool `json:"allowResourceConfigWithMultipleDevices,omitempty"`
+	RomVersion string `json:"romVersion,omitempty"`
+	RomMd5sum string `json:"romMd5sum,omitempty"`
+	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
 }
 
 // QueryPciDeviceSpecView QueryPciDeviceSpec
@@ -41,3 +42,4 @@ type GetPciDeviceSpecCandidatesView struct {
 type UpdatePciDeviceSpecEventView struct {
 	Inventory PciDeviceSpecInventoryView `json:"inventory,omitempty"`
 }
+

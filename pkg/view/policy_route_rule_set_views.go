@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type PolicyRouteRuleSetInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Type   string                                 `json:"type,omitempty"`
-	Rules  []PolicyRouteRuleInventoryView         `json:"rules,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	Rules []PolicyRouteRuleInventoryView `json:"rules,omitempty"`
 	L3Refs []PolicyRouteRuleSetL3RefInventoryView `json:"l3Refs,omitempty"`
 }
 
@@ -39,3 +40,4 @@ type DeletePolicyRouteRuleSetEventView struct {
 type QueryPolicyRouteRuleSetView struct {
 	Inventories []PolicyRouteRuleSetInventoryView `json:"inventories,omitempty"`
 }
+

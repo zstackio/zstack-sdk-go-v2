@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -22,4 +22,19 @@ func (cli *ZSClient) CreateL2VxlanNetwork(params param.CreateL2VxlanNetworkParam
 func (cli *ZSClient) QueryL2VxlanNetwork(params *param.QueryParam) ([]view.L2VxlanNetworkInventoryView, error) {
 	var resp []view.L2VxlanNetworkInventoryView
 	return resp, cli.List("v1/l2-networks/vxlan", params, &resp)
+}
+
+func (cli *ZSClient) GetL2VxlanNetwork(uuid string) (*view.L2VxlanNetworkInventoryView, error) {
+	var resp view.L2VxlanNetworkInventoryView
+	if err := cli.Get("v1/l2-networks/vxlan", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageL2VxlanNetwork Pagination
+func (cli *ZSClient) PageL2VxlanNetwork(params *param.QueryParam) ([]view.L2VxlanNetworkInventoryView, int, error) {
+	var l2VxlanNetworks []view.L2VxlanNetworkInventoryView
+	total, err := cli.Page("v1/l2-networks/vxlan", params, &l2VxlanNetworks)
+	return l2VxlanNetworks, total, err
 }

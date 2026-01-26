@@ -10,9 +10,10 @@ var _ = time.Now // avoid unused import
 type PortMirrorInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	State             string                           `json:"state,omitempty"`
-	MirrorNetworkUuid string                           `json:"mirrorNetworkUuid,omitempty"`
-	Sessions          []PortMirrorSessionInventoryView `json:"sessions,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	MirrorNetworkUuid string `json:"mirrorNetworkUuid,omitempty"`
+	Sessions []PortMirrorSessionInventoryView `json:"sessions,omitempty"`
 }
 
 // ChangePortMirrorStateEventView ChangePortMirrorStateEvent
@@ -39,3 +40,4 @@ type DeletePortMirrorEventView struct {
 type UpdatePortMirrorEventView struct {
 	Inventory PortMirrorInventoryView `json:"inventory,omitempty"`
 }
+

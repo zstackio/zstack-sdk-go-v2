@@ -8,14 +8,13 @@ var _ = time.Now // avoid unused import
 
 // UpdateUsbDeviceParamDetail UpdateUsbDevice detail param
 type UpdateUsbDeviceParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	State string `json:"state,omitempty"`
+	Description *string `json:"description,omitempty"`
+	State *string `json:"state,omitempty"`
 }
 
 // UpdateUsbDeviceParam UpdateUsbDevice request param
 type UpdateUsbDeviceParam struct {
 	BaseParam
-	Params UpdateUsbDeviceParamDetail `json:"params"`
+	Params UpdateUsbDeviceParamDetail `json:"updateUsbDevice"`
 }

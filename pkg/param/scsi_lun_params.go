@@ -8,13 +8,12 @@ var _ = time.Now // avoid unused import
 
 // UpdateScsiLunParamDetail UpdateScsiLun detail param
 type UpdateScsiLunParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	State string `json:"state,omitempty"`
+	State *string `json:"state,omitempty"`
 }
 
 // UpdateScsiLunParam UpdateScsiLun request param
 type UpdateScsiLunParam struct {
 	BaseParam
-	Params UpdateScsiLunParamDetail `json:"params"`
+	Params UpdateScsiLunParamDetail `json:"updateScsiLun"`
 }

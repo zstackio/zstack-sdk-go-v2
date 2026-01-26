@@ -10,10 +10,11 @@ var _ = time.Now // avoid unused import
 type AliyunPanguPartitionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	AccountUuid      string `json:"accountUuid,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
 	IdentityZoneUuid string `json:"identityZoneUuid,omitempty"`
-	AppName          string `json:"appName,omitempty"`
-	PartitionName    string `json:"partitionName,omitempty"`
+	Description string `json:"description,omitempty"`
+	AppName string `json:"appName,omitempty"`
+	PartitionName string `json:"partitionName,omitempty"`
 }
 
 // AddAliyunPanguPartitionEventView AddAliyunPanguPartitionEvent
@@ -35,3 +36,4 @@ type QueryAliyunPanguPartitionView struct {
 type UpdateAliyunPanguPartitionEventView struct {
 	Inventory AliyunPanguPartitionInventoryView `json:"inventory,omitempty"`
 }
+

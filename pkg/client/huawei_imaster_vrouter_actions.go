@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,18 +12,33 @@ var _ = view.MapView{} // avoid unused import
 
 // CreateHuaweiIMasterVRouter creates HuaweiIMasterVRouter
 func (cli *ZSClient) CreateHuaweiIMasterVRouter(params param.CreateHuaweiIMasterVRouterParam) (*view.HuaweiIMasterVRouterInventoryView, error) {
-	var resp view.CreateHuaweiIMasterVRouterEventView
+	resp := view.HuaweiIMasterVRouterInventoryView{}
 	if err := cli.Post("v1/sdn-controller/huawei-imaster/vrouters", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // QueryHuaweiIMasterVRouter queries HuaweiIMasterVRouter list
 func (cli *ZSClient) QueryHuaweiIMasterVRouter(params *param.QueryParam) ([]view.HuaweiIMasterVRouterInventoryView, error) {
 	var resp []view.HuaweiIMasterVRouterInventoryView
 	return resp, cli.List("v1/sdn-controller/huawei-imaster/vrouters", params, &resp)
 }
+
+func (cli *ZSClient) GetHuaweiIMasterVRouter(uuid string) (*view.HuaweiIMasterVRouterInventoryView, error) {
+	var resp view.HuaweiIMasterVRouterInventoryView
+	if err := cli.Get("v1/sdn-controller/huawei-imaster/vrouters", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageHuaweiIMasterVRouter Pagination
+func (cli *ZSClient) PageHuaweiIMasterVRouter(params *param.QueryParam) ([]view.HuaweiIMasterVRouterInventoryView, int, error) {
+	var huaweiIMasterVRouters []view.HuaweiIMasterVRouterInventoryView
+	total, err := cli.Page("v1/sdn-controller/huawei-imaster/vrouters", params, &huaweiIMasterVRouters)
+	return huaweiIMasterVRouters, total, err
+}
 // DeleteHuaweiIMasterVRouter deletes HuaweiIMasterVRouter
 func (cli *ZSClient) DeleteHuaweiIMasterVRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sdn-controller/huawei-imaster/vrouters/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/sdn-controller/huawei-imaster/vrouters", uuid, string(deleteMode))
 }

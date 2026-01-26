@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,17 +12,34 @@ var _ = view.MapView{} // avoid unused import
 
 // AddKVMHost adds KVMHost
 func (cli *ZSClient) AddKVMHost(params param.AddKVMHostParam) (*view.HostInventoryView, error) {
-	var resp view.AddHostEventView
+	resp := view.HostInventoryView{}
 	if err := cli.Post("v1/hosts/kvm", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
+}
+
+// AddKVMHostAsync Async
+func (cli *ZSClient) AddKVMHostAsync(params param.AddKVMHostParam) (string, error) {
+
+	resource := "v1/hosts/kvm"
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
 }
 // UpdateKVMHost updates KVMHost
 func (cli *ZSClient) UpdateKVMHost(uuid string, params param.UpdateKVMHostParam) (*view.HostInventoryView, error) {
-	var resp view.UpdateHostEventView
-	if err := cli.Put("v1/hosts/kvm/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.HostInventoryView{}
+	if err := cli.PutWithRespKey("v1/hosts/kvm", uuid, "", map[string]interface{}{
+		"updateKVMHost": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

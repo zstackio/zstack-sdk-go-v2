@@ -10,6 +10,7 @@ var _ = time.Now // avoid unused import
 type HostSchedulingRuleGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
+	Description string `json:"description,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
 }
 
@@ -32,3 +33,4 @@ type CreateHostSchedulingRuleGroupEventView struct {
 type DeleteHostSchedulingRuleGroupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

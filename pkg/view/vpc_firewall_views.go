@@ -11,6 +11,7 @@ type VpcFirewallInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	Refs []VpcFirewallRuleSetL3RefInventoryView `json:"refs,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // UpdateVpcFirewallEventView UpdateVpcFirewallEvent
@@ -32,3 +33,4 @@ type RefreshFirewallEventView struct {
 type QueryVpcFirewallView struct {
 	Inventories []VpcFirewallInventoryView `json:"inventories,omitempty"`
 }
+

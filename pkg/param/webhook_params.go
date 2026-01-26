@@ -8,38 +8,36 @@ var _ = time.Now // avoid unused import
 
 // UpdateWebhookParamDetail UpdateWebhook detail param
 type UpdateWebhookParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	Url string `json:"url,omitempty"`
-	Type string `json:"type,omitempty"`
-	Opaque string `json:"opaque,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Opaque *string `json:"opaque,omitempty"`
 }
 
 // UpdateWebhookParam UpdateWebhook request param
 type UpdateWebhookParam struct {
 	BaseParam
-	Params UpdateWebhookParamDetail `json:"params"`
+	Params UpdateWebhookParamDetail `json:"updateWebhook"`
 }
 // DeleteWebhookParamDetail DeleteWebhook detail param
 type DeleteWebhookParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteWebhookParam DeleteWebhook request param
 type DeleteWebhookParam struct {
 	BaseParam
-	Params DeleteWebhookParamDetail `json:"params"`
+	Params DeleteWebhookParamDetail `json:"deleteWebhook"`
 }
 // CreateWebhookParamDetail CreateWebhook detail param
 type CreateWebhookParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Url string `json:"url" validate:"required"`
 	Type string `json:"type" validate:"required"`
-	Opaque string `json:"opaque,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Opaque *string `json:"opaque,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 

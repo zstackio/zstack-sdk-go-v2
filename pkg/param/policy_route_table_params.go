@@ -10,8 +10,8 @@ var _ = time.Now // avoid unused import
 type CreatePolicyRouteTableParamDetail struct {
 	VRouterUuid string `json:"vRouterUuid" validate:"required"`
 	Number int `json:"number" validate:"required"`
-	Description string `json:"description,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -22,12 +22,11 @@ type CreatePolicyRouteTableParam struct {
 }
 // DeletePolicyRouteTableParamDetail DeletePolicyRouteTable detail param
 type DeletePolicyRouteTableParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeletePolicyRouteTableParam DeletePolicyRouteTable request param
 type DeletePolicyRouteTableParam struct {
 	BaseParam
-	Params DeletePolicyRouteTableParamDetail `json:"params"`
+	Params DeletePolicyRouteTableParamDetail `json:"deletePolicyRouteTable"`
 }

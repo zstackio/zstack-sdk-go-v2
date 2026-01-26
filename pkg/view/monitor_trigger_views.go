@@ -10,12 +10,13 @@ var _ = time.Now // avoid unused import
 type MonitorTriggerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Expression           string    `json:"expression,omitempty"`
-	RecoveryExpression   string    `json:"recoveryExpression,omitempty"`
-	Status               string    `json:"status,omitempty"`
-	State                string    `json:"state,omitempty"`
-	Duration             int       `json:"duration,omitempty"`
-	TargetResourceUuid   string    `json:"targetResourceUuid,omitempty"`
+	Expression string `json:"expression,omitempty"`
+	RecoveryExpression string `json:"recoveryExpression,omitempty"`
+	Description string `json:"description,omitempty"`
+	Status string `json:"status,omitempty"`
+	State string `json:"state,omitempty"`
+	Duration int `json:"duration,omitempty"`
+	TargetResourceUuid string `json:"targetResourceUuid,omitempty"`
 	LastStatusChangeTime time.Time `json:"lastStatusChangeTime,omitempty"`
 }
 
@@ -48,3 +49,4 @@ type DeleteMonitorTriggerEventView struct {
 type UpdateMonitorTriggerEventView struct {
 	Inventory MonitorTriggerInventoryView `json:"inventory,omitempty"`
 }
+

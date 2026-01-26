@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type NetworkServiceProviderInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Type                   string   `json:"type,omitempty"`
-	NetworkServiceTypes    []string `json:"networkServiceTypes,omitempty"`
+	Description string `json:"description,omitempty"`
+	Type string `json:"type,omitempty"`
+	NetworkServiceTypes []string `json:"networkServiceTypes,omitempty"`
 	AttachedL2NetworkUuids []string `json:"attachedL2NetworkUuids,omitempty"`
 }
 
@@ -19,3 +20,4 @@ type NetworkServiceProviderInventoryView struct {
 type QueryNetworkServiceProviderView struct {
 	Inventories []NetworkServiceProviderInventoryView `json:"inventories,omitempty"`
 }
+

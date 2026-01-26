@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -12,9 +12,11 @@ var _ = view.MapView{} // avoid unused import
 
 // UpdateEventSubscriptionLabel updates EventSubscriptionLabel
 func (cli *ZSClient) UpdateEventSubscriptionLabel(uuid string, params param.UpdateEventSubscriptionLabelParam) (*view.EventSubscriptionLabelInventoryView, error) {
-	var resp view.UpdateEventSubscriptionLabelEventView
-	if err := cli.Put("v1/zwatch/events/subscriptions/labels/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.EventSubscriptionLabelInventoryView{}
+	if err := cli.PutWithRespKey("v1/zwatch/events/subscriptions/labels", uuid, "", map[string]interface{}{
+		"updateEventSubscriptionLabel": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

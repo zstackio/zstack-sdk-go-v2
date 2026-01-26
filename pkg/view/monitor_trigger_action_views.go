@@ -10,8 +10,9 @@ var _ = time.Now // avoid unused import
 type MonitorTriggerActionInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	State        string   `json:"state,omitempty"`
-	Type         string   `json:"type,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
 	TriggerUuids []string `json:"triggerUuids,omitempty"`
 }
 
@@ -34,3 +35,4 @@ type CreateMonitorTriggerActionEventView struct {
 type ChangeMonitorTriggerActionStateEventView struct {
 	Inventory MonitorTriggerActionInventoryView `json:"inventory,omitempty"`
 }
+

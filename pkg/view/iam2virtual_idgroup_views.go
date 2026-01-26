@@ -10,9 +10,10 @@ var _ = time.Now // avoid unused import
 type IAM2VirtualIDGroupInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ProjectUuid string                       `json:"projectUuid,omitempty"`
-	State       string                       `json:"state,omitempty"`
-	Attributes  []IAM2AttributeInventoryView `json:"attributes,omitempty"`
+	ProjectUuid string `json:"projectUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Attributes []IAM2AttributeInventoryView `json:"attributes,omitempty"`
 }
 
 // QueryIAM2VirtualIDGroupView QueryIAM2VirtualIDGroup
@@ -39,3 +40,4 @@ type DeleteIAM2VirtualIDGroupEventView struct {
 type UpdateIAM2VirtualIDGroupEventView struct {
 	Inventory IAM2VirtualIDGroupInventoryView `json:"inventory,omitempty"`
 }
+

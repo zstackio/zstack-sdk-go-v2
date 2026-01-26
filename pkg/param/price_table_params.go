@@ -9,9 +9,9 @@ var _ = time.Now // avoid unused import
 // CreatePriceTableParamDetail CreatePriceTable detail param
 type CreatePriceTableParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Prices []CreatePriceTable_PriceParam `json:"prices" validate:"required"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -22,24 +22,22 @@ type CreatePriceTableParam struct {
 }
 // UpdatePriceTableParamDetail UpdatePriceTable detail param
 type UpdatePriceTableParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdatePriceTableParam UpdatePriceTable request param
 type UpdatePriceTableParam struct {
 	BaseParam
-	Params UpdatePriceTableParamDetail `json:"params"`
+	Params UpdatePriceTableParamDetail `json:"updatePriceTable"`
 }
 // DeletePriceTableParamDetail DeletePriceTable detail param
 type DeletePriceTableParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeletePriceTableParam DeletePriceTable request param
 type DeletePriceTableParam struct {
 	BaseParam
-	Params DeletePriceTableParamDetail `json:"params"`
+	Params DeletePriceTableParamDetail `json:"deletePriceTable"`
 }

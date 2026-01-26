@@ -8,12 +8,13 @@ var _ = time.Now // avoid unused import
 
 // GlobalConfigInventoryView GlobalConfig
 type GlobalConfigInventoryView struct {
-	Id           int64  `json:"id,omitempty"`
-	Name         string `json:"name,omitempty"`
-	Category     string `json:"category,omitempty"`
-	Description  string `json:"description,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	Id int64 `json:"id,omitempty"`
+	Category string `json:"category,omitempty"`
+	Description string `json:"description,omitempty"`
 	DefaultValue string `json:"defaultValue,omitempty"`
-	Value        string `json:"value,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 
 // UpdateGlobalConfigEventView UpdateGlobalConfigEvent
@@ -30,3 +31,4 @@ type ResetGlobalConfigEventView struct {
 type QueryGlobalConfigView struct {
 	Inventories []GlobalConfigInventoryView `json:"inventories,omitempty"`
 }
+

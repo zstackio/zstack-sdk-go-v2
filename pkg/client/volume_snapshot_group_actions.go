@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,23 +15,40 @@ func (cli *ZSClient) QueryVolumeSnapshotGroup(params *param.QueryParam) ([]view.
 	var resp []view.VolumeSnapshotGroupInventoryView
 	return resp, cli.List("v1/volume-snapshots/group", params, &resp)
 }
+
+func (cli *ZSClient) GetVolumeSnapshotGroup(uuid string) (*view.VolumeSnapshotGroupInventoryView, error) {
+	var resp view.VolumeSnapshotGroupInventoryView
+	if err := cli.Get("v1/volume-snapshots/group", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageVolumeSnapshotGroup Pagination
+func (cli *ZSClient) PageVolumeSnapshotGroup(params *param.QueryParam) ([]view.VolumeSnapshotGroupInventoryView, int, error) {
+	var volumeSnapshotGroups []view.VolumeSnapshotGroupInventoryView
+	total, err := cli.Page("v1/volume-snapshots/group", params, &volumeSnapshotGroups)
+	return volumeSnapshotGroups, total, err
+}
 // CreateVolumeSnapshotGroup creates VolumeSnapshotGroup
 func (cli *ZSClient) CreateVolumeSnapshotGroup(params param.CreateVolumeSnapshotGroupParam) (*view.VolumeSnapshotGroupInventoryView, error) {
-	var resp view.CreateVolumeSnapshotGroupEventView
+	resp := view.VolumeSnapshotGroupInventoryView{}
 	if err := cli.Post("v1/volume-snapshots/group", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // UpdateVolumeSnapshotGroup updates VolumeSnapshotGroup
 func (cli *ZSClient) UpdateVolumeSnapshotGroup(uuid string, params param.UpdateVolumeSnapshotGroupParam) (*view.VolumeSnapshotGroupInventoryView, error) {
-	var resp view.UpdateVolumeSnapshotGroupEventView
-	if err := cli.Put("v1/volume-snapshots/group/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.VolumeSnapshotGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/volume-snapshots/group", uuid, "", map[string]interface{}{
+		"updateVolumeSnapshotGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }
 // DeleteVolumeSnapshotGroup deletes VolumeSnapshotGroup
 func (cli *ZSClient) DeleteVolumeSnapshotGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volume-snapshots/group/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/volume-snapshots/group", uuid, string(deleteMode))
 }

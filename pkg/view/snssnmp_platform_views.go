@@ -11,9 +11,10 @@ type SNSSnmpPlatformInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	SnmpAddress string `json:"snmpAddress,omitempty"`
-	SnmpPort    int    `json:"snmpPort,omitempty"`
-	State       string `json:"state,omitempty"`
-	Type        string `json:"type,omitempty"`
+	SnmpPort int `json:"snmpPort,omitempty"`
+	Description string `json:"description,omitempty"`
+	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // QuerySNSEmailPlatformView QuerySNSEmailPlatform
@@ -30,3 +31,4 @@ type UpdateSNSApplicationPlatformEventView struct {
 type CreateSNSApplicationPlatformEventView struct {
 	Inventory SNSApplicationPlatformInventoryView `json:"inventory,omitempty"`
 }
+

@@ -10,7 +10,8 @@ var _ = time.Now // avoid unused import
 type AccessControlRuleInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Rule     string `json:"rule,omitempty"`
+	Description string `json:"description,omitempty"`
+	Rule string `json:"rule,omitempty"`
 	Strategy string `json:"strategy,omitempty"`
 }
 
@@ -33,3 +34,4 @@ type DeleteAccessControlRuleEventView struct {
 type QueryAccessControlRuleView struct {
 	Inventories []AccessControlRuleInventoryView `json:"inventories,omitempty"`
 }
+

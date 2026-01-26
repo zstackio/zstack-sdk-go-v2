@@ -8,14 +8,13 @@ var _ = time.Now // avoid unused import
 
 // OssBucketInventoryView OssBucket
 type OssBucketInventoryView struct {
-	Uuid           string    `json:"uuid,omitempty"`
-	BucketName     string    `json:"bucketName,omitempty"`
-	DataCenterUuid string    `json:"dataCenterUuid,omitempty"`
-	Current        string    `json:"current,omitempty"`
-	RegionName     string    `json:"regionName,omitempty"`
-	Description    string    `json:"description,omitempty"`
-	CreateDate     time.Time `json:"createDate,omitempty"`
-	LastOpDate     time.Time `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	BucketName string `json:"bucketName,omitempty"`
+	DataCenterUuid string `json:"dataCenterUuid,omitempty"`
+	Current string `json:"current,omitempty"`
+	RegionName string `json:"regionName,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // CreateOssBucketRemoteEventView CreateOssBucketRemoteEvent
@@ -47,3 +46,4 @@ type QueryOssBucketFileNameView struct {
 type DetachOssBucketFromEcsDataCenterEventView struct {
 	Inventory OssBucketInventoryView `json:"inventory,omitempty"`
 }
+

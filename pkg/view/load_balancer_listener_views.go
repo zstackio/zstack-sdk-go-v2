@@ -10,16 +10,17 @@ var _ = time.Now // avoid unused import
 type LoadBalancerListenerInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	LoadBalancerUuid   string                                            `json:"loadBalancerUuid,omitempty"`
-	InstancePort       int                                               `json:"instancePort,omitempty"`
-	LoadBalancerPort   int                                               `json:"loadBalancerPort,omitempty"`
-	SecurityPolicyType string                                            `json:"securityPolicyType,omitempty"`
-	Protocol           string                                            `json:"protocol,omitempty"`
-	ServerGroupUuid    string                                            `json:"serverGroupUuid,omitempty"`
-	VmNicRefs          []LoadBalancerListenerVmNicRefInventoryView       `json:"vmNicRefs,omitempty"`
-	AclRefs            []LoadBalancerListenerACLRefInventoryView         `json:"aclRefs,omitempty"`
-	CertificateRefs    []LoadBalancerListenerCertificateRefInventoryView `json:"certificateRefs,omitempty"`
-	ServerGroupRefs    []LoadBalancerListenerServerGroupRefInventoryView `json:"serverGroupRefs,omitempty"`
+	Description string `json:"description,omitempty"`
+	LoadBalancerUuid string `json:"loadBalancerUuid,omitempty"`
+	InstancePort int `json:"instancePort,omitempty"`
+	LoadBalancerPort int `json:"loadBalancerPort,omitempty"`
+	SecurityPolicyType string `json:"securityPolicyType,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	ServerGroupUuid string `json:"serverGroupUuid,omitempty"`
+	VmNicRefs []LoadBalancerListenerVmNicRefInventoryView `json:"vmNicRefs,omitempty"`
+	AclRefs []LoadBalancerListenerACLRefInventoryView `json:"aclRefs,omitempty"`
+	CertificateRefs []LoadBalancerListenerCertificateRefInventoryView `json:"certificateRefs,omitempty"`
+	ServerGroupRefs []LoadBalancerListenerServerGroupRefInventoryView `json:"serverGroupRefs,omitempty"`
 }
 
 // AddAccessControlListToLoadBalancerEventView AddAccessControlListToLoadBalancerEvent
@@ -81,3 +82,4 @@ type RemoveAccessControlListFromLoadBalancerEventView struct {
 type DeleteLoadBalancerListenerEventView struct {
 	Inventory LoadBalancerInventoryView `json:"inventory,omitempty"`
 }
+

@@ -8,12 +8,11 @@ var _ = time.Now // avoid unused import
 
 // NetworkRouterFlowMeterRefInventoryView NetworkRouterFlowMeterRef
 type NetworkRouterFlowMeterRefInventoryView struct {
-	Uuid          string    `json:"uuid,omitempty"`
-	VRouterUuid   string    `json:"vRouterUuid,omitempty"`
-	FlowMeterUuid string    `json:"flowMeterUuid,omitempty"`
-	L3NetworkUuid string    `json:"l3NetworkUuid,omitempty"`
-	CreateDate    time.Time `json:"createDate,omitempty"`
-	LastOpDate    time.Time `json:"lastOpDate,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	VRouterUuid string `json:"vRouterUuid,omitempty"`
+	FlowMeterUuid string `json:"flowMeterUuid,omitempty"`
+	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 }
 
 // QueryVRouterFlowMeterNetworkView QueryVRouterFlowMeterNetwork
@@ -25,3 +24,4 @@ type QueryVRouterFlowMeterNetworkView struct {
 type AddVRouterNetworksToFlowMeterEventView struct {
 	Inventories []NetworkRouterFlowMeterRefInventoryView `json:"inventories,omitempty"`
 }
+

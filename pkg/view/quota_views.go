@@ -12,7 +12,7 @@ type QuotaInventoryView struct {
 	BaseTimeView
 	IdentityUuid string `json:"identityUuid,omitempty"`
 	IdentityType string `json:"identityType,omitempty"`
-	Value        int64  `json:"value,omitempty"`
+	Value int64 `json:"value,omitempty"`
 }
 
 // QueryQuotaView QueryQuota
@@ -29,3 +29,4 @@ type UpdateOrganizationQuotaEventView struct {
 type UpdateQuotaEventView struct {
 	Inventory QuotaInventoryView `json:"inventory,omitempty"`
 }
+

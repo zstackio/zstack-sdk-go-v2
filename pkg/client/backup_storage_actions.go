@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,23 +15,42 @@ func (cli *ZSClient) QueryBackupStorage(params *param.QueryParam) ([]view.Backup
 	var resp []view.BackupStorageInventoryView
 	return resp, cli.List("v1/backup-storage", params, &resp)
 }
-// UpdateBackupStorage updates BackupStorage
-func (cli *ZSClient) UpdateBackupStorage(uuid string, params param.UpdateBackupStorageParam) (*view.BackupStorageInventoryView, error) {
-	var resp view.UpdateBackupStorageEventView
-	if err := cli.Put("v1/backup-storage/{uuid}/actions", uuid, params, &resp); err != nil {
+
+func (cli *ZSClient) GetBackupStorage(uuid string) (*view.BackupStorageInventoryView, error) {
+	var resp view.BackupStorageInventoryView
+	if err := cli.Get("v1/backup-storage", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
+}
+
+// PageBackupStorage Pagination
+func (cli *ZSClient) PageBackupStorage(params *param.QueryParam) ([]view.BackupStorageInventoryView, int, error) {
+	var backupStorages []view.BackupStorageInventoryView
+	total, err := cli.Page("v1/backup-storage", params, &backupStorages)
+	return backupStorages, total, err
+}
+// UpdateBackupStorage updates BackupStorage
+func (cli *ZSClient) UpdateBackupStorage(uuid string, params param.UpdateBackupStorageParam) (*view.BackupStorageInventoryView, error) {
+	resp := view.BackupStorageInventoryView{}
+	if err := cli.PutWithRespKey("v1/backup-storage", uuid, "", map[string]interface{}{
+		"updateBackupStorage": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 // DeleteBackupStorage deletes BackupStorage
 func (cli *ZSClient) DeleteBackupStorage(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/backup-storage/{uuid}", uuid, string(deleteMode))
+	return cli.Delete("v1/backup-storage", uuid, string(deleteMode))
 }
 // ReconnectBackupStorage operates on BackupStorage
 func (cli *ZSClient) ReconnectBackupStorage(uuid string, params param.ReconnectBackupStorageParam) (*view.BackupStorageInventoryView, error) {
-	var resp view.ReconnectBackupStorageEventView
-	if err := cli.Put("v1/backup-storage/{uuid}/actions", uuid, params, &resp); err != nil {
+	resp := view.BackupStorageInventoryView{}
+	if err := cli.PutWithRespKey("v1/backup-storage", uuid, "", map[string]interface{}{
+		"reconnectBackupStorage": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

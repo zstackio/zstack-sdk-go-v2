@@ -8,36 +8,34 @@ var _ = time.Now // avoid unused import
 
 // DeleteClusterParamDetail DeleteCluster detail param
 type DeleteClusterParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteClusterParam DeleteCluster request param
 type DeleteClusterParam struct {
 	BaseParam
-	Params DeleteClusterParamDetail `json:"params"`
+	Params DeleteClusterParamDetail `json:"deleteCluster"`
 }
 // UpdateClusterParamDetail UpdateCluster detail param
 type UpdateClusterParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateClusterParam UpdateCluster request param
 type UpdateClusterParam struct {
 	BaseParam
-	Params UpdateClusterParamDetail `json:"params"`
+	Params UpdateClusterParamDetail `json:"updateCluster"`
 }
 // CreateClusterParamDetail CreateCluster detail param
 type CreateClusterParamDetail struct {
 	ZoneUuid string `json:"zoneUuid" validate:"required"`
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	HypervisorType string `json:"hypervisorType" validate:"required"`
-	Type string `json:"type,omitempty"`
-	Architecture string `json:"architecture,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Architecture *string `json:"architecture,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 

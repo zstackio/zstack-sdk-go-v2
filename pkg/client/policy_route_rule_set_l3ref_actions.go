@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,19 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryPolicyRouteRuleSetL3Ref(params *param.QueryParam) ([]view.PolicyRouteRuleSetL3RefInventoryView, error) {
 	var resp []view.PolicyRouteRuleSetL3RefInventoryView
 	return resp, cli.List("v1/policy-routes/rulesets/l3networdks/refs", params, &resp)
+}
+
+func (cli *ZSClient) GetPolicyRouteRuleSetL3Ref(uuid string) (*view.PolicyRouteRuleSetL3RefInventoryView, error) {
+	var resp view.PolicyRouteRuleSetL3RefInventoryView
+	if err := cli.Get("v1/policy-routes/rulesets/l3networdks/refs", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PagePolicyRouteRuleSetL3Ref Pagination
+func (cli *ZSClient) PagePolicyRouteRuleSetL3Ref(params *param.QueryParam) ([]view.PolicyRouteRuleSetL3RefInventoryView, int, error) {
+	var policyRouteRuleSetL3Refs []view.PolicyRouteRuleSetL3RefInventoryView
+	total, err := cli.Page("v1/policy-routes/rulesets/l3networdks/refs", params, &policyRouteRuleSetL3Refs)
+	return policyRouteRuleSetL3Refs, total, err
 }

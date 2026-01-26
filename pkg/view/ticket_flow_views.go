@@ -10,10 +10,11 @@ var _ = time.Now // avoid unused import
 type TicketFlowInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ParentFlowUuid  string `json:"parentFlowUuid,omitempty"`
-	FlowContext     string `json:"flowContext,omitempty"`
+	Description string `json:"description,omitempty"`
+	ParentFlowUuid string `json:"parentFlowUuid,omitempty"`
+	FlowContext string `json:"flowContext,omitempty"`
 	FlowContextType string `json:"flowContextType,omitempty"`
-	CollectionUuid  string `json:"collectionUuid,omitempty"`
+	CollectionUuid string `json:"collectionUuid,omitempty"`
 }
 
 // UpdateIAM2TicketFlowEventView UpdateIAM2TicketFlowEvent
@@ -30,3 +31,4 @@ type QueryTicketFlowView struct {
 type AddIAM2TicketFlowEventView struct {
 	Inventory TicketFlowInventoryView `json:"inventory,omitempty"`
 }
+

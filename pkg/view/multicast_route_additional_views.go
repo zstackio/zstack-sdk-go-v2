@@ -8,8 +8,11 @@ var _ = time.Now // avoid unused import
 
 // MulticastRouteInventoryView MulticastRoute
 type MulticastRouteInventoryView struct {
-	SourceAddress     string `json:"sourceAddress,omitempty"`
-	GroupAddress      string `json:"groupAddress,omitempty"`
+	BaseInfoView
+	BaseTimeView
+	SourceAddress string `json:"sourceAddress,omitempty"`
+	GroupAddress string `json:"groupAddress,omitempty"`
 	IngressInterfaces string `json:"ingressInterfaces,omitempty"`
-	EgressInterfaces  string `json:"egressInterfaces,omitempty"`
+	EgressInterfaces string `json:"egressInterfaces,omitempty"`
 }
+

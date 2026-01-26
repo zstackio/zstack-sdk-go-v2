@@ -10,7 +10,8 @@ var _ = time.Now // avoid unused import
 type SSORedirectTemplateInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ClientUuid       string `json:"clientUuid,omitempty"`
+	Description string `json:"description,omitempty"`
+	ClientUuid string `json:"clientUuid,omitempty"`
 	RedirectTemplate string `json:"redirectTemplate,omitempty"`
 }
 
@@ -28,3 +29,4 @@ type UpdateSSORedirectTemplateEventView struct {
 type DeleteSSORedirectTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
 }
+

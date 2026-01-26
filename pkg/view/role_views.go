@@ -10,15 +10,21 @@ var _ = time.Now // avoid unused import
 type RoleInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	Identity   string                             `json:"identity,omitempty"`
-	Type       string                             `json:"type,omitempty"`
-	State      string                             `json:"state,omitempty"`
+	Description string `json:"description,omitempty"`
+	Identity string `json:"identity,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
 	Statements []RolePolicyStatementInventoryView `json:"statements,omitempty"`
-	Policies   []RolePolicyRefInventoryView       `json:"policies,omitempty"`
+	Policies []RolePolicyRefInventoryView `json:"policies,omitempty"`
 }
 
 // ChangeRoleStateEventView ChangeRoleStateEvent
 type ChangeRoleStateEventView struct {
+	Inventory RoleInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateRoleEventView CreateRoleEvent
+type CreateRoleEventView struct {
 	Inventory RoleInventoryView `json:"inventory,omitempty"`
 }
 
@@ -36,3 +42,4 @@ type DeleteRoleEventView struct {
 type UpdateRoleEventView struct {
 	Inventory RoleInventoryView `json:"inventory,omitempty"`
 }
+

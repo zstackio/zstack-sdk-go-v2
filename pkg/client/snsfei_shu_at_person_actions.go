@@ -3,8 +3,9 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"fmt"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -15,15 +16,30 @@ func (cli *ZSClient) QuerySNSFeiShuAtPerson(params *param.QueryParam) ([]view.SN
 	var resp []view.SNSFeiShuAtPersonInventoryView
 	return resp, cli.List("v1/sns/application-endpoints/feishu/at-persons", params, &resp)
 }
+
+func (cli *ZSClient) GetSNSFeiShuAtPerson(uuid string) (*view.SNSFeiShuAtPersonInventoryView, error) {
+	var resp view.SNSFeiShuAtPersonInventoryView
+	if err := cli.Get("v1/sns/application-endpoints/feishu/at-persons", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageSNSFeiShuAtPerson Pagination
+func (cli *ZSClient) PageSNSFeiShuAtPerson(params *param.QueryParam) ([]view.SNSFeiShuAtPersonInventoryView, int, error) {
+	var sNSFeiShuAtPersons []view.SNSFeiShuAtPersonInventoryView
+	total, err := cli.Page("v1/sns/application-endpoints/feishu/at-persons", params, &sNSFeiShuAtPersons)
+	return sNSFeiShuAtPersons, total, err
+}
 // RemoveSNSFeiShuAtPerson removes SNSFeiShuAtPerson
-func (cli *ZSClient) RemoveSNSFeiShuAtPerson(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sns/application-endpoints/feishu/{endpointUuid}/at-persons/{userId}", uuid, string(deleteMode))
+func (cli *ZSClient) RemoveSNSFeiShuAtPerson(endpointUuid string, userId string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/sns/application-endpoints/feishu", endpointUuid, fmt.Sprintf("at-persons/%s", userId), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 // AddSNSFeiShuAtPerson adds SNSFeiShuAtPerson
 func (cli *ZSClient) AddSNSFeiShuAtPerson(params param.AddSNSFeiShuAtPersonParam) (*view.SNSFeiShuAtPersonInventoryView, error) {
-	var resp view.AddSNSFeiShuAtPersonEventView
+	resp := view.SNSFeiShuAtPersonInventoryView{}
 	if err := cli.Post("v1/sns/application-endpoints/feishu/at-persons", params, &resp); err != nil {
 		return nil, err
 	}
-	return &resp.Inventory, nil
+	return &resp, nil
 }

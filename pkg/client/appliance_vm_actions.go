@@ -3,8 +3,8 @@
 package client
 
 import (
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/param"
-	"dev.zstack.io/ye.zou/zstack-go-sdk/pkg/view"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
 var _ = param.BaseParam{} // avoid unused import
@@ -14,4 +14,19 @@ var _ = view.MapView{} // avoid unused import
 func (cli *ZSClient) QueryApplianceVm(params *param.QueryParam) ([]view.ApplianceVmInventoryView, error) {
 	var resp []view.ApplianceVmInventoryView
 	return resp, cli.List("v1/vm-instances/appliances", params, &resp)
+}
+
+func (cli *ZSClient) GetApplianceVm(uuid string) (*view.ApplianceVmInventoryView, error) {
+	var resp view.ApplianceVmInventoryView
+	if err := cli.Get("v1/vm-instances/appliances", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageApplianceVm Pagination
+func (cli *ZSClient) PageApplianceVm(params *param.QueryParam) ([]view.ApplianceVmInventoryView, int, error) {
+	var applianceVms []view.ApplianceVmInventoryView
+	total, err := cli.Page("v1/vm-instances/appliances", params, &applianceVms)
+	return applianceVms, total, err
 }

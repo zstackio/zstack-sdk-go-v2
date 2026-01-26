@@ -8,31 +8,30 @@ var _ = time.Now // avoid unused import
 
 // UpdateL3NetworkParamDetail UpdateL3Network detail param
 type UpdateL3NetworkParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
 	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	DnsDomain string `json:"dnsDomain,omitempty"`
-	Category string `json:"category,omitempty"`
-	System bool `json:"system,omitempty"`
+	Description *string `json:"description,omitempty"`
+	DnsDomain *string `json:"dnsDomain,omitempty"`
+	Category *string `json:"category,omitempty"`
+	System *bool `json:"system,omitempty"`
 }
 
 // UpdateL3NetworkParam UpdateL3Network request param
 type UpdateL3NetworkParam struct {
 	BaseParam
-	Params UpdateL3NetworkParamDetail `json:"params"`
+	Params UpdateL3NetworkParamDetail `json:"updateL3Network"`
 }
 // CreateL3NetworkParamDetail CreateL3Network detail param
 type CreateL3NetworkParamDetail struct {
 	Name string `json:"name" validate:"required"`
-	Description string `json:"description,omitempty"`
-	Type string `json:"type,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Type *string `json:"type,omitempty"`
 	L2NetworkUuid string `json:"l2NetworkUuid" validate:"required"`
-	Category string `json:"category,omitempty"`
-	IpVersion int `json:"ipVersion,omitempty"`
+	Category *string `json:"category,omitempty"`
+	IpVersion *int `json:"ipVersion,omitempty"`
 	System bool `json:"system,omitempty"`
-	DnsDomain string `json:"dnsDomain,omitempty"`
-	EnableIPAM bool `json:"enableIPAM,omitempty"`
-	ResourceUuid string `json:"resourceUuid,omitempty"`
+	DnsDomain *string `json:"dnsDomain,omitempty"`
+	EnableIPAM *bool `json:"enableIPAM,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
 
@@ -43,12 +42,11 @@ type CreateL3NetworkParam struct {
 }
 // DeleteL3NetworkParamDetail DeleteL3Network detail param
 type DeleteL3NetworkParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	DeleteMode string `json:"deleteMode,omitempty"`
+	DeleteMode *string `json:"deleteMode,omitempty"`
 }
 
 // DeleteL3NetworkParam DeleteL3Network request param
 type DeleteL3NetworkParam struct {
 	BaseParam
-	Params DeleteL3NetworkParamDetail `json:"params"`
+	Params DeleteL3NetworkParamDetail `json:"deleteL3Network"`
 }

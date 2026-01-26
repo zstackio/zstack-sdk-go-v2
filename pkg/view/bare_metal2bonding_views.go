@@ -11,9 +11,9 @@ type BareMetal2BondingInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	ChassisUuid string `json:"chassisUuid,omitempty"`
-	Slaves      string `json:"slaves,omitempty"`
-	Opts        string `json:"opts,omitempty"`
-	Mode        int    `json:"mode,omitempty"`
+	Slaves string `json:"slaves,omitempty"`
+	Opts string `json:"opts,omitempty"`
+	Mode int `json:"mode,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
 }
 
@@ -26,3 +26,4 @@ type QueryBareMetal2BondingView struct {
 type CreateBareMetal2BondingEventView struct {
 	Inventory BareMetal2BondingInventoryView `json:"inventory,omitempty"`
 }
+

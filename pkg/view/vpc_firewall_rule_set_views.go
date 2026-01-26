@@ -10,10 +10,11 @@ var _ = time.Now // avoid unused import
 type VpcFirewallRuleSetInventoryView struct {
 	BaseInfoView
 	BaseTimeView
-	ActionType string                         `json:"actionType,omitempty"`
-	IsDefault  bool                           `json:"isDefault,omitempty"`
-	IsApplied  bool                           `json:"isApplied,omitempty"`
-	Rules      []VpcFirewallRuleInventoryView `json:"rules,omitempty"`
+	ActionType string `json:"actionType,omitempty"`
+	Description string `json:"description,omitempty"`
+	IsDefault bool `json:"isDefault,omitempty"`
+	IsApplied bool `json:"isApplied,omitempty"`
+	Rules []VpcFirewallRuleInventoryView `json:"rules,omitempty"`
 }
 
 // CreateFirewallRuleFromConfigFileEventView CreateFirewallRuleFromConfigFileEvent
@@ -40,3 +41,4 @@ type ApplyRuleSetChangesEventView struct {
 type UpdateFirewallRuleSetEventView struct {
 	Inventory VpcFirewallRuleSetInventoryView `json:"inventory,omitempty"`
 }
+
