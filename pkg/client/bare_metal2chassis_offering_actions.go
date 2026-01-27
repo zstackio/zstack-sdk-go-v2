@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateBareMetal2ChassisOffering updates BareMetal2ChassisOffering
 func (cli *ZSClient) UpdateBareMetal2ChassisOffering(uuid string, params param.UpdateBareMetal2ChassisOfferingParam) (*view.BareMetal2ChassisOfferingInventoryView, error) {
 	resp := view.BareMetal2ChassisOfferingInventoryView{}
-	if err := cli.Put("v1/baremetal2/chassis/offerings", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal2/chassis/offerings", uuid, "", map[string]interface{}{
 		"updateBareMetal2ChassisOffering": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -21,7 +21,7 @@ func (cli *ZSClient) AddInfoSecSecurityMachine(params param.AddInfoSecSecurityMa
 // UpdateInfoSecSecurityMachine updates InfoSecSecurityMachine
 func (cli *ZSClient) UpdateInfoSecSecurityMachine(uuid string, params param.UpdateInfoSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Put("v1/security-machines/infoSec", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/security-machines/infoSec", uuid, "", map[string]interface{}{
 		"updateInfoSecSecurityMachine": params.Params,
 	}, &resp); err != nil {
 		return nil, err

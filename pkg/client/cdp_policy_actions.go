@@ -45,7 +45,7 @@ func (cli *ZSClient) PageCdpPolicy(params *param.QueryParam) ([]view.CdpPolicyIn
 // UpdateCdpPolicy updates CdpPolicy
 func (cli *ZSClient) UpdateCdpPolicy(uuid string, params param.UpdateCdpPolicyParam) (*view.CdpPolicyInventoryView, error) {
 	resp := view.CdpPolicyInventoryView{}
-	if err := cli.Put("v1/cdp-backup-storage/policy", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/cdp-backup-storage/policy", uuid, "", map[string]interface{}{
 		"updateCdpPolicy": params.Params,
 	}, &resp); err != nil {
 		return nil, err

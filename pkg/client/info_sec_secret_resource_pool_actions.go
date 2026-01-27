@@ -21,7 +21,7 @@ func (cli *ZSClient) CreateInfoSecSecretResourcePool(params param.CreateInfoSecS
 // UpdateInfoSecSecretResourcePool updates InfoSecSecretResourcePool
 func (cli *ZSClient) UpdateInfoSecSecretResourcePool(uuid string, params param.UpdateInfoSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Put("v1/secret-resource-pools/infoSec", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/secret-resource-pools/infoSec", uuid, "", map[string]interface{}{
 		"updateInfoSecSecretResourcePool": params.Params,
 	}, &resp); err != nil {
 		return nil, err

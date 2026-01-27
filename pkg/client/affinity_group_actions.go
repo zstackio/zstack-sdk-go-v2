@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAffinityGroup updates AffinityGroup
 func (cli *ZSClient) UpdateAffinityGroup(uuid string, params param.UpdateAffinityGroupParam) (*view.AffinityGroupInventoryView, error) {
 	resp := view.AffinityGroupInventoryView{}
-	if err := cli.Put("v1/affinity-groups", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/affinity-groups", uuid, "", map[string]interface{}{
 		"updateAffinityGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

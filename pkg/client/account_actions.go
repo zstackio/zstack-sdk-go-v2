@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAccount updates Account
 func (cli *ZSClient) UpdateAccount(uuid string, params param.UpdateAccountParam) (*view.AccountInventoryView, error) {
 	resp := view.AccountInventoryView{}
-	if err := cli.Put("v1/accounts", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/accounts", uuid, "", map[string]interface{}{
 		"updateAccount": params.Params,
 	}, &resp); err != nil {
 		return nil, err

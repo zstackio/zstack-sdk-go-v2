@@ -37,7 +37,7 @@ func (cli *ZSClient) DeleteIAM2Organization(uuid string, deleteMode param.Delete
 // UpdateIAM2Organization updates IAM2Organization
 func (cli *ZSClient) UpdateIAM2Organization(uuid string, params param.UpdateIAM2OrganizationParam) (*view.IAM2OrganizationInventoryView, error) {
 	resp := view.IAM2OrganizationInventoryView{}
-	if err := cli.Put("v1/iam2/organizations", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/iam2/organizations", uuid, "", map[string]interface{}{
 		"updateIAM2Organization": params.Params,
 	}, &resp); err != nil {
 		return nil, err

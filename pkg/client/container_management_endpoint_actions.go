@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateContainerManagementEndpoint updates ContainerManagementEndpoint
 func (cli *ZSClient) UpdateContainerManagementEndpoint(uuid string, params param.UpdateContainerManagementEndpointParam) (*view.ContainerManagementEndpointInventoryView, error) {
 	resp := view.ContainerManagementEndpointInventoryView{}
-	if err := cli.Put("v1/container/management/endpoint", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/container/management/endpoint", uuid, "", map[string]interface{}{
 		"updateContainerManagementEndpoint": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (cli *ZSClient) AddContainerManagementEndpoint(params param.AddContainerMan
 // SyncContainerManagementEndpoint operates on ContainerManagementEndpoint
 func (cli *ZSClient) SyncContainerManagementEndpoint(uuid string, params param.SyncContainerManagementEndpointParam) (*view.ContainerManagementEndpointInventoryView, error) {
 	resp := view.ContainerManagementEndpointInventoryView{}
-	if err := cli.Put("v1/container/management/endpoint", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/container/management/endpoint", uuid, "", map[string]interface{}{
 		"syncContainerManagementEndpoint": params.Params,
 	}, &resp); err != nil {
 		return nil, err

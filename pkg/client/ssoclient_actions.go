@@ -19,9 +19,9 @@ func (cli *ZSClient) DeleteSSOClient(params param.DeleteSSOClientParam) (*view.S
 	return &resp, nil
 }
 // GetSSOClient gets SSOClient by uuid
-func (cli *ZSClient) GetSSOClient(uuid string) (*view.SSOClientInventoryView, error) {
+func (cli *ZSClient) GetSSOClient() (*view.SSOClientInventoryView, error) {
 	var resp view.SSOClientInventoryView
-	if err := cli.Get("v1/get/sso/client", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/get/sso/client", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -33,7 +33,7 @@ func (cli *ZSClient) PagePrimaryStorage(params *param.QueryParam) ([]view.Primar
 // ReconnectPrimaryStorage operates on PrimaryStorage
 func (cli *ZSClient) ReconnectPrimaryStorage(uuid string, params param.ReconnectPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Put("v1/primary-storage", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/primary-storage", uuid, "", map[string]interface{}{
 		"reconnectPrimaryStorage": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -43,7 +43,7 @@ func (cli *ZSClient) ReconnectPrimaryStorage(uuid string, params param.Reconnect
 // UpdatePrimaryStorage updates PrimaryStorage
 func (cli *ZSClient) UpdatePrimaryStorage(uuid string, params param.UpdatePrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Put("v1/primary-storage", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/primary-storage", uuid, "", map[string]interface{}{
 		"updatePrimaryStorage": params.Params,
 	}, &resp); err != nil {
 		return nil, err

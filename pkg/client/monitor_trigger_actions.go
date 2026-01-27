@@ -69,7 +69,7 @@ func (cli *ZSClient) DeleteMonitorTrigger(uuid string, deleteMode param.DeleteMo
 // UpdateMonitorTrigger updates MonitorTrigger
 func (cli *ZSClient) UpdateMonitorTrigger(uuid string, params param.UpdateMonitorTriggerParam) (*view.MonitorTriggerInventoryView, error) {
 	resp := view.MonitorTriggerInventoryView{}
-	if err := cli.Put("v1/monitoring/triggers", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/monitoring/triggers", uuid, "", map[string]interface{}{
 		"updateMonitorTrigger": params.Params,
 	}, &resp); err != nil {
 		return nil, err

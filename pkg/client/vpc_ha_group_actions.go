@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateVpcHaGroup updates VpcHaGroup
 func (cli *ZSClient) UpdateVpcHaGroup(uuid string, params param.UpdateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
 	resp := view.VpcHaGroupInventoryView{}
-	if err := cli.Put("v1/vpc/hagroups", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/vpc/hagroups", uuid, "", map[string]interface{}{
 		"updateVpcHaGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

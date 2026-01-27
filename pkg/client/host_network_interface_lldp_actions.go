@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // GetHostNetworkInterfaceLldp gets HostNetworkInterfaceLldp by uuid
 func (cli *ZSClient) GetHostNetworkInterfaceLldp(uuid string) (*view.HostNetworkInterfaceLldpInventoryView, error) {
 	var resp view.HostNetworkInterfaceLldpInventoryView
-	if err := cli.Get("v1/hostNetworkInterface/lldp", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/hostNetworkInterface/lldp", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -13,7 +13,9 @@ var _ = view.MapView{} // avoid unused import
 // AddAliyunNasMountTarget adds AliyunNasMountTarget
 func (cli *ZSClient) AddAliyunNasMountTarget(params param.AddAliyunNasMountTargetParam) (*view.AliyunNasMountTargetInventoryView, error) {
 	resp := view.AliyunNasMountTargetInventoryView{}
-	if err := cli.Post("v1/nas/aliyun/mount", params, &resp); err != nil {
+	if err := cli.PutWithRespKey("v1/nas/aliyun/mount", "", "", map[string]interface{}{
+		"addAliyunNasMountTarget": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

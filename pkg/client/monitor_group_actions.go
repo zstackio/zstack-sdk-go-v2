@@ -45,7 +45,7 @@ func (cli *ZSClient) PageMonitorGroup(params *param.QueryParam) ([]view.MonitorG
 // UpdateMonitorGroup updates MonitorGroup
 func (cli *ZSClient) UpdateMonitorGroup(uuid string, params param.UpdateMonitorGroupParam) (*view.MonitorGroupInventoryView, error) {
 	resp := view.MonitorGroupInventoryView{}
-	if err := cli.Put("v1/zwatch/monitorgroups", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/zwatch/monitorgroups", uuid, "", map[string]interface{}{
 		"updateMonitorGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

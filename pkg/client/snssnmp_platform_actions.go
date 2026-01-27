@@ -33,7 +33,7 @@ func (cli *ZSClient) PageSNSSnmpPlatform(params *param.QueryParam) ([]view.SNSEm
 // UpdateSNSSnmpPlatform updates SNSSnmpPlatform
 func (cli *ZSClient) UpdateSNSSnmpPlatform(uuid string, params param.UpdateSNSSnmpPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
 	resp := view.SNSApplicationPlatformInventoryView{}
-	if err := cli.Put("v1/sns/application-platforms/snmp", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sns/application-platforms/snmp", uuid, "", map[string]interface{}{
 		"updateSNSSnmpPlatform": params.Params,
 	}, &resp); err != nil {
 		return nil, err

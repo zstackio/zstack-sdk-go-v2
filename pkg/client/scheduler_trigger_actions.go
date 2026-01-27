@@ -33,7 +33,7 @@ func (cli *ZSClient) PageSchedulerTrigger(params *param.QueryParam) ([]view.Sche
 // UpdateSchedulerTrigger updates SchedulerTrigger
 func (cli *ZSClient) UpdateSchedulerTrigger(uuid string, params param.UpdateSchedulerTriggerParam) (*view.SchedulerTriggerInventoryView, error) {
 	resp := view.SchedulerTriggerInventoryView{}
-	if err := cli.Put("v1/scheduler/triggers", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/scheduler/triggers", uuid, "", map[string]interface{}{
 		"updateSchedulerTrigger": params.Params,
 	}, &resp); err != nil {
 		return nil, err

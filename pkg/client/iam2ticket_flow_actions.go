@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateIAM2TicketFlow updates IAM2TicketFlow
 func (cli *ZSClient) UpdateIAM2TicketFlow(uuid string, params param.UpdateIAM2TicketFlowParam) (*view.TicketFlowInventoryView, error) {
 	resp := view.TicketFlowInventoryView{}
-	if err := cli.Put("v1/tickets/flow", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/tickets/flow", uuid, "", map[string]interface{}{
 		"updateIAM2TicketFlow": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -19,9 +19,9 @@ func (cli *ZSClient) CreateCasClient(params param.CreateCasClientParam) (*view.C
 	return &resp, nil
 }
 // UpdateCasClient updates CasClient
-func (cli *ZSClient) UpdateCasClient(uuid string, params param.UpdateCasClientParam) (*view.CasClientInventoryView, error) {
+func (cli *ZSClient) UpdateCasClient(params param.UpdateCasClientParam) (*view.CasClientInventoryView, error) {
 	resp := view.CasClientInventoryView{}
-	if err := cli.Put("v1/update/cas/client", uuid, params, &resp); err != nil {
+	if err := cli.Post("v1/update/cas/client", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

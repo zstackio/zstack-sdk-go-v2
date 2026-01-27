@@ -19,9 +19,9 @@ func (cli *ZSClient) CreateSnmpAgent(params param.CreateSnmpAgentParam) (*view.S
 	return &resp, nil
 }
 // StartSnmpAgent starts SnmpAgent
-func (cli *ZSClient) StartSnmpAgent(uuid string, params param.StartSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+func (cli *ZSClient) StartSnmpAgent(params param.StartSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.Put("v1/snmp/agent/actions", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/snmp/agent/actions", "", "", map[string]interface{}{
 		"startSnmpAgent": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -29,9 +29,9 @@ func (cli *ZSClient) StartSnmpAgent(uuid string, params param.StartSnmpAgentPara
 	return &resp, nil
 }
 // StopSnmpAgent stops SnmpAgent
-func (cli *ZSClient) StopSnmpAgent(uuid string, params param.StopSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+func (cli *ZSClient) StopSnmpAgent(params param.StopSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.Put("v1/snmp/agent/actions", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/snmp/agent/actions", "", "", map[string]interface{}{
 		"stopSnmpAgent": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -39,9 +39,9 @@ func (cli *ZSClient) StopSnmpAgent(uuid string, params param.StopSnmpAgentParam)
 	return &resp, nil
 }
 // UpdateSnmpAgent updates SnmpAgent
-func (cli *ZSClient) UpdateSnmpAgent(uuid string, params param.UpdateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+func (cli *ZSClient) UpdateSnmpAgent(params param.UpdateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.Put("v1/snmp/agent/actions", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/snmp/agent/actions", "", "", map[string]interface{}{
 		"updateSnmpAgent": params.Params,
 	}, &resp); err != nil {
 		return nil, err
