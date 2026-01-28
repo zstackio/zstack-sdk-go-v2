@@ -23,11 +23,6 @@ type DeleteMetricTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// QueryMetricDataHttpReceiverView QueryMetricDataHttpReceiver
-type QueryMetricDataHttpReceiverView struct {
-	Inventories []MetricDataHttpReceiverInventoryView `json:"inventories,omitempty"`
-}
-
 // CreateMetricTemplateEventView CreateMetricTemplateEvent
 type CreateMetricTemplateEventView struct {
 	Inventory MetricTemplateInventoryView `json:"inventory,omitempty"`
