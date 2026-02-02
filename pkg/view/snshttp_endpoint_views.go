@@ -25,11 +25,6 @@ type CreateSNSHttpEndpointEventView struct {
 	Inventory SNSHttpEndpointInventoryView `json:"inventory,omitempty"`
 }
 
-// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
-type UpdateSNSApplicationEndpointEventView struct {
-	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
-}
-
 // QuerySNSHttpEndpointView QuerySNSHttpEndpoint
 type QuerySNSHttpEndpointView struct {
 	Inventories []SNSHttpEndpointInventoryView `json:"inventories,omitempty"`
