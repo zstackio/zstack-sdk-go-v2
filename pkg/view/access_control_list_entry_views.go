@@ -15,6 +15,7 @@ type AccessControlListEntryInventoryView struct {
 	Domain string `json:"domain,omitempty"`
 	Url string `json:"url,omitempty"`
 	IpEntries string `json:"ipEntries,omitempty"`
+	RedirectPort int `json:"redirectPort,omitempty"`
 	Description string `json:"description,omitempty"`
 }
 

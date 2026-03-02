@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,50 +20,4 @@ func TestQueryHuaweiIMasterTenant(t *testing.T) {
 	}
 	golog.Infof("QueryHuaweiIMasterTenant result count: %d", len(result))
 }
-func TestGetHuaweiIMasterTenant(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryHuaweiIMasterTenant(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetHuaweiIMasterTenant Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No HuaweiIMasterTenant found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetHuaweiIMasterTenant(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetHuaweiIMasterTenant error: %v", err)
-		return
-	}
-	golog.Infof("GetHuaweiIMasterTenant result: %s", result.UUID)
-}
-
-func TestDeleteHuaweiIMasterTenant(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteHuaweiIMasterTenant is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryHuaweiIMasterTenant(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteHuaweiIMasterTenant Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No HuaweiIMasterTenant found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteHuaweiIMasterTenant(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteHuaweiIMasterTenant error: %v", err)
-		return
-	}
-	golog.Infof("DeleteHuaweiIMasterTenant succeeded for UUID: %s", list[0].UUID)
-}

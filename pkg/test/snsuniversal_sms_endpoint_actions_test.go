@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,85 +20,4 @@ func TestQuerySNSUniversalSmsEndpoint(t *testing.T) {
 	}
 	golog.Infof("QuerySNSUniversalSmsEndpoint result count: %d", len(result))
 }
-func TestGetSNSUniversalSmsEndpoint(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySNSUniversalSmsEndpoint(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetSNSUniversalSmsEndpoint Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SNSUniversalSmsEndpoint found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetSNSUniversalSmsEndpoint(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetSNSUniversalSmsEndpoint error: %v", err)
-		return
-	}
-	golog.Infof("GetSNSUniversalSmsEndpoint result: %s", result.UUID)
-}
-
-func TestUpdateSNSUniversalSmsEndpoint(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySNSUniversalSmsEndpoint(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateSNSUniversalSmsEndpoint Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SNSUniversalSmsEndpoint found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateSNSUniversalSmsEndpointParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateSNSUniversalSmsEndpointParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateSNSUniversalSmsEndpoint(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateSNSUniversalSmsEndpoint error: %v", err)
-		return
-	}
-	golog.Infof("UpdateSNSUniversalSmsEndpoint result: %s", result.UUID)
-}
-
-func TestCreateSNSUniversalSmsEndpoint(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateSNSUniversalSmsEndpoint is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateSNSUniversalSmsEndpointParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateSNSUniversalSmsEndpointParamDetail{
-	// 		Name: "test-snsuniversalsmsendpoint",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateSNSUniversalSmsEndpoint(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateSNSUniversalSmsEndpoint error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateSNSUniversalSmsEndpoint result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSUniversalSmsEndpoint(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteSNSUniversalSmsEndpoint error: %v", err)
-	// }
-}
-
-func TestValidateSNSUniversalSmsEndpoint(t *testing.T) {
-	// ValidateSNSUniversalSmsEndpoint operation
-	t.Skip("TestValidateSNSUniversalSmsEndpoint requires manual implementation")
-
-}

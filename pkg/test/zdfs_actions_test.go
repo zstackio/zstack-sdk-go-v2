@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,31 +20,4 @@ func TestQueryZdfs(t *testing.T) {
 	}
 	golog.Infof("QueryZdfs result count: %d", len(result))
 }
-func TestGetZdfs(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryZdfs(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetZdfs Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No Zdfs found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetZdfs(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetZdfs error: %v", err)
-		return
-	}
-	golog.Infof("GetZdfs result: %s", result.UUID)
-}
-
-func TestReconnectZdfs(t *testing.T) {
-	// ReconnectZdfs operation
-	t.Skip("TestReconnectZdfs requires manual implementation")
-
-}

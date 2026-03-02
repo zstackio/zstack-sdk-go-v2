@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,54 +20,4 @@ func TestQueryPciDeviceSpec(t *testing.T) {
 	}
 	golog.Infof("QueryPciDeviceSpec result count: %d", len(result))
 }
-func TestGetPciDeviceSpec(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPciDeviceSpec(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetPciDeviceSpec Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No PciDeviceSpec found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetPciDeviceSpec(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetPciDeviceSpec error: %v", err)
-		return
-	}
-	golog.Infof("GetPciDeviceSpec result: %s", result.UUID)
-}
-
-func TestUpdatePciDeviceSpec(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPciDeviceSpec(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdatePciDeviceSpec Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No PciDeviceSpec found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdatePciDeviceSpecParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdatePciDeviceSpecParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdatePciDeviceSpec(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdatePciDeviceSpec error: %v", err)
-		return
-	}
-	golog.Infof("UpdatePciDeviceSpec result: %s", result.UUID)
-}

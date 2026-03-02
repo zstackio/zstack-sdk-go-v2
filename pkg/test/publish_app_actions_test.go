@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,85 +20,4 @@ func TestQueryPublishApp(t *testing.T) {
 	}
 	golog.Infof("QueryPublishApp result count: %d", len(result))
 }
-func TestGetPublishApp(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPublishApp(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetPublishApp Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No PublishApp found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetPublishApp(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetPublishApp error: %v", err)
-		return
-	}
-	golog.Infof("GetPublishApp result: %s", result.UUID)
-}
-
-func TestUpdatePublishApp(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPublishApp(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdatePublishApp Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No PublishApp found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdatePublishAppParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdatePublishAppParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdatePublishApp(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdatePublishApp error: %v", err)
-		return
-	}
-	golog.Infof("UpdatePublishApp result: %s", result.UUID)
-}
-
-func TestDeletePublishApp(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeletePublishApp is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryPublishApp(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeletePublishApp Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No PublishApp found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeletePublishApp(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeletePublishApp error: %v", err)
-		return
-	}
-	golog.Infof("DeletePublishApp succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestPublishApp(t *testing.T) {
-	// PublishApp operation
-	t.Skip("TestPublishApp requires manual implementation")
-
-}

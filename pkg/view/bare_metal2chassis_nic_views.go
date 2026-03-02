@@ -15,5 +15,6 @@ type BareMetal2ChassisNicInventoryView struct {
 	NicName string `json:"nicName,omitempty"`
 	Speed string `json:"speed,omitempty"`
 	IsProvisionNic bool `json:"isProvisionNic,omitempty"`
+	IsPrimaryProvisionNic bool `json:"isPrimaryProvisionNic,omitempty"`
 }
 

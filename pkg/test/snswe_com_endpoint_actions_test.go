@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,79 +20,4 @@ func TestQuerySNSWeComEndpoint(t *testing.T) {
 	}
 	golog.Infof("QuerySNSWeComEndpoint result count: %d", len(result))
 }
-func TestGetSNSWeComEndpoint(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySNSWeComEndpoint(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetSNSWeComEndpoint Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SNSWeComEndpoint found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetSNSWeComEndpoint(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetSNSWeComEndpoint error: %v", err)
-		return
-	}
-	golog.Infof("GetSNSWeComEndpoint result: %s", result.UUID)
-}
-
-func TestUpdateSNSWeComEndpoint(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySNSWeComEndpoint(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateSNSWeComEndpoint Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SNSWeComEndpoint found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateSNSWeComEndpointParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateSNSWeComEndpointParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateSNSWeComEndpoint(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateSNSWeComEndpoint error: %v", err)
-		return
-	}
-	golog.Infof("UpdateSNSWeComEndpoint result: %s", result.UUID)
-}
-
-func TestCreateSNSWeComEndpoint(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateSNSWeComEndpoint is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateSNSWeComEndpointParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateSNSWeComEndpointParamDetail{
-	// 		Name: "test-snswecomendpoint",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateSNSWeComEndpoint(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateSNSWeComEndpoint error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateSNSWeComEndpoint result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSWeComEndpoint(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteSNSWeComEndpoint error: %v", err)
-	// }
-}

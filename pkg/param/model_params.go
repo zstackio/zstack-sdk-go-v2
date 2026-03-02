@@ -21,6 +21,7 @@ type UpdateModelParamDetail struct {
 	Name string `json:"name,omitempty"`
 	InstallPath *string `json:"installPath,omitempty"`
 	Description *string `json:"description,omitempty"`
+	Vendor *string `json:"vendor,omitempty"`
 	Parameters *string `json:"parameters,omitempty"`
 	ModelCenterUuid *string `json:"modelCenterUuid,omitempty"`
 	ModelClassifications []string `json:"modelClassifications,omitempty"`

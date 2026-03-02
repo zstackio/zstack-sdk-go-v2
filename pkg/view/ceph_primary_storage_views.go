@@ -33,13 +33,13 @@ type RemoveMonFromCephPrimaryStorageEventView struct {
 	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
-// AddMonToCephPrimaryStorageEventView AddMonToCephPrimaryStorageEvent
-type AddMonToCephPrimaryStorageEventView struct {
+// UpdateCephPrimaryStorageMonEventView UpdateCephPrimaryStorageMonEvent
+type UpdateCephPrimaryStorageMonEventView struct {
 	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
-// QueryPrimaryStorageView QueryPrimaryStorage
-type QueryPrimaryStorageView struct {
-	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
+// AddMonToCephPrimaryStorageEventView AddMonToCephPrimaryStorageEvent
+type AddMonToCephPrimaryStorageEventView struct {
+	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 

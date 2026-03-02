@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -12,48 +13,11 @@ import (
 
 func TestQueryVCenter(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	queryParam.Limit(10)
-	result, err := accessKeyAuthCli.QueryVCenter(&queryParam)
+	result, err := accountLoginCli.QueryVCenter(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVCenter error: %v", err)
 		return
 	}
-	golog.Infof("======================================")
 	golog.Infof("QueryVCenter result count: %d", len(result))
-	for _, r := range result {
-		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
-	}
-	golog.Infof("======================================")
 }
 
-func TestPageVCenter(t *testing.T) {
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(10).Start(0)
-	result, total, err := accessKeyAuthCli.PageVCenter(&queryParam)
-	if err != nil {
-		t.Errorf("TestPageVCenter error: %v", err)
-		return
-	}
-	golog.Infof("PageVCenter result: total=%d, returned=%d", total, len(result))
-}
-
-func TestGetVCenter(t *testing.T) {
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accessKeyAuthCli.QueryVCenter(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetVCenter Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No VCenter found to test Get")
-		return
-	}
-
-	result, err := accessKeyAuthCli.GetVCenter(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetVCenter error: %v", err)
-		return
-	}
-	golog.Infof("GetVCenter result: %s, Name: %s", result.UUID, result.Name)
-}

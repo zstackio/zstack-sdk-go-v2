@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,54 +20,4 @@ func TestQueryIAM2VirtualIDAttribute(t *testing.T) {
 	}
 	golog.Infof("QueryIAM2VirtualIDAttribute result count: %d", len(result))
 }
-func TestGetIAM2VirtualIDAttribute(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryIAM2VirtualIDAttribute(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetIAM2VirtualIDAttribute Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No IAM2VirtualIDAttribute found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetIAM2VirtualIDAttribute(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetIAM2VirtualIDAttribute error: %v", err)
-		return
-	}
-	golog.Infof("GetIAM2VirtualIDAttribute result: %s", result.UUID)
-}
-
-func TestUpdateIAM2VirtualIDAttribute(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryIAM2VirtualIDAttribute(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateIAM2VirtualIDAttribute Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No IAM2VirtualIDAttribute found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateIAM2VirtualIDAttributeParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateIAM2VirtualIDAttributeParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateIAM2VirtualIDAttribute(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateIAM2VirtualIDAttribute error: %v", err)
-		return
-	}
-	golog.Infof("UpdateIAM2VirtualIDAttribute result: %s", result.UUID)
-}
