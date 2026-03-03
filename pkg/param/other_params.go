@@ -364,6 +364,15 @@ type AttachL3NetworkToVmParam struct {
 	BaseParam
 	Params AttachL3NetworkToVmParamDetail `json:"params"`
 }
+// AttachPrimaryStorageToClusterParamDetail AttachPrimaryStorageToCluster detail param
+type AttachPrimaryStorageToClusterParamDetail struct {
+}
+
+// AttachPrimaryStorageToClusterParam AttachPrimaryStorageToCluster request param
+type AttachPrimaryStorageToClusterParam struct {
+	BaseParam
+	Params AttachPrimaryStorageToClusterParamDetail `json:"params"`
+}
 // AttachL2NetworkToClusterParamDetail AttachL2NetworkToCluster detail param
 type AttachL2NetworkToClusterParamDetail struct {
 	L2ProviderType *string `json:"l2ProviderType,omitempty"`
@@ -373,15 +382,6 @@ type AttachL2NetworkToClusterParamDetail struct {
 type AttachL2NetworkToClusterParam struct {
 	BaseParam
 	Params AttachL2NetworkToClusterParamDetail `json:"attachL2NetworkToCluster"`
-}
-// AttachPrimaryStorageToClusterParamDetail AttachPrimaryStorageToCluster detail param
-type AttachPrimaryStorageToClusterParamDetail struct {
-}
-
-// AttachPrimaryStorageToClusterParam AttachPrimaryStorageToCluster request param
-type AttachPrimaryStorageToClusterParam struct {
-	BaseParam
-	Params AttachPrimaryStorageToClusterParamDetail `json:"params"`
 }
 // ChangeVmNicTypeParamDetail ChangeVmNicType detail param
 type ChangeVmNicTypeParamDetail struct {
@@ -2825,17 +2825,6 @@ type AttachMonitorTriggerActionToTriggerParam struct {
 	BaseParam
 	Params AttachMonitorTriggerActionToTriggerParamDetail `json:"params"`
 }
-// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
-type GetAliyunNasFileSystemRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	FileSystemId *string `json:"fileSystemId,omitempty"`
-}
-
-// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
-type GetAliyunNasFileSystemRemoteParam struct {
-	BaseParam
-	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
-}
 // UpdateOrganizationQuotaParamDetail UpdateOrganizationQuota detail param
 type UpdateOrganizationQuotaParamDetail struct {
 	IdentityUuid string `json:"identityUuid" validate:"required"`
@@ -2847,6 +2836,17 @@ type UpdateOrganizationQuotaParamDetail struct {
 type UpdateOrganizationQuotaParam struct {
 	BaseParam
 	Params UpdateOrganizationQuotaParamDetail `json:"updateOrganizationQuota"`
+}
+// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
+type GetAliyunNasFileSystemRemoteParamDetail struct {
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	FileSystemId *string `json:"fileSystemId,omitempty"`
+}
+
+// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
+type GetAliyunNasFileSystemRemoteParam struct {
+	BaseParam
+	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
 }
 // ChangePreconfigurationTemplateStateParamDetail ChangePreconfigurationTemplateState detail param
 type ChangePreconfigurationTemplateStateParamDetail struct {
@@ -4515,15 +4515,6 @@ type UnlockIdentityParam struct {
 	BaseParam
 	Params UnlockIdentityParamDetail `json:"unlockIdentity"`
 }
-// GetCandidateVmNicsForPortMirrorParamDetail GetCandidateVmNicsForPortMirror detail param
-type GetCandidateVmNicsForPortMirrorParamDetail struct {
-}
-
-// GetCandidateVmNicsForPortMirrorParam GetCandidateVmNicsForPortMirror request param
-type GetCandidateVmNicsForPortMirrorParam struct {
-	BaseParam
-	Params GetCandidateVmNicsForPortMirrorParamDetail `json:"getCandidateVmNicsForPortMirror"`
-}
 // ChangeVmSchedulingRuleStateParamDetail ChangeVmSchedulingRuleState detail param
 type ChangeVmSchedulingRuleStateParamDetail struct {
 	State string `json:"state" validate:"required"`
@@ -4533,6 +4524,15 @@ type ChangeVmSchedulingRuleStateParamDetail struct {
 type ChangeVmSchedulingRuleStateParam struct {
 	BaseParam
 	Params ChangeVmSchedulingRuleStateParamDetail `json:"changeVmSchedulingRuleState"`
+}
+// GetCandidateVmNicsForPortMirrorParamDetail GetCandidateVmNicsForPortMirror detail param
+type GetCandidateVmNicsForPortMirrorParamDetail struct {
+}
+
+// GetCandidateVmNicsForPortMirrorParam GetCandidateVmNicsForPortMirror request param
+type GetCandidateVmNicsForPortMirrorParam struct {
+	BaseParam
+	Params GetCandidateVmNicsForPortMirrorParamDetail `json:"getCandidateVmNicsForPortMirror"`
 }
 // CreateFirewallRuleParamDetail CreateFirewallRule detail param
 type CreateFirewallRuleParamDetail struct {
@@ -7479,16 +7479,6 @@ type AddDisasterImageStoreBackupStorageParam struct {
 	BaseParam
 	Params AddDisasterImageStoreBackupStorageParamDetail `json:"params"`
 }
-// CreateVolumesSnapshotParamDetail CreateVolumesSnapshot detail param
-type CreateVolumesSnapshotParamDetail struct {
-	VolumeUuids []string `json:"volumeUuids" validate:"required"`
-}
-
-// CreateVolumesSnapshotParam CreateVolumesSnapshot request param
-type CreateVolumesSnapshotParam struct {
-	BaseParam
-	Params CreateVolumesSnapshotParamDetail `json:"params"`
-}
 // GetVmSchedulingRulesExecuteStateParamDetail GetVmSchedulingRulesExecuteState detail param
 type GetVmSchedulingRulesExecuteStateParamDetail struct {
 	Uuids []string `json:"uuids" validate:"required"`
@@ -7498,6 +7488,16 @@ type GetVmSchedulingRulesExecuteStateParamDetail struct {
 type GetVmSchedulingRulesExecuteStateParam struct {
 	BaseParam
 	Params GetVmSchedulingRulesExecuteStateParamDetail `json:"params"`
+}
+// CreateVolumesSnapshotParamDetail CreateVolumesSnapshot detail param
+type CreateVolumesSnapshotParamDetail struct {
+	VolumeUuids []string `json:"volumeUuids" validate:"required"`
+}
+
+// CreateVolumesSnapshotParam CreateVolumesSnapshot request param
+type CreateVolumesSnapshotParam struct {
+	BaseParam
+	Params CreateVolumesSnapshotParamDetail `json:"params"`
 }
 // GetIpAddressCapacityParamDetail GetIpAddressCapacity detail param
 type GetIpAddressCapacityParamDetail struct {
@@ -7970,6 +7970,16 @@ type UpdateAtPersonOfAtDingTalkEndpointParam struct {
 	BaseParam
 	Params UpdateAtPersonOfAtDingTalkEndpointParamDetail `json:"updateAtPersonOfAtDingTalkEndpoint"`
 }
+// GetResourceAccountParamDetail GetResourceAccount detail param
+type GetResourceAccountParamDetail struct {
+	ResourceUuids []string `json:"resourceUuids" validate:"required"`
+}
+
+// GetResourceAccountParam GetResourceAccount request param
+type GetResourceAccountParam struct {
+	BaseParam
+	Params GetResourceAccountParamDetail `json:"getResourceAccount"`
+}
 // UpdateAliyunMountTargetParamDetail UpdateAliyunMountTarget detail param
 type UpdateAliyunMountTargetParamDetail struct {
 	AccessGroupUuid string `json:"accessGroupUuid" validate:"required"`
@@ -7982,16 +7992,6 @@ type UpdateAliyunMountTargetParamDetail struct {
 type UpdateAliyunMountTargetParam struct {
 	BaseParam
 	Params UpdateAliyunMountTargetParamDetail `json:"updateAliyunMountTarget"`
-}
-// GetResourceAccountParamDetail GetResourceAccount detail param
-type GetResourceAccountParamDetail struct {
-	ResourceUuids []string `json:"resourceUuids" validate:"required"`
-}
-
-// GetResourceAccountParam GetResourceAccount request param
-type GetResourceAccountParam struct {
-	BaseParam
-	Params GetResourceAccountParamDetail `json:"getResourceAccount"`
 }
 // ChangeSecretResourcePoolStateParamDetail ChangeSecretResourcePoolState detail param
 type ChangeSecretResourcePoolStateParamDetail struct {
@@ -9226,16 +9226,6 @@ type DeleteEcsSecurityGroupRuleRemoteParam struct {
 	BaseParam
 	Params DeleteEcsSecurityGroupRuleRemoteParamDetail `json:"deleteEcsSecurityGroupRuleRemote"`
 }
-// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
-type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
-	VmUuid string `json:"vmUuid" validate:"required"`
-}
-
-// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
-type GetCandidateAffinityGroupForAttachingVmParam struct {
-	BaseParam
-	Params GetCandidateAffinityGroupForAttachingVmParamDetail `json:"getCandidateAffinityGroupForAttachingVm"`
-}
 // DetachAliyunDiskFromEcsParamDetail DetachAliyunDiskFromEcs detail param
 type DetachAliyunDiskFromEcsParamDetail struct {
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
@@ -9246,6 +9236,16 @@ type DetachAliyunDiskFromEcsParamDetail struct {
 type DetachAliyunDiskFromEcsParam struct {
 	BaseParam
 	Params DetachAliyunDiskFromEcsParamDetail `json:"params"`
+}
+// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
+type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
+	VmUuid string `json:"vmUuid" validate:"required"`
+}
+
+// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
+type GetCandidateAffinityGroupForAttachingVmParam struct {
+	BaseParam
+	Params GetCandidateAffinityGroupForAttachingVmParamDetail `json:"getCandidateAffinityGroupForAttachingVm"`
 }
 // UpdateFirewallIpSetTemplateParamDetail UpdateFirewallIpSetTemplate detail param
 type UpdateFirewallIpSetTemplateParamDetail struct {
@@ -10131,6 +10131,15 @@ type GetAppBuildSystemCapacityParam struct {
 	BaseParam
 	Params GetAppBuildSystemCapacityParamDetail `json:"getAppBuildSystemCapacity"`
 }
+// GetAttachableVpcL3NetworkParamDetail GetAttachableVpcL3Network detail param
+type GetAttachableVpcL3NetworkParamDetail struct {
+}
+
+// GetAttachableVpcL3NetworkParam GetAttachableVpcL3Network request param
+type GetAttachableVpcL3NetworkParam struct {
+	BaseParam
+	Params GetAttachableVpcL3NetworkParamDetail `json:"params"`
+}
 // ChangeBaremetalChassisStateParamDetail ChangeBaremetalChassisState detail param
 type ChangeBaremetalChassisStateParamDetail struct {
 	StateEvent string `json:"stateEvent" validate:"required"`
@@ -10140,15 +10149,6 @@ type ChangeBaremetalChassisStateParamDetail struct {
 type ChangeBaremetalChassisStateParam struct {
 	BaseParam
 	Params ChangeBaremetalChassisStateParamDetail `json:"changeBaremetalChassisState"`
-}
-// GetAttachableVpcL3NetworkParamDetail GetAttachableVpcL3Network detail param
-type GetAttachableVpcL3NetworkParamDetail struct {
-}
-
-// GetAttachableVpcL3NetworkParam GetAttachableVpcL3Network request param
-type GetAttachableVpcL3NetworkParam struct {
-	BaseParam
-	Params GetAttachableVpcL3NetworkParamDetail `json:"params"`
 }
 // GetL3NetworkMtuParamDetail GetL3NetworkMtu detail param
 type GetL3NetworkMtuParamDetail struct {
@@ -10663,16 +10663,6 @@ type GetLicenseUKeyStatusParam struct {
 	BaseParam
 	Params GetLicenseUKeyStatusParamDetail `json:"params"`
 }
-// SetL3NetworkRouterInterfaceIpParamDetail SetL3NetworkRouterInterfaceIp detail param
-type SetL3NetworkRouterInterfaceIpParamDetail struct {
-	RouterInterfaceIp string `json:"routerInterfaceIp" validate:"required"`
-}
-
-// SetL3NetworkRouterInterfaceIpParam SetL3NetworkRouterInterfaceIp request param
-type SetL3NetworkRouterInterfaceIpParam struct {
-	BaseParam
-	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"params"`
-}
 // AddTicketTypesToTicketFlowCollectionParamDetail AddTicketTypesToTicketFlowCollection detail param
 type AddTicketTypesToTicketFlowCollectionParamDetail struct {
 	TicketTypeUuids []string `json:"ticketTypeUuids" validate:"required"`
@@ -10682,6 +10672,16 @@ type AddTicketTypesToTicketFlowCollectionParamDetail struct {
 type AddTicketTypesToTicketFlowCollectionParam struct {
 	BaseParam
 	Params AddTicketTypesToTicketFlowCollectionParamDetail `json:"params"`
+}
+// SetL3NetworkRouterInterfaceIpParamDetail SetL3NetworkRouterInterfaceIp detail param
+type SetL3NetworkRouterInterfaceIpParamDetail struct {
+	RouterInterfaceIp string `json:"routerInterfaceIp" validate:"required"`
+}
+
+// SetL3NetworkRouterInterfaceIpParam SetL3NetworkRouterInterfaceIp request param
+type SetL3NetworkRouterInterfaceIpParam struct {
+	BaseParam
+	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"params"`
 }
 // GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail GetConnectionBetweenL3NetworkAndAliyunVSwitch detail param
 type GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
