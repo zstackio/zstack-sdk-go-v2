@@ -362,19 +362,19 @@ func (cli *ZSClient) AttachL3NetworkToVm(params param.AttachL3NetworkToVmParam) 
 	return &resp, nil
 }
 
-// AttachL2NetworkToCluster operates on L2NetworkToCluster
-func (cli *ZSClient) AttachL2NetworkToCluster(params param.AttachL2NetworkToClusterParam) (*view.L2NetworkInventoryView, error) {
-	resp := view.L2NetworkInventoryView{}
-	if err := cli.Post("v1/l2-networks/{l2NetworkUuid}/clusters/{clusterUuid}", params, &resp); err != nil {
+// AttachPrimaryStorageToCluster operates on PrimaryStorageToCluster
+func (cli *ZSClient) AttachPrimaryStorageToCluster(params param.AttachPrimaryStorageToClusterParam) (*view.PrimaryStorageInventoryView, error) {
+	resp := view.PrimaryStorageInventoryView{}
+	if err := cli.Post("v1/clusters/{clusterUuid}/primary-storage/{primaryStorageUuid}", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// AttachPrimaryStorageToCluster operates on PrimaryStorageToCluster
-func (cli *ZSClient) AttachPrimaryStorageToCluster(params param.AttachPrimaryStorageToClusterParam) (*view.PrimaryStorageInventoryView, error) {
-	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post("v1/clusters/{clusterUuid}/primary-storage/{primaryStorageUuid}", params, &resp); err != nil {
+// AttachL2NetworkToCluster operates on L2NetworkToCluster
+func (cli *ZSClient) AttachL2NetworkToCluster(params param.AttachL2NetworkToClusterParam) (*view.L2NetworkInventoryView, error) {
+	resp := view.L2NetworkInventoryView{}
+	if err := cli.Post("v1/l2-networks/{l2NetworkUuid}/clusters/{clusterUuid}", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2690,21 +2690,21 @@ func (cli *ZSClient) AttachMonitorTriggerActionToTrigger(params param.AttachMoni
 	return &resp, nil
 }
 
-// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
-func (cli *ZSClient) GetAliyunNasFileSystemRemote() (*view.AliyunNasFileSystemPropertyView, error) {
-	var resp view.AliyunNasFileSystemPropertyView
-	if err := cli.GetWithRespKey("v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // UpdateOrganizationQuota updates OrganizationQuota
 func (cli *ZSClient) UpdateOrganizationQuota(params param.UpdateOrganizationQuotaParam) (*view.QuotaInventoryView, error) {
 	resp := view.QuotaInventoryView{}
 	if err := cli.PutWithRespKey("v1/iam2/Organization/quotas/actions", "", "", map[string]interface{}{
 		"updateOrganizationQuota": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
+func (cli *ZSClient) GetAliyunNasFileSystemRemote() (*view.AliyunNasFileSystemPropertyView, error) {
+	var resp view.AliyunNasFileSystemPropertyView
+	if err := cli.GetWithRespKey("v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4271,22 +4271,22 @@ func (cli *ZSClient) UnlockIdentity() (*view.UnlockIdentityView, error) {
 	return &resp, nil
 }
 
-// GetCandidateVmNicsForPortMirror gets CandidateVmNicsForPortMirror by uuid
-func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, typeParam string) (*view.VmNicInventoryView, error) {
-	var resp view.VmNicInventoryView
-	err := cli.GetWithSpec("v1/port-mirrors", portMirrorUuid, fmt.Sprintf("vm-instances/candidate-nics/%s", typeParam), "", nil, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // ChangeVmSchedulingRuleState changes VmSchedulingRuleState
 func (cli *ZSClient) ChangeVmSchedulingRuleState(uuid string, params param.ChangeVmSchedulingRuleStateParam) (*view.VmSchedulingRuleInventoryView, error) {
 	resp := view.VmSchedulingRuleInventoryView{}
 	if err := cli.PutWithRespKey("v1/vmSchedulingRule", uuid, "", map[string]interface{}{
 		"changeVmSchedulingRuleState": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetCandidateVmNicsForPortMirror gets CandidateVmNicsForPortMirror by uuid
+func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, typeParam string) (*view.VmNicInventoryView, error) {
+	var resp view.VmNicInventoryView
+	err := cli.GetWithSpec("v1/port-mirrors", portMirrorUuid, fmt.Sprintf("vm-instances/candidate-nics/%s", typeParam), "", nil, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6977,19 +6977,19 @@ func (cli *ZSClient) AddDisasterImageStoreBackupStorage(params param.AddDisaster
 	return &resp, nil
 }
 
-// CreateVolumesSnapshot creates VolumesSnapshot
-func (cli *ZSClient) CreateVolumesSnapshot(params param.CreateVolumesSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
-	resp := view.VolumeSnapshotInventoryView{}
-	if err := cli.Post("v1/volumes/volume-snapshots", params, &resp); err != nil {
+// GetVmSchedulingRulesExecuteState gets VmSchedulingRulesExecuteState by uuid
+func (cli *ZSClient) GetVmSchedulingRulesExecuteState(params param.GetVmSchedulingRulesExecuteStateParam) (*view.GetVmSchedulingRulesExecuteStateView, error) {
+	resp := view.GetVmSchedulingRulesExecuteStateView{}
+	if err := cli.Post("v1/get/vmSchedulingRules/conflict/state", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// GetVmSchedulingRulesExecuteState gets VmSchedulingRulesExecuteState by uuid
-func (cli *ZSClient) GetVmSchedulingRulesExecuteState(params param.GetVmSchedulingRulesExecuteStateParam) (*view.GetVmSchedulingRulesExecuteStateView, error) {
-	resp := view.GetVmSchedulingRulesExecuteStateView{}
-	if err := cli.Post("v1/get/vmSchedulingRules/conflict/state", params, &resp); err != nil {
+// CreateVolumesSnapshot creates VolumesSnapshot
+func (cli *ZSClient) CreateVolumesSnapshot(params param.CreateVolumesSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
+	resp := view.VolumeSnapshotInventoryView{}
+	if err := cli.Post("v1/volumes/volume-snapshots", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7383,21 +7383,21 @@ func (cli *ZSClient) UpdateAtPersonOfAtDingTalkEndpoint(uuid string, params para
 	return &resp, nil
 }
 
+// GetResourceAccount gets ResourceAccount by uuid
+func (cli *ZSClient) GetResourceAccount() (*view.StringView, error) {
+	var resp view.StringView
+	if err := cli.GetWithRespKey("v1/resources/accounts", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // UpdateAliyunMountTarget updates AliyunMountTarget
 func (cli *ZSClient) UpdateAliyunMountTarget(params param.UpdateAliyunMountTargetParam) (*view.NasMountTargetInventoryView, error) {
 	resp := view.NasMountTargetInventoryView{}
 	if err := cli.PutWithRespKey("v1/nas/aliyun/mount", "", "", map[string]interface{}{
 		"updateAliyunMountTarget": params.Params,
 	}, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
-// GetResourceAccount gets ResourceAccount by uuid
-func (cli *ZSClient) GetResourceAccount() (*view.StringView, error) {
-	var resp view.StringView
-	if err := cli.GetWithRespKey("v1/resources/accounts", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8500,19 +8500,19 @@ func (cli *ZSClient) DeleteEcsSecurityGroupRuleRemote(uuid string, deleteMode pa
 	return cli.Delete("v1/hybrid/aliyun/security-group-rule/remote", uuid, string(deleteMode))
 }
 
-// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
-func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm() (*view.AffinityGroupInventoryView, error) {
-	var resp view.AffinityGroupInventoryView
-	if err := cli.GetWithRespKey("v1/affinityGroup/attachingVm", "", "", nil, &resp); err != nil {
+// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
+func (cli *ZSClient) DetachAliyunDiskFromEcs(params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
+	resp := view.DetachAliyunDiskFromEcsEventView{}
+	if err := cli.Post("v1/hybrid/aliyun/disk/{uuid}/detach", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
-func (cli *ZSClient) DetachAliyunDiskFromEcs(params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
-	resp := view.DetachAliyunDiskFromEcsEventView{}
-	if err := cli.Post("v1/hybrid/aliyun/disk/{uuid}/detach", params, &resp); err != nil {
+// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
+func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm() (*view.AffinityGroupInventoryView, error) {
+	var resp view.AffinityGroupInventoryView
+	if err := cli.GetWithRespKey("v1/affinityGroup/attachingVm", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9253,21 +9253,21 @@ func (cli *ZSClient) GetAppBuildSystemCapacity() (*view.GetAppBuildSystemCapacit
 	return &resp, nil
 }
 
+// GetAttachableVpcL3Network gets AttachableVpcL3Network by uuid
+func (cli *ZSClient) GetAttachableVpcL3Network(params param.GetAttachableVpcL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+	resp := view.L3NetworkInventoryView{}
+	if err := cli.Post("v1/vpc/virtual-routers/{uuid}/attachable-vpc-l3s", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // ChangeBaremetalChassisState changes BaremetalChassisState
 func (cli *ZSClient) ChangeBaremetalChassisState(uuid string, params param.ChangeBaremetalChassisStateParam) (*view.BaremetalChassisInventoryView, error) {
 	resp := view.BaremetalChassisInventoryView{}
 	if err := cli.PutWithRespKey("v1/baremetal/chassis", uuid, "", map[string]interface{}{
 		"changeBaremetalChassisState": params.Params,
 	}, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
-// GetAttachableVpcL3Network gets AttachableVpcL3Network by uuid
-func (cli *ZSClient) GetAttachableVpcL3Network(params param.GetAttachableVpcL3NetworkParam) (*view.L3NetworkInventoryView, error) {
-	resp := view.L3NetworkInventoryView{}
-	if err := cli.Post("v1/vpc/virtual-routers/{uuid}/attachable-vpc-l3s", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9790,19 +9790,19 @@ func (cli *ZSClient) GetLicenseUKeyStatus() (*view.UKeyInventoryView, error) {
 	return &resp, nil
 }
 
-// SetL3NetworkRouterInterfaceIp operates on L3NetworkRouterInterfaceIp
-func (cli *ZSClient) SetL3NetworkRouterInterfaceIp(params param.SetL3NetworkRouterInterfaceIpParam) (*view.SetL3NetworkRouterInterfaceIpEventView, error) {
-	resp := view.SetL3NetworkRouterInterfaceIpEventView{}
-	if err := cli.Post("v1/l3-networks/{l3NetworkUuid}/router-interface-ip", params, &resp); err != nil {
+// AddTicketTypesToTicketFlowCollection adds TicketTypesToTicketFlowCollection
+func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(params param.AddTicketTypesToTicketFlowCollectionParam) (*view.AddTicketTypesToTicketFlowCollectionEventView, error) {
+	resp := view.AddTicketTypesToTicketFlowCollectionEventView{}
+	if err := cli.Post("v1/tickets/flow-collections/{ticketFlowCollectionUuid}/ticket-types", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// AddTicketTypesToTicketFlowCollection adds TicketTypesToTicketFlowCollection
-func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(params param.AddTicketTypesToTicketFlowCollectionParam) (*view.AddTicketTypesToTicketFlowCollectionEventView, error) {
-	resp := view.AddTicketTypesToTicketFlowCollectionEventView{}
-	if err := cli.Post("v1/tickets/flow-collections/{ticketFlowCollectionUuid}/ticket-types", params, &resp); err != nil {
+// SetL3NetworkRouterInterfaceIp operates on L3NetworkRouterInterfaceIp
+func (cli *ZSClient) SetL3NetworkRouterInterfaceIp(params param.SetL3NetworkRouterInterfaceIpParam) (*view.SetL3NetworkRouterInterfaceIpEventView, error) {
+	resp := view.SetL3NetworkRouterInterfaceIpEventView{}
+	if err := cli.Post("v1/l3-networks/{l3NetworkUuid}/router-interface-ip", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
