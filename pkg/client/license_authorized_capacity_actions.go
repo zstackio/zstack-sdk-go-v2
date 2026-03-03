@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // GetLicenseAuthorizedCapacity gets LicenseAuthorizedCapacity by uuid
-func (cli *ZSClient) GetLicenseAuthorizedCapacity(uuid string) (*view.LicenseAuthorizedCapacityInventoryView, error) {
+func (cli *ZSClient) GetLicenseAuthorizedCapacity() (*view.LicenseAuthorizedCapacityInventoryView, error) {
 	var resp view.LicenseAuthorizedCapacityInventoryView
-	if err := cli.Get("v1/license-server/authorized-capacity", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/license-server/authorized-capacity", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

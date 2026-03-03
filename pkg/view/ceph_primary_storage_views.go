@@ -43,8 +43,3 @@ type AddMonToCephPrimaryStorageEventView struct {
 	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
-// QueryPrimaryStorageView QueryPrimaryStorage
-type QueryPrimaryStorageView struct {
-	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
-}
-

@@ -45,7 +45,7 @@ func (cli *ZSClient) PageAliyunPanguPartition(params *param.QueryParam) ([]view.
 // UpdateAliyunPanguPartition updates AliyunPanguPartition
 func (cli *ZSClient) UpdateAliyunPanguPartition(uuid string, params param.UpdateAliyunPanguPartitionParam) (*view.AliyunPanguPartitionInventoryView, error) {
 	resp := view.AliyunPanguPartitionInventoryView{}
-	if err := cli.Put("v1/aliyun/pangu", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/aliyun/pangu", uuid, "", map[string]interface{}{
 		"updateAliyunPanguPartition": params.Params,
 	}, &resp); err != nil {
 		return nil, err

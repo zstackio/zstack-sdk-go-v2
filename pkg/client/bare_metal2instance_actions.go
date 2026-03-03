@@ -56,7 +56,7 @@ func (cli *ZSClient) CreateBareMetal2InstanceAsync(params param.CreateBareMetal2
 // ReconnectBareMetal2Instance operates on BareMetal2Instance
 func (cli *ZSClient) ReconnectBareMetal2Instance(uuid string, params param.ReconnectBareMetal2InstanceParam) (*view.BareMetal2InstanceInventoryView, error) {
 	resp := view.BareMetal2InstanceInventoryView{}
-	if err := cli.Put("v1/baremetal2/bm-instances", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal2/bm-instances", uuid, "", map[string]interface{}{
 		"reconnectBareMetal2Instance": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -66,7 +66,7 @@ func (cli *ZSClient) ReconnectBareMetal2Instance(uuid string, params param.Recon
 // StartBareMetal2Instance starts BareMetal2Instance
 func (cli *ZSClient) StartBareMetal2Instance(uuid string, params param.StartBareMetal2InstanceParam) (*view.BareMetal2InstanceInventoryView, error) {
 	resp := view.BareMetal2InstanceInventoryView{}
-	if err := cli.Put("v1/baremetal2/bm-instances", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal2/bm-instances", uuid, "", map[string]interface{}{
 		"startBareMetal2Instance": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -76,7 +76,7 @@ func (cli *ZSClient) StartBareMetal2Instance(uuid string, params param.StartBare
 // UpdateBareMetal2Instance updates BareMetal2Instance
 func (cli *ZSClient) UpdateBareMetal2Instance(uuid string, params param.UpdateBareMetal2InstanceParam) (*view.BareMetal2InstanceInventoryView, error) {
 	resp := view.BareMetal2InstanceInventoryView{}
-	if err := cli.Put("v1/baremetal2/bm-instances", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal2/bm-instances", uuid, "", map[string]interface{}{
 		"updateBareMetal2Instance": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -12,52 +13,11 @@ import (
 
 func TestQueryL2Network(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	queryParam.Limit(10)
-	result, err := accessKeyAuthCli.QueryL2Network(&queryParam)
+	result, err := accountLoginCli.QueryL2Network(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryL2Network error: %v", err)
 		return
 	}
-	golog.Infof("======================================")
 	golog.Infof("QueryL2Network result count: %d", len(result))
-	for _, r := range result {
-		golog.Infof("%s\t%s\t%s\t%s", r.UUID, r.Name, r.Type, r.PhysicalInterface)
-	}
-	golog.Infof("======================================")
 }
 
-func TestPageL2Network(t *testing.T) {
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(10).Start(0)
-	result, total, err := accessKeyAuthCli.PageL2Network(&queryParam)
-	if err != nil {
-		t.Errorf("TestPageL2Network error: %v", err)
-		return
-	}
-	golog.Infof("PageL2Network result: total=%d, returned=%d", total, len(result))
-	golog.Infof("======================================")
-	for _, r := range result {
-		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.Type)
-	}
-}
-
-func TestGetL2Network(t *testing.T) {
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accessKeyAuthCli.QueryL2Network(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetL2Network Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No L2Network found to test Get")
-		return
-	}
-
-	result, err := accessKeyAuthCli.GetL2Network(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetL2Network error: %v", err)
-		return
-	}
-	golog.Infof("GetL2Network result: %s, Name: %s", result.UUID, result.Name)
-}

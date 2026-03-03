@@ -21,6 +21,11 @@ type UpdateMonitorTriggerActionEventView struct {
 	Inventory MonitorTriggerActionInventoryView `json:"inventory,omitempty"`
 }
 
+// QueryMonitorTriggerActionView QueryMonitorTriggerAction
+type QueryMonitorTriggerActionView struct {
+	Inventories []MonitorTriggerActionInventoryView `json:"inventories,omitempty"`
+}
+
 // CreateMonitorTriggerActionEventView CreateMonitorTriggerActionEvent
 type CreateMonitorTriggerActionEventView struct {
 	Inventory MonitorTriggerActionInventoryView `json:"inventory,omitempty"`

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateVniRange updates VniRange
 func (cli *ZSClient) UpdateVniRange(uuid string, params param.UpdateVniRangeParam) (*view.VniRangeInventoryView, error) {
 	resp := view.VniRangeInventoryView{}
-	if err := cli.Put("v1/l2-networks/vxlan-pool/vni-ranges", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/l2-networks/vxlan-pool/vni-ranges", uuid, "", map[string]interface{}{
 		"updateVniRange": params.Params,
 	}, &resp); err != nil {
 		return nil, err

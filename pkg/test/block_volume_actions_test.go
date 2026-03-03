@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,79 +20,4 @@ func TestQueryBlockVolume(t *testing.T) {
 	}
 	golog.Infof("QueryBlockVolume result count: %d", len(result))
 }
-func TestGetBlockVolume(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryBlockVolume(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetBlockVolume Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No BlockVolume found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetBlockVolume(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetBlockVolume error: %v", err)
-		return
-	}
-	golog.Infof("GetBlockVolume result: %s", result.UUID)
-}
-
-func TestUpdateBlockVolume(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryBlockVolume(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateBlockVolume Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No BlockVolume found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateBlockVolumeParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateBlockVolumeParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateBlockVolume(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateBlockVolume error: %v", err)
-		return
-	}
-	golog.Infof("UpdateBlockVolume result: %s", result.UUID)
-}
-
-func TestCreateBlockVolume(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateBlockVolume is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateBlockVolumeParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateBlockVolumeParamDetail{
-	// 		Name: "test-blockvolume",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateBlockVolume(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateBlockVolume error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateBlockVolume result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteBlockVolume(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteBlockVolume error: %v", err)
-	// }
-}

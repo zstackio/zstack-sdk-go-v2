@@ -37,7 +37,7 @@ func (cli *ZSClient) DeleteStackTemplate(uuid string, deleteMode param.DeleteMod
 // UpdateStackTemplate updates StackTemplate
 func (cli *ZSClient) UpdateStackTemplate(uuid string, params param.UpdateStackTemplateParam) (*view.StackTemplateInventoryView, error) {
 	resp := view.StackTemplateInventoryView{}
-	if err := cli.Put("v1/cloudformation/template", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/cloudformation/template", uuid, "", map[string]interface{}{
 		"updateStackTemplate": params.Params,
 	}, &resp); err != nil {
 		return nil, err

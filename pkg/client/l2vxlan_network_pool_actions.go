@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateL2VxlanNetworkPool creates L2VxlanNetworkPool
-func (cli *ZSClient) CreateL2VxlanNetworkPool(params param.CreateL2VxlanNetworkPoolParam) (*view.L2VxlanNetworkPoolInventoryView, error) {
+func (cli *ZSClient) CreateL2VxlanNetworkPool() (*view.L2VxlanNetworkPoolInventoryView, error) {
 	resp := view.L2VxlanNetworkPoolInventoryView{}
-	if err := cli.Post("v1/l2-networks/vxlan-pool", params, &resp); err != nil {
+	if err := cli.Post("v1/l2-networks/vxlan-pool", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

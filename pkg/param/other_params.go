@@ -419,6 +419,7 @@ type GetMdevDeviceCandidatesParamDetail struct {
 	HostUuid *string `json:"hostUuid,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	Types []string `json:"types,omitempty"`
+	MinAvailableDevicesPerHost *int `json:"minAvailableDevicesPerHost,omitempty"`
 }
 
 // GetMdevDeviceCandidatesParam GetMdevDeviceCandidates request param
@@ -914,6 +915,15 @@ type GetSupportedIdentityModelsParamDetail struct {
 type GetSupportedIdentityModelsParam struct {
 	BaseParam
 	Params GetSupportedIdentityModelsParamDetail `json:"getSupportedIdentityModels"`
+}
+// SuspendLongJobParamDetail SuspendLongJob detail param
+type SuspendLongJobParamDetail struct {
+}
+
+// SuspendLongJobParam SuspendLongJob request param
+type SuspendLongJobParam struct {
+	BaseParam
+	Params SuspendLongJobParamDetail `json:"suspendLongJob"`
 }
 // AddUserToGroupParamDetail AddUserToGroup detail param
 type AddUserToGroupParamDetail struct {
@@ -2838,17 +2848,6 @@ type AttachMonitorTriggerActionToTriggerParam struct {
 	BaseParam
 	Params AttachMonitorTriggerActionToTriggerParamDetail `json:"params"`
 }
-// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
-type GetAliyunNasFileSystemRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	FileSystemId *string `json:"fileSystemId,omitempty"`
-}
-
-// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
-type GetAliyunNasFileSystemRemoteParam struct {
-	BaseParam
-	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
-}
 // UpdateOrganizationQuotaParamDetail UpdateOrganizationQuota detail param
 type UpdateOrganizationQuotaParamDetail struct {
 	IdentityUuid string `json:"identityUuid" validate:"required"`
@@ -2860,6 +2859,17 @@ type UpdateOrganizationQuotaParamDetail struct {
 type UpdateOrganizationQuotaParam struct {
 	BaseParam
 	Params UpdateOrganizationQuotaParamDetail `json:"updateOrganizationQuota"`
+}
+// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
+type GetAliyunNasFileSystemRemoteParamDetail struct {
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	FileSystemId *string `json:"fileSystemId,omitempty"`
+}
+
+// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
+type GetAliyunNasFileSystemRemoteParam struct {
+	BaseParam
+	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
 }
 // ChangePreconfigurationTemplateStateParamDetail ChangePreconfigurationTemplateState detail param
 type ChangePreconfigurationTemplateStateParamDetail struct {
@@ -4787,6 +4797,7 @@ type DeployModelEvalServiceParamDetail struct {
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -7581,6 +7592,7 @@ type DeployAppDevelopmentServiceParamDetail struct {
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -8131,6 +8143,7 @@ type DeployModelServiceParamDetail struct {
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -9338,6 +9351,7 @@ type AddAccessControlListRedirectRuleParamDetail struct {
 	Description *string `json:"description,omitempty"`
 	Domain *string `json:"domain,omitempty"`
 	Url *string `json:"url,omitempty"`
+	RedirectPort *int `json:"redirectPort,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -9801,6 +9815,7 @@ type MatchModelServiceTemplateWithModelParamDetail struct {
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -10073,6 +10088,28 @@ type IsOpensourceVersionParamDetail struct {
 type IsOpensourceVersionParam struct {
 	BaseParam
 	Params IsOpensourceVersionParamDetail `json:"isOpensourceVersion"`
+}
+// CreateBareMetal2InstanceFromVolumeBackupParamDetail CreateBareMetal2InstanceFromVolumeBackup detail param
+type CreateBareMetal2InstanceFromVolumeBackupParamDetail struct {
+	Name string `json:"name" validate:"required"`
+	Description *string `json:"description,omitempty"`
+	ZoneUuid *string `json:"zoneUuid,omitempty"`
+	ClusterUuid *string `json:"clusterUuid,omitempty"`
+	GatewayUuid *string `json:"gatewayUuid,omitempty"`
+	ChassisUuid *string `json:"chassisUuid,omitempty"`
+	ChassisOfferingUuid *string `json:"chassisOfferingUuid,omitempty"`
+	ChassisDiskUuid *string `json:"chassisDiskUuid,omitempty"`
+	PrimaryStorageUuidForRootVolume *string `json:"primaryStorageUuidForRootVolume,omitempty"`
+	RootVolumeSystemTags []string `json:"rootVolumeSystemTags,omitempty"`
+	GatewayAllocatorStrategy *string `json:"gatewayAllocatorStrategy,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
+}
+
+// CreateBareMetal2InstanceFromVolumeBackupParam CreateBareMetal2InstanceFromVolumeBackup request param
+type CreateBareMetal2InstanceFromVolumeBackupParam struct {
+	BaseParam
+	Params CreateBareMetal2InstanceFromVolumeBackupParamDetail `json:"params"`
 }
 // CreateEcsInstanceFromEcsImageParamDetail CreateEcsInstanceFromEcsImage detail param
 type CreateEcsInstanceFromEcsImageParamDetail struct {
@@ -10756,16 +10793,6 @@ type GetLicenseUKeyStatusParam struct {
 	BaseParam
 	Params GetLicenseUKeyStatusParamDetail `json:"params"`
 }
-// AddTicketTypesToTicketFlowCollectionParamDetail AddTicketTypesToTicketFlowCollection detail param
-type AddTicketTypesToTicketFlowCollectionParamDetail struct {
-	TicketTypeUuids []string `json:"ticketTypeUuids" validate:"required"`
-}
-
-// AddTicketTypesToTicketFlowCollectionParam AddTicketTypesToTicketFlowCollection request param
-type AddTicketTypesToTicketFlowCollectionParam struct {
-	BaseParam
-	Params AddTicketTypesToTicketFlowCollectionParamDetail `json:"params"`
-}
 // SetL3NetworkRouterInterfaceIpParamDetail SetL3NetworkRouterInterfaceIp detail param
 type SetL3NetworkRouterInterfaceIpParamDetail struct {
 	RouterInterfaceIp string `json:"routerInterfaceIp" validate:"required"`
@@ -10775,6 +10802,16 @@ type SetL3NetworkRouterInterfaceIpParamDetail struct {
 type SetL3NetworkRouterInterfaceIpParam struct {
 	BaseParam
 	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"params"`
+}
+// AddTicketTypesToTicketFlowCollectionParamDetail AddTicketTypesToTicketFlowCollection detail param
+type AddTicketTypesToTicketFlowCollectionParamDetail struct {
+	TicketTypeUuids []string `json:"ticketTypeUuids" validate:"required"`
+}
+
+// AddTicketTypesToTicketFlowCollectionParam AddTicketTypesToTicketFlowCollection request param
+type AddTicketTypesToTicketFlowCollectionParam struct {
+	BaseParam
+	Params AddTicketTypesToTicketFlowCollectionParamDetail `json:"params"`
 }
 // GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail GetConnectionBetweenL3NetworkAndAliyunVSwitch detail param
 type GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
@@ -11437,6 +11474,15 @@ type GetCandidateVMForAttachingAffinityGroupParam struct {
 	BaseParam
 	Params GetCandidateVMForAttachingAffinityGroupParamDetail `json:"getCandidateVMForAttachingAffinityGroup"`
 }
+// DetachPolicyFromUserGroupParamDetail DetachPolicyFromUserGroup detail param
+type DetachPolicyFromUserGroupParamDetail struct {
+}
+
+// DetachPolicyFromUserGroupParam DetachPolicyFromUserGroup request param
+type DetachPolicyFromUserGroupParam struct {
+	BaseParam
+	Params DetachPolicyFromUserGroupParamDetail `json:"detachPolicyFromUserGroup"`
+}
 // DeleteVpcVpnConnectionLocalParamDetail DeleteVpcVpnConnectionLocal detail param
 type DeleteVpcVpnConnectionLocalParamDetail struct {
 	DeleteMode *string `json:"deleteMode,omitempty"`
@@ -11446,15 +11492,6 @@ type DeleteVpcVpnConnectionLocalParamDetail struct {
 type DeleteVpcVpnConnectionLocalParam struct {
 	BaseParam
 	Params DeleteVpcVpnConnectionLocalParamDetail `json:"deleteVpcVpnConnectionLocal"`
-}
-// DetachPolicyFromUserGroupParamDetail DetachPolicyFromUserGroup detail param
-type DetachPolicyFromUserGroupParamDetail struct {
-}
-
-// DetachPolicyFromUserGroupParam DetachPolicyFromUserGroup request param
-type DetachPolicyFromUserGroupParam struct {
-	BaseParam
-	Params DetachPolicyFromUserGroupParamDetail `json:"detachPolicyFromUserGroup"`
 }
 // AddActionToAlarmParamDetail AddActionToAlarm detail param
 type AddActionToAlarmParamDetail struct {
@@ -11499,6 +11536,31 @@ type ZQLQueryParamDetail struct {
 type ZQLQueryParam struct {
 	BaseParam
 	Params ZQLQueryParamDetail `json:"zQLQuery"`
+}
+// CreateBareMetal2InstanceFromVmBackupParamDetail CreateBareMetal2InstanceFromVmBackup detail param
+type CreateBareMetal2InstanceFromVmBackupParamDetail struct {
+	Name string `json:"name" validate:"required"`
+	Description *string `json:"description,omitempty"`
+	ZoneUuid *string `json:"zoneUuid,omitempty"`
+	ClusterUuid *string `json:"clusterUuid,omitempty"`
+	GatewayUuid *string `json:"gatewayUuid,omitempty"`
+	ChassisUuid *string `json:"chassisUuid,omitempty"`
+	ChassisOfferingUuid *string `json:"chassisOfferingUuid,omitempty"`
+	ChassisDiskUuid *string `json:"chassisDiskUuid,omitempty"`
+	PrimaryStorageUuidForRootVolume *string `json:"primaryStorageUuidForRootVolume,omitempty"`
+	PrimaryStorageUuidForDataVolume *string `json:"primaryStorageUuidForDataVolume,omitempty"`
+	DataDiskOfferingUuids []string `json:"dataDiskOfferingUuids,omitempty"`
+	RootVolumeSystemTags []string `json:"rootVolumeSystemTags,omitempty"`
+	DataVolumeSystemTags []string `json:"dataVolumeSystemTags,omitempty"`
+	GatewayAllocatorStrategy *string `json:"gatewayAllocatorStrategy,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
+}
+
+// CreateBareMetal2InstanceFromVmBackupParam CreateBareMetal2InstanceFromVmBackup request param
+type CreateBareMetal2InstanceFromVmBackupParam struct {
+	BaseParam
+	Params CreateBareMetal2InstanceFromVmBackupParamDetail `json:"params"`
 }
 // GetElaborationsParamDetail GetElaborations detail param
 type GetElaborationsParamDetail struct {

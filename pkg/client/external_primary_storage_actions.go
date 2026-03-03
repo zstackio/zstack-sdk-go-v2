@@ -21,7 +21,7 @@ func (cli *ZSClient) AddExternalPrimaryStorage(params param.AddExternalPrimarySt
 // UpdateExternalPrimaryStorage updates ExternalPrimaryStorage
 func (cli *ZSClient) UpdateExternalPrimaryStorage(uuid string, params param.UpdateExternalPrimaryStorageParam) (*view.ExternalPrimaryStorageInventoryView, error) {
 	resp := view.ExternalPrimaryStorageInventoryView{}
-	if err := cli.Put("v1/primary-storage/addon", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/primary-storage/addon", uuid, "", map[string]interface{}{
 		"updateExternalPrimaryStorage": params.Params,
 	}, &resp); err != nil {
 		return nil, err

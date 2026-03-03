@@ -25,7 +25,7 @@ func (cli *ZSClient) CreateDiskOffering(params param.CreateDiskOfferingParam) (*
 // UpdateDiskOffering updates DiskOffering
 func (cli *ZSClient) UpdateDiskOffering(uuid string, params param.UpdateDiskOfferingParam) (*view.DiskOfferingInventoryView, error) {
 	resp := view.DiskOfferingInventoryView{}
-	if err := cli.Put("v1/disk-offerings", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/disk-offerings", uuid, "", map[string]interface{}{
 		"updateDiskOffering": params.Params,
 	}, &resp); err != nil {
 		return nil, err

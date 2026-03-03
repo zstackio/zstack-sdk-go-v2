@@ -21,7 +21,7 @@ func (cli *ZSClient) CreatePolicyRouteRuleSet(params param.CreatePolicyRouteRule
 // UpdatePolicyRouteRuleSet updates PolicyRouteRuleSet
 func (cli *ZSClient) UpdatePolicyRouteRuleSet(uuid string, params param.UpdatePolicyRouteRuleSetParam) (*view.PolicyRouteRuleSetInventoryView, error) {
 	resp := view.PolicyRouteRuleSetInventoryView{}
-	if err := cli.Put("v1/policy-routes/ruleSets", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/policy-routes/ruleSets", uuid, "", map[string]interface{}{
 		"updatePolicyRouteRuleSet": params.Params,
 	}, &resp); err != nil {
 		return nil, err

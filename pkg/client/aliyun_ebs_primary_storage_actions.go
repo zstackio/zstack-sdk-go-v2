@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAliyunEbsPrimaryStorage updates AliyunEbsPrimaryStorage
 func (cli *ZSClient) UpdateAliyunEbsPrimaryStorage(uuid string, params param.UpdateAliyunEbsPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Put("v1/primary-storage/aliyun/ebs", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/primary-storage/aliyun/ebs", uuid, "", map[string]interface{}{
 		"updateAliyunEbsPrimaryStorage": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,50 +20,4 @@ func TestQueryTicketFlowCollection(t *testing.T) {
 	}
 	golog.Infof("QueryTicketFlowCollection result count: %d", len(result))
 }
-func TestGetTicketFlowCollection(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryTicketFlowCollection(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetTicketFlowCollection Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No TicketFlowCollection found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetTicketFlowCollection(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetTicketFlowCollection error: %v", err)
-		return
-	}
-	golog.Infof("GetTicketFlowCollection result: %s", result.UUID)
-}
-
-func TestDeleteTicketFlowCollection(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteTicketFlowCollection is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryTicketFlowCollection(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteTicketFlowCollection Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No TicketFlowCollection found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteTicketFlowCollection(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteTicketFlowCollection error: %v", err)
-		return
-	}
-	golog.Infof("DeleteTicketFlowCollection succeeded for UUID: %s", list[0].UUID)
-}

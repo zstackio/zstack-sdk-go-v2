@@ -11,17 +11,17 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // GetTwoFactorAuthenticationSecret gets TwoFactorAuthenticationSecret by uuid
-func (cli *ZSClient) GetTwoFactorAuthenticationSecret(uuid string) (*view.TwoFactorAuthenticationSecretInventoryView, error) {
+func (cli *ZSClient) GetTwoFactorAuthenticationSecret() (*view.TwoFactorAuthenticationSecretInventoryView, error) {
 	var resp view.GetTwoFactorAuthenticationSecretView
-	if err := cli.Get("v1/twofactorauthentication/secret", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/twofactorauthentication/secret", "", "inventory", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil
 }
 // ResetTwoFactorAuthenticationSecret operates on TwoFactorAuthenticationSecret
-func (cli *ZSClient) ResetTwoFactorAuthenticationSecret(uuid string, params param.ResetTwoFactorAuthenticationSecretParam) (*view.TwoFactorAuthenticationSecretInventoryView, error) {
+func (cli *ZSClient) ResetTwoFactorAuthenticationSecret(params param.ResetTwoFactorAuthenticationSecretParam) (*view.TwoFactorAuthenticationSecretInventoryView, error) {
 	resp := view.TwoFactorAuthenticationSecretInventoryView{}
-	if err := cli.Put("v1/twofactorauthentication/secrets", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/twofactorauthentication/secrets", "", "", map[string]interface{}{
 		"resetTwoFactorAuthenticationSecret": params.Params,
 	}, &resp); err != nil {
 		return nil, err

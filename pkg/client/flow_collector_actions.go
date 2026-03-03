@@ -41,7 +41,7 @@ func (cli *ZSClient) PageFlowCollector(params *param.QueryParam) ([]view.FlowCol
 // UpdateFlowCollector updates FlowCollector
 func (cli *ZSClient) UpdateFlowCollector(uuid string, params param.UpdateFlowCollectorParam) (*view.FlowCollectorInventoryView, error) {
 	resp := view.FlowCollectorInventoryView{}
-	if err := cli.Put("v1/flowmeters/collectors", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/flowmeters/collectors", uuid, "", map[string]interface{}{
 		"updateFlowCollector": params.Params,
 	}, &resp); err != nil {
 		return nil, err

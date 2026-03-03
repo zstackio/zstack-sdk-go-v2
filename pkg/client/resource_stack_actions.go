@@ -45,7 +45,7 @@ func (cli *ZSClient) CreateResourceStack(params param.CreateResourceStackParam) 
 // UpdateResourceStack updates ResourceStack
 func (cli *ZSClient) UpdateResourceStack(uuid string, params param.UpdateResourceStackParam) (*view.ResourceStackInventoryView, error) {
 	resp := view.ResourceStackInventoryView{}
-	if err := cli.Put("v1/cloudformation/stack", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/cloudformation/stack", uuid, "", map[string]interface{}{
 		"updateResourceStack": params.Params,
 	}, &resp); err != nil {
 		return nil, err

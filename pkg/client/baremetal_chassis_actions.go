@@ -33,7 +33,7 @@ func (cli *ZSClient) PageBaremetalChassis(params *param.QueryParam) ([]view.Bare
 // InspectBaremetalChassis operates on BaremetalChassis
 func (cli *ZSClient) InspectBaremetalChassis(uuid string, params param.InspectBaremetalChassisParam) (*view.BaremetalChassisInventoryView, error) {
 	resp := view.BaremetalChassisInventoryView{}
-	if err := cli.Put("v1/baremetal/chassis", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal/chassis", uuid, "", map[string]interface{}{
 		"inspectBaremetalChassis": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -43,7 +43,7 @@ func (cli *ZSClient) InspectBaremetalChassis(uuid string, params param.InspectBa
 // UpdateBaremetalChassis updates BaremetalChassis
 func (cli *ZSClient) UpdateBaremetalChassis(uuid string, params param.UpdateBaremetalChassisParam) (*view.BaremetalChassisInventoryView, error) {
 	resp := view.BaremetalChassisInventoryView{}
-	if err := cli.Put("v1/baremetal/chassis", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal/chassis", uuid, "", map[string]interface{}{
 		"updateBaremetalChassis": params.Params,
 	}, &resp); err != nil {
 		return nil, err

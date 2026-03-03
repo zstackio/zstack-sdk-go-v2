@@ -15,6 +15,7 @@ type MdevDeviceSpecInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
+	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
 }
 

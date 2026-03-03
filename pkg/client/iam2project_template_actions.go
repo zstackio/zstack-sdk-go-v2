@@ -41,7 +41,7 @@ func (cli *ZSClient) PageIAM2ProjectTemplate(params *param.QueryParam) ([]view.I
 // UpdateIAM2ProjectTemplate updates IAM2ProjectTemplate
 func (cli *ZSClient) UpdateIAM2ProjectTemplate(uuid string, params param.UpdateIAM2ProjectTemplateParam) (*view.IAM2ProjectTemplateInventoryView, error) {
 	resp := view.IAM2ProjectTemplateInventoryView{}
-	if err := cli.Put("v1/iam2/projects/templates", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/iam2/projects/templates", uuid, "", map[string]interface{}{
 		"updateIAM2ProjectTemplate": params.Params,
 	}, &resp); err != nil {
 		return nil, err

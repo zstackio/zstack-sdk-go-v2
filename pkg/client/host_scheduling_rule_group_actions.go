@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateHostSchedulingRuleGroup updates HostSchedulingRuleGroup
 func (cli *ZSClient) UpdateHostSchedulingRuleGroup(uuid string, params param.UpdateHostSchedulingRuleGroupParam) (*view.HostSchedulingRuleGroupInventoryView, error) {
 	resp := view.HostSchedulingRuleGroupInventoryView{}
-	if err := cli.Put("v1/hostSchedulingRuleGroup", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/hostSchedulingRuleGroup", uuid, "", map[string]interface{}{
 		"updateHostSchedulingRuleGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

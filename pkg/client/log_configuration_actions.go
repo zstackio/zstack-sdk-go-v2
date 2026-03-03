@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateLogConfiguration updates LogConfiguration
-func (cli *ZSClient) UpdateLogConfiguration(uuid string, params param.UpdateLogConfigurationParam) (*view.JsonLabelInventoryView, error) {
+func (cli *ZSClient) UpdateLogConfiguration(params param.UpdateLogConfigurationParam) (*view.JsonLabelInventoryView, error) {
 	resp := view.JsonLabelInventoryView{}
-	if err := cli.Put("v1/log/configurations", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/log/configurations", "", "", map[string]interface{}{
 		"updateLogConfiguration": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,9 +21,9 @@ func (cli *ZSClient) UpdateLogConfiguration(uuid string, params param.UpdateLogC
 	return &resp, nil
 }
 // GetLogConfiguration gets LogConfiguration by uuid
-func (cli *ZSClient) GetLogConfiguration(uuid string) (*view.JsonLabelInventoryView, error) {
+func (cli *ZSClient) GetLogConfiguration() (*view.JsonLabelInventoryView, error) {
 	var resp view.JsonLabelInventoryView
-	if err := cli.Get("v1/log/configurations", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/log/configurations", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

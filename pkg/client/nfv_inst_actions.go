@@ -41,7 +41,7 @@ func (cli *ZSClient) PageNfvInst(params *param.QueryParam) ([]view.NfvInstInvent
 // ReconnectNfvInst operates on NfvInst
 func (cli *ZSClient) ReconnectNfvInst(vmInstanceUuid string, params param.ReconnectNfvInstParam) (*view.ApplianceVmInventoryView, error) {
 	resp := view.ApplianceVmInventoryView{}
-	if err := cli.Put("v1/vm-instances/appliances/nfvinst", vmInstanceUuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/vm-instances/appliances/nfvinst", vmInstanceUuid, "", map[string]interface{}{
 		"reconnectNfvInst": params.Params,
 	}, &resp); err != nil {
 		return nil, err

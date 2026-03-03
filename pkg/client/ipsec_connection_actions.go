@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // ReconnectIPsecConnection operates on IPsecConnection
 func (cli *ZSClient) ReconnectIPsecConnection(uuid string, params param.ReconnectIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
 	resp := view.IPsecConnectionInventoryView{}
-	if err := cli.Put("v1/ipsec", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/ipsec", uuid, "", map[string]interface{}{
 		"reconnectIPsecConnection": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -23,7 +23,7 @@ func (cli *ZSClient) ReconnectIPsecConnection(uuid string, params param.Reconnec
 // UpdateIPsecConnection updates IPsecConnection
 func (cli *ZSClient) UpdateIPsecConnection(uuid string, params param.UpdateIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
 	resp := view.IPsecConnectionInventoryView{}
-	if err := cli.Put("v1/ipsec", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/ipsec", uuid, "", map[string]interface{}{
 		"updateIPsecConnection": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -45,7 +45,7 @@ func (cli *ZSClient) CreateIPsecConnection(params param.CreateIPsecConnectionPar
 // ChangeIPsecConnection changes IPsecConnection
 func (cli *ZSClient) ChangeIPsecConnection(uuid string, params param.ChangeIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
 	resp := view.IPsecConnectionInventoryView{}
-	if err := cli.Put("v1/ipsec/config", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/ipsec/config", uuid, "", map[string]interface{}{
 		"changeIPsecConnection": params.Params,
 	}, &resp); err != nil {
 		return nil, err

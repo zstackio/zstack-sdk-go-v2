@@ -33,7 +33,7 @@ func (cli *ZSClient) PageActiveAlarmTemplate(params *param.QueryParam) ([]view.A
 // UpdateActiveAlarmTemplate updates ActiveAlarmTemplate
 func (cli *ZSClient) UpdateActiveAlarmTemplate(uuid string, params param.UpdateActiveAlarmTemplateParam) (*view.ActiveAlarmTemplateInventoryView, error) {
 	resp := view.ActiveAlarmTemplateInventoryView{}
-	if err := cli.Put("v1/zwatch/activealarms/templates", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/zwatch/activealarms/templates", uuid, "", map[string]interface{}{
 		"updateActiveAlarmTemplate": params.Params,
 	}, &resp); err != nil {
 		return nil, err

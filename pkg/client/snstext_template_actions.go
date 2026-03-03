@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateSNSTextTemplate updates SNSTextTemplate
 func (cli *ZSClient) UpdateSNSTextTemplate(uuid string, params param.UpdateSNSTextTemplateParam) (*view.SNSTextTemplateInventoryView, error) {
 	resp := view.SNSTextTemplateInventoryView{}
-	if err := cli.Put("v1/zwatch/alarms/sns/text-templates", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/zwatch/alarms/sns/text-templates", uuid, "", map[string]interface{}{
 		"updateSNSTextTemplate": params.Params,
 	}, &resp); err != nil {
 		return nil, err

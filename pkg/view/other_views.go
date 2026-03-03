@@ -254,6 +254,11 @@ type GetSupportedIdentityModelsView struct {
 	Configs []string `json:"configs,omitempty"`
 }
 
+// SuspendLongJobEventView SuspendLongJobEvent
+type SuspendLongJobEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
 // AddUserToGroupEventView AddUserToGroupEvent
 type AddUserToGroupEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -3017,13 +3022,13 @@ type GetLicenseUKeyStatusEventView struct {
 	Inventories []UKeyInventoryView `json:"inventories,omitempty"`
 }
 
-// AddTicketTypesToTicketFlowCollectionEventView AddTicketTypesToTicketFlowCollectionEvent
-type AddTicketTypesToTicketFlowCollectionEventView struct {
+// SetL3NetworkRouterInterfaceIpEventView SetL3NetworkRouterInterfaceIpEvent
+type SetL3NetworkRouterInterfaceIpEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// SetL3NetworkRouterInterfaceIpEventView SetL3NetworkRouterInterfaceIpEvent
-type SetL3NetworkRouterInterfaceIpEventView struct {
+// AddTicketTypesToTicketFlowCollectionEventView AddTicketTypesToTicketFlowCollectionEvent
+type AddTicketTypesToTicketFlowCollectionEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -3200,13 +3205,13 @@ type DeleteVmBootModeEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteVpcVpnConnectionLocalEventView DeleteVpcVpnConnectionLocalEvent
-type DeleteVpcVpnConnectionLocalEventView struct {
+// DetachPolicyFromUserGroupEventView DetachPolicyFromUserGroupEvent
+type DetachPolicyFromUserGroupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DetachPolicyFromUserGroupEventView DetachPolicyFromUserGroupEvent
-type DetachPolicyFromUserGroupEventView struct {
+// DeleteVpcVpnConnectionLocalEventView DeleteVpcVpnConnectionLocalEvent
+type DeleteVpcVpnConnectionLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 

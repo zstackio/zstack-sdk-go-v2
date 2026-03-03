@@ -11,6 +11,7 @@ type UpdateMdevDeviceSpecParamDetail struct {
 	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	State *string `json:"state,omitempty"`
+	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
 }
 
 // UpdateMdevDeviceSpecParam UpdateMdevDeviceSpec request param

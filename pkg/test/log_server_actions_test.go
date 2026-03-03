@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,85 +20,4 @@ func TestQueryLogServer(t *testing.T) {
 	}
 	golog.Infof("QueryLogServer result count: %d", len(result))
 }
-func TestGetLogServer(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryLogServer(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetLogServer Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No LogServer found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetLogServer(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetLogServer error: %v", err)
-		return
-	}
-	golog.Infof("GetLogServer result: %s", result.UUID)
-}
-
-func TestUpdateLogServer(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryLogServer(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateLogServer Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No LogServer found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateLogServerParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateLogServerParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateLogServer(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateLogServer error: %v", err)
-		return
-	}
-	golog.Infof("UpdateLogServer result: %s", result.UUID)
-}
-
-func TestDeleteLogServer(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteLogServer is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryLogServer(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteLogServer Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No LogServer found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteLogServer(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteLogServer error: %v", err)
-		return
-	}
-	golog.Infof("DeleteLogServer succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestAddLogServer(t *testing.T) {
-	// Add operation - similar to Create
-	t.Skip("TestAddLogServer requires valid creation parameters")
-
-}

@@ -41,7 +41,7 @@ func (cli *ZSClient) PageSNSDingTalkEndpoint(params *param.QueryParam) ([]view.S
 // UpdateSNSDingTalkEndpoint updates SNSDingTalkEndpoint
 func (cli *ZSClient) UpdateSNSDingTalkEndpoint(uuid string, params param.UpdateSNSDingTalkEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	resp := view.SNSApplicationEndpointInventoryView{}
-	if err := cli.Put("v1/sns/application-endpoints/ding-talk", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints/ding-talk", uuid, "", map[string]interface{}{
 		"updateSNSDingTalkEndpoint": params.Params,
 	}, &resp); err != nil {
 		return nil, err

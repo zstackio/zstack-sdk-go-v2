@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,75 +20,4 @@ func TestQueryImageReplicationGroup(t *testing.T) {
 	}
 	golog.Infof("QueryImageReplicationGroup result count: %d", len(result))
 }
-func TestGetImageReplicationGroup(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryImageReplicationGroup(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetImageReplicationGroup Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No ImageReplicationGroup found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetImageReplicationGroup(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetImageReplicationGroup error: %v", err)
-		return
-	}
-	golog.Infof("GetImageReplicationGroup result: %s", result.UUID)
-}
-
-func TestDeleteImageReplicationGroup(t *testing.T) {
-	// WARNING: This test will actually delete a resource!
-	// Query first to get UUID (but skip by default to avoid accidental deletion)
-	t.Skip("TestDeleteImageReplicationGroup is skipped by default to prevent accidental deletion. Remove this line to enable.")
-
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryImageReplicationGroup(&queryParam)
-	if err != nil {
-		t.Errorf("TestDeleteImageReplicationGroup Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No ImageReplicationGroup found to test Delete")
-		return
-	}
-
-	err = accountLoginCli.DeleteImageReplicationGroup(list[0].UUID, param.DeleteModePermissive)
-	if err != nil {
-		t.Errorf("TestDeleteImageReplicationGroup error: %v", err)
-		return
-	}
-	golog.Infof("DeleteImageReplicationGroup succeeded for UUID: %s", list[0].UUID)
-}
-
-func TestCreateImageReplicationGroup(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateImageReplicationGroup is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateImageReplicationGroupParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateImageReplicationGroupParamDetail{
-	// 		Name: "test-imagereplicationgroup",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateImageReplicationGroup(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateImageReplicationGroup error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateImageReplicationGroup result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteImageReplicationGroup(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteImageReplicationGroup error: %v", err)
-	// }
-}

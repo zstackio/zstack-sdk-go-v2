@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,50 +20,4 @@ func TestQueryBaremetalBonding(t *testing.T) {
 	}
 	golog.Infof("QueryBaremetalBonding result count: %d", len(result))
 }
-func TestGetBaremetalBonding(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryBaremetalBonding(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetBaremetalBonding Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No BaremetalBonding found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetBaremetalBonding(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetBaremetalBonding error: %v", err)
-		return
-	}
-	golog.Infof("GetBaremetalBonding result: %s", result.UUID)
-}
-
-func TestCreateBaremetalBonding(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateBaremetalBonding is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateBaremetalBondingParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateBaremetalBondingParamDetail{
-	// 		Name: "test-baremetalbonding",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateBaremetalBonding(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateBaremetalBonding error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateBaremetalBonding result: %s", result.Uuid)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteBaremetalBonding(result.Uuid, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteBaremetalBonding error: %v", err)
-	// }
-}

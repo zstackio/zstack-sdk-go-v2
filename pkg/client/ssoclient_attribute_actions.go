@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateSSOClientAttribute updates SSOClientAttribute
 func (cli *ZSClient) UpdateSSOClientAttribute(uuid string, params param.UpdateSSOClientAttributeParam) (*view.SSOClientAttributeInventoryView, error) {
 	resp := view.SSOClientAttributeInventoryView{}
-	if err := cli.Put("v1/sso/client/attributes", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sso/client/attributes", uuid, "", map[string]interface{}{
 		"updateSSOClientAttribute": params.Params,
 	}, &resp); err != nil {
 		return nil, err

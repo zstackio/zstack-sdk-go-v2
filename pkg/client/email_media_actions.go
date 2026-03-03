@@ -41,7 +41,7 @@ func (cli *ZSClient) CreateEmailMedia(params param.CreateEmailMediaParam) (*view
 // UpdateEmailMedia updates EmailMedia
 func (cli *ZSClient) UpdateEmailMedia(uuid string, params param.UpdateEmailMediaParam) (*view.EmailMediaInventoryView, error) {
 	resp := view.EmailMediaInventoryView{}
-	if err := cli.Put("v1/media/emails", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/media/emails", uuid, "", map[string]interface{}{
 		"updateEmailMedia": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -11,17 +11,17 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // GetVirtualRouterSoftwareVersion gets VirtualRouterSoftwareVersion by uuid
-func (cli *ZSClient) GetVirtualRouterSoftwareVersion(uuid string) (*view.VirtualRouterSoftwareVersionInventoryView, error) {
+func (cli *ZSClient) GetVirtualRouterSoftwareVersion() (*view.VirtualRouterSoftwareVersionInventoryView, error) {
 	var resp view.VirtualRouterSoftwareVersionInventoryView
-	if err := cli.Get("v1/vpc/virtual-routers/softwareversion", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/vpc/virtual-routers/softwareversion", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // UpdateVirtualRouterSoftwareVersion updates VirtualRouterSoftwareVersion
-func (cli *ZSClient) UpdateVirtualRouterSoftwareVersion(uuid string, params param.UpdateVirtualRouterSoftwareVersionParam) (*view.VirtualRouterSoftwareVersionInventoryView, error) {
+func (cli *ZSClient) UpdateVirtualRouterSoftwareVersion(params param.UpdateVirtualRouterSoftwareVersionParam) (*view.VirtualRouterSoftwareVersionInventoryView, error) {
 	resp := view.VirtualRouterSoftwareVersionInventoryView{}
-	if err := cli.Put("v1/vpc/virtual-routers", uuid, params, &resp); err != nil {
+	if err := cli.Post("v1/vpc/virtual-routers/{uuid}/softwareversion", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

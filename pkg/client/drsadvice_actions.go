@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // ApplyDRSAdvice operates on DRSAdvice
 func (cli *ZSClient) ApplyDRSAdvice(adviceUuid string, params param.ApplyDRSAdviceParam) (*view.DRSAdviceInventoryView, error) {
 	resp := view.DRSAdviceInventoryView{}
-	if err := cli.Put("v1/clusters/drs/advice", adviceUuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/clusters/drs/advice", adviceUuid, "", map[string]interface{}{
 		"applyDRSAdvice": params.Params,
 	}, &resp); err != nil {
 		return nil, err

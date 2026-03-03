@@ -17,7 +17,7 @@ func (cli *ZSClient) DeleteVipQos(uuid string, deleteMode param.DeleteMode) erro
 // SetVipQos operates on VipQos
 func (cli *ZSClient) SetVipQos(uuid string, params param.SetVipQosParam) (*view.VipQosInventoryView, error) {
 	resp := view.VipQosInventoryView{}
-	if err := cli.Put("v1/vips", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/vips", uuid, "", map[string]interface{}{
 		"setVipQos": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -27,7 +27,7 @@ func (cli *ZSClient) SetVipQos(uuid string, params param.SetVipQosParam) (*view.
 // GetVipQos gets VipQos by uuid
 func (cli *ZSClient) GetVipQos(uuid string) (*view.VipQosInventoryView, error) {
 	var resp view.VipQosInventoryView
-	if err := cli.Get("v1/vip", uuid, nil, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/vip", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

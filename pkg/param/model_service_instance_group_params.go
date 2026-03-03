@@ -15,6 +15,7 @@ type UpdateModelServiceInstanceGroupParamDetail struct {
 	ServiceLivez *string `json:"serviceLivez,omitempty"`
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	ServiceBootupTime *int `json:"serviceBootupTime,omitempty"`
+	PackageVersion *string `json:"packageVersion,omitempty"`
 }
 
 // UpdateModelServiceInstanceGroupParam UpdateModelServiceInstanceGroup request param

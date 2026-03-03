@@ -45,7 +45,7 @@ func (cli *ZSClient) DeleteIscsiServer(uuid string, deleteMode param.DeleteMode)
 // RefreshIscsiServer operates on IscsiServer
 func (cli *ZSClient) RefreshIscsiServer(params param.RefreshIscsiServerParam) (*view.IscsiServerInventoryView, error) {
 	resp := view.IscsiServerInventoryView{}
-	if err := cli.Post("v1/storage-devices/iscsi/servers", params, &resp); err != nil {
+	if err := cli.Post("v1/storage-devices/iscsi/servers/{uuid}", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -53,7 +53,7 @@ func (cli *ZSClient) RefreshIscsiServer(params param.RefreshIscsiServerParam) (*
 // UpdateIscsiServer updates IscsiServer
 func (cli *ZSClient) UpdateIscsiServer(uuid string, params param.UpdateIscsiServerParam) (*view.IscsiServerInventoryView, error) {
 	resp := view.IscsiServerInventoryView{}
-	if err := cli.Put("v1/storage-devices/iscsi/servers", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/storage-devices/iscsi/servers", uuid, "", map[string]interface{}{
 		"updateIscsiServer": params.Params,
 	}, &resp); err != nil {
 		return nil, err

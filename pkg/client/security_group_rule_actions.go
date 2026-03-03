@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // ChangeSecurityGroupRule changes SecurityGroupRule
 func (cli *ZSClient) ChangeSecurityGroupRule(uuid string, params param.ChangeSecurityGroupRuleParam) (*view.SecurityGroupRuleInventoryView, error) {
 	resp := view.SecurityGroupRuleInventoryView{}
-	if err := cli.Put("v1/security-groups/rules", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/security-groups/rules", uuid, "", map[string]interface{}{
 		"changeSecurityGroupRule": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,9 +21,9 @@ func (cli *ZSClient) ChangeSecurityGroupRule(uuid string, params param.ChangeSec
 	return &resp, nil
 }
 // ValidateSecurityGroupRule operates on SecurityGroupRule
-func (cli *ZSClient) ValidateSecurityGroupRule(params param.ValidateSecurityGroupRuleParam) (*view.SecurityGroupRuleInventoryView, error) {
+func (cli *ZSClient) ValidateSecurityGroupRule(uuid string) (*view.SecurityGroupRuleInventoryView, error) {
 	var resp view.SecurityGroupRuleInventoryView
-	if err := cli.Get("v1/security-groups", "", params, &resp); err != nil {
+	if err := cli.GetWithRespKey("v1/security-groups", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

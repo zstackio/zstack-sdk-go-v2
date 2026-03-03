@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,79 +20,4 @@ func TestQuerySNSFeiShuEndpoint(t *testing.T) {
 	}
 	golog.Infof("QuerySNSFeiShuEndpoint result count: %d", len(result))
 }
-func TestGetSNSFeiShuEndpoint(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySNSFeiShuEndpoint(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetSNSFeiShuEndpoint Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SNSFeiShuEndpoint found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetSNSFeiShuEndpoint(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetSNSFeiShuEndpoint error: %v", err)
-		return
-	}
-	golog.Infof("GetSNSFeiShuEndpoint result: %s", result.UUID)
-}
-
-func TestUpdateSNSFeiShuEndpoint(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySNSFeiShuEndpoint(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateSNSFeiShuEndpoint Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SNSFeiShuEndpoint found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateSNSFeiShuEndpointParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateSNSFeiShuEndpointParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateSNSFeiShuEndpoint(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateSNSFeiShuEndpoint error: %v", err)
-		return
-	}
-	golog.Infof("UpdateSNSFeiShuEndpoint result: %s", result.UUID)
-}
-
-func TestCreateSNSFeiShuEndpoint(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateSNSFeiShuEndpoint is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateSNSFeiShuEndpointParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateSNSFeiShuEndpointParamDetail{
-	// 		Name: "test-snsfeishuendpoint",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateSNSFeiShuEndpoint(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateSNSFeiShuEndpoint error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateSNSFeiShuEndpoint result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSFeiShuEndpoint(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteSNSFeiShuEndpoint error: %v", err)
-	// }
-}

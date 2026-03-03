@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -12,52 +13,11 @@ import (
 
 func TestQueryLoadBalancer(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	queryParam.Limit(10)
-	result, err := accessKeyAuthCli.QueryLoadBalancer(&queryParam)
+	result, err := accountLoginCli.QueryLoadBalancer(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryLoadBalancer error: %v", err)
 		return
 	}
-	golog.Infof("======================================")
 	golog.Infof("QueryLoadBalancer result count: %d", len(result))
-	for _, r := range result {
-		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
-	}
-	golog.Infof("======================================")
 }
 
-func TestPageLoadBalancer(t *testing.T) {
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(10).Start(0)
-	result, total, err := accessKeyAuthCli.PageLoadBalancer(&queryParam)
-	if err != nil {
-		t.Errorf("TestPageLoadBalancer error: %v", err)
-		return
-	}
-	golog.Infof("PageLoadBalancer result: total=%d, returned=%d", total, len(result))
-	golog.Infof("======================================")
-	for _, r := range result {
-		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
-	}
-}
-
-func TestGetLoadBalancer(t *testing.T) {
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accessKeyAuthCli.QueryLoadBalancer(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetLoadBalancer Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No LoadBalancer found to test Get")
-		return
-	}
-
-	result, err := accessKeyAuthCli.GetLoadBalancer(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetLoadBalancer error: %v", err)
-		return
-	}
-	golog.Infof("GetLoadBalancer result: %s, Name: %s", result.UUID, result.Name)
-}

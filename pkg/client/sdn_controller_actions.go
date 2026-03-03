@@ -25,7 +25,7 @@ func (cli *ZSClient) AddSdnController(params param.AddSdnControllerParam) (*view
 // UpdateSdnController updates SdnController
 func (cli *ZSClient) UpdateSdnController(uuid string, params param.UpdateSdnControllerParam) (*view.SdnControllerInventoryView, error) {
 	resp := view.SdnControllerInventoryView{}
-	if err := cli.Put("v1/sdn-controllers", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sdn-controllers", uuid, "", map[string]interface{}{
 		"updateSdnController": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -35,7 +35,7 @@ func (cli *ZSClient) UpdateSdnController(uuid string, params param.UpdateSdnCont
 // ChangeSdnController changes SdnController
 func (cli *ZSClient) ChangeSdnController(uuid string, params param.ChangeSdnControllerParam) (*view.SdnControllerInventoryView, error) {
 	resp := view.SdnControllerInventoryView{}
-	if err := cli.Put("v1/sdn-controllers", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sdn-controllers", uuid, "", map[string]interface{}{
 		"changeSdnController": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -45,7 +45,7 @@ func (cli *ZSClient) ChangeSdnController(uuid string, params param.ChangeSdnCont
 // ReconnectSdnController operates on SdnController
 func (cli *ZSClient) ReconnectSdnController(sdnControllerUuid string, params param.ReconnectSdnControllerParam) (*view.SdnControllerInventoryView, error) {
 	resp := view.SdnControllerInventoryView{}
-	if err := cli.Put("v1/sdn-controllers", sdnControllerUuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/sdn-controllers", sdnControllerUuid, "", map[string]interface{}{
 		"reconnectSdnController": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateAutoScalingRule updates AutoScalingRule
 func (cli *ZSClient) UpdateAutoScalingRule(uuid string, params param.UpdateAutoScalingRuleParam) (*view.AutoScalingRuleInventoryView, error) {
 	resp := view.AutoScalingRuleInventoryView{}
-	if err := cli.Put("v1/autoscaling/rules", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/autoscaling/rules", uuid, "", map[string]interface{}{
 		"updateAutoScalingRule": params.Params,
 	}, &resp); err != nil {
 		return nil, err

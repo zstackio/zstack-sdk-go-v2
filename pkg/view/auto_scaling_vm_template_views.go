@@ -30,8 +30,18 @@ type AutoScalingVmTemplateInventoryView struct {
 	SystemTags []string `json:"systemTags,omitempty"`
 }
 
+// UpdateAutoScalingTemplateEventView UpdateAutoScalingTemplateEvent
+type UpdateAutoScalingTemplateEventView struct {
+	Inventory AutoScalingTemplateInventoryView `json:"inventory,omitempty"`
+}
+
 // QueryAutoScalingVmTemplateView QueryAutoScalingVmTemplate
 type QueryAutoScalingVmTemplateView struct {
 	Inventories []AutoScalingVmTemplateInventoryView `json:"inventories,omitempty"`
+}
+
+// CreateAutoScalingTemplateEventView CreateAutoScalingTemplateEvent
+type CreateAutoScalingTemplateEventView struct {
+	Inventory AutoScalingTemplateInventoryView `json:"inventory,omitempty"`
 }
 

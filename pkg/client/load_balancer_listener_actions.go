@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateLoadBalancerListener updates LoadBalancerListener
 func (cli *ZSClient) UpdateLoadBalancerListener(uuid string, params param.UpdateLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	resp := view.LoadBalancerListenerInventoryView{}
-	if err := cli.Put("v1/load-balancers/listeners", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/load-balancers/listeners", uuid, "", map[string]interface{}{
 		"updateLoadBalancerListener": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (cli *ZSClient) PageLoadBalancerListener(params *param.QueryParam) ([]view.
 // ChangeLoadBalancerListener changes LoadBalancerListener
 func (cli *ZSClient) ChangeLoadBalancerListener(uuid string, params param.ChangeLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	resp := view.LoadBalancerListenerInventoryView{}
-	if err := cli.Put("v1/load-balancers/listeners", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/load-balancers/listeners", uuid, "", map[string]interface{}{
 		"changeLoadBalancerListener": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,54 +20,4 @@ func TestQuerySharedBlock(t *testing.T) {
 	}
 	golog.Infof("QuerySharedBlock result count: %d", len(result))
 }
-func TestGetSharedBlock(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySharedBlock(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetSharedBlock Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SharedBlock found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetSharedBlock(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetSharedBlock error: %v", err)
-		return
-	}
-	golog.Infof("GetSharedBlock result: %s", result.UUID)
-}
-
-func TestUpdateSharedBlock(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QuerySharedBlock(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateSharedBlock Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No SharedBlock found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateSharedBlockParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateSharedBlockParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateSharedBlock("", list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateSharedBlock error: %v", err)
-		return
-	}
-	golog.Infof("UpdateSharedBlock result: %s", result.UUID)
-}

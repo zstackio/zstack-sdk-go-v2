@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateCertificate updates Certificate
 func (cli *ZSClient) UpdateCertificate(uuid string, params param.UpdateCertificateParam) (*view.CertificateInventoryView, error) {
 	resp := view.CertificateInventoryView{}
-	if err := cli.Put("v1/certificates", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/certificates", uuid, "", map[string]interface{}{
 		"updateCertificate": params.Params,
 	}, &resp); err != nil {
 		return nil, err

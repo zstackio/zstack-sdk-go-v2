@@ -21,7 +21,7 @@ func (cli *ZSClient) CreatePluginSecretResourcePool(params param.CreatePluginSec
 // UpdatePluginSecretResourcePool updates PluginSecretResourcePool
 func (cli *ZSClient) UpdatePluginSecretResourcePool(uuid string, params param.UpdatePluginSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Put("v1/secret-resource-pool/plugin", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/secret-resource-pool/plugin", uuid, "", map[string]interface{}{
 		"updatePluginSecretResourcePool": params.Params,
 	}, &resp); err != nil {
 		return nil, err

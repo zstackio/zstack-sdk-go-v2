@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // UpdateScsiLun updates ScsiLun
 func (cli *ZSClient) UpdateScsiLun(uuid string, params param.UpdateScsiLunParam) (*view.ScsiLunInventoryView, error) {
 	resp := view.ScsiLunInventoryView{}
-	if err := cli.Put("v1/storage-devices/scsi-lun", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/storage-devices/scsi-lun", uuid, "", map[string]interface{}{
 		"updateScsiLun": params.Params,
 	}, &resp); err != nil {
 		return nil, err
