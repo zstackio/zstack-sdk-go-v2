@@ -20,11 +20,6 @@ type SNSEmailEndpointInventoryView struct {
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
 
-// CreateSNSApplicationEndpointEventView CreateSNSApplicationEndpointEvent
-type CreateSNSApplicationEndpointEventView struct {
-	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
-}
-
 // QuerySNSEmailEndpointView QuerySNSEmailEndpoint
 type QuerySNSEmailEndpointView struct {
 	Inventories []SNSEmailEndpointInventoryView `json:"inventories,omitempty"`

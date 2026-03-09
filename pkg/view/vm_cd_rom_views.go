@@ -23,6 +23,12 @@ type CreateVmCdRomEventView struct {
 	Inventory VmCdRomInventoryView `json:"inventory,omitempty"`
 }
 
+// DeleteVmCdRomEventView DeleteVmCdRomEvent
+type DeleteVmCdRomEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
 // QueryVmCdRomView QueryVmCdRom
 type QueryVmCdRomView struct {
 	Inventories []VmCdRomInventoryView `json:"inventories,omitempty"`

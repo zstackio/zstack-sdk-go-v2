@@ -364,15 +364,6 @@ type AttachL3NetworkToVmParam struct {
 	BaseParam
 	Params AttachL3NetworkToVmParamDetail `json:"params"`
 }
-// AttachPrimaryStorageToClusterParamDetail AttachPrimaryStorageToCluster detail param
-type AttachPrimaryStorageToClusterParamDetail struct {
-}
-
-// AttachPrimaryStorageToClusterParam AttachPrimaryStorageToCluster request param
-type AttachPrimaryStorageToClusterParam struct {
-	BaseParam
-	Params AttachPrimaryStorageToClusterParamDetail `json:"params"`
-}
 // AttachL2NetworkToClusterParamDetail AttachL2NetworkToCluster detail param
 type AttachL2NetworkToClusterParamDetail struct {
 	L2ProviderType *string `json:"l2ProviderType,omitempty"`
@@ -382,6 +373,15 @@ type AttachL2NetworkToClusterParamDetail struct {
 type AttachL2NetworkToClusterParam struct {
 	BaseParam
 	Params AttachL2NetworkToClusterParamDetail `json:"attachL2NetworkToCluster"`
+}
+// AttachPrimaryStorageToClusterParamDetail AttachPrimaryStorageToCluster detail param
+type AttachPrimaryStorageToClusterParamDetail struct {
+}
+
+// AttachPrimaryStorageToClusterParam AttachPrimaryStorageToCluster request param
+type AttachPrimaryStorageToClusterParam struct {
+	BaseParam
+	Params AttachPrimaryStorageToClusterParamDetail `json:"params"`
 }
 // ChangeVmNicTypeParamDetail ChangeVmNicType detail param
 type ChangeVmNicTypeParamDetail struct {
@@ -4515,6 +4515,15 @@ type UnlockIdentityParam struct {
 	BaseParam
 	Params UnlockIdentityParamDetail `json:"unlockIdentity"`
 }
+// GetCandidateVmNicsForPortMirrorParamDetail GetCandidateVmNicsForPortMirror detail param
+type GetCandidateVmNicsForPortMirrorParamDetail struct {
+}
+
+// GetCandidateVmNicsForPortMirrorParam GetCandidateVmNicsForPortMirror request param
+type GetCandidateVmNicsForPortMirrorParam struct {
+	BaseParam
+	Params GetCandidateVmNicsForPortMirrorParamDetail `json:"getCandidateVmNicsForPortMirror"`
+}
 // ChangeVmSchedulingRuleStateParamDetail ChangeVmSchedulingRuleState detail param
 type ChangeVmSchedulingRuleStateParamDetail struct {
 	State string `json:"state" validate:"required"`
@@ -4524,15 +4533,6 @@ type ChangeVmSchedulingRuleStateParamDetail struct {
 type ChangeVmSchedulingRuleStateParam struct {
 	BaseParam
 	Params ChangeVmSchedulingRuleStateParamDetail `json:"changeVmSchedulingRuleState"`
-}
-// GetCandidateVmNicsForPortMirrorParamDetail GetCandidateVmNicsForPortMirror detail param
-type GetCandidateVmNicsForPortMirrorParamDetail struct {
-}
-
-// GetCandidateVmNicsForPortMirrorParam GetCandidateVmNicsForPortMirror request param
-type GetCandidateVmNicsForPortMirrorParam struct {
-	BaseParam
-	Params GetCandidateVmNicsForPortMirrorParamDetail `json:"getCandidateVmNicsForPortMirror"`
 }
 // CreateFirewallRuleParamDetail CreateFirewallRule detail param
 type CreateFirewallRuleParamDetail struct {
@@ -5091,16 +5091,6 @@ type DetachServiceFromObservabilityServerParam struct {
 	BaseParam
 	Params DetachServiceFromObservabilityServerParamDetail `json:"detachServiceFromObservabilityServer"`
 }
-// SetVmUsbRedirectParamDetail SetVmUsbRedirect detail param
-type SetVmUsbRedirectParamDetail struct {
-	Enable bool `json:"enable" validate:"required"`
-}
-
-// SetVmUsbRedirectParam SetVmUsbRedirect request param
-type SetVmUsbRedirectParam struct {
-	BaseParam
-	Params SetVmUsbRedirectParamDetail `json:"setVmUsbRedirect"`
-}
 // GetHostCandidatesForVmMigrationParamDetail GetHostCandidatesForVmMigration detail param
 type GetHostCandidatesForVmMigrationParamDetail struct {
 	DstPrimaryStorageUuid string `json:"dstPrimaryStorageUuid" validate:"required"`
@@ -5111,6 +5101,16 @@ type GetHostCandidatesForVmMigrationParamDetail struct {
 type GetHostCandidatesForVmMigrationParam struct {
 	BaseParam
 	Params GetHostCandidatesForVmMigrationParamDetail `json:"getHostCandidatesForVmMigration"`
+}
+// SetVmUsbRedirectParamDetail SetVmUsbRedirect detail param
+type SetVmUsbRedirectParamDetail struct {
+	Enable bool `json:"enable" validate:"required"`
+}
+
+// SetVmUsbRedirectParam SetVmUsbRedirect request param
+type SetVmUsbRedirectParam struct {
+	BaseParam
+	Params SetVmUsbRedirectParamDetail `json:"setVmUsbRedirect"`
 }
 // GetVmNicAttachableEipsParamDetail GetVmNicAttachableEips detail param
 type GetVmNicAttachableEipsParamDetail struct {
@@ -7479,16 +7479,6 @@ type AddDisasterImageStoreBackupStorageParam struct {
 	BaseParam
 	Params AddDisasterImageStoreBackupStorageParamDetail `json:"params"`
 }
-// GetVmSchedulingRulesExecuteStateParamDetail GetVmSchedulingRulesExecuteState detail param
-type GetVmSchedulingRulesExecuteStateParamDetail struct {
-	Uuids []string `json:"uuids" validate:"required"`
-}
-
-// GetVmSchedulingRulesExecuteStateParam GetVmSchedulingRulesExecuteState request param
-type GetVmSchedulingRulesExecuteStateParam struct {
-	BaseParam
-	Params GetVmSchedulingRulesExecuteStateParamDetail `json:"params"`
-}
 // CreateVolumesSnapshotParamDetail CreateVolumesSnapshot detail param
 type CreateVolumesSnapshotParamDetail struct {
 	VolumeUuids []string `json:"volumeUuids" validate:"required"`
@@ -7498,6 +7488,16 @@ type CreateVolumesSnapshotParamDetail struct {
 type CreateVolumesSnapshotParam struct {
 	BaseParam
 	Params CreateVolumesSnapshotParamDetail `json:"params"`
+}
+// GetVmSchedulingRulesExecuteStateParamDetail GetVmSchedulingRulesExecuteState detail param
+type GetVmSchedulingRulesExecuteStateParamDetail struct {
+	Uuids []string `json:"uuids" validate:"required"`
+}
+
+// GetVmSchedulingRulesExecuteStateParam GetVmSchedulingRulesExecuteState request param
+type GetVmSchedulingRulesExecuteStateParam struct {
+	BaseParam
+	Params GetVmSchedulingRulesExecuteStateParamDetail `json:"params"`
 }
 // GetIpAddressCapacityParamDetail GetIpAddressCapacity detail param
 type GetIpAddressCapacityParamDetail struct {
@@ -10131,15 +10131,6 @@ type GetAppBuildSystemCapacityParam struct {
 	BaseParam
 	Params GetAppBuildSystemCapacityParamDetail `json:"getAppBuildSystemCapacity"`
 }
-// GetAttachableVpcL3NetworkParamDetail GetAttachableVpcL3Network detail param
-type GetAttachableVpcL3NetworkParamDetail struct {
-}
-
-// GetAttachableVpcL3NetworkParam GetAttachableVpcL3Network request param
-type GetAttachableVpcL3NetworkParam struct {
-	BaseParam
-	Params GetAttachableVpcL3NetworkParamDetail `json:"params"`
-}
 // ChangeBaremetalChassisStateParamDetail ChangeBaremetalChassisState detail param
 type ChangeBaremetalChassisStateParamDetail struct {
 	StateEvent string `json:"stateEvent" validate:"required"`
@@ -10149,6 +10140,15 @@ type ChangeBaremetalChassisStateParamDetail struct {
 type ChangeBaremetalChassisStateParam struct {
 	BaseParam
 	Params ChangeBaremetalChassisStateParamDetail `json:"changeBaremetalChassisState"`
+}
+// GetAttachableVpcL3NetworkParamDetail GetAttachableVpcL3Network detail param
+type GetAttachableVpcL3NetworkParamDetail struct {
+}
+
+// GetAttachableVpcL3NetworkParam GetAttachableVpcL3Network request param
+type GetAttachableVpcL3NetworkParam struct {
+	BaseParam
+	Params GetAttachableVpcL3NetworkParamDetail `json:"params"`
 }
 // GetL3NetworkMtuParamDetail GetL3NetworkMtu detail param
 type GetL3NetworkMtuParamDetail struct {
@@ -10663,16 +10663,6 @@ type GetLicenseUKeyStatusParam struct {
 	BaseParam
 	Params GetLicenseUKeyStatusParamDetail `json:"params"`
 }
-// AddTicketTypesToTicketFlowCollectionParamDetail AddTicketTypesToTicketFlowCollection detail param
-type AddTicketTypesToTicketFlowCollectionParamDetail struct {
-	TicketTypeUuids []string `json:"ticketTypeUuids" validate:"required"`
-}
-
-// AddTicketTypesToTicketFlowCollectionParam AddTicketTypesToTicketFlowCollection request param
-type AddTicketTypesToTicketFlowCollectionParam struct {
-	BaseParam
-	Params AddTicketTypesToTicketFlowCollectionParamDetail `json:"params"`
-}
 // SetL3NetworkRouterInterfaceIpParamDetail SetL3NetworkRouterInterfaceIp detail param
 type SetL3NetworkRouterInterfaceIpParamDetail struct {
 	RouterInterfaceIp string `json:"routerInterfaceIp" validate:"required"`
@@ -10682,6 +10672,16 @@ type SetL3NetworkRouterInterfaceIpParamDetail struct {
 type SetL3NetworkRouterInterfaceIpParam struct {
 	BaseParam
 	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"params"`
+}
+// AddTicketTypesToTicketFlowCollectionParamDetail AddTicketTypesToTicketFlowCollection detail param
+type AddTicketTypesToTicketFlowCollectionParamDetail struct {
+	TicketTypeUuids []string `json:"ticketTypeUuids" validate:"required"`
+}
+
+// AddTicketTypesToTicketFlowCollectionParam AddTicketTypesToTicketFlowCollection request param
+type AddTicketTypesToTicketFlowCollectionParam struct {
+	BaseParam
+	Params AddTicketTypesToTicketFlowCollectionParamDetail `json:"params"`
 }
 // GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail GetConnectionBetweenL3NetworkAndAliyunVSwitch detail param
 type GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
@@ -11335,6 +11335,15 @@ type GetCandidateVMForAttachingAffinityGroupParam struct {
 	BaseParam
 	Params GetCandidateVMForAttachingAffinityGroupParamDetail `json:"getCandidateVMForAttachingAffinityGroup"`
 }
+// DetachPolicyFromUserGroupParamDetail DetachPolicyFromUserGroup detail param
+type DetachPolicyFromUserGroupParamDetail struct {
+}
+
+// DetachPolicyFromUserGroupParam DetachPolicyFromUserGroup request param
+type DetachPolicyFromUserGroupParam struct {
+	BaseParam
+	Params DetachPolicyFromUserGroupParamDetail `json:"detachPolicyFromUserGroup"`
+}
 // DeleteVpcVpnConnectionLocalParamDetail DeleteVpcVpnConnectionLocal detail param
 type DeleteVpcVpnConnectionLocalParamDetail struct {
 	DeleteMode *string `json:"deleteMode,omitempty"`
@@ -11344,15 +11353,6 @@ type DeleteVpcVpnConnectionLocalParamDetail struct {
 type DeleteVpcVpnConnectionLocalParam struct {
 	BaseParam
 	Params DeleteVpcVpnConnectionLocalParamDetail `json:"deleteVpcVpnConnectionLocal"`
-}
-// DetachPolicyFromUserGroupParamDetail DetachPolicyFromUserGroup detail param
-type DetachPolicyFromUserGroupParamDetail struct {
-}
-
-// DetachPolicyFromUserGroupParam DetachPolicyFromUserGroup request param
-type DetachPolicyFromUserGroupParam struct {
-	BaseParam
-	Params DetachPolicyFromUserGroupParamDetail `json:"detachPolicyFromUserGroup"`
 }
 // AddActionToAlarmParamDetail AddActionToAlarm detail param
 type AddActionToAlarmParamDetail struct {
