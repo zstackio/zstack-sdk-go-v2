@@ -28,6 +28,11 @@ type AddImageStoreBackupStorageEventView struct {
 	Inventory ImageStoreBackupStorageInventoryView `json:"inventory,omitempty"`
 }
 
+// UpdateBackupStorageEventView UpdateBackupStorageEvent
+type UpdateBackupStorageEventView struct {
+	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
+}
+
 // QueryImageStoreBackupStorageView QueryImageStoreBackupStorage
 type QueryImageStoreBackupStorageView struct {
 	Inventories []ImageStoreBackupStorageInventoryView `json:"inventories,omitempty"`

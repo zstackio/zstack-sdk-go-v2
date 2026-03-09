@@ -21,8 +21,8 @@ func (cli *ZSClient) UpdateLogConfiguration(params param.UpdateLogConfigurationP
 	return &resp, nil
 }
 // GetLogConfiguration gets LogConfiguration by uuid
-func (cli *ZSClient) GetLogConfiguration() (*view.JsonLabelInventoryView, error) {
-	var resp view.JsonLabelInventoryView
+func (cli *ZSClient) GetLogConfiguration() (*view.GetLogConfigurationView, error) {
+	var resp view.GetLogConfigurationView
 	if err := cli.GetWithRespKey("v1/log/configurations", "", "", nil, &resp); err != nil {
 		return nil, err
 	}

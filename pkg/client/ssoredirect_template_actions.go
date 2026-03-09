@@ -27,9 +27,9 @@ func (cli *ZSClient) UpdateSSORedirectTemplate(params param.UpdateSSORedirectTem
 	return &resp, nil
 }
 // DeleteSSORedirectTemplate deletes SSORedirectTemplate
-func (cli *ZSClient) DeleteSSORedirectTemplate(params param.DeleteSSORedirectTemplateParam) (*view.SSORedirectTemplateInventoryView, error) {
-	resp := view.SSORedirectTemplateInventoryView{}
-	if err := cli.Post("v1/delete/sso/redirect/template", params, &resp); err != nil {
+func (cli *ZSClient) DeleteSSORedirectTemplate(params param.DeleteSSORedirectTemplateParam) (*view.DeleteSSORedirectTemplateEventView, error) {
+	resp := view.DeleteSSORedirectTemplateEventView{}
+	if err := cli.PostWithRespKey("v1/delete/sso/redirect/template", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
