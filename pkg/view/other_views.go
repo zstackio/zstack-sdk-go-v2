@@ -3166,13 +3166,13 @@ type DeleteVmBootModeEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DetachPolicyFromUserGroupEventView DetachPolicyFromUserGroupEvent
-type DetachPolicyFromUserGroupEventView struct {
+// DeleteVpcVpnConnectionLocalEventView DeleteVpcVpnConnectionLocalEvent
+type DeleteVpcVpnConnectionLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteVpcVpnConnectionLocalEventView DeleteVpcVpnConnectionLocalEvent
-type DeleteVpcVpnConnectionLocalEventView struct {
+// DetachPolicyFromUserGroupEventView DetachPolicyFromUserGroupEvent
+type DetachPolicyFromUserGroupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 

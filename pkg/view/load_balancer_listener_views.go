@@ -78,8 +78,3 @@ type RemoveAccessControlListFromLoadBalancerEventView struct {
 	Inventory LoadBalancerListenerInventoryView `json:"inventory,omitempty"`
 }
 
-// DeleteLoadBalancerListenerEventView DeleteLoadBalancerListenerEvent
-type DeleteLoadBalancerListenerEventView struct {
-	Inventory LoadBalancerInventoryView `json:"inventory,omitempty"`
-}
-

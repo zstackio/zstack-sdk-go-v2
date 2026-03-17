@@ -49,6 +49,11 @@ type DeleteLoadBalancerEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// DeleteLoadBalancerListenerEventView DeleteLoadBalancerListenerEvent
+type DeleteLoadBalancerListenerEventView struct {
+	Inventory LoadBalancerInventoryView `json:"inventory,omitempty"`
+}
+
 // AttachVipToLoadBalancerEventView AttachVipToLoadBalancerEvent
 type AttachVipToLoadBalancerEventView struct {
 	Inventory LoadBalancerInventoryView `json:"inventory,omitempty"`

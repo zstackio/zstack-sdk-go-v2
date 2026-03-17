@@ -2690,21 +2690,21 @@ func (cli *ZSClient) AttachMonitorTriggerActionToTrigger(params param.AttachMoni
 	return &resp, nil
 }
 
+// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
+func (cli *ZSClient) GetAliyunNasFileSystemRemote() (*view.GetAliyunNasFileSystemRemoteView, error) {
+	var resp view.GetAliyunNasFileSystemRemoteView
+	if err := cli.GetWithRespKey("v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // UpdateOrganizationQuota updates OrganizationQuota
 func (cli *ZSClient) UpdateOrganizationQuota(params param.UpdateOrganizationQuotaParam) (*view.QuotaInventoryView, error) {
 	resp := view.QuotaInventoryView{}
 	if err := cli.PutWithRespKey("v1/iam2/Organization/quotas/actions", "", "", map[string]interface{}{
 		"updateOrganizationQuota": params.Params,
 	}, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
-// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
-func (cli *ZSClient) GetAliyunNasFileSystemRemote() (*view.GetAliyunNasFileSystemRemoteView, error) {
-	var resp view.GetAliyunNasFileSystemRemoteView
-	if err := cli.GetWithRespKey("v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3111,15 +3111,6 @@ func (cli *ZSClient) ChangeInstanceOfferingState(uuid string, params param.Chang
 	return &resp, nil
 }
 
-// GetBackupStorageCapacity gets BackupStorageCapacity by uuid
-func (cli *ZSClient) GetBackupStorageCapacity() (*view.GetBackupStorageCapacityView, error) {
-	var resp view.GetBackupStorageCapacityView
-	if err := cli.GetWithRespKey("v1/backup-storage/capacities", "", "", nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // QueryVirtualBorderRouterFromLocal queries VirtualBorderRouterFromLocal list
 func (cli *ZSClient) QueryVirtualBorderRouterFromLocal(params *param.QueryParam) ([]view.VirtualBorderRouterInventoryView, error) {
 	var resp []view.VirtualBorderRouterInventoryView
@@ -3139,6 +3130,15 @@ func (cli *ZSClient) PageVirtualBorderRouterFromLocal(params *param.QueryParam) 
 	var virtualBorderRouterFromLocals []view.VirtualBorderRouterInventoryView
 	total, err := cli.Page("v1/hybrid/aliyun/border-router", params, &virtualBorderRouterFromLocals)
 	return virtualBorderRouterFromLocals, total, err
+}
+
+// GetBackupStorageCapacity gets BackupStorageCapacity by uuid
+func (cli *ZSClient) GetBackupStorageCapacity() (*view.GetBackupStorageCapacityView, error) {
+	var resp view.GetBackupStorageCapacityView
+	if err := cli.GetWithRespKey("v1/backup-storage/capacities", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // GenerateSeMdevDevices operates on SeMdevDevices
@@ -4779,21 +4779,21 @@ func (cli *ZSClient) DetachServiceFromObservabilityServer(uuid string, deleteMod
 	return cli.Delete("v1/observability-server", uuid, string(deleteMode))
 }
 
-// GetHostCandidatesForVmMigration gets HostCandidatesForVmMigration by uuid
-func (cli *ZSClient) GetHostCandidatesForVmMigration(uuid string) (*view.GetHostCandidatesForVmMigrationView, error) {
-	var resp view.GetHostCandidatesForVmMigrationView
-	if err := cli.GetWithRespKey("v1/primary-storage/hosts", uuid, "", nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // SetVmUsbRedirect operates on VmUsbRedirect
 func (cli *ZSClient) SetVmUsbRedirect(uuid string, params param.SetVmUsbRedirectParam) (*view.SetVmUsbRedirectEventView, error) {
 	resp := view.SetVmUsbRedirectEventView{}
 	if err := cli.PutWithRespKey("v1/vm-instances", uuid, "", map[string]interface{}{
 		"setVmUsbRedirect": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetHostCandidatesForVmMigration gets HostCandidatesForVmMigration by uuid
+func (cli *ZSClient) GetHostCandidatesForVmMigration(uuid string) (*view.GetHostCandidatesForVmMigrationView, error) {
+	var resp view.GetHostCandidatesForVmMigrationView
+	if err := cli.GetWithRespKey("v1/primary-storage/hosts", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7383,21 +7383,21 @@ func (cli *ZSClient) UpdateAtPersonOfAtDingTalkEndpoint(uuid string, params para
 	return &resp, nil
 }
 
-// GetResourceAccount gets ResourceAccount by uuid
-func (cli *ZSClient) GetResourceAccount() (*view.GetResourceAccountView, error) {
-	var resp view.GetResourceAccountView
-	if err := cli.GetWithRespKey("v1/resources/accounts", "", "", nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // UpdateAliyunMountTarget updates AliyunMountTarget
 func (cli *ZSClient) UpdateAliyunMountTarget(params param.UpdateAliyunMountTargetParam) (*view.NasMountTargetInventoryView, error) {
 	resp := view.NasMountTargetInventoryView{}
 	if err := cli.PutWithRespKey("v1/nas/aliyun/mount", "", "", map[string]interface{}{
 		"updateAliyunMountTarget": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetResourceAccount gets ResourceAccount by uuid
+func (cli *ZSClient) GetResourceAccount() (*view.GetResourceAccountView, error) {
+	var resp view.GetResourceAccountView
+	if err := cli.GetWithRespKey("v1/resources/accounts", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8500,19 +8500,19 @@ func (cli *ZSClient) DeleteEcsSecurityGroupRuleRemote(uuid string, deleteMode pa
 	return cli.Delete("v1/hybrid/aliyun/security-group-rule/remote", uuid, string(deleteMode))
 }
 
-// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
-func (cli *ZSClient) DetachAliyunDiskFromEcs(params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
-	resp := view.DetachAliyunDiskFromEcsEventView{}
-	if err := cli.Post("v1/hybrid/aliyun/disk/{uuid}/detach", params, &resp); err != nil {
+// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
+func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm() (*view.GetCandidateAffinityGroupForAttachingVmView, error) {
+	var resp view.GetCandidateAffinityGroupForAttachingVmView
+	if err := cli.GetWithRespKey("v1/affinityGroup/attachingVm", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
-func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm() (*view.GetCandidateAffinityGroupForAttachingVmView, error) {
-	var resp view.GetCandidateAffinityGroupForAttachingVmView
-	if err := cli.GetWithRespKey("v1/affinityGroup/attachingVm", "", "", nil, &resp); err != nil {
+// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
+func (cli *ZSClient) DetachAliyunDiskFromEcs(params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
+	resp := view.DetachAliyunDiskFromEcsEventView{}
+	if err := cli.Post("v1/hybrid/aliyun/disk/{uuid}/detach", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9253,21 +9253,21 @@ func (cli *ZSClient) GetAppBuildSystemCapacity() (*view.GetAppBuildSystemCapacit
 	return &resp, nil
 }
 
+// GetAttachableVpcL3Network gets AttachableVpcL3Network by uuid
+func (cli *ZSClient) GetAttachableVpcL3Network(params param.GetAttachableVpcL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+	resp := view.L3NetworkInventoryView{}
+	if err := cli.Post("v1/vpc/virtual-routers/{uuid}/attachable-vpc-l3s", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // ChangeBaremetalChassisState changes BaremetalChassisState
 func (cli *ZSClient) ChangeBaremetalChassisState(uuid string, params param.ChangeBaremetalChassisStateParam) (*view.BaremetalChassisInventoryView, error) {
 	resp := view.BaremetalChassisInventoryView{}
 	if err := cli.PutWithRespKey("v1/baremetal/chassis", uuid, "", map[string]interface{}{
 		"changeBaremetalChassisState": params.Params,
 	}, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
-// GetAttachableVpcL3Network gets AttachableVpcL3Network by uuid
-func (cli *ZSClient) GetAttachableVpcL3Network(params param.GetAttachableVpcL3NetworkParam) (*view.L3NetworkInventoryView, error) {
-	resp := view.L3NetworkInventoryView{}
-	if err := cli.Post("v1/vpc/virtual-routers/{uuid}/attachable-vpc-l3s", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10497,14 +10497,14 @@ func (cli *ZSClient) GetCandidateVMForAttachingAffinityGroup() (*view.GetCandida
 	return &resp, nil
 }
 
-// DetachPolicyFromUserGroup operates on PolicyFromUserGroup
-func (cli *ZSClient) DetachPolicyFromUserGroup(groupUuid string, policyUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/accounts/groups", groupUuid, fmt.Sprintf("policies/%s", policyUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
-}
-
 // DeleteVpcVpnConnectionLocal deletes VpcVpnConnectionLocal
 func (cli *ZSClient) DeleteVpcVpnConnectionLocal(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/hybrid/vpn-connection", uuid, string(deleteMode))
+}
+
+// DetachPolicyFromUserGroup operates on PolicyFromUserGroup
+func (cli *ZSClient) DetachPolicyFromUserGroup(groupUuid string, policyUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/accounts/groups", groupUuid, fmt.Sprintf("policies/%s", policyUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 
 // AddActionToAlarm adds ActionToAlarm
