@@ -249,6 +249,11 @@ type GetSupportedIdentityModelsView struct {
 	Configs []string `json:"configs,omitempty"`
 }
 
+// SuspendLongJobEventView SuspendLongJobEvent
+type SuspendLongJobEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
 // AddUserToGroupEventView AddUserToGroupEvent
 type AddUserToGroupEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -3166,13 +3171,13 @@ type DeleteVmBootModeEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteVpcVpnConnectionLocalEventView DeleteVpcVpnConnectionLocalEvent
-type DeleteVpcVpnConnectionLocalEventView struct {
+// DetachPolicyFromUserGroupEventView DetachPolicyFromUserGroupEvent
+type DetachPolicyFromUserGroupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DetachPolicyFromUserGroupEventView DetachPolicyFromUserGroupEvent
-type DetachPolicyFromUserGroupEventView struct {
+// DeleteVpcVpnConnectionLocalEventView DeleteVpcVpnConnectionLocalEvent
+type DeleteVpcVpnConnectionLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 

@@ -21,8 +21,8 @@ func (cli *ZSClient) ChangeSecurityGroupRule(uuid string, params param.ChangeSec
 	return &resp, nil
 }
 // ValidateSecurityGroupRule operates on SecurityGroupRule
-func (cli *ZSClient) ValidateSecurityGroupRule(uuid string) (*view.ValidateSecurityGroupRuleView, error) {
-	var resp view.ValidateSecurityGroupRuleView
+func (cli *ZSClient) ValidateSecurityGroupRule(uuid string) (*view.SecurityGroupRuleInventoryView, error) {
+	var resp view.SecurityGroupRuleInventoryView
 	if err := cli.GetWithRespKey("v1/security-groups", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}

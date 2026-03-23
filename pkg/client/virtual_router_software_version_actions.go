@@ -11,8 +11,8 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // GetVirtualRouterSoftwareVersion gets VirtualRouterSoftwareVersion by uuid
-func (cli *ZSClient) GetVirtualRouterSoftwareVersion() (*view.GetVirtualRouterSoftwareVersionView, error) {
-	var resp view.GetVirtualRouterSoftwareVersionView
+func (cli *ZSClient) GetVirtualRouterSoftwareVersion() (*view.VirtualRouterSoftwareVersionInventoryView, error) {
+	var resp view.VirtualRouterSoftwareVersionInventoryView
 	if err := cli.GetWithRespKey("v1/vpc/virtual-routers/softwareversion", "", "", nil, &resp); err != nil {
 		return nil, err
 	}

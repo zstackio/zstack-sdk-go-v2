@@ -21,8 +21,8 @@ func (cli *ZSClient) SyncPrimaryStorageCapacity(primaryStorageUuid string, param
 	return &resp, nil
 }
 // GetPrimaryStorageCapacity gets PrimaryStorageCapacity by uuid
-func (cli *ZSClient) GetPrimaryStorageCapacity() (*view.GetPrimaryStorageCapacityView, error) {
-	var resp view.GetPrimaryStorageCapacityView
+func (cli *ZSClient) GetPrimaryStorageCapacity() (*view.PrimaryStorageCapacityInventoryView, error) {
+	var resp view.PrimaryStorageCapacityInventoryView
 	if err := cli.GetWithRespKey("v1/primary-storage/capacities", "", "", nil, &resp); err != nil {
 		return nil, err
 	}

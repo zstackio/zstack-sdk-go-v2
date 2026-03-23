@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -12,48 +13,11 @@ import (
 
 func TestQueryIAM2Project(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	queryParam.Limit(10)
-	result, err := accessKeyAuthCli.QueryIAM2Project(&queryParam)
+	result, err := accountLoginCli.QueryIAM2Project(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryIAM2Project error: %v", err)
 		return
 	}
-	golog.Infof("======================================")
 	golog.Infof("QueryIAM2Project result count: %d", len(result))
-	for _, r := range result {
-		golog.Infof("%s\t%s\t%s", r.UUID, r.Name, r.State)
-	}
-	golog.Infof("======================================")
 }
 
-func TestPageIAM2Project(t *testing.T) {
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(10).Start(0)
-	result, total, err := accessKeyAuthCli.PageIAM2Project(&queryParam)
-	if err != nil {
-		t.Errorf("TestPageIAM2Project error: %v", err)
-		return
-	}
-	golog.Infof("PageIAM2Project result: total=%d, returned=%d", total, len(result))
-}
-
-func TestGetIAM2Project(t *testing.T) {
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accessKeyAuthCli.QueryIAM2Project(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetIAM2Project Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No IAM2Project found to test Get")
-		return
-	}
-
-	result, err := accessKeyAuthCli.GetIAM2Project(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetIAM2Project error: %v", err)
-		return
-	}
-	golog.Infof("GetIAM2Project result: %s, Name: %s", result.UUID, result.Name)
-}

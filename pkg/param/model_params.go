@@ -21,11 +21,13 @@ type UpdateModelParamDetail struct {
 	Name string `json:"name,omitempty"`
 	InstallPath *string `json:"installPath,omitempty"`
 	Description *string `json:"description,omitempty"`
+	Vendor *string `json:"vendor,omitempty"`
 	Parameters *string `json:"parameters,omitempty"`
 	ModelCenterUuid *string `json:"modelCenterUuid,omitempty"`
 	ModelClassifications []string `json:"modelClassifications,omitempty"`
 	RecommendedGpuNum *string `json:"recommendedGpuNum,omitempty"`
 	GpuConstraintDescription *string `json:"gpuConstraintDescription,omitempty"`
+	ModelId *string `json:"modelId,omitempty"`
 }
 
 // UpdateModelParam UpdateModel request param
@@ -49,6 +51,7 @@ type AddModelParamDetail struct {
 	ModelServiceUuids []string `json:"modelServiceUuids,omitempty"`
 	RecommendedGpuNum *string `json:"recommendedGpuNum,omitempty"`
 	GpuConstraintDescription *string `json:"gpuConstraintDescription,omitempty"`
+	ModelId *string `json:"modelId,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

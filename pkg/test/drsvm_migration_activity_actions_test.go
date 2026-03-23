@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,25 +20,4 @@ func TestQueryDRSVmMigrationActivity(t *testing.T) {
 	}
 	golog.Infof("QueryDRSVmMigrationActivity result count: %d", len(result))
 }
-func TestGetDRSVmMigrationActivity(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryDRSVmMigrationActivity(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetDRSVmMigrationActivity Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No DRSVmMigrationActivity found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetDRSVmMigrationActivity(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetDRSVmMigrationActivity error: %v", err)
-		return
-	}
-	golog.Infof("GetDRSVmMigrationActivity result: %s", result.UUID)
-}

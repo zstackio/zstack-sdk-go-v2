@@ -25,8 +25,8 @@ func (cli *ZSClient) SetVipQos(uuid string, params param.SetVipQosParam) (*view.
 	return &resp, nil
 }
 // GetVipQos gets VipQos by uuid
-func (cli *ZSClient) GetVipQos(uuid string) (*view.GetVipQosView, error) {
-	var resp view.GetVipQosView
+func (cli *ZSClient) GetVipQos(uuid string) (*view.VipQosInventoryView, error) {
+	var resp view.VipQosInventoryView
 	if err := cli.GetWithRespKey("v1/vip", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}

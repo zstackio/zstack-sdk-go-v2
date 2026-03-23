@@ -1,4 +1,5 @@
 // Copyright (c) ZStack.io, Inc.
+// Auto-generated integration tests. DO NOT EDIT.
 
 package test
 
@@ -19,91 +20,4 @@ func TestQueryVmSchedulingRule(t *testing.T) {
 	}
 	golog.Infof("QueryVmSchedulingRule result count: %d", len(result))
 }
-func TestGetVmSchedulingRule(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVmSchedulingRule(&queryParam)
-	if err != nil {
-		t.Errorf("TestGetVmSchedulingRule Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No VmSchedulingRule found to test Get")
-		return
-	}
 
-	// Get by UUID
-	result, err := accountLoginCli.GetVmSchedulingRule(list[0].UUID)
-	if err != nil {
-		t.Errorf("TestGetVmSchedulingRule error: %v", err)
-		return
-	}
-	golog.Infof("GetVmSchedulingRule result: %s", result.UUID)
-}
-
-func TestUpdateVmSchedulingRule(t *testing.T) {
-	// First query to get a valid UUID
-	queryParam := param.NewQueryParam()
-	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVmSchedulingRule(&queryParam)
-	if err != nil {
-		t.Errorf("TestUpdateVmSchedulingRule Query error: %v", err)
-		return
-	}
-	if len(list) == 0 {
-		t.Skip("No VmSchedulingRule found to test Update")
-		return
-	}
-
-	// Update with minimal params
-	updateParam := param.UpdateVmSchedulingRuleParam{
-		BaseParam: param.BaseParam{},
-		Params:    param.UpdateVmSchedulingRuleParamDetail{
-			// Keep original values - just testing the API works
-		},
-	}
-	result, err := accountLoginCli.UpdateVmSchedulingRule(list[0].UUID, updateParam)
-	if err != nil {
-		t.Errorf("TestUpdateVmSchedulingRule error: %v", err)
-		return
-	}
-	golog.Infof("UpdateVmSchedulingRule result: %s", result.UUID)
-}
-
-func TestCreateVmSchedulingRule(t *testing.T) {
-	// WARNING: This test will create a real resource!
-	t.Skip("TestCreateVmSchedulingRule is skipped by default. Implement with valid params to test creation.")
-
-	// createParam := param.CreateVmSchedulingRuleParam{
-	// 	BaseParam: param.BaseParam{},
-	// 	Params: param.CreateVmSchedulingRuleParamDetail{
-	// 		Name: "test-vmschedulingrule",
-	// 		// Add other required fields
-	// 	},
-	// }
-	// result, err := accountLoginCli.CreateVmSchedulingRule(createParam)
-	// if err != nil {
-	// 	t.Errorf("TestCreateVmSchedulingRule error: %v", err)
-	// 	return
-	// }
-	// golog.Infof("CreateVmSchedulingRule result: %s", result.UUID)
-	//
-	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteVmSchedulingRule(result.UUID, param.DeleteModePermissive)
-	// if err != nil {
-	// 	t.Logf("Cleanup DeleteVmSchedulingRule error: %v", err)
-	// }
-}
-
-func TestRemoveVmSchedulingRule(t *testing.T) {
-	// RemoveVmSchedulingRule operation
-	t.Skip("TestRemoveVmSchedulingRule requires manual implementation")
-
-}
-
-func TestValidateVmSchedulingRule(t *testing.T) {
-	// ValidateVmSchedulingRule operation
-	t.Skip("TestValidateVmSchedulingRule requires manual implementation")
-
-}
