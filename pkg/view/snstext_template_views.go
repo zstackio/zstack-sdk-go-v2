@@ -25,11 +25,6 @@ type UpdateSNSTextTemplateEventView struct {
 	Inventory SNSTextTemplateInventoryView `json:"inventory,omitempty"`
 }
 
-// CreateSNSTextTemplateEventView CreateSNSTextTemplateEvent
-type CreateSNSTextTemplateEventView struct {
-	Inventory SNSTextTemplateInventoryView `json:"inventory,omitempty"`
-}
-
 // DeleteSNSTextTemplateEventView DeleteSNSTextTemplateEvent
 type DeleteSNSTextTemplateEventView struct {
 	Success bool `json:"success,omitempty"`

@@ -22,7 +22,6 @@ type ModelInventoryView struct {
 	Version string `json:"version,omitempty"`
 	Type string `json:"type,omitempty"`
 	MinGpuMemory int64 `json:"minGpuMemory,omitempty"`
-	RecommendedGpuMemory int64 `json:"recommendedGpuMemory,omitempty"`
 	RecommendedGpuNum []int `json:"recommendedGpuNum,omitempty"`
 	GpuConstraintDescription string `json:"gpuConstraintDescription,omitempty"`
 	VersionSemver string `json:"versionSemver,omitempty"`

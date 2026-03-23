@@ -21,8 +21,6 @@ type ModelServiceInstanceInventoryView struct {
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	NodeRank int `json:"nodeRank,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
-	Architecture string `json:"architecture,omitempty"`
-	GpuVendor string `json:"gpuVendor,omitempty"`
 	Vm VmInstanceInventoryView `json:"vm,omitempty"`
 }
 

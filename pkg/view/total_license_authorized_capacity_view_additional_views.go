@@ -13,6 +13,5 @@ type TotalLicenseAuthorizedCapacityViewView struct {
 	ServerInventory LicenseAuthorizedNodeInventoryView `json:"serverInventory,omitempty"`
 	PlatformLicense LicenseInventoryView `json:"platformLicense,omitempty"`
 	AddOns []LicenseAddOnInventoryView `json:"addOns,omitempty"`
-	Extensions map[string]interface{} `json:"extensions,omitempty"`
 }
 

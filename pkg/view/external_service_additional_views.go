@@ -12,5 +12,6 @@ type ExternalServiceInventoryView struct {
 	BaseTimeView
 	Status string `json:"status,omitempty"`
 	Capabilities ExternalServiceCapabilitiesView `json:"capabilities,omitempty"`
+	ServiceType string `json:"serviceType,omitempty"`
 }
 
