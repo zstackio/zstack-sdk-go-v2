@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryKvmHypervisorInfo(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryKvmHypervisorInfo(&queryParam)
+	result, err := accountLoginCli.QueryKvmHypervisorInfo(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryKvmHypervisorInfo error: %v", err)
 		return

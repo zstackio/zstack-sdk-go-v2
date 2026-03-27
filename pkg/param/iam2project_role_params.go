@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // CreateIAM2ProjectRoleParamDetail CreateIAM2ProjectRole detail param
 type CreateIAM2ProjectRoleParamDetail struct {

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryResourceStack(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryResourceStack(&queryParam)
+	result, err := accountLoginCli.QueryResourceStack(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryResourceStack error: %v", err)
 		return

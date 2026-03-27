@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryMiniStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMiniStorage(&queryParam)
+	result, err := accountLoginCli.QueryMiniStorage(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMiniStorage error: %v", err)
 		return

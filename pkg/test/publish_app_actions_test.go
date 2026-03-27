@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryPublishApp(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPublishApp(&queryParam)
+	result, err := accountLoginCli.QueryPublishApp(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPublishApp error: %v", err)
 		return

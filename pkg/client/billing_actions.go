@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,6 +12,6 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteBilling deletes Billing
-func (cli *ZSClient) DeleteBilling(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/billings/billings", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteBilling(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/billings/billings", uuid, string(deleteMode))
 }

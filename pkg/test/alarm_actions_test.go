@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryAlarm(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAlarm(&queryParam)
+	result, err := accountLoginCli.QueryAlarm(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAlarm error: %v", err)
 		return

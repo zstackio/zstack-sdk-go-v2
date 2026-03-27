@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // LoadBalancerListenerInventoryView LoadBalancerListener
 type LoadBalancerListenerInventoryView struct {
@@ -76,5 +76,10 @@ type ChangeLoadBalancerListenerEventView struct {
 // RemoveAccessControlListFromLoadBalancerEventView RemoveAccessControlListFromLoadBalancerEvent
 type RemoveAccessControlListFromLoadBalancerEventView struct {
 	Inventory LoadBalancerListenerInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteLoadBalancerListenerEventView DeleteLoadBalancerListenerEvent
+type DeleteLoadBalancerListenerEventView struct {
+	Inventory LoadBalancerInventoryView `json:"inventory,omitempty"`
 }
 

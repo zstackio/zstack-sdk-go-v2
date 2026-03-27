@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQuerySystemTag(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySystemTag(&queryParam)
+	result, err := accountLoginCli.QuerySystemTag(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySystemTag error: %v", err)
 		return

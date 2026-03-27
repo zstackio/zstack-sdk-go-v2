@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryHuaweiIMasterVpc(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryHuaweiIMasterVpc(&queryParam)
+	result, err := accountLoginCli.QueryHuaweiIMasterVpc(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryHuaweiIMasterVpc error: %v", err)
 		return

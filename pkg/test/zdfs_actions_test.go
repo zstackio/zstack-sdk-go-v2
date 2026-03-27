@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryZdfs(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryZdfs(&queryParam)
+	result, err := accountLoginCli.QueryZdfs(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryZdfs error: %v", err)
 		return

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryAgentVersion(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAgentVersion(&queryParam)
+	result, err := accountLoginCli.QueryAgentVersion(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAgentVersion error: %v", err)
 		return

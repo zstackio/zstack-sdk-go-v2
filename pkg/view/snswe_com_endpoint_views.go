@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // SNSWeComEndpointInventoryView SNSWeComEndpoint
 type SNSWeComEndpointInventoryView struct {
@@ -30,10 +30,5 @@ type CreateSNSWeComEndpointEventView struct {
 // QuerySNSWeComEndpointView QuerySNSWeComEndpoint
 type QuerySNSWeComEndpointView struct {
 	Inventories []SNSWeComEndpointInventoryView `json:"inventories,omitempty"`
-}
-
-// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
-type UpdateSNSApplicationEndpointEventView struct {
-	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
 }
 

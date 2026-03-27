@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +15,7 @@ func TestUpdateOssBucket(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryOssBucketFileName(&queryParam)
+	list, err := accountLoginCli.QueryOssBucketFileName(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestUpdateOssBucket Query error: %v", err)
 		return
@@ -31,7 +32,7 @@ func TestUpdateOssBucket(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateOssBucket(list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateOssBucket(context.Background(), list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateOssBucket error: %v", err)
 		return

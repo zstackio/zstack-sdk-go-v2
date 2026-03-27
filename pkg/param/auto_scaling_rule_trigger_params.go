@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // DeleteAutoScalingRuleTriggerParamDetail DeleteAutoScalingRuleTrigger detail param
 type DeleteAutoScalingRuleTriggerParamDetail struct {

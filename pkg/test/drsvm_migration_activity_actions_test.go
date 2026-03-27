@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryDRSVmMigrationActivity(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryDRSVmMigrationActivity(&queryParam)
+	result, err := accountLoginCli.QueryDRSVmMigrationActivity(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryDRSVmMigrationActivity error: %v", err)
 		return

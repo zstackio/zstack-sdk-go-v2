@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQuerySNSDingTalkAtPerson(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySNSDingTalkAtPerson(&queryParam)
+	result, err := accountLoginCli.QuerySNSDingTalkAtPerson(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySNSDingTalkAtPerson error: %v", err)
 		return

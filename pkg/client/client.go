@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"crypto/sha512"
 	"fmt"
 	"net/http"
@@ -24,7 +25,7 @@ func NewZSClient(config *ZSConfig) *ZSClient {
 	}
 }
 
-func (cli *ZSClient) Login() (*view.SessionInventoryView, error) {
+func (cli *ZSClient) Login(ctx context.Context) (*view.SessionInventoryView, error) {
 	if cli.authType != AuthTypeAccountUser && cli.authType != AuthTypeAccount {
 		return nil, errors.ErrNotSupported
 	}
@@ -32,9 +33,9 @@ func (cli *ZSClient) Login() (*view.SessionInventoryView, error) {
 	var sessionView *view.SessionInventoryView
 	var err error
 	if cli.authType == AuthTypeAccountUser {
-		sessionView, err = cli.logInByAccountUser()
+		sessionView, err = cli.logInByAccountUser(ctx)
 	} else {
-		sessionView, err = cli.logInByAccount()
+		sessionView, err = cli.logInByAccount(ctx)
 	}
 
 	if err != nil {
@@ -46,7 +47,7 @@ func (cli *ZSClient) Login() (*view.SessionInventoryView, error) {
 	return sessionView, nil
 }
 
-func (cli *ZSClient) logInByAccountUser() (*view.SessionInventoryView, error) {
+func (cli *ZSClient) logInByAccountUser(ctx context.Context) (*view.SessionInventoryView, error) {
 	if cli.authType != AuthTypeAccountUser {
 		return nil, errors.ErrNotSupported
 	}
@@ -63,7 +64,7 @@ func (cli *ZSClient) logInByAccountUser() (*view.SessionInventoryView, error) {
 		},
 	}
 	sessionView := view.SessionInventoryView{}
-	err := cli.Put("v1/accounts/users/login", "", params, &sessionView)
+	err := cli.Put(ctx, "v1/accounts/users/login", "", params, &sessionView)
 	if err != nil {
 		golog.Errorf("ZSClient.logInByAccountUser Account[%s] User[%s] error:%v",
 			cli.accountName, cli.accountUserName, err)
@@ -73,7 +74,7 @@ func (cli *ZSClient) logInByAccountUser() (*view.SessionInventoryView, error) {
 	return &sessionView, nil
 }
 
-func (cli *ZSClient) logInByAccount() (*view.SessionInventoryView, error) {
+func (cli *ZSClient) logInByAccount(ctx context.Context) (*view.SessionInventoryView, error) {
 	if cli.authType != AuthTypeAccount {
 		return nil, errors.ErrNotSupported
 	}
@@ -89,7 +90,7 @@ func (cli *ZSClient) logInByAccount() (*view.SessionInventoryView, error) {
 		},
 	}
 	sessionView := view.SessionInventoryView{}
-	err := cli.Put("v1/accounts/login", "", params, &sessionView)
+	err := cli.Put(ctx, "v1/accounts/login", "", params, &sessionView)
 	if err != nil {
 		golog.Errorf("ZSClient.logInByAccount Account[%s] error:%v", cli.accountName, err)
 		return nil, err
@@ -98,7 +99,7 @@ func (cli *ZSClient) logInByAccount() (*view.SessionInventoryView, error) {
 	return &sessionView, nil
 }
 
-func (cli *ZSClient) ValidateSession() (map[string]bool, error) {
+func (cli *ZSClient) ValidateSession(ctx context.Context) (map[string]bool, error) {
 	if cli.authType != AuthTypeAccountUser && cli.authType != AuthTypeAccount {
 		return nil, errors.ErrNotSupported
 	}
@@ -107,12 +108,12 @@ func (cli *ZSClient) ValidateSession() (map[string]bool, error) {
 		return nil, errors.ErrNotSupported
 	}
 
-	return cli.ValidateSessionId(cli.sessionId)
+	return cli.ValidateSessionId(ctx, cli.sessionId)
 }
 
-func (cli *ZSClient) ValidateSessionId(sessionId string) (map[string]bool, error) {
+func (cli *ZSClient) ValidateSessionId(ctx context.Context, sessionId string) (map[string]bool, error) {
 	validSession := make(map[string]bool)
-	err := cli.GetWithSpec("v1/accounts/sessions", sessionId, "valid", "", nil, &validSession)
+	err := cli.GetWithSpec(ctx, "v1/accounts/sessions", sessionId, "valid", "", nil, &validSession)
 	if err != nil {
 		golog.Errorf("ZSClient.ValidateSession sessionId[%s] error:%v", sessionId, err)
 		return nil, err
@@ -122,7 +123,7 @@ func (cli *ZSClient) ValidateSessionId(sessionId string) (map[string]bool, error
 	return validSession, nil
 }
 
-func (cli *ZSClient) Logout() error {
+func (cli *ZSClient) Logout(ctx context.Context) error {
 	if cli.authType != AuthTypeAccountUser && cli.authType != AuthTypeAccount {
 		return errors.ErrNotSupported
 	}
@@ -131,7 +132,7 @@ func (cli *ZSClient) Logout() error {
 		return errors.ErrNotSupported
 	}
 
-	err := cli.Delete("v1/accounts/sessions", cli.sessionId, "")
+	err := cli.Delete(ctx, "v1/accounts/sessions", cli.sessionId, "")
 	if err != nil {
 		golog.Errorf("ZSClient.Logout sessionId[%s] error:%v", cli.sessionId, err)
 		return err
@@ -141,7 +142,7 @@ func (cli *ZSClient) Logout() error {
 	return nil
 }
 
-func (cli *ZSClient) WebLogin() (*view.WebUISessionView, error) {
+func (cli *ZSClient) WebLogin(ctx context.Context) (*view.WebUISessionView, error) {
 	if cli.authType != AuthTypeAccountUser && cli.authType != AuthTypeAccount {
 		return nil, errors.ErrNotSupported
 	}
@@ -154,8 +155,8 @@ func (cli *ZSClient) WebLogin() (*view.WebUISessionView, error) {
 			"accountName": cli.accountName,
 			"password":    fmt.Sprintf("%x", sha512.Sum512([]byte(cli.password))),
 		}
-		query = `mutation loginByAccount($input:LoginByAccountInput!) { 
-			loginByAccount(input: $input) { 
+		query = `mutation loginByAccount($input:LoginByAccountInput!) {
+			loginByAccount(input: $input) {
 			  sessionId,
 			  accountUuid,
 			  userUuid,
@@ -168,8 +169,8 @@ func (cli *ZSClient) WebLogin() (*view.WebUISessionView, error) {
 			"name":     cli.accountUserName,
 			"password": fmt.Sprintf("%x", sha512.Sum512([]byte(cli.password))),
 		}
-		query = `mutation loginIAM2VirtualID($input:LoginIAM2VirtualIDInput!) { 
-			loginIAM2VirtualID(input: $input) { 
+		query = `mutation loginIAM2VirtualID($input:LoginIAM2VirtualIDInput!) {
+			loginIAM2VirtualID(input: $input) {
 			  sessionId,
 			  accountUuid,
 			  userUuid,
@@ -186,7 +187,7 @@ func (cli *ZSClient) WebLogin() (*view.WebUISessionView, error) {
 			Input: input,
 		},
 	}
-	respHeader, err := cli.hql(params, result, responseKeyData, operationName)
+	respHeader, err := cli.hql(ctx, params, result, responseKeyData, operationName)
 	if err != nil {
 		return nil, err
 	}
@@ -196,9 +197,9 @@ func (cli *ZSClient) WebLogin() (*view.WebUISessionView, error) {
 	return result, nil
 }
 
-func (cli *ZSClient) hql(params param.HqlParam, retVal interface{}, unMarshalKeys ...string) (http.Header, error) {
+func (cli *ZSClient) hql(ctx context.Context, params param.HqlParam, retVal interface{}, unMarshalKeys ...string) (http.Header, error) {
 	urlStr := fmt.Sprintf("http://%s:%d/graphql", cli.hostname, WebZStackPort)
-	_, respHeader, resp, err := cli.httpPost(urlStr, jsonMarshal(params), false)
+	_, respHeader, resp, err := cli.httpPost(ctx, urlStr, jsonMarshal(params), false)
 	if err != nil {
 		return nil, err
 	}
@@ -210,11 +211,11 @@ func (cli *ZSClient) hql(params param.HqlParam, retVal interface{}, unMarshalKey
 	return respHeader, resp.Unmarshal(retVal, unMarshalKeys...)
 }
 
-func (cli *ZSClient) Zql(querySt string, retVal interface{}, unMarshalKeys ...string) (http.Header, error) {
+func (cli *ZSClient) Zql(ctx context.Context, querySt string, retVal interface{}, unMarshalKeys ...string) (http.Header, error) {
 	encodedQuery := url.QueryEscape(querySt)
 	baseUrl := cli.getRequestURL("v1/zql")
 	urlStr := fmt.Sprintf("%s?zql=%s", baseUrl, encodedQuery)
-	_, respHeader, resp, err := cli.httpGet(urlStr, false)
+	_, respHeader, resp, err := cli.httpGet(ctx, urlStr, false)
 	if err != nil {
 		return nil, err
 	}

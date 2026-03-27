@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVniRange(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVniRange(&queryParam)
+	result, err := accountLoginCli.QueryVniRange(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVniRange error: %v", err)
 		return

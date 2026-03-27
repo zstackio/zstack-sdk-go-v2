@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQuerySshKeyPair(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySshKeyPair(&queryParam)
+	result, err := accountLoginCli.QuerySshKeyPair(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySshKeyPair error: %v", err)
 		return

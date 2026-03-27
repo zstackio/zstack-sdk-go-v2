@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // UpdateIAM2TicketFlowParamDetail UpdateIAM2TicketFlow detail param
 type UpdateIAM2TicketFlowParamDetail struct {

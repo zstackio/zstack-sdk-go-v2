@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +15,7 @@ func TestUpdateEcsInstance(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryEcsInstanceFromLocal(&queryParam)
+	list, err := accountLoginCli.QueryEcsInstanceFromLocal(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestUpdateEcsInstance Query error: %v", err)
 		return
@@ -31,7 +32,7 @@ func TestUpdateEcsInstance(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateEcsInstance(list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateEcsInstance(context.Background(), list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateEcsInstance error: %v", err)
 		return
@@ -46,7 +47,7 @@ func TestDeleteEcsInstance(t *testing.T) {
 
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryEcsInstanceFromLocal(&queryParam)
+	list, err := accountLoginCli.QueryEcsInstanceFromLocal(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestDeleteEcsInstance Query error: %v", err)
 		return
@@ -56,7 +57,7 @@ func TestDeleteEcsInstance(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteEcsInstance(list[0].UUID, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteEcsInstance(context.Background(), list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteEcsInstance error: %v", err)
 		return
@@ -70,13 +71,13 @@ func TestStartEcsInstance(t *testing.T) {
 	// queryParam := param.NewQueryParam()
 	// queryParam.AddQ("state=Stopped")
 	// queryParam.Limit(1)
-	// list, err := accountLoginCli.Query(&queryParam)
+	// list, err := accountLoginCli.Query(context.Background(), &queryParam)
 	// if err != nil || len(list) == 0 {
 	// 	t.Skip("No stopped  found")
 	// 	return
 	// }
 	// startParam := param.StartEcsInstanceParam{}
-	// result, err := accountLoginCli.StartEcsInstance(list[0].UUID, startParam)
+	// result, err := accountLoginCli.StartEcsInstance(context.Background(), list[0].UUID, startParam)
 	// if err != nil {
 	// 	t.Errorf("TestStartEcsInstance error: %v", err)
 	// }
@@ -90,13 +91,13 @@ func TestStopEcsInstance(t *testing.T) {
 	// queryParam := param.NewQueryParam()
 	// queryParam.AddQ("state=Running")
 	// queryParam.Limit(1)
-	// list, err := accountLoginCli.QueryEcsInstance(&queryParam)
+	// list, err := accountLoginCli.QueryEcsInstance(context.Background(), &queryParam)
 	// if err != nil || len(list) == 0 {
 	// 	t.Skip("No running EcsInstance found")
 	// 	return
 	// }
 	// stopParam := param.StopEcsInstanceParam{}
-	// result, err := accountLoginCli.StopEcsInstance(list[0].UUID, stopParam)
+	// result, err := accountLoginCli.StopEcsInstance(context.Background(), list[0].UUID, stopParam)
 	// if err != nil {
 	// 	t.Errorf("TestStopEcsInstance error: %v", err)
 	// }

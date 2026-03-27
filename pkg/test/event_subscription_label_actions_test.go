@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +15,7 @@ func TestUpdateEventSubscriptionLabel(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryEventSubscription(&queryParam)
+	list, err := accountLoginCli.QueryEventSubscription(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestUpdateEventSubscriptionLabel Query error: %v", err)
 		return
@@ -31,7 +32,7 @@ func TestUpdateEventSubscriptionLabel(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateEventSubscriptionLabel(list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateEventSubscriptionLabel(context.Background(), list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateEventSubscriptionLabel error: %v", err)
 		return

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -12,18 +13,18 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateGlobalConfig updates GlobalConfig
-func (cli *ZSClient) UpdateGlobalConfig(category string, name string, params param.UpdateGlobalConfigParam) (*view.GlobalConfigInventoryView, error) {
+func (cli *ZSClient) UpdateGlobalConfig(ctx context.Context, category string, name string, params param.UpdateGlobalConfigParam) (*view.GlobalConfigInventoryView, error) {
 	resp := view.GlobalConfigInventoryView{}
-	err := cli.PutWithSpec("v1/global-configurations", category, fmt.Sprintf("%s/actions", name), "", params, &resp)
+	err := cli.PutWithSpec(ctx, "v1/global-configurations", category, fmt.Sprintf("%s/actions", name), "", params, &resp)
 	if err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // ResetGlobalConfig operates on GlobalConfig
-func (cli *ZSClient) ResetGlobalConfig() (*view.GlobalConfigInventoryView, error) {
+func (cli *ZSClient) ResetGlobalConfig(ctx context.Context) (*view.GlobalConfigInventoryView, error) {
 	resp := view.GlobalConfigInventoryView{}
-	if err := cli.PutWithRespKey("v1/global-configurations/actions", "", "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/global-configurations/actions", "", "", map[string]interface{}{
 		"resetGlobalConfig": map[string]interface{}{},
 	}, &resp); err != nil {
 		return nil, err
@@ -31,22 +32,22 @@ func (cli *ZSClient) ResetGlobalConfig() (*view.GlobalConfigInventoryView, error
 	return &resp, nil
 }
 // QueryGlobalConfig queries GlobalConfig list
-func (cli *ZSClient) QueryGlobalConfig(params *param.QueryParam) ([]view.GlobalConfigInventoryView, error) {
+func (cli *ZSClient) QueryGlobalConfig(ctx context.Context, params *param.QueryParam) ([]view.GlobalConfigInventoryView, error) {
 	var resp []view.GlobalConfigInventoryView
-	return resp, cli.List("v1/global-configurations", params, &resp)
+	return resp, cli.List(ctx, "v1/global-configurations", params, &resp)
 }
 
-func (cli *ZSClient) GetGlobalConfig(uuid string) (*view.GlobalConfigInventoryView, error) {
+func (cli *ZSClient) GetGlobalConfig(ctx context.Context, uuid string) (*view.GlobalConfigInventoryView, error) {
 	var resp view.GlobalConfigInventoryView
-	if err := cli.Get("v1/global-configurations", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/global-configurations", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageGlobalConfig Pagination
-func (cli *ZSClient) PageGlobalConfig(params *param.QueryParam) ([]view.GlobalConfigInventoryView, int, error) {
+func (cli *ZSClient) PageGlobalConfig(ctx context.Context, params *param.QueryParam) ([]view.GlobalConfigInventoryView, int, error) {
 	var globalConfigs []view.GlobalConfigInventoryView
-	total, err := cli.Page("v1/global-configurations", params, &globalConfigs)
+	total, err := cli.Page(ctx, "v1/global-configurations", params, &globalConfigs)
 	return globalConfigs, total, err
 }

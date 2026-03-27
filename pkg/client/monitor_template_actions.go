@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,9 +12,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateMonitorTemplate updates MonitorTemplate
-func (cli *ZSClient) UpdateMonitorTemplate(uuid string, params param.UpdateMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
+func (cli *ZSClient) UpdateMonitorTemplate(ctx context.Context, uuid string, params param.UpdateMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	resp := view.MonitorTemplateInventoryView{}
-	if err := cli.PutWithRespKey("v1/zwatch/monitortemplates", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/zwatch/monitortemplates", uuid, "", map[string]interface{}{
 		"updateMonitorTemplate": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,42 +22,42 @@ func (cli *ZSClient) UpdateMonitorTemplate(uuid string, params param.UpdateMonit
 	return &resp, nil
 }
 // CloneMonitorTemplate operates on MonitorTemplate
-func (cli *ZSClient) CloneMonitorTemplate(params param.CloneMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
+func (cli *ZSClient) CloneMonitorTemplate(ctx context.Context, params param.CloneMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	resp := view.MonitorTemplateInventoryView{}
-	if err := cli.Post("v1/zwatch/monitortemplates/{uuid}/actions", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/zwatch/monitortemplates/{uuid}/actions", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QueryMonitorTemplate queries MonitorTemplate list
-func (cli *ZSClient) QueryMonitorTemplate(params *param.QueryParam) ([]view.MonitorTemplateInventoryView, error) {
+func (cli *ZSClient) QueryMonitorTemplate(ctx context.Context, params *param.QueryParam) ([]view.MonitorTemplateInventoryView, error) {
 	var resp []view.MonitorTemplateInventoryView
-	return resp, cli.List("v1/zwatch/monitortemplates", params, &resp)
+	return resp, cli.List(ctx, "v1/zwatch/monitortemplates", params, &resp)
 }
 
-func (cli *ZSClient) GetMonitorTemplate(uuid string) (*view.MonitorTemplateInventoryView, error) {
+func (cli *ZSClient) GetMonitorTemplate(ctx context.Context, uuid string) (*view.MonitorTemplateInventoryView, error) {
 	var resp view.MonitorTemplateInventoryView
-	if err := cli.Get("v1/zwatch/monitortemplates", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/zwatch/monitortemplates", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageMonitorTemplate Pagination
-func (cli *ZSClient) PageMonitorTemplate(params *param.QueryParam) ([]view.MonitorTemplateInventoryView, int, error) {
+func (cli *ZSClient) PageMonitorTemplate(ctx context.Context, params *param.QueryParam) ([]view.MonitorTemplateInventoryView, int, error) {
 	var monitorTemplates []view.MonitorTemplateInventoryView
-	total, err := cli.Page("v1/zwatch/monitortemplates", params, &monitorTemplates)
+	total, err := cli.Page(ctx, "v1/zwatch/monitortemplates", params, &monitorTemplates)
 	return monitorTemplates, total, err
 }
 // CreateMonitorTemplate creates MonitorTemplate
-func (cli *ZSClient) CreateMonitorTemplate(params param.CreateMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
+func (cli *ZSClient) CreateMonitorTemplate(ctx context.Context, params param.CreateMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	resp := view.MonitorTemplateInventoryView{}
-	if err := cli.Post("v1/zwatch/monitortemplates", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/zwatch/monitortemplates", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // DeleteMonitorTemplate deletes MonitorTemplate
-func (cli *ZSClient) DeleteMonitorTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/monitortemplates", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteMonitorTemplate(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/zwatch/monitortemplates", uuid, string(deleteMode))
 }

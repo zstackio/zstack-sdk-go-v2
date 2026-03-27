@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryStackTemplate(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryStackTemplate(&queryParam)
+	result, err := accountLoginCli.QueryStackTemplate(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryStackTemplate error: %v", err)
 		return

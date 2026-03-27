@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateAutoScalingRuleSchedulerJobTrigger(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateAutoScalingRuleSchedulerJobTrigger(createParam)
+	// result, err := accountLoginCli.CreateAutoScalingRuleSchedulerJobTrigger(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateAutoScalingRuleSchedulerJobTrigger error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateAutoScalingRuleSchedulerJobTrigger(t *testing.T) {
 	// golog.Infof("CreateAutoScalingRuleSchedulerJobTrigger result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteAutoScalingRuleSchedulerJobTrigger(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteAutoScalingRuleSchedulerJobTrigger(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteAutoScalingRuleSchedulerJobTrigger error: %v", err)
 	// }

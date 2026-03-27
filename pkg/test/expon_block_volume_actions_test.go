@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryExponBlockVolume(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryExponBlockVolume(&queryParam)
+	result, err := accountLoginCli.QueryExponBlockVolume(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryExponBlockVolume error: %v", err)
 		return

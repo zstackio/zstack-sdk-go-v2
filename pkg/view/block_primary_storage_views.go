@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // BlockPrimaryStorageInventoryView BlockPrimaryStorage
 type BlockPrimaryStorageInventoryView struct {
@@ -30,6 +30,11 @@ type BlockPrimaryStorageInventoryView struct {
 // UpdateBlockPrimaryStorageEventView UpdateBlockPrimaryStorageEvent
 type UpdateBlockPrimaryStorageEventView struct {
 	Inventory BlockPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// AddPrimaryStorageEventView AddPrimaryStorageEvent
+type AddPrimaryStorageEventView struct {
+	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
 // QueryBlockPrimaryStorageView QueryBlockPrimaryStorage

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryHostNetworkBonding(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryHostNetworkBonding(&queryParam)
+	result, err := accountLoginCli.QueryHostNetworkBonding(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryHostNetworkBonding error: %v", err)
 		return

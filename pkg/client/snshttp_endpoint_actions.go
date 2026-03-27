@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,17 +12,17 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateSNSHttpEndpoint creates SNSHttpEndpoint
-func (cli *ZSClient) CreateSNSHttpEndpoint(params param.CreateSNSHttpEndpointParam) (*view.SNSHttpEndpointInventoryView, error) {
+func (cli *ZSClient) CreateSNSHttpEndpoint(ctx context.Context, params param.CreateSNSHttpEndpointParam) (*view.SNSHttpEndpointInventoryView, error) {
 	resp := view.SNSHttpEndpointInventoryView{}
-	if err := cli.Post("v1/sns/application-endpoints/http", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/sns/application-endpoints/http", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // UpdateSNSHttpEndpoint updates SNSHttpEndpoint
-func (cli *ZSClient) UpdateSNSHttpEndpoint(uuid string, params param.UpdateSNSHttpEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
+func (cli *ZSClient) UpdateSNSHttpEndpoint(ctx context.Context, uuid string, params param.UpdateSNSHttpEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	resp := view.SNSApplicationEndpointInventoryView{}
-	if err := cli.PutWithRespKey("v1/sns/application-endpoints/http", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/sns/application-endpoints/http", uuid, "", map[string]interface{}{
 		"updateSNSHttpEndpoint": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -29,22 +30,22 @@ func (cli *ZSClient) UpdateSNSHttpEndpoint(uuid string, params param.UpdateSNSHt
 	return &resp, nil
 }
 // QuerySNSHttpEndpoint queries SNSHttpEndpoint list
-func (cli *ZSClient) QuerySNSHttpEndpoint(params *param.QueryParam) ([]view.SNSHttpEndpointInventoryView, error) {
+func (cli *ZSClient) QuerySNSHttpEndpoint(ctx context.Context, params *param.QueryParam) ([]view.SNSHttpEndpointInventoryView, error) {
 	var resp []view.SNSHttpEndpointInventoryView
-	return resp, cli.List("v1/sns/application-endpoints/http", params, &resp)
+	return resp, cli.List(ctx, "v1/sns/application-endpoints/http", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSHttpEndpoint(uuid string) (*view.SNSHttpEndpointInventoryView, error) {
+func (cli *ZSClient) GetSNSHttpEndpoint(ctx context.Context, uuid string) (*view.SNSHttpEndpointInventoryView, error) {
 	var resp view.SNSHttpEndpointInventoryView
-	if err := cli.Get("v1/sns/application-endpoints/http", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/sns/application-endpoints/http", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageSNSHttpEndpoint Pagination
-func (cli *ZSClient) PageSNSHttpEndpoint(params *param.QueryParam) ([]view.SNSHttpEndpointInventoryView, int, error) {
+func (cli *ZSClient) PageSNSHttpEndpoint(ctx context.Context, params *param.QueryParam) ([]view.SNSHttpEndpointInventoryView, int, error) {
 	var sNSHttpEndpoints []view.SNSHttpEndpointInventoryView
-	total, err := cli.Page("v1/sns/application-endpoints/http", params, &sNSHttpEndpoints)
+	total, err := cli.Page(ctx, "v1/sns/application-endpoints/http", params, &sNSHttpEndpoints)
 	return sNSHttpEndpoints, total, err
 }

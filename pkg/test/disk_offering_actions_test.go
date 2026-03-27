@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryDiskOffering(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryDiskOffering(&queryParam)
+	result, err := accountLoginCli.QueryDiskOffering(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryDiskOffering error: %v", err)
 		return

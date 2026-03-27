@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryDRSAdvice(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryDRSAdvice(&queryParam)
+	result, err := accountLoginCli.QueryDRSAdvice(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryDRSAdvice error: %v", err)
 		return

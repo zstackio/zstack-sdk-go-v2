@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryLdapServer(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryLdapServer(&queryParam)
+	result, err := accountLoginCli.QueryLdapServer(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryLdapServer error: %v", err)
 		return

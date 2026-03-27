@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateSanSecSecretResourcePool(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateSanSecSecretResourcePool(createParam)
+	// result, err := accountLoginCli.CreateSanSecSecretResourcePool(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateSanSecSecretResourcePool error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateSanSecSecretResourcePool(t *testing.T) {
 	// golog.Infof("CreateSanSecSecretResourcePool result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSanSecSecretResourcePool(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSanSecSecretResourcePool(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSanSecSecretResourcePool error: %v", err)
 	// }

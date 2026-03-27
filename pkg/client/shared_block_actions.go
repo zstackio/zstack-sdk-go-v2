@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -12,29 +13,29 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QuerySharedBlock queries SharedBlock list
-func (cli *ZSClient) QuerySharedBlock(params *param.QueryParam) ([]view.SharedBlockInventoryView, error) {
+func (cli *ZSClient) QuerySharedBlock(ctx context.Context, params *param.QueryParam) ([]view.SharedBlockInventoryView, error) {
 	var resp []view.SharedBlockInventoryView
-	return resp, cli.List("v1/sharedblock-group/sharedblocks", params, &resp)
+	return resp, cli.List(ctx, "v1/sharedblock-group/sharedblocks", params, &resp)
 }
 
-func (cli *ZSClient) GetSharedBlock(uuid string) (*view.SharedBlockInventoryView, error) {
+func (cli *ZSClient) GetSharedBlock(ctx context.Context, uuid string) (*view.SharedBlockInventoryView, error) {
 	var resp view.SharedBlockInventoryView
-	if err := cli.Get("v1/sharedblock-group/sharedblocks", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/sharedblock-group/sharedblocks", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageSharedBlock Pagination
-func (cli *ZSClient) PageSharedBlock(params *param.QueryParam) ([]view.SharedBlockInventoryView, int, error) {
+func (cli *ZSClient) PageSharedBlock(ctx context.Context, params *param.QueryParam) ([]view.SharedBlockInventoryView, int, error) {
 	var sharedBlocks []view.SharedBlockInventoryView
-	total, err := cli.Page("v1/sharedblock-group/sharedblocks", params, &sharedBlocks)
+	total, err := cli.Page(ctx, "v1/sharedblock-group/sharedblocks", params, &sharedBlocks)
 	return sharedBlocks, total, err
 }
 // UpdateSharedBlock updates SharedBlock
-func (cli *ZSClient) UpdateSharedBlock(sharedBlockGroupUuid string, uuid string, params param.UpdateSharedBlockParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
+func (cli *ZSClient) UpdateSharedBlock(ctx context.Context, sharedBlockGroupUuid string, uuid string, params param.UpdateSharedBlockParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
 	resp := view.SharedBlockGroupPrimaryStorageInventoryView{}
-	err := cli.PutWithSpec("v1/primary-storage/sharedblockgroup", sharedBlockGroupUuid, fmt.Sprintf("sharedblocks/%s/actions", uuid), "", params, &resp)
+	err := cli.PutWithSpec(ctx, "v1/primary-storage/sharedblockgroup", sharedBlockGroupUuid, fmt.Sprintf("sharedblocks/%s/actions", uuid), "", params, &resp)
 	if err != nil {
 		return nil, err
 	}

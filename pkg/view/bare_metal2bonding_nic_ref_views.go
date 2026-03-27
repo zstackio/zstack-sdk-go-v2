@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // BareMetal2BondingNicRefInventoryView BareMetal2BondingNicRef
 type BareMetal2BondingNicRefInventoryView struct {
@@ -18,10 +18,5 @@ type BareMetal2BondingNicRefInventoryView struct {
 	VmNic VmNicInventoryView `json:"vmNic,omitempty"`
 	ProvisionNic BareMetal2InstanceProvisionNicInventoryView `json:"provisionNic,omitempty"`
 	BareMetal2Bonding BareMetal2BondingInventoryView `json:"bareMetal2Bonding,omitempty"`
-}
-
-// QueryBareMetal2ChassisView QueryBareMetal2Chassis
-type QueryBareMetal2ChassisView struct {
-	Inventories []BareMetal2ChassisInventoryView `json:"inventories,omitempty"`
 }
 

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryPolicy(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPolicy(&queryParam)
+	result, err := accountLoginCli.QueryPolicy(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPolicy error: %v", err)
 		return

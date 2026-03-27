@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryPolicyRouteTableRouteEntry(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPolicyRouteTableRouteEntry(&queryParam)
+	result, err := accountLoginCli.QueryPolicyRouteTableRouteEntry(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPolicyRouteTableRouteEntry error: %v", err)
 		return

@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateAiSiNoSecretResourcePool(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateAiSiNoSecretResourcePool(createParam)
+	// result, err := accountLoginCli.CreateAiSiNoSecretResourcePool(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateAiSiNoSecretResourcePool error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateAiSiNoSecretResourcePool(t *testing.T) {
 	// golog.Infof("CreateAiSiNoSecretResourcePool result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteAiSiNoSecretResourcePool(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteAiSiNoSecretResourcePool(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteAiSiNoSecretResourcePool error: %v", err)
 	// }

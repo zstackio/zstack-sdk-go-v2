@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryPolicyRouteTableVRouterRef(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPolicyRouteTableVRouterRef(&queryParam)
+	result, err := accountLoginCli.QueryPolicyRouteTableVRouterRef(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPolicyRouteTableVRouterRef error: %v", err)
 		return

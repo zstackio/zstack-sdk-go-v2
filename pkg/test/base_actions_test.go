@@ -1,6 +1,7 @@
 package test
 
 import (
+	"context"
 	"os"
 	"testing"
 
@@ -48,11 +49,11 @@ var loginSession *view.SessionInventoryView
 
 func TestMain(m *testing.M) {
 	var err error
-	loginSession, err = accountLoginCli.Login()
+	loginSession, err = accountLoginCli.Login(context.Background(), )
 	if err != nil {
 		os.Exit(1) // 登录失败直接退出，不运行测试
 	}
-	defer accountLoginCli.Logout()
+	defer accountLoginCli.Logout(context.Background(), )
 	code := m.Run()
 	os.Exit(code)
 }

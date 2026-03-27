@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryAddressPool(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAddressPool(&queryParam)
+	result, err := accountLoginCli.QueryAddressPool(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAddressPool error: %v", err)
 		return

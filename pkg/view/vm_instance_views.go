@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // VmInstanceInventoryView VmInstance
 type VmInstanceInventoryView struct {
@@ -104,8 +104,19 @@ type CreateVmFromVolumeBackupEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
 
+// DeleteVmCdRomEventView DeleteVmCdRomEvent
+type DeleteVmCdRomEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
 // SetVmConsolePasswordEventView SetVmConsolePasswordEvent
 type SetVmConsolePasswordEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateConsolePasswordEventView UpdateConsolePasswordEvent
+type UpdateConsolePasswordEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
 

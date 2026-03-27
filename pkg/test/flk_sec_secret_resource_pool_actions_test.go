@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateFlkSecSecretResourcePool(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateFlkSecSecretResourcePool(createParam)
+	// result, err := accountLoginCli.CreateFlkSecSecretResourcePool(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateFlkSecSecretResourcePool error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateFlkSecSecretResourcePool(t *testing.T) {
 	// golog.Infof("CreateFlkSecSecretResourcePool result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteFlkSecSecretResourcePool(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteFlkSecSecretResourcePool(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteFlkSecSecretResourcePool error: %v", err)
 	// }

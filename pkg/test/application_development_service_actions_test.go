@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryApplicationDevelopmentService(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryApplicationDevelopmentService(&queryParam)
+	result, err := accountLoginCli.QueryApplicationDevelopmentService(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryApplicationDevelopmentService error: %v", err)
 		return

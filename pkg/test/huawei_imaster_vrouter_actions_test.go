@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryHuaweiIMasterVRouter(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryHuaweiIMasterVRouter(&queryParam)
+	result, err := accountLoginCli.QueryHuaweiIMasterVRouter(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryHuaweiIMasterVRouter error: %v", err)
 		return

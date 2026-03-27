@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryMonitorGroupEventSubscription(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMonitorGroupEventSubscription(&queryParam)
+	result, err := accountLoginCli.QueryMonitorGroupEventSubscription(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMonitorGroupEventSubscription error: %v", err)
 		return

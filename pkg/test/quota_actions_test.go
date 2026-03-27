@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryQuota(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryQuota(&queryParam)
+	result, err := accountLoginCli.QueryQuota(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryQuota error: %v", err)
 		return

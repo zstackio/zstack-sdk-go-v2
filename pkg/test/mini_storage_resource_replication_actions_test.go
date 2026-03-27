@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryMiniStorageResourceReplication(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMiniStorageResourceReplication(&queryParam)
+	result, err := accountLoginCli.QueryMiniStorageResourceReplication(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMiniStorageResourceReplication error: %v", err)
 		return

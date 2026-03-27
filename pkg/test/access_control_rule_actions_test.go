@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryAccessControlRule(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAccessControlRule(&queryParam)
+	result, err := accountLoginCli.QueryAccessControlRule(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAccessControlRule error: %v", err)
 		return

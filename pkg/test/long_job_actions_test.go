@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryLongJob(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryLongJob(&queryParam)
+	result, err := accountLoginCli.QueryLongJob(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryLongJob error: %v", err)
 		return

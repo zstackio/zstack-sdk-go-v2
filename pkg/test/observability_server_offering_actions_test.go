@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateObservabilityServerOffering(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateObservabilityServerOffering(createParam)
+	// result, err := accountLoginCli.CreateObservabilityServerOffering(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateObservabilityServerOffering error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateObservabilityServerOffering(t *testing.T) {
 	// golog.Infof("CreateObservabilityServerOffering result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteObservabilityServerOffering(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteObservabilityServerOffering(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteObservabilityServerOffering error: %v", err)
 	// }

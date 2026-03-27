@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // AiSiNoSecretResourcePoolInventoryView AiSiNoSecretResourcePool
 type AiSiNoSecretResourcePoolInventoryView struct {
@@ -26,5 +26,10 @@ type AiSiNoSecretResourcePoolInventoryView struct {
 	Model string `json:"model,omitempty"`
 	HeartbeatInterval int `json:"heartbeatInterval,omitempty"`
 	Ability string `json:"ability,omitempty"`
+}
+
+// CreateSecretResourcePoolEventView CreateSecretResourcePoolEvent
+type CreateSecretResourcePoolEventView struct {
+	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
 }
 

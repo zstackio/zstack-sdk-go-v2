@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryLocalStorageResourceRef(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryLocalStorageResourceRef(&queryParam)
+	result, err := accountLoginCli.QueryLocalStorageResourceRef(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryLocalStorageResourceRef error: %v", err)
 		return

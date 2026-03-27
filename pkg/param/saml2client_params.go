@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // UpdateSAML2ClientParamDetail UpdateSAML2Client detail param
 type UpdateSAML2ClientParamDetail struct {

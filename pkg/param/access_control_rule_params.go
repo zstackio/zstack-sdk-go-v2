@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // AddAccessControlRuleParamDetail AddAccessControlRule detail param
 type AddAccessControlRuleParamDetail struct {

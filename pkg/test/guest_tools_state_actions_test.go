@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryGuestToolsState(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryGuestToolsState(&queryParam)
+	result, err := accountLoginCli.QueryGuestToolsState(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryGuestToolsState error: %v", err)
 		return

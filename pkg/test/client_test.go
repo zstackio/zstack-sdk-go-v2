@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"reflect"
 	"testing"
 
@@ -37,19 +38,19 @@ func TestZSClient_ValidateSession(t *testing.T) {
 }
 
 func TestZSClient_Zql(t *testing.T) {
-	if _, err := accountLoginCli.Zql("query Image where __systemTag__='applianceType::vrouter'", nil); err != nil {
+	if _, err := accountLoginCli.Zql(context.Background(), "query Image where __systemTag__='applianceType::vrouter'", nil); err != nil {
 		t.Fatalf("TestZSClient_Zql error: %v", err)
 	}
 }
 
 func TestZSClient_WebLogin(t *testing.T) {
-	data, err := accountLoginCli.WebLogin()
+	data, err := accountLoginCli.WebLogin(context.Background(), )
 	if err != nil {
 		t.Fatalf("TestZSClient_WebLogin error: %v", err)
 	}
 	golog.Infof("%v", jsonutils.Marshal(data))
 
-	result, err := accountLoginCli.ValidateSessionId(data.SessionId)
+	result, err := accountLoginCli.ValidateSessionId(context.Background(), data.SessionId)
 	if err != nil {
 		t.Fatalf("TestZSClient_WebLogin ValidateSessionId error: %v", err)
 	}

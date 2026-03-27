@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,29 +12,29 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryGuestToolsState queries GuestToolsState list
-func (cli *ZSClient) QueryGuestToolsState(params *param.QueryParam) ([]view.GuestToolsStateInventoryView, error) {
+func (cli *ZSClient) QueryGuestToolsState(ctx context.Context, params *param.QueryParam) ([]view.GuestToolsStateInventoryView, error) {
 	var resp []view.GuestToolsStateInventoryView
-	return resp, cli.List("v1/guesttools", params, &resp)
+	return resp, cli.List(ctx, "v1/guesttools", params, &resp)
 }
 
-func (cli *ZSClient) GetGuestToolsState(uuid string) (*view.GuestToolsStateInventoryView, error) {
+func (cli *ZSClient) GetGuestToolsState(ctx context.Context, uuid string) (*view.GuestToolsStateInventoryView, error) {
 	var resp view.GuestToolsStateInventoryView
-	if err := cli.Get("v1/guesttools", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/guesttools", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageGuestToolsState Pagination
-func (cli *ZSClient) PageGuestToolsState(params *param.QueryParam) ([]view.GuestToolsStateInventoryView, int, error) {
+func (cli *ZSClient) PageGuestToolsState(ctx context.Context, params *param.QueryParam) ([]view.GuestToolsStateInventoryView, int, error) {
 	var guestToolsStates []view.GuestToolsStateInventoryView
-	total, err := cli.Page("v1/guesttools", params, &guestToolsStates)
+	total, err := cli.Page(ctx, "v1/guesttools", params, &guestToolsStates)
 	return guestToolsStates, total, err
 }
 // UpdateGuestToolsState updates GuestToolsState
-func (cli *ZSClient) UpdateGuestToolsState(vmInstanceUuid string, params param.UpdateGuestToolsStateParam) (*view.GuestToolsStateInventoryView, error) {
+func (cli *ZSClient) UpdateGuestToolsState(ctx context.Context, vmInstanceUuid string, params param.UpdateGuestToolsStateParam) (*view.GuestToolsStateInventoryView, error) {
 	resp := view.GuestToolsStateInventoryView{}
-	if err := cli.PutWithRespKey("v1/vm-instances", vmInstanceUuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/vm-instances", vmInstanceUuid, "", map[string]interface{}{
 		"updateGuestToolsState": params.Params,
 	}, &resp); err != nil {
 		return nil, err

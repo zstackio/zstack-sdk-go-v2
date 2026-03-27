@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryHostPhysicalMemory(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryHostPhysicalMemory(&queryParam)
+	result, err := accountLoginCli.QueryHostPhysicalMemory(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryHostPhysicalMemory error: %v", err)
 		return

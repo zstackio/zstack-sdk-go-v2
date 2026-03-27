@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryMetricRuleTemplate(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMetricRuleTemplate(&queryParam)
+	result, err := accountLoginCli.QueryMetricRuleTemplate(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMetricRuleTemplate error: %v", err)
 		return

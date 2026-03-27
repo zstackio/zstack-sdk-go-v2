@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQuerySdnController(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySdnController(&queryParam)
+	result, err := accountLoginCli.QuerySdnController(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySdnController error: %v", err)
 		return

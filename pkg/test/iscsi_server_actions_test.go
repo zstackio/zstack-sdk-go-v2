@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryIscsiServer(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryIscsiServer(&queryParam)
+	result, err := accountLoginCli.QueryIscsiServer(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryIscsiServer error: %v", err)
 		return

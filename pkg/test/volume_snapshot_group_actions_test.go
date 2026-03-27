@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVolumeSnapshotGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVolumeSnapshotGroup(&queryParam)
+	result, err := accountLoginCli.QueryVolumeSnapshotGroup(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVolumeSnapshotGroup error: %v", err)
 		return

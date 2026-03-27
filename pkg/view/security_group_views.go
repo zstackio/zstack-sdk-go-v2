@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // SecurityGroupInventoryView SecurityGroup
 type SecurityGroupInventoryView struct {
@@ -27,6 +27,11 @@ type ChangeSecurityGroupStateEventView struct {
 // QuerySecurityGroupView QuerySecurityGroup
 type QuerySecurityGroupView struct {
 	Inventories []SecurityGroupInventoryView `json:"inventories,omitempty"`
+}
+
+// AddSecurityGroupRuleEventView AddSecurityGroupRuleEvent
+type AddSecurityGroupRuleEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
 }
 
 // DetachSecurityGroupFromL3NetworkEventView DetachSecurityGroupFromL3NetworkEvent
@@ -56,6 +61,11 @@ type DeleteSecurityGroupEventView struct {
 
 // UpdateSecurityGroupRulePriorityEventView UpdateSecurityGroupRulePriorityEvent
 type UpdateSecurityGroupRulePriorityEventView struct {
+	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteSecurityGroupRuleEventView DeleteSecurityGroupRuleEvent
+type DeleteSecurityGroupRuleEventView struct {
 	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
 }
 

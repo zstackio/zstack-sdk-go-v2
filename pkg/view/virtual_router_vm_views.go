@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // VirtualRouterVmInventoryView VirtualRouterVm
 type VirtualRouterVmInventoryView struct {
@@ -46,10 +46,5 @@ type VirtualRouterVmInventoryView struct {
 // UpdateVirtualRouterEventView UpdateVirtualRouterEvent
 type UpdateVirtualRouterEventView struct {
 	Inventory VirtualRouterVmInventoryView `json:"inventory,omitempty"`
-}
-
-// QueryApplianceVmView QueryApplianceVm
-type QueryApplianceVmView struct {
-	Inventories []ApplianceVmInventoryView `json:"inventories,omitempty"`
 }
 

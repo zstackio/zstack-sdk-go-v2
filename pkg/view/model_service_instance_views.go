@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // ModelServiceInstanceInventoryView ModelServiceInstance
 type ModelServiceInstanceInventoryView struct {
@@ -21,6 +21,8 @@ type ModelServiceInstanceInventoryView struct {
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	NodeRank int `json:"nodeRank,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
+	Architecture string `json:"architecture,omitempty"`
+	GpuVendor string `json:"gpuVendor,omitempty"`
 	Vm VmInstanceInventoryView `json:"vm,omitempty"`
 }
 

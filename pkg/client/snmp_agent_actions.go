@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,17 +12,17 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateSnmpAgent creates SnmpAgent
-func (cli *ZSClient) CreateSnmpAgent(params param.CreateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+func (cli *ZSClient) CreateSnmpAgent(ctx context.Context, params param.CreateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.Post("v1/snmp/agent", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/snmp/agent", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // StartSnmpAgent starts SnmpAgent
-func (cli *ZSClient) StartSnmpAgent(params param.StartSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+func (cli *ZSClient) StartSnmpAgent(ctx context.Context, params param.StartSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.PutWithRespKey("v1/snmp/agent/actions", "", "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/snmp/agent/actions", "", "", map[string]interface{}{
 		"startSnmpAgent": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -29,9 +30,9 @@ func (cli *ZSClient) StartSnmpAgent(params param.StartSnmpAgentParam) (*view.Snm
 	return &resp, nil
 }
 // StopSnmpAgent stops SnmpAgent
-func (cli *ZSClient) StopSnmpAgent(params param.StopSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+func (cli *ZSClient) StopSnmpAgent(ctx context.Context, params param.StopSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.PutWithRespKey("v1/snmp/agent/actions", "", "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/snmp/agent/actions", "", "", map[string]interface{}{
 		"stopSnmpAgent": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -39,9 +40,9 @@ func (cli *ZSClient) StopSnmpAgent(params param.StopSnmpAgentParam) (*view.SnmpA
 	return &resp, nil
 }
 // UpdateSnmpAgent updates SnmpAgent
-func (cli *ZSClient) UpdateSnmpAgent(params param.UpdateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
+func (cli *ZSClient) UpdateSnmpAgent(ctx context.Context, params param.UpdateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.PutWithRespKey("v1/snmp/agent/actions", "", "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/snmp/agent/actions", "", "", map[string]interface{}{
 		"updateSnmpAgent": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -49,22 +50,22 @@ func (cli *ZSClient) UpdateSnmpAgent(params param.UpdateSnmpAgentParam) (*view.S
 	return &resp, nil
 }
 // QuerySnmpAgent queries SnmpAgent list
-func (cli *ZSClient) QuerySnmpAgent(params *param.QueryParam) ([]view.SnmpAgentInventoryView, error) {
+func (cli *ZSClient) QuerySnmpAgent(ctx context.Context, params *param.QueryParam) ([]view.SnmpAgentInventoryView, error) {
 	var resp []view.SnmpAgentInventoryView
-	return resp, cli.List("v1/snmp/agent", params, &resp)
+	return resp, cli.List(ctx, "v1/snmp/agent", params, &resp)
 }
 
-func (cli *ZSClient) GetSnmpAgent(uuid string) (*view.SnmpAgentInventoryView, error) {
+func (cli *ZSClient) GetSnmpAgent(ctx context.Context, uuid string) (*view.SnmpAgentInventoryView, error) {
 	var resp view.SnmpAgentInventoryView
-	if err := cli.Get("v1/snmp/agent", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/snmp/agent", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageSnmpAgent Pagination
-func (cli *ZSClient) PageSnmpAgent(params *param.QueryParam) ([]view.SnmpAgentInventoryView, int, error) {
+func (cli *ZSClient) PageSnmpAgent(ctx context.Context, params *param.QueryParam) ([]view.SnmpAgentInventoryView, int, error) {
 	var snmpAgents []view.SnmpAgentInventoryView
-	total, err := cli.Page("v1/snmp/agent", params, &snmpAgents)
+	total, err := cli.Page(ctx, "v1/snmp/agent", params, &snmpAgents)
 	return snmpAgents, total, err
 }

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,22 +12,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryMonitorGroupInstance queries MonitorGroupInstance list
-func (cli *ZSClient) QueryMonitorGroupInstance(params *param.QueryParam) ([]view.MonitorGroupInstanceInventoryView, error) {
+func (cli *ZSClient) QueryMonitorGroupInstance(ctx context.Context, params *param.QueryParam) ([]view.MonitorGroupInstanceInventoryView, error) {
 	var resp []view.MonitorGroupInstanceInventoryView
-	return resp, cli.List("v1/zwatch/monitorgroups/instances", params, &resp)
+	return resp, cli.List(ctx, "v1/zwatch/monitorgroups/instances", params, &resp)
 }
 
-func (cli *ZSClient) GetMonitorGroupInstance(uuid string) (*view.MonitorGroupInstanceInventoryView, error) {
+func (cli *ZSClient) GetMonitorGroupInstance(ctx context.Context, uuid string) (*view.MonitorGroupInstanceInventoryView, error) {
 	var resp view.MonitorGroupInstanceInventoryView
-	if err := cli.Get("v1/zwatch/monitorgroups/instances", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/zwatch/monitorgroups/instances", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageMonitorGroupInstance Pagination
-func (cli *ZSClient) PageMonitorGroupInstance(params *param.QueryParam) ([]view.MonitorGroupInstanceInventoryView, int, error) {
+func (cli *ZSClient) PageMonitorGroupInstance(ctx context.Context, params *param.QueryParam) ([]view.MonitorGroupInstanceInventoryView, int, error) {
 	var monitorGroupInstances []view.MonitorGroupInstanceInventoryView
-	total, err := cli.Page("v1/zwatch/monitorgroups/instances", params, &monitorGroupInstances)
+	total, err := cli.Page(ctx, "v1/zwatch/monitorgroups/instances", params, &monitorGroupInstances)
 	return monitorGroupInstances, total, err
 }

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryBaremetalChassis(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryBaremetalChassis(&queryParam)
+	result, err := accountLoginCli.QueryBaremetalChassis(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryBaremetalChassis error: %v", err)
 		return

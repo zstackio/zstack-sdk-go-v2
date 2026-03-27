@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // CephBackupStorageMonInventoryView CephBackupStorageMon
 type CephBackupStorageMonInventoryView struct {
@@ -19,10 +19,5 @@ type CephBackupStorageMonInventoryView struct {
 	SshUsername string `json:"sshUsername,omitempty"`
 	SshPassword string `json:"sshPassword,omitempty"`
 	MonUuid string `json:"monUuid,omitempty"`
-}
-
-// UpdateCephBackupStorageMonEventView UpdateCephBackupStorageMonEvent
-type UpdateCephBackupStorageMonEventView struct {
-	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
 }
 

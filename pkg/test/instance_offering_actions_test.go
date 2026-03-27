@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryInstanceOffering(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryInstanceOffering(&queryParam)
+	result, err := accountLoginCli.QueryInstanceOffering(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryInstanceOffering error: %v", err)
 		return

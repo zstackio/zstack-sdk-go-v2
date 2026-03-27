@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVmInstanceDeviceAddressGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVmInstanceDeviceAddressGroup(&queryParam)
+	result, err := accountLoginCli.QueryVmInstanceDeviceAddressGroup(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVmInstanceDeviceAddressGroup error: %v", err)
 		return

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVCenterBackupStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVCenterBackupStorage(&queryParam)
+	result, err := accountLoginCli.QueryVCenterBackupStorage(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVCenterBackupStorage error: %v", err)
 		return

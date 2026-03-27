@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryMonitorGroupInstance(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMonitorGroupInstance(&queryParam)
+	result, err := accountLoginCli.QueryMonitorGroupInstance(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMonitorGroupInstance error: %v", err)
 		return

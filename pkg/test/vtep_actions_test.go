@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVtep(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVtep(&queryParam)
+	result, err := accountLoginCli.QueryVtep(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVtep error: %v", err)
 		return
