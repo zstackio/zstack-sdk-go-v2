@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreatePluginSecretResourcePool(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreatePluginSecretResourcePool(createParam)
+	// result, err := accountLoginCli.CreatePluginSecretResourcePool(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreatePluginSecretResourcePool error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreatePluginSecretResourcePool(t *testing.T) {
 	// golog.Infof("CreatePluginSecretResourcePool result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeletePluginSecretResourcePool(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeletePluginSecretResourcePool(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeletePluginSecretResourcePool error: %v", err)
 	// }

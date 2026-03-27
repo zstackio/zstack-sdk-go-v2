@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQuerySecurityMachine(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySecurityMachine(&queryParam)
+	result, err := accountLoginCli.QuerySecurityMachine(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySecurityMachine error: %v", err)
 		return

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryHostNetworkInterfaceLldp(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryHostNetworkInterfaceLldp(&queryParam)
+	result, err := accountLoginCli.QueryHostNetworkInterfaceLldp(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryHostNetworkInterfaceLldp error: %v", err)
 		return

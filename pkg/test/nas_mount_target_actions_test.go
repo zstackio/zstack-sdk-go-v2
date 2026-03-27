@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryNasMountTarget(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryNasMountTarget(&queryParam)
+	result, err := accountLoginCli.QueryNasMountTarget(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryNasMountTarget error: %v", err)
 		return

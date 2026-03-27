@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryMulticastRouter(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMulticastRouter(&queryParam)
+	result, err := accountLoginCli.QueryMulticastRouter(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMulticastRouter error: %v", err)
 		return

@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // GetOAuth2TokenParamDetail GetOAuth2Token detail param
 type GetOAuth2TokenParamDetail struct {

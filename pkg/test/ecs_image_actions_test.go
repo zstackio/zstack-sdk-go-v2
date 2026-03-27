@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +15,7 @@ func TestUpdateEcsImage(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryEcsImageFromLocal(&queryParam)
+	list, err := accountLoginCli.QueryEcsImageFromLocal(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestUpdateEcsImage Query error: %v", err)
 		return
@@ -31,7 +32,7 @@ func TestUpdateEcsImage(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateEcsImage(list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateEcsImage(context.Background(), list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateEcsImage error: %v", err)
 		return

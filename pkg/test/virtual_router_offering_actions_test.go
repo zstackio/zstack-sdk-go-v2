@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVirtualRouterOffering(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVirtualRouterOffering(&queryParam)
+	result, err := accountLoginCli.QueryVirtualRouterOffering(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVirtualRouterOffering error: %v", err)
 		return

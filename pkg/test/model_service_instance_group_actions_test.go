@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryModelServiceInstanceGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryModelServiceInstanceGroup(&queryParam)
+	result, err := accountLoginCli.QueryModelServiceInstanceGroup(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryModelServiceInstanceGroup error: %v", err)
 		return

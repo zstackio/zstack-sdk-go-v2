@@ -4,16 +4,16 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
-
-// AddAttributesToIAM2OrganizationEventView AddAttributesToIAM2OrganizationEvent
-type AddAttributesToIAM2OrganizationEventView struct {
-	Success bool `json:"success,omitempty"`
-}
+var _ = time.Now() // avoid unused import
 
 // GetCreateEcsImageProgressView GetCreateEcsImageProgress
 type GetCreateEcsImageProgressView struct {
 	Progress ProgressPropertyView `json:"progress,omitempty"`
+}
+
+// AddAttributesToIAM2OrganizationEventView AddAttributesToIAM2OrganizationEvent
+type AddAttributesToIAM2OrganizationEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 
 // LogOutView LogOut
@@ -55,6 +55,11 @@ type BatchCreateIAM2VirtualIDFromConfigFileEventView struct {
 
 // SyncDataCenterFromRemoteEventView SyncDataCenterFromRemoteEvent
 type SyncDataCenterFromRemoteEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// SetVmInstanceHygonMdevEventView SetVmInstanceHygonMdevEvent
+type SetVmInstanceHygonMdevEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -1211,11 +1216,6 @@ type DeleteHostNetworkServiceTypeEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// SubscribeResNotifyEventView SubscribeResNotifyEvent
-type SubscribeResNotifyEventView struct {
-	Inventory ResNotifySubscriptionInventoryView `json:"inventory,omitempty"`
-}
-
 // ReloadElaborationEventView ReloadElaborationEvent
 type ReloadElaborationEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -1465,6 +1465,11 @@ type UpdateThirdpartyAlertsEventView struct {
 // PullSdnControllerTenantEventView PullSdnControllerTenantEvent
 type PullSdnControllerTenantEventView struct {
 	Inventories []H3cSdnControllerTenantInventoryView `json:"inventories,omitempty"`
+}
+
+// GenerateHygonMdevDevicesEventView GenerateHygonMdevDevicesEvent
+type GenerateHygonMdevDevicesEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 
 // SetVmUsbRedirectEventView SetVmUsbRedirectEvent
@@ -1984,6 +1989,7 @@ type PowerOnBaremetalChassisEventView struct {
 // RequestLicenseCapacityEventView RequestLicenseCapacityEvent
 type RequestLicenseCapacityEventView struct {
 	Inventory LicenseAuthorizedCapacityInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVirtualizerInfoView GetVirtualizerInfo
@@ -2310,6 +2316,11 @@ type UnregisterLicenseRequestedApplicationEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// ProvisionNfvInstGroupEventView ProvisionNfvInstGroupEvent
+type ProvisionNfvInstGroupEventView struct {
+	Inventory NfvInstGroupInventoryView `json:"inventory,omitempty"`
+}
+
 // ChangeVmPasswordEventView ChangeVmPasswordEvent
 type ChangeVmPasswordEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2335,9 +2346,19 @@ type DeleteVmUserDefinedXmlHookScriptEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// AddL3NetworkToGroupEventView AddL3NetworkToGroupEvent
+type AddL3NetworkToGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
 // CheckResourcePermissionView CheckResourcePermission
 type CheckResourcePermissionView struct {
 	Apis []string `json:"apis,omitempty"`
+}
+
+// ProvisionNfvInstConfigEventView ProvisionNfvInstConfigEvent
+type ProvisionNfvInstConfigEventView struct {
+	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
 }
 
 // GetCandidateMiniHostsView GetCandidateMiniHosts
@@ -2382,6 +2403,11 @@ type GetClusterDRSStatusView struct {
 // GetVmNumaView GetVmNuma
 type GetVmNumaView struct {
 	Enable bool `json:"enable,omitempty"`
+}
+
+// UngenerateHygonMdevDevicesEventView UngenerateHygonMdevDevicesEvent
+type UngenerateHygonMdevDevicesEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 
 // DeletePluginDriversEventView DeletePluginDriversEvent
@@ -2933,6 +2959,14 @@ type SdnControllerAddHostEventView struct {
 	Inventory SdnControllerInventoryView `json:"inventory,omitempty"`
 }
 
+// GetLicenseNodeUsageDetailsView GetLicenseNodeUsageDetails
+type GetLicenseNodeUsageDetailsView struct {
+	NodeInventory LicenseAuthorizedNodeInventoryView `json:"nodeInventory,omitempty"`
+	PlatformLicense LicenseInventoryView `json:"platformLicense,omitempty"`
+	AddOns []LicenseAddOnInventoryView `json:"addOns,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
 // RenewSessionEventView RenewSessionEvent
 type RenewSessionEventView struct {
 	Inventory SessionInventoryView `json:"inventory,omitempty"`
@@ -2988,13 +3022,13 @@ type GetLicenseUKeyStatusEventView struct {
 	Inventories []UKeyInventoryView `json:"inventories,omitempty"`
 }
 
-// SetL3NetworkRouterInterfaceIpEventView SetL3NetworkRouterInterfaceIpEvent
-type SetL3NetworkRouterInterfaceIpEventView struct {
+// AddTicketTypesToTicketFlowCollectionEventView AddTicketTypesToTicketFlowCollectionEvent
+type AddTicketTypesToTicketFlowCollectionEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// AddTicketTypesToTicketFlowCollectionEventView AddTicketTypesToTicketFlowCollectionEvent
-type AddTicketTypesToTicketFlowCollectionEventView struct {
+// SetL3NetworkRouterInterfaceIpEventView SetL3NetworkRouterInterfaceIpEvent
+type SetL3NetworkRouterInterfaceIpEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -3171,13 +3205,13 @@ type DeleteVmBootModeEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DetachPolicyFromUserGroupEventView DetachPolicyFromUserGroupEvent
-type DetachPolicyFromUserGroupEventView struct {
+// DeleteVpcVpnConnectionLocalEventView DeleteVpcVpnConnectionLocalEvent
+type DeleteVpcVpnConnectionLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteVpcVpnConnectionLocalEventView DeleteVpcVpnConnectionLocalEvent
-type DeleteVpcVpnConnectionLocalEventView struct {
+// DetachPolicyFromUserGroupEventView DetachPolicyFromUserGroupEvent
+type DetachPolicyFromUserGroupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 

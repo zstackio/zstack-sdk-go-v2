@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateCSPSecretResourcePool(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateCSPSecretResourcePool(createParam)
+	// result, err := accountLoginCli.CreateCSPSecretResourcePool(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateCSPSecretResourcePool error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateCSPSecretResourcePool(t *testing.T) {
 	// golog.Infof("CreateCSPSecretResourcePool result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteCSPSecretResourcePool(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteCSPSecretResourcePool(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteCSPSecretResourcePool error: %v", err)
 	// }

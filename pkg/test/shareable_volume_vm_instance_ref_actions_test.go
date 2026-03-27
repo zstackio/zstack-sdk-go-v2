@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryShareableVolumeVmInstanceRef(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryShareableVolumeVmInstanceRef(&queryParam)
+	result, err := accountLoginCli.QueryShareableVolumeVmInstanceRef(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryShareableVolumeVmInstanceRef error: %v", err)
 		return

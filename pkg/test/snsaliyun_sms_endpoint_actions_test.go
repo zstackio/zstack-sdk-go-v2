@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -26,7 +27,7 @@ func TestCreateSNSAliyunSmsEndpoint(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateSNSAliyunSmsEndpoint(createParam)
+	// result, err := accountLoginCli.CreateSNSAliyunSmsEndpoint(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateSNSAliyunSmsEndpoint error: %v", err)
 	// 	return
@@ -34,7 +35,7 @@ func TestCreateSNSAliyunSmsEndpoint(t *testing.T) {
 	// golog.Infof("CreateSNSAliyunSmsEndpoint result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSNSAliyunSmsEndpoint(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSNSAliyunSmsEndpoint(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSNSAliyunSmsEndpoint error: %v", err)
 	// }

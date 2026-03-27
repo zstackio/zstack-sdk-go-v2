@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // CephPrimaryStorageInventoryView CephPrimaryStorage
 type CephPrimaryStorageInventoryView struct {
@@ -30,11 +30,6 @@ type CephPrimaryStorageInventoryView struct {
 
 // RemoveMonFromCephPrimaryStorageEventView RemoveMonFromCephPrimaryStorageEvent
 type RemoveMonFromCephPrimaryStorageEventView struct {
-	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateCephPrimaryStorageMonEventView UpdateCephPrimaryStorageMonEvent
-type UpdateCephPrimaryStorageMonEventView struct {
 	Inventory CephPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 

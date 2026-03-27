@@ -4,14 +4,13 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
-// PolicyView Policy
-type PolicyView struct {
-	MetaClass interface{} `json:"metaClass,omitempty"`
+// PolicyInventoryView Policy
+type PolicyInventoryView struct {
+	BaseInfoView
+	BaseTimeView
 	Statements []PolicyStatementView `json:"statements,omitempty"`
-	Name string `json:"name,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
 }
 
@@ -30,11 +29,12 @@ type CreatePolicyEventView struct {
 	Inventory PolicyInventoryView `json:"inventory,omitempty"`
 }
 
-// PolicyInventoryView Policy
-type PolicyInventoryView struct {
-	BaseInfoView
-	BaseTimeView
+// PolicyView Policy
+type PolicyView struct {
+	MetaClass interface{} `json:"metaClass,omitempty"`
 	Statements []PolicyStatementView `json:"statements,omitempty"`
+	Name string `json:"name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 	AccountUuid string `json:"accountUuid,omitempty"`
 }
 

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQuerySNSPluginEndpoint(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySNSPluginEndpoint(&queryParam)
+	result, err := accountLoginCli.QuerySNSPluginEndpoint(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySNSPluginEndpoint error: %v", err)
 		return

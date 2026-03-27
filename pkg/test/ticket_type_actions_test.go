@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryTicketType(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryTicketType(&queryParam)
+	result, err := accountLoginCli.QueryTicketType(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryTicketType error: %v", err)
 		return

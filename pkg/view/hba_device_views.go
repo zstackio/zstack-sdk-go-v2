@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // HbaDeviceInventoryView HbaDevice
 type HbaDeviceInventoryView struct {
@@ -12,10 +12,5 @@ type HbaDeviceInventoryView struct {
 	BaseTimeView
 	HostUuid string `json:"hostUuid,omitempty"`
 	HbaType string `json:"hbaType,omitempty"`
-}
-
-// QueryFcHbaDeviceView QueryFcHbaDevice
-type QueryFcHbaDeviceView struct {
-	Inventories []HbaDeviceInventoryView `json:"inventories,omitempty"`
 }
 

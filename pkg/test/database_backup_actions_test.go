@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryDatabaseBackup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryDatabaseBackup(&queryParam)
+	result, err := accountLoginCli.QueryDatabaseBackup(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryDatabaseBackup error: %v", err)
 		return

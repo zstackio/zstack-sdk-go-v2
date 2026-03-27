@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryContainerManagementEndpoint(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryContainerManagementEndpoint(&queryParam)
+	result, err := accountLoginCli.QueryContainerManagementEndpoint(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryContainerManagementEndpoint error: %v", err)
 		return

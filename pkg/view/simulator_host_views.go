@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // SimulatorHostInventoryView SimulatorHost
 type SimulatorHostInventoryView struct {
@@ -39,5 +39,10 @@ type SimulatorHostInventoryView struct {
 	RaidStatus string `json:"raidStatus,omitempty"`
 	TemperatureStatus string `json:"temperatureStatus,omitempty"`
 	Architecture string `json:"architecture,omitempty"`
+}
+
+// AddHostEventView AddHostEvent
+type AddHostEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
 }
 

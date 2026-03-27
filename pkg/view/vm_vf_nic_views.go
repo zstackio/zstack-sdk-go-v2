@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // VmVfNicInventoryView VmVfNic
 type VmVfNicInventoryView struct {
@@ -12,6 +12,7 @@ type VmVfNicInventoryView struct {
 	BaseTimeView
 	PciDeviceUuid string `json:"pciDeviceUuid,omitempty"`
 	HaState string `json:"haState,omitempty"`
+	SecondaryPciDeviceUuid string `json:"secondaryPciDeviceUuid,omitempty"`
 	VmInstanceUuid string `json:"vmInstanceUuid,omitempty"`
 	L3NetworkUuid string `json:"l3NetworkUuid,omitempty"`
 	Ip string `json:"ip,omitempty"`

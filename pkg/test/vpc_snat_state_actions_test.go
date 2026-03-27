@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVpcSnatState(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVpcSnatState(&queryParam)
+	result, err := accountLoginCli.QueryVpcSnatState(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVpcSnatState error: %v", err)
 		return

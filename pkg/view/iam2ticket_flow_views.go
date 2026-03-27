@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // IAM2TicketFlowInventoryView IAM2TicketFlow
 type IAM2TicketFlowInventoryView struct {
@@ -19,8 +19,18 @@ type IAM2TicketFlowInventoryView struct {
 	CollectionUuid string `json:"collectionUuid,omitempty"`
 }
 
+// UpdateIAM2TicketFlowEventView UpdateIAM2TicketFlowEvent
+type UpdateIAM2TicketFlowEventView struct {
+	Inventory TicketFlowInventoryView `json:"inventory,omitempty"`
+}
+
 // DeleteIAM2TicketFlowEventView DeleteIAM2TicketFlowEvent
 type DeleteIAM2TicketFlowEventView struct {
 	Success bool `json:"success,omitempty"`
+}
+
+// AddIAM2TicketFlowEventView AddIAM2TicketFlowEvent
+type AddIAM2TicketFlowEventView struct {
+	Inventory TicketFlowInventoryView `json:"inventory,omitempty"`
 }
 

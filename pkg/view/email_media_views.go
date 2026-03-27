@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // EmailMediaInventoryView EmailMedia
 type EmailMediaInventoryView struct {
@@ -16,16 +16,6 @@ type EmailMediaInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
-}
-
-// QueryMediaView QueryMedia
-type QueryMediaView struct {
-	Inventories []MediaInventoryView `json:"inventories,omitempty"`
-}
-
-// CreateMediaEventView CreateMediaEvent
-type CreateMediaEventView struct {
-	Inventory MediaInventoryView `json:"inventory,omitempty"`
 }
 
 // UpdateEmailMediaEventView UpdateEmailMediaEvent

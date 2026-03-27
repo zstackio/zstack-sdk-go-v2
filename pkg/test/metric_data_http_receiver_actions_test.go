@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryMetricDataHttpReceiver(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMetricDataHttpReceiver(&queryParam)
+	result, err := accountLoginCli.QueryMetricDataHttpReceiver(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMetricDataHttpReceiver error: %v", err)
 		return

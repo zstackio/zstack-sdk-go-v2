@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQuerySNSEndpointThirdpartyAlertHistory(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySNSEndpointThirdpartyAlertHistory(&queryParam)
+	result, err := accountLoginCli.QuerySNSEndpointThirdpartyAlertHistory(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySNSEndpointThirdpartyAlertHistory error: %v", err)
 		return

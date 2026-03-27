@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateCasClient(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateCasClient(createParam)
+	// result, err := accountLoginCli.CreateCasClient(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateCasClient error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateCasClient(t *testing.T) {
 	// golog.Infof("CreateCasClient result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteCasClient(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteCasClient(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteCasClient error: %v", err)
 	// }

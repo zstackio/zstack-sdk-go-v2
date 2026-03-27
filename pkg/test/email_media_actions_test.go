@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryEmailMedia(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryEmailMedia(&queryParam)
+	result, err := accountLoginCli.QueryEmailMedia(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryEmailMedia error: %v", err)
 		return

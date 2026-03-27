@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -17,7 +18,7 @@ func TestDeleteBilling(t *testing.T) {
 
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAccountBilling(&queryParam)
+	list, err := accountLoginCli.QueryAccountBilling(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestDeleteBilling Query error: %v", err)
 		return
@@ -27,7 +28,7 @@ func TestDeleteBilling(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteBilling(list[0].ResourceName, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteBilling(context.Background(), list[0].ResourceName, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteBilling error: %v", err)
 		return

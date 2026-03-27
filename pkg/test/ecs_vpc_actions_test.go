@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +15,7 @@ func TestUpdateEcsVpc(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryEcsVpcFromLocal(&queryParam)
+	list, err := accountLoginCli.QueryEcsVpcFromLocal(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestUpdateEcsVpc Query error: %v", err)
 		return
@@ -31,7 +32,7 @@ func TestUpdateEcsVpc(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateEcsVpc(list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateEcsVpc(context.Background(), list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateEcsVpc error: %v", err)
 		return

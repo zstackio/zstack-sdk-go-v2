@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryPortMirrorSession(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPortMirrorSession(&queryParam)
+	result, err := accountLoginCli.QueryPortMirrorSession(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPortMirrorSession error: %v", err)
 		return

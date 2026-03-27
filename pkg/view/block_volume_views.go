@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // BlockVolumeInventoryView BlockVolume
 type BlockVolumeInventoryView struct {
@@ -31,11 +31,6 @@ type BlockVolumeInventoryView struct {
 	LastVmInstanceUuid string `json:"lastVmInstanceUuid,omitempty"`
 	LastAttachDate time.Time `json:"lastAttachDate,omitempty"`
 	Protocol string `json:"protocol,omitempty"`
-}
-
-// UpdateBlockVolumeEventView UpdateBlockVolumeEvent
-type UpdateBlockVolumeEventView struct {
-	Inventory BlockVolumeInventoryView `json:"inventory,omitempty"`
 }
 
 // CreateBlockVolumeEventView CreateBlockVolumeEvent

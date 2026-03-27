@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // SftpBackupStorageInventoryView SftpBackupStorage
 type SftpBackupStorageInventoryView struct {
@@ -26,11 +26,6 @@ type SftpBackupStorageInventoryView struct {
 // QuerySftpBackupStorageView QuerySftpBackupStorage
 type QuerySftpBackupStorageView struct {
 	Inventories []SftpBackupStorageInventoryView `json:"inventories,omitempty"`
-}
-
-// UpdateBackupStorageEventView UpdateBackupStorageEvent
-type UpdateBackupStorageEventView struct {
-	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
 }
 
 // ReconnectSftpBackupStorageEventView ReconnectSftpBackupStorageEvent

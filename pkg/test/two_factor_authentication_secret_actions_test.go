@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +15,7 @@ func TestGetTwoFactorAuthenticationSecret(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryTwoFactorAuthentication(&queryParam)
+	list, err := accountLoginCli.QueryTwoFactorAuthentication(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestGetTwoFactorAuthenticationSecret Query error: %v", err)
 		return
@@ -25,7 +26,7 @@ func TestGetTwoFactorAuthenticationSecret(t *testing.T) {
 	}
 
 	// Get by UUID
-	result, err := accountLoginCli.GetTwoFactorAuthenticationSecret(list[0].UUID)
+	result, err := accountLoginCli.GetTwoFactorAuthenticationSecret(context.Background(), list[0].UUID)
 	if err != nil {
 		t.Errorf("TestGetTwoFactorAuthenticationSecret error: %v", err)
 		return

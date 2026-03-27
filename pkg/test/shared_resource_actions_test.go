@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQuerySharedResource(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySharedResource(&queryParam)
+	result, err := accountLoginCli.QuerySharedResource(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySharedResource error: %v", err)
 		return

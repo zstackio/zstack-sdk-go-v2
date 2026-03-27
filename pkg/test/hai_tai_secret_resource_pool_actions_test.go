@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateHaiTaiSecretResourcePool(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateHaiTaiSecretResourcePool(createParam)
+	// result, err := accountLoginCli.CreateHaiTaiSecretResourcePool(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateHaiTaiSecretResourcePool error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateHaiTaiSecretResourcePool(t *testing.T) {
 	// golog.Infof("CreateHaiTaiSecretResourcePool result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteHaiTaiSecretResourcePool(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteHaiTaiSecretResourcePool(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteHaiTaiSecretResourcePool error: %v", err)
 	// }

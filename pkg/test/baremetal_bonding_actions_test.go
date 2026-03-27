@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryBaremetalBonding(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryBaremetalBonding(&queryParam)
+	result, err := accountLoginCli.QueryBaremetalBonding(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryBaremetalBonding error: %v", err)
 		return

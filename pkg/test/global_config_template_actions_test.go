@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryGlobalConfigTemplate(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryGlobalConfigTemplate(&queryParam)
+	result, err := accountLoginCli.QueryGlobalConfigTemplate(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryGlobalConfigTemplate error: %v", err)
 		return

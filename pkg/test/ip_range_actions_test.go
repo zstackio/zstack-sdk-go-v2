@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryIpRange(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryIpRange(&queryParam)
+	result, err := accountLoginCli.QueryIpRange(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryIpRange error: %v", err)
 		return

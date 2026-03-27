@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryEip(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryEip(&queryParam)
+	result, err := accountLoginCli.QueryEip(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryEip error: %v", err)
 		return

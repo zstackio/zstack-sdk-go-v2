@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // SanSecSecurityMachineInventoryView SanSecSecurityMachine
 type SanSecSecurityMachineInventoryView struct {
@@ -19,16 +19,5 @@ type SanSecSecurityMachineInventoryView struct {
 	Model string `json:"model,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
-}
-
-// AddSecurityMachineEventView AddSecurityMachineEvent
-type AddSecurityMachineEventView struct {
-	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateSecurityMachineEventView UpdateSecurityMachineEvent
-type UpdateSecurityMachineEventView struct {
-	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
-	Success bool `json:"success,omitempty"`
 }
 

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVpcFirewall(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVpcFirewall(&queryParam)
+	result, err := accountLoginCli.QueryVpcFirewall(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVpcFirewall error: %v", err)
 		return

@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVpcHaGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVpcHaGroup(&queryParam)
+	result, err := accountLoginCli.QueryVpcHaGroup(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVpcHaGroup error: %v", err)
 		return

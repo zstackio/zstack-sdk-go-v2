@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVpcHaGroupNetworkServiceRef(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVpcHaGroupNetworkServiceRef(&queryParam)
+	result, err := accountLoginCli.QueryVpcHaGroupNetworkServiceRef(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVpcHaGroupNetworkServiceRef error: %v", err)
 		return

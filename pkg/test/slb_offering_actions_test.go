@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQuerySlbOffering(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySlbOffering(&queryParam)
+	result, err := accountLoginCli.QuerySlbOffering(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySlbOffering error: %v", err)
 		return

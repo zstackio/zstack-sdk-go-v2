@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateAutoScalingRuleAlarmTrigger(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateAutoScalingRuleAlarmTrigger(createParam)
+	// result, err := accountLoginCli.CreateAutoScalingRuleAlarmTrigger(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateAutoScalingRuleAlarmTrigger error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateAutoScalingRuleAlarmTrigger(t *testing.T) {
 	// golog.Infof("CreateAutoScalingRuleAlarmTrigger result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteAutoScalingRuleAlarmTrigger(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteAutoScalingRuleAlarmTrigger(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteAutoScalingRuleAlarmTrigger error: %v", err)
 	// }

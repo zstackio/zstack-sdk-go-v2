@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,9 +12,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateVpcHaGroup updates VpcHaGroup
-func (cli *ZSClient) UpdateVpcHaGroup(uuid string, params param.UpdateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
+func (cli *ZSClient) UpdateVpcHaGroup(ctx context.Context, uuid string, params param.UpdateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
 	resp := view.VpcHaGroupInventoryView{}
-	if err := cli.PutWithRespKey("v1/vpc/hagroups", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/vpc/hagroups", uuid, "", map[string]interface{}{
 		"updateVpcHaGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,34 +22,34 @@ func (cli *ZSClient) UpdateVpcHaGroup(uuid string, params param.UpdateVpcHaGroup
 	return &resp, nil
 }
 // DeleteVpcHaGroup deletes VpcHaGroup
-func (cli *ZSClient) DeleteVpcHaGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vpc/hagroups", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteVpcHaGroup(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/vpc/hagroups", uuid, string(deleteMode))
 }
 // CreateVpcHaGroup creates VpcHaGroup
-func (cli *ZSClient) CreateVpcHaGroup(params param.CreateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
+func (cli *ZSClient) CreateVpcHaGroup(ctx context.Context, params param.CreateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
 	resp := view.VpcHaGroupInventoryView{}
-	if err := cli.Post("v1/vpc/hagroups", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/vpc/hagroups", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QueryVpcHaGroup queries VpcHaGroup list
-func (cli *ZSClient) QueryVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGroupInventoryView, error) {
+func (cli *ZSClient) QueryVpcHaGroup(ctx context.Context, params *param.QueryParam) ([]view.VpcHaGroupInventoryView, error) {
 	var resp []view.VpcHaGroupInventoryView
-	return resp, cli.List("v1/vpc/hagroups", params, &resp)
+	return resp, cli.List(ctx, "v1/vpc/hagroups", params, &resp)
 }
 
-func (cli *ZSClient) GetVpcHaGroup(uuid string) (*view.VpcHaGroupInventoryView, error) {
+func (cli *ZSClient) GetVpcHaGroup(ctx context.Context, uuid string) (*view.VpcHaGroupInventoryView, error) {
 	var resp view.VpcHaGroupInventoryView
-	if err := cli.Get("v1/vpc/hagroups", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/vpc/hagroups", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageVpcHaGroup Pagination
-func (cli *ZSClient) PageVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGroupInventoryView, int, error) {
+func (cli *ZSClient) PageVpcHaGroup(ctx context.Context, params *param.QueryParam) ([]view.VpcHaGroupInventoryView, int, error) {
 	var vpcHaGroups []view.VpcHaGroupInventoryView
-	total, err := cli.Page("v1/vpc/hagroups", params, &vpcHaGroups)
+	total, err := cli.Page(ctx, "v1/vpc/hagroups", params, &vpcHaGroups)
 	return vpcHaGroups, total, err
 }

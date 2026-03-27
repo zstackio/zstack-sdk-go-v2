@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +15,7 @@ func TestUpdateAlarmLabel(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAlarm(&queryParam)
+	list, err := accountLoginCli.QueryAlarm(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestUpdateAlarmLabel Query error: %v", err)
 		return
@@ -31,7 +32,7 @@ func TestUpdateAlarmLabel(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateAlarmLabel(list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateAlarmLabel(context.Background(), list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateAlarmLabel error: %v", err)
 		return

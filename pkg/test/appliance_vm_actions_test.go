@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryApplianceVm(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryApplianceVm(&queryParam)
+	result, err := accountLoginCli.QueryApplianceVm(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryApplianceVm error: %v", err)
 		return

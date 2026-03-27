@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // IAM2VirtualIDGroupInventoryView IAM2VirtualIDGroup
 type IAM2VirtualIDGroupInventoryView struct {

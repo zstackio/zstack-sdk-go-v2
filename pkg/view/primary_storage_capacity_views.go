@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // PrimaryStorageCapacityInventoryView PrimaryStorageCapacity
 type PrimaryStorageCapacityInventoryView struct {
@@ -15,11 +15,6 @@ type PrimaryStorageCapacityInventoryView struct {
 	TotalPhysicalCapacity int64 `json:"totalPhysicalCapacity,omitempty"`
 	AvailablePhysicalCapacity int64 `json:"availablePhysicalCapacity,omitempty"`
 	SystemUsedCapacity int64 `json:"systemUsedCapacity,omitempty"`
-}
-
-// SyncPrimaryStorageCapacityEventView SyncPrimaryStorageCapacityEvent
-type SyncPrimaryStorageCapacityEventView struct {
-	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
 // GetPrimaryStorageCapacityView GetPrimaryStorageCapacity

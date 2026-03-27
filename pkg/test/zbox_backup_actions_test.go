@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryZBoxBackup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryZBoxBackup(&queryParam)
+	result, err := accountLoginCli.QueryZBoxBackup(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryZBoxBackup error: %v", err)
 		return

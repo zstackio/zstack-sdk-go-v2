@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryVpcSharedQos(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVpcSharedQos(&queryParam)
+	result, err := accountLoginCli.QueryVpcSharedQos(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVpcSharedQos error: %v", err)
 		return

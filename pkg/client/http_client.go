@@ -90,14 +90,14 @@ func (cli *ZSHttpClient) unloadSession() {
 
 ////////////////////////////// List(Query) ///////////////////////
 
-func (cli *ZSHttpClient) ListAll(resource string, params *param.QueryParam, retVal interface{}) error {
+func (cli *ZSHttpClient) ListAll(ctx context.Context, resource string, params *param.QueryParam, retVal interface{}) error {
 	result := []jsonutils.JSONObject{}
 	start, limit := 0, 50
 	for {
 		params = params.Start(start).Limit(limit).ReplyWithCount(true)
 
 		urlStr := cli.getListURL(resource, params.Values)
-		_, resp, err := cli.httpList(urlStr)
+		_, resp, err := cli.httpList(ctx, urlStr)
 		if err != nil {
 			return err
 		}
@@ -117,13 +117,13 @@ func (cli *ZSHttpClient) ListAll(resource string, params *param.QueryParam, retV
 	}
 }
 
-func (cli *ZSHttpClient) Page(resource string, params *param.QueryParam, retVal interface{}) (int, error) {
-	return cli.PageWithKey(resource, responseKeyInventories, params, retVal)
+func (cli *ZSHttpClient) Page(ctx context.Context, resource string, params *param.QueryParam, retVal interface{}) (int, error) {
+	return cli.PageWithKey(ctx, resource, responseKeyInventories, params, retVal)
 }
 
-func (cli *ZSHttpClient) PageWithKey(resource, responseKey string, params *param.QueryParam, retVal interface{}) (int, error) {
+func (cli *ZSHttpClient) PageWithKey(ctx context.Context, resource, responseKey string, params *param.QueryParam, retVal interface{}) (int, error) {
 	params.ReplyWithCount(true)
-	err := cli.ListWithRespKey(resource, responseKey, params, retVal)
+	err := cli.ListWithRespKey(ctx, resource, responseKey, params, retVal)
 	if err != nil {
 		return 0, err
 	}
@@ -131,13 +131,13 @@ func (cli *ZSHttpClient) PageWithKey(resource, responseKey string, params *param
 	return strconv.Atoi(params.Get(responseKeyTotal))
 }
 
-func (cli *ZSHttpClient) List(resource string, params *param.QueryParam, retVal interface{}) error {
-	return cli.ListWithRespKey(resource, responseKeyInventories, params, retVal)
+func (cli *ZSHttpClient) List(ctx context.Context, resource string, params *param.QueryParam, retVal interface{}) error {
+	return cli.ListWithRespKey(ctx, resource, responseKeyInventories, params, retVal)
 }
 
-func (cli *ZSHttpClient) ListWithRespKey(resource, responseKey string, params *param.QueryParam, retVal interface{}) error {
+func (cli *ZSHttpClient) ListWithRespKey(ctx context.Context, resource, responseKey string, params *param.QueryParam, retVal interface{}) error {
 	urlStr := cli.getListURL(resource, params.Values)
-	_, resp, err := cli.httpList(urlStr)
+	_, resp, err := cli.httpList(ctx, urlStr)
 	if err != nil {
 		return err
 	}
@@ -158,13 +158,13 @@ func (cli *ZSHttpClient) ListWithRespKey(resource, responseKey string, params *p
 	return resp.Unmarshal(retVal, responseKey)
 }
 
-func (cli *ZSHttpClient) httpList(urlStr string) (http.Header, jsonutils.JSONObject, error) {
+func (cli *ZSHttpClient) httpList(ctx context.Context, urlStr string) (http.Header, jsonutils.JSONObject, error) {
 	header, err := cli.getHeader(urlStr, http.MethodGet)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, context.Background(), httputils.GET, urlStr, header, nil, cli.debug)
+	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, ctx, httputils.GET, urlStr, header, nil, cli.debug)
 	if err != nil {
 		if e, ok := err.(*httputils.JSONClientError); ok {
 			if strings.Contains(e.Details, "wrong accessKey signature") || strings.Contains(e.Details, "access key id") {
@@ -187,7 +187,7 @@ func (cli *ZSHttpClient) getListURL(resource string, params url.Values) string {
 
 ////////////////////////////// Get(Retrieve Details) ///////////////////////
 
-func (cli *ZSHttpClient) Get(resource, resourceId string, params interface{}, retVal interface{}) error {
+func (cli *ZSHttpClient) Get(ctx context.Context, resource, resourceId string, params interface{}, retVal interface{}) error {
 	urlStr := cli.getGetURL(resource, resourceId, "")
 	if params != nil {
 		urlValues, err := param.ConvertStruct2UrlValues(params)
@@ -196,7 +196,7 @@ func (cli *ZSHttpClient) Get(resource, resourceId string, params interface{}, re
 		}
 		urlStr = fmt.Sprintf("%s?%s", urlStr, urlValues.Encode())
 	}
-	_, _, resp, err := cli.httpGet(urlStr, false)
+	_, _, resp, err := cli.httpGet(ctx, urlStr, false)
 	if err != nil {
 		return err
 	}
@@ -216,11 +216,11 @@ func (cli *ZSHttpClient) Get(resource, resourceId string, params interface{}, re
 	return inventories[0].Unmarshal(retVal)
 }
 
-func (cli *ZSHttpClient) GetWithRespKey(resource, resourceId, responseKey string, params interface{}, retVal interface{}) error {
-	return cli.GetWithSpec(resource, resourceId, "", responseKey, params, retVal)
+func (cli *ZSHttpClient) GetWithRespKey(ctx context.Context, resource, resourceId, responseKey string, params interface{}, retVal interface{}) error {
+	return cli.GetWithSpec(ctx, resource, resourceId, "", responseKey, params, retVal)
 }
 
-func (cli *ZSHttpClient) GetWithSpec(resource, resourceId, spec, responseKey string, params interface{}, retVal interface{}) error {
+func (cli *ZSHttpClient) GetWithSpec(ctx context.Context, resource, resourceId, spec, responseKey string, params interface{}, retVal interface{}) error {
 	urlStr := cli.getGetURL(resource, resourceId, spec)
 	if params != nil {
 		urlValues, err := param.ConvertStruct2UrlValues(params)
@@ -229,7 +229,7 @@ func (cli *ZSHttpClient) GetWithSpec(resource, resourceId, spec, responseKey str
 		}
 		urlStr = fmt.Sprintf("%s?%s", urlStr, urlValues.Encode())
 	}
-	_, _, resp, err := cli.httpGet(urlStr, false)
+	_, _, resp, err := cli.httpGet(ctx, urlStr, false)
 	if err != nil {
 		return err
 	}
@@ -245,7 +245,7 @@ func (cli *ZSHttpClient) GetWithSpec(resource, resourceId, spec, responseKey str
 	return resp.Unmarshal(retVal, responseKey)
 }
 
-func (cli *ZSHttpClient) httpGet(urlStr string, async bool) (string, http.Header, jsonutils.JSONObject, error) {
+func (cli *ZSHttpClient) httpGet(ctx context.Context, urlStr string, async bool) (string, http.Header, jsonutils.JSONObject, error) {
 	header := http.Header{}
 
 	var respHeader http.Header
@@ -257,7 +257,7 @@ func (cli *ZSHttpClient) httpGet(urlStr string, async bool) (string, http.Header
 			return "", nil, nil, err
 		}
 
-		httpRespHeader, httpResp, err := httputils.JSONRequest(cli.httpClient, context.TODO(), httputils.GET, urlStr, header, nil, cli.debug)
+		httpRespHeader, httpResp, err := httputils.JSONRequest(cli.httpClient, ctx, httputils.GET, urlStr, header, nil, cli.debug)
 		if err != nil {
 			if strings.Contains(err.Error(), "exceeded while awaiting headers") {
 				time.Sleep(time.Second * 5)
@@ -275,7 +275,7 @@ func (cli *ZSHttpClient) httpGet(urlStr string, async bool) (string, http.Header
 	if resp.Contains(responseKeyLocation) {
 		location, _ = resp.GetString(responseKeyLocation)
 		if !async {
-			resultHeader, result, err := cli.httpWait(header, http.MethodGet, urlStr, jsonutils.NewDict(), location)
+			resultHeader, result, err := cli.httpWait(ctx, header, http.MethodGet, urlStr, jsonutils.NewDict(), location)
 			return location, resultHeader, result, err
 		}
 	}
@@ -289,18 +289,18 @@ func (cli *ZSHttpClient) getGetURL(resource, resourceId, spec string) string {
 
 ////////////////////////////// Post(Create) ///////////////////////
 
-func (cli *ZSHttpClient) Post(resource string, params interface{}, retVal interface{}) error {
-	return cli.PostWithRespKey(resource, responseKeyInventory, params, retVal)
+func (cli *ZSHttpClient) Post(ctx context.Context, resource string, params interface{}, retVal interface{}) error {
+	return cli.PostWithRespKey(ctx, resource, responseKeyInventory, params, retVal)
 }
 
-func (cli *ZSHttpClient) PostWithRespKey(resource, responseKey string, params interface{}, retVal interface{}) error {
-	_, err := cli.PostWithAsync(resource, responseKey, params, retVal, false)
+func (cli *ZSHttpClient) PostWithRespKey(ctx context.Context, resource, responseKey string, params interface{}, retVal interface{}) error {
+	_, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, false)
 	return err
 }
 
-func (cli *ZSHttpClient) PostWithAsync(resource, responseKey string, params interface{}, retVal interface{}, async bool) (string, error) {
+func (cli *ZSHttpClient) PostWithAsync(ctx context.Context, resource, responseKey string, params interface{}, retVal interface{}, async bool) (string, error) {
 	urlStr := cli.getPostURL(resource)
-	location, _, resp, err := cli.httpPost(urlStr, jsonMarshal(params), async)
+	location, _, resp, err := cli.httpPost(ctx, urlStr, jsonMarshal(params), async)
 	if err != nil {
 		return location, err
 	}
@@ -316,13 +316,13 @@ func (cli *ZSHttpClient) PostWithAsync(resource, responseKey string, params inte
 	return location, resp.Unmarshal(retVal, responseKey)
 }
 
-func (cli *ZSHttpClient) httpPost(urlStr string, params jsonutils.JSONObject, async bool) (string, http.Header, jsonutils.JSONObject, error) {
+func (cli *ZSHttpClient) httpPost(ctx context.Context, urlStr string, params jsonutils.JSONObject, async bool) (string, http.Header, jsonutils.JSONObject, error) {
 	header, err := cli.getHeader(urlStr, http.MethodPost)
 	if err != nil {
 		return "", nil, nil, err
 	}
 
-	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, context.TODO(), httputils.POST, urlStr, header, params, cli.debug)
+	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, ctx, httputils.POST, urlStr, header, params, cli.debug)
 	if err != nil {
 		return "", nil, nil, errors.Wrapf(err, "%s %s %s", http.MethodPost, urlStr, params.String())
 	}
@@ -331,7 +331,7 @@ func (cli *ZSHttpClient) httpPost(urlStr string, params jsonutils.JSONObject, as
 	if resp.Contains(responseKeyLocation) {
 		location, _ = resp.GetString(responseKeyLocation)
 		if !async {
-			resultHeader, result, err := cli.httpWait(header, http.MethodPost, urlStr, params, location)
+			resultHeader, result, err := cli.httpWait(ctx, header, http.MethodPost, urlStr, params, location)
 			return location, resultHeader, result, err
 		}
 	}
@@ -345,22 +345,22 @@ func (cli *ZSHttpClient) getPostURL(resource string) string {
 
 ////////////////////////////// Put(Update) ///////////////////////
 
-func (cli *ZSHttpClient) Put(resource, resourceId string, params interface{}, retVal interface{}) error {
-	return cli.PutWithRespKey(resource, resourceId, responseKeyInventory, params, retVal)
+func (cli *ZSHttpClient) Put(ctx context.Context, resource, resourceId string, params interface{}, retVal interface{}) error {
+	return cli.PutWithRespKey(ctx, resource, resourceId, responseKeyInventory, params, retVal)
 }
 
-func (cli *ZSHttpClient) PutWithRespKey(resource, resourceId, responseKey string, params interface{}, retVal interface{}) error {
-	return cli.PutWithSpec(resource, resourceId, "actions", responseKey, params, retVal)
+func (cli *ZSHttpClient) PutWithRespKey(ctx context.Context, resource, resourceId, responseKey string, params interface{}, retVal interface{}) error {
+	return cli.PutWithSpec(ctx, resource, resourceId, "actions", responseKey, params, retVal)
 }
 
-func (cli *ZSHttpClient) PutWithSpec(resource, resourceId, spec, responseKey string, params interface{}, retVal interface{}) error {
-	_, err := cli.PutWithAsync(resource, resourceId, spec, responseKey, params, retVal, false)
+func (cli *ZSHttpClient) PutWithSpec(ctx context.Context, resource, resourceId, spec, responseKey string, params interface{}, retVal interface{}) error {
+	_, err := cli.PutWithAsync(ctx, resource, resourceId, spec, responseKey, params, retVal, false)
 	return err
 }
 
-func (cli *ZSHttpClient) PutWithAsync(resource, resourceId, spec, responseKey string, params interface{}, retVal interface{}, async bool) (string, error) {
+func (cli *ZSHttpClient) PutWithAsync(ctx context.Context, resource, resourceId, spec, responseKey string, params interface{}, retVal interface{}, async bool) (string, error) {
 	urlStr := cli.getPutURL(resource, resourceId, spec)
-	location, _, resp, err := cli.httpPut(urlStr, jsonMarshal(params), async)
+	location, _, resp, err := cli.httpPut(ctx, urlStr, jsonMarshal(params), async)
 	if err != nil {
 		return location, err
 	}
@@ -376,13 +376,13 @@ func (cli *ZSHttpClient) PutWithAsync(resource, resourceId, spec, responseKey st
 	return location, resp.Unmarshal(retVal, responseKey)
 }
 
-func (cli *ZSHttpClient) httpPut(urlStr string, params jsonutils.JSONObject, async bool) (string, http.Header, jsonutils.JSONObject, error) {
+func (cli *ZSHttpClient) httpPut(ctx context.Context, urlStr string, params jsonutils.JSONObject, async bool) (string, http.Header, jsonutils.JSONObject, error) {
 	header, err := cli.getHeader(urlStr, http.MethodPut)
 	if err != nil {
 		return "", nil, nil, err
 	}
 
-	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, context.Background(), httputils.PUT, urlStr, header, params, cli.debug)
+	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, ctx, httputils.PUT, urlStr, header, params, cli.debug)
 	if err != nil {
 		return "", nil, nil, errors.Wrapf(err, "%s %s %s", http.MethodPut, urlStr, params.String())
 	}
@@ -391,7 +391,7 @@ func (cli *ZSHttpClient) httpPut(urlStr string, params jsonutils.JSONObject, asy
 	if resp.Contains(responseKeyLocation) {
 		location, _ = resp.GetString(responseKeyLocation)
 		if !async {
-			resultHeader, result, err := cli.httpWait(header, http.MethodPut, urlStr, params, location)
+			resultHeader, result, err := cli.httpWait(ctx, header, http.MethodPut, urlStr, params, location)
 			return location, resultHeader, result, err
 		}
 	}
@@ -405,18 +405,18 @@ func (cli *ZSHttpClient) getPutURL(resource, resourceId, spec string) string {
 
 ////////////////////////////// Delete(Delete) ///////////////////////
 
-func (cli *ZSHttpClient) Delete(resource, resourceId, deleteMode string) error {
-	return cli.DeleteWithSpec(resource, resourceId, "", fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+func (cli *ZSHttpClient) Delete(ctx context.Context, resource, resourceId, deleteMode string) error {
+	return cli.DeleteWithSpec(ctx, resource, resourceId, "", fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 
-func (cli *ZSHttpClient) DeleteWithSpec(resource, resourceId, spec, paramsStr string, retVal interface{}) error {
-	_, err := cli.DeleteWithAsync(resource, resourceId, spec, paramsStr, retVal, false)
+func (cli *ZSHttpClient) DeleteWithSpec(ctx context.Context, resource, resourceId, spec, paramsStr string, retVal interface{}) error {
+	_, err := cli.DeleteWithAsync(ctx, resource, resourceId, spec, paramsStr, retVal, false)
 	return err
 }
 
-func (cli *ZSHttpClient) DeleteWithAsync(resource, resourceId, spec, paramsStr string, retVal interface{}, async bool) (string, error) {
+func (cli *ZSHttpClient) DeleteWithAsync(ctx context.Context, resource, resourceId, spec, paramsStr string, retVal interface{}, async bool) (string, error) {
 	urlStr := cli.getDeleteURL(resource, resourceId, spec, paramsStr)
-	location, _, resp, err := cli.httpDelete(urlStr, async)
+	location, _, resp, err := cli.httpDelete(ctx, urlStr, async)
 	if err != nil {
 		return location, err
 	}
@@ -428,13 +428,13 @@ func (cli *ZSHttpClient) DeleteWithAsync(resource, resourceId, spec, paramsStr s
 	return location, resp.Unmarshal(retVal, responseKeyInventory)
 }
 
-func (cli *ZSHttpClient) httpDelete(urlStr string, async bool) (string, http.Header, jsonutils.JSONObject, error) {
+func (cli *ZSHttpClient) httpDelete(ctx context.Context, urlStr string, async bool) (string, http.Header, jsonutils.JSONObject, error) {
 	header, err := cli.getHeader(urlStr, http.MethodDelete)
 	if err != nil {
 		return "", nil, nil, err
 	}
 
-	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, context.Background(), httputils.DELETE, urlStr, header, nil, cli.debug)
+	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, ctx, httputils.DELETE, urlStr, header, nil, cli.debug)
 	if err != nil {
 		return "", nil, nil, errors.Wrapf(err, "%s %s", http.MethodDelete, urlStr)
 	}
@@ -443,7 +443,7 @@ func (cli *ZSHttpClient) httpDelete(urlStr string, async bool) (string, http.Hea
 	if resp.Contains(responseKeyLocation) {
 		location, _ = resp.GetString(responseKeyLocation)
 		if !async {
-			resultHeader, result, err := cli.httpWait(header, http.MethodDelete, urlStr, jsonutils.NewDict(), location)
+			resultHeader, result, err := cli.httpWait(ctx, header, http.MethodDelete, urlStr, jsonutils.NewDict(), location)
 			return location, resultHeader, result, err
 		}
 	}
@@ -571,12 +571,12 @@ func (cli *ZSHttpClient) getAccessKeyHeader(url, method string) (http.Header, er
 	return header, nil
 }
 
-func (cli *ZSHttpClient) Wait(location, responseKey string, retVal interface{}) error {
+func (cli *ZSHttpClient) Wait(ctx context.Context, location, responseKey string, retVal interface{}) error {
 	header, err := cli.getHeader(location, http.MethodGet)
 	if err != nil {
 		return err
 	}
-	_, result, err := cli.httpWait(header, "", "", jsonutils.NewDict(), location)
+	_, result, err := cli.httpWait(ctx, header, "", "", jsonutils.NewDict(), location)
 	if err != nil {
 		return err
 	}
@@ -592,7 +592,7 @@ func (cli *ZSHttpClient) Wait(location, responseKey string, retVal interface{}) 
 	return result.Unmarshal(retVal, responseKey)
 }
 
-func (cli *ZSHttpClient) httpWait(header http.Header, action string, requestURL string, params jsonutils.JSONObject, location string) (http.Header, jsonutils.JSONObject, error) {
+func (cli *ZSHttpClient) httpWait(ctx context.Context, header http.Header, action string, requestURL string, params jsonutils.JSONObject, location string) (http.Header, jsonutils.JSONObject, error) {
 
 	configHost := fmt.Sprintf("%s:%d", cli.hostname, cli.port)
 	if !strings.Contains(location, configHost) {
@@ -606,7 +606,7 @@ func (cli *ZSHttpClient) httpWait(header http.Header, action string, requestURL 
 
 	return retryCallback(func() (http.Header, jsonutils.JSONObject, error) {
 
-		resp, err := httputils.Request(cli.httpClient, context.TODO(), httputils.GET, location, header, nil, cli.debug)
+		resp, err := httputils.Request(cli.httpClient, ctx, httputils.GET, location, header, nil, cli.debug)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, fmt.Sprintf("wait location %s", location))
 		}

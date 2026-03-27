@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // SecurityGroupL3NetworkRefInventoryView SecurityGroupL3NetworkRef
 type SecurityGroupL3NetworkRefInventoryView struct {

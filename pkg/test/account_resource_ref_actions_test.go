@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryAccountResourceRef(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAccountResourceRef(&queryParam)
+	result, err := accountLoginCli.QueryAccountResourceRef(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAccountResourceRef error: %v", err)
 		return

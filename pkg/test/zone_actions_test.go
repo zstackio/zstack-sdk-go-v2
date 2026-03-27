@@ -4,6 +4,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -13,7 +14,7 @@ import (
 
 func TestQueryZone(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryZone(&queryParam)
+	result, err := accountLoginCli.QueryZone(context.Background(), &queryParam)
 	if err != nil {
 		t.Errorf("TestQueryZone error: %v", err)
 		return

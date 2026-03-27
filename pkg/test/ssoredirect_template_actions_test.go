@@ -3,6 +3,7 @@
 package test
 
 import (
+	"context"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestCreateSSORedirectTemplate(t *testing.T) {
 	// 		// Add other required fields
 	// 	},
 	// }
-	// result, err := accountLoginCli.CreateSSORedirectTemplate(createParam)
+	// result, err := accountLoginCli.CreateSSORedirectTemplate(context.Background(), createParam)
 	// if err != nil {
 	// 	t.Errorf("TestCreateSSORedirectTemplate error: %v", err)
 	// 	return
@@ -25,7 +26,7 @@ func TestCreateSSORedirectTemplate(t *testing.T) {
 	// golog.Infof("CreateSSORedirectTemplate result: %s", result.Uuid)
 	//
 	// // Cleanup: delete the created resource
-	// err = accountLoginCli.DeleteSSORedirectTemplate(result.Uuid, param.DeleteModePermissive)
+	// err = accountLoginCli.DeleteSSORedirectTemplate(context.Background(), result.Uuid, param.DeleteModePermissive)
 	// if err != nil {
 	// 	t.Logf("Cleanup DeleteSSORedirectTemplate error: %v", err)
 	// }
