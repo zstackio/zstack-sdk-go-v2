@@ -11,17 +11,17 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateSNSAliyunSmsEndpoint creates SNSAliyunSmsEndpoint
-func (cli *ZSClient) CreateSNSAliyunSmsEndpoint(params param.CreateSNSAliyunSmsEndpointParam) (*view.SNSAliyunSmsEndpointInventoryView, error) {
+func (cli *ZSClient) CreateSNSAliyunSmsEndpoint(ctx context.Context, params param.CreateSNSAliyunSmsEndpointParam) (*view.SNSAliyunSmsEndpointInventoryView, error) {
 	resp := view.SNSAliyunSmsEndpointInventoryView{}
-	if err := cli.Post("v1/sns/sms-endpoints/aliyunsms", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/sns/sms-endpoints/aliyunsms", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // ValidateSNSAliyunSmsEndpoint operates on SNSAliyunSmsEndpoint
-func (cli *ZSClient) ValidateSNSAliyunSmsEndpoint(uuid string, params param.ValidateSNSAliyunSmsEndpointParam) (*view.SNSAliyunSmsEndpointInventoryView, error) {
+func (cli *ZSClient) ValidateSNSAliyunSmsEndpoint(ctx context.Context, uuid string, params param.ValidateSNSAliyunSmsEndpointParam) (*view.SNSAliyunSmsEndpointInventoryView, error) {
 	resp := view.SNSAliyunSmsEndpointInventoryView{}
-	if err := cli.PutWithRespKey("v1/sns/sms-endpoints", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/sns/sms-endpoints", uuid, "", map[string]interface{}{
 		"validateSNSAliyunSmsEndpoint": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -11,6 +11,6 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteAutoScalingTemplate deletes AutoScalingTemplate
-func (cli *ZSClient) DeleteAutoScalingTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/autoscaling/template", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteAutoScalingTemplate(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/autoscaling/template", uuid, string(deleteMode))
 }

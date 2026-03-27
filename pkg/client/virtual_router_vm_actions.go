@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryVirtualRouterVm queries VirtualRouterVm list
-func (cli *ZSClient) QueryVirtualRouterVm(params *param.QueryParam) ([]view.ApplianceVmInventoryView, error) {
+func (cli *ZSClient) QueryVirtualRouterVm(ctx context.Context, params *param.QueryParam) ([]view.ApplianceVmInventoryView, error) {
 	var resp []view.ApplianceVmInventoryView
-	return resp, cli.List("v1/vm-instances/appliances/virtual-routers", params, &resp)
+	return resp, cli.List(ctx, "v1/vm-instances/appliances/virtual-routers", params, &resp)
 }
 
-func (cli *ZSClient) GetVirtualRouterVm(uuid string) (*view.ApplianceVmInventoryView, error) {
+func (cli *ZSClient) GetVirtualRouterVm(ctx context.Context, uuid string) (*view.ApplianceVmInventoryView, error) {
 	var resp view.ApplianceVmInventoryView
-	if err := cli.Get("v1/vm-instances/appliances/virtual-routers", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/vm-instances/appliances/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageVirtualRouterVm Pagination
-func (cli *ZSClient) PageVirtualRouterVm(params *param.QueryParam) ([]view.ApplianceVmInventoryView, int, error) {
+func (cli *ZSClient) PageVirtualRouterVm(ctx context.Context, params *param.QueryParam) ([]view.ApplianceVmInventoryView, int, error) {
 	var virtualRouterVms []view.ApplianceVmInventoryView
-	total, err := cli.Page("v1/vm-instances/appliances/virtual-routers", params, &virtualRouterVms)
+	total, err := cli.Page(ctx, "v1/vm-instances/appliances/virtual-routers", params, &virtualRouterVms)
 	return virtualRouterVms, total, err
 }

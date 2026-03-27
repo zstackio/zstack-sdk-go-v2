@@ -10663,16 +10663,6 @@ type GetLicenseUKeyStatusParam struct {
 	BaseParam
 	Params GetLicenseUKeyStatusParamDetail `json:"params"`
 }
-// SetL3NetworkRouterInterfaceIpParamDetail SetL3NetworkRouterInterfaceIp detail param
-type SetL3NetworkRouterInterfaceIpParamDetail struct {
-	RouterInterfaceIp string `json:"routerInterfaceIp" validate:"required"`
-}
-
-// SetL3NetworkRouterInterfaceIpParam SetL3NetworkRouterInterfaceIp request param
-type SetL3NetworkRouterInterfaceIpParam struct {
-	BaseParam
-	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"params"`
-}
 // AddTicketTypesToTicketFlowCollectionParamDetail AddTicketTypesToTicketFlowCollection detail param
 type AddTicketTypesToTicketFlowCollectionParamDetail struct {
 	TicketTypeUuids []string `json:"ticketTypeUuids" validate:"required"`
@@ -10682,6 +10672,16 @@ type AddTicketTypesToTicketFlowCollectionParamDetail struct {
 type AddTicketTypesToTicketFlowCollectionParam struct {
 	BaseParam
 	Params AddTicketTypesToTicketFlowCollectionParamDetail `json:"params"`
+}
+// SetL3NetworkRouterInterfaceIpParamDetail SetL3NetworkRouterInterfaceIp detail param
+type SetL3NetworkRouterInterfaceIpParamDetail struct {
+	RouterInterfaceIp string `json:"routerInterfaceIp" validate:"required"`
+}
+
+// SetL3NetworkRouterInterfaceIpParam SetL3NetworkRouterInterfaceIp request param
+type SetL3NetworkRouterInterfaceIpParam struct {
+	BaseParam
+	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"params"`
 }
 // GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail GetConnectionBetweenL3NetworkAndAliyunVSwitch detail param
 type GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {

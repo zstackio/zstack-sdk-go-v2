@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // AddAliyunNasMountTarget adds AliyunNasMountTarget
-func (cli *ZSClient) AddAliyunNasMountTarget(params param.AddAliyunNasMountTargetParam) (*view.AliyunNasMountTargetInventoryView, error) {
+func (cli *ZSClient) AddAliyunNasMountTarget(ctx context.Context, params param.AddAliyunNasMountTargetParam) (*view.AliyunNasMountTargetInventoryView, error) {
 	resp := view.AliyunNasMountTargetInventoryView{}
-	if err := cli.PutWithRespKey("v1/nas/aliyun/mount", "", "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/nas/aliyun/mount", "", "", map[string]interface{}{
 		"addAliyunNasMountTarget": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,9 +21,9 @@ func (cli *ZSClient) AddAliyunNasMountTarget(params param.AddAliyunNasMountTarge
 	return &resp, nil
 }
 // CreateAliyunNasMountTarget creates AliyunNasMountTarget
-func (cli *ZSClient) CreateAliyunNasMountTarget(params param.CreateAliyunNasMountTargetParam) (*view.NasMountTargetInventoryView, error) {
+func (cli *ZSClient) CreateAliyunNasMountTarget(ctx context.Context, params param.CreateAliyunNasMountTargetParam) (*view.NasMountTargetInventoryView, error) {
 	resp := view.NasMountTargetInventoryView{}
-	if err := cli.Post("v1/nas/aliyun/mount", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/nas/aliyun/mount", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

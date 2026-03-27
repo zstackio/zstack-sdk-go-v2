@@ -11,41 +11,41 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteUserGroup deletes UserGroup
-func (cli *ZSClient) DeleteUserGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/accounts/groups", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteUserGroup(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/accounts/groups", uuid, string(deleteMode))
 }
 // CreateUserGroup creates UserGroup
-func (cli *ZSClient) CreateUserGroup(params param.CreateUserGroupParam) (*view.UserGroupInventoryView, error) {
+func (cli *ZSClient) CreateUserGroup(ctx context.Context, params param.CreateUserGroupParam) (*view.UserGroupInventoryView, error) {
 	resp := view.UserGroupInventoryView{}
-	if err := cli.Post("v1/accounts/groups", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/accounts/groups", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QueryUserGroup queries UserGroup list
-func (cli *ZSClient) QueryUserGroup(params *param.QueryParam) ([]view.UserGroupInventoryView, error) {
+func (cli *ZSClient) QueryUserGroup(ctx context.Context, params *param.QueryParam) ([]view.UserGroupInventoryView, error) {
 	var resp []view.UserGroupInventoryView
-	return resp, cli.List("v1/accounts/groups", params, &resp)
+	return resp, cli.List(ctx, "v1/accounts/groups", params, &resp)
 }
 
-func (cli *ZSClient) GetUserGroup(uuid string) (*view.UserGroupInventoryView, error) {
+func (cli *ZSClient) GetUserGroup(ctx context.Context, uuid string) (*view.UserGroupInventoryView, error) {
 	var resp view.UserGroupInventoryView
-	if err := cli.Get("v1/accounts/groups", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/accounts/groups", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageUserGroup Pagination
-func (cli *ZSClient) PageUserGroup(params *param.QueryParam) ([]view.UserGroupInventoryView, int, error) {
+func (cli *ZSClient) PageUserGroup(ctx context.Context, params *param.QueryParam) ([]view.UserGroupInventoryView, int, error) {
 	var userGroups []view.UserGroupInventoryView
-	total, err := cli.Page("v1/accounts/groups", params, &userGroups)
+	total, err := cli.Page(ctx, "v1/accounts/groups", params, &userGroups)
 	return userGroups, total, err
 }
 // UpdateUserGroup updates UserGroup
-func (cli *ZSClient) UpdateUserGroup(params param.UpdateUserGroupParam) (*view.UserGroupInventoryView, error) {
+func (cli *ZSClient) UpdateUserGroup(ctx context.Context, params param.UpdateUserGroupParam) (*view.UserGroupInventoryView, error) {
 	resp := view.UserGroupInventoryView{}
-	if err := cli.PutWithRespKey("v1/accounts/groups/actions", "", "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/accounts/groups/actions", "", "", map[string]interface{}{
 		"updateUserGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

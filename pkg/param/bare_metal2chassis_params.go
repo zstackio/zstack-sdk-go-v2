@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // InspectBareMetal2ChassisParamDetail InspectBareMetal2Chassis detail param
 type InspectBareMetal2ChassisParamDetail struct {

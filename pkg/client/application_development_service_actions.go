@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryApplicationDevelopmentService queries ApplicationDevelopmentService list
-func (cli *ZSClient) QueryApplicationDevelopmentService(params *param.QueryParam) ([]view.ApplicationDevelopmentServiceInventoryView, error) {
+func (cli *ZSClient) QueryApplicationDevelopmentService(ctx context.Context, params *param.QueryParam) ([]view.ApplicationDevelopmentServiceInventoryView, error) {
 	var resp []view.ApplicationDevelopmentServiceInventoryView
-	return resp, cli.List("v1/ai/model-services/app/", params, &resp)
+	return resp, cli.List(ctx, "v1/ai/model-services/app/", params, &resp)
 }
 
-func (cli *ZSClient) GetApplicationDevelopmentService(uuid string) (*view.ApplicationDevelopmentServiceInventoryView, error) {
+func (cli *ZSClient) GetApplicationDevelopmentService(ctx context.Context, uuid string) (*view.ApplicationDevelopmentServiceInventoryView, error) {
 	var resp view.ApplicationDevelopmentServiceInventoryView
-	if err := cli.Get("v1/ai/model-services/app/", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/ai/model-services/app/", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageApplicationDevelopmentService Pagination
-func (cli *ZSClient) PageApplicationDevelopmentService(params *param.QueryParam) ([]view.ApplicationDevelopmentServiceInventoryView, int, error) {
+func (cli *ZSClient) PageApplicationDevelopmentService(ctx context.Context, params *param.QueryParam) ([]view.ApplicationDevelopmentServiceInventoryView, int, error) {
 	var applicationDevelopmentServices []view.ApplicationDevelopmentServiceInventoryView
-	total, err := cli.Page("v1/ai/model-services/app/", params, &applicationDevelopmentServices)
+	total, err := cli.Page(ctx, "v1/ai/model-services/app/", params, &applicationDevelopmentServices)
 	return applicationDevelopmentServices, total, err
 }

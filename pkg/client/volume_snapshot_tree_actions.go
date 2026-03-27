@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryVolumeSnapshotTree queries VolumeSnapshotTree list
-func (cli *ZSClient) QueryVolumeSnapshotTree(params *param.QueryParam) ([]view.VolumeSnapshotTreeInventoryView, error) {
+func (cli *ZSClient) QueryVolumeSnapshotTree(ctx context.Context, params *param.QueryParam) ([]view.VolumeSnapshotTreeInventoryView, error) {
 	var resp []view.VolumeSnapshotTreeInventoryView
-	return resp, cli.List("v1/volume-snapshots/trees", params, &resp)
+	return resp, cli.List(ctx, "v1/volume-snapshots/trees", params, &resp)
 }
 
-func (cli *ZSClient) GetVolumeSnapshotTree(uuid string) (*view.VolumeSnapshotTreeInventoryView, error) {
+func (cli *ZSClient) GetVolumeSnapshotTree(ctx context.Context, uuid string) (*view.VolumeSnapshotTreeInventoryView, error) {
 	var resp view.VolumeSnapshotTreeInventoryView
-	if err := cli.Get("v1/volume-snapshots/trees", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/volume-snapshots/trees", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageVolumeSnapshotTree Pagination
-func (cli *ZSClient) PageVolumeSnapshotTree(params *param.QueryParam) ([]view.VolumeSnapshotTreeInventoryView, int, error) {
+func (cli *ZSClient) PageVolumeSnapshotTree(ctx context.Context, params *param.QueryParam) ([]view.VolumeSnapshotTreeInventoryView, int, error) {
 	var volumeSnapshotTrees []view.VolumeSnapshotTreeInventoryView
-	total, err := cli.Page("v1/volume-snapshots/trees", params, &volumeSnapshotTrees)
+	total, err := cli.Page(ctx, "v1/volume-snapshots/trees", params, &volumeSnapshotTrees)
 	return volumeSnapshotTrees, total, err
 }

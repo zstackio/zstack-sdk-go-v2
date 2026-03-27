@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateSNSFeiShuEndpoint updates SNSFeiShuEndpoint
-func (cli *ZSClient) UpdateSNSFeiShuEndpoint(uuid string, params param.UpdateSNSFeiShuEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
+func (cli *ZSClient) UpdateSNSFeiShuEndpoint(ctx context.Context, uuid string, params param.UpdateSNSFeiShuEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	resp := view.SNSApplicationEndpointInventoryView{}
-	if err := cli.PutWithRespKey("v1/sns/application-endpoints/feishu", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/sns/application-endpoints/feishu", uuid, "", map[string]interface{}{
 		"updateSNSFeiShuEndpoint": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,30 +21,30 @@ func (cli *ZSClient) UpdateSNSFeiShuEndpoint(uuid string, params param.UpdateSNS
 	return &resp, nil
 }
 // CreateSNSFeiShuEndpoint creates SNSFeiShuEndpoint
-func (cli *ZSClient) CreateSNSFeiShuEndpoint(params param.CreateSNSFeiShuEndpointParam) (*view.SNSFeiShuEndpointInventoryView, error) {
+func (cli *ZSClient) CreateSNSFeiShuEndpoint(ctx context.Context, params param.CreateSNSFeiShuEndpointParam) (*view.SNSFeiShuEndpointInventoryView, error) {
 	resp := view.SNSFeiShuEndpointInventoryView{}
-	if err := cli.Post("v1/sns/application-endpoints/feishu", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/sns/application-endpoints/feishu", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QuerySNSFeiShuEndpoint queries SNSFeiShuEndpoint list
-func (cli *ZSClient) QuerySNSFeiShuEndpoint(params *param.QueryParam) ([]view.SNSFeiShuEndpointInventoryView, error) {
+func (cli *ZSClient) QuerySNSFeiShuEndpoint(ctx context.Context, params *param.QueryParam) ([]view.SNSFeiShuEndpointInventoryView, error) {
 	var resp []view.SNSFeiShuEndpointInventoryView
-	return resp, cli.List("v1/sns/application-endpoints/feishu", params, &resp)
+	return resp, cli.List(ctx, "v1/sns/application-endpoints/feishu", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSFeiShuEndpoint(uuid string) (*view.SNSFeiShuEndpointInventoryView, error) {
+func (cli *ZSClient) GetSNSFeiShuEndpoint(ctx context.Context, uuid string) (*view.SNSFeiShuEndpointInventoryView, error) {
 	var resp view.SNSFeiShuEndpointInventoryView
-	if err := cli.Get("v1/sns/application-endpoints/feishu", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/sns/application-endpoints/feishu", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageSNSFeiShuEndpoint Pagination
-func (cli *ZSClient) PageSNSFeiShuEndpoint(params *param.QueryParam) ([]view.SNSFeiShuEndpointInventoryView, int, error) {
+func (cli *ZSClient) PageSNSFeiShuEndpoint(ctx context.Context, params *param.QueryParam) ([]view.SNSFeiShuEndpointInventoryView, int, error) {
 	var sNSFeiShuEndpoints []view.SNSFeiShuEndpointInventoryView
-	total, err := cli.Page("v1/sns/application-endpoints/feishu", params, &sNSFeiShuEndpoints)
+	total, err := cli.Page(ctx, "v1/sns/application-endpoints/feishu", params, &sNSFeiShuEndpoints)
 	return sNSFeiShuEndpoints, total, err
 }

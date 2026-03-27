@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // PolicyRouteRuleSetL3RefInventoryView PolicyRouteRuleSetL3Ref
 type PolicyRouteRuleSetL3RefInventoryView struct {

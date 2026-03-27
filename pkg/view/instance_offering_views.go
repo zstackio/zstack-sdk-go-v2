@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // InstanceOfferingInventoryView InstanceOffering
 type InstanceOfferingInventoryView struct {
@@ -19,11 +19,6 @@ type InstanceOfferingInventoryView struct {
 	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 	SortKey int `json:"sortKey,omitempty"`
 	State string `json:"state,omitempty"`
-}
-
-// ChangeInstanceOfferingEventView ChangeInstanceOfferingEvent
-type ChangeInstanceOfferingEventView struct {
-	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
 
 // UpdateInstanceOfferingEventView UpdateInstanceOfferingEvent

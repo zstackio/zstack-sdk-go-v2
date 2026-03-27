@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryVirtualRouterVRouterRouteTableRef queries VirtualRouterVRouterRouteTableRef list
-func (cli *ZSClient) QueryVirtualRouterVRouterRouteTableRef(params *param.QueryParam) ([]view.VirtualRouterVRouterRouteTableRefInventoryView, error) {
+func (cli *ZSClient) QueryVirtualRouterVRouterRouteTableRef(ctx context.Context, params *param.QueryParam) ([]view.VirtualRouterVRouterRouteTableRefInventoryView, error) {
 	var resp []view.VirtualRouterVRouterRouteTableRefInventoryView
-	return resp, cli.List("v1/vrouter-route-tables/virtual-router-refs", params, &resp)
+	return resp, cli.List(ctx, "v1/vrouter-route-tables/virtual-router-refs", params, &resp)
 }
 
-func (cli *ZSClient) GetVirtualRouterVRouterRouteTableRef(uuid string) (*view.VirtualRouterVRouterRouteTableRefInventoryView, error) {
+func (cli *ZSClient) GetVirtualRouterVRouterRouteTableRef(ctx context.Context, uuid string) (*view.VirtualRouterVRouterRouteTableRefInventoryView, error) {
 	var resp view.VirtualRouterVRouterRouteTableRefInventoryView
-	if err := cli.Get("v1/vrouter-route-tables/virtual-router-refs", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/vrouter-route-tables/virtual-router-refs", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageVirtualRouterVRouterRouteTableRef Pagination
-func (cli *ZSClient) PageVirtualRouterVRouterRouteTableRef(params *param.QueryParam) ([]view.VirtualRouterVRouterRouteTableRefInventoryView, int, error) {
+func (cli *ZSClient) PageVirtualRouterVRouterRouteTableRef(ctx context.Context, params *param.QueryParam) ([]view.VirtualRouterVRouterRouteTableRefInventoryView, int, error) {
 	var virtualRouterVRouterRouteTableRefs []view.VirtualRouterVRouterRouteTableRefInventoryView
-	total, err := cli.Page("v1/vrouter-route-tables/virtual-router-refs", params, &virtualRouterVRouterRouteTableRefs)
+	total, err := cli.Page(ctx, "v1/vrouter-route-tables/virtual-router-refs", params, &virtualRouterVRouterRouteTableRefs)
 	return virtualRouterVRouterRouteTableRefs, total, err
 }

@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateTemplateConfig updates TemplateConfig
-func (cli *ZSClient) UpdateTemplateConfig(templateUuid string, params param.UpdateTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
+func (cli *ZSClient) UpdateTemplateConfig(ctx context.Context, templateUuid string, params param.UpdateTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
 	resp := view.TemplateConfigInventoryView{}
-	if err := cli.PutWithRespKey("v1/template-configurations", templateUuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/template-configurations", templateUuid, "", map[string]interface{}{
 		"updateTemplateConfig": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,29 +21,29 @@ func (cli *ZSClient) UpdateTemplateConfig(templateUuid string, params param.Upda
 	return &resp, nil
 }
 // QueryTemplateConfig queries TemplateConfig list
-func (cli *ZSClient) QueryTemplateConfig(params *param.QueryParam) ([]view.TemplateConfigInventoryView, error) {
+func (cli *ZSClient) QueryTemplateConfig(ctx context.Context, params *param.QueryParam) ([]view.TemplateConfigInventoryView, error) {
 	var resp []view.TemplateConfigInventoryView
-	return resp, cli.List("v1/template-configurations/configs", params, &resp)
+	return resp, cli.List(ctx, "v1/template-configurations/configs", params, &resp)
 }
 
-func (cli *ZSClient) GetTemplateConfig(uuid string) (*view.TemplateConfigInventoryView, error) {
+func (cli *ZSClient) GetTemplateConfig(ctx context.Context, uuid string) (*view.TemplateConfigInventoryView, error) {
 	var resp view.TemplateConfigInventoryView
-	if err := cli.Get("v1/template-configurations/configs", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/template-configurations/configs", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageTemplateConfig Pagination
-func (cli *ZSClient) PageTemplateConfig(params *param.QueryParam) ([]view.TemplateConfigInventoryView, int, error) {
+func (cli *ZSClient) PageTemplateConfig(ctx context.Context, params *param.QueryParam) ([]view.TemplateConfigInventoryView, int, error) {
 	var templateConfigs []view.TemplateConfigInventoryView
-	total, err := cli.Page("v1/template-configurations/configs", params, &templateConfigs)
+	total, err := cli.Page(ctx, "v1/template-configurations/configs", params, &templateConfigs)
 	return templateConfigs, total, err
 }
 // RevertTemplateConfig operates on TemplateConfig
-func (cli *ZSClient) RevertTemplateConfig(templateUuid string, params param.RevertTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
+func (cli *ZSClient) RevertTemplateConfig(ctx context.Context, templateUuid string, params param.RevertTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
 	resp := view.TemplateConfigInventoryView{}
-	if err := cli.PutWithRespKey("v1/template-configurations", templateUuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/template-configurations", templateUuid, "", map[string]interface{}{
 		"revertTemplateConfig": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -51,9 +51,9 @@ func (cli *ZSClient) RevertTemplateConfig(templateUuid string, params param.Reve
 	return &resp, nil
 }
 // ApplyTemplateConfig operates on TemplateConfig
-func (cli *ZSClient) ApplyTemplateConfig(templateUuid string, params param.ApplyTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
+func (cli *ZSClient) ApplyTemplateConfig(ctx context.Context, templateUuid string, params param.ApplyTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
 	resp := view.TemplateConfigInventoryView{}
-	if err := cli.PutWithRespKey("v1/template-configurations", templateUuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/template-configurations", templateUuid, "", map[string]interface{}{
 		"applyTemplateConfig": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -61,9 +61,9 @@ func (cli *ZSClient) ApplyTemplateConfig(templateUuid string, params param.Apply
 	return &resp, nil
 }
 // ResetTemplateConfig operates on TemplateConfig
-func (cli *ZSClient) ResetTemplateConfig(templateUuid string, params param.ResetTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
+func (cli *ZSClient) ResetTemplateConfig(ctx context.Context, templateUuid string, params param.ResetTemplateConfigParam) (*view.TemplateConfigInventoryView, error) {
 	resp := view.TemplateConfigInventoryView{}
-	if err := cli.PutWithRespKey("v1/template-configurations", templateUuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/template-configurations", templateUuid, "", map[string]interface{}{
 		"resetTemplateConfig": params.Params,
 	}, &resp); err != nil {
 		return nil, err

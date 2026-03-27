@@ -11,30 +11,30 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateSNSEmailEndpoint creates SNSEmailEndpoint
-func (cli *ZSClient) CreateSNSEmailEndpoint(params param.CreateSNSEmailEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
+func (cli *ZSClient) CreateSNSEmailEndpoint(ctx context.Context, params param.CreateSNSEmailEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	resp := view.SNSApplicationEndpointInventoryView{}
-	if err := cli.Post("v1/sns/application-endpoints/emails", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/sns/application-endpoints/emails", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QuerySNSEmailEndpoint queries SNSEmailEndpoint list
-func (cli *ZSClient) QuerySNSEmailEndpoint(params *param.QueryParam) ([]view.SNSEmailEndpointInventoryView, error) {
+func (cli *ZSClient) QuerySNSEmailEndpoint(ctx context.Context, params *param.QueryParam) ([]view.SNSEmailEndpointInventoryView, error) {
 	var resp []view.SNSEmailEndpointInventoryView
-	return resp, cli.List("v1/sns/application-endpoints/emails", params, &resp)
+	return resp, cli.List(ctx, "v1/sns/application-endpoints/emails", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSEmailEndpoint(uuid string) (*view.SNSEmailEndpointInventoryView, error) {
+func (cli *ZSClient) GetSNSEmailEndpoint(ctx context.Context, uuid string) (*view.SNSEmailEndpointInventoryView, error) {
 	var resp view.SNSEmailEndpointInventoryView
-	if err := cli.Get("v1/sns/application-endpoints/emails", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/sns/application-endpoints/emails", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageSNSEmailEndpoint Pagination
-func (cli *ZSClient) PageSNSEmailEndpoint(params *param.QueryParam) ([]view.SNSEmailEndpointInventoryView, int, error) {
+func (cli *ZSClient) PageSNSEmailEndpoint(ctx context.Context, params *param.QueryParam) ([]view.SNSEmailEndpointInventoryView, int, error) {
 	var sNSEmailEndpoints []view.SNSEmailEndpointInventoryView
-	total, err := cli.Page("v1/sns/application-endpoints/emails", params, &sNSEmailEndpoints)
+	total, err := cli.Page(ctx, "v1/sns/application-endpoints/emails", params, &sNSEmailEndpoints)
 	return sNSEmailEndpoints, total, err
 }

@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateAlertDataAck updates AlertDataAck
-func (cli *ZSClient) UpdateAlertDataAck(alertDataUuid string, params param.UpdateAlertDataAckParam) (*view.AlertDataAckInventoryView, error) {
+func (cli *ZSClient) UpdateAlertDataAck(ctx context.Context, alertDataUuid string, params param.UpdateAlertDataAckParam) (*view.AlertDataAckInventoryView, error) {
 	resp := view.AlertDataAckInventoryView{}
-	if err := cli.PutWithRespKey("v1/zwatch/alert-histories/acknowledgments", alertDataUuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/zwatch/alert-histories/acknowledgments", alertDataUuid, "", map[string]interface{}{
 		"updateAlertDataAck": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,22 +21,22 @@ func (cli *ZSClient) UpdateAlertDataAck(alertDataUuid string, params param.Updat
 	return &resp, nil
 }
 // QueryAlertDataAck queries AlertDataAck list
-func (cli *ZSClient) QueryAlertDataAck(params *param.QueryParam) ([]view.AlertDataAckInventoryView, error) {
+func (cli *ZSClient) QueryAlertDataAck(ctx context.Context, params *param.QueryParam) ([]view.AlertDataAckInventoryView, error) {
 	var resp []view.AlertDataAckInventoryView
-	return resp, cli.List("v1/zwatch/alert-histories/acknowledgments", params, &resp)
+	return resp, cli.List(ctx, "v1/zwatch/alert-histories/acknowledgments", params, &resp)
 }
 
-func (cli *ZSClient) GetAlertDataAck(uuid string) (*view.AlertDataAckInventoryView, error) {
+func (cli *ZSClient) GetAlertDataAck(ctx context.Context, uuid string) (*view.AlertDataAckInventoryView, error) {
 	var resp view.AlertDataAckInventoryView
-	if err := cli.Get("v1/zwatch/alert-histories/acknowledgments", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/zwatch/alert-histories/acknowledgments", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageAlertDataAck Pagination
-func (cli *ZSClient) PageAlertDataAck(params *param.QueryParam) ([]view.AlertDataAckInventoryView, int, error) {
+func (cli *ZSClient) PageAlertDataAck(ctx context.Context, params *param.QueryParam) ([]view.AlertDataAckInventoryView, int, error) {
 	var alertDataAcks []view.AlertDataAckInventoryView
-	total, err := cli.Page("v1/zwatch/alert-histories/acknowledgments", params, &alertDataAcks)
+	total, err := cli.Page(ctx, "v1/zwatch/alert-histories/acknowledgments", params, &alertDataAcks)
 	return alertDataAcks, total, err
 }

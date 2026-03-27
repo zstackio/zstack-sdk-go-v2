@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // KVMHostInventoryView KVMHost
 type KVMHostInventoryView struct {
@@ -42,11 +42,6 @@ type KVMHostInventoryView struct {
 	RaidStatus string `json:"raidStatus,omitempty"`
 	TemperatureStatus string `json:"temperatureStatus,omitempty"`
 	Architecture string `json:"architecture,omitempty"`
-}
-
-// AddHostEventView AddHostEvent
-type AddHostEventView struct {
-	Inventory HostInventoryView `json:"inventory,omitempty"`
 }
 
 // UpdateHostEventView UpdateHostEvent

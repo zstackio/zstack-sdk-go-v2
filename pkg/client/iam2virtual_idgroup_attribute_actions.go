@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateIAM2VirtualIDGroupAttribute updates IAM2VirtualIDGroupAttribute
-func (cli *ZSClient) UpdateIAM2VirtualIDGroupAttribute(uuid string, params param.UpdateIAM2VirtualIDGroupAttributeParam) (*view.IAM2VirtualIDGroupAttributeInventoryView, error) {
+func (cli *ZSClient) UpdateIAM2VirtualIDGroupAttribute(ctx context.Context, uuid string, params param.UpdateIAM2VirtualIDGroupAttributeParam) (*view.IAM2VirtualIDGroupAttributeInventoryView, error) {
 	resp := view.IAM2VirtualIDGroupAttributeInventoryView{}
-	if err := cli.PutWithRespKey("v1/iam2/projects/groups/attributes", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/iam2/projects/groups/attributes", uuid, "", map[string]interface{}{
 		"updateIAM2VirtualIDGroupAttribute": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,22 +21,22 @@ func (cli *ZSClient) UpdateIAM2VirtualIDGroupAttribute(uuid string, params param
 	return &resp, nil
 }
 // QueryIAM2VirtualIDGroupAttribute queries IAM2VirtualIDGroupAttribute list
-func (cli *ZSClient) QueryIAM2VirtualIDGroupAttribute(params *param.QueryParam) ([]view.IAM2VirtualIDGroupAttributeInventoryView, error) {
+func (cli *ZSClient) QueryIAM2VirtualIDGroupAttribute(ctx context.Context, params *param.QueryParam) ([]view.IAM2VirtualIDGroupAttributeInventoryView, error) {
 	var resp []view.IAM2VirtualIDGroupAttributeInventoryView
-	return resp, cli.List("v1/iam2/projects/groups/attributes/", params, &resp)
+	return resp, cli.List(ctx, "v1/iam2/projects/groups/attributes/", params, &resp)
 }
 
-func (cli *ZSClient) GetIAM2VirtualIDGroupAttribute(uuid string) (*view.IAM2VirtualIDGroupAttributeInventoryView, error) {
+func (cli *ZSClient) GetIAM2VirtualIDGroupAttribute(ctx context.Context, uuid string) (*view.IAM2VirtualIDGroupAttributeInventoryView, error) {
 	var resp view.IAM2VirtualIDGroupAttributeInventoryView
-	if err := cli.Get("v1/iam2/projects/groups/attributes/", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/iam2/projects/groups/attributes/", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageIAM2VirtualIDGroupAttribute Pagination
-func (cli *ZSClient) PageIAM2VirtualIDGroupAttribute(params *param.QueryParam) ([]view.IAM2VirtualIDGroupAttributeInventoryView, int, error) {
+func (cli *ZSClient) PageIAM2VirtualIDGroupAttribute(ctx context.Context, params *param.QueryParam) ([]view.IAM2VirtualIDGroupAttributeInventoryView, int, error) {
 	var iAM2VirtualIDGroupAttributes []view.IAM2VirtualIDGroupAttributeInventoryView
-	total, err := cli.Page("v1/iam2/projects/groups/attributes/", params, &iAM2VirtualIDGroupAttributes)
+	total, err := cli.Page(ctx, "v1/iam2/projects/groups/attributes/", params, &iAM2VirtualIDGroupAttributes)
 	return iAM2VirtualIDGroupAttributes, total, err
 }

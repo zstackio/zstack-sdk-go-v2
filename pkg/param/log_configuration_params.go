@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // UpdateLogConfigurationParamDetail UpdateLogConfiguration detail param
 type UpdateLogConfigurationParamDetail struct {

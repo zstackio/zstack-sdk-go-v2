@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryAccountResourceRef queries AccountResourceRef list
-func (cli *ZSClient) QueryAccountResourceRef(params *param.QueryParam) ([]view.AccountResourceRefInventoryView, error) {
+func (cli *ZSClient) QueryAccountResourceRef(ctx context.Context, params *param.QueryParam) ([]view.AccountResourceRefInventoryView, error) {
 	var resp []view.AccountResourceRefInventoryView
-	return resp, cli.List("v1/accounts/resources/refs", params, &resp)
+	return resp, cli.List(ctx, "v1/accounts/resources/refs", params, &resp)
 }
 
-func (cli *ZSClient) GetAccountResourceRef(uuid string) (*view.AccountResourceRefInventoryView, error) {
+func (cli *ZSClient) GetAccountResourceRef(ctx context.Context, uuid string) (*view.AccountResourceRefInventoryView, error) {
 	var resp view.AccountResourceRefInventoryView
-	if err := cli.Get("v1/accounts/resources/refs", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/accounts/resources/refs", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageAccountResourceRef Pagination
-func (cli *ZSClient) PageAccountResourceRef(params *param.QueryParam) ([]view.AccountResourceRefInventoryView, int, error) {
+func (cli *ZSClient) PageAccountResourceRef(ctx context.Context, params *param.QueryParam) ([]view.AccountResourceRefInventoryView, int, error) {
 	var accountResourceRefs []view.AccountResourceRefInventoryView
-	total, err := cli.Page("v1/accounts/resources/refs", params, &accountResourceRefs)
+	total, err := cli.Page(ctx, "v1/accounts/resources/refs", params, &accountResourceRefs)
 	return accountResourceRefs, total, err
 }

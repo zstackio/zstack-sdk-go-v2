@@ -11,13 +11,13 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteSNSTopic deletes SNSTopic
-func (cli *ZSClient) DeleteSNSTopic(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sns/topics", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteSNSTopic(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/sns/topics", uuid, string(deleteMode))
 }
 // UpdateSNSTopic updates SNSTopic
-func (cli *ZSClient) UpdateSNSTopic(uuid string, params param.UpdateSNSTopicParam) (*view.SNSTopicInventoryView, error) {
+func (cli *ZSClient) UpdateSNSTopic(ctx context.Context, uuid string, params param.UpdateSNSTopicParam) (*view.SNSTopicInventoryView, error) {
 	resp := view.SNSTopicInventoryView{}
-	if err := cli.PutWithRespKey("v1/sns/topics", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/sns/topics", uuid, "", map[string]interface{}{
 		"updateSNSTopic": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -25,29 +25,29 @@ func (cli *ZSClient) UpdateSNSTopic(uuid string, params param.UpdateSNSTopicPara
 	return &resp, nil
 }
 // QuerySNSTopic queries SNSTopic list
-func (cli *ZSClient) QuerySNSTopic(params *param.QueryParam) ([]view.SNSTopicInventoryView, error) {
+func (cli *ZSClient) QuerySNSTopic(ctx context.Context, params *param.QueryParam) ([]view.SNSTopicInventoryView, error) {
 	var resp []view.SNSTopicInventoryView
-	return resp, cli.List("v1/sns/topics", params, &resp)
+	return resp, cli.List(ctx, "v1/sns/topics", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSTopic(uuid string) (*view.SNSTopicInventoryView, error) {
+func (cli *ZSClient) GetSNSTopic(ctx context.Context, uuid string) (*view.SNSTopicInventoryView, error) {
 	var resp view.SNSTopicInventoryView
-	if err := cli.Get("v1/sns/topics", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/sns/topics", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageSNSTopic Pagination
-func (cli *ZSClient) PageSNSTopic(params *param.QueryParam) ([]view.SNSTopicInventoryView, int, error) {
+func (cli *ZSClient) PageSNSTopic(ctx context.Context, params *param.QueryParam) ([]view.SNSTopicInventoryView, int, error) {
 	var sNSTopics []view.SNSTopicInventoryView
-	total, err := cli.Page("v1/sns/topics", params, &sNSTopics)
+	total, err := cli.Page(ctx, "v1/sns/topics", params, &sNSTopics)
 	return sNSTopics, total, err
 }
 // CreateSNSTopic creates SNSTopic
-func (cli *ZSClient) CreateSNSTopic(params param.CreateSNSTopicParam) (*view.SNSTopicInventoryView, error) {
+func (cli *ZSClient) CreateSNSTopic(ctx context.Context, params param.CreateSNSTopicParam) (*view.SNSTopicInventoryView, error) {
 	resp := view.SNSTopicInventoryView{}
-	if err := cli.Post("v1/sns/topics", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/sns/topics", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

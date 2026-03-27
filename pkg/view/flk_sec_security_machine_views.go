@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // FlkSecSecurityMachineInventoryView FlkSecSecurityMachine
 type FlkSecSecurityMachineInventoryView struct {
@@ -19,5 +19,16 @@ type FlkSecSecurityMachineInventoryView struct {
 	Model string `json:"model,omitempty"`
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
+}
+
+// UpdateSecurityMachineEventView UpdateSecurityMachineEvent
+type UpdateSecurityMachineEventView struct {
+	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
+}
+
+// AddSecurityMachineEventView AddSecurityMachineEvent
+type AddSecurityMachineEventView struct {
+	Inventory SecurityMachineInventoryView `json:"inventory,omitempty"`
 }
 

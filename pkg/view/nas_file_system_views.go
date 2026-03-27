@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // NasFileSystemInventoryView NasFileSystem
 type NasFileSystemInventoryView struct {
@@ -23,6 +23,11 @@ type QueryNasFileSystemView struct {
 
 // UpdateNasFileSystemEventView UpdateNasFileSystemEvent
 type UpdateNasFileSystemEventView struct {
+	Inventory NasFileSystemInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateNasFileSystemEventView CreateNasFileSystemEvent
+type CreateNasFileSystemEventView struct {
 	Inventory NasFileSystemInventoryView `json:"inventory,omitempty"`
 }
 

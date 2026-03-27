@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateEcsVpc updates EcsVpc
-func (cli *ZSClient) UpdateEcsVpc(uuid string, params param.UpdateEcsVpcParam) (*view.EcsVpcInventoryView, error) {
+func (cli *ZSClient) UpdateEcsVpc(ctx context.Context, uuid string, params param.UpdateEcsVpcParam) (*view.EcsVpcInventoryView, error) {
 	resp := view.EcsVpcInventoryView{}
-	if err := cli.PutWithRespKey("v1/hybrid/aliyun/vpc", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/hybrid/aliyun/vpc", uuid, "", map[string]interface{}{
 		"updateEcsVpc": params.Params,
 	}, &resp); err != nil {
 		return nil, err

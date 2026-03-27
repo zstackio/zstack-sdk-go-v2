@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryVmInstanceDeviceAddressGroup queries VmInstanceDeviceAddressGroup list
-func (cli *ZSClient) QueryVmInstanceDeviceAddressGroup(params *param.QueryParam) ([]view.VmInstanceDeviceAddressGroupInventoryView, error) {
+func (cli *ZSClient) QueryVmInstanceDeviceAddressGroup(ctx context.Context, params *param.QueryParam) ([]view.VmInstanceDeviceAddressGroupInventoryView, error) {
 	var resp []view.VmInstanceDeviceAddressGroupInventoryView
-	return resp, cli.List("v1/vmInstance/device/address/group", params, &resp)
+	return resp, cli.List(ctx, "v1/vmInstance/device/address/group", params, &resp)
 }
 
-func (cli *ZSClient) GetVmInstanceDeviceAddressGroup(uuid string) (*view.VmInstanceDeviceAddressGroupInventoryView, error) {
+func (cli *ZSClient) GetVmInstanceDeviceAddressGroup(ctx context.Context, uuid string) (*view.VmInstanceDeviceAddressGroupInventoryView, error) {
 	var resp view.VmInstanceDeviceAddressGroupInventoryView
-	if err := cli.Get("v1/vmInstance/device/address/group", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/vmInstance/device/address/group", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageVmInstanceDeviceAddressGroup Pagination
-func (cli *ZSClient) PageVmInstanceDeviceAddressGroup(params *param.QueryParam) ([]view.VmInstanceDeviceAddressGroupInventoryView, int, error) {
+func (cli *ZSClient) PageVmInstanceDeviceAddressGroup(ctx context.Context, params *param.QueryParam) ([]view.VmInstanceDeviceAddressGroupInventoryView, int, error) {
 	var vmInstanceDeviceAddressGroups []view.VmInstanceDeviceAddressGroupInventoryView
-	total, err := cli.Page("v1/vmInstance/device/address/group", params, &vmInstanceDeviceAddressGroups)
+	total, err := cli.Page(ctx, "v1/vmInstance/device/address/group", params, &vmInstanceDeviceAddressGroups)
 	return vmInstanceDeviceAddressGroups, total, err
 }

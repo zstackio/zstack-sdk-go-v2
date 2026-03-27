@@ -11,17 +11,17 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateAliyunProxyVpc creates AliyunProxyVpc
-func (cli *ZSClient) CreateAliyunProxyVpc(params param.CreateAliyunProxyVpcParam) (*view.AliyunProxyVpcInventoryView, error) {
+func (cli *ZSClient) CreateAliyunProxyVpc(ctx context.Context, params param.CreateAliyunProxyVpcParam) (*view.AliyunProxyVpcInventoryView, error) {
 	resp := view.AliyunProxyVpcInventoryView{}
-	if err := cli.Post("v1/aliyun-proxy/vpcs", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/aliyun-proxy/vpcs", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // UpdateAliyunProxyVpc updates AliyunProxyVpc
-func (cli *ZSClient) UpdateAliyunProxyVpc(uuid string, params param.UpdateAliyunProxyVpcParam) (*view.AliyunProxyVpcInventoryView, error) {
+func (cli *ZSClient) UpdateAliyunProxyVpc(ctx context.Context, uuid string, params param.UpdateAliyunProxyVpcParam) (*view.AliyunProxyVpcInventoryView, error) {
 	resp := view.AliyunProxyVpcInventoryView{}
-	if err := cli.PutWithRespKey("v1/aliyun-proxy/vpcs", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/aliyun-proxy/vpcs", uuid, "", map[string]interface{}{
 		"updateAliyunProxyVpc": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -29,26 +29,26 @@ func (cli *ZSClient) UpdateAliyunProxyVpc(uuid string, params param.UpdateAliyun
 	return &resp, nil
 }
 // QueryAliyunProxyVpc queries AliyunProxyVpc list
-func (cli *ZSClient) QueryAliyunProxyVpc(params *param.QueryParam) ([]view.AliyunProxyVpcInventoryView, error) {
+func (cli *ZSClient) QueryAliyunProxyVpc(ctx context.Context, params *param.QueryParam) ([]view.AliyunProxyVpcInventoryView, error) {
 	var resp []view.AliyunProxyVpcInventoryView
-	return resp, cli.List("v1/aliyun-proxy/vpcs", params, &resp)
+	return resp, cli.List(ctx, "v1/aliyun-proxy/vpcs", params, &resp)
 }
 
-func (cli *ZSClient) GetAliyunProxyVpc(uuid string) (*view.AliyunProxyVpcInventoryView, error) {
+func (cli *ZSClient) GetAliyunProxyVpc(ctx context.Context, uuid string) (*view.AliyunProxyVpcInventoryView, error) {
 	var resp view.AliyunProxyVpcInventoryView
-	if err := cli.Get("v1/aliyun-proxy/vpcs", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/aliyun-proxy/vpcs", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageAliyunProxyVpc Pagination
-func (cli *ZSClient) PageAliyunProxyVpc(params *param.QueryParam) ([]view.AliyunProxyVpcInventoryView, int, error) {
+func (cli *ZSClient) PageAliyunProxyVpc(ctx context.Context, params *param.QueryParam) ([]view.AliyunProxyVpcInventoryView, int, error) {
 	var aliyunProxyVpcs []view.AliyunProxyVpcInventoryView
-	total, err := cli.Page("v1/aliyun-proxy/vpcs", params, &aliyunProxyVpcs)
+	total, err := cli.Page(ctx, "v1/aliyun-proxy/vpcs", params, &aliyunProxyVpcs)
 	return aliyunProxyVpcs, total, err
 }
 // DeleteAliyunProxyVpc deletes AliyunProxyVpc
-func (cli *ZSClient) DeleteAliyunProxyVpc(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/aliyun-proxy/vpcs", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteAliyunProxyVpc(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/aliyun-proxy/vpcs", uuid, string(deleteMode))
 }

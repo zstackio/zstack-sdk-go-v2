@@ -11,21 +11,21 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // AddEventRuleTemplate adds EventRuleTemplate
-func (cli *ZSClient) AddEventRuleTemplate(params param.AddEventRuleTemplateParam) (*view.EventRuleTemplateInventoryView, error) {
+func (cli *ZSClient) AddEventRuleTemplate(ctx context.Context, params param.AddEventRuleTemplateParam) (*view.EventRuleTemplateInventoryView, error) {
 	resp := view.EventRuleTemplateInventoryView{}
-	if err := cli.Post("v1/zwatch/monitortemplates/evenrules", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/zwatch/monitortemplates/evenrules", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // DeleteEventRuleTemplate deletes EventRuleTemplate
-func (cli *ZSClient) DeleteEventRuleTemplate(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/monitortemplates/evenrules", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteEventRuleTemplate(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/zwatch/monitortemplates/evenrules", uuid, string(deleteMode))
 }
 // UpdateEventRuleTemplate updates EventRuleTemplate
-func (cli *ZSClient) UpdateEventRuleTemplate(uuid string, params param.UpdateEventRuleTemplateParam) (*view.EventRuleTemplateInventoryView, error) {
+func (cli *ZSClient) UpdateEventRuleTemplate(ctx context.Context, uuid string, params param.UpdateEventRuleTemplateParam) (*view.EventRuleTemplateInventoryView, error) {
 	resp := view.EventRuleTemplateInventoryView{}
-	if err := cli.PutWithRespKey("v1/zwatch/monitortemplates/evenrules", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/zwatch/monitortemplates/evenrules", uuid, "", map[string]interface{}{
 		"updateEventRuleTemplate": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -33,22 +33,22 @@ func (cli *ZSClient) UpdateEventRuleTemplate(uuid string, params param.UpdateEve
 	return &resp, nil
 }
 // QueryEventRuleTemplate queries EventRuleTemplate list
-func (cli *ZSClient) QueryEventRuleTemplate(params *param.QueryParam) ([]view.EventRuleTemplateInventoryView, error) {
+func (cli *ZSClient) QueryEventRuleTemplate(ctx context.Context, params *param.QueryParam) ([]view.EventRuleTemplateInventoryView, error) {
 	var resp []view.EventRuleTemplateInventoryView
-	return resp, cli.List("v1/zwatch/monitortemplates/evenrules", params, &resp)
+	return resp, cli.List(ctx, "v1/zwatch/monitortemplates/evenrules", params, &resp)
 }
 
-func (cli *ZSClient) GetEventRuleTemplate(uuid string) (*view.EventRuleTemplateInventoryView, error) {
+func (cli *ZSClient) GetEventRuleTemplate(ctx context.Context, uuid string) (*view.EventRuleTemplateInventoryView, error) {
 	var resp view.EventRuleTemplateInventoryView
-	if err := cli.Get("v1/zwatch/monitortemplates/evenrules", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/zwatch/monitortemplates/evenrules", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageEventRuleTemplate Pagination
-func (cli *ZSClient) PageEventRuleTemplate(params *param.QueryParam) ([]view.EventRuleTemplateInventoryView, int, error) {
+func (cli *ZSClient) PageEventRuleTemplate(ctx context.Context, params *param.QueryParam) ([]view.EventRuleTemplateInventoryView, int, error) {
 	var eventRuleTemplates []view.EventRuleTemplateInventoryView
-	total, err := cli.Page("v1/zwatch/monitortemplates/evenrules", params, &eventRuleTemplates)
+	total, err := cli.Page(ctx, "v1/zwatch/monitortemplates/evenrules", params, &eventRuleTemplates)
 	return eventRuleTemplates, total, err
 }

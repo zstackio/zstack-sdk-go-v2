@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // GetHostNetworkInterfaceLldp gets HostNetworkInterfaceLldp by uuid
-func (cli *ZSClient) GetHostNetworkInterfaceLldp(uuid string) (*view.GetHostNetworkInterfaceLldpView, error) {
+func (cli *ZSClient) GetHostNetworkInterfaceLldp(ctx context.Context, uuid string) (*view.GetHostNetworkInterfaceLldpView, error) {
 	var resp view.GetHostNetworkInterfaceLldpView
-	if err := cli.GetWithRespKey("v1/hostNetworkInterface/lldp", uuid, "", nil, &resp); err != nil {
+	if err := cli.GetWithRespKey(ctx, "v1/hostNetworkInterface/lldp", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -11,17 +11,17 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // AddVCenter adds VCenter
-func (cli *ZSClient) AddVCenter(params param.AddVCenterParam) (*view.VCenterInventoryView, error) {
+func (cli *ZSClient) AddVCenter(ctx context.Context, params param.AddVCenterParam) (*view.VCenterInventoryView, error) {
 	resp := view.VCenterInventoryView{}
-	if err := cli.Post("v1/vcenters", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/vcenters", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // SyncVCenter operates on VCenter
-func (cli *ZSClient) SyncVCenter(uuid string, params param.SyncVCenterParam) (*view.VCenterInventoryView, error) {
+func (cli *ZSClient) SyncVCenter(ctx context.Context, uuid string, params param.SyncVCenterParam) (*view.VCenterInventoryView, error) {
 	resp := view.VCenterInventoryView{}
-	if err := cli.PutWithRespKey("v1/vcenters", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/vcenters", uuid, "", map[string]interface{}{
 		"syncVCenter": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -29,29 +29,29 @@ func (cli *ZSClient) SyncVCenter(uuid string, params param.SyncVCenterParam) (*v
 	return &resp, nil
 }
 // QueryVCenter queries VCenter list
-func (cli *ZSClient) QueryVCenter(params *param.QueryParam) ([]view.VCenterInventoryView, error) {
+func (cli *ZSClient) QueryVCenter(ctx context.Context, params *param.QueryParam) ([]view.VCenterInventoryView, error) {
 	var resp []view.VCenterInventoryView
-	return resp, cli.List("v1/vcenters", params, &resp)
+	return resp, cli.List(ctx, "v1/vcenters", params, &resp)
 }
 
-func (cli *ZSClient) GetVCenter(uuid string) (*view.VCenterInventoryView, error) {
+func (cli *ZSClient) GetVCenter(ctx context.Context, uuid string) (*view.VCenterInventoryView, error) {
 	var resp view.VCenterInventoryView
-	if err := cli.Get("v1/vcenters", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/vcenters", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageVCenter Pagination
-func (cli *ZSClient) PageVCenter(params *param.QueryParam) ([]view.VCenterInventoryView, int, error) {
+func (cli *ZSClient) PageVCenter(ctx context.Context, params *param.QueryParam) ([]view.VCenterInventoryView, int, error) {
 	var vCenters []view.VCenterInventoryView
-	total, err := cli.Page("v1/vcenters", params, &vCenters)
+	total, err := cli.Page(ctx, "v1/vcenters", params, &vCenters)
 	return vCenters, total, err
 }
 // UpdateVCenter updates VCenter
-func (cli *ZSClient) UpdateVCenter(uuid string, params param.UpdateVCenterParam) (*view.VCenterInventoryView, error) {
+func (cli *ZSClient) UpdateVCenter(ctx context.Context, uuid string, params param.UpdateVCenterParam) (*view.VCenterInventoryView, error) {
 	resp := view.VCenterInventoryView{}
-	if err := cli.PutWithRespKey("v1/vcenters", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/vcenters", uuid, "", map[string]interface{}{
 		"updateVCenter": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -59,6 +59,6 @@ func (cli *ZSClient) UpdateVCenter(uuid string, params param.UpdateVCenterParam)
 	return &resp, nil
 }
 // DeleteVCenter deletes VCenter
-func (cli *ZSClient) DeleteVCenter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vcenters", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteVCenter(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/vcenters", uuid, string(deleteMode))
 }

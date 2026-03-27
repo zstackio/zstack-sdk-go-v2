@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // GetOAuth2Token gets OAuth2Token by uuid
-func (cli *ZSClient) GetOAuth2Token() (*view.OAuth2TokenInventoryView, error) {
+func (cli *ZSClient) GetOAuth2Token(ctx context.Context) (*view.OAuth2TokenInventoryView, error) {
 	var resp view.GetOAuth2TokenView
-	if err := cli.GetWithRespKey("v1/get/oauth2/token", "", "inventory", nil, &resp); err != nil {
+	if err := cli.GetWithRespKey(ctx, "v1/get/oauth2/token", "", "inventory", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp.Inventory, nil

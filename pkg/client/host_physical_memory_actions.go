@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryHostPhysicalMemory queries HostPhysicalMemory list
-func (cli *ZSClient) QueryHostPhysicalMemory(params *param.QueryParam) ([]view.HostPhysicalMemoryInventoryView, error) {
+func (cli *ZSClient) QueryHostPhysicalMemory(ctx context.Context, params *param.QueryParam) ([]view.HostPhysicalMemoryInventoryView, error) {
 	var resp []view.HostPhysicalMemoryInventoryView
-	return resp, cli.List("v1/hosts/physicalmemory", params, &resp)
+	return resp, cli.List(ctx, "v1/hosts/physicalmemory", params, &resp)
 }
 
-func (cli *ZSClient) GetHostPhysicalMemory(uuid string) (*view.HostPhysicalMemoryInventoryView, error) {
+func (cli *ZSClient) GetHostPhysicalMemory(ctx context.Context, uuid string) (*view.HostPhysicalMemoryInventoryView, error) {
 	var resp view.HostPhysicalMemoryInventoryView
-	if err := cli.Get("v1/hosts/physicalmemory", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/hosts/physicalmemory", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageHostPhysicalMemory Pagination
-func (cli *ZSClient) PageHostPhysicalMemory(params *param.QueryParam) ([]view.HostPhysicalMemoryInventoryView, int, error) {
+func (cli *ZSClient) PageHostPhysicalMemory(ctx context.Context, params *param.QueryParam) ([]view.HostPhysicalMemoryInventoryView, int, error) {
 	var hostPhysicalMemories []view.HostPhysicalMemoryInventoryView
-	total, err := cli.Page("v1/hosts/physicalmemory", params, &hostPhysicalMemories)
+	total, err := cli.Page(ctx, "v1/hosts/physicalmemory", params, &hostPhysicalMemories)
 	return hostPhysicalMemories, total, err
 }

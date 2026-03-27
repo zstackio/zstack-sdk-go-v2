@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // DeleteIAM2OrganizationParamDetail DeleteIAM2Organization detail param
 type DeleteIAM2OrganizationParamDetail struct {

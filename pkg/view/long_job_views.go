@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // LongJobInventoryView LongJob
 type LongJobInventoryView struct {
@@ -53,6 +53,11 @@ type BatchAddBareMetal2ChassisEventView struct {
 
 // BatchCreateBaremetalChassisEventView BatchCreateBaremetalChassisEvent
 type BatchCreateBaremetalChassisEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
+}
+
+// SyncLdapServerEventView SyncLdapServerEvent
+type SyncLdapServerEventView struct {
 	Inventory LongJobInventoryView `json:"inventory,omitempty"`
 }
 

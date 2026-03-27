@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // SecretResourcePoolInventoryView SecretResourcePool
 type SecretResourcePoolInventoryView struct {
@@ -23,16 +23,6 @@ type SecretResourcePoolInventoryView struct {
 // DeleteSecretResourcePoolEventView DeleteSecretResourcePoolEvent
 type DeleteSecretResourcePoolEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// CreateSecretResourcePoolEventView CreateSecretResourcePoolEvent
-type CreateSecretResourcePoolEventView struct {
-	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateSecretResourcePoolEventView UpdateSecretResourcePoolEvent
-type UpdateSecretResourcePoolEventView struct {
-	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
 }
 
 // ChangeSecretResourcePoolStateEventView ChangeSecretResourcePoolStateEvent

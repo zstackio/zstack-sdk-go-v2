@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // CreateVmCdRomParamDetail CreateVmCdRom detail param
 type CreateVmCdRomParamDetail struct {

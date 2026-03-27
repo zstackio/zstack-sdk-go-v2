@@ -12,33 +12,33 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // RemoveSNSDingTalkAtPerson removes SNSDingTalkAtPerson
-func (cli *ZSClient) RemoveSNSDingTalkAtPerson(endpointUuid string, phoneNumber string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/sns/application-endpoints/ding-talk", endpointUuid, fmt.Sprintf("at-persons/%s", phoneNumber), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+func (cli *ZSClient) RemoveSNSDingTalkAtPerson(ctx context.Context, endpointUuid string, phoneNumber string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec(ctx, "v1/sns/application-endpoints/ding-talk", endpointUuid, fmt.Sprintf("at-persons/%s", phoneNumber), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 // QuerySNSDingTalkAtPerson queries SNSDingTalkAtPerson list
-func (cli *ZSClient) QuerySNSDingTalkAtPerson(params *param.QueryParam) ([]view.SNSDingTalkAtPersonInventoryView, error) {
+func (cli *ZSClient) QuerySNSDingTalkAtPerson(ctx context.Context, params *param.QueryParam) ([]view.SNSDingTalkAtPersonInventoryView, error) {
 	var resp []view.SNSDingTalkAtPersonInventoryView
-	return resp, cli.List("v1/sns/application-endpoints/ding-talk/at-persons", params, &resp)
+	return resp, cli.List(ctx, "v1/sns/application-endpoints/ding-talk/at-persons", params, &resp)
 }
 
-func (cli *ZSClient) GetSNSDingTalkAtPerson(uuid string) (*view.SNSDingTalkAtPersonInventoryView, error) {
+func (cli *ZSClient) GetSNSDingTalkAtPerson(ctx context.Context, uuid string) (*view.SNSDingTalkAtPersonInventoryView, error) {
 	var resp view.SNSDingTalkAtPersonInventoryView
-	if err := cli.Get("v1/sns/application-endpoints/ding-talk/at-persons", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/sns/application-endpoints/ding-talk/at-persons", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageSNSDingTalkAtPerson Pagination
-func (cli *ZSClient) PageSNSDingTalkAtPerson(params *param.QueryParam) ([]view.SNSDingTalkAtPersonInventoryView, int, error) {
+func (cli *ZSClient) PageSNSDingTalkAtPerson(ctx context.Context, params *param.QueryParam) ([]view.SNSDingTalkAtPersonInventoryView, int, error) {
 	var sNSDingTalkAtPersons []view.SNSDingTalkAtPersonInventoryView
-	total, err := cli.Page("v1/sns/application-endpoints/ding-talk/at-persons", params, &sNSDingTalkAtPersons)
+	total, err := cli.Page(ctx, "v1/sns/application-endpoints/ding-talk/at-persons", params, &sNSDingTalkAtPersons)
 	return sNSDingTalkAtPersons, total, err
 }
 // AddSNSDingTalkAtPerson adds SNSDingTalkAtPerson
-func (cli *ZSClient) AddSNSDingTalkAtPerson(params param.AddSNSDingTalkAtPersonParam) (*view.SNSDingTalkAtPersonInventoryView, error) {
+func (cli *ZSClient) AddSNSDingTalkAtPerson(ctx context.Context, params param.AddSNSDingTalkAtPersonParam) (*view.SNSDingTalkAtPersonInventoryView, error) {
 	resp := view.SNSDingTalkAtPersonInventoryView{}
-	if err := cli.Post("v1/sns/application-endpoints/ding-talk/at-persons", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/sns/application-endpoints/ding-talk/at-persons", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

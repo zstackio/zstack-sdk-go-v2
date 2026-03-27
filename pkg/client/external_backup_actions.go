@@ -11,26 +11,26 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteExternalBackup deletes ExternalBackup
-func (cli *ZSClient) DeleteExternalBackup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/externalbackup", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteExternalBackup(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/externalbackup", uuid, string(deleteMode))
 }
 // QueryExternalBackup queries ExternalBackup list
-func (cli *ZSClient) QueryExternalBackup(params *param.QueryParam) ([]view.ExternalBackupInventoryView, error) {
+func (cli *ZSClient) QueryExternalBackup(ctx context.Context, params *param.QueryParam) ([]view.ExternalBackupInventoryView, error) {
 	var resp []view.ExternalBackupInventoryView
-	return resp, cli.List("v1/externalbackup", params, &resp)
+	return resp, cli.List(ctx, "v1/externalbackup", params, &resp)
 }
 
-func (cli *ZSClient) GetExternalBackup(uuid string) (*view.ExternalBackupInventoryView, error) {
+func (cli *ZSClient) GetExternalBackup(ctx context.Context, uuid string) (*view.ExternalBackupInventoryView, error) {
 	var resp view.ExternalBackupInventoryView
-	if err := cli.Get("v1/externalbackup", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/externalbackup", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageExternalBackup Pagination
-func (cli *ZSClient) PageExternalBackup(params *param.QueryParam) ([]view.ExternalBackupInventoryView, int, error) {
+func (cli *ZSClient) PageExternalBackup(ctx context.Context, params *param.QueryParam) ([]view.ExternalBackupInventoryView, int, error) {
 	var externalBackups []view.ExternalBackupInventoryView
-	total, err := cli.Page("v1/externalbackup", params, &externalBackups)
+	total, err := cli.Page(ctx, "v1/externalbackup", params, &externalBackups)
 	return externalBackups, total, err
 }

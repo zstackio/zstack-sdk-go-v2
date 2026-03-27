@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // BareMetal2ChassisInventoryView BareMetal2Chassis
 type BareMetal2ChassisInventoryView struct {
@@ -32,6 +32,11 @@ type InspectBareMetal2ChassisEventView struct {
 // UpdateBareMetal2ChassisEventView UpdateBareMetal2ChassisEvent
 type UpdateBareMetal2ChassisEventView struct {
 	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryBareMetal2ChassisView QueryBareMetal2Chassis
+type QueryBareMetal2ChassisView struct {
+	Inventories []BareMetal2ChassisInventoryView `json:"inventories,omitempty"`
 }
 
 // ChangeBareMetal2ChassisStateEventView ChangeBareMetal2ChassisStateEvent

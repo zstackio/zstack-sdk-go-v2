@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // CreateIAM2VirtualIDGroupParamDetail CreateIAM2VirtualIDGroup detail param
 type CreateIAM2VirtualIDGroupParamDetail struct {

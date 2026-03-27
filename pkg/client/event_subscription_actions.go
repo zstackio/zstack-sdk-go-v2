@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryEventSubscription queries EventSubscription list
-func (cli *ZSClient) QueryEventSubscription(params *param.QueryParam) ([]view.EventSubscriptionInventoryView, error) {
+func (cli *ZSClient) QueryEventSubscription(ctx context.Context, params *param.QueryParam) ([]view.EventSubscriptionInventoryView, error) {
 	var resp []view.EventSubscriptionInventoryView
-	return resp, cli.List("v1/zwatch/events/subscriptions", params, &resp)
+	return resp, cli.List(ctx, "v1/zwatch/events/subscriptions", params, &resp)
 }
 
-func (cli *ZSClient) GetEventSubscription(uuid string) (*view.EventSubscriptionInventoryView, error) {
+func (cli *ZSClient) GetEventSubscription(ctx context.Context, uuid string) (*view.EventSubscriptionInventoryView, error) {
 	var resp view.EventSubscriptionInventoryView
-	if err := cli.Get("v1/zwatch/events/subscriptions", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/zwatch/events/subscriptions", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageEventSubscription Pagination
-func (cli *ZSClient) PageEventSubscription(params *param.QueryParam) ([]view.EventSubscriptionInventoryView, int, error) {
+func (cli *ZSClient) PageEventSubscription(ctx context.Context, params *param.QueryParam) ([]view.EventSubscriptionInventoryView, int, error) {
 	var eventSubscriptions []view.EventSubscriptionInventoryView
-	total, err := cli.Page("v1/zwatch/events/subscriptions", params, &eventSubscriptions)
+	total, err := cli.Page(ctx, "v1/zwatch/events/subscriptions", params, &eventSubscriptions)
 	return eventSubscriptions, total, err
 }

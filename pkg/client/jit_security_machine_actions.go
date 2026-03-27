@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateJitSecurityMachine updates JitSecurityMachine
-func (cli *ZSClient) UpdateJitSecurityMachine(uuid string, params param.UpdateJitSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
+func (cli *ZSClient) UpdateJitSecurityMachine(ctx context.Context, uuid string, params param.UpdateJitSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.PutWithRespKey("v1/security-machines/jida/auth-gateway", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/security-machines/jida/auth-gateway", uuid, "", map[string]interface{}{
 		"updateJitSecurityMachine": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,9 +21,9 @@ func (cli *ZSClient) UpdateJitSecurityMachine(uuid string, params param.UpdateJi
 	return &resp, nil
 }
 // AddJitSecurityMachine adds JitSecurityMachine
-func (cli *ZSClient) AddJitSecurityMachine(params param.AddJitSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
+func (cli *ZSClient) AddJitSecurityMachine(ctx context.Context, params param.AddJitSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Post("v1/security-machine/jida/auth-gateway", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/security-machine/jida/auth-gateway", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

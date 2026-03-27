@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryMiniStorageResourceReplication queries MiniStorageResourceReplication list
-func (cli *ZSClient) QueryMiniStorageResourceReplication(params *param.QueryParam) ([]view.MiniStorageResourceReplicationInventoryView, error) {
+func (cli *ZSClient) QueryMiniStorageResourceReplication(ctx context.Context, params *param.QueryParam) ([]view.MiniStorageResourceReplicationInventoryView, error) {
 	var resp []view.MiniStorageResourceReplicationInventoryView
-	return resp, cli.List("v1/primary-storage/mini/replications", params, &resp)
+	return resp, cli.List(ctx, "v1/primary-storage/mini/replications", params, &resp)
 }
 
-func (cli *ZSClient) GetMiniStorageResourceReplication(uuid string) (*view.MiniStorageResourceReplicationInventoryView, error) {
+func (cli *ZSClient) GetMiniStorageResourceReplication(ctx context.Context, uuid string) (*view.MiniStorageResourceReplicationInventoryView, error) {
 	var resp view.MiniStorageResourceReplicationInventoryView
-	if err := cli.Get("v1/primary-storage/mini/replications", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/primary-storage/mini/replications", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageMiniStorageResourceReplication Pagination
-func (cli *ZSClient) PageMiniStorageResourceReplication(params *param.QueryParam) ([]view.MiniStorageResourceReplicationInventoryView, int, error) {
+func (cli *ZSClient) PageMiniStorageResourceReplication(ctx context.Context, params *param.QueryParam) ([]view.MiniStorageResourceReplicationInventoryView, int, error) {
 	var miniStorageResourceReplications []view.MiniStorageResourceReplicationInventoryView
-	total, err := cli.Page("v1/primary-storage/mini/replications", params, &miniStorageResourceReplications)
+	total, err := cli.Page(ctx, "v1/primary-storage/mini/replications", params, &miniStorageResourceReplications)
 	return miniStorageResourceReplications, total, err
 }

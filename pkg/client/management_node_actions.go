@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryManagementNode queries ManagementNode list
-func (cli *ZSClient) QueryManagementNode(params *param.QueryParam) ([]view.ManagementNodeInventoryView, error) {
+func (cli *ZSClient) QueryManagementNode(ctx context.Context, params *param.QueryParam) ([]view.ManagementNodeInventoryView, error) {
 	var resp []view.ManagementNodeInventoryView
-	return resp, cli.List("v1/management-nodes", params, &resp)
+	return resp, cli.List(ctx, "v1/management-nodes", params, &resp)
 }
 
-func (cli *ZSClient) GetManagementNode(uuid string) (*view.ManagementNodeInventoryView, error) {
+func (cli *ZSClient) GetManagementNode(ctx context.Context, uuid string) (*view.ManagementNodeInventoryView, error) {
 	var resp view.ManagementNodeInventoryView
-	if err := cli.Get("v1/management-nodes", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/management-nodes", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageManagementNode Pagination
-func (cli *ZSClient) PageManagementNode(params *param.QueryParam) ([]view.ManagementNodeInventoryView, int, error) {
+func (cli *ZSClient) PageManagementNode(ctx context.Context, params *param.QueryParam) ([]view.ManagementNodeInventoryView, int, error) {
 	var managementNodes []view.ManagementNodeInventoryView
-	total, err := cli.Page("v1/management-nodes", params, &managementNodes)
+	total, err := cli.Page(ctx, "v1/management-nodes", params, &managementNodes)
 	return managementNodes, total, err
 }

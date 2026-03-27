@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateUserProxyConfig updates UserProxyConfig
-func (cli *ZSClient) UpdateUserProxyConfig(uuid string, params param.UpdateUserProxyConfigParam) (*view.UserProxyConfigInventoryView, error) {
+func (cli *ZSClient) UpdateUserProxyConfig(ctx context.Context, uuid string, params param.UpdateUserProxyConfigParam) (*view.UserProxyConfigInventoryView, error) {
 	resp := view.UserProxyConfigInventoryView{}
-	if err := cli.PutWithRespKey("v1/user-proxy-configs", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/user-proxy-configs", uuid, "", map[string]interface{}{
 		"updateUserProxyConfig": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,33 +21,33 @@ func (cli *ZSClient) UpdateUserProxyConfig(uuid string, params param.UpdateUserP
 	return &resp, nil
 }
 // DeleteUserProxyConfig deletes UserProxyConfig
-func (cli *ZSClient) DeleteUserProxyConfig(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/user-proxy-configs", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteUserProxyConfig(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/user-proxy-configs", uuid, string(deleteMode))
 }
 // QueryUserProxyConfig queries UserProxyConfig list
-func (cli *ZSClient) QueryUserProxyConfig(params *param.QueryParam) ([]view.UserProxyConfigInventoryView, error) {
+func (cli *ZSClient) QueryUserProxyConfig(ctx context.Context, params *param.QueryParam) ([]view.UserProxyConfigInventoryView, error) {
 	var resp []view.UserProxyConfigInventoryView
-	return resp, cli.List("v1/user-proxy-configs", params, &resp)
+	return resp, cli.List(ctx, "v1/user-proxy-configs", params, &resp)
 }
 
-func (cli *ZSClient) GetUserProxyConfig(uuid string) (*view.UserProxyConfigInventoryView, error) {
+func (cli *ZSClient) GetUserProxyConfig(ctx context.Context, uuid string) (*view.UserProxyConfigInventoryView, error) {
 	var resp view.UserProxyConfigInventoryView
-	if err := cli.Get("v1/user-proxy-configs", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/user-proxy-configs", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageUserProxyConfig Pagination
-func (cli *ZSClient) PageUserProxyConfig(params *param.QueryParam) ([]view.UserProxyConfigInventoryView, int, error) {
+func (cli *ZSClient) PageUserProxyConfig(ctx context.Context, params *param.QueryParam) ([]view.UserProxyConfigInventoryView, int, error) {
 	var userProxyConfigs []view.UserProxyConfigInventoryView
-	total, err := cli.Page("v1/user-proxy-configs", params, &userProxyConfigs)
+	total, err := cli.Page(ctx, "v1/user-proxy-configs", params, &userProxyConfigs)
 	return userProxyConfigs, total, err
 }
 // CreateUserProxyConfig creates UserProxyConfig
-func (cli *ZSClient) CreateUserProxyConfig(params param.CreateUserProxyConfigParam) (*view.UserProxyConfigInventoryView, error) {
+func (cli *ZSClient) CreateUserProxyConfig(ctx context.Context, params param.CreateUserProxyConfigParam) (*view.UserProxyConfigInventoryView, error) {
 	resp := view.UserProxyConfigInventoryView{}
-	if err := cli.Post("v1/user-proxy-configs", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/user-proxy-configs", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

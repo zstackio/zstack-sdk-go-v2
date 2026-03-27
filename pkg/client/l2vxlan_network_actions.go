@@ -11,30 +11,30 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateL2VxlanNetwork creates L2VxlanNetwork
-func (cli *ZSClient) CreateL2VxlanNetwork(params param.CreateL2VxlanNetworkParam) (*view.L2VxlanNetworkInventoryView, error) {
+func (cli *ZSClient) CreateL2VxlanNetwork(ctx context.Context, params param.CreateL2VxlanNetworkParam) (*view.L2VxlanNetworkInventoryView, error) {
 	resp := view.L2VxlanNetworkInventoryView{}
-	if err := cli.Post("v1/l2-networks/vxlan", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/l2-networks/vxlan", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QueryL2VxlanNetwork queries L2VxlanNetwork list
-func (cli *ZSClient) QueryL2VxlanNetwork(params *param.QueryParam) ([]view.L2VxlanNetworkInventoryView, error) {
+func (cli *ZSClient) QueryL2VxlanNetwork(ctx context.Context, params *param.QueryParam) ([]view.L2VxlanNetworkInventoryView, error) {
 	var resp []view.L2VxlanNetworkInventoryView
-	return resp, cli.List("v1/l2-networks/vxlan", params, &resp)
+	return resp, cli.List(ctx, "v1/l2-networks/vxlan", params, &resp)
 }
 
-func (cli *ZSClient) GetL2VxlanNetwork(uuid string) (*view.L2VxlanNetworkInventoryView, error) {
+func (cli *ZSClient) GetL2VxlanNetwork(ctx context.Context, uuid string) (*view.L2VxlanNetworkInventoryView, error) {
 	var resp view.L2VxlanNetworkInventoryView
-	if err := cli.Get("v1/l2-networks/vxlan", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/l2-networks/vxlan", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageL2VxlanNetwork Pagination
-func (cli *ZSClient) PageL2VxlanNetwork(params *param.QueryParam) ([]view.L2VxlanNetworkInventoryView, int, error) {
+func (cli *ZSClient) PageL2VxlanNetwork(ctx context.Context, params *param.QueryParam) ([]view.L2VxlanNetworkInventoryView, int, error) {
 	var l2VxlanNetworks []view.L2VxlanNetworkInventoryView
-	total, err := cli.Page("v1/l2-networks/vxlan", params, &l2VxlanNetworks)
+	total, err := cli.Page(ctx, "v1/l2-networks/vxlan", params, &l2VxlanNetworks)
 	return l2VxlanNetworks, total, err
 }

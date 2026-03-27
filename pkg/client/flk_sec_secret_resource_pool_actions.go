@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateFlkSecSecretResourcePool updates FlkSecSecretResourcePool
-func (cli *ZSClient) UpdateFlkSecSecretResourcePool(uuid string, params param.UpdateFlkSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
+func (cli *ZSClient) UpdateFlkSecSecretResourcePool(ctx context.Context, uuid string, params param.UpdateFlkSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.PutWithRespKey("v1/secret-resource-pools/flkSec", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/secret-resource-pools/flkSec", uuid, "", map[string]interface{}{
 		"updateFlkSecSecretResourcePool": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,9 +21,9 @@ func (cli *ZSClient) UpdateFlkSecSecretResourcePool(uuid string, params param.Up
 	return &resp, nil
 }
 // CreateFlkSecSecretResourcePool creates FlkSecSecretResourcePool
-func (cli *ZSClient) CreateFlkSecSecretResourcePool(params param.CreateFlkSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
+func (cli *ZSClient) CreateFlkSecSecretResourcePool(ctx context.Context, params param.CreateFlkSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Post("v1/secret-resource-pool/flkSec", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/secret-resource-pool/flkSec", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

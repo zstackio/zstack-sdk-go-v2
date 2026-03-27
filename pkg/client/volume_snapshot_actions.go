@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateVolumeSnapshot updates VolumeSnapshot
-func (cli *ZSClient) UpdateVolumeSnapshot(uuid string, params param.UpdateVolumeSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
+func (cli *ZSClient) UpdateVolumeSnapshot(ctx context.Context, uuid string, params param.UpdateVolumeSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
 	resp := view.VolumeSnapshotInventoryView{}
-	if err := cli.PutWithRespKey("v1/volume-snapshots", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/volume-snapshots", uuid, "", map[string]interface{}{
 		"updateVolumeSnapshot": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,33 +21,33 @@ func (cli *ZSClient) UpdateVolumeSnapshot(uuid string, params param.UpdateVolume
 	return &resp, nil
 }
 // QueryVolumeSnapshot queries VolumeSnapshot list
-func (cli *ZSClient) QueryVolumeSnapshot(params *param.QueryParam) ([]view.VolumeSnapshotInventoryView, error) {
+func (cli *ZSClient) QueryVolumeSnapshot(ctx context.Context, params *param.QueryParam) ([]view.VolumeSnapshotInventoryView, error) {
 	var resp []view.VolumeSnapshotInventoryView
-	return resp, cli.List("v1/volume-snapshots", params, &resp)
+	return resp, cli.List(ctx, "v1/volume-snapshots", params, &resp)
 }
 
-func (cli *ZSClient) GetVolumeSnapshot(uuid string) (*view.VolumeSnapshotInventoryView, error) {
+func (cli *ZSClient) GetVolumeSnapshot(ctx context.Context, uuid string) (*view.VolumeSnapshotInventoryView, error) {
 	var resp view.VolumeSnapshotInventoryView
-	if err := cli.Get("v1/volume-snapshots", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/volume-snapshots", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageVolumeSnapshot Pagination
-func (cli *ZSClient) PageVolumeSnapshot(params *param.QueryParam) ([]view.VolumeSnapshotInventoryView, int, error) {
+func (cli *ZSClient) PageVolumeSnapshot(ctx context.Context, params *param.QueryParam) ([]view.VolumeSnapshotInventoryView, int, error) {
 	var volumeSnapshots []view.VolumeSnapshotInventoryView
-	total, err := cli.Page("v1/volume-snapshots", params, &volumeSnapshots)
+	total, err := cli.Page(ctx, "v1/volume-snapshots", params, &volumeSnapshots)
 	return volumeSnapshots, total, err
 }
 // DeleteVolumeSnapshot deletes VolumeSnapshot
-func (cli *ZSClient) DeleteVolumeSnapshot(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volume-snapshots", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteVolumeSnapshot(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/volume-snapshots", uuid, string(deleteMode))
 }
 // CreateVolumeSnapshot creates VolumeSnapshot
-func (cli *ZSClient) CreateVolumeSnapshot(params param.CreateVolumeSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
+func (cli *ZSClient) CreateVolumeSnapshot(ctx context.Context, params param.CreateVolumeSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
 	resp := view.VolumeSnapshotInventoryView{}
-	if err := cli.Post("v1/volumes/{volumeUuid}/volume-snapshots", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/volumes/{volumeUuid}/volume-snapshots", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

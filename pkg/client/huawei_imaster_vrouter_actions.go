@@ -11,34 +11,34 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateHuaweiIMasterVRouter creates HuaweiIMasterVRouter
-func (cli *ZSClient) CreateHuaweiIMasterVRouter(params param.CreateHuaweiIMasterVRouterParam) (*view.HuaweiIMasterVRouterInventoryView, error) {
+func (cli *ZSClient) CreateHuaweiIMasterVRouter(ctx context.Context, params param.CreateHuaweiIMasterVRouterParam) (*view.HuaweiIMasterVRouterInventoryView, error) {
 	resp := view.HuaweiIMasterVRouterInventoryView{}
-	if err := cli.Post("v1/sdn-controller/huawei-imaster/vrouters", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/sdn-controller/huawei-imaster/vrouters", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QueryHuaweiIMasterVRouter queries HuaweiIMasterVRouter list
-func (cli *ZSClient) QueryHuaweiIMasterVRouter(params *param.QueryParam) ([]view.HuaweiIMasterVRouterInventoryView, error) {
+func (cli *ZSClient) QueryHuaweiIMasterVRouter(ctx context.Context, params *param.QueryParam) ([]view.HuaweiIMasterVRouterInventoryView, error) {
 	var resp []view.HuaweiIMasterVRouterInventoryView
-	return resp, cli.List("v1/sdn-controller/huawei-imaster/vrouters", params, &resp)
+	return resp, cli.List(ctx, "v1/sdn-controller/huawei-imaster/vrouters", params, &resp)
 }
 
-func (cli *ZSClient) GetHuaweiIMasterVRouter(uuid string) (*view.HuaweiIMasterVRouterInventoryView, error) {
+func (cli *ZSClient) GetHuaweiIMasterVRouter(ctx context.Context, uuid string) (*view.HuaweiIMasterVRouterInventoryView, error) {
 	var resp view.HuaweiIMasterVRouterInventoryView
-	if err := cli.Get("v1/sdn-controller/huawei-imaster/vrouters", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/sdn-controller/huawei-imaster/vrouters", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageHuaweiIMasterVRouter Pagination
-func (cli *ZSClient) PageHuaweiIMasterVRouter(params *param.QueryParam) ([]view.HuaweiIMasterVRouterInventoryView, int, error) {
+func (cli *ZSClient) PageHuaweiIMasterVRouter(ctx context.Context, params *param.QueryParam) ([]view.HuaweiIMasterVRouterInventoryView, int, error) {
 	var huaweiIMasterVRouters []view.HuaweiIMasterVRouterInventoryView
-	total, err := cli.Page("v1/sdn-controller/huawei-imaster/vrouters", params, &huaweiIMasterVRouters)
+	total, err := cli.Page(ctx, "v1/sdn-controller/huawei-imaster/vrouters", params, &huaweiIMasterVRouters)
 	return huaweiIMasterVRouters, total, err
 }
 // DeleteHuaweiIMasterVRouter deletes HuaweiIMasterVRouter
-func (cli *ZSClient) DeleteHuaweiIMasterVRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sdn-controller/huawei-imaster/vrouters", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteHuaweiIMasterVRouter(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/sdn-controller/huawei-imaster/vrouters", uuid, string(deleteMode))
 }

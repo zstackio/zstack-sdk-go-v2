@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // AutoScalingRuleTriggerInventoryView AutoScalingRuleTrigger
 type AutoScalingRuleTriggerInventoryView struct {
@@ -24,10 +24,5 @@ type QueryAutoScalingRuleTriggerView struct {
 // DeleteAutoScalingRuleTriggerEventView DeleteAutoScalingRuleTriggerEvent
 type DeleteAutoScalingRuleTriggerEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// CreateAutoScalingRuleTriggerEventView CreateAutoScalingRuleTriggerEvent
-type CreateAutoScalingRuleTriggerEventView struct {
-	Inventory AutoScalingRuleTriggerInventoryView `json:"inventory,omitempty"`
 }
 

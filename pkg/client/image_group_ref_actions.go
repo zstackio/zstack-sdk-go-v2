@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryImageGroupRef queries ImageGroupRef list
-func (cli *ZSClient) QueryImageGroupRef(params *param.QueryParam) ([]view.ImageGroupRefInventoryView, error) {
+func (cli *ZSClient) QueryImageGroupRef(ctx context.Context, params *param.QueryParam) ([]view.ImageGroupRefInventoryView, error) {
 	var resp []view.ImageGroupRefInventoryView
-	return resp, cli.List("v1/imagegrouprefs", params, &resp)
+	return resp, cli.List(ctx, "v1/imagegrouprefs", params, &resp)
 }
 
-func (cli *ZSClient) GetImageGroupRef(uuid string) (*view.ImageGroupRefInventoryView, error) {
+func (cli *ZSClient) GetImageGroupRef(ctx context.Context, uuid string) (*view.ImageGroupRefInventoryView, error) {
 	var resp view.ImageGroupRefInventoryView
-	if err := cli.Get("v1/imagegrouprefs", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/imagegrouprefs", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageImageGroupRef Pagination
-func (cli *ZSClient) PageImageGroupRef(params *param.QueryParam) ([]view.ImageGroupRefInventoryView, int, error) {
+func (cli *ZSClient) PageImageGroupRef(ctx context.Context, params *param.QueryParam) ([]view.ImageGroupRefInventoryView, int, error) {
 	var imageGroupRefs []view.ImageGroupRefInventoryView
-	total, err := cli.Page("v1/imagegrouprefs", params, &imageGroupRefs)
+	total, err := cli.Page(ctx, "v1/imagegrouprefs", params, &imageGroupRefs)
 	return imageGroupRefs, total, err
 }

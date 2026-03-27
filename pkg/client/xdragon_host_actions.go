@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // AddXDragonHost adds XDragonHost
-func (cli *ZSClient) AddXDragonHost(params param.AddXDragonHostParam) (*view.HostInventoryView, error) {
+func (cli *ZSClient) AddXDragonHost(ctx context.Context, params param.AddXDragonHostParam) (*view.HostInventoryView, error) {
 	resp := view.HostInventoryView{}
-	if err := cli.Post("v1/hosts/xdragon", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/hosts/xdragon", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

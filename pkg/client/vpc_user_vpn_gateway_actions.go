@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateVpcUserVpnGateway updates VpcUserVpnGateway
-func (cli *ZSClient) UpdateVpcUserVpnGateway(uuid string, params param.UpdateVpcUserVpnGatewayParam) (*view.VpcUserVpnGatewayInventoryView, error) {
+func (cli *ZSClient) UpdateVpcUserVpnGateway(ctx context.Context, uuid string, params param.UpdateVpcUserVpnGatewayParam) (*view.VpcUserVpnGatewayInventoryView, error) {
 	resp := view.VpcUserVpnGatewayInventoryView{}
-	if err := cli.PutWithRespKey("v1/hybrid/user-vpn", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/hybrid/user-vpn", uuid, "", map[string]interface{}{
 		"updateVpcUserVpnGateway": params.Params,
 	}, &resp); err != nil {
 		return nil, err

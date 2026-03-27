@@ -11,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryMonitorGroupAlarm queries MonitorGroupAlarm list
-func (cli *ZSClient) QueryMonitorGroupAlarm(params *param.QueryParam) ([]view.MonitorGroupAlarmInventoryView, error) {
+func (cli *ZSClient) QueryMonitorGroupAlarm(ctx context.Context, params *param.QueryParam) ([]view.MonitorGroupAlarmInventoryView, error) {
 	var resp []view.MonitorGroupAlarmInventoryView
-	return resp, cli.List("v1/zwatch/monitorgroups/alarms", params, &resp)
+	return resp, cli.List(ctx, "v1/zwatch/monitorgroups/alarms", params, &resp)
 }
 
-func (cli *ZSClient) GetMonitorGroupAlarm(uuid string) (*view.MonitorGroupAlarmInventoryView, error) {
+func (cli *ZSClient) GetMonitorGroupAlarm(ctx context.Context, uuid string) (*view.MonitorGroupAlarmInventoryView, error) {
 	var resp view.MonitorGroupAlarmInventoryView
-	if err := cli.Get("v1/zwatch/monitorgroups/alarms", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/zwatch/monitorgroups/alarms", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageMonitorGroupAlarm Pagination
-func (cli *ZSClient) PageMonitorGroupAlarm(params *param.QueryParam) ([]view.MonitorGroupAlarmInventoryView, int, error) {
+func (cli *ZSClient) PageMonitorGroupAlarm(ctx context.Context, params *param.QueryParam) ([]view.MonitorGroupAlarmInventoryView, int, error) {
 	var monitorGroupAlarms []view.MonitorGroupAlarmInventoryView
-	total, err := cli.Page("v1/zwatch/monitorgroups/alarms", params, &monitorGroupAlarms)
+	total, err := cli.Page(ctx, "v1/zwatch/monitorgroups/alarms", params, &monitorGroupAlarms)
 	return monitorGroupAlarms, total, err
 }

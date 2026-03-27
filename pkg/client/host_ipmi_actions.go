@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateHostIpmi updates HostIpmi
-func (cli *ZSClient) UpdateHostIpmi(uuid string, params param.UpdateHostIpmiParam) (*view.HostIpmiInventoryView, error) {
+func (cli *ZSClient) UpdateHostIpmi(ctx context.Context, uuid string, params param.UpdateHostIpmiParam) (*view.HostIpmiInventoryView, error) {
 	resp := view.HostIpmiInventoryView{}
-	if err := cli.PutWithRespKey("v1/hosts/ipmi", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/hosts/ipmi", uuid, "", map[string]interface{}{
 		"updateHostIpmi": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // BareMetal2GatewayInventoryView BareMetal2Gateway
 type BareMetal2GatewayInventoryView struct {
@@ -84,5 +84,10 @@ type DeleteBareMetal2GatewayEventView struct {
 // AttachBareMetal2GatewayToClusterEventView AttachBareMetal2GatewayToClusterEvent
 type AttachBareMetal2GatewayToClusterEventView struct {
 	Inventory BareMetal2GatewayInventoryView `json:"inventory,omitempty"`
+}
+
+// AddHostEventView AddHostEvent
+type AddHostEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
 }
 

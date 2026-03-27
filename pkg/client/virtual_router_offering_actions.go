@@ -11,37 +11,37 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryVirtualRouterOffering queries VirtualRouterOffering list
-func (cli *ZSClient) QueryVirtualRouterOffering(params *param.QueryParam) ([]view.VirtualRouterOfferingInventoryView, error) {
+func (cli *ZSClient) QueryVirtualRouterOffering(ctx context.Context, params *param.QueryParam) ([]view.VirtualRouterOfferingInventoryView, error) {
 	var resp []view.VirtualRouterOfferingInventoryView
-	return resp, cli.List("v1/instance-offerings/virtual-routers", params, &resp)
+	return resp, cli.List(ctx, "v1/instance-offerings/virtual-routers", params, &resp)
 }
 
-func (cli *ZSClient) GetVirtualRouterOffering(uuid string) (*view.VirtualRouterOfferingInventoryView, error) {
+func (cli *ZSClient) GetVirtualRouterOffering(ctx context.Context, uuid string) (*view.VirtualRouterOfferingInventoryView, error) {
 	var resp view.VirtualRouterOfferingInventoryView
-	if err := cli.Get("v1/instance-offerings/virtual-routers", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/instance-offerings/virtual-routers", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageVirtualRouterOffering Pagination
-func (cli *ZSClient) PageVirtualRouterOffering(params *param.QueryParam) ([]view.VirtualRouterOfferingInventoryView, int, error) {
+func (cli *ZSClient) PageVirtualRouterOffering(ctx context.Context, params *param.QueryParam) ([]view.VirtualRouterOfferingInventoryView, int, error) {
 	var virtualRouterOfferings []view.VirtualRouterOfferingInventoryView
-	total, err := cli.Page("v1/instance-offerings/virtual-routers", params, &virtualRouterOfferings)
+	total, err := cli.Page(ctx, "v1/instance-offerings/virtual-routers", params, &virtualRouterOfferings)
 	return virtualRouterOfferings, total, err
 }
 // CreateVirtualRouterOffering creates VirtualRouterOffering
-func (cli *ZSClient) CreateVirtualRouterOffering(params param.CreateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {
+func (cli *ZSClient) CreateVirtualRouterOffering(ctx context.Context, params param.CreateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.Post("v1/instance-offerings/virtual-routers", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/instance-offerings/virtual-routers", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // UpdateVirtualRouterOffering updates VirtualRouterOffering
-func (cli *ZSClient) UpdateVirtualRouterOffering(uuid string, params param.UpdateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {
+func (cli *ZSClient) UpdateVirtualRouterOffering(ctx context.Context, uuid string, params param.UpdateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.PutWithRespKey("v1/instance-offerings/virtual-routers", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/instance-offerings/virtual-routers", uuid, "", map[string]interface{}{
 		"updateVirtualRouterOffering": params.Params,
 	}, &resp); err != nil {
 		return nil, err

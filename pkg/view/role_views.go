@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now // avoid unused import
+var _ = time.Now() // avoid unused import
 
 // RoleInventoryView Role
 type RoleInventoryView struct {
@@ -20,6 +20,11 @@ type RoleInventoryView struct {
 
 // ChangeRoleStateEventView ChangeRoleStateEvent
 type ChangeRoleStateEventView struct {
+	Inventory RoleInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateRoleEventView CreateRoleEvent
+type CreateRoleEventView struct {
 	Inventory RoleInventoryView `json:"inventory,omitempty"`
 }
 

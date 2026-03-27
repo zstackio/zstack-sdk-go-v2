@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateScsiLun updates ScsiLun
-func (cli *ZSClient) UpdateScsiLun(uuid string, params param.UpdateScsiLunParam) (*view.ScsiLunInventoryView, error) {
+func (cli *ZSClient) UpdateScsiLun(ctx context.Context, uuid string, params param.UpdateScsiLunParam) (*view.ScsiLunInventoryView, error) {
 	resp := view.ScsiLunInventoryView{}
-	if err := cli.PutWithRespKey("v1/storage-devices/scsi-lun", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/storage-devices/scsi-lun", uuid, "", map[string]interface{}{
 		"updateScsiLun": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -21,22 +21,22 @@ func (cli *ZSClient) UpdateScsiLun(uuid string, params param.UpdateScsiLunParam)
 	return &resp, nil
 }
 // QueryScsiLun queries ScsiLun list
-func (cli *ZSClient) QueryScsiLun(params *param.QueryParam) ([]view.ScsiLunInventoryView, error) {
+func (cli *ZSClient) QueryScsiLun(ctx context.Context, params *param.QueryParam) ([]view.ScsiLunInventoryView, error) {
 	var resp []view.ScsiLunInventoryView
-	return resp, cli.List("v1/storage-devices/scsi-lun/luns", params, &resp)
+	return resp, cli.List(ctx, "v1/storage-devices/scsi-lun/luns", params, &resp)
 }
 
-func (cli *ZSClient) GetScsiLun(uuid string) (*view.ScsiLunInventoryView, error) {
+func (cli *ZSClient) GetScsiLun(ctx context.Context, uuid string) (*view.ScsiLunInventoryView, error) {
 	var resp view.ScsiLunInventoryView
-	if err := cli.Get("v1/storage-devices/scsi-lun/luns", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/storage-devices/scsi-lun/luns", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageScsiLun Pagination
-func (cli *ZSClient) PageScsiLun(params *param.QueryParam) ([]view.ScsiLunInventoryView, int, error) {
+func (cli *ZSClient) PageScsiLun(ctx context.Context, params *param.QueryParam) ([]view.ScsiLunInventoryView, int, error) {
 	var scsiLuns []view.ScsiLunInventoryView
-	total, err := cli.Page("v1/storage-devices/scsi-lun/luns", params, &scsiLuns)
+	total, err := cli.Page(ctx, "v1/storage-devices/scsi-lun/luns", params, &scsiLuns)
 	return scsiLuns, total, err
 }

@@ -11,17 +11,17 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateAccessControlList creates AccessControlList
-func (cli *ZSClient) CreateAccessControlList(params param.CreateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
+func (cli *ZSClient) CreateAccessControlList(ctx context.Context, params param.CreateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
 	resp := view.AccessControlListInventoryView{}
-	if err := cli.Post("v1/access-control-lists", params, &resp); err != nil {
+	if err := cli.Post(ctx, "v1/access-control-lists", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // UpdateAccessControlList updates AccessControlList
-func (cli *ZSClient) UpdateAccessControlList(uuid string, params param.UpdateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
+func (cli *ZSClient) UpdateAccessControlList(ctx context.Context, uuid string, params param.UpdateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
 	resp := view.AccessControlListInventoryView{}
-	if err := cli.PutWithRespKey("v1/access-control-lists", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey(ctx, "v1/access-control-lists", uuid, "", map[string]interface{}{
 		"updateAccessControlList": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -29,26 +29,26 @@ func (cli *ZSClient) UpdateAccessControlList(uuid string, params param.UpdateAcc
 	return &resp, nil
 }
 // QueryAccessControlList queries AccessControlList list
-func (cli *ZSClient) QueryAccessControlList(params *param.QueryParam) ([]view.AccessControlListInventoryView, error) {
+func (cli *ZSClient) QueryAccessControlList(ctx context.Context, params *param.QueryParam) ([]view.AccessControlListInventoryView, error) {
 	var resp []view.AccessControlListInventoryView
-	return resp, cli.List("v1/access-control-lists", params, &resp)
+	return resp, cli.List(ctx, "v1/access-control-lists", params, &resp)
 }
 
-func (cli *ZSClient) GetAccessControlList(uuid string) (*view.AccessControlListInventoryView, error) {
+func (cli *ZSClient) GetAccessControlList(ctx context.Context, uuid string) (*view.AccessControlListInventoryView, error) {
 	var resp view.AccessControlListInventoryView
-	if err := cli.Get("v1/access-control-lists", uuid, nil, &resp); err != nil {
+	if err := cli.Get(ctx, "v1/access-control-lists", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageAccessControlList Pagination
-func (cli *ZSClient) PageAccessControlList(params *param.QueryParam) ([]view.AccessControlListInventoryView, int, error) {
+func (cli *ZSClient) PageAccessControlList(ctx context.Context, params *param.QueryParam) ([]view.AccessControlListInventoryView, int, error) {
 	var accessControlLists []view.AccessControlListInventoryView
-	total, err := cli.Page("v1/access-control-lists", params, &accessControlLists)
+	total, err := cli.Page(ctx, "v1/access-control-lists", params, &accessControlLists)
 	return accessControlLists, total, err
 }
 // DeleteAccessControlList deletes AccessControlList
-func (cli *ZSClient) DeleteAccessControlList(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/access-control-lists", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteAccessControlList(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/access-control-lists", uuid, string(deleteMode))
 }
