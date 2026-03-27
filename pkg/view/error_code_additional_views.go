@@ -16,5 +16,7 @@ type ErrorCodeView struct {
 	Cost string `json:"cost,omitempty"`
 	Cause *ErrorCodeView `json:"cause,omitempty"`
 	Opaque interface{} `json:"opaque,omitempty"`
+	GlobalErrorCode string `json:"globalErrorCode,omitempty"`
+	Message string `json:"message,omitempty"`
 }
 

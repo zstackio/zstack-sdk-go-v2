@@ -27,10 +27,6 @@ type ModelEvalServiceInstanceGroupInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Yaml string `json:"yaml,omitempty"`
 	SupportMetrics []string `json:"supportMetrics,omitempty"`
-}
-
-// QueryModelServiceInstanceGroupView QueryModelServiceInstanceGroup
-type QueryModelServiceInstanceGroupView struct {
-	Inventories []ModelServiceInstanceGroupInventoryView `json:"inventories,omitempty"`
+	ExportPath string `json:"exportPath,omitempty"`
 }
 

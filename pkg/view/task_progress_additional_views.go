@@ -19,5 +19,6 @@ type TaskProgressInventoryView struct {
 	Time int64 `json:"time,omitempty"`
 	SubTasks []*TaskProgressInventoryView `json:"subTasks,omitempty"`
 	Arguments string `json:"arguments,omitempty"`
+	ProgressDetail LongJobProgressDetailView `json:"progressDetail,omitempty"`
 }
 

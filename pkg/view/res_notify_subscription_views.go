@@ -15,6 +15,7 @@ type ResNotifySubscriptionInventoryView struct {
 	EventTypes string `json:"eventTypes,omitempty"`
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
+	AccountUuid string `json:"accountUuid,omitempty"`
 	WebhookRef ResNotifyWebhookRefInventoryView `json:"webhookRef,omitempty"`
 }
 

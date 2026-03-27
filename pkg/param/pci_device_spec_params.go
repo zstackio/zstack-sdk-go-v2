@@ -14,6 +14,7 @@ type UpdatePciDeviceSpecParamDetail struct {
 	RomVersion *string `json:"romVersion,omitempty"`
 	AbandonSpecRom *bool `json:"abandonSpecRom,omitempty"`
 	State *string `json:"state,omitempty"`
+	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
 }
 
 // UpdatePciDeviceSpecParam UpdatePciDeviceSpec request param

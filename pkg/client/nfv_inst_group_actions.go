@@ -21,7 +21,7 @@ func (cli *ZSClient) CreateNfvInstGroup(params param.CreateNfvInstGroupParam) (*
 // SyncNfvInstGroup operates on NfvInstGroup
 func (cli *ZSClient) SyncNfvInstGroup(uuid string, params param.SyncNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
 	resp := view.NfvInstGroupInventoryView{}
-	if err := cli.Put("v1/nfvinstgroup/group", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/nfvinstgroup/group", uuid, "", map[string]interface{}{
 		"syncNfvInstGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -31,7 +31,7 @@ func (cli *ZSClient) SyncNfvInstGroup(uuid string, params param.SyncNfvInstGroup
 // UpdateNfvInstGroup updates NfvInstGroup
 func (cli *ZSClient) UpdateNfvInstGroup(uuid string, params param.UpdateNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
 	resp := view.NfvInstGroupInventoryView{}
-	if err := cli.Put("v1/nfvinstgroup/group", uuid, map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/nfvinstgroup/group", uuid, "", map[string]interface{}{
 		"updateNfvInstGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

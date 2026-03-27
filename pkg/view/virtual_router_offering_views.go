@@ -31,8 +31,3 @@ type QueryVirtualRouterOfferingView struct {
 	Inventories []VirtualRouterOfferingInventoryView `json:"inventories,omitempty"`
 }
 
-// UpdateInstanceOfferingEventView UpdateInstanceOfferingEvent
-type UpdateInstanceOfferingEventView struct {
-	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
-}
-

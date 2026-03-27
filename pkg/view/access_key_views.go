@@ -16,6 +16,7 @@ type AccessKeyInventoryView struct {
 	AccessKeyID string `json:"AccessKeyID,omitempty"`
 	AccessKeySecret string `json:"AccessKeySecret,omitempty"`
 	State string `json:"state,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // ChangeAccessKeyStateEventView ChangeAccessKeyStateEvent

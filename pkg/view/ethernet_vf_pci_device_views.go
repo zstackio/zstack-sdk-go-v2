@@ -35,6 +35,8 @@ type EthernetVfPciDeviceInventoryView struct {
 	IommuGroup string `json:"iommuGroup,omitempty"`
 	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
 	Rev string `json:"rev,omitempty"`
+	DependentDevices string `json:"dependentDevices,omitempty"`
+	VmPciDeviceAddress string `json:"vmPciDeviceAddress,omitempty"`
 	MatchedPciDeviceOfferingRef []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDeviceOfferingRef,omitempty"`
 	MdevSpecRefs []PciDeviceMdevSpecRefInventoryView `json:"mdevSpecRefs,omitempty"`
 }
