@@ -2,4 +2,7 @@
 .gradle
 .vscode
 .test.test.exe
+# Ignore Claude Code local settings (contains API keys)
+.claude/settings.local.json
+
 # Ignore provider test file
