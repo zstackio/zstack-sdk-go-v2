@@ -15,8 +15,3 @@ type SshPrivateKeyPairInventoryView struct {
 	PrivateKey string `json:"privateKey,omitempty"`
 }
 
-// GenerateSshKeyPairView GenerateSshKeyPair
-type GenerateSshKeyPairView struct {
-	Inventory SshPrivateKeyPairInventoryView `json:"inventory,omitempty"`
-}
-

@@ -9790,19 +9790,19 @@ func (cli *ZSClient) GetLicenseUKeyStatus(ctx context.Context) (*view.UKeyInvent
 	return &resp, nil
 }
 
-// AddTicketTypesToTicketFlowCollection adds TicketTypesToTicketFlowCollection
-func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(ctx context.Context, params param.AddTicketTypesToTicketFlowCollectionParam) (*view.AddTicketTypesToTicketFlowCollectionEventView, error) {
-	resp := view.AddTicketTypesToTicketFlowCollectionEventView{}
-	if err := cli.Post(ctx, "v1/tickets/flow-collections/{ticketFlowCollectionUuid}/ticket-types", params, &resp); err != nil {
+// SetL3NetworkRouterInterfaceIp operates on L3NetworkRouterInterfaceIp
+func (cli *ZSClient) SetL3NetworkRouterInterfaceIp(ctx context.Context, params param.SetL3NetworkRouterInterfaceIpParam) (*view.SetL3NetworkRouterInterfaceIpEventView, error) {
+	resp := view.SetL3NetworkRouterInterfaceIpEventView{}
+	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/router-interface-ip", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// SetL3NetworkRouterInterfaceIp operates on L3NetworkRouterInterfaceIp
-func (cli *ZSClient) SetL3NetworkRouterInterfaceIp(ctx context.Context, params param.SetL3NetworkRouterInterfaceIpParam) (*view.SetL3NetworkRouterInterfaceIpEventView, error) {
-	resp := view.SetL3NetworkRouterInterfaceIpEventView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/router-interface-ip", params, &resp); err != nil {
+// AddTicketTypesToTicketFlowCollection adds TicketTypesToTicketFlowCollection
+func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(ctx context.Context, params param.AddTicketTypesToTicketFlowCollectionParam) (*view.AddTicketTypesToTicketFlowCollectionEventView, error) {
+	resp := view.AddTicketTypesToTicketFlowCollectionEventView{}
+	if err := cli.Post(ctx, "v1/tickets/flow-collections/{ticketFlowCollectionUuid}/ticket-types", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

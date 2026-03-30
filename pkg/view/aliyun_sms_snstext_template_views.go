@@ -29,11 +29,6 @@ type UpdateAliyunSmsSNSTextTemplateEventView struct {
 	Inventory AliyunSmsSNSTextTemplateInventoryView `json:"inventory,omitempty"`
 }
 
-// CreateSNSTextTemplateEventView CreateSNSTextTemplateEvent
-type CreateSNSTextTemplateEventView struct {
-	Inventory SNSTextTemplateInventoryView `json:"inventory,omitempty"`
-}
-
 // QueryAliyunSmsSNSTextTemplateView QueryAliyunSmsSNSTextTemplate
 type QueryAliyunSmsSNSTextTemplateView struct {
 	Inventories []AliyunSmsSNSTextTemplateInventoryView `json:"inventories,omitempty"`

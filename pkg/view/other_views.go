@@ -2983,13 +2983,13 @@ type GetLicenseUKeyStatusEventView struct {
 	Inventories []UKeyInventoryView `json:"inventories,omitempty"`
 }
 
-// AddTicketTypesToTicketFlowCollectionEventView AddTicketTypesToTicketFlowCollectionEvent
-type AddTicketTypesToTicketFlowCollectionEventView struct {
+// SetL3NetworkRouterInterfaceIpEventView SetL3NetworkRouterInterfaceIpEvent
+type SetL3NetworkRouterInterfaceIpEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// SetL3NetworkRouterInterfaceIpEventView SetL3NetworkRouterInterfaceIpEvent
-type SetL3NetworkRouterInterfaceIpEventView struct {
+// AddTicketTypesToTicketFlowCollectionEventView AddTicketTypesToTicketFlowCollectionEvent
+type AddTicketTypesToTicketFlowCollectionEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
