@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // TicketFlowCollectionInventoryView TicketFlowCollection
 type TicketFlowCollectionInventoryView struct {
@@ -16,6 +16,11 @@ type TicketFlowCollectionInventoryView struct {
 	IsDefault bool `json:"isDefault,omitempty"`
 	Flows []TicketFlowInventoryView `json:"flows,omitempty"`
 	TicketTypeUuids []string `json:"ticketTypeUuids,omitempty"`
+}
+
+// UpdateTicketFlowCollectionEventView UpdateTicketFlowCollectionEvent
+type UpdateTicketFlowCollectionEventView struct {
+	Inventory TicketFlowCollectionInventoryView `json:"inventory,omitempty"`
 }
 
 // QueryTicketFlowCollectionView QueryTicketFlowCollection

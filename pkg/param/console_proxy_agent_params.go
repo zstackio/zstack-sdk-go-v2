@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // ReconnectConsoleProxyAgentParamDetail ReconnectConsoleProxyAgent detail param
 type ReconnectConsoleProxyAgentParamDetail struct {

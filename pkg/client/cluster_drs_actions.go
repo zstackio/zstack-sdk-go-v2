@@ -3,7 +3,7 @@
 package client
 
 import (
-	"context"
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,41 +12,41 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryClusterDRS queries ClusterDRS list
-func (cli *ZSClient) QueryClusterDRS(ctx context.Context, params *param.QueryParam) ([]view.ClusterDRSInventoryView, error) {
+func (cli *ZSClient) QueryClusterDRS(params *param.QueryParam) ([]view.ClusterDRSInventoryView, error) {
 	var resp []view.ClusterDRSInventoryView
-	return resp, cli.List(ctx, "v1/clusters/drs", params, &resp)
+	return resp, cli.List("v1/clusters/drs", params, &resp)
 }
 
-func (cli *ZSClient) GetClusterDRS(ctx context.Context, uuid string) (*view.ClusterDRSInventoryView, error) {
+func (cli *ZSClient) GetClusterDRS(uuid string) (*view.ClusterDRSInventoryView, error) {
 	var resp view.ClusterDRSInventoryView
-	if err := cli.Get(ctx, "v1/clusters/drs", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/clusters/drs", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageClusterDRS Pagination
-func (cli *ZSClient) PageClusterDRS(ctx context.Context, params *param.QueryParam) ([]view.ClusterDRSInventoryView, int, error) {
+func (cli *ZSClient) PageClusterDRS(params *param.QueryParam) ([]view.ClusterDRSInventoryView, int, error) {
 	var clusterDRSs []view.ClusterDRSInventoryView
-	total, err := cli.Page(ctx, "v1/clusters/drs", params, &clusterDRSs)
+	total, err := cli.Page("v1/clusters/drs", params, &clusterDRSs)
 	return clusterDRSs, total, err
 }
 // DeleteClusterDRS deletes ClusterDRS
-func (cli *ZSClient) DeleteClusterDRS(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/clusters/drs", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteClusterDRS(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/clusters/drs", uuid, string(deleteMode))
 }
 // CreateClusterDRS creates ClusterDRS
-func (cli *ZSClient) CreateClusterDRS(ctx context.Context, params param.CreateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
+func (cli *ZSClient) CreateClusterDRS(clusterUuid string, params param.CreateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
 	resp := view.ClusterDRSInventoryView{}
-	if err := cli.Post(ctx, "v1/clusters/{clusterUuid}/drs", params, &resp); err != nil {
+	if err := cli.Post(fmt.Sprintf("v1/clusters/%s/drs", clusterUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // UpdateClusterDRS updates ClusterDRS
-func (cli *ZSClient) UpdateClusterDRS(ctx context.Context, uuid string, params param.UpdateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
+func (cli *ZSClient) UpdateClusterDRS(uuid string, params param.UpdateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
 	resp := view.ClusterDRSInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/clusters/drs", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/clusters/drs", uuid, "", map[string]interface{}{
 		"updateClusterDRS": params.Params,
 	}, &resp); err != nil {
 		return nil, err

@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // MonitorTriggerInventoryView MonitorTrigger
 type MonitorTriggerInventoryView struct {
@@ -38,6 +38,11 @@ type DeleteMonitorTriggerActionEventView struct {
 // ChangeMonitorTriggerStateEventView ChangeMonitorTriggerStateEvent
 type ChangeMonitorTriggerStateEventView struct {
 	Inventory MonitorTriggerInventoryView `json:"inventory,omitempty"`
+}
+
+// QueryMonitorTriggerActionView QueryMonitorTriggerAction
+type QueryMonitorTriggerActionView struct {
+	Inventories []MonitorTriggerActionInventoryView `json:"inventories,omitempty"`
 }
 
 // DeleteMonitorTriggerEventView DeleteMonitorTriggerEvent

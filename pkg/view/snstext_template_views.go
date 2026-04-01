@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // SNSTextTemplateInventoryView SNSTextTemplate
 type SNSTextTemplateInventoryView struct {
@@ -22,6 +22,11 @@ type SNSTextTemplateInventoryView struct {
 
 // UpdateSNSTextTemplateEventView UpdateSNSTextTemplateEvent
 type UpdateSNSTextTemplateEventView struct {
+	Inventory SNSTextTemplateInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateSNSTextTemplateEventView CreateSNSTextTemplateEvent
+type CreateSNSTextTemplateEventView struct {
 	Inventory SNSTextTemplateInventoryView `json:"inventory,omitempty"`
 }
 

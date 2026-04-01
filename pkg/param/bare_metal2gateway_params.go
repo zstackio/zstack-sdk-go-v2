@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // ReconnectBareMetal2GatewayParamDetail ReconnectBareMetal2Gateway detail param
 type ReconnectBareMetal2GatewayParamDetail struct {

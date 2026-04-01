@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,34 +11,34 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateCbtTask creates CbtTask
-func (cli *ZSClient) CreateCbtTask(ctx context.Context, params param.CreateCbtTaskParam) (*view.CbtTaskInventoryView, error) {
+func (cli *ZSClient) CreateCbtTask(params param.CreateCbtTaskParam) (*view.CbtTaskInventoryView, error) {
 	resp := view.CbtTaskInventoryView{}
-	if err := cli.Post(ctx, "v1/cbt-task/create", params, &resp); err != nil {
+	if err := cli.Post("v1/cbt-task/create", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // DeleteCbtTask deletes CbtTask
-func (cli *ZSClient) DeleteCbtTask(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/cbt-task", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteCbtTask(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/cbt-task", uuid, string(deleteMode))
 }
 // QueryCbtTask queries CbtTask list
-func (cli *ZSClient) QueryCbtTask(ctx context.Context, params *param.QueryParam) ([]view.CbtTaskInventoryView, error) {
+func (cli *ZSClient) QueryCbtTask(params *param.QueryParam) ([]view.CbtTaskInventoryView, error) {
 	var resp []view.CbtTaskInventoryView
-	return resp, cli.List(ctx, "v1/cbt-task", params, &resp)
+	return resp, cli.List("v1/cbt-task", params, &resp)
 }
 
-func (cli *ZSClient) GetCbtTask(ctx context.Context, uuid string) (*view.CbtTaskInventoryView, error) {
+func (cli *ZSClient) GetCbtTask(uuid string) (*view.CbtTaskInventoryView, error) {
 	var resp view.CbtTaskInventoryView
-	if err := cli.Get(ctx, "v1/cbt-task", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/cbt-task", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageCbtTask Pagination
-func (cli *ZSClient) PageCbtTask(ctx context.Context, params *param.QueryParam) ([]view.CbtTaskInventoryView, int, error) {
+func (cli *ZSClient) PageCbtTask(params *param.QueryParam) ([]view.CbtTaskInventoryView, int, error) {
 	var cbtTasks []view.CbtTaskInventoryView
-	total, err := cli.Page(ctx, "v1/cbt-task", params, &cbtTasks)
+	total, err := cli.Page("v1/cbt-task", params, &cbtTasks)
 	return cbtTasks, total, err
 }

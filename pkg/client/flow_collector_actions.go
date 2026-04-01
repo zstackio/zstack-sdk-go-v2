@@ -3,7 +3,7 @@
 package client
 
 import (
-	"context"
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,37 +12,37 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateFlowCollector creates FlowCollector
-func (cli *ZSClient) CreateFlowCollector(ctx context.Context, params param.CreateFlowCollectorParam) (*view.FlowCollectorInventoryView, error) {
+func (cli *ZSClient) CreateFlowCollector(flowMeterUuid string, params param.CreateFlowCollectorParam) (*view.FlowCollectorInventoryView, error) {
 	resp := view.FlowCollectorInventoryView{}
-	if err := cli.Post(ctx, "v1/flowmeters/{flowMeterUuid}/collectors", params, &resp); err != nil {
+	if err := cli.Post(fmt.Sprintf("v1/flowmeters/%s/collectors", flowMeterUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QueryFlowCollector queries FlowCollector list
-func (cli *ZSClient) QueryFlowCollector(ctx context.Context, params *param.QueryParam) ([]view.FlowCollectorInventoryView, error) {
+func (cli *ZSClient) QueryFlowCollector(params *param.QueryParam) ([]view.FlowCollectorInventoryView, error) {
 	var resp []view.FlowCollectorInventoryView
-	return resp, cli.List(ctx, "v1/flowmeters/collectors", params, &resp)
+	return resp, cli.List("v1/flowmeters/collectors", params, &resp)
 }
 
-func (cli *ZSClient) GetFlowCollector(ctx context.Context, uuid string) (*view.FlowCollectorInventoryView, error) {
+func (cli *ZSClient) GetFlowCollector(uuid string) (*view.FlowCollectorInventoryView, error) {
 	var resp view.FlowCollectorInventoryView
-	if err := cli.Get(ctx, "v1/flowmeters/collectors", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/flowmeters/collectors", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageFlowCollector Pagination
-func (cli *ZSClient) PageFlowCollector(ctx context.Context, params *param.QueryParam) ([]view.FlowCollectorInventoryView, int, error) {
+func (cli *ZSClient) PageFlowCollector(params *param.QueryParam) ([]view.FlowCollectorInventoryView, int, error) {
 	var flowCollectors []view.FlowCollectorInventoryView
-	total, err := cli.Page(ctx, "v1/flowmeters/collectors", params, &flowCollectors)
+	total, err := cli.Page("v1/flowmeters/collectors", params, &flowCollectors)
 	return flowCollectors, total, err
 }
 // UpdateFlowCollector updates FlowCollector
-func (cli *ZSClient) UpdateFlowCollector(ctx context.Context, uuid string, params param.UpdateFlowCollectorParam) (*view.FlowCollectorInventoryView, error) {
+func (cli *ZSClient) UpdateFlowCollector(uuid string, params param.UpdateFlowCollectorParam) (*view.FlowCollectorInventoryView, error) {
 	resp := view.FlowCollectorInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/flowmeters/collectors", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/flowmeters/collectors", uuid, "", map[string]interface{}{
 		"updateFlowCollector": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -50,6 +50,6 @@ func (cli *ZSClient) UpdateFlowCollector(ctx context.Context, uuid string, param
 	return &resp, nil
 }
 // DeleteFlowCollector deletes FlowCollector
-func (cli *ZSClient) DeleteFlowCollector(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/flowmeters/collectors", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteFlowCollector(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/flowmeters/collectors", uuid, string(deleteMode))
 }

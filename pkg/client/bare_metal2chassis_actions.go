@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // InspectBareMetal2Chassis operates on BareMetal2Chassis
-func (cli *ZSClient) InspectBareMetal2Chassis(ctx context.Context, uuid string, params param.InspectBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
+func (cli *ZSClient) InspectBareMetal2Chassis(uuid string, params param.InspectBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	resp := view.BareMetal2ChassisInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/baremetal2/chassis", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal2/chassis", uuid, "", map[string]interface{}{
 		"inspectBareMetal2Chassis": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -22,9 +21,9 @@ func (cli *ZSClient) InspectBareMetal2Chassis(ctx context.Context, uuid string, 
 	return &resp, nil
 }
 // UpdateBareMetal2Chassis updates BareMetal2Chassis
-func (cli *ZSClient) UpdateBareMetal2Chassis(ctx context.Context, uuid string, params param.UpdateBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
+func (cli *ZSClient) UpdateBareMetal2Chassis(uuid string, params param.UpdateBareMetal2ChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	resp := view.BareMetal2ChassisInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/baremetal2/chassis", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/baremetal2/chassis", uuid, "", map[string]interface{}{
 		"updateBareMetal2Chassis": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -32,26 +31,26 @@ func (cli *ZSClient) UpdateBareMetal2Chassis(ctx context.Context, uuid string, p
 	return &resp, nil
 }
 // QueryBareMetal2Chassis queries BareMetal2Chassis list
-func (cli *ZSClient) QueryBareMetal2Chassis(ctx context.Context, params *param.QueryParam) ([]view.BareMetal2ChassisInventoryView, error) {
+func (cli *ZSClient) QueryBareMetal2Chassis(params *param.QueryParam) ([]view.BareMetal2ChassisInventoryView, error) {
 	var resp []view.BareMetal2ChassisInventoryView
-	return resp, cli.List(ctx, "v1/baremetal2/chassis", params, &resp)
+	return resp, cli.List("v1/baremetal2/chassis", params, &resp)
 }
 
-func (cli *ZSClient) GetBareMetal2Chassis(ctx context.Context, uuid string) (*view.BareMetal2ChassisInventoryView, error) {
+func (cli *ZSClient) GetBareMetal2Chassis(uuid string) (*view.BareMetal2ChassisInventoryView, error) {
 	var resp view.BareMetal2ChassisInventoryView
-	if err := cli.Get(ctx, "v1/baremetal2/chassis", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/baremetal2/chassis", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageBareMetal2Chassis Pagination
-func (cli *ZSClient) PageBareMetal2Chassis(ctx context.Context, params *param.QueryParam) ([]view.BareMetal2ChassisInventoryView, int, error) {
+func (cli *ZSClient) PageBareMetal2Chassis(params *param.QueryParam) ([]view.BareMetal2ChassisInventoryView, int, error) {
 	var bareMetal2Chassis []view.BareMetal2ChassisInventoryView
-	total, err := cli.Page(ctx, "v1/baremetal2/chassis", params, &bareMetal2Chassis)
+	total, err := cli.Page("v1/baremetal2/chassis", params, &bareMetal2Chassis)
 	return bareMetal2Chassis, total, err
 }
 // DeleteBareMetal2Chassis deletes BareMetal2Chassis
-func (cli *ZSClient) DeleteBareMetal2Chassis(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/baremetal2/chassis", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteBareMetal2Chassis(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/baremetal2/chassis", uuid, string(deleteMode))
 }

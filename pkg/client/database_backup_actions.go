@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,26 +11,26 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteDatabaseBackup deletes DatabaseBackup
-func (cli *ZSClient) DeleteDatabaseBackup(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/database-backups", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteDatabaseBackup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/database-backups", uuid, string(deleteMode))
 }
 // CreateDatabaseBackup creates DatabaseBackup
-func (cli *ZSClient) CreateDatabaseBackup(ctx context.Context, params param.CreateDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
+func (cli *ZSClient) CreateDatabaseBackup(params param.CreateDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
 	resp := view.DatabaseBackupInventoryView{}
-	if err := cli.Post(ctx, "v1/database-backups", params, &resp); err != nil {
+	if err := cli.Post("v1/database-backups", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateDatabaseBackupAsync Async
-func (cli *ZSClient) CreateDatabaseBackupAsync(ctx context.Context, params param.CreateDatabaseBackupParam) (string, error) {
+func (cli *ZSClient) CreateDatabaseBackupAsync(params param.CreateDatabaseBackupParam) (string, error) {
 
 	resource := "v1/database-backups"
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -39,29 +38,29 @@ func (cli *ZSClient) CreateDatabaseBackupAsync(ctx context.Context, params param
 	return apiId, nil
 }
 // QueryDatabaseBackup queries DatabaseBackup list
-func (cli *ZSClient) QueryDatabaseBackup(ctx context.Context, params *param.QueryParam) ([]view.DatabaseBackupInventoryView, error) {
+func (cli *ZSClient) QueryDatabaseBackup(params *param.QueryParam) ([]view.DatabaseBackupInventoryView, error) {
 	var resp []view.DatabaseBackupInventoryView
-	return resp, cli.List(ctx, "v1/database-backups", params, &resp)
+	return resp, cli.List("v1/database-backups", params, &resp)
 }
 
-func (cli *ZSClient) GetDatabaseBackup(ctx context.Context, uuid string) (*view.DatabaseBackupInventoryView, error) {
+func (cli *ZSClient) GetDatabaseBackup(uuid string) (*view.DatabaseBackupInventoryView, error) {
 	var resp view.DatabaseBackupInventoryView
-	if err := cli.Get(ctx, "v1/database-backups", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/database-backups", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageDatabaseBackup Pagination
-func (cli *ZSClient) PageDatabaseBackup(ctx context.Context, params *param.QueryParam) ([]view.DatabaseBackupInventoryView, int, error) {
+func (cli *ZSClient) PageDatabaseBackup(params *param.QueryParam) ([]view.DatabaseBackupInventoryView, int, error) {
 	var databaseBackups []view.DatabaseBackupInventoryView
-	total, err := cli.Page(ctx, "v1/database-backups", params, &databaseBackups)
+	total, err := cli.Page("v1/database-backups", params, &databaseBackups)
 	return databaseBackups, total, err
 }
 // SyncDatabaseBackup operates on DatabaseBackup
-func (cli *ZSClient) SyncDatabaseBackup(ctx context.Context, imageStoreUuid string, params param.SyncDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
+func (cli *ZSClient) SyncDatabaseBackup(imageStoreUuid string, params param.SyncDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
 	resp := view.DatabaseBackupInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/database-backups/imageStore", imageStoreUuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/database-backups/imageStore", imageStoreUuid, "", map[string]interface{}{
 		"syncDatabaseBackup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

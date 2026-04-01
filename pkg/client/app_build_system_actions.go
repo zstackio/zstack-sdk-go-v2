@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,37 +11,37 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // AddAppBuildSystem adds AppBuildSystem
-func (cli *ZSClient) AddAppBuildSystem(ctx context.Context, params param.AddAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
+func (cli *ZSClient) AddAppBuildSystem(params param.AddAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
 	resp := view.AppBuildSystemInventoryView{}
-	if err := cli.Post(ctx, "v1/appcenter/buildsystem", params, &resp); err != nil {
+	if err := cli.Post("v1/appcenter/buildsystem", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QueryAppBuildSystem queries AppBuildSystem list
-func (cli *ZSClient) QueryAppBuildSystem(ctx context.Context, params *param.QueryParam) ([]view.AppBuildSystemInventoryView, error) {
+func (cli *ZSClient) QueryAppBuildSystem(params *param.QueryParam) ([]view.AppBuildSystemInventoryView, error) {
 	var resp []view.AppBuildSystemInventoryView
-	return resp, cli.List(ctx, "v1/appcenter/buildsystem", params, &resp)
+	return resp, cli.List("v1/appcenter/buildsystem", params, &resp)
 }
 
-func (cli *ZSClient) GetAppBuildSystem(ctx context.Context, uuid string) (*view.AppBuildSystemInventoryView, error) {
+func (cli *ZSClient) GetAppBuildSystem(uuid string) (*view.AppBuildSystemInventoryView, error) {
 	var resp view.AppBuildSystemInventoryView
-	if err := cli.Get(ctx, "v1/appcenter/buildsystem", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/appcenter/buildsystem", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageAppBuildSystem Pagination
-func (cli *ZSClient) PageAppBuildSystem(ctx context.Context, params *param.QueryParam) ([]view.AppBuildSystemInventoryView, int, error) {
+func (cli *ZSClient) PageAppBuildSystem(params *param.QueryParam) ([]view.AppBuildSystemInventoryView, int, error) {
 	var appBuildSystems []view.AppBuildSystemInventoryView
-	total, err := cli.Page(ctx, "v1/appcenter/buildsystem", params, &appBuildSystems)
+	total, err := cli.Page("v1/appcenter/buildsystem", params, &appBuildSystems)
 	return appBuildSystems, total, err
 }
 // ReconnectAppBuildSystem operates on AppBuildSystem
-func (cli *ZSClient) ReconnectAppBuildSystem(ctx context.Context, uuid string, params param.ReconnectAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
+func (cli *ZSClient) ReconnectAppBuildSystem(uuid string, params param.ReconnectAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
 	resp := view.AppBuildSystemInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/appcenter/buildsystem", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/appcenter/buildsystem", uuid, "", map[string]interface{}{
 		"reconnectAppBuildSystem": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -50,9 +49,9 @@ func (cli *ZSClient) ReconnectAppBuildSystem(ctx context.Context, uuid string, p
 	return &resp, nil
 }
 // UpdateAppBuildSystem updates AppBuildSystem
-func (cli *ZSClient) UpdateAppBuildSystem(ctx context.Context, uuid string, params param.UpdateAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
+func (cli *ZSClient) UpdateAppBuildSystem(uuid string, params param.UpdateAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
 	resp := view.AppBuildSystemInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/appcenter/buildsystem", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/appcenter/buildsystem", uuid, "", map[string]interface{}{
 		"updateAppBuildSystem": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -60,6 +59,6 @@ func (cli *ZSClient) UpdateAppBuildSystem(ctx context.Context, uuid string, para
 	return &resp, nil
 }
 // DeleteAppBuildSystem deletes AppBuildSystem
-func (cli *ZSClient) DeleteAppBuildSystem(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/appcenter/buildsystem", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteAppBuildSystem(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/appcenter/buildsystem", uuid, string(deleteMode))
 }

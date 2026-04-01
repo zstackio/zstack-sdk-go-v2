@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,22 +11,22 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryVpcSnatState queries VpcSnatState list
-func (cli *ZSClient) QueryVpcSnatState(ctx context.Context, params *param.QueryParam) ([]view.VpcSnatStateInventoryView, error) {
+func (cli *ZSClient) QueryVpcSnatState(params *param.QueryParam) ([]view.VpcSnatStateInventoryView, error) {
 	var resp []view.VpcSnatStateInventoryView
-	return resp, cli.List(ctx, "v1/vpc/virtual-routers/networkservicestate/snat", params, &resp)
+	return resp, cli.List("v1/vpc/virtual-routers/networkservicestate/snat", params, &resp)
 }
 
-func (cli *ZSClient) GetVpcSnatState(ctx context.Context, uuid string) (*view.VpcSnatStateInventoryView, error) {
+func (cli *ZSClient) GetVpcSnatState(uuid string) (*view.VpcSnatStateInventoryView, error) {
 	var resp view.VpcSnatStateInventoryView
-	if err := cli.Get(ctx, "v1/vpc/virtual-routers/networkservicestate/snat", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/vpc/virtual-routers/networkservicestate/snat", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageVpcSnatState Pagination
-func (cli *ZSClient) PageVpcSnatState(ctx context.Context, params *param.QueryParam) ([]view.VpcSnatStateInventoryView, int, error) {
+func (cli *ZSClient) PageVpcSnatState(params *param.QueryParam) ([]view.VpcSnatStateInventoryView, int, error) {
 	var vpcSnatStates []view.VpcSnatStateInventoryView
-	total, err := cli.Page(ctx, "v1/vpc/virtual-routers/networkservicestate/snat", params, &vpcSnatStates)
+	total, err := cli.Page("v1/vpc/virtual-routers/networkservicestate/snat", params, &vpcSnatStates)
 	return vpcSnatStates, total, err
 }

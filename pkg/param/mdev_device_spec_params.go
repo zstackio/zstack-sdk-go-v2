@@ -4,14 +4,13 @@ package param
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // UpdateMdevDeviceSpecParamDetail UpdateMdevDeviceSpec detail param
 type UpdateMdevDeviceSpecParamDetail struct {
 	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	State *string `json:"state,omitempty"`
-	AllocatorStrategy *string `json:"allocatorStrategy,omitempty"`
 }
 
 // UpdateMdevDeviceSpecParam UpdateMdevDeviceSpec request param

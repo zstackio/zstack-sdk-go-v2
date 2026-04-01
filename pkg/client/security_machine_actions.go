@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,13 +11,13 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteSecurityMachine deletes SecurityMachine
-func (cli *ZSClient) DeleteSecurityMachine(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/security-machines", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteSecurityMachine(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/security-machines", uuid, string(deleteMode))
 }
 // UpdateSecurityMachine updates SecurityMachine
-func (cli *ZSClient) UpdateSecurityMachine(ctx context.Context, uuid string, params param.UpdateSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
+func (cli *ZSClient) UpdateSecurityMachine(uuid string, params param.UpdateSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/security-machines", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/security-machines", uuid, "", map[string]interface{}{
 		"updateSecurityMachine": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -26,22 +25,22 @@ func (cli *ZSClient) UpdateSecurityMachine(ctx context.Context, uuid string, par
 	return &resp, nil
 }
 // QuerySecurityMachine queries SecurityMachine list
-func (cli *ZSClient) QuerySecurityMachine(ctx context.Context, params *param.QueryParam) ([]view.SecurityMachineInventoryView, error) {
+func (cli *ZSClient) QuerySecurityMachine(params *param.QueryParam) ([]view.SecurityMachineInventoryView, error) {
 	var resp []view.SecurityMachineInventoryView
-	return resp, cli.List(ctx, "v1/security-machines", params, &resp)
+	return resp, cli.List("v1/security-machines", params, &resp)
 }
 
-func (cli *ZSClient) GetSecurityMachine(ctx context.Context, uuid string) (*view.SecurityMachineInventoryView, error) {
+func (cli *ZSClient) GetSecurityMachine(uuid string) (*view.SecurityMachineInventoryView, error) {
 	var resp view.SecurityMachineInventoryView
-	if err := cli.Get(ctx, "v1/security-machines", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/security-machines", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageSecurityMachine Pagination
-func (cli *ZSClient) PageSecurityMachine(ctx context.Context, params *param.QueryParam) ([]view.SecurityMachineInventoryView, int, error) {
+func (cli *ZSClient) PageSecurityMachine(params *param.QueryParam) ([]view.SecurityMachineInventoryView, int, error) {
 	var securityMachines []view.SecurityMachineInventoryView
-	total, err := cli.Page(ctx, "v1/security-machines", params, &securityMachines)
+	total, err := cli.Page("v1/security-machines", params, &securityMachines)
 	return securityMachines, total, err
 }

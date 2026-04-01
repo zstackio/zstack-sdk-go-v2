@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // SNSEmailPlatformInventoryView SNSEmailPlatform
 type SNSEmailPlatformInventoryView struct {
@@ -16,6 +16,16 @@ type SNSEmailPlatformInventoryView struct {
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
 	Type string `json:"type,omitempty"`
+}
+
+// CreateSNSApplicationPlatformEventView CreateSNSApplicationPlatformEvent
+type CreateSNSApplicationPlatformEventView struct {
+	Inventory SNSApplicationPlatformInventoryView `json:"inventory,omitempty"`
+}
+
+// QuerySNSEmailPlatformView QuerySNSEmailPlatform
+type QuerySNSEmailPlatformView struct {
+	Inventories []SNSEmailPlatformInventoryView `json:"inventories,omitempty"`
 }
 
 // ValidateSNSEmailPlatformEventView ValidateSNSEmailPlatformEvent

@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // UpdateFlkSecSecretResourcePoolParamDetail UpdateFlkSecSecretResourcePool detail param
 type UpdateFlkSecSecretResourcePoolParamDetail struct {

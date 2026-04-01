@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // AliyunEbsBackupStorageInventoryView AliyunEbsBackupStorage
 type AliyunEbsBackupStorageInventoryView struct {
@@ -21,8 +21,13 @@ type AliyunEbsBackupStorageInventoryView struct {
 	AttachedZoneUuids []string `json:"attachedZoneUuids,omitempty"`
 }
 
-// UpdateBackupStorageEventView UpdateBackupStorageEvent
-type UpdateBackupStorageEventView struct {
+// QueryBackupStorageView QueryBackupStorage
+type QueryBackupStorageView struct {
+	Inventories []BackupStorageInventoryView `json:"inventories,omitempty"`
+}
+
+// AddBackupStorageEventView AddBackupStorageEvent
+type AddBackupStorageEventView struct {
 	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
 }
 

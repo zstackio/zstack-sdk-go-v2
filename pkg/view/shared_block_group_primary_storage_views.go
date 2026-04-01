@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // SharedBlockGroupPrimaryStorageInventoryView SharedBlockGroupPrimaryStorage
 type SharedBlockGroupPrimaryStorageInventoryView struct {
@@ -39,6 +39,11 @@ type QuerySharedBlockGroupPrimaryStorageView struct {
 
 // RefreshSharedBlockDeviceCapacityEventView RefreshSharedBlockDeviceCapacityEvent
 type RefreshSharedBlockDeviceCapacityEventView struct {
+	Inventory SharedBlockGroupPrimaryStorageInventoryView `json:"inventory,omitempty"`
+}
+
+// UpdateSharedBlockEventView UpdateSharedBlockEvent
+type UpdateSharedBlockEventView struct {
 	Inventory SharedBlockGroupPrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 

@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // L2VxlanNetworkPoolInventoryView L2VxlanNetworkPool
 type L2VxlanNetworkPoolInventoryView struct {

@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // V2VConversionHostInventoryView V2VConversionHost
 type V2VConversionHostInventoryView struct {

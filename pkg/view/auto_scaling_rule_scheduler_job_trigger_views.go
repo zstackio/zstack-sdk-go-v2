@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // AutoScalingRuleSchedulerJobTriggerInventoryView AutoScalingRuleSchedulerJobTrigger
 type AutoScalingRuleSchedulerJobTriggerInventoryView struct {
@@ -15,5 +15,10 @@ type AutoScalingRuleSchedulerJobTriggerInventoryView struct {
 	RuleUuid string `json:"ruleUuid,omitempty"`
 	Description string `json:"description,omitempty"`
 	State string `json:"state,omitempty"`
+}
+
+// CreateAutoScalingRuleTriggerEventView CreateAutoScalingRuleTriggerEvent
+type CreateAutoScalingRuleTriggerEventView struct {
+	Inventory AutoScalingRuleTriggerInventoryView `json:"inventory,omitempty"`
 }
 

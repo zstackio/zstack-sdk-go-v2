@@ -4,14 +4,13 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // ApplicationDevelopmentServiceInventoryView ApplicationDevelopmentService
 type ApplicationDevelopmentServiceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	DeploymentStatus string `json:"deploymentStatus,omitempty"`
-	PackageVersion string `json:"packageVersion,omitempty"`
 	Service ModelServiceInventoryView `json:"service,omitempty"`
 	ModelServiceUuid string `json:"modelServiceUuid,omitempty"`
 	ModelUuid string `json:"modelUuid,omitempty"`
