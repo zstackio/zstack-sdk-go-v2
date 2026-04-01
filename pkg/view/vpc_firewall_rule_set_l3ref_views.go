@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // VpcFirewallRuleSetL3RefInventoryView VpcFirewallRuleSetL3Ref
 type VpcFirewallRuleSetL3RefInventoryView struct {

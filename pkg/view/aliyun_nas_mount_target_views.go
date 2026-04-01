@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // AliyunNasMountTargetInventoryView AliyunNasMountTarget
 type AliyunNasMountTargetInventoryView struct {
@@ -21,5 +21,10 @@ type AliyunNasMountTargetInventoryView struct {
 // AddAliyunNasMountTargetEventView AddAliyunNasMountTargetEvent
 type AddAliyunNasMountTargetEventView struct {
 	Inventory AliyunNasMountTargetInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateNasMountTargetEventView CreateNasMountTargetEvent
+type CreateNasMountTargetEventView struct {
+	Inventory NasMountTargetInventoryView `json:"inventory,omitempty"`
 }
 

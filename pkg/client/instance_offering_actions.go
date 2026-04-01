@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // ChangeInstanceOffering changes InstanceOffering
-func (cli *ZSClient) ChangeInstanceOffering(ctx context.Context, vmInstanceUuid string, params param.ChangeInstanceOfferingParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) ChangeInstanceOffering(vmInstanceUuid string, params param.ChangeInstanceOfferingParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/vm-instances", vmInstanceUuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/vm-instances", vmInstanceUuid, "", map[string]interface{}{
 		"changeInstanceOffering": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -22,9 +21,9 @@ func (cli *ZSClient) ChangeInstanceOffering(ctx context.Context, vmInstanceUuid 
 	return &resp, nil
 }
 // UpdateInstanceOffering updates InstanceOffering
-func (cli *ZSClient) UpdateInstanceOffering(ctx context.Context, uuid string, params param.UpdateInstanceOfferingParam) (*view.InstanceOfferingInventoryView, error) {
+func (cli *ZSClient) UpdateInstanceOffering(uuid string, params param.UpdateInstanceOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/instance-offerings", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/instance-offerings", uuid, "", map[string]interface{}{
 		"updateInstanceOffering": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -32,34 +31,34 @@ func (cli *ZSClient) UpdateInstanceOffering(ctx context.Context, uuid string, pa
 	return &resp, nil
 }
 // CreateInstanceOffering creates InstanceOffering
-func (cli *ZSClient) CreateInstanceOffering(ctx context.Context, params param.CreateInstanceOfferingParam) (*view.InstanceOfferingInventoryView, error) {
+func (cli *ZSClient) CreateInstanceOffering(params param.CreateInstanceOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.Post(ctx, "v1/instance-offerings", params, &resp); err != nil {
+	if err := cli.Post("v1/instance-offerings", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QueryInstanceOffering queries InstanceOffering list
-func (cli *ZSClient) QueryInstanceOffering(ctx context.Context, params *param.QueryParam) ([]view.InstanceOfferingInventoryView, error) {
+func (cli *ZSClient) QueryInstanceOffering(params *param.QueryParam) ([]view.InstanceOfferingInventoryView, error) {
 	var resp []view.InstanceOfferingInventoryView
-	return resp, cli.List(ctx, "v1/instance-offerings", params, &resp)
+	return resp, cli.List("v1/instance-offerings", params, &resp)
 }
 
-func (cli *ZSClient) GetInstanceOffering(ctx context.Context, uuid string) (*view.InstanceOfferingInventoryView, error) {
+func (cli *ZSClient) GetInstanceOffering(uuid string) (*view.InstanceOfferingInventoryView, error) {
 	var resp view.InstanceOfferingInventoryView
-	if err := cli.Get(ctx, "v1/instance-offerings", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/instance-offerings", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageInstanceOffering Pagination
-func (cli *ZSClient) PageInstanceOffering(ctx context.Context, params *param.QueryParam) ([]view.InstanceOfferingInventoryView, int, error) {
+func (cli *ZSClient) PageInstanceOffering(params *param.QueryParam) ([]view.InstanceOfferingInventoryView, int, error) {
 	var instanceOfferings []view.InstanceOfferingInventoryView
-	total, err := cli.Page(ctx, "v1/instance-offerings", params, &instanceOfferings)
+	total, err := cli.Page("v1/instance-offerings", params, &instanceOfferings)
 	return instanceOfferings, total, err
 }
 // DeleteInstanceOffering deletes InstanceOffering
-func (cli *ZSClient) DeleteInstanceOffering(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/instance-offerings", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteInstanceOffering(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/instance-offerings", uuid, string(deleteMode))
 }

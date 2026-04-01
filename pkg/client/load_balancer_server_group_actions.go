@@ -3,7 +3,7 @@
 package client
 
 import (
-	"context"
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,41 +12,41 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateLoadBalancerServerGroup creates LoadBalancerServerGroup
-func (cli *ZSClient) CreateLoadBalancerServerGroup(ctx context.Context, params param.CreateLoadBalancerServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
+func (cli *ZSClient) CreateLoadBalancerServerGroup(loadBalancerUuid string, params param.CreateLoadBalancerServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
 	resp := view.LoadBalancerServerGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/{loadBalancerUuid}/servergroups", params, &resp); err != nil {
+	if err := cli.Post(fmt.Sprintf("v1/load-balancers/%s/servergroups", loadBalancerUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // QueryLoadBalancerServerGroup queries LoadBalancerServerGroup list
-func (cli *ZSClient) QueryLoadBalancerServerGroup(ctx context.Context, params *param.QueryParam) ([]view.LoadBalancerServerGroupInventoryView, error) {
+func (cli *ZSClient) QueryLoadBalancerServerGroup(params *param.QueryParam) ([]view.LoadBalancerServerGroupInventoryView, error) {
 	var resp []view.LoadBalancerServerGroupInventoryView
-	return resp, cli.List(ctx, "v1/load-balancers/servergroups", params, &resp)
+	return resp, cli.List("v1/load-balancers/servergroups", params, &resp)
 }
 
-func (cli *ZSClient) GetLoadBalancerServerGroup(ctx context.Context, uuid string) (*view.LoadBalancerServerGroupInventoryView, error) {
+func (cli *ZSClient) GetLoadBalancerServerGroup(uuid string) (*view.LoadBalancerServerGroupInventoryView, error) {
 	var resp view.LoadBalancerServerGroupInventoryView
-	if err := cli.Get(ctx, "v1/load-balancers/servergroups", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/load-balancers/servergroups", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageLoadBalancerServerGroup Pagination
-func (cli *ZSClient) PageLoadBalancerServerGroup(ctx context.Context, params *param.QueryParam) ([]view.LoadBalancerServerGroupInventoryView, int, error) {
+func (cli *ZSClient) PageLoadBalancerServerGroup(params *param.QueryParam) ([]view.LoadBalancerServerGroupInventoryView, int, error) {
 	var loadBalancerServerGroups []view.LoadBalancerServerGroupInventoryView
-	total, err := cli.Page(ctx, "v1/load-balancers/servergroups", params, &loadBalancerServerGroups)
+	total, err := cli.Page("v1/load-balancers/servergroups", params, &loadBalancerServerGroups)
 	return loadBalancerServerGroups, total, err
 }
 // DeleteLoadBalancerServerGroup deletes LoadBalancerServerGroup
-func (cli *ZSClient) DeleteLoadBalancerServerGroup(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/load-balancers/servergroups", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteLoadBalancerServerGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/load-balancers/servergroups", uuid, string(deleteMode))
 }
 // UpdateLoadBalancerServerGroup updates LoadBalancerServerGroup
-func (cli *ZSClient) UpdateLoadBalancerServerGroup(ctx context.Context, uuid string, params param.UpdateLoadBalancerServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
+func (cli *ZSClient) UpdateLoadBalancerServerGroup(uuid string, params param.UpdateLoadBalancerServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
 	resp := view.LoadBalancerServerGroupInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/load-balancers/servergroups", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/load-balancers/servergroups", uuid, "", map[string]interface{}{
 		"updateLoadBalancerServerGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err

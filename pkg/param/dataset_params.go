@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // CreateDatasetParamDetail CreateDataset detail param
 type CreateDatasetParamDetail struct {

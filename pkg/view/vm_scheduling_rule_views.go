@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // VmSchedulingRuleInventoryView VmSchedulingRule
 type VmSchedulingRuleInventoryView struct {
@@ -22,9 +22,19 @@ type VmSchedulingRuleInventoryView struct {
 	Usages []AffinityGroupUsageInventoryView `json:"usages,omitempty"`
 }
 
+// DeleteAffinityGroupEventView DeleteAffinityGroupEvent
+type DeleteAffinityGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
 // ChangeVmSchedulingRuleStateEventView ChangeVmSchedulingRuleStateEvent
 type ChangeVmSchedulingRuleStateEventView struct {
 	Inventory VmSchedulingRuleInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateAffinityGroupEventView CreateAffinityGroupEvent
+type CreateAffinityGroupEventView struct {
+	Inventory AffinityGroupInventoryView `json:"inventory,omitempty"`
 }
 
 // ValidateVmSchedulingRuleView ValidateVmSchedulingRule

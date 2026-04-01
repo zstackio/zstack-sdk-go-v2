@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // GpuDeviceSpecInventoryView GpuDeviceSpec
 type GpuDeviceSpecInventoryView struct {
@@ -13,7 +13,6 @@ type GpuDeviceSpecInventoryView struct {
 	Memory int64 `json:"memory,omitempty"`
 	GpuType string `json:"gpuType,omitempty"`
 	Isolated bool `json:"isolated,omitempty"`
-	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 	Description string `json:"description,omitempty"`
 	VendorId string `json:"vendorId,omitempty"`
 	Vendor string `json:"vendor,omitempty"`

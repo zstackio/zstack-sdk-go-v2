@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // OAuth2TokenInventoryView OAuth2Token
 type OAuth2TokenInventoryView struct {

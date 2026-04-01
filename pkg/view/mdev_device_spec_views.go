@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // MdevDeviceSpecInventoryView MdevDeviceSpec
 type MdevDeviceSpecInventoryView struct {
@@ -15,7 +15,6 @@ type MdevDeviceSpecInventoryView struct {
 	Type string `json:"type,omitempty"`
 	State string `json:"state,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
-	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
 }
 

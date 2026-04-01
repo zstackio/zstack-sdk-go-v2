@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // ModelServiceInventoryView ModelService
 type ModelServiceInventoryView struct {
@@ -25,7 +25,6 @@ type ModelServiceInventoryView struct {
 	InstallPath string `json:"installPath,omitempty"`
 	PythonVersion string `json:"pythonVersion,omitempty"`
 	CondaVersion string `json:"condaVersion,omitempty"`
-	Version string `json:"version,omitempty"`
 	StartCommand string `json:"startCommand,omitempty"`
 	ContainerCommand string `json:"containerCommand,omitempty"`
 	ContainerArgs string `json:"containerArgs,omitempty"`

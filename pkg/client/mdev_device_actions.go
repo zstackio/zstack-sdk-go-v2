@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateMdevDevice updates MdevDevice
-func (cli *ZSClient) UpdateMdevDevice(ctx context.Context, uuid string, params param.UpdateMdevDeviceParam) (*view.MdevDeviceInventoryView, error) {
+func (cli *ZSClient) UpdateMdevDevice(uuid string, params param.UpdateMdevDeviceParam) (*view.MdevDeviceInventoryView, error) {
 	resp := view.MdevDeviceInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/mdev-devices", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/mdev-devices", uuid, "", map[string]interface{}{
 		"updateMdevDevice": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -22,26 +21,26 @@ func (cli *ZSClient) UpdateMdevDevice(ctx context.Context, uuid string, params p
 	return &resp, nil
 }
 // DeleteMdevDevice deletes MdevDevice
-func (cli *ZSClient) DeleteMdevDevice(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/mdev-devices", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteMdevDevice(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/mdev-devices", uuid, string(deleteMode))
 }
 // QueryMdevDevice queries MdevDevice list
-func (cli *ZSClient) QueryMdevDevice(ctx context.Context, params *param.QueryParam) ([]view.MdevDeviceInventoryView, error) {
+func (cli *ZSClient) QueryMdevDevice(params *param.QueryParam) ([]view.MdevDeviceInventoryView, error) {
 	var resp []view.MdevDeviceInventoryView
-	return resp, cli.List(ctx, "v1/mdev-devices", params, &resp)
+	return resp, cli.List("v1/mdev-devices", params, &resp)
 }
 
-func (cli *ZSClient) GetMdevDevice(ctx context.Context, uuid string) (*view.MdevDeviceInventoryView, error) {
+func (cli *ZSClient) GetMdevDevice(uuid string) (*view.MdevDeviceInventoryView, error) {
 	var resp view.MdevDeviceInventoryView
-	if err := cli.Get(ctx, "v1/mdev-devices", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/mdev-devices", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageMdevDevice Pagination
-func (cli *ZSClient) PageMdevDevice(ctx context.Context, params *param.QueryParam) ([]view.MdevDeviceInventoryView, int, error) {
+func (cli *ZSClient) PageMdevDevice(params *param.QueryParam) ([]view.MdevDeviceInventoryView, int, error) {
 	var mdevDevices []view.MdevDeviceInventoryView
-	total, err := cli.Page(ctx, "v1/mdev-devices", params, &mdevDevices)
+	total, err := cli.Page("v1/mdev-devices", params, &mdevDevices)
 	return mdevDevices, total, err
 }

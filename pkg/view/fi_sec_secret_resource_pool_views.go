@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // FiSecSecretResourcePoolInventoryView FiSecSecretResourcePool
 type FiSecSecretResourcePoolInventoryView struct {
@@ -19,10 +19,5 @@ type FiSecSecretResourcePoolInventoryView struct {
 	Model string `json:"model,omitempty"`
 	HeartbeatInterval int `json:"heartbeatInterval,omitempty"`
 	Ability string `json:"ability,omitempty"`
-}
-
-// UpdateSecretResourcePoolEventView UpdateSecretResourcePoolEvent
-type UpdateSecretResourcePoolEventView struct {
-	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
 }
 

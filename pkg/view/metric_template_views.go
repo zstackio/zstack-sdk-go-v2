@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // MetricTemplateInventoryView MetricTemplate
 type MetricTemplateInventoryView struct {
@@ -21,11 +21,6 @@ type MetricTemplateInventoryView struct {
 // DeleteMetricTemplateEventView DeleteMetricTemplateEvent
 type DeleteMetricTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// QueryMetricDataHttpReceiverView QueryMetricDataHttpReceiver
-type QueryMetricDataHttpReceiverView struct {
-	Inventories []MetricDataHttpReceiverInventoryView `json:"inventories,omitempty"`
 }
 
 // CreateMetricTemplateEventView CreateMetricTemplateEvent

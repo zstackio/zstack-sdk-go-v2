@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // BareMetal2UsageInventoryView BareMetal2Usage
 type BareMetal2UsageInventoryView struct {

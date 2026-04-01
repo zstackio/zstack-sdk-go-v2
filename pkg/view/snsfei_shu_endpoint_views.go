@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // SNSFeiShuEndpointInventoryView SNSFeiShuEndpoint
 type SNSFeiShuEndpointInventoryView struct {
@@ -21,6 +21,11 @@ type SNSFeiShuEndpointInventoryView struct {
 	PlatformUuid string `json:"platformUuid,omitempty"`
 	ConnectionStatus string `json:"connectionStatus,omitempty"`
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
+}
+
+// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
+type UpdateSNSApplicationEndpointEventView struct {
+	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
 }
 
 // CreateSNSFeiShuEndpointEventView CreateSNSFeiShuEndpointEvent

@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,21 +11,21 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteAutoScalingGroup deletes AutoScalingGroup
-func (cli *ZSClient) DeleteAutoScalingGroup(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/autoscaling/groups", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteAutoScalingGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/autoscaling/groups", uuid, string(deleteMode))
 }
 // CreateAutoScalingGroup creates AutoScalingGroup
-func (cli *ZSClient) CreateAutoScalingGroup(ctx context.Context, params param.CreateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
+func (cli *ZSClient) CreateAutoScalingGroup(params param.CreateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
 	resp := view.AutoScalingGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/autoscaling/groups", params, &resp); err != nil {
+	if err := cli.Post("v1/autoscaling/groups", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // UpdateAutoScalingGroup updates AutoScalingGroup
-func (cli *ZSClient) UpdateAutoScalingGroup(ctx context.Context, uuid string, params param.UpdateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
+func (cli *ZSClient) UpdateAutoScalingGroup(uuid string, params param.UpdateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
 	resp := view.AutoScalingGroupInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/autoscaling/groups", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/autoscaling/groups", uuid, "", map[string]interface{}{
 		"updateAutoScalingGroup": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -34,22 +33,22 @@ func (cli *ZSClient) UpdateAutoScalingGroup(ctx context.Context, uuid string, pa
 	return &resp, nil
 }
 // QueryAutoScalingGroup queries AutoScalingGroup list
-func (cli *ZSClient) QueryAutoScalingGroup(ctx context.Context, params *param.QueryParam) ([]view.AutoScalingGroupInventoryView, error) {
+func (cli *ZSClient) QueryAutoScalingGroup(params *param.QueryParam) ([]view.AutoScalingGroupInventoryView, error) {
 	var resp []view.AutoScalingGroupInventoryView
-	return resp, cli.List(ctx, "v1/autoscaling/groups", params, &resp)
+	return resp, cli.List("v1/autoscaling/groups", params, &resp)
 }
 
-func (cli *ZSClient) GetAutoScalingGroup(ctx context.Context, uuid string) (*view.AutoScalingGroupInventoryView, error) {
+func (cli *ZSClient) GetAutoScalingGroup(uuid string) (*view.AutoScalingGroupInventoryView, error) {
 	var resp view.AutoScalingGroupInventoryView
-	if err := cli.Get(ctx, "v1/autoscaling/groups", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/autoscaling/groups", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageAutoScalingGroup Pagination
-func (cli *ZSClient) PageAutoScalingGroup(ctx context.Context, params *param.QueryParam) ([]view.AutoScalingGroupInventoryView, int, error) {
+func (cli *ZSClient) PageAutoScalingGroup(params *param.QueryParam) ([]view.AutoScalingGroupInventoryView, int, error) {
 	var autoScalingGroups []view.AutoScalingGroupInventoryView
-	total, err := cli.Page(ctx, "v1/autoscaling/groups", params, &autoScalingGroups)
+	total, err := cli.Page("v1/autoscaling/groups", params, &autoScalingGroups)
 	return autoScalingGroups, total, err
 }

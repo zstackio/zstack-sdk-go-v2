@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // ModelServiceInstanceGroupInventoryView ModelServiceInstanceGroup
 type ModelServiceInstanceGroupInventoryView struct {
@@ -20,11 +20,6 @@ type ModelServiceInstanceGroupInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Yaml string `json:"yaml,omitempty"`
 	SupportMetrics []string `json:"supportMetrics,omitempty"`
-}
-
-// QueryModelServiceInstanceGroupView QueryModelServiceInstanceGroup
-type QueryModelServiceInstanceGroupView struct {
-	Inventories []ModelServiceInstanceGroupInventoryView `json:"inventories,omitempty"`
 }
 
 // UpdateModelServiceInstanceGroupEventView UpdateModelServiceInstanceGroupEvent

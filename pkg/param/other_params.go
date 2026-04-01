@@ -419,7 +419,6 @@ type GetMdevDeviceCandidatesParamDetail struct {
 	HostUuid *string `json:"hostUuid,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	Types []string `json:"types,omitempty"`
-	MinAvailableDevicesPerHost *int `json:"minAvailableDevicesPerHost,omitempty"`
 }
 
 // GetMdevDeviceCandidatesParam GetMdevDeviceCandidates request param
@@ -4797,7 +4796,6 @@ type DeployModelEvalServiceParamDetail struct {
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
-	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -7592,7 +7590,6 @@ type DeployAppDevelopmentServiceParamDetail struct {
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
-	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -7979,15 +7976,6 @@ type SetVmQxlMemoryParam struct {
 	BaseParam
 	Params SetVmQxlMemoryParamDetail `json:"setVmQxlMemory"`
 }
-// GetVolumeFormatParamDetail GetVolumeFormat detail param
-type GetVolumeFormatParamDetail struct {
-}
-
-// GetVolumeFormatParam GetVolumeFormat request param
-type GetVolumeFormatParam struct {
-	BaseParam
-	Params GetVolumeFormatParamDetail `json:"getVolumeFormat"`
-}
 // AddLocalPrimaryStorageParamDetail AddLocalPrimaryStorage detail param
 type AddLocalPrimaryStorageParamDetail struct {
 	Url string `json:"url" validate:"required"`
@@ -8003,6 +7991,15 @@ type AddLocalPrimaryStorageParamDetail struct {
 type AddLocalPrimaryStorageParam struct {
 	BaseParam
 	Params AddLocalPrimaryStorageParamDetail `json:"params"`
+}
+// GetVolumeFormatParamDetail GetVolumeFormat detail param
+type GetVolumeFormatParamDetail struct {
+}
+
+// GetVolumeFormatParam GetVolumeFormat request param
+type GetVolumeFormatParam struct {
+	BaseParam
+	Params GetVolumeFormatParamDetail `json:"getVolumeFormat"`
 }
 // UpdateAtPersonOfAtDingTalkEndpointParamDetail UpdateAtPersonOfAtDingTalkEndpoint detail param
 type UpdateAtPersonOfAtDingTalkEndpointParamDetail struct {
@@ -8143,7 +8140,6 @@ type DeployModelServiceParamDetail struct {
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
-	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -9815,7 +9811,6 @@ type MatchModelServiceTemplateWithModelParamDetail struct {
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
-	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -10241,15 +10236,6 @@ type GetAppBuildSystemCapacityParam struct {
 	BaseParam
 	Params GetAppBuildSystemCapacityParamDetail `json:"getAppBuildSystemCapacity"`
 }
-// GetAttachableVpcL3NetworkParamDetail GetAttachableVpcL3Network detail param
-type GetAttachableVpcL3NetworkParamDetail struct {
-}
-
-// GetAttachableVpcL3NetworkParam GetAttachableVpcL3Network request param
-type GetAttachableVpcL3NetworkParam struct {
-	BaseParam
-	Params GetAttachableVpcL3NetworkParamDetail `json:"params"`
-}
 // ChangeBaremetalChassisStateParamDetail ChangeBaremetalChassisState detail param
 type ChangeBaremetalChassisStateParamDetail struct {
 	StateEvent string `json:"stateEvent" validate:"required"`
@@ -10259,6 +10245,15 @@ type ChangeBaremetalChassisStateParamDetail struct {
 type ChangeBaremetalChassisStateParam struct {
 	BaseParam
 	Params ChangeBaremetalChassisStateParamDetail `json:"changeBaremetalChassisState"`
+}
+// GetAttachableVpcL3NetworkParamDetail GetAttachableVpcL3Network detail param
+type GetAttachableVpcL3NetworkParamDetail struct {
+}
+
+// GetAttachableVpcL3NetworkParam GetAttachableVpcL3Network request param
+type GetAttachableVpcL3NetworkParam struct {
+	BaseParam
+	Params GetAttachableVpcL3NetworkParamDetail `json:"params"`
 }
 // ChangeNfvInstGroupOperationModeParamDetail ChangeNfvInstGroupOperationMode detail param
 type ChangeNfvInstGroupOperationModeParamDetail struct {

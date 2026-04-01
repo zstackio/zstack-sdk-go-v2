@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // JsonLabelInventoryView JsonLabel
 type JsonLabelInventoryView struct {
@@ -14,20 +14,5 @@ type JsonLabelInventoryView struct {
 	LabelKey string `json:"labelKey,omitempty"`
 	LabelValue string `json:"labelValue,omitempty"`
 	ResourceUuid string `json:"resourceUuid,omitempty"`
-}
-
-// UpdateLogConfigurationEventView UpdateLogConfigurationEvent
-type UpdateLogConfigurationEventView struct {
-	Inventory JsonLabelInventoryView `json:"inventory,omitempty"`
-}
-
-// GetLogConfigurationView GetLogConfiguration
-type GetLogConfigurationView struct {
-	Inventories []JsonLabelInventoryView `json:"inventories,omitempty"`
-}
-
-// AddLogConfigurationEventView AddLogConfigurationEvent
-type AddLogConfigurationEventView struct {
-	Inventory JsonLabelInventoryView `json:"inventory,omitempty"`
 }
 

@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // CreateL2VxlanNetworkParamDetail CreateL2VxlanNetwork detail param
 type CreateL2VxlanNetworkParamDetail struct {

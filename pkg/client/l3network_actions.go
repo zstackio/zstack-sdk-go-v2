@@ -3,7 +3,6 @@
 package client
 
 import (
-	"context"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -12,29 +11,29 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // QueryL3Network queries L3Network list
-func (cli *ZSClient) QueryL3Network(ctx context.Context, params *param.QueryParam) ([]view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) QueryL3Network(params *param.QueryParam) ([]view.L3NetworkInventoryView, error) {
 	var resp []view.L3NetworkInventoryView
-	return resp, cli.List(ctx, "v1/l3-networks", params, &resp)
+	return resp, cli.List("v1/l3-networks", params, &resp)
 }
 
-func (cli *ZSClient) GetL3Network(ctx context.Context, uuid string) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) GetL3Network(uuid string) (*view.L3NetworkInventoryView, error) {
 	var resp view.L3NetworkInventoryView
-	if err := cli.Get(ctx, "v1/l3-networks", uuid, nil, &resp); err != nil {
+	if err := cli.Get("v1/l3-networks", uuid, nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // PageL3Network Pagination
-func (cli *ZSClient) PageL3Network(ctx context.Context, params *param.QueryParam) ([]view.L3NetworkInventoryView, int, error) {
+func (cli *ZSClient) PageL3Network(params *param.QueryParam) ([]view.L3NetworkInventoryView, int, error) {
 	var l3Networks []view.L3NetworkInventoryView
-	total, err := cli.Page(ctx, "v1/l3-networks", params, &l3Networks)
+	total, err := cli.Page("v1/l3-networks", params, &l3Networks)
 	return l3Networks, total, err
 }
 // UpdateL3Network updates L3Network
-func (cli *ZSClient) UpdateL3Network(ctx context.Context, uuid string, params param.UpdateL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) UpdateL3Network(uuid string, params param.UpdateL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	resp := view.L3NetworkInventoryView{}
-	if err := cli.PutWithRespKey(ctx, "v1/l3-networks", uuid, "", map[string]interface{}{
+	if err := cli.PutWithRespKey("v1/l3-networks", uuid, "", map[string]interface{}{
 		"updateL3Network": params.Params,
 	}, &resp); err != nil {
 		return nil, err
@@ -42,14 +41,14 @@ func (cli *ZSClient) UpdateL3Network(ctx context.Context, uuid string, params pa
 	return &resp, nil
 }
 // CreateL3Network creates L3Network
-func (cli *ZSClient) CreateL3Network(ctx context.Context, params param.CreateL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) CreateL3Network(params param.CreateL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	resp := view.L3NetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks", params, &resp); err != nil {
+	if err := cli.Post("v1/l3-networks", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // DeleteL3Network deletes L3Network
-func (cli *ZSClient) DeleteL3Network(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/l3-networks", uuid, string(deleteMode))
+func (cli *ZSClient) DeleteL3Network(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/l3-networks", uuid, string(deleteMode))
 }

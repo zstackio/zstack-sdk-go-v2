@@ -4,7 +4,7 @@ package param
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // AddV2VConversionHostParamDetail AddV2VConversionHost detail param
 type AddV2VConversionHostParamDetail struct {

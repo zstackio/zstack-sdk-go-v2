@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // SAML2ClientInventoryView SAML2Client
 type SAML2ClientInventoryView struct {

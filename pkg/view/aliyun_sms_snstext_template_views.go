@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // AliyunSmsSNSTextTemplateInventoryView AliyunSmsSNSTextTemplate
 type AliyunSmsSNSTextTemplateInventoryView struct {
@@ -27,11 +27,6 @@ type AliyunSmsSNSTextTemplateInventoryView struct {
 // UpdateAliyunSmsSNSTextTemplateEventView UpdateAliyunSmsSNSTextTemplateEvent
 type UpdateAliyunSmsSNSTextTemplateEventView struct {
 	Inventory AliyunSmsSNSTextTemplateInventoryView `json:"inventory,omitempty"`
-}
-
-// CreateSNSTextTemplateEventView CreateSNSTextTemplateEvent
-type CreateSNSTextTemplateEventView struct {
-	Inventory SNSTextTemplateInventoryView `json:"inventory,omitempty"`
 }
 
 // QueryAliyunSmsSNSTextTemplateView QueryAliyunSmsSNSTextTemplate

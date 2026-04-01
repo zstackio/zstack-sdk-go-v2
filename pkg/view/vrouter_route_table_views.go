@@ -4,7 +4,7 @@ package view
 
 import "time"
 
-var _ = time.Now() // avoid unused import
+var _ = time.Now // avoid unused import
 
 // VRouterRouteTableInventoryView VRouterRouteTable
 type VRouterRouteTableInventoryView struct {
@@ -18,6 +18,11 @@ type VRouterRouteTableInventoryView struct {
 // QueryVRouterRouteTableView QueryVRouterRouteTable
 type QueryVRouterRouteTableView struct {
 	Inventories []VRouterRouteTableInventoryView `json:"inventories,omitempty"`
+}
+
+// DeleteVRouterRouteEntryEventView DeleteVRouterRouteEntryEvent
+type DeleteVRouterRouteEntryEventView struct {
+	Inventory VRouterRouteTableInventoryView `json:"inventory,omitempty"`
 }
 
 // DetachVRouterRouteTableFromVRouterEventView DetachVRouterRouteTableFromVRouterEvent
