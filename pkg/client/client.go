@@ -25,6 +25,57 @@ func NewZSClient(config *ZSConfig) *ZSClient {
 	}
 }
 
+// Shadow methods that delegate to ZSHttpClient with context.Background().
+// These allow action methods to call cli.Post/Get/etc without passing ctx.
+
+func (cli *ZSClient) Post(path string, params interface{}, result interface{}) error {
+	return cli.ZSHttpClient.Post(context.Background(), path, params, result)
+}
+
+func (cli *ZSClient) Get(path string, uuid string, params interface{}, result interface{}) error {
+	return cli.ZSHttpClient.Get(context.Background(), path, uuid, params, result)
+}
+
+func (cli *ZSClient) GetWithRespKey(path string, uuid string, responseKey string, params interface{}, result interface{}) error {
+	return cli.ZSHttpClient.GetWithRespKey(context.Background(), path, uuid, responseKey, params, result)
+}
+
+func (cli *ZSClient) GetWithSpec(path string, uuid string, spec string, responseKey string, params interface{}, result interface{}) error {
+	return cli.ZSHttpClient.GetWithSpec(context.Background(), path, uuid, spec, responseKey, params, result)
+}
+
+func (cli *ZSClient) List(path string, params *param.QueryParam, result interface{}) error {
+	return cli.ZSHttpClient.List(context.Background(), path, params, result)
+}
+
+func (cli *ZSClient) Page(path string, params *param.QueryParam, result interface{}) (int, error) {
+	return cli.ZSHttpClient.Page(context.Background(), path, params, result)
+}
+
+func (cli *ZSClient) Put(path string, uuid string, params interface{}, result interface{}) error {
+	return cli.ZSHttpClient.Put(context.Background(), path, uuid, params, result)
+}
+
+func (cli *ZSClient) PutWithRespKey(path string, uuid string, responseKey string, params interface{}, result interface{}) error {
+	return cli.ZSHttpClient.PutWithRespKey(context.Background(), path, uuid, responseKey, params, result)
+}
+
+func (cli *ZSClient) Delete(path string, uuid string, deleteMode string) error {
+	return cli.ZSHttpClient.Delete(context.Background(), path, uuid, deleteMode)
+}
+
+func (cli *ZSClient) DeleteWithSpec(path string, uuid string, spec string, deleteMode string, params interface{}) error {
+	return cli.ZSHttpClient.DeleteWithSpec(context.Background(), path, uuid, spec, deleteMode, params)
+}
+
+func (cli *ZSClient) PostWithAsync(path string, responseKey string, params interface{}, result interface{}, async bool) (string, error) {
+	return cli.ZSHttpClient.PostWithAsync(context.Background(), path, responseKey, params, result, async)
+}
+
+func (cli *ZSClient) PutWithSpec(path string, uuid string, spec string, responseKey string, params interface{}, result interface{}) error {
+	return cli.ZSHttpClient.PutWithSpec(context.Background(), path, uuid, spec, responseKey, params, result)
+}
+
 func (cli *ZSClient) Login(ctx context.Context) (*view.SessionInventoryView, error) {
 	if cli.authType != AuthTypeAccountUser && cli.authType != AuthTypeAccount {
 		return nil, errors.ErrNotSupported
@@ -64,7 +115,7 @@ func (cli *ZSClient) logInByAccountUser(ctx context.Context) (*view.SessionInven
 		},
 	}
 	sessionView := view.SessionInventoryView{}
-	err := cli.Put(ctx, "v1/accounts/users/login", "", params, &sessionView)
+	err := cli.ZSHttpClient.Put(ctx, "v1/accounts/users/login", "", params, &sessionView)
 	if err != nil {
 		golog.Errorf("ZSClient.logInByAccountUser Account[%s] User[%s] error:%v",
 			cli.accountName, cli.accountUserName, err)
@@ -90,7 +141,7 @@ func (cli *ZSClient) logInByAccount(ctx context.Context) (*view.SessionInventory
 		},
 	}
 	sessionView := view.SessionInventoryView{}
-	err := cli.Put(ctx, "v1/accounts/login", "", params, &sessionView)
+	err := cli.ZSHttpClient.Put(ctx, "v1/accounts/login", "", params, &sessionView)
 	if err != nil {
 		golog.Errorf("ZSClient.logInByAccount Account[%s] error:%v", cli.accountName, err)
 		return nil, err
@@ -113,7 +164,7 @@ func (cli *ZSClient) ValidateSession(ctx context.Context) (map[string]bool, erro
 
 func (cli *ZSClient) ValidateSessionId(ctx context.Context, sessionId string) (map[string]bool, error) {
 	validSession := make(map[string]bool)
-	err := cli.GetWithSpec(ctx, "v1/accounts/sessions", sessionId, "valid", "", nil, &validSession)
+	err := cli.ZSHttpClient.GetWithSpec(ctx, "v1/accounts/sessions", sessionId, "valid", "", nil, &validSession)
 	if err != nil {
 		golog.Errorf("ZSClient.ValidateSession sessionId[%s] error:%v", sessionId, err)
 		return nil, err
@@ -132,7 +183,7 @@ func (cli *ZSClient) Logout(ctx context.Context) error {
 		return errors.ErrNotSupported
 	}
 
-	err := cli.Delete(ctx, "v1/accounts/sessions", cli.sessionId, "")
+	err := cli.ZSHttpClient.Delete(ctx, "v1/accounts/sessions", cli.sessionId, "")
 	if err != nil {
 		golog.Errorf("ZSClient.Logout sessionId[%s] error:%v", cli.sessionId, err)
 		return err
