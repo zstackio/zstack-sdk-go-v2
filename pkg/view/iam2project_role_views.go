@@ -19,11 +19,6 @@ type IAM2ProjectRoleInventoryView struct {
 	Policies []RolePolicyRefInventoryView `json:"policies,omitempty"`
 }
 
-// CreateRoleEventView CreateRoleEvent
-type CreateRoleEventView struct {
-	Inventory RoleInventoryView `json:"inventory,omitempty"`
-}
-
 // QueryIAM2ProjectRoleView QueryIAM2ProjectRole
 type QueryIAM2ProjectRoleView struct {
 	Inventories []IAM2ProjectRoleInventoryView `json:"inventories,omitempty"`

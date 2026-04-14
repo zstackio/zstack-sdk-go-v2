@@ -8553,6 +8553,16 @@ type ChangeVmNicNetworkParam struct {
 	BaseParam
 	Params ChangeVmNicNetworkParamDetail `json:"params"`
 }
+// RemoveLabelFromAlarmParamDetail RemoveLabelFromAlarm detail param
+type RemoveLabelFromAlarmParamDetail struct {
+	DeleteMode *string `json:"deleteMode,omitempty"`
+}
+
+// RemoveLabelFromAlarmParam RemoveLabelFromAlarm request param
+type RemoveLabelFromAlarmParam struct {
+	BaseParam
+	Params RemoveLabelFromAlarmParamDetail `json:"removeLabelFromAlarm"`
+}
 // CreateBareMetal2IpmiChassisHardwareInfoParamDetail CreateBareMetal2IpmiChassisHardwareInfo detail param
 type CreateBareMetal2IpmiChassisHardwareInfoParamDetail struct {
 	IpmiAddress string `json:"ipmiAddress" validate:"required"`
@@ -8565,16 +8575,6 @@ type CreateBareMetal2IpmiChassisHardwareInfoParamDetail struct {
 type CreateBareMetal2IpmiChassisHardwareInfoParam struct {
 	BaseParam
 	Params CreateBareMetal2IpmiChassisHardwareInfoParamDetail `json:"params"`
-}
-// RemoveLabelFromAlarmParamDetail RemoveLabelFromAlarm detail param
-type RemoveLabelFromAlarmParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// RemoveLabelFromAlarmParam RemoveLabelFromAlarm request param
-type RemoveLabelFromAlarmParam struct {
-	BaseParam
-	Params RemoveLabelFromAlarmParamDetail `json:"removeLabelFromAlarm"`
 }
 // DeleteIAM2VirtualIDLdapBindingParamDetail DeleteIAM2VirtualIDLdapBinding detail param
 type DeleteIAM2VirtualIDLdapBindingParamDetail struct {
@@ -10663,16 +10663,6 @@ type GetLicenseUKeyStatusParam struct {
 	BaseParam
 	Params GetLicenseUKeyStatusParamDetail `json:"params"`
 }
-// SetL3NetworkRouterInterfaceIpParamDetail SetL3NetworkRouterInterfaceIp detail param
-type SetL3NetworkRouterInterfaceIpParamDetail struct {
-	RouterInterfaceIp string `json:"routerInterfaceIp" validate:"required"`
-}
-
-// SetL3NetworkRouterInterfaceIpParam SetL3NetworkRouterInterfaceIp request param
-type SetL3NetworkRouterInterfaceIpParam struct {
-	BaseParam
-	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"params"`
-}
 // AddTicketTypesToTicketFlowCollectionParamDetail AddTicketTypesToTicketFlowCollection detail param
 type AddTicketTypesToTicketFlowCollectionParamDetail struct {
 	TicketTypeUuids []string `json:"ticketTypeUuids" validate:"required"`
@@ -10682,6 +10672,16 @@ type AddTicketTypesToTicketFlowCollectionParamDetail struct {
 type AddTicketTypesToTicketFlowCollectionParam struct {
 	BaseParam
 	Params AddTicketTypesToTicketFlowCollectionParamDetail `json:"params"`
+}
+// SetL3NetworkRouterInterfaceIpParamDetail SetL3NetworkRouterInterfaceIp detail param
+type SetL3NetworkRouterInterfaceIpParamDetail struct {
+	RouterInterfaceIp string `json:"routerInterfaceIp" validate:"required"`
+}
+
+// SetL3NetworkRouterInterfaceIpParam SetL3NetworkRouterInterfaceIp request param
+type SetL3NetworkRouterInterfaceIpParam struct {
+	BaseParam
+	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"params"`
 }
 // GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail GetConnectionBetweenL3NetworkAndAliyunVSwitch detail param
 type GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
