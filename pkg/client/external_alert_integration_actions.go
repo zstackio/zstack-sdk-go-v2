@@ -29,10 +29,7 @@ func (cli *ZSClient) CheckExternalAlertIntegration(params param.CheckExternalAle
 }
 
 // RemoveExternalAlertIntegration 移除外部告警集成（删除 Endpoint、订阅及推送模板）
-func (cli *ZSClient) RemoveExternalAlertIntegration(params param.RemoveExternalAlertIntegrationParam) (*view.RemoveExternalAlertIntegrationView, error) {
-	resp := view.RemoveExternalAlertIntegrationView{}
-	if err := cli.Post("v1/sns/external-alert-integrations/remove", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
+func (cli *ZSClient) RemoveExternalAlertIntegration(params param.RemoveExternalAlertIntegrationParam) error {
+	var resp view.SuccessView
+	return cli.Post("v1/sns/external-alert-integrations/remove", params, &resp)
 }

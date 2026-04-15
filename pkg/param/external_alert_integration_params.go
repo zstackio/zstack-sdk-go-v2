@@ -6,8 +6,8 @@ import "time"
 
 var _ = time.Now // avoid unused import
 
-// SetupExternalAlertIntegrationParamDetail SetupExternalAlertIntegration detail param
-type SetupExternalAlertIntegrationParamDetail struct {
+// SetupExternalAlertIntegrationDetail SetupExternalAlertIntegration detail param
+type SetupExternalAlertIntegrationDetail struct {
 	Name        string  `json:"name"`                  // 集成名称
 	Url         string  `json:"url"`                   // Webhook 回调地址
 	Description *string `json:"description,omitempty"` // 描述
@@ -16,11 +16,11 @@ type SetupExternalAlertIntegrationParamDetail struct {
 // SetupExternalAlertIntegrationParam SetupExternalAlertIntegration request param
 type SetupExternalAlertIntegrationParam struct {
 	BaseParam
-	Params SetupExternalAlertIntegrationParamDetail `json:"params"`
+	Params SetupExternalAlertIntegrationDetail `json:"params"`
 }
 
-// CheckExternalAlertIntegrationParamDetail CheckExternalAlertIntegration detail param
-type CheckExternalAlertIntegrationParamDetail struct {
+// CheckExternalAlertIntegrationDetail CheckExternalAlertIntegration detail param
+type CheckExternalAlertIntegrationDetail struct {
 	EndpointUuid string `json:"endpointUuid"` // HTTP Endpoint UUID
 	ExpectedUrl  string `json:"expectedUrl"`  // 期望的 Webhook 回调地址
 }
@@ -28,16 +28,16 @@ type CheckExternalAlertIntegrationParamDetail struct {
 // CheckExternalAlertIntegrationParam CheckExternalAlertIntegration request param
 type CheckExternalAlertIntegrationParam struct {
 	BaseParam
-	Params CheckExternalAlertIntegrationParamDetail `json:"params"`
+	Params CheckExternalAlertIntegrationDetail `json:"params"`
 }
 
-// RemoveExternalAlertIntegrationParamDetail RemoveExternalAlertIntegration detail param
-type RemoveExternalAlertIntegrationParamDetail struct {
+// RemoveExternalAlertIntegrationDetail RemoveExternalAlertIntegration detail param
+type RemoveExternalAlertIntegrationDetail struct {
 	EndpointUuid string `json:"endpointUuid"` // HTTP Endpoint UUID
 }
 
 // RemoveExternalAlertIntegrationParam RemoveExternalAlertIntegration request param
 type RemoveExternalAlertIntegrationParam struct {
 	BaseParam
-	Params RemoveExternalAlertIntegrationParamDetail `json:"params"`
+	Params RemoveExternalAlertIntegrationDetail `json:"params"`
 }

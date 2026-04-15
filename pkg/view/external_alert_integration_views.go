@@ -21,8 +21,3 @@ type CheckExternalAlertIntegrationView struct {
 	Subscribed     bool `json:"subscribed"`     // 是否已订阅系统告警 Topic
 	TemplateExists bool `json:"templateExists"` // 事件推送模板是否存在
 }
-
-// RemoveExternalAlertIntegrationView RemoveExternalAlertIntegration response
-type RemoveExternalAlertIntegrationView struct {
-	Success bool `json:"success"` // 操作是否成功
-}
