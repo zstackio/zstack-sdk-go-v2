@@ -3,9 +3,9 @@
 | 字段 | 值 |
 |---|---|
 | 严重度 | **High** |
-| 状态 | 🔲 待修 |
+| 状态 | ✅ 已修（2026-04-26，按当前代码实现复核） |
 | 发现日期 | 2026-03-26 |
-| 影响 SDK 文件 | `pkg/client/client.go` (旧 `ZSClient.Post`) + `pkg/client/other_actions.go`（101 个方法） |
+| 影响 SDK 文件 | `pkg/client/client.go`（当前 `ZSClient.Post` shadow） + 历史 action 调用路径 |
 | 影响 provider 资源数 | 7 已绕过 + 至少 1 待绕过（`zstack_volume`） |
 | 跟踪关键字 | `SDK-BUG-002`、`SDK-WA-002`、`ZSHttpClient.Post(` |
 
@@ -23,7 +23,23 @@ ZStack API 必然返回 404 或 400，资源 attach 失败。
 
 ---
 
-## 2. 根因
+## 2. 复核结论（当前代码）
+
+当前代码里，`ZSClient.Post` 已直接委托到底层 `ZSHttpClient.Post`：
+
+```go
+func (cli *ZSClient) Post(path string, params interface{}, result interface{}) error {
+    return cli.ZSHttpClient.Post(context.Background(), path, params, result)
+}
+```
+
+底层 `ZSHttpClient.Post` 通过 `getPostURL()` / `getURL()` 走统一 URL 构造路径。与此同时，当前 `pkg/client` 中已没有仍然依赖 `{xxx}` 模板占位符的 action 实现；action 方法使用的是具体资源路径，资源标识通过 `resourceId` 参数进入 URL 拼接逻辑。
+
+因此，**文档里记录的历史问题在当前代码中已不再成立**。
+
+---
+
+## 3. 历史根因（保留归档）
 
 ### 2.1 SDK 内有两套 HTTP 客户端
 
@@ -54,7 +70,7 @@ $ grep -c "^func (cli \*ZSClient) Post\b" pkg/client/client.go
 
 ---
 
-## 3. 复现
+## 4. 历史复现方式
 
 ```go
 // SDK 测试代码
@@ -69,7 +85,18 @@ err := cli.AttachL2NetworkToCluster(param.AttachL2NetworkToClusterParam{
 
 ---
 
-## 4. 修复方案
+## 5. 修复结果
+
+当前仓库已不再需要依赖 "删除旧版 `ZSClient.Post`" 或 "对 `{xxx}` 模板做自动替换" 这类补救方案。现状是：
+
+1. `ZSClient.Post` 已桥接到 `ZSHttpClient.Post`
+2. 当前 `pkg/client` action 代码不再保留 `{placeholder}` 模板路径调用
+
+建议将此问题视为**历史 bug，当前已修复**。
+
+---
+
+## 6. 历史修复方案（保留归档）
 
 ### 方案 A — 删除 `ZSClient.Post()` 老版本（推荐）
 
@@ -111,7 +138,7 @@ func (cli *ZSClient) Post(path string, params interface{}, result interface{}) e
 
 ---
 
-## 5. 已确认 provider 已绕过的资源
+## 7. 已确认 provider 已绕过的资源
 
 > Provider 直接走 `r.client.ZSHttpClient.Post(ctx, fmt.Sprintf("v1/...", uuid), params, &resp)` 手动拼接 URL。
 
@@ -138,7 +165,13 @@ func (cli *ZSClient) Post(path string, params interface{}, result interface{}) e
 
 ---
 
-## 6. SDK 修复后的 Provider 回收清单
+## 8. SDK 修复后的 Provider 回收清单
+
+### 当前状态
+
+- 当前 SDK 代码路径已确认不再保留该 bug。
+- 下游 provider 可优先验证是否仍需保留历史 workaround。
+- 若 provider 侧升级到当前 SDK 后验证通过，可逐步回收 `ZSHttpClient.Post(...)` 的手工绕过代码。
 
 ```bash
 cd terraform-provider-zstack
@@ -171,7 +204,7 @@ grep -rn "ZSHttpClient.Post(" zstack/provider/
 
 ---
 
-## 7. 原始报告
+## 9. 原始报告
 
 - `terraform-provider-zstack/docs/SDK_URL_TEMPLATE_BUG.md` — 中文完整调查
 - `terraform-provider-zstack/docs/sdk-url-template-bug.md` — 同根（异名文件）

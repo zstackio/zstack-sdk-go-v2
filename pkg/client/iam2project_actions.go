@@ -8,7 +8,7 @@ import (
 )
 
 var _ = param.BaseParam{} // avoid unused import
-var _ = view.MapView{} // avoid unused import
+var _ = view.MapView{}    // avoid unused import
 
 // CreateIAM2Project creates IAM2Project
 func (cli *ZSClient) CreateIAM2Project(params param.CreateIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
@@ -18,6 +18,7 @@ func (cli *ZSClient) CreateIAM2Project(params param.CreateIAM2ProjectParam) (*vi
 	}
 	return &resp, nil
 }
+
 // DeleteIAM2Project deletes IAM2Project
 func (cli *ZSClient) DeleteIAM2Project(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
@@ -29,7 +30,8 @@ func (cli *ZSClient) DeleteAndExpungeIAM2Project(uuid string, deleteMode param.D
 		return err
 	}
 	return cli.ExpungeIAM2Project(uuid)
-	}
+}
+
 // RecoverIAM2Project operates on IAM2Project
 func (cli *ZSClient) RecoverIAM2Project(uuid string, params param.RecoverIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
 	resp := view.IAM2ProjectInventoryView{}
@@ -40,6 +42,7 @@ func (cli *ZSClient) RecoverIAM2Project(uuid string, params param.RecoverIAM2Pro
 	}
 	return &resp, nil
 }
+
 // QueryIAM2Project queries IAM2Project list
 func (cli *ZSClient) QueryIAM2Project(params *param.QueryParam) ([]view.IAM2ProjectInventoryView, error) {
 	var resp []view.IAM2ProjectInventoryView
@@ -60,6 +63,7 @@ func (cli *ZSClient) PageIAM2Project(params *param.QueryParam) ([]view.IAM2Proje
 	total, err := cli.Page("v1/iam2/projects", params, &iAM2Projects)
 	return iAM2Projects, total, err
 }
+
 // ExpungeIAM2Project operates on IAM2Project
 func (cli *ZSClient) ExpungeIAM2Project(uuid string) error {
 	params := map[string]interface{}{
@@ -67,6 +71,7 @@ func (cli *ZSClient) ExpungeIAM2Project(uuid string) error {
 	}
 	return cli.Put("v1/iam2/projects", uuid, params, nil)
 }
+
 // LoginIAM2Project operates on IAM2Project
 func (cli *ZSClient) LoginIAM2Project(params param.LoginIAM2ProjectParam) (*view.SessionInventoryView, error) {
 	resp := view.SessionInventoryView{}
@@ -77,6 +82,7 @@ func (cli *ZSClient) LoginIAM2Project(params param.LoginIAM2ProjectParam) (*view
 	}
 	return &resp, nil
 }
+
 // UpdateIAM2Project updates IAM2Project
 func (cli *ZSClient) UpdateIAM2Project(uuid string, params param.UpdateIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
 	resp := view.IAM2ProjectInventoryView{}
