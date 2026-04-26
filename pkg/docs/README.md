@@ -15,9 +15,9 @@
 | 编号 | 标题 | 严重度 | 影响范围 | Provider workaround | 状态 |
 |---|---|---|---|---|---|
 | [SDK-BUG-001](./SDK-BUG-001-PutWithRespKey-Empty-Envelope.md) | `PutWithRespKey` / `PutWithSpec` 第 3 参数 `responseKey=""` 导致响应 envelope 解析失败 | **High** | 569 处调用，至少 23 个 provider 资源已受影响 | re-query (`Query*` / `Get*`) 替换 SDK 返回值 | ✅ 已修 |
-| [SDK-BUG-002](./SDK-BUG-002-ZSClient-Post-URL-Template.md) | `ZSClient.Post()` 不解析 URL 路径占位符 `{xxx}` | **High** | 101+ 个 action 方法 | 直接走 `ZSHttpClient.Post()` 拼接 URL | 🔲 待修 |
+| [SDK-BUG-002](./SDK-BUG-002-ZSClient-Post-URL-Template.md) | `ZSClient.Post()` 不解析 URL 路径占位符 `{xxx}` | **High** | 历史上影响 101+ 个 action 方法 | 直接走 `ZSHttpClient.Post()` 拼接 URL | ✅ 已修 |
 | [SDK-BUG-003](./SDK-BUG-003-IAM2Project-Soft-Delete.md) | `DeleteIAM2Project` 是软删除，不释放 name | Medium | 1 个 SDK 方法 | provider Delete 后追加 `ExpungeIAM2Project` | ✅ 已修 |
-| [SDK-BUG-004](./SDK-BUG-004-L3Network-Delete-URL.md) | `DeleteL3Network` URL 拼接异常 | High | 1 个 SDK 方法（待 SDK 团队复现） | 暂未绕过；`zstack_l3network` Delete 报错 | 🔲 待修 / 待复现 |
+| [SDK-BUG-004](./SDK-BUG-004-L3Network-Delete-URL.md) | `DeleteL3Network` URL 拼接异常 | High | 历史上影响 1 个 SDK 方法 | 暂未绕过；`zstack_l3network` Delete 报错 | ✅ 已修 |
 
 ---
 
@@ -26,8 +26,8 @@
 | 优先级 | Bug |
 |---|---|
 | **P0** — 影响面最大 | SDK-BUG-001（修一处 SDK 底层 → 23 处 provider 自动受益） |
-| **P0** — 阻塞功能 | SDK-BUG-004（资源根本无法 Delete） |
-| **P1** — 影响 attach/list action 类调用 | SDK-BUG-002 |
+| **P0** — 已完成 | SDK-BUG-004（当前代码路径已确认会携带 UUID） |
+| **P1** — 已完成 | SDK-BUG-002（当前代码路径不再依赖模板占位符解析） |
 | **P2** — 单点功能受限 | SDK-BUG-003 |
 
 ---

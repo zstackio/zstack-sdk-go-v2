@@ -3,21 +3,41 @@
 | 字段 | 值 |
 |---|---|
 | 严重度 | **High** |
-| 状态 | 🔲 待复现 / 待修 |
+| 状态 | ✅ 已修（2026-04-26，按当前代码实现复核） |
 | 发现日期 | 2026-04-24（QA 跟踪扫描） |
-| 影响 SDK 文件 | `pkg/client/l3network_actions.go` 第 51-54 行 |
+| 影响 SDK 文件 | `pkg/client/l3network_actions.go` + `pkg/client/http_client.go` |
 | 影响 provider 资源数 | 1（`zstack_l3network`） |
 | 跟踪关键字 | `SDK-BUG-004`、`BUG-059` |
 
 ---
 
-## 1. 现象
+## 1. 复核结论（当前代码）
+
+当前代码中：
+
+```go
+func (cli *ZSClient) DeleteL3Network(uuid string, deleteMode param.DeleteMode) error {
+    return cli.Delete("v1/l3-networks", uuid, string(deleteMode))
+}
+```
+
+底层 `ZSHttpClient.Delete` 会把 `resourceId` 继续传给 `DeleteWithSpec`，而 `getDeleteURL()` / `getURL()` 在 `resourceId != ""` 时会把 UUID 追加到资源路径中。因此当前实现会构造：
+
+```text
+DELETE /v1/l3-networks/{uuid}?deleteMode=Permissive
+```
+
+从当前代码来看，文档里描述的“UUID 丢失”问题**已不再成立**。
+
+---
+
+## 2. 历史现象
 
 下游 provider 在 `terraform destroy` 时调用 `cli.DeleteL3Network(uuid, mode)`，被报告"URL 缺 UUID 参数"，DELETE 请求打到错误 endpoint，资源无法删除（必须人工介入或后端清理）。
 
 ---
 
-## 2. SDK 当前实现
+## 3. SDK 当前实现
 
 ```go
 // pkg/client/l3network_actions.go:51-54
@@ -52,7 +72,7 @@ ZStack 拒绝（或当作"列表删除"）。
 
 ---
 
-## 3. 待 SDK 团队复现的开放问题
+## 4. 历史复现记录（保留归档）
 
 QA tracker 标注此 bug 为 "SDK 侧问题，非 provider"，但未提交完整 trace。建议 SDK 团队按以下步骤复现：
 
@@ -110,7 +130,7 @@ cfg.Debug(true)
 
 ---
 
-## 4. Provider 当前状态
+## 5. Provider 当前状态
 
 未绕过。`zstack_l3network` 的 Delete 路径目前仍直接调用 SDK 方法：
 
@@ -119,7 +139,7 @@ cfg.Debug(true)
 err := r.client.DeleteL3Network(state.Uuid.ValueString(), param.DeleteModePermissive)
 ```
 
-如果 SDK 团队复现确认是 SDK bug，**短期 provider 可以走 ZSHttpClient 直接拼 URL 绕过**：
+如果历史分支上再次出现同类问题，**短期 provider 仍可走 ZSHttpClient 直接拼 URL 绕过**：
 
 ```go
 err := r.client.ZSHttpClient.DeleteWithSpec(
@@ -132,20 +152,19 @@ err := r.client.ZSHttpClient.DeleteWithSpec(
 )
 ```
 
-但在 SDK 复现/修复之前，建议先按"复现步骤"section 拿到准确 trace 再决定方案。
+但按当前仓库代码复核，该问题应视为**已修复的历史问题**。
 
 ---
 
-## 5. 建议下一步
+## 6. 建议下一步
 
-1. **SDK 团队**：按本文 § 3 复现，捕获完整 HTTP trace；
-2. 若复现成功 → 修 `getDeleteURL` 或 `DeleteWithSpec` 在 `resourceId != ""` 时强制保留 uuid；
-3. 若复现失败 → 重新审视 provider 侧调用（也许 provider 在某分支误传 `state.Uuid` 为空）；
-4. 修复后给下游 provider 升 SDK 即可，无 workaround 需回收。
+1. 下游 provider 升级到当前 SDK 后，优先验证 `zstack_l3network` Delete 是否正常；
+2. 若验证通过，可关闭该项历史追踪；
+3. 若在特定分支/特定版本仍能复现，再补充 trace 并按版本单独记录，而不是继续标记当前主线 SDK 为待修。
 
 ---
 
-## 6. 原始报告
+## 7. 原始报告
 
 - `terraform-provider-zstack/_bmad-output/bug-tracker.md` § BUG-059（标 P0 Open）
 - `terraform-provider-zstack/_bmad-output/bug-tracker.md` § "SDK 修复跟进列表" → `SDK-FIX-004`
