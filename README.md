@@ -27,6 +27,8 @@ go get github.com/zstackio/zstack-sdk-go-v2
 
 ```go
 import (
+    "context"
+
     "github.com/zstackio/zstack-sdk-go-v2/pkg/client"
     "github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 )
@@ -40,11 +42,11 @@ accountLoginClient := client.NewZSClient(
 )
 
 // Login to ZStack
-_, err := accountLoginClient.Login()
+_, err := accountLoginClient.Login(context.Background())
 if err != nil {
     // Handle error
 }
-defer accountLoginClient.Logout()
+defer accountLoginClient.Logout(context.Background())
 
 // Query clusters
 clusters, err := accountLoginClient.QueryCluster(param.NewQueryParam())
@@ -98,6 +100,34 @@ This SDK provides Go bindings for all major ZStack API operations, including but
 
 ### Testing
 
+The repository now distinguishes between fast default checks and environment-backed test suites.
+
+#### Default verification
+
+Run the full repository checks without requiring a live ZStack environment:
+
+```bash
+go test ./...
+```
+
+#### Environment-backed test suites
+
+The following test packages are disabled by default and only run when their gate variable is set:
+
+| Package | Enable variable | Purpose |
+| --- | --- | --- |
+| `pkg/test` | `ZSTACK_ENABLE_PKG_TEST=1` | Auto-generated SDK action tests |
+| `pkg/integration_test` | `ZSTACK_ENABLE_INTEGRATION_TEST=1` | Integration tests against a live API endpoint |
+| `pkg/real_test` | `ZSTACK_ENABLE_REAL_TEST=1` | Real-environment regression coverage |
+
+Examples:
+
+```bash
+ZSTACK_ENABLE_PKG_TEST=1 go test ./pkg/test
+ZSTACK_ENABLE_INTEGRATION_TEST=1 ZSTACK_HOST=127.0.0.1 ZSTACK_PORT=8080 ZSTACK_ACCOUNT=admin ZSTACK_PASSWORD=password go test ./pkg/integration_test
+ZSTACK_ENABLE_REAL_TEST=1 go test ./pkg/real_test
+```
+
 To run tests and generate an HTML report:
 
 **Windows (PowerShell):**
@@ -133,4 +163,3 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 ### Support
 
 For issues, questions and discussions please use the [GitHub Issues](https://github.com/zstackio/zstack-sdk-go-v2/issues).
-
