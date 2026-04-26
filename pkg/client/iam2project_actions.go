@@ -22,6 +22,14 @@ func (cli *ZSClient) CreateIAM2Project(params param.CreateIAM2ProjectParam) (*vi
 func (cli *ZSClient) DeleteIAM2Project(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
 }
+
+// DeleteAndExpungeIAM2Project deletes IAM2Project and then expunges it from recycle bin.
+func (cli *ZSClient) DeleteAndExpungeIAM2Project(uuid string, deleteMode param.DeleteMode) error {
+	if err := cli.DeleteIAM2Project(uuid, deleteMode); err != nil {
+		return err
+	}
+	return cli.ExpungeIAM2Project(uuid)
+	}
 // RecoverIAM2Project operates on IAM2Project
 func (cli *ZSClient) RecoverIAM2Project(uuid string, params param.RecoverIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
 	resp := view.IAM2ProjectInventoryView{}
