@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryConsoleProxyAgent(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryConsoleProxyAgent(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryConsoleProxyAgent(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryConsoleProxyAgent error: %v", err)
 		return

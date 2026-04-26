@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryCephOsdGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryCephOsdGroup(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryCephOsdGroup(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryCephOsdGroup error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryImageStoreBackupStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryImageStoreBackupStorage(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryImageStoreBackupStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryImageStoreBackupStorage error: %v", err)
 		return

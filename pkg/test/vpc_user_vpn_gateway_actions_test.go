@@ -3,7 +3,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -15,7 +14,7 @@ func TestUpdateVpcUserVpnGateway(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryVpcUserVpnGatewayFromLocal(context.Background(), &queryParam)
+	list, err := accountLoginCli.QueryVpcUserVpnGatewayFromLocal(&queryParam)
 	if err != nil {
 		t.Errorf("TestUpdateVpcUserVpnGateway Query error: %v", err)
 		return
@@ -32,7 +31,7 @@ func TestUpdateVpcUserVpnGateway(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateVpcUserVpnGateway(context.Background(), list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateVpcUserVpnGateway(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateVpcUserVpnGateway error: %v", err)
 		return

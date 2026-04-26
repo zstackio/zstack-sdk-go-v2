@@ -3,7 +3,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -18,7 +17,7 @@ func TestDeleteAutoScalingTemplate(t *testing.T) {
 
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryAutoScalingVmTemplate(context.Background(), &queryParam)
+	list, err := accountLoginCli.QueryAutoScalingVmTemplate(&queryParam)
 	if err != nil {
 		t.Errorf("TestDeleteAutoScalingTemplate Query error: %v", err)
 		return
@@ -28,7 +27,7 @@ func TestDeleteAutoScalingTemplate(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteAutoScalingTemplate(context.Background(), list[0].UUID, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteAutoScalingTemplate(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteAutoScalingTemplate error: %v", err)
 		return

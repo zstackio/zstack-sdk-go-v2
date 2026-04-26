@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryTicket(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryTicket(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryTicket(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryTicket error: %v", err)
 		return

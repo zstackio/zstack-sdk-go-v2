@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryCCSCertificate(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryCCSCertificate(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryCCSCertificate(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryCCSCertificate error: %v", err)
 		return

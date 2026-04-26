@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryCbtTask(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryCbtTask(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryCbtTask(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryCbtTask error: %v", err)
 		return

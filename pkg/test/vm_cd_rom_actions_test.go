@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVmCdRom(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVmCdRom(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVmCdRom(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVmCdRom error: %v", err)
 		return

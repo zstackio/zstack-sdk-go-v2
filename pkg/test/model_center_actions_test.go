@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryModelCenter(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryModelCenter(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryModelCenter(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryModelCenter error: %v", err)
 		return

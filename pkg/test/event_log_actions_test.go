@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryEventLog(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryEventLog(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryEventLog(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryEventLog error: %v", err)
 		return

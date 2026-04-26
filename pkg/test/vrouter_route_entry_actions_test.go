@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVRouterRouteEntry(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVRouterRouteEntry(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVRouterRouteEntry(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVRouterRouteEntry error: %v", err)
 		return

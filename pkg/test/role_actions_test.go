@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryRole(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryRole(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryRole(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryRole error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySecurityGroupRule(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySecurityGroupRule(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySecurityGroupRule(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySecurityGroupRule error: %v", err)
 		return

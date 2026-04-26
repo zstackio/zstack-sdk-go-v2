@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySNSMicrosoftTeamsEndpoint(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySNSMicrosoftTeamsEndpoint(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySNSMicrosoftTeamsEndpoint(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySNSMicrosoftTeamsEndpoint error: %v", err)
 		return

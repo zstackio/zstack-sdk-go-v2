@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryManagementNode(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryManagementNode(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryManagementNode(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryManagementNode error: %v", err)
 		return

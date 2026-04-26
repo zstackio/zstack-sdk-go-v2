@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryCephPrimaryStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryCephPrimaryStorage(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryCephPrimaryStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryCephPrimaryStorage error: %v", err)
 		return

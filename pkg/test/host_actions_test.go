@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryHost(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryHost(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryHost(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryHost error: %v", err)
 		return

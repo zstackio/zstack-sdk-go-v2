@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryUserTag(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryUserTag(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryUserTag(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryUserTag error: %v", err)
 		return

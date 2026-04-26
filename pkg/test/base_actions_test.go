@@ -48,12 +48,16 @@ var accessKeyAuthCli = client.NewZSClient(
 var loginSession *view.SessionInventoryView
 
 func TestMain(m *testing.M) {
+	if os.Getenv("ZSTACK_ENABLE_PKG_TEST") == "" {
+		os.Exit(0)
+	}
+
 	var err error
-	loginSession, err = accountLoginCli.Login(context.Background(), )
+	loginSession, err = accountLoginCli.Login(context.Background())
 	if err != nil {
 		os.Exit(1) // 登录失败直接退出，不运行测试
 	}
-	defer accountLoginCli.Logout(context.Background(), )
+	defer accountLoginCli.Logout(context.Background())
 	code := m.Run()
 	os.Exit(code)
 }

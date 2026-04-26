@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryPciDeviceOffering(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPciDeviceOffering(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryPciDeviceOffering(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPciDeviceOffering error: %v", err)
 		return

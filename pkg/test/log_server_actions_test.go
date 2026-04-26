@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryLogServer(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryLogServer(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryLogServer(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryLogServer error: %v", err)
 		return

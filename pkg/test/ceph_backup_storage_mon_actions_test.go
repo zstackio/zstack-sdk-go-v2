@@ -3,7 +3,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -15,7 +14,7 @@ func TestUpdateCephBackupStorageMon(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryCephBackupStorage(context.Background(), &queryParam)
+	list, err := accountLoginCli.QueryCephBackupStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestUpdateCephBackupStorageMon Query error: %v", err)
 		return
@@ -32,7 +31,7 @@ func TestUpdateCephBackupStorageMon(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateCephBackupStorageMon(context.Background(), list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateCephBackupStorageMon(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateCephBackupStorageMon error: %v", err)
 		return

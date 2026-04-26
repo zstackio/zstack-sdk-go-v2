@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryUserProxyConfig(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryUserProxyConfig(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryUserProxyConfig(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryUserProxyConfig error: %v", err)
 		return

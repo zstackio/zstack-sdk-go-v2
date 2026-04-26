@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryTicketFlowCollection(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryTicketFlowCollection(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryTicketFlowCollection(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryTicketFlowCollection error: %v", err)
 		return

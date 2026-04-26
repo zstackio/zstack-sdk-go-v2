@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySftpBackupStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySftpBackupStorage(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySftpBackupStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySftpBackupStorage error: %v", err)
 		return

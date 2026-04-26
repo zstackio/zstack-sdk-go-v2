@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryEventRuleTemplate(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryEventRuleTemplate(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryEventRuleTemplate(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryEventRuleTemplate error: %v", err)
 		return

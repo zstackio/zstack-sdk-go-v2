@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVolumeBackup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVolumeBackup(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVolumeBackup(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVolumeBackup error: %v", err)
 		return

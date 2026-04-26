@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryXskyBlockVolume(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryXskyBlockVolume(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryXskyBlockVolume(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryXskyBlockVolume error: %v", err)
 		return

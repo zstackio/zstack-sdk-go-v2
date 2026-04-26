@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVip(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVip(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVip(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVip error: %v", err)
 		return

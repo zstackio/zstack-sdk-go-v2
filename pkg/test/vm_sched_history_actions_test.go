@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVmSchedHistory(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVmSchedHistory(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVmSchedHistory(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVmSchedHistory error: %v", err)
 		return

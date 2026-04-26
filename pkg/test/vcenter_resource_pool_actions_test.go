@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVCenterResourcePool(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVCenterResourcePool(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVCenterResourcePool(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVCenterResourcePool error: %v", err)
 		return

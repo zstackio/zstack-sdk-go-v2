@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySchedulerTrigger(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySchedulerTrigger(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySchedulerTrigger(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySchedulerTrigger error: %v", err)
 		return

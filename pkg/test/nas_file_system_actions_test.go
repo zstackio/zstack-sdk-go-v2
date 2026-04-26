@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryNasFileSystem(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryNasFileSystem(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryNasFileSystem(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryNasFileSystem error: %v", err)
 		return

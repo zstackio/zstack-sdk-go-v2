@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryWebhook(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryWebhook(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryWebhook(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryWebhook error: %v", err)
 		return

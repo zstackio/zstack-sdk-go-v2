@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryAutoScalingRuleTrigger(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAutoScalingRuleTrigger(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryAutoScalingRuleTrigger(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAutoScalingRuleTrigger error: %v", err)
 		return

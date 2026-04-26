@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryOvnControllerVmInstance(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryOvnControllerVmInstance(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryOvnControllerVmInstance(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryOvnControllerVmInstance error: %v", err)
 		return

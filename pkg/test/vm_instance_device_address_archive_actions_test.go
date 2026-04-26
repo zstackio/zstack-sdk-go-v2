@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVmInstanceDeviceAddressArchive(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVmInstanceDeviceAddressArchive(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVmInstanceDeviceAddressArchive(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVmInstanceDeviceAddressArchive error: %v", err)
 		return

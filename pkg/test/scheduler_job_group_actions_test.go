@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySchedulerJobGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySchedulerJobGroup(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySchedulerJobGroup(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySchedulerJobGroup error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryGpuDevice(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryGpuDevice(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryGpuDevice(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryGpuDevice error: %v", err)
 		return

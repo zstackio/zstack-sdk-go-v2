@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryCdpTask(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryCdpTask(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryCdpTask(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryCdpTask error: %v", err)
 		return

@@ -4,6 +4,7 @@
 package integration_test
 
 import (
+	"context"
 	"os"
 	"testing"
 
@@ -20,6 +21,10 @@ const (
 var testCli *client.ZSClient
 
 func TestMain(m *testing.M) {
+	if os.Getenv("ZSTACK_ENABLE_INTEGRATION_TEST") == "" {
+		os.Exit(0)
+	}
+
 	hostname := os.Getenv("ZSTACK_HOST")
 	if hostname == "" {
 		hostname = defaultHostname
@@ -38,12 +43,12 @@ func TestMain(m *testing.M) {
 		Debug(true)
 	testCli = client.NewZSClient(config)
 
-	_, err := testCli.Login()
+	_, err := testCli.Login(context.Background())
 	if err != nil {
 		golog.Errorf("Integration test login failed: %v", err)
 		os.Exit(1)
 	}
-	defer testCli.Logout()
+	defer testCli.Logout(context.Background())
 
 	os.Exit(m.Run())
 }

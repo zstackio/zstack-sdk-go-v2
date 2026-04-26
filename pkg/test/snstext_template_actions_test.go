@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySNSTextTemplate(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySNSTextTemplate(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySNSTextTemplate(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySNSTextTemplate error: %v", err)
 		return

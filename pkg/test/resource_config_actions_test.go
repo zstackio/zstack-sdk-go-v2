@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryResourceConfig(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryResourceConfig(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryResourceConfig(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryResourceConfig error: %v", err)
 		return

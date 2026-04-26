@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVmNic(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVmNic(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVmNic(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVmNic error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryTrainedModelRecord(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryTrainedModelRecord(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryTrainedModelRecord(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryTrainedModelRecord error: %v", err)
 		return

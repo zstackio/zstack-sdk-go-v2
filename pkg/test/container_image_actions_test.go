@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryContainerImage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryContainerImage(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryContainerImage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryContainerImage error: %v", err)
 		return

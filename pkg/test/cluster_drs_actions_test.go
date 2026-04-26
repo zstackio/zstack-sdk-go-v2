@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryClusterDRS(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryClusterDRS(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryClusterDRS(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryClusterDRS error: %v", err)
 		return

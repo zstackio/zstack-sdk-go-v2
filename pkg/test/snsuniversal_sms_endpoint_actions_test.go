@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySNSUniversalSmsEndpoint(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySNSUniversalSmsEndpoint(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySNSUniversalSmsEndpoint(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySNSUniversalSmsEndpoint error: %v", err)
 		return

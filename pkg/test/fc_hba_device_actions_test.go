@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryFcHbaDevice(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryFcHbaDevice(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryFcHbaDevice(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryFcHbaDevice error: %v", err)
 		return

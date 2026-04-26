@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryCertificate(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryCertificate(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryCertificate(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryCertificate error: %v", err)
 		return

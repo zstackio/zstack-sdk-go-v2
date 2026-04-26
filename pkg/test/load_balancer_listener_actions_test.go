@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryLoadBalancerListener(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryLoadBalancerListener(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryLoadBalancerListener(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryLoadBalancerListener error: %v", err)
 		return

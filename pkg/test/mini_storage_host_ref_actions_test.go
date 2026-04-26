@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryMiniStorageHostRef(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMiniStorageHostRef(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryMiniStorageHostRef(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMiniStorageHostRef error: %v", err)
 		return

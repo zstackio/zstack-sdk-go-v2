@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryImageGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryImageGroup(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryImageGroup(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryImageGroup error: %v", err)
 		return

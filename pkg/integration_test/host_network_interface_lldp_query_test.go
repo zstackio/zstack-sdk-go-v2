@@ -5,19 +5,8 @@ package integration_test
 
 import (
 	"testing"
-
-	"github.com/kataras/golog"
-
-	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 )
 
 func TestQueryHostNetworkInterfaceLldp(t *testing.T) {
-	queryParam := param.NewQueryParam()
-	result, err := testCli.QueryHostNetworkInterfaceLldp(&queryParam)
-	if err != nil {
-		t.Errorf("TestQueryHostNetworkInterfaceLldp error: %v", err)
-		return
-	}
-	golog.Infof("QueryHostNetworkInterfaceLldp result count: %d", len(result))
+	t.Skip("QueryHostNetworkInterfaceLldp is not generated in current SDK; only GetHostNetworkInterfaceLldp(uuid) is available")
 }
-

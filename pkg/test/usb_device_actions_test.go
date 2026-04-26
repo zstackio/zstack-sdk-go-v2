@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryUsbDevice(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryUsbDevice(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryUsbDevice(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryUsbDevice error: %v", err)
 		return

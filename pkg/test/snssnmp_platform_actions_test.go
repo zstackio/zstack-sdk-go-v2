@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySNSSnmpPlatform(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySNSSnmpPlatform(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySNSSnmpPlatform(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySNSSnmpPlatform error: %v", err)
 		return

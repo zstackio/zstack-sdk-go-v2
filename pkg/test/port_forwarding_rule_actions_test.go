@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryPortForwardingRule(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPortForwardingRule(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryPortForwardingRule(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPortForwardingRule error: %v", err)
 		return

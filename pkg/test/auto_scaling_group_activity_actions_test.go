@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryAutoScalingGroupActivity(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAutoScalingGroupActivity(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryAutoScalingGroupActivity(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAutoScalingGroupActivity error: %v", err)
 		return

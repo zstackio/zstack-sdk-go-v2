@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryNvmeLun(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryNvmeLun(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryNvmeLun(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryNvmeLun error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryNfvInstOffering(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryNfvInstOffering(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryNfvInstOffering(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryNfvInstOffering error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryAccessKey(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAccessKey(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryAccessKey(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAccessKey error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryIscsiLun(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryIscsiLun(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryIscsiLun(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryIscsiLun error: %v", err)
 		return

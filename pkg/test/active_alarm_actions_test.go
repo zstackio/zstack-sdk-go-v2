@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryActiveAlarm(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryActiveAlarm(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryActiveAlarm(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryActiveAlarm error: %v", err)
 		return

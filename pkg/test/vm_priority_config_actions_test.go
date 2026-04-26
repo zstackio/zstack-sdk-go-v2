@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVmPriorityConfig(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVmPriorityConfig(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVmPriorityConfig(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVmPriorityConfig error: %v", err)
 		return

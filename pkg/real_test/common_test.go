@@ -3,6 +3,7 @@
 package real_test
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"os"
@@ -59,6 +60,10 @@ func strPtr(s string) *string {
 
 // TestMain 是测试的主入口
 func TestMain(m *testing.M) {
+	if os.Getenv("ZSTACK_ENABLE_REAL_TEST") == "" {
+		os.Exit(0)
+	}
+
 	// 解析命令行参数
 	flag.Parse()
 
@@ -89,7 +94,7 @@ func TestMain(m *testing.M) {
 	cli = client.NewZSClient(config)
 
 	// 登录
-	_, err := cli.Login()
+	_, err := cli.Login(context.Background())
 	if err != nil {
 		golog.Fatalf("Failed to login: %v", err)
 	}

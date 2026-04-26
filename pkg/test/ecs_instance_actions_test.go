@@ -3,7 +3,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -15,7 +14,7 @@ func TestUpdateEcsInstance(t *testing.T) {
 	// First query to get a valid UUID
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryEcsInstanceFromLocal(context.Background(), &queryParam)
+	list, err := accountLoginCli.QueryEcsInstanceFromLocal(&queryParam)
 	if err != nil {
 		t.Errorf("TestUpdateEcsInstance Query error: %v", err)
 		return
@@ -32,7 +31,7 @@ func TestUpdateEcsInstance(t *testing.T) {
 			// Keep original values - just testing the API works
 		},
 	}
-	result, err := accountLoginCli.UpdateEcsInstance(context.Background(), list[0].UUID, updateParam)
+	result, err := accountLoginCli.UpdateEcsInstance(list[0].UUID, updateParam)
 	if err != nil {
 		t.Errorf("TestUpdateEcsInstance error: %v", err)
 		return
@@ -47,7 +46,7 @@ func TestDeleteEcsInstance(t *testing.T) {
 
 	queryParam := param.NewQueryParam()
 	queryParam.Limit(1)
-	list, err := accountLoginCli.QueryEcsInstanceFromLocal(context.Background(), &queryParam)
+	list, err := accountLoginCli.QueryEcsInstanceFromLocal(&queryParam)
 	if err != nil {
 		t.Errorf("TestDeleteEcsInstance Query error: %v", err)
 		return
@@ -57,7 +56,7 @@ func TestDeleteEcsInstance(t *testing.T) {
 		return
 	}
 
-	err = accountLoginCli.DeleteEcsInstance(context.Background(), list[0].UUID, param.DeleteModePermissive)
+	err = accountLoginCli.DeleteEcsInstance(list[0].UUID, param.DeleteModePermissive)
 	if err != nil {
 		t.Errorf("TestDeleteEcsInstance error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryAffinityGroup(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAffinityGroup(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryAffinityGroup(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAffinityGroup error: %v", err)
 		return

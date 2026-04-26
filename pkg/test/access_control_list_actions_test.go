@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryAccessControlList(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAccessControlList(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryAccessControlList(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAccessControlList error: %v", err)
 		return

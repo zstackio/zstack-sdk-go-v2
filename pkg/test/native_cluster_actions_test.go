@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryNativeCluster(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryNativeCluster(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryNativeCluster(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryNativeCluster error: %v", err)
 		return

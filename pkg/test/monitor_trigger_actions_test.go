@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryMonitorTrigger(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMonitorTrigger(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryMonitorTrigger(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMonitorTrigger error: %v", err)
 		return

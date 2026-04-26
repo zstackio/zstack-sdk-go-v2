@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryPreconfigurationTemplate(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryPreconfigurationTemplate(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryPreconfigurationTemplate(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryPreconfigurationTemplate error: %v", err)
 		return

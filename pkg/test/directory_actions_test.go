@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryDirectory(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryDirectory(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryDirectory(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryDirectory error: %v", err)
 		return

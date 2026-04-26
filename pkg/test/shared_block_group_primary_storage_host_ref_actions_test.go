@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySharedBlockGroupPrimaryStorageHostRef(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySharedBlockGroupPrimaryStorageHostRef(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySharedBlockGroupPrimaryStorageHostRef(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySharedBlockGroupPrimaryStorageHostRef error: %v", err)
 		return

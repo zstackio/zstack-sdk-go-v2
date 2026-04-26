@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryAlertDataAck(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAlertDataAck(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryAlertDataAck(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAlertDataAck error: %v", err)
 		return

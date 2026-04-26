@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryHuaweiIMasterFabric(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryHuaweiIMasterFabric(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryHuaweiIMasterFabric(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryHuaweiIMasterFabric error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryMdevDeviceSpec(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryMdevDeviceSpec(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryMdevDeviceSpec(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryMdevDeviceSpec error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryAccountPriceTableRef(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryAccountPriceTableRef(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryAccountPriceTableRef(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryAccountPriceTableRef error: %v", err)
 		return

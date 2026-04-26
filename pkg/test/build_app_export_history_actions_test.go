@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryBuildAppExportHistory(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryBuildAppExportHistory(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryBuildAppExportHistory(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryBuildAppExportHistory error: %v", err)
 		return

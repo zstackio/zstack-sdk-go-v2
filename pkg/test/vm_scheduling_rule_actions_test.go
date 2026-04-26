@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryVmSchedulingRule(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryVmSchedulingRule(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryVmSchedulingRule(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryVmSchedulingRule error: %v", err)
 		return

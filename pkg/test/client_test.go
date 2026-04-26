@@ -25,7 +25,7 @@ func TestZSClient_ValidateSession(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := tt.cli.ValidateSession()
+			got, err := tt.cli.ValidateSession(context.Background())
 			if (err != nil) != tt.wantErr {
 				t.Errorf("ZSClient.ValidateSession() error = %v, wantErr %v", err, tt.wantErr)
 				return

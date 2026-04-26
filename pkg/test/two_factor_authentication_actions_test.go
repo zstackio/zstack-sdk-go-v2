@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryTwoFactorAuthentication(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryTwoFactorAuthentication(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryTwoFactorAuthentication(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryTwoFactorAuthentication error: %v", err)
 		return

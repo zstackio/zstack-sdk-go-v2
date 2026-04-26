@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryBlockPrimaryStorage(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryBlockPrimaryStorage(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryBlockPrimaryStorage(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryBlockPrimaryStorage error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryGuestVmScriptExecutedRecordDetail(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryGuestVmScriptExecutedRecordDetail(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryGuestVmScriptExecutedRecordDetail(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryGuestVmScriptExecutedRecordDetail error: %v", err)
 		return

@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQuerySnmpAgent(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QuerySnmpAgent(context.Background(), &queryParam)
+	result, err := accountLoginCli.QuerySnmpAgent(&queryParam)
 	if err != nil {
 		t.Errorf("TestQuerySnmpAgent error: %v", err)
 		return

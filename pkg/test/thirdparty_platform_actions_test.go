@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryThirdpartyPlatform(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryThirdpartyPlatform(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryThirdpartyPlatform(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryThirdpartyPlatform error: %v", err)
 		return

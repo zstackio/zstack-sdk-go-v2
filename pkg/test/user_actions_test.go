@@ -4,7 +4,6 @@
 package test
 
 import (
-	"context"
 	"testing"
 
 	"github.com/kataras/golog"
@@ -14,7 +13,7 @@ import (
 
 func TestQueryUser(t *testing.T) {
 	queryParam := param.NewQueryParam()
-	result, err := accountLoginCli.QueryUser(context.Background(), &queryParam)
+	result, err := accountLoginCli.QueryUser(&queryParam)
 	if err != nil {
 		t.Errorf("TestQueryUser error: %v", err)
 		return
