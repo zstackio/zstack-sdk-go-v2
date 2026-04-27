@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/jsonutils"
@@ -160,5 +161,134 @@ func TestDeleteAndExpungeIAM2Project_DeletesThenExpunges(t *testing.T) {
 
 	if !strings.Contains(bodies[1], `"expungeIAM2Project":{}`) {
 		t.Fatalf("expected expunge body, got %s", bodies[1])
+	}
+}
+
+// TestPutWithRespKey_EmptyResponseKey_InventoryWithZStackTimeFormat covers
+// SDK-BUG-001's regression target: when an Update* action passes an empty
+// responseKey but the API returns the inventory envelope, the SDK must
+// decode through jsonutils.Unmarshal (which understands timeutils formats
+// such as ZStackTimeFormat — "Jan 2, 2006 3:04:05 PM"), not the stdlib
+// json.Unmarshal which silently leaves time.Time fields zero-valued.
+func TestPutWithRespKey_EmptyResponseKey_InventoryWithZStackTimeFormat(t *testing.T) {
+	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		// lastOpDate is in ZStackTimeFormat — stdlib json.Unmarshal cannot
+		// parse this into time.Time but jsonutils.Unmarshal can.
+		_, _ = w.Write([]byte(`{"inventory":{"uuid":"project-1","name":"project-name","lastOpDate":"Apr 26, 2026 10:30:00 AM"}}`))
+	})
+
+	var result view.IAM2ProjectInventoryView
+	err := cli.PutWithRespKey("v1/iam2/projects", "project-1", "", map[string]interface{}{
+		"updateIAM2Project": map[string]interface{}{"name": "project-name"},
+	}, &result)
+	if err != nil {
+		t.Fatalf("PutWithRespKey returned error: %v", err)
+	}
+
+	if result.UUID != "project-1" || result.Name != "project-name" {
+		t.Fatalf("expected inventory fields to be unmarshaled, got %+v", result)
+	}
+	if result.LastOpDate.IsZero() {
+		t.Fatalf("expected LastOpDate to be parsed from ZStackTimeFormat, got zero value")
+	}
+	// Sanity-check the parsed components rather than an exact timezone-bound
+	// equality so the test stays portable.
+	if result.LastOpDate.Year() != 2026 || result.LastOpDate.Month() != time.April || result.LastOpDate.Day() != 26 {
+		t.Fatalf("expected 2026-04-26, got %v", result.LastOpDate)
+	}
+}
+
+// TestPutWithRespKey_EmptyResponseKey_NoInventoryEnvelopeFallsThrough verifies
+// the bounded-risk guarantee: when the response does NOT include an inventory
+// envelope, the SDK keeps its original whole-body Unmarshal path. This protects
+// any non-Update PutWithRespKey(..., "", ...) callers whose responses are bare
+// objects, "results"-shaped, scalar success blobs, etc.
+func TestPutWithRespKey_EmptyResponseKey_NoInventoryEnvelopeFallsThrough(t *testing.T) {
+	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		// No `inventory` key — bare object the SDK must continue to decode
+		// directly into the target struct.
+		_, _ = w.Write([]byte(`{"uuid":"bare-1","name":"bare-name"}`))
+	})
+
+	var result view.IAM2ProjectInventoryView
+	err := cli.PutWithRespKey("v1/iam2/projects", "bare-1", "", map[string]interface{}{
+		"updateIAM2Project": map[string]interface{}{"name": "bare-name"},
+	}, &result)
+	if err != nil {
+		t.Fatalf("PutWithRespKey returned error: %v", err)
+	}
+
+	if result.UUID != "bare-1" || result.Name != "bare-name" {
+		t.Fatalf("expected fallback whole-body unmarshal to populate result, got %+v", result)
+	}
+}
+
+// TestPutWithRespKey_ExplicitResponseKey_StillWorks asserts the fix did not
+// alter the path used by callers that already pass an explicit responseKey
+// (e.g. anything that goes through Put or PutWithRespKey with "inventory").
+func TestPutWithRespKey_ExplicitResponseKey_StillWorks(t *testing.T) {
+	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"inventory":{"uuid":"project-1","name":"explicit"}}`))
+	})
+
+	var result view.IAM2ProjectInventoryView
+	err := cli.PutWithRespKey("v1/iam2/projects", "project-1", responseKeyInventory, map[string]interface{}{
+		"updateIAM2Project": map[string]interface{}{"name": "explicit"},
+	}, &result)
+	if err != nil {
+		t.Fatalf("PutWithRespKey returned error: %v", err)
+	}
+	if result.UUID != "project-1" || result.Name != "explicit" {
+		t.Fatalf("expected explicit responseKey to keep working, got %+v", result)
+	}
+}
+
+// TestPostWithRespKey_EmptyResponseKey_InventoryWithZStackTimeFormat keeps
+// PostWithAsync's fallback in lockstep with PutWithAsync so the same bounded
+// fix applies to any future Create-path caller that mirrors the Update pattern.
+func TestPostWithRespKey_EmptyResponseKey_InventoryWithZStackTimeFormat(t *testing.T) {
+	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			t.Fatalf("expected POST request, got %s", r.Method)
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"inventory":{"uuid":"project-1","name":"created","lastOpDate":"Apr 26, 2026 10:30:00 AM"}}`))
+	})
+
+	var result view.IAM2ProjectInventoryView
+	err := cli.PostWithRespKey(t.Context(), "v1/iam2/projects", "", map[string]interface{}{
+		"createIAM2Project": map[string]interface{}{"name": "created"},
+	}, &result)
+	if err != nil {
+		t.Fatalf("PostWithRespKey returned error: %v", err)
+	}
+	if result.UUID != "project-1" || result.Name != "created" {
+		t.Fatalf("expected inventory fields to be unmarshaled, got %+v", result)
+	}
+	if result.LastOpDate.IsZero() {
+		t.Fatalf("expected LastOpDate to be parsed from ZStackTimeFormat, got zero value")
+	}
+}
+
+// TestPostWithRespKey_EmptyResponseKey_NoInventoryEnvelopeFallsThrough mirrors
+// the Put-side fallback test for PostWithAsync.
+func TestPostWithRespKey_EmptyResponseKey_NoInventoryEnvelopeFallsThrough(t *testing.T) {
+	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"uuid":"bare-1","name":"bare-name"}`))
+	})
+
+	var result view.IAM2ProjectInventoryView
+	err := cli.PostWithRespKey(t.Context(), "v1/iam2/projects", "", map[string]interface{}{
+		"createIAM2Project": map[string]interface{}{"name": "bare-name"},
+	}, &result)
+	if err != nil {
+		t.Fatalf("PostWithRespKey returned error: %v", err)
+	}
+	if result.UUID != "bare-1" || result.Name != "bare-name" {
+		t.Fatalf("expected fallback whole-body unmarshal to populate result, got %+v", result)
 	}
 }

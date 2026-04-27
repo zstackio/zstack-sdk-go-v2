@@ -6,7 +6,6 @@ import (
 	"context"
 	"crypto/hmac"
 	"crypto/sha1"
-	"encoding/json"
 	"encoding/base64"
 	"fmt"
 	"net/http"
@@ -311,11 +310,13 @@ func (cli *ZSHttpClient) PostWithAsync(ctx context.Context, resource, responseKe
 	}
 
 	if len(responseKey) == 0 {
+		// SDK-BUG-001: many auto-generated *_actions.go callers pass an empty
+		// responseKey but the ZStack API still returns an `inventory` envelope.
+		// Fall back to the inventory key when present so callers do not get a
+		// zero-valued struct. Use jsonutils.Unmarshal (not the stdlib) so
+		// ZStack-specific time formats (ZStackTimeFormat) decode correctly.
 		if resp.Contains(responseKeyInventory) {
-			inventory, err := resp.Get(responseKeyInventory)
-			if err == nil {
-				return location, json.Unmarshal([]byte(inventory.String()), retVal)
-			}
+			return location, resp.Unmarshal(retVal, responseKeyInventory)
 		}
 		return location, resp.Unmarshal(retVal)
 	}
@@ -377,11 +378,13 @@ func (cli *ZSHttpClient) PutWithAsync(ctx context.Context, resource, resourceId,
 	}
 
 	if len(responseKey) == 0 {
+		// SDK-BUG-001: many auto-generated *_actions.go callers pass an empty
+		// responseKey but the ZStack API still returns an `inventory` envelope.
+		// Fall back to the inventory key when present so callers do not get a
+		// zero-valued struct. Use jsonutils.Unmarshal (not the stdlib) so
+		// ZStack-specific time formats (ZStackTimeFormat) decode correctly.
 		if resp.Contains(responseKeyInventory) {
-			inventory, err := resp.Get(responseKeyInventory)
-			if err == nil {
-				return location, json.Unmarshal([]byte(inventory.String()), retVal)
-			}
+			return location, resp.Unmarshal(retVal, responseKeyInventory)
 		}
 		return location, resp.Unmarshal(retVal)
 	}
