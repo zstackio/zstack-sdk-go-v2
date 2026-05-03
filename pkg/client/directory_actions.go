@@ -8,7 +8,7 @@ import (
 )
 
 var _ = param.BaseParam{} // avoid unused import
-var _ = view.MapView{} // avoid unused import
+var _ = view.MapView{}    // avoid unused import
 
 // UpdateDirectory updates Directory
 func (cli *ZSClient) UpdateDirectory(params param.UpdateDirectoryParam) (*view.DirectoryInventoryView, error) {
@@ -20,6 +20,7 @@ func (cli *ZSClient) UpdateDirectory(params param.UpdateDirectoryParam) (*view.D
 	}
 	return &resp, nil
 }
+
 // CreateDirectory creates Directory
 func (cli *ZSClient) CreateDirectory(params param.CreateDirectoryParam) (*view.DirectoryInventoryView, error) {
 	resp := view.DirectoryInventoryView{}
@@ -28,6 +29,7 @@ func (cli *ZSClient) CreateDirectory(params param.CreateDirectoryParam) (*view.D
 	}
 	return &resp, nil
 }
+
 // QueryDirectory queries Directory list
 func (cli *ZSClient) QueryDirectory(params *param.QueryParam) ([]view.DirectoryInventoryView, error) {
 	var resp []view.DirectoryInventoryView
@@ -48,7 +50,14 @@ func (cli *ZSClient) PageDirectory(params *param.QueryParam) ([]view.DirectoryIn
 	total, err := cli.Page("v1/directories", params, &directories)
 	return directories, total, err
 }
+
 // DeleteDirectory deletes Directory
 func (cli *ZSClient) DeleteDirectory(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/delete/directory", uuid, string(deleteMode))
+	mode := string(deleteMode)
+	return cli.DeleteWithBody("v1/delete/directory", param.DeleteDirectoryParam{
+		Params: param.DeleteDirectoryParamDetail{
+			Uuid:       uuid,
+			DeleteMode: &mode,
+		},
+	}, nil)
 }
