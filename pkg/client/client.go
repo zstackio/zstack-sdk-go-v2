@@ -64,6 +64,10 @@ func (cli *ZSClient) Delete(path string, uuid string, deleteMode string) error {
 	return cli.ZSHttpClient.Delete(context.Background(), path, uuid, deleteMode)
 }
 
+func (cli *ZSClient) DeleteWithBody(path string, params interface{}, result interface{}) error {
+	return cli.ZSHttpClient.DeleteWithBody(context.Background(), path, params, result)
+}
+
 func (cli *ZSClient) DeleteWithSpec(path string, uuid string, spec string, deleteMode string, params interface{}) error {
 	return cli.ZSHttpClient.DeleteWithSpec(context.Background(), path, uuid, spec, deleteMode, params)
 }

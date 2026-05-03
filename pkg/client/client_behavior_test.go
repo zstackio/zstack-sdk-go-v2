@@ -34,7 +34,7 @@ func newTestZSClient(t *testing.T, handler http.HandlerFunc) *ZSClient {
 
 	config := NewZSConfig(serverURL.Hostname(), port, "zstack").AccessKey("ak", "sk")
 	return NewZSClient(config)
-	}
+}
 
 func TestPutWithRespKey_EmptyResponseKeyFallsBackToInventoryEnvelope(t *testing.T) {
 	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
@@ -161,6 +161,46 @@ func TestDeleteAndExpungeIAM2Project_DeletesThenExpunges(t *testing.T) {
 
 	if !strings.Contains(bodies[1], `"expungeIAM2Project":{}`) {
 		t.Fatalf("expected expunge body, got %s", bodies[1])
+	}
+}
+
+func TestDeleteDirectory_UsesActionURLAndBody(t *testing.T) {
+	var request string
+	var body string
+
+	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
+		bodyBytes, err := io.ReadAll(r.Body)
+		if err != nil {
+			t.Fatalf("read request body: %v", err)
+		}
+
+		request = r.Method + " " + r.URL.RequestURI()
+		body = string(bodyBytes)
+
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{}`))
+	})
+
+	err := cli.DeleteDirectory("directory-1", param.DeleteModePermissive)
+	if err != nil {
+		t.Fatalf("DeleteDirectory returned error: %v", err)
+	}
+
+	if request != "DELETE /zstack/v1/delete/directory" {
+		t.Fatalf("unexpected delete request: %s", request)
+	}
+
+	var payload struct {
+		DeleteDirectory struct {
+			UUID       string `json:"uuid"`
+			DeleteMode string `json:"deleteMode"`
+		} `json:"deleteDirectory"`
+	}
+	if err := json.Unmarshal([]byte(body), &payload); err != nil {
+		t.Fatalf("unmarshal deleteDirectory body: %v", err)
+	}
+	if payload.DeleteDirectory.UUID != "directory-1" || payload.DeleteDirectory.DeleteMode != "Permissive" {
+		t.Fatalf("expected deleteDirectory body, got %s", body)
 	}
 }
 

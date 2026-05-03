@@ -425,6 +425,24 @@ func (cli *ZSHttpClient) Delete(ctx context.Context, resource, resourceId, delet
 	return cli.DeleteWithSpec(ctx, resource, resourceId, "", fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 
+func (cli *ZSHttpClient) DeleteWithBody(ctx context.Context, resource string, params interface{}, retVal interface{}) error {
+	urlStr := cli.getDeleteURL(resource, "", "", "")
+	_, _, resp, err := cli.httpDeleteWithBody(ctx, urlStr, jsonMarshal(params), false)
+	if err != nil {
+		return err
+	}
+
+	if retVal == nil {
+		return nil
+	}
+
+	if resp.Contains(responseKeyInventory) {
+		return resp.Unmarshal(retVal, responseKeyInventory)
+	}
+
+	return resp.Unmarshal(retVal)
+}
+
 func (cli *ZSHttpClient) DeleteWithSpec(ctx context.Context, resource, resourceId, spec, paramsStr string, retVal interface{}) error {
 	_, err := cli.DeleteWithAsync(ctx, resource, resourceId, spec, paramsStr, retVal, false)
 	return err
@@ -445,12 +463,16 @@ func (cli *ZSHttpClient) DeleteWithAsync(ctx context.Context, resource, resource
 }
 
 func (cli *ZSHttpClient) httpDelete(ctx context.Context, urlStr string, async bool) (string, http.Header, jsonutils.JSONObject, error) {
+	return cli.httpDeleteWithBody(ctx, urlStr, nil, async)
+}
+
+func (cli *ZSHttpClient) httpDeleteWithBody(ctx context.Context, urlStr string, params jsonutils.JSONObject, async bool) (string, http.Header, jsonutils.JSONObject, error) {
 	header, err := cli.getHeader(urlStr, http.MethodDelete)
 	if err != nil {
 		return "", nil, nil, err
 	}
 
-	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, ctx, httputils.DELETE, urlStr, header, nil, cli.debug)
+	respHeader, resp, err := httputils.JSONRequest(cli.httpClient, ctx, httputils.DELETE, urlStr, header, params, cli.debug)
 	if err != nil {
 		return "", nil, nil, errors.Wrapf(err, "%s %s", http.MethodDelete, urlStr)
 	}
