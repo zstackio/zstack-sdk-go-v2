@@ -332,3 +332,72 @@ func TestPostWithRespKey_EmptyResponseKey_NoInventoryEnvelopeFallsThrough(t *tes
 		t.Fatalf("expected fallback whole-body unmarshal to populate result, got %+v", result)
 	}
 }
+
+func TestAttachTagToResources_DecodesTopLevelEventResponse(t *testing.T) {
+	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			t.Fatalf("expected POST request, got %s", r.Method)
+		}
+		if r.URL.Path != "/zstack/v1/tags/tag-1/resources" {
+			t.Fatalf("unexpected request path: %s", r.URL.Path)
+		}
+		body, err := io.ReadAll(r.Body)
+		if err != nil {
+			t.Fatalf("read request body: %v", err)
+		}
+		if !strings.Contains(string(body), `"resourceUuids":["res-1"]`) {
+			t.Fatalf("expected resourceUuids in request body, got %s", body)
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"success":true,"results":[{"success":true,"inventory":{"uuid":"binding-1","resourceUuid":"res-1"}}]}`))
+	})
+
+	resp, err := cli.AttachTagToResources("tag-1", param.AttachTagToResourcesParam{
+		Params: param.AttachTagToResourcesParamDetail{
+			ResourceUuids: []string{"res-1"},
+		},
+	})
+	if err != nil {
+		t.Fatalf("AttachTagToResources returned error: %v", err)
+	}
+	if !resp.Success || len(resp.Results) != 1 || !resp.Results[0].Success {
+		t.Fatalf("expected successful top-level event response, got %+v", resp)
+	}
+	if resp.Results[0].Inventory.UUID != "binding-1" || resp.Results[0].Inventory.ResourceUuid != "res-1" {
+		t.Fatalf("expected decoded result inventory, got %+v", resp.Results[0].Inventory)
+	}
+}
+
+func TestAddVmNicToSecurityGroup_DecodesTopLevelEventResponse(t *testing.T) {
+	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			t.Fatalf("expected POST request, got %s", r.Method)
+		}
+		if r.URL.Path != "/zstack/v1/security-groups/sg-1/vm-instances/nics" {
+			t.Fatalf("unexpected request path: %s", r.URL.Path)
+		}
+		body, err := io.ReadAll(r.Body)
+		if err != nil {
+			t.Fatalf("read request body: %v", err)
+		}
+		if !strings.Contains(string(body), `"vmNicUuids":["nic-1"]`) {
+			t.Fatalf("expected vmNicUuids in request body, got %s", body)
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"success":true}`))
+	})
+
+	resp, err := cli.AddVmNicToSecurityGroup("sg-1", param.AddVmNicToSecurityGroupParam{
+		Params: param.AddVmNicToSecurityGroupParamDetail{
+			VmNicUuids: []string{"nic-1"},
+		},
+	})
+	if err != nil {
+		t.Fatalf("AddVmNicToSecurityGroup returned error: %v", err)
+	}
+	if !resp.Success {
+		t.Fatalf("expected successful top-level event response, got %+v", resp)
+	}
+}

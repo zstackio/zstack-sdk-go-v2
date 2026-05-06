@@ -9,7 +9,7 @@ import (
 )
 
 var _ = param.BaseParam{} // avoid unused import
-var _ = view.MapView{} // avoid unused import
+var _ = view.MapView{}    // avoid unused import
 
 // ChangeIAM2OrganizationState changes IAM2OrganizationState
 func (cli *ZSClient) ChangeIAM2OrganizationState(uuid string, params param.ChangeIAM2OrganizationStateParam) (*view.IAM2OrganizationInventoryView, error) {
@@ -2793,7 +2793,7 @@ func (cli *ZSClient) GetIAM2ProjectContainerClusterCandidates() (*view.Container
 // AttachTagToResources operates on TagToResources
 func (cli *ZSClient) AttachTagToResources(tagUuid string, params param.AttachTagToResourcesParam) (*view.AttachTagToResourcesEventView, error) {
 	resp := view.AttachTagToResourcesEventView{}
-	if err := cli.Post(fmt.Sprintf("v1/tags/%s/resources", tagUuid), params, &resp); err != nil {
+	if _, err := cli.PostWithAsync(fmt.Sprintf("v1/tags/%s/resources", tagUuid), "", params, &resp, false); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8137,7 +8137,7 @@ func (cli *ZSClient) ChangeSecurityGroupRuleState(securityGroupUuid string, para
 // AddVmNicToSecurityGroup adds VmNicToSecurityGroup
 func (cli *ZSClient) AddVmNicToSecurityGroup(securityGroupUuid string, params param.AddVmNicToSecurityGroupParam) (*view.AddVmNicToSecurityGroupEventView, error) {
 	resp := view.AddVmNicToSecurityGroupEventView{}
-	if err := cli.Post(fmt.Sprintf("v1/security-groups/%s/vm-instances/nics", securityGroupUuid), params, &resp); err != nil {
+	if _, err := cli.PostWithAsync(fmt.Sprintf("v1/security-groups/%s/vm-instances/nics", securityGroupUuid), "", params, &resp, false); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -11111,4 +11111,3 @@ func (cli *ZSClient) SyncVpcVpnGatewayFromRemote(dataCenterUuid string, params p
 func (cli *ZSClient) DeleteEcsVpcInLocal(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/hybrid/aliyun/vpc", uuid, string(deleteMode))
 }
-
