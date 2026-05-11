@@ -27,8 +27,3 @@ type SanSecSecretResourcePoolInventoryView struct {
 	Ability string `json:"ability,omitempty"`
 }
 
-// UpdateSecretResourcePoolEventView UpdateSecretResourcePoolEvent
-type UpdateSecretResourcePoolEventView struct {
-	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
-}
-

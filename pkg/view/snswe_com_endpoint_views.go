@@ -32,3 +32,8 @@ type QuerySNSWeComEndpointView struct {
 	Inventories []SNSWeComEndpointInventoryView `json:"inventories,omitempty"`
 }
 
+// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
+type UpdateSNSApplicationEndpointEventView struct {
+	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
+}
+
