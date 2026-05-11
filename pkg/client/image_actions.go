@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -27,7 +28,7 @@ func (cli *ZSClient) AddImageAsync(ctx context.Context, params param.AddImagePar
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}

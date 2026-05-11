@@ -23,3 +23,8 @@ type HaiTaiSecretResourcePoolInventoryView struct {
 	Ability string `json:"ability,omitempty"`
 }
 
+// CreateSecretResourcePoolEventView CreateSecretResourcePoolEvent
+type CreateSecretResourcePoolEventView struct {
+	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
+}
+

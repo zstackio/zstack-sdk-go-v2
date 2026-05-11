@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -371,19 +372,19 @@ func (cli *ZSClient) AttachL3NetworkToVm(ctx context.Context, vmInstanceUuid str
 	return &resp, nil
 }
 
-// AttachL2NetworkToCluster operates on L2NetworkToCluster
-func (cli *ZSClient) AttachL2NetworkToCluster(ctx context.Context, l2NetworkUuid string, clusterUuid string, params param.AttachL2NetworkToClusterParam) (*view.L2NetworkInventoryView, error) {
-	resp := view.L2NetworkInventoryView{}
-	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l2-networks/%s/clusters/%s", l2NetworkUuid, clusterUuid), "inventory", params, &resp); err != nil {
+// AttachPrimaryStorageToCluster operates on PrimaryStorageToCluster
+func (cli *ZSClient) AttachPrimaryStorageToCluster(ctx context.Context, clusterUuid string, primaryStorageUuid string, params param.AttachPrimaryStorageToClusterParam) (*view.PrimaryStorageInventoryView, error) {
+	resp := view.PrimaryStorageInventoryView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/clusters/%s/primary-storage/%s", clusterUuid, primaryStorageUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// AttachPrimaryStorageToCluster operates on PrimaryStorageToCluster
-func (cli *ZSClient) AttachPrimaryStorageToCluster(ctx context.Context, clusterUuid string, primaryStorageUuid string, params param.AttachPrimaryStorageToClusterParam) (*view.PrimaryStorageInventoryView, error) {
-	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/clusters/%s/primary-storage/%s", clusterUuid, primaryStorageUuid), "inventory", params, &resp); err != nil {
+// AttachL2NetworkToCluster operates on L2NetworkToCluster
+func (cli *ZSClient) AttachL2NetworkToCluster(ctx context.Context, l2NetworkUuid string, clusterUuid string, params param.AttachL2NetworkToClusterParam) (*view.L2NetworkInventoryView, error) {
+	resp := view.L2NetworkInventoryView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l2-networks/%s/clusters/%s", l2NetworkUuid, clusterUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -486,7 +487,7 @@ func (cli *ZSClient) PrimaryStorageMigrateVolumeAsync(ctx context.Context, param
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -802,7 +803,7 @@ func (cli *ZSClient) ExportVmOvaPackageAsync(ctx context.Context, params param.E
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -828,7 +829,7 @@ func (cli *ZSClient) RevertVmFromCdpBackupAsync(ctx context.Context, params para
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -2084,7 +2085,7 @@ func (cli *ZSClient) CreateVmBackupAsync(ctx context.Context, params param.Creat
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -2890,7 +2891,7 @@ func (cli *ZSClient) ExportImageFromBackupStorageAsync(ctx context.Context, para
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -3308,7 +3309,7 @@ func (cli *ZSClient) BackupStorageMigrateImageAsync(ctx context.Context, params 
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -3836,7 +3837,7 @@ func (cli *ZSClient) RunIAM2ScriptAsync(ctx context.Context, params param.RunIAM
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -3988,7 +3989,7 @@ func (cli *ZSClient) ConvertVmFromForeignHypervisorAsync(ctx context.Context, pa
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -4635,7 +4636,7 @@ func (cli *ZSClient) CreateVmInstanceFromOvfAsync(ctx context.Context, params pa
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -5087,7 +5088,7 @@ func (cli *ZSClient) CreateVmFromCdpBackupAsync(ctx context.Context, params para
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -5562,7 +5563,7 @@ func (cli *ZSClient) StartDataProtectionAsync(ctx context.Context, params param.
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -5739,7 +5740,7 @@ func (cli *ZSClient) ReclaimSpaceFromImageStoreAsync(ctx context.Context, params
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -6969,7 +6970,7 @@ func (cli *ZSClient) UpdateClusterOSAsync(ctx context.Context, params param.Upda
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -7128,19 +7129,19 @@ func (cli *ZSClient) AddDisasterImageStoreBackupStorage(ctx context.Context, par
 	return &resp, nil
 }
 
-// CreateVolumesSnapshot creates VolumesSnapshot
-func (cli *ZSClient) CreateVolumesSnapshot(ctx context.Context, params param.CreateVolumesSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
-	resp := view.VolumeSnapshotInventoryView{}
-	if err := cli.PostWithRespKey(ctx, "v1/volumes/volume-snapshots", "inventories", params, &resp); err != nil {
+// GetVmSchedulingRulesExecuteState gets VmSchedulingRulesExecuteState by uuid
+func (cli *ZSClient) GetVmSchedulingRulesExecuteState(ctx context.Context) (*view.GetVmSchedulingRulesExecuteStateView, error) {
+	var resp view.GetVmSchedulingRulesExecuteStateView
+	if err := cli.GetWithRespKey(ctx, "v1/get/vmSchedulingRules/conflict/state", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// GetVmSchedulingRulesExecuteState gets VmSchedulingRulesExecuteState by uuid
-func (cli *ZSClient) GetVmSchedulingRulesExecuteState(ctx context.Context) (*view.GetVmSchedulingRulesExecuteStateView, error) {
-	var resp view.GetVmSchedulingRulesExecuteStateView
-	if err := cli.GetWithRespKey(ctx, "v1/get/vmSchedulingRules/conflict/state", "", "", nil, &resp); err != nil {
+// CreateVolumesSnapshot creates VolumesSnapshot
+func (cli *ZSClient) CreateVolumesSnapshot(ctx context.Context, params param.CreateVolumesSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
+	resp := view.VolumeSnapshotInventoryView{}
+	if err := cli.PostWithRespKey(ctx, "v1/volumes/volume-snapshots", "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7303,7 +7304,7 @@ func (cli *ZSClient) CreateDataVolumeTemplateFromVolumeAsync(ctx context.Context
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -7750,7 +7751,7 @@ func (cli *ZSClient) MigrateVmAsync(ctx context.Context, params param.MigrateVmP
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -7787,7 +7788,7 @@ func (cli *ZSClient) FlattenVmInstanceAsync(ctx context.Context, params param.Fl
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -8030,7 +8031,7 @@ func (cli *ZSClient) BatchCreateBaremetalChassisAsync(ctx context.Context, param
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -8474,7 +8475,7 @@ func (cli *ZSClient) RevertVolumeFromSnapshotAsync(ctx context.Context, params p
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -8682,7 +8683,7 @@ func (cli *ZSClient) FlattenVolumeAsync(ctx context.Context, params param.Flatte
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -8704,19 +8705,19 @@ func (cli *ZSClient) DeleteEcsSecurityGroupRuleRemote(ctx context.Context, uuid 
 	return cli.Delete(ctx, "v1/hybrid/aliyun/security-group-rule/remote", uuid, string(deleteMode))
 }
 
-// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
-func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(ctx context.Context) (*view.GetCandidateAffinityGroupForAttachingVmView, error) {
-	var resp view.GetCandidateAffinityGroupForAttachingVmView
-	if err := cli.GetWithRespKey(ctx, "v1/affinityGroup/attachingVm", "", "", nil, &resp); err != nil {
+// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
+func (cli *ZSClient) DetachAliyunDiskFromEcs(ctx context.Context, uuid string, params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
+	resp := view.DetachAliyunDiskFromEcsEventView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/disk/%s/detach", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
-func (cli *ZSClient) DetachAliyunDiskFromEcs(ctx context.Context, uuid string, params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
-	resp := view.DetachAliyunDiskFromEcsEventView{}
-	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/disk/%s/detach", uuid), "", params, &resp); err != nil {
+// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
+func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(ctx context.Context) (*view.GetCandidateAffinityGroupForAttachingVmView, error) {
+	var resp view.GetCandidateAffinityGroupForAttachingVmView
+	if err := cli.GetWithRespKey(ctx, "v1/affinityGroup/attachingVm", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9162,7 +9163,7 @@ func (cli *ZSClient) PrimaryStorageMigrateVmAsync(ctx context.Context, params pa
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -10525,7 +10526,7 @@ func (cli *ZSClient) CreateRootVolumeTemplateFromRootVolumeAsync(ctx context.Con
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -10716,7 +10717,7 @@ func (cli *ZSClient) AddKVMHostFromConfigFileAsync(ctx context.Context, params p
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}
@@ -11164,7 +11165,7 @@ func (cli *ZSClient) EnableCdpTaskAsync(ctx context.Context, params param.Enable
 	responseKey := ""
 	var retVal interface{}
 
-	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	apiId, err := cli.PostWithAsync(ctx, resource, responseKey, params, retVal, true)
 	if err != nil {
 		return "", err
 	}

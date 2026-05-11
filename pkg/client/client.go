@@ -3,6 +3,7 @@
 package client
 
 import (
+	"context"
 	"crypto/sha512"
 	"fmt"
 	"net/http"
@@ -63,7 +64,7 @@ func (cli *ZSClient) logInByAccountUser() (*view.SessionInventoryView, error) {
 		},
 	}
 	sessionView := view.SessionInventoryView{}
-	err := cli.Put("v1/accounts/users/login", "", params, &sessionView)
+	err := cli.Put(context.Background(), "v1/accounts/users/login", "", params, &sessionView)
 	if err != nil {
 		golog.Errorf("ZSClient.logInByAccountUser Account[%s] User[%s] error:%v",
 			cli.accountName, cli.accountUserName, err)
@@ -89,7 +90,7 @@ func (cli *ZSClient) logInByAccount() (*view.SessionInventoryView, error) {
 		},
 	}
 	sessionView := view.SessionInventoryView{}
-	err := cli.Put("v1/accounts/login", "", params, &sessionView)
+	err := cli.Put(context.Background(), "v1/accounts/login", "", params, &sessionView)
 	if err != nil {
 		golog.Errorf("ZSClient.logInByAccount Account[%s] error:%v", cli.accountName, err)
 		return nil, err
@@ -112,7 +113,7 @@ func (cli *ZSClient) ValidateSession() (map[string]bool, error) {
 
 func (cli *ZSClient) ValidateSessionId(sessionId string) (map[string]bool, error) {
 	validSession := make(map[string]bool)
-	err := cli.GetWithSpec("v1/accounts/sessions", sessionId, "valid", "", nil, &validSession)
+	err := cli.GetWithSpec(context.Background(), "v1/accounts/sessions", sessionId, "valid", "", nil, &validSession)
 	if err != nil {
 		golog.Errorf("ZSClient.ValidateSession sessionId[%s] error:%v", sessionId, err)
 		return nil, err
@@ -131,7 +132,7 @@ func (cli *ZSClient) Logout() error {
 		return errors.ErrNotSupported
 	}
 
-	err := cli.Delete("v1/accounts/sessions", cli.sessionId, "")
+	err := cli.Delete(context.Background(), "v1/accounts/sessions", cli.sessionId, "")
 	if err != nil {
 		golog.Errorf("ZSClient.Logout sessionId[%s] error:%v", cli.sessionId, err)
 		return err
@@ -198,7 +199,7 @@ func (cli *ZSClient) WebLogin() (*view.WebUISessionView, error) {
 
 func (cli *ZSClient) hql(params param.HqlParam, retVal interface{}, unMarshalKeys ...string) (http.Header, error) {
 	urlStr := fmt.Sprintf("http://%s:%d/graphql", cli.hostname, WebZStackPort)
-	_, respHeader, resp, err := cli.httpPost(urlStr, jsonMarshal(params), false)
+	_, respHeader, resp, err := cli.httpPost(context.Background(), urlStr, jsonMarshal(params), false)
 	if err != nil {
 		return nil, err
 	}
@@ -214,7 +215,7 @@ func (cli *ZSClient) Zql(querySt string, retVal interface{}, unMarshalKeys ...st
 	encodedQuery := url.QueryEscape(querySt)
 	baseUrl := cli.getRequestURL("v1/zql")
 	urlStr := fmt.Sprintf("%s?zql=%s", baseUrl, encodedQuery)
-	_, respHeader, resp, err := cli.httpGet(urlStr, false)
+	_, respHeader, resp, err := cli.httpGet(context.Background(), urlStr, false)
 	if err != nil {
 		return nil, err
 	}

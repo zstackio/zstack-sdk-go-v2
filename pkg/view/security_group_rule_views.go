@@ -41,18 +41,8 @@ type ValidateSecurityGroupRuleView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// AddSecurityGroupRuleEventView AddSecurityGroupRuleEvent
-type AddSecurityGroupRuleEventView struct {
-	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
-}
-
 // QuerySecurityGroupRuleView QuerySecurityGroupRule
 type QuerySecurityGroupRuleView struct {
 	Inventories []SecurityGroupRuleInventoryView `json:"inventories,omitempty"`
-}
-
-// DeleteSecurityGroupRuleEventView DeleteSecurityGroupRuleEvent
-type DeleteSecurityGroupRuleEventView struct {
-	Inventory SecurityGroupInventoryView `json:"inventory,omitempty"`
 }
 
