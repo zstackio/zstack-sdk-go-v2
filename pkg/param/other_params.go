@@ -374,6 +374,15 @@ type AttachL3NetworkToVmParam struct {
 	BaseParam
 	Params AttachL3NetworkToVmParamDetail `json:"params"`
 }
+// AttachPrimaryStorageToClusterParamDetail AttachPrimaryStorageToCluster detail param
+type AttachPrimaryStorageToClusterParamDetail struct {
+}
+
+// AttachPrimaryStorageToClusterParam AttachPrimaryStorageToCluster request param
+type AttachPrimaryStorageToClusterParam struct {
+	BaseParam
+	Params AttachPrimaryStorageToClusterParamDetail `json:"params"`
+}
 // AttachL2NetworkToClusterParamDetail AttachL2NetworkToCluster detail param
 type AttachL2NetworkToClusterParamDetail struct {
 	L2ProviderType *string `json:"l2ProviderType,omitempty"`
@@ -383,15 +392,6 @@ type AttachL2NetworkToClusterParamDetail struct {
 type AttachL2NetworkToClusterParam struct {
 	BaseParam
 	Params AttachL2NetworkToClusterParamDetail `json:"attachL2NetworkToCluster"`
-}
-// AttachPrimaryStorageToClusterParamDetail AttachPrimaryStorageToCluster detail param
-type AttachPrimaryStorageToClusterParamDetail struct {
-}
-
-// AttachPrimaryStorageToClusterParam AttachPrimaryStorageToCluster request param
-type AttachPrimaryStorageToClusterParam struct {
-	BaseParam
-	Params AttachPrimaryStorageToClusterParamDetail `json:"params"`
 }
 // ChangeVmNicTypeParamDetail ChangeVmNicType detail param
 type ChangeVmNicTypeParamDetail struct {
@@ -7619,16 +7619,6 @@ type AddDisasterImageStoreBackupStorageParam struct {
 	BaseParam
 	Params AddDisasterImageStoreBackupStorageParamDetail `json:"params"`
 }
-// CreateVolumesSnapshotParamDetail CreateVolumesSnapshot detail param
-type CreateVolumesSnapshotParamDetail struct {
-	VolumeUuids []string `json:"volumeUuids" validate:"required"`
-}
-
-// CreateVolumesSnapshotParam CreateVolumesSnapshot request param
-type CreateVolumesSnapshotParam struct {
-	BaseParam
-	Params CreateVolumesSnapshotParamDetail `json:"params"`
-}
 // GetVmSchedulingRulesExecuteStateParamDetail GetVmSchedulingRulesExecuteState detail param
 type GetVmSchedulingRulesExecuteStateParamDetail struct {
 	Uuids []string `json:"uuids" validate:"required"`
@@ -7638,6 +7628,16 @@ type GetVmSchedulingRulesExecuteStateParamDetail struct {
 type GetVmSchedulingRulesExecuteStateParam struct {
 	BaseParam
 	Params GetVmSchedulingRulesExecuteStateParamDetail `json:"getVmSchedulingRulesExecuteState"`
+}
+// CreateVolumesSnapshotParamDetail CreateVolumesSnapshot detail param
+type CreateVolumesSnapshotParamDetail struct {
+	VolumeUuids []string `json:"volumeUuids" validate:"required"`
+}
+
+// CreateVolumesSnapshotParam CreateVolumesSnapshot request param
+type CreateVolumesSnapshotParam struct {
+	BaseParam
+	Params CreateVolumesSnapshotParamDetail `json:"params"`
 }
 // GetIpAddressCapacityParamDetail GetIpAddressCapacity detail param
 type GetIpAddressCapacityParamDetail struct {
@@ -9421,16 +9421,6 @@ type DeleteEcsSecurityGroupRuleRemoteParam struct {
 	BaseParam
 	Params DeleteEcsSecurityGroupRuleRemoteParamDetail `json:"deleteEcsSecurityGroupRuleRemote"`
 }
-// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
-type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
-	VmUuid string `json:"vmUuid" validate:"required"`
-}
-
-// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
-type GetCandidateAffinityGroupForAttachingVmParam struct {
-	BaseParam
-	Params GetCandidateAffinityGroupForAttachingVmParamDetail `json:"getCandidateAffinityGroupForAttachingVm"`
-}
 // DetachAliyunDiskFromEcsParamDetail DetachAliyunDiskFromEcs detail param
 type DetachAliyunDiskFromEcsParamDetail struct {
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
@@ -9441,6 +9431,16 @@ type DetachAliyunDiskFromEcsParamDetail struct {
 type DetachAliyunDiskFromEcsParam struct {
 	BaseParam
 	Params DetachAliyunDiskFromEcsParamDetail `json:"params"`
+}
+// GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
+type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
+	VmUuid string `json:"vmUuid" validate:"required"`
+}
+
+// GetCandidateAffinityGroupForAttachingVmParam GetCandidateAffinityGroupForAttachingVm request param
+type GetCandidateAffinityGroupForAttachingVmParam struct {
+	BaseParam
+	Params GetCandidateAffinityGroupForAttachingVmParamDetail `json:"getCandidateAffinityGroupForAttachingVm"`
 }
 // UpdateFirewallIpSetTemplateParamDetail UpdateFirewallIpSetTemplate detail param
 type UpdateFirewallIpSetTemplateParamDetail struct {
