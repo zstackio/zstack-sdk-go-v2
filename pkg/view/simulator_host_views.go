@@ -41,3 +41,8 @@ type SimulatorHostInventoryView struct {
 	Architecture string `json:"architecture,omitempty"`
 }
 
+// AddHostEventView AddHostEvent
+type AddHostEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
+}
+

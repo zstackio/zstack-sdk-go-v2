@@ -372,19 +372,19 @@ func (cli *ZSClient) AttachL3NetworkToVm(ctx context.Context, vmInstanceUuid str
 	return &resp, nil
 }
 
-// AttachPrimaryStorageToCluster operates on PrimaryStorageToCluster
-func (cli *ZSClient) AttachPrimaryStorageToCluster(ctx context.Context, clusterUuid string, primaryStorageUuid string, params param.AttachPrimaryStorageToClusterParam) (*view.PrimaryStorageInventoryView, error) {
-	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/clusters/%s/primary-storage/%s", clusterUuid, primaryStorageUuid), "inventory", params, &resp); err != nil {
+// AttachL2NetworkToCluster operates on L2NetworkToCluster
+func (cli *ZSClient) AttachL2NetworkToCluster(ctx context.Context, l2NetworkUuid string, clusterUuid string, params param.AttachL2NetworkToClusterParam) (*view.L2NetworkInventoryView, error) {
+	resp := view.L2NetworkInventoryView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l2-networks/%s/clusters/%s", l2NetworkUuid, clusterUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// AttachL2NetworkToCluster operates on L2NetworkToCluster
-func (cli *ZSClient) AttachL2NetworkToCluster(ctx context.Context, l2NetworkUuid string, clusterUuid string, params param.AttachL2NetworkToClusterParam) (*view.L2NetworkInventoryView, error) {
-	resp := view.L2NetworkInventoryView{}
-	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l2-networks/%s/clusters/%s", l2NetworkUuid, clusterUuid), "inventory", params, &resp); err != nil {
+// AttachPrimaryStorageToCluster operates on PrimaryStorageToCluster
+func (cli *ZSClient) AttachPrimaryStorageToCluster(ctx context.Context, clusterUuid string, primaryStorageUuid string, params param.AttachPrimaryStorageToClusterParam) (*view.PrimaryStorageInventoryView, error) {
+	resp := view.PrimaryStorageInventoryView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/clusters/%s/primary-storage/%s", clusterUuid, primaryStorageUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2711,21 +2711,21 @@ func (cli *ZSClient) AttachMonitorTriggerActionToTrigger(ctx context.Context, tr
 	return &resp, nil
 }
 
+// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
+func (cli *ZSClient) GetAliyunNasFileSystemRemote(ctx context.Context) (*view.GetAliyunNasFileSystemRemoteView, error) {
+	var resp view.GetAliyunNasFileSystemRemoteView
+	if err := cli.GetWithRespKey(ctx, "v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // UpdateOrganizationQuota updates OrganizationQuota
 func (cli *ZSClient) UpdateOrganizationQuota(ctx context.Context, params param.UpdateOrganizationQuotaParam) (*view.QuotaInventoryView, error) {
 	resp := view.QuotaInventoryView{}
 	if err := cli.PutWithRespKey(ctx, "v1/iam2/Organization/quotas/actions", "", "", map[string]interface{}{
 		"updateOrganizationQuota": params.Params,
 	}, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
-// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
-func (cli *ZSClient) GetAliyunNasFileSystemRemote(ctx context.Context) (*view.GetAliyunNasFileSystemRemoteView, error) {
-	var resp view.GetAliyunNasFileSystemRemoteView
-	if err := cli.GetWithRespKey(ctx, "v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7129,19 +7129,19 @@ func (cli *ZSClient) AddDisasterImageStoreBackupStorage(ctx context.Context, par
 	return &resp, nil
 }
 
-// GetVmSchedulingRulesExecuteState gets VmSchedulingRulesExecuteState by uuid
-func (cli *ZSClient) GetVmSchedulingRulesExecuteState(ctx context.Context) (*view.GetVmSchedulingRulesExecuteStateView, error) {
-	var resp view.GetVmSchedulingRulesExecuteStateView
-	if err := cli.GetWithRespKey(ctx, "v1/get/vmSchedulingRules/conflict/state", "", "", nil, &resp); err != nil {
+// CreateVolumesSnapshot creates VolumesSnapshot
+func (cli *ZSClient) CreateVolumesSnapshot(ctx context.Context, params param.CreateVolumesSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
+	resp := view.VolumeSnapshotInventoryView{}
+	if err := cli.PostWithRespKey(ctx, "v1/volumes/volume-snapshots", "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// CreateVolumesSnapshot creates VolumesSnapshot
-func (cli *ZSClient) CreateVolumesSnapshot(ctx context.Context, params param.CreateVolumesSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
-	resp := view.VolumeSnapshotInventoryView{}
-	if err := cli.PostWithRespKey(ctx, "v1/volumes/volume-snapshots", "inventories", params, &resp); err != nil {
+// GetVmSchedulingRulesExecuteState gets VmSchedulingRulesExecuteState by uuid
+func (cli *ZSClient) GetVmSchedulingRulesExecuteState(ctx context.Context) (*view.GetVmSchedulingRulesExecuteStateView, error) {
+	var resp view.GetVmSchedulingRulesExecuteStateView
+	if err := cli.GetWithRespKey(ctx, "v1/get/vmSchedulingRules/conflict/state", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8705,19 +8705,19 @@ func (cli *ZSClient) DeleteEcsSecurityGroupRuleRemote(ctx context.Context, uuid 
 	return cli.Delete(ctx, "v1/hybrid/aliyun/security-group-rule/remote", uuid, string(deleteMode))
 }
 
-// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
-func (cli *ZSClient) DetachAliyunDiskFromEcs(ctx context.Context, uuid string, params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
-	resp := view.DetachAliyunDiskFromEcsEventView{}
-	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/disk/%s/detach", uuid), "", params, &resp); err != nil {
+// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
+func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(ctx context.Context) (*view.GetCandidateAffinityGroupForAttachingVmView, error) {
+	var resp view.GetCandidateAffinityGroupForAttachingVmView
+	if err := cli.GetWithRespKey(ctx, "v1/affinityGroup/attachingVm", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
-// GetCandidateAffinityGroupForAttachingVm gets CandidateAffinityGroupForAttachingVm by uuid
-func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(ctx context.Context) (*view.GetCandidateAffinityGroupForAttachingVmView, error) {
-	var resp view.GetCandidateAffinityGroupForAttachingVmView
-	if err := cli.GetWithRespKey(ctx, "v1/affinityGroup/attachingVm", "", "", nil, &resp); err != nil {
+// DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
+func (cli *ZSClient) DetachAliyunDiskFromEcs(ctx context.Context, uuid string, params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
+	resp := view.DetachAliyunDiskFromEcsEventView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/disk/%s/detach", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
