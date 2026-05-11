@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateSystemTag(ctx context.Context, uuid string, params pa
 // CreateSystemTag creates SystemTag
 func (cli *ZSClient) CreateSystemTag(ctx context.Context) (*view.SystemTagInventoryView, error) {
 	resp := view.SystemTagInventoryView{}
-	if err := cli.Post(ctx, "v1/system-tags", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/system-tags", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

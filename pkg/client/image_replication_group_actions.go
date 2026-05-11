@@ -37,7 +37,7 @@ func (cli *ZSClient) PageImageReplicationGroup(ctx context.Context, params *para
 // CreateImageReplicationGroup creates ImageReplicationGroup
 func (cli *ZSClient) CreateImageReplicationGroup(ctx context.Context, params param.CreateImageReplicationGroupParam) (*view.ImageReplicationGroupInventoryView, error) {
 	resp := view.ImageReplicationGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/image-replication-groups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/image-replication-groups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

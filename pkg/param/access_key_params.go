@@ -13,6 +13,7 @@ type CreateAccessKeyParamDetail struct {
 	Description *string `json:"description,omitempty"`
 	AccessKeyID *string `json:"AccessKeyID,omitempty"`
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty"`
+	AccessKeyType *string `json:"accessKeyType,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }

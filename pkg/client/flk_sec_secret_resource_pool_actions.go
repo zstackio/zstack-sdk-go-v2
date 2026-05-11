@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateFlkSecSecretResourcePool(ctx context.Context, uuid st
 // CreateFlkSecSecretResourcePool creates FlkSecSecretResourcePool
 func (cli *ZSClient) CreateFlkSecSecretResourcePool(ctx context.Context, params param.CreateFlkSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Post(ctx, "v1/secret-resource-pool/flkSec", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/secret-resource-pool/flkSec", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

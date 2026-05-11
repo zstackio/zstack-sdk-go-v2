@@ -33,7 +33,7 @@ func (cli *ZSClient) PageSecurityGroup(ctx context.Context, params *param.QueryP
 // CreateSecurityGroup creates SecurityGroup
 func (cli *ZSClient) CreateSecurityGroup(ctx context.Context, params param.CreateSecurityGroupParam) (*view.SecurityGroupInventoryView, error) {
 	resp := view.SecurityGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/security-groups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/security-groups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

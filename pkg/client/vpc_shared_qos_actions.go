@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateVpcSharedQos creates VpcSharedQos
 func (cli *ZSClient) CreateVpcSharedQos(ctx context.Context, params param.CreateVpcSharedQosParam) (*view.VpcSharedQosInventoryView, error) {
 	resp := view.VpcSharedQosInventoryView{}
-	if err := cli.Post(ctx, "v1/vips/sharedqos", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vips/sharedqos", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

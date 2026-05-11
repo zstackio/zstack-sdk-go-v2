@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -45,9 +46,9 @@ func (cli *ZSClient) RebootEcsInstance(ctx context.Context, uuid string, params 
 	return &resp, nil
 }
 // UpdateEcsInstance updates EcsInstance
-func (cli *ZSClient) UpdateEcsInstance(ctx context.Context, params param.UpdateEcsInstanceParam) (*view.EcsInstanceInventoryView, error) {
+func (cli *ZSClient) UpdateEcsInstance(ctx context.Context, uuid string, params param.UpdateEcsInstanceParam) (*view.EcsInstanceInventoryView, error) {
 	resp := view.EcsInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/{uuid}/ecs", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/%s/ecs", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

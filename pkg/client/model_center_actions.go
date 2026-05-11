@@ -37,7 +37,7 @@ func (cli *ZSClient) PageModelCenter(ctx context.Context, params *param.QueryPar
 // AddModelCenter adds ModelCenter
 func (cli *ZSClient) AddModelCenter(ctx context.Context, params param.AddModelCenterParam) (*view.ModelCenterInventoryView, error) {
 	resp := view.ModelCenterInventoryView{}
-	if err := cli.Post(ctx, "v1/ai/model-centers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ai/model-centers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

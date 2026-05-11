@@ -14,7 +14,7 @@ var _ = view.MapView{} // avoid unused import
 // AddSNSWeComAtPerson adds SNSWeComAtPerson
 func (cli *ZSClient) AddSNSWeComAtPerson(ctx context.Context, params param.AddSNSWeComAtPersonParam) (*view.SNSWeComAtPersonInventoryView, error) {
 	resp := view.SNSWeComAtPersonInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/we-com/at-persons", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/we-com/at-persons", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

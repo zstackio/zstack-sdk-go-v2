@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -15,9 +16,9 @@ func (cli *ZSClient) DeleteReservedIpRange(ctx context.Context, uuid string, del
 	return cli.Delete(ctx, "v1/l3-networks/reserved-ip-ranges", uuid, string(deleteMode))
 }
 // AddReservedIpRange adds ReservedIpRange
-func (cli *ZSClient) AddReservedIpRange(ctx context.Context, params param.AddReservedIpRangeParam) (*view.ReservedIpRangeInventoryView, error) {
+func (cli *ZSClient) AddReservedIpRange(ctx context.Context, l3NetworkUuid string, params param.AddReservedIpRangeParam) (*view.ReservedIpRangeInventoryView, error) {
 	resp := view.ReservedIpRangeInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/reserved-ip-ranges", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/reserved-ip-ranges", l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

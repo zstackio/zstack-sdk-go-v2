@@ -17,6 +17,7 @@ type GpuDeviceInventoryView struct {
 	GpuType string `json:"gpuType,omitempty"`
 	GpuStatus string `json:"gpuStatus,omitempty"`
 	AllocateStatus string `json:"allocateStatus,omitempty"`
+	Mode string `json:"mode,omitempty"`
 	Description string `json:"description,omitempty"`
 	HostUuid string `json:"hostUuid,omitempty"`
 	ParentUuid string `json:"parentUuid,omitempty"`
@@ -26,6 +27,9 @@ type GpuDeviceInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	VirtStatus string `json:"virtStatus,omitempty"`
+	VirtState string `json:"virtState,omitempty"`
+	VirtCapabilities []string `json:"virtCapabilities,omitempty"`
+	VirtMode string `json:"virtMode,omitempty"`
 	Chooser string `json:"chooser,omitempty"`
 	VendorId string `json:"vendorId,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
@@ -37,12 +41,20 @@ type GpuDeviceInventoryView struct {
 	IommuGroup string `json:"iommuGroup,omitempty"`
 	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
 	Rev string `json:"rev,omitempty"`
+	DependentDevices string `json:"dependentDevices,omitempty"`
+	VmPciDeviceAddress string `json:"vmPciDeviceAddress,omitempty"`
 	MatchedPciDeviceOfferingRef []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDeviceOfferingRef,omitempty"`
 	MdevSpecRefs []PciDeviceMdevSpecRefInventoryView `json:"mdevSpecRefs,omitempty"`
+	ShareType string `json:"shareType,omitempty"`
 }
 
 // QueryGpuDeviceView QueryGpuDevice
 type QueryGpuDeviceView struct {
+	Inventories []GpuDeviceInventoryView `json:"inventories,omitempty"`
+}
+
+// GetGpuDeviceCandidatesView GetGpuDeviceCandidates
+type GetGpuDeviceCandidatesView struct {
 	Inventories []GpuDeviceInventoryView `json:"inventories,omitempty"`
 }
 

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddAccessControlRule adds AccessControlRule
 func (cli *ZSClient) AddAccessControlRule(ctx context.Context, params param.AddAccessControlRuleParam) (*view.AccessControlRuleInventoryView, error) {
 	resp := view.AccessControlRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/login-control/access-control/rules", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/login-control/access-control/rules", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateJitSecurityMachine(ctx context.Context, uuid string, 
 // AddJitSecurityMachine adds JitSecurityMachine
 func (cli *ZSClient) AddJitSecurityMachine(ctx context.Context, params param.AddJitSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Post(ctx, "v1/security-machine/jida/auth-gateway", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/security-machine/jida/auth-gateway", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

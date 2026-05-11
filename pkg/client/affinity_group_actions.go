@@ -27,7 +27,7 @@ func (cli *ZSClient) DeleteAffinityGroup(ctx context.Context, uuid string, delet
 // CreateAffinityGroup creates AffinityGroup
 func (cli *ZSClient) CreateAffinityGroup(ctx context.Context, params param.CreateAffinityGroupParam) (*view.AffinityGroupInventoryView, error) {
 	resp := view.AffinityGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/affinity-groups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/affinity-groups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

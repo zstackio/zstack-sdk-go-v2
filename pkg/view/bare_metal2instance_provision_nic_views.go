@@ -15,6 +15,8 @@ type BareMetal2InstanceProvisionNicInventoryView struct {
 	Ip string `json:"ip,omitempty"`
 	Netmask string `json:"netmask,omitempty"`
 	Gateway string `json:"gateway,omitempty"`
+	InstanceUuid string `json:"instanceUuid,omitempty"`
+	IsPrimaryProvisionNic bool `json:"isPrimaryProvisionNic,omitempty"`
 	Metadata string `json:"metadata,omitempty"`
 }
 

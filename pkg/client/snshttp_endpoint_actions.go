@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSNSHttpEndpoint creates SNSHttpEndpoint
 func (cli *ZSClient) CreateSNSHttpEndpoint(ctx context.Context, params param.CreateSNSHttpEndpointParam) (*view.SNSHttpEndpointInventoryView, error) {
 	resp := view.SNSHttpEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/http", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/http", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

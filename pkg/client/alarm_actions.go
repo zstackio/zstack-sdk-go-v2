@@ -47,7 +47,7 @@ func (cli *ZSClient) PageAlarm(ctx context.Context, params *param.QueryParam) ([
 // CreateAlarm creates Alarm
 func (cli *ZSClient) CreateAlarm(ctx context.Context, params param.CreateAlarmParam) (*view.AlarmInventoryView, error) {
 	resp := view.AlarmInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/alarms", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/alarms", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

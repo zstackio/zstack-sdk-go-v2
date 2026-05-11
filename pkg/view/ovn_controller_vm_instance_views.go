@@ -10,6 +10,14 @@ var _ = time.Now() // avoid unused import
 type OvnControllerVmInstanceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
+	NbClusterStatus string `json:"nbClusterStatus,omitempty"`
+	SbClusterStatus string `json:"sbClusterStatus,omitempty"`
+	ConfigVersion int `json:"configVersion,omitempty"`
+	NfvInstGroupUuid string `json:"nfvInstGroupUuid,omitempty"`
+	NetOsDistro string `json:"netOsDistro,omitempty"`
+	BaseOsDistro string `json:"baseOsDistro,omitempty"`
+	ClusterStatus string `json:"clusterStatus,omitempty"`
+	StatusDetail string `json:"statusDetail,omitempty"`
 	ApplianceVmType string `json:"applianceVmType,omitempty"`
 	ManagementNetworkUuid string `json:"managementNetworkUuid,omitempty"`
 	DefaultRouteL3NetworkUuid string `json:"defaultRouteL3NetworkUuid,omitempty"`
@@ -39,5 +47,10 @@ type OvnControllerVmInstanceInventoryView struct {
 	AllVolumes []VolumeInventoryView `json:"allVolumes,omitempty"`
 	VmCdRoms []VmCdRomInventoryView `json:"vmCdRoms,omitempty"`
 	GuestOsType string `json:"guestOsType,omitempty"`
+}
+
+// QueryOvnControllerVmInstanceView QueryOvnControllerVmInstance
+type QueryOvnControllerVmInstanceView struct {
+	Inventories []OvnControllerVmInstanceInventoryView `json:"inventories,omitempty"`
 }
 

@@ -33,7 +33,7 @@ func (cli *ZSClient) PageSlbGroup(ctx context.Context, params *param.QueryParam)
 // CreateSlbGroup creates SlbGroup
 func (cli *ZSClient) CreateSlbGroup(ctx context.Context, params param.CreateSlbGroupParam) (*view.SlbGroupInventoryView, error) {
 	resp := view.SlbGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/slb/groups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/load-balancers/slb/groups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

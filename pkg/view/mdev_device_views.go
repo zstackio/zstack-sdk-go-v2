@@ -21,6 +21,7 @@ type MdevDeviceInventoryView struct {
 	Status string `json:"status,omitempty"`
 	Chooser string `json:"chooser,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
+	ShareType string `json:"shareType,omitempty"`
 }
 
 // GetMdevDeviceCandidatesView GetMdevDeviceCandidates

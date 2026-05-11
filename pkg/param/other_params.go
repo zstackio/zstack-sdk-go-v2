@@ -193,6 +193,16 @@ type ChangeBackupStorageStateParam struct {
 	BaseParam
 	Params ChangeBackupStorageStateParamDetail `json:"changeBackupStorageState"`
 }
+// SetVmInstanceHygonMdevParamDetail SetVmInstanceHygonMdev detail param
+type SetVmInstanceHygonMdevParamDetail struct {
+	HygonSecurityElementEnable string `json:"hygonSecurityElementEnable" validate:"required"`
+}
+
+// SetVmInstanceHygonMdevParam SetVmInstanceHygonMdev request param
+type SetVmInstanceHygonMdevParam struct {
+	BaseParam
+	Params SetVmInstanceHygonMdevParamDetail `json:"params"`
+}
 // GetCandidateIsoForAttachingVmParamDetail GetCandidateIsoForAttachingVm detail param
 type GetCandidateIsoForAttachingVmParamDetail struct {
 }
@@ -409,6 +419,7 @@ type GetMdevDeviceCandidatesParamDetail struct {
 	HostUuid *string `json:"hostUuid,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	Types []string `json:"types,omitempty"`
+	MinAvailableDevicesPerHost *int `json:"minAvailableDevicesPerHost,omitempty"`
 }
 
 // GetMdevDeviceCandidatesParam GetMdevDeviceCandidates request param
@@ -481,6 +492,7 @@ type GetPrimaryStorageCandidatesForVmMigrationParam struct {
 // PrimaryStorageMigrateVolumeParamDetail PrimaryStorageMigrateVolume detail param
 type PrimaryStorageMigrateVolumeParamDetail struct {
 	DstPrimaryStorageUuid string `json:"dstPrimaryStorageUuid" validate:"required"`
+	VolumeProvisioningStrategy *string `json:"volumeProvisioningStrategy,omitempty"`
 }
 
 // PrimaryStorageMigrateVolumeParam PrimaryStorageMigrateVolume request param
@@ -904,6 +916,15 @@ type GetSupportedIdentityModelsParam struct {
 	BaseParam
 	Params GetSupportedIdentityModelsParamDetail `json:"getSupportedIdentityModels"`
 }
+// SuspendLongJobParamDetail SuspendLongJob detail param
+type SuspendLongJobParamDetail struct {
+}
+
+// SuspendLongJobParam SuspendLongJob request param
+type SuspendLongJobParam struct {
+	BaseParam
+	Params SuspendLongJobParamDetail `json:"suspendLongJob"`
+}
 // AddUserToGroupParamDetail AddUserToGroup detail param
 type AddUserToGroupParamDetail struct {
 	UserUuid string `json:"userUuid" validate:"required"`
@@ -1321,6 +1342,8 @@ type CreateSlbInstanceParamDetail struct {
 	ZoneUuid *string `json:"zoneUuid,omitempty"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	HostUuid *string `json:"hostUuid,omitempty"`
+	PrimaryStorageUuidForRootVolume *string `json:"primaryStorageUuidForRootVolume,omitempty"`
+	RootVolumeSystemTags []string `json:"rootVolumeSystemTags,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -1591,6 +1614,7 @@ type SetVmStaticIpParamDetail struct {
 	Gateway *string `json:"gateway,omitempty"`
 	Ipv6Gateway *string `json:"ipv6Gateway,omitempty"`
 	Ipv6Prefix *string `json:"ipv6Prefix,omitempty"`
+	DnsAddresses []string `json:"dnsAddresses,omitempty"`
 }
 
 // SetVmStaticIpParam SetVmStaticIp request param
@@ -1930,7 +1954,7 @@ type GetVmsSchedulingStateFromSchedulingRuleParamDetail struct {
 // GetVmsSchedulingStateFromSchedulingRuleParam GetVmsSchedulingStateFromSchedulingRule request param
 type GetVmsSchedulingStateFromSchedulingRuleParam struct {
 	BaseParam
-	Params GetVmsSchedulingStateFromSchedulingRuleParamDetail `json:"params"`
+	Params GetVmsSchedulingStateFromSchedulingRuleParamDetail `json:"getVmsSchedulingStateFromSchedulingRule"`
 }
 // ChangeAlarmStateParamDetail ChangeAlarmState detail param
 type ChangeAlarmStateParamDetail struct {
@@ -2825,17 +2849,6 @@ type AttachMonitorTriggerActionToTriggerParam struct {
 	BaseParam
 	Params AttachMonitorTriggerActionToTriggerParamDetail `json:"params"`
 }
-// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
-type GetAliyunNasFileSystemRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	FileSystemId *string `json:"fileSystemId,omitempty"`
-}
-
-// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
-type GetAliyunNasFileSystemRemoteParam struct {
-	BaseParam
-	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
-}
 // UpdateOrganizationQuotaParamDetail UpdateOrganizationQuota detail param
 type UpdateOrganizationQuotaParamDetail struct {
 	IdentityUuid string `json:"identityUuid" validate:"required"`
@@ -2847,6 +2860,17 @@ type UpdateOrganizationQuotaParamDetail struct {
 type UpdateOrganizationQuotaParam struct {
 	BaseParam
 	Params UpdateOrganizationQuotaParamDetail `json:"updateOrganizationQuota"`
+}
+// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
+type GetAliyunNasFileSystemRemoteParamDetail struct {
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	FileSystemId *string `json:"fileSystemId,omitempty"`
+}
+
+// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
+type GetAliyunNasFileSystemRemoteParam struct {
+	BaseParam
+	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
 }
 // ChangePreconfigurationTemplateStateParamDetail ChangePreconfigurationTemplateState detail param
 type ChangePreconfigurationTemplateStateParamDetail struct {
@@ -2886,6 +2910,7 @@ type ExecuteGuestVmScriptParamDetail struct {
 	ScriptTimeout *int `json:"scriptTimeout,omitempty"`
 	LogPath *string `json:"logPath,omitempty"`
 	RecordUuid *string `json:"recordUuid,omitempty"`
+	RuntimeParams *string `json:"runtimeParams,omitempty"`
 }
 
 // ExecuteGuestVmScriptParam ExecuteGuestVmScript request param
@@ -3183,6 +3208,15 @@ type AttachIsoToVmInstanceParamDetail struct {
 type AttachIsoToVmInstanceParam struct {
 	BaseParam
 	Params AttachIsoToVmInstanceParamDetail `json:"attachIsoToVmInstance"`
+}
+// RemoveVmDGpuStrategyParamDetail RemoveVmDGpuStrategy detail param
+type RemoveVmDGpuStrategyParamDetail struct {
+}
+
+// RemoveVmDGpuStrategyParam RemoveVmDGpuStrategy request param
+type RemoveVmDGpuStrategyParam struct {
+	BaseParam
+	Params RemoveVmDGpuStrategyParamDetail `json:"removeVmDGpuStrategy"`
 }
 // SetVRouterRouterIdParamDetail SetVRouterRouterId detail param
 type SetVRouterRouterIdParamDetail struct {
@@ -3761,6 +3795,7 @@ type GetGpuDeviceSpecCandidatesParamDetail struct {
 	HostUuid *string `json:"hostUuid,omitempty"`
 	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
 	VmInstanceUuids []string `json:"vmInstanceUuids,omitempty"`
+	Mode *string `json:"mode,omitempty"`
 }
 
 // GetGpuDeviceSpecCandidatesParam GetGpuDeviceSpecCandidates request param
@@ -3965,6 +4000,16 @@ type CreateTagParam struct {
 	BaseParam
 	Params CreateTagParamDetail `json:"params"`
 }
+// UpdateConsolePasswordParamDetail UpdateConsolePassword detail param
+type UpdateConsolePasswordParamDetail struct {
+	Password string `json:"password" validate:"required"`
+}
+
+// UpdateConsolePasswordParam UpdateConsolePassword request param
+type UpdateConsolePasswordParam struct {
+	BaseParam
+	Params UpdateConsolePasswordParamDetail `json:"updateConsolePassword"`
+}
 // CreateVmInstanceFromVolumeSnapshotGroupParamDetail CreateVmInstanceFromVolumeSnapshotGroup detail param
 type CreateVmInstanceFromVolumeSnapshotGroupParamDetail struct {
 	Name string `json:"name" validate:"required"`
@@ -4101,6 +4146,18 @@ type DetachBareMetal2GatewayFromClusterParamDetail struct {
 type DetachBareMetal2GatewayFromClusterParam struct {
 	BaseParam
 	Params DetachBareMetal2GatewayFromClusterParamDetail `json:"detachBareMetal2GatewayFromCluster"`
+}
+// GetDGpuSpecStatsParamDetail GetDGpuSpecStats detail param
+type GetDGpuSpecStatsParamDetail struct {
+	ZoneUuid *string `json:"zoneUuid,omitempty"`
+	ClusterUuid *string `json:"clusterUuid,omitempty"`
+	HostUuid *string `json:"hostUuid,omitempty"`
+}
+
+// GetDGpuSpecStatsParam GetDGpuSpecStats request param
+type GetDGpuSpecStatsParam struct {
+	BaseParam
+	Params GetDGpuSpecStatsParamDetail `json:"getDGpuSpecStats"`
 }
 // ReloadElaborationParamDetail ReloadElaboration detail param
 type ReloadElaborationParamDetail struct {
@@ -4419,6 +4476,15 @@ type GetHostMultipathTopologyParamDetail struct {
 type GetHostMultipathTopologyParam struct {
 	BaseParam
 	Params GetHostMultipathTopologyParamDetail `json:"getHostMultipathTopology"`
+}
+// EnableDGpuModeParamDetail EnableDGpuMode detail param
+type EnableDGpuModeParamDetail struct {
+}
+
+// EnableDGpuModeParam EnableDGpuMode request param
+type EnableDGpuModeParam struct {
+	BaseParam
+	Params EnableDGpuModeParamDetail `json:"enableDGpuMode"`
 }
 // DeleteEcsImageRemoteParamDetail DeleteEcsImageRemote detail param
 type DeleteEcsImageRemoteParamDetail struct {
@@ -4770,18 +4836,21 @@ type DeployModelEvalServiceParamDetail struct {
 	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
 	DockerImage *string `json:"dockerImage,omitempty"`
 	CpuNum *int `json:"cpuNum,omitempty"`
+	RequestCpuNum *int `json:"requestCpuNum,omitempty"`
 	Name string `json:"name" validate:"required"`
 	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
 	StartupParameters map[string]string `json:"startupParameters,omitempty"`
 	Type string `json:"type" validate:"required"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	MemorySize *int64 `json:"memorySize,omitempty"`
+	RequestMemorySize *int64 `json:"requestMemorySize,omitempty"`
 	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
 	ServiceBootUptime *int `json:"serviceBootUptime,omitempty"`
 	ServiceLivez *string `json:"serviceLivez,omitempty"`
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -5090,6 +5159,16 @@ type DetachServiceFromObservabilityServerParamDetail struct {
 type DetachServiceFromObservabilityServerParam struct {
 	BaseParam
 	Params DetachServiceFromObservabilityServerParamDetail `json:"detachServiceFromObservabilityServer"`
+}
+// GenerateHygonMdevDevicesParamDetail GenerateHygonMdevDevices detail param
+type GenerateHygonMdevDevicesParamDetail struct {
+	MaxQemuNum int `json:"maxQemuNum" validate:"required"`
+}
+
+// GenerateHygonMdevDevicesParam GenerateHygonMdevDevices request param
+type GenerateHygonMdevDevicesParam struct {
+	BaseParam
+	Params GenerateHygonMdevDevicesParamDetail `json:"generateHygonMdevDevices"`
 }
 // SetVmUsbRedirectParamDetail SetVmUsbRedirect detail param
 type SetVmUsbRedirectParamDetail struct {
@@ -5442,6 +5521,15 @@ type DegradeFromLicenseServerParam struct {
 	BaseParam
 	Params DegradeFromLicenseServerParamDetail `json:"degradeFromLicenseServer"`
 }
+// UpdateNfvInstProvisionConfigParamDetail UpdateNfvInstProvisionConfig detail param
+type UpdateNfvInstProvisionConfigParamDetail struct {
+}
+
+// UpdateNfvInstProvisionConfigParam UpdateNfvInstProvisionConfig request param
+type UpdateNfvInstProvisionConfigParam struct {
+	BaseParam
+	Params UpdateNfvInstProvisionConfigParamDetail `json:"updateNfvInstProvisionConfig"`
+}
 // GetDebugSignalParamDetail GetDebugSignal detail param
 type GetDebugSignalParamDetail struct {
 }
@@ -5710,6 +5798,15 @@ type SetVpcVRouterNetworkServiceStateParamDetail struct {
 type SetVpcVRouterNetworkServiceStateParam struct {
 	BaseParam
 	Params SetVpcVRouterNetworkServiceStateParamDetail `json:"params"`
+}
+// DetachNfvInstFromGroupParamDetail DetachNfvInstFromGroup detail param
+type DetachNfvInstFromGroupParamDetail struct {
+}
+
+// DetachNfvInstFromGroupParam DetachNfvInstFromGroup request param
+type DetachNfvInstFromGroupParam struct {
+	BaseParam
+	Params DetachNfvInstFromGroupParamDetail `json:"detachNfvInstFromGroup"`
 }
 // AddDnsToVpcRouterParamDetail AddDnsToVpcRouter detail param
 type AddDnsToVpcRouterParamDetail struct {
@@ -6267,6 +6364,16 @@ type GetCandidatePrimaryStoragesForCreatingVmParam struct {
 	BaseParam
 	Params GetCandidatePrimaryStoragesForCreatingVmParamDetail `json:"getCandidatePrimaryStoragesForCreatingVm"`
 }
+// SetVpcVRouterSnatLogStateParamDetail SetVpcVRouterSnatLogState detail param
+type SetVpcVRouterSnatLogStateParamDetail struct {
+	State string `json:"state" validate:"required"`
+}
+
+// SetVpcVRouterSnatLogStateParam SetVpcVRouterSnatLogState request param
+type SetVpcVRouterSnatLogStateParam struct {
+	BaseParam
+	Params SetVpcVRouterSnatLogStateParamDetail `json:"setVpcVRouterSnatLogState"`
+}
 // GetVmConsolePasswordParamDetail GetVmConsolePassword detail param
 type GetVmConsolePasswordParamDetail struct {
 }
@@ -6478,6 +6585,19 @@ type AddRolesToIAM2VirtualIDGroupParamDetail struct {
 type AddRolesToIAM2VirtualIDGroupParam struct {
 	BaseParam
 	Params AddRolesToIAM2VirtualIDGroupParamDetail `json:"params"`
+}
+// SetVmDGpuStrategyParamDetail SetVmDGpuStrategy detail param
+type SetVmDGpuStrategyParamDetail struct {
+	DgpuProfileUuid string `json:"dgpuProfileUuid" validate:"required"`
+	GpuDeviceUuid *string `json:"gpuDeviceUuid,omitempty"`
+	Chooser string `json:"chooser" validate:"required"`
+	AutoDetachOnStop *bool `json:"autoDetachOnStop,omitempty"`
+}
+
+// SetVmDGpuStrategyParam SetVmDGpuStrategy request param
+type SetVmDGpuStrategyParam struct {
+	BaseParam
+	Params SetVmDGpuStrategyParamDetail `json:"setVmDGpuStrategy"`
 }
 // CheckStaticProvisionIpParamDetail CheckStaticProvisionIp detail param
 type CheckStaticProvisionIpParamDetail struct {
@@ -6958,6 +7078,7 @@ type RequestLicenseCapacityParamDetail struct {
 	Quota int64 `json:"quota" validate:"required"`
 	ClientAuthorizedNodeUuid string `json:"clientAuthorizedNodeUuid" validate:"required"`
 	LicenseType string `json:"licenseType" validate:"required"`
+	ResourceInfo *string `json:"resourceInfo,omitempty"`
 }
 
 // RequestLicenseCapacityParam RequestLicenseCapacity request param
@@ -7098,6 +7219,16 @@ type ExpungeDataVolumeParamDetail struct {
 type ExpungeDataVolumeParam struct {
 	BaseParam
 	Params ExpungeDataVolumeParamDetail `json:"expungeDataVolume"`
+}
+// DetachDGpuFromVmParamDetail DetachDGpuFromVm detail param
+type DetachDGpuFromVmParamDetail struct {
+	DgpuDeviceUuid string `json:"dgpuDeviceUuid" validate:"required"`
+}
+
+// DetachDGpuFromVmParam DetachDGpuFromVm request param
+type DetachDGpuFromVmParam struct {
+	BaseParam
+	Params DetachDGpuFromVmParamDetail `json:"detachDGpuFromVm"`
 }
 // AddActionToEventSubscriptionParamDetail AddActionToEventSubscription detail param
 type AddActionToEventSubscriptionParamDetail struct {
@@ -7428,6 +7559,15 @@ type DetachBackupStorageFromZoneParam struct {
 	BaseParam
 	Params DetachBackupStorageFromZoneParamDetail `json:"detachBackupStorageFromZone"`
 }
+// GetVpcVRouterSnatLogStateParamDetail GetVpcVRouterSnatLogState detail param
+type GetVpcVRouterSnatLogStateParamDetail struct {
+}
+
+// GetVpcVRouterSnatLogStateParam GetVpcVRouterSnatLogState request param
+type GetVpcVRouterSnatLogStateParam struct {
+	BaseParam
+	Params GetVpcVRouterSnatLogStateParamDetail `json:"getVpcVRouterSnatLogState"`
+}
 // UpdateCCSCertificateUserStateParamDetail UpdateCCSCertificateUserState detail param
 type UpdateCCSCertificateUserStateParamDetail struct {
 	State string `json:"state" validate:"required"`
@@ -7497,7 +7637,7 @@ type GetVmSchedulingRulesExecuteStateParamDetail struct {
 // GetVmSchedulingRulesExecuteStateParam GetVmSchedulingRulesExecuteState request param
 type GetVmSchedulingRulesExecuteStateParam struct {
 	BaseParam
-	Params GetVmSchedulingRulesExecuteStateParamDetail `json:"params"`
+	Params GetVmSchedulingRulesExecuteStateParamDetail `json:"getVmSchedulingRulesExecuteState"`
 }
 // GetIpAddressCapacityParamDetail GetIpAddressCapacity detail param
 type GetIpAddressCapacityParamDetail struct {
@@ -7516,6 +7656,7 @@ type GetIpAddressCapacityParam struct {
 type SetIAM2ProjectContainerClusterParamDetail struct {
 	ContainerUuid string `json:"containerUuid" validate:"required"`
 	ClusterId int64 `json:"clusterId" validate:"required"`
+	Force *bool `json:"force,omitempty"`
 }
 
 // SetIAM2ProjectContainerClusterParam SetIAM2ProjectContainerCluster request param
@@ -7535,18 +7676,21 @@ type DeployAppDevelopmentServiceParamDetail struct {
 	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
 	DockerImage *string `json:"dockerImage,omitempty"`
 	CpuNum *int `json:"cpuNum,omitempty"`
+	RequestCpuNum *int `json:"requestCpuNum,omitempty"`
 	Name string `json:"name" validate:"required"`
 	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
 	StartupParameters map[string]string `json:"startupParameters,omitempty"`
 	Type string `json:"type" validate:"required"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	MemorySize *int64 `json:"memorySize,omitempty"`
+	RequestMemorySize *int64 `json:"requestMemorySize,omitempty"`
 	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
 	ServiceBootUptime *int `json:"serviceBootUptime,omitempty"`
 	ServiceLivez *string `json:"serviceLivez,omitempty"`
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -7802,6 +7946,15 @@ type PullHuaweiIMasterControllerParamDetail struct {
 type PullHuaweiIMasterControllerParam struct {
 	BaseParam
 	Params PullHuaweiIMasterControllerParamDetail `json:"pullHuaweiIMasterController"`
+}
+// DisableDGpuModeParamDetail DisableDGpuMode detail param
+type DisableDGpuModeParamDetail struct {
+}
+
+// DisableDGpuModeParam DisableDGpuMode request param
+type DisableDGpuModeParam struct {
+	BaseParam
+	Params DisableDGpuModeParamDetail `json:"disableDGpuMode"`
 }
 // RemoveRolesFromIAM2VirtualIDGroupParamDetail RemoveRolesFromIAM2VirtualIDGroup detail param
 type RemoveRolesFromIAM2VirtualIDGroupParamDetail struct {
@@ -8085,18 +8238,21 @@ type DeployModelServiceParamDetail struct {
 	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
 	DockerImage *string `json:"dockerImage,omitempty"`
 	CpuNum *int `json:"cpuNum,omitempty"`
+	RequestCpuNum *int `json:"requestCpuNum,omitempty"`
 	Name string `json:"name" validate:"required"`
 	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
 	StartupParameters map[string]string `json:"startupParameters,omitempty"`
 	Type string `json:"type" validate:"required"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	MemorySize *int64 `json:"memorySize,omitempty"`
+	RequestMemorySize *int64 `json:"requestMemorySize,omitempty"`
 	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
 	ServiceBootUptime *int `json:"serviceBootUptime,omitempty"`
 	ServiceLivez *string `json:"serviceLivez,omitempty"`
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -8171,6 +8327,15 @@ type SetIpOnHostNetworkInterfaceParamDetail struct {
 type SetIpOnHostNetworkInterfaceParam struct {
 	BaseParam
 	Params SetIpOnHostNetworkInterfaceParamDetail `json:"params"`
+}
+// ProvisionNfvInstGroupParamDetail ProvisionNfvInstGroup detail param
+type ProvisionNfvInstGroupParamDetail struct {
+}
+
+// ProvisionNfvInstGroupParam ProvisionNfvInstGroup request param
+type ProvisionNfvInstGroupParam struct {
+	BaseParam
+	Params ProvisionNfvInstGroupParamDetail `json:"provisionNfvInstGroup"`
 }
 // DetachNicFromBondingParamDetail DetachNicFromBonding detail param
 type DetachNicFromBondingParamDetail struct {
@@ -8258,6 +8423,17 @@ type DeleteVmUserDefinedXmlHookScriptParam struct {
 	BaseParam
 	Params DeleteVmUserDefinedXmlHookScriptParamDetail `json:"deleteVmUserDefinedXmlHookScript"`
 }
+// AddL3NetworkToGroupParamDetail AddL3NetworkToGroup detail param
+type AddL3NetworkToGroupParamDetail struct {
+	FrontEndL3NetworkUuid string `json:"frontEndL3NetworkUuid" validate:"required"`
+	BackendL3NetworkUuids []string `json:"backendL3NetworkUuids" validate:"required"`
+}
+
+// AddL3NetworkToGroupParam AddL3NetworkToGroup request param
+type AddL3NetworkToGroupParam struct {
+	BaseParam
+	Params AddL3NetworkToGroupParamDetail `json:"params"`
+}
 // SyncZBoxCapacityParamDetail SyncZBoxCapacity detail param
 type SyncZBoxCapacityParamDetail struct {
 }
@@ -8290,6 +8466,15 @@ type CheckResourcePermissionParamDetail struct {
 type CheckResourcePermissionParam struct {
 	BaseParam
 	Params CheckResourcePermissionParamDetail `json:"checkResourcePermission"`
+}
+// ProvisionNfvInstConfigParamDetail ProvisionNfvInstConfig detail param
+type ProvisionNfvInstConfigParamDetail struct {
+}
+
+// ProvisionNfvInstConfigParam ProvisionNfvInstConfig request param
+type ProvisionNfvInstConfigParam struct {
+	BaseParam
+	Params ProvisionNfvInstConfigParamDetail `json:"provisionNfvInstConfig"`
 }
 // GetCandidateMiniHostsParamDetail GetCandidateMiniHosts detail param
 type GetCandidateMiniHostsParamDetail struct {
@@ -8471,6 +8656,15 @@ type CreateDataVolumeParam struct {
 	BaseParam
 	Params CreateDataVolumeParamDetail `json:"params"`
 }
+// UngenerateHygonMdevDevicesParamDetail UngenerateHygonMdevDevices detail param
+type UngenerateHygonMdevDevicesParamDetail struct {
+}
+
+// UngenerateHygonMdevDevicesParam UngenerateHygonMdevDevices request param
+type UngenerateHygonMdevDevicesParam struct {
+	BaseParam
+	Params UngenerateHygonMdevDevicesParamDetail `json:"ungenerateHygonMdevDevices"`
+}
 // DeletePluginDriversParamDetail DeletePluginDrivers detail param
 type DeletePluginDriversParamDetail struct {
 	DeleteMode *string `json:"deleteMode,omitempty"`
@@ -8546,22 +8740,13 @@ type GetNicQosParam struct {
 // ChangeVmNicNetworkParamDetail ChangeVmNicNetwork detail param
 type ChangeVmNicNetworkParamDetail struct {
 	StaticIp *string `json:"staticIp,omitempty"`
+	DnsAddresses []string `json:"dnsAddresses,omitempty"`
 }
 
 // ChangeVmNicNetworkParam ChangeVmNicNetwork request param
 type ChangeVmNicNetworkParam struct {
 	BaseParam
 	Params ChangeVmNicNetworkParamDetail `json:"params"`
-}
-// RemoveLabelFromAlarmParamDetail RemoveLabelFromAlarm detail param
-type RemoveLabelFromAlarmParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// RemoveLabelFromAlarmParam RemoveLabelFromAlarm request param
-type RemoveLabelFromAlarmParam struct {
-	BaseParam
-	Params RemoveLabelFromAlarmParamDetail `json:"removeLabelFromAlarm"`
 }
 // CreateBareMetal2IpmiChassisHardwareInfoParamDetail CreateBareMetal2IpmiChassisHardwareInfo detail param
 type CreateBareMetal2IpmiChassisHardwareInfoParamDetail struct {
@@ -8575,6 +8760,16 @@ type CreateBareMetal2IpmiChassisHardwareInfoParamDetail struct {
 type CreateBareMetal2IpmiChassisHardwareInfoParam struct {
 	BaseParam
 	Params CreateBareMetal2IpmiChassisHardwareInfoParamDetail `json:"params"`
+}
+// RemoveLabelFromAlarmParamDetail RemoveLabelFromAlarm detail param
+type RemoveLabelFromAlarmParamDetail struct {
+	DeleteMode *string `json:"deleteMode,omitempty"`
+}
+
+// RemoveLabelFromAlarmParam RemoveLabelFromAlarm request param
+type RemoveLabelFromAlarmParam struct {
+	BaseParam
+	Params RemoveLabelFromAlarmParamDetail `json:"removeLabelFromAlarm"`
 }
 // DeleteIAM2VirtualIDLdapBindingParamDetail DeleteIAM2VirtualIDLdapBinding detail param
 type DeleteIAM2VirtualIDLdapBindingParamDetail struct {
@@ -9266,6 +9461,7 @@ type AddAccessControlListRedirectRuleParamDetail struct {
 	Description *string `json:"description,omitempty"`
 	Domain *string `json:"domain,omitempty"`
 	Url *string `json:"url,omitempty"`
+	RedirectPort *int `json:"redirectPort,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -9717,18 +9913,21 @@ type MatchModelServiceTemplateWithModelParamDetail struct {
 	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
 	DockerImage *string `json:"dockerImage,omitempty"`
 	CpuNum *int `json:"cpuNum,omitempty"`
+	RequestCpuNum *int `json:"requestCpuNum,omitempty"`
 	Name string `json:"name" validate:"required"`
 	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
 	StartupParameters map[string]string `json:"startupParameters,omitempty"`
 	Type string `json:"type" validate:"required"`
 	ClusterUuid *string `json:"clusterUuid,omitempty"`
 	MemorySize *int64 `json:"memorySize,omitempty"`
+	RequestMemorySize *int64 `json:"requestMemorySize,omitempty"`
 	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
 	ServiceBootUptime *int `json:"serviceBootUptime,omitempty"`
 	ServiceLivez *string `json:"serviceLivez,omitempty"`
 	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
 	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
 	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
+	ProjectUuid *string `json:"projectUuid,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -9798,6 +9997,7 @@ type PrimaryStorageMigrateVmParamDetail struct {
 	DownTime *int `json:"downTime,omitempty"`
 	Strategy *string `json:"strategy,omitempty"`
 	Bandwidth *int64 `json:"bandwidth,omitempty"`
+	VolumeProvisioningStrategy *string `json:"volumeProvisioningStrategy,omitempty"`
 }
 
 // PrimaryStorageMigrateVmParam PrimaryStorageMigrateVm request param
@@ -10001,6 +10201,28 @@ type IsOpensourceVersionParam struct {
 	BaseParam
 	Params IsOpensourceVersionParamDetail `json:"isOpensourceVersion"`
 }
+// CreateBareMetal2InstanceFromVolumeBackupParamDetail CreateBareMetal2InstanceFromVolumeBackup detail param
+type CreateBareMetal2InstanceFromVolumeBackupParamDetail struct {
+	Name string `json:"name" validate:"required"`
+	Description *string `json:"description,omitempty"`
+	ZoneUuid *string `json:"zoneUuid,omitempty"`
+	ClusterUuid *string `json:"clusterUuid,omitempty"`
+	GatewayUuid *string `json:"gatewayUuid,omitempty"`
+	ChassisUuid *string `json:"chassisUuid,omitempty"`
+	ChassisOfferingUuid *string `json:"chassisOfferingUuid,omitempty"`
+	ChassisDiskUuid *string `json:"chassisDiskUuid,omitempty"`
+	PrimaryStorageUuidForRootVolume *string `json:"primaryStorageUuidForRootVolume,omitempty"`
+	RootVolumeSystemTags []string `json:"rootVolumeSystemTags,omitempty"`
+	GatewayAllocatorStrategy *string `json:"gatewayAllocatorStrategy,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
+}
+
+// CreateBareMetal2InstanceFromVolumeBackupParam CreateBareMetal2InstanceFromVolumeBackup request param
+type CreateBareMetal2InstanceFromVolumeBackupParam struct {
+	BaseParam
+	Params CreateBareMetal2InstanceFromVolumeBackupParamDetail `json:"params"`
+}
 // CreateEcsInstanceFromEcsImageParamDetail CreateEcsInstanceFromEcsImage detail param
 type CreateEcsInstanceFromEcsImageParamDetail struct {
 	EcsRootVolumeType *string `json:"ecsRootVolumeType,omitempty"`
@@ -10149,6 +10371,16 @@ type ChangeBaremetalChassisStateParamDetail struct {
 type ChangeBaremetalChassisStateParam struct {
 	BaseParam
 	Params ChangeBaremetalChassisStateParamDetail `json:"changeBaremetalChassisState"`
+}
+// ChangeNfvInstGroupOperationModeParamDetail ChangeNfvInstGroupOperationMode detail param
+type ChangeNfvInstGroupOperationModeParamDetail struct {
+	OperationMode string `json:"operationMode" validate:"required"`
+}
+
+// ChangeNfvInstGroupOperationModeParam ChangeNfvInstGroupOperationMode request param
+type ChangeNfvInstGroupOperationModeParam struct {
+	BaseParam
+	Params ChangeNfvInstGroupOperationModeParamDetail `json:"changeNfvInstGroupOperationMode"`
 }
 // GetL3NetworkMtuParamDetail GetL3NetworkMtu detail param
 type GetL3NetworkMtuParamDetail struct {
@@ -10511,6 +10743,16 @@ type SdnControllerAddHostParamDetail struct {
 type SdnControllerAddHostParam struct {
 	BaseParam
 	Params SdnControllerAddHostParamDetail `json:"sdnControllerAddHost"`
+}
+// GetLicenseNodeUsageDetailsParamDetail GetLicenseNodeUsageDetails detail param
+type GetLicenseNodeUsageDetailsParamDetail struct {
+	NodeUuid *string `json:"nodeUuid,omitempty"`
+}
+
+// GetLicenseNodeUsageDetailsParam GetLicenseNodeUsageDetails request param
+type GetLicenseNodeUsageDetailsParam struct {
+	BaseParam
+	Params GetLicenseNodeUsageDetailsParamDetail `json:"getLicenseNodeUsageDetails"`
 }
 // CreateAliyunSnapshotRemoteParamDetail CreateAliyunSnapshotRemote detail param
 type CreateAliyunSnapshotRemoteParamDetail struct {
@@ -10923,6 +11165,21 @@ type SetIpOnHostNetworkBondingParam struct {
 	BaseParam
 	Params SetIpOnHostNetworkBondingParamDetail `json:"params"`
 }
+// GetGpuDeviceCandidatesParamDetail GetGpuDeviceCandidates detail param
+type GetGpuDeviceCandidatesParamDetail struct {
+	ClusterUuids []string `json:"clusterUuids,omitempty"`
+	HostUuid *string `json:"hostUuid,omitempty"`
+	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
+	VmInstanceUuids []string `json:"vmInstanceUuids,omitempty"`
+	Mode *string `json:"mode,omitempty"`
+	PciSpecUuids []string `json:"pciSpecUuids,omitempty"`
+}
+
+// GetGpuDeviceCandidatesParam GetGpuDeviceCandidates request param
+type GetGpuDeviceCandidatesParam struct {
+	BaseParam
+	Params GetGpuDeviceCandidatesParamDetail `json:"getGpuDeviceCandidates"`
+}
 // RemoveAttributesFromIAM2VirtualIDParamDetail RemoveAttributesFromIAM2VirtualID detail param
 type RemoveAttributesFromIAM2VirtualIDParamDetail struct {
 	AttributeUuids []string `json:"attributeUuids" validate:"required"`
@@ -11006,6 +11263,15 @@ type DeleteLdapBindingParamDetail struct {
 type DeleteLdapBindingParam struct {
 	BaseParam
 	Params DeleteLdapBindingParamDetail `json:"deleteLdapBinding"`
+}
+// AttachNfvInstToGroupParamDetail AttachNfvInstToGroup detail param
+type AttachNfvInstToGroupParamDetail struct {
+}
+
+// AttachNfvInstToGroupParam AttachNfvInstToGroup request param
+type AttachNfvInstToGroupParam struct {
+	BaseParam
+	Params AttachNfvInstToGroupParamDetail `json:"attachNfvInstToGroup"`
 }
 // DebugSignalParamDetail DebugSignal detail param
 type DebugSignalParamDetail struct {
@@ -11397,6 +11663,31 @@ type ZQLQueryParamDetail struct {
 type ZQLQueryParam struct {
 	BaseParam
 	Params ZQLQueryParamDetail `json:"zQLQuery"`
+}
+// CreateBareMetal2InstanceFromVmBackupParamDetail CreateBareMetal2InstanceFromVmBackup detail param
+type CreateBareMetal2InstanceFromVmBackupParamDetail struct {
+	Name string `json:"name" validate:"required"`
+	Description *string `json:"description,omitempty"`
+	ZoneUuid *string `json:"zoneUuid,omitempty"`
+	ClusterUuid *string `json:"clusterUuid,omitempty"`
+	GatewayUuid *string `json:"gatewayUuid,omitempty"`
+	ChassisUuid *string `json:"chassisUuid,omitempty"`
+	ChassisOfferingUuid *string `json:"chassisOfferingUuid,omitempty"`
+	ChassisDiskUuid *string `json:"chassisDiskUuid,omitempty"`
+	PrimaryStorageUuidForRootVolume *string `json:"primaryStorageUuidForRootVolume,omitempty"`
+	PrimaryStorageUuidForDataVolume *string `json:"primaryStorageUuidForDataVolume,omitempty"`
+	DataDiskOfferingUuids []string `json:"dataDiskOfferingUuids,omitempty"`
+	RootVolumeSystemTags []string `json:"rootVolumeSystemTags,omitempty"`
+	DataVolumeSystemTags []string `json:"dataVolumeSystemTags,omitempty"`
+	GatewayAllocatorStrategy *string `json:"gatewayAllocatorStrategy,omitempty"`
+	ResourceUuid *string `json:"resourceUuid,omitempty"`
+	TagUuids []string `json:"tagUuids,omitempty"`
+}
+
+// CreateBareMetal2InstanceFromVmBackupParam CreateBareMetal2InstanceFromVmBackup request param
+type CreateBareMetal2InstanceFromVmBackupParam struct {
+	BaseParam
+	Params CreateBareMetal2InstanceFromVmBackupParamDetail `json:"params"`
 }
 // GetElaborationsParamDetail GetElaborations detail param
 type GetElaborationsParamDetail struct {

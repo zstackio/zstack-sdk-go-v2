@@ -37,7 +37,7 @@ func (cli *ZSClient) PageMetricTemplate(ctx context.Context, params *param.Query
 // CreateMetricTemplate creates MetricTemplate
 func (cli *ZSClient) CreateMetricTemplate(ctx context.Context, params param.CreateMetricTemplateParam) (*view.MetricTemplateInventoryView, error) {
 	resp := view.MetricTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/metrics/httpreceivers/templates", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/metrics/httpreceivers/templates", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

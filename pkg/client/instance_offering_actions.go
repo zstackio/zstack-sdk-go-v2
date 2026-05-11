@@ -33,7 +33,7 @@ func (cli *ZSClient) UpdateInstanceOffering(ctx context.Context, uuid string, pa
 // CreateInstanceOffering creates InstanceOffering
 func (cli *ZSClient) CreateInstanceOffering(ctx context.Context, params param.CreateInstanceOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.Post(ctx, "v1/instance-offerings", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/instance-offerings", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

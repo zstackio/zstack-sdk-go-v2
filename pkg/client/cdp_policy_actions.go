@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateCdpPolicy creates CdpPolicy
 func (cli *ZSClient) CreateCdpPolicy(ctx context.Context, params param.CreateCdpPolicyParam) (*view.CdpPolicyInventoryView, error) {
 	resp := view.CdpPolicyInventoryView{}
-	if err := cli.Post(ctx, "v1/cdp-backup-storage/policy", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cdp-backup-storage/policy", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

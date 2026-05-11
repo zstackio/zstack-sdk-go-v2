@@ -47,7 +47,7 @@ func (cli *ZSClient) UpdateVip(ctx context.Context, uuid string, params param.Up
 // CreateVip creates Vip
 func (cli *ZSClient) CreateVip(ctx context.Context, params param.CreateVipParam) (*view.VipInventoryView, error) {
 	resp := view.VipInventoryView{}
-	if err := cli.Post(ctx, "v1/vips", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vips", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

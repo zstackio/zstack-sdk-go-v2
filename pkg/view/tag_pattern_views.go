@@ -14,6 +14,7 @@ type TagPatternInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Color string `json:"color,omitempty"`
 	Type string `json:"type,omitempty"`
+	ResourceType string `json:"resourceType,omitempty"`
 }
 
 // QueryTagView QueryTag

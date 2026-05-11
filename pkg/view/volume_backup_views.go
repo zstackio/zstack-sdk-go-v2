@@ -16,6 +16,7 @@ type VolumeBackupInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	Size int64 `json:"size,omitempty"`
+	HypervisorType string `json:"hypervisorType,omitempty"`
 	Metadata string `json:"metadata,omitempty"`
 	GroupUuid string `json:"groupUuid,omitempty"`
 	Mode string `json:"mode,omitempty"`

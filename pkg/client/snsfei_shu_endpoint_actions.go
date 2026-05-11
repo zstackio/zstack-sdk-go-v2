@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateSNSFeiShuEndpoint(ctx context.Context, uuid string, p
 // CreateSNSFeiShuEndpoint creates SNSFeiShuEndpoint
 func (cli *ZSClient) CreateSNSFeiShuEndpoint(ctx context.Context, params param.CreateSNSFeiShuEndpointParam) (*view.SNSFeiShuEndpointInventoryView, error) {
 	resp := view.SNSFeiShuEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/feishu", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/feishu", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

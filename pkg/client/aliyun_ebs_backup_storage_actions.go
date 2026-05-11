@@ -33,7 +33,7 @@ func (cli *ZSClient) PageAliyunEbsBackupStorage(ctx context.Context, params *par
 // AddAliyunEbsBackupStorage adds AliyunEbsBackupStorage
 func (cli *ZSClient) AddAliyunEbsBackupStorage(ctx context.Context, params param.AddAliyunEbsBackupStorageParam) (*view.BackupStorageInventoryView, error) {
 	resp := view.BackupStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/backup-storage/aliyun/ebs", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/backup-storage/aliyun/ebs", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

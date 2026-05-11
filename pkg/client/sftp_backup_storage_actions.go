@@ -53,7 +53,7 @@ func (cli *ZSClient) ReconnectSftpBackupStorage(ctx context.Context, uuid string
 // AddSftpBackupStorage adds SftpBackupStorage
 func (cli *ZSClient) AddSftpBackupStorage(ctx context.Context, params param.AddSftpBackupStorageParam) (*view.SftpBackupStorageInventoryView, error) {
 	resp := view.SftpBackupStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/backup-storage/sftp", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/backup-storage/sftp", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateMonitorGroup creates MonitorGroup
 func (cli *ZSClient) CreateMonitorGroup(ctx context.Context, params param.CreateMonitorGroupParam) (*view.MonitorGroupInventoryView, error) {
 	resp := view.MonitorGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/monitorgroups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/monitorgroups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

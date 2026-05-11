@@ -35,7 +35,7 @@ func (cli *ZSClient) DeleteLogConfiguration(ctx context.Context, uuid string, de
 // AddLogConfiguration adds LogConfiguration
 func (cli *ZSClient) AddLogConfiguration(ctx context.Context, params param.AddLogConfigurationParam) (*view.JsonLabelInventoryView, error) {
 	resp := view.JsonLabelInventoryView{}
-	if err := cli.Post(ctx, "v1/log/configurations", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/log/configurations", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

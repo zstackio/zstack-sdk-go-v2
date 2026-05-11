@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddBareMetal2IpmiChassis adds BareMetal2IpmiChassis
 func (cli *ZSClient) AddBareMetal2IpmiChassis(ctx context.Context, params param.AddBareMetal2IpmiChassisParam) (*view.BareMetal2ChassisInventoryView, error) {
 	resp := view.BareMetal2ChassisInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal2/chassis/ipmi", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal2/chassis/ipmi", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

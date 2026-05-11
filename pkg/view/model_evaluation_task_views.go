@@ -34,6 +34,8 @@ type ModelEvaluationTaskInventoryView struct {
 	RequestHeaders map[string]string `json:"requestHeaders,omitempty"`
 	ConnectTimeout int `json:"connectTimeout,omitempty"`
 	ReadTimeout int `json:"readTimeout,omitempty"`
+	TotalScore float64 `json:"totalScore,omitempty"`
+	EndTime time.Time `json:"endTime,omitempty"`
 }
 
 // DeleteModelEvaluationTaskEventView DeleteModelEvaluationTaskEvent

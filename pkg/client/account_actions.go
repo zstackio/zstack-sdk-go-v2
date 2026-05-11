@@ -27,7 +27,7 @@ func (cli *ZSClient) DeleteAccount(ctx context.Context, uuid string, deleteMode 
 // CreateAccount creates Account
 func (cli *ZSClient) CreateAccount(ctx context.Context, params param.CreateAccountParam) (*view.AccountInventoryView, error) {
 	resp := view.AccountInventoryView{}
-	if err := cli.Post(ctx, "v1/accounts", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/accounts", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

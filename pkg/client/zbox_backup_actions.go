@@ -33,7 +33,7 @@ func (cli *ZSClient) PageZBoxBackup(ctx context.Context, params *param.QueryPara
 // CreateZBoxBackup creates ZBoxBackup
 func (cli *ZSClient) CreateZBoxBackup(ctx context.Context, params param.CreateZBoxBackupParam) (*view.ExternalBackupInventoryView, error) {
 	resp := view.ExternalBackupInventoryView{}
-	if err := cli.Post(ctx, "v1/externalbackup/zbox", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/externalbackup/zbox", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

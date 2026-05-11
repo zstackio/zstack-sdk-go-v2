@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddSanSecSecurityMachine adds SanSecSecurityMachine
 func (cli *ZSClient) AddSanSecSecurityMachine(ctx context.Context, params param.AddSanSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Post(ctx, "v1/security-machine/sanSec", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/security-machine/sanSec", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

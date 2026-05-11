@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateAiSiNoSecretResourcePool creates AiSiNoSecretResourcePool
 func (cli *ZSClient) CreateAiSiNoSecretResourcePool(ctx context.Context, params param.CreateAiSiNoSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Post(ctx, "v1/secret-resource-pool/aisino", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/secret-resource-pool/aisino", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

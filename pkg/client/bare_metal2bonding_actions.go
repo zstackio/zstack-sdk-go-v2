@@ -33,7 +33,7 @@ func (cli *ZSClient) PageBareMetal2Bonding(ctx context.Context, params *param.Qu
 // CreateBareMetal2Bonding creates BareMetal2Bonding
 func (cli *ZSClient) CreateBareMetal2Bonding(ctx context.Context, params param.CreateBareMetal2BondingParam) (*view.BareMetal2BondingInventoryView, error) {
 	resp := view.BareMetal2BondingInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal2/chassis/bond", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal2/chassis/bond", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

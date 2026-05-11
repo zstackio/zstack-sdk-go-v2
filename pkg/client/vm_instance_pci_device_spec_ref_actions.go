@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -29,4 +30,13 @@ func (cli *ZSClient) PageVmInstancePciDeviceSpecRef(ctx context.Context, params 
 	var vmInstancePciDeviceSpecRefs []view.VmInstancePciDeviceSpecRefInventoryView
 	total, err := cli.Page(ctx, "v1/vm-instances/{vmInstanceUuid}/pci-device-specs", params, &vmInstancePciDeviceSpecRefs)
 	return vmInstancePciDeviceSpecRefs, total, err
+}
+// UpdateVmInstancePciDeviceSpecRef updates VmInstancePciDeviceSpecRef
+func (cli *ZSClient) UpdateVmInstancePciDeviceSpecRef(ctx context.Context, pciSpecUuid string, vmInstanceUuid string, params param.UpdateVmInstancePciDeviceSpecRefParam) (*view.VmInstancePciDeviceSpecRefInventoryView, error) {
+	resp := view.VmInstancePciDeviceSpecRefInventoryView{}
+	err := cli.PutWithSpec(ctx, "v1/pci-device-specs", pciSpecUuid, fmt.Sprintf("vm-instances/%s/actions", vmInstanceUuid), "", params, &resp)
+	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

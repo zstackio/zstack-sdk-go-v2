@@ -47,7 +47,7 @@ func (cli *ZSClient) PageLogServer(ctx context.Context, params *param.QueryParam
 // AddLogServer adds LogServer
 func (cli *ZSClient) AddLogServer(ctx context.Context, params param.AddLogServerParam) (*view.LogServerInventoryView, error) {
 	resp := view.LogServerInventoryView{}
-	if err := cli.Post(ctx, "v1/log/servers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/log/servers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

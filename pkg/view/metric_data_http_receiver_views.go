@@ -15,11 +15,6 @@ type MetricDataHttpReceiverInventoryView struct {
 	State string `json:"state,omitempty"`
 }
 
-// QueryMetricDataHttpReceiverView QueryMetricDataHttpReceiver
-type QueryMetricDataHttpReceiverView struct {
-	Inventories []MetricDataHttpReceiverInventoryView `json:"inventories,omitempty"`
-}
-
 // DeleteMetricDataHttpReceiverEventView DeleteMetricDataHttpReceiverEvent
 type DeleteMetricDataHttpReceiverEventView struct {
 	Success bool `json:"success,omitempty"`

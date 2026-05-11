@@ -33,7 +33,7 @@ func (cli *ZSClient) PageMonitorTrigger(ctx context.Context, params *param.Query
 // CreateMonitorTrigger creates MonitorTrigger
 func (cli *ZSClient) CreateMonitorTrigger(ctx context.Context, params param.CreateMonitorTriggerParam) (*view.MonitorTriggerInventoryView, error) {
 	resp := view.MonitorTriggerInventoryView{}
-	if err := cli.Post(ctx, "v1/monitoring/triggers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/monitoring/triggers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

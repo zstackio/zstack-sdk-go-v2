@@ -17,7 +17,7 @@ func (cli *ZSClient) DeletePreconfigurationTemplate(ctx context.Context, uuid st
 // AddPreconfigurationTemplate adds PreconfigurationTemplate
 func (cli *ZSClient) AddPreconfigurationTemplate(ctx context.Context, params param.AddPreconfigurationTemplateParam) (*view.PreconfigurationTemplateInventoryView, error) {
 	resp := view.PreconfigurationTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal/preconfigurations", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal/preconfigurations", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

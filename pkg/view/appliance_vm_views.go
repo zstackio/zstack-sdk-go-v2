@@ -46,6 +46,11 @@ type ReconnectVirtualRouterEventView struct {
 	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
 }
 
+// UpdateNfvInstProvisionConfigEventView UpdateNfvInstProvisionConfigEvent
+type UpdateNfvInstProvisionConfigEventView struct {
+	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
+}
+
 // CreateOvnControllerVmEventView CreateOvnControllerVmEvent
 type CreateOvnControllerVmEventView struct {
 	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`

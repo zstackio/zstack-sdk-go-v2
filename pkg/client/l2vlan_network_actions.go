@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateL2VlanNetwork creates L2VlanNetwork
 func (cli *ZSClient) CreateL2VlanNetwork(ctx context.Context, params param.CreateL2VlanNetworkParam) (*view.L2VlanNetworkInventoryView, error) {
 	resp := view.L2VlanNetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/l2-networks/vlan", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l2-networks/vlan", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

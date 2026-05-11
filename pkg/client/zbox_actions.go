@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddZBox adds ZBox
 func (cli *ZSClient) AddZBox(ctx context.Context, params param.AddZBoxParam) (*view.ZBoxInventoryView, error) {
 	resp := view.ZBoxInventoryView{}
-	if err := cli.Post(ctx, "v1/zbox", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zbox", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

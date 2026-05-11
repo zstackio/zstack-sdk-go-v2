@@ -23,7 +23,7 @@ func (cli *ZSClient) AddAliyunNasFileSystem(ctx context.Context, params param.Ad
 // CreateAliyunNasFileSystem creates AliyunNasFileSystem
 func (cli *ZSClient) CreateAliyunNasFileSystem(ctx context.Context, params param.CreateAliyunNasFileSystemParam) (*view.NasFileSystemInventoryView, error) {
 	resp := view.NasFileSystemInventoryView{}
-	if err := cli.Post(ctx, "v1/nas/aliyun", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/nas/aliyun", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

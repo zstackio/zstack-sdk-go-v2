@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSanSecSecretResourcePool creates SanSecSecretResourcePool
 func (cli *ZSClient) CreateSanSecSecretResourcePool(ctx context.Context, params param.CreateSanSecSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Post(ctx, "v1/secret-resource-pool/sanSec", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/secret-resource-pool/sanSec", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

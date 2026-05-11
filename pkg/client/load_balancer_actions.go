@@ -33,7 +33,7 @@ func (cli *ZSClient) PageLoadBalancer(ctx context.Context, params *param.QueryPa
 // CreateLoadBalancer creates LoadBalancer
 func (cli *ZSClient) CreateLoadBalancer(ctx context.Context, params param.CreateLoadBalancerParam) (*view.LoadBalancerInventoryView, error) {
 	resp := view.LoadBalancerInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/load-balancers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

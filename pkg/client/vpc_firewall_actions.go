@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateVpcFirewall(ctx context.Context, uuid string, params 
 // CreateVpcFirewall creates VpcFirewall
 func (cli *ZSClient) CreateVpcFirewall(ctx context.Context, params param.CreateVpcFirewallParam) (*view.VpcFirewallInventoryView, error) {
 	resp := view.VpcFirewallInventoryView{}
-	if err := cli.Post(ctx, "v1/vpcfirewalls", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vpcfirewalls", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

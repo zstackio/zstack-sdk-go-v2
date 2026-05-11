@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateFiSecSecurityMachine(ctx context.Context, uuid string
 // AddFiSecSecurityMachine adds FiSecSecurityMachine
 func (cli *ZSClient) AddFiSecSecurityMachine(ctx context.Context, params param.AddFiSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Post(ctx, "v1/security-machine/fiSec", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/security-machine/fiSec", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -21,9 +22,9 @@ func (cli *ZSClient) UpdateMonitorTemplate(ctx context.Context, uuid string, par
 	return &resp, nil
 }
 // CloneMonitorTemplate operates on MonitorTemplate
-func (cli *ZSClient) CloneMonitorTemplate(ctx context.Context, params param.CloneMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
+func (cli *ZSClient) CloneMonitorTemplate(ctx context.Context, uuid string, params param.CloneMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	resp := view.MonitorTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/monitortemplates/{uuid}/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zwatch/monitortemplates/%s/actions", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -51,7 +52,7 @@ func (cli *ZSClient) PageMonitorTemplate(ctx context.Context, params *param.Quer
 // CreateMonitorTemplate creates MonitorTemplate
 func (cli *ZSClient) CreateMonitorTemplate(ctx context.Context, params param.CreateMonitorTemplateParam) (*view.MonitorTemplateInventoryView, error) {
 	resp := view.MonitorTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/monitortemplates", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/monitortemplates", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

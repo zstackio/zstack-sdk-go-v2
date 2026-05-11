@@ -17,7 +17,7 @@ func (cli *ZSClient) DeleteUserGroup(ctx context.Context, uuid string, deleteMod
 // CreateUserGroup creates UserGroup
 func (cli *ZSClient) CreateUserGroup(ctx context.Context, params param.CreateUserGroupParam) (*view.UserGroupInventoryView, error) {
 	resp := view.UserGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/accounts/groups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/accounts/groups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

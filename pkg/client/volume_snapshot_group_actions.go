@@ -33,7 +33,7 @@ func (cli *ZSClient) PageVolumeSnapshotGroup(ctx context.Context, params *param.
 // CreateVolumeSnapshotGroup creates VolumeSnapshotGroup
 func (cli *ZSClient) CreateVolumeSnapshotGroup(ctx context.Context, params param.CreateVolumeSnapshotGroupParam) (*view.VolumeSnapshotGroupInventoryView, error) {
 	resp := view.VolumeSnapshotGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/volume-snapshots/group", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/volume-snapshots/group", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

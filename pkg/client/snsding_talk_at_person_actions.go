@@ -38,7 +38,7 @@ func (cli *ZSClient) PageSNSDingTalkAtPerson(ctx context.Context, params *param.
 // AddSNSDingTalkAtPerson adds SNSDingTalkAtPerson
 func (cli *ZSClient) AddSNSDingTalkAtPerson(ctx context.Context, params param.AddSNSDingTalkAtPersonParam) (*view.SNSDingTalkAtPersonInventoryView, error) {
 	resp := view.SNSDingTalkAtPersonInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/ding-talk/at-persons", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/ding-talk/at-persons", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

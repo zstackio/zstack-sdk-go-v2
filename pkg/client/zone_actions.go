@@ -33,7 +33,7 @@ func (cli *ZSClient) PageZone(ctx context.Context, params *param.QueryParam) ([]
 // CreateZone creates Zone
 func (cli *ZSClient) CreateZone(ctx context.Context, params param.CreateZoneParam) (*view.ZoneInventoryView, error) {
 	resp := view.ZoneInventoryView{}
-	if err := cli.Post(ctx, "v1/zones", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zones", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

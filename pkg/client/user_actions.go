@@ -47,7 +47,7 @@ func (cli *ZSClient) UpdateUser(ctx context.Context, params param.UpdateUserPara
 // CreateUser creates User
 func (cli *ZSClient) CreateUser(ctx context.Context, params param.CreateUserParam) (*view.UserInventoryView, error) {
 	resp := view.UserInventoryView{}
-	if err := cli.Post(ctx, "v1/accounts/users", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/accounts/users", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

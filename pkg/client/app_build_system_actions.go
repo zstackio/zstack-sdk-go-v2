@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddAppBuildSystem adds AppBuildSystem
 func (cli *ZSClient) AddAppBuildSystem(ctx context.Context, params param.AddAppBuildSystemParam) (*view.AppBuildSystemInventoryView, error) {
 	resp := view.AppBuildSystemInventoryView{}
-	if err := cli.Post(ctx, "v1/appcenter/buildsystem", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/appcenter/buildsystem", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

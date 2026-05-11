@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // RefreshFiberChannelStorage operates on FiberChannelStorage
 func (cli *ZSClient) RefreshFiberChannelStorage(ctx context.Context, params param.RefreshFiberChannelStorageParam) (*view.FiberChannelStorageInventoryView, error) {
 	resp := view.FiberChannelStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/storage-devices/fiber-channel/controllers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/storage-devices/fiber-channel/controllers", "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateMulticastRouter creates MulticastRouter
 func (cli *ZSClient) CreateMulticastRouter(ctx context.Context, params param.CreateMulticastRouterParam) (*view.MulticastRouterInventoryView, error) {
 	resp := view.MulticastRouterInventoryView{}
-	if err := cli.Post(ctx, "v1/multicast/virtual-routers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/multicast/virtual-routers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

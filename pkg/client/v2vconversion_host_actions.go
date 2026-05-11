@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddV2VConversionHost adds V2VConversionHost
 func (cli *ZSClient) AddV2VConversionHost(ctx context.Context, params param.AddV2VConversionHostParam) (*view.V2VConversionHostInventoryView, error) {
 	resp := view.V2VConversionHostInventoryView{}
-	if err := cli.Post(ctx, "v1/v2v-conversion-hosts", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/v2v-conversion-hosts", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

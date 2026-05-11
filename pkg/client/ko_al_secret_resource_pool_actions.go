@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateKoAlSecretResourcePool(ctx context.Context, uuid stri
 // CreateKoAlSecretResourcePool creates KoAlSecretResourcePool
 func (cli *ZSClient) CreateKoAlSecretResourcePool(ctx context.Context, params param.CreateKoAlSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Post(ctx, "v1/secret-resource-pool/koal", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/secret-resource-pool/koal", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -43,7 +43,7 @@ func (cli *ZSClient) PageAliyunProxyVSwitch(ctx context.Context, params *param.Q
 // CreateAliyunProxyVSwitch creates AliyunProxyVSwitch
 func (cli *ZSClient) CreateAliyunProxyVSwitch(ctx context.Context, params param.CreateAliyunProxyVSwitchParam) (*view.AliyunProxyVSwitchInventoryView, error) {
 	resp := view.AliyunProxyVSwitchInventoryView{}
-	if err := cli.Post(ctx, "v1/aliyun-proxy/vpcs/vswitches", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/aliyun-proxy/vpcs/vswitches", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

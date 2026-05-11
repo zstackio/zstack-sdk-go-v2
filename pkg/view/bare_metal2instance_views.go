@@ -20,7 +20,7 @@ type BareMetal2InstanceInventoryView struct {
 	ProvisionType string `json:"provisionType,omitempty"`
 	AgentVersion string `json:"agentVersion,omitempty"`
 	IsLatestAgent bool `json:"isLatestAgent,omitempty"`
-	ProvisionNic BareMetal2InstanceProvisionNicInventoryView `json:"provisionNic,omitempty"`
+	ProvisionNics []BareMetal2InstanceProvisionNicInventoryView `json:"provisionNics,omitempty"`
 	Description string `json:"description,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
 	ClusterUuid string `json:"clusterUuid,omitempty"`
@@ -71,6 +71,11 @@ type ChangeBareMetal2InstancePasswordEventView struct {
 	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
 }
 
+// CreateBareMetal2InstanceFromVolumeBackupEventView CreateBareMetal2InstanceFromVolumeBackupEvent
+type CreateBareMetal2InstanceFromVolumeBackupEventView struct {
+	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
+}
+
 // ReconnectBareMetal2InstanceEventView ReconnectBareMetal2InstanceEvent
 type ReconnectBareMetal2InstanceEventView struct {
 	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
@@ -78,6 +83,11 @@ type ReconnectBareMetal2InstanceEventView struct {
 
 // StartBareMetal2InstanceEventView StartBareMetal2InstanceEvent
 type StartBareMetal2InstanceEventView struct {
+	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// CreateBareMetal2InstanceFromVmBackupEventView CreateBareMetal2InstanceFromVmBackupEvent
+type CreateBareMetal2InstanceFromVmBackupEventView struct {
 	Inventory BareMetal2InstanceInventoryView `json:"inventory,omitempty"`
 }
 

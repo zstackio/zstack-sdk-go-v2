@@ -29,6 +29,7 @@ type AddExternalPrimaryStorageParam struct {
 type UpdateExternalPrimaryStorageParamDetail struct {
 	Config *string `json:"config,omitempty"`
 	DefaultProtocol *string `json:"defaultProtocol,omitempty"`
+	OldConfig *string `json:"oldConfig,omitempty"`
 	Name string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Url *string `json:"url,omitempty"`

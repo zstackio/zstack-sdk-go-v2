@@ -43,7 +43,7 @@ func (cli *ZSClient) PageBareMetal2ProvisionNetwork(ctx context.Context, params 
 // CreateBareMetal2ProvisionNetwork creates BareMetal2ProvisionNetwork
 func (cli *ZSClient) CreateBareMetal2ProvisionNetwork(ctx context.Context, params param.CreateBareMetal2ProvisionNetworkParam) (*view.BareMetal2ProvisionNetworkInventoryView, error) {
 	resp := view.BareMetal2ProvisionNetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal2/provision-networks", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal2/provision-networks", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

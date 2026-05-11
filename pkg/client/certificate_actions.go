@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateCertificate(ctx context.Context, uuid string, params 
 // CreateCertificate creates Certificate
 func (cli *ZSClient) CreateCertificate(ctx context.Context, params param.CreateCertificateParam) (*view.CertificateInventoryView, error) {
 	resp := view.CertificateInventoryView{}
-	if err := cli.Post(ctx, "v1/certificates", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/certificates", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

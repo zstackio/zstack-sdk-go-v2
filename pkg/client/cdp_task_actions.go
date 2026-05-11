@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateCdpTask creates CdpTask
 func (cli *ZSClient) CreateCdpTask(ctx context.Context, params param.CreateCdpTaskParam) (*view.CdpTaskInventoryView, error) {
 	resp := view.CdpTaskInventoryView{}
-	if err := cli.Post(ctx, "v1/cdp-backup-storage/task", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cdp-backup-storage/task", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

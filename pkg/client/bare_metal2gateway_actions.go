@@ -57,7 +57,7 @@ func (cli *ZSClient) DeleteBareMetal2Gateway(ctx context.Context, uuid string, d
 // AddBareMetal2Gateway adds BareMetal2Gateway
 func (cli *ZSClient) AddBareMetal2Gateway(ctx context.Context, params param.AddBareMetal2GatewayParam) (*view.HostInventoryView, error) {
 	resp := view.HostInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal2/gateways", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal2/gateways", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

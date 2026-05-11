@@ -33,7 +33,7 @@ func (cli *ZSClient) PageNvmeTarget(ctx context.Context, params *param.QueryPara
 // RefreshNvmeTarget operates on NvmeTarget
 func (cli *ZSClient) RefreshNvmeTarget(ctx context.Context, params param.RefreshNvmeTargetParam) (*view.NvmeTargetInventoryView, error) {
 	resp := view.NvmeTargetInventoryView{}
-	if err := cli.Post(ctx, "v1/storage-devices/nvme/controllers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/storage-devices/nvme/controllers", "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -47,7 +47,7 @@ func (cli *ZSClient) DeleteWebhook(ctx context.Context, uuid string, deleteMode 
 // CreateWebhook creates Webhook
 func (cli *ZSClient) CreateWebhook(ctx context.Context, params param.CreateWebhookParam) (*view.WebhookInventoryView, error) {
 	resp := view.WebhookInventoryView{}
-	if err := cli.Post(ctx, "v1/web-hooks", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/web-hooks", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

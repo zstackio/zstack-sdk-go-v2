@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateVmNic creates VmNic
 func (cli *ZSClient) CreateVmNic(ctx context.Context, params param.CreateVmNicParam) (*view.VmNicInventoryView, error) {
 	resp := view.VmNicInventoryView{}
-	if err := cli.Post(ctx, "v1/nics", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/nics", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

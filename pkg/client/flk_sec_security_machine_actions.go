@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateFlkSecSecurityMachine(ctx context.Context, uuid strin
 // AddFlkSecSecurityMachine adds FlkSecSecurityMachine
 func (cli *ZSClient) AddFlkSecSecurityMachine(ctx context.Context, params param.AddFlkSecSecurityMachineParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Post(ctx, "v1/security-machine/flkSec", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/security-machine/flkSec", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

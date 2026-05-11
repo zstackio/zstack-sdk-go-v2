@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSnmpAgent creates SnmpAgent
 func (cli *ZSClient) CreateSnmpAgent(ctx context.Context, params param.CreateSnmpAgentParam) (*view.SnmpAgentInventoryView, error) {
 	resp := view.SnmpAgentInventoryView{}
-	if err := cli.Post(ctx, "v1/snmp/agent", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/snmp/agent", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

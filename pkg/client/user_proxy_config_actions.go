@@ -47,7 +47,7 @@ func (cli *ZSClient) PageUserProxyConfig(ctx context.Context, params *param.Quer
 // CreateUserProxyConfig creates UserProxyConfig
 func (cli *ZSClient) CreateUserProxyConfig(ctx context.Context, params param.CreateUserProxyConfigParam) (*view.UserProxyConfigInventoryView, error) {
 	resp := view.UserProxyConfigInventoryView{}
-	if err := cli.Post(ctx, "v1/user-proxy-configs", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/user-proxy-configs", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

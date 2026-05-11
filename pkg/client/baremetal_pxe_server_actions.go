@@ -77,7 +77,7 @@ func (cli *ZSClient) PageBaremetalPxeServer(ctx context.Context, params *param.Q
 // CreateBaremetalPxeServer creates BaremetalPxeServer
 func (cli *ZSClient) CreateBaremetalPxeServer(ctx context.Context, params param.CreateBaremetalPxeServerParam) (*view.BaremetalPxeServerInventoryView, error) {
 	resp := view.BaremetalPxeServerInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal/pxeservers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal/pxeservers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

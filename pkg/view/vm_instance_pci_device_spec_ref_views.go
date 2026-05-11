@@ -25,3 +25,8 @@ type AddPciDeviceSpecToVmInstanceEventView struct {
 	Inventory VmInstancePciDeviceSpecRefInventoryView `json:"inventory,omitempty"`
 }
 
+// UpdateVmInstancePciDeviceSpecRefEventView UpdateVmInstancePciDeviceSpecRefEvent
+type UpdateVmInstancePciDeviceSpecRefEventView struct {
+	Inventory VmInstancePciDeviceSpecRefInventoryView `json:"inventory,omitempty"`
+}
+

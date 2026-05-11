@@ -37,7 +37,7 @@ func (cli *ZSClient) DeleteNvmeServer(ctx context.Context, uuid string, deleteMo
 // AddNvmeServer adds NvmeServer
 func (cli *ZSClient) AddNvmeServer(ctx context.Context, params param.AddNvmeServerParam) (*view.NvmeServerInventoryView, error) {
 	resp := view.NvmeServerInventoryView{}
-	if err := cli.Post(ctx, "v1/storage-devices/nvme/servers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/storage-devices/nvme/servers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

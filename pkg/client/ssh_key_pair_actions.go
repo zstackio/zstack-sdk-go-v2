@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSshKeyPair creates SshKeyPair
 func (cli *ZSClient) CreateSshKeyPair(ctx context.Context, params param.CreateSshKeyPairParam) (*view.SshKeyPairInventoryView, error) {
 	resp := view.SshKeyPairInventoryView{}
-	if err := cli.Post(ctx, "v1/ssh-key-pair", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ssh-key-pair", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -21,7 +21,7 @@ func (cli *ZSClient) CreateSshKeyPair(ctx context.Context, params param.CreateSs
 // GenerateSshKeyPair operates on SshKeyPair
 func (cli *ZSClient) GenerateSshKeyPair(ctx context.Context, params param.GenerateSshKeyPairParam) (*view.SshPrivateKeyPairInventoryView, error) {
 	resp := view.SshPrivateKeyPairInventoryView{}
-	if err := cli.Post(ctx, "v1/ssh-key-pair/generate", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ssh-key-pair/generate", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

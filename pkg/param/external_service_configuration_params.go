@@ -8,7 +8,7 @@ var _ = time.Now() // avoid unused import
 
 // UpdateExternalServiceConfigurationParamDetail UpdateExternalServiceConfiguration detail param
 type UpdateExternalServiceConfigurationParamDetail struct {
-	Description *string `json:"description" validate:"required"`
+	Description *string `json:"description,omitempty"`
 }
 
 // UpdateExternalServiceConfigurationParam UpdateExternalServiceConfiguration request param

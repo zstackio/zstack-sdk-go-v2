@@ -13,6 +13,7 @@ type GpuDeviceSpecInventoryView struct {
 	Memory int64 `json:"memory,omitempty"`
 	GpuType string `json:"gpuType,omitempty"`
 	Isolated bool `json:"isolated,omitempty"`
+	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
 	Description string `json:"description,omitempty"`
 	VendorId string `json:"vendorId,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
@@ -29,10 +30,6 @@ type GpuDeviceSpecInventoryView struct {
 	RomVersion string `json:"romVersion,omitempty"`
 	RomMd5sum string `json:"romMd5sum,omitempty"`
 	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
-}
-
-// GetGpuDeviceSpecCandidatesView GetGpuDeviceSpecCandidates
-type GetGpuDeviceSpecCandidatesView struct {
-	Inventories []GpuDeviceSpecInventoryView `json:"inventories,omitempty"`
+	ShareType string `json:"shareType,omitempty"`
 }
 

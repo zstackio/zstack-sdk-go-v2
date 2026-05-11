@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -29,9 +30,9 @@ func (cli *ZSClient) ValidateSecurityGroupRule(ctx context.Context, uuid string)
 	return &resp, nil
 }
 // AddSecurityGroupRule adds SecurityGroupRule
-func (cli *ZSClient) AddSecurityGroupRule(ctx context.Context, params param.AddSecurityGroupRuleParam) (*view.SecurityGroupInventoryView, error) {
+func (cli *ZSClient) AddSecurityGroupRule(ctx context.Context, securityGroupUuid string, params param.AddSecurityGroupRuleParam) (*view.SecurityGroupInventoryView, error) {
 	resp := view.SecurityGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/security-groups/{securityGroupUuid}/rules", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/security-groups/%s/rules", securityGroupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

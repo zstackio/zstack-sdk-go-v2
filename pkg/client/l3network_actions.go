@@ -43,7 +43,7 @@ func (cli *ZSClient) UpdateL3Network(ctx context.Context, uuid string, params pa
 // CreateL3Network creates L3Network
 func (cli *ZSClient) CreateL3Network(ctx context.Context, params param.CreateL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	resp := view.L3NetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l3-networks", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -41,9 +42,9 @@ func (cli *ZSClient) PageVniRange(ctx context.Context, params *param.QueryParam)
 	return vniRanges, total, err
 }
 // CreateVniRange creates VniRange
-func (cli *ZSClient) CreateVniRange(ctx context.Context, params param.CreateVniRangeParam) (*view.VniRangeInventoryView, error) {
+func (cli *ZSClient) CreateVniRange(ctx context.Context, l2NetworkUuid string, params param.CreateVniRangeParam) (*view.VniRangeInventoryView, error) {
 	resp := view.VniRangeInventoryView{}
-	if err := cli.Post(ctx, "v1/l2-networks/vxlan-pool/{l2NetworkUuid}/vni-ranges", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l2-networks/vxlan-pool/%s/vni-ranges", l2NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

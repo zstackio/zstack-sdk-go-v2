@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateHuaweiIMasterVRouter creates HuaweiIMasterVRouter
 func (cli *ZSClient) CreateHuaweiIMasterVRouter(ctx context.Context, params param.CreateHuaweiIMasterVRouterParam) (*view.HuaweiIMasterVRouterInventoryView, error) {
 	resp := view.HuaweiIMasterVRouterInventoryView{}
-	if err := cli.Post(ctx, "v1/sdn-controller/huawei-imaster/vrouters", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sdn-controller/huawei-imaster/vrouters", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

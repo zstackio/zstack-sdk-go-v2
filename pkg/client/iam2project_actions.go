@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateIAM2Project creates IAM2Project
 func (cli *ZSClient) CreateIAM2Project(ctx context.Context, params param.CreateIAM2ProjectParam) (*view.IAM2ProjectInventoryView, error) {
 	resp := view.IAM2ProjectInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/projects", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/projects", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

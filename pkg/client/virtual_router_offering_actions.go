@@ -33,7 +33,7 @@ func (cli *ZSClient) PageVirtualRouterOffering(ctx context.Context, params *para
 // CreateVirtualRouterOffering creates VirtualRouterOffering
 func (cli *ZSClient) CreateVirtualRouterOffering(ctx context.Context, params param.CreateVirtualRouterOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.Post(ctx, "v1/instance-offerings/virtual-routers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/instance-offerings/virtual-routers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

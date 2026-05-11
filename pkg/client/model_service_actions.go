@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,9 +12,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CloneModelService operates on ModelService
-func (cli *ZSClient) CloneModelService(ctx context.Context, params param.CloneModelServiceParam) (*view.ModelServiceInventoryView, error) {
+func (cli *ZSClient) CloneModelService(ctx context.Context, uuid string, params param.CloneModelServiceParam) (*view.ModelServiceInventoryView, error) {
 	resp := view.ModelServiceInventoryView{}
-	if err := cli.Post(ctx, "v1/ai/model-services/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/ai/model-services/%s", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -35,7 +36,7 @@ func (cli *ZSClient) DeleteModelService(ctx context.Context, uuid string, delete
 // AddModelService adds ModelService
 func (cli *ZSClient) AddModelService(ctx context.Context, params param.AddModelServiceParam) (*view.ModelServiceInventoryView, error) {
 	resp := view.ModelServiceInventoryView{}
-	if err := cli.Post(ctx, "v1/ai/model-services", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ai/model-services", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

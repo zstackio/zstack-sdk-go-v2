@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddExternalBackupStorage adds ExternalBackupStorage
 func (cli *ZSClient) AddExternalBackupStorage(ctx context.Context, params param.AddExternalBackupStorageParam) (*view.ExternalBackupStorageInventoryView, error) {
 	resp := view.ExternalBackupStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/backup-storage/addon", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/backup-storage/addon", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

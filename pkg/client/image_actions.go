@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -13,7 +14,7 @@ var _ = view.MapView{} // avoid unused import
 // AddImage adds Image
 func (cli *ZSClient) AddImage(ctx context.Context, params param.AddImageParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Post(ctx, "v1/images", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/images", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -74,9 +75,9 @@ func (cli *ZSClient) RecoverImage(ctx context.Context, imageUuid string, params 
 	return &resp, nil
 }
 // CloneImage operates on Image
-func (cli *ZSClient) CloneImage(ctx context.Context, params param.CloneImageParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) CloneImage(ctx context.Context, imageUuid string, params param.CloneImageParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Post(ctx, "v1/image/clone/{imageUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/image/clone/%s", imageUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

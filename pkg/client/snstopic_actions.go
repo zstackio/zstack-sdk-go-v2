@@ -47,7 +47,7 @@ func (cli *ZSClient) PageSNSTopic(ctx context.Context, params *param.QueryParam)
 // CreateSNSTopic creates SNSTopic
 func (cli *ZSClient) CreateSNSTopic(ctx context.Context, params param.CreateSNSTopicParam) (*view.SNSTopicInventoryView, error) {
 	resp := view.SNSTopicInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/topics", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/topics", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

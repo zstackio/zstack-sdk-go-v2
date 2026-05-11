@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,9 +12,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateFlowCollector creates FlowCollector
-func (cli *ZSClient) CreateFlowCollector(ctx context.Context, params param.CreateFlowCollectorParam) (*view.FlowCollectorInventoryView, error) {
+func (cli *ZSClient) CreateFlowCollector(ctx context.Context, flowMeterUuid string, params param.CreateFlowCollectorParam) (*view.FlowCollectorInventoryView, error) {
 	resp := view.FlowCollectorInventoryView{}
-	if err := cli.Post(ctx, "v1/flowmeters/{flowMeterUuid}/collectors", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/flowmeters/%s/collectors", flowMeterUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

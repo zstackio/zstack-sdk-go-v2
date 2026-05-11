@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateBlockVolume(ctx context.Context, uuid string, params 
 // CreateBlockVolume creates BlockVolume
 func (cli *ZSClient) CreateBlockVolume(ctx context.Context, params param.CreateBlockVolumeParam) (*view.BlockVolumeInventoryView, error) {
 	resp := view.BlockVolumeInventoryView{}
-	if err := cli.Post(ctx, "v1/block-volumes", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/block-volumes", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -37,7 +37,7 @@ func (cli *ZSClient) DeleteVRouterRouteTable(ctx context.Context, uuid string, d
 // CreateVRouterRouteTable creates VRouterRouteTable
 func (cli *ZSClient) CreateVRouterRouteTable(ctx context.Context, params param.CreateVRouterRouteTableParam) (*view.VRouterRouteTableInventoryView, error) {
 	resp := view.VRouterRouteTableInventoryView{}
-	if err := cli.Post(ctx, "v1/vrouter-route-tables", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vrouter-route-tables", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

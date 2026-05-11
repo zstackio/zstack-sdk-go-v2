@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSNSEmailEndpoint creates SNSEmailEndpoint
 func (cli *ZSClient) CreateSNSEmailEndpoint(ctx context.Context, params param.CreateSNSEmailEndpointParam) (*view.SNSApplicationEndpointInventoryView, error) {
 	resp := view.SNSApplicationEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/emails", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/emails", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

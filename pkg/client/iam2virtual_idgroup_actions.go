@@ -33,7 +33,7 @@ func (cli *ZSClient) PageIAM2VirtualIDGroup(ctx context.Context, params *param.Q
 // CreateIAM2VirtualIDGroup creates IAM2VirtualIDGroup
 func (cli *ZSClient) CreateIAM2VirtualIDGroup(ctx context.Context, params param.CreateIAM2VirtualIDGroupParam) (*view.IAM2VirtualIDGroupInventoryView, error) {
 	resp := view.IAM2VirtualIDGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/groups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/groups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

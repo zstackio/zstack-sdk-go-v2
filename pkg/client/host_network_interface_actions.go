@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,9 +12,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // UpdateHostNetworkInterface updates HostNetworkInterface
-func (cli *ZSClient) UpdateHostNetworkInterface(ctx context.Context, params param.UpdateHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
+func (cli *ZSClient) UpdateHostNetworkInterface(ctx context.Context, interfaceUuid string, params param.UpdateHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
 	resp := view.HostNetworkInterfaceInventoryView{}
-	if err := cli.Post(ctx, "v1/hosts/nics/{interfaceUuid}/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hosts/nics/%s/actions", interfaceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

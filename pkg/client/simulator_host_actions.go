@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddSimulatorHost adds SimulatorHost
 func (cli *ZSClient) AddSimulatorHost(ctx context.Context, params param.AddSimulatorHostParam) (*view.HostInventoryView, error) {
 	resp := view.HostInventoryView{}
-	if err := cli.Post(ctx, "v1/hosts/simulators", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hosts/simulators", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

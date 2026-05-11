@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,9 +12,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateVolumeBackup creates VolumeBackup
-func (cli *ZSClient) CreateVolumeBackup(ctx context.Context, params param.CreateVolumeBackupParam) (*view.VolumeBackupInventoryView, error) {
+func (cli *ZSClient) CreateVolumeBackup(ctx context.Context, volumeUuid string, params param.CreateVolumeBackupParam) (*view.VolumeBackupInventoryView, error) {
 	resp := view.VolumeBackupInventoryView{}
-	if err := cli.Post(ctx, "v1/volumes/{volumeUuid}/volume-backups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/volumes/%s/volume-backups", volumeUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

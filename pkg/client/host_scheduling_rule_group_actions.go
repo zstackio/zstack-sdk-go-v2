@@ -43,7 +43,7 @@ func (cli *ZSClient) PageHostSchedulingRuleGroup(ctx context.Context, params *pa
 // CreateHostSchedulingRuleGroup creates HostSchedulingRuleGroup
 func (cli *ZSClient) CreateHostSchedulingRuleGroup(ctx context.Context, params param.CreateHostSchedulingRuleGroupParam) (*view.HostSchedulingRuleGroupInventoryView, error) {
 	resp := view.HostSchedulingRuleGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/hostSchedulingRuleGroup", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hostSchedulingRuleGroup", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

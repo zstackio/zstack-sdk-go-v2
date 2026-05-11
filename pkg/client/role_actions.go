@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateRole creates Role
 func (cli *ZSClient) CreateRole(ctx context.Context, params param.CreateRoleParam) (*view.RoleInventoryView, error) {
 	resp := view.RoleInventoryView{}
-	if err := cli.Post(ctx, "v1/identities/roles", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/identities/roles", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

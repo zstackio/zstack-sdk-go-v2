@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -19,9 +20,9 @@ func (cli *ZSClient) GetVirtualRouterSoftwareVersion(ctx context.Context) (*view
 	return &resp, nil
 }
 // UpdateVirtualRouterSoftwareVersion updates VirtualRouterSoftwareVersion
-func (cli *ZSClient) UpdateVirtualRouterSoftwareVersion(ctx context.Context, params param.UpdateVirtualRouterSoftwareVersionParam) (*view.VirtualRouterSoftwareVersionInventoryView, error) {
+func (cli *ZSClient) UpdateVirtualRouterSoftwareVersion(ctx context.Context, uuid string, params param.UpdateVirtualRouterSoftwareVersionParam) (*view.VirtualRouterSoftwareVersionInventoryView, error) {
 	resp := view.VirtualRouterSoftwareVersionInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/softwareversion", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/softwareversion", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

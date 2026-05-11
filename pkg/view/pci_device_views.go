@@ -19,6 +19,9 @@ type PciDeviceInventoryView struct {
 	State string `json:"state,omitempty"`
 	Status string `json:"status,omitempty"`
 	VirtStatus string `json:"virtStatus,omitempty"`
+	VirtState string `json:"virtState,omitempty"`
+	VirtCapabilities []string `json:"virtCapabilities,omitempty"`
+	VirtMode string `json:"virtMode,omitempty"`
 	Chooser string `json:"chooser,omitempty"`
 	VendorId string `json:"vendorId,omitempty"`
 	Vendor string `json:"vendor,omitempty"`
@@ -30,8 +33,11 @@ type PciDeviceInventoryView struct {
 	IommuGroup string `json:"iommuGroup,omitempty"`
 	MetaData PciDeviceMetaDataView `json:"metaData,omitempty"`
 	Rev string `json:"rev,omitempty"`
+	DependentDevices string `json:"dependentDevices,omitempty"`
+	VmPciDeviceAddress string `json:"vmPciDeviceAddress,omitempty"`
 	MatchedPciDeviceOfferingRef []PciDevicePciDeviceOfferingRefInventoryView `json:"matchedPciDeviceOfferingRef,omitempty"`
 	MdevSpecRefs []PciDeviceMdevSpecRefInventoryView `json:"mdevSpecRefs,omitempty"`
+	ShareType string `json:"shareType,omitempty"`
 }
 
 // UpdatePciDeviceEventView UpdatePciDeviceEvent

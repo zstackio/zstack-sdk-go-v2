@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSNSDingTalkEndpoint creates SNSDingTalkEndpoint
 func (cli *ZSClient) CreateSNSDingTalkEndpoint(ctx context.Context, params param.CreateSNSDingTalkEndpointParam) (*view.SNSDingTalkEndpointInventoryView, error) {
 	resp := view.SNSDingTalkEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/ding-talk", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/ding-talk", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

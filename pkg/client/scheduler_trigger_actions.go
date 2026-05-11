@@ -47,7 +47,7 @@ func (cli *ZSClient) DeleteSchedulerTrigger(ctx context.Context, uuid string, de
 // CreateSchedulerTrigger creates SchedulerTrigger
 func (cli *ZSClient) CreateSchedulerTrigger(ctx context.Context, params param.CreateSchedulerTriggerParam) (*view.SchedulerTriggerInventoryView, error) {
 	resp := view.SchedulerTriggerInventoryView{}
-	if err := cli.Post(ctx, "v1/scheduler/triggers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/scheduler/triggers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

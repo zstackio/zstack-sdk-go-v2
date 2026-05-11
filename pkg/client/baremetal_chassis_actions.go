@@ -57,7 +57,7 @@ func (cli *ZSClient) DeleteBaremetalChassis(ctx context.Context, uuid string, de
 // CreateBaremetalChassis creates BaremetalChassis
 func (cli *ZSClient) CreateBaremetalChassis(ctx context.Context, params param.CreateBaremetalChassisParam) (*view.BaremetalChassisInventoryView, error) {
 	resp := view.BaremetalChassisInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal/chassis", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal/chassis", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

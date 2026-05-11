@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreatePortMirrorSession creates PortMirrorSession
 func (cli *ZSClient) CreatePortMirrorSession(ctx context.Context, params param.CreatePortMirrorSessionParam) (*view.PortMirrorSessionInventoryView, error) {
 	resp := view.PortMirrorSessionInventoryView{}
-	if err := cli.Post(ctx, "v1/port-mirrors/sessions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/port-mirrors/sessions", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

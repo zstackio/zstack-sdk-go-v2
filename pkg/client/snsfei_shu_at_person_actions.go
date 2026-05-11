@@ -38,7 +38,7 @@ func (cli *ZSClient) RemoveSNSFeiShuAtPerson(ctx context.Context, endpointUuid s
 // AddSNSFeiShuAtPerson adds SNSFeiShuAtPerson
 func (cli *ZSClient) AddSNSFeiShuAtPerson(ctx context.Context, params param.AddSNSFeiShuAtPersonParam) (*view.SNSFeiShuAtPersonInventoryView, error) {
 	resp := view.SNSFeiShuAtPersonInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/feishu/at-persons", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/feishu/at-persons", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

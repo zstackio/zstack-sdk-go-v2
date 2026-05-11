@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddCephPrimaryStorage adds CephPrimaryStorage
 func (cli *ZSClient) AddCephPrimaryStorage(ctx context.Context, params param.AddCephPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/ceph", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/ceph", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

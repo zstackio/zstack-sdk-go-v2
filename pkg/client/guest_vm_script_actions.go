@@ -37,7 +37,7 @@ func (cli *ZSClient) DeleteGuestVmScript(ctx context.Context, uuid string, delet
 // CreateGuestVmScript creates GuestVmScript
 func (cli *ZSClient) CreateGuestVmScript(ctx context.Context, params param.CreateGuestVmScriptParam) (*view.GuestVmScriptInventoryView, error) {
 	resp := view.GuestVmScriptInventoryView{}
-	if err := cli.Post(ctx, "v1/scripts", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/scripts", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

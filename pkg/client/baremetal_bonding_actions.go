@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateBaremetalBonding creates BaremetalBonding
 func (cli *ZSClient) CreateBaremetalBonding(ctx context.Context, params param.CreateBaremetalBondingParam) (*view.BaremetalBondingInventoryView, error) {
 	resp := view.BaremetalBondingInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal/network/bondings", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal/network/bondings", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

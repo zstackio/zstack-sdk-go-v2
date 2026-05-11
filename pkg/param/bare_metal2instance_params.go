@@ -23,6 +23,7 @@ type CreateBareMetal2InstanceParamDetail struct {
 	RootVolumeSystemTags []string `json:"rootVolumeSystemTags,omitempty"`
 	DataVolumeSystemTags []string `json:"dataVolumeSystemTags,omitempty"`
 	GatewayAllocatorStrategy *string `json:"gatewayAllocatorStrategy,omitempty"`
+	ChassisType *string `json:"chassisType,omitempty"`
 	ResourceUuid *string `json:"resourceUuid,omitempty"`
 	TagUuids []string `json:"tagUuids,omitempty"`
 }
@@ -47,6 +48,7 @@ type StartBareMetal2InstanceParamDetail struct {
 	GatewayUuid *string `json:"gatewayUuid,omitempty"`
 	ChassisUuid *string `json:"chassisUuid,omitempty"`
 	ChassisOfferingUuid *string `json:"chassisOfferingUuid,omitempty"`
+	ChassisType *string `json:"chassisType,omitempty"`
 }
 
 // StartBareMetal2InstanceParam StartBareMetal2Instance request param

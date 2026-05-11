@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSNSWeComEndpoint creates SNSWeComEndpoint
 func (cli *ZSClient) CreateSNSWeComEndpoint(ctx context.Context, params param.CreateSNSWeComEndpointParam) (*view.SNSWeComEndpointInventoryView, error) {
 	resp := view.SNSWeComEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/we-com", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/we-com", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

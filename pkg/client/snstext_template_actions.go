@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateSNSTextTemplate(ctx context.Context, uuid string, par
 // CreateSNSTextTemplate creates SNSTextTemplate
 func (cli *ZSClient) CreateSNSTextTemplate(ctx context.Context, params param.CreateSNSTextTemplateParam) (*view.SNSTextTemplateInventoryView, error) {
 	resp := view.SNSTextTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/alarms/sns/text-templates", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/alarms/sns/text-templates", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -27,7 +27,7 @@ func (cli *ZSClient) DeleteIAM2TicketFlow(ctx context.Context, uuid string, dele
 // AddIAM2TicketFlow adds IAM2TicketFlow
 func (cli *ZSClient) AddIAM2TicketFlow(ctx context.Context, params param.AddIAM2TicketFlowParam) (*view.TicketFlowInventoryView, error) {
 	resp := view.TicketFlowInventoryView{}
-	if err := cli.Post(ctx, "v1/tickets/flow", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/tickets/flow", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

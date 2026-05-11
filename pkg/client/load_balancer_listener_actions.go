@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -21,9 +22,9 @@ func (cli *ZSClient) UpdateLoadBalancerListener(ctx context.Context, uuid string
 	return &resp, nil
 }
 // CreateLoadBalancerListener creates LoadBalancerListener
-func (cli *ZSClient) CreateLoadBalancerListener(ctx context.Context, params param.CreateLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
+func (cli *ZSClient) CreateLoadBalancerListener(ctx context.Context, loadBalancerUuid string, params param.CreateLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	resp := view.LoadBalancerListenerInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/{loadBalancerUuid}/listeners", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/load-balancers/%s/listeners", loadBalancerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

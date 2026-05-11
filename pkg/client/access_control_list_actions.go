@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateAccessControlList creates AccessControlList
 func (cli *ZSClient) CreateAccessControlList(ctx context.Context, params param.CreateAccessControlListParam) (*view.AccessControlListInventoryView, error) {
 	resp := view.AccessControlListInventoryView{}
-	if err := cli.Post(ctx, "v1/access-control-lists", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/access-control-lists", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

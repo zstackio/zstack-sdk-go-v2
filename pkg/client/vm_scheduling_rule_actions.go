@@ -17,7 +17,7 @@ func (cli *ZSClient) RemoveVmSchedulingRule(ctx context.Context, uuid string, de
 // CreateVmSchedulingRule creates VmSchedulingRule
 func (cli *ZSClient) CreateVmSchedulingRule(ctx context.Context, params param.CreateVmSchedulingRuleParam) (*view.AffinityGroupInventoryView, error) {
 	resp := view.AffinityGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/vmsSchedulingRule", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vmsSchedulingRule", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

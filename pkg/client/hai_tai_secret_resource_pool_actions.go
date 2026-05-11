@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateHaiTaiSecretResourcePool creates HaiTaiSecretResourcePool
 func (cli *ZSClient) CreateHaiTaiSecretResourcePool(ctx context.Context, params param.CreateHaiTaiSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Post(ctx, "v1/secret-resource-pool/haitai", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/secret-resource-pool/haitai", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -16,9 +16,9 @@ func (cli *ZSClient) DeleteVRouterRouteEntry(ctx context.Context, routeTableUuid
 	return cli.DeleteWithSpec(ctx, "v1/vrouter-route-tables", routeTableUuid, fmt.Sprintf("route-entries/%s", uuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 // AddVRouterRouteEntry adds VRouterRouteEntry
-func (cli *ZSClient) AddVRouterRouteEntry(ctx context.Context, params param.AddVRouterRouteEntryParam) (*view.VRouterRouteEntryInventoryView, error) {
+func (cli *ZSClient) AddVRouterRouteEntry(ctx context.Context, routeTableUuid string, params param.AddVRouterRouteEntryParam) (*view.VRouterRouteEntryInventoryView, error) {
 	resp := view.VRouterRouteEntryInventoryView{}
-	if err := cli.Post(ctx, "v1/vrouter-route-tables/{routeTableUuid}/route-entries", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vrouter-route-tables/%s/route-entries", routeTableUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

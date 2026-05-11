@@ -33,7 +33,7 @@ func (cli *ZSClient) PageEmailMedia(ctx context.Context, params *param.QueryPara
 // CreateEmailMedia creates EmailMedia
 func (cli *ZSClient) CreateEmailMedia(ctx context.Context, params param.CreateEmailMediaParam) (*view.MediaInventoryView, error) {
 	resp := view.MediaInventoryView{}
-	if err := cli.Post(ctx, "v1/media/emails", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/media/emails", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

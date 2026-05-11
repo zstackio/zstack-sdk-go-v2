@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreatePluginSecretResourcePool creates PluginSecretResourcePool
 func (cli *ZSClient) CreatePluginSecretResourcePool(ctx context.Context, params param.CreatePluginSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Post(ctx, "v1/secret-resource-pool/plugin", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/secret-resource-pool/plugin", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

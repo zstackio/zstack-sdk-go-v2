@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateCSPSecretResourcePool(ctx context.Context, uuid strin
 // CreateCSPSecretResourcePool creates CSPSecretResourcePool
 func (cli *ZSClient) CreateCSPSecretResourcePool(ctx context.Context, params param.CreateCSPSecretResourcePoolParam) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Post(ctx, "v1/secret-resource-pool/csp", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/secret-resource-pool/csp", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

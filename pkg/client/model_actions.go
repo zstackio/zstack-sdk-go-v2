@@ -47,7 +47,7 @@ func (cli *ZSClient) UpdateModel(ctx context.Context, uuid string, params param.
 // AddModel adds Model
 func (cli *ZSClient) AddModel(ctx context.Context, params param.AddModelParam) (*view.ModelInventoryView, error) {
 	resp := view.ModelInventoryView{}
-	if err := cli.Post(ctx, "v1/ai/models", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ai/models", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -21,9 +22,9 @@ func (cli *ZSClient) UpdateCephPrimaryStoragePool(ctx context.Context, uuid stri
 	return &resp, nil
 }
 // AddCephPrimaryStoragePool adds CephPrimaryStoragePool
-func (cli *ZSClient) AddCephPrimaryStoragePool(ctx context.Context, params param.AddCephPrimaryStoragePoolParam) (*view.CephPrimaryStoragePoolInventoryView, error) {
+func (cli *ZSClient) AddCephPrimaryStoragePool(ctx context.Context, primaryStorageUuid string, params param.AddCephPrimaryStoragePoolParam) (*view.CephPrimaryStoragePoolInventoryView, error) {
 	resp := view.CephPrimaryStoragePoolInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/ceph/{primaryStorageUuid}/pools", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/primary-storage/ceph/%s/pools", primaryStorageUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

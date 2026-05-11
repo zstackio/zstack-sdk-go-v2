@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -35,9 +36,9 @@ func (cli *ZSClient) DeleteClusterDRS(ctx context.Context, uuid string, deleteMo
 	return cli.Delete(ctx, "v1/clusters/drs", uuid, string(deleteMode))
 }
 // CreateClusterDRS creates ClusterDRS
-func (cli *ZSClient) CreateClusterDRS(ctx context.Context, params param.CreateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
+func (cli *ZSClient) CreateClusterDRS(ctx context.Context, clusterUuid string, params param.CreateClusterDRSParam) (*view.ClusterDRSInventoryView, error) {
 	resp := view.ClusterDRSInventoryView{}
-	if err := cli.Post(ctx, "v1/clusters/{clusterUuid}/drs", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/clusters/%s/drs", clusterUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

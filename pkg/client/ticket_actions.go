@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateTicket creates Ticket
 func (cli *ZSClient) CreateTicket(ctx context.Context, params param.CreateTicketParam) (*view.TicketInventoryView, error) {
 	resp := view.TicketInventoryView{}
-	if err := cli.Post(ctx, "v1/tickets", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/tickets", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -17,7 +17,7 @@ func (cli *ZSClient) DeleteDiskOffering(ctx context.Context, uuid string, delete
 // CreateDiskOffering creates DiskOffering
 func (cli *ZSClient) CreateDiskOffering(ctx context.Context, params param.CreateDiskOfferingParam) (*view.DiskOfferingInventoryView, error) {
 	resp := view.DiskOfferingInventoryView{}
-	if err := cli.Post(ctx, "v1/disk-offerings", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/disk-offerings", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

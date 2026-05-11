@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreatePortMirror creates PortMirror
 func (cli *ZSClient) CreatePortMirror(ctx context.Context, params param.CreatePortMirrorParam) (*view.PortMirrorInventoryView, error) {
 	resp := view.PortMirrorInventoryView{}
-	if err := cli.Post(ctx, "v1/port-mirrors", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/port-mirrors", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

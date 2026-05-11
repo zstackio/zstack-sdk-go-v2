@@ -1,0 +1,43 @@
+// Copyright (c) ZStack.io, Inc.
+
+package view
+
+import "time"
+
+var _ = time.Now() // avoid unused import
+
+// GpuDeviceSpecCandidateInventoryView GpuDeviceSpecCandidate
+type GpuDeviceSpecCandidateInventoryView struct {
+	BaseInfoView
+	BaseTimeView
+	Mode string `json:"mode,omitempty"`
+	MaxAvailableMemory int64 `json:"maxAvailableMemory,omitempty"`
+	DgpuProfiles []DGpuProfileInventoryView `json:"dgpuProfiles,omitempty"`
+	Memory int64 `json:"memory,omitempty"`
+	GpuType string `json:"gpuType,omitempty"`
+	Isolated bool `json:"isolated,omitempty"`
+	AllocatorStrategy string `json:"allocatorStrategy,omitempty"`
+	Description string `json:"description,omitempty"`
+	VendorId string `json:"vendorId,omitempty"`
+	Vendor string `json:"vendor,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	Device string `json:"device,omitempty"`
+	SubvendorId string `json:"subvendorId,omitempty"`
+	SubdeviceId string `json:"subdeviceId,omitempty"`
+	RamSize string `json:"ramSize,omitempty"`
+	MaxPartNum int `json:"maxPartNum,omitempty"`
+	Type string `json:"type,omitempty"`
+	State string `json:"state,omitempty"`
+	IsVirtual bool `json:"isVirtual,omitempty"`
+	AllowResourceConfigWithMultipleDevices bool `json:"allowResourceConfigWithMultipleDevices,omitempty"`
+	RomVersion string `json:"romVersion,omitempty"`
+	RomMd5sum string `json:"romMd5sum,omitempty"`
+	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
+	ShareType string `json:"shareType,omitempty"`
+}
+
+// GetGpuDeviceSpecCandidatesView GetGpuDeviceSpecCandidates
+type GetGpuDeviceSpecCandidatesView struct {
+	Inventories []GpuDeviceSpecCandidateInventoryView `json:"inventories,omitempty"`
+}
+

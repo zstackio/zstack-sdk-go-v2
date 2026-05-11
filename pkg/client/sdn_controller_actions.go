@@ -17,7 +17,7 @@ func (cli *ZSClient) RemoveSdnController(ctx context.Context, uuid string, delet
 // AddSdnController adds SdnController
 func (cli *ZSClient) AddSdnController(ctx context.Context, params param.AddSdnControllerParam) (*view.SdnControllerInventoryView, error) {
 	resp := view.SdnControllerInventoryView{}
-	if err := cli.Post(ctx, "v1/sdn-controllers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sdn-controllers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

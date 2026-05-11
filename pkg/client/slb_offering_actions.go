@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSlbOffering creates SlbOffering
 func (cli *ZSClient) CreateSlbOffering(ctx context.Context, params param.CreateSlbOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.Post(ctx, "v1/instance-offerings/slb", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/instance-offerings/slb", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

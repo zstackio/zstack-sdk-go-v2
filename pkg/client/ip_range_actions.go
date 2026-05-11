@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,9 +12,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // AddIpRange adds IpRange
-func (cli *ZSClient) AddIpRange(ctx context.Context, params param.AddIpRangeParam) (*view.IpRangeInventoryView, error) {
+func (cli *ZSClient) AddIpRange(ctx context.Context, l3NetworkUuid string, params param.AddIpRangeParam) (*view.IpRangeInventoryView, error) {
 	resp := view.IpRangeInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/ip-ranges", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/ip-ranges", l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

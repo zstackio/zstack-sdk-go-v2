@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -13,7 +14,7 @@ var _ = view.MapView{} // avoid unused import
 // AddIscsiServer adds IscsiServer
 func (cli *ZSClient) AddIscsiServer(ctx context.Context, params param.AddIscsiServerParam) (*view.IscsiServerInventoryView, error) {
 	resp := view.IscsiServerInventoryView{}
-	if err := cli.Post(ctx, "v1/storage-devices/iscsi/servers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/storage-devices/iscsi/servers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -43,9 +44,9 @@ func (cli *ZSClient) DeleteIscsiServer(ctx context.Context, uuid string, deleteM
 	return cli.Delete(ctx, "v1/storage-devices/iscsi/servers", uuid, string(deleteMode))
 }
 // RefreshIscsiServer operates on IscsiServer
-func (cli *ZSClient) RefreshIscsiServer(ctx context.Context, params param.RefreshIscsiServerParam) (*view.IscsiServerInventoryView, error) {
+func (cli *ZSClient) RefreshIscsiServer(ctx context.Context, uuid string, params param.RefreshIscsiServerParam) (*view.IscsiServerInventoryView, error) {
 	resp := view.IscsiServerInventoryView{}
-	if err := cli.Post(ctx, "v1/storage-devices/iscsi/servers/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/storage-devices/iscsi/servers/%s", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

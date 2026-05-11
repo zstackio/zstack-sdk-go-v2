@@ -33,7 +33,7 @@ func (cli *ZSClient) PagePolicyRouteRule(ctx context.Context, params *param.Quer
 // CreatePolicyRouteRule creates PolicyRouteRule
 func (cli *ZSClient) CreatePolicyRouteRule(ctx context.Context, params param.CreatePolicyRouteRuleParam) (*view.PolicyRouteRuleInventoryView, error) {
 	resp := view.PolicyRouteRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/policy-routes/rules", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/policy-routes/rules", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

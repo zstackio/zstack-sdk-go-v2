@@ -43,7 +43,7 @@ func (cli *ZSClient) UpdateThirdpartyPlatform(ctx context.Context, uuid string, 
 // AddThirdpartyPlatform adds ThirdpartyPlatform
 func (cli *ZSClient) AddThirdpartyPlatform(ctx context.Context, params param.AddThirdpartyPlatformParam) (*view.ThirdpartyPlatformInventoryView, error) {
 	resp := view.ThirdpartyPlatformInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/third-party/platforms", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/third-party/platforms", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

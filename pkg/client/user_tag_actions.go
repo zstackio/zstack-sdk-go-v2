@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateUserTag creates UserTag
 func (cli *ZSClient) CreateUserTag(ctx context.Context) (*view.UserTagInventoryView, error) {
 	resp := view.UserTagInventoryView{}
-	if err := cli.Post(ctx, "v1/user-tags", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/user-tags", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

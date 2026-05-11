@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateBlockPrimaryStorage(ctx context.Context, uuid string,
 // AddBlockPrimaryStorage adds BlockPrimaryStorage
 func (cli *ZSClient) AddBlockPrimaryStorage(ctx context.Context, params param.AddBlockPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/block", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/block", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

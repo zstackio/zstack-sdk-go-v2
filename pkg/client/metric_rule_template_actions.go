@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -45,9 +46,9 @@ func (cli *ZSClient) UpdateMetricRuleTemplate(ctx context.Context, uuid string, 
 	return &resp, nil
 }
 // AddMetricRuleTemplate adds MetricRuleTemplate
-func (cli *ZSClient) AddMetricRuleTemplate(ctx context.Context, params param.AddMetricRuleTemplateParam) (*view.MetricRuleTemplateInventoryView, error) {
+func (cli *ZSClient) AddMetricRuleTemplate(ctx context.Context, monitorTemplateUuid string, params param.AddMetricRuleTemplateParam) (*view.MetricRuleTemplateInventoryView, error) {
 	resp := view.MetricRuleTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/monitortemplates/{monitorTemplateUuid}/metricrules", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zwatch/monitortemplates/%s/metricrules", monitorTemplateUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

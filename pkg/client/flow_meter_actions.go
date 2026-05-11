@@ -33,7 +33,7 @@ func (cli *ZSClient) PageFlowMeter(ctx context.Context, params *param.QueryParam
 // CreateFlowMeter creates FlowMeter
 func (cli *ZSClient) CreateFlowMeter(ctx context.Context, params param.CreateFlowMeterParam) (*view.FlowMeterInventoryView, error) {
 	resp := view.FlowMeterInventoryView{}
-	if err := cli.Post(ctx, "v1/flowmeters", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/flowmeters", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

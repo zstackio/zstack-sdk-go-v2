@@ -37,7 +37,7 @@ func (cli *ZSClient) DeleteMetricDataHttpReceiver(ctx context.Context, uuid stri
 // CreateMetricDataHttpReceiver creates MetricDataHttpReceiver
 func (cli *ZSClient) CreateMetricDataHttpReceiver(ctx context.Context, params param.CreateMetricDataHttpReceiverParam) (*view.MetricDataHttpReceiverInventoryView, error) {
 	resp := view.MetricDataHttpReceiverInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/metrics/httpreceivers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/metrics/httpreceivers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

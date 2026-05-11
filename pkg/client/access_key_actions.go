@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateAccessKey creates AccessKey
 func (cli *ZSClient) CreateAccessKey(ctx context.Context, params param.CreateAccessKeyParam) (*view.AccessKeyInventoryView, error) {
 	resp := view.AccessKeyInventoryView{}
-	if err := cli.Post(ctx, "v1/accesskeys", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/accesskeys", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

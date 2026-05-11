@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -11,9 +12,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // CreateLoadBalancerServerGroup creates LoadBalancerServerGroup
-func (cli *ZSClient) CreateLoadBalancerServerGroup(ctx context.Context, params param.CreateLoadBalancerServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
+func (cli *ZSClient) CreateLoadBalancerServerGroup(ctx context.Context, loadBalancerUuid string, params param.CreateLoadBalancerServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
 	resp := view.LoadBalancerServerGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/{loadBalancerUuid}/servergroups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/load-balancers/%s/servergroups", loadBalancerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

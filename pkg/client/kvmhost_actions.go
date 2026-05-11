@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddKVMHost adds KVMHost
 func (cli *ZSClient) AddKVMHost(ctx context.Context, params param.AddKVMHostParam) (*view.HostInventoryView, error) {
 	resp := view.HostInventoryView{}
-	if err := cli.Post(ctx, "v1/hosts/kvm", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hosts/kvm", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

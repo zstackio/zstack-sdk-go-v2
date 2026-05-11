@@ -37,7 +37,7 @@ func (cli *ZSClient) DeleteIPsecConnection(ctx context.Context, uuid string, del
 // CreateIPsecConnection creates IPsecConnection
 func (cli *ZSClient) CreateIPsecConnection(ctx context.Context, params param.CreateIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
 	resp := view.IPsecConnectionInventoryView{}
-	if err := cli.Post(ctx, "v1/ipsec", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ipsec", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

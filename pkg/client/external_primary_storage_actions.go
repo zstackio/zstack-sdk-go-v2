@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddExternalPrimaryStorage adds ExternalPrimaryStorage
 func (cli *ZSClient) AddExternalPrimaryStorage(ctx context.Context, params param.AddExternalPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/addon", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/addon", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

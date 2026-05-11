@@ -33,7 +33,7 @@ func (cli *ZSClient) PageDataset(ctx context.Context, params *param.QueryParam) 
 // CreateDataset creates Dataset
 func (cli *ZSClient) CreateDataset(ctx context.Context, params param.CreateDatasetParam) (*view.DatasetInventoryView, error) {
 	resp := view.DatasetInventoryView{}
-	if err := cli.Post(ctx, "v1/ai/datasets", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ai/datasets", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

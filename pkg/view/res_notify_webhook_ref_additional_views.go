@@ -11,7 +11,6 @@ type ResNotifyWebhookRefInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	WebhookUrl string `json:"webhookUrl,omitempty"`
-	Secret string `json:"secret,omitempty"`
 	CustomHeaders string `json:"customHeaders,omitempty"`
 }
 

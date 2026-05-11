@@ -23,7 +23,7 @@ func (cli *ZSClient) AddAliyunNasMountTarget(ctx context.Context, params param.A
 // CreateAliyunNasMountTarget creates AliyunNasMountTarget
 func (cli *ZSClient) CreateAliyunNasMountTarget(ctx context.Context, params param.CreateAliyunNasMountTargetParam) (*view.NasMountTargetInventoryView, error) {
 	resp := view.NasMountTargetInventoryView{}
-	if err := cli.Post(ctx, "v1/nas/aliyun/mount", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/nas/aliyun/mount", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

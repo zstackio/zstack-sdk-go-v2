@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateVmCdRom creates VmCdRom
 func (cli *ZSClient) CreateVmCdRom(ctx context.Context, params param.CreateVmCdRomParam) (*view.VmCdRomInventoryView, error) {
 	resp := view.VmCdRomInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/cdroms", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vm-instances/cdroms", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

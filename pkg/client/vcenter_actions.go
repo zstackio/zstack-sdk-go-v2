@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddVCenter adds VCenter
 func (cli *ZSClient) AddVCenter(ctx context.Context, params param.AddVCenterParam) (*view.VCenterInventoryView, error) {
 	resp := view.VCenterInventoryView{}
-	if err := cli.Post(ctx, "v1/vcenters", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vcenters", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

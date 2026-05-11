@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSNSEmailPlatform creates SNSEmailPlatform
 func (cli *ZSClient) CreateSNSEmailPlatform(ctx context.Context, params param.CreateSNSEmailPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
 	resp := view.SNSApplicationPlatformInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-platforms/email", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-platforms/email", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -58,6 +58,11 @@ type SyncDataCenterFromRemoteEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// SetVmInstanceHygonMdevEventView SetVmInstanceHygonMdevEvent
+type SetVmInstanceHygonMdevEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
 // SecurityMachineDetectSyncEventView SecurityMachineDetectSyncEvent
 type SecurityMachineDetectSyncEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -247,6 +252,11 @@ type GetSchedulerExecutionReportView struct {
 // GetSupportedIdentityModelsView GetSupportedIdentityModels
 type GetSupportedIdentityModelsView struct {
 	Configs []string `json:"configs,omitempty"`
+}
+
+// SuspendLongJobEventView SuspendLongJobEvent
+type SuspendLongJobEventView struct {
+	Inventory LongJobInventoryView `json:"inventory,omitempty"`
 }
 
 // AddUserToGroupEventView AddUserToGroupEvent
@@ -971,6 +981,11 @@ type LoginByCasView struct {
 	Inventory SessionInventoryView `json:"inventory,omitempty"`
 }
 
+// RemoveVmDGpuStrategyEventView RemoveVmDGpuStrategyEvent
+type RemoveVmDGpuStrategyEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
 // SetVRouterRouterIdEventView SetVRouterRouterIdEvent
 type SetVRouterRouterIdEventView struct {
 	RouterId string `json:"routerId,omitempty"`
@@ -1211,6 +1226,11 @@ type SubscribeResNotifyEventView struct {
 	Inventory ResNotifySubscriptionInventoryView `json:"inventory,omitempty"`
 }
 
+// GetDGpuSpecStatsView GetDGpuSpecStats
+type GetDGpuSpecStatsView struct {
+	Inventories []DGpuSpecStatsInventoryView `json:"inventories,omitempty"`
+}
+
 // ReloadElaborationEventView ReloadElaborationEvent
 type ReloadElaborationEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -1289,6 +1309,11 @@ type GetElaborationCategoriesView struct {
 // GetHostMultipathTopologyView GetHostMultipathTopology
 type GetHostMultipathTopologyView struct {
 	Results []MultipathTopologyStructView `json:"results,omitempty"`
+}
+
+// EnableDGpuModeEventView EnableDGpuModeEvent
+type EnableDGpuModeEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 
 // DeleteEcsImageRemoteEventView DeleteEcsImageRemoteEvent
@@ -1460,6 +1485,11 @@ type UpdateThirdpartyAlertsEventView struct {
 // PullSdnControllerTenantEventView PullSdnControllerTenantEvent
 type PullSdnControllerTenantEventView struct {
 	Inventories []H3cSdnControllerTenantInventoryView `json:"inventories,omitempty"`
+}
+
+// GenerateHygonMdevDevicesEventView GenerateHygonMdevDevicesEvent
+type GenerateHygonMdevDevicesEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 
 // SetVmUsbRedirectEventView SetVmUsbRedirectEvent
@@ -1773,6 +1803,11 @@ type GetCandidatePrimaryStoragesForCreatingVmView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// SetVpcVRouterSnatLogStateEventView SetVpcVRouterSnatLogStateEvent
+type SetVpcVRouterSnatLogStateEventView struct {
+	State string `json:"state,omitempty"`
+}
+
 // GetVmConsolePasswordView GetVmConsolePassword
 type GetVmConsolePasswordView struct {
 	Password string `json:"password,omitempty"`
@@ -1833,6 +1868,11 @@ type DetachVmFromVmSchedulingRuleGroupEventView struct {
 
 // AddRolesToIAM2VirtualIDGroupEventView AddRolesToIAM2VirtualIDGroupEvent
 type AddRolesToIAM2VirtualIDGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// SetVmDGpuStrategyEventView SetVmDGpuStrategyEvent
+type SetVmDGpuStrategyEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -1979,6 +2019,7 @@ type PowerOnBaremetalChassisEventView struct {
 // RequestLicenseCapacityEventView RequestLicenseCapacityEvent
 type RequestLicenseCapacityEventView struct {
 	Inventory LicenseAuthorizedCapacityInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // GetVirtualizerInfoView GetVirtualizerInfo
@@ -2000,6 +2041,11 @@ type KvmRunShellEventView struct {
 
 // ExpungeDataVolumeEventView ExpungeDataVolumeEvent
 type ExpungeDataVolumeEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
+// DetachDGpuFromVmEventView DetachDGpuFromVmEvent
+type DetachDGpuFromVmEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -2103,6 +2149,11 @@ type CalculateResourceSpendingView struct {
 	Spending []ResourceSpendingView `json:"spending,omitempty"`
 	Pagination PaginationView `json:"pagination,omitempty"`
 	Success bool `json:"success,omitempty"`
+}
+
+// GetVpcVRouterSnatLogStateView GetVpcVRouterSnatLogState
+type GetVpcVRouterSnatLogStateView struct {
+	State string `json:"state,omitempty"`
 }
 
 // PowerResetBaremetalChassisEventView PowerResetBaremetalChassisEvent
@@ -2216,6 +2267,11 @@ type PullHuaweiIMasterControllerEventView struct {
 	Inventories []HuaweiIMasterSdnControllerInventoryView `json:"inventories,omitempty"`
 }
 
+// DisableDGpuModeEventView DisableDGpuModeEvent
+type DisableDGpuModeEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
 // RemoveRolesFromIAM2VirtualIDGroupEventView RemoveRolesFromIAM2VirtualIDGroupEvent
 type RemoveRolesFromIAM2VirtualIDGroupEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2305,6 +2361,11 @@ type UnregisterLicenseRequestedApplicationEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// ProvisionNfvInstGroupEventView ProvisionNfvInstGroupEvent
+type ProvisionNfvInstGroupEventView struct {
+	Inventory NfvInstGroupInventoryView `json:"inventory,omitempty"`
+}
+
 // ChangeVmPasswordEventView ChangeVmPasswordEvent
 type ChangeVmPasswordEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2330,9 +2391,19 @@ type DeleteVmUserDefinedXmlHookScriptEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// AddL3NetworkToGroupEventView AddL3NetworkToGroupEvent
+type AddL3NetworkToGroupEventView struct {
+	Success bool `json:"success,omitempty"`
+}
+
 // CheckResourcePermissionView CheckResourcePermission
 type CheckResourcePermissionView struct {
 	Apis []string `json:"apis,omitempty"`
+}
+
+// ProvisionNfvInstConfigEventView ProvisionNfvInstConfigEvent
+type ProvisionNfvInstConfigEventView struct {
+	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
 }
 
 // GetCandidateMiniHostsView GetCandidateMiniHosts
@@ -2377,6 +2448,11 @@ type GetClusterDRSStatusView struct {
 // GetVmNumaView GetVmNuma
 type GetVmNumaView struct {
 	Enable bool `json:"enable,omitempty"`
+}
+
+// UngenerateHygonMdevDevicesEventView UngenerateHygonMdevDevicesEvent
+type UngenerateHygonMdevDevicesEventView struct {
+	Success bool `json:"success,omitempty"`
 }
 
 // DeletePluginDriversEventView DeletePluginDriversEvent
@@ -2926,6 +3002,14 @@ type SyncVmClockEventView struct {
 // SdnControllerAddHostEventView SdnControllerAddHostEvent
 type SdnControllerAddHostEventView struct {
 	Inventory SdnControllerInventoryView `json:"inventory,omitempty"`
+}
+
+// GetLicenseNodeUsageDetailsView GetLicenseNodeUsageDetails
+type GetLicenseNodeUsageDetailsView struct {
+	NodeInventory LicenseAuthorizedNodeInventoryView `json:"nodeInventory,omitempty"`
+	PlatformLicense LicenseInventoryView `json:"platformLicense,omitempty"`
+	AddOns []LicenseAddOnInventoryView `json:"addOns,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // RenewSessionEventView RenewSessionEvent

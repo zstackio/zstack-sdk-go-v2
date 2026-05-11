@@ -104,7 +104,7 @@ func (cli *ZSClient) DestroyVmInstance(ctx context.Context, uuid string, deleteM
 // CreateVmInstance creates VmInstance
 func (cli *ZSClient) CreateVmInstance(ctx context.Context, params param.CreateVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vm-instances", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

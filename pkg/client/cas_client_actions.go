@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateCasClient creates CasClient
 func (cli *ZSClient) CreateCasClient(ctx context.Context, params param.CreateCasClientParam) (*view.CasClientInventoryView, error) {
 	resp := view.CasClientInventoryView{}
-	if err := cli.Post(ctx, "v1/create/cas/client", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/create/cas/client", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -21,7 +21,7 @@ func (cli *ZSClient) CreateCasClient(ctx context.Context, params param.CreateCas
 // UpdateCasClient updates CasClient
 func (cli *ZSClient) UpdateCasClient(ctx context.Context, params param.UpdateCasClientParam) (*view.CasClientInventoryView, error) {
 	resp := view.CasClientInventoryView{}
-	if err := cli.Post(ctx, "v1/update/cas/client", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/update/cas/client", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

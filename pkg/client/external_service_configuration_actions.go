@@ -43,7 +43,7 @@ func (cli *ZSClient) UpdateExternalServiceConfiguration(ctx context.Context, uui
 // AddExternalServiceConfiguration adds ExternalServiceConfiguration
 func (cli *ZSClient) AddExternalServiceConfiguration(ctx context.Context, params param.AddExternalServiceConfigurationParam) (*view.ExternalServiceConfigurationInventoryView, error) {
 	resp := view.ExternalServiceConfigurationInventoryView{}
-	if err := cli.Post(ctx, "v1/external/service/configuration", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/external/service/configuration", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

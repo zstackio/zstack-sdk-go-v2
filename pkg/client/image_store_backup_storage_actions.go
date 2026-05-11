@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddImageStoreBackupStorage adds ImageStoreBackupStorage
 func (cli *ZSClient) AddImageStoreBackupStorage(ctx context.Context, params param.AddImageStoreBackupStorageParam) (*view.ImageStoreBackupStorageInventoryView, error) {
 	resp := view.ImageStoreBackupStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/backup-storage/image-store", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/backup-storage/image-store", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -45,9 +46,9 @@ func (cli *ZSClient) DeleteVolumeSnapshot(ctx context.Context, uuid string, dele
 	return cli.Delete(ctx, "v1/volume-snapshots", uuid, string(deleteMode))
 }
 // CreateVolumeSnapshot creates VolumeSnapshot
-func (cli *ZSClient) CreateVolumeSnapshot(ctx context.Context, params param.CreateVolumeSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
+func (cli *ZSClient) CreateVolumeSnapshot(ctx context.Context, volumeUuid string, params param.CreateVolumeSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
 	resp := view.VolumeSnapshotInventoryView{}
-	if err := cli.Post(ctx, "v1/volumes/{volumeUuid}/volume-snapshots", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/volumes/%s/volume-snapshots", volumeUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

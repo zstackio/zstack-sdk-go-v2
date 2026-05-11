@@ -15,6 +15,7 @@ type UsedIpInventoryView struct {
 	IpVersion int `json:"ipVersion,omitempty"`
 	Ip string `json:"ip,omitempty"`
 	Netmask string `json:"netmask,omitempty"`
+	PrefixLen int `json:"prefixLen,omitempty"`
 	Gateway string `json:"gateway,omitempty"`
 	UsedFor string `json:"usedFor,omitempty"`
 	IpInLong int64 `json:"ipInLong,omitempty"`

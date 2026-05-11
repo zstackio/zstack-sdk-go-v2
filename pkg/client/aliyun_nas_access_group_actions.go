@@ -33,7 +33,7 @@ func (cli *ZSClient) UpdateAliyunNasAccessGroup(ctx context.Context, params para
 // CreateAliyunNasAccessGroup creates AliyunNasAccessGroup
 func (cli *ZSClient) CreateAliyunNasAccessGroup(ctx context.Context, params param.CreateAliyunNasAccessGroupParam) (*view.AliyunNasAccessGroupInventoryView, error) {
 	resp := view.AliyunNasAccessGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/nas/aliyun/access", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/nas/aliyun/access", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

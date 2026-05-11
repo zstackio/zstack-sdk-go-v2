@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddEventRuleTemplate adds EventRuleTemplate
 func (cli *ZSClient) AddEventRuleTemplate(ctx context.Context, params param.AddEventRuleTemplateParam) (*view.EventRuleTemplateInventoryView, error) {
 	resp := view.EventRuleTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/monitortemplates/evenrules", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/monitortemplates/evenrules", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreatePriceTable creates PriceTable
 func (cli *ZSClient) CreatePriceTable(ctx context.Context, params param.CreatePriceTableParam) (*view.PriceTableInventoryView, error) {
 	resp := view.PriceTableInventoryView{}
-	if err := cli.Post(ctx, "v1/billings/price-tables", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/billings/price-tables", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

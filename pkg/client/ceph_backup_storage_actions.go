@@ -33,7 +33,7 @@ func (cli *ZSClient) PageCephBackupStorage(ctx context.Context, params *param.Qu
 // AddCephBackupStorage adds CephBackupStorage
 func (cli *ZSClient) AddCephBackupStorage(ctx context.Context, params param.AddCephBackupStorageParam) (*view.BackupStorageInventoryView, error) {
 	resp := view.BackupStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/backup-storage/ceph", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/backup-storage/ceph", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

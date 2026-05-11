@@ -33,7 +33,7 @@ func (cli *ZSClient) PageSharedBlockGroupPrimaryStorage(ctx context.Context, par
 // AddSharedBlockGroupPrimaryStorage adds SharedBlockGroupPrimaryStorage
 func (cli *ZSClient) AddSharedBlockGroupPrimaryStorage(ctx context.Context, params param.AddSharedBlockGroupPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/sharedblockgroup", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/sharedblockgroup", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

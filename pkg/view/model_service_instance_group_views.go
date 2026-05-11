@@ -20,6 +20,7 @@ type ModelServiceInstanceGroupInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Yaml string `json:"yaml,omitempty"`
 	SupportMetrics []string `json:"supportMetrics,omitempty"`
+	ExportPath string `json:"exportPath,omitempty"`
 }
 
 // UpdateModelServiceInstanceGroupEventView UpdateModelServiceInstanceGroupEvent

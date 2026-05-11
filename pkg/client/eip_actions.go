@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -13,15 +14,15 @@ var _ = view.MapView{} // avoid unused import
 // CreateEip creates Eip
 func (cli *ZSClient) CreateEip(ctx context.Context, params param.CreateEipParam) (*view.EipInventoryView, error) {
 	resp := view.EipInventoryView{}
-	if err := cli.Post(ctx, "v1/eips", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/eips", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 // AttachEip operates on Eip
-func (cli *ZSClient) AttachEip(ctx context.Context, params param.AttachEipParam) (*view.EipInventoryView, error) {
+func (cli *ZSClient) AttachEip(ctx context.Context, eipUuid string, vmNicUuid string, params param.AttachEipParam) (*view.EipInventoryView, error) {
 	resp := view.EipInventoryView{}
-	if err := cli.Post(ctx, "v1/eips/{eipUuid}/vm-instances/nics/{vmNicUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/eips/%s/vm-instances/nics/%s", eipUuid, vmNicUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

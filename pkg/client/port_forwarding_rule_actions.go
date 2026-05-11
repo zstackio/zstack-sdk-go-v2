@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -49,9 +50,9 @@ func (cli *ZSClient) DetachPortForwardingRule(ctx context.Context, uuid string, 
 	return cli.Delete(ctx, "v1/port-forwarding", uuid, string(deleteMode))
 }
 // AttachPortForwardingRule operates on PortForwardingRule
-func (cli *ZSClient) AttachPortForwardingRule(ctx context.Context, params param.AttachPortForwardingRuleParam) (*view.PortForwardingRuleInventoryView, error) {
+func (cli *ZSClient) AttachPortForwardingRule(ctx context.Context, ruleUuid string, vmNicUuid string, params param.AttachPortForwardingRuleParam) (*view.PortForwardingRuleInventoryView, error) {
 	resp := view.PortForwardingRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/port-forwarding/{ruleUuid}/vm-instances/nics/{vmNicUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/port-forwarding/%s/vm-instances/nics/%s", ruleUuid, vmNicUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -59,7 +60,7 @@ func (cli *ZSClient) AttachPortForwardingRule(ctx context.Context, params param.
 // CreatePortForwardingRule creates PortForwardingRule
 func (cli *ZSClient) CreatePortForwardingRule(ctx context.Context, params param.CreatePortForwardingRuleParam) (*view.PortForwardingRuleInventoryView, error) {
 	resp := view.PortForwardingRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/port-forwarding", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/port-forwarding", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

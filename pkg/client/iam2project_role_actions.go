@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateIAM2ProjectRole creates IAM2ProjectRole
 func (cli *ZSClient) CreateIAM2ProjectRole(ctx context.Context) (*view.RoleInventoryView, error) {
 	resp := view.RoleInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/project-roles", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/project-roles", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

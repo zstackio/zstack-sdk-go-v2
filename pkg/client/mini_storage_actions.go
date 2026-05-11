@@ -33,7 +33,7 @@ func (cli *ZSClient) PageMiniStorage(ctx context.Context, params *param.QueryPar
 // AddMiniStorage adds MiniStorage
 func (cli *ZSClient) AddMiniStorage(ctx context.Context, params param.AddMiniStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/mini", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/mini", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

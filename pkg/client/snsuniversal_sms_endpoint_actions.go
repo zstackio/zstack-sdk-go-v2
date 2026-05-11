@@ -43,7 +43,7 @@ func (cli *ZSClient) UpdateSNSUniversalSmsEndpoint(ctx context.Context, uuid str
 // CreateSNSUniversalSmsEndpoint creates SNSUniversalSmsEndpoint
 func (cli *ZSClient) CreateSNSUniversalSmsEndpoint(ctx context.Context, params param.CreateSNSUniversalSmsEndpointParam) (*view.SNSUniversalSmsEndpointInventoryView, error) {
 	resp := view.SNSUniversalSmsEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/universal-sms", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/universal-sms", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

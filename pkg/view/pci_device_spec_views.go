@@ -26,6 +26,7 @@ type PciDeviceSpecInventoryView struct {
 	RomVersion string `json:"romVersion,omitempty"`
 	RomMd5sum string `json:"romMd5sum,omitempty"`
 	MaxAvailableDevicesPerHost int `json:"maxAvailableDevicesPerHost,omitempty"`
+	ShareType string `json:"shareType,omitempty"`
 }
 
 // QueryPciDeviceSpecView QueryPciDeviceSpec

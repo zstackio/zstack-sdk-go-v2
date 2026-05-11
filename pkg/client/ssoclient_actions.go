@@ -11,9 +11,9 @@ var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
 // DeleteSSOClient deletes SSOClient
-func (cli *ZSClient) DeleteSSOClient(params param.DeleteSSOClientParam) (*view.DeleteSSOClientEventView, error) {
+func (cli *ZSClient) DeleteSSOClient(ctx context.Context, params param.DeleteSSOClientParam) (*view.DeleteSSOClientEventView, error) {
 	resp := view.DeleteSSOClientEventView{}
-	if err := cli.PostWithRespKey("v1/delete/sso/client", "", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/delete/sso/client", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

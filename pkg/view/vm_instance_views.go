@@ -120,6 +120,11 @@ type SetVmConsolePasswordEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
 
+// UpdateConsolePasswordEventView UpdateConsolePasswordEvent
+type UpdateConsolePasswordEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+}
+
 // CreateVmInstanceFromVolumeSnapshotGroupEventView CreateVmInstanceFromVolumeSnapshotGroupEvent
 type CreateVmInstanceFromVolumeSnapshotGroupEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`

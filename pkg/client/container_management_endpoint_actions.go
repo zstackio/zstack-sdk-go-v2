@@ -43,7 +43,7 @@ func (cli *ZSClient) PageContainerManagementEndpoint(ctx context.Context, params
 // AddContainerManagementEndpoint adds ContainerManagementEndpoint
 func (cli *ZSClient) AddContainerManagementEndpoint(ctx context.Context, params param.AddContainerManagementEndpointParam) (*view.ContainerManagementEndpointInventoryView, error) {
 	resp := view.ContainerManagementEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/container/management/endpoint", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/container/management/endpoint", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateCbtTask creates CbtTask
 func (cli *ZSClient) CreateCbtTask(ctx context.Context, params param.CreateCbtTaskParam) (*view.CbtTaskInventoryView, error) {
 	resp := view.CbtTaskInventoryView{}
-	if err := cli.Post(ctx, "v1/cbt-task/create", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cbt-task/create", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

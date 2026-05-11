@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreatePolicyRouteRuleSet creates PolicyRouteRuleSet
 func (cli *ZSClient) CreatePolicyRouteRuleSet(ctx context.Context, params param.CreatePolicyRouteRuleSetParam) (*view.PolicyRouteRuleSetInventoryView, error) {
 	resp := view.PolicyRouteRuleSetInventoryView{}
-	if err := cli.Post(ctx, "v1/policy-routes/rulesets", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/policy-routes/rulesets", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

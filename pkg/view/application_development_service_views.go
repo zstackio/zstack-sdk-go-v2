@@ -11,6 +11,7 @@ type ApplicationDevelopmentServiceInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	DeploymentStatus string `json:"deploymentStatus,omitempty"`
+	PackageVersion string `json:"packageVersion,omitempty"`
 	Service ModelServiceInventoryView `json:"service,omitempty"`
 	ModelServiceUuid string `json:"modelServiceUuid,omitempty"`
 	ModelUuid string `json:"modelUuid,omitempty"`
@@ -22,6 +23,7 @@ type ApplicationDevelopmentServiceInventoryView struct {
 	Description string `json:"description,omitempty"`
 	Yaml string `json:"yaml,omitempty"`
 	SupportMetrics []string `json:"supportMetrics,omitempty"`
+	ExportPath string `json:"exportPath,omitempty"`
 }
 
 // QueryApplicationDevelopmentServiceView QueryApplicationDevelopmentService

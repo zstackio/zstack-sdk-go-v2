@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateAliyunSmsSNSTextTemplate(ctx context.Context, uuid st
 // CreateAliyunSmsSNSTextTemplate creates AliyunSmsSNSTextTemplate
 func (cli *ZSClient) CreateAliyunSmsSNSTextTemplate(ctx context.Context, params param.CreateAliyunSmsSNSTextTemplateParam) (*view.SNSTextTemplateInventoryView, error) {
 	resp := view.SNSTextTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/alarms/sns/text-templates/aliyun-sms", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/alarms/sns/text-templates/aliyun-sms", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

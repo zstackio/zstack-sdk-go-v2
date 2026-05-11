@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddAliyunPanguPartition adds AliyunPanguPartition
 func (cli *ZSClient) AddAliyunPanguPartition(ctx context.Context, params param.AddAliyunPanguPartitionParam) (*view.AliyunPanguPartitionInventoryView, error) {
 	resp := view.AliyunPanguPartitionInventoryView{}
-	if err := cli.Post(ctx, "v1/aliyun/pangu", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/aliyun/pangu", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

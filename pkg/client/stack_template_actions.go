@@ -47,7 +47,7 @@ func (cli *ZSClient) UpdateStackTemplate(ctx context.Context, uuid string, param
 // AddStackTemplate adds StackTemplate
 func (cli *ZSClient) AddStackTemplate(ctx context.Context, params param.AddStackTemplateParam) (*view.StackTemplateInventoryView, error) {
 	resp := view.StackTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/cloudformation/template", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cloudformation/template", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

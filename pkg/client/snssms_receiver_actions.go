@@ -14,7 +14,7 @@ var _ = view.MapView{} // avoid unused import
 // AddSNSSmsReceiver adds SNSSmsReceiver
 func (cli *ZSClient) AddSNSSmsReceiver(ctx context.Context, params param.AddSNSSmsReceiverParam) (*view.SNSSmsReceiverInventoryView, error) {
 	resp := view.SNSSmsReceiverInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/sms-endpoints/receivers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/sms-endpoints/receivers", "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

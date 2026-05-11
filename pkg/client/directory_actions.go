@@ -23,7 +23,7 @@ func (cli *ZSClient) UpdateDirectory(ctx context.Context, params param.UpdateDir
 // CreateDirectory creates Directory
 func (cli *ZSClient) CreateDirectory(ctx context.Context, params param.CreateDirectoryParam) (*view.DirectoryInventoryView, error) {
 	resp := view.DirectoryInventoryView{}
-	if err := cli.Post(ctx, "v1/create/directory", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/create/directory", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

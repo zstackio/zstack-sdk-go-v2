@@ -47,7 +47,7 @@ func (cli *ZSClient) UpdateIAM2Organization(ctx context.Context, uuid string, pa
 // CreateIAM2Organization creates IAM2Organization
 func (cli *ZSClient) CreateIAM2Organization(ctx context.Context, params param.CreateIAM2OrganizationParam) (*view.IAM2OrganizationInventoryView, error) {
 	resp := view.IAM2OrganizationInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/organizations", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/organizations", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -33,7 +33,7 @@ func (cli *ZSClient) StartBaremetalInstance(ctx context.Context, uuid string, pa
 // CreateBaremetalInstance creates BaremetalInstance
 func (cli *ZSClient) CreateBaremetalInstance(ctx context.Context, params param.CreateBaremetalInstanceParam) (*view.BaremetalInstanceInventoryView, error) {
 	resp := view.BaremetalInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal/instances", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal/instances", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

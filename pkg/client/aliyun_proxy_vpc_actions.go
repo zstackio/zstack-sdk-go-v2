@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateAliyunProxyVpc creates AliyunProxyVpc
 func (cli *ZSClient) CreateAliyunProxyVpc(ctx context.Context, params param.CreateAliyunProxyVpcParam) (*view.AliyunProxyVpcInventoryView, error) {
 	resp := view.AliyunProxyVpcInventoryView{}
-	if err := cli.Post(ctx, "v1/aliyun-proxy/vpcs", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/aliyun-proxy/vpcs", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSNSAliyunSmsEndpoint creates SNSAliyunSmsEndpoint
 func (cli *ZSClient) CreateSNSAliyunSmsEndpoint(ctx context.Context, params param.CreateSNSAliyunSmsEndpointParam) (*view.SNSAliyunSmsEndpointInventoryView, error) {
 	resp := view.SNSAliyunSmsEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/sms-endpoints/aliyunsms", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/sms-endpoints/aliyunsms", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

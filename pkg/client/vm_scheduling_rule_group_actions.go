@@ -47,7 +47,7 @@ func (cli *ZSClient) UpdateVmSchedulingRuleGroup(ctx context.Context, uuid strin
 // CreateVmSchedulingRuleGroup creates VmSchedulingRuleGroup
 func (cli *ZSClient) CreateVmSchedulingRuleGroup(ctx context.Context, params param.CreateVmSchedulingRuleGroupParam) (*view.VmSchedulingRuleGroupInventoryView, error) {
 	resp := view.VmSchedulingRuleGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/vmSchedulingRuleGroup", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vmSchedulingRuleGroup", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

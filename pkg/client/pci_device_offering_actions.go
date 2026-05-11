@@ -17,7 +17,7 @@ func (cli *ZSClient) DeletePciDeviceOffering(ctx context.Context, uuid string, d
 // CreatePciDeviceOffering creates PciDeviceOffering
 func (cli *ZSClient) CreatePciDeviceOffering(ctx context.Context, params param.CreatePciDeviceOfferingParam) (*view.PciDeviceOfferingInventoryView, error) {
 	resp := view.PciDeviceOfferingInventoryView{}
-	if err := cli.Post(ctx, "v1/pci-device/pci-device-offerings", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/pci-device/pci-device-offerings", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

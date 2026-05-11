@@ -37,7 +37,7 @@ func (cli *ZSClient) PageResourceStack(ctx context.Context, params *param.QueryP
 // CreateResourceStack creates ResourceStack
 func (cli *ZSClient) CreateResourceStack(ctx context.Context, params param.CreateResourceStackParam) (*view.ResourceStackInventoryView, error) {
 	resp := view.ResourceStackInventoryView{}
-	if err := cli.Post(ctx, "v1/cloudformation/stack", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cloudformation/stack", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

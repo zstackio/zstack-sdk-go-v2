@@ -17,7 +17,7 @@ func (cli *ZSClient) DeleteAutoScalingGroup(ctx context.Context, uuid string, de
 // CreateAutoScalingGroup creates AutoScalingGroup
 func (cli *ZSClient) CreateAutoScalingGroup(ctx context.Context, params param.CreateAutoScalingGroupParam) (*view.AutoScalingGroupInventoryView, error) {
 	resp := view.AutoScalingGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/autoscaling/groups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/autoscaling/groups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

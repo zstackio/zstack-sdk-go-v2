@@ -33,7 +33,7 @@ func (cli *ZSClient) PageSNSPluginEndpoint(ctx context.Context, params *param.Qu
 // CreateSNSPluginEndpoint creates SNSPluginEndpoint
 func (cli *ZSClient) CreateSNSPluginEndpoint(ctx context.Context, params param.CreateSNSPluginEndpointParam) (*view.SNSPluginEndpointInventoryView, error) {
 	resp := view.SNSPluginEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/plugin", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/plugin", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

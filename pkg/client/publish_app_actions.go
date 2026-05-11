@@ -33,7 +33,7 @@ func (cli *ZSClient) PagePublishApp(ctx context.Context, params *param.QueryPara
 // PublishApp operates on PublishApp
 func (cli *ZSClient) PublishApp(ctx context.Context, params param.PublishAppParam) (*view.PublishAppInventoryView, error) {
 	resp := view.PublishAppInventoryView{}
-	if err := cli.Post(ctx, "v1/appcenter/app", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/appcenter/app", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

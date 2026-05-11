@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // AddLdapServer adds LdapServer
 func (cli *ZSClient) AddLdapServer(ctx context.Context, params param.AddLdapServerParam) (*view.LdapServerInventoryView, error) {
 	resp := view.LdapServerInventoryView{}
-	if err := cli.Post(ctx, "v1/ldap/servers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ldap/servers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

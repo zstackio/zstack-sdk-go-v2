@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateL2VxlanNetworkPool creates L2VxlanNetworkPool
 func (cli *ZSClient) CreateL2VxlanNetworkPool(ctx context.Context) (*view.L2VxlanNetworkPoolInventoryView, error) {
 	resp := view.L2VxlanNetworkPoolInventoryView{}
-	if err := cli.Post(ctx, "v1/l2-networks/vxlan-pool", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l2-networks/vxlan-pool", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

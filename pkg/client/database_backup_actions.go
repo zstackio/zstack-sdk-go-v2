@@ -17,7 +17,7 @@ func (cli *ZSClient) DeleteDatabaseBackup(ctx context.Context, uuid string, dele
 // CreateDatabaseBackup creates DatabaseBackup
 func (cli *ZSClient) CreateDatabaseBackup(ctx context.Context, params param.CreateDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {
 	resp := view.DatabaseBackupInventoryView{}
-	if err := cli.Post(ctx, "v1/database-backups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/database-backups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

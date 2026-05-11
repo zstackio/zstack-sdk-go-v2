@@ -25,7 +25,7 @@ func (cli *ZSClient) ChangeIAM2OrganizationState(ctx context.Context, uuid strin
 // CreateAutoScalingGroupAddingNewInstanceRule creates AutoScalingGroupAddingNewInstanceRule
 func (cli *ZSClient) CreateAutoScalingGroupAddingNewInstanceRule(ctx context.Context, params param.CreateAutoScalingGroupAddingNewInstanceRuleParam) (*view.AutoScalingRuleInventoryView, error) {
 	resp := view.AutoScalingRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/autoscaling/rules/adding-new-instance", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/autoscaling/rules/adding-new-instance", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -34,7 +34,7 @@ func (cli *ZSClient) CreateAutoScalingGroupAddingNewInstanceRule(ctx context.Con
 // SetServiceTypeOnHostNetworkBonding operates on ServiceTypeOnHostNetworkBonding
 func (cli *ZSClient) SetServiceTypeOnHostNetworkBonding(ctx context.Context, params param.SetServiceTypeOnHostNetworkBondingParam) (*view.HostNetworkBondingServiceRefInventoryView, error) {
 	resp := view.HostNetworkBondingServiceRefInventoryView{}
-	if err := cli.Post(ctx, "v1/hosts/bondings/service-types", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hosts/bondings/service-types", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -62,9 +62,9 @@ func (cli *ZSClient) PagePciDevicePciDeviceOffering(ctx context.Context, params 
 }
 
 // AddAttributesToIAM2Organization adds AttributesToIAM2Organization
-func (cli *ZSClient) AddAttributesToIAM2Organization(ctx context.Context, params param.AddAttributesToIAM2OrganizationParam) (*view.AddAttributesToIAM2OrganizationEventView, error) {
+func (cli *ZSClient) AddAttributesToIAM2Organization(ctx context.Context, uuid string, params param.AddAttributesToIAM2OrganizationParam) (*view.AddAttributesToIAM2OrganizationEventView, error) {
 	resp := view.AddAttributesToIAM2OrganizationEventView{}
-	if err := cli.Post(ctx, "v1/iam2/organizations/{uuid}/attributes", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/organizations/%s/attributes", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -81,9 +81,9 @@ func (cli *ZSClient) GetCreateEcsImageProgress(ctx context.Context, dataCenterUu
 }
 
 // AddAccessControlListToLoadBalancer adds AccessControlListToLoadBalancer
-func (cli *ZSClient) AddAccessControlListToLoadBalancer(ctx context.Context, params param.AddAccessControlListToLoadBalancerParam) (*view.LoadBalancerListenerInventoryView, error) {
+func (cli *ZSClient) AddAccessControlListToLoadBalancer(ctx context.Context, listenerUuid string, params param.AddAccessControlListToLoadBalancerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	resp := view.LoadBalancerListenerInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/listeners/{listenerUuid}/access-control-lists", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/load-balancers/listeners/%s/access-control-lists", listenerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -140,7 +140,7 @@ func (cli *ZSClient) DeleteBackupFileInPublic(ctx context.Context, uuid string, 
 // BatchCreateIAM2VirtualIDFromConfigFile operates on CreateIAM2VirtualIDFromConfigFile
 func (cli *ZSClient) BatchCreateIAM2VirtualIDFromConfigFile(ctx context.Context, params param.BatchCreateIAM2VirtualIDFromConfigFileParam) (*view.BatchCreateIAM2VirtualIDFromConfigFileEventView, error) {
 	resp := view.BatchCreateIAM2VirtualIDFromConfigFileEventView{}
-	if err := cli.Post(ctx, "v1/iam2/virtual-ids/from-file", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/virtual-ids/from-file", "numberOfImportedUser", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -209,6 +209,15 @@ func (cli *ZSClient) ChangeBackupStorageState(ctx context.Context, uuid string, 
 	return &resp, nil
 }
 
+// SetVmInstanceHygonMdev operates on VmInstanceHygonMdev
+func (cli *ZSClient) SetVmInstanceHygonMdev(ctx context.Context, uuid string, params param.SetVmInstanceHygonMdevParam) (*view.SetVmInstanceHygonMdevEventView, error) {
+	resp := view.SetVmInstanceHygonMdevEventView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/%s/hygon-mdev", uuid), "", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // GetCandidateIsoForAttachingVm gets CandidateIsoForAttachingVm by uuid
 func (cli *ZSClient) GetCandidateIsoForAttachingVm(ctx context.Context, uuid string) (*view.GetCandidateIsoForAttachingVmView, error) {
 	var resp view.GetCandidateIsoForAttachingVmView
@@ -219,9 +228,9 @@ func (cli *ZSClient) GetCandidateIsoForAttachingVm(ctx context.Context, uuid str
 }
 
 // SecurityMachineDetectSync operates on MachineDetectSync
-func (cli *ZSClient) SecurityMachineDetectSync(ctx context.Context, params param.SecurityMachineDetectSyncParam) (*view.SecurityMachineDetectSyncEventView, error) {
+func (cli *ZSClient) SecurityMachineDetectSync(ctx context.Context, uuid string, params param.SecurityMachineDetectSyncParam) (*view.SecurityMachineDetectSyncEventView, error) {
 	resp := view.SecurityMachineDetectSyncEventView{}
-	if err := cli.Post(ctx, "v1/security-machine/{uuid}/detect/sync/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/security-machine/%s/detect/sync/actions", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -293,7 +302,7 @@ func (cli *ZSClient) UpdateAlarmData(ctx context.Context, params param.UpdateAla
 // CreateVpnIpsecConfig creates VpnIpsecConfig
 func (cli *ZSClient) CreateVpnIpsecConfig(ctx context.Context, params param.CreateVpnIpsecConfigParam) (*view.VpcVpnIpSecConfigInventoryView, error) {
 	resp := view.VpcVpnIpSecConfigInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/vpn-connection/ipsec", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/vpn-connection/ipsec", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -302,7 +311,7 @@ func (cli *ZSClient) CreateVpnIpsecConfig(ctx context.Context, params param.Crea
 // SNSEmailTestConnection operates on EmailTestConnection
 func (cli *ZSClient) SNSEmailTestConnection(ctx context.Context, params param.SNSEmailTestConnectionParam) (*view.SNSEmailTestConnectionEventView, error) {
 	resp := view.SNSEmailTestConnectionEventView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/email/test-connection", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/email/test-connection", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -311,7 +320,7 @@ func (cli *ZSClient) SNSEmailTestConnection(ctx context.Context, params param.SN
 // RegisterLicenseServer operates on LicenseServer
 func (cli *ZSClient) RegisterLicenseServer(ctx context.Context, params param.RegisterLicenseServerParam) (*view.RegisterLicenseServerEventView, error) {
 	resp := view.RegisterLicenseServerEventView{}
-	if err := cli.Post(ctx, "v1/license-server/client", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/license-server/client", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -331,7 +340,7 @@ func (cli *ZSClient) ChangeAutoScalingGroupState(ctx context.Context, uuid strin
 // CreateAutoScalingGroupRemovalInstanceRule creates AutoScalingGroupRemovalInstanceRule
 func (cli *ZSClient) CreateAutoScalingGroupRemovalInstanceRule(ctx context.Context, params param.CreateAutoScalingGroupRemovalInstanceRuleParam) (*view.AutoScalingRuleInventoryView, error) {
 	resp := view.AutoScalingRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/autoscaling/rules/removal-instance", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/autoscaling/rules/removal-instance", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -354,27 +363,27 @@ func (cli *ZSClient) DeleteModelEvaluationTasks(ctx context.Context, uuid string
 }
 
 // AttachL3NetworkToVm operates on L3NetworkToVm
-func (cli *ZSClient) AttachL3NetworkToVm(ctx context.Context, params param.AttachL3NetworkToVmParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) AttachL3NetworkToVm(ctx context.Context, vmInstanceUuid string, l3NetworkUuid string, params param.AttachL3NetworkToVmParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/{vmInstanceUuid}/l3-networks/{l3NetworkUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/%s/l3-networks/%s", vmInstanceUuid, l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachL2NetworkToCluster operates on L2NetworkToCluster
-func (cli *ZSClient) AttachL2NetworkToCluster(ctx context.Context, params param.AttachL2NetworkToClusterParam) (*view.L2NetworkInventoryView, error) {
+func (cli *ZSClient) AttachL2NetworkToCluster(ctx context.Context, l2NetworkUuid string, clusterUuid string, params param.AttachL2NetworkToClusterParam) (*view.L2NetworkInventoryView, error) {
 	resp := view.L2NetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/l2-networks/{l2NetworkUuid}/clusters/{clusterUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l2-networks/%s/clusters/%s", l2NetworkUuid, clusterUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachPrimaryStorageToCluster operates on PrimaryStorageToCluster
-func (cli *ZSClient) AttachPrimaryStorageToCluster(ctx context.Context, params param.AttachPrimaryStorageToClusterParam) (*view.PrimaryStorageInventoryView, error) {
+func (cli *ZSClient) AttachPrimaryStorageToCluster(ctx context.Context, clusterUuid string, primaryStorageUuid string, params param.AttachPrimaryStorageToClusterParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/clusters/{clusterUuid}/primary-storage/{primaryStorageUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/clusters/%s/primary-storage/%s", clusterUuid, primaryStorageUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -423,7 +432,7 @@ func (cli *ZSClient) GetTwoFactorAuthenticationState(ctx context.Context) (*view
 // BootstrapMiniHost operates on MiniHost
 func (cli *ZSClient) BootstrapMiniHost(ctx context.Context, params param.BootstrapMiniHostParam) (*view.BootstrapMiniHostEventView, error) {
 	resp := view.BootstrapMiniHostEventView{}
-	if err := cli.Post(ctx, "v1/mini-clusters/hosts", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/mini-clusters/hosts", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -546,9 +555,9 @@ func (cli *ZSClient) GetDatabaseBackupFromImageStore(ctx context.Context) (*view
 }
 
 // SyncEcsVSwitchFromRemote operates on EcsVSwitchFromRemote
-func (cli *ZSClient) SyncEcsVSwitchFromRemote(ctx context.Context, params param.SyncEcsVSwitchFromRemoteParam) (*view.EcsVSwitchInventoryView, error) {
+func (cli *ZSClient) SyncEcsVSwitchFromRemote(ctx context.Context, dataCenterUuid string, params param.SyncEcsVSwitchFromRemoteParam) (*view.EcsVSwitchInventoryView, error) {
 	resp := view.EcsVSwitchInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/vswitch/{dataCenterUuid}/sync", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/vswitch/%s/sync", dataCenterUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -584,7 +593,7 @@ func (cli *ZSClient) RemovePciDeviceSpecFromVmInstance(ctx context.Context, pciS
 // AddIAM2VirtualIDGroupToProjects adds IAM2VirtualIDGroupToProjects
 func (cli *ZSClient) AddIAM2VirtualIDGroupToProjects(ctx context.Context, params param.AddIAM2VirtualIDGroupToProjectsParam) (*view.AddIAM2VirtualIDGroupToProjectsEventView, error) {
 	resp := view.AddIAM2VirtualIDGroupToProjectsEventView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/groups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/projects/groups", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -596,9 +605,9 @@ func (cli *ZSClient) RemoveServerGroupFromLoadBalancerListener(ctx context.Conte
 }
 
 // AddSharedBlockToSharedBlockGroup adds SharedBlockToSharedBlockGroup
-func (cli *ZSClient) AddSharedBlockToSharedBlockGroup(ctx context.Context, params param.AddSharedBlockToSharedBlockGroupParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
+func (cli *ZSClient) AddSharedBlockToSharedBlockGroup(ctx context.Context, uuid string, params param.AddSharedBlockToSharedBlockGroupParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
 	resp := view.SharedBlockGroupPrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/sharedblockgroup/{uuid}/sharedblocks", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/primary-storage/sharedblockgroup/%s/sharedblocks", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -624,18 +633,18 @@ func (cli *ZSClient) DeleteTag(ctx context.Context, uuid string, deleteMode para
 }
 
 // AddIAM2VirtualIDsToOrganization adds IAM2VirtualIDsToOrganization
-func (cli *ZSClient) AddIAM2VirtualIDsToOrganization(ctx context.Context, params param.AddIAM2VirtualIDsToOrganizationParam) (*view.AddIAM2VirtualIDsToOrganizationEventView, error) {
+func (cli *ZSClient) AddIAM2VirtualIDsToOrganization(ctx context.Context, organizationUuid string, params param.AddIAM2VirtualIDsToOrganizationParam) (*view.AddIAM2VirtualIDsToOrganizationEventView, error) {
 	resp := view.AddIAM2VirtualIDsToOrganizationEventView{}
-	if err := cli.Post(ctx, "v1/iam2/organizations/{organizationUuid}/virtual-ids", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/organizations/%s/virtual-ids", organizationUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachProvisionNicToBonding operates on ProvisionNicToBonding
-func (cli *ZSClient) AttachProvisionNicToBonding(ctx context.Context, params param.AttachProvisionNicToBondingParam) (*view.BareMetal2InstanceInventoryView, error) {
+func (cli *ZSClient) AttachProvisionNicToBonding(ctx context.Context, uuid string, bondingUuid string, params param.AttachProvisionNicToBondingParam) (*view.BareMetal2InstanceInventoryView, error) {
 	resp := view.BareMetal2InstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal2/bm-instances/{uuid}/bm2-bondings/{bondingUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/baremetal2/bm-instances/%s/bm2-bondings/%s", uuid, bondingUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -644,7 +653,7 @@ func (cli *ZSClient) AttachProvisionNicToBonding(ctx context.Context, params par
 // ExportNbdVolumes operates on NbdVolumes
 func (cli *ZSClient) ExportNbdVolumes(ctx context.Context, params param.ExportNbdVolumesParam) (*view.ExportNbdVolumesEventView, error) {
 	resp := view.ExportNbdVolumesEventView{}
-	if err := cli.Post(ctx, "v1/cbt-task/exportvolume", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cbt-task/exportvolume", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -758,9 +767,9 @@ func (cli *ZSClient) DeleteMetricData(ctx context.Context, uuid string, deleteMo
 }
 
 // AddLabelToAlarm adds LabelToAlarm
-func (cli *ZSClient) AddLabelToAlarm(ctx context.Context, params param.AddLabelToAlarmParam) (*view.AlarmLabelInventoryView, error) {
+func (cli *ZSClient) AddLabelToAlarm(ctx context.Context, alarmUuid string, params param.AddLabelToAlarmParam) (*view.AlarmLabelInventoryView, error) {
 	resp := view.AlarmLabelInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/alarms/{alarmUuid}/labels", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zwatch/alarms/%s/labels", alarmUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -780,7 +789,7 @@ func (cli *ZSClient) SyncAliyunRouterInterfaceFromRemote(ctx context.Context, da
 // ExportVmOvaPackage operates on VmOvaPackage
 func (cli *ZSClient) ExportVmOvaPackage(ctx context.Context, params param.ExportVmOvaPackageParam) (*view.ImagePackageInventoryView, error) {
 	resp := view.ImagePackageInventoryView{}
-	if err := cli.Post(ctx, "v1/ovf/ova-packages", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ovf/ova-packages", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -830,7 +839,7 @@ func (cli *ZSClient) RevertVmFromCdpBackupAsync(ctx context.Context, params para
 // SNSFeiShuTestConnection operates on FeiShuTestConnection
 func (cli *ZSClient) SNSFeiShuTestConnection(ctx context.Context, params param.SNSFeiShuTestConnectionParam) (*view.SNSFeiShuTestConnectionEventView, error) {
 	resp := view.SNSFeiShuTestConnectionEventView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/feishu/test-connection", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/feishu/test-connection", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -848,7 +857,7 @@ func (cli *ZSClient) GetSchedulerExecutionReport(ctx context.Context) (*view.Get
 // CreateFirewallRuleFromConfigFile creates FirewallRuleFromConfigFile
 func (cli *ZSClient) CreateFirewallRuleFromConfigFile(ctx context.Context, params param.CreateFirewallRuleFromConfigFileParam) (*view.VpcFirewallRuleSetInventoryView, error) {
 	resp := view.VpcFirewallRuleSetInventoryView{}
-	if err := cli.Post(ctx, "v1/vpcfirewalls/rules/from-file", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vpcfirewalls/rules/from-file", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -863,10 +872,21 @@ func (cli *ZSClient) GetSupportedIdentityModels(ctx context.Context) (*view.GetS
 	return &resp, nil
 }
 
+// SuspendLongJob operates on SuspendLongJob
+func (cli *ZSClient) SuspendLongJob(ctx context.Context, uuid string, params param.SuspendLongJobParam) (*view.LongJobInventoryView, error) {
+	resp := view.LongJobInventoryView{}
+	if err := cli.PutWithRespKey(ctx, "v1/longjobs", uuid, "", map[string]interface{}{
+		"suspendLongJob": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // AddUserToGroup adds UserToGroup
-func (cli *ZSClient) AddUserToGroup(ctx context.Context, params param.AddUserToGroupParam) (*view.AddUserToGroupEventView, error) {
+func (cli *ZSClient) AddUserToGroup(ctx context.Context, groupUuid string, params param.AddUserToGroupParam) (*view.AddUserToGroupEventView, error) {
 	resp := view.AddUserToGroupEventView{}
-	if err := cli.Post(ctx, "v1/accounts/groups/{groupUuid}/users", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/accounts/groups/%s/users", groupUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1089,7 +1109,7 @@ func (cli *ZSClient) ChangeVfNicHaState(ctx context.Context, vfNicUuid string, p
 // CreateOvnControllerOffering creates OvnControllerOffering
 func (cli *ZSClient) CreateOvnControllerOffering(ctx context.Context, params param.CreateOvnControllerOfferingParam) (*view.InstanceOfferingInventoryView, error) {
 	resp := view.InstanceOfferingInventoryView{}
-	if err := cli.Post(ctx, "v1/instance-offerings/ovn", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/instance-offerings/ovn", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1231,7 +1251,7 @@ func (cli *ZSClient) GetVRouterFlowCounter(ctx context.Context, uuid string) (*v
 // CreateAliyunRouterInterfaceRemote creates AliyunRouterInterfaceRemote
 func (cli *ZSClient) CreateAliyunRouterInterfaceRemote(ctx context.Context, params param.CreateAliyunRouterInterfaceRemoteParam) (*view.AliyunRouterInterfaceInventoryView, error) {
 	resp := view.AliyunRouterInterfaceInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/router-interface", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/router-interface", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1291,7 +1311,7 @@ func (cli *ZSClient) ChangeHostPassword(ctx context.Context, hostUuid string, pa
 // CreateSlbInstance creates SlbInstance
 func (cli *ZSClient) CreateSlbInstance(ctx context.Context, params param.CreateSlbInstanceParam) (*view.SlbVmInstanceInventoryView, error) {
 	resp := view.SlbVmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/slb/instances", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/load-balancers/slb/instances", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1347,9 +1367,9 @@ func (cli *ZSClient) ShrinkVolumeSnapshot(ctx context.Context, uuid string, para
 }
 
 // AddHostToHostSchedulingRuleGroup adds HostToHostSchedulingRuleGroup
-func (cli *ZSClient) AddHostToHostSchedulingRuleGroup(ctx context.Context, params param.AddHostToHostSchedulingRuleGroupParam) (*view.AddHostToHostSchedulingRuleGroupEventView, error) {
+func (cli *ZSClient) AddHostToHostSchedulingRuleGroup(ctx context.Context, hostGroupUuid string, hostUuid string, params param.AddHostToHostSchedulingRuleGroupParam) (*view.AddHostToHostSchedulingRuleGroupEventView, error) {
 	resp := view.AddHostToHostSchedulingRuleGroupEventView{}
-	if err := cli.Post(ctx, "v1/hostSchedulingRuleGroup/{hostGroupUuid}/host/{hostUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hostSchedulingRuleGroup/%s/host/%s", hostGroupUuid, hostUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1358,7 +1378,7 @@ func (cli *ZSClient) AddHostToHostSchedulingRuleGroup(ctx context.Context, param
 // CreateBuildApp creates BuildApp
 func (cli *ZSClient) CreateBuildApp(ctx context.Context, params param.CreateBuildAppParam) (*view.BuildApplicationInventoryView, error) {
 	resp := view.BuildApplicationInventoryView{}
-	if err := cli.Post(ctx, "v1/appcenter/buildapp", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/appcenter/buildapp", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1404,9 +1424,9 @@ func (cli *ZSClient) GetVmHostname(ctx context.Context, uuid string) (*view.GetV
 }
 
 // AddSchedulerJobsToSchedulerJobGroup adds SchedulerJobsToSchedulerJobGroup
-func (cli *ZSClient) AddSchedulerJobsToSchedulerJobGroup(ctx context.Context, params param.AddSchedulerJobsToSchedulerJobGroupParam) (*view.SchedulerJobGroupJobRefInventoryView, error) {
+func (cli *ZSClient) AddSchedulerJobsToSchedulerJobGroup(ctx context.Context, schedulerJobGroupUuid string, params param.AddSchedulerJobsToSchedulerJobGroupParam) (*view.SchedulerJobGroupJobRefInventoryView, error) {
 	resp := view.SchedulerJobGroupJobRefInventoryView{}
-	if err := cli.Post(ctx, "v1/scheduler/jobgroups/{schedulerJobGroupUuid}/job", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/scheduler/jobgroups/%s/job", schedulerJobGroupUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1425,16 +1445,16 @@ func (cli *ZSClient) DeleteVpcUserVpnGatewayLocal(ctx context.Context, uuid stri
 // CreateVRouterOspfArea creates VRouterOspfArea
 func (cli *ZSClient) CreateVRouterOspfArea(ctx context.Context, params param.CreateVRouterOspfAreaParam) (*view.RouterAreaInventoryView, error) {
 	resp := view.RouterAreaInventoryView{}
-	if err := cli.Post(ctx, "v1/routerArea", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/routerArea", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SetSecurityMachineKey operates on SecurityMachineKey
-func (cli *ZSClient) SetSecurityMachineKey(ctx context.Context, params param.SetSecurityMachineKeyParam) (*view.SecurityMachineInventoryView, error) {
+func (cli *ZSClient) SetSecurityMachineKey(ctx context.Context, uuid string, params param.SetSecurityMachineKeyParam) (*view.SecurityMachineInventoryView, error) {
 	resp := view.SecurityMachineInventoryView{}
-	if err := cli.Post(ctx, "v1/secret-resource-pool-token/set/{uuid}/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/secret-resource-pool-token/set/%s/actions", uuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1443,16 +1463,16 @@ func (cli *ZSClient) SetSecurityMachineKey(ctx context.Context, params param.Set
 // CreateOAuthClient creates OAuthClient
 func (cli *ZSClient) CreateOAuthClient(ctx context.Context, params param.CreateOAuthClientParam) (*view.OAuth2ClientInventoryView, error) {
 	resp := view.OAuth2ClientInventoryView{}
-	if err := cli.Post(ctx, "v1/create/oauth2/client", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/create/oauth2/client", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetVpcAttachedEip gets VpcAttachedEip by uuid
-func (cli *ZSClient) GetVpcAttachedEip(ctx context.Context, params param.GetVpcAttachedEipParam) (*view.EipInventoryView, error) {
+func (cli *ZSClient) GetVpcAttachedEip(ctx context.Context, uuid string, params param.GetVpcAttachedEipParam) (*view.EipInventoryView, error) {
 	resp := view.EipInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/attached-eip", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-eip", uuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1629,7 +1649,7 @@ func (cli *ZSClient) RunSchedulerTrigger(ctx context.Context, uuid string, param
 // CreateAliyunVpcVirtualRouterEntryRemote creates AliyunVpcVirtualRouterEntryRemote
 func (cli *ZSClient) CreateAliyunVpcVirtualRouterEntryRemote(ctx context.Context, params param.CreateAliyunVpcVirtualRouterEntryRemoteParam) (*view.VpcVirtualRouteEntryInventoryView, error) {
 	resp := view.VpcVirtualRouteEntryInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/route-entry", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/route-entry", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1671,9 +1691,9 @@ func (cli *ZSClient) RemoveRendezvousPointFromMulticastRouter(ctx context.Contex
 }
 
 // AddIAM2VirtualIDsToProject adds IAM2VirtualIDsToProject
-func (cli *ZSClient) AddIAM2VirtualIDsToProject(ctx context.Context, params param.AddIAM2VirtualIDsToProjectParam) (*view.AddIAM2VirtualIDsToProjectEventView, error) {
+func (cli *ZSClient) AddIAM2VirtualIDsToProject(ctx context.Context, projectUuid string, params param.AddIAM2VirtualIDsToProjectParam) (*view.AddIAM2VirtualIDsToProjectEventView, error) {
 	resp := view.AddIAM2VirtualIDsToProjectEventView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/{projectUuid}/virtual-ids", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/projects/%s/virtual-ids", projectUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1682,7 +1702,7 @@ func (cli *ZSClient) AddIAM2VirtualIDsToProject(ctx context.Context, params para
 // SubscribeEvent operates on SubscribeEvent
 func (cli *ZSClient) SubscribeEvent(ctx context.Context, params param.SubscribeEventParam) (*view.EventSubscriptionInventoryView, error) {
 	resp := view.EventSubscriptionInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/events/subscriptions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/events/subscriptions", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1752,9 +1772,9 @@ func (cli *ZSClient) IdentifyHost(ctx context.Context, uuid string, params param
 }
 
 // CreateRootVolumeTemplateFromVolumeBackup creates RootVolumeTemplateFromVolumeBackup
-func (cli *ZSClient) CreateRootVolumeTemplateFromVolumeBackup(ctx context.Context, params param.CreateRootVolumeTemplateFromVolumeBackupParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) CreateRootVolumeTemplateFromVolumeBackup(ctx context.Context, backupUuid string, params param.CreateRootVolumeTemplateFromVolumeBackupParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Post(ctx, "v1/images/root-volume-templates/from/volume-template/{backupUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/images/root-volume-templates/from/volume-template/%s", backupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1763,7 +1783,7 @@ func (cli *ZSClient) CreateRootVolumeTemplateFromVolumeBackup(ctx context.Contex
 // CheckFirewallRuleConfigFile operates on FirewallRuleConfigFile
 func (cli *ZSClient) CheckFirewallRuleConfigFile(ctx context.Context, params param.CheckFirewallRuleConfigFileParam) (*view.CheckFirewallRuleConfigFileView, error) {
 	resp := view.CheckFirewallRuleConfigFileView{}
-	if err := cli.Post(ctx, "v1/vpcfirewalls/rules/from-file/check", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vpcfirewalls/rules/from-file/check", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1806,7 +1826,7 @@ func (cli *ZSClient) UnsubscribeEvent(ctx context.Context, uuid string, deleteMo
 // CreateObservabilityServer creates ObservabilityServer
 func (cli *ZSClient) CreateObservabilityServer(ctx context.Context, params param.CreateObservabilityServerParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/observability-servers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/observability-servers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1818,9 +1838,9 @@ func (cli *ZSClient) RemoveMonFromCephPrimaryStorage(ctx context.Context, uuid s
 }
 
 // GetVmsSchedulingStateFromSchedulingRule gets VmsSchedulingStateFromSchedulingRule by uuid
-func (cli *ZSClient) GetVmsSchedulingStateFromSchedulingRule(ctx context.Context, params param.GetVmsSchedulingStateFromSchedulingRuleParam) (*view.GetVmsSchedulingStateFromSchedulingRuleView, error) {
-	resp := view.GetVmsSchedulingStateFromSchedulingRuleView{}
-	if err := cli.Post(ctx, "v1/get/vms/schedulingState/from/SchedulingRule", params, &resp); err != nil {
+func (cli *ZSClient) GetVmsSchedulingStateFromSchedulingRule(ctx context.Context) (*view.GetVmsSchedulingStateFromSchedulingRuleView, error) {
+	var resp view.GetVmsSchedulingStateFromSchedulingRuleView
+	if err := cli.GetWithRespKey(ctx, "v1/get/vms/schedulingState/from/SchedulingRule", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -1908,9 +1928,9 @@ func (cli *ZSClient) PageEventRecord(ctx context.Context, params *param.QueryPar
 }
 
 // AttachBareMetal2ProvisionNetworkToCluster operates on BareMetal2ProvisionNetworkToCluster
-func (cli *ZSClient) AttachBareMetal2ProvisionNetworkToCluster(ctx context.Context, params param.AttachBareMetal2ProvisionNetworkToClusterParam) (*view.BareMetal2ProvisionNetworkInventoryView, error) {
+func (cli *ZSClient) AttachBareMetal2ProvisionNetworkToCluster(ctx context.Context, clusterUuid string, networkUuid string, params param.AttachBareMetal2ProvisionNetworkToClusterParam) (*view.BareMetal2ProvisionNetworkInventoryView, error) {
 	resp := view.BareMetal2ProvisionNetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal2/clusters/{clusterUuid}/provision-networks/{networkUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/baremetal2/clusters/%s/provision-networks/%s", clusterUuid, networkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2001,25 +2021,25 @@ func (cli *ZSClient) DeleteModels(ctx context.Context, uuid string, deleteMode p
 // ListVmsFromSchedulingState operates on ListVmsFromSchedulingState
 func (cli *ZSClient) ListVmsFromSchedulingState(ctx context.Context, params param.ListVmsFromSchedulingStateParam) (*view.ListVmsFromSchedulingStateView, error) {
 	resp := view.ListVmsFromSchedulingStateView{}
-	if err := cli.Post(ctx, "v1/list/vms/from/executeState", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/list/vms/from/executeState", "uuids", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateRootVolumeTemplateFromVolumeSnapshot creates RootVolumeTemplateFromVolumeSnapshot
-func (cli *ZSClient) CreateRootVolumeTemplateFromVolumeSnapshot(ctx context.Context, params param.CreateRootVolumeTemplateFromVolumeSnapshotParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) CreateRootVolumeTemplateFromVolumeSnapshot(ctx context.Context, snapshotUuid string, params param.CreateRootVolumeTemplateFromVolumeSnapshotParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Post(ctx, "v1/images/root-volume-templates/from/volume-snapshots/{snapshotUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/images/root-volume-templates/from/volume-snapshots/%s", snapshotUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AllocateHostResource operates on HostResource
-func (cli *ZSClient) AllocateHostResource(ctx context.Context, params param.AllocateHostResourceParam) (*view.AllocateHostResourceEventView, error) {
+func (cli *ZSClient) AllocateHostResource(ctx context.Context, uuid string, params param.AllocateHostResourceParam) (*view.AllocateHostResourceEventView, error) {
 	resp := view.AllocateHostResourceEventView{}
-	if err := cli.Post(ctx, "v1/hosts/{uuid}/allocate-resource", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hosts/%s/allocate-resource", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2037,7 +2057,7 @@ func (cli *ZSClient) GetCandidateLdapEntryForBinding(ctx context.Context) (*view
 // CheckElaborationContent operates on ElaborationContent
 func (cli *ZSClient) CheckElaborationContent(ctx context.Context, params param.CheckElaborationContentParam) (*view.CheckElaborationContentView, error) {
 	resp := view.CheckElaborationContentView{}
-	if err := cli.Post(ctx, "v1/errorcode/elaborations/check", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/errorcode/elaborations/check", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2049,9 +2069,9 @@ func (cli *ZSClient) DeleteVmConsolePassword(ctx context.Context, uuid string, d
 }
 
 // CreateVmBackup creates VmBackup
-func (cli *ZSClient) CreateVmBackup(ctx context.Context, params param.CreateVmBackupParam) (*view.VolumeBackupInventoryView, error) {
+func (cli *ZSClient) CreateVmBackup(ctx context.Context, rootVolumeUuid string, params param.CreateVmBackupParam) (*view.VolumeBackupInventoryView, error) {
 	resp := view.VolumeBackupInventoryView{}
-	if err := cli.Post(ctx, "v1/volumes/{rootVolumeUuid}/vm-backups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/volumes/%s/vm-backups", rootVolumeUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2102,9 +2122,9 @@ func (cli *ZSClient) CleanInvalidLdapBinding(ctx context.Context) (*view.Account
 }
 
 // AttachBaremetalPxeServerToCluster operates on BaremetalPxeServerToCluster
-func (cli *ZSClient) AttachBaremetalPxeServerToCluster(ctx context.Context, params param.AttachBaremetalPxeServerToClusterParam) (*view.BaremetalPxeServerInventoryView, error) {
+func (cli *ZSClient) AttachBaremetalPxeServerToCluster(ctx context.Context, clusterUuid string, pxeServerUuid string, params param.AttachBaremetalPxeServerToClusterParam) (*view.BaremetalPxeServerInventoryView, error) {
 	resp := view.BaremetalPxeServerInventoryView{}
-	if err := cli.Post(ctx, "v1/clusters/{clusterUuid}/pxeservers/{pxeServerUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/clusters/%s/pxeservers/%s", clusterUuid, pxeServerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2138,7 +2158,7 @@ func (cli *ZSClient) DetachIAM2ProjectFromIAM2Organization(ctx context.Context, 
 // DiscoverExternalPrimaryStorage operates on DiscoverExternalPrimaryStorage
 func (cli *ZSClient) DiscoverExternalPrimaryStorage(ctx context.Context, params param.DiscoverExternalPrimaryStorageParam) (*view.ExternalPrimaryStorageInventoryView, error) {
 	resp := view.ExternalPrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/addon/discover", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/addon/discover", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2163,9 +2183,9 @@ func (cli *ZSClient) GetConnectionAccessPointFromRemote(ctx context.Context, uui
 }
 
 // GetVpcAttachedOspf gets VpcAttachedOspf by uuid
-func (cli *ZSClient) GetVpcAttachedOspf(ctx context.Context, params param.GetVpcAttachedOspfParam) (*view.NetworkRouterAreaRefInventoryView, error) {
+func (cli *ZSClient) GetVpcAttachedOspf(ctx context.Context, uuid string, params param.GetVpcAttachedOspfParam) (*view.NetworkRouterAreaRefInventoryView, error) {
 	resp := view.NetworkRouterAreaRefInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/attached-ospf", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-ospf", uuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2234,9 +2254,9 @@ func (cli *ZSClient) GetCandidateBackupStorageForCreatingImage(ctx context.Conte
 }
 
 // AttachAutoScalingTemplateToGroup operates on AutoScalingTemplateToGroup
-func (cli *ZSClient) AttachAutoScalingTemplateToGroup(ctx context.Context, params param.AttachAutoScalingTemplateToGroupParam) (*view.AutoScalingGroupInventoryView, error) {
+func (cli *ZSClient) AttachAutoScalingTemplateToGroup(ctx context.Context, uuid string, groupUuid string, params param.AttachAutoScalingTemplateToGroupParam) (*view.AutoScalingGroupInventoryView, error) {
 	resp := view.AutoScalingGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/autoscaling/template/{uuid}/groups/{groupUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/autoscaling/template/%s/groups/%s", uuid, groupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2254,7 +2274,7 @@ func (cli *ZSClient) GetCpuMemoryCapacity(ctx context.Context) (*view.GetCpuMemo
 // AddIntegrityResource adds IntegrityResource
 func (cli *ZSClient) AddIntegrityResource(ctx context.Context, params param.AddIntegrityResourceParam) (*view.AddIntegrityResourceEventView, error) {
 	resp := view.AddIntegrityResourceEventView{}
-	if err := cli.Post(ctx, "v1/integrity/resource/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/integrity/resource/actions", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2332,7 +2352,7 @@ func (cli *ZSClient) PageHybridKeySecret(ctx context.Context, params *param.Quer
 // UploadFileToVm operates on UploadFileToVm
 func (cli *ZSClient) UploadFileToVm(ctx context.Context, params param.UploadFileToVmParam) (*view.UploadFileToVmEventView, error) {
 	resp := view.UploadFileToVmEventView{}
-	if err := cli.Post(ctx, "v1/upload-file", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/upload-file", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2393,7 +2413,7 @@ func (cli *ZSClient) SsoClientPushData(ctx context.Context, params param.SsoClie
 // AddEmailAddressToSNSEmailEndpoint adds EmailAddressToSNSEmailEndpoint
 func (cli *ZSClient) AddEmailAddressToSNSEmailEndpoint(ctx context.Context, params param.AddEmailAddressToSNSEmailEndpointParam) (*view.SNSEmailAddressInventoryView, error) {
 	resp := view.SNSEmailAddressInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/emails/email-addresses", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/emails/email-addresses", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2423,7 +2443,7 @@ func (cli *ZSClient) PageVmNicInSecurityGroup(ctx context.Context, params *param
 // BackupDatabaseToPublicCloud operates on DatabaseToPublicCloud
 func (cli *ZSClient) BackupDatabaseToPublicCloud(ctx context.Context, params param.BackupDatabaseToPublicCloudParam) (*view.BackupDatabaseToPublicCloudEventView, error) {
 	resp := view.BackupDatabaseToPublicCloudEventView{}
-	if err := cli.Post(ctx, "v1/hybrid/backup-mysql", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/backup-mysql", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2473,9 +2493,9 @@ func (cli *ZSClient) RevertVmFromSnapshotGroup(ctx context.Context, uuid string,
 }
 
 // DetachFirewallRuleSetFromL3 operates on FirewallRuleSetFromL3
-func (cli *ZSClient) DetachFirewallRuleSetFromL3(ctx context.Context, params param.DetachFirewallRuleSetFromL3Param) (*view.DetachFirewallRuleSetFromL3EventView, error) {
+func (cli *ZSClient) DetachFirewallRuleSetFromL3(ctx context.Context, l3Uuid string, ruleSetUuid string, params param.DetachFirewallRuleSetFromL3Param) (*view.DetachFirewallRuleSetFromL3EventView, error) {
 	resp := view.DetachFirewallRuleSetFromL3EventView{}
-	if err := cli.Post(ctx, "v1/vpcfirewalls/l3networks/{l3Uuid}/ruleSets/{ruleSetUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpcfirewalls/l3networks/%s/ruleSets/%s", l3Uuid, ruleSetUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2484,7 +2504,7 @@ func (cli *ZSClient) DetachFirewallRuleSetFromL3(ctx context.Context, params par
 // ListVmSchedulingRulesFromExecuteState operates on ListVmSchedulingRulesFromExecuteState
 func (cli *ZSClient) ListVmSchedulingRulesFromExecuteState(ctx context.Context, params param.ListVmSchedulingRulesFromExecuteStateParam) (*view.ListVmSchedulingRulesFromExecuteStateView, error) {
 	resp := view.ListVmSchedulingRulesFromExecuteStateView{}
-	if err := cli.Post(ctx, "v1/list/vmSchedulingRules/from/conflict/state", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/list/vmSchedulingRules/from/conflict/state", "uuids", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2515,7 +2535,7 @@ func (cli *ZSClient) SetImageQga(ctx context.Context, uuid string, params param.
 // ListVMsFromKVMHost operates on ListVMsFromKVMHost
 func (cli *ZSClient) ListVMsFromKVMHost(ctx context.Context, params param.ListVMsFromKVMHostParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/v2v", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/v2v", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2549,7 +2569,7 @@ func (cli *ZSClient) GetAliyunNasMountTargetRemote(ctx context.Context) (*view.G
 // CreateImageGroupFromVmInstance creates ImageGroupFromVmInstance
 func (cli *ZSClient) CreateImageGroupFromVmInstance(ctx context.Context, params param.CreateImageGroupFromVmInstanceParam) (*view.ImageGroupInventoryView, error) {
 	resp := view.ImageGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/images/groups/from/vm-instance", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/images/groups/from/vm-instance", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2621,7 +2641,7 @@ func (cli *ZSClient) ChangeDiskOfferingState(ctx context.Context, uuid string, p
 // RequestConsoleAccess operates on RequestConsoleAccess
 func (cli *ZSClient) RequestConsoleAccess(ctx context.Context, params param.RequestConsoleAccessParam) (*view.ConsoleInventoryView, error) {
 	resp := view.ConsoleInventoryView{}
-	if err := cli.Post(ctx, "v1/consoles", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/consoles", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2682,18 +2702,9 @@ func (cli *ZSClient) DeleteVmStaticIp(ctx context.Context, uuid string, deleteMo
 }
 
 // AttachMonitorTriggerActionToTrigger operates on MonitorTriggerActionToTrigger
-func (cli *ZSClient) AttachMonitorTriggerActionToTrigger(ctx context.Context, params param.AttachMonitorTriggerActionToTriggerParam) (*view.AttachMonitorTriggerActionToTriggerEventView, error) {
+func (cli *ZSClient) AttachMonitorTriggerActionToTrigger(ctx context.Context, triggerUuid string, actionUuid string, params param.AttachMonitorTriggerActionToTriggerParam) (*view.AttachMonitorTriggerActionToTriggerEventView, error) {
 	resp := view.AttachMonitorTriggerActionToTriggerEventView{}
-	if err := cli.Post(ctx, "v1/monitoring/triggers/{triggerUuid}/trigger-actions/{actionUuid}", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
-// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
-func (cli *ZSClient) GetAliyunNasFileSystemRemote(ctx context.Context) (*view.GetAliyunNasFileSystemRemoteView, error) {
-	var resp view.GetAliyunNasFileSystemRemoteView
-	if err := cli.GetWithRespKey(ctx, "v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/monitoring/triggers/%s/trigger-actions/%s", triggerUuid, actionUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2705,6 +2716,15 @@ func (cli *ZSClient) UpdateOrganizationQuota(ctx context.Context, params param.U
 	if err := cli.PutWithRespKey(ctx, "v1/iam2/Organization/quotas/actions", "", "", map[string]interface{}{
 		"updateOrganizationQuota": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
+func (cli *ZSClient) GetAliyunNasFileSystemRemote(ctx context.Context) (*view.GetAliyunNasFileSystemRemoteView, error) {
+	var resp view.GetAliyunNasFileSystemRemoteView
+	if err := cli.GetWithRespKey(ctx, "v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2733,9 +2753,9 @@ func (cli *ZSClient) SetOrganizationSupervisor(ctx context.Context, uuid string,
 }
 
 // AttachL3NetworksToIPsecConnection operates on L3NetworksToIPsecConnection
-func (cli *ZSClient) AttachL3NetworksToIPsecConnection(ctx context.Context, params param.AttachL3NetworksToIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
+func (cli *ZSClient) AttachL3NetworksToIPsecConnection(ctx context.Context, uuid string, params param.AttachL3NetworksToIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
 	resp := view.IPsecConnectionInventoryView{}
-	if err := cli.Post(ctx, "v1/ipsec/{uuid}/l3networks", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/ipsec/%s/l3networks", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2755,7 +2775,7 @@ func (cli *ZSClient) ExecuteGuestVmScript(ctx context.Context, uuid string, para
 // AddNfsPrimaryStorage adds NfsPrimaryStorage
 func (cli *ZSClient) AddNfsPrimaryStorage(ctx context.Context) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/nfs", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/nfs", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2771,9 +2791,9 @@ func (cli *ZSClient) GetIAM2ProjectContainerClusterCandidates(ctx context.Contex
 }
 
 // AttachTagToResources operates on TagToResources
-func (cli *ZSClient) AttachTagToResources(ctx context.Context, params param.AttachTagToResourcesParam) (*view.AttachTagToResourcesEventView, error) {
+func (cli *ZSClient) AttachTagToResources(ctx context.Context, tagUuid string, params param.AttachTagToResourcesParam) (*view.AttachTagToResourcesEventView, error) {
 	resp := view.AttachTagToResourcesEventView{}
-	if err := cli.Post(ctx, "v1/tags/{tagUuid}/resources", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/tags/%s/resources", tagUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2791,9 +2811,9 @@ func (cli *ZSClient) ChangePrimaryStorageState(ctx context.Context, uuid string,
 }
 
 // GetVpcAttachedNetflow gets VpcAttachedNetflow by uuid
-func (cli *ZSClient) GetVpcAttachedNetflow(ctx context.Context, params param.GetVpcAttachedNetflowParam) (*view.FlowMeterInventoryView, error) {
+func (cli *ZSClient) GetVpcAttachedNetflow(ctx context.Context, uuid string, params param.GetVpcAttachedNetflowParam) (*view.FlowMeterInventoryView, error) {
 	resp := view.FlowMeterInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/attached-netflow", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-netflow", uuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2846,7 +2866,7 @@ func (cli *ZSClient) DeleteFirewallIpSetTemplate(ctx context.Context, uuid strin
 // SNSDingTalkTestConnection operates on DingTalkTestConnection
 func (cli *ZSClient) SNSDingTalkTestConnection(ctx context.Context, params param.SNSDingTalkTestConnectionParam) (*view.SNSDingTalkTestConnectionEventView, error) {
 	resp := view.SNSDingTalkTestConnectionEventView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/ding-talk/test-connection", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/ding-talk/test-connection", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2890,7 +2910,7 @@ func (cli *ZSClient) GetModelCenterServices(ctx context.Context) (*view.GetModel
 // CreateFirewallIpSetTemplate creates FirewallIpSetTemplate
 func (cli *ZSClient) CreateFirewallIpSetTemplate(ctx context.Context, params param.CreateFirewallIpSetTemplateParam) (*view.VpcFirewallIpSetTemplateInventoryView, error) {
 	resp := view.VpcFirewallIpSetTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/vpcfirewalls/ipset/templates", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vpcfirewalls/ipset/templates", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2909,7 +2929,7 @@ func (cli *ZSClient) DetachPolicyRouteRuleSetFromL3(ctx context.Context, ruleSet
 // CreateL2TfNetwork creates L2TfNetwork
 func (cli *ZSClient) CreateL2TfNetwork(ctx context.Context, params param.CreateL2TfNetworkParam) (*view.L2NetworkInventoryView, error) {
 	resp := view.L2NetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/l2-networks/tf", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l2-networks/tf", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -2965,18 +2985,18 @@ func (cli *ZSClient) GetCandidateVmNicsForLoadBalancerServerGroup(ctx context.Co
 }
 
 // AttachIscsiServerToCluster operates on IscsiServerToCluster
-func (cli *ZSClient) AttachIscsiServerToCluster(ctx context.Context, params param.AttachIscsiServerToClusterParam) (*view.IscsiServerInventoryView, error) {
+func (cli *ZSClient) AttachIscsiServerToCluster(ctx context.Context, clusterUuid string, uuid string, params param.AttachIscsiServerToClusterParam) (*view.IscsiServerInventoryView, error) {
 	resp := view.IscsiServerInventoryView{}
-	if err := cli.Post(ctx, "v1/clusters/{clusterUuid}/storage-devices/iscsi/servers/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/clusters/%s/storage-devices/iscsi/servers/%s", clusterUuid, uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachRoleToAccount operates on RoleToAccount
-func (cli *ZSClient) AttachRoleToAccount(ctx context.Context, params param.AttachRoleToAccountParam) (*view.AttachRoleToAccountEventView, error) {
+func (cli *ZSClient) AttachRoleToAccount(ctx context.Context, accountUuid string, roleUuid string, params param.AttachRoleToAccountParam) (*view.AttachRoleToAccountEventView, error) {
 	resp := view.AttachRoleToAccountEventView{}
-	if err := cli.Post(ctx, "v1/identities/accounts/{accountUuid}/roles/{roleUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/identities/accounts/%s/roles/%s", accountUuid, roleUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3004,18 +3024,23 @@ func (cli *ZSClient) PageBuildApp(ctx context.Context, params *param.QueryParam)
 }
 
 // AttachIsoToVmInstance operates on IsoToVmInstance
-func (cli *ZSClient) AttachIsoToVmInstance(ctx context.Context, params param.AttachIsoToVmInstanceParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) AttachIsoToVmInstance(ctx context.Context, vmInstanceUuid string, isoUuid string, params param.AttachIsoToVmInstanceParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/{vmInstanceUuid}/iso/{isoUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/%s/iso/%s", vmInstanceUuid, isoUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
+// RemoveVmDGpuStrategy removes VmDGpuStrategy
+func (cli *ZSClient) RemoveVmDGpuStrategy(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/vm-instances", uuid, string(deleteMode))
+}
+
 // SetVRouterRouterId operates on VRouterRouterId
-func (cli *ZSClient) SetVRouterRouterId(ctx context.Context, params param.SetVRouterRouterIdParam) (*view.SetVRouterRouterIdEventView, error) {
+func (cli *ZSClient) SetVRouterRouterId(ctx context.Context, vRouterUuid string, params param.SetVRouterRouterIdParam) (*view.SetVRouterRouterIdEventView, error) {
 	resp := view.SetVRouterRouterIdEventView{}
-	if err := cli.Post(ctx, "v1/routerArea/{vRouterUuid}/routerid", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/routerArea/%s/routerid", vRouterUuid), "routerId", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3027,9 +3052,9 @@ func (cli *ZSClient) ExpungeVmUserDefinedXmlHookScript(ctx context.Context, uuid
 }
 
 // DeleteCdpTaskData deletes CdpTaskData
-func (cli *ZSClient) DeleteCdpTaskData(uuid string, params param.DeleteCdpTaskDataParam) (*view.DeleteCdpTaskDataEventView, error) {
+func (cli *ZSClient) DeleteCdpTaskData(ctx context.Context, uuid string, params param.DeleteCdpTaskDataParam) (*view.DeleteCdpTaskDataEventView, error) {
 	resp := view.DeleteCdpTaskDataEventView{}
-	if err := cli.PostWithRespKey(fmt.Sprintf("v1/cdp-task/%s/data", uuid), "", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/cdp-task/%s/data", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3155,7 +3180,7 @@ func (cli *ZSClient) GenerateSeMdevDevices(ctx context.Context, mttyDeviceUuid s
 // CreateMiniCluster creates MiniCluster
 func (cli *ZSClient) CreateMiniCluster(ctx context.Context, params param.CreateMiniClusterParam) (*view.ClusterInventoryView, error) {
 	resp := view.ClusterInventoryView{}
-	if err := cli.Post(ctx, "v1/mini-clusters", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/mini-clusters", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3197,16 +3222,16 @@ func (cli *ZSClient) UndoSnapshotCreation(ctx context.Context, uuid string, para
 // AddBuildApp adds BuildApp
 func (cli *ZSClient) AddBuildApp(ctx context.Context, params param.AddBuildAppParam) (*view.BuildApplicationInventoryView, error) {
 	resp := view.BuildApplicationInventoryView{}
-	if err := cli.Post(ctx, "v1/appcenter/buildapp/add", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/appcenter/buildapp/add", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateVmFromVolumeBackup creates VmFromVolumeBackup
-func (cli *ZSClient) CreateVmFromVolumeBackup(ctx context.Context, params param.CreateVmFromVolumeBackupParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) CreateVmFromVolumeBackup(ctx context.Context, backupUuid string, params param.CreateVmFromVolumeBackupParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/from/vm-backup/{backupUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/from/vm-backup/%s", backupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3231,9 +3256,9 @@ func (cli *ZSClient) GetEcsInstanceVncUrl(ctx context.Context, uuid string) (*vi
 }
 
 // AddMonToCephPrimaryStorage adds MonToCephPrimaryStorage
-func (cli *ZSClient) AddMonToCephPrimaryStorage(ctx context.Context, params param.AddMonToCephPrimaryStorageParam) (*view.CephPrimaryStorageInventoryView, error) {
+func (cli *ZSClient) AddMonToCephPrimaryStorage(ctx context.Context, uuid string, params param.AddMonToCephPrimaryStorageParam) (*view.CephPrimaryStorageInventoryView, error) {
 	resp := view.CephPrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/ceph/{uuid}/mons", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/primary-storage/ceph/%s/mons", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3335,18 +3360,18 @@ func (cli *ZSClient) RemoveBackendServerFromServerGroup(ctx context.Context, ser
 }
 
 // GetVpcAttachedVip gets VpcAttachedVip by uuid
-func (cli *ZSClient) GetVpcAttachedVip(ctx context.Context, params param.GetVpcAttachedVipParam) (*view.VipInventoryView, error) {
+func (cli *ZSClient) GetVpcAttachedVip(ctx context.Context, uuid string, params param.GetVpcAttachedVipParam) (*view.VipInventoryView, error) {
 	resp := view.VipInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/attached-vip", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-vip", uuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddIpv6Range adds Ipv6Range
-func (cli *ZSClient) AddIpv6Range(ctx context.Context, params param.AddIpv6RangeParam) (*view.IpRangeInventoryView, error) {
+func (cli *ZSClient) AddIpv6Range(ctx context.Context, l3NetworkUuid string, params param.AddIpv6RangeParam) (*view.IpRangeInventoryView, error) {
 	resp := view.IpRangeInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/ipv6-ranges", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/ipv6-ranges", l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3355,7 +3380,7 @@ func (cli *ZSClient) AddIpv6Range(ctx context.Context, params param.AddIpv6Range
 // CheckBaremetalChassisConfigFile operates on BaremetalChassisConfigFile
 func (cli *ZSClient) CheckBaremetalChassisConfigFile(ctx context.Context, params param.CheckBaremetalChassisConfigFileParam) (*view.CheckBaremetalChassisConfigFileView, error) {
 	resp := view.CheckBaremetalChassisConfigFileView{}
-	if err := cli.Post(ctx, "v1/baremetal/chassis/from-file/check", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal/chassis/from-file/check", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3403,7 +3428,7 @@ func (cli *ZSClient) DeleteOssBucketRemote(ctx context.Context, uuid string, del
 // CreateL2PortGroup creates L2PortGroup
 func (cli *ZSClient) CreateL2PortGroup(ctx context.Context, params param.CreateL2PortGroupParam) (*view.CreateL2PortGroupEventView, error) {
 	resp := view.CreateL2PortGroupEventView{}
-	if err := cli.Post(ctx, "v1/l2-networks/port-group", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l2-networks/port-group", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3466,7 +3491,7 @@ func (cli *ZSClient) TriggerGCJob(ctx context.Context, uuid string, params param
 // CheckBareMetal2IpmiChassisConfigFile operates on BareMetal2IpmiChassisConfigFile
 func (cli *ZSClient) CheckBareMetal2IpmiChassisConfigFile(ctx context.Context) (*view.CheckBareMetal2ChassisConfigFileView, error) {
 	resp := view.CheckBareMetal2ChassisConfigFileView{}
-	if err := cli.Post(ctx, "v1/baremetal2/chassis/ipmi/from-file/check", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal2/chassis/ipmi/from-file/check", "", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3485,7 +3510,7 @@ func (cli *ZSClient) DeleteVpcIkeConfigLocal(ctx context.Context, uuid string, d
 // CreateOssBucketRemote creates OssBucketRemote
 func (cli *ZSClient) CreateOssBucketRemote(ctx context.Context, params param.CreateOssBucketRemoteParam) (*view.OssBucketInventoryView, error) {
 	resp := view.OssBucketInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/oss-bucket/remote", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/oss-bucket/remote", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3494,7 +3519,7 @@ func (cli *ZSClient) CreateOssBucketRemote(ctx context.Context, params param.Cre
 // AddSimulatorPrimaryStorage adds SimulatorPrimaryStorage
 func (cli *ZSClient) AddSimulatorPrimaryStorage(ctx context.Context, params param.AddSimulatorPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/simulators", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/simulators", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3526,9 +3551,9 @@ func (cli *ZSClient) SetVmConsolePassword(ctx context.Context, uuid string, para
 }
 
 // AttachFirewallRuleSetToL3 operates on FirewallRuleSetToL3
-func (cli *ZSClient) AttachFirewallRuleSetToL3(ctx context.Context, params param.AttachFirewallRuleSetToL3Param) (*view.VpcFirewallRuleSetL3RefInventoryView, error) {
+func (cli *ZSClient) AttachFirewallRuleSetToL3(ctx context.Context, ruleSetUuid string, l3Uuid string, params param.AttachFirewallRuleSetToL3Param) (*view.VpcFirewallRuleSetL3RefInventoryView, error) {
 	resp := view.VpcFirewallRuleSetL3RefInventoryView{}
-	if err := cli.Post(ctx, "v1/vpcfirewalls/ruleSets/{ruleSetUuid}/l3networks/{l3Uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpcfirewalls/ruleSets/%s/l3networks/%s", ruleSetUuid, l3Uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3611,9 +3636,9 @@ func (cli *ZSClient) UngroupVolumeSnapshotGroup(ctx context.Context, uuid string
 }
 
 // SubscribeSNSTopic operates on SubscribeSNSTopic
-func (cli *ZSClient) SubscribeSNSTopic(ctx context.Context, params param.SubscribeSNSTopicParam) (*view.SubscribeSNSTopicEventView, error) {
+func (cli *ZSClient) SubscribeSNSTopic(ctx context.Context, topicUuid string, endpointUuid string, params param.SubscribeSNSTopicParam) (*view.SubscribeSNSTopicEventView, error) {
 	resp := view.SubscribeSNSTopicEventView{}
-	if err := cli.Post(ctx, "v1/sns/topics/{topicUuid}/endpoints/{endpointUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/sns/topics/%s/endpoints/%s", topicUuid, endpointUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3638,9 +3663,9 @@ func (cli *ZSClient) GetVmRDP(ctx context.Context, uuid string) (*view.GetVmRDPV
 }
 
 // AttachPciDeviceToVm operates on PciDeviceToVm
-func (cli *ZSClient) AttachPciDeviceToVm(ctx context.Context, params param.AttachPciDeviceToVmParam) (*view.PciDeviceInventoryView, error) {
+func (cli *ZSClient) AttachPciDeviceToVm(ctx context.Context, pciDeviceUuid string, params param.AttachPciDeviceToVmParam) (*view.PciDeviceInventoryView, error) {
 	resp := view.PciDeviceInventoryView{}
-	if err := cli.Post(ctx, "v1/pci-device/pci-devices/{pciDeviceUuid}/attach", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/pci-device/pci-devices/%s/attach", pciDeviceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3691,7 +3716,7 @@ func (cli *ZSClient) GetAllMetricMetadata(ctx context.Context) (*view.GetAllMetr
 // AddOssBucketFromRemote adds OssBucketFromRemote
 func (cli *ZSClient) AddOssBucketFromRemote(ctx context.Context, params param.AddOssBucketFromRemoteParam) (*view.OssBucketInventoryView, error) {
 	resp := view.OssBucketInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/oss-bucket", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/oss-bucket", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3720,9 +3745,9 @@ func (cli *ZSClient) RefreshGuestOsMetadata(ctx context.Context) (*view.RefreshG
 }
 
 // GCAliyunSnapshotRemote operates on GCAliyunSnapshotRemote
-func (cli *ZSClient) GCAliyunSnapshotRemote(ctx context.Context, params param.GCAliyunSnapshotRemoteParam) (*view.GCAliyunSnapshotRemoteEventView, error) {
+func (cli *ZSClient) GCAliyunSnapshotRemote(ctx context.Context, dataCenterUuid string, params param.GCAliyunSnapshotRemoteParam) (*view.GCAliyunSnapshotRemoteEventView, error) {
 	resp := view.GCAliyunSnapshotRemoteEventView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/snapshot/{dataCenterUuid}/gc", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/snapshot/%s/gc", dataCenterUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3731,7 +3756,7 @@ func (cli *ZSClient) GCAliyunSnapshotRemote(ctx context.Context, params param.GC
 // DownloadBackupFileFromPublicCloud operates on DownloadBackupFileFromPublicCloud
 func (cli *ZSClient) DownloadBackupFileFromPublicCloud(ctx context.Context, params param.DownloadBackupFileFromPublicCloudParam) (*view.DownloadBackupFileFromPublicCloudEventView, error) {
 	resp := view.DownloadBackupFileFromPublicCloudEventView{}
-	if err := cli.Post(ctx, "v1/hybrid/backup-mysql/download", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/backup-mysql/download", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3740,16 +3765,16 @@ func (cli *ZSClient) DownloadBackupFileFromPublicCloud(ctx context.Context, para
 // AddIAM2VirtualIDsToProjects adds IAM2VirtualIDsToProjects
 func (cli *ZSClient) AddIAM2VirtualIDsToProjects(ctx context.Context, params param.AddIAM2VirtualIDsToProjectsParam) (*view.AddIAM2VirtualIDsToProjectsEventView, error) {
 	resp := view.AddIAM2VirtualIDsToProjectsEventView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/virtual-ids", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/projects/virtual-ids", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateIAM2ProjectTemplateFromProject creates IAM2ProjectTemplateFromProject
-func (cli *ZSClient) CreateIAM2ProjectTemplateFromProject(ctx context.Context, params param.CreateIAM2ProjectTemplateFromProjectParam) (*view.IAM2ProjectTemplateInventoryView, error) {
+func (cli *ZSClient) CreateIAM2ProjectTemplateFromProject(ctx context.Context, projectUuid string, params param.CreateIAM2ProjectTemplateFromProjectParam) (*view.IAM2ProjectTemplateInventoryView, error) {
 	resp := view.IAM2ProjectTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/templates/from/projects/{projectUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/projects/templates/from/projects/%s", projectUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3758,16 +3783,27 @@ func (cli *ZSClient) CreateIAM2ProjectTemplateFromProject(ctx context.Context, p
 // CreateTag creates Tag
 func (cli *ZSClient) CreateTag(ctx context.Context, params param.CreateTagParam) (*view.TagPatternInventoryView, error) {
 	resp := view.TagPatternInventoryView{}
-	if err := cli.Post(ctx, "v1/tags", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/tags", "inventory", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UpdateConsolePassword updates ConsolePassword
+func (cli *ZSClient) UpdateConsolePassword(ctx context.Context, uuid string, params param.UpdateConsolePasswordParam) (*view.VmInstanceInventoryView, error) {
+	resp := view.VmInstanceInventoryView{}
+	if err := cli.PutWithRespKey(ctx, "v1/vm-instances", uuid, "", map[string]interface{}{
+		"updateConsolePassword": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateVmInstanceFromVolumeSnapshotGroup creates VmInstanceFromVolumeSnapshotGroup
-func (cli *ZSClient) CreateVmInstanceFromVolumeSnapshotGroup(ctx context.Context, params param.CreateVmInstanceFromVolumeSnapshotGroupParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) CreateVmInstanceFromVolumeSnapshotGroup(ctx context.Context, volumeSnapshotGroupUuid string, params param.CreateVmInstanceFromVolumeSnapshotGroupParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/from/volume-snapshots/group/{volumeSnapshotGroupUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/from/volume-snapshots/group/%s", volumeSnapshotGroupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3787,7 +3823,7 @@ func (cli *ZSClient) SetIAM2ProjectRetirePolicy(ctx context.Context, uuid string
 // RunIAM2Script operates on RunIAM2Script
 func (cli *ZSClient) RunIAM2Script(ctx context.Context, params param.RunIAM2ScriptParam) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/iam2-script/run", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/iam2-script/run", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3809,9 +3845,9 @@ func (cli *ZSClient) RunIAM2ScriptAsync(ctx context.Context, params param.RunIAM
 }
 
 // AttachServiceToObservabilityServer operates on ServiceToObservabilityServer
-func (cli *ZSClient) AttachServiceToObservabilityServer(ctx context.Context, params param.AttachServiceToObservabilityServerParam) (*view.ObservabilityServerVmInventoryView, error) {
+func (cli *ZSClient) AttachServiceToObservabilityServer(ctx context.Context, observabilityServerUuid string, params param.AttachServiceToObservabilityServerParam) (*view.ObservabilityServerVmInventoryView, error) {
 	resp := view.ObservabilityServerVmInventoryView{}
-	if err := cli.Post(ctx, "v1/observability-server/{observabilityServerUuid}/service", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/observability-server/%s/service", observabilityServerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3825,16 +3861,16 @@ func (cli *ZSClient) DeleteHostNetworkServiceType(ctx context.Context, uuid stri
 // SubscribeResNotify operates on SubscribeResNotify
 func (cli *ZSClient) SubscribeResNotify(ctx context.Context, params param.SubscribeResNotifyParam) (*view.ResNotifySubscriptionInventoryView, error) {
 	resp := view.ResNotifySubscriptionInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/resnotify/subscriptions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/resnotify/subscriptions", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateIAM2ProjectFromTemplate creates IAM2ProjectFromTemplate
-func (cli *ZSClient) CreateIAM2ProjectFromTemplate(ctx context.Context, params param.CreateIAM2ProjectFromTemplateParam) (*view.IAM2ProjectInventoryView, error) {
+func (cli *ZSClient) CreateIAM2ProjectFromTemplate(ctx context.Context, templateUuid string, params param.CreateIAM2ProjectFromTemplateParam) (*view.IAM2ProjectInventoryView, error) {
 	resp := view.IAM2ProjectInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/from/templates/{templateUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/projects/from/templates/%s", templateUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3864,16 +3900,16 @@ func (cli *ZSClient) PageVpcIpSecConfigFromLocal(ctx context.Context, params *pa
 // AddConnectionAccessPointFromRemote adds ConnectionAccessPointFromRemote
 func (cli *ZSClient) AddConnectionAccessPointFromRemote(ctx context.Context, params param.AddConnectionAccessPointFromRemoteParam) (*view.ConnectionAccessPointInventoryView, error) {
 	resp := view.ConnectionAccessPointInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/access-point", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/access-point", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachSshKeyPairToVmInstance operates on SshKeyPairToVmInstance
-func (cli *ZSClient) AttachSshKeyPairToVmInstance(ctx context.Context, params param.AttachSshKeyPairToVmInstanceParam) (*view.SshKeyPairInventoryView, error) {
+func (cli *ZSClient) AttachSshKeyPairToVmInstance(ctx context.Context, sshKeyPairUuid string, vmInstanceUuid string, params param.AttachSshKeyPairToVmInstanceParam) (*view.SshKeyPairInventoryView, error) {
 	resp := view.SshKeyPairInventoryView{}
-	if err := cli.Post(ctx, "v1/ssh-key-pair/{sshKeyPairUuid}/vm-instance/{vmInstanceUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/ssh-key-pair/%s/vm-instance/%s", sshKeyPairUuid, vmInstanceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3905,6 +3941,15 @@ func (cli *ZSClient) DetachBareMetal2GatewayFromCluster(ctx context.Context, clu
 	return cli.DeleteWithSpec(ctx, "v1/baremetal2/clusters", clusterUuid, fmt.Sprintf("gateways/%s", gatewayUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 
+// GetDGpuSpecStats gets DGpuSpecStats by uuid
+func (cli *ZSClient) GetDGpuSpecStats(ctx context.Context) (*view.GetDGpuSpecStatsView, error) {
+	var resp view.GetDGpuSpecStatsView
+	if err := cli.GetWithRespKey(ctx, "v1/gpu-device/dgpu-spec-stats", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // ReloadElaboration operates on ReloadElaboration
 func (cli *ZSClient) ReloadElaboration(ctx context.Context) (*view.ReloadElaborationEventView, error) {
 	resp := view.ReloadElaborationEventView{}
@@ -3930,7 +3975,7 @@ func (cli *ZSClient) ReconnectVirtualRouter(ctx context.Context, vmInstanceUuid 
 // ConvertVmFromForeignHypervisor operates on ConvertVmFromForeignHypervisor
 func (cli *ZSClient) ConvertVmFromForeignHypervisor(ctx context.Context, params param.ConvertVmFromForeignHypervisorParam) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Post(ctx, "v1/v2vs", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/v2vs", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -3967,37 +4012,58 @@ func (cli *ZSClient) RestartResourceStack(ctx context.Context, uuid string, para
 	return &resp, nil
 }
 
+// QueryHygonDevice queries HygonDevice list
+func (cli *ZSClient) QueryHygonDevice(ctx context.Context, params *param.QueryParam) ([]view.HygonCcpDeviceInventoryView, error) {
+	var resp []view.HygonCcpDeviceInventoryView
+	return resp, cli.List(ctx, "v1/hygon-devices", params, &resp)
+}
+
+func (cli *ZSClient) GetHygonDevice(ctx context.Context, uuid string) (*view.HygonCcpDeviceInventoryView, error) {
+	var resp view.HygonCcpDeviceInventoryView
+	if err := cli.Get(ctx, "v1/hygon-devices", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageHygonDevice Pagination
+func (cli *ZSClient) PageHygonDevice(ctx context.Context, params *param.QueryParam) ([]view.HygonCcpDeviceInventoryView, int, error) {
+	var hygonDevices []view.HygonCcpDeviceInventoryView
+	total, err := cli.Page(ctx, "v1/hygon-devices", params, &hygonDevices)
+	return hygonDevices, total, err
+}
+
 // SyncEcsImageFromRemote operates on EcsImageFromRemote
-func (cli *ZSClient) SyncEcsImageFromRemote(ctx context.Context, params param.SyncEcsImageFromRemoteParam) (*view.EcsImageInventoryView, error) {
+func (cli *ZSClient) SyncEcsImageFromRemote(ctx context.Context, dataCenterUuid string, params param.SyncEcsImageFromRemoteParam) (*view.EcsImageInventoryView, error) {
 	resp := view.EcsImageInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/image/{dataCenterUuid}/sync", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/image/%s/sync", dataCenterUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachPoliciesToUser operates on PoliciesToUser
-func (cli *ZSClient) AttachPoliciesToUser(ctx context.Context, params param.AttachPoliciesToUserParam) (*view.AttachPoliciesToUserEventView, error) {
+func (cli *ZSClient) AttachPoliciesToUser(ctx context.Context, userUuid string, params param.AttachPoliciesToUserParam) (*view.AttachPoliciesToUserEventView, error) {
 	resp := view.AttachPoliciesToUserEventView{}
-	if err := cli.Post(ctx, "v1/accounts/users/{userUuid}/policy-collection", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/accounts/users/%s/policy-collection", userUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachBackupStorageToZone operates on BackupStorageToZone
-func (cli *ZSClient) AttachBackupStorageToZone(ctx context.Context, params param.AttachBackupStorageToZoneParam) (*view.BackupStorageInventoryView, error) {
+func (cli *ZSClient) AttachBackupStorageToZone(ctx context.Context, zoneUuid string, backupStorageUuid string, params param.AttachBackupStorageToZoneParam) (*view.BackupStorageInventoryView, error) {
 	resp := view.BackupStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/zones/{zoneUuid}/backup-storage/{backupStorageUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zones/%s/backup-storage/%s", zoneUuid, backupStorageUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddPciDeviceSpecToVmInstance adds PciDeviceSpecToVmInstance
-func (cli *ZSClient) AddPciDeviceSpecToVmInstance(ctx context.Context, params param.AddPciDeviceSpecToVmInstanceParam) (*view.VmInstancePciDeviceSpecRefInventoryView, error) {
+func (cli *ZSClient) AddPciDeviceSpecToVmInstance(ctx context.Context, pciSpecUuid string, vmInstanceUuid string, params param.AddPciDeviceSpecToVmInstanceParam) (*view.VmInstancePciDeviceSpecRefInventoryView, error) {
 	resp := view.VmInstancePciDeviceSpecRefInventoryView{}
-	if err := cli.Post(ctx, "v1/pci-device-specs/{pciSpecUuid}/vm-instances/{vmInstanceUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/pci-device-specs/%s/vm-instances/%s", pciSpecUuid, vmInstanceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4024,9 +4090,9 @@ func (cli *ZSClient) GetVpcVpnConfigurationFromRemote(ctx context.Context, uuid 
 }
 
 // CreateImageGroupFromImage creates ImageGroupFromImage
-func (cli *ZSClient) CreateImageGroupFromImage(ctx context.Context, params param.CreateImageGroupFromImageParam) (*view.ImageGroupInventoryView, error) {
+func (cli *ZSClient) CreateImageGroupFromImage(ctx context.Context, rootVolumeTemplateUuid string, params param.CreateImageGroupFromImageParam) (*view.ImageGroupInventoryView, error) {
 	resp := view.ImageGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/imagegroup/from/image/{rootVolumeTemplateUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/imagegroup/from/image/%s", rootVolumeTemplateUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4035,7 +4101,7 @@ func (cli *ZSClient) CreateImageGroupFromImage(ctx context.Context, params param
 // TokenIntrospection operates on TokenIntrospection
 func (cli *ZSClient) TokenIntrospection(ctx context.Context, params param.TokenIntrospectionParam) (*view.TokenIntrospectionView, error) {
 	resp := view.TokenIntrospectionView{}
-	if err := cli.Post(ctx, "v1/token/introspect", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/token/introspect", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4053,18 +4119,18 @@ func (cli *ZSClient) SyncVmBackupFromImageStoreBackupStorage(ctx context.Context
 }
 
 // AddCertificateToLoadBalancerListener adds CertificateToLoadBalancerListener
-func (cli *ZSClient) AddCertificateToLoadBalancerListener(ctx context.Context, params param.AddCertificateToLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
+func (cli *ZSClient) AddCertificateToLoadBalancerListener(ctx context.Context, listenerUuid string, params param.AddCertificateToLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	resp := view.LoadBalancerListenerInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/listeners/{listenerUuid}/certificate", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/load-balancers/listeners/%s/certificate", listenerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddRolesToIAM2VirtualID adds RolesToIAM2VirtualID
-func (cli *ZSClient) AddRolesToIAM2VirtualID(ctx context.Context, params param.AddRolesToIAM2VirtualIDParam) (*view.AddRolesToIAM2VirtualIDEventView, error) {
+func (cli *ZSClient) AddRolesToIAM2VirtualID(ctx context.Context, virtualIDUuid string, params param.AddRolesToIAM2VirtualIDParam) (*view.AddRolesToIAM2VirtualIDEventView, error) {
 	resp := view.AddRolesToIAM2VirtualIDEventView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/virtual-ids/{virtualIDUuid}/roles", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/projects/virtual-ids/%s/roles", virtualIDUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4094,7 +4160,7 @@ func (cli *ZSClient) PageTicketHistory(ctx context.Context, params *param.QueryP
 // CreateFaultToleranceVmInstance creates FaultToleranceVmInstance
 func (cli *ZSClient) CreateFaultToleranceVmInstance(ctx context.Context, params param.CreateFaultToleranceVmInstanceParam) (*view.CreateFaultToleranceVmInstanceEventView, error) {
 	resp := view.CreateFaultToleranceVmInstanceEventView{}
-	if err := cli.Post(ctx, "v1/vm-instances/fault-tolerance", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vm-instances/fault-tolerance", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4138,9 +4204,9 @@ func (cli *ZSClient) UpdateHybridEip(ctx context.Context, uuid string, params pa
 }
 
 // GetVpcAttachedIpsec gets VpcAttachedIpsec by uuid
-func (cli *ZSClient) GetVpcAttachedIpsec(ctx context.Context, params param.GetVpcAttachedIpsecParam) (*view.IPsecConnectionInventoryView, error) {
+func (cli *ZSClient) GetVpcAttachedIpsec(ctx context.Context, uuid string, params param.GetVpcAttachedIpsecParam) (*view.IPsecConnectionInventoryView, error) {
 	resp := view.IPsecConnectionInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/attached-ipsec", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-ipsec", uuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4179,6 +4245,17 @@ func (cli *ZSClient) GetScsiLunCandidatesForAttachingVm(ctx context.Context, uui
 func (cli *ZSClient) GetHostMultipathTopology(ctx context.Context) (*view.GetHostMultipathTopologyView, error) {
 	var resp view.GetHostMultipathTopologyView
 	if err := cli.GetWithRespKey(ctx, "v1/storage-devices/multipath/topology", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// EnableDGpuMode operates on EnableDGpuMode
+func (cli *ZSClient) EnableDGpuMode(ctx context.Context, gpuDeviceUuid string, params param.EnableDGpuModeParam) (*view.EnableDGpuModeEventView, error) {
+	resp := view.EnableDGpuModeEventView{}
+	if err := cli.PutWithRespKey(ctx, "v1/gpu-device/gpu-devices", gpuDeviceUuid, "", map[string]interface{}{
+		"enableDGpuMode": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4233,7 +4310,7 @@ func (cli *ZSClient) CleanUpTrashOnBackupStorage(ctx context.Context, uuid strin
 // CreateConnectionBetweenL3NetworkAndAliyunVSwitch creates ConnectionBetweenL3NetworkAndAliyunVSwitch
 func (cli *ZSClient) CreateConnectionBetweenL3NetworkAndAliyunVSwitch(ctx context.Context, params param.CreateConnectionBetweenL3NetworkAndAliyunVSwitchParam) (*view.ConnectionRelationShipInventoryView, error) {
 	resp := view.ConnectionRelationShipInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/connections", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/connections", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4245,9 +4322,9 @@ func (cli *ZSClient) DetachPriceTableFromAccount(ctx context.Context, tableUuid 
 }
 
 // AddVRouterNetworksToFlowMeter adds VRouterNetworksToFlowMeter
-func (cli *ZSClient) AddVRouterNetworksToFlowMeter(ctx context.Context, params param.AddVRouterNetworksToFlowMeterParam) (*view.NetworkRouterFlowMeterRefInventoryView, error) {
+func (cli *ZSClient) AddVRouterNetworksToFlowMeter(ctx context.Context, flowMeterUuid string, vRouterUuid string, params param.AddVRouterNetworksToFlowMeterParam) (*view.NetworkRouterFlowMeterRefInventoryView, error) {
 	resp := view.NetworkRouterFlowMeterRefInventoryView{}
-	if err := cli.Post(ctx, "v1/flowmeters/{flowMeterUuid}/router/{vRouterUuid}/addnetworks", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/flowmeters/%s/router/%s/addnetworks", flowMeterUuid, vRouterUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4295,7 +4372,7 @@ func (cli *ZSClient) ChangeVmSchedulingRuleState(ctx context.Context, uuid strin
 // CreateFirewallRule creates FirewallRule
 func (cli *ZSClient) CreateFirewallRule(ctx context.Context, params param.CreateFirewallRuleParam) (*view.VpcFirewallRuleInventoryView, error) {
 	resp := view.VpcFirewallRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/vpcfirewalls/rules", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vpcfirewalls/rules", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4320,9 +4397,9 @@ func (cli *ZSClient) GetDataVolumeAttachableVm(ctx context.Context, uuid string)
 }
 
 // AddIpRangeByNetworkCidr adds IpRangeByNetworkCidr
-func (cli *ZSClient) AddIpRangeByNetworkCidr(ctx context.Context, params param.AddIpRangeByNetworkCidrParam) (*view.IpRangeInventoryView, error) {
+func (cli *ZSClient) AddIpRangeByNetworkCidr(ctx context.Context, l3NetworkUuid string, params param.AddIpRangeByNetworkCidrParam) (*view.IpRangeInventoryView, error) {
 	resp := view.IpRangeInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/ip-ranges/by-cidr", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/ip-ranges/by-cidr", l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4331,16 +4408,16 @@ func (cli *ZSClient) AddIpRangeByNetworkCidr(ctx context.Context, params param.A
 // CreateL2NoVlanNetwork creates L2NoVlanNetwork
 func (cli *ZSClient) CreateL2NoVlanNetwork(ctx context.Context) (*view.L2NetworkInventoryView, error) {
 	resp := view.L2NetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/l2-networks/no-vlan", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l2-networks/no-vlan", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddMonToCephBackupStorage adds MonToCephBackupStorage
-func (cli *ZSClient) AddMonToCephBackupStorage(ctx context.Context, params param.AddMonToCephBackupStorageParam) (*view.CephBackupStorageInventoryView, error) {
+func (cli *ZSClient) AddMonToCephBackupStorage(ctx context.Context, uuid string, params param.AddMonToCephBackupStorageParam) (*view.CephBackupStorageInventoryView, error) {
 	resp := view.CephBackupStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/backup-storage/ceph/{uuid}/mons", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/backup-storage/ceph/%s/mons", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4412,7 +4489,7 @@ func (cli *ZSClient) DetachPrimaryStorageFromCluster(ctx context.Context, cluste
 // CheckStackTemplateParameters operates on StackTemplateParameters
 func (cli *ZSClient) CheckStackTemplateParameters(ctx context.Context, params param.CheckStackTemplateParametersParam) (*view.CheckStackTemplateParametersView, error) {
 	resp := view.CheckStackTemplateParametersView{}
-	if err := cli.Post(ctx, "v1/cloudformation/stack/check", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cloudformation/stack/check", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4428,9 +4505,9 @@ func (cli *ZSClient) GetFactoryModeState(ctx context.Context) (*view.GetFactoryM
 }
 
 // AddServerGroupToLoadBalancerListener adds ServerGroupToLoadBalancerListener
-func (cli *ZSClient) AddServerGroupToLoadBalancerListener(ctx context.Context, params param.AddServerGroupToLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
+func (cli *ZSClient) AddServerGroupToLoadBalancerListener(ctx context.Context, listenerUuid string, params param.AddServerGroupToLoadBalancerListenerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	resp := view.LoadBalancerListenerInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/listeners/{listenerUuid}/servergroups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/load-balancers/listeners/%s/servergroups", listenerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4457,27 +4534,27 @@ func (cli *ZSClient) DeployModelEvalService(ctx context.Context, uuid string, pa
 }
 
 // AttachNvmeServerToCluster operates on NvmeServerToCluster
-func (cli *ZSClient) AttachNvmeServerToCluster(ctx context.Context, params param.AttachNvmeServerToClusterParam) (*view.NvmeServerInventoryView, error) {
+func (cli *ZSClient) AttachNvmeServerToCluster(ctx context.Context, clusterUuid string, uuid string, params param.AttachNvmeServerToClusterParam) (*view.NvmeServerInventoryView, error) {
 	resp := view.NvmeServerInventoryView{}
-	if err := cli.Post(ctx, "v1/clusters/{clusterUuid}/storage-devices/nvme/servers/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/clusters/%s/storage-devices/nvme/servers/%s", clusterUuid, uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetHostResourceAllocation gets HostResourceAllocation by uuid
-func (cli *ZSClient) GetHostResourceAllocation(ctx context.Context, params param.GetHostResourceAllocationParam) (*view.GetHostResourceAllocationEventView, error) {
+func (cli *ZSClient) GetHostResourceAllocation(ctx context.Context, uuid string, params param.GetHostResourceAllocationParam) (*view.GetHostResourceAllocationEventView, error) {
 	resp := view.GetHostResourceAllocationEventView{}
-	if err := cli.Post(ctx, "v1/hosts/{uuid}/resource-allocation", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hosts/%s/resource-allocation", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachUsbDeviceToVm operates on UsbDeviceToVm
-func (cli *ZSClient) AttachUsbDeviceToVm(ctx context.Context, params param.AttachUsbDeviceToVmParam) (*view.UsbDeviceInventoryView, error) {
+func (cli *ZSClient) AttachUsbDeviceToVm(ctx context.Context, usbDeviceUuid string, params param.AttachUsbDeviceToVmParam) (*view.UsbDeviceInventoryView, error) {
 	resp := view.UsbDeviceInventoryView{}
-	if err := cli.Post(ctx, "v1/usb-device/usb-devices/{usbDeviceUuid}/attach", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/usb-device/usb-devices/%s/attach", usbDeviceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4493,9 +4570,9 @@ func (cli *ZSClient) GetLicenseAddOns(ctx context.Context) (*view.GetLicenseAddO
 }
 
 // SyncAliyunSnapshotRemote operates on AliyunSnapshotRemote
-func (cli *ZSClient) SyncAliyunSnapshotRemote(ctx context.Context, params param.SyncAliyunSnapshotRemoteParam) (*view.AliyunSnapshotInventoryView, error) {
+func (cli *ZSClient) SyncAliyunSnapshotRemote(ctx context.Context, dataCenterUuid string, params param.SyncAliyunSnapshotRemoteParam) (*view.AliyunSnapshotInventoryView, error) {
 	resp := view.AliyunSnapshotInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/snapshot/{dataCenterUuid}/sync", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/snapshot/%s/sync", dataCenterUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4545,7 +4622,7 @@ func (cli *ZSClient) GetVpcIPsecLog(ctx context.Context) (*view.GetVpcIPsecLogVi
 // CreateVmInstanceFromOvf creates VmInstanceFromOvf
 func (cli *ZSClient) CreateVmInstanceFromOvf(ctx context.Context, params param.CreateVmInstanceFromOvfParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/ovf/create-vm-instance", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ovf/create-vm-instance", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4601,7 +4678,7 @@ func (cli *ZSClient) ChangeVmImage(ctx context.Context, vmInstanceUuid string, p
 // AddResourcesToDirectory adds ResourcesToDirectory
 func (cli *ZSClient) AddResourcesToDirectory(ctx context.Context, params param.AddResourcesToDirectoryParam) (*view.AddResourcesToDirectoryEventView, error) {
 	resp := view.AddResourcesToDirectoryEventView{}
-	if err := cli.Post(ctx, "v1/add/resources/directory", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/add/resources/directory", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4655,9 +4732,9 @@ func (cli *ZSClient) GetResourceFromPublishApp(ctx context.Context) (*view.GetRe
 }
 
 // ChangeResourceOwner changes ResourceOwner
-func (cli *ZSClient) ChangeResourceOwner(ctx context.Context, params param.ChangeResourceOwnerParam) (*view.AccountResourceRefInventoryView, error) {
+func (cli *ZSClient) ChangeResourceOwner(ctx context.Context, accountUuid string, params param.ChangeResourceOwnerParam) (*view.AccountResourceRefInventoryView, error) {
 	resp := view.AccountResourceRefInventoryView{}
-	if err := cli.Post(ctx, "v1/account/{accountUuid}/resources", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/account/%s/resources", accountUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4708,9 +4785,9 @@ func (cli *ZSClient) PageAliyunSnapshotFromLocal(ctx context.Context, params *pa
 }
 
 // EnableCbtTask operates on EnableCbtTask
-func (cli *ZSClient) EnableCbtTask(ctx context.Context, params param.EnableCbtTaskParam) (*view.EnableCbtTaskEventView, error) {
+func (cli *ZSClient) EnableCbtTask(ctx context.Context, uuid string, params param.EnableCbtTaskParam) (*view.EnableCbtTaskEventView, error) {
 	resp := view.EnableCbtTaskEventView{}
-	if err := cli.Post(ctx, "v1/cbt-task/enable/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/cbt-task/enable/%s", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4728,16 +4805,16 @@ func (cli *ZSClient) GetAliyunNasAccessGroupRemote(ctx context.Context) (*view.G
 // CheckBuildAppParameters operates on BuildAppParameters
 func (cli *ZSClient) CheckBuildAppParameters(ctx context.Context, params param.CheckBuildAppParametersParam) (*view.CheckBuildAppParametersView, error) {
 	resp := view.CheckBuildAppParametersView{}
-	if err := cli.Post(ctx, "v1/appcenter/buildapp/check", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/appcenter/buildapp/check", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddLabelToEventSubscription adds LabelToEventSubscription
-func (cli *ZSClient) AddLabelToEventSubscription(ctx context.Context, params param.AddLabelToEventSubscriptionParam) (*view.EventSubscriptionLabelInventoryView, error) {
+func (cli *ZSClient) AddLabelToEventSubscription(ctx context.Context, subscriptionUuid string, params param.AddLabelToEventSubscriptionParam) (*view.EventSubscriptionLabelInventoryView, error) {
 	resp := view.EventSubscriptionLabelInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/events/subscriptions/{subscriptionUuid}/labels", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zwatch/events/subscriptions/%s/labels", subscriptionUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4777,6 +4854,17 @@ func (cli *ZSClient) PullSdnControllerTenant(ctx context.Context, uuid string, p
 // DetachServiceFromObservabilityServer operates on ServiceFromObservabilityServer
 func (cli *ZSClient) DetachServiceFromObservabilityServer(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete(ctx, "v1/observability-server", uuid, string(deleteMode))
+}
+
+// GenerateHygonMdevDevices operates on HygonMdevDevices
+func (cli *ZSClient) GenerateHygonMdevDevices(ctx context.Context, hostUuid string, params param.GenerateHygonMdevDevicesParam) (*view.GenerateHygonMdevDevicesEventView, error) {
+	resp := view.GenerateHygonMdevDevicesEventView{}
+	if err := cli.PutWithRespKey(ctx, "v1/hygon-devices", hostUuid, "", map[string]interface{}{
+		"generateHygonMdevDevices": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // SetVmUsbRedirect operates on VmUsbRedirect
@@ -4831,9 +4919,9 @@ func (cli *ZSClient) UpdateChronyServers(ctx context.Context, params param.Updat
 }
 
 // AttachPolicyRouteRuleSetToL3 operates on PolicyRouteRuleSetToL3
-func (cli *ZSClient) AttachPolicyRouteRuleSetToL3(ctx context.Context, params param.AttachPolicyRouteRuleSetToL3Param) (*view.AttachPolicyRouteRuleSetToL3EventView, error) {
+func (cli *ZSClient) AttachPolicyRouteRuleSetToL3(ctx context.Context, ruleSetUuid string, l3Uuid string, params param.AttachPolicyRouteRuleSetToL3Param) (*view.AttachPolicyRouteRuleSetToL3EventView, error) {
 	resp := view.AttachPolicyRouteRuleSetToL3EventView{}
-	if err := cli.Post(ctx, "v1/policy-routes/rulesets/{ruleSetUuid}/l3networks/{l3Uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/policy-routes/rulesets/%s/l3networks/%s", ruleSetUuid, l3Uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4842,7 +4930,7 @@ func (cli *ZSClient) AttachPolicyRouteRuleSetToL3(ctx context.Context, params pa
 // UpdateOAuthClient updates OAuthClient
 func (cli *ZSClient) UpdateOAuthClient(ctx context.Context, params param.UpdateOAuthClientParam) (*view.OAuth2ClientInventoryView, error) {
 	resp := view.OAuth2ClientInventoryView{}
-	if err := cli.Post(ctx, "v1/update/oauth2/client", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/update/oauth2/client", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4899,9 +4987,9 @@ func (cli *ZSClient) GetVmsCapabilities(ctx context.Context) (*view.GetVmsCapabi
 }
 
 // AttachPolicyToUserGroup operates on PolicyToUserGroup
-func (cli *ZSClient) AttachPolicyToUserGroup(ctx context.Context, params param.AttachPolicyToUserGroupParam) (*view.AttachPolicyToUserGroupEventView, error) {
+func (cli *ZSClient) AttachPolicyToUserGroup(ctx context.Context, groupUuid string, params param.AttachPolicyToUserGroupParam) (*view.AttachPolicyToUserGroupEventView, error) {
 	resp := view.AttachPolicyToUserGroupEventView{}
-	if err := cli.Post(ctx, "v1/accounts/groups/{groupUuid}/policies", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/accounts/groups/%s/policies", groupUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -4931,7 +5019,7 @@ func (cli *ZSClient) ShareResource(ctx context.Context, params param.ShareResour
 // CreateEcsVpcRemote creates EcsVpcRemote
 func (cli *ZSClient) CreateEcsVpcRemote(ctx context.Context, params param.CreateEcsVpcRemoteParam) (*view.EcsVpcInventoryView, error) {
 	resp := view.EcsVpcInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/vpc", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/vpc", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5021,7 +5109,7 @@ func (cli *ZSClient) SyncVpcVpnConnectionFromRemote(ctx context.Context, dataCen
 // CreateVpnIkeConfig creates VpnIkeConfig
 func (cli *ZSClient) CreateVpnIkeConfig(ctx context.Context, params param.CreateVpnIkeConfigParam) (*view.VpcVpnIkeConfigInventoryView, error) {
 	resp := view.VpcVpnIkeConfigInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/vpn-connection/ike", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/vpn-connection/ike", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5030,16 +5118,16 @@ func (cli *ZSClient) CreateVpnIkeConfig(ctx context.Context, params param.Create
 // SubmitLongJob operates on SubmitLongJob
 func (cli *ZSClient) SubmitLongJob(ctx context.Context, params param.SubmitLongJobParam) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Post(ctx, "v1/longjobs", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/longjobs", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateDataVolumeTemplateFromVolumeBackup creates DataVolumeTemplateFromVolumeBackup
-func (cli *ZSClient) CreateDataVolumeTemplateFromVolumeBackup(ctx context.Context, params param.CreateDataVolumeTemplateFromVolumeBackupParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) CreateDataVolumeTemplateFromVolumeBackup(ctx context.Context, backupUuid string, params param.CreateDataVolumeTemplateFromVolumeBackupParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Post(ctx, "v1/images/data-volume-templates/from/volume-template/{backupUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/images/data-volume-templates/from/volume-template/%s", backupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5048,6 +5136,17 @@ func (cli *ZSClient) CreateDataVolumeTemplateFromVolumeBackup(ctx context.Contex
 // DegradeFromLicenseServer operates on DegradeFromLicenseServer
 func (cli *ZSClient) DegradeFromLicenseServer(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete(ctx, "v1/license-server", uuid, string(deleteMode))
+}
+
+// UpdateNfvInstProvisionConfig updates NfvInstProvisionConfig
+func (cli *ZSClient) UpdateNfvInstProvisionConfig(ctx context.Context, vmInstanceUuid string, params param.UpdateNfvInstProvisionConfigParam) (*view.ApplianceVmInventoryView, error) {
+	resp := view.ApplianceVmInventoryView{}
+	if err := cli.PutWithRespKey(ctx, "v1/vm-instances/appliances/nfvinst", vmInstanceUuid, "", map[string]interface{}{
+		"updateNfvInstProvisionConfig": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // GetDebugSignal gets DebugSignal by uuid
@@ -5060,9 +5159,9 @@ func (cli *ZSClient) GetDebugSignal(ctx context.Context) (*view.GetDebugSignalVi
 }
 
 // UpdateAliyunKeySecret updates AliyunKeySecret
-func (cli *ZSClient) UpdateAliyunKeySecret(ctx context.Context, params param.UpdateAliyunKeySecretParam) (*view.HybridAccountInventoryView, error) {
+func (cli *ZSClient) UpdateAliyunKeySecret(ctx context.Context, uuid string, params param.UpdateAliyunKeySecretParam) (*view.HybridAccountInventoryView, error) {
 	resp := view.HybridAccountInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/{uuid}/key", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/%s/key", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5080,9 +5179,9 @@ func (cli *ZSClient) SyncLicenseCapacity(ctx context.Context) (*view.SyncLicense
 }
 
 // AttachDataVolumeToHost operates on DataVolumeToHost
-func (cli *ZSClient) AttachDataVolumeToHost(ctx context.Context, params param.AttachDataVolumeToHostParam) (*view.AttachDataVolumeToHostEventView, error) {
+func (cli *ZSClient) AttachDataVolumeToHost(ctx context.Context, volumeUuid string, hostUuid string, params param.AttachDataVolumeToHostParam) (*view.AttachDataVolumeToHostEventView, error) {
 	resp := view.AttachDataVolumeToHostEventView{}
-	if err := cli.Post(ctx, "v1/volumes/{volumeUuid}/hosts/{hostUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/volumes/%s/hosts/%s", volumeUuid, hostUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5091,7 +5190,7 @@ func (cli *ZSClient) AttachDataVolumeToHost(ctx context.Context, params param.At
 // SecurityMachineEncrypt operates on MachineEncrypt
 func (cli *ZSClient) SecurityMachineEncrypt(ctx context.Context, params param.SecurityMachineEncryptParam) (*view.SecurityMachineEncryptEventView, error) {
 	resp := view.SecurityMachineEncryptEventView{}
-	if err := cli.Post(ctx, "v1/security-machine/encrypt/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/security-machine/encrypt/actions", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5132,9 +5231,9 @@ func (cli *ZSClient) DetachNetworkServiceFromL3Network(ctx context.Context, uuid
 }
 
 // CreateDataVolumeFromVolumeBackup creates DataVolumeFromVolumeBackup
-func (cli *ZSClient) CreateDataVolumeFromVolumeBackup(ctx context.Context, params param.CreateDataVolumeFromVolumeBackupParam) (*view.VolumeInventoryView, error) {
+func (cli *ZSClient) CreateDataVolumeFromVolumeBackup(ctx context.Context, backupUuid string, params param.CreateDataVolumeFromVolumeBackupParam) (*view.VolumeInventoryView, error) {
 	resp := view.VolumeInventoryView{}
-	if err := cli.Post(ctx, "v1/volumes/data-volume/from/volume-template/{backupUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/volumes/data-volume/from/volume-template/%s", backupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5159,7 +5258,7 @@ func (cli *ZSClient) GetSupportAPIs(ctx context.Context) (*view.GetSupportAPIsVi
 // AddSharedMountPointPrimaryStorage adds SharedMountPointPrimaryStorage
 func (cli *ZSClient) AddSharedMountPointPrimaryStorage(ctx context.Context) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/smp", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/smp", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5207,7 +5306,7 @@ func (cli *ZSClient) ChangeAccessControlListRedirectRule(ctx context.Context, uu
 // AddResourceStackVmPortMonitor adds ResourceStackVmPortMonitor
 func (cli *ZSClient) AddResourceStackVmPortMonitor(ctx context.Context, params param.AddResourceStackVmPortMonitorParam) (*view.AddResourceStackVmPortMonitorEventView, error) {
 	resp := view.AddResourceStackVmPortMonitorEventView{}
-	if err := cli.Post(ctx, "v1/cloudformation/stack/monitor/addvm", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cloudformation/stack/monitor/addvm", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5225,9 +5324,9 @@ func (cli *ZSClient) ChangeSNSApplicationEndpointState(ctx context.Context, uuid
 }
 
 // GetVpcAttachedLoadBalancer gets VpcAttachedLoadBalancer by uuid
-func (cli *ZSClient) GetVpcAttachedLoadBalancer(ctx context.Context, params param.GetVpcAttachedLoadBalancerParam) (*view.LoadBalancerInventoryView, error) {
+func (cli *ZSClient) GetVpcAttachedLoadBalancer(ctx context.Context, uuid string, params param.GetVpcAttachedLoadBalancerParam) (*view.LoadBalancerInventoryView, error) {
 	resp := view.LoadBalancerInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/attached-lb", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-lb", uuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5236,34 +5335,44 @@ func (cli *ZSClient) GetVpcAttachedLoadBalancer(ctx context.Context, params para
 // CreateVpcVpnConnectionRemote creates VpcVpnConnectionRemote
 func (cli *ZSClient) CreateVpcVpnConnectionRemote(ctx context.Context, params param.CreateVpcVpnConnectionRemoteParam) (*view.VpcVpnConnectionInventoryView, error) {
 	resp := view.VpcVpnConnectionInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/vpn-connection", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/vpn-connection", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetVpcAttachedPortForwardingRules gets VpcAttachedPortForwardingRules by uuid
-func (cli *ZSClient) GetVpcAttachedPortForwardingRules(ctx context.Context, params param.GetVpcAttachedPortForwardingRulesParam) (*view.PortForwardingRuleInventoryView, error) {
+func (cli *ZSClient) GetVpcAttachedPortForwardingRules(ctx context.Context, uuid string, params param.GetVpcAttachedPortForwardingRulesParam) (*view.PortForwardingRuleInventoryView, error) {
 	resp := view.PortForwardingRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/attached-pf", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-pf", uuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SetVpcVRouterNetworkServiceState operates on VpcVRouterNetworkServiceState
-func (cli *ZSClient) SetVpcVRouterNetworkServiceState(ctx context.Context, params param.SetVpcVRouterNetworkServiceStateParam) (*view.SetVpcVRouterNetworkServiceStateEventView, error) {
+func (cli *ZSClient) SetVpcVRouterNetworkServiceState(ctx context.Context, uuid string, params param.SetVpcVRouterNetworkServiceStateParam) (*view.SetVpcVRouterNetworkServiceStateEventView, error) {
 	resp := view.SetVpcVRouterNetworkServiceStateEventView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/networkservicestate", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/networkservicestate", uuid), "state", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachNfvInstFromGroup operates on NfvInstFromGroup
+func (cli *ZSClient) DetachNfvInstFromGroup(ctx context.Context, groupUuid string, nfvInstUuid string, params param.DetachNfvInstFromGroupParam) (*view.NfvInstGroupInventoryView, error) {
+	resp := view.NfvInstGroupInventoryView{}
+	err := cli.PutWithSpec(ctx, "v1/nfvinstgroup/group", groupUuid, fmt.Sprintf("instances/%s/actions", nfvInstUuid), "", params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddDnsToVpcRouter adds DnsToVpcRouter
-func (cli *ZSClient) AddDnsToVpcRouter(ctx context.Context, params param.AddDnsToVpcRouterParam) (*view.VpcRouterVmInventoryView, error) {
+func (cli *ZSClient) AddDnsToVpcRouter(ctx context.Context, uuid string, params param.AddDnsToVpcRouterParam) (*view.VpcRouterVmInventoryView, error) {
 	resp := view.VpcRouterVmInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/dns", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/dns", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5311,7 +5420,7 @@ func (cli *ZSClient) GetVmInstanceFirstBootDevice(ctx context.Context, uuid stri
 // CreateOvnControllerVm creates OvnControllerVm
 func (cli *ZSClient) CreateOvnControllerVm(ctx context.Context) (*view.ApplianceVmInventoryView, error) {
 	resp := view.ApplianceVmInventoryView{}
-	if err := cli.Post(ctx, "v1/ovn/instances", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ovn/instances", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5350,7 +5459,7 @@ func (cli *ZSClient) CheckIAM2OrganizationAvailability(ctx context.Context) (*vi
 // UnmountVmInstanceRecoveryPoint operates on UnmountVmInstanceRecoveryPoint
 func (cli *ZSClient) UnmountVmInstanceRecoveryPoint(ctx context.Context, params param.UnmountVmInstanceRecoveryPointParam) (*view.UnmountVmInstanceRecoveryPointEventView, error) {
 	resp := view.UnmountVmInstanceRecoveryPointEventView{}
-	if err := cli.Post(ctx, "v1/cdp-backup-storage/unmount-recovery-point", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cdp-backup-storage/unmount-recovery-point", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5440,7 +5549,7 @@ func (cli *ZSClient) GetTaskProgress(ctx context.Context, uuid string) (*view.Ge
 // StartDataProtection starts DataProtection
 func (cli *ZSClient) StartDataProtection(ctx context.Context, params param.StartDataProtectionParam) (*view.StartDataProtectionEventView, error) {
 	resp := view.StartDataProtectionEventView{}
-	if err := cli.Post(ctx, "v1/start/data/protection/", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/start/data/protection/", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5464,7 +5573,7 @@ func (cli *ZSClient) StartDataProtectionAsync(ctx context.Context, params param.
 // ChangeActiveAlarmState changes ActiveAlarmState
 func (cli *ZSClient) ChangeActiveAlarmState(ctx context.Context, params param.ChangeActiveAlarmStateParam) (*view.ChangeActiveAlarmStateEventView, error) {
 	resp := view.ChangeActiveAlarmStateEventView{}
-	if err := cli.Post(ctx, "v1/zwatch/activealarms/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/activealarms/actions", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5513,9 +5622,9 @@ func (cli *ZSClient) GetNoTriggerSchedulerJobs(ctx context.Context) (*view.GetNo
 }
 
 // AddProxyToResource adds ProxyToResource
-func (cli *ZSClient) AddProxyToResource(ctx context.Context, params param.AddProxyToResourceParam) (*view.UserProxyConfigResourceRefInventoryView, error) {
+func (cli *ZSClient) AddProxyToResource(ctx context.Context, proxyUuid string, resourceUuid string, params param.AddProxyToResourceParam) (*view.UserProxyConfigResourceRefInventoryView, error) {
 	resp := view.UserProxyConfigResourceRefInventoryView{}
-	if err := cli.Post(ctx, "v1/proxy/{proxyUuid}/resource/{resourceUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/proxy/%s/resource/%s", proxyUuid, resourceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5566,7 +5675,7 @@ func (cli *ZSClient) RemoveIAM2VirtualIDsFromProject(ctx context.Context, uuid s
 // CreateEcsImageFromEcsSnapshot creates EcsImageFromEcsSnapshot
 func (cli *ZSClient) CreateEcsImageFromEcsSnapshot(ctx context.Context, params param.CreateEcsImageFromEcsSnapshotParam) (*view.EcsImageInventoryView, error) {
 	resp := view.EcsImageInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/image/snapshot", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/image/snapshot", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5575,7 +5684,7 @@ func (cli *ZSClient) CreateEcsImageFromEcsSnapshot(ctx context.Context, params p
 // CreateResourceStackFromApp creates ResourceStackFromApp
 func (cli *ZSClient) CreateResourceStackFromApp(ctx context.Context, params param.CreateResourceStackFromAppParam) (*view.ResourceStackInventoryView, error) {
 	resp := view.ResourceStackInventoryView{}
-	if err := cli.Post(ctx, "v1/appcenter/app/stack", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/appcenter/app/stack", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5657,9 +5766,9 @@ func (cli *ZSClient) GetCandidateVmForAttachingIso(ctx context.Context, uuid str
 }
 
 // AttachDataVolumeToVm operates on DataVolumeToVm
-func (cli *ZSClient) AttachDataVolumeToVm(ctx context.Context, params param.AttachDataVolumeToVmParam) (*view.VolumeInventoryView, error) {
+func (cli *ZSClient) AttachDataVolumeToVm(ctx context.Context, volumeUuid string, vmInstanceUuid string, params param.AttachDataVolumeToVmParam) (*view.VolumeInventoryView, error) {
 	resp := view.VolumeInventoryView{}
-	if err := cli.Post(ctx, "v1/volumes/{volumeUuid}/vm-instances/{vmInstanceUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/volumes/%s/vm-instances/%s", volumeUuid, vmInstanceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5707,9 +5816,9 @@ func (cli *ZSClient) SetVolumeQos(ctx context.Context, uuid string, params param
 }
 
 // DetachHybridEipFromEcs operates on HybridEipFromEcs
-func (cli *ZSClient) DetachHybridEipFromEcs(ctx context.Context, params param.DetachHybridEipFromEcsParam) (*view.DetachHybridEipFromEcsEventView, error) {
+func (cli *ZSClient) DetachHybridEipFromEcs(ctx context.Context, eipUuid string, params param.DetachHybridEipFromEcsParam) (*view.DetachHybridEipFromEcsEventView, error) {
 	resp := view.DetachHybridEipFromEcsEventView{}
-	if err := cli.Post(ctx, "v1/hybrid/eip/{eipUuid}/detach", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/eip/%s/detach", eipUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5757,9 +5866,9 @@ func (cli *ZSClient) PageVpcIkeConfigFromLocal(ctx context.Context, params *para
 }
 
 // SetVmInstanceHaLevel operates on VmInstanceHaLevel
-func (cli *ZSClient) SetVmInstanceHaLevel(ctx context.Context, params param.SetVmInstanceHaLevelParam) (*view.SetVmInstanceHaLevelEventView, error) {
+func (cli *ZSClient) SetVmInstanceHaLevel(ctx context.Context, uuid string, params param.SetVmInstanceHaLevelParam) (*view.SetVmInstanceHaLevelEventView, error) {
 	resp := view.SetVmInstanceHaLevelEventView{}
-	if err := cli.Post(ctx, "v1/vm-instances/{uuid}/ha-levels", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/%s/ha-levels", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5788,6 +5897,17 @@ func (cli *ZSClient) DeleteHybridKeySecret(ctx context.Context, uuid string, del
 func (cli *ZSClient) GetCandidatePrimaryStoragesForCreatingVm(ctx context.Context) (*view.GetCandidatePrimaryStoragesForCreatingVmView, error) {
 	var resp view.GetCandidatePrimaryStoragesForCreatingVmView
 	if err := cli.GetWithRespKey(ctx, "v1/vm-instances/candidate-storages", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SetVpcVRouterSnatLogState operates on VpcVRouterSnatLogState
+func (cli *ZSClient) SetVpcVRouterSnatLogState(ctx context.Context, uuid string, params param.SetVpcVRouterSnatLogStateParam) (*view.SetVpcVRouterSnatLogStateEventView, error) {
+	resp := view.SetVpcVRouterSnatLogStateEventView{}
+	if err := cli.PutWithRespKey(ctx, "v1/vpc/virtual-routers", uuid, "", map[string]interface{}{
+		"setVpcVRouterSnatLogState": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5856,9 +5976,9 @@ func (cli *ZSClient) RemoveResourcesFromDirectory(ctx context.Context, uuid stri
 }
 
 // CreateVmFromVmBackup creates VmFromVmBackup
-func (cli *ZSClient) CreateVmFromVmBackup(ctx context.Context, params param.CreateVmFromVmBackupParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) CreateVmFromVmBackup(ctx context.Context, groupUuid string, params param.CreateVmFromVmBackupParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/from/vm-backups/{groupUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/from/vm-backups/%s", groupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5870,9 +5990,9 @@ func (cli *ZSClient) DeleteExportedDatabaseBackupFromBackupStorage(ctx context.C
 }
 
 // AttachNetworkServiceToL3Network operates on NetworkServiceToL3Network
-func (cli *ZSClient) AttachNetworkServiceToL3Network(ctx context.Context, params param.AttachNetworkServiceToL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) AttachNetworkServiceToL3Network(ctx context.Context, l3NetworkUuid string, params param.AttachNetworkServiceToL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	resp := view.L3NetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/network-services", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/network-services", l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5881,7 +6001,7 @@ func (cli *ZSClient) AttachNetworkServiceToL3Network(ctx context.Context, params
 // UnexportNbdVolumes operates on UnexportNbdVolumes
 func (cli *ZSClient) UnexportNbdVolumes(ctx context.Context, params param.UnexportNbdVolumesParam) (*view.UnexportNbdVolumesEventView, error) {
 	resp := view.UnexportNbdVolumesEventView{}
-	if err := cli.Post(ctx, "v1/cbt-task/unexportvolume", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cbt-task/unexportvolume", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5933,7 +6053,7 @@ func (cli *ZSClient) ExecuteAutoScalingRule(ctx context.Context, uuid string, pa
 // SNSHttpTestConnection operates on HttpTestConnection
 func (cli *ZSClient) SNSHttpTestConnection(ctx context.Context, params param.SNSHttpTestConnectionParam) (*view.SNSHttpTestConnectionEventView, error) {
 	resp := view.SNSHttpTestConnectionEventView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/http/test-connection", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/http/test-connection", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -5985,7 +6105,7 @@ func (cli *ZSClient) PageHybridEipFromLocal(ctx context.Context, params *param.Q
 // AddHybridKeySecret adds HybridKeySecret
 func (cli *ZSClient) AddHybridKeySecret(ctx context.Context, params param.AddHybridKeySecretParam) (*view.HybridAccountInventoryView, error) {
 	resp := view.HybridAccountInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/hybrid/key", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/hybrid/key", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6018,9 +6138,9 @@ func (cli *ZSClient) DetachVmFromVmSchedulingRuleGroup(ctx context.Context, uuid
 }
 
 // AddVRouterNetworksToOspfArea adds VRouterNetworksToOspfArea
-func (cli *ZSClient) AddVRouterNetworksToOspfArea(ctx context.Context, params param.AddVRouterNetworksToOspfAreaParam) (*view.NetworkRouterAreaRefInventoryView, error) {
+func (cli *ZSClient) AddVRouterNetworksToOspfArea(ctx context.Context, routerAreaUuid string, vRouterUuid string, params param.AddVRouterNetworksToOspfAreaParam) (*view.NetworkRouterAreaRefInventoryView, error) {
 	resp := view.NetworkRouterAreaRefInventoryView{}
-	if err := cli.Post(ctx, "v1/routerArea/{routerAreaUuid}/router/{vRouterUuid}/addnetworks", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/routerArea/%s/router/%s/addnetworks", routerAreaUuid, vRouterUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6048,9 +6168,20 @@ func (cli *ZSClient) PageSNSSmsEndpoint(ctx context.Context, params *param.Query
 }
 
 // AddRolesToIAM2VirtualIDGroup adds RolesToIAM2VirtualIDGroup
-func (cli *ZSClient) AddRolesToIAM2VirtualIDGroup(ctx context.Context, params param.AddRolesToIAM2VirtualIDGroupParam) (*view.AddRolesToIAM2VirtualIDGroupEventView, error) {
+func (cli *ZSClient) AddRolesToIAM2VirtualIDGroup(ctx context.Context, groupUuid string, params param.AddRolesToIAM2VirtualIDGroupParam) (*view.AddRolesToIAM2VirtualIDGroupEventView, error) {
 	resp := view.AddRolesToIAM2VirtualIDGroupEventView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/groups/{groupUuid}/roles", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/projects/groups/%s/roles", groupUuid), "", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SetVmDGpuStrategy operates on VmDGpuStrategy
+func (cli *ZSClient) SetVmDGpuStrategy(ctx context.Context, vmInstanceUuid string, params param.SetVmDGpuStrategyParam) (*view.SetVmDGpuStrategyEventView, error) {
+	resp := view.SetVmDGpuStrategyEventView{}
+	if err := cli.PutWithRespKey(ctx, "v1/vm-instances", vmInstanceUuid, "", map[string]interface{}{
+		"setVmDGpuStrategy": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6059,7 +6190,7 @@ func (cli *ZSClient) AddRolesToIAM2VirtualIDGroup(ctx context.Context, params pa
 // CheckStaticProvisionIp operates on StaticProvisionIp
 func (cli *ZSClient) CheckStaticProvisionIp(ctx context.Context, params param.CheckStaticProvisionIpParam) (*view.CheckStaticProvisionIpView, error) {
 	resp := view.CheckStaticProvisionIpView{}
-	if err := cli.Post(ctx, "v1/baremetal2/bm-instances/static/provision/ip/check", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal2/bm-instances/static/provision/ip/check", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6088,9 +6219,9 @@ func (cli *ZSClient) PushLicenseAddOnsUsage(ctx context.Context, params param.Pu
 }
 
 // AttachHybridEipToEcs operates on HybridEipToEcs
-func (cli *ZSClient) AttachHybridEipToEcs(ctx context.Context, params param.AttachHybridEipToEcsParam) (*view.HybridEipAddressInventoryView, error) {
+func (cli *ZSClient) AttachHybridEipToEcs(ctx context.Context, eipUuid string, params param.AttachHybridEipToEcsParam) (*view.HybridEipAddressInventoryView, error) {
 	resp := view.HybridEipAddressInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/eip/{eipUuid}/attach", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/eip/%s/attach", eipUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6099,25 +6230,25 @@ func (cli *ZSClient) AttachHybridEipToEcs(ctx context.Context, params param.Atta
 // CreateEcsImageFromLocalImage creates EcsImageFromLocalImage
 func (cli *ZSClient) CreateEcsImageFromLocalImage(ctx context.Context, params param.CreateEcsImageFromLocalImageParam) (*view.EcsImageInventoryView, error) {
 	resp := view.EcsImageInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/image", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/image", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddHostRouteToL3Network adds HostRouteToL3Network
-func (cli *ZSClient) AddHostRouteToL3Network(ctx context.Context, params param.AddHostRouteToL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) AddHostRouteToL3Network(ctx context.Context, l3NetworkUuid string, params param.AddHostRouteToL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	resp := view.L3NetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/hostroute", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/hostroute", l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddInstanceToMonitorGroup adds InstanceToMonitorGroup
-func (cli *ZSClient) AddInstanceToMonitorGroup(ctx context.Context, params param.AddInstanceToMonitorGroupParam) (*view.MonitorGroupInstanceInventoryView, error) {
+func (cli *ZSClient) AddInstanceToMonitorGroup(ctx context.Context, groupUuid string, params param.AddInstanceToMonitorGroupParam) (*view.MonitorGroupInstanceInventoryView, error) {
 	resp := view.MonitorGroupInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/monitorgroups/{groupUuid}/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zwatch/monitorgroups/%s/actions", groupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6133,9 +6264,9 @@ func (cli *ZSClient) GetBareMetal2ProvisionNetworkIpAddressCapacity(ctx context.
 }
 
 // AttachMdevDeviceToVm operates on MdevDeviceToVm
-func (cli *ZSClient) AttachMdevDeviceToVm(ctx context.Context, params param.AttachMdevDeviceToVmParam) (*view.MdevDeviceInventoryView, error) {
+func (cli *ZSClient) AttachMdevDeviceToVm(ctx context.Context, mdevDeviceUuid string, vmInstanceUuid string, params param.AttachMdevDeviceToVmParam) (*view.MdevDeviceInventoryView, error) {
 	resp := view.MdevDeviceInventoryView{}
-	if err := cli.Post(ctx, "v1/mdev-devices/{mdevDeviceUuid}/vm-instances/{vmInstanceUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/mdev-devices/%s/vm-instances/%s", mdevDeviceUuid, vmInstanceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6144,7 +6275,7 @@ func (cli *ZSClient) AttachMdevDeviceToVm(ctx context.Context, params param.Atta
 // DecodeStackTemplate operates on DecodeStackTemplate
 func (cli *ZSClient) DecodeStackTemplate(ctx context.Context, params param.DecodeStackTemplateParam) (*view.DecodeStackTemplateView, error) {
 	resp := view.DecodeStackTemplateView{}
-	if err := cli.Post(ctx, "v1/cloudformation/stack/preview/resource", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cloudformation/stack/preview/resource", "resources", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6194,7 +6325,7 @@ func (cli *ZSClient) PageEcsInstanceFromLocal(ctx context.Context, params *param
 // CreateL2HardwareVxlanNetworkPool creates L2HardwareVxlanNetworkPool
 func (cli *ZSClient) CreateL2HardwareVxlanNetworkPool(ctx context.Context, params param.CreateL2HardwareVxlanNetworkPoolParam) (*view.CreateL2HardwareVxlanNetworkPoolEventView, error) {
 	resp := view.CreateL2HardwareVxlanNetworkPoolEventView{}
-	if err := cli.Post(ctx, "v1/l2-networks/hardware-vxlan-pool", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l2-networks/hardware-vxlan-pool", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6230,9 +6361,9 @@ func (cli *ZSClient) GetEipAttachableVmNics(ctx context.Context, uuid string) (*
 }
 
 // AddIpv6RangeByNetworkCidr adds Ipv6RangeByNetworkCidr
-func (cli *ZSClient) AddIpv6RangeByNetworkCidr(ctx context.Context, params param.AddIpv6RangeByNetworkCidrParam) (*view.IpRangeInventoryView, error) {
+func (cli *ZSClient) AddIpv6RangeByNetworkCidr(ctx context.Context, l3NetworkUuid string, params param.AddIpv6RangeByNetworkCidrParam) (*view.IpRangeInventoryView, error) {
 	resp := view.IpRangeInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/ipv6-ranges/by-cidr", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/ipv6-ranges/by-cidr", l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6259,9 +6390,9 @@ func (cli *ZSClient) ReloadExternalService(ctx context.Context, params param.Rel
 }
 
 // AddIAM2VirtualIDsToGroup adds IAM2VirtualIDsToGroup
-func (cli *ZSClient) AddIAM2VirtualIDsToGroup(ctx context.Context, params param.AddIAM2VirtualIDsToGroupParam) (*view.AddIAM2VirtualIDToGroupEventView, error) {
+func (cli *ZSClient) AddIAM2VirtualIDsToGroup(ctx context.Context, groupUuid string, params param.AddIAM2VirtualIDsToGroupParam) (*view.AddIAM2VirtualIDToGroupEventView, error) {
 	resp := view.AddIAM2VirtualIDToGroupEventView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/groups/{groupUuid}/virtual-ids", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/projects/groups/%s/virtual-ids", groupUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6270,7 +6401,7 @@ func (cli *ZSClient) AddIAM2VirtualIDsToGroup(ctx context.Context, params param.
 // CreateIAM2VirtualIDLdapBinding creates IAM2VirtualIDLdapBinding
 func (cli *ZSClient) CreateIAM2VirtualIDLdapBinding(ctx context.Context, params param.CreateIAM2VirtualIDLdapBindingParam) (*view.LdapResourceRefInventoryView, error) {
 	resp := view.LdapResourceRefInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/ldap/bindings", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/ldap/bindings", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6311,7 +6442,7 @@ func (cli *ZSClient) PageResourcePrice(ctx context.Context, params *param.QueryP
 // AddIdentityZoneFromRemote adds IdentityZoneFromRemote
 func (cli *ZSClient) AddIdentityZoneFromRemote(ctx context.Context, params param.AddIdentityZoneFromRemoteParam) (*view.IdentityZoneInventoryView, error) {
 	resp := view.IdentityZoneInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/identity-zone", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/identity-zone", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6331,7 +6462,7 @@ func (cli *ZSClient) GetVolumeSnapshotSize(ctx context.Context, uuid string, par
 // BatchSyncVolumeSize operates on SyncVolumeSize
 func (cli *ZSClient) BatchSyncVolumeSize(ctx context.Context, params param.BatchSyncVolumeSizeParam) (*view.BatchSyncVolumeSizeView, error) {
 	resp := view.BatchSyncVolumeSizeView{}
-	if err := cli.Post(ctx, "v1/volumes/batch-sync-volumes", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/volumes/batch-sync-volumes", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6367,7 +6498,7 @@ func (cli *ZSClient) GetVmMonitorNumber(ctx context.Context, uuid string) (*view
 // CreateIAM2VirtualIDFromLdapUid creates IAM2VirtualIDFromLdapUid
 func (cli *ZSClient) CreateIAM2VirtualIDFromLdapUid(ctx context.Context, params param.CreateIAM2VirtualIDFromLdapUidParam) (*view.LdapResourceRefInventoryView, error) {
 	resp := view.LdapResourceRefInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/virtual-id/ldap/uid", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/virtual-id/ldap/uid", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6403,7 +6534,7 @@ func (cli *ZSClient) RemoveActionFromEventSubscription(ctx context.Context, subs
 // CheckKVMHostConfigFile operates on KVMHostConfigFile
 func (cli *ZSClient) CheckKVMHostConfigFile(ctx context.Context) (*view.CheckHostConfigFileView, error) {
 	resp := view.CheckHostConfigFileView{}
-	if err := cli.Post(ctx, "v1/hosts/kvm/from-file/check", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hosts/kvm/from-file/check", "", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6421,7 +6552,7 @@ func (cli *ZSClient) GetContainerUsage(ctx context.Context) (*view.GetContainerU
 // SNSSnmpTestConnection operates on SnmpTestConnection
 func (cli *ZSClient) SNSSnmpTestConnection(ctx context.Context, params param.SNSSnmpTestConnectionParam) (*view.SNSSnmpTestConnectionEventView, error) {
 	resp := view.SNSSnmpTestConnectionEventView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/snmp/test-connection", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/snmp/test-connection", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6460,7 +6591,7 @@ func (cli *ZSClient) PageGCJob(ctx context.Context, params *param.QueryParam) ([
 // CreateHostNetworkServiceType creates HostNetworkServiceType
 func (cli *ZSClient) CreateHostNetworkServiceType(ctx context.Context, params param.CreateHostNetworkServiceTypeParam) (*view.HostNetworkLabelInventoryView, error) {
 	resp := view.HostNetworkLabelInventoryView{}
-	if err := cli.Post(ctx, "v1/hosts/service-types", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hosts/service-types", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6495,9 +6626,9 @@ func (cli *ZSClient) GetVolumeQos(ctx context.Context, uuid string) (*view.GetVo
 }
 
 // AddRemoteCidrsToIPsecConnection adds RemoteCidrsToIPsecConnection
-func (cli *ZSClient) AddRemoteCidrsToIPsecConnection(ctx context.Context, params param.AddRemoteCidrsToIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
+func (cli *ZSClient) AddRemoteCidrsToIPsecConnection(ctx context.Context, uuid string, params param.AddRemoteCidrsToIPsecConnectionParam) (*view.IPsecConnectionInventoryView, error) {
 	resp := view.IPsecConnectionInventoryView{}
-	if err := cli.Post(ctx, "v1/ipsec/{uuid}/remote-cidrs", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/ipsec/%s/remote-cidrs", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6517,16 +6648,16 @@ func (cli *ZSClient) PowerOnBaremetalChassis(ctx context.Context, chassisUuid st
 // RequestLicenseCapacity operates on RequestLicenseCapacity
 func (cli *ZSClient) RequestLicenseCapacity(ctx context.Context, params param.RequestLicenseCapacityParam) (*view.LicenseAuthorizedCapacityInventoryView, error) {
 	resp := view.LicenseAuthorizedCapacityInventoryView{}
-	if err := cli.Post(ctx, "v1/license-server/capacity-application", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/license-server/capacity-application", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateDataVolumeFromVolumeSnapshot creates DataVolumeFromVolumeSnapshot
-func (cli *ZSClient) CreateDataVolumeFromVolumeSnapshot(ctx context.Context, params param.CreateDataVolumeFromVolumeSnapshotParam) (*view.VolumeInventoryView, error) {
+func (cli *ZSClient) CreateDataVolumeFromVolumeSnapshot(ctx context.Context, volumeSnapshotUuid string, params param.CreateDataVolumeFromVolumeSnapshotParam) (*view.VolumeInventoryView, error) {
 	resp := view.VolumeInventoryView{}
-	if err := cli.Post(ctx, "v1/volumes/data/from/volume-snapshots/{volumeSnapshotUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/volumes/data/from/volume-snapshots/%s", volumeSnapshotUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6594,7 +6725,7 @@ func (cli *ZSClient) KvmRunShell(ctx context.Context, params param.KvmRunShellPa
 // CreateAliyunNasAccessGroupRule creates AliyunNasAccessGroupRule
 func (cli *ZSClient) CreateAliyunNasAccessGroupRule(ctx context.Context, params param.CreateAliyunNasAccessGroupRuleParam) (*view.AliyunNasAccessRuleInventoryView, error) {
 	resp := view.AliyunNasAccessRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/nas/aliyun/rule", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/nas/aliyun/rule", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6630,10 +6761,21 @@ func (cli *ZSClient) ExpungeDataVolume(ctx context.Context, uuid string) error {
 	return cli.Put(ctx, "v1/volumes", uuid, params, nil)
 }
 
+// DetachDGpuFromVm operates on DGpuFromVm
+func (cli *ZSClient) DetachDGpuFromVm(ctx context.Context, vmInstanceUuid string, params param.DetachDGpuFromVmParam) (*view.DetachDGpuFromVmEventView, error) {
+	resp := view.DetachDGpuFromVmEventView{}
+	if err := cli.PutWithRespKey(ctx, "v1/vm-instances", vmInstanceUuid, "", map[string]interface{}{
+		"detachDGpuFromVm": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // AddActionToEventSubscription adds ActionToEventSubscription
-func (cli *ZSClient) AddActionToEventSubscription(ctx context.Context, params param.AddActionToEventSubscriptionParam) (*view.EventSubscriptionInventoryView, error) {
+func (cli *ZSClient) AddActionToEventSubscription(ctx context.Context, subscriptionUuid string, params param.AddActionToEventSubscriptionParam) (*view.EventSubscriptionInventoryView, error) {
 	resp := view.EventSubscriptionInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/events/subscriptions/{subscriptionUuid}/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zwatch/events/subscriptions/%s/actions", subscriptionUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6720,7 +6862,7 @@ func (cli *ZSClient) UpdateAtPersonOfAtFeiShuEndpoint(ctx context.Context, uuid 
 // CreateL2HardwareVxlanNetwork creates L2HardwareVxlanNetwork
 func (cli *ZSClient) CreateL2HardwareVxlanNetwork(ctx context.Context, params param.CreateL2HardwareVxlanNetworkParam) (*view.CreateL2HardwareVxlanNetworkEventView, error) {
 	resp := view.CreateL2HardwareVxlanNetworkEventView{}
-	if err := cli.Post(ctx, "v1/l2-networks/hardware-vxlan", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l2-networks/hardware-vxlan", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6739,16 +6881,16 @@ func (cli *ZSClient) GetGlobalConfigOptions(ctx context.Context, category string
 // CreateHybridEip creates HybridEip
 func (cli *ZSClient) CreateHybridEip(ctx context.Context, params param.CreateHybridEipParam) (*view.HybridEipAddressInventoryView, error) {
 	resp := view.HybridEipAddressInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/eip", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/eip", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // ApplyMonitorTemplateToMonitorGroup operates on MonitorTemplateToMonitorGroup
-func (cli *ZSClient) ApplyMonitorTemplateToMonitorGroup(ctx context.Context, params param.ApplyMonitorTemplateToMonitorGroupParam) (*view.MonitorGroupTemplateRefInventoryView, error) {
+func (cli *ZSClient) ApplyMonitorTemplateToMonitorGroup(ctx context.Context, templateUuid string, groupUuid string, params param.ApplyMonitorTemplateToMonitorGroupParam) (*view.MonitorGroupTemplateRefInventoryView, error) {
 	resp := view.MonitorGroupTemplateRefInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/monitortemplates/{templateUuid}/monitorgroups/{groupUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zwatch/monitortemplates/%s/monitorgroups/%s", templateUuid, groupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6757,7 +6899,7 @@ func (cli *ZSClient) ApplyMonitorTemplateToMonitorGroup(ctx context.Context, par
 // PutMetricData operates on PutMetricData
 func (cli *ZSClient) PutMetricData(ctx context.Context, params param.PutMetricDataParam) (*view.PutMetricDataEventView, error) {
 	resp := view.PutMetricDataEventView{}
-	if err := cli.Post(ctx, "v1/zwatch/metrics", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/metrics", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6845,9 +6987,9 @@ func (cli *ZSClient) GetVmUsbRedirect(ctx context.Context, uuid string) (*view.G
 }
 
 // CreateImageGroupFromSnapshot creates ImageGroupFromSnapshot
-func (cli *ZSClient) CreateImageGroupFromSnapshot(ctx context.Context, params param.CreateImageGroupFromSnapshotParam) (*view.ImageGroupInventoryView, error) {
+func (cli *ZSClient) CreateImageGroupFromSnapshot(ctx context.Context, rootVolumeSnapshotUuid string, params param.CreateImageGroupFromSnapshotParam) (*view.ImageGroupInventoryView, error) {
 	resp := view.ImageGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/imagegroup/from/snapshot/{rootVolumeSnapshotUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/imagegroup/from/snapshot/%s", rootVolumeSnapshotUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6863,9 +7005,9 @@ func (cli *ZSClient) GetOssBucketFileFromRemote(ctx context.Context) (*view.GetO
 }
 
 // AttachVipToVpcSharedQos operates on VipToVpcSharedQos
-func (cli *ZSClient) AttachVipToVpcSharedQos(ctx context.Context, params param.AttachVipToVpcSharedQosParam) (*view.AttachVipToVpcSharedQosEventView, error) {
+func (cli *ZSClient) AttachVipToVpcSharedQos(ctx context.Context, sharedQosUuid string, params param.AttachVipToVpcSharedQosParam) (*view.AttachVipToVpcSharedQosEventView, error) {
 	resp := view.AttachVipToVpcSharedQosEventView{}
-	if err := cli.Post(ctx, "v1/vips/sharedqos/{sharedQosUuid}/vips", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vips/sharedqos/%s/vips", sharedQosUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6937,10 +7079,19 @@ func (cli *ZSClient) DetachBackupStorageFromZone(ctx context.Context, zoneUuid s
 	return cli.DeleteWithSpec(ctx, "v1/zones", zoneUuid, fmt.Sprintf("backup-storage/%s", backupStorageUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 
+// GetVpcVRouterSnatLogState gets VpcVRouterSnatLogState by uuid
+func (cli *ZSClient) GetVpcVRouterSnatLogState(ctx context.Context, uuid string) (*view.GetVpcVRouterSnatLogStateView, error) {
+	var resp view.GetVpcVRouterSnatLogStateView
+	if err := cli.GetWithRespKey(ctx, "v1/vpc/virtual-routers", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // UpdateCCSCertificateUserState updates CCSCertificateUserState
-func (cli *ZSClient) UpdateCCSCertificateUserState(ctx context.Context, params param.UpdateCCSCertificateUserStateParam) (*view.CCSCertificateInventoryView, error) {
+func (cli *ZSClient) UpdateCCSCertificateUserState(ctx context.Context, userUuid string, params param.UpdateCCSCertificateUserStateParam) (*view.CCSCertificateInventoryView, error) {
 	resp := view.CCSCertificateInventoryView{}
-	if err := cli.Post(ctx, "v1/crypto/ccs-certificate/update-state/{userUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/crypto/ccs-certificate/update-state/%s", userUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6971,7 +7122,7 @@ func (cli *ZSClient) CleanUpTrashOnPrimaryStorage(ctx context.Context, uuid stri
 // AddDisasterImageStoreBackupStorage adds DisasterImageStoreBackupStorage
 func (cli *ZSClient) AddDisasterImageStoreBackupStorage(ctx context.Context, params param.AddDisasterImageStoreBackupStorageParam) (*view.ImageStoreBackupStorageInventoryView, error) {
 	resp := view.ImageStoreBackupStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/backup-storage/image-store/disaster", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/backup-storage/image-store/disaster", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -6980,16 +7131,16 @@ func (cli *ZSClient) AddDisasterImageStoreBackupStorage(ctx context.Context, par
 // CreateVolumesSnapshot creates VolumesSnapshot
 func (cli *ZSClient) CreateVolumesSnapshot(ctx context.Context, params param.CreateVolumesSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {
 	resp := view.VolumeSnapshotInventoryView{}
-	if err := cli.Post(ctx, "v1/volumes/volume-snapshots", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/volumes/volume-snapshots", "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // GetVmSchedulingRulesExecuteState gets VmSchedulingRulesExecuteState by uuid
-func (cli *ZSClient) GetVmSchedulingRulesExecuteState(ctx context.Context, params param.GetVmSchedulingRulesExecuteStateParam) (*view.GetVmSchedulingRulesExecuteStateView, error) {
-	resp := view.GetVmSchedulingRulesExecuteStateView{}
-	if err := cli.Post(ctx, "v1/get/vmSchedulingRules/conflict/state", params, &resp); err != nil {
+func (cli *ZSClient) GetVmSchedulingRulesExecuteState(ctx context.Context) (*view.GetVmSchedulingRulesExecuteStateView, error) {
+	var resp view.GetVmSchedulingRulesExecuteStateView
+	if err := cli.GetWithRespKey(ctx, "v1/get/vmSchedulingRules/conflict/state", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7065,16 +7216,16 @@ func (cli *ZSClient) GetSignatureServerEncryptPublicKey(ctx context.Context) (*v
 // AddAliyunKeySecret adds AliyunKeySecret
 func (cli *ZSClient) AddAliyunKeySecret(ctx context.Context, params param.AddAliyunKeySecretParam) (*view.HybridAccountInventoryView, error) {
 	resp := view.HybridAccountInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/key", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/key", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddBackupStoragesToReplicationGroup adds BackupStoragesToReplicationGroup
-func (cli *ZSClient) AddBackupStoragesToReplicationGroup(ctx context.Context, params param.AddBackupStoragesToReplicationGroupParam) (*view.ImageReplicationGroupBackupStorageRefInventoryView, error) {
+func (cli *ZSClient) AddBackupStoragesToReplicationGroup(ctx context.Context, replicationGroupUuid string, params param.AddBackupStoragesToReplicationGroupParam) (*view.ImageReplicationGroupBackupStorageRefInventoryView, error) {
 	resp := view.ImageReplicationGroupBackupStorageRefInventoryView{}
-	if err := cli.Post(ctx, "v1/image-replication-groups/{replicationGroupUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/image-replication-groups/%s", replicationGroupUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7083,7 +7234,7 @@ func (cli *ZSClient) AddBackupStoragesToReplicationGroup(ctx context.Context, pa
 // AddDataCenterFromRemote adds DataCenterFromRemote
 func (cli *ZSClient) AddDataCenterFromRemote(ctx context.Context, params param.AddDataCenterFromRemoteParam) (*view.DataCenterInventoryView, error) {
 	resp := view.DataCenterInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/data-center", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/data-center", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7097,7 +7248,7 @@ func (cli *ZSClient) DeleteFirewallRuleSet(ctx context.Context, uuid string, del
 // BatchAddBareMetal2IpmiChassis operates on AddBareMetal2IpmiChassis
 func (cli *ZSClient) BatchAddBareMetal2IpmiChassis(ctx context.Context) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal2/chassis/ipmi/from-file", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal2/chassis/ipmi/from-file", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7137,9 +7288,9 @@ func (cli *ZSClient) SetOrganizationOperation(ctx context.Context, uuid string, 
 }
 
 // CreateDataVolumeTemplateFromVolume creates DataVolumeTemplateFromVolume
-func (cli *ZSClient) CreateDataVolumeTemplateFromVolume(ctx context.Context, params param.CreateDataVolumeTemplateFromVolumeParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) CreateDataVolumeTemplateFromVolume(ctx context.Context, volumeUuid string, params param.CreateDataVolumeTemplateFromVolumeParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Post(ctx, "v1/images/data-volume-templates/from/volumes/{volumeUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/images/data-volume-templates/from/volumes/%s", volumeUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7176,9 +7327,9 @@ func (cli *ZSClient) ExportDatabaseBackupFromBackupStorage(ctx context.Context, 
 }
 
 // AttachIAM2ProjectToIAM2Organization operates on IAM2ProjectToIAM2Organization
-func (cli *ZSClient) AttachIAM2ProjectToIAM2Organization(ctx context.Context, params param.AttachIAM2ProjectToIAM2OrganizationParam) (*view.IAM2ProjectInventoryView, error) {
+func (cli *ZSClient) AttachIAM2ProjectToIAM2Organization(ctx context.Context, projectUuid string, organizationUuid string, params param.AttachIAM2ProjectToIAM2OrganizationParam) (*view.IAM2ProjectInventoryView, error) {
 	resp := view.IAM2ProjectInventoryView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/{projectUuid}/iam2/organizations/{organizationUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/projects/%s/iam2/organizations/%s", projectUuid, organizationUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7187,16 +7338,16 @@ func (cli *ZSClient) AttachIAM2ProjectToIAM2Organization(ctx context.Context, pa
 // CreateEmailMonitorTriggerAction creates EmailMonitorTrigger
 func (cli *ZSClient) CreateEmailMonitorTriggerAction(ctx context.Context, params param.CreateEmailMonitorTriggerActionParam) (*view.MonitorTriggerActionInventoryView, error) {
 	resp := view.MonitorTriggerActionInventoryView{}
-	if err := cli.Post(ctx, "v1/monitoring/trigger-actions/emails", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/monitoring/trigger-actions/emails", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SetVpcVRouterDistributedRoutingEnabled operates on VpcVRouterDistributedRoutingEnabled
-func (cli *ZSClient) SetVpcVRouterDistributedRoutingEnabled(ctx context.Context, params param.SetVpcVRouterDistributedRoutingEnabledParam) (*view.SetVpcVRouterDistributedRoutingEnabledEventView, error) {
+func (cli *ZSClient) SetVpcVRouterDistributedRoutingEnabled(ctx context.Context, uuid string, params param.SetVpcVRouterDistributedRoutingEnabledParam) (*view.SetVpcVRouterDistributedRoutingEnabledEventView, error) {
 	resp := view.SetVpcVRouterDistributedRoutingEnabledEventView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/distributed-routing", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/distributed-routing", uuid), "enabled", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7223,9 +7374,9 @@ func (cli *ZSClient) GetLocalRaidPhysicalDriveSmart(ctx context.Context, uuid st
 }
 
 // UpdateHybridKeySecret updates HybridKeySecret
-func (cli *ZSClient) UpdateHybridKeySecret(ctx context.Context, params param.UpdateHybridKeySecretParam) (*view.HybridAccountInventoryView, error) {
+func (cli *ZSClient) UpdateHybridKeySecret(ctx context.Context, uuid string, params param.UpdateHybridKeySecretParam) (*view.HybridAccountInventoryView, error) {
 	resp := view.HybridAccountInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/hybrid/{uuid}/key", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/hybrid/%s/key", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7242,6 +7393,17 @@ func (cli *ZSClient) PullHuaweiIMasterController(ctx context.Context, uuid strin
 	return &resp, nil
 }
 
+// DisableDGpuMode operates on DisableDGpuMode
+func (cli *ZSClient) DisableDGpuMode(ctx context.Context, gpuDeviceUuid string, params param.DisableDGpuModeParam) (*view.DisableDGpuModeEventView, error) {
+	resp := view.DisableDGpuModeEventView{}
+	if err := cli.PutWithRespKey(ctx, "v1/gpu-device/gpu-devices", gpuDeviceUuid, "", map[string]interface{}{
+		"disableDGpuMode": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // RemoveRolesFromIAM2VirtualIDGroup removes RolesFromIAM2VirtualIDGroup
 func (cli *ZSClient) RemoveRolesFromIAM2VirtualIDGroup(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete(ctx, "v1/iam2/projects/groups", uuid, string(deleteMode))
@@ -7250,7 +7412,7 @@ func (cli *ZSClient) RemoveRolesFromIAM2VirtualIDGroup(ctx context.Context, uuid
 // AckAlarmData operates on AlarmData
 func (cli *ZSClient) AckAlarmData(ctx context.Context, params param.AckAlarmDataParam) (*view.AlertDataAckInventoryView, error) {
 	resp := view.AlertDataAckInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/alarm-histories/acknowledgments", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/alarm-histories/acknowledgments", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7275,7 +7437,7 @@ func (cli *ZSClient) ChangeIAM2OrganizationParent(ctx context.Context, parentUui
 // SNSWeComTestConnection operates on WeComTestConnection
 func (cli *ZSClient) SNSWeComTestConnection(ctx context.Context, params param.SNSWeComTestConnectionParam) (*view.SNSWeComTestConnectionEventView, error) {
 	resp := view.SNSWeComTestConnectionEventView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/we-com/test-connection", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/we-com/test-connection", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7324,9 +7486,9 @@ func (cli *ZSClient) GetChronyServers(ctx context.Context) (*view.GetChronyServe
 }
 
 // AttachL3NetworkToVmNic operates on L3NetworkToVmNic
-func (cli *ZSClient) AttachL3NetworkToVmNic(ctx context.Context, params param.AttachL3NetworkToVmNicParam) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) AttachL3NetworkToVmNic(ctx context.Context, vmNicUuid string, l3NetworkUuid string, params param.AttachL3NetworkToVmNicParam) (*view.VmNicInventoryView, error) {
 	resp := view.VmNicInventoryView{}
-	if err := cli.Post(ctx, "v1/nics/{vmNicUuid}/l3-networks/{l3NetworkUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/nics/%s/l3-networks/%s", vmNicUuid, l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7357,7 +7519,7 @@ func (cli *ZSClient) SetVmQxlMemory(ctx context.Context, uuid string, params par
 // AddLocalPrimaryStorage adds LocalPrimaryStorage
 func (cli *ZSClient) AddLocalPrimaryStorage(ctx context.Context) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/local-storage", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/local-storage", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7417,16 +7579,16 @@ func (cli *ZSClient) ChangeSecretResourcePoolState(ctx context.Context, uuid str
 // AddSimulatorBackupStorage adds SimulatorBackupStorage
 func (cli *ZSClient) AddSimulatorBackupStorage(ctx context.Context, params param.AddSimulatorBackupStorageParam) (*view.BackupStorageInventoryView, error) {
 	resp := view.BackupStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/backup-storage/simulators", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/backup-storage/simulators", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // BindModelToService operates on BindModelToService
-func (cli *ZSClient) BindModelToService(ctx context.Context, params param.BindModelToServiceParam) (*view.ModelServiceInventoryView, error) {
+func (cli *ZSClient) BindModelToService(ctx context.Context, modelUuid string, modelServiceUuid string, params param.BindModelToServiceParam) (*view.ModelServiceInventoryView, error) {
 	resp := view.ModelServiceInventoryView{}
-	if err := cli.Post(ctx, "v1/ai/models/{modelUuid}/model-services/{modelServiceUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/ai/models/%s/model-services/%s", modelUuid, modelServiceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7451,9 +7613,9 @@ func (cli *ZSClient) CheckNetworkReachable(ctx context.Context) (*view.CheckNetw
 }
 
 // SetFlowMeterRouterId operates on FlowMeterRouterId
-func (cli *ZSClient) SetFlowMeterRouterId(ctx context.Context, params param.SetFlowMeterRouterIdParam) (*view.SetFlowMeterRouterIdEventView, error) {
+func (cli *ZSClient) SetFlowMeterRouterId(ctx context.Context, vRouterUuid string, params param.SetFlowMeterRouterIdParam) (*view.SetFlowMeterRouterIdEventView, error) {
 	resp := view.SetFlowMeterRouterIdEventView{}
-	if err := cli.Post(ctx, "v1/flowmeters/{vRouterUuid}/routerid", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/flowmeters/%s/routerid", vRouterUuid), "routerId", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7462,7 +7624,7 @@ func (cli *ZSClient) SetFlowMeterRouterId(ctx context.Context, params param.SetF
 // AddStorageProtocol adds StorageProtocol
 func (cli *ZSClient) AddStorageProtocol(ctx context.Context, params param.AddStorageProtocolParam) (*view.AddStorageProtocolEventView, error) {
 	resp := view.AddStorageProtocolEventView{}
-	if err := cli.Post(ctx, "v1/primary-storage/protocol", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/protocol", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7509,9 +7671,9 @@ func (cli *ZSClient) UnregisterLicenseRequestedApplication(ctx context.Context, 
 }
 
 // AttachSecurityGroupToL3Network operates on SecurityGroupToL3Network
-func (cli *ZSClient) AttachSecurityGroupToL3Network(ctx context.Context, params param.AttachSecurityGroupToL3NetworkParam) (*view.SecurityGroupInventoryView, error) {
+func (cli *ZSClient) AttachSecurityGroupToL3Network(ctx context.Context, securityGroupUuid string, l3NetworkUuid string, params param.AttachSecurityGroupToL3NetworkParam) (*view.SecurityGroupInventoryView, error) {
 	resp := view.SecurityGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/security-groups/{securityGroupUuid}/l3-networks/{l3NetworkUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/security-groups/%s/l3-networks/%s", securityGroupUuid, l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7529,9 +7691,20 @@ func (cli *ZSClient) UpdateVmNicDriver(ctx context.Context, vmInstanceUuid strin
 }
 
 // SetIpOnHostNetworkInterface operates on IpOnHostNetworkInterface
-func (cli *ZSClient) SetIpOnHostNetworkInterface(ctx context.Context, params param.SetIpOnHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
+func (cli *ZSClient) SetIpOnHostNetworkInterface(ctx context.Context, interfaceUuid string, params param.SetIpOnHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
 	resp := view.HostNetworkInterfaceInventoryView{}
-	if err := cli.Post(ctx, "v1/hosts/nics/{interfaceUuid}/ip", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hosts/nics/%s/ip", interfaceUuid), "inventory", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ProvisionNfvInstGroup operates on ProvisionNfvInstGroup
+func (cli *ZSClient) ProvisionNfvInstGroup(ctx context.Context, uuid string, params param.ProvisionNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
+	resp := view.NfvInstGroupInventoryView{}
+	if err := cli.PutWithRespKey(ctx, "v1/nfvinstgroup/group", uuid, "", map[string]interface{}{
+		"provisionNfvInstGroup": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7641,6 +7814,15 @@ func (cli *ZSClient) DeleteVmUserDefinedXmlHookScript(ctx context.Context, uuid 
 	return cli.Delete(ctx, "v1/vm-instances", uuid, string(deleteMode))
 }
 
+// AddL3NetworkToGroup adds L3NetworkToGroup
+func (cli *ZSClient) AddL3NetworkToGroup(ctx context.Context, nfvInstGroupUuid string, networkServiceUuid string, params param.AddL3NetworkToGroupParam) (*view.AddL3NetworkToGroupEventView, error) {
+	resp := view.AddL3NetworkToGroupEventView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/nfvinstgroup/group/%s/service/%s", nfvInstGroupUuid, networkServiceUuid), "", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // SyncZBoxCapacity operates on ZBoxCapacity
 func (cli *ZSClient) SyncZBoxCapacity(ctx context.Context, uuid string, params param.SyncZBoxCapacityParam) (*view.ZBoxInventoryView, error) {
 	resp := view.ZBoxInventoryView{}
@@ -7655,7 +7837,7 @@ func (cli *ZSClient) SyncZBoxCapacity(ctx context.Context, uuid string, params p
 // AckEventData operates on EventData
 func (cli *ZSClient) AckEventData(ctx context.Context, params param.AckEventDataParam) (*view.AlertDataAckInventoryView, error) {
 	resp := view.AlertDataAckInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/event-histories/acknowledgments", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/zwatch/event-histories/acknowledgments", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7665,6 +7847,17 @@ func (cli *ZSClient) AckEventData(ctx context.Context, params param.AckEventData
 func (cli *ZSClient) CheckResourcePermission(ctx context.Context) (*view.CheckResourcePermissionView, error) {
 	var resp view.CheckResourcePermissionView
 	if err := cli.GetWithRespKey(ctx, "v1/accounts/resource/api-permissions", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ProvisionNfvInstConfig operates on ProvisionNfvInstConfig
+func (cli *ZSClient) ProvisionNfvInstConfig(ctx context.Context, vmInstanceUuid string, params param.ProvisionNfvInstConfigParam) (*view.ApplianceVmInventoryView, error) {
+	resp := view.ApplianceVmInventoryView{}
+	if err := cli.PutWithRespKey(ctx, "v1/vm-instances/appliances/nfvinst", vmInstanceUuid, "", map[string]interface{}{
+		"provisionNfvInstConfig": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7712,9 +7905,9 @@ func (cli *ZSClient) ChangeL3NetworkState(ctx context.Context, uuid string, para
 }
 
 // GetHostNUMATopology gets HostNUMATopology by uuid
-func (cli *ZSClient) GetHostNUMATopology(ctx context.Context, params param.GetHostNUMATopologyParam) (*view.GetHostNUMATopologyEventView, error) {
+func (cli *ZSClient) GetHostNUMATopology(ctx context.Context, uuid string, params param.GetHostNUMATopologyParam) (*view.GetHostNUMATopologyEventView, error) {
 	resp := view.GetHostNUMATopologyEventView{}
-	if err := cli.Post(ctx, "v1/hosts/{uuid}/numa", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hosts/%s/numa", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7723,16 +7916,16 @@ func (cli *ZSClient) GetHostNUMATopology(ctx context.Context, params param.GetHo
 // CreateL2VirtualSwitch creates L2VirtualSwitch
 func (cli *ZSClient) CreateL2VirtualSwitch(ctx context.Context, params param.CreateL2VirtualSwitchParam) (*view.CreateL2VirtualSwitchEventView, error) {
 	resp := view.CreateL2VirtualSwitchEventView{}
-	if err := cli.Post(ctx, "v1/l2-networks/virtual-switch", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l2-networks/virtual-switch", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddVmNicToLoadBalancer adds VmNicToLoadBalancer
-func (cli *ZSClient) AddVmNicToLoadBalancer(ctx context.Context, params param.AddVmNicToLoadBalancerParam) (*view.LoadBalancerListenerInventoryView, error) {
+func (cli *ZSClient) AddVmNicToLoadBalancer(ctx context.Context, listenerUuid string, params param.AddVmNicToLoadBalancerParam) (*view.LoadBalancerListenerInventoryView, error) {
 	resp := view.LoadBalancerListenerInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/listeners/{listenerUuid}/vm-instances/nics", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/load-balancers/listeners/%s/vm-instances/nics", listenerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7761,7 +7954,7 @@ func (cli *ZSClient) GetClusterDRSStatus(ctx context.Context) (*view.GetClusterD
 // AddAliyunNasPrimaryStorage adds AliyunNasPrimaryStorage
 func (cli *ZSClient) AddAliyunNasPrimaryStorage(ctx context.Context, params param.AddAliyunNasPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
 	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/aliyun/nas", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/aliyun/nas", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7788,9 +7981,9 @@ func (cli *ZSClient) ChangeZoneState(ctx context.Context, uuid string, params pa
 }
 
 // AttachAppBuildSystemToZone operates on AppBuildSystemToZone
-func (cli *ZSClient) AttachAppBuildSystemToZone(ctx context.Context, params param.AttachAppBuildSystemToZoneParam) (*view.AppBuildSystemZoneRefInventoryView, error) {
+func (cli *ZSClient) AttachAppBuildSystemToZone(ctx context.Context, zoneUuid string, buildSystemUuid string, params param.AttachAppBuildSystemToZoneParam) (*view.AppBuildSystemZoneRefInventoryView, error) {
 	resp := view.AppBuildSystemZoneRefInventoryView{}
-	if err := cli.Post(ctx, "v1/zones/{zoneUuid}/buildsystem/{buildSystemUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zones/%s/buildsystem/%s", zoneUuid, buildSystemUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7799,7 +7992,18 @@ func (cli *ZSClient) AttachAppBuildSystemToZone(ctx context.Context, params para
 // CreateDataVolume creates DataVolume
 func (cli *ZSClient) CreateDataVolume(ctx context.Context, params param.CreateDataVolumeParam) (*view.VolumeInventoryView, error) {
 	resp := view.VolumeInventoryView{}
-	if err := cli.Post(ctx, "v1/volumes/data", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/volumes/data", "inventory", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UngenerateHygonMdevDevices operates on UngenerateHygonMdevDevices
+func (cli *ZSClient) UngenerateHygonMdevDevices(ctx context.Context, hostUuid string, params param.UngenerateHygonMdevDevicesParam) (*view.UngenerateHygonMdevDevicesEventView, error) {
+	resp := view.UngenerateHygonMdevDevicesEventView{}
+	if err := cli.PutWithRespKey(ctx, "v1/hygon-devices", hostUuid, "", map[string]interface{}{
+		"ungenerateHygonMdevDevices": params.Params,
+	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7813,7 +8017,7 @@ func (cli *ZSClient) DeletePluginDrivers(ctx context.Context, uuid string, delet
 // BatchCreateBaremetalChassis operates on CreateBaremetalChassis
 func (cli *ZSClient) BatchCreateBaremetalChassis(ctx context.Context, params param.BatchCreateBaremetalChassisParam) (*view.LongJobInventoryView, error) {
 	resp := view.LongJobInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal/chassis/from-file", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal/chassis/from-file", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7835,9 +8039,9 @@ func (cli *ZSClient) BatchCreateBaremetalChassisAsync(ctx context.Context, param
 }
 
 // AddSchedulerJobToSchedulerTrigger adds SchedulerJobToSchedulerTrigger
-func (cli *ZSClient) AddSchedulerJobToSchedulerTrigger(ctx context.Context, params param.AddSchedulerJobToSchedulerTriggerParam) (*view.SchedulerJobSchedulerTriggerInventoryView, error) {
+func (cli *ZSClient) AddSchedulerJobToSchedulerTrigger(ctx context.Context, schedulerJobUuid string, schedulerTriggerUuid string, params param.AddSchedulerJobToSchedulerTriggerParam) (*view.SchedulerJobSchedulerTriggerInventoryView, error) {
 	resp := view.SchedulerJobSchedulerTriggerInventoryView{}
-	if err := cli.Post(ctx, "v1/scheduler/jobs/{schedulerJobUuid}/scheduler/triggers/{schedulerTriggerUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/scheduler/jobs/%s/scheduler/triggers/%s", schedulerJobUuid, schedulerTriggerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7878,9 +8082,18 @@ func (cli *ZSClient) GetNicQos(ctx context.Context, uuid string) (*view.GetNicQo
 }
 
 // ChangeVmNicNetwork changes VmNicNetwork
-func (cli *ZSClient) ChangeVmNicNetwork(ctx context.Context, params param.ChangeVmNicNetworkParam) (*view.VmNicInventoryView, error) {
+func (cli *ZSClient) ChangeVmNicNetwork(ctx context.Context, vmNicUuid string, destL3NetworkUuid string, params param.ChangeVmNicNetworkParam) (*view.VmNicInventoryView, error) {
 	resp := view.VmNicInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/nics/{vmNicUuid}/l3-networks/{destL3NetworkUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/nics/%s/l3-networks/%s", vmNicUuid, destL3NetworkUuid), "inventory", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CreateBareMetal2IpmiChassisHardwareInfo creates BareMetal2IpmiChassisHardwareInfo
+func (cli *ZSClient) CreateBareMetal2IpmiChassisHardwareInfo(ctx context.Context, params param.CreateBareMetal2IpmiChassisHardwareInfoParam) (*view.CreateBareMetal2ChassisHardwareView, error) {
+	resp := view.CreateBareMetal2ChassisHardwareView{}
+	if err := cli.PostWithRespKey(ctx, "v1/baremetal2/chassis/ipmi/hardwareinfos", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7889,15 +8102,6 @@ func (cli *ZSClient) ChangeVmNicNetwork(ctx context.Context, params param.Change
 // RemoveLabelFromAlarm removes LabelFromAlarm
 func (cli *ZSClient) RemoveLabelFromAlarm(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete(ctx, "v1/zwatch/alarms/labels", uuid, string(deleteMode))
-}
-
-// CreateBareMetal2IpmiChassisHardwareInfo creates BareMetal2IpmiChassisHardwareInfo
-func (cli *ZSClient) CreateBareMetal2IpmiChassisHardwareInfo(ctx context.Context, params param.CreateBareMetal2IpmiChassisHardwareInfoParam) (*view.CreateBareMetal2ChassisHardwareView, error) {
-	resp := view.CreateBareMetal2ChassisHardwareView{}
-	if err := cli.Post(ctx, "v1/baremetal2/chassis/ipmi/hardwareinfos", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
 }
 
 // DeleteIAM2VirtualIDLdapBinding deletes IAM2VirtualIDLdapBinding
@@ -7938,7 +8142,7 @@ func (cli *ZSClient) GetLicenseCapabilities(ctx context.Context) (*view.GetLicen
 // CreateFirewallRuleTemplate creates FirewallRuleTemplate
 func (cli *ZSClient) CreateFirewallRuleTemplate(ctx context.Context, params param.CreateFirewallRuleTemplateParam) (*view.VpcFirewallRuleTemplateInventoryView, error) {
 	resp := view.VpcFirewallRuleTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/vpcfirewalls/rules/template", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vpcfirewalls/rules/template", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -7987,9 +8191,9 @@ func (cli *ZSClient) GetCdpBackupStorageRequirement(ctx context.Context, uuid st
 }
 
 // AddAttributesToIAM2VirtualIDGroup adds AttributesToIAM2VirtualIDGroup
-func (cli *ZSClient) AddAttributesToIAM2VirtualIDGroup(ctx context.Context, params param.AddAttributesToIAM2VirtualIDGroupParam) (*view.AddAttributesToIAM2VirtualIDGroupEventView, error) {
+func (cli *ZSClient) AddAttributesToIAM2VirtualIDGroup(ctx context.Context, uuid string, params param.AddAttributesToIAM2VirtualIDGroupParam) (*view.AddAttributesToIAM2VirtualIDGroupEventView, error) {
 	resp := view.AddAttributesToIAM2VirtualIDGroupEventView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/groups/{uuid}/attributes", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/projects/groups/%s/attributes", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8018,9 +8222,9 @@ func (cli *ZSClient) ChangeSecurityGroupRuleState(ctx context.Context, securityG
 }
 
 // AddVmNicToSecurityGroup adds VmNicToSecurityGroup
-func (cli *ZSClient) AddVmNicToSecurityGroup(ctx context.Context, params param.AddVmNicToSecurityGroupParam) (*view.AddVmNicToSecurityGroupEventView, error) {
+func (cli *ZSClient) AddVmNicToSecurityGroup(ctx context.Context, securityGroupUuid string, params param.AddVmNicToSecurityGroupParam) (*view.AddVmNicToSecurityGroupEventView, error) {
 	resp := view.AddVmNicToSecurityGroupEventView{}
-	if err := cli.Post(ctx, "v1/security-groups/{securityGroupUuid}/vm-instances/nics", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/security-groups/%s/vm-instances/nics", securityGroupUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8069,7 +8273,7 @@ func (cli *ZSClient) GetCandidateZonesClustersHostsForCreatingVm(ctx context.Con
 // CreateResourcePrice creates ResourcePrice
 func (cli *ZSClient) CreateResourcePrice(ctx context.Context, params param.CreateResourcePriceParam) (*view.PriceInventoryView, error) {
 	resp := view.PriceInventoryView{}
-	if err := cli.Post(ctx, "v1/billings/prices", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/billings/prices", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8107,7 +8311,7 @@ func (cli *ZSClient) GetL3NetworkDhcpIpAddress(ctx context.Context, uuid string)
 // CreateFirewallRuleSet creates FirewallRuleSet
 func (cli *ZSClient) CreateFirewallRuleSet(ctx context.Context, params param.CreateFirewallRuleSetParam) (*view.VpcFirewallRuleSetInventoryView, error) {
 	resp := view.VpcFirewallRuleSetInventoryView{}
-	if err := cli.Post(ctx, "v1/vpcfirewalls/ruleSets", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vpcfirewalls/ruleSets", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8116,7 +8320,7 @@ func (cli *ZSClient) CreateFirewallRuleSet(ctx context.Context, params param.Cre
 // CreateJitSecretResourcePool creates JitSecretResourcePool
 func (cli *ZSClient) CreateJitSecretResourcePool(ctx context.Context) (*view.SecretResourcePoolInventoryView, error) {
 	resp := view.SecretResourcePoolInventoryView{}
-	if err := cli.Post(ctx, "v1/secret-resource-pool/jit", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/secret-resource-pool/jit", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8194,9 +8398,9 @@ func (cli *ZSClient) DeleteAliyunKeySecret(ctx context.Context, uuid string, del
 }
 
 // CreateVmInstanceFromVolumeSnapshot creates VmInstanceFromVolumeSnapshot
-func (cli *ZSClient) CreateVmInstanceFromVolumeSnapshot(ctx context.Context, params param.CreateVmInstanceFromVolumeSnapshotParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) CreateVmInstanceFromVolumeSnapshot(ctx context.Context, volumeSnapshotUuid string, params param.CreateVmInstanceFromVolumeSnapshotParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/from/volume-snapshots/{volumeSnapshotUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/from/volume-snapshots/%s", volumeSnapshotUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8223,9 +8427,9 @@ func (cli *ZSClient) PrometheusQueryVmMonitoringData(ctx context.Context) (*view
 }
 
 // UpdateResourceConfigs updates ResourceConfigs
-func (cli *ZSClient) UpdateResourceConfigs(ctx context.Context, params param.UpdateResourceConfigsParam) (*view.ResourceConfigStructView, error) {
+func (cli *ZSClient) UpdateResourceConfigs(ctx context.Context, resourceUuid string, params param.UpdateResourceConfigsParam) (*view.ResourceConfigStructView, error) {
 	resp := view.ResourceConfigStructView{}
-	if err := cli.Post(ctx, "v1/resource-configurations/{resourceUuid}/resource-configs/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/resource-configurations/%s/resource-configs/actions", resourceUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8281,7 +8485,7 @@ func (cli *ZSClient) RevertVolumeFromSnapshotAsync(ctx context.Context, params p
 // GetBlockPrimaryStorageMetadata gets BlockPrimaryStorageMetadata by uuid
 func (cli *ZSClient) GetBlockPrimaryStorageMetadata(ctx context.Context, params param.GetBlockPrimaryStorageMetadataParam) (*view.BlockPrimaryStorageInventoryView, error) {
 	resp := view.BlockPrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/block/metadata", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/primary-storage/block/metadata", "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8321,9 +8525,9 @@ func (cli *ZSClient) DetachScsiLunFromHost(ctx context.Context, uuid string, par
 }
 
 // DisableCbtTask operates on DisableCbtTask
-func (cli *ZSClient) DisableCbtTask(ctx context.Context, params param.DisableCbtTaskParam) (*view.CbtTaskInventoryView, error) {
+func (cli *ZSClient) DisableCbtTask(ctx context.Context, uuid string, params param.DisableCbtTaskParam) (*view.CbtTaskInventoryView, error) {
 	resp := view.CbtTaskInventoryView{}
-	if err := cli.Post(ctx, "v1/cbt-task/disable/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/cbt-task/disable/%s", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8420,9 +8624,9 @@ func (cli *ZSClient) DeleteFirewallRuleTemplate(ctx context.Context, uuid string
 }
 
 // DetachPciDeviceFromVm operates on PciDeviceFromVm
-func (cli *ZSClient) DetachPciDeviceFromVm(ctx context.Context, params param.DetachPciDeviceFromVmParam) (*view.PciDeviceInventoryView, error) {
+func (cli *ZSClient) DetachPciDeviceFromVm(ctx context.Context, pciDeviceUuid string, params param.DetachPciDeviceFromVmParam) (*view.PciDeviceInventoryView, error) {
 	resp := view.PciDeviceInventoryView{}
-	if err := cli.Post(ctx, "v1/pci-device/pci-devices/{pciDeviceUuid}/detach", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/pci-device/pci-devices/%s/detach", pciDeviceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8431,16 +8635,16 @@ func (cli *ZSClient) DetachPciDeviceFromVm(ctx context.Context, params param.Det
 // ExecuteGuestVmCommand operates on ExecuteGuestVmCommand
 func (cli *ZSClient) ExecuteGuestVmCommand(ctx context.Context, params param.ExecuteGuestVmCommandParam) (*view.ExecuteGuestVmCommandEventView, error) {
 	resp := view.ExecuteGuestVmCommandEventView{}
-	if err := cli.Post(ctx, "v1/vm-instances/commands/exec", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vm-instances/commands/exec", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // ChangeVpcSharedQosBandwidth changes VpcSharedQosBandwidth
-func (cli *ZSClient) ChangeVpcSharedQosBandwidth(ctx context.Context, params param.ChangeVpcSharedQosBandwidthParam) (*view.VpcSharedQosInventoryView, error) {
+func (cli *ZSClient) ChangeVpcSharedQosBandwidth(ctx context.Context, sharedQosUuid string, params param.ChangeVpcSharedQosBandwidthParam) (*view.VpcSharedQosInventoryView, error) {
 	resp := view.VpcSharedQosInventoryView{}
-	if err := cli.Post(ctx, "v1/vips/sharedqos/{sharedQosUuid}/bandwidth/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vips/sharedqos/%s/bandwidth/actions", sharedQosUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8452,9 +8656,9 @@ func (cli *ZSClient) RemoveAttributesFromIAM2VirtualIDGroup(ctx context.Context,
 }
 
 // AddAttributesToIAM2VirtualID adds AttributesToIAM2VirtualID
-func (cli *ZSClient) AddAttributesToIAM2VirtualID(ctx context.Context, params param.AddAttributesToIAM2VirtualIDParam) (*view.AddAttributesToIAM2VirtualIDEventView, error) {
+func (cli *ZSClient) AddAttributesToIAM2VirtualID(ctx context.Context, uuid string, params param.AddAttributesToIAM2VirtualIDParam) (*view.AddAttributesToIAM2VirtualIDEventView, error) {
 	resp := view.AddAttributesToIAM2VirtualIDEventView{}
-	if err := cli.Post(ctx, "v1/iam2/virtual-ids/{uuid}/attributes", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/virtual-ids/%s/attributes", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8489,7 +8693,7 @@ func (cli *ZSClient) FlattenVolumeAsync(ctx context.Context, params param.Flatte
 // CreateAliyunDiskFromRemote creates AliyunDiskFromRemote
 func (cli *ZSClient) CreateAliyunDiskFromRemote(ctx context.Context, params param.CreateAliyunDiskFromRemoteParam) (*view.AliyunDiskInventoryView, error) {
 	resp := view.AliyunDiskInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/disk", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/disk", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8510,9 +8714,9 @@ func (cli *ZSClient) GetCandidateAffinityGroupForAttachingVm(ctx context.Context
 }
 
 // DetachAliyunDiskFromEcs operates on AliyunDiskFromEcs
-func (cli *ZSClient) DetachAliyunDiskFromEcs(ctx context.Context, params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
+func (cli *ZSClient) DetachAliyunDiskFromEcs(ctx context.Context, uuid string, params param.DetachAliyunDiskFromEcsParam) (*view.DetachAliyunDiskFromEcsEventView, error) {
 	resp := view.DetachAliyunDiskFromEcsEventView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/disk/{uuid}/detach", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/disk/%s/detach", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8530,9 +8734,9 @@ func (cli *ZSClient) UpdateFirewallIpSetTemplate(ctx context.Context, uuid strin
 }
 
 // AddAccessControlListRedirectRule adds AccessControlListRedirectRule
-func (cli *ZSClient) AddAccessControlListRedirectRule(ctx context.Context, params param.AddAccessControlListRedirectRuleParam) (*view.AccessControlListEntryInventoryView, error) {
+func (cli *ZSClient) AddAccessControlListRedirectRule(ctx context.Context, aclUuid string, params param.AddAccessControlListRedirectRuleParam) (*view.AccessControlListEntryInventoryView, error) {
 	resp := view.AccessControlListEntryInventoryView{}
-	if err := cli.Post(ctx, "v1/access-control-lists/{aclUuid}/redirectRules", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/access-control-lists/%s/redirectRules", aclUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8573,9 +8777,9 @@ func (cli *ZSClient) PrometheusQueryPassThrough(ctx context.Context) (*view.Prom
 }
 
 // AttachVmNicToVm operates on VmNicToVm
-func (cli *ZSClient) AttachVmNicToVm(ctx context.Context, params param.AttachVmNicToVmParam) (*view.VmInstanceInventoryView, error) {
+func (cli *ZSClient) AttachVmNicToVm(ctx context.Context, vmInstanceUuid string, vmNicUuid string, params param.AttachVmNicToVmParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/{vmInstanceUuid}/nices/{vmNicUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/%s/nices/%s", vmInstanceUuid, vmNicUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8627,9 +8831,9 @@ func (cli *ZSClient) SdnControllerRemoveHost(ctx context.Context, sdnControllerU
 }
 
 // DetachCCSCertificateFromUser operates on CCSCertificateFromUser
-func (cli *ZSClient) DetachCCSCertificateFromUser(ctx context.Context, params param.DetachCCSCertificateFromUserParam) (*view.DetachCCSCertificateFromUserEventView, error) {
+func (cli *ZSClient) DetachCCSCertificateFromUser(ctx context.Context, userUuid string, params param.DetachCCSCertificateFromUserParam) (*view.DetachCCSCertificateFromUserEventView, error) {
 	resp := view.DetachCCSCertificateFromUserEventView{}
-	if err := cli.Post(ctx, "v1/crypto/ccs-certificate/detach-user/{userUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/crypto/ccs-certificate/detach-user/%s", userUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8649,7 +8853,7 @@ func (cli *ZSClient) GetManagementNodeOS(ctx context.Context) (*view.GetManageme
 // CreateLdapBinding creates LdapBinding
 func (cli *ZSClient) CreateLdapBinding(ctx context.Context, params param.CreateLdapBindingParam) (*view.LdapAccountRefInventoryView, error) {
 	resp := view.LdapAccountRefInventoryView{}
-	if err := cli.Post(ctx, "v1/ldap/bindings", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ldap/bindings", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8669,7 +8873,7 @@ func (cli *ZSClient) ExecuteDRSScheduling(ctx context.Context, uuid string, para
 // CreateEcsSecurityGroupRuleRemote creates EcsSecurityGroupRuleRemote
 func (cli *ZSClient) CreateEcsSecurityGroupRuleRemote(ctx context.Context, params param.CreateEcsSecurityGroupRuleRemoteParam) (*view.EcsSecurityGroupRuleInventoryView, error) {
 	resp := view.EcsSecurityGroupRuleInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/security-group-rule", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/security-group-rule", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8687,7 +8891,7 @@ func (cli *ZSClient) GetVmQga(ctx context.Context, uuid string) (*view.GetVmQgaV
 // PreviewResourceStack operates on PreviewResourceStack
 func (cli *ZSClient) PreviewResourceStack(ctx context.Context, params param.PreviewResourceStackParam) (*view.PreviewResourceStackView, error) {
 	resp := view.PreviewResourceStackView{}
-	if err := cli.Post(ctx, "v1/cloudformation/stack/preview", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cloudformation/stack/preview", "preview", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8748,9 +8952,9 @@ func (cli *ZSClient) ChangeSchedulerState(ctx context.Context, uuid string, para
 }
 
 // AttachPriceTableToAccount operates on PriceTableToAccount
-func (cli *ZSClient) AttachPriceTableToAccount(ctx context.Context, params param.AttachPriceTableToAccountParam) (*view.PriceTableInventoryView, error) {
+func (cli *ZSClient) AttachPriceTableToAccount(ctx context.Context, tableUuid string, accountUuid string, params param.AttachPriceTableToAccountParam) (*view.PriceTableInventoryView, error) {
 	resp := view.PriceTableInventoryView{}
-	if err := cli.Post(ctx, "v1/billings/price-tables/{tableUuid}/accounts/{accountUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/billings/price-tables/%s/accounts/%s", tableUuid, accountUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8770,7 +8974,7 @@ func (cli *ZSClient) GenerateMdevDevices(ctx context.Context, pciDeviceUuid stri
 // PreviewResourceFromApp operates on PreviewResourceFromApp
 func (cli *ZSClient) PreviewResourceFromApp(ctx context.Context, params param.PreviewResourceFromAppParam) (*view.PreviewResourceStackView, error) {
 	resp := view.PreviewResourceStackView{}
-	if err := cli.Post(ctx, "v1/appcenter/app/preview", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/appcenter/app/preview", "preview", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8788,9 +8992,9 @@ func (cli *ZSClient) ChangeSNSTopicState(ctx context.Context, uuid string, param
 }
 
 // AttachScsiLunToVmInstance operates on ScsiLunToVmInstance
-func (cli *ZSClient) AttachScsiLunToVmInstance(ctx context.Context, params param.AttachScsiLunToVmInstanceParam) (*view.ScsiLunInventoryView, error) {
+func (cli *ZSClient) AttachScsiLunToVmInstance(ctx context.Context, vmInstanceUuid string, uuid string, params param.AttachScsiLunToVmInstanceParam) (*view.ScsiLunInventoryView, error) {
 	resp := view.ScsiLunInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/{vmInstanceUuid}/scsi-lun/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/%s/scsi-lun/%s", vmInstanceUuid, uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8811,9 +9015,9 @@ func (cli *ZSClient) GetIAM2ProjectsOfVirtualID(ctx context.Context) (*view.GetI
 }
 
 // AddVmToAffinityGroup adds VmToAffinityGroup
-func (cli *ZSClient) AddVmToAffinityGroup(ctx context.Context, params param.AddVmToAffinityGroupParam) (*view.AffinityGroupInventoryView, error) {
+func (cli *ZSClient) AddVmToAffinityGroup(ctx context.Context, affinityGroupUuid string, uuid string, params param.AddVmToAffinityGroupParam) (*view.AffinityGroupInventoryView, error) {
 	resp := view.AffinityGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/affinity-groups/{affinityGroupUuid}/vm-instances/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/affinity-groups/%s/vm-instances/%s", affinityGroupUuid, uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8853,18 +9057,18 @@ func (cli *ZSClient) SetVmInstanceDefaultCdRom(ctx context.Context, vmInstanceUu
 }
 
 // RefreshSharedblockDeviceCapacity operates on SharedblockDeviceCapacity
-func (cli *ZSClient) RefreshSharedblockDeviceCapacity(ctx context.Context, params param.RefreshSharedblockDeviceCapacityParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
+func (cli *ZSClient) RefreshSharedblockDeviceCapacity(ctx context.Context, sharedBlockGroupUuid string, uuid string, params param.RefreshSharedblockDeviceCapacityParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
 	resp := view.SharedBlockGroupPrimaryStorageInventoryView{}
-	if err := cli.Post(ctx, "v1/primary-storage/sharedblockgroup/{sharedBlockGroupUuid}/sharedblocks/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/primary-storage/sharedblockgroup/%s/sharedblocks/%s", sharedBlockGroupUuid, uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // FstrimVm operates on FstrimVm
-func (cli *ZSClient) FstrimVm(ctx context.Context, params param.FstrimVmParam) (*view.FstrimVmEventView, error) {
+func (cli *ZSClient) FstrimVm(ctx context.Context, uuid string, params param.FstrimVmParam) (*view.FstrimVmEventView, error) {
 	resp := view.FstrimVmEventView{}
-	if err := cli.Post(ctx, "v1/vm-instances/{uuid}/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vm-instances/%s/actions", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8878,7 +9082,7 @@ func (cli *ZSClient) DetachL2NetworkFromCluster(ctx context.Context, l2NetworkUu
 // SyncAINginxConfiguration operates on AINginxConfiguration
 func (cli *ZSClient) SyncAINginxConfiguration(ctx context.Context, params param.SyncAINginxConfigurationParam) (*view.SyncAINginxConfigurationView, error) {
 	resp := view.SyncAINginxConfigurationView{}
-	if err := cli.Post(ctx, "v1/ai/nginx/sync", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ai/nginx/sync", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8887,7 +9091,7 @@ func (cli *ZSClient) SyncAINginxConfiguration(ctx context.Context, params param.
 // MatchModelServiceTemplateWithModel operates on MatchModelServiceTemplateWithModel
 func (cli *ZSClient) MatchModelServiceTemplateWithModel(ctx context.Context, params param.MatchModelServiceTemplateWithModelParam) (*view.MatchModelServiceTemplateWithModelEventView, error) {
 	resp := view.MatchModelServiceTemplateWithModelEventView{}
-	if err := cli.Post(ctx, "v1/ai/model-services/templates", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ai/model-services/templates", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8905,9 +9109,9 @@ func (cli *ZSClient) ChangeVmNicState(ctx context.Context, vmNicUuid string, par
 }
 
 // AddPolicyStatementsToRole adds PolicyStatementsToRole
-func (cli *ZSClient) AddPolicyStatementsToRole(ctx context.Context, params param.AddPolicyStatementsToRoleParam) (*view.AddPolicyStatementsToRoleEventView, error) {
+func (cli *ZSClient) AddPolicyStatementsToRole(ctx context.Context, uuid string, params param.AddPolicyStatementsToRoleParam) (*view.AddPolicyStatementsToRoleEventView, error) {
 	resp := view.AddPolicyStatementsToRoleEventView{}
-	if err := cli.Post(ctx, "v1/identities/roles/{uuid}/policy-statements", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/identities/roles/%s/policy-statements", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8980,7 +9184,7 @@ func (cli *ZSClient) RecoverDatabaseFromBackup(ctx context.Context, params param
 // CreateIAM2TickFlowCollection creates IAM2TickFlowCollection
 func (cli *ZSClient) CreateIAM2TickFlowCollection(ctx context.Context, params param.CreateIAM2TickFlowCollectionParam) (*view.TicketFlowCollectionInventoryView, error) {
 	resp := view.TicketFlowCollectionInventoryView{}
-	if err := cli.Post(ctx, "v1/tickets/flow-collections", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/tickets/flow-collections", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9020,16 +9224,16 @@ func (cli *ZSClient) GetVRouterOspfNeighbor(ctx context.Context, uuid string) (*
 // CreateVpcVRouter creates VpcVRouter
 func (cli *ZSClient) CreateVpcVRouter(ctx context.Context, params param.CreateVpcVRouterParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vpc/virtual-routers", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SyncEcsInstanceFromRemote operates on EcsInstanceFromRemote
-func (cli *ZSClient) SyncEcsInstanceFromRemote(ctx context.Context, params param.SyncEcsInstanceFromRemoteParam) (*view.EcsInstanceInventoryView, error) {
+func (cli *ZSClient) SyncEcsInstanceFromRemote(ctx context.Context, dataCenterUuid string, params param.SyncEcsInstanceFromRemoteParam) (*view.EcsInstanceInventoryView, error) {
 	resp := view.EcsInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/ecs/{dataCenterUuid}/sync", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/ecs/%s/sync", dataCenterUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9095,7 +9299,7 @@ func (cli *ZSClient) GetHostTask(ctx context.Context) (*view.GetChainTaskView, e
 // AddResourceToIAM2Project adds ResourceToIAM2Project
 func (cli *ZSClient) AddResourceToIAM2Project(ctx context.Context, params param.AddResourceToIAM2ProjectParam) (*view.AddResourceToIAM2ProjectEventView, error) {
 	resp := view.AddResourceToIAM2ProjectEventView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/add/resource/", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/iam2/projects/add/resource/", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9141,10 +9345,19 @@ func (cli *ZSClient) IsOpensourceVersion(ctx context.Context) (*view.IsOpensourc
 	return &resp, nil
 }
 
+// CreateBareMetal2InstanceFromVolumeBackup creates BareMetal2InstanceFromVolumeBackup
+func (cli *ZSClient) CreateBareMetal2InstanceFromVolumeBackup(ctx context.Context, backupUuid string, params param.CreateBareMetal2InstanceFromVolumeBackupParam) (*view.BareMetal2InstanceInventoryView, error) {
+	resp := view.BareMetal2InstanceInventoryView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/baremetal2-instance/from/volume-backup/%s", backupUuid), "inventory", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // CreateEcsInstanceFromEcsImage creates EcsInstanceFromEcsImage
 func (cli *ZSClient) CreateEcsInstanceFromEcsImage(ctx context.Context, params param.CreateEcsInstanceFromEcsImageParam) (*view.EcsInstanceInventoryView, error) {
 	resp := view.EcsInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/ecs", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/ecs", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9224,7 +9437,7 @@ func (cli *ZSClient) UnregisterLicenseServer(ctx context.Context, uuid string, d
 // CreateVmUserDefinedXmlHookScript creates VmUserDefinedXmlHookScript
 func (cli *ZSClient) CreateVmUserDefinedXmlHookScript(ctx context.Context, params param.CreateVmUserDefinedXmlHookScriptParam) (*view.XmlHookInventoryView, error) {
 	resp := view.XmlHookInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/xml-hook-script", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vm-instances/xml-hook-script", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9233,7 +9446,7 @@ func (cli *ZSClient) CreateVmUserDefinedXmlHookScript(ctx context.Context, param
 // UpgradeToLicenseServer operates on UpgradeToLicenseServer
 func (cli *ZSClient) UpgradeToLicenseServer(ctx context.Context) (*view.LicenseAuthorizedNodeInventoryView, error) {
 	resp := view.LicenseAuthorizedNodeInventoryView{}
-	if err := cli.Post(ctx, "v1/license-server", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/license-server", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9254,9 +9467,9 @@ func (cli *ZSClient) GetAppBuildSystemCapacity(ctx context.Context) (*view.GetAp
 }
 
 // GetAttachableVpcL3Network gets AttachableVpcL3Network by uuid
-func (cli *ZSClient) GetAttachableVpcL3Network(ctx context.Context, params param.GetAttachableVpcL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) GetAttachableVpcL3Network(ctx context.Context, uuid string, params param.GetAttachableVpcL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	resp := view.L3NetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/virtual-routers/{uuid}/attachable-vpc-l3s", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vpc/virtual-routers/%s/attachable-vpc-l3s", uuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9273,6 +9486,17 @@ func (cli *ZSClient) ChangeBaremetalChassisState(ctx context.Context, uuid strin
 	return &resp, nil
 }
 
+// ChangeNfvInstGroupOperationMode changes NfvInstGroupOperationMode
+func (cli *ZSClient) ChangeNfvInstGroupOperationMode(ctx context.Context, uuid string, params param.ChangeNfvInstGroupOperationModeParam) (*view.NfvInstGroupInventoryView, error) {
+	resp := view.NfvInstGroupInventoryView{}
+	if err := cli.PutWithRespKey(ctx, "v1/nfvinstgroup/group", uuid, "", map[string]interface{}{
+		"changeNfvInstGroupOperationMode": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // GetL3NetworkMtu gets L3NetworkMtu by uuid
 func (cli *ZSClient) GetL3NetworkMtu(ctx context.Context, uuid string) (*view.GetL3NetworkMtuView, error) {
 	var resp view.GetL3NetworkMtuView
@@ -9283,9 +9507,9 @@ func (cli *ZSClient) GetL3NetworkMtu(ctx context.Context, uuid string) (*view.Ge
 }
 
 // AttachVipToLoadBalancer operates on VipToLoadBalancer
-func (cli *ZSClient) AttachVipToLoadBalancer(ctx context.Context, params param.AttachVipToLoadBalancerParam) (*view.LoadBalancerInventoryView, error) {
+func (cli *ZSClient) AttachVipToLoadBalancer(ctx context.Context, loadBalancerUuid string, vipUuid string, params param.AttachVipToLoadBalancerParam) (*view.LoadBalancerInventoryView, error) {
 	resp := view.LoadBalancerInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/{loadBalancerUuid}/vip/{vipUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/load-balancers/%s/vip/%s", loadBalancerUuid, vipUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9324,9 +9548,9 @@ func (cli *ZSClient) PageConnectionBetweenL3NetworkAndAliyunVSwitch(ctx context.
 }
 
 // AddDnsToL3Network adds DnsToL3Network
-func (cli *ZSClient) AddDnsToL3Network(ctx context.Context, params param.AddDnsToL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+func (cli *ZSClient) AddDnsToL3Network(ctx context.Context, l3NetworkUuid string, params param.AddDnsToL3NetworkParam) (*view.L3NetworkInventoryView, error) {
 	resp := view.L3NetworkInventoryView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/dns", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/dns", l3NetworkUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9378,7 +9602,7 @@ func (cli *ZSClient) ChangeLoadBalancerBackendServer(ctx context.Context, server
 // CreateEcsVSwitchRemote creates EcsVSwitchRemote
 func (cli *ZSClient) CreateEcsVSwitchRemote(ctx context.Context, params param.CreateEcsVSwitchRemoteParam) (*view.EcsVSwitchInventoryView, error) {
 	resp := view.EcsVSwitchInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/vswitch", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/vswitch", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9416,7 +9640,7 @@ func (cli *ZSClient) UpdateHostNetworkServiceType(ctx context.Context, uuid stri
 // SNSMicrosoftTeamsTestConnection operates on MicrosoftTeamsTestConnection
 func (cli *ZSClient) SNSMicrosoftTeamsTestConnection(ctx context.Context, params param.SNSMicrosoftTeamsTestConnectionParam) (*view.SNSMicrosoftTeamsTestConnectionEventView, error) {
 	resp := view.SNSMicrosoftTeamsTestConnectionEventView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/microsoft-teams/test-connection", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/microsoft-teams/test-connection", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9434,7 +9658,7 @@ func (cli *ZSClient) GetLatestGuestToolsForVm(ctx context.Context, uuid string) 
 // CreateVpcUserVpnGatewayRemote creates VpcUserVpnGatewayRemote
 func (cli *ZSClient) CreateVpcUserVpnGatewayRemote(ctx context.Context, params param.CreateVpcUserVpnGatewayRemoteParam) (*view.VpcUserVpnGatewayInventoryView, error) {
 	resp := view.VpcUserVpnGatewayInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/user-vpn", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/user-vpn", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9443,7 +9667,7 @@ func (cli *ZSClient) CreateVpcUserVpnGatewayRemote(ctx context.Context, params p
 // CreateOssBackupBucketRemote creates OssBackupBucketRemote
 func (cli *ZSClient) CreateOssBackupBucketRemote(ctx context.Context, params param.CreateOssBackupBucketRemoteParam) (*view.CreateOssBackupBucketRemoteEventView, error) {
 	resp := view.CreateOssBackupBucketRemoteEventView{}
-	if err := cli.Post(ctx, "v1/hybrid/backup-mysql/oss", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/backup-mysql/oss", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9524,9 +9748,9 @@ func (cli *ZSClient) GetVmAttachableL3Network(ctx context.Context, uuid string) 
 }
 
 // UpdateEcsInstanceVncPassword updates EcsInstanceVncPassword
-func (cli *ZSClient) UpdateEcsInstanceVncPassword(ctx context.Context, params param.UpdateEcsInstanceVncPasswordParam) (*view.UpdateEcsInstanceVncPasswordEventView, error) {
+func (cli *ZSClient) UpdateEcsInstanceVncPassword(ctx context.Context, uuid string, params param.UpdateEcsInstanceVncPasswordParam) (*view.UpdateEcsInstanceVncPasswordEventView, error) {
 	resp := view.UpdateEcsInstanceVncPasswordEventView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/{uuid}/ecs-vnc", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/%s/ecs-vnc", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9553,9 +9777,9 @@ func (cli *ZSClient) GetVmInstanceProtectedRecoveryPoints(ctx context.Context, u
 }
 
 // AddVmToVmSchedulingRuleGroup adds VmToVmSchedulingRuleGroup
-func (cli *ZSClient) AddVmToVmSchedulingRuleGroup(ctx context.Context, params param.AddVmToVmSchedulingRuleGroupParam) (*view.AddVmToVmSchedulingRuleGroupEventView, error) {
+func (cli *ZSClient) AddVmToVmSchedulingRuleGroup(ctx context.Context, vmGroupUuid string, vmUuid string, params param.AddVmToVmSchedulingRuleGroupParam) (*view.AddVmToVmSchedulingRuleGroupEventView, error) {
 	resp := view.AddVmToVmSchedulingRuleGroupEventView{}
-	if err := cli.Post(ctx, "v1/vmSchedulingRuleGroup/{vmGroupUuid}/vmInstance/{vmUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vmSchedulingRuleGroup/%s/vmInstance/%s", vmGroupUuid, vmUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9575,16 +9799,16 @@ func (cli *ZSClient) SyncBackupFromImageStoreBackupStorage(ctx context.Context, 
 // GetHostWebSshUrl gets HostWebSshUrl by uuid
 func (cli *ZSClient) GetHostWebSshUrl(ctx context.Context, params param.GetHostWebSshUrlParam) (*view.GetHostWebSshUrlEventView, error) {
 	resp := view.GetHostWebSshUrlEventView{}
-	if err := cli.Post(ctx, "v1/hosts/webssh", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hosts/webssh", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SetL3NetworkMtu operates on L3NetworkMtu
-func (cli *ZSClient) SetL3NetworkMtu(ctx context.Context, params param.SetL3NetworkMtuParam) (*view.SetL3NetworkMtuEventView, error) {
+func (cli *ZSClient) SetL3NetworkMtu(ctx context.Context, l3NetworkUuid string, params param.SetL3NetworkMtuParam) (*view.SetL3NetworkMtuEventView, error) {
 	resp := view.SetL3NetworkMtuEventView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/mtu", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/mtu", l3NetworkUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9634,16 +9858,25 @@ func (cli *ZSClient) PageVpcVpnConnectionFromLocal(ctx context.Context, params *
 // CreateSNSSnmpEndpoint creates SNSSnmpEndpoint
 func (cli *ZSClient) CreateSNSSnmpEndpoint(ctx context.Context) (*view.SNSApplicationEndpointInventoryView, error) {
 	resp := view.SNSApplicationEndpointInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-endpoints/snmp", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-endpoints/snmp", "inventory", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SdnControllerAddHost operates on SdnControllerAddHost
-func (cli *ZSClient) SdnControllerAddHost(ctx context.Context, params param.SdnControllerAddHostParam) (*view.SdnControllerInventoryView, error) {
+func (cli *ZSClient) SdnControllerAddHost(ctx context.Context, sdnControllerUuid string, hostUuid string, params param.SdnControllerAddHostParam) (*view.SdnControllerInventoryView, error) {
 	resp := view.SdnControllerInventoryView{}
-	if err := cli.Post(ctx, "v1/sdn-controllers/{sdnControllerUuid}/hosts/{hostUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/sdn-controllers/%s/hosts/%s", sdnControllerUuid, hostUuid), "inventory", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetLicenseNodeUsageDetails gets LicenseNodeUsageDetails by uuid
+func (cli *ZSClient) GetLicenseNodeUsageDetails(ctx context.Context) (*view.GetLicenseNodeUsageDetailsView, error) {
+	var resp view.GetLicenseNodeUsageDetailsView
+	if err := cli.GetWithRespKey(ctx, "v1/license/node/usage/details", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9652,7 +9885,7 @@ func (cli *ZSClient) SdnControllerAddHost(ctx context.Context, params param.SdnC
 // CreateAliyunSnapshotRemote creates AliyunSnapshotRemote
 func (cli *ZSClient) CreateAliyunSnapshotRemote(ctx context.Context, params param.CreateAliyunSnapshotRemoteParam) (*view.AliyunSnapshotInventoryView, error) {
 	resp := view.AliyunSnapshotInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/snapshot", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/snapshot", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9708,9 +9941,9 @@ func (cli *ZSClient) SetVmConsoleMode(ctx context.Context, uuid string, params p
 }
 
 // AttachPolicyToUser operates on PolicyToUser
-func (cli *ZSClient) AttachPolicyToUser(ctx context.Context, params param.AttachPolicyToUserParam) (*view.AttachPolicyToUserEventView, error) {
+func (cli *ZSClient) AttachPolicyToUser(ctx context.Context, userUuid string, params param.AttachPolicyToUserParam) (*view.AttachPolicyToUserEventView, error) {
 	resp := view.AttachPolicyToUserEventView{}
-	if err := cli.Post(ctx, "v1/accounts/users/{userUuid}/policies", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/accounts/users/%s/policies", userUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9726,9 +9959,9 @@ func (cli *ZSClient) GetVfPciDeviceAvailableInL2Network(ctx context.Context) (*v
 }
 
 // AddAttributesToIAM2Project adds AttributesToIAM2Project
-func (cli *ZSClient) AddAttributesToIAM2Project(ctx context.Context, params param.AddAttributesToIAM2ProjectParam) (*view.AddAttributesToIAM2ProjectEventView, error) {
+func (cli *ZSClient) AddAttributesToIAM2Project(ctx context.Context, uuid string, params param.AddAttributesToIAM2ProjectParam) (*view.AddAttributesToIAM2ProjectEventView, error) {
 	resp := view.AddAttributesToIAM2ProjectEventView{}
-	if err := cli.Post(ctx, "v1/iam2/projects/{uuid}/attributes", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/iam2/projects/%s/attributes", uuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9784,25 +10017,25 @@ func (cli *ZSClient) GetEcsInstanceType(ctx context.Context) (*view.GetEcsInstan
 // GetLicenseUKeyStatus gets LicenseUKeyStatus by uuid
 func (cli *ZSClient) GetLicenseUKeyStatus(ctx context.Context) (*view.UKeyInventoryView, error) {
 	resp := view.UKeyInventoryView{}
-	if err := cli.Post(ctx, "v1/licenses/actions", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/licenses/actions", "inventories", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddTicketTypesToTicketFlowCollection adds TicketTypesToTicketFlowCollection
-func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(ctx context.Context, params param.AddTicketTypesToTicketFlowCollectionParam) (*view.AddTicketTypesToTicketFlowCollectionEventView, error) {
+func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(ctx context.Context, ticketFlowCollectionUuid string, params param.AddTicketTypesToTicketFlowCollectionParam) (*view.AddTicketTypesToTicketFlowCollectionEventView, error) {
 	resp := view.AddTicketTypesToTicketFlowCollectionEventView{}
-	if err := cli.Post(ctx, "v1/tickets/flow-collections/{ticketFlowCollectionUuid}/ticket-types", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/tickets/flow-collections/%s/ticket-types", ticketFlowCollectionUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SetL3NetworkRouterInterfaceIp operates on L3NetworkRouterInterfaceIp
-func (cli *ZSClient) SetL3NetworkRouterInterfaceIp(ctx context.Context, params param.SetL3NetworkRouterInterfaceIpParam) (*view.SetL3NetworkRouterInterfaceIpEventView, error) {
+func (cli *ZSClient) SetL3NetworkRouterInterfaceIp(ctx context.Context, l3NetworkUuid string, params param.SetL3NetworkRouterInterfaceIpParam) (*view.SetL3NetworkRouterInterfaceIpEventView, error) {
 	resp := view.SetL3NetworkRouterInterfaceIpEventView{}
-	if err := cli.Post(ctx, "v1/l3-networks/{l3NetworkUuid}/router-interface-ip", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l3-networks/%s/router-interface-ip", l3NetworkUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -9937,9 +10170,9 @@ func (cli *ZSClient) RevertVmFromVmBackup(ctx context.Context, groupUuid string,
 }
 
 // AttachCCSCertificateToUser operates on CCSCertificateToUser
-func (cli *ZSClient) AttachCCSCertificateToUser(ctx context.Context, params param.AttachCCSCertificateToUserParam) (*view.CCSCertificateInventoryView, error) {
+func (cli *ZSClient) AttachCCSCertificateToUser(ctx context.Context, userUuid string, params param.AttachCCSCertificateToUserParam) (*view.CCSCertificateInventoryView, error) {
 	resp := view.CCSCertificateInventoryView{}
-	if err := cli.Post(ctx, "v1/crypto/ccs-certificate/attach-user/{userUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/crypto/ccs-certificate/attach-user/%s", userUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10086,18 +10319,27 @@ func (cli *ZSClient) GetVmTask(ctx context.Context) (*view.GetChainTaskView, err
 }
 
 // DisableCdpTask operates on DisableCdpTask
-func (cli *ZSClient) DisableCdpTask(ctx context.Context, params param.DisableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
+func (cli *ZSClient) DisableCdpTask(ctx context.Context, uuid string, params param.DisableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
 	resp := view.CdpTaskInventoryView{}
-	if err := cli.Post(ctx, "v1/cdp-task/disable/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/cdp-task/disable/%s", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // SetIpOnHostNetworkBonding operates on IpOnHostNetworkBonding
-func (cli *ZSClient) SetIpOnHostNetworkBonding(ctx context.Context, params param.SetIpOnHostNetworkBondingParam) (*view.HostNetworkBondingInventoryView, error) {
+func (cli *ZSClient) SetIpOnHostNetworkBonding(ctx context.Context, bondingUuid string, params param.SetIpOnHostNetworkBondingParam) (*view.HostNetworkBondingInventoryView, error) {
 	resp := view.HostNetworkBondingInventoryView{}
-	if err := cli.Post(ctx, "v1/hosts/bondings/{bondingUuid}/ip", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hosts/bondings/%s/ip", bondingUuid), "inventory", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetGpuDeviceCandidates gets GpuDeviceCandidates by uuid
+func (cli *ZSClient) GetGpuDeviceCandidates(ctx context.Context) (*view.GetGpuDeviceCandidatesView, error) {
+	var resp view.GetGpuDeviceCandidatesView
+	if err := cli.GetWithRespKey(ctx, "v1/gpu-devices/candidates", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10111,25 +10353,25 @@ func (cli *ZSClient) RemoveAttributesFromIAM2VirtualID(ctx context.Context, uuid
 // CreateBonding creates Bonding
 func (cli *ZSClient) CreateBonding(ctx context.Context, params param.CreateBondingParam) (*view.HostNetworkBondingInventoryView, error) {
 	resp := view.HostNetworkBondingInventoryView{}
-	if err := cli.Post(ctx, "v1/hosts/bondings", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hosts/bondings", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // DetachUsbDeviceFromVm operates on UsbDeviceFromVm
-func (cli *ZSClient) DetachUsbDeviceFromVm(ctx context.Context, params param.DetachUsbDeviceFromVmParam) (*view.UsbDeviceInventoryView, error) {
+func (cli *ZSClient) DetachUsbDeviceFromVm(ctx context.Context, usbDeviceUuid string, params param.DetachUsbDeviceFromVmParam) (*view.UsbDeviceInventoryView, error) {
 	resp := view.UsbDeviceInventoryView{}
-	if err := cli.Post(ctx, "v1/usb-device/usb-devices/{usbDeviceUuid}/detach", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/usb-device/usb-devices/%s/detach", usbDeviceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateDataVolumeTemplateFromVolumeSnapshot creates DataVolumeTemplateFromVolumeSnapshot
-func (cli *ZSClient) CreateDataVolumeTemplateFromVolumeSnapshot(ctx context.Context, params param.CreateDataVolumeTemplateFromVolumeSnapshotParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) CreateDataVolumeTemplateFromVolumeSnapshot(ctx context.Context, snapshotUuid string, params param.CreateDataVolumeTemplateFromVolumeSnapshotParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Post(ctx, "v1/images/data-volume-templates/from/volume-snapshots/{snapshotUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/images/data-volume-templates/from/volume-snapshots/%s", snapshotUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10141,9 +10383,9 @@ func (cli *ZSClient) DetachRoleFromAccount(ctx context.Context, accountUuid stri
 }
 
 // AddRendezvousPointToMulticastRouter adds RendezvousPointToMulticastRouter
-func (cli *ZSClient) AddRendezvousPointToMulticastRouter(ctx context.Context, params param.AddRendezvousPointToMulticastRouterParam) (*view.MulticastRouterInventoryView, error) {
+func (cli *ZSClient) AddRendezvousPointToMulticastRouter(ctx context.Context, uuid string, params param.AddRendezvousPointToMulticastRouterParam) (*view.MulticastRouterInventoryView, error) {
 	resp := view.MulticastRouterInventoryView{}
-	if err := cli.Post(ctx, "v1/multicast/virtual-routers/{uuid}/RendezvousPoint", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/multicast/virtual-routers/%s/RendezvousPoint", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10175,10 +10417,20 @@ func (cli *ZSClient) DeleteLdapBinding(ctx context.Context, uuid string, deleteM
 	return cli.Delete(ctx, "v1/ldap/bindings", uuid, string(deleteMode))
 }
 
+// AttachNfvInstToGroup operates on NfvInstToGroup
+func (cli *ZSClient) AttachNfvInstToGroup(ctx context.Context, groupUuid string, nfvInstUuid string, params param.AttachNfvInstToGroupParam) (*view.NfvInstGroupInventoryView, error) {
+	resp := view.NfvInstGroupInventoryView{}
+	err := cli.PutWithSpec(ctx, "v1/nfvinstgroup/group", groupUuid, fmt.Sprintf("instances/%s/actions", nfvInstUuid), "", params, &resp)
+	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // DebugSignal operates on DebugSignal
 func (cli *ZSClient) DebugSignal(ctx context.Context, params param.DebugSignalParam) (*view.DebugSignalEventView, error) {
 	resp := view.DebugSignalEventView{}
-	if err := cli.Post(ctx, "v1/debug", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/debug", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10187,7 +10439,7 @@ func (cli *ZSClient) DebugSignal(ctx context.Context, params param.DebugSignalPa
 // CreateVmInstanceFromVolume creates VmInstanceFromVolume
 func (cli *ZSClient) CreateVmInstanceFromVolume(ctx context.Context, params param.CreateVmInstanceFromVolumeParam) (*view.VmInstanceInventoryView, error) {
 	resp := view.VmInstanceInventoryView{}
-	if err := cli.Post(ctx, "v1/vm-instances/from/volume", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vm-instances/from/volume", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10205,7 +10457,7 @@ func (cli *ZSClient) GetVpcVRouterDistributedRoutingEnabled(ctx context.Context,
 // CreateEcsSecurityGroupRemote creates EcsSecurityGroupRemote
 func (cli *ZSClient) CreateEcsSecurityGroupRemote(ctx context.Context, params param.CreateEcsSecurityGroupRemoteParam) (*view.EcsSecurityGroupInventoryView, error) {
 	resp := view.EcsSecurityGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/security-group/remote", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hybrid/aliyun/security-group/remote", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10258,9 +10510,9 @@ func (cli *ZSClient) PageEcsVSwitchFromLocal(ctx context.Context, params *param.
 }
 
 // CreateRootVolumeTemplateFromRootVolume creates RootVolumeTemplateFromRootVolume
-func (cli *ZSClient) CreateRootVolumeTemplateFromRootVolume(ctx context.Context, params param.CreateRootVolumeTemplateFromRootVolumeParam) (*view.ImageInventoryView, error) {
+func (cli *ZSClient) CreateRootVolumeTemplateFromRootVolume(ctx context.Context, rootVolumeUuid string, params param.CreateRootVolumeTemplateFromRootVolumeParam) (*view.ImageInventoryView, error) {
 	resp := view.ImageInventoryView{}
-	if err := cli.Post(ctx, "v1/images/root-volume-templates/from/volumes/{rootVolumeUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/images/root-volume-templates/from/volumes/%s", rootVolumeUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10282,9 +10534,9 @@ func (cli *ZSClient) CreateRootVolumeTemplateFromRootVolumeAsync(ctx context.Con
 }
 
 // AttachAliyunDiskToEcs operates on AliyunDiskToEcs
-func (cli *ZSClient) AttachAliyunDiskToEcs(ctx context.Context, params param.AttachAliyunDiskToEcsParam) (*view.AliyunDiskInventoryView, error) {
+func (cli *ZSClient) AttachAliyunDiskToEcs(ctx context.Context, diskUuid string, params param.AttachAliyunDiskToEcsParam) (*view.AliyunDiskInventoryView, error) {
 	resp := view.AliyunDiskInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/disk/{diskUuid}/attach", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/disk/%s/attach", diskUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10317,9 +10569,9 @@ func (cli *ZSClient) PageEcsImageFromLocal(ctx context.Context, params *param.Qu
 }
 
 // GetObservabilityServerServiceData gets ObservabilityServerServiceData by uuid
-func (cli *ZSClient) GetObservabilityServerServiceData(ctx context.Context, params param.GetObservabilityServerServiceDataParam) (*view.ObservabilityServerServiceDataInventoryView, error) {
+func (cli *ZSClient) GetObservabilityServerServiceData(ctx context.Context, observabilityServerUuid string, params param.GetObservabilityServerServiceDataParam) (*view.ObservabilityServerServiceDataInventoryView, error) {
 	resp := view.ObservabilityServerServiceDataInventoryView{}
-	if err := cli.Post(ctx, "v1/observability-server/{observabilityServerUuid}/service-data", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/observability-server/%s/service-data", observabilityServerUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10349,16 +10601,16 @@ func (cli *ZSClient) PageAliyunVirtualRouterFromLocal(ctx context.Context, param
 // VerifyLicenseServer operates on VerifyLicenseServer
 func (cli *ZSClient) VerifyLicenseServer(ctx context.Context, params param.VerifyLicenseServerParam) (*view.VerifyLicenseServerEventView, error) {
 	resp := view.VerifyLicenseServerEventView{}
-	if err := cli.Post(ctx, "v1/license-server/register-verify", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/license-server/register-verify", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachBareMetal2GatewayToCluster operates on BareMetal2GatewayToCluster
-func (cli *ZSClient) AttachBareMetal2GatewayToCluster(ctx context.Context, params param.AttachBareMetal2GatewayToClusterParam) (*view.BareMetal2GatewayInventoryView, error) {
+func (cli *ZSClient) AttachBareMetal2GatewayToCluster(ctx context.Context, clusterUuid string, gatewayUuid string, params param.AttachBareMetal2GatewayToClusterParam) (*view.BareMetal2GatewayInventoryView, error) {
 	resp := view.BareMetal2GatewayInventoryView{}
-	if err := cli.Post(ctx, "v1/baremetal2/clusters/{clusterUuid}/gateways/{gatewayUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/baremetal2/clusters/%s/gateways/%s", clusterUuid, gatewayUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10406,9 +10658,9 @@ func (cli *ZSClient) GetVmInstanceRecoveryPoints(ctx context.Context, uuid strin
 }
 
 // CreateSystemTags creates SystemTags
-func (cli *ZSClient) CreateSystemTags(ctx context.Context, params param.CreateSystemTagsParam) (*view.SystemTagInventoryView, error) {
+func (cli *ZSClient) CreateSystemTags(ctx context.Context, resourceUuid string, params param.CreateSystemTagsParam) (*view.SystemTagInventoryView, error) {
 	resp := view.SystemTagInventoryView{}
-	if err := cli.Post(ctx, "v1/system-tags/{resourceUuid}/tags", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/system-tags/%s/tags", resourceUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10451,7 +10703,7 @@ func (cli *ZSClient) CleanUpImageCacheOnPrimaryStorage(ctx context.Context, uuid
 // AddKVMHostFromConfigFile adds KVMHostFromConfigFile
 func (cli *ZSClient) AddKVMHostFromConfigFile(ctx context.Context) (*view.AddHostFromConfigFileEventView, error) {
 	resp := view.AddHostFromConfigFileEventView{}
-	if err := cli.Post(ctx, "v1/hosts/kvm/from-file", map[string]interface{}{}, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hosts/kvm/from-file", "", map[string]interface{}{}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10508,9 +10760,9 @@ func (cli *ZSClient) DetachPolicyFromUserGroup(ctx context.Context, groupUuid st
 }
 
 // AddActionToAlarm adds ActionToAlarm
-func (cli *ZSClient) AddActionToAlarm(ctx context.Context, params param.AddActionToAlarmParam) (*view.AlarmInventoryView, error) {
+func (cli *ZSClient) AddActionToAlarm(ctx context.Context, alarmUuid string, params param.AddActionToAlarmParam) (*view.AlarmInventoryView, error) {
 	resp := view.AlarmInventoryView{}
-	if err := cli.Post(ctx, "v1/zwatch/alarms/{alarmUuid}/actions", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/zwatch/alarms/%s/actions", alarmUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10531,6 +10783,15 @@ func (cli *ZSClient) UpdateFirewallRule(ctx context.Context, uuid string, params
 func (cli *ZSClient) ZQLQuery(ctx context.Context) (*view.ZQLQueryView, error) {
 	var resp view.ZQLQueryView
 	if err := cli.GetWithRespKey(ctx, "v1/zql", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CreateBareMetal2InstanceFromVmBackup creates BareMetal2InstanceFromVmBackup
+func (cli *ZSClient) CreateBareMetal2InstanceFromVmBackup(ctx context.Context, groupUuid string, params param.CreateBareMetal2InstanceFromVmBackupParam) (*view.BareMetal2InstanceInventoryView, error) {
+	resp := view.BareMetal2InstanceInventoryView{}
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/baremetal2-instance/from/vm-backup/%s", groupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10575,9 +10836,9 @@ func (cli *ZSClient) RevertVolumeFromVolumeBackup(ctx context.Context, uuid stri
 }
 
 // CreateDataVolumeFromVolumeTemplate creates DataVolumeFromVolumeTemplate
-func (cli *ZSClient) CreateDataVolumeFromVolumeTemplate(ctx context.Context, params param.CreateDataVolumeFromVolumeTemplateParam) (*view.VolumeInventoryView, error) {
+func (cli *ZSClient) CreateDataVolumeFromVolumeTemplate(ctx context.Context, imageUuid string, params param.CreateDataVolumeFromVolumeTemplateParam) (*view.VolumeInventoryView, error) {
 	resp := view.VolumeInventoryView{}
-	if err := cli.Post(ctx, "v1/volumes/data/from/data-volume-templates/{imageUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/volumes/data/from/data-volume-templates/%s", imageUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10602,9 +10863,9 @@ func (cli *ZSClient) GetOssBucketNameFromRemote(ctx context.Context, uuid string
 }
 
 // SyncEcsVpcFromRemote operates on EcsVpcFromRemote
-func (cli *ZSClient) SyncEcsVpcFromRemote(ctx context.Context, params param.SyncEcsVpcFromRemoteParam) (*view.EcsVpcInventoryView, error) {
+func (cli *ZSClient) SyncEcsVpcFromRemote(ctx context.Context, dataCenterUuid string, params param.SyncEcsVpcFromRemoteParam) (*view.EcsVpcInventoryView, error) {
 	resp := view.EcsVpcInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/vpc/{dataCenterUuid}/sync", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/vpc/%s/sync", dataCenterUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10613,34 +10874,34 @@ func (cli *ZSClient) SyncEcsVpcFromRemote(ctx context.Context, params param.Sync
 // SetServiceTypeOnHostNetworkInterface operates on ServiceTypeOnHostNetworkInterface
 func (cli *ZSClient) SetServiceTypeOnHostNetworkInterface(ctx context.Context, params param.SetServiceTypeOnHostNetworkInterfaceParam) (*view.HostNetworkInterfaceServiceRefInventoryView, error) {
 	resp := view.HostNetworkInterfaceServiceRefInventoryView{}
-	if err := cli.Post(ctx, "v1/hosts/nics/service-types", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/hosts/nics/service-types", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddBackendServerToServerGroup adds BackendServerToServerGroup
-func (cli *ZSClient) AddBackendServerToServerGroup(ctx context.Context, params param.AddBackendServerToServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
+func (cli *ZSClient) AddBackendServerToServerGroup(ctx context.Context, serverGroupUuid string, params param.AddBackendServerToServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
 	resp := view.LoadBalancerServerGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/load-balancers/servergroups/{serverGroupUuid}/backendservers", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/load-balancers/servergroups/%s/backendservers", serverGroupUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachUserDefinedXmlHookScriptToVm operates on UserDefinedXmlHookScriptToVm
-func (cli *ZSClient) AttachUserDefinedXmlHookScriptToVm(ctx context.Context, params param.AttachUserDefinedXmlHookScriptToVmParam) (*view.AttachUserDefinedXmlHookScriptToVmEventView, error) {
+func (cli *ZSClient) AttachUserDefinedXmlHookScriptToVm(ctx context.Context, xmlHookUuid string, vmInstanceUuid string, params param.AttachUserDefinedXmlHookScriptToVmParam) (*view.AttachUserDefinedXmlHookScriptToVmEventView, error) {
 	resp := view.AttachUserDefinedXmlHookScriptToVmEventView{}
-	if err := cli.Post(ctx, "v1/xmlhook/{xmlHookUuid}/vm-instances/{vmInstanceUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/xmlhook/%s/vm-instances/%s", xmlHookUuid, vmInstanceUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AttachPolicyToRole operates on PolicyToRole
-func (cli *ZSClient) AttachPolicyToRole(ctx context.Context, params param.AttachPolicyToRoleParam) (*view.AttachPolicyToRoleEventView, error) {
+func (cli *ZSClient) AttachPolicyToRole(ctx context.Context, policyUuid string, roleUuid string, params param.AttachPolicyToRoleParam) (*view.AttachPolicyToRoleEventView, error) {
 	resp := view.AttachPolicyToRoleEventView{}
-	if err := cli.Post(ctx, "v1/identities/policies/{policyUuid}/roles/{roleUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/identities/policies/%s/roles/%s", policyUuid, roleUuid), "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10708,9 +10969,9 @@ func (cli *ZSClient) GetVipAvailablePort(ctx context.Context, uuid string) (*vie
 }
 
 // SyncDiskFromAliyunFromRemote operates on DiskFromAliyunFromRemote
-func (cli *ZSClient) SyncDiskFromAliyunFromRemote(ctx context.Context, params param.SyncDiskFromAliyunFromRemoteParam) (*view.AliyunDiskInventoryView, error) {
+func (cli *ZSClient) SyncDiskFromAliyunFromRemote(ctx context.Context, identityUuid string, params param.SyncDiskFromAliyunFromRemoteParam) (*view.AliyunDiskInventoryView, error) {
 	resp := view.AliyunDiskInventoryView{}
-	if err := cli.Post(ctx, "v1/hybrid/aliyun/disk/{identityUuid}/sync", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/hybrid/aliyun/disk/%s/sync", identityUuid), "inventories", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10730,16 +10991,16 @@ func (cli *ZSClient) ChangeVolumeState(ctx context.Context, uuid string, params 
 // MountVmInstanceRecoveryPoint operates on MountVmInstanceRecoveryPoint
 func (cli *ZSClient) MountVmInstanceRecoveryPoint(ctx context.Context, params param.MountVmInstanceRecoveryPointParam) (*view.MountVmInstanceRecoveryPointEventView, error) {
 	resp := view.MountVmInstanceRecoveryPointEventView{}
-	if err := cli.Post(ctx, "v1/cdp-backup-storage/mount-recovery-point", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/cdp-backup-storage/mount-recovery-point", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // CreateVxlanPoolRemoteVtep creates VxlanPoolRemoteVtep
-func (cli *ZSClient) CreateVxlanPoolRemoteVtep(ctx context.Context, params param.CreateVxlanPoolRemoteVtepParam) (*view.RemoteVtepInventoryView, error) {
+func (cli *ZSClient) CreateVxlanPoolRemoteVtep(ctx context.Context, l2NetworkUuid string, clusterUuid string, params param.CreateVxlanPoolRemoteVtepParam) (*view.RemoteVtepInventoryView, error) {
 	resp := view.RemoteVtepInventoryView{}
-	if err := cli.Post(ctx, "v1/l2-networks/{l2NetworkUuid}/clusters/{clusterUuid}/remote-vtep-ip", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/l2-networks/%s/clusters/%s/remote-vtep-ip", l2NetworkUuid, clusterUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10788,7 +11049,7 @@ func (cli *ZSClient) DetachOssBucketFromEcsDataCenter(ctx context.Context, ossBu
 // ParseOvf operates on ParseOvf
 func (cli *ZSClient) ParseOvf(ctx context.Context, params param.ParseOvfParam) (*view.ParseOvfView, error) {
 	resp := view.ParseOvfView{}
-	if err := cli.Post(ctx, "v1/ovf/parse", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/ovf/parse", "ovfInfo", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10816,9 +11077,9 @@ func (cli *ZSClient) PageFaultToleranceVm(ctx context.Context, params *param.Que
 }
 
 // AddSchedulerJobGroupToSchedulerTrigger adds SchedulerJobGroupToSchedulerTrigger
-func (cli *ZSClient) AddSchedulerJobGroupToSchedulerTrigger(ctx context.Context, params param.AddSchedulerJobGroupToSchedulerTriggerParam) (*view.SchedulerJobGroupSchedulerTriggerRefInventoryView, error) {
+func (cli *ZSClient) AddSchedulerJobGroupToSchedulerTrigger(ctx context.Context, schedulerJobGroupUuid string, schedulerTriggerUuid string, params param.AddSchedulerJobGroupToSchedulerTriggerParam) (*view.SchedulerJobGroupSchedulerTriggerRefInventoryView, error) {
 	resp := view.SchedulerJobGroupSchedulerTriggerRefInventoryView{}
-	if err := cli.Post(ctx, "v1/scheduler/jobgroups/{schedulerJobGroupUuid}/scheduler/triggers/{schedulerTriggerUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/scheduler/jobgroups/%s/scheduler/triggers/%s", schedulerJobGroupUuid, schedulerTriggerUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10856,9 +11117,9 @@ func (cli *ZSClient) UpdateTag(ctx context.Context, uuid string, params param.Up
 }
 
 // AttachVRouterRouteTableToVRouter operates on VRouterRouteTableToVRouter
-func (cli *ZSClient) AttachVRouterRouteTableToVRouter(ctx context.Context, params param.AttachVRouterRouteTableToVRouterParam) (*view.VRouterRouteTableInventoryView, error) {
+func (cli *ZSClient) AttachVRouterRouteTableToVRouter(ctx context.Context, routeTableUuid string, params param.AttachVRouterRouteTableToVRouterParam) (*view.VRouterRouteTableInventoryView, error) {
 	resp := view.VRouterRouteTableInventoryView{}
-	if err := cli.Post(ctx, "v1/vrouter-route-tables/{routeTableUuid}/attach", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/vrouter-route-tables/%s/attach", routeTableUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10867,16 +11128,16 @@ func (cli *ZSClient) AttachVRouterRouteTableToVRouter(ctx context.Context, param
 // CreateVxlanVtep creates VxlanVtep
 func (cli *ZSClient) CreateVxlanVtep(ctx context.Context, params param.CreateVxlanVtepParam) (*view.VtepInventoryView, error) {
 	resp := view.VtepInventoryView{}
-	if err := cli.Post(ctx, "v1/l2-networks/vxlan/vteps", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/l2-networks/vxlan/vteps", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 // AddMdevDeviceSpecToVmInstance adds MdevDeviceSpecToVmInstance
-func (cli *ZSClient) AddMdevDeviceSpecToVmInstance(ctx context.Context, params param.AddMdevDeviceSpecToVmInstanceParam) (*view.VmInstanceMdevDeviceSpecRefInventoryView, error) {
+func (cli *ZSClient) AddMdevDeviceSpecToVmInstance(ctx context.Context, mdevSpecUuid string, vmInstanceUuid string, params param.AddMdevDeviceSpecToVmInstanceParam) (*view.VmInstanceMdevDeviceSpecRefInventoryView, error) {
 	resp := view.VmInstanceMdevDeviceSpecRefInventoryView{}
-	if err := cli.Post(ctx, "v1/mdev-device-specs/{mdevSpecUuid}/vm-instances/{vmInstanceUuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/mdev-device-specs/%s/vm-instances/%s", mdevSpecUuid, vmInstanceUuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10888,9 +11149,9 @@ func (cli *ZSClient) DetachScsiLunFromVmInstance(ctx context.Context, vmInstance
 }
 
 // EnableCdpTask operates on EnableCdpTask
-func (cli *ZSClient) EnableCdpTask(ctx context.Context, params param.EnableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
+func (cli *ZSClient) EnableCdpTask(ctx context.Context, uuid string, params param.EnableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
 	resp := view.CdpTaskInventoryView{}
-	if err := cli.Post(ctx, "v1/cdp-task/enable/{uuid}", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, fmt.Sprintf("v1/cdp-task/enable/%s", uuid), "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -10925,7 +11186,7 @@ func (cli *ZSClient) SyncConnectionAccessPointFromRemote(ctx context.Context, da
 // RegisterLicenseRequestedApplication operates on LicenseRequestedApplication
 func (cli *ZSClient) RegisterLicenseRequestedApplication(ctx context.Context, params param.RegisterLicenseRequestedApplicationParam) (*view.RegisterLicenseRequestedApplicationEventView, error) {
 	resp := view.RegisterLicenseRequestedApplicationEventView{}
-	if err := cli.Post(ctx, "v1/licenses/applications", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/licenses/applications", "", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

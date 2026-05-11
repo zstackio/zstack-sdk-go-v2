@@ -43,7 +43,7 @@ func (cli *ZSClient) UpdateSNSSnmpPlatform(ctx context.Context, uuid string, par
 // CreateSNSSnmpPlatform creates SNSSnmpPlatform
 func (cli *ZSClient) CreateSNSSnmpPlatform(ctx context.Context, params param.CreateSNSSnmpPlatformParam) (*view.SNSApplicationPlatformInventoryView, error) {
 	resp := view.SNSApplicationPlatformInventoryView{}
-	if err := cli.Post(ctx, "v1/sns/application-platforms/snmp", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/sns/application-platforms/snmp", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

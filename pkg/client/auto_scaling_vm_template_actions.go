@@ -43,7 +43,7 @@ func (cli *ZSClient) PageAutoScalingVmTemplate(ctx context.Context, params *para
 // CreateAutoScalingVmTemplate creates AutoScalingVmTemplate
 func (cli *ZSClient) CreateAutoScalingVmTemplate(ctx context.Context, params param.CreateAutoScalingVmTemplateParam) (*view.AutoScalingTemplateInventoryView, error) {
 	resp := view.AutoScalingTemplateInventoryView{}
-	if err := cli.Post(ctx, "v1/autoscaling/vmtemplate", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/autoscaling/vmtemplate", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

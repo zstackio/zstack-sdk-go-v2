@@ -27,7 +27,7 @@ func (cli *ZSClient) UpdateCluster(ctx context.Context, uuid string, params para
 // CreateCluster creates Cluster
 func (cli *ZSClient) CreateCluster(ctx context.Context, params param.CreateClusterParam) (*view.ClusterInventoryView, error) {
 	resp := view.ClusterInventoryView{}
-	if err := cli.Post(ctx, "v1/clusters", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/clusters", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -27,7 +27,7 @@ func (cli *ZSClient) DeleteVpcHaGroup(ctx context.Context, uuid string, deleteMo
 // CreateVpcHaGroup creates VpcHaGroup
 func (cli *ZSClient) CreateVpcHaGroup(ctx context.Context, params param.CreateVpcHaGroupParam) (*view.VpcHaGroupInventoryView, error) {
 	resp := view.VpcHaGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/vpc/hagroups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/vpc/hagroups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

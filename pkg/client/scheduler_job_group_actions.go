@@ -13,7 +13,7 @@ var _ = view.MapView{} // avoid unused import
 // CreateSchedulerJobGroup creates SchedulerJobGroup
 func (cli *ZSClient) CreateSchedulerJobGroup(ctx context.Context, params param.CreateSchedulerJobGroupParam) (*view.SchedulerJobGroupInventoryView, error) {
 	resp := view.SchedulerJobGroupInventoryView{}
-	if err := cli.Post(ctx, "v1/scheduler/jobgroups", params, &resp); err != nil {
+	if err := cli.PostWithRespKey(ctx, "v1/scheduler/jobgroups", "inventory", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
