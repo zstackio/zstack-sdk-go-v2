@@ -55,11 +55,6 @@ type SyncPrimaryStorageCapacityEventView struct {
 	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
-// AddPrimaryStorageEventView AddPrimaryStorageEvent
-type AddPrimaryStorageEventView struct {
-	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-
 // ChangePrimaryStorageStateEventView ChangePrimaryStorageStateEvent
 type ChangePrimaryStorageStateEventView struct {
 	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`

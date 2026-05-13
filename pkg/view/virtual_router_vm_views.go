@@ -48,3 +48,8 @@ type UpdateVirtualRouterEventView struct {
 	Inventory VirtualRouterVmInventoryView `json:"inventory,omitempty"`
 }
 
+// QueryApplianceVmView QueryApplianceVm
+type QueryApplianceVmView struct {
+	Inventories []ApplianceVmInventoryView `json:"inventories,omitempty"`
+}
+
