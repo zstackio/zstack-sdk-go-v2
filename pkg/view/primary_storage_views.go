@@ -40,11 +40,6 @@ type UpdatePrimaryStorageEventView struct {
 	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 
-// QueryPrimaryStorageView QueryPrimaryStorage
-type QueryPrimaryStorageView struct {
-	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
-}
-
 // GetPrimaryStorageCandidatesForVolumeMigrationView GetPrimaryStorageCandidatesForVolumeMigration
 type GetPrimaryStorageCandidatesForVolumeMigrationView struct {
 	Inventories []PrimaryStorageInventoryView `json:"inventories,omitempty"`
@@ -52,11 +47,6 @@ type GetPrimaryStorageCandidatesForVolumeMigrationView struct {
 
 // SyncPrimaryStorageCapacityEventView SyncPrimaryStorageCapacityEvent
 type SyncPrimaryStorageCapacityEventView struct {
-	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-
-// AddPrimaryStorageEventView AddPrimaryStorageEvent
-type AddPrimaryStorageEventView struct {
 	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
 }
 

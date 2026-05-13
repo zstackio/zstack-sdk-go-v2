@@ -36,11 +36,6 @@ type ChangeL2NetworkVlanIdEventView struct {
 	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`
 }
 
-// CreateL2NetworkEventView CreateL2NetworkEvent
-type CreateL2NetworkEventView struct {
-	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`
-}
-
 // UpdateL2NetworkEventView UpdateL2NetworkEvent
 type UpdateL2NetworkEventView struct {
 	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`

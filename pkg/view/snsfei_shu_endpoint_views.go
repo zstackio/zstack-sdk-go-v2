@@ -23,6 +23,11 @@ type SNSFeiShuEndpointInventoryView struct {
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
 
+// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
+type UpdateSNSApplicationEndpointEventView struct {
+	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
+}
+
 // CreateSNSFeiShuEndpointEventView CreateSNSFeiShuEndpointEvent
 type CreateSNSFeiShuEndpointEventView struct {
 	Inventory SNSFeiShuEndpointInventoryView `json:"inventory,omitempty"`
