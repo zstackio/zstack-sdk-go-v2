@@ -20,6 +20,11 @@ type QueryVRouterRouteTableView struct {
 	Inventories []VRouterRouteTableInventoryView `json:"inventories,omitempty"`
 }
 
+// DeleteVRouterRouteEntryEventView DeleteVRouterRouteEntryEvent
+type DeleteVRouterRouteEntryEventView struct {
+	Inventory VRouterRouteTableInventoryView `json:"inventory,omitempty"`
+}
+
 // DetachVRouterRouteTableFromVRouterEventView DetachVRouterRouteTableFromVRouterEvent
 type DetachVRouterRouteTableFromVRouterEventView struct {
 	Inventory VRouterRouteTableInventoryView `json:"inventory,omitempty"`

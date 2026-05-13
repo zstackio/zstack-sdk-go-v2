@@ -30,3 +30,8 @@ type ModelEvalServiceInstanceGroupInventoryView struct {
 	ExportPath string `json:"exportPath,omitempty"`
 }
 
+// QueryModelServiceInstanceGroupView QueryModelServiceInstanceGroup
+type QueryModelServiceInstanceGroupView struct {
+	Inventories []ModelServiceInstanceGroupInventoryView `json:"inventories,omitempty"`
+}
+

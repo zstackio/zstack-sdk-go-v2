@@ -19,6 +19,11 @@ type SNSMicrosoftTeamsEndpointInventoryView struct {
 	Platform SNSApplicationPlatformInventoryView `json:"platform,omitempty"`
 }
 
+// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
+type UpdateSNSApplicationEndpointEventView struct {
+	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
+}
+
 // CreateSNSMicrosoftTeamsEndpointEventView CreateSNSMicrosoftTeamsEndpointEvent
 type CreateSNSMicrosoftTeamsEndpointEventView struct {
 	Inventory SNSMicrosoftTeamsEndpointInventoryView `json:"inventory,omitempty"`

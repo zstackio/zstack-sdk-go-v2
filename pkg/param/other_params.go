@@ -2849,17 +2849,6 @@ type AttachMonitorTriggerActionToTriggerParam struct {
 	BaseParam
 	Params AttachMonitorTriggerActionToTriggerParamDetail `json:"params"`
 }
-// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
-type GetAliyunNasFileSystemRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	FileSystemId *string `json:"fileSystemId,omitempty"`
-}
-
-// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
-type GetAliyunNasFileSystemRemoteParam struct {
-	BaseParam
-	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
-}
 // UpdateOrganizationQuotaParamDetail UpdateOrganizationQuota detail param
 type UpdateOrganizationQuotaParamDetail struct {
 	IdentityUuid string `json:"identityUuid" validate:"required"`
@@ -2871,6 +2860,17 @@ type UpdateOrganizationQuotaParamDetail struct {
 type UpdateOrganizationQuotaParam struct {
 	BaseParam
 	Params UpdateOrganizationQuotaParamDetail `json:"updateOrganizationQuota"`
+}
+// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
+type GetAliyunNasFileSystemRemoteParamDetail struct {
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	FileSystemId *string `json:"fileSystemId,omitempty"`
+}
+
+// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
+type GetAliyunNasFileSystemRemoteParam struct {
+	BaseParam
+	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
 }
 // ChangePreconfigurationTemplateStateParamDetail ChangePreconfigurationTemplateState detail param
 type ChangePreconfigurationTemplateStateParamDetail struct {
@@ -8748,16 +8748,6 @@ type ChangeVmNicNetworkParam struct {
 	BaseParam
 	Params ChangeVmNicNetworkParamDetail `json:"params"`
 }
-// RemoveLabelFromAlarmParamDetail RemoveLabelFromAlarm detail param
-type RemoveLabelFromAlarmParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// RemoveLabelFromAlarmParam RemoveLabelFromAlarm request param
-type RemoveLabelFromAlarmParam struct {
-	BaseParam
-	Params RemoveLabelFromAlarmParamDetail `json:"removeLabelFromAlarm"`
-}
 // CreateBareMetal2IpmiChassisHardwareInfoParamDetail CreateBareMetal2IpmiChassisHardwareInfo detail param
 type CreateBareMetal2IpmiChassisHardwareInfoParamDetail struct {
 	IpmiAddress string `json:"ipmiAddress" validate:"required"`
@@ -8770,6 +8760,16 @@ type CreateBareMetal2IpmiChassisHardwareInfoParamDetail struct {
 type CreateBareMetal2IpmiChassisHardwareInfoParam struct {
 	BaseParam
 	Params CreateBareMetal2IpmiChassisHardwareInfoParamDetail `json:"params"`
+}
+// RemoveLabelFromAlarmParamDetail RemoveLabelFromAlarm detail param
+type RemoveLabelFromAlarmParamDetail struct {
+	DeleteMode *string `json:"deleteMode,omitempty"`
+}
+
+// RemoveLabelFromAlarmParam RemoveLabelFromAlarm request param
+type RemoveLabelFromAlarmParam struct {
+	BaseParam
+	Params RemoveLabelFromAlarmParamDetail `json:"removeLabelFromAlarm"`
 }
 // DeleteIAM2VirtualIDLdapBindingParamDetail DeleteIAM2VirtualIDLdapBinding detail param
 type DeleteIAM2VirtualIDLdapBindingParamDetail struct {

@@ -2711,21 +2711,21 @@ func (cli *ZSClient) AttachMonitorTriggerActionToTrigger(ctx context.Context, tr
 	return &resp, nil
 }
 
-// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
-func (cli *ZSClient) GetAliyunNasFileSystemRemote(ctx context.Context) (*view.GetAliyunNasFileSystemRemoteView, error) {
-	var resp view.GetAliyunNasFileSystemRemoteView
-	if err := cli.GetWithRespKey(ctx, "v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // UpdateOrganizationQuota updates OrganizationQuota
 func (cli *ZSClient) UpdateOrganizationQuota(ctx context.Context, params param.UpdateOrganizationQuotaParam) (*view.QuotaInventoryView, error) {
 	resp := view.QuotaInventoryView{}
 	if err := cli.PutWithRespKey(ctx, "v1/iam2/Organization/quotas/actions", "", "", map[string]interface{}{
 		"updateOrganizationQuota": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
+func (cli *ZSClient) GetAliyunNasFileSystemRemote(ctx context.Context) (*view.GetAliyunNasFileSystemRemoteView, error) {
+	var resp view.GetAliyunNasFileSystemRemoteView
+	if err := cli.GetWithRespKey(ctx, "v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
@@ -8091,11 +8091,6 @@ func (cli *ZSClient) ChangeVmNicNetwork(ctx context.Context, vmNicUuid string, d
 	return &resp, nil
 }
 
-// RemoveLabelFromAlarm removes LabelFromAlarm
-func (cli *ZSClient) RemoveLabelFromAlarm(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete(ctx, "v1/zwatch/alarms/labels", uuid, string(deleteMode))
-}
-
 // CreateBareMetal2IpmiChassisHardwareInfo creates BareMetal2IpmiChassisHardwareInfo
 func (cli *ZSClient) CreateBareMetal2IpmiChassisHardwareInfo(ctx context.Context, params param.CreateBareMetal2IpmiChassisHardwareInfoParam) (*view.CreateBareMetal2ChassisHardwareView, error) {
 	resp := view.CreateBareMetal2ChassisHardwareView{}
@@ -8103,6 +8098,11 @@ func (cli *ZSClient) CreateBareMetal2IpmiChassisHardwareInfo(ctx context.Context
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// RemoveLabelFromAlarm removes LabelFromAlarm
+func (cli *ZSClient) RemoveLabelFromAlarm(ctx context.Context, uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete(ctx, "v1/zwatch/alarms/labels", uuid, string(deleteMode))
 }
 
 // DeleteIAM2VirtualIDLdapBinding deletes IAM2VirtualIDLdapBinding
