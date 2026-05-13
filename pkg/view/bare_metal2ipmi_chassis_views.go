@@ -27,3 +27,8 @@ type BareMetal2IpmiChassisInventoryView struct {
 	ChassisOffering BareMetal2ChassisOfferingInventoryView `json:"chassisOffering,omitempty"`
 }
 
+// UpdateBareMetal2ChassisEventView UpdateBareMetal2ChassisEvent
+type UpdateBareMetal2ChassisEventView struct {
+	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
+}
+
