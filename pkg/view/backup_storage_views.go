@@ -30,11 +30,6 @@ type GetCandidateBackupStorageForCreatingImageView struct {
 	Inventories []BackupStorageInventoryView `json:"inventories,omitempty"`
 }
 
-// UpdateBackupStorageEventView UpdateBackupStorageEvent
-type UpdateBackupStorageEventView struct {
-	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
-}
-
 // AttachBackupStorageToZoneEventView AttachBackupStorageToZoneEvent
 type AttachBackupStorageToZoneEventView struct {
 	Inventory BackupStorageInventoryView `json:"inventory,omitempty"`
