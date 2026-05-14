@@ -56,3 +56,13 @@ type CreateOvnControllerVmEventView struct {
 	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
 }
 
+// QueryApplianceVmView QueryApplianceVm
+type QueryApplianceVmView struct {
+	Inventories []ApplianceVmInventoryView `json:"inventories,omitempty"`
+}
+
+// ReconnectNfvInstEventView ReconnectNfvInstEvent
+type ReconnectNfvInstEventView struct {
+	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
+}
+

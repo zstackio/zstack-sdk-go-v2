@@ -23,3 +23,8 @@ type L2GeneveNetworkInventoryView struct {
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 
+// CreateL2NetworkEventView CreateL2NetworkEvent
+type CreateL2NetworkEventView struct {
+	Inventory L2NetworkInventoryView `json:"inventory,omitempty"`
+}
+

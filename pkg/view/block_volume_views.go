@@ -33,11 +33,6 @@ type BlockVolumeInventoryView struct {
 	Protocol string `json:"protocol,omitempty"`
 }
 
-// UpdateBlockVolumeEventView UpdateBlockVolumeEvent
-type UpdateBlockVolumeEventView struct {
-	Inventory BlockVolumeInventoryView `json:"inventory,omitempty"`
-}
-
 // CreateBlockVolumeEventView CreateBlockVolumeEvent
 type CreateBlockVolumeEventView struct {
 	Inventory BlockVolumeInventoryView `json:"inventory,omitempty"`
