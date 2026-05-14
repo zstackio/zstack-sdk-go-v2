@@ -21,8 +21,3 @@ type CephBackupStorageMonInventoryView struct {
 	MonUuid string `json:"monUuid,omitempty"`
 }
 
-// UpdateCephBackupStorageMonEventView UpdateCephBackupStorageMonEvent
-type UpdateCephBackupStorageMonEventView struct {
-	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
-}
-

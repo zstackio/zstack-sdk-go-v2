@@ -44,6 +44,11 @@ type ChangeHostStateEventView struct {
 	Inventory HostInventoryView `json:"inventory,omitempty"`
 }
 
+// AddHostEventView AddHostEvent
+type AddHostEventView struct {
+	Inventory HostInventoryView `json:"inventory,omitempty"`
+}
+
 // ReconnectHostEventView ReconnectHostEvent
 type ReconnectHostEventView struct {
 	Inventory HostInventoryView `json:"inventory,omitempty"`
