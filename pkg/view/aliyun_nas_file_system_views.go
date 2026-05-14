@@ -23,8 +23,3 @@ type AddAliyunNasFileSystemEventView struct {
 	Inventory AliyunNasFileSystemInventoryView `json:"inventory,omitempty"`
 }
 
-// CreateNasFileSystemEventView CreateNasFileSystemEvent
-type CreateNasFileSystemEventView struct {
-	Inventory NasFileSystemInventoryView `json:"inventory,omitempty"`
-}
-

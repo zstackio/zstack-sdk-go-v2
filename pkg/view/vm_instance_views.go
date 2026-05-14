@@ -61,6 +61,11 @@ type SetVmBootOrderEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
 
+// ChangeInstanceOfferingEventView ChangeInstanceOfferingEvent
+type ChangeInstanceOfferingEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+}
+
 // DetachL3NetworkFromVmEventView DetachL3NetworkFromVmEvent
 type DetachL3NetworkFromVmEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
@@ -102,6 +107,12 @@ type AttachIsoToVmInstanceEventView struct {
 // CreateVmFromVolumeBackupEventView CreateVmFromVolumeBackupEvent
 type CreateVmFromVolumeBackupEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+}
+
+// DeleteVmCdRomEventView DeleteVmCdRomEvent
+type DeleteVmCdRomEventView struct {
+	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
+	Success bool `json:"success,omitempty"`
 }
 
 // SetVmConsolePasswordEventView SetVmConsolePasswordEvent

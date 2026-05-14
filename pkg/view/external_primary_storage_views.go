@@ -30,11 +30,6 @@ type ExternalPrimaryStorageInventoryView struct {
 	AttachedClusterUuids []string `json:"attachedClusterUuids,omitempty"`
 }
 
-// AddPrimaryStorageEventView AddPrimaryStorageEvent
-type AddPrimaryStorageEventView struct {
-	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-
 // UpdateExternalPrimaryStorageEventView UpdateExternalPrimaryStorageEvent
 type UpdateExternalPrimaryStorageEventView struct {
 	Inventory ExternalPrimaryStorageInventoryView `json:"inventory,omitempty"`

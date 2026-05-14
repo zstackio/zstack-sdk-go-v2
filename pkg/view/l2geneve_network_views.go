@@ -11,6 +11,7 @@ type L2GeneveNetworkInventoryView struct {
 	BaseInfoView
 	BaseTimeView
 	GeneveId int `json:"geneveId,omitempty"`
+	Vni int `json:"vni,omitempty"`
 	Description string `json:"description,omitempty"`
 	ZoneUuid string `json:"zoneUuid,omitempty"`
 	PhysicalInterface string `json:"physicalInterface,omitempty"`

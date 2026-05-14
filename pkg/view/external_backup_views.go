@@ -23,6 +23,11 @@ type DeleteExternalBackupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// CreateExternalBackupEventView CreateExternalBackupEvent
+type CreateExternalBackupEventView struct {
+	Inventory ExternalBackupInventoryView `json:"inventory,omitempty"`
+}
+
 // QueryExternalBackupView QueryExternalBackup
 type QueryExternalBackupView struct {
 	Inventories []ExternalBackupInventoryView `json:"inventories,omitempty"`

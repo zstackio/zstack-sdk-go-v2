@@ -26,8 +26,3 @@ type BareMetal2DpuChassisInventoryView struct {
 	ChassisOffering BareMetal2ChassisOfferingInventoryView `json:"chassisOffering,omitempty"`
 }
 
-// AddBareMetal2ChassisEventView AddBareMetal2ChassisEvent
-type AddBareMetal2ChassisEventView struct {
-	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
-}
-
