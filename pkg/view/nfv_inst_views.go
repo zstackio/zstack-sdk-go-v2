@@ -57,3 +57,8 @@ type QueryNfvInstView struct {
 	Inventories []NfvInstInventoryView `json:"inventories,omitempty"`
 }
 
+// ReconnectNfvInstEventView ReconnectNfvInstEvent
+type ReconnectNfvInstEventView struct {
+	Inventory ApplianceVmInventoryView `json:"inventory,omitempty"`
+}
+

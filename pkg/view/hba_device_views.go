@@ -14,8 +14,3 @@ type HbaDeviceInventoryView struct {
 	HbaType string `json:"hbaType,omitempty"`
 }
 
-// QueryFcHbaDeviceView QueryFcHbaDevice
-type QueryFcHbaDeviceView struct {
-	Inventories []HbaDeviceInventoryView `json:"inventories,omitempty"`
-}
-

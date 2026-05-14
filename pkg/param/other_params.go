@@ -2849,17 +2849,6 @@ type AttachMonitorTriggerActionToTriggerParam struct {
 	BaseParam
 	Params AttachMonitorTriggerActionToTriggerParamDetail `json:"params"`
 }
-// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
-type GetAliyunNasFileSystemRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	FileSystemId *string `json:"fileSystemId,omitempty"`
-}
-
-// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
-type GetAliyunNasFileSystemRemoteParam struct {
-	BaseParam
-	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
-}
 // UpdateOrganizationQuotaParamDetail UpdateOrganizationQuota detail param
 type UpdateOrganizationQuotaParamDetail struct {
 	IdentityUuid string `json:"identityUuid" validate:"required"`
@@ -2871,6 +2860,17 @@ type UpdateOrganizationQuotaParamDetail struct {
 type UpdateOrganizationQuotaParam struct {
 	BaseParam
 	Params UpdateOrganizationQuotaParamDetail `json:"updateOrganizationQuota"`
+}
+// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
+type GetAliyunNasFileSystemRemoteParamDetail struct {
+	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
+	FileSystemId *string `json:"fileSystemId,omitempty"`
+}
+
+// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
+type GetAliyunNasFileSystemRemoteParam struct {
+	BaseParam
+	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
 }
 // ChangePreconfigurationTemplateStateParamDetail ChangePreconfigurationTemplateState detail param
 type ChangePreconfigurationTemplateStateParamDetail struct {
