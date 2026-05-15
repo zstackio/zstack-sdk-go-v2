@@ -37,11 +37,6 @@ type QuerySharedBlockGroupPrimaryStorageView struct {
 	Inventories []SharedBlockGroupPrimaryStorageInventoryView `json:"inventories,omitempty"`
 }
 
-// AddPrimaryStorageEventView AddPrimaryStorageEvent
-type AddPrimaryStorageEventView struct {
-	Inventory PrimaryStorageInventoryView `json:"inventory,omitempty"`
-}
-
 // RefreshSharedBlockDeviceCapacityEventView RefreshSharedBlockDeviceCapacityEvent
 type RefreshSharedBlockDeviceCapacityEventView struct {
 	Inventory SharedBlockGroupPrimaryStorageInventoryView `json:"inventory,omitempty"`

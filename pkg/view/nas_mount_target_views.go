@@ -26,6 +26,11 @@ type QueryNasMountTargetView struct {
 	Inventories []NasMountTargetInventoryView `json:"inventories,omitempty"`
 }
 
+// CreateNasMountTargetEventView CreateNasMountTargetEvent
+type CreateNasMountTargetEventView struct {
+	Inventory NasMountTargetInventoryView `json:"inventory,omitempty"`
+}
+
 // DeleteNasMountTargetEventView DeleteNasMountTargetEvent
 type DeleteNasMountTargetEventView struct {
 	Success bool `json:"success,omitempty"`

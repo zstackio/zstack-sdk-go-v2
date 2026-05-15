@@ -2711,21 +2711,21 @@ func (cli *ZSClient) AttachMonitorTriggerActionToTrigger(ctx context.Context, tr
 	return &resp, nil
 }
 
+// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
+func (cli *ZSClient) GetAliyunNasFileSystemRemote(ctx context.Context) (*view.GetAliyunNasFileSystemRemoteView, error) {
+	var resp view.GetAliyunNasFileSystemRemoteView
+	if err := cli.GetWithRespKey(ctx, "v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // UpdateOrganizationQuota updates OrganizationQuota
 func (cli *ZSClient) UpdateOrganizationQuota(ctx context.Context, params param.UpdateOrganizationQuotaParam) (*view.QuotaInventoryView, error) {
 	resp := view.QuotaInventoryView{}
 	if err := cli.PutWithRespKey(ctx, "v1/iam2/Organization/quotas/actions", "", "", map[string]interface{}{
 		"updateOrganizationQuota": params.Params,
 	}, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
-// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
-func (cli *ZSClient) GetAliyunNasFileSystemRemote(ctx context.Context) (*view.GetAliyunNasFileSystemRemoteView, error) {
-	var resp view.GetAliyunNasFileSystemRemoteView
-	if err := cli.GetWithRespKey(ctx, "v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -25,6 +25,11 @@ type ChangeSNSApplicationPlatformStateEventView struct {
 	Inventory SNSApplicationPlatformInventoryView `json:"inventory,omitempty"`
 }
 
+// UpdateSNSApplicationPlatformEventView UpdateSNSApplicationPlatformEvent
+type UpdateSNSApplicationPlatformEventView struct {
+	Inventory SNSApplicationPlatformInventoryView `json:"inventory,omitempty"`
+}
+
 // QuerySNSApplicationPlatformView QuerySNSApplicationPlatform
 type QuerySNSApplicationPlatformView struct {
 	Inventories []SNSApplicationPlatformInventoryView `json:"inventories,omitempty"`
