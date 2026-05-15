@@ -41,6 +41,11 @@ type XskyBlockVolumeInventoryView struct {
 	Protocol string `json:"protocol,omitempty"`
 }
 
+// UpdateBlockVolumeEventView UpdateBlockVolumeEvent
+type UpdateBlockVolumeEventView struct {
+	Inventory BlockVolumeInventoryView `json:"inventory,omitempty"`
+}
+
 // QueryXskyBlockVolumeView QueryXskyBlockVolume
 type QueryXskyBlockVolumeView struct {
 	Inventories []XskyBlockVolumeInventoryView `json:"inventories,omitempty"`
