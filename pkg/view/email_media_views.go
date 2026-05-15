@@ -18,16 +18,6 @@ type EmailMediaInventoryView struct {
 	State string `json:"state,omitempty"`
 }
 
-// QueryMediaView QueryMedia
-type QueryMediaView struct {
-	Inventories []MediaInventoryView `json:"inventories,omitempty"`
-}
-
-// CreateMediaEventView CreateMediaEvent
-type CreateMediaEventView struct {
-	Inventory MediaInventoryView `json:"inventory,omitempty"`
-}
-
 // UpdateEmailMediaEventView UpdateEmailMediaEvent
 type UpdateEmailMediaEventView struct {
 	Inventory EmailMediaInventoryView `json:"inventory,omitempty"`
