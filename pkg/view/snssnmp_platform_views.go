@@ -17,8 +17,8 @@ type SNSSnmpPlatformInventoryView struct {
 	Type string `json:"type,omitempty"`
 }
 
-// UpdateSNSApplicationPlatformEventView UpdateSNSApplicationPlatformEvent
-type UpdateSNSApplicationPlatformEventView struct {
-	Inventory SNSApplicationPlatformInventoryView `json:"inventory,omitempty"`
+// QuerySNSEmailPlatformView QuerySNSEmailPlatform
+type QuerySNSEmailPlatformView struct {
+	Inventories []SNSEmailPlatformInventoryView `json:"inventories,omitempty"`
 }
 
