@@ -29,11 +29,6 @@ type InspectBareMetal2ChassisEventView struct {
 	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
 }
 
-// UpdateBareMetal2ChassisEventView UpdateBareMetal2ChassisEvent
-type UpdateBareMetal2ChassisEventView struct {
-	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
-}
-
 // ChangeBareMetal2ChassisStateEventView ChangeBareMetal2ChassisStateEvent
 type ChangeBareMetal2ChassisStateEventView struct {
 	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
