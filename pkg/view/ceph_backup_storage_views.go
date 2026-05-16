@@ -48,8 +48,3 @@ type RemoveMonFromCephBackupStorageEventView struct {
 	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
 }
 
-// UpdateCephBackupStorageMonEventView UpdateCephBackupStorageMonEvent
-type UpdateCephBackupStorageMonEventView struct {
-	Inventory CephBackupStorageInventoryView `json:"inventory,omitempty"`
-}
-
