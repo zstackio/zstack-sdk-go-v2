@@ -26,6 +26,11 @@ type QuerySNSUniversalSmsEndpointView struct {
 	Inventories []SNSUniversalSmsEndpointInventoryView `json:"inventories,omitempty"`
 }
 
+// UpdateSNSApplicationEndpointEventView UpdateSNSApplicationEndpointEvent
+type UpdateSNSApplicationEndpointEventView struct {
+	Inventory SNSApplicationEndpointInventoryView `json:"inventory,omitempty"`
+}
+
 // CreateSNSUniversalSmsEndpointEventView CreateSNSUniversalSmsEndpointEvent
 type CreateSNSUniversalSmsEndpointEventView struct {
 	Inventory SNSUniversalSmsEndpointInventoryView `json:"inventory,omitempty"`
