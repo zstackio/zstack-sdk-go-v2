@@ -26,8 +26,3 @@ type ObservabilityServerOfferingInventoryView struct {
 	State string `json:"state,omitempty"`
 }
 
-// CreateInstanceOfferingEventView CreateInstanceOfferingEvent
-type CreateInstanceOfferingEventView struct {
-	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
-}
-

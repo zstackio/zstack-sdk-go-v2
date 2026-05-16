@@ -18,6 +18,11 @@ type TicketFlowCollectionInventoryView struct {
 	TicketTypeUuids []string `json:"ticketTypeUuids,omitempty"`
 }
 
+// UpdateTicketFlowCollectionEventView UpdateTicketFlowCollectionEvent
+type UpdateTicketFlowCollectionEventView struct {
+	Inventory TicketFlowCollectionInventoryView `json:"inventory,omitempty"`
+}
+
 // QueryTicketFlowCollectionView QueryTicketFlowCollection
 type QueryTicketFlowCollectionView struct {
 	Inventories []TicketFlowCollectionInventoryView `json:"inventories,omitempty"`

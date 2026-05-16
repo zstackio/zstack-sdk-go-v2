@@ -44,13 +44,3 @@ type KVMHostInventoryView struct {
 	Architecture string `json:"architecture,omitempty"`
 }
 
-// AddHostEventView AddHostEvent
-type AddHostEventView struct {
-	Inventory HostInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateHostEventView UpdateHostEvent
-type UpdateHostEventView struct {
-	Inventory HostInventoryView `json:"inventory,omitempty"`
-}
-
