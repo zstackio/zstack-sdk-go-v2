@@ -26,11 +26,6 @@ type ChangeInstanceOfferingEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
 }
 
-// CreateInstanceOfferingEventView CreateInstanceOfferingEvent
-type CreateInstanceOfferingEventView struct {
-	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
-}
-
 // UpdateInstanceOfferingEventView UpdateInstanceOfferingEvent
 type UpdateInstanceOfferingEventView struct {
 	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
