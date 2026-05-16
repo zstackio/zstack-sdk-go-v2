@@ -44,6 +44,11 @@ type DeleteBareMetal2ChassisEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
+// AddBareMetal2ChassisEventView AddBareMetal2ChassisEvent
+type AddBareMetal2ChassisEventView struct {
+	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
+}
+
 // InspectBareMetal2ChassisByInstanceEventView InspectBareMetal2ChassisByInstanceEvent
 type InspectBareMetal2ChassisByInstanceEventView struct {
 	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
