@@ -44,11 +44,6 @@ type ChangeHostStateEventView struct {
 	Inventory HostInventoryView `json:"inventory,omitempty"`
 }
 
-// AddHostEventView AddHostEvent
-type AddHostEventView struct {
-	Inventory HostInventoryView `json:"inventory,omitempty"`
-}
-
 // ReconnectHostEventView ReconnectHostEvent
 type ReconnectHostEventView struct {
 	Inventory HostInventoryView `json:"inventory,omitempty"`
@@ -57,11 +52,6 @@ type ReconnectHostEventView struct {
 // GetHostCandidatesForVmMigrationView GetHostCandidatesForVmMigration
 type GetHostCandidatesForVmMigrationView struct {
 	Inventories []HostInventoryView `json:"inventories,omitempty"`
-}
-
-// UpdateHostEventView UpdateHostEvent
-type UpdateHostEventView struct {
-	Inventory HostInventoryView `json:"inventory,omitempty"`
 }
 
 // DeleteHostEventView DeleteHostEvent

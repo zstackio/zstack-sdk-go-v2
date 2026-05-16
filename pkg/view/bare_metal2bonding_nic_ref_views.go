@@ -20,8 +20,3 @@ type BareMetal2BondingNicRefInventoryView struct {
 	BareMetal2Bonding BareMetal2BondingInventoryView `json:"bareMetal2Bonding,omitempty"`
 }
 
-// QueryBareMetal2ChassisView QueryBareMetal2Chassis
-type QueryBareMetal2ChassisView struct {
-	Inventories []BareMetal2ChassisInventoryView `json:"inventories,omitempty"`
-}
-

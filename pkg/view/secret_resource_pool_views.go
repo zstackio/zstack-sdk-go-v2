@@ -25,16 +25,6 @@ type DeleteSecretResourcePoolEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// CreateSecretResourcePoolEventView CreateSecretResourcePoolEvent
-type CreateSecretResourcePoolEventView struct {
-	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateSecretResourcePoolEventView UpdateSecretResourcePoolEvent
-type UpdateSecretResourcePoolEventView struct {
-	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
-}
-
 // ChangeSecretResourcePoolStateEventView ChangeSecretResourcePoolStateEvent
 type ChangeSecretResourcePoolStateEventView struct {
 	Inventory SecretResourcePoolInventoryView `json:"inventory,omitempty"`
