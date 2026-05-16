@@ -21,16 +21,6 @@ type InstanceOfferingInventoryView struct {
 	State string `json:"state,omitempty"`
 }
 
-// ChangeInstanceOfferingEventView ChangeInstanceOfferingEvent
-type ChangeInstanceOfferingEventView struct {
-	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateInstanceOfferingEventView UpdateInstanceOfferingEvent
-type UpdateInstanceOfferingEventView struct {
-	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
-}
-
 // ChangeInstanceOfferingStateEventView ChangeInstanceOfferingStateEvent
 type ChangeInstanceOfferingStateEventView struct {
 	Inventory InstanceOfferingInventoryView `json:"inventory,omitempty"`
