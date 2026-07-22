@@ -9,18 +9,24 @@ import (
 )
 
 var _ = param.BaseParam{} // avoid unused import
-var _ = view.MapView{} // avoid unused import
+var _ = view.MapView{}    // avoid unused import
 
 // UpdateVniRange updates VniRange
 func (cli *ZSClient) UpdateVniRange(uuid string, params param.UpdateVniRangeParam) (*view.VniRangeInventoryView, error) {
 	resp := view.VniRangeInventoryView{}
-	if err := cli.PutWithRespKey("v1/l2-networks/vxlan-pool/vni-ranges", uuid, "", map[string]interface{}{
-		"updateVniRange": params.Params,
-	}, &resp); err != nil {
+	body := struct {
+		param.BaseParam
+		UpdateVniRange param.UpdateVniRangeParamDetail `json:"updateVniRange"`
+	}{
+		BaseParam:      params.BaseParam,
+		UpdateVniRange: params.Params,
+	}
+	if err := cli.PutWithSpec("v1/l2-networks/vxlan-pool/vni-ranges", uuid, "", "", body, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
+
 // QueryVniRange queries VniRange list
 func (cli *ZSClient) QueryVniRange(params *param.QueryParam) ([]view.VniRangeInventoryView, error) {
 	var resp []view.VniRangeInventoryView
@@ -41,6 +47,7 @@ func (cli *ZSClient) PageVniRange(params *param.QueryParam) ([]view.VniRangeInve
 	total, err := cli.Page("v1/l2-networks/vxlan-pool/vni-range", params, &vniRanges)
 	return vniRanges, total, err
 }
+
 // CreateVniRange creates VniRange
 func (cli *ZSClient) CreateVniRange(l2NetworkUuid string, params param.CreateVniRangeParam) (*view.VniRangeInventoryView, error) {
 	resp := view.VniRangeInventoryView{}
@@ -49,6 +56,7 @@ func (cli *ZSClient) CreateVniRange(l2NetworkUuid string, params param.CreateVni
 	}
 	return &resp, nil
 }
+
 // DeleteVniRange deletes VniRange
 func (cli *ZSClient) DeleteVniRange(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/l2-networks/vxlan-pool/vni-ranges", uuid, string(deleteMode))
