@@ -383,7 +383,14 @@ func (cli *ZSClient) AttachPrimaryStorageToCluster(clusterUuid string, primarySt
 // AttachL2NetworkToCluster operates on L2NetworkToCluster
 func (cli *ZSClient) AttachL2NetworkToCluster(l2NetworkUuid string, clusterUuid string, params param.AttachL2NetworkToClusterParam) (*view.L2NetworkInventoryView, error) {
 	resp := view.L2NetworkInventoryView{}
-	if err := cli.Post(fmt.Sprintf("v1/l2-networks/%s/clusters/%s", l2NetworkUuid, clusterUuid), params, &resp); err != nil {
+	body := struct {
+		param.BaseParam
+		L2ProviderType *string `json:"l2ProviderType,omitempty"`
+	}{
+		BaseParam:      params.BaseParam,
+		L2ProviderType: params.Params.L2ProviderType,
+	}
+	if err := cli.Post(fmt.Sprintf("v1/l2-networks/%s/clusters/%s", l2NetworkUuid, clusterUuid), body, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil
