@@ -96,7 +96,15 @@ func ConvertStruct2UrlValues(param interface{}) (url.Values, error) {
 	s.TagName = "json"
 	mappedOpts := s.Map()
 	for k, v := range mappedOpts {
-		result.Set(k, fmt.Sprintf("%v", v))
+		value := reflect.ValueOf(v)
+		switch value.Kind() {
+		case reflect.Array, reflect.Slice:
+			for i := 0; i < value.Len(); i++ {
+				result.Add(k, fmt.Sprintf("%v", value.Index(i).Interface()))
+			}
+		default:
+			result.Set(k, fmt.Sprintf("%v", v))
+		}
 	}
 	return result, nil
 }
