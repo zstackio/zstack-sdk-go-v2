@@ -4,6 +4,8 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -10412,9 +10414,27 @@ func (cli *ZSClient) GetIAM2ProjectContainerImages(projectId string, repositoryI
 	return &resp, nil
 }
 
-// DetachDataVolumeFromVm operates on DataVolumeFromVm
-func (cli *ZSClient) DetachDataVolumeFromVm(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volumes", uuid, string(deleteMode))
+// DetachDataVolumeFromVm detaches a data volume without deleting it.
+func (cli *ZSClient) DetachDataVolumeFromVm(uuid string, params param.DetachDataVolumeFromVmParam) (*view.VolumeInventoryView, error) {
+	body := struct {
+		VmUuid *string `json:"vmUuid,omitempty"`
+		param.BaseParam
+	}{
+		VmUuid:    params.Params.VmUuid,
+		BaseParam: params.BaseParam,
+	}
+	path := fmt.Sprintf("v1/volumes/%s/vm-instances", uuid)
+	query := url.Values{}
+	if params.Params.VmUuid != nil && *params.Params.VmUuid != "" {
+		query.Set("vmUuid", *params.Params.VmUuid)
+		path = fmt.Sprintf("%s?%s", path, query.Encode())
+	}
+
+	resp := view.VolumeInventoryView{}
+	if err := cli.DeleteWithBody(path, body, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }
 
 // QueryEcsVSwitchFromLocal queries EcsVSwitchFromLocal list
@@ -10572,9 +10592,16 @@ func (cli *ZSClient) DeleteEcsSecurityGroupInLocal(uuid string, deleteMode param
 	return cli.Delete("v1/hybrid/aliyun/security-group", uuid, string(deleteMode))
 }
 
-// DetachDataVolumeFromHost operates on DataVolumeFromHost
-func (cli *ZSClient) DetachDataVolumeFromHost(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volumes", uuid, string(deleteMode))
+// DetachDataVolumeFromHost detaches a data volume without deleting it.
+func (cli *ZSClient) DetachDataVolumeFromHost(volumeUuid string, params param.DetachDataVolumeFromHostParam) error {
+	body := struct {
+		HostUuid *string `json:"hostUuid,omitempty"`
+		param.BaseParam
+	}{
+		HostUuid:  params.Params.HostUuid,
+		BaseParam: params.BaseParam,
+	}
+	return cli.DeleteWithBody(fmt.Sprintf("v1/volumes/%s/hosts", volumeUuid), body, nil)
 }
 
 // GetVmInstanceRecoveryPoints gets VmInstanceRecoveryPoints by uuid
