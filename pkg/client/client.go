@@ -94,7 +94,7 @@ func (cli *ZSClient) Login(ctx context.Context) (*view.SessionInventoryView, err
 	}
 
 	if err != nil {
-		golog.Errorf("ZSClient.Login error:%v", err)
+		// Authentication errors can contain request credentials; let callers handle them.
 		return nil, err
 	}
 
@@ -121,8 +121,7 @@ func (cli *ZSClient) logInByAccountUser(ctx context.Context) (*view.SessionInven
 	sessionView := view.SessionInventoryView{}
 	err := cli.ZSHttpClient.Put(ctx, "v1/accounts/users/login", "", params, &sessionView)
 	if err != nil {
-		golog.Errorf("ZSClient.logInByAccountUser Account[%s] User[%s] error:%v",
-			cli.accountName, cli.accountUserName, err)
+		// Do not log authentication request data.
 		return nil, err
 	}
 
@@ -147,7 +146,7 @@ func (cli *ZSClient) logInByAccount(ctx context.Context) (*view.SessionInventory
 	sessionView := view.SessionInventoryView{}
 	err := cli.ZSHttpClient.Put(ctx, "v1/accounts/login", "", params, &sessionView)
 	if err != nil {
-		golog.Errorf("ZSClient.logInByAccount Account[%s] error:%v", cli.accountName, err)
+		// Do not log the wrapped request, which includes the password digest.
 		return nil, err
 	}
 
@@ -189,7 +188,7 @@ func (cli *ZSClient) Logout(ctx context.Context) error {
 
 	err := cli.ZSHttpClient.Delete(ctx, "v1/accounts/sessions", cli.sessionId, "")
 	if err != nil {
-		golog.Errorf("ZSClient.Logout sessionId[%s] error:%v", cli.sessionId, err)
+		// Session IDs and wrapped request errors are credentials.
 		return err
 	}
 

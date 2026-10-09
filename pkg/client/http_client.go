@@ -477,6 +477,11 @@ func (cli *ZSHttpClient) httpDeleteWithBody(ctx context.Context, urlStr string, 
 		return "", nil, nil, errors.Wrapf(err, "%s %s", http.MethodDelete, urlStr)
 	}
 
+	// A successful HTTP 204 has no JSON body (e.g. account logout).
+	if resp == nil {
+		return "", respHeader, jsonutils.NewDict(), nil
+	}
+
 	var location string
 	if resp.Contains(responseKeyLocation) {
 		location, _ = resp.GetString(responseKeyLocation)
