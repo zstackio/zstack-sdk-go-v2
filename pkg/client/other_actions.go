@@ -2280,6 +2280,16 @@ func (cli *ZSClient) GetCpuMemoryCapacity() (*view.GetCpuMemoryCapacityView, err
 	return &resp, nil
 }
 
+// GetCpuMemoryCapacityWithParams passes the scope required by Cloud. When no
+// zone, cluster, or host is selected, callers must set All to true.
+func (cli *ZSClient) GetCpuMemoryCapacityWithParams(params param.GetCpuMemoryCapacityParamDetail) (*view.GetCpuMemoryCapacityView, error) {
+	var resp view.GetCpuMemoryCapacityView
+	if err := cli.GetWithRespKey("v1/hosts/capacities/cpu-memory", "", "", &params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // AddIntegrityResource adds IntegrityResource
 func (cli *ZSClient) AddIntegrityResource(params param.AddIntegrityResourceParam) (*view.AddIntegrityResourceEventView, error) {
 	resp := view.AddIntegrityResourceEventView{}
