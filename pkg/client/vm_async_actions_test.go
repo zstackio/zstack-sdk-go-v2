@@ -54,3 +54,30 @@ func TestVMAsyncSingleRequests(t *testing.T) {
 		}
 	}
 }
+
+func TestVMCreationAcknowledgementCloudDates(t *testing.T) {
+	const id = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+	for _, submit := range []bool{false, true} {
+		t.Run(fmt.Sprint(submit), func(t *testing.T) {
+			calls := 0
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				calls++
+				fmt.Fprint(w, `{"inventory":{"uuid":"`+id+`","name":"synthetic","state":"Running","createDate":"2026-10-18 08:23:29","lastOpDate":"2026-10-18 08:23:31","allVolumes":[{"uuid":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","createDate":"2026-10-18 08:23:29"}]}}`)
+			}))
+			defer server.Close()
+			host, rawPort, _ := net.SplitHostPort(strings.TrimPrefix(server.URL, "http://"))
+			port, _ := strconv.Atoi(rawPort)
+			c := &ZSClient{ZSHttpClient: &ZSHttpClient{ZSConfig: NewZSConfig(host, port, "zstack").AccessKey("ak", "sk").RetryTimes(100), httpClient: server.Client()}}
+			var out VMAsyncResult
+			var err error
+			if submit {
+				out, err = c.CreateVmInstanceAsync(context.Background(), param.CreateVmInstanceParam{})
+			} else {
+				out, err = c.QueryVmCreation(context.Background(), id)
+			}
+			if err != nil || out.State != "succeeded" || out.Inventory == nil || out.Inventory.UUID != id || out.Inventory.CreateDate.IsZero() || len(out.Inventory.AllVolumes) != 1 || out.Inventory.AllVolumes[0].CreateDate.IsZero() || calls != 1 {
+				t.Fatalf("Cloud date acknowledgement: state=%s err=%v calls=%d", out.State, err, calls)
+			}
+		})
+	}
+}

@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
+	"github.com/zstackio/zstack-sdk-go-v2/pkg/util/jsonutils"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
@@ -160,7 +161,16 @@ func (cli *ZSHttpClient) vmAsyncRequest(ctx context.Context, method, target stri
 		return fail(ErrAsyncResponse)
 	}
 	var vm view.VmInstanceInventoryView
-	if json.Unmarshal(data["inventory"], &vm) != nil || !asyncID(vm.UUID) {
+	var receipt struct {
+		UUID string `json:"uuid"`
+	}
+	if json.Unmarshal(data["inventory"], &receipt) != nil || !asyncID(receipt.UUID) {
+		return fail(ErrAsyncResponse)
+	}
+	// Cloud inventory timestamps use its SQL datetime representation. Reuse the
+	// SDK inventory decoder, including nested NIC/volume dates, as List does.
+	inventory, err := jsonutils.Parse(data["inventory"])
+	if err != nil || inventory == nil || inventory.Unmarshal(&vm) != nil || vm.UUID != receipt.UUID {
 		return fail(ErrAsyncResponse)
 	}
 	return VMAsyncResult{State: "succeeded", JobID: job, Inventory: &vm}, nil
