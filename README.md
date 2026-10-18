@@ -80,6 +80,20 @@ if err != nil {
 // Use clusters data
 
 ```
+### Asynchronous VM operations
+
+`CreateVmInstanceAsync` and `QueryVmCreation` perform one context-bound request
+without polling or retrying. Creation receipts use the SDK inventory decoder for
+Cloud timestamps, including nested volume dates.
+
+`ControlVmInstanceAsync` supports `stop`, `force-stop`, `destroy`, and `expunge`
+with a caller-persisted job UUID. `QueryVmControlForAction` queries that original
+job and accepts a successful empty-object receipt only for `destroy`/`expunge`.
+The legacy `QueryVmControl` remains strict when the action is unknown. A failed
+request or unavailable job leaves the operation outcome unknown; callers must
+not automatically resubmit. API success alone does not prove physical resource
+release, which requires separate resource observations.
+
 ### Authentication
 
 The SDK supports the following authentication methods:
