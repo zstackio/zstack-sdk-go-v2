@@ -272,6 +272,9 @@ func (cli *ZSHttpClient) httpGet(ctx context.Context, urlStr string, async bool)
 	}
 
 	var location string
+	if resp == nil {
+		return "", nil, nil, errors.Errorf("GET %s returned an empty or invalid JSON response", urlStr)
+	}
 	if resp.Contains(responseKeyLocation) {
 		location, _ = resp.GetString(responseKeyLocation)
 		if !async {
