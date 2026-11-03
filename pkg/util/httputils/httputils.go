@@ -776,6 +776,13 @@ func ParseJSONResponse(reqBody string, resp *http.Response, err error, debug boo
 				jrbody2 = v
 			}
 		}
+		// A failed ZStack API job reports its error code and reason in an
+		// "error" object next to fields such as "success" and "diagnostic".
+		if jrbody2 != nil {
+			if zsError, err := jrbody2.Get("error"); err == nil {
+				jrbody2 = zsError
+			}
+		}
 		if jrbody2 != nil {
 			if ecode, _ := jrbody2.GetString("code"); len(ecode) > 0 {
 				code, err := strconv.Atoi(ecode)
