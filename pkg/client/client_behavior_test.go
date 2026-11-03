@@ -401,3 +401,29 @@ func TestAddVmNicToSecurityGroup_DecodesTopLevelEventResponse(t *testing.T) {
 		t.Fatalf("expected successful top-level event response, got %+v", resp)
 	}
 }
+
+func TestFailedAPIJobKeepsZStackReason(t *testing.T) {
+	const jobID = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+	const reason = "shared volume[uuid: 707bf71579f05268aeacdf85330a6258] on shared block group primary storage can not resize"
+	cli := newTestZSClient(t, func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/zstack/v1/api-jobs/"+jobID {
+			w.WriteHeader(http.StatusAccepted)
+			_, _ = io.WriteString(w, `{"location":"http://internal:8080/zstack/v1/api-jobs/`+jobID+`"}`)
+			return
+		}
+		w.WriteHeader(http.StatusServiceUnavailable)
+		_, _ = io.WriteString(w, `{"success":"false","id":"`+jobID+`",`+
+			`"diagnostic":{"component":"Cloud","code":"10031","message":"`+reason+`"},`+
+			`"error":{"code":"SYS.1007","description":"One or more API argument is invalid","details":"`+reason+`"}}`)
+	})
+
+	_, err := cli.ResizeDataVolume("707bf71579f05268aeacdf85330a6258", param.ResizeDataVolumeParam{
+		Params: param.ResizeDataVolumeParamDetail{Size: 3 << 30},
+	})
+	if err == nil {
+		t.Fatal("expected the failed job to return an error")
+	}
+	if !strings.Contains(err.Error(), reason) || !strings.Contains(err.Error(), "SYS.1007") {
+		t.Fatalf("error lost the ZStack code or reason: %v", err)
+	}
+}
