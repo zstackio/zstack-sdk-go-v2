@@ -94,6 +94,24 @@ request or unavailable job leaves the operation outcome unknown; callers must
 not automatically resubmit. API success alone does not prove physical resource
 release, which requires separate resource observations.
 
+### Detaching tags from resources
+
+`DetachTagFromResources` requires the resource UUIDs as its third argument:
+
+```go
+err := cli.DetachTagFromResources(tagUUID, param.DeleteModePermissive, []string{
+    resourceUUIDA,
+    resourceUUIDB,
+})
+```
+
+This replaces the previous two-argument signature. Callers, including Terraform
+provider adapters, must pass the resource list when upgrading. The SDK sends
+repeated `resourceUuids` query parameters to `/v1/tags/{tagUuid}/resources`;
+Cloud does not split comma-separated UUIDs. Empty tags, empty lists, and empty
+UUID entries are rejected before sending a request. This operation removes only
+the requested bindings and preserves the tag itself.
+
 ### Authentication
 
 The SDK supports the following authentication methods:
