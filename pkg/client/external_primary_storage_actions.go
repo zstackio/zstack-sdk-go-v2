@@ -28,3 +28,12 @@ func (cli *ZSClient) UpdateExternalPrimaryStorage(uuid string, params param.Upda
 	}
 	return &resp, nil
 }
+
+// DiscoverExternalPrimaryStorage operates on DiscoverExternalPrimaryStorage
+func (cli *ZSClient) DiscoverExternalPrimaryStorage(params param.DiscoverExternalPrimaryStorageParam) (*view.ExternalPrimaryStorageInventoryView, error) {
+	resp := view.ExternalPrimaryStorageInventoryView{}
+	if err := cli.Post("v1/primary-storage/addon/discover", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

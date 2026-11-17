@@ -48,3 +48,12 @@ func (cli *ZSClient) PageSNSHttpEndpoint(params *param.QueryParam) ([]view.SNSHt
 	total, err := cli.Page("v1/sns/application-endpoints/http", params, &sNSHttpEndpoints)
 	return sNSHttpEndpoints, total, err
 }
+
+// SNSHttpTestConnection operates on HttpTestConnection
+func (cli *ZSClient) SNSHttpTestConnection(params param.SNSHttpTestConnectionParam) (*view.SNSHttpTestConnectionEventView, error) {
+	resp := view.SNSHttpTestConnectionEventView{}
+	if err := cli.Post("v1/sns/application-endpoints/http/test-connection", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -48,6 +50,53 @@ func (cli *ZSClient) UpdateVip(uuid string, params param.UpdateVipParam) (*view.
 func (cli *ZSClient) CreateVip(params param.CreateVipParam) (*view.VipInventoryView, error) {
 	resp := view.VipInventoryView{}
 	if err := cli.Post("v1/vips", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CheckVipPortAvailability operates on VipPortAvailability
+func (cli *ZSClient) CheckVipPortAvailability(uuid string) (*view.CheckVipPortAvailabilityView, error) {
+	var resp view.CheckVipPortAvailabilityView
+	if err := cli.GetWithRespKey("v1/vips", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeVipState changes VipState
+func (cli *ZSClient) ChangeVipState(uuid string, params param.ChangeVipStateParam) (*view.VipInventoryView, error) {
+	resp := view.VipInventoryView{}
+	if err := cli.PutWithRespKey("v1/vips", uuid, "", map[string]interface{}{
+		"changeVipState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetVpcAttachedVip gets VpcAttachedVip by uuid
+func (cli *ZSClient) GetVpcAttachedVip(uuid string, params param.GetVpcAttachedVipParam) (*view.VipInventoryView, error) {
+	resp := view.VipInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-vip", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetVipUsedPorts gets VipUsedPorts by uuid
+func (cli *ZSClient) GetVipUsedPorts(uuid string) (*view.VipPortRangeInventoryView, error) {
+	var resp view.VipPortRangeInventoryView
+	if err := cli.GetWithRespKey("v1/vips", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetVipAvailablePort gets VipAvailablePort by uuid
+func (cli *ZSClient) GetVipAvailablePort(uuid string) (*view.GetVipAvailablePortView, error) {
+	var resp view.GetVipAvailablePortView
+	if err := cli.GetWithRespKey("v1/vips", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

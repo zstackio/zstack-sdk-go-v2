@@ -62,3 +62,12 @@ func (cli *ZSClient) PageAliyunNasAccessGroup(params *param.QueryParam) ([]view.
 	total, err := cli.Page("v1/nas/aliyun/access", params, &aliyunNasAccessGroups)
 	return aliyunNasAccessGroups, total, err
 }
+
+// GetAliyunNasAccessGroupRemote gets AliyunNasAccessGroupRemote by uuid
+func (cli *ZSClient) GetAliyunNasAccessGroupRemote() (*view.AliyunNasAccessGroupPropertyView, error) {
+	var resp view.AliyunNasAccessGroupPropertyView
+	if err := cli.GetWithRespKey("v1/nas/aliyun/access/remote", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

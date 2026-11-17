@@ -30,3 +30,12 @@ func (cli *ZSClient) PageL2PortGroupNetwork(params *param.QueryParam) ([]view.L2
 	total, err := cli.Page("v1/l2-networks/port-group", params, &l2PortGroupNetworks)
 	return l2PortGroupNetworks, total, err
 }
+
+// CreateL2PortGroup creates L2PortGroup
+func (cli *ZSClient) CreateL2PortGroup(params param.CreateL2PortGroupParam) (*view.CreateL2PortGroupEventView, error) {
+	resp := view.CreateL2PortGroupEventView{}
+	if err := cli.Post("v1/l2-networks/port-group", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

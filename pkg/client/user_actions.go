@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -51,4 +53,32 @@ func (cli *ZSClient) CreateUser(params param.CreateUserParam) (*view.UserInvento
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// AttachPoliciesToUser operates on PoliciesToUser
+func (cli *ZSClient) AttachPoliciesToUser(userUuid string, params param.AttachPoliciesToUserParam) (*view.AttachPoliciesToUserEventView, error) {
+	resp := view.AttachPoliciesToUserEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/accounts/users/%s/policy-collection", userUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachPolicyFromUser operates on PolicyFromUser
+func (cli *ZSClient) DetachPolicyFromUser(userUuid string, policyUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/accounts/users", userUuid, fmt.Sprintf("policies/%s", policyUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// AttachPolicyToUser operates on PolicyToUser
+func (cli *ZSClient) AttachPolicyToUser(userUuid string, params param.AttachPolicyToUserParam) (*view.AttachPolicyToUserEventView, error) {
+	resp := view.AttachPolicyToUserEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/accounts/users/%s/policies", userUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachPoliciesFromUser operates on PoliciesFromUser
+func (cli *ZSClient) DetachPoliciesFromUser(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/accounts/users", uuid, string(deleteMode))
 }

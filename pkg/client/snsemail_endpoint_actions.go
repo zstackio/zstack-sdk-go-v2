@@ -38,3 +38,12 @@ func (cli *ZSClient) PageSNSEmailEndpoint(params *param.QueryParam) ([]view.SNSE
 	total, err := cli.Page("v1/sns/application-endpoints/emails", params, &sNSEmailEndpoints)
 	return sNSEmailEndpoints, total, err
 }
+
+// SNSEmailTestConnection operates on EmailTestConnection
+func (cli *ZSClient) SNSEmailTestConnection(params param.SNSEmailTestConnectionParam) (*view.SNSEmailTestConnectionEventView, error) {
+	resp := view.SNSEmailTestConnectionEventView{}
+	if err := cli.Post("v1/sns/application-endpoints/email/test-connection", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

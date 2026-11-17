@@ -30,3 +30,12 @@ func (cli *ZSClient) PageContainerImage(params *param.QueryParam) ([]view.Contai
 	total, err := cli.Page("v1/container/images", params, &containerImages)
 	return containerImages, total, err
 }
+
+// GetContainerUsage gets ContainerUsage by uuid
+func (cli *ZSClient) GetContainerUsage() (*view.GetContainerUsageView, error) {
+	var resp view.GetContainerUsageView
+	if err := cli.GetWithRespKey("v1/container/usage", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

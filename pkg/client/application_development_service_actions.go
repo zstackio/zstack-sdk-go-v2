@@ -30,3 +30,23 @@ func (cli *ZSClient) PageApplicationDevelopmentService(params *param.QueryParam)
 	total, err := cli.Page("v1/ai/model-services/app/", params, &applicationDevelopmentServices)
 	return applicationDevelopmentServices, total, err
 }
+
+// DeployAppDevelopmentService operates on DeployAppDevelopmentService
+func (cli *ZSClient) DeployAppDevelopmentService() (*view.ModelServiceInstanceGroupInventoryView, error) {
+	resp := view.ModelServiceInstanceGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/ai/model-services/app/", "", "", map[string]interface{}{
+		"deployAppDevelopmentService": map[string]interface{}{},
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SyncAINginxConfiguration operates on AINginxConfiguration
+func (cli *ZSClient) SyncAINginxConfiguration(params param.SyncAINginxConfigurationParam) (*view.SyncAINginxConfigurationView, error) {
+	resp := view.SyncAINginxConfigurationView{}
+	if err := cli.Post("v1/ai/nginx/sync", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

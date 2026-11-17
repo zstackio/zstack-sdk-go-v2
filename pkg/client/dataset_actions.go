@@ -67,3 +67,19 @@ func (cli *ZSClient) UpdateDataset(uuid string, params param.UpdateDatasetParam)
 	}
 	return &resp, nil
 }
+
+// UpdateDatasets updates Datasets
+func (cli *ZSClient) UpdateDatasets(params param.UpdateDatasetsParam) (*view.UpdateDatasetsEventView, error) {
+	resp := view.UpdateDatasetsEventView{}
+	if err := cli.PutWithRespKey("v1/ai/datasets", "", "", map[string]interface{}{
+		"updateDatasets": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DeleteDatasets deletes Datasets
+func (cli *ZSClient) DeleteDatasets(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/ai/datasets", uuid, string(deleteMode))
+}

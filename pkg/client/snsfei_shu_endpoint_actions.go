@@ -48,3 +48,12 @@ func (cli *ZSClient) PageSNSFeiShuEndpoint(params *param.QueryParam) ([]view.SNS
 	total, err := cli.Page("v1/sns/application-endpoints/feishu", params, &sNSFeiShuEndpoints)
 	return sNSFeiShuEndpoints, total, err
 }
+
+// SNSFeiShuTestConnection operates on FeiShuTestConnection
+func (cli *ZSClient) SNSFeiShuTestConnection(params param.SNSFeiShuTestConnectionParam) (*view.SNSFeiShuTestConnectionEventView, error) {
+	resp := view.SNSFeiShuTestConnectionEventView{}
+	if err := cli.Post("v1/sns/application-endpoints/feishu/test-connection", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

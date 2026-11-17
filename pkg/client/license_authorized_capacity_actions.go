@@ -18,3 +18,23 @@ func (cli *ZSClient) GetLicenseAuthorizedCapacity() (*view.LicenseAuthorizedCapa
 	}
 	return &resp, nil
 }
+
+// SyncLicenseCapacity operates on LicenseCapacity
+func (cli *ZSClient) SyncLicenseCapacity() (*view.SyncLicenseCapacityEventView, error) {
+	resp := view.SyncLicenseCapacityEventView{}
+	if err := cli.PutWithRespKey("v1/license-server/authorized-capacity/sync", "", "", map[string]interface{}{
+		"syncLicenseCapacity": map[string]interface{}{},
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RequestLicenseCapacity operates on RequestLicenseCapacity
+func (cli *ZSClient) RequestLicenseCapacity(params param.RequestLicenseCapacityParam) (*view.LicenseAuthorizedCapacityInventoryView, error) {
+	resp := view.LicenseAuthorizedCapacityInventoryView{}
+	if err := cli.Post("v1/license-server/capacity-application", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

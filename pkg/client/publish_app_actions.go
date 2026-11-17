@@ -52,3 +52,21 @@ func (cli *ZSClient) UpdatePublishApp(uuid string, params param.UpdatePublishApp
 func (cli *ZSClient) DeletePublishApp(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/appcenter/app", uuid, string(deleteMode))
 }
+
+// GetResourceFromPublishApp gets ResourceFromPublishApp by uuid
+func (cli *ZSClient) GetResourceFromPublishApp() (*view.GetResourceFromPublishAppView, error) {
+	var resp view.GetResourceFromPublishAppView
+	if err := cli.GetWithRespKey("v1/appcenter/app/resources", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PreviewResourceFromApp operates on PreviewResourceFromApp
+func (cli *ZSClient) PreviewResourceFromApp(params param.PreviewResourceFromAppParam) (*view.PreviewResourceStackView, error) {
+	resp := view.PreviewResourceStackView{}
+	if err := cli.Post("v1/appcenter/app/preview", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

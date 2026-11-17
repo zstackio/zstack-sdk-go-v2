@@ -30,3 +30,35 @@ func (cli *ZSClient) PageSNSEndpointThirdpartyAlertHistory(params *param.QueryPa
 	total, err := cli.Page("v1/zwatch/third-party/alert-publish-histories", params, &sNSEndpointThirdpartyAlertHistories)
 	return sNSEndpointThirdpartyAlertHistories, total, err
 }
+
+// QueryThirdpartyAlert queries ThirdpartyAlert list
+func (cli *ZSClient) QueryThirdpartyAlert(params *param.QueryParam) ([]view.ThirdpartyOriginalAlertInventoryView, error) {
+	var resp []view.ThirdpartyOriginalAlertInventoryView
+	return resp, cli.List("v1/zwatch/third-party/alerts", params, &resp)
+}
+
+func (cli *ZSClient) GetThirdpartyAlert(uuid string) (*view.ThirdpartyOriginalAlertInventoryView, error) {
+	var resp view.ThirdpartyOriginalAlertInventoryView
+	if err := cli.Get("v1/zwatch/third-party/alerts", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageThirdpartyAlert Pagination
+func (cli *ZSClient) PageThirdpartyAlert(params *param.QueryParam) ([]view.ThirdpartyOriginalAlertInventoryView, int, error) {
+	var thirdpartyAlerts []view.ThirdpartyOriginalAlertInventoryView
+	total, err := cli.Page("v1/zwatch/third-party/alerts", params, &thirdpartyAlerts)
+	return thirdpartyAlerts, total, err
+}
+
+// UpdateThirdpartyAlerts updates ThirdpartyAlerts
+func (cli *ZSClient) UpdateThirdpartyAlerts(params param.UpdateThirdpartyAlertsParam) (*view.UpdateThirdpartyAlertsEventView, error) {
+	resp := view.UpdateThirdpartyAlertsEventView{}
+	if err := cli.PutWithRespKey("v1/zwatch/third-party/alerts/actions", "", "", map[string]interface{}{
+		"updateThirdpartyAlerts": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -48,6 +50,77 @@ func (cli *ZSClient) UpdateFlowMeter(uuid string, params param.UpdateFlowMeterPa
 	if err := cli.PutWithRespKey("v1/flowmeters", uuid, "", map[string]interface{}{
 		"updateFlowMeter": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetVRouterFlowCounter gets VRouterFlowCounter by uuid
+func (cli *ZSClient) GetVRouterFlowCounter(uuid string) (*view.GetVRouterFlowCounterView, error) {
+	var resp view.GetVRouterFlowCounterView
+	if err := cli.GetWithRespKey("v1/flowmeters", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetVpcAttachedNetflow gets VpcAttachedNetflow by uuid
+func (cli *ZSClient) GetVpcAttachedNetflow(uuid string, params param.GetVpcAttachedNetflowParam) (*view.FlowMeterInventoryView, error) {
+	resp := view.FlowMeterInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-netflow", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// QueryVRouterFlowMeterNetwork queries VRouterFlowMeterNetwork list
+func (cli *ZSClient) QueryVRouterFlowMeterNetwork(params *param.QueryParam) ([]view.NetworkRouterFlowMeterRefInventoryView, error) {
+	var resp []view.NetworkRouterFlowMeterRefInventoryView
+	return resp, cli.List("v1/flowmeters/networks", params, &resp)
+}
+
+func (cli *ZSClient) GetVRouterFlowMeterNetwork(uuid string) (*view.NetworkRouterFlowMeterRefInventoryView, error) {
+	var resp view.NetworkRouterFlowMeterRefInventoryView
+	if err := cli.Get("v1/flowmeters/networks", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageVRouterFlowMeterNetwork Pagination
+func (cli *ZSClient) PageVRouterFlowMeterNetwork(params *param.QueryParam) ([]view.NetworkRouterFlowMeterRefInventoryView, int, error) {
+	var vRouterFlowMeterNetworks []view.NetworkRouterFlowMeterRefInventoryView
+	total, err := cli.Page("v1/flowmeters/networks", params, &vRouterFlowMeterNetworks)
+	return vRouterFlowMeterNetworks, total, err
+}
+
+// AddVRouterNetworksToFlowMeter adds VRouterNetworksToFlowMeter
+func (cli *ZSClient) AddVRouterNetworksToFlowMeter(flowMeterUuid string, vRouterUuid string, params param.AddVRouterNetworksToFlowMeterParam) (*view.NetworkRouterFlowMeterRefInventoryView, error) {
+	resp := view.NetworkRouterFlowMeterRefInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/flowmeters/%s/router/%s/addnetworks", flowMeterUuid, vRouterUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveVRouterNetworksFromFlowMeter removes VRouterNetworksFromFlowMeter
+func (cli *ZSClient) RemoveVRouterNetworksFromFlowMeter(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/flowmeters/networks", uuid, string(deleteMode))
+}
+
+// SetFlowMeterRouterId operates on FlowMeterRouterId
+func (cli *ZSClient) SetFlowMeterRouterId(vRouterUuid string, params param.SetFlowMeterRouterIdParam) (*view.SetFlowMeterRouterIdEventView, error) {
+	resp := view.SetFlowMeterRouterIdEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/flowmeters/%s/routerid", vRouterUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetFlowMeterRouterId gets FlowMeterRouterId by uuid
+func (cli *ZSClient) GetFlowMeterRouterId(uuid string) (*view.GetFlowMeterRouterIdView, error) {
+	var resp view.GetFlowMeterRouterIdView
+	if err := cli.GetWithRespKey("v1/flowmeters", uuid, "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

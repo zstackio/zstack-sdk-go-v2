@@ -44,3 +44,8 @@ func (cli *ZSClient) UpdateModelServiceInstanceGroup(uuid string, params param.U
 func (cli *ZSClient) DeleteModelServiceInstanceGroup(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/ai/model-services/instances/groups", uuid, string(deleteMode))
 }
+
+// DeleteModelServiceInstanceGroups deletes ModelServiceInstanceGroups
+func (cli *ZSClient) DeleteModelServiceInstanceGroups(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/ai/model-services/instances/groups", uuid, string(deleteMode))
+}

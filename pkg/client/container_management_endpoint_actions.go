@@ -62,3 +62,8 @@ func (cli *ZSClient) SyncContainerManagementEndpoint(uuid string, params param.S
 func (cli *ZSClient) DeleteContainerManagementEndpoint(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/container/management/endpoint", uuid, string(deleteMode))
 }
+
+// DeleteContainerResourceFromEndpoint deletes ContainerResourceFromEndpoint
+func (cli *ZSClient) DeleteContainerResourceFromEndpoint(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/container/management/endpoint", uuid, string(deleteMode))
+}

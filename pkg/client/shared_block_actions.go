@@ -40,3 +40,30 @@ func (cli *ZSClient) UpdateSharedBlock(sharedBlockGroupUuid string, uuid string,
 	}
 	return &resp, nil
 }
+
+// AddSharedBlockToSharedBlockGroup adds SharedBlockToSharedBlockGroup
+func (cli *ZSClient) AddSharedBlockToSharedBlockGroup(uuid string, params param.AddSharedBlockToSharedBlockGroupParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
+	resp := view.SharedBlockGroupPrimaryStorageInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/primary-storage/sharedblockgroup/%s/sharedblocks", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetSharedBlockCandidate gets SharedBlockCandidate by uuid
+func (cli *ZSClient) GetSharedBlockCandidate() (*view.GetSharedBlockCandidateView, error) {
+	var resp view.GetSharedBlockCandidateView
+	if err := cli.GetWithRespKey("v1/primary-storage/sharedblockgroup/sharedblock-candidates", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RefreshSharedblockDeviceCapacity operates on SharedblockDeviceCapacity
+func (cli *ZSClient) RefreshSharedblockDeviceCapacity(sharedBlockGroupUuid string, uuid string, params param.RefreshSharedblockDeviceCapacityParam) (*view.SharedBlockGroupPrimaryStorageInventoryView, error) {
+	resp := view.SharedBlockGroupPrimaryStorageInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/primary-storage/sharedblockgroup/%s/sharedblocks/%s", sharedBlockGroupUuid, uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

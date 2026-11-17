@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -54,6 +56,63 @@ func (cli *ZSClient) ReconnectImageStoreBackupStorage(uuid string, params param.
 	if err := cli.PutWithRespKey("v1/backup-storage/image-store", uuid, "", map[string]interface{}{
 		"reconnectImageStoreBackupStorage": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SetImageStoreBackupStorageQuota operates on ImageStoreBackupStorageQuota
+func (cli *ZSClient) SetImageStoreBackupStorageQuota(params param.SetImageStoreBackupStorageQuotaParam) (*view.SetImageStoreBackupStorageQuotaEventView, error) {
+	resp := view.SetImageStoreBackupStorageQuotaEventView{}
+	if err := cli.PutWithRespKey("v1/backup-storage/image-store/actions", "", "", map[string]interface{}{
+		"setImageStoreBackupStorageQuota": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetImagesFromImageStoreBackupStorage gets ImagesFromImageStoreBackupStorage by uuid
+func (cli *ZSClient) GetImagesFromImageStoreBackupStorage(uuid string, params param.GetImagesFromImageStoreBackupStorageParam) (*view.GetImagesFromImageStoreBackupStorageView, error) {
+	resp := view.GetImagesFromImageStoreBackupStorageView{}
+	if err := cli.PutWithRespKey("v1/backup-storage", uuid, "", map[string]interface{}{
+		"getImagesFromImageStoreBackupStorage": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ReclaimSpaceFromImageStore operates on ReclaimSpaceFromImageStore
+func (cli *ZSClient) ReclaimSpaceFromImageStore(uuid string, params param.ReclaimSpaceFromImageStoreParam) (*view.ReclaimSpaceFromImageStoreEventView, error) {
+	resp := view.ReclaimSpaceFromImageStoreEventView{}
+	if err := cli.PutWithRespKey("v1/backup-storage/image-store", uuid, "", map[string]interface{}{
+		"reclaimSpaceFromImageStore": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ReclaimSpaceFromImageStoreAsync Async
+func (cli *ZSClient) ReclaimSpaceFromImageStoreAsync(uuid string, params param.ReclaimSpaceFromImageStoreParam) (string, error) {
+
+	resource := fmt.Sprintf("v1/backup-storage/image-store/%s/actions", uuid)
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
+}
+
+// AddDisasterImageStoreBackupStorage adds DisasterImageStoreBackupStorage
+func (cli *ZSClient) AddDisasterImageStoreBackupStorage(params param.AddDisasterImageStoreBackupStorageParam) (*view.ImageStoreBackupStorageInventoryView, error) {
+	resp := view.ImageStoreBackupStorageInventoryView{}
+	if err := cli.Post("v1/backup-storage/image-store/disaster", params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

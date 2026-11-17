@@ -65,3 +65,23 @@ func (cli *ZSClient) DeleteEip(uuid string, deleteMode param.DeleteMode) error {
 func (cli *ZSClient) DetachEip(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/eips", uuid, string(deleteMode))
 }
+
+// ChangeEipState changes EipState
+func (cli *ZSClient) ChangeEipState(uuid string, params param.ChangeEipStateParam) (*view.EipInventoryView, error) {
+	resp := view.EipInventoryView{}
+	if err := cli.PutWithRespKey("v1/eips", uuid, "", map[string]interface{}{
+		"changeEipState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetVpcAttachedEip gets VpcAttachedEip by uuid
+func (cli *ZSClient) GetVpcAttachedEip(uuid string, params param.GetVpcAttachedEipParam) (*view.EipInventoryView, error) {
+	resp := view.EipInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-eip", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

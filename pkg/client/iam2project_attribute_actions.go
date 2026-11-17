@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -39,4 +41,18 @@ func (cli *ZSClient) UpdateIAM2ProjectAttribute(uuid string, params param.Update
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// AddAttributesToIAM2Project adds AttributesToIAM2Project
+func (cli *ZSClient) AddAttributesToIAM2Project(uuid string, params param.AddAttributesToIAM2ProjectParam) (*view.AddAttributesToIAM2ProjectEventView, error) {
+	resp := view.AddAttributesToIAM2ProjectEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/iam2/projects/%s/attributes", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveAttributesFromIAM2Project removes AttributesFromIAM2Project
+func (cli *ZSClient) RemoveAttributesFromIAM2Project(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
 }

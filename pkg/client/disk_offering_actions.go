@@ -52,3 +52,25 @@ func (cli *ZSClient) PageDiskOffering(params *param.QueryParam) ([]view.DiskOffe
 	total, err := cli.Page("v1/disk-offerings", params, &diskOfferings)
 	return diskOfferings, total, err
 }
+
+// ValidateDiskOfferingUserConfig operates on DiskOfferingUserConfig
+func (cli *ZSClient) ValidateDiskOfferingUserConfig(params param.ValidateDiskOfferingUserConfigParam) (*view.ValidateDiskOfferingUserConfigEventView, error) {
+	resp := view.ValidateDiskOfferingUserConfigEventView{}
+	if err := cli.PutWithRespKey("v1/billings/accounts/actions", "", "", map[string]interface{}{
+		"validateDiskOfferingUserConfig": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeDiskOfferingState changes DiskOfferingState
+func (cli *ZSClient) ChangeDiskOfferingState(uuid string, params param.ChangeDiskOfferingStateParam) (*view.DiskOfferingInventoryView, error) {
+	resp := view.DiskOfferingInventoryView{}
+	if err := cli.PutWithRespKey("v1/disk-offerings", uuid, "", map[string]interface{}{
+		"changeDiskOfferingState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

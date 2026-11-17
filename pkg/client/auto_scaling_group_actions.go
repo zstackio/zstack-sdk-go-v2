@@ -52,3 +52,14 @@ func (cli *ZSClient) PageAutoScalingGroup(params *param.QueryParam) ([]view.Auto
 	total, err := cli.Page("v1/autoscaling/groups", params, &autoScalingGroups)
 	return autoScalingGroups, total, err
 }
+
+// ChangeAutoScalingGroupState changes AutoScalingGroupState
+func (cli *ZSClient) ChangeAutoScalingGroupState(uuid string, params param.ChangeAutoScalingGroupStateParam) (*view.AutoScalingGroupInventoryView, error) {
+	resp := view.AutoScalingGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/autoscaling/groups", uuid, "", map[string]interface{}{
+		"changeAutoScalingGroupState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

@@ -52,3 +52,23 @@ func (cli *ZSClient) CreateSchedulerTrigger(params param.CreateSchedulerTriggerP
 	}
 	return &resp, nil
 }
+
+// GetAvailableTriggers gets AvailableTriggers by uuid
+func (cli *ZSClient) GetAvailableTriggers() (*view.SchedulerTriggerInventoryView, error) {
+	var resp view.SchedulerTriggerInventoryView
+	if err := cli.GetWithRespKey("v1/scheduler/triggers/available", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RunSchedulerTrigger operates on RunSchedulerTrigger
+func (cli *ZSClient) RunSchedulerTrigger(uuid string, params param.RunSchedulerTriggerParam) (*view.RunSchedulerTriggerEventView, error) {
+	resp := view.RunSchedulerTriggerEventView{}
+	if err := cli.PutWithRespKey("v1/scheduler/triggers", uuid, "", map[string]interface{}{
+		"runSchedulerTrigger": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -48,6 +50,81 @@ func (cli *ZSClient) PageAlarm(params *param.QueryParam) ([]view.AlarmInventoryV
 func (cli *ZSClient) CreateAlarm(params param.CreateAlarmParam) (*view.AlarmInventoryView, error) {
 	resp := view.AlarmInventoryView{}
 	if err := cli.Post("v1/zwatch/alarms", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UpdateAlarmData updates AlarmData
+func (cli *ZSClient) UpdateAlarmData(params param.UpdateAlarmDataParam) (*view.UpdateAlarmDataEventView, error) {
+	resp := view.UpdateAlarmDataEventView{}
+	if err := cli.PutWithRespKey("v1/zwatch/alarm-histories/actions", "", "", map[string]interface{}{
+		"updateAlarmData": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveActionFromAlarm removes ActionFromAlarm
+func (cli *ZSClient) RemoveActionFromAlarm(alarmUuid string, actionUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/zwatch/alarms", alarmUuid, fmt.Sprintf("actions/%s", actionUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// ChangeAlarmState changes AlarmState
+func (cli *ZSClient) ChangeAlarmState(uuid string, params param.ChangeAlarmStateParam) (*view.AlarmInventoryView, error) {
+	resp := view.AlarmInventoryView{}
+	if err := cli.PutWithRespKey("v1/zwatch/alarms", uuid, "", map[string]interface{}{
+		"changeAlarmState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetZWatchAlertHistogram gets ZWatchAlertHistogram by uuid
+func (cli *ZSClient) GetZWatchAlertHistogram() (*view.GetZWatchAlertHistogramView, error) {
+	var resp view.GetZWatchAlertHistogramView
+	if err := cli.GetWithRespKey("v1/zwatch/alert-histories/histogram", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// QueryAlarmRecord queries AlarmRecord list
+func (cli *ZSClient) QueryAlarmRecord(params *param.QueryParam) ([]view.AlarmRecordsInventoryView, error) {
+	var resp []view.AlarmRecordsInventoryView
+	return resp, cli.List("v1/zwatch/alarm-records", params, &resp)
+}
+
+func (cli *ZSClient) GetAlarmRecord(uuid string) (*view.AlarmRecordsInventoryView, error) {
+	var resp view.AlarmRecordsInventoryView
+	if err := cli.Get("v1/zwatch/alarm-records", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageAlarmRecord Pagination
+func (cli *ZSClient) PageAlarmRecord(params *param.QueryParam) ([]view.AlarmRecordsInventoryView, int, error) {
+	var alarmRecords []view.AlarmRecordsInventoryView
+	total, err := cli.Page("v1/zwatch/alarm-records", params, &alarmRecords)
+	return alarmRecords, total, err
+}
+
+// GetAlarmData gets AlarmData by uuid
+func (cli *ZSClient) GetAlarmData() (*view.GetAlarmDataView, error) {
+	var resp view.GetAlarmDataView
+	if err := cli.GetWithRespKey("v1/zwatch/alarm-histories", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddActionToAlarm adds ActionToAlarm
+func (cli *ZSClient) AddActionToAlarm(alarmUuid string, params param.AddActionToAlarmParam) (*view.AlarmInventoryView, error) {
+	resp := view.AlarmInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/zwatch/alarms/%s/actions", alarmUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

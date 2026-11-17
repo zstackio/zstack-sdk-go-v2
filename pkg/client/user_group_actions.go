@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -51,4 +53,32 @@ func (cli *ZSClient) UpdateUserGroup(params param.UpdateUserGroupParam) (*view.U
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// AddUserToGroup adds UserToGroup
+func (cli *ZSClient) AddUserToGroup(groupUuid string, params param.AddUserToGroupParam) (*view.AddUserToGroupEventView, error) {
+	resp := view.AddUserToGroupEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/accounts/groups/%s/users", groupUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveUserFromGroup removes UserFromGroup
+func (cli *ZSClient) RemoveUserFromGroup(groupUuid string, userUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/accounts/groups", groupUuid, fmt.Sprintf("users/%s", userUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// AttachPolicyToUserGroup operates on PolicyToUserGroup
+func (cli *ZSClient) AttachPolicyToUserGroup(groupUuid string, params param.AttachPolicyToUserGroupParam) (*view.AttachPolicyToUserGroupEventView, error) {
+	resp := view.AttachPolicyToUserGroupEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/accounts/groups/%s/policies", groupUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachPolicyFromUserGroup operates on PolicyFromUserGroup
+func (cli *ZSClient) DetachPolicyFromUserGroup(groupUuid string, policyUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/accounts/groups", groupUuid, fmt.Sprintf("policies/%s", policyUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }

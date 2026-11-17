@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -66,4 +68,43 @@ func (cli *ZSClient) AddModelAsync(params param.AddModelParam) (string, error) {
 	}
 
 	return apiId, nil
+}
+
+// GetSupportedIdentityModels gets SupportedIdentityModels by uuid
+func (cli *ZSClient) GetSupportedIdentityModels() (*view.GetSupportedIdentityModelsView, error) {
+	var resp view.GetSupportedIdentityModelsView
+	if err := cli.GetWithRespKey("v1/identity-models", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DeleteModels deletes Models
+func (cli *ZSClient) DeleteModels(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/ai/models", uuid, string(deleteMode))
+}
+
+// GenerateModelMetadata operates on ModelMetadata
+func (cli *ZSClient) GenerateModelMetadata(params param.GenerateModelMetadataParam) (*view.GenerateModelMetadataEventView, error) {
+	resp := view.GenerateModelMetadataEventView{}
+	if err := cli.PutWithRespKey("v1/ai/model/metadata/generate", "", "", map[string]interface{}{
+		"generateModelMetadata": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// BindModelToService operates on BindModelToService
+func (cli *ZSClient) BindModelToService(modelUuid string, modelServiceUuid string, params param.BindModelToServiceParam) (*view.ModelServiceInventoryView, error) {
+	resp := view.ModelServiceInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/ai/models/%s/model-services/%s", modelUuid, modelServiceUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UnbindModelFromService operates on UnbindModelFromService
+func (cli *ZSClient) UnbindModelFromService(modelUuid string, modelServiceUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/ai/models", modelUuid, fmt.Sprintf("model-services/%s", modelServiceUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }

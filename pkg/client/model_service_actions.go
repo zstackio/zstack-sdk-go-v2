@@ -76,3 +76,59 @@ func (cli *ZSClient) PageModelService(params *param.QueryParam) ([]view.ModelSer
 	total, err := cli.Page("v1/ai/model-services", params, &modelServices)
 	return modelServices, total, err
 }
+
+// DeployDistributedModelService operates on DeployDistributedModelService
+func (cli *ZSClient) DeployDistributedModelService(params param.DeployDistributedModelServiceParam) (*view.ModelServiceInstanceGroupInventoryView, error) {
+	resp := view.ModelServiceInstanceGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/ai/model-services", "", "", map[string]interface{}{
+		"deployDistributedModelService": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetMaaSUsage gets MaaSUsage by uuid
+func (cli *ZSClient) GetMaaSUsage() (*view.GetMaaSUsageView, error) {
+	var resp view.GetMaaSUsageView
+	if err := cli.GetWithRespKey("v1/maas/usage", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DeployModelService operates on DeployModelService
+func (cli *ZSClient) DeployModelService(uuid string, params param.DeployModelServiceParam) (*view.ModelServiceInstanceGroupInventoryView, error) {
+	resp := view.ModelServiceInstanceGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/ai/model-services", uuid, "", map[string]interface{}{
+		"deployModelService": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DeleteModelServices deletes ModelServices
+func (cli *ZSClient) DeleteModelServices(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/ai/model-services/", uuid, string(deleteMode))
+}
+
+// RestartModelServiceGroups operates on RestartModelServiceGroups
+func (cli *ZSClient) RestartModelServiceGroups(params param.RestartModelServiceGroupsParam) (*view.RestartModelServiceGroupsEventView, error) {
+	resp := view.RestartModelServiceGroupsEventView{}
+	if err := cli.PutWithRespKey("v1/model-service-instance-groups", "", "", map[string]interface{}{
+		"restartModelServiceGroups": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// MatchModelServiceTemplateWithModel operates on MatchModelServiceTemplateWithModel
+func (cli *ZSClient) MatchModelServiceTemplateWithModel(params param.MatchModelServiceTemplateWithModelParam) (*view.MatchModelServiceTemplateWithModelEventView, error) {
+	resp := view.MatchModelServiceTemplateWithModelEventView{}
+	if err := cli.Post("v1/ai/model-services/templates", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

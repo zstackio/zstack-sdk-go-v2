@@ -48,3 +48,12 @@ func (cli *ZSClient) UpdateSNSWeComEndpoint(uuid string, params param.UpdateSNSW
 	}
 	return &resp, nil
 }
+
+// SNSWeComTestConnection operates on WeComTestConnection
+func (cli *ZSClient) SNSWeComTestConnection(params param.SNSWeComTestConnectionParam) (*view.SNSWeComTestConnectionEventView, error) {
+	resp := view.SNSWeComTestConnectionEventView{}
+	if err := cli.Post("v1/sns/application-endpoints/we-com/test-connection", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

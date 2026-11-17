@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -33,4 +35,29 @@ func (cli *ZSClient) PageTicketFlowCollection(params *param.QueryParam) ([]view.
 // DeleteTicketFlowCollection deletes TicketFlowCollection
 func (cli *ZSClient) DeleteTicketFlowCollection(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/tickets/flow-collections", uuid, string(deleteMode))
+}
+
+// RemoveTicketTypesFromTicketFlowCollection removes TicketTypesFromTicketFlowCollection
+func (cli *ZSClient) RemoveTicketTypesFromTicketFlowCollection(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/tickets/flow-collections", uuid, string(deleteMode))
+}
+
+// ChangeTicketFlowCollectionState changes TicketFlowCollectionState
+func (cli *ZSClient) ChangeTicketFlowCollectionState(uuid string, params param.ChangeTicketFlowCollectionStateParam) (*view.TicketFlowCollectionInventoryView, error) {
+	resp := view.TicketFlowCollectionInventoryView{}
+	if err := cli.PutWithRespKey("v1/tickets/flow-collections", uuid, "", map[string]interface{}{
+		"changeTicketFlowCollectionState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddTicketTypesToTicketFlowCollection adds TicketTypesToTicketFlowCollection
+func (cli *ZSClient) AddTicketTypesToTicketFlowCollection(ticketFlowCollectionUuid string, params param.AddTicketTypesToTicketFlowCollectionParam) (*view.AddTicketTypesToTicketFlowCollectionEventView, error) {
+	resp := view.AddTicketTypesToTicketFlowCollectionEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/tickets/flow-collections/%s/ticket-types", ticketFlowCollectionUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

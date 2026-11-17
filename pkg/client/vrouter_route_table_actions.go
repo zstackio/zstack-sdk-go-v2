@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -48,6 +50,29 @@ func (cli *ZSClient) UpdateVRouterRouteTable(uuid string, params param.UpdateVRo
 	if err := cli.PutWithRespKey("v1/vrouter-route-tables", uuid, "", map[string]interface{}{
 		"updateVRouterRouteTable": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetRouteTableVpcVRouterCandidate gets RouteTableVpcVRouterCandidate by uuid
+func (cli *ZSClient) GetRouteTableVpcVRouterCandidate() (*view.VpcRouterVmInventoryView, error) {
+	var resp view.VpcRouterVmInventoryView
+	if err := cli.GetWithRespKey("v1/vpc/virtual-routers/get-vpc-candidate", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachVRouterRouteTableFromVRouter operates on VRouterRouteTableFromVRouter
+func (cli *ZSClient) DetachVRouterRouteTableFromVRouter(routeTableUuid string, virtualRouterVmUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/vrouter-route-tables", routeTableUuid, fmt.Sprintf("detach/%s", virtualRouterVmUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// AttachVRouterRouteTableToVRouter operates on VRouterRouteTableToVRouter
+func (cli *ZSClient) AttachVRouterRouteTableToVRouter(routeTableUuid string, params param.AttachVRouterRouteTableToVRouterParam) (*view.VRouterRouteTableInventoryView, error) {
+	resp := view.VRouterRouteTableInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/vrouter-route-tables/%s/attach", routeTableUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

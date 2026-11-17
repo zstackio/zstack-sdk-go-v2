@@ -52,3 +52,21 @@ func (cli *ZSClient) AddStackTemplate(params param.AddStackTemplateParam) (*view
 	}
 	return &resp, nil
 }
+
+// CheckStackTemplateParameters operates on StackTemplateParameters
+func (cli *ZSClient) CheckStackTemplateParameters(params param.CheckStackTemplateParametersParam) (*view.CheckStackTemplateParametersView, error) {
+	resp := view.CheckStackTemplateParametersView{}
+	if err := cli.Post("v1/cloudformation/stack/check", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DecodeStackTemplate operates on DecodeStackTemplate
+func (cli *ZSClient) DecodeStackTemplate(params param.DecodeStackTemplateParam) (*view.DecodeStackTemplateView, error) {
+	resp := view.DecodeStackTemplateView{}
+	if err := cli.Post("v1/cloudformation/stack/preview/resource", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

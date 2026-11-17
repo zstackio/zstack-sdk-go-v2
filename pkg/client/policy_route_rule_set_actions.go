@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -51,4 +53,27 @@ func (cli *ZSClient) PagePolicyRouteRuleSet(params *param.QueryParam) ([]view.Po
 	var policyRouteRuleSets []view.PolicyRouteRuleSetInventoryView
 	total, err := cli.Page("v1/policy-routes/rulesets", params, &policyRouteRuleSets)
 	return policyRouteRuleSets, total, err
+}
+
+// GetPolicyRouteRuleSetFromVirtualRouter gets PolicyRouteRuleSetFromVirtualRouter by uuid
+func (cli *ZSClient) GetPolicyRouteRuleSetFromVirtualRouter(uuid string) (*view.PolicyRouteRuleSetInventoryView, error) {
+	var resp view.PolicyRouteRuleSetInventoryView
+	if err := cli.GetWithRespKey("v1/policy-routes/rulesets/virtualrouter", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachPolicyRouteRuleSetFromL3 operates on PolicyRouteRuleSetFromL3
+func (cli *ZSClient) DetachPolicyRouteRuleSetFromL3(ruleSetUuid string, l3Uuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/policy-routes/rulesets", ruleSetUuid, fmt.Sprintf("l3networks/%s", l3Uuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// AttachPolicyRouteRuleSetToL3 operates on PolicyRouteRuleSetToL3
+func (cli *ZSClient) AttachPolicyRouteRuleSetToL3(ruleSetUuid string, l3Uuid string, params param.AttachPolicyRouteRuleSetToL3Param) (*view.AttachPolicyRouteRuleSetToL3EventView, error) {
+	resp := view.AttachPolicyRouteRuleSetToL3EventView{}
+	if err := cli.Post(fmt.Sprintf("v1/policy-routes/rulesets/%s/l3networks/%s", ruleSetUuid, l3Uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

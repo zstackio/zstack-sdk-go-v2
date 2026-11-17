@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -81,4 +83,18 @@ func (cli *ZSClient) CreateBaremetalPxeServer(params param.CreateBaremetalPxeSer
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// AttachBaremetalPxeServerToCluster operates on BaremetalPxeServerToCluster
+func (cli *ZSClient) AttachBaremetalPxeServerToCluster(clusterUuid string, pxeServerUuid string, params param.AttachBaremetalPxeServerToClusterParam) (*view.BaremetalPxeServerInventoryView, error) {
+	resp := view.BaremetalPxeServerInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/clusters/%s/pxeservers/%s", clusterUuid, pxeServerUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachBaremetalPxeServerFromCluster operates on BaremetalPxeServerFromCluster
+func (cli *ZSClient) DetachBaremetalPxeServerFromCluster(clusterUuid string, pxeServerUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/clusters", clusterUuid, fmt.Sprintf("pxeservers/%s", pxeServerUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }

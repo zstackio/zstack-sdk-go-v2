@@ -30,3 +30,21 @@ func (cli *ZSClient) PageActiveAlarm(params *param.QueryParam) ([]view.ActiveAla
 	total, err := cli.Page("v1/zwatch/activealarms/alarms", params, &activeAlarms)
 	return activeAlarms, total, err
 }
+
+// GetActiveAlarmStatus gets ActiveAlarmStatus by uuid
+func (cli *ZSClient) GetActiveAlarmStatus() (*view.GetActiveAlarmStatusView, error) {
+	var resp view.GetActiveAlarmStatusView
+	if err := cli.GetWithRespKey("v1/zwatch/activealarms/status", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeActiveAlarmState changes ActiveAlarmState
+func (cli *ZSClient) ChangeActiveAlarmState(params param.ChangeActiveAlarmStateParam) (*view.ChangeActiveAlarmStateEventView, error) {
+	resp := view.ChangeActiveAlarmStateEventView{}
+	if err := cli.Post("v1/zwatch/activealarms/actions", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

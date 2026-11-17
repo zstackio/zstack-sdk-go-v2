@@ -49,3 +49,39 @@ func (cli *ZSClient) LocateHostNetworkInterface(hostUuid string, params param.Lo
 	}
 	return &resp, nil
 }
+
+// GetCandidateNetworkInterfaces gets CandidateNetworkInterfaces by uuid
+func (cli *ZSClient) GetCandidateNetworkInterfaces() (*view.GetCandidateNetworkInterfacesView, error) {
+	var resp view.GetCandidateNetworkInterfacesView
+	if err := cli.GetWithRespKey("v1/cluster/hosts-network-interfaces", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SetIpOnHostNetworkInterface operates on IpOnHostNetworkInterface
+func (cli *ZSClient) SetIpOnHostNetworkInterface(interfaceUuid string, params param.SetIpOnHostNetworkInterfaceParam) (*view.HostNetworkInterfaceInventoryView, error) {
+	resp := view.HostNetworkInterfaceInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/hosts/nics/%s/ip", interfaceUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetCandidateInterfaceVlanIds gets CandidateInterfaceVlanIds by uuid
+func (cli *ZSClient) GetCandidateInterfaceVlanIds() (*view.GetCandidateInterfaceVlanIdsView, error) {
+	var resp view.GetCandidateInterfaceVlanIdsView
+	if err := cli.GetWithRespKey("v1/host/network-interface-vlan-ids", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SetServiceTypeOnHostNetworkInterface operates on ServiceTypeOnHostNetworkInterface
+func (cli *ZSClient) SetServiceTypeOnHostNetworkInterface(params param.SetServiceTypeOnHostNetworkInterfaceParam) (*view.HostNetworkInterfaceServiceRefInventoryView, error) {
+	resp := view.HostNetworkInterfaceServiceRefInventoryView{}
+	if err := cli.Post("v1/hosts/nics/service-types", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

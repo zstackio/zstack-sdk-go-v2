@@ -53,3 +53,23 @@ func (cli *ZSClient) UpdateClusterDRS(uuid string, params param.UpdateClusterDRS
 	}
 	return &resp, nil
 }
+
+// GetClusterDRSStatus gets ClusterDRSStatus by uuid
+func (cli *ZSClient) GetClusterDRSStatus() (*view.GetClusterDRSStatusView, error) {
+	var resp view.GetClusterDRSStatusView
+	if err := cli.GetWithRespKey("v1/clusters/drs/status", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ExecuteDRSScheduling operates on ExecuteDRSScheduling
+func (cli *ZSClient) ExecuteDRSScheduling(uuid string, params param.ExecuteDRSSchedulingParam) (*view.ExecuteDRSSchedulingEventView, error) {
+	resp := view.ExecuteDRSSchedulingEventView{}
+	if err := cli.PutWithRespKey("v1/clusters/drs", uuid, "", map[string]interface{}{
+		"executeDRSScheduling": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

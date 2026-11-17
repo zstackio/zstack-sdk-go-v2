@@ -42,3 +42,17 @@ func (cli *ZSClient) CreateMetricDataHttpReceiver(params param.CreateMetricDataH
 	}
 	return &resp, nil
 }
+
+// DeleteMetricData deletes MetricData
+func (cli *ZSClient) DeleteMetricData(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/zwatch/metrics", uuid, string(deleteMode))
+}
+
+// PutMetricData operates on PutMetricData
+func (cli *ZSClient) PutMetricData(params param.PutMetricDataParam) (*view.PutMetricDataEventView, error) {
+	resp := view.PutMetricDataEventView{}
+	if err := cli.Post("v1/zwatch/metrics", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

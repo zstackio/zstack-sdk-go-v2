@@ -48,3 +48,19 @@ func (cli *ZSClient) PageVpcFirewall(params *param.QueryParam) ([]view.VpcFirewa
 	total, err := cli.Page("v1/vpcfirewalls", params, &vpcFirewalls)
 	return vpcFirewalls, total, err
 }
+
+// DeleteFirewall deletes Firewall
+func (cli *ZSClient) DeleteFirewall(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vpcfirewalls", uuid, string(deleteMode))
+}
+
+// RefreshFirewall operates on Firewall
+func (cli *ZSClient) RefreshFirewall(uuid string, params param.RefreshFirewallParam) (*view.VpcFirewallInventoryView, error) {
+	resp := view.VpcFirewallInventoryView{}
+	if err := cli.PutWithRespKey("v1/vpcfirewalls/refresh", uuid, "", map[string]interface{}{
+		"refreshFirewall": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

@@ -40,3 +40,14 @@ func (cli *ZSClient) PageBareMetal2ChassisOffering(params *param.QueryParam) ([]
 	total, err := cli.Page("v1/baremetal2/chassis/offerings", params, &bareMetal2ChassisOfferings)
 	return bareMetal2ChassisOfferings, total, err
 }
+
+// ChangeBareMetal2ChassisOfferingState changes BareMetal2ChassisOfferingState
+func (cli *ZSClient) ChangeBareMetal2ChassisOfferingState(uuid string, params param.ChangeBareMetal2ChassisOfferingStateParam) (*view.BareMetal2ChassisOfferingInventoryView, error) {
+	resp := view.BareMetal2ChassisOfferingInventoryView{}
+	if err := cli.PutWithRespKey("v1/baremetal2/chassis/offerings", uuid, "", map[string]interface{}{
+		"changeBareMetal2ChassisOfferingState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

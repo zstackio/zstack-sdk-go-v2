@@ -30,3 +30,14 @@ func (cli *ZSClient) PageVmPriorityConfig(params *param.QueryParam) ([]view.VmPr
 	total, err := cli.Page("v1/vm-priority-config", params, &vmPriorityConfigs)
 	return vmPriorityConfigs, total, err
 }
+
+// UpdatePriorityConfig updates PriorityConfig
+func (cli *ZSClient) UpdatePriorityConfig(uuid string, params param.UpdatePriorityConfigParam) (*view.UpdatePriorityConfigEventView, error) {
+	resp := view.UpdatePriorityConfigEventView{}
+	if err := cli.PutWithRespKey("v1/vm-priority-config", uuid, "", map[string]interface{}{
+		"updatePriorityConfig": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

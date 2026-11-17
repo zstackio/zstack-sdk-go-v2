@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -51,4 +53,13 @@ func (cli *ZSClient) UpdateIAM2ProjectTemplate(uuid string, params param.UpdateI
 // DeleteIAM2ProjectTemplate deletes IAM2ProjectTemplate
 func (cli *ZSClient) DeleteIAM2ProjectTemplate(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/iam2/projects/templates", uuid, string(deleteMode))
+}
+
+// CreateIAM2ProjectTemplateFromProject creates IAM2ProjectTemplateFromProject
+func (cli *ZSClient) CreateIAM2ProjectTemplateFromProject(projectUuid string, params param.CreateIAM2ProjectTemplateFromProjectParam) (*view.IAM2ProjectTemplateInventoryView, error) {
+	resp := view.IAM2ProjectTemplateInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/iam2/projects/templates/from/projects/%s", projectUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

@@ -23,3 +23,23 @@ func (cli *ZSClient) AddAccessControlListEntry(aclUuid string, params param.AddA
 	}
 	return &resp, nil
 }
+
+// ChangeAccessControlListRedirectRule changes AccessControlListRedirectRule
+func (cli *ZSClient) ChangeAccessControlListRedirectRule(uuid string, params param.ChangeAccessControlListRedirectRuleParam) (*view.AccessControlListEntryInventoryView, error) {
+	resp := view.AccessControlListEntryInventoryView{}
+	if err := cli.PutWithRespKey("v1/access-control-lists/redirectRules", uuid, "", map[string]interface{}{
+		"changeAccessControlListRedirectRule": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddAccessControlListRedirectRule adds AccessControlListRedirectRule
+func (cli *ZSClient) AddAccessControlListRedirectRule(aclUuid string, params param.AddAccessControlListRedirectRuleParam) (*view.AccessControlListEntryInventoryView, error) {
+	resp := view.AccessControlListEntryInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/access-control-lists/%s/redirectRules", aclUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

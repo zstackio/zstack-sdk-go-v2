@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -39,4 +41,18 @@ func (cli *ZSClient) PageIAM2VirtualIDGroupAttribute(params *param.QueryParam) (
 	var iAM2VirtualIDGroupAttributes []view.IAM2VirtualIDGroupAttributeInventoryView
 	total, err := cli.Page("v1/iam2/projects/groups/attributes/", params, &iAM2VirtualIDGroupAttributes)
 	return iAM2VirtualIDGroupAttributes, total, err
+}
+
+// AddAttributesToIAM2VirtualIDGroup adds AttributesToIAM2VirtualIDGroup
+func (cli *ZSClient) AddAttributesToIAM2VirtualIDGroup(uuid string, params param.AddAttributesToIAM2VirtualIDGroupParam) (*view.AddAttributesToIAM2VirtualIDGroupEventView, error) {
+	resp := view.AddAttributesToIAM2VirtualIDGroupEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/iam2/projects/groups/%s/attributes", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveAttributesFromIAM2VirtualIDGroup removes AttributesFromIAM2VirtualIDGroup
+func (cli *ZSClient) RemoveAttributesFromIAM2VirtualIDGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
 }

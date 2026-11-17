@@ -44,3 +44,14 @@ func (cli *ZSClient) PageSNSApplicationPlatform(params *param.QueryParam) ([]vie
 	total, err := cli.Page("v1/sns/application-platforms", params, &sNSApplicationPlatforms)
 	return sNSApplicationPlatforms, total, err
 }
+
+// ChangeSNSApplicationPlatformState changes SNSApplicationPlatformState
+func (cli *ZSClient) ChangeSNSApplicationPlatformState(uuid string, params param.ChangeSNSApplicationPlatformStateParam) (*view.SNSApplicationPlatformInventoryView, error) {
+	resp := view.SNSApplicationPlatformInventoryView{}
+	if err := cli.PutWithRespKey("v1/sns/application-platforms", uuid, "", map[string]interface{}{
+		"changeSNSApplicationPlatformState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

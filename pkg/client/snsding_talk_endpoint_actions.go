@@ -48,3 +48,12 @@ func (cli *ZSClient) UpdateSNSDingTalkEndpoint(uuid string, params param.UpdateS
 	}
 	return &resp, nil
 }
+
+// SNSDingTalkTestConnection operates on DingTalkTestConnection
+func (cli *ZSClient) SNSDingTalkTestConnection(params param.SNSDingTalkTestConnectionParam) (*view.SNSDingTalkTestConnectionEventView, error) {
+	resp := view.SNSDingTalkTestConnectionEventView{}
+	if err := cli.Post("v1/sns/application-endpoints/ding-talk/test-connection", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

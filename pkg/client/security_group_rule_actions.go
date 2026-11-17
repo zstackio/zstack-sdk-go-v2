@@ -61,3 +61,25 @@ func (cli *ZSClient) PageSecurityGroupRule(params *param.QueryParam) ([]view.Sec
 func (cli *ZSClient) DeleteSecurityGroupRule(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/security-groups/rules", uuid, string(deleteMode))
 }
+
+// ChangeSecurityGroupRuleState changes SecurityGroupRuleState
+func (cli *ZSClient) ChangeSecurityGroupRuleState(securityGroupUuid string, params param.ChangeSecurityGroupRuleStateParam) (*view.SecurityGroupInventoryView, error) {
+	resp := view.SecurityGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/security-groups", securityGroupUuid, "", map[string]interface{}{
+		"changeSecurityGroupRuleState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UpdateSecurityGroupRulePriority updates SecurityGroupRulePriority
+func (cli *ZSClient) UpdateSecurityGroupRulePriority(securityGroupUuid string, params param.UpdateSecurityGroupRulePriorityParam) (*view.SecurityGroupInventoryView, error) {
+	resp := view.SecurityGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/security-groups", securityGroupUuid, "", map[string]interface{}{
+		"updateSecurityGroupRulePriority": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

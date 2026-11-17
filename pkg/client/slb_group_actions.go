@@ -52,3 +52,25 @@ func (cli *ZSClient) UpdateSlbGroup(uuid string, params param.UpdateSlbGroupPara
 	}
 	return &resp, nil
 }
+
+// ChangeSlbGroupMonitorIps changes SlbGroupMonitorIps
+func (cli *ZSClient) ChangeSlbGroupMonitorIps(slbGroupUuid string, params param.ChangeSlbGroupMonitorIpsParam) (*view.SlbGroupInventoryView, error) {
+	resp := view.SlbGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/load-balancers/slb/groups", slbGroupUuid, "", map[string]interface{}{
+		"changeSlbGroupMonitorIps": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeSlbGroupDeployType changes SlbGroupDeployType
+func (cli *ZSClient) ChangeSlbGroupDeployType(slbGroupUuid string, params param.ChangeSlbGroupDeployTypeParam) (*view.SlbGroupInventoryView, error) {
+	resp := view.SlbGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/load-balancers/slb/groups", slbGroupUuid, "", map[string]interface{}{
+		"changeSlbGroupDeployType": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

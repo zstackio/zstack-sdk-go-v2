@@ -43,3 +43,14 @@ func (cli *ZSClient) PageSNSWeComAtPerson(params *param.QueryParam) ([]view.SNSW
 func (cli *ZSClient) RemoveSNSWeComAtPerson(endpointUuid string, userId string, deleteMode param.DeleteMode) error {
 	return cli.DeleteWithSpec("v1/sns/application-endpoints/we-com", endpointUuid, fmt.Sprintf("at-persons/%s", userId), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
+
+// UpdateAtPersonOfAtWeComEndpoint updates AtPersonOfAtWeComEndpoint
+func (cli *ZSClient) UpdateAtPersonOfAtWeComEndpoint(uuid string, params param.UpdateAtPersonOfAtWeComEndpointParam) (*view.SNSWeComAtPersonInventoryView, error) {
+	resp := view.SNSWeComAtPersonInventoryView{}
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints/we-com/at-persons", uuid, "", map[string]interface{}{
+		"updateAtPersonOfAtWeComEndpoint": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

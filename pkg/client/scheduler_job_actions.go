@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -51,4 +53,38 @@ func (cli *ZSClient) PageSchedulerJob(params *param.QueryParam) ([]view.Schedule
 	var schedulerJobs []view.SchedulerJobInventoryView
 	total, err := cli.Page("v1/scheduler/jobs", params, &schedulerJobs)
 	return schedulerJobs, total, err
+}
+
+// RemoveSchedulerJobFromSchedulerTrigger removes SchedulerJobFromSchedulerTrigger
+func (cli *ZSClient) RemoveSchedulerJobFromSchedulerTrigger(schedulerJobUuid string, schedulerTriggerUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/scheduler/jobs", schedulerJobUuid, fmt.Sprintf("scheduler/triggers/%s", schedulerTriggerUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// GetNoTriggerSchedulerJobs gets NoTriggerSchedulerJobs by uuid
+func (cli *ZSClient) GetNoTriggerSchedulerJobs() (*view.SchedulerJobInventoryView, error) {
+	var resp view.SchedulerJobInventoryView
+	if err := cli.GetWithRespKey("v1/scheduler/jobs/candidates", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddSchedulerJobToSchedulerTrigger adds SchedulerJobToSchedulerTrigger
+func (cli *ZSClient) AddSchedulerJobToSchedulerTrigger(schedulerJobUuid string, schedulerTriggerUuid string, params param.AddSchedulerJobToSchedulerTriggerParam) (*view.SchedulerJobSchedulerTriggerInventoryView, error) {
+	resp := view.SchedulerJobSchedulerTriggerInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/scheduler/jobs/%s/scheduler/triggers/%s", schedulerJobUuid, schedulerTriggerUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeSchedulerState changes SchedulerState
+func (cli *ZSClient) ChangeSchedulerState(uuid string, params param.ChangeSchedulerStateParam) (*view.SchedulerJobInventoryView, error) {
+	resp := view.SchedulerJobInventoryView{}
+	if err := cli.PutWithRespKey("v1/schedulers", uuid, "", map[string]interface{}{
+		"changeSchedulerState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

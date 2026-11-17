@@ -43,3 +43,14 @@ func (cli *ZSClient) AddSNSDingTalkAtPerson(params param.AddSNSDingTalkAtPersonP
 	}
 	return &resp, nil
 }
+
+// UpdateAtPersonOfAtDingTalkEndpoint updates AtPersonOfAtDingTalkEndpoint
+func (cli *ZSClient) UpdateAtPersonOfAtDingTalkEndpoint(uuid string, params param.UpdateAtPersonOfAtDingTalkEndpointParam) (*view.SNSDingTalkAtPersonInventoryView, error) {
+	resp := view.SNSDingTalkAtPersonInventoryView{}
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints/ding-talk/at-persons", uuid, "", map[string]interface{}{
+		"updateAtPersonOfAtDingTalkEndpoint": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

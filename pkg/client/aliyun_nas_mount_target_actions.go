@@ -28,3 +28,23 @@ func (cli *ZSClient) CreateAliyunNasMountTarget(params param.CreateAliyunNasMoun
 	}
 	return &resp, nil
 }
+
+// GetAliyunNasMountTargetRemote gets AliyunNasMountTargetRemote by uuid
+func (cli *ZSClient) GetAliyunNasMountTargetRemote() (*view.AliyunNasMountTargetPropertyView, error) {
+	var resp view.AliyunNasMountTargetPropertyView
+	if err := cli.GetWithRespKey("v1/nas/aliyun/mount/remote", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UpdateAliyunMountTarget updates AliyunMountTarget
+func (cli *ZSClient) UpdateAliyunMountTarget(params param.UpdateAliyunMountTargetParam) (*view.NasMountTargetInventoryView, error) {
+	resp := view.NasMountTargetInventoryView{}
+	if err := cli.PutWithRespKey("v1/nas/aliyun/mount", "", "", map[string]interface{}{
+		"updateAliyunMountTarget": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

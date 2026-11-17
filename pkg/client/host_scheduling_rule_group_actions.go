@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -50,5 +52,19 @@ func (cli *ZSClient) CreateHostSchedulingRuleGroup(params param.CreateHostSchedu
 }
 // DeleteHostSchedulingRuleGroup deletes HostSchedulingRuleGroup
 func (cli *ZSClient) DeleteHostSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/hostSchedulingRuleGroup", uuid, string(deleteMode))
+}
+
+// AddHostToHostSchedulingRuleGroup adds HostToHostSchedulingRuleGroup
+func (cli *ZSClient) AddHostToHostSchedulingRuleGroup(hostGroupUuid string, hostUuid string, params param.AddHostToHostSchedulingRuleGroupParam) (*view.AddHostToHostSchedulingRuleGroupEventView, error) {
+	resp := view.AddHostToHostSchedulingRuleGroupEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/hostSchedulingRuleGroup/%s/host/%s", hostGroupUuid, hostUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachHostFromHostSchedulingRuleGroup operates on HostFromHostSchedulingRuleGroup
+func (cli *ZSClient) DetachHostFromHostSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/hostSchedulingRuleGroup", uuid, string(deleteMode))
 }

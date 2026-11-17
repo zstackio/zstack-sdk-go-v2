@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -48,6 +50,48 @@ func (cli *ZSClient) UpdateVmCdRom(uuid string, params param.UpdateVmCdRomParam)
 	if err := cli.PutWithRespKey("v1/vm-instances/cdroms", uuid, "", map[string]interface{}{
 		"updateVmCdRom": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetCandidateIsoForAttachingVm gets CandidateIsoForAttachingVm by uuid
+func (cli *ZSClient) GetCandidateIsoForAttachingVm(uuid string) (*view.ImageInventoryView, error) {
+	var resp view.ImageInventoryView
+	if err := cli.GetWithRespKey("v1/vm-instances", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AttachIsoToVmInstance operates on IsoToVmInstance
+func (cli *ZSClient) AttachIsoToVmInstance(vmInstanceUuid string, isoUuid string, params param.AttachIsoToVmInstanceParam) (*view.VmInstanceInventoryView, error) {
+	resp := view.VmInstanceInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/vm-instances/%s/iso/%s", vmInstanceUuid, isoUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetCandidateVmForAttachingIso gets CandidateVmForAttachingIso by uuid
+func (cli *ZSClient) GetCandidateVmForAttachingIso(uuid string) (*view.VmInstanceInventoryView, error) {
+	var resp view.VmInstanceInventoryView
+	if err := cli.GetWithRespKey("v1/images/iso", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachIsoFromVmInstance operates on IsoFromVmInstance
+func (cli *ZSClient) DetachIsoFromVmInstance(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
+}
+
+// SetVmInstanceDefaultCdRom operates on VmInstanceDefaultCdRom
+func (cli *ZSClient) SetVmInstanceDefaultCdRom(vmInstanceUuid string, uuid string, params param.SetVmInstanceDefaultCdRomParam) (*view.VmCdRomInventoryView, error) {
+	resp := view.VmCdRomInventoryView{}
+	err := cli.PutWithSpec("v1/vm-instances", vmInstanceUuid, fmt.Sprintf("cdroms/%s/actions", uuid), "", params, &resp)
+	if err != nil {
 		return nil, err
 	}
 	return &resp, nil

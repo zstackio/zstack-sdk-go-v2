@@ -65,3 +65,23 @@ func (cli *ZSClient) CreatePortForwardingRule(params param.CreatePortForwardingR
 	}
 	return &resp, nil
 }
+
+// ChangePortForwardingRuleState changes PortForwardingRuleState
+func (cli *ZSClient) ChangePortForwardingRuleState(uuid string, params param.ChangePortForwardingRuleStateParam) (*view.PortForwardingRuleInventoryView, error) {
+	resp := view.PortForwardingRuleInventoryView{}
+	if err := cli.PutWithRespKey("v1/port-forwarding", uuid, "", map[string]interface{}{
+		"changePortForwardingRuleState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetVpcAttachedPortForwardingRules gets VpcAttachedPortForwardingRules by uuid
+func (cli *ZSClient) GetVpcAttachedPortForwardingRules(uuid string, params param.GetVpcAttachedPortForwardingRulesParam) (*view.PortForwardingRuleInventoryView, error) {
+	resp := view.PortForwardingRuleInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/vpc/virtual-routers/%s/attached-pf", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

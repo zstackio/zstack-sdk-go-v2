@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -51,4 +53,57 @@ func (cli *ZSClient) UpdateIAM2VirtualIDGroup(uuid string, params param.UpdateIA
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// AddIAM2VirtualIDGroupToProjects adds IAM2VirtualIDGroupToProjects
+func (cli *ZSClient) AddIAM2VirtualIDGroupToProjects(params param.AddIAM2VirtualIDGroupToProjectsParam) (*view.AddIAM2VirtualIDGroupToProjectsEventView, error) {
+	resp := view.AddIAM2VirtualIDGroupToProjectsEventView{}
+	if err := cli.Post("v1/iam2/projects/groups", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveIAM2VirtualIDsFromGroup removes IAM2VirtualIDsFromGroup
+func (cli *ZSClient) RemoveIAM2VirtualIDsFromGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
+}
+
+// RemoveIAM2VirtualIDGroupFromProjects removes IAM2VirtualIDGroupFromProjects
+func (cli *ZSClient) RemoveIAM2VirtualIDGroupFromProjects(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
+}
+
+// ChangeIAM2VirtualIDGroupState changes IAM2VirtualIDGroupState
+func (cli *ZSClient) ChangeIAM2VirtualIDGroupState(uuid string, params param.ChangeIAM2VirtualIDGroupStateParam) (*view.IAM2VirtualIDGroupInventoryView, error) {
+	resp := view.IAM2VirtualIDGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/iam2/projects/groups", uuid, "", map[string]interface{}{
+		"changeIAM2VirtualIDGroupState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddRolesToIAM2VirtualIDGroup adds RolesToIAM2VirtualIDGroup
+func (cli *ZSClient) AddRolesToIAM2VirtualIDGroup(groupUuid string, params param.AddRolesToIAM2VirtualIDGroupParam) (*view.AddRolesToIAM2VirtualIDGroupEventView, error) {
+	resp := view.AddRolesToIAM2VirtualIDGroupEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/iam2/projects/groups/%s/roles", groupUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddIAM2VirtualIDsToGroup adds IAM2VirtualIDsToGroup
+func (cli *ZSClient) AddIAM2VirtualIDsToGroup(groupUuid string, params param.AddIAM2VirtualIDsToGroupParam) (*view.AddIAM2VirtualIDToGroupEventView, error) {
+	resp := view.AddIAM2VirtualIDToGroupEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/iam2/projects/groups/%s/virtual-ids", groupUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveRolesFromIAM2VirtualIDGroup removes RolesFromIAM2VirtualIDGroup
+func (cli *ZSClient) RemoveRolesFromIAM2VirtualIDGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
 }

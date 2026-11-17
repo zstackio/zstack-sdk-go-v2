@@ -52,3 +52,37 @@ func (cli *ZSClient) UpdateVolumeSnapshotGroup(uuid string, params param.UpdateV
 func (cli *ZSClient) DeleteVolumeSnapshotGroup(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/volume-snapshots/group", uuid, string(deleteMode))
 }
+
+// CheckVolumeSnapshotGroupAvailability operates on VolumeSnapshotGroupAvailability
+func (cli *ZSClient) CheckVolumeSnapshotGroupAvailability() (*view.CheckVolumeSnapshotGroupAvailabilityView, error) {
+	var resp view.CheckVolumeSnapshotGroupAvailabilityView
+	if err := cli.GetWithRespKey("v1/volume-snapshots/groups/availabilities", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RevertVmFromSnapshotGroup operates on VmFromSnapshotGroup
+func (cli *ZSClient) RevertVmFromSnapshotGroup(uuid string, params param.RevertVmFromSnapshotGroupParam) (*view.RevertVmFromSnapshotGroupEventView, error) {
+	resp := view.RevertVmFromSnapshotGroupEventView{}
+	if err := cli.PutWithRespKey("v1/volume-snapshots/group", uuid, "", map[string]interface{}{
+		"revertVmFromSnapshotGroup": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UngroupVolumeSnapshotGroup operates on UngroupVolumeSnapshotGroup
+func (cli *ZSClient) UngroupVolumeSnapshotGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/volume-snapshots/ungroup", uuid, string(deleteMode))
+}
+
+// GetMemorySnapshotGroupReference gets MemorySnapshotGroupReference by uuid
+func (cli *ZSClient) GetMemorySnapshotGroupReference() (*view.VolumeSnapshotGroupInventoryView, error) {
+	var resp view.VolumeSnapshotGroupInventoryView
+	if err := cli.GetWithRespKey("v1/memory-snapshots/group/reference", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

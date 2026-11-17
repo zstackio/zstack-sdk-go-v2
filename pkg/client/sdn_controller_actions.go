@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -71,4 +73,50 @@ func (cli *ZSClient) PageSdnController(params *param.QueryParam) ([]view.SdnCont
 	var sdnControllers []view.SdnControllerInventoryView
 	total, err := cli.Page("v1/sdn-controllers", params, &sdnControllers)
 	return sdnControllers, total, err
+}
+
+// SdnControllerChangeHost operates on SdnControllerChangeHost
+func (cli *ZSClient) SdnControllerChangeHost(sdnControllerUuid string, hostUuid string, params param.SdnControllerChangeHostParam) (*view.SdnControllerInventoryView, error) {
+	resp := view.SdnControllerInventoryView{}
+	err := cli.PutWithSpec("v1/sdn-controllers", sdnControllerUuid, fmt.Sprintf("hosts/%s/actions", hostUuid), "", params, &resp)
+	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PullSdnControllerTenant operates on PullSdnControllerTenant
+func (cli *ZSClient) PullSdnControllerTenant(uuid string, params param.PullSdnControllerTenantParam) (*view.H3cSdnControllerTenantInventoryView, error) {
+	resp := view.H3cSdnControllerTenantInventoryView{}
+	if err := cli.PutWithRespKey("v1/sdn-controllers", uuid, "", map[string]interface{}{
+		"pullSdnControllerTenant": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PullHuaweiIMasterController operates on PullHuaweiIMasterController
+func (cli *ZSClient) PullHuaweiIMasterController(uuid string, params param.PullHuaweiIMasterControllerParam) (*view.HuaweiIMasterSdnControllerInventoryView, error) {
+	resp := view.HuaweiIMasterSdnControllerInventoryView{}
+	if err := cli.PutWithRespKey("v1/sdn-controller/huawei-imaster", uuid, "", map[string]interface{}{
+		"pullHuaweiIMasterController": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SdnControllerRemoveHost operates on SdnControllerRemoveHost
+func (cli *ZSClient) SdnControllerRemoveHost(sdnControllerUuid string, hostUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/sdn-controllers", sdnControllerUuid, fmt.Sprintf("hosts/%s", hostUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// SdnControllerAddHost operates on SdnControllerAddHost
+func (cli *ZSClient) SdnControllerAddHost(sdnControllerUuid string, hostUuid string, params param.SdnControllerAddHostParam) (*view.SdnControllerInventoryView, error) {
+	resp := view.SdnControllerInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/sdn-controllers/%s/hosts/%s", sdnControllerUuid, hostUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -38,6 +40,15 @@ func (cli *ZSClient) PageImageReplicationGroup(params *param.QueryParam) ([]view
 func (cli *ZSClient) CreateImageReplicationGroup(params param.CreateImageReplicationGroupParam) (*view.ImageReplicationGroupInventoryView, error) {
 	resp := view.ImageReplicationGroupInventoryView{}
 	if err := cli.Post("v1/image-replication-groups", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddBackupStoragesToReplicationGroup adds BackupStoragesToReplicationGroup
+func (cli *ZSClient) AddBackupStoragesToReplicationGroup(replicationGroupUuid string, params param.AddBackupStoragesToReplicationGroupParam) (*view.ImageReplicationGroupBackupStorageRefInventoryView, error) {
+	resp := view.ImageReplicationGroupBackupStorageRefInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/image-replication-groups/%s", replicationGroupUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

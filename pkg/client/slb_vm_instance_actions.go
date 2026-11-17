@@ -30,3 +30,23 @@ func (cli *ZSClient) PageSlbVmInstance(params *param.QueryParam) ([]view.SlbVmIn
 	total, err := cli.Page("v1/load-balancers/slb/instances", params, &slbVmInstances)
 	return slbVmInstances, total, err
 }
+
+// CreateSlbInstance creates SlbInstance
+func (cli *ZSClient) CreateSlbInstance(params param.CreateSlbInstanceParam) (*view.SlbVmInstanceInventoryView, error) {
+	resp := view.SlbVmInstanceInventoryView{}
+	if err := cli.Post("v1/load-balancers/slb/instances", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ProvisionSlbInstance operates on ProvisionSlbInstance
+func (cli *ZSClient) ProvisionSlbInstance(uuid string, params param.ProvisionSlbInstanceParam) (*view.SlbGroupInventoryView, error) {
+	resp := view.SlbGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/load-balancers/slb/instances", uuid, "", map[string]interface{}{
+		"provisionSlbInstance": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

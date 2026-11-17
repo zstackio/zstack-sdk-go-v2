@@ -44,3 +44,32 @@ func (cli *ZSClient) PageSecretResourcePool(params *param.QueryParam) ([]view.Se
 	total, err := cli.Page("v1/secret-resource-pools", params, &secretResourcePools)
 	return secretResourcePools, total, err
 }
+
+// GetSignatureServerEncryptPublicKey gets SignatureServerEncryptPublicKey by uuid
+func (cli *ZSClient) GetSignatureServerEncryptPublicKey() (*view.GetSignatureServerEncryptPublicKeyView, error) {
+	var resp view.GetSignatureServerEncryptPublicKeyView
+	if err := cli.GetWithRespKey("v1/secret-resource-pool-token/signature-server-encrypt-public-key", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeSecretResourcePoolState changes SecretResourcePoolState
+func (cli *ZSClient) ChangeSecretResourcePoolState(uuid string, params param.ChangeSecretResourcePoolStateParam) (*view.SecretResourcePoolInventoryView, error) {
+	resp := view.SecretResourcePoolInventoryView{}
+	if err := cli.PutWithRespKey("v1/secret-resource-pools", uuid, "", map[string]interface{}{
+		"changeSecretResourcePoolState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CreateJitSecretResourcePool creates JitSecretResourcePool
+func (cli *ZSClient) CreateJitSecretResourcePool() (*view.SecretResourcePoolInventoryView, error) {
+	resp := view.SecretResourcePoolInventoryView{}
+	if err := cli.Post("v1/secret-resource-pool/jit", map[string]interface{}{}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

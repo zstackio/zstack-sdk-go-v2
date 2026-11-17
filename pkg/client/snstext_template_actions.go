@@ -52,3 +52,12 @@ func (cli *ZSClient) PageSNSTextTemplate(params *param.QueryParam) ([]view.SNSTe
 	total, err := cli.Page("v1/zwatch/alarms/sns/text-templates", params, &sNSTextTemplates)
 	return sNSTextTemplates, total, err
 }
+
+// GetTextTemplateArg gets TextTemplateArg by uuid
+func (cli *ZSClient) GetTextTemplateArg() (*view.GetTextTemplateArgView, error) {
+	var resp view.GetTextTemplateArgView
+	if err := cli.GetWithRespKey("v1/zwatch/textTemplateArg", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

@@ -30,3 +30,12 @@ func (cli *ZSClient) PageOvnController(params *param.QueryParam) ([]view.OvnCont
 	total, err := cli.Page("v1/ovn-controllers", params, &ovnControllers)
 	return ovnControllers, total, err
 }
+
+// CreateOvnControllerVm creates OvnControllerVm
+func (cli *ZSClient) CreateOvnControllerVm() (*view.ApplianceVmInventoryView, error) {
+	resp := view.ApplianceVmInventoryView{}
+	if err := cli.Post("v1/ovn/instances", map[string]interface{}{}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

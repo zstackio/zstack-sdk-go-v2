@@ -61,3 +61,17 @@ func (cli *ZSClient) CreateMonitorTemplate(params param.CreateMonitorTemplatePar
 func (cli *ZSClient) DeleteMonitorTemplate(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/zwatch/monitortemplates", uuid, string(deleteMode))
 }
+
+// RevokeMonitorTemplateFromMonitorGroup operates on RevokeMonitorTemplateFromMonitorGroup
+func (cli *ZSClient) RevokeMonitorTemplateFromMonitorGroup(templateUuid string, groupUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/zwatch/monitortemplates", templateUuid, fmt.Sprintf("monitorgroups/%s", groupUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// ApplyMonitorTemplateToMonitorGroup operates on MonitorTemplateToMonitorGroup
+func (cli *ZSClient) ApplyMonitorTemplateToMonitorGroup(templateUuid string, groupUuid string, params param.ApplyMonitorTemplateToMonitorGroupParam) (*view.MonitorGroupTemplateRefInventoryView, error) {
+	resp := view.MonitorGroupTemplateRefInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/zwatch/monitortemplates/%s/monitorgroups/%s", templateUuid, groupUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

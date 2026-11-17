@@ -28,3 +28,12 @@ func (cli *ZSClient) CreateAliyunNasFileSystem(params param.CreateAliyunNasFileS
 	}
 	return &resp, nil
 }
+
+// GetAliyunNasFileSystemRemote gets AliyunNasFileSystemRemote by uuid
+func (cli *ZSClient) GetAliyunNasFileSystemRemote() (*view.AliyunNasFileSystemPropertyView, error) {
+	var resp view.AliyunNasFileSystemPropertyView
+	if err := cli.GetWithRespKey("v1/nas/aliyun/remote", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

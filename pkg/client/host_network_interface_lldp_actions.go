@@ -18,3 +18,14 @@ func (cli *ZSClient) GetHostNetworkInterfaceLldp(uuid string) (*view.HostNetwork
 	}
 	return &resp, nil
 }
+
+// ChangeHostNetworkInterfaceLldpMode changes HostNetworkInterfaceLldpMode
+func (cli *ZSClient) ChangeHostNetworkInterfaceLldpMode(params param.ChangeHostNetworkInterfaceLldpModeParam) (*view.HostNetworkInterfaceLldpInventoryView, error) {
+	resp := view.HostNetworkInterfaceLldpInventoryView{}
+	if err := cli.PutWithRespKey("v1/hostNetworkInterface/lldp/actions", "", "", map[string]interface{}{
+		"changeHostNetworkInterfaceLldpMode": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

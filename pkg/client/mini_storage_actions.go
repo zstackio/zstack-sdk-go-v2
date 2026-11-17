@@ -38,3 +38,14 @@ func (cli *ZSClient) AddMiniStorage(params param.AddMiniStorageParam) (*view.Pri
 	}
 	return &resp, nil
 }
+
+// RecoverResourceSplitBrain operates on ResourceSplitBrain
+func (cli *ZSClient) RecoverResourceSplitBrain(resourceUuid string, params param.RecoverResourceSplitBrainParam) (*view.RecoverResourceSplitBrainEventView, error) {
+	resp := view.RecoverResourceSplitBrainEventView{}
+	if err := cli.PutWithRespKey("v1/primary-storage/mini", resourceUuid, "", map[string]interface{}{
+		"recoverResourceSplitBrain": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

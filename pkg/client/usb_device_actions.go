@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -36,6 +38,33 @@ func (cli *ZSClient) UpdateUsbDevice(uuid string, params param.UpdateUsbDevicePa
 	if err := cli.PutWithRespKey("v1/usb-device/usb-devices", uuid, "", map[string]interface{}{
 		"updateUsbDevice": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AttachUsbDeviceToVm operates on UsbDeviceToVm
+func (cli *ZSClient) AttachUsbDeviceToVm(usbDeviceUuid string, params param.AttachUsbDeviceToVmParam) (*view.UsbDeviceInventoryView, error) {
+	resp := view.UsbDeviceInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/usb-device/usb-devices/%s/attach", usbDeviceUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetUsbDeviceCandidatesForAttachingVm gets UsbDeviceCandidatesForAttachingVm by uuid
+func (cli *ZSClient) GetUsbDeviceCandidatesForAttachingVm(uuid string) (*view.UsbDeviceInventoryView, error) {
+	var resp view.UsbDeviceInventoryView
+	if err := cli.GetWithRespKey("v1/vm-instances", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachUsbDeviceFromVm operates on UsbDeviceFromVm
+func (cli *ZSClient) DetachUsbDeviceFromVm(usbDeviceUuid string, params param.DetachUsbDeviceFromVmParam) (*view.UsbDeviceInventoryView, error) {
+	resp := view.UsbDeviceInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/usb-device/usb-devices/%s/detach", usbDeviceUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -48,3 +48,12 @@ func (cli *ZSClient) PageBlockVolume(params *param.QueryParam) ([]view.BlockVolu
 	total, err := cli.Page("v1/block-volumes", params, &blockVolumes)
 	return blockVolumes, total, err
 }
+
+// GetAccessPath gets AccessPath by uuid
+func (cli *ZSClient) GetAccessPath() (*view.GetAccessPathView, error) {
+	var resp view.GetAccessPathView
+	if err := cli.GetWithRespKey("v1/block-volumes/access/path", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

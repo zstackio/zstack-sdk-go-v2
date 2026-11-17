@@ -14,3 +14,12 @@ func (cli *ZSClient) GetEffectiveResourceConfig(resourceUuid, category, name str
 	}
 	return &resp, nil
 }
+
+// GetResourceBindableConfig gets ResourceBindableConfig by uuid
+func (cli *ZSClient) GetResourceBindableConfig() (*view.GetResourceBindableConfigView, error) {
+	var resp view.GetResourceBindableConfigView
+	if err := cli.GetWithRespKey("v1/resource-configurations/bindable", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

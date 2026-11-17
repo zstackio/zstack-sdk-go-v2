@@ -34,3 +34,14 @@ func (cli *ZSClient) PageBuildAppExportHistory(params *param.QueryParam) ([]view
 	total, err := cli.Page("v1/appcenter/exportapp", params, &buildAppExportHistories)
 	return buildAppExportHistories, total, err
 }
+
+// ExportBuildApp operates on BuildApp
+func (cli *ZSClient) ExportBuildApp(uuid string, params param.ExportBuildAppParam) (*view.BuildAppExportHistoryInventoryView, error) {
+	resp := view.BuildAppExportHistoryInventoryView{}
+	if err := cli.PutWithRespKey("v1/appcenter/buildapp", uuid, "", map[string]interface{}{
+		"exportBuildApp": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

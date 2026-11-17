@@ -52,3 +52,23 @@ func (cli *ZSClient) UpdateGuestVmScript(uuid string, params param.UpdateGuestVm
 	}
 	return &resp, nil
 }
+
+// GetInvocationRecords gets InvocationRecords by uuid
+func (cli *ZSClient) GetInvocationRecords() (*view.InvocationRecordView, error) {
+	var resp view.InvocationRecordView
+	if err := cli.GetWithRespKey("v1/scripts/aliyun-invocations", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ExecuteGuestVmScript operates on ExecuteGuestVmScript
+func (cli *ZSClient) ExecuteGuestVmScript(uuid string, params param.ExecuteGuestVmScriptParam) (*view.GuestVmScriptExecutedRecordInventoryView, error) {
+	resp := view.GuestVmScriptExecutedRecordInventoryView{}
+	if err := cli.PutWithRespKey("v1/scripts", uuid, "", map[string]interface{}{
+		"executeGuestVmScript": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
