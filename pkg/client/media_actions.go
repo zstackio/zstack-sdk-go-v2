@@ -34,3 +34,14 @@ func (cli *ZSClient) PageMedia(params *param.QueryParam) ([]view.MediaInventoryV
 	total, err := cli.Page("v1/media", params, &medias)
 	return medias, total, err
 }
+
+// ChangeMediaState changes MediaState
+func (cli *ZSClient) ChangeMediaState(uuid string, params param.ChangeMediaStateParam) (*view.MediaInventoryView, error) {
+	resp := view.MediaInventoryView{}
+	if err := cli.PutWithRespKey("v1/media", uuid, "", map[string]interface{}{
+		"changeMediaState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

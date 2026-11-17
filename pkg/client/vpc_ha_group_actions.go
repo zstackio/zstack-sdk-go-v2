@@ -52,3 +52,14 @@ func (cli *ZSClient) PageVpcHaGroup(params *param.QueryParam) ([]view.VpcHaGroup
 	total, err := cli.Page("v1/vpc/hagroups", params, &vpcHaGroups)
 	return vpcHaGroups, total, err
 }
+
+// ChangeVpcHaGroupMonitorIps changes VpcHaGroupMonitorIps
+func (cli *ZSClient) ChangeVpcHaGroupMonitorIps(uuid string, params param.ChangeVpcHaGroupMonitorIpsParam) (*view.VpcHaGroupInventoryView, error) {
+	resp := view.VpcHaGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/vpc/hagroups", uuid, "", map[string]interface{}{
+		"changeVpcHaGroupMonitorIps": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

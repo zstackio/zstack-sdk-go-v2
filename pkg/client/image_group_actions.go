@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -36,4 +38,31 @@ func (cli *ZSClient) PageImageGroup(params *param.QueryParam) ([]view.ImageGroup
 	var imageGroups []view.ImageGroupInventoryView
 	total, err := cli.Page("v1/imagegroups", params, &imageGroups)
 	return imageGroups, total, err
+}
+
+// CreateImageGroupFromVmInstance creates ImageGroupFromVmInstance
+func (cli *ZSClient) CreateImageGroupFromVmInstance(params param.CreateImageGroupFromVmInstanceParam) (*view.ImageGroupInventoryView, error) {
+	resp := view.ImageGroupInventoryView{}
+	if err := cli.Post("v1/images/groups/from/vm-instance", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CreateImageGroupFromImage creates ImageGroupFromImage
+func (cli *ZSClient) CreateImageGroupFromImage(rootVolumeTemplateUuid string, params param.CreateImageGroupFromImageParam) (*view.ImageGroupInventoryView, error) {
+	resp := view.ImageGroupInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/imagegroup/from/image/%s", rootVolumeTemplateUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CreateImageGroupFromSnapshot creates ImageGroupFromSnapshot
+func (cli *ZSClient) CreateImageGroupFromSnapshot(rootVolumeSnapshotUuid string, params param.CreateImageGroupFromSnapshotParam) (*view.ImageGroupInventoryView, error) {
+	resp := view.ImageGroupInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/imagegroup/from/snapshot/%s", rootVolumeSnapshotUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

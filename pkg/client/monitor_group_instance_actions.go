@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -29,4 +31,18 @@ func (cli *ZSClient) PageMonitorGroupInstance(params *param.QueryParam) ([]view.
 	var monitorGroupInstances []view.MonitorGroupInstanceInventoryView
 	total, err := cli.Page("v1/zwatch/monitorgroups/instances", params, &monitorGroupInstances)
 	return monitorGroupInstances, total, err
+}
+
+// AddInstanceToMonitorGroup adds InstanceToMonitorGroup
+func (cli *ZSClient) AddInstanceToMonitorGroup(groupUuid string, params param.AddInstanceToMonitorGroupParam) (*view.MonitorGroupInstanceInventoryView, error) {
+	resp := view.MonitorGroupInstanceInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/zwatch/monitorgroups/%s/actions", groupUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveInstanceFromMonitorGroup removes InstanceFromMonitorGroup
+func (cli *ZSClient) RemoveInstanceFromMonitorGroup(groupUuid string, instanceUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/zwatch/monitorgroups", groupUuid, fmt.Sprintf("actions/%s", instanceUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }

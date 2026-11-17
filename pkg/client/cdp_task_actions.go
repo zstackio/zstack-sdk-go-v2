@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -51,4 +53,57 @@ func (cli *ZSClient) UpdateCdpTask(uuid string, params param.UpdateCdpTaskParam)
 // DeleteCdpTask deletes CdpTask
 func (cli *ZSClient) DeleteCdpTask(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/cdp-task", uuid, string(deleteMode))
+}
+
+// UpgradeBackupStorageCdpTasks operates on UpgradeBackupStorageCdpTasks
+func (cli *ZSClient) UpgradeBackupStorageCdpTasks(backupStorageUuid string, params param.UpgradeBackupStorageCdpTasksParam) (*view.UpgradeBackupStorageCdpTasksEventView, error) {
+	resp := view.UpgradeBackupStorageCdpTasksEventView{}
+	if err := cli.PutWithRespKey("v1/cdp-task/upgrade", backupStorageUuid, "", map[string]interface{}{
+		"upgradeBackupStorageCdpTasks": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DeleteCdpTaskData deletes CdpTaskData
+func (cli *ZSClient) DeleteCdpTaskData(uuid string, params param.DeleteCdpTaskDataParam) (*view.DeleteCdpTaskDataEventView, error) {
+	resp := view.DeleteCdpTaskDataEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/cdp-task/%s/data", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DisableCdpTask operates on DisableCdpTask
+func (cli *ZSClient) DisableCdpTask(uuid string, params param.DisableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
+	resp := view.CdpTaskInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/cdp-task/disable/%s", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// EnableCdpTask operates on EnableCdpTask
+func (cli *ZSClient) EnableCdpTask(uuid string, params param.EnableCdpTaskParam) (*view.CdpTaskInventoryView, error) {
+	resp := view.CdpTaskInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/cdp-task/enable/%s", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// EnableCdpTaskAsync Async
+func (cli *ZSClient) EnableCdpTaskAsync(uuid string, params param.EnableCdpTaskParam) (string, error) {
+
+	resource := fmt.Sprintf("v1/cdp-task/enable/%s", uuid)
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
 }

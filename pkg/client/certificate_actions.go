@@ -52,3 +52,12 @@ func (cli *ZSClient) PageCertificate(params *param.QueryParam) ([]view.Certifica
 	total, err := cli.Page("v1/certificates", params, &certificates)
 	return certificates, total, err
 }
+
+// GetSpiceCertificates gets SpiceCertificates by uuid
+func (cli *ZSClient) GetSpiceCertificates() (*view.GetSpiceCertificatesView, error) {
+	var resp view.GetSpiceCertificatesView
+	if err := cli.GetWithRespKey("v1/spice/certificates", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

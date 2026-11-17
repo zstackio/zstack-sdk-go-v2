@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -51,4 +53,50 @@ func (cli *ZSClient) CreateSNSTopic(params param.CreateSNSTopicParam) (*view.SNS
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// UnsubscribeSNSTopic operates on UnsubscribeSNSTopic
+func (cli *ZSClient) UnsubscribeSNSTopic(topicUuid string, endpointUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/sns/topics", topicUuid, fmt.Sprintf("endpoints/%s", endpointUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// SubscribeSNSTopic operates on SubscribeSNSTopic
+func (cli *ZSClient) SubscribeSNSTopic(topicUuid string, endpointUuid string, params param.SubscribeSNSTopicParam) (*view.SubscribeSNSTopicEventView, error) {
+	resp := view.SubscribeSNSTopicEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/sns/topics/%s/endpoints/%s", topicUuid, endpointUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeSNSTopicState changes SNSTopicState
+func (cli *ZSClient) ChangeSNSTopicState(uuid string, params param.ChangeSNSTopicStateParam) (*view.SNSTopicInventoryView, error) {
+	resp := view.SNSTopicInventoryView{}
+	if err := cli.PutWithRespKey("v1/zwatch/topics", uuid, "", map[string]interface{}{
+		"changeSNSTopicState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// QuerySNSTopicSubscriber queries SNSTopicSubscriber list
+func (cli *ZSClient) QuerySNSTopicSubscriber(params *param.QueryParam) ([]view.SNSSubscriberInventoryView, error) {
+	var resp []view.SNSSubscriberInventoryView
+	return resp, cli.List("v1/sns/topics/subscribers", params, &resp)
+}
+
+func (cli *ZSClient) GetSNSTopicSubscriber(uuid string) (*view.SNSSubscriberInventoryView, error) {
+	var resp view.SNSSubscriberInventoryView
+	if err := cli.Get("v1/sns/topics/subscribers", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageSNSTopicSubscriber Pagination
+func (cli *ZSClient) PageSNSTopicSubscriber(params *param.QueryParam) ([]view.SNSSubscriberInventoryView, int, error) {
+	var sNSTopicSubscribers []view.SNSSubscriberInventoryView
+	total, err := cli.Page("v1/sns/topics/subscribers", params, &sNSTopicSubscribers)
+	return sNSTopicSubscribers, total, err
 }

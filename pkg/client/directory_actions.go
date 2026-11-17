@@ -61,3 +61,39 @@ func (cli *ZSClient) DeleteDirectory(uuid string, deleteMode param.DeleteMode) e
 		},
 	}, nil)
 }
+
+// AddResourcesToDirectory adds ResourcesToDirectory
+func (cli *ZSClient) AddResourcesToDirectory(params param.AddResourcesToDirectoryParam) (*view.AddResourcesToDirectoryEventView, error) {
+	resp := view.AddResourcesToDirectoryEventView{}
+	if err := cli.Post("v1/add/resources/directory", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveResourcesFromDirectory removes ResourcesFromDirectory
+func (cli *ZSClient) RemoveResourcesFromDirectory(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/remove/resources/directory", uuid, string(deleteMode))
+}
+
+// MoveDirectory operates on MoveDirectory
+func (cli *ZSClient) MoveDirectory(params param.MoveDirectoryParam) (*view.MoveDirectoryEventView, error) {
+	resp := view.MoveDirectoryEventView{}
+	if err := cli.PutWithRespKey("v1/move/directory", "", "", map[string]interface{}{
+		"moveDirectory": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// MoveResourcesToDirectory operates on MoveResourcesToDirectory
+func (cli *ZSClient) MoveResourcesToDirectory(params param.MoveResourcesToDirectoryParam) (*view.MoveResourcesToDirectoryEventView, error) {
+	resp := view.MoveResourcesToDirectoryEventView{}
+	if err := cli.PutWithRespKey("v1/move/resources/directory", "", "", map[string]interface{}{
+		"moveResourcesToDirectory": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

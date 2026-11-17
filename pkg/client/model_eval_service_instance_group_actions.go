@@ -30,3 +30,14 @@ func (cli *ZSClient) PageModelEvalServiceInstanceGroup(params *param.QueryParam)
 	total, err := cli.Page("v1/ai/model-eval-services/instances/groups/", params, &modelEvalServiceInstanceGroups)
 	return modelEvalServiceInstanceGroups, total, err
 }
+
+// DeployModelEvalService operates on DeployModelEvalService
+func (cli *ZSClient) DeployModelEvalService(uuid string, params param.DeployModelEvalServiceParam) (*view.ModelEvalServiceInstanceGroupInventoryView, error) {
+	resp := view.ModelEvalServiceInstanceGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/ai/model-services/eval", uuid, "", map[string]interface{}{
+		"deployModelEvalService": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

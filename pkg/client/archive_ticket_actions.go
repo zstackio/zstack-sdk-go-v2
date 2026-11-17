@@ -30,3 +30,24 @@ func (cli *ZSClient) PageArchiveTicket(params *param.QueryParam) ([]view.Archive
 	total, err := cli.Page("v1/tickets/archives", params, &archiveTickets)
 	return archiveTickets, total, err
 }
+
+// QueryArchiveTicketHistory queries ArchiveTicketHistory list
+func (cli *ZSClient) QueryArchiveTicketHistory(params *param.QueryParam) ([]view.ArchiveTicketStatusHistoryInventoryView, error) {
+	var resp []view.ArchiveTicketStatusHistoryInventoryView
+	return resp, cli.List("v1/tickets/histories/archives", params, &resp)
+}
+
+func (cli *ZSClient) GetArchiveTicketHistory(uuid string) (*view.ArchiveTicketStatusHistoryInventoryView, error) {
+	var resp view.ArchiveTicketStatusHistoryInventoryView
+	if err := cli.Get("v1/tickets/histories/archives", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageArchiveTicketHistory Pagination
+func (cli *ZSClient) PageArchiveTicketHistory(params *param.QueryParam) ([]view.ArchiveTicketStatusHistoryInventoryView, int, error) {
+	var archiveTicketHistories []view.ArchiveTicketStatusHistoryInventoryView
+	total, err := cli.Page("v1/tickets/histories/archives", params, &archiveTicketHistories)
+	return archiveTicketHistories, total, err
+}

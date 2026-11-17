@@ -38,3 +38,14 @@ func (cli *ZSClient) PageL2VlanNetwork(params *param.QueryParam) ([]view.L2VlanN
 	total, err := cli.Page("v1/l2-networks/vlan", params, &l2VlanNetworks)
 	return l2VlanNetworks, total, err
 }
+
+// ChangeL2NetworkVlanId changes L2NetworkVlanId
+func (cli *ZSClient) ChangeL2NetworkVlanId(uuid string, params param.ChangeL2NetworkVlanIdParam) (*view.L2NetworkInventoryView, error) {
+	resp := view.L2NetworkInventoryView{}
+	if err := cli.PutWithRespKey("v1/l2-networks", uuid, "", map[string]interface{}{
+		"changeL2NetworkVlanId": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

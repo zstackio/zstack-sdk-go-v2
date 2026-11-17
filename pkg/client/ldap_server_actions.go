@@ -78,3 +78,65 @@ func (cli *ZSClient) UpdateLdapServer(ldapServerUuid string, params param.Update
 	}
 	return &resp, nil
 }
+
+// GetCandidateLdapEntryForBinding gets CandidateLdapEntryForBinding by uuid
+func (cli *ZSClient) GetCandidateLdapEntryForBinding() (*view.GetLdapEntryView, error) {
+	var resp view.GetLdapEntryView
+	if err := cli.GetWithRespKey("v1/ldap/entries/candidates", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetLdapEntry gets LdapEntry by uuid
+func (cli *ZSClient) GetLdapEntry() (*view.GetLdapEntryView, error) {
+	var resp view.GetLdapEntryView
+	if err := cli.GetWithRespKey("v1/ldap/entry", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// QueryLdapBinding queries LdapBinding list
+func (cli *ZSClient) QueryLdapBinding(params *param.QueryParam) ([]view.LdapAccountRefInventoryView, error) {
+	var resp []view.LdapAccountRefInventoryView
+	return resp, cli.List("v1/ldap/bindings", params, &resp)
+}
+
+func (cli *ZSClient) GetLdapBinding(uuid string) (*view.LdapAccountRefInventoryView, error) {
+	var resp view.LdapAccountRefInventoryView
+	if err := cli.Get("v1/ldap/bindings", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageLdapBinding Pagination
+func (cli *ZSClient) PageLdapBinding(params *param.QueryParam) ([]view.LdapAccountRefInventoryView, int, error) {
+	var ldapBindings []view.LdapAccountRefInventoryView
+	total, err := cli.Page("v1/ldap/bindings", params, &ldapBindings)
+	return ldapBindings, total, err
+}
+
+// GetLdapServerAvailableAttributes gets LdapServerAvailableAttributes by uuid
+func (cli *ZSClient) GetLdapServerAvailableAttributes(uuid string) (*view.GetLdapServerAvailableAttributesView, error) {
+	var resp view.GetLdapServerAvailableAttributesView
+	if err := cli.GetWithRespKey("v1/ldap/server/attributes", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CreateLdapBinding creates LdapBinding
+func (cli *ZSClient) CreateLdapBinding(params param.CreateLdapBindingParam) (*view.LdapAccountRefInventoryView, error) {
+	resp := view.LdapAccountRefInventoryView{}
+	if err := cli.Post("v1/ldap/bindings", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DeleteLdapBinding deletes LdapBinding
+func (cli *ZSClient) DeleteLdapBinding(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/ldap/bindings", uuid, string(deleteMode))
+}

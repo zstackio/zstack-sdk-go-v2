@@ -30,3 +30,12 @@ func (cli *ZSClient) PageNetworkServiceProvider(params *param.QueryParam) ([]vie
 	total, err := cli.Page("v1/network-services/providers", params, &networkServiceProviders)
 	return networkServiceProviders, total, err
 }
+
+// GetNetworkServiceTypes gets NetworkServiceTypes by uuid
+func (cli *ZSClient) GetNetworkServiceTypes() (*view.GetNetworkServiceTypesView, error) {
+	var resp view.GetNetworkServiceTypesView
+	if err := cli.GetWithRespKey("v1/network-services/types", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

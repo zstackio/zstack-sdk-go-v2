@@ -52,3 +52,14 @@ func (cli *ZSClient) PagePreconfigurationTemplate(params *param.QueryParam) ([]v
 	total, err := cli.Page("v1/baremetal/preconfigurations", params, &preconfigurationTemplates)
 	return preconfigurationTemplates, total, err
 }
+
+// ChangePreconfigurationTemplateState changes PreconfigurationTemplateState
+func (cli *ZSClient) ChangePreconfigurationTemplateState(uuid string, params param.ChangePreconfigurationTemplateStateParam) (*view.PreconfigurationTemplateInventoryView, error) {
+	resp := view.PreconfigurationTemplateInventoryView{}
+	if err := cli.PutWithRespKey("v1/baremetal/preconfigurations", uuid, "", map[string]interface{}{
+		"changePreconfigurationTemplateState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

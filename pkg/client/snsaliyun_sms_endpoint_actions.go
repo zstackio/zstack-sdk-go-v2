@@ -28,3 +28,24 @@ func (cli *ZSClient) ValidateSNSAliyunSmsEndpoint(uuid string, params param.Vali
 	}
 	return &resp, nil
 }
+
+// QuerySNSSmsEndpoint queries SNSSmsEndpoint list
+func (cli *ZSClient) QuerySNSSmsEndpoint(params *param.QueryParam) ([]view.SNSAliyunSmsEndpointInventoryView, error) {
+	var resp []view.SNSAliyunSmsEndpointInventoryView
+	return resp, cli.List("v1/sns/sms-endpoints", params, &resp)
+}
+
+func (cli *ZSClient) GetSNSSmsEndpoint(uuid string) (*view.SNSAliyunSmsEndpointInventoryView, error) {
+	var resp view.SNSAliyunSmsEndpointInventoryView
+	if err := cli.Get("v1/sns/sms-endpoints", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PageSNSSmsEndpoint Pagination
+func (cli *ZSClient) PageSNSSmsEndpoint(params *param.QueryParam) ([]view.SNSAliyunSmsEndpointInventoryView, int, error) {
+	var sNSSmsEndpoints []view.SNSAliyunSmsEndpointInventoryView
+	total, err := cli.Page("v1/sns/sms-endpoints", params, &sNSSmsEndpoints)
+	return sNSSmsEndpoints, total, err
+}

@@ -20,3 +20,12 @@ func (cli *ZSClient) UpdateIAM2TicketFlowCollection(uuid string, params param.Up
 	}
 	return &resp, nil
 }
+
+// CreateIAM2TickFlowCollection creates IAM2TickFlowCollection
+func (cli *ZSClient) CreateIAM2TickFlowCollection(params param.CreateIAM2TickFlowCollectionParam) (*view.TicketFlowCollectionInventoryView, error) {
+	resp := view.TicketFlowCollectionInventoryView{}
+	if err := cli.Post("v1/tickets/flow-collections", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

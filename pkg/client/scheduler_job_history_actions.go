@@ -30,3 +30,12 @@ func (cli *ZSClient) PageSchedulerJobHistory(params *param.QueryParam) ([]view.S
 	total, err := cli.Page("v1/scheduler/job/history", params, &schedulerJobHistories)
 	return schedulerJobHistories, total, err
 }
+
+// GetSchedulerExecutionReport gets SchedulerExecutionReport by uuid
+func (cli *ZSClient) GetSchedulerExecutionReport() (*view.GetSchedulerExecutionReportView, error) {
+	var resp view.GetSchedulerExecutionReportView
+	if err := cli.GetWithRespKey("v1/scheduler/report", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

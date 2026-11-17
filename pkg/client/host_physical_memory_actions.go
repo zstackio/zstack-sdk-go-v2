@@ -30,3 +30,12 @@ func (cli *ZSClient) PageHostPhysicalMemory(params *param.QueryParam) ([]view.Ho
 	total, err := cli.Page("v1/hosts/physicalmemory", params, &hostPhysicalMemories)
 	return hostPhysicalMemories, total, err
 }
+
+// GetHostPhysicalMemoryFacts gets HostPhysicalMemoryFacts by uuid
+func (cli *ZSClient) GetHostPhysicalMemoryFacts(uuid string) (*view.HostPhysicalMemoryInventoryView, error) {
+	var resp view.HostPhysicalMemoryInventoryView
+	if err := cli.GetWithRespKey("v1/hosts/physical-memory-facts", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

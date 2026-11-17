@@ -53,3 +53,12 @@ func (cli *ZSClient) CreateZBoxBackupAsync(params param.CreateZBoxBackupParam) (
 
 	return apiId, nil
 }
+
+// GetZBoxBackupDetails gets ZBoxBackupDetails by uuid
+func (cli *ZSClient) GetZBoxBackupDetails(uuid string) (*view.GetZBoxBackupDetailsView, error) {
+	var resp view.GetZBoxBackupDetailsView
+	if err := cli.GetWithRespKey("v1/externalbackup/zbox", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

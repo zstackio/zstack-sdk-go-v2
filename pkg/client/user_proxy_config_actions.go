@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -48,6 +50,15 @@ func (cli *ZSClient) PageUserProxyConfig(params *param.QueryParam) ([]view.UserP
 func (cli *ZSClient) CreateUserProxyConfig(params param.CreateUserProxyConfigParam) (*view.UserProxyConfigInventoryView, error) {
 	resp := view.UserProxyConfigInventoryView{}
 	if err := cli.Post("v1/user-proxy-configs", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddProxyToResource adds ProxyToResource
+func (cli *ZSClient) AddProxyToResource(proxyUuid string, resourceUuid string, params param.AddProxyToResourceParam) (*view.UserProxyConfigResourceRefInventoryView, error) {
+	resp := view.UserProxyConfigResourceRefInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/proxy/%s/resource/%s", proxyUuid, resourceUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

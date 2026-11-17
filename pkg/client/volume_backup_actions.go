@@ -68,3 +68,36 @@ func (cli *ZSClient) PageVolumeBackup(params *param.QueryParam) ([]view.VolumeBa
 func (cli *ZSClient) DeleteVolumeBackup(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/volume-backups", uuid, string(deleteMode))
 }
+
+// RecoverBackupFromImageStoreBackupStorage operates on BackupFromImageStoreBackupStorage
+func (cli *ZSClient) RecoverBackupFromImageStoreBackupStorage(uuid string, params param.RecoverBackupFromImageStoreBackupStorageParam) (*view.VolumeBackupInventoryView, error) {
+	resp := view.VolumeBackupInventoryView{}
+	if err := cli.PutWithRespKey("v1/volume-backups", uuid, "", map[string]interface{}{
+		"recoverBackupFromImageStoreBackupStorage": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SyncBackupFromImageStoreBackupStorage operates on BackupFromImageStoreBackupStorage
+func (cli *ZSClient) SyncBackupFromImageStoreBackupStorage(uuid string, params param.SyncBackupFromImageStoreBackupStorageParam) (*view.VolumeBackupInventoryView, error) {
+	resp := view.VolumeBackupInventoryView{}
+	if err := cli.PutWithRespKey("v1/volume-backups", uuid, "", map[string]interface{}{
+		"syncBackupFromImageStoreBackupStorage": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RevertVolumeFromVolumeBackup operates on VolumeFromVolumeBackup
+func (cli *ZSClient) RevertVolumeFromVolumeBackup(uuid string, params param.RevertVolumeFromVolumeBackupParam) (*view.RevertVolumeFromVolumeBackupEventView, error) {
+	resp := view.RevertVolumeFromVolumeBackupEventView{}
+	if err := cli.PutWithRespKey("v1/volume-backups", uuid, "", map[string]interface{}{
+		"revertVolumeFromVolumeBackup": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

@@ -44,3 +44,8 @@ func (cli *ZSClient) UpdateModelEvaluationTask(uuid string, params param.UpdateM
 	}
 	return &resp, nil
 }
+
+// DeleteModelEvaluationTasks deletes ModelEvaluationTasks
+func (cli *ZSClient) DeleteModelEvaluationTasks(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/model-evaluation-tasks", uuid, string(deleteMode))
+}

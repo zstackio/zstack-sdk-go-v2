@@ -43,3 +43,14 @@ func (cli *ZSClient) AddSNSFeiShuAtPerson(params param.AddSNSFeiShuAtPersonParam
 	}
 	return &resp, nil
 }
+
+// UpdateAtPersonOfAtFeiShuEndpoint updates AtPersonOfAtFeiShuEndpoint
+func (cli *ZSClient) UpdateAtPersonOfAtFeiShuEndpoint(uuid string, params param.UpdateAtPersonOfAtFeiShuEndpointParam) (*view.SNSFeiShuAtPersonInventoryView, error) {
+	resp := view.SNSFeiShuAtPersonInventoryView{}
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints/feishu/at-persons", uuid, "", map[string]interface{}{
+		"updateAtPersonOfAtFeiShuEndpoint": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

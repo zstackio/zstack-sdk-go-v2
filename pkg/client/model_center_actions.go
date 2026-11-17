@@ -52,3 +52,12 @@ func (cli *ZSClient) UpdateModelCenter(uuid string, params param.UpdateModelCent
 	}
 	return &resp, nil
 }
+
+// GetModelCenterServices gets ModelCenterServices by uuid
+func (cli *ZSClient) GetModelCenterServices() (*view.GetModelCenterServicesView, error) {
+	var resp view.GetModelCenterServicesView
+	if err := cli.GetWithRespKey("v1/ai/model-centers/services", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

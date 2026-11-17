@@ -50,3 +50,21 @@ func (cli *ZSClient) UpdateConsoleProxyAgent(uuid string, params param.UpdateCon
 	}
 	return &resp, nil
 }
+
+// GetVmConsoleAddress gets VmConsoleAddress by uuid
+func (cli *ZSClient) GetVmConsoleAddress(uuid string) (*view.GetVmConsoleAddressView, error) {
+	var resp view.GetVmConsoleAddressView
+	if err := cli.GetWithRespKey("v1/vm-instances", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RequestConsoleAccess operates on RequestConsoleAccess
+func (cli *ZSClient) RequestConsoleAccess(params param.RequestConsoleAccessParam) (*view.ConsoleInventoryView, error) {
+	resp := view.ConsoleInventoryView{}
+	if err := cli.Post("v1/consoles", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

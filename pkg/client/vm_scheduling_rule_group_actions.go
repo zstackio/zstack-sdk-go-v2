@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -48,6 +50,20 @@ func (cli *ZSClient) UpdateVmSchedulingRuleGroup(uuid string, params param.Updat
 func (cli *ZSClient) CreateVmSchedulingRuleGroup(params param.CreateVmSchedulingRuleGroupParam) (*view.VmSchedulingRuleGroupInventoryView, error) {
 	resp := view.VmSchedulingRuleGroupInventoryView{}
 	if err := cli.Post("v1/vmSchedulingRuleGroup", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachVmFromVmSchedulingRuleGroup operates on VmFromVmSchedulingRuleGroup
+func (cli *ZSClient) DetachVmFromVmSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vmSchedulingRuleGroup", uuid, string(deleteMode))
+}
+
+// AddVmToVmSchedulingRuleGroup adds VmToVmSchedulingRuleGroup
+func (cli *ZSClient) AddVmToVmSchedulingRuleGroup(vmGroupUuid string, vmUuid string, params param.AddVmToVmSchedulingRuleGroupParam) (*view.AddVmToVmSchedulingRuleGroupEventView, error) {
+	resp := view.AddVmToVmSchedulingRuleGroupEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/vmSchedulingRuleGroup/%s/vmInstance/%s", vmGroupUuid, vmUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

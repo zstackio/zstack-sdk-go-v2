@@ -26,3 +26,14 @@ func (cli *ZSClient) GetSSOClient() (*view.SSOClientInventoryView, error) {
 	}
 	return &resp, nil
 }
+
+// SsoClientPushData operates on SsoClientPushData
+func (cli *ZSClient) SsoClientPushData(params param.SsoClientPushDataParam) (*view.SsoClientPushDataEventView, error) {
+	resp := view.SsoClientPushDataEventView{}
+	if err := cli.PutWithRespKey("v1/sso/resource/data/push", "", "", map[string]interface{}{
+		"ssoClientPushData": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

@@ -53,3 +53,43 @@ func (cli *ZSClient) UpdateLoadBalancerServerGroup(uuid string, params param.Upd
 	}
 	return &resp, nil
 }
+
+// GetCandidateVmNicsForLoadBalancerServerGroup gets CandidateVmNicsForLoadBalancerServerGroup by uuid
+func (cli *ZSClient) GetCandidateVmNicsForLoadBalancerServerGroup() (*view.VmNicInventoryView, error) {
+	var resp view.VmNicInventoryView
+	if err := cli.GetWithRespKey("v1/load-balancers/servergroups/candidate-nics", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveBackendServerFromServerGroup removes BackendServerFromServerGroup
+func (cli *ZSClient) RemoveBackendServerFromServerGroup(serverGroupUuid string, params param.RemoveBackendServerFromServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
+	resp := view.LoadBalancerServerGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/load-balancers/servergroups", serverGroupUuid, "", map[string]interface{}{
+		"removeBackendServerFromServerGroup": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeLoadBalancerBackendServer changes LoadBalancerBackendServer
+func (cli *ZSClient) ChangeLoadBalancerBackendServer(serverGroupUuid string, params param.ChangeLoadBalancerBackendServerParam) (*view.LoadBalancerServerGroupInventoryView, error) {
+	resp := view.LoadBalancerServerGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/load-balancers/servergroups", serverGroupUuid, "", map[string]interface{}{
+		"changeLoadBalancerBackendServer": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddBackendServerToServerGroup adds BackendServerToServerGroup
+func (cli *ZSClient) AddBackendServerToServerGroup(serverGroupUuid string, params param.AddBackendServerToServerGroupParam) (*view.LoadBalancerServerGroupInventoryView, error) {
+	resp := view.LoadBalancerServerGroupInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/load-balancers/servergroups/%s/backendservers", serverGroupUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

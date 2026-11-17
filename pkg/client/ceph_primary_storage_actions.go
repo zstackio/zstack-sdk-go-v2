@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -37,4 +39,18 @@ func (cli *ZSClient) PageCephPrimaryStorage(params *param.QueryParam) ([]view.Pr
 	var cephPrimaryStorages []view.PrimaryStorageInventoryView
 	total, err := cli.Page("v1/primary-storage/ceph", params, &cephPrimaryStorages)
 	return cephPrimaryStorages, total, err
+}
+
+// RemoveMonFromCephPrimaryStorage removes MonFromCephPrimaryStorage
+func (cli *ZSClient) RemoveMonFromCephPrimaryStorage(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/primary-storage/ceph", uuid, string(deleteMode))
+}
+
+// AddMonToCephPrimaryStorage adds MonToCephPrimaryStorage
+func (cli *ZSClient) AddMonToCephPrimaryStorage(uuid string, params param.AddMonToCephPrimaryStorageParam) (*view.CephPrimaryStorageInventoryView, error) {
+	resp := view.CephPrimaryStorageInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/primary-storage/ceph/%s/mons", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

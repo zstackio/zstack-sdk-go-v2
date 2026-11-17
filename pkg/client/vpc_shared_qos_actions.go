@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -50,5 +52,28 @@ func (cli *ZSClient) UpdateVpcSharedQos(uuid string, params param.UpdateVpcShare
 }
 // DeleteVpcSharedQos deletes VpcSharedQos
 func (cli *ZSClient) DeleteVpcSharedQos(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/vips/sharedqos", uuid, string(deleteMode))
+}
+
+// AttachVipToVpcSharedQos operates on VipToVpcSharedQos
+func (cli *ZSClient) AttachVipToVpcSharedQos(sharedQosUuid string, params param.AttachVipToVpcSharedQosParam) (*view.AttachVipToVpcSharedQosEventView, error) {
+	resp := view.AttachVipToVpcSharedQosEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/vips/sharedqos/%s/vips", sharedQosUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeVpcSharedQosBandwidth changes VpcSharedQosBandwidth
+func (cli *ZSClient) ChangeVpcSharedQosBandwidth(sharedQosUuid string, params param.ChangeVpcSharedQosBandwidthParam) (*view.VpcSharedQosInventoryView, error) {
+	resp := view.VpcSharedQosInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/vips/sharedqos/%s/bandwidth/actions", sharedQosUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachVipFromVpcSharedQos operates on VipFromVpcSharedQos
+func (cli *ZSClient) DetachVipFromVpcSharedQos(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/vips/sharedqos", uuid, string(deleteMode))
 }

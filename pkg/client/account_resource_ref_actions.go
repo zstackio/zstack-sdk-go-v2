@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -29,4 +31,35 @@ func (cli *ZSClient) PageAccountResourceRef(params *param.QueryParam) ([]view.Ac
 	var accountResourceRefs []view.AccountResourceRefInventoryView
 	total, err := cli.Page("v1/accounts/resources/refs", params, &accountResourceRefs)
 	return accountResourceRefs, total, err
+}
+
+// ChangeResourceOwner changes ResourceOwner
+func (cli *ZSClient) ChangeResourceOwner(accountUuid string, params param.ChangeResourceOwnerParam) (*view.AccountResourceRefInventoryView, error) {
+	resp := view.AccountResourceRefInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/account/%s/resources", accountUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ShareResource operates on ShareResource
+func (cli *ZSClient) ShareResource(params param.ShareResourceParam) (*view.ShareResourceEventView, error) {
+	resp := view.ShareResourceEventView{}
+	if err := cli.PutWithRespKey("v1/accounts/resources/actions", "", "", map[string]interface{}{
+		"shareResource": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RevokeResourceSharing operates on RevokeResourceSharing
+func (cli *ZSClient) RevokeResourceSharing(params param.RevokeResourceSharingParam) (*view.RevokeResourceSharingEventView, error) {
+	resp := view.RevokeResourceSharingEventView{}
+	if err := cli.PutWithRespKey("v1/accounts/resources/actions", "", "", map[string]interface{}{
+		"revokeResourceSharing": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

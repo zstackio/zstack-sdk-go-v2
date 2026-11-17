@@ -48,3 +48,21 @@ func (cli *ZSClient) PageBlockPrimaryStorage(params *param.QueryParam) ([]view.B
 	total, err := cli.Page("v1/primary-storage/block", params, &blockPrimaryStorages)
 	return blockPrimaryStorages, total, err
 }
+
+// AddStorageProtocol adds StorageProtocol
+func (cli *ZSClient) AddStorageProtocol(params param.AddStorageProtocolParam) (*view.AddStorageProtocolEventView, error) {
+	resp := view.AddStorageProtocolEventView{}
+	if err := cli.Post("v1/primary-storage/protocol", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetBlockPrimaryStorageMetadata gets BlockPrimaryStorageMetadata by uuid
+func (cli *ZSClient) GetBlockPrimaryStorageMetadata(params param.GetBlockPrimaryStorageMetadataParam) (*view.BlockPrimaryStorageInventoryView, error) {
+	resp := view.BlockPrimaryStorageInventoryView{}
+	if err := cli.Post("v1/primary-storage/block/metadata", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

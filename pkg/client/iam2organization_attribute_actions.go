@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -39,4 +41,18 @@ func (cli *ZSClient) PageIAM2OrganizationAttribute(params *param.QueryParam) ([]
 	var iAM2OrganizationAttributes []view.IAM2OrganizationAttributeInventoryView
 	total, err := cli.Page("v1/iam2/organizations/attributes", params, &iAM2OrganizationAttributes)
 	return iAM2OrganizationAttributes, total, err
+}
+
+// AddAttributesToIAM2Organization adds AttributesToIAM2Organization
+func (cli *ZSClient) AddAttributesToIAM2Organization(uuid string, params param.AddAttributesToIAM2OrganizationParam) (*view.AddAttributesToIAM2OrganizationEventView, error) {
+	resp := view.AddAttributesToIAM2OrganizationEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/iam2/organizations/%s/attributes", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveAttributesFromIAM2Organization removes AttributesFromIAM2Organization
+func (cli *ZSClient) RemoveAttributesFromIAM2Organization(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/iam2/organizations", uuid, string(deleteMode))
 }

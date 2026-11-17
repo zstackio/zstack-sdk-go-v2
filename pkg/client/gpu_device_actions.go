@@ -30,3 +30,12 @@ func (cli *ZSClient) PageGpuDevice(params *param.QueryParam) ([]view.GpuDeviceIn
 	total, err := cli.Page("v1/gpu-device/gpu-devices", params, &gpuDevices)
 	return gpuDevices, total, err
 }
+
+// GetGpuDeviceSpecCandidates gets GpuDeviceSpecCandidates by uuid
+func (cli *ZSClient) GetGpuDeviceSpecCandidates() (*view.GpuDeviceSpecInventoryView, error) {
+	var resp view.GpuDeviceSpecInventoryView
+	if err := cli.GetWithRespKey("v1/gpu-device-specs/candidates", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

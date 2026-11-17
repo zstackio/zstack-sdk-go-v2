@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -79,6 +81,53 @@ func (cli *ZSClient) UpdateBareMetal2Instance(uuid string, params param.UpdateBa
 	if err := cli.PutWithRespKey("v1/baremetal2/bm-instances", uuid, "", map[string]interface{}{
 		"updateBareMetal2Instance": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetBareMetal2SupportedBootMode gets BareMetal2SupportedBootMode by uuid
+func (cli *ZSClient) GetBareMetal2SupportedBootMode() (*view.GetBareMetal2SupportedBootModeView, error) {
+	var resp view.GetBareMetal2SupportedBootModeView
+	if err := cli.GetWithRespKey("v1/baremetal2/chassis/supported-boot-modes", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeBareMetal2InstancePassword changes BareMetal2InstancePassword
+func (cli *ZSClient) ChangeBareMetal2InstancePassword(uuid string, params param.ChangeBareMetal2InstancePasswordParam) (*view.BareMetal2InstanceInventoryView, error) {
+	resp := view.BareMetal2InstanceInventoryView{}
+	if err := cli.PutWithRespKey("v1/baremetal2/bm-instances", uuid, "", map[string]interface{}{
+		"changeBareMetal2InstancePassword": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CheckStaticProvisionIp operates on StaticProvisionIp
+func (cli *ZSClient) CheckStaticProvisionIp(params param.CheckStaticProvisionIpParam) (*view.CheckStaticProvisionIpView, error) {
+	resp := view.CheckStaticProvisionIpView{}
+	if err := cli.Post("v1/baremetal2/bm-instances/static/provision/ip/check", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CreateBareMetal2InstanceFromVolumeBackup creates BareMetal2InstanceFromVolumeBackup
+func (cli *ZSClient) CreateBareMetal2InstanceFromVolumeBackup(backupUuid string, params param.CreateBareMetal2InstanceFromVolumeBackupParam) (*view.BareMetal2InstanceInventoryView, error) {
+	resp := view.BareMetal2InstanceInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/baremetal2-instance/from/volume-backup/%s", backupUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CreateBareMetal2InstanceFromVmBackup creates BareMetal2InstanceFromVmBackup
+func (cli *ZSClient) CreateBareMetal2InstanceFromVmBackup(groupUuid string, params param.CreateBareMetal2InstanceFromVmBackupParam) (*view.BareMetal2InstanceInventoryView, error) {
+	resp := view.BareMetal2InstanceInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/baremetal2-instance/from/vm-backup/%s", groupUuid), params, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

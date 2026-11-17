@@ -40,3 +40,32 @@ func (cli *ZSClient) UpdateGuestToolsState(vmInstanceUuid string, params param.U
 	}
 	return &resp, nil
 }
+
+// GetVmGuestToolsInfo gets VmGuestToolsInfo by uuid
+func (cli *ZSClient) GetVmGuestToolsInfo(uuid string) (*view.GetVmGuestToolsInfoView, error) {
+	var resp view.GetVmGuestToolsInfoView
+	if err := cli.GetWithRespKey("v1/vm-instances", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AttachGuestToolsIsoToVm operates on GuestToolsIsoToVm
+func (cli *ZSClient) AttachGuestToolsIsoToVm(uuid string, params param.AttachGuestToolsIsoToVmParam) (*view.AttachGuestToolsIsoToVmEventView, error) {
+	resp := view.AttachGuestToolsIsoToVmEventView{}
+	if err := cli.PutWithRespKey("v1/vm-instances", uuid, "", map[string]interface{}{
+		"attachGuestToolsIsoToVm": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetLatestGuestToolsForVm gets LatestGuestToolsForVm by uuid
+func (cli *ZSClient) GetLatestGuestToolsForVm(uuid string) (*view.GuestToolsInventoryView, error) {
+	var resp view.GetLatestGuestToolsForVmView
+	if err := cli.GetWithRespKey("v1/vm-instances", uuid, "inventory", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Inventory, nil
+}

@@ -40,3 +40,14 @@ func (cli *ZSClient) UpdateQuota(params param.UpdateQuotaParam) (*view.QuotaInve
 	}
 	return &resp, nil
 }
+
+// UpdateOrganizationQuota updates OrganizationQuota
+func (cli *ZSClient) UpdateOrganizationQuota(params param.UpdateOrganizationQuotaParam) (*view.QuotaInventoryView, error) {
+	resp := view.QuotaInventoryView{}
+	if err := cli.PutWithRespKey("v1/iam2/Organization/quotas/actions", "", "", map[string]interface{}{
+		"updateOrganizationQuota": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

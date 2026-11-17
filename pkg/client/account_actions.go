@@ -52,3 +52,108 @@ func (cli *ZSClient) PageAccount(params *param.QueryParam) ([]view.AccountInvent
 	total, err := cli.Page("v1/accounts", params, &accounts)
 	return accounts, total, err
 }
+
+// LogOut operates on LogOut
+func (cli *ZSClient) LogOut(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/accounts/sessions", uuid, string(deleteMode))
+}
+
+// RefreshCaptcha operates on Captcha
+func (cli *ZSClient) RefreshCaptcha() (*view.RefreshCaptchaView, error) {
+	var resp view.RefreshCaptchaView
+	if err := cli.GetWithRespKey("v1/captcha/refresh", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CleanInvalidLdapBinding operates on InvalidLdapBinding
+func (cli *ZSClient) CleanInvalidLdapBinding() (*view.AccountInventoryView, error) {
+	resp := view.AccountInventoryView{}
+	if err := cli.PutWithRespKey("v1/ldap/bindings/actions", "", "", map[string]interface{}{
+		"cleanInvalidLdapBinding": map[string]interface{}{},
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CheckApiPermission operates on ApiPermission
+func (cli *ZSClient) CheckApiPermission(params param.CheckApiPermissionParam) (*view.CheckApiPermissionView, error) {
+	resp := view.CheckApiPermissionView{}
+	if err := cli.PutWithRespKey("v1/accounts/permissions/actions", "", "", map[string]interface{}{
+		"checkApiPermission": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UnlockIdentity operates on UnlockIdentity
+func (cli *ZSClient) UnlockIdentity() (*view.UnlockIdentityView, error) {
+	var resp view.UnlockIdentityView
+	if err := cli.GetWithRespKey("v1/login/control/unlock", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetAccountQuotaUsage gets AccountQuotaUsage by uuid
+func (cli *ZSClient) GetAccountQuotaUsage(uuid string) (*view.GetAccountQuotaUsageView, error) {
+	var resp view.GetAccountQuotaUsageView
+	if err := cli.GetWithRespKey("v1/accounts/quota", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ValidatePassword operates on Password
+func (cli *ZSClient) ValidatePassword(params param.ValidatePasswordParam) (*view.ValidatePasswordView, error) {
+	resp := view.ValidatePasswordView{}
+	if err := cli.PutWithRespKey("v1/password/verify", "", "", map[string]interface{}{
+		"validatePassword": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetResourceAccount gets ResourceAccount by uuid
+func (cli *ZSClient) GetResourceAccount() (*view.StringView, error) {
+	var resp view.StringView
+	if err := cli.GetWithRespKey("v1/resources/accounts", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CheckResourcePermission operates on ResourcePermission
+func (cli *ZSClient) CheckResourcePermission() (*view.CheckResourcePermissionView, error) {
+	var resp view.CheckResourcePermissionView
+	if err := cli.GetWithRespKey("v1/accounts/resource/api-permissions", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CalculateAccountSpending operates on AccountSpending
+func (cli *ZSClient) CalculateAccountSpending(accountUuid string, params param.CalculateAccountSpendingParam) (*view.CalculateAccountSpendingView, error) {
+	resp := view.CalculateAccountSpendingView{}
+	if err := cli.PutWithRespKey("v1/billings/accounts", accountUuid, "", map[string]interface{}{
+		"calculateAccountSpending": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RenewSession operates on RenewSession
+func (cli *ZSClient) RenewSession(sessionUuid string, params param.RenewSessionParam) (*view.SessionInventoryView, error) {
+	resp := view.SessionInventoryView{}
+	if err := cli.PutWithRespKey("v1/accounts/sessions", sessionUuid, "", map[string]interface{}{
+		"renewSession": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

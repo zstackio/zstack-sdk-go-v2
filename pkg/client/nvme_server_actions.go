@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -41,4 +43,18 @@ func (cli *ZSClient) AddNvmeServer(params param.AddNvmeServerParam) (*view.NvmeS
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// AttachNvmeServerToCluster operates on NvmeServerToCluster
+func (cli *ZSClient) AttachNvmeServerToCluster(clusterUuid string, uuid string, params param.AttachNvmeServerToClusterParam) (*view.NvmeServerInventoryView, error) {
+	resp := view.NvmeServerInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/clusters/%s/storage-devices/nvme/servers/%s", clusterUuid, uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachNvmeServerFromCluster operates on NvmeServerFromCluster
+func (cli *ZSClient) DetachNvmeServerFromCluster(clusterUuid string, uuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/clusters", clusterUuid, fmt.Sprintf("storage-devices/nvme/servers/%s", uuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }

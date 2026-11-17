@@ -30,3 +30,12 @@ func (cli *ZSClient) PageVtep(params *param.QueryParam) ([]view.VtepInventoryVie
 	total, err := cli.Page("v1/l2-networks/vteps", params, &vteps)
 	return vteps, total, err
 }
+
+// CreateVxlanVtep creates VxlanVtep
+func (cli *ZSClient) CreateVxlanVtep(params param.CreateVxlanVtepParam) (*view.VtepInventoryView, error) {
+	resp := view.VtepInventoryView{}
+	if err := cli.Post("v1/l2-networks/vxlan/vteps", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

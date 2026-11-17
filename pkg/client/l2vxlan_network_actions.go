@@ -38,3 +38,17 @@ func (cli *ZSClient) PageL2VxlanNetwork(params *param.QueryParam) ([]view.L2Vxla
 	total, err := cli.Page("v1/l2-networks/vxlan", params, &l2VxlanNetworks)
 	return l2VxlanNetworks, total, err
 }
+
+// DeleteVxlanL2Network deletes VxlanL2Network
+func (cli *ZSClient) DeleteVxlanL2Network(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/l2-networks/vxlan", uuid, string(deleteMode))
+}
+
+// CreateL2HardwareVxlanNetwork creates L2HardwareVxlanNetwork
+func (cli *ZSClient) CreateL2HardwareVxlanNetwork(params param.CreateL2HardwareVxlanNetworkParam) (*view.CreateL2HardwareVxlanNetworkEventView, error) {
+	resp := view.CreateL2HardwareVxlanNetworkEventView{}
+	if err := cli.Post("v1/l2-networks/hardware-vxlan", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

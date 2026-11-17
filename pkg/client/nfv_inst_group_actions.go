@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -61,4 +63,46 @@ func (cli *ZSClient) PageNfvInstGroup(params *param.QueryParam) ([]view.NfvInstG
 	var nfvInstGroups []view.NfvInstGroupInventoryView
 	total, err := cli.Page("v1/nfvinstgroup/group", params, &nfvInstGroups)
 	return nfvInstGroups, total, err
+}
+
+// DetachNfvInstFromGroup operates on NfvInstFromGroup
+func (cli *ZSClient) DetachNfvInstFromGroup(groupUuid string, nfvInstUuid string, params param.DetachNfvInstFromGroupParam) (*view.NfvInstGroupInventoryView, error) {
+	resp := view.NfvInstGroupInventoryView{}
+	err := cli.PutWithSpec("v1/nfvinstgroup/group", groupUuid, fmt.Sprintf("instances/%s/actions", nfvInstUuid), "", params, &resp)
+	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ProvisionNfvInstGroup operates on ProvisionNfvInstGroup
+func (cli *ZSClient) ProvisionNfvInstGroup(uuid string, params param.ProvisionNfvInstGroupParam) (*view.NfvInstGroupInventoryView, error) {
+	resp := view.NfvInstGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/nfvinstgroup/group", uuid, "", map[string]interface{}{
+		"provisionNfvInstGroup": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeNfvInstGroupOperationMode changes NfvInstGroupOperationMode
+func (cli *ZSClient) ChangeNfvInstGroupOperationMode(uuid string, params param.ChangeNfvInstGroupOperationModeParam) (*view.NfvInstGroupInventoryView, error) {
+	resp := view.NfvInstGroupInventoryView{}
+	if err := cli.PutWithRespKey("v1/nfvinstgroup/group", uuid, "", map[string]interface{}{
+		"changeNfvInstGroupOperationMode": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AttachNfvInstToGroup operates on NfvInstToGroup
+func (cli *ZSClient) AttachNfvInstToGroup(groupUuid string, nfvInstUuid string, params param.AttachNfvInstToGroupParam) (*view.NfvInstGroupInventoryView, error) {
+	resp := view.NfvInstGroupInventoryView{}
+	err := cli.PutWithSpec("v1/nfvinstgroup/group", groupUuid, fmt.Sprintf("instances/%s/actions", nfvInstUuid), "", params, &resp)
+	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

@@ -30,3 +30,25 @@ func (cli *ZSClient) PageMttyDevice(params *param.QueryParam) ([]view.MttyDevice
 	total, err := cli.Page("v1/mtty-devices", params, &mttyDevices)
 	return mttyDevices, total, err
 }
+
+// GenerateSeMdevDevices operates on SeMdevDevices
+func (cli *ZSClient) GenerateSeMdevDevices(mttyDeviceUuid string, params param.GenerateSeMdevDevicesParam) (*view.GenerateSeMdevDevicesEventView, error) {
+	resp := view.GenerateSeMdevDevicesEventView{}
+	if err := cli.PutWithRespKey("v1/mtty-devices", mttyDeviceUuid, "", map[string]interface{}{
+		"generateSeMdevDevices": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UngenerateSeMdevDevices operates on UngenerateSeMdevDevices
+func (cli *ZSClient) UngenerateSeMdevDevices(mttyDeviceUuid string, params param.UngenerateSeMdevDevicesParam) (*view.UngenerateSeMdevDevicesEventView, error) {
+	resp := view.UngenerateSeMdevDevicesEventView{}
+	if err := cli.PutWithRespKey("v1/mtty-devices", mttyDeviceUuid, "", map[string]interface{}{
+		"ungenerateSeMdevDevices": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

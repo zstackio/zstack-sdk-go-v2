@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -43,4 +45,42 @@ func (cli *ZSClient) PageSecurityMachine(params *param.QueryParam) ([]view.Secur
 	var securityMachines []view.SecurityMachineInventoryView
 	total, err := cli.Page("v1/security-machines", params, &securityMachines)
 	return securityMachines, total, err
+}
+
+// SecurityMachineDetectSync operates on MachineDetectSync
+func (cli *ZSClient) SecurityMachineDetectSync(uuid string, params param.SecurityMachineDetectSyncParam) (*view.SecurityMachineDetectSyncEventView, error) {
+	resp := view.SecurityMachineDetectSyncEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/security-machine/%s/detect/sync/actions", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SetSecurityMachineKey operates on SecurityMachineKey
+func (cli *ZSClient) SetSecurityMachineKey(uuid string, params param.SetSecurityMachineKeyParam) (*view.SecurityMachineInventoryView, error) {
+	resp := view.SecurityMachineInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/secret-resource-pool-token/set/%s/actions", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// SecurityMachineEncrypt operates on MachineEncrypt
+func (cli *ZSClient) SecurityMachineEncrypt(params param.SecurityMachineEncryptParam) (*view.SecurityMachineEncryptEventView, error) {
+	resp := view.SecurityMachineEncryptEventView{}
+	if err := cli.Post("v1/security-machine/encrypt/actions", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeSecurityMachineState changes SecurityMachineState
+func (cli *ZSClient) ChangeSecurityMachineState(uuid string, params param.ChangeSecurityMachineStateParam) (*view.SecurityMachineInventoryView, error) {
+	resp := view.SecurityMachineInventoryView{}
+	if err := cli.PutWithRespKey("v1/security-machines", uuid, "", map[string]interface{}{
+		"changeSecurityMachineState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

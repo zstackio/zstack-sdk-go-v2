@@ -30,3 +30,21 @@ func (cli *ZSClient) PageMiniStorageHostRef(params *param.QueryParam) ([]view.Mi
 	total, err := cli.Page("v1/primary-storage/mini/host-refs", params, &miniStorageHostRefs)
 	return miniStorageHostRefs, total, err
 }
+
+// BootstrapMiniHost operates on MiniHost
+func (cli *ZSClient) BootstrapMiniHost(params param.BootstrapMiniHostParam) (*view.BootstrapMiniHostEventView, error) {
+	resp := view.BootstrapMiniHostEventView{}
+	if err := cli.Post("v1/mini-clusters/hosts", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetCandidateMiniHosts gets CandidateMiniHosts by uuid
+func (cli *ZSClient) GetCandidateMiniHosts() (*view.GetCandidateMiniHostsView, error) {
+	var resp view.GetCandidateMiniHostsView
+	if err := cli.GetWithRespKey("v1/mini-clusters/candidate-hosts", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

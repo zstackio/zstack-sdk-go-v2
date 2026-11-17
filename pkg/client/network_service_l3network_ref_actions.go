@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -29,4 +31,18 @@ func (cli *ZSClient) PageNetworkServiceL3NetworkRef(params *param.QueryParam) ([
 	var networkServiceL3NetworkRefs []view.NetworkServiceL3NetworkRefInventoryView
 	total, err := cli.Page("v1/l3-networks/network-services/refs", params, &networkServiceL3NetworkRefs)
 	return networkServiceL3NetworkRefs, total, err
+}
+
+// DetachNetworkServiceFromL3Network operates on NetworkServiceFromL3Network
+func (cli *ZSClient) DetachNetworkServiceFromL3Network(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/l3-networks", uuid, string(deleteMode))
+}
+
+// AttachNetworkServiceToL3Network operates on NetworkServiceToL3Network
+func (cli *ZSClient) AttachNetworkServiceToL3Network(l3NetworkUuid string, params param.AttachNetworkServiceToL3NetworkParam) (*view.L3NetworkInventoryView, error) {
+	resp := view.L3NetworkInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/l3-networks/%s/network-services", l3NetworkUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

@@ -64,3 +64,69 @@ func (cli *ZSClient) PageLongJob(params *param.QueryParam) ([]view.LongJobInvent
 	total, err := cli.Page("v1/longjobs", params, &longJobs)
 	return longJobs, total, err
 }
+
+// SuspendLongJob operates on SuspendLongJob
+func (cli *ZSClient) SuspendLongJob(uuid string, params param.SuspendLongJobParam) (*view.LongJobInventoryView, error) {
+	resp := view.LongJobInventoryView{}
+	if err := cli.PutWithRespKey("v1/longjobs", uuid, "", map[string]interface{}{
+		"suspendLongJob": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CancelLongJob operates on CancelLongJob
+func (cli *ZSClient) CancelLongJob(uuid string, params param.CancelLongJobParam) (*view.CancelLongJobEventView, error) {
+	resp := view.CancelLongJobEventView{}
+	if err := cli.PutWithRespKey("v1/longjobs", uuid, "", map[string]interface{}{
+		"cancelLongJob": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RunIAM2Script operates on RunIAM2Script
+func (cli *ZSClient) RunIAM2Script(params param.RunIAM2ScriptParam) (*view.LongJobInventoryView, error) {
+	resp := view.LongJobInventoryView{}
+	if err := cli.Post("v1/iam2/iam2-script/run", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RunIAM2ScriptAsync Async
+func (cli *ZSClient) RunIAM2ScriptAsync(params param.RunIAM2ScriptParam) (string, error) {
+
+	resource := "v1/iam2/iam2-script/run"
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
+}
+
+// SubmitLongJob operates on SubmitLongJob
+func (cli *ZSClient) SubmitLongJob(params param.SubmitLongJobParam) (*view.LongJobInventoryView, error) {
+	resp := view.LongJobInventoryView{}
+	if err := cli.Post("v1/longjobs", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RerunLongJob operates on RerunLongJob
+func (cli *ZSClient) RerunLongJob(uuid string, params param.RerunLongJobParam) (*view.LongJobInventoryView, error) {
+	resp := view.LongJobInventoryView{}
+	if err := cli.PutWithRespKey("v1/longjobs", uuid, "", map[string]interface{}{
+		"rerunLongJob": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

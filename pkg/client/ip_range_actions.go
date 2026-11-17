@@ -53,3 +53,39 @@ func (cli *ZSClient) PageIpRange(params *param.QueryParam) ([]view.IpRangeInvent
 func (cli *ZSClient) DeleteIpRange(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/l3-networks/ip-ranges", uuid, string(deleteMode))
 }
+
+// AddIpv6Range adds Ipv6Range
+func (cli *ZSClient) AddIpv6Range(l3NetworkUuid string, params param.AddIpv6RangeParam) (*view.IpRangeInventoryView, error) {
+	resp := view.IpRangeInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/l3-networks/%s/ipv6-ranges", l3NetworkUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetFreeIp gets FreeIp by uuid
+func (cli *ZSClient) GetFreeIp() (*view.FreeIpInventoryView, error) {
+	var resp view.FreeIpInventoryView
+	if err := cli.GetWithRespKey("v1/l3-networks/ip/free", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddIpRangeByNetworkCidr adds IpRangeByNetworkCidr
+func (cli *ZSClient) AddIpRangeByNetworkCidr(l3NetworkUuid string, params param.AddIpRangeByNetworkCidrParam) (*view.IpRangeInventoryView, error) {
+	resp := view.IpRangeInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/l3-networks/%s/ip-ranges/by-cidr", l3NetworkUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AddIpv6RangeByNetworkCidr adds Ipv6RangeByNetworkCidr
+func (cli *ZSClient) AddIpv6RangeByNetworkCidr(l3NetworkUuid string, params param.AddIpv6RangeByNetworkCidrParam) (*view.IpRangeInventoryView, error) {
+	resp := view.IpRangeInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/l3-networks/%s/ipv6-ranges/by-cidr", l3NetworkUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

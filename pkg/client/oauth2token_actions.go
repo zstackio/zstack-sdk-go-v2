@@ -18,3 +18,12 @@ func (cli *ZSClient) GetOAuth2Token() (*view.OAuth2TokenInventoryView, error) {
 	}
 	return &resp.Inventory, nil
 }
+
+// TokenIntrospection operates on TokenIntrospection
+func (cli *ZSClient) TokenIntrospection(params param.TokenIntrospectionParam) (*view.TokenIntrospectionView, error) {
+	resp := view.TokenIntrospectionView{}
+	if err := cli.Post("v1/token/introspect", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

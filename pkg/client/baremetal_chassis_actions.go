@@ -62,3 +62,100 @@ func (cli *ZSClient) CreateBaremetalChassis(params param.CreateBaremetalChassisP
 	}
 	return &resp, nil
 }
+
+// CleanUpBaremetalChassisBonding operates on UpBaremetalChassisBonding
+func (cli *ZSClient) CleanUpBaremetalChassisBonding(chassisUuid string, params param.CleanUpBaremetalChassisBondingParam) (*view.CleanUpBaremetalChassisBondingEventView, error) {
+	resp := view.CleanUpBaremetalChassisBondingEventView{}
+	if err := cli.PutWithRespKey("v1/baremetal/chassis", chassisUuid, "", map[string]interface{}{
+		"cleanUpBaremetalChassisBonding": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CheckBaremetalChassisConfigFile operates on BaremetalChassisConfigFile
+func (cli *ZSClient) CheckBaremetalChassisConfigFile(params param.CheckBaremetalChassisConfigFileParam) (*view.CheckBaremetalChassisConfigFileView, error) {
+	resp := view.CheckBaremetalChassisConfigFileView{}
+	if err := cli.Post("v1/baremetal/chassis/from-file/check", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PowerOnBaremetalChassis operates on PowerOnBaremetalChassis
+func (cli *ZSClient) PowerOnBaremetalChassis(chassisUuid string, params param.PowerOnBaremetalChassisParam) (*view.PowerOnBaremetalChassisEventView, error) {
+	resp := view.PowerOnBaremetalChassisEventView{}
+	if err := cli.PutWithRespKey("v1/baremetal/chassis", chassisUuid, "", map[string]interface{}{
+		"powerOnBaremetalChassis": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PowerResetBaremetalChassis operates on PowerResetBaremetalChassis
+func (cli *ZSClient) PowerResetBaremetalChassis(chassisUuid string, params param.PowerResetBaremetalChassisParam) (*view.PowerResetBaremetalChassisEventView, error) {
+	resp := view.PowerResetBaremetalChassisEventView{}
+	if err := cli.PutWithRespKey("v1/baremetal/chassis", chassisUuid, "", map[string]interface{}{
+		"powerResetBaremetalChassis": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// BatchCreateBaremetalChassis operates on CreateBaremetalChassis
+func (cli *ZSClient) BatchCreateBaremetalChassis(params param.BatchCreateBaremetalChassisParam) (*view.LongJobInventoryView, error) {
+	resp := view.LongJobInventoryView{}
+	if err := cli.Post("v1/baremetal/chassis/from-file", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// BatchCreateBaremetalChassisAsync Async
+func (cli *ZSClient) BatchCreateBaremetalChassisAsync(params param.BatchCreateBaremetalChassisParam) (string, error) {
+
+	resource := "v1/baremetal/chassis/from-file"
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
+}
+
+// GetBaremetalChassisPowerStatus gets BaremetalChassisPowerStatus by uuid
+func (cli *ZSClient) GetBaremetalChassisPowerStatus(uuid string) (*view.GetBaremetalChassisPowerStatusView, error) {
+	var resp view.GetBaremetalChassisPowerStatusView
+	if err := cli.GetWithRespKey("v1/baremetal/chassis", uuid, "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ChangeBaremetalChassisState changes BaremetalChassisState
+func (cli *ZSClient) ChangeBaremetalChassisState(uuid string, params param.ChangeBaremetalChassisStateParam) (*view.BaremetalChassisInventoryView, error) {
+	resp := view.BaremetalChassisInventoryView{}
+	if err := cli.PutWithRespKey("v1/baremetal/chassis", uuid, "", map[string]interface{}{
+		"changeBaremetalChassisState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PowerOffBaremetalChassis operates on PowerOffBaremetalChassis
+func (cli *ZSClient) PowerOffBaremetalChassis(chassisUuid string, params param.PowerOffBaremetalChassisParam) (*view.PowerOffBaremetalChassisEventView, error) {
+	resp := view.PowerOffBaremetalChassisEventView{}
+	if err := cli.PutWithRespKey("v1/baremetal/chassis", chassisUuid, "", map[string]interface{}{
+		"powerOffBaremetalChassis": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

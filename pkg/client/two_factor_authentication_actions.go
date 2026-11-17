@@ -30,3 +30,12 @@ func (cli *ZSClient) PageTwoFactorAuthentication(params *param.QueryParam) ([]vi
 	total, err := cli.Page("v1/twofactorauthentication/secrets", params, &twoFactorAuthentications)
 	return twoFactorAuthentications, total, err
 }
+
+// GetTwoFactorAuthenticationState gets TwoFactorAuthenticationState by uuid
+func (cli *ZSClient) GetTwoFactorAuthenticationState() (*view.GetTwoFactorAuthenticationStateView, error) {
+	var resp view.GetTwoFactorAuthenticationStateView
+	if err := cli.GetWithRespKey("v1/twofactorauthentication/state", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

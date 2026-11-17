@@ -52,3 +52,14 @@ func (cli *ZSClient) PageAccessControlList(params *param.QueryParam) ([]view.Acc
 func (cli *ZSClient) DeleteAccessControlList(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/access-control-lists", uuid, string(deleteMode))
 }
+
+// ChangeAccessControlListServerGroup changes AccessControlListServerGroup
+func (cli *ZSClient) ChangeAccessControlListServerGroup(aclUuid string, params param.ChangeAccessControlListServerGroupParam) (*view.LoadBalancerListerAclView, error) {
+	resp := view.LoadBalancerListerAclView{}
+	if err := cli.PutWithRespKey("v1/load-balancers/listener/acl", aclUuid, "", map[string]interface{}{
+		"changeAccessControlListServerGroup": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

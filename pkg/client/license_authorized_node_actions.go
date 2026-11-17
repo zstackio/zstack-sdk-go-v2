@@ -30,3 +30,12 @@ func (cli *ZSClient) PageLicenseAuthorizedNode(params *param.QueryParam) ([]view
 	total, err := cli.Page("v1/license-servers", params, &licenseAuthorizedNodes)
 	return licenseAuthorizedNodes, total, err
 }
+
+// UpgradeToLicenseServer operates on UpgradeToLicenseServer
+func (cli *ZSClient) UpgradeToLicenseServer() (*view.LicenseAuthorizedNodeInventoryView, error) {
+	resp := view.LicenseAuthorizedNodeInventoryView{}
+	if err := cli.Post("v1/license-server", map[string]interface{}{}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

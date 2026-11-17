@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -37,4 +39,18 @@ func (cli *ZSClient) AddCephBackupStorage(params param.AddCephBackupStorageParam
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// AddMonToCephBackupStorage adds MonToCephBackupStorage
+func (cli *ZSClient) AddMonToCephBackupStorage(uuid string, params param.AddMonToCephBackupStorageParam) (*view.CephBackupStorageInventoryView, error) {
+	resp := view.CephBackupStorageInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/backup-storage/ceph/%s/mons", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// RemoveMonFromCephBackupStorage removes MonFromCephBackupStorage
+func (cli *ZSClient) RemoveMonFromCephBackupStorage(uuid string, deleteMode param.DeleteMode) error {
+	return cli.Delete("v1/backup-storage/ceph", uuid, string(deleteMode))
 }

@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -61,4 +63,38 @@ func (cli *ZSClient) UpdateAppBuildSystem(uuid string, params param.UpdateAppBui
 // DeleteAppBuildSystem deletes AppBuildSystem
 func (cli *ZSClient) DeleteAppBuildSystem(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/appcenter/buildsystem", uuid, string(deleteMode))
+}
+
+// ChangeAppBuildSystemState changes AppBuildSystemState
+func (cli *ZSClient) ChangeAppBuildSystemState(uuid string, params param.ChangeAppBuildSystemStateParam) (*view.AppBuildSystemInventoryView, error) {
+	resp := view.AppBuildSystemInventoryView{}
+	if err := cli.PutWithRespKey("v1/appcenter/buildsystem", uuid, "", map[string]interface{}{
+		"changeAppBuildSystemState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AttachAppBuildSystemToZone operates on AppBuildSystemToZone
+func (cli *ZSClient) AttachAppBuildSystemToZone(zoneUuid string, buildSystemUuid string, params param.AttachAppBuildSystemToZoneParam) (*view.AppBuildSystemZoneRefInventoryView, error) {
+	resp := view.AppBuildSystemZoneRefInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/zones/%s/buildsystem/%s", zoneUuid, buildSystemUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachAppBuildSystemToZone operates on AppBuildSystemToZone
+func (cli *ZSClient) DetachAppBuildSystemToZone(zoneUuid string, buildSystemUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/zones", zoneUuid, fmt.Sprintf("buildsystem/%s", buildSystemUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// GetAppBuildSystemCapacity gets AppBuildSystemCapacity by uuid
+func (cli *ZSClient) GetAppBuildSystemCapacity() (*view.GetAppBuildSystemCapacityView, error) {
+	var resp view.GetAppBuildSystemCapacityView
+	if err := cli.GetWithRespKey("v1/appcenter/buildsystem/capacities", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

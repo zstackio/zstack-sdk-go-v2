@@ -44,3 +44,22 @@ func (cli *ZSClient) UpdateResourceConfig(category string, name string, resource
 func (cli *ZSClient) DeleteResourceConfig(category string, name string, resourceUuid string, deleteMode param.DeleteMode) error {
 	return cli.DeleteWithSpec("v1/resource-configurations", category, fmt.Sprintf("%s/%s", name, resourceUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
+
+// GetResourceConfigs gets ResourceConfigs by uuid
+func (cli *ZSClient) GetResourceConfigs(resourceUuid string, category string) (*view.GetResourceConfigsView, error) {
+	var resp view.GetResourceConfigsView
+	err := cli.GetWithSpec("v1/resource-configurations", resourceUuid, fmt.Sprintf("%s", category), "", nil, &resp)
+	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UpdateResourceConfigs updates ResourceConfigs
+func (cli *ZSClient) UpdateResourceConfigs(resourceUuid string, params param.UpdateResourceConfigsParam) (*view.ResourceConfigStructView, error) {
+	resp := view.ResourceConfigStructView{}
+	if err := cli.Post(fmt.Sprintf("v1/resource-configurations/%s/resource-configs/actions", resourceUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

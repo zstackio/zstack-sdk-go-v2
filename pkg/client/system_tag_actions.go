@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -47,4 +49,13 @@ func (cli *ZSClient) PageSystemTag(params *param.QueryParam) ([]view.SystemTagIn
 	var systemTags []view.SystemTagInventoryView
 	total, err := cli.Page("v1/system-tags", params, &systemTags)
 	return systemTags, total, err
+}
+
+// CreateSystemTags creates SystemTags
+func (cli *ZSClient) CreateSystemTags(resourceUuid string, params param.CreateSystemTagsParam) (*view.SystemTagInventoryView, error) {
+	resp := view.SystemTagInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/system-tags/%s/tags", resourceUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

@@ -44,3 +44,14 @@ func (cli *ZSClient) UpdateSNSApplicationEndpoint(uuid string, params param.Upda
 func (cli *ZSClient) DeleteSNSApplicationEndpoint(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/sns/application-endpoints", uuid, string(deleteMode))
 }
+
+// ChangeSNSApplicationEndpointState changes SNSApplicationEndpointState
+func (cli *ZSClient) ChangeSNSApplicationEndpointState(uuid string, params param.ChangeSNSApplicationEndpointStateParam) (*view.SNSApplicationEndpointInventoryView, error) {
+	resp := view.SNSApplicationEndpointInventoryView{}
+	if err := cli.PutWithRespKey("v1/sns/application-endpoints", uuid, "", map[string]interface{}{
+		"changeSNSApplicationEndpointState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

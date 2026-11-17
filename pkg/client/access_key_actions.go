@@ -42,3 +42,14 @@ func (cli *ZSClient) PageAccessKey(params *param.QueryParam) ([]view.AccessKeyIn
 func (cli *ZSClient) DeleteAccessKey(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/accesskeys", uuid, string(deleteMode))
 }
+
+// ChangeAccessKeyState changes AccessKeyState
+func (cli *ZSClient) ChangeAccessKeyState(uuid string, params param.ChangeAccessKeyStateParam) (*view.AccessKeyInventoryView, error) {
+	resp := view.AccessKeyInventoryView{}
+	if err := cli.PutWithRespKey("v1/accesskeys", uuid, "", map[string]interface{}{
+		"changeAccessKeyState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

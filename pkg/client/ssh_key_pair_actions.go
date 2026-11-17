@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -59,4 +61,18 @@ func (cli *ZSClient) PageSshKeyPair(params *param.QueryParam) ([]view.SshKeyPair
 // DeleteSshKeyPair deletes SshKeyPair
 func (cli *ZSClient) DeleteSshKeyPair(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/ssh-key-pair", uuid, string(deleteMode))
+}
+
+// DetachSshKeyPairFromVmInstance operates on SshKeyPairFromVmInstance
+func (cli *ZSClient) DetachSshKeyPairFromVmInstance(sshKeyPairUuid string, vmInstanceUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/ssh-key-pair", sshKeyPairUuid, fmt.Sprintf("vm-instance/%s", vmInstanceUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// AttachSshKeyPairToVmInstance operates on SshKeyPairToVmInstance
+func (cli *ZSClient) AttachSshKeyPairToVmInstance(sshKeyPairUuid string, vmInstanceUuid string, params param.AttachSshKeyPairToVmInstanceParam) (*view.SshKeyPairInventoryView, error) {
+	resp := view.SshKeyPairInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/ssh-key-pair/%s/vm-instance/%s", sshKeyPairUuid, vmInstanceUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

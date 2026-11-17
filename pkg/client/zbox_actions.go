@@ -38,3 +38,25 @@ func (cli *ZSClient) PageZBox(params *param.QueryParam) ([]view.ZBoxInventoryVie
 	total, err := cli.Page("v1/zbox", params, &zBoxs)
 	return zBoxs, total, err
 }
+
+// SyncZBoxCapacity operates on ZBoxCapacity
+func (cli *ZSClient) SyncZBoxCapacity(uuid string, params param.SyncZBoxCapacityParam) (*view.ZBoxInventoryView, error) {
+	resp := view.ZBoxInventoryView{}
+	if err := cli.PutWithRespKey("v1/zbox", uuid, "", map[string]interface{}{
+		"syncZBoxCapacity": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// EjectZBox operates on EjectZBox
+func (cli *ZSClient) EjectZBox(uuid string, params param.EjectZBoxParam) (*view.ZBoxInventoryView, error) {
+	resp := view.ZBoxInventoryView{}
+	if err := cli.PutWithRespKey("v1/zbox", uuid, "", map[string]interface{}{
+		"ejectZBox": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

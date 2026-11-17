@@ -52,3 +52,14 @@ func (cli *ZSClient) UpdateZone(uuid string, params param.UpdateZoneParam) (*vie
 	}
 	return &resp, nil
 }
+
+// ChangeZoneState changes ZoneState
+func (cli *ZSClient) ChangeZoneState(uuid string, params param.ChangeZoneStateParam) (*view.ZoneInventoryView, error) {
+	resp := view.ZoneInventoryView{}
+	if err := cli.PutWithRespKey("v1/zones", uuid, "", map[string]interface{}{
+		"changeZoneState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

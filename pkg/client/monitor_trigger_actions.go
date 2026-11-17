@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -72,6 +74,40 @@ func (cli *ZSClient) UpdateMonitorTrigger(uuid string, params param.UpdateMonito
 	if err := cli.PutWithRespKey("v1/monitoring/triggers", uuid, "", map[string]interface{}{
 		"updateMonitorTrigger": params.Params,
 	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// AttachMonitorTriggerActionToTrigger operates on MonitorTriggerActionToTrigger
+func (cli *ZSClient) AttachMonitorTriggerActionToTrigger(triggerUuid string, actionUuid string, params param.AttachMonitorTriggerActionToTriggerParam) (*view.AttachMonitorTriggerActionToTriggerEventView, error) {
+	resp := view.AttachMonitorTriggerActionToTriggerEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/monitoring/triggers/%s/trigger-actions/%s", triggerUuid, actionUuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachMonitorTriggerActionFromTrigger operates on MonitorTriggerActionFromTrigger
+func (cli *ZSClient) DetachMonitorTriggerActionFromTrigger(triggerUuid string, actionUuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/monitoring/triggers", triggerUuid, fmt.Sprintf("trigger-actions/%s", actionUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}
+
+// ChangeMonitorTriggerState changes MonitorTriggerState
+func (cli *ZSClient) ChangeMonitorTriggerState(uuid string, params param.ChangeMonitorTriggerStateParam) (*view.MonitorTriggerInventoryView, error) {
+	resp := view.MonitorTriggerInventoryView{}
+	if err := cli.PutWithRespKey("v1/monitoring/triggers", uuid, "", map[string]interface{}{
+		"changeMonitorTriggerState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetMonitorItem gets MonitorItem by uuid
+func (cli *ZSClient) GetMonitorItem() (*view.ItemInventoryView, error) {
+	var resp view.ItemInventoryView
+	if err := cli.GetWithRespKey("v1/monitoring/items", "", "", nil, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

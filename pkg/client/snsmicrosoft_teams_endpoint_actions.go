@@ -48,3 +48,12 @@ func (cli *ZSClient) PageSNSMicrosoftTeamsEndpoint(params *param.QueryParam) ([]
 	total, err := cli.Page("v1/sns/application-endpoints/microsoft-teams", params, &sNSMicrosoftTeamsEndpoints)
 	return sNSMicrosoftTeamsEndpoints, total, err
 }
+
+// SNSMicrosoftTeamsTestConnection operates on MicrosoftTeamsTestConnection
+func (cli *ZSClient) SNSMicrosoftTeamsTestConnection(params param.SNSMicrosoftTeamsTestConnectionParam) (*view.SNSMicrosoftTeamsTestConnectionEventView, error) {
+	resp := view.SNSMicrosoftTeamsTestConnectionEventView{}
+	if err := cli.Post("v1/sns/application-endpoints/microsoft-teams/test-connection", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

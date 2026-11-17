@@ -52,3 +52,49 @@ func (cli *ZSClient) PageV2VConversionHost(params *param.QueryParam) ([]view.V2V
 func (cli *ZSClient) DeleteV2VConversionHost(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/v2v-conversion-hosts", uuid, string(deleteMode))
 }
+
+// ConvertVmFromForeignHypervisor operates on ConvertVmFromForeignHypervisor
+func (cli *ZSClient) ConvertVmFromForeignHypervisor(params param.ConvertVmFromForeignHypervisorParam) (*view.LongJobInventoryView, error) {
+	resp := view.LongJobInventoryView{}
+	if err := cli.Post("v1/v2vs", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ConvertVmFromForeignHypervisorAsync Async
+func (cli *ZSClient) ConvertVmFromForeignHypervisorAsync(params param.ConvertVmFromForeignHypervisorParam) (string, error) {
+
+	resource := "v1/v2vs"
+	responseKey := ""
+	var retVal interface{}
+
+	apiId, err := cli.PostWithAsync(resource, responseKey, params, retVal, true)
+	if err != nil {
+		return "", err
+	}
+
+	return apiId, nil
+}
+
+// ChangeV2VConversionHostState changes V2VConversionHostState
+func (cli *ZSClient) ChangeV2VConversionHostState(uuid string, params param.ChangeV2VConversionHostStateParam) (*view.V2VConversionHostInventoryView, error) {
+	resp := view.V2VConversionHostInventoryView{}
+	if err := cli.PutWithRespKey("v1/v2v-conversion-hosts", uuid, "", map[string]interface{}{
+		"changeV2VConversionHostState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CleanV2VConversionCache operates on V2VConversionCache
+func (cli *ZSClient) CleanV2VConversionCache(uuid string, params param.CleanV2VConversionCacheParam) (*view.CleanV2VConversionCacheEventView, error) {
+	resp := view.CleanV2VConversionCacheEventView{}
+	if err := cli.PutWithRespKey("v1/v2v/conversion/host", uuid, "", map[string]interface{}{
+		"cleanV2VConversionCache": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

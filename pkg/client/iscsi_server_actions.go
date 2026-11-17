@@ -61,3 +61,17 @@ func (cli *ZSClient) UpdateIscsiServer(uuid string, params param.UpdateIscsiServ
 	}
 	return &resp, nil
 }
+
+// AttachIscsiServerToCluster operates on IscsiServerToCluster
+func (cli *ZSClient) AttachIscsiServerToCluster(clusterUuid string, uuid string, params param.AttachIscsiServerToClusterParam) (*view.IscsiServerInventoryView, error) {
+	resp := view.IscsiServerInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/clusters/%s/storage-devices/iscsi/servers/%s", clusterUuid, uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DetachIscsiServerFromCluster operates on IscsiServerFromCluster
+func (cli *ZSClient) DetachIscsiServerFromCluster(clusterUuid string, uuid string, deleteMode param.DeleteMode) error {
+	return cli.DeleteWithSpec("v1/clusters", clusterUuid, fmt.Sprintf("storage-devices/iscsi/servers/%s", uuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+}

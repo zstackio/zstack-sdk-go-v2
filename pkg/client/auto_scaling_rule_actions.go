@@ -44,3 +44,54 @@ func (cli *ZSClient) PageAutoScalingRule(params *param.QueryParam) ([]view.AutoS
 	total, err := cli.Page("v1/autoscaling/groups/rules", params, &autoScalingRules)
 	return autoScalingRules, total, err
 }
+
+// CreateAutoScalingGroupAddingNewInstanceRule creates AutoScalingGroupAddingNewInstanceRule
+func (cli *ZSClient) CreateAutoScalingGroupAddingNewInstanceRule(params param.CreateAutoScalingGroupAddingNewInstanceRuleParam) (*view.AutoScalingRuleInventoryView, error) {
+	resp := view.AutoScalingRuleInventoryView{}
+	if err := cli.Post("v1/autoscaling/rules/adding-new-instance", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// CreateAutoScalingGroupRemovalInstanceRule creates AutoScalingGroupRemovalInstanceRule
+func (cli *ZSClient) CreateAutoScalingGroupRemovalInstanceRule(params param.CreateAutoScalingGroupRemovalInstanceRuleParam) (*view.AutoScalingRuleInventoryView, error) {
+	resp := view.AutoScalingRuleInventoryView{}
+	if err := cli.Post("v1/autoscaling/rules/removal-instance", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UpdateAutoScalingGroupRemovalInstanceRule updates AutoScalingGroupRemovalInstanceRule
+func (cli *ZSClient) UpdateAutoScalingGroupRemovalInstanceRule(uuid string, params param.UpdateAutoScalingGroupRemovalInstanceRuleParam) (*view.AutoScalingRuleInventoryView, error) {
+	resp := view.AutoScalingRuleInventoryView{}
+	if err := cli.PutWithRespKey("v1/autoscaling/rules/removal-instance", uuid, "", map[string]interface{}{
+		"updateAutoScalingGroupRemovalInstanceRule": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// ExecuteAutoScalingRule operates on ExecuteAutoScalingRule
+func (cli *ZSClient) ExecuteAutoScalingRule(uuid string, params param.ExecuteAutoScalingRuleParam) (*view.ExecuteAutoScalingRuleEventView, error) {
+	resp := view.ExecuteAutoScalingRuleEventView{}
+	if err := cli.PutWithRespKey("v1/autoscaling/rules", uuid, "", map[string]interface{}{
+		"executeAutoScalingRule": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// UpdateAutoScalingGroupAddingNewInstanceRule updates AutoScalingGroupAddingNewInstanceRule
+func (cli *ZSClient) UpdateAutoScalingGroupAddingNewInstanceRule(uuid string, params param.UpdateAutoScalingGroupAddingNewInstanceRuleParam) (*view.AutoScalingRuleInventoryView, error) {
+	resp := view.AutoScalingRuleInventoryView{}
+	if err := cli.PutWithRespKey("v1/autoscaling/rules/adding-new-instance", uuid, "", map[string]interface{}{
+		"updateAutoScalingGroupAddingNewInstanceRule": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

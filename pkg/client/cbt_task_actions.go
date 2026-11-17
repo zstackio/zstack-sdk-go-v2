@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -41,4 +43,22 @@ func (cli *ZSClient) PageCbtTask(params *param.QueryParam) ([]view.CbtTaskInvent
 	var cbtTasks []view.CbtTaskInventoryView
 	total, err := cli.Page("v1/cbt-task", params, &cbtTasks)
 	return cbtTasks, total, err
+}
+
+// EnableCbtTask operates on EnableCbtTask
+func (cli *ZSClient) EnableCbtTask(uuid string, params param.EnableCbtTaskParam) (*view.EnableCbtTaskEventView, error) {
+	resp := view.EnableCbtTaskEventView{}
+	if err := cli.Post(fmt.Sprintf("v1/cbt-task/enable/%s", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// DisableCbtTask operates on DisableCbtTask
+func (cli *ZSClient) DisableCbtTask(uuid string, params param.DisableCbtTaskParam) (*view.CbtTaskInventoryView, error) {
+	resp := view.CbtTaskInventoryView{}
+	if err := cli.Post(fmt.Sprintf("v1/cbt-task/disable/%s", uuid), params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
 }

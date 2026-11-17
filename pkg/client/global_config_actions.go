@@ -50,3 +50,13 @@ func (cli *ZSClient) PageGlobalConfig(params *param.QueryParam) ([]view.GlobalCo
 	total, err := cli.Page("v1/global-configurations", params, &globalConfigs)
 	return globalConfigs, total, err
 }
+
+// GetGlobalConfigOptions gets GlobalConfigOptions by uuid
+func (cli *ZSClient) GetGlobalConfigOptions(category string, name string) (*view.GetGlobalConfigOptionsView, error) {
+	var resp view.GetGlobalConfigOptionsView
+	err := cli.GetWithSpec("v1/global-configurations", category, fmt.Sprintf("%s", name), "", nil, &resp)
+	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

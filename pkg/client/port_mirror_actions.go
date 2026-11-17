@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -51,4 +53,46 @@ func (cli *ZSClient) UpdatePortMirror(uuid string, params param.UpdatePortMirror
 		return nil, err
 	}
 	return &resp, nil
+}
+
+// ChangePortMirrorState changes PortMirrorState
+func (cli *ZSClient) ChangePortMirrorState(uuid string, params param.ChangePortMirrorStateParam) (*view.PortMirrorInventoryView, error) {
+	resp := view.PortMirrorInventoryView{}
+	if err := cli.PutWithRespKey("v1/port-mirrors", uuid, "", map[string]interface{}{
+		"changePortMirrorState": params.Params,
+	}, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// GetCandidateVmNicsForPortMirror gets CandidateVmNicsForPortMirror by uuid
+func (cli *ZSClient) GetCandidateVmNicsForPortMirror(portMirrorUuid string, typeParam string) (*view.VmNicInventoryView, error) {
+	var resp view.VmNicInventoryView
+	err := cli.GetWithSpec("v1/port-mirrors", portMirrorUuid, fmt.Sprintf("vm-instances/candidate-nics/%s", typeParam), "", nil, &resp)
+	if err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// QueryPortMirrorNetworkUsedIp queries PortMirrorNetworkUsedIp list
+func (cli *ZSClient) QueryPortMirrorNetworkUsedIp(params *param.QueryParam) ([]view.MirrorNetworkUsedIpInventoryView, error) {
+	var resp []view.MirrorNetworkUsedIpInventoryView
+	return resp, cli.List("v1/port-mirrors/networks/usedIps", params, &resp)
+}
+
+func (cli *ZSClient) GetPortMirrorNetworkUsedIp(uuid string) (*view.MirrorNetworkUsedIpInventoryView, error) {
+	var resp view.MirrorNetworkUsedIpInventoryView
+	if err := cli.Get("v1/port-mirrors/networks/usedIps", uuid, nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+// PagePortMirrorNetworkUsedIp Pagination
+func (cli *ZSClient) PagePortMirrorNetworkUsedIp(params *param.QueryParam) ([]view.MirrorNetworkUsedIpInventoryView, int, error) {
+	var portMirrorNetworkUsedIps []view.MirrorNetworkUsedIpInventoryView
+	total, err := cli.Page("v1/port-mirrors/networks/usedIps", params, &portMirrorNetworkUsedIps)
+	return portMirrorNetworkUsedIps, total, err
 }
