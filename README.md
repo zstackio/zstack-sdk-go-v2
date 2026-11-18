@@ -171,7 +171,7 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 
 ### Related Projects
 
-- [Terraform Provider for ZStack](https://github.com/terraform-zstack-modules/terraform-provider-zstack)
+- [Terraform Provider for ZStack](https://github.com/ZStack-Robot/terraform-provider-zstack/)
 - [ZStack Documentation](https://www.zstack.io/help/dev_manual/dev_guide/v5/)
 
 ### Support
