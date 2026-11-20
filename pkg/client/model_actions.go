@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -79,9 +80,17 @@ func (cli *ZSClient) GetSupportedIdentityModels() (*view.GetSupportedIdentityMod
 	return &resp, nil
 }
 
-// DeleteModels deletes Models
+// DeleteModels sends one UUID to the collection endpoint.
 func (cli *ZSClient) DeleteModels(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/models", uuid, string(deleteMode))
+	return cli.DeleteModelsWithParams(deleteMode, param.DeleteModelsParamDetail{Uuids: []string{uuid}})
+}
+
+// DeleteModelsWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteModelsWithParams(deleteMode param.DeleteMode, params param.DeleteModelsParamDetail) error {
+	query := url.Values{
+		"uuids": params.Uuids,
+	}
+	return cli.deleteActionWithQuery("v1/ai/models", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "uuids")
 }
 
 // GenerateModelMetadata operates on ModelMetadata

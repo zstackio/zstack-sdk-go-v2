@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -12,9 +13,17 @@ import (
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
-// DeleteDatabaseBackup deletes DatabaseBackup
+// DeleteDatabaseBackup sends the action with its default options.
 func (cli *ZSClient) DeleteDatabaseBackup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/database-backups", uuid, string(deleteMode))
+	return cli.DeleteDatabaseBackupWithParams(uuid, deleteMode, param.DeleteDatabaseBackupParamDetail{})
+}
+
+// DeleteDatabaseBackupWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteDatabaseBackupWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteDatabaseBackupParamDetail) error {
+	query := url.Values{
+		"backupStorageUuids": params.BackupStorageUuids,
+	}
+	return cli.deleteResourceWithQuery("v1/database-backups", uuid, deleteMode, query)
 }
 // CreateDatabaseBackup creates DatabaseBackup
 func (cli *ZSClient) CreateDatabaseBackup(params param.CreateDatabaseBackupParam) (*view.DatabaseBackupInventoryView, error) {

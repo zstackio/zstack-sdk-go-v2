@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -84,9 +85,19 @@ func (cli *ZSClient) GetInterdependentL3NetworksImages() (*view.GetInterdependen
 	return &resp, nil
 }
 
-// RemoveHostRouteFromL3Network removes HostRouteFromL3Network
+// RemoveHostRouteFromL3Network requires additional arguments.
+//
+// Deprecated: use RemoveHostRouteFromL3NetworkWithParams to supply the required fields.
 func (cli *ZSClient) RemoveHostRouteFromL3Network(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/l3-networks", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveHostRouteFromL3Network requires additional arguments; use RemoveHostRouteFromL3NetworkWithParams")
+}
+
+// RemoveHostRouteFromL3NetworkWithParams sends the required route and query parameters for RemoveHostRouteFromL3Network.
+func (cli *ZSClient) RemoveHostRouteFromL3NetworkWithParams(l3NetworkUuid string, deleteMode param.DeleteMode, params param.RemoveHostRouteFromL3NetworkParamDetail) error {
+	query := url.Values{
+		"prefix": {params.Prefix},
+	}
+	return cli.deleteActionWithQuery("v1/l3-networks", l3NetworkUuid, "hostroute", deleteMode, query, "prefix")
 }
 
 // IsVfNicAvailableInL3Network operates on IsVfNicAvailableInL3Network

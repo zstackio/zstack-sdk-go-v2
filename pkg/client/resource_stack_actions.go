@@ -3,6 +3,10 @@
 package client
 
 import (
+	"fmt"
+	"net/url"
+	"strconv"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -94,9 +98,25 @@ func (cli *ZSClient) RestartResourceStack(uuid string, params param.RestartResou
 	return &resp, nil
 }
 
-// DeleteResourceStackVmPortMonitor deletes ResourceStackVmPortMonitor
+// DeleteResourceStackVmPortMonitor requires additional arguments.
+//
+// Deprecated: use DeleteResourceStackVmPortMonitorWithParams to supply the required fields.
 func (cli *ZSClient) DeleteResourceStackVmPortMonitor(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/cloudformation/stack/monitor/delvm", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteResourceStackVmPortMonitor requires additional arguments; use DeleteResourceStackVmPortMonitorWithParams")
+}
+
+// DeleteResourceStackVmPortMonitorWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteResourceStackVmPortMonitorWithParams(deleteMode param.DeleteMode, params param.DeleteResourceStackVmPortMonitorParamDetail) error {
+	query := url.Values{
+		"vmInstanceUuid": {params.VmInstanceUuid},
+	}
+	if params.StackUuid != nil {
+		query.Set("stackUuid", *params.StackUuid)
+	}
+	if params.Port != nil {
+		query.Set("port", strconv.Itoa(*params.Port))
+	}
+	return cli.deleteActionWithQuery("v1/cloudformation/stack/monitor/delvm", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "vmInstanceUuid")
 }
 
 // AddResourceStackVmPortMonitor adds ResourceStackVmPortMonitor

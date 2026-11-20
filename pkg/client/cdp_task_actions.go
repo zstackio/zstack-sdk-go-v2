@@ -4,6 +4,8 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+	"strconv"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -50,9 +52,18 @@ func (cli *ZSClient) UpdateCdpTask(uuid string, params param.UpdateCdpTaskParam)
 	}
 	return &resp, nil
 }
-// DeleteCdpTask deletes CdpTask
+// DeleteCdpTask sends the action with its default options.
 func (cli *ZSClient) DeleteCdpTask(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/cdp-task", uuid, string(deleteMode))
+	return cli.DeleteCdpTaskWithParams(uuid, deleteMode, param.DeleteCdpTaskParamDetail{})
+}
+
+// DeleteCdpTaskWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteCdpTaskWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteCdpTaskParamDetail) error {
+	query := url.Values{}
+	if params.Force != nil {
+		query.Set("force", strconv.FormatBool(*params.Force))
+	}
+	return cli.deleteResourceWithQuery("v1/cdp-task", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 
 // UpgradeBackupStorageCdpTasks operates on UpgradeBackupStorageCdpTasks

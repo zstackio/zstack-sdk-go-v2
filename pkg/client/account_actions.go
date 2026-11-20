@@ -3,6 +3,10 @@
 package client
 
 import (
+	"fmt"
+	"net/url"
+	"strings"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -53,9 +57,24 @@ func (cli *ZSClient) PageAccount(params *param.QueryParam) ([]view.AccountInvent
 	return accounts, total, err
 }
 
-// LogOut operates on LogOut
+// LogOut revokes the specified session, or the client's session when uuid is empty.
 func (cli *ZSClient) LogOut(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/accounts/sessions", uuid, string(deleteMode))
+	return cli.LogOutWithParams(uuid, deleteMode, param.LogOutParamDetail{})
+}
+
+// LogOutWithParams revokes a session and provides client information to Cloud.
+func (cli *ZSClient) LogOutWithParams(sessionUuid string, deleteMode param.DeleteMode, params param.LogOutParamDetail) error {
+	if sessionUuid == "" {
+		sessionUuid = cli.sessionId
+	}
+	query := url.Values{}
+	for key, value := range params.ClientInfo {
+		if strings.TrimSpace(key) == "" || strings.Contains(key, ".") {
+			return fmt.Errorf("clientInfo keys must be nonempty and must not contain dots")
+		}
+		query.Set("clientInfo."+key, value)
+	}
+	return cli.deleteResourceWithQuery("v1/accounts/sessions", sessionUuid, deleteMode, query)
 }
 
 // RefreshCaptcha operates on Captcha

@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -130,7 +131,17 @@ func (cli *ZSClient) AddVmNicToSecurityGroup(securityGroupUuid string, params pa
 	return &resp, nil
 }
 
-// DeleteVmNicFromSecurityGroup deletes VmNicFromSecurityGroup
+// DeleteVmNicFromSecurityGroup requires additional arguments.
+//
+// Deprecated: use DeleteVmNicFromSecurityGroupWithParams to supply the required fields.
 func (cli *ZSClient) DeleteVmNicFromSecurityGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/security-groups", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteVmNicFromSecurityGroup requires additional arguments; use DeleteVmNicFromSecurityGroupWithParams")
+}
+
+// DeleteVmNicFromSecurityGroupWithParams sends the required route and query parameters for DeleteVmNicFromSecurityGroup.
+func (cli *ZSClient) DeleteVmNicFromSecurityGroupWithParams(securityGroupUuid string, deleteMode param.DeleteMode, params param.DeleteVmNicFromSecurityGroupParamDetail) error {
+	query := url.Values{
+		"vmNicUuids": params.VmNicUuids,
+	}
+	return cli.deleteActionWithQuery("v1/security-groups", securityGroupUuid, "vm-instances/nics", deleteMode, query, "vmNicUuids")
 }

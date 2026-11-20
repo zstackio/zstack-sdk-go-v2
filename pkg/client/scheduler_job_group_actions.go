@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -69,9 +70,19 @@ func (cli *ZSClient) RemoveSchedulerJobGroupFromSchedulerTrigger(schedulerJobGro
 	return cli.DeleteWithSpec("v1/scheduler/jobgroups", schedulerJobGroupUuid, fmt.Sprintf("scheduler/triggers/%s", schedulerTriggerUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
 }
 
-// RemoveSchedulerJobsFromSchedulerJobGroup removes SchedulerJobsFromSchedulerJobGroup
+// RemoveSchedulerJobsFromSchedulerJobGroup requires additional arguments.
+//
+// Deprecated: use RemoveSchedulerJobsFromSchedulerJobGroupWithParams to supply the required fields.
 func (cli *ZSClient) RemoveSchedulerJobsFromSchedulerJobGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/scheduler/jobgroups", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveSchedulerJobsFromSchedulerJobGroup requires additional arguments; use RemoveSchedulerJobsFromSchedulerJobGroupWithParams")
+}
+
+// RemoveSchedulerJobsFromSchedulerJobGroupWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) RemoveSchedulerJobsFromSchedulerJobGroupWithParams(schedulerJobGroupUuid string, deleteMode param.DeleteMode, params param.RemoveSchedulerJobsFromSchedulerJobGroupParamDetail) error {
+	query := url.Values{
+		"schedulerJobUuids": params.SchedulerJobUuids,
+	}
+	return cli.deleteActionWithQuery("v1/scheduler/jobgroups", schedulerJobGroupUuid, "job", deleteMode, query, "schedulerJobUuids")
 }
 
 // AddSchedulerJobGroupToSchedulerTrigger adds SchedulerJobGroupToSchedulerTrigger

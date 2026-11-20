@@ -4,6 +4,8 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -82,9 +84,17 @@ func (cli *ZSClient) CloneImage(imageUuid string, params param.CloneImageParam) 
 	}
 	return &resp, nil
 }
-// DeleteImage deletes Image
+// DeleteImage sends the action with its default options.
 func (cli *ZSClient) DeleteImage(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/images", uuid, string(deleteMode))
+	return cli.DeleteImageWithParams(uuid, deleteMode, param.DeleteImageParamDetail{})
+}
+
+// DeleteImageWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteImageWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteImageParamDetail) error {
+	query := url.Values{
+		"backupStorageUuids": params.BackupStorageUuids,
+	}
+	return cli.deleteResourceWithQuery("v1/images", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 // UpdateImage updates Image
 func (cli *ZSClient) UpdateImage(uuid string, params param.UpdateImageParam) (*view.ImageInventoryView, error) {

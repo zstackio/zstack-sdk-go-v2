@@ -4,6 +4,8 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+	"strconv"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -20,9 +22,18 @@ func (cli *ZSClient) CreateCbtTask(params param.CreateCbtTaskParam) (*view.CbtTa
 	}
 	return &resp, nil
 }
-// DeleteCbtTask deletes CbtTask
+// DeleteCbtTask sends the action with its default options.
 func (cli *ZSClient) DeleteCbtTask(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/cbt-task", uuid, string(deleteMode))
+	return cli.DeleteCbtTaskWithParams(uuid, deleteMode, param.DeleteCbtTaskParamDetail{})
+}
+
+// DeleteCbtTaskWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteCbtTaskWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteCbtTaskParamDetail) error {
+	query := url.Values{}
+	if params.Force != nil {
+		query.Set("force", strconv.FormatBool(*params.Force))
+	}
+	return cli.deleteResourceWithQuery("v1/cbt-task", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 // QueryCbtTask queries CbtTask list
 func (cli *ZSClient) QueryCbtTask(params *param.QueryParam) ([]view.CbtTaskInventoryView, error) {

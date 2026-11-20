@@ -4,6 +4,8 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -73,14 +75,34 @@ func (cli *ZSClient) AddAccessControlListToLoadBalancer(listenerUuid string, par
 	return &resp, nil
 }
 
-// RemoveServerGroupFromLoadBalancerListener removes ServerGroupFromLoadBalancerListener
+// RemoveServerGroupFromLoadBalancerListener requires additional arguments.
+//
+// Deprecated: use RemoveServerGroupFromLoadBalancerListenerWithParams to supply the required fields.
 func (cli *ZSClient) RemoveServerGroupFromLoadBalancerListener(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveServerGroupFromLoadBalancerListener requires additional arguments; use RemoveServerGroupFromLoadBalancerListenerWithParams")
 }
 
-// RemoveCertificateFromLoadBalancerListener removes CertificateFromLoadBalancerListener
+// RemoveServerGroupFromLoadBalancerListenerWithParams sends the required route and query parameters for RemoveServerGroupFromLoadBalancerListener.
+func (cli *ZSClient) RemoveServerGroupFromLoadBalancerListenerWithParams(listenerUuid string, deleteMode param.DeleteMode, params param.RemoveServerGroupFromLoadBalancerListenerParamDetail) error {
+	query := url.Values{
+		"serverGroupUuid": {params.ServerGroupUuid},
+	}
+	return cli.deleteActionWithQuery("v1/load-balancers/listeners", listenerUuid, "servergroups", deleteMode, query, "serverGroupUuid")
+}
+
+// RemoveCertificateFromLoadBalancerListener requires additional arguments.
+//
+// Deprecated: use RemoveCertificateFromLoadBalancerListenerWithParams to supply the required fields.
 func (cli *ZSClient) RemoveCertificateFromLoadBalancerListener(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveCertificateFromLoadBalancerListener requires additional arguments; use RemoveCertificateFromLoadBalancerListenerWithParams")
+}
+
+// RemoveCertificateFromLoadBalancerListenerWithParams sends the required route and query parameters for RemoveCertificateFromLoadBalancerListener.
+func (cli *ZSClient) RemoveCertificateFromLoadBalancerListenerWithParams(listenerUuid string, deleteMode param.DeleteMode, params param.RemoveCertificateFromLoadBalancerListenerParamDetail) error {
+	query := url.Values{
+		"certificateUuid": {params.CertificateUuid},
+	}
+	return cli.deleteActionWithQuery("v1/load-balancers/listeners", listenerUuid, "certificate", deleteMode, query, "certificateUuid")
 }
 
 // GetLoadBalancerListenerACLEntries gets LoadBalancerListenerACLEntries by uuid
@@ -119,9 +141,19 @@ func (cli *ZSClient) GetCandidateVmNicsForLoadBalancer(uuid string) (*view.VmNic
 	return &resp, nil
 }
 
-// RemoveVmNicFromLoadBalancer removes VmNicFromLoadBalancer
+// RemoveVmNicFromLoadBalancer requires additional arguments.
+//
+// Deprecated: use RemoveVmNicFromLoadBalancerWithParams to supply the required fields.
 func (cli *ZSClient) RemoveVmNicFromLoadBalancer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveVmNicFromLoadBalancer requires additional arguments; use RemoveVmNicFromLoadBalancerWithParams")
+}
+
+// RemoveVmNicFromLoadBalancerWithParams sends the required route and query parameters for RemoveVmNicFromLoadBalancer.
+func (cli *ZSClient) RemoveVmNicFromLoadBalancerWithParams(listenerUuid string, deleteMode param.DeleteMode, params param.RemoveVmNicFromLoadBalancerParamDetail) error {
+	query := url.Values{
+		"vmNicUuids": params.VmNicUuids,
+	}
+	return cli.deleteActionWithQuery("v1/load-balancers/listeners", listenerUuid, "vm-instances/nics", deleteMode, query, "vmNicUuids")
 }
 
 // AddVmNicToLoadBalancer adds VmNicToLoadBalancer
@@ -133,7 +165,18 @@ func (cli *ZSClient) AddVmNicToLoadBalancer(listenerUuid string, params param.Ad
 	return &resp, nil
 }
 
-// RemoveAccessControlListFromLoadBalancer removes AccessControlListFromLoadBalancer
+// RemoveAccessControlListFromLoadBalancer requires additional arguments.
+//
+// Deprecated: use RemoveAccessControlListFromLoadBalancerWithParams to supply the required fields.
 func (cli *ZSClient) RemoveAccessControlListFromLoadBalancer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/load-balancers/listeners", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveAccessControlListFromLoadBalancer requires additional arguments; use RemoveAccessControlListFromLoadBalancerWithParams")
+}
+
+// RemoveAccessControlListFromLoadBalancerWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) RemoveAccessControlListFromLoadBalancerWithParams(listenerUuid string, deleteMode param.DeleteMode, params param.RemoveAccessControlListFromLoadBalancerParamDetail) error {
+	query := url.Values{
+		"aclUuids":         params.AclUuids,
+		"serverGroupUuids": params.ServerGroupUuids,
+	}
+	return cli.deleteActionWithQuery("v1/load-balancers/listeners", listenerUuid, "access-control-lists", deleteMode, query, "aclUuids")
 }

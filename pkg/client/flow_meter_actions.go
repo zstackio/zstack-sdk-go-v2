@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -103,9 +104,17 @@ func (cli *ZSClient) AddVRouterNetworksToFlowMeter(flowMeterUuid string, vRouter
 	return &resp, nil
 }
 
-// RemoveVRouterNetworksFromFlowMeter removes VRouterNetworksFromFlowMeter
+// RemoveVRouterNetworksFromFlowMeter sends one UUID to the collection endpoint.
 func (cli *ZSClient) RemoveVRouterNetworksFromFlowMeter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/flowmeters/networks", uuid, string(deleteMode))
+	return cli.RemoveVRouterNetworksFromFlowMeterWithParams(deleteMode, param.RemoveVRouterNetworksFromFlowMeterParamDetail{Uuids: []string{uuid}})
+}
+
+// RemoveVRouterNetworksFromFlowMeterWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) RemoveVRouterNetworksFromFlowMeterWithParams(deleteMode param.DeleteMode, params param.RemoveVRouterNetworksFromFlowMeterParamDetail) error {
+	query := url.Values{
+		"uuids": params.Uuids,
+	}
+	return cli.deleteActionWithQuery("v1/flowmeters/networks", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "uuids")
 }
 
 // SetFlowMeterRouterId operates on FlowMeterRouterId

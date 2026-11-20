@@ -3,6 +3,8 @@
 package client
 
 import (
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -48,9 +50,21 @@ func (cli *ZSClient) UpdateVolumeSnapshotGroup(uuid string, params param.UpdateV
 	}
 	return &resp, nil
 }
-// DeleteVolumeSnapshotGroup deletes VolumeSnapshotGroup
+// DeleteVolumeSnapshotGroup sends the action with its default options.
 func (cli *ZSClient) DeleteVolumeSnapshotGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volume-snapshots/group", uuid, string(deleteMode))
+	return cli.DeleteVolumeSnapshotGroupWithParams(uuid, deleteMode, param.DeleteVolumeSnapshotGroupParamDetail{})
+}
+
+// DeleteVolumeSnapshotGroupWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteVolumeSnapshotGroupWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteVolumeSnapshotGroupParamDetail) error {
+	query := url.Values{}
+	if params.Direction != nil {
+		query.Set("direction", *params.Direction)
+	}
+	if params.Scope != nil {
+		query.Set("scope", *params.Scope)
+	}
+	return cli.deleteResourceWithQuery("v1/volume-snapshots/group", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 
 // CheckVolumeSnapshotGroupAvailability operates on VolumeSnapshotGroupAvailability

@@ -3,6 +3,10 @@
 package client
 
 import (
+	"fmt"
+	"net/url"
+	"strconv"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -28,9 +32,21 @@ func (cli *ZSClient) GetLogConfiguration() (*view.JsonLabelInventoryView, error)
 	}
 	return &resp, nil
 }
-// DeleteLogConfiguration deletes LogConfiguration
+// DeleteLogConfiguration deletes the log configuration identified by a decimal config ID.
 func (cli *ZSClient) DeleteLogConfiguration(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/log/configurations/log4j2", uuid, string(deleteMode))
+	configID, err := strconv.ParseInt(uuid, 10, 64)
+	if err != nil {
+		return fmt.Errorf("configId must be a decimal integer: %w", err)
+	}
+	return cli.DeleteLogConfigurationWithParams(deleteMode, param.DeleteLogConfigurationParamDetail{ConfigId: configID})
+}
+
+// DeleteLogConfigurationWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteLogConfigurationWithParams(deleteMode param.DeleteMode, params param.DeleteLogConfigurationParamDetail) error {
+	query := url.Values{
+		"configId": {strconv.FormatInt(params.ConfigId, 10)},
+	}
+	return cli.deleteActionWithQuery("v1/log/configurations/log4j2", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "configId")
 }
 // AddLogConfiguration adds LogConfiguration
 func (cli *ZSClient) AddLogConfiguration(params param.AddLogConfigurationParam) (*view.JsonLabelInventoryView, error) {

@@ -3,6 +3,8 @@
 package client
 
 import (
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -30,7 +32,15 @@ func (cli *ZSClient) PageAlert(params *param.QueryParam) ([]view.AlertInventoryV
 	total, err := cli.Page("v1/monitoring/alerts", params, &alerts)
 	return alerts, total, err
 }
-// DeleteAlert deletes Alert
+// DeleteAlert sends one UUID to the collection endpoint.
 func (cli *ZSClient) DeleteAlert(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/monitoring/alerts", uuid, string(deleteMode))
+	return cli.DeleteAlertWithParams(deleteMode, param.DeleteAlertParamDetail{Uuids: []string{uuid}})
+}
+
+// DeleteAlertWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteAlertWithParams(deleteMode param.DeleteMode, params param.DeleteAlertParamDetail) error {
+	query := url.Values{
+		"uuids": params.Uuids,
+	}
+	return cli.deleteActionWithQuery("v1/monitoring/alerts", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "uuids")
 }

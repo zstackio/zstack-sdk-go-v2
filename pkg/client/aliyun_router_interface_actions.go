@@ -3,6 +3,9 @@
 package client
 
 import (
+	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -59,9 +62,19 @@ func (cli *ZSClient) PageAliyunRouterInterfaceFromLocal(params *param.QueryParam
 	return aliyunRouterInterfaceFromLocals, total, err
 }
 
-// DeleteAliyunRouterInterfaceRemote deletes AliyunRouterInterfaceRemote
+// DeleteAliyunRouterInterfaceRemote requires additional arguments.
+//
+// Deprecated: use DeleteAliyunRouterInterfaceRemoteWithParams to supply the required fields.
 func (cli *ZSClient) DeleteAliyunRouterInterfaceRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/hybrid/aliyun/router-interface/remote", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteAliyunRouterInterfaceRemote requires additional arguments; use DeleteAliyunRouterInterfaceRemoteWithParams")
+}
+
+// DeleteAliyunRouterInterfaceRemoteWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteAliyunRouterInterfaceRemoteWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteAliyunRouterInterfaceRemoteParamDetail) error {
+	query := url.Values{
+		"vRouterType": {params.VRouterType},
+	}
+	return cli.deleteResourceWithQuery("v1/hybrid/aliyun/router-interface/remote", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query, "vRouterType")
 }
 
 // UpdateAliyunRouteInterfaceRemote updates AliyunRouteInterfaceRemote

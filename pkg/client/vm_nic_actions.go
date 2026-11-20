@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -67,9 +68,19 @@ func (cli *ZSClient) UpdateVmNicMac(vmNicUuid string, params param.UpdateVmNicMa
 	return &resp, nil
 }
 
-// DeleteNicQos deletes NicQos
+// DeleteNicQos requires additional arguments.
+//
+// Deprecated: use DeleteNicQosWithParams to supply the required fields.
 func (cli *ZSClient) DeleteNicQos(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteNicQos requires additional arguments; use DeleteNicQosWithParams")
+}
+
+// DeleteNicQosWithParams sends the required route and query parameters for DeleteNicQos.
+func (cli *ZSClient) DeleteNicQosWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteNicQosParamDetail) error {
+	query := url.Values{
+		"direction": {params.Direction},
+	}
+	return cli.deleteActionWithQuery("v1/vm-instances", uuid, "nic-qos", deleteMode, query, "direction")
 }
 
 // ChangeVfNicHaState changes VfNicHaState

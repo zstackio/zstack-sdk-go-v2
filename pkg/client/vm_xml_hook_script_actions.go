@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -45,9 +46,18 @@ func (cli *ZSClient) ExpungeVmUserDefinedXmlHookScript(uuid string, deleteMode p
 	return cli.Delete("v1/vm-instances/xml-hook-script", uuid, string(deleteMode))
 }
 
-// DetachUserDefinedXmlHookScriptFromVm operates on UserDefinedXmlHookScriptFromVm
+// DetachUserDefinedXmlHookScriptFromVm sends the action with its default options.
 func (cli *ZSClient) DetachUserDefinedXmlHookScriptFromVm(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/xmlhook/vm-instances", uuid, string(deleteMode))
+	return cli.DetachUserDefinedXmlHookScriptFromVmWithParams(uuid, deleteMode, param.DetachUserDefinedXmlHookScriptFromVmParamDetail{})
+}
+
+// DetachUserDefinedXmlHookScriptFromVmWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DetachUserDefinedXmlHookScriptFromVmWithParams(vmInstanceUuid string, deleteMode param.DeleteMode, params param.DetachUserDefinedXmlHookScriptFromVmParamDetail) error {
+	query := url.Values{}
+	if params.StartupStrategy != nil {
+		query.Set("startupStrategy", *params.StartupStrategy)
+	}
+	return cli.deleteActionWithQuery("v1/xmlhook/vm-instances", vmInstanceUuid, "detach", deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 
 // DeleteVmUserDefinedXmlHookScript deletes VmUserDefinedXmlHookScript

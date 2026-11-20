@@ -4,19 +4,40 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
-// DeleteHybridEipRemote deletes HybridEipRemote
+// DeleteHybridEipRemote requires additional arguments.
+//
+// Deprecated: use DeleteHybridEipRemoteWithParams to supply the required fields.
 func (cli *ZSClient) DeleteHybridEipRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/hybrid/eip", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteHybridEipRemote requires additional arguments; use DeleteHybridEipRemoteWithParams")
 }
 
-// DeleteHybridEipFromLocal deletes HybridEipFromLocal
+// DeleteHybridEipRemoteWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteHybridEipRemoteWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteHybridEipRemoteParamDetail) error {
+	query := url.Values{
+		"type": {params.Type},
+	}
+	return cli.deleteActionWithQuery("v1/hybrid/eip", uuid, "remote", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "type")
+}
+
+// DeleteHybridEipFromLocal requires additional arguments.
+//
+// Deprecated: use DeleteHybridEipFromLocalWithParams to supply the required fields.
 func (cli *ZSClient) DeleteHybridEipFromLocal(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/hybrid/eip", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteHybridEipFromLocal requires additional arguments; use DeleteHybridEipFromLocalWithParams")
+}
+
+// DeleteHybridEipFromLocalWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteHybridEipFromLocalWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteHybridEipFromLocalParamDetail) error {
+	query := url.Values{
+		"type": {params.Type},
+	}
+	return cli.deleteResourceWithQuery("v1/hybrid/eip", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query, "type")
 }
 
 // SyncHybridEipFromRemote operates on HybridEipFromRemote

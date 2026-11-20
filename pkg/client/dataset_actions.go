@@ -3,6 +3,8 @@
 package client
 
 import (
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -79,7 +81,15 @@ func (cli *ZSClient) UpdateDatasets(params param.UpdateDatasetsParam) (*view.Upd
 	return &resp, nil
 }
 
-// DeleteDatasets deletes Datasets
+// DeleteDatasets sends one UUID to the collection endpoint.
 func (cli *ZSClient) DeleteDatasets(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/datasets", uuid, string(deleteMode))
+	return cli.DeleteDatasetsWithParams(deleteMode, param.DeleteDatasetsParamDetail{Uuids: []string{uuid}})
+}
+
+// DeleteDatasetsWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteDatasetsWithParams(deleteMode param.DeleteMode, params param.DeleteDatasetsParamDetail) error {
+	query := url.Values{
+		"uuids": params.Uuids,
+	}
+	return cli.deleteActionWithQuery("v1/ai/datasets", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "uuids")
 }

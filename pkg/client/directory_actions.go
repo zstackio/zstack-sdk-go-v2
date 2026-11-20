@@ -3,6 +3,9 @@
 package client
 
 import (
+	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -71,9 +74,20 @@ func (cli *ZSClient) AddResourcesToDirectory(params param.AddResourcesToDirector
 	return &resp, nil
 }
 
-// RemoveResourcesFromDirectory removes ResourcesFromDirectory
+// RemoveResourcesFromDirectory requires additional arguments.
+//
+// Deprecated: use RemoveResourcesFromDirectoryWithParams to supply the required fields.
 func (cli *ZSClient) RemoveResourcesFromDirectory(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/remove/resources/directory", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveResourcesFromDirectory requires additional arguments; use RemoveResourcesFromDirectoryWithParams")
+}
+
+// RemoveResourcesFromDirectoryWithParams sends the required route and query parameters for RemoveResourcesFromDirectory.
+func (cli *ZSClient) RemoveResourcesFromDirectoryWithParams(deleteMode param.DeleteMode, params param.RemoveResourcesFromDirectoryParamDetail) error {
+	query := url.Values{
+		"directoryUuid": {params.DirectoryUuid},
+		"resourceUuids": params.ResourceUuids,
+	}
+	return cli.deleteActionWithQuery("v1/remove/resources/directory", "", "", deleteMode, query, "directoryUuid", "resourceUuids")
 }
 
 // MoveDirectory operates on MoveDirectory

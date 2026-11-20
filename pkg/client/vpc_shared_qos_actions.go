@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -73,7 +74,27 @@ func (cli *ZSClient) ChangeVpcSharedQosBandwidth(sharedQosUuid string, params pa
 	return &resp, nil
 }
 
-// DetachVipFromVpcSharedQos operates on VipFromVpcSharedQos
+// DetachVipFromVpcSharedQos requires the VIPs to detach.
+//
+// Deprecated: use DetachVipFromVpcSharedQosWithParams to specify the VIPs.
 func (cli *ZSClient) DetachVipFromVpcSharedQos(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vips/sharedqos", uuid, string(deleteMode))
+	return fmt.Errorf("DetachVipFromVpcSharedQos requires VIP UUIDs; use DetachVipFromVpcSharedQosWithParams")
+}
+
+// DetachVipFromVpcSharedQosWithParams detaches VIPs identified by VipUuids or VipLists.
+func (cli *ZSClient) DetachVipFromVpcSharedQosWithParams(sharedQosUuid string, deleteMode param.DeleteMode, params param.DetachVipFromVpcSharedQosParamDetail) error {
+	query := url.Values{}
+	var required []string
+	if len(params.VipUuids) > 0 {
+		query["vipUuids"] = params.VipUuids
+		required = append(required, "vipUuids")
+	}
+	if len(params.VipLists) > 0 {
+		query["vipLists"] = params.VipLists
+		required = append(required, "vipLists")
+	}
+	if len(required) == 0 {
+		return fmt.Errorf("vipUuids or vipLists is required")
+	}
+	return cli.deleteActionWithQuery("v1/vips/sharedqos", sharedQosUuid, "vips", deleteMode, query, required...)
 }

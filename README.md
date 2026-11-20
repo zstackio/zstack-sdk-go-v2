@@ -94,6 +94,29 @@ request or unavailable job leaves the operation outcome unknown; callers must
 not automatically resubmit. API success alone does not prove physical resource
 release, which requires separate resource observations.
 
+### Deleting bindings and other resource settings
+
+`DetachTagFromResources(tagUUID, deleteMode, resourceUUIDs)` requires an
+explicit resource list. Pass it as the third argument when upgrading from
+the two-argument version.
+
+For other actions that require selectors in addition to the resource UUID,
+use the corresponding `WithParams` method, for example:
+
+```go
+err := cli.DeleteVmNicFromSecurityGroupWithParams(
+    groupUUID,
+    param.DeleteModePermissive,
+    param.DeleteVmNicFromSecurityGroupParamDetail{
+        VmNicUuids: []string{nicUUIDA, nicUUIDB},
+    },
+)
+```
+
+The old methods with insufficient arguments return an error before sending a
+request. See the [DELETE action audit](pkg/docs/delete-action-audit.md) for
+the affected methods and migration details.
+
 ### Authentication
 
 The SDK supports the following authentication methods:

@@ -4,6 +4,9 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+	"strconv"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -64,9 +67,20 @@ func (cli *ZSClient) PageVolumeBackup(params *param.QueryParam) ([]view.VolumeBa
 	total, err := cli.Page("v1/volume-backups", params, &volumeBackups)
 	return volumeBackups, total, err
 }
-// DeleteVolumeBackup deletes VolumeBackup
+// DeleteVolumeBackup sends the action with its default options.
 func (cli *ZSClient) DeleteVolumeBackup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volume-backups", uuid, string(deleteMode))
+	return cli.DeleteVolumeBackupWithParams(uuid, deleteMode, param.DeleteVolumeBackupParamDetail{})
+}
+
+// DeleteVolumeBackupWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteVolumeBackupWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteVolumeBackupParamDetail) error {
+	query := url.Values{
+		"backupStorageUuids": params.BackupStorageUuids,
+	}
+	if params.HandleDependency != nil {
+		query.Set("handleDependency", strconv.FormatBool(*params.HandleDependency))
+	}
+	return cli.deleteResourceWithQuery("v1/volume-backups", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 
 // RecoverBackupFromImageStoreBackupStorage operates on BackupFromImageStoreBackupStorage

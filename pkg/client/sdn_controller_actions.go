@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -107,9 +108,22 @@ func (cli *ZSClient) PullHuaweiIMasterController(uuid string, params param.PullH
 	return &resp, nil
 }
 
-// SdnControllerRemoveHost operates on SdnControllerRemoveHost
+// SdnControllerRemoveHost sends the action with its default options.
 func (cli *ZSClient) SdnControllerRemoveHost(sdnControllerUuid string, hostUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/sdn-controllers", sdnControllerUuid, fmt.Sprintf("hosts/%s", hostUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+	return cli.SdnControllerRemoveHostWithParams(sdnControllerUuid, hostUuid, deleteMode, param.SdnControllerRemoveHostParamDetail{})
+}
+
+// SdnControllerRemoveHostWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) SdnControllerRemoveHostWithParams(sdnControllerUuid, hostUuid string, deleteMode param.DeleteMode, params param.SdnControllerRemoveHostParamDetail) error {
+	query := url.Values{}
+	if params.VSwitchType != nil {
+		query.Set("vSwitchType", *params.VSwitchType)
+	}
+	host, err := actionPathSegment("hostUuid", hostUuid)
+	if err != nil {
+		return err
+	}
+	return cli.deleteActionWithQuery("v1/sdn-controllers", sdnControllerUuid, "hosts/"+host, deleteMode, query)
 }
 
 // SdnControllerAddHost operates on SdnControllerAddHost

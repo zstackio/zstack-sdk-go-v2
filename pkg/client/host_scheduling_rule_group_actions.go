@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -64,7 +65,17 @@ func (cli *ZSClient) AddHostToHostSchedulingRuleGroup(hostGroupUuid string, host
 	return &resp, nil
 }
 
-// DetachHostFromHostSchedulingRuleGroup operates on HostFromHostSchedulingRuleGroup
+// DetachHostFromHostSchedulingRuleGroup requires additional arguments.
+//
+// Deprecated: use DetachHostFromHostSchedulingRuleGroupWithParams to supply the required fields.
 func (cli *ZSClient) DetachHostFromHostSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/hostSchedulingRuleGroup", uuid, string(deleteMode))
+	return fmt.Errorf("DetachHostFromHostSchedulingRuleGroup requires additional arguments; use DetachHostFromHostSchedulingRuleGroupWithParams")
+}
+
+// DetachHostFromHostSchedulingRuleGroupWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DetachHostFromHostSchedulingRuleGroupWithParams(hostGroupUuid string, deleteMode param.DeleteMode, params param.DetachHostFromHostSchedulingRuleGroupParamDetail) error {
+	query := url.Values{
+		"hostUuid": {params.HostUuid},
+	}
+	return cli.deleteActionWithQuery("v1/hostSchedulingRuleGroup", hostGroupUuid, "host", deleteMode, query, "hostUuid")
 }

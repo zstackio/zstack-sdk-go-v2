@@ -4,6 +4,8 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -57,9 +59,17 @@ func (cli *ZSClient) PageSecurityGroupRule(params *param.QueryParam) ([]view.Sec
 	total, err := cli.Page("v1/security-groups/rules", params, &securityGroupRules)
 	return securityGroupRules, total, err
 }
-// DeleteSecurityGroupRule deletes SecurityGroupRule
+// DeleteSecurityGroupRule deletes one security group rule.
 func (cli *ZSClient) DeleteSecurityGroupRule(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/security-groups/rules", uuid, string(deleteMode))
+	return cli.DeleteSecurityGroupRuleWithParams(deleteMode, param.DeleteSecurityGroupRuleParamDetail{RuleUuids: []string{uuid}})
+}
+
+// DeleteSecurityGroupRuleWithParams sends the required route and query parameters for DeleteSecurityGroupRule.
+func (cli *ZSClient) DeleteSecurityGroupRuleWithParams(deleteMode param.DeleteMode, params param.DeleteSecurityGroupRuleParamDetail) error {
+	query := url.Values{
+		"ruleUuids": params.RuleUuids,
+	}
+	return cli.deleteActionWithQuery("v1/security-groups/rules", "", "", deleteMode, query, "ruleUuids")
 }
 
 // ChangeSecurityGroupRuleState changes SecurityGroupRuleState

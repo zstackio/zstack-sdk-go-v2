@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -38,9 +39,17 @@ func (cli *ZSClient) GetVpcAttachedOspf(uuid string, params param.GetVpcAttached
 	return &resp, nil
 }
 
-// RemoveVRouterNetworksFromOspfArea removes VRouterNetworksFromOspfArea
+// RemoveVRouterNetworksFromOspfArea sends one UUID to the collection endpoint.
 func (cli *ZSClient) RemoveVRouterNetworksFromOspfArea(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/routerArea/networks", uuid, string(deleteMode))
+	return cli.RemoveVRouterNetworksFromOspfAreaWithParams(deleteMode, param.RemoveVRouterNetworksFromOspfAreaParamDetail{Uuids: []string{uuid}})
+}
+
+// RemoveVRouterNetworksFromOspfAreaWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) RemoveVRouterNetworksFromOspfAreaWithParams(deleteMode param.DeleteMode, params param.RemoveVRouterNetworksFromOspfAreaParamDetail) error {
+	query := url.Values{
+		"uuids": params.Uuids,
+	}
+	return cli.deleteActionWithQuery("v1/routerArea/networks", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "uuids")
 }
 
 // SetVRouterRouterId operates on VRouterRouterId

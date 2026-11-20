@@ -4,6 +4,8 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -41,9 +43,21 @@ func (cli *ZSClient) PageVolumeSnapshot(params *param.QueryParam) ([]view.Volume
 	total, err := cli.Page("v1/volume-snapshots", params, &volumeSnapshots)
 	return volumeSnapshots, total, err
 }
-// DeleteVolumeSnapshot deletes VolumeSnapshot
+// DeleteVolumeSnapshot sends the action with its default options.
 func (cli *ZSClient) DeleteVolumeSnapshot(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volume-snapshots", uuid, string(deleteMode))
+	return cli.DeleteVolumeSnapshotWithParams(uuid, deleteMode, param.DeleteVolumeSnapshotParamDetail{})
+}
+
+// DeleteVolumeSnapshotWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteVolumeSnapshotWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteVolumeSnapshotParamDetail) error {
+	query := url.Values{}
+	if params.Direction != nil {
+		query.Set("direction", *params.Direction)
+	}
+	if params.Scope != nil {
+		query.Set("scope", *params.Scope)
+	}
+	return cli.deleteResourceWithQuery("v1/volume-snapshots", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 // CreateVolumeSnapshot creates VolumeSnapshot
 func (cli *ZSClient) CreateVolumeSnapshot(volumeUuid string, params param.CreateVolumeSnapshotParam) (*view.VolumeSnapshotInventoryView, error) {

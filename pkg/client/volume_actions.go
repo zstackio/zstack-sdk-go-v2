@@ -249,9 +249,18 @@ func (cli *ZSClient) CreateDataVolume(params param.CreateDataVolumeParam) (*view
 	return &resp, nil
 }
 
-// DeleteVolumeQos deletes VolumeQos
+// DeleteVolumeQos sends the action with its default options.
 func (cli *ZSClient) DeleteVolumeQos(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/volumes", uuid, string(deleteMode))
+	return cli.DeleteVolumeQosWithParams(uuid, deleteMode, param.DeleteVolumeQosParamDetail{})
+}
+
+// DeleteVolumeQosWithParams sends the required route and query parameters for DeleteVolumeQos.
+func (cli *ZSClient) DeleteVolumeQosWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteVolumeQosParamDetail) error {
+	query := url.Values{}
+	if params.Mode != nil {
+		query.Set("mode", *params.Mode)
+	}
+	return cli.deleteActionWithQuery("v1/volumes", uuid, "qos", deleteMode, query)
 }
 
 // FlattenVolume operates on FlattenVolume

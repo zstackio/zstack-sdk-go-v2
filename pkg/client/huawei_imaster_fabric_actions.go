@@ -3,6 +3,8 @@
 package client
 
 import (
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -10,9 +12,18 @@ import (
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
-// DeleteHuaweiIMasterFabric deletes HuaweiIMasterFabric
+// DeleteHuaweiIMasterFabric sends the action with its default options.
 func (cli *ZSClient) DeleteHuaweiIMasterFabric(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sdn-controller/huawei-imaster/fabrics", uuid, string(deleteMode))
+	return cli.DeleteHuaweiIMasterFabricWithParams(uuid, deleteMode, param.DeleteHuaweiIMasterFabricParamDetail{})
+}
+
+// DeleteHuaweiIMasterFabricWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteHuaweiIMasterFabricWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteHuaweiIMasterFabricParamDetail) error {
+	query := url.Values{}
+	if params.SdnControllerUuid != nil {
+		query.Set("sdnControllerUuid", *params.SdnControllerUuid)
+	}
+	return cli.deleteResourceWithQuery("v1/sdn-controller/huawei-imaster/fabrics", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 // QueryHuaweiIMasterFabric queries HuaweiIMasterFabric list
 func (cli *ZSClient) QueryHuaweiIMasterFabric(params *param.QueryParam) ([]view.HuaweiIMasterFabricInventoryView, error) {

@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -75,9 +76,19 @@ func (cli *ZSClient) AttachRoleToAccount(accountUuid string, roleUuid string, pa
 	return &resp, nil
 }
 
-// RemovePolicyStatementsFromRole removes PolicyStatementsFromRole
+// RemovePolicyStatementsFromRole requires additional arguments.
+//
+// Deprecated: use RemovePolicyStatementsFromRoleWithParams to supply the required fields.
 func (cli *ZSClient) RemovePolicyStatementsFromRole(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/identities/roles", uuid, string(deleteMode))
+	return fmt.Errorf("RemovePolicyStatementsFromRole requires additional arguments; use RemovePolicyStatementsFromRoleWithParams")
+}
+
+// RemovePolicyStatementsFromRoleWithParams sends the required route and query parameters for RemovePolicyStatementsFromRole.
+func (cli *ZSClient) RemovePolicyStatementsFromRoleWithParams(uuid string, deleteMode param.DeleteMode, params param.RemovePolicyStatementsFromRoleParamDetail) error {
+	query := url.Values{
+		"policyStatementUuids": params.PolicyStatementUuids,
+	}
+	return cli.deleteActionWithQuery("v1/identities/roles", uuid, "policy-statements", deleteMode, query, "policyStatementUuids")
 }
 
 // DetachPolicyFromRole operates on PolicyFromRole

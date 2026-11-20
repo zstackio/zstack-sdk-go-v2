@@ -3,6 +3,8 @@
 package client
 
 import (
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -38,7 +40,16 @@ func (cli *ZSClient) PageHuaweiIMasterVRouter(params *param.QueryParam) ([]view.
 	total, err := cli.Page("v1/sdn-controller/huawei-imaster/vrouters", params, &huaweiIMasterVRouters)
 	return huaweiIMasterVRouters, total, err
 }
-// DeleteHuaweiIMasterVRouter deletes HuaweiIMasterVRouter
+// DeleteHuaweiIMasterVRouter sends the action with its default options.
 func (cli *ZSClient) DeleteHuaweiIMasterVRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sdn-controller/huawei-imaster/vrouters", uuid, string(deleteMode))
+	return cli.DeleteHuaweiIMasterVRouterWithParams(uuid, deleteMode, param.DeleteHuaweiIMasterVRouterParamDetail{})
+}
+
+// DeleteHuaweiIMasterVRouterWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteHuaweiIMasterVRouterWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteHuaweiIMasterVRouterParamDetail) error {
+	query := url.Values{}
+	if params.SdnControllerUuid != nil {
+		query.Set("sdnControllerUuid", *params.SdnControllerUuid)
+	}
+	return cli.deleteResourceWithQuery("v1/sdn-controller/huawei-imaster/vrouters", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }

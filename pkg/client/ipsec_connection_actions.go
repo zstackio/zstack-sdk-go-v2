@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -123,12 +124,32 @@ func (cli *ZSClient) AddRemoteCidrsToIPsecConnection(uuid string, params param.A
 	return &resp, nil
 }
 
-// DetachL3NetworksFromIPsecConnection operates on L3NetworksFromIPsecConnection
+// DetachL3NetworksFromIPsecConnection requires additional arguments.
+//
+// Deprecated: use DetachL3NetworksFromIPsecConnectionWithParams to supply the required fields.
 func (cli *ZSClient) DetachL3NetworksFromIPsecConnection(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ipsec", uuid, string(deleteMode))
+	return fmt.Errorf("DetachL3NetworksFromIPsecConnection requires additional arguments; use DetachL3NetworksFromIPsecConnectionWithParams")
 }
 
-// RemoveRemoteCidrsFromIPsecConnection removes RemoteCidrsFromIPsecConnection
+// DetachL3NetworksFromIPsecConnectionWithParams sends the required route and query parameters for DetachL3NetworksFromIPsecConnection.
+func (cli *ZSClient) DetachL3NetworksFromIPsecConnectionWithParams(uuid string, deleteMode param.DeleteMode, params param.DetachL3NetworksFromIPsecConnectionParamDetail) error {
+	query := url.Values{
+		"l3NetworkUuids": params.L3NetworkUuids,
+	}
+	return cli.deleteActionWithQuery("v1/ipsec", uuid, "l3networks", deleteMode, query, "l3NetworkUuids")
+}
+
+// RemoveRemoteCidrsFromIPsecConnection requires additional arguments.
+//
+// Deprecated: use RemoveRemoteCidrsFromIPsecConnectionWithParams to supply the required fields.
 func (cli *ZSClient) RemoveRemoteCidrsFromIPsecConnection(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ipsec", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveRemoteCidrsFromIPsecConnection requires additional arguments; use RemoveRemoteCidrsFromIPsecConnectionWithParams")
+}
+
+// RemoveRemoteCidrsFromIPsecConnectionWithParams sends the required route and query parameters for RemoveRemoteCidrsFromIPsecConnection.
+func (cli *ZSClient) RemoveRemoteCidrsFromIPsecConnectionWithParams(uuid string, deleteMode param.DeleteMode, params param.RemoveRemoteCidrsFromIPsecConnectionParamDetail) error {
+	query := url.Values{
+		"peerCidrs": params.PeerCidrs,
+	}
+	return cli.deleteActionWithQuery("v1/ipsec", uuid, "remote-cidrs", deleteMode, query, "peerCidrs")
 }

@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -45,9 +46,20 @@ func (cli *ZSClient) DeleteMulticastRouter(uuid string, deleteMode param.DeleteM
 	return cli.Delete("v1/multicast/virtual-routers", uuid, string(deleteMode))
 }
 
-// RemoveRendezvousPointFromMulticastRouter removes RendezvousPointFromMulticastRouter
+// RemoveRendezvousPointFromMulticastRouter requires additional arguments.
+//
+// Deprecated: use RemoveRendezvousPointFromMulticastRouterWithParams to supply the required fields.
 func (cli *ZSClient) RemoveRendezvousPointFromMulticastRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/multicast/virtual-routers", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveRendezvousPointFromMulticastRouter requires additional arguments; use RemoveRendezvousPointFromMulticastRouterWithParams")
+}
+
+// RemoveRendezvousPointFromMulticastRouterWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) RemoveRendezvousPointFromMulticastRouterWithParams(uuid string, deleteMode param.DeleteMode, params param.RemoveRendezvousPointFromMulticastRouterParamDetail) error {
+	query := url.Values{
+		"rpAddress":    {params.RpAddress},
+		"groupAddress": {params.GroupAddress},
+	}
+	return cli.deleteActionWithQuery("v1/multicast/virtual-routers", uuid, "RendezvousPoint", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "rpAddress", "groupAddress")
 }
 
 // ChangeMulticastRouterState changes MulticastRouterState

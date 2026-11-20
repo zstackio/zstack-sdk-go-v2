@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -61,7 +62,17 @@ func (cli *ZSClient) CleanUpBareMetal2Bonding(chassisUuid string, params param.C
 	return &resp, nil
 }
 
-// DetachProvisionNicFromBonding operates on ProvisionNicFromBonding
+// DetachProvisionNicFromBonding requires additional arguments.
+//
+// Deprecated: use DetachProvisionNicFromBondingWithParams to supply the required fields.
 func (cli *ZSClient) DetachProvisionNicFromBonding(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/baremetal2/bm-instances/bm2-bondings", uuid, string(deleteMode))
+	return fmt.Errorf("DetachProvisionNicFromBonding requires additional arguments; use DetachProvisionNicFromBondingWithParams")
+}
+
+// DetachProvisionNicFromBondingWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DetachProvisionNicFromBondingWithParams(uuid string, deleteMode param.DeleteMode, params param.DetachProvisionNicFromBondingParamDetail) error {
+	query := url.Values{
+		"provisionNicUuid": {params.ProvisionNicUuid},
+	}
+	return cli.deleteResourceWithQuery("v1/baremetal2/bm-instances/bm2-bondings", uuid, deleteMode, query, "provisionNicUuid")
 }

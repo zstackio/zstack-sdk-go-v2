@@ -3,6 +3,8 @@
 package client
 
 import (
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -10,9 +12,18 @@ import (
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
-// DeleteHuaweiIMasterTenant deletes HuaweiIMasterTenant
+// DeleteHuaweiIMasterTenant sends the action with its default options.
 func (cli *ZSClient) DeleteHuaweiIMasterTenant(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/sdn-controller/huawei-imaster/tenants", uuid, string(deleteMode))
+	return cli.DeleteHuaweiIMasterTenantWithParams(uuid, deleteMode, param.DeleteHuaweiIMasterTenantParamDetail{})
+}
+
+// DeleteHuaweiIMasterTenantWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteHuaweiIMasterTenantWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteHuaweiIMasterTenantParamDetail) error {
+	query := url.Values{}
+	if params.SdnControllerUuid != nil {
+		query.Set("sdnControllerUuid", *params.SdnControllerUuid)
+	}
+	return cli.deleteResourceWithQuery("v1/sdn-controller/huawei-imaster/tenants", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 // QueryHuaweiIMasterTenant queries HuaweiIMasterTenant list
 func (cli *ZSClient) QueryHuaweiIMasterTenant(params *param.QueryParam) ([]view.HuaweiIMasterTenantInventoryView, error) {

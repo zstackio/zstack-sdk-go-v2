@@ -3,13 +3,28 @@
 package client
 
 import (
+	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
 
-// DeleteBackupFileInPublic deletes BackupFileInPublic
+// DeleteBackupFileInPublic requires additional arguments.
+//
+// Deprecated: use DeleteBackupFileInPublicWithParams to supply the required fields.
 func (cli *ZSClient) DeleteBackupFileInPublic(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/hybrid/backup-mysql", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteBackupFileInPublic requires additional arguments; use DeleteBackupFileInPublicWithParams")
+}
+
+// DeleteBackupFileInPublicWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteBackupFileInPublicWithParams(deleteMode param.DeleteMode, params param.DeleteBackupFileInPublicParamDetail) error {
+	query := url.Values{
+		"type":     {params.Type},
+		"regionId": {params.RegionId},
+		"file":     {params.File},
+	}
+	return cli.deleteActionWithQuery("v1/hybrid/backup-mysql", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "type", "regionId", "file")
 }
 
 // BackupDatabaseToPublicCloud operates on DatabaseToPublicCloud

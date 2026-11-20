@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -55,9 +56,19 @@ func (cli *ZSClient) CreateVmSchedulingRuleGroup(params param.CreateVmScheduling
 	return &resp, nil
 }
 
-// DetachVmFromVmSchedulingRuleGroup operates on VmFromVmSchedulingRuleGroup
+// DetachVmFromVmSchedulingRuleGroup requires additional arguments.
+//
+// Deprecated: use DetachVmFromVmSchedulingRuleGroupWithParams to supply the required fields.
 func (cli *ZSClient) DetachVmFromVmSchedulingRuleGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vmSchedulingRuleGroup", uuid, string(deleteMode))
+	return fmt.Errorf("DetachVmFromVmSchedulingRuleGroup requires additional arguments; use DetachVmFromVmSchedulingRuleGroupWithParams")
+}
+
+// DetachVmFromVmSchedulingRuleGroupWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DetachVmFromVmSchedulingRuleGroupWithParams(vmGroupUuid string, deleteMode param.DeleteMode, params param.DetachVmFromVmSchedulingRuleGroupParamDetail) error {
+	query := url.Values{
+		"vmUuid": {params.VmUuid},
+	}
+	return cli.deleteActionWithQuery("v1/vmSchedulingRuleGroup", vmGroupUuid, "vmInstance/", deleteMode, query, "vmUuid")
 }
 
 // AddVmToVmSchedulingRuleGroup adds VmToVmSchedulingRuleGroup

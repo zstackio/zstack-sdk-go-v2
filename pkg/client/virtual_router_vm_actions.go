@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -33,9 +34,19 @@ func (cli *ZSClient) PageVirtualRouterVm(params *param.QueryParam) ([]view.Appli
 	return virtualRouterVms, total, err
 }
 
-// RemoveDnsFromVpcRouter removes DnsFromVpcRouter
+// RemoveDnsFromVpcRouter requires additional arguments.
+//
+// Deprecated: use RemoveDnsFromVpcRouterWithParams to supply the required fields.
 func (cli *ZSClient) RemoveDnsFromVpcRouter(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vpc/virtual-routers", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveDnsFromVpcRouter requires additional arguments; use RemoveDnsFromVpcRouterWithParams")
+}
+
+// RemoveDnsFromVpcRouterWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) RemoveDnsFromVpcRouterWithParams(uuid string, deleteMode param.DeleteMode, params param.RemoveDnsFromVpcRouterParamDetail) error {
+	query := url.Values{
+		"dns": {params.Dns},
+	}
+	return cli.deleteActionWithQuery("v1/vpc/virtual-routers", uuid, "dns", deleteMode, query, "dns")
 }
 
 // ReconnectVirtualRouter operates on VirtualRouter

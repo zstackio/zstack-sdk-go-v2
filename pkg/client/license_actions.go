@@ -3,6 +3,10 @@
 package client
 
 import (
+	"fmt"
+	"net/url"
+	"strings"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -10,9 +14,26 @@ import (
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
-// DeleteLicense deletes License
+// DeleteLicense requires a license selector in addition to the management node.
+//
+// Deprecated: use DeleteLicenseWithParams to specify a license UUID or module.
 func (cli *ZSClient) DeleteLicense(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/licenses/mn", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteLicense requires a license UUID or module; use DeleteLicenseWithParams")
+}
+
+// DeleteLicenseWithParams deletes a license by UUID, or by module when the UUID is absent.
+func (cli *ZSClient) DeleteLicenseWithParams(managementNodeUuid string, deleteMode param.DeleteMode, params param.DeleteLicenseParamDetail) error {
+	query := url.Values{}
+	required := "uuid"
+	if params.Uuid != "" {
+		query.Set("uuid", params.Uuid)
+	} else {
+		required = "module"
+	}
+	if params.Module != nil {
+		query.Set("module", *params.Module)
+	}
+	return cli.deleteActionWithQuery("v1/licenses/mn", managementNodeUuid, "actions", deleteMode, query, required)
 }
 // UpdateLicense updates License
 func (cli *ZSClient) UpdateLicense(managementNodeUuid string, params param.UpdateLicenseParam) (*view.LicenseInventoryView, error) {
@@ -117,9 +138,25 @@ func (cli *ZSClient) GetLicenseInfo() (*view.LicenseInventoryView, error) {
 	return &resp.Inventory, nil
 }
 
-// UnregisterLicenseServer operates on LicenseServer
+// UnregisterLicenseServer unregisters a client node, or its server when uuid is empty.
 func (cli *ZSClient) UnregisterLicenseServer(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/license-server/client", uuid, string(deleteMode))
+	params := param.UnregisterLicenseServerParamDetail{}
+	if uuid != "" {
+		params.ClientAuthorizedNodeUuid = &uuid
+	}
+	return cli.UnregisterLicenseServerWithParams(deleteMode, params)
+}
+
+// UnregisterLicenseServerWithParams unregisters a node or the client's license server.
+func (cli *ZSClient) UnregisterLicenseServerWithParams(deleteMode param.DeleteMode, params param.UnregisterLicenseServerParamDetail) error {
+	query := url.Values{}
+	if params.ClientAuthorizedNodeUuid != nil {
+		if strings.TrimSpace(*params.ClientAuthorizedNodeUuid) == "" {
+			return fmt.Errorf("clientAuthorizedNodeUuid must not be empty when supplied")
+		}
+		query.Set("clientAuthorizedNodeUuid", *params.ClientAuthorizedNodeUuid)
+	}
+	return cli.deleteActionWithQuery("v1/license-server/client", "", "", deleteMode, query)
 }
 
 // GetLicenseNodeUsageDetails gets LicenseNodeUsageDetails by uuid
@@ -140,9 +177,21 @@ func (cli *ZSClient) GetLicenseUKeyStatus() (*view.UKeyInventoryView, error) {
 	return &resp, nil
 }
 
-// WithdrawLicenseCapacityApplication operates on WithdrawLicenseCapacityApplication
+// WithdrawLicenseCapacityApplication requires additional arguments.
+//
+// Deprecated: use WithdrawLicenseCapacityApplicationWithParams to supply the required fields.
 func (cli *ZSClient) WithdrawLicenseCapacityApplication(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/license-server/capacity-application", uuid, string(deleteMode))
+	return fmt.Errorf("WithdrawLicenseCapacityApplication requires additional arguments; use WithdrawLicenseCapacityApplicationWithParams")
+}
+
+// WithdrawLicenseCapacityApplicationWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) WithdrawLicenseCapacityApplicationWithParams(deleteMode param.DeleteMode, params param.WithdrawLicenseCapacityApplicationParamDetail) error {
+	query := url.Values{
+		"resourceUuidList":         params.ResourceUuidList,
+		"clientAuthorizedNodeUuid": {params.ClientAuthorizedNodeUuid},
+		"licenseType":              {params.LicenseType},
+	}
+	return cli.deleteActionWithQuery("v1/license-server/capacity-application", "", "", deleteMode, query, "resourceUuidList", "clientAuthorizedNodeUuid", "licenseType")
 }
 
 // VerifyLicenseServer operates on VerifyLicenseServer

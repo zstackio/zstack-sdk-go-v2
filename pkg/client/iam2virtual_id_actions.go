@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -150,14 +151,35 @@ func (cli *ZSClient) GetIAM2VirtualIDAPIPermission() (*view.GetIAM2VirtualIDAPIP
 	return &resp, nil
 }
 
-// RemoveIAM2VirtualIDsFromProjects removes IAM2VirtualIDsFromProjects
+// RemoveIAM2VirtualIDsFromProjects requires additional arguments.
+//
+// Deprecated: use RemoveIAM2VirtualIDsFromProjectsWithParams to supply the required fields.
 func (cli *ZSClient) RemoveIAM2VirtualIDsFromProjects(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/virtual-ids", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveIAM2VirtualIDsFromProjects requires additional arguments; use RemoveIAM2VirtualIDsFromProjectsWithParams")
 }
 
-// RemoveIAM2VirtualIDsFromProject removes IAM2VirtualIDsFromProject
+// RemoveIAM2VirtualIDsFromProjectsWithParams sends the required route and query parameters for RemoveIAM2VirtualIDsFromProjects.
+func (cli *ZSClient) RemoveIAM2VirtualIDsFromProjectsWithParams(deleteMode param.DeleteMode, params param.RemoveIAM2VirtualIDsFromProjectsParamDetail) error {
+	query := url.Values{
+		"projectUuids":   params.ProjectUuids,
+		"virtualIDUuids": params.VirtualIDUuids,
+	}
+	return cli.deleteActionWithQuery("v1/iam2/projects/virtual-ids", "", "", deleteMode, query, "projectUuids", "virtualIDUuids")
+}
+
+// RemoveIAM2VirtualIDsFromProject requires additional arguments.
+//
+// Deprecated: use RemoveIAM2VirtualIDsFromProjectWithParams to supply the required fields.
 func (cli *ZSClient) RemoveIAM2VirtualIDsFromProject(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveIAM2VirtualIDsFromProject requires additional arguments; use RemoveIAM2VirtualIDsFromProjectWithParams")
+}
+
+// RemoveIAM2VirtualIDsFromProjectWithParams sends the required route and query parameters for RemoveIAM2VirtualIDsFromProject.
+func (cli *ZSClient) RemoveIAM2VirtualIDsFromProjectWithParams(projectUuid string, deleteMode param.DeleteMode, params param.RemoveIAM2VirtualIDsFromProjectParamDetail) error {
+	query := url.Values{
+		"virtualIDUuids": params.VirtualIDUuids,
+	}
+	return cli.deleteActionWithQuery("v1/iam2/projects", projectUuid, "virtual-ids", deleteMode, query, "virtualIDUuids")
 }
 
 // CreateIAM2VirtualIDFromLdapUid creates IAM2VirtualIDFromLdapUid
@@ -169,14 +191,37 @@ func (cli *ZSClient) CreateIAM2VirtualIDFromLdapUid(params param.CreateIAM2Virtu
 	return &resp, nil
 }
 
-// RemoveRolesFromIAM2VirtualID removes RolesFromIAM2VirtualID
+// RemoveRolesFromIAM2VirtualID requires additional arguments.
+//
+// Deprecated: use RemoveRolesFromIAM2VirtualIDWithParams to supply the required fields.
 func (cli *ZSClient) RemoveRolesFromIAM2VirtualID(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/virtual-ids", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveRolesFromIAM2VirtualID requires additional arguments; use RemoveRolesFromIAM2VirtualIDWithParams")
 }
 
-// RemoveIAM2VirtualIDsFromOrganization removes IAM2VirtualIDsFromOrganization
+// RemoveRolesFromIAM2VirtualIDWithParams sends the required route and query parameters for RemoveRolesFromIAM2VirtualID.
+func (cli *ZSClient) RemoveRolesFromIAM2VirtualIDWithParams(virtualIDUuid string, deleteMode param.DeleteMode, params param.RemoveRolesFromIAM2VirtualIDParamDetail) error {
+	query := url.Values{
+		"roleUuids": params.RoleUuids,
+	}
+	if params.ProjectUuid != nil {
+		query.Set("projectUuid", *params.ProjectUuid)
+	}
+	return cli.deleteActionWithQuery("v1/iam2/projects/virtual-ids", virtualIDUuid, "roles", deleteMode, query, "roleUuids")
+}
+
+// RemoveIAM2VirtualIDsFromOrganization requires additional arguments.
+//
+// Deprecated: use RemoveIAM2VirtualIDsFromOrganizationWithParams to supply the required fields.
 func (cli *ZSClient) RemoveIAM2VirtualIDsFromOrganization(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/organizations", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveIAM2VirtualIDsFromOrganization requires additional arguments; use RemoveIAM2VirtualIDsFromOrganizationWithParams")
+}
+
+// RemoveIAM2VirtualIDsFromOrganizationWithParams sends the required route and query parameters for RemoveIAM2VirtualIDsFromOrganization.
+func (cli *ZSClient) RemoveIAM2VirtualIDsFromOrganizationWithParams(organizationUuid string, deleteMode param.DeleteMode, params param.RemoveIAM2VirtualIDsFromOrganizationParamDetail) error {
+	query := url.Values{
+		"virtualIDUuids": params.VirtualIDUuids,
+	}
+	return cli.deleteActionWithQuery("v1/iam2/organizations", organizationUuid, "virtual-ids", deleteMode, query, "virtualIDUuids")
 }
 
 // ChangeIAM2VirtualIDState changes IAM2VirtualIDState

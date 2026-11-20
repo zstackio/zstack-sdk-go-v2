@@ -3,6 +3,9 @@
 package client
 
 import (
+	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -21,9 +24,19 @@ func (cli *ZSClient) UpdateOssBucket(uuid string, params param.UpdateOssBucketPa
 	return &resp, nil
 }
 
-// DeleteOssBucketFileRemote deletes OssBucketFileRemote
+// DeleteOssBucketFileRemote requires additional arguments.
+//
+// Deprecated: use DeleteOssBucketFileRemoteWithParams to supply the required fields.
 func (cli *ZSClient) DeleteOssBucketFileRemote(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/hybrid/aliyun/oss-bucket-file/remote", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteOssBucketFileRemote requires additional arguments; use DeleteOssBucketFileRemoteWithParams")
+}
+
+// DeleteOssBucketFileRemoteWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteOssBucketFileRemoteWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteOssBucketFileRemoteParamDetail) error {
+	query := url.Values{
+		"fileName": {params.FileName},
+	}
+	return cli.deleteResourceWithQuery("v1/hybrid/aliyun/oss-bucket-file/remote", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query, "fileName")
 }
 
 // DeleteOssBucketRemote deletes OssBucketRemote

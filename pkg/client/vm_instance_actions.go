@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -308,9 +309,22 @@ func (cli *ZSClient) SetVmSecurityLevel(uuid string, params param.SetVmSecurityL
 	return &resp, nil
 }
 
-// DeleteVmStaticIp deletes VmStaticIp
+// DeleteVmStaticIp requires additional arguments.
+//
+// Deprecated: use DeleteVmStaticIpWithParams to supply the required fields.
 func (cli *ZSClient) DeleteVmStaticIp(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteVmStaticIp requires additional arguments; use DeleteVmStaticIpWithParams")
+}
+
+// DeleteVmStaticIpWithParams sends the required route and query parameters for DeleteVmStaticIp.
+func (cli *ZSClient) DeleteVmStaticIpWithParams(vmInstanceUuid string, deleteMode param.DeleteMode, params param.DeleteVmStaticIpParamDetail) error {
+	query := url.Values{
+		"l3NetworkUuid": {params.L3NetworkUuid},
+	}
+	if params.StaticIp != nil {
+		query.Set("staticIp", *params.StaticIp)
+	}
+	return cli.deleteActionWithQuery("v1/vm-instances", vmInstanceUuid, "static-ips", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "l3NetworkUuid")
 }
 
 // GetVmCapabilities gets VmCapabilities by uuid

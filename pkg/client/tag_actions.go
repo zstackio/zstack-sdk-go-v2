@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -14,9 +15,28 @@ func (cli *ZSClient) DeleteTag(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/tags", uuid, string(deleteMode))
 }
 
-// DetachTagFromResources operates on TagFromResources
-func (cli *ZSClient) DetachTagFromResources(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/tags", uuid, string(deleteMode))
+// DetachTagFromResources removes a tag's bindings from the specified resources.
+// resourceUuids must be nonempty; this operation does not delete the tag itself.
+func (cli *ZSClient) DetachTagFromResources(tagUuid string, deleteMode param.DeleteMode, resourceUuids []string) error {
+	if tagUuid == "" {
+		return fmt.Errorf("tagUuid is required")
+	}
+	if len(resourceUuids) == 0 {
+		return fmt.Errorf("resourceUuids is required")
+	}
+
+	query := url.Values{}
+	for _, uuid := range resourceUuids {
+		if uuid == "" {
+			return fmt.Errorf("resourceUuids must not contain empty UUIDs")
+		}
+		// Cloud treats comma-separated UUIDs as a single resource UUID.
+		query.Add("resourceUuids", uuid)
+	}
+	if deleteMode != "" {
+		query.Set("deleteMode", string(deleteMode))
+	}
+	return cli.DeleteWithSpec("v1/tags", tagUuid, "resources", query.Encode(), nil)
 }
 
 // AttachTagToResources operates on TagToResources

@@ -3,6 +3,8 @@
 package client
 
 import (
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -45,7 +47,15 @@ func (cli *ZSClient) DeleteModelServiceInstanceGroup(uuid string, deleteMode par
 	return cli.Delete("v1/ai/model-services/instances/groups", uuid, string(deleteMode))
 }
 
-// DeleteModelServiceInstanceGroups deletes ModelServiceInstanceGroups
+// DeleteModelServiceInstanceGroups sends one UUID to the collection endpoint.
 func (cli *ZSClient) DeleteModelServiceInstanceGroups(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/model-services/instances/groups", uuid, string(deleteMode))
+	return cli.DeleteModelServiceInstanceGroupsWithParams(deleteMode, param.DeleteModelServiceInstanceGroupsParamDetail{Uuids: []string{uuid}})
+}
+
+// DeleteModelServiceInstanceGroupsWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteModelServiceInstanceGroupsWithParams(deleteMode param.DeleteMode, params param.DeleteModelServiceInstanceGroupsParamDetail) error {
+	query := url.Values{
+		"uuids": params.Uuids,
+	}
+	return cli.deleteActionWithQuery("v1/ai/model-services/instances/groups", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "uuids")
 }

@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -52,7 +53,17 @@ func (cli *ZSClient) AddAttributesToIAM2VirtualIDGroup(uuid string, params param
 	return &resp, nil
 }
 
-// RemoveAttributesFromIAM2VirtualIDGroup removes AttributesFromIAM2VirtualIDGroup
+// RemoveAttributesFromIAM2VirtualIDGroup requires additional arguments.
+//
+// Deprecated: use RemoveAttributesFromIAM2VirtualIDGroupWithParams to supply the required fields.
 func (cli *ZSClient) RemoveAttributesFromIAM2VirtualIDGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveAttributesFromIAM2VirtualIDGroup requires additional arguments; use RemoveAttributesFromIAM2VirtualIDGroupWithParams")
+}
+
+// RemoveAttributesFromIAM2VirtualIDGroupWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) RemoveAttributesFromIAM2VirtualIDGroupWithParams(uuid string, deleteMode param.DeleteMode, params param.RemoveAttributesFromIAM2VirtualIDGroupParamDetail) error {
+	query := url.Values{
+		"attributeUuids": params.AttributeUuids,
+	}
+	return cli.deleteActionWithQuery("v1/iam2/projects/groups", uuid, "attributes", deleteMode, query, "attributeUuids")
 }

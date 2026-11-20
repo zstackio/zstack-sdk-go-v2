@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -42,9 +43,22 @@ func (cli *ZSClient) PageL2VxlanNetworkPool(params *param.QueryParam) ([]view.L2
 	return l2VxlanNetworkPools, total, err
 }
 
-// DeleteVxlanPoolRemoteVtep deletes VxlanPoolRemoteVtep
+// DeleteVxlanPoolRemoteVtep requires the VTEP address.
+//
+// Deprecated: use DeleteVxlanPoolRemoteVtepWithParams to specify the address.
 func (cli *ZSClient) DeleteVxlanPoolRemoteVtep(l2NetworkUuid string, clusterUuid string, deleteMode param.DeleteMode) error {
-	return cli.DeleteWithSpec("v1/l2-networks", l2NetworkUuid, fmt.Sprintf("clusters/%s/delete/remote-vtep-ip", clusterUuid), fmt.Sprintf("deleteMode=%s", deleteMode), nil)
+	return fmt.Errorf("DeleteVxlanPoolRemoteVtep requires remoteVtepIp; use DeleteVxlanPoolRemoteVtepWithParams")
+}
+
+// DeleteVxlanPoolRemoteVtepWithParams deletes one remote VTEP address.
+func (cli *ZSClient) DeleteVxlanPoolRemoteVtepWithParams(l2NetworkUuid, clusterUuid string, deleteMode param.DeleteMode, params param.DeleteVxlanPoolRemoteVtepParamDetail) error {
+	cluster, err := actionPathSegment("clusterUuid", clusterUuid)
+	if err != nil {
+		return err
+	}
+	query := url.Values{"remoteVtepIp": {params.RemoteVtepIp}}
+	return cli.deleteActionWithQuery("v1/l2-networks", l2NetworkUuid, "clusters/"+cluster+"/delete/remote-vtep-ip",
+		deleteModeOrDefault(deleteMode, params.DeleteMode), query, "remoteVtepIp")
 }
 
 // CreateL2HardwareVxlanNetworkPool creates L2HardwareVxlanNetworkPool

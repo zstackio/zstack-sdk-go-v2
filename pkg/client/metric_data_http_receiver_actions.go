@@ -3,6 +3,9 @@
 package client
 
 import (
+	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -43,9 +46,21 @@ func (cli *ZSClient) CreateMetricDataHttpReceiver(params param.CreateMetricDataH
 	return &resp, nil
 }
 
-// DeleteMetricData deletes MetricData
+// DeleteMetricData requires additional arguments.
+//
+// Deprecated: use DeleteMetricDataWithParams to supply the required fields.
 func (cli *ZSClient) DeleteMetricData(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/zwatch/metrics", uuid, string(deleteMode))
+	return fmt.Errorf("DeleteMetricData requires additional arguments; use DeleteMetricDataWithParams")
+}
+
+// DeleteMetricDataWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteMetricDataWithParams(deleteMode param.DeleteMode, params param.DeleteMetricDataParamDetail) error {
+	query := url.Values{
+		"namespace":  {params.Namespace},
+		"metricName": {params.MetricName},
+		"labels":     params.Labels,
+	}
+	return cli.deleteActionWithQuery("v1/zwatch/metrics", "", "", deleteMode, query, "namespace", "metricName")
 }
 
 // PutMetricData operates on PutMetricData

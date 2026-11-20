@@ -3,6 +3,8 @@
 package client
 
 import (
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -10,9 +12,21 @@ import (
 var _ = param.BaseParam{} // avoid unused import
 var _ = view.MapView{} // avoid unused import
 
-// DeleteBuildAppExportHistory deletes BuildAppExportHistory
+// DeleteBuildAppExportHistory sends the action with its default options.
 func (cli *ZSClient) DeleteBuildAppExportHistory(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/buildapp/exports", uuid, string(deleteMode))
+	return cli.DeleteBuildAppExportHistoryWithParams(uuid, deleteMode, param.DeleteBuildAppExportHistoryParamDetail{})
+}
+
+// DeleteBuildAppExportHistoryWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteBuildAppExportHistoryWithParams(buildAppUuid string, deleteMode param.DeleteMode, params param.DeleteBuildAppExportHistoryParamDetail) error {
+	query := url.Values{}
+	if params.ExportId != nil {
+		query.Set("exportId", *params.ExportId)
+	}
+	if params.BuildSystemUuid != nil {
+		query.Set("buildSystemUuid", *params.BuildSystemUuid)
+	}
+	return cli.deleteResourceWithQuery("v1/buildapp/exports", buildAppUuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 // QueryBuildAppExportHistory queries BuildAppExportHistory list
 func (cli *ZSClient) QueryBuildAppExportHistory(params *param.QueryParam) ([]view.BuildAppExportHistoryInventoryView, error) {

@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -64,14 +65,35 @@ func (cli *ZSClient) AddIAM2VirtualIDGroupToProjects(params param.AddIAM2Virtual
 	return &resp, nil
 }
 
-// RemoveIAM2VirtualIDsFromGroup removes IAM2VirtualIDsFromGroup
+// RemoveIAM2VirtualIDsFromGroup requires additional arguments.
+//
+// Deprecated: use RemoveIAM2VirtualIDsFromGroupWithParams to supply the required fields.
 func (cli *ZSClient) RemoveIAM2VirtualIDsFromGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveIAM2VirtualIDsFromGroup requires additional arguments; use RemoveIAM2VirtualIDsFromGroupWithParams")
 }
 
-// RemoveIAM2VirtualIDGroupFromProjects removes IAM2VirtualIDGroupFromProjects
+// RemoveIAM2VirtualIDsFromGroupWithParams sends the required route and query parameters for RemoveIAM2VirtualIDsFromGroup.
+func (cli *ZSClient) RemoveIAM2VirtualIDsFromGroupWithParams(groupUuid string, deleteMode param.DeleteMode, params param.RemoveIAM2VirtualIDsFromGroupParamDetail) error {
+	query := url.Values{
+		"virtualIDUuids": params.VirtualIDUuids,
+	}
+	return cli.deleteActionWithQuery("v1/iam2/projects/groups", groupUuid, "virtual-ids", deleteMode, query, "virtualIDUuids")
+}
+
+// RemoveIAM2VirtualIDGroupFromProjects requires additional arguments.
+//
+// Deprecated: use RemoveIAM2VirtualIDGroupFromProjectsWithParams to supply the required fields.
 func (cli *ZSClient) RemoveIAM2VirtualIDGroupFromProjects(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveIAM2VirtualIDGroupFromProjects requires additional arguments; use RemoveIAM2VirtualIDGroupFromProjectsWithParams")
+}
+
+// RemoveIAM2VirtualIDGroupFromProjectsWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) RemoveIAM2VirtualIDGroupFromProjectsWithParams(deleteMode param.DeleteMode, params param.RemoveIAM2VirtualIDGroupFromProjectsParamDetail) error {
+	query := url.Values{
+		"projectUuids": params.ProjectUuids,
+		"groupUuids":   params.GroupUuids,
+	}
+	return cli.deleteActionWithQuery("v1/iam2/projects/groups", "", "", deleteMode, query, "projectUuids", "groupUuids")
 }
 
 // ChangeIAM2VirtualIDGroupState changes IAM2VirtualIDGroupState
@@ -103,7 +125,20 @@ func (cli *ZSClient) AddIAM2VirtualIDsToGroup(groupUuid string, params param.Add
 	return &resp, nil
 }
 
-// RemoveRolesFromIAM2VirtualIDGroup removes RolesFromIAM2VirtualIDGroup
+// RemoveRolesFromIAM2VirtualIDGroup requires additional arguments.
+//
+// Deprecated: use RemoveRolesFromIAM2VirtualIDGroupWithParams to supply the required fields.
 func (cli *ZSClient) RemoveRolesFromIAM2VirtualIDGroup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/iam2/projects/groups", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveRolesFromIAM2VirtualIDGroup requires additional arguments; use RemoveRolesFromIAM2VirtualIDGroupWithParams")
+}
+
+// RemoveRolesFromIAM2VirtualIDGroupWithParams sends the required route and query parameters for RemoveRolesFromIAM2VirtualIDGroup.
+func (cli *ZSClient) RemoveRolesFromIAM2VirtualIDGroupWithParams(groupUuid string, deleteMode param.DeleteMode, params param.RemoveRolesFromIAM2VirtualIDGroupParamDetail) error {
+	query := url.Values{
+		"roleUuids": params.RoleUuids,
+	}
+	if params.ProjectUuid != nil {
+		query.Set("projectUuid", *params.ProjectUuid)
+	}
+	return cli.deleteActionWithQuery("v1/iam2/projects/groups", groupUuid, "roles", deleteMode, query, "roleUuids")
 }

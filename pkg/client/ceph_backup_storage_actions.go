@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -50,7 +51,17 @@ func (cli *ZSClient) AddMonToCephBackupStorage(uuid string, params param.AddMonT
 	return &resp, nil
 }
 
-// RemoveMonFromCephBackupStorage removes MonFromCephBackupStorage
+// RemoveMonFromCephBackupStorage requires additional arguments.
+//
+// Deprecated: use RemoveMonFromCephBackupStorageWithParams to supply the required fields.
 func (cli *ZSClient) RemoveMonFromCephBackupStorage(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/backup-storage/ceph", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveMonFromCephBackupStorage requires additional arguments; use RemoveMonFromCephBackupStorageWithParams")
+}
+
+// RemoveMonFromCephBackupStorageWithParams sends the required route and query parameters for RemoveMonFromCephBackupStorage.
+func (cli *ZSClient) RemoveMonFromCephBackupStorageWithParams(uuid string, deleteMode param.DeleteMode, params param.RemoveMonFromCephBackupStorageParamDetail) error {
+	query := url.Values{
+		"monHostnames": params.MonHostnames,
+	}
+	return cli.deleteActionWithQuery("v1/backup-storage/ceph", uuid, "mons", deleteMode, query, "monHostnames")
 }

@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -78,7 +79,17 @@ func (cli *ZSClient) AttachPolicyToUser(userUuid string, params param.AttachPoli
 	return &resp, nil
 }
 
-// DetachPoliciesFromUser operates on PoliciesFromUser
+// DetachPoliciesFromUser requires additional arguments.
+//
+// Deprecated: use DetachPoliciesFromUserWithParams to supply the required fields.
 func (cli *ZSClient) DetachPoliciesFromUser(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/accounts/users", uuid, string(deleteMode))
+	return fmt.Errorf("DetachPoliciesFromUser requires additional arguments; use DetachPoliciesFromUserWithParams")
+}
+
+// DetachPoliciesFromUserWithParams sends the required route and query parameters for DetachPoliciesFromUser.
+func (cli *ZSClient) DetachPoliciesFromUserWithParams(userUuid string, deleteMode param.DeleteMode, params param.DetachPoliciesFromUserParamDetail) error {
+	query := url.Values{
+		"policyUuids": params.PolicyUuids,
+	}
+	return cli.deleteActionWithQuery("v1/accounts/users", userUuid, "policies", deleteMode, query, "policyUuids")
 }

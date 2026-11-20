@@ -4,6 +4,8 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -108,9 +110,17 @@ func (cli *ZSClient) DeployModelService(uuid string, params param.DeployModelSer
 	return &resp, nil
 }
 
-// DeleteModelServices deletes ModelServices
+// DeleteModelServices sends one UUID to the collection endpoint.
 func (cli *ZSClient) DeleteModelServices(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/ai/model-services/", uuid, string(deleteMode))
+	return cli.DeleteModelServicesWithParams(deleteMode, param.DeleteModelServicesParamDetail{Uuids: []string{uuid}})
+}
+
+// DeleteModelServicesWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteModelServicesWithParams(deleteMode param.DeleteMode, params param.DeleteModelServicesParamDetail) error {
+	query := url.Values{
+		"uuids": params.Uuids,
+	}
+	return cli.deleteActionWithQuery("v1/ai/model-services/", "", "", deleteModeOrDefault(deleteMode, params.DeleteMode), query, "uuids")
 }
 
 // RestartModelServiceGroups operates on RestartModelServiceGroups

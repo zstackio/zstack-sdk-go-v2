@@ -3,6 +3,8 @@
 package client
 
 import (
+	"net/url"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -45,7 +47,15 @@ func (cli *ZSClient) UpdateModelEvaluationTask(uuid string, params param.UpdateM
 	return &resp, nil
 }
 
-// DeleteModelEvaluationTasks deletes ModelEvaluationTasks
+// DeleteModelEvaluationTasks sends one UUID to the collection endpoint.
 func (cli *ZSClient) DeleteModelEvaluationTasks(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/model-evaluation-tasks", uuid, string(deleteMode))
+	return cli.DeleteModelEvaluationTasksWithParams(deleteMode, param.DeleteModelEvaluationTasksParamDetail{Uuids: []string{uuid}})
+}
+
+// DeleteModelEvaluationTasksWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteModelEvaluationTasksWithParams(deleteMode param.DeleteMode, params param.DeleteModelEvaluationTasksParamDetail) error {
+	query := url.Values{
+		"uuids": params.Uuids,
+	}
+	return cli.deleteActionWithQuery("v1/model-evaluation-tasks", "", "", deleteMode, query, "uuids")
 }

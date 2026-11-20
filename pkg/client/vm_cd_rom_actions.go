@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -82,9 +83,18 @@ func (cli *ZSClient) GetCandidateVmForAttachingIso(uuid string) (*view.VmInstanc
 	return &resp, nil
 }
 
-// DetachIsoFromVmInstance operates on IsoFromVmInstance
+// DetachIsoFromVmInstance sends the action with its default options.
 func (cli *ZSClient) DetachIsoFromVmInstance(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vm-instances", uuid, string(deleteMode))
+	return cli.DetachIsoFromVmInstanceWithParams(uuid, deleteMode, param.DetachIsoFromVmInstanceParamDetail{})
+}
+
+// DetachIsoFromVmInstanceWithParams sends the required route and query parameters for DetachIsoFromVmInstance.
+func (cli *ZSClient) DetachIsoFromVmInstanceWithParams(vmInstanceUuid string, deleteMode param.DeleteMode, params param.DetachIsoFromVmInstanceParamDetail) error {
+	query := url.Values{}
+	if params.IsoUuid != nil {
+		query.Set("isoUuid", *params.IsoUuid)
+	}
+	return cli.deleteActionWithQuery("v1/vm-instances", vmInstanceUuid, "iso", deleteMode, query)
 }
 
 // SetVmInstanceDefaultCdRom operates on VmInstanceDefaultCdRom

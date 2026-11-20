@@ -3,6 +3,9 @@
 package client
 
 import (
+	"net/url"
+	"strconv"
+
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
 )
@@ -18,9 +21,18 @@ func (cli *ZSClient) UpdateResourcePrice(uuid string, params param.UpdateResourc
 	return &resp, nil
 }
 
-// DeleteResourcePrice deletes ResourcePrice
+// DeleteResourcePrice sends the action with its default options.
 func (cli *ZSClient) DeleteResourcePrice(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/billings/prices", uuid, string(deleteMode))
+	return cli.DeleteResourcePriceWithParams(uuid, deleteMode, param.DeleteResourcePriceParamDetail{})
+}
+
+// DeleteResourcePriceWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteResourcePriceWithParams(uuid string, deleteMode param.DeleteMode, params param.DeleteResourcePriceParamDetail) error {
+	query := url.Values{}
+	if params.CutoffPrice != nil {
+		query.Set("cutoffPrice", strconv.FormatBool(*params.CutoffPrice))
+	}
+	return cli.deleteResourceWithQuery("v1/billings/prices", uuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 
 // QueryResourcePrice queries ResourcePrice list

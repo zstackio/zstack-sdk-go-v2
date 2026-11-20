@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -37,9 +38,19 @@ func (cli *ZSClient) DeleteTicketFlowCollection(uuid string, deleteMode param.De
 	return cli.Delete("v1/tickets/flow-collections", uuid, string(deleteMode))
 }
 
-// RemoveTicketTypesFromTicketFlowCollection removes TicketTypesFromTicketFlowCollection
+// RemoveTicketTypesFromTicketFlowCollection requires additional arguments.
+//
+// Deprecated: use RemoveTicketTypesFromTicketFlowCollectionWithParams to supply the required fields.
 func (cli *ZSClient) RemoveTicketTypesFromTicketFlowCollection(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/tickets/flow-collections", uuid, string(deleteMode))
+	return fmt.Errorf("RemoveTicketTypesFromTicketFlowCollection requires additional arguments; use RemoveTicketTypesFromTicketFlowCollectionWithParams")
+}
+
+// RemoveTicketTypesFromTicketFlowCollectionWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) RemoveTicketTypesFromTicketFlowCollectionWithParams(ticketFlowCollectionUuid string, deleteMode param.DeleteMode, params param.RemoveTicketTypesFromTicketFlowCollectionParamDetail) error {
+	query := url.Values{
+		"ticketTypeUuids": params.TicketTypeUuids,
+	}
+	return cli.deleteActionWithQuery("v1/tickets/flow-collections", ticketFlowCollectionUuid, "ticket-types", deleteMode, query, "ticketTypeUuids")
 }
 
 // ChangeTicketFlowCollectionState changes TicketFlowCollectionState

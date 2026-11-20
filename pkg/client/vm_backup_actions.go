@@ -4,6 +4,8 @@ package client
 
 import (
 	"fmt"
+	"net/url"
+	"strconv"
 
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/param"
 	"github.com/zstackio/zstack-sdk-go-v2/pkg/view"
@@ -44,9 +46,20 @@ func (cli *ZSClient) RecoverVmBackupFromImageStoreBackupStorage(groupUuid string
 	return &resp, nil
 }
 
-// DeleteVmBackup deletes VmBackup
+// DeleteVmBackup sends the action with its default options.
 func (cli *ZSClient) DeleteVmBackup(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/vm-backups", uuid, string(deleteMode))
+	return cli.DeleteVmBackupWithParams(uuid, deleteMode, param.DeleteVmBackupParamDetail{})
+}
+
+// DeleteVmBackupWithParams sends the DELETE request with its operation parameters.
+func (cli *ZSClient) DeleteVmBackupWithParams(groupUuid string, deleteMode param.DeleteMode, params param.DeleteVmBackupParamDetail) error {
+	query := url.Values{
+		"backupStorageUuids": params.BackupStorageUuids,
+	}
+	if params.HandleDependency != nil {
+		query.Set("handleDependency", strconv.FormatBool(*params.HandleDependency))
+	}
+	return cli.deleteResourceWithQuery("v1/vm-backups", groupUuid, deleteModeOrDefault(deleteMode, params.DeleteMode), query)
 }
 
 // SyncVmBackup operates on VmBackup
