@@ -42,15 +42,6 @@ type SetServiceTypeOnHostNetworkBondingParam struct {
 	BaseParam
 	Params SetServiceTypeOnHostNetworkBondingParamDetail `json:"params"`
 }
-// GetCreateEcsImageProgressParamDetail GetCreateEcsImageProgress detail param
-type GetCreateEcsImageProgressParamDetail struct {
-}
-
-// GetCreateEcsImageProgressParam GetCreateEcsImageProgress request param
-type GetCreateEcsImageProgressParam struct {
-	BaseParam
-	Params GetCreateEcsImageProgressParamDetail `json:"getCreateEcsImageProgress"`
-}
 // AddAttributesToIAM2OrganizationParamDetail AddAttributesToIAM2Organization detail param
 type AddAttributesToIAM2OrganizationParamDetail struct {
 	Attributes []AttributeParam `json:"attributes" validate:"required"`
@@ -122,19 +113,6 @@ type GetInterdependentL3NetworksBackupStoragesParam struct {
 	BaseParam
 	Params GetInterdependentL3NetworksBackupStoragesParamDetail `json:"getInterdependentL3NetworksBackupStorages"`
 }
-// DeleteBackupFileInPublicParamDetail DeleteBackupFileInPublic detail param
-type DeleteBackupFileInPublicParamDetail struct {
-	Type string `json:"type" validate:"required"`
-	RegionId string `json:"regionId" validate:"required"`
-	File string `json:"file" validate:"required"`
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteBackupFileInPublicParam DeleteBackupFileInPublic request param
-type DeleteBackupFileInPublicParam struct {
-	BaseParam
-	Params DeleteBackupFileInPublicParamDetail `json:"deleteBackupFileInPublic"`
-}
 // BatchCreateIAM2VirtualIDFromConfigFileParamDetail BatchCreateIAM2VirtualIDFromConfigFile detail param
 type BatchCreateIAM2VirtualIDFromConfigFileParamDetail struct {
 	VirtualIDInfos string `json:"virtualIDInfos" validate:"required"`
@@ -171,17 +149,6 @@ type UpdateEmailMonitorTriggerActionParamDetail struct {
 type UpdateEmailMonitorTriggerActionParam struct {
 	BaseParam
 	Params UpdateEmailMonitorTriggerActionParamDetail `json:"updateEmailMonitorTriggerAction"`
-}
-// SyncDataCenterFromRemoteParamDetail SyncDataCenterFromRemote detail param
-type SyncDataCenterFromRemoteParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncDataCenterFromRemoteParam SyncDataCenterFromRemote request param
-type SyncDataCenterFromRemoteParam struct {
-	BaseParam
-	Params SyncDataCenterFromRemoteParamDetail `json:"syncDataCenterFromRemote"`
 }
 // ChangeBackupStorageStateParamDetail ChangeBackupStorageState detail param
 type ChangeBackupStorageStateParamDetail struct {
@@ -270,23 +237,6 @@ type UpdateAlarmDataParam struct {
 	BaseParam
 	Params UpdateAlarmDataParamDetail `json:"updateAlarmData"`
 }
-// CreateVpnIpsecConfigParamDetail CreateVpnIpsecConfig detail param
-type CreateVpnIpsecConfigParamDetail struct {
-	Name string `json:"name" validate:"required"`
-	Pfs *string `json:"pfs,omitempty"`
-	EncAlg *string `json:"encAlg,omitempty"`
-	AuthAlg *string `json:"authAlg,omitempty"`
-	Lifetime *int `json:"lifetime,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateVpnIpsecConfigParam CreateVpnIpsecConfig request param
-type CreateVpnIpsecConfigParam struct {
-	BaseParam
-	Params CreateVpnIpsecConfigParamDetail `json:"params"`
-}
 // SNSEmailTestConnectionParamDetail SNSEmailTestConnection detail param
 type SNSEmailTestConnectionParamDetail struct {
 	Emails []string `json:"emails,omitempty"`
@@ -350,16 +300,6 @@ type ChangeSlbGroupMonitorIpsParamDetail struct {
 type ChangeSlbGroupMonitorIpsParam struct {
 	BaseParam
 	Params ChangeSlbGroupMonitorIpsParamDetail `json:"changeSlbGroupMonitorIps"`
-}
-// DeleteModelEvaluationTasksParamDetail DeleteModelEvaluationTasks detail param
-type DeleteModelEvaluationTasksParamDetail struct {
-	Uuids []string `json:"uuids" validate:"required"`
-}
-
-// DeleteModelEvaluationTasksParam DeleteModelEvaluationTasks request param
-type DeleteModelEvaluationTasksParam struct {
-	BaseParam
-	Params DeleteModelEvaluationTasksParamDetail `json:"deleteModelEvaluationTasks"`
 }
 // AttachL3NetworkToVmParamDetail AttachL3NetworkToVm detail param
 type AttachL3NetworkToVmParamDetail struct {
@@ -499,28 +439,6 @@ type PrimaryStorageMigrateVolumeParam struct {
 	BaseParam
 	Params PrimaryStorageMigrateVolumeParamDetail `json:"primaryStorageMigrateVolume"`
 }
-// DeleteHybridEipRemoteParamDetail DeleteHybridEipRemote detail param
-type DeleteHybridEipRemoteParamDetail struct {
-	Type string `json:"type" validate:"required"`
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteHybridEipRemoteParam DeleteHybridEipRemote request param
-type DeleteHybridEipRemoteParam struct {
-	BaseParam
-	Params DeleteHybridEipRemoteParamDetail `json:"deleteHybridEipRemote"`
-}
-// DeleteModelServiceInstanceGroupsParamDetail DeleteModelServiceInstanceGroups detail param
-type DeleteModelServiceInstanceGroupsParamDetail struct {
-	Uuids []string `json:"uuids" validate:"required"`
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteModelServiceInstanceGroupsParam DeleteModelServiceInstanceGroups request param
-type DeleteModelServiceInstanceGroupsParam struct {
-	BaseParam
-	Params DeleteModelServiceInstanceGroupsParamDetail `json:"deleteModelServiceInstanceGroups"`
-}
 // GetVmBootOrderParamDetail GetVmBootOrder detail param
 type GetVmBootOrderParamDetail struct {
 }
@@ -550,18 +468,6 @@ type GetDatabaseBackupFromImageStoreParamDetail struct {
 type GetDatabaseBackupFromImageStoreParam struct {
 	BaseParam
 	Params GetDatabaseBackupFromImageStoreParamDetail `json:"getDatabaseBackupFromImageStore"`
-}
-// SyncEcsVSwitchFromRemoteParamDetail SyncEcsVSwitchFromRemote detail param
-type SyncEcsVSwitchFromRemoteParamDetail struct {
-	VSwitchId *string `json:"vSwitchId,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncEcsVSwitchFromRemoteParam SyncEcsVSwitchFromRemote request param
-type SyncEcsVSwitchFromRemoteParam struct {
-	BaseParam
-	Params SyncEcsVSwitchFromRemoteParamDetail `json:"params"`
 }
 // LocateLocalRaidPhysicalDriveParamDetail LocateLocalRaidPhysicalDrive detail param
 type LocateLocalRaidPhysicalDriveParamDetail struct {
@@ -630,16 +536,6 @@ type RefreshCaptchaParamDetail struct {
 type RefreshCaptchaParam struct {
 	BaseParam
 	Params RefreshCaptchaParamDetail `json:"refreshCaptcha"`
-}
-// DeleteEcsVSwitchInLocalParamDetail DeleteEcsVSwitchInLocal detail param
-type DeleteEcsVSwitchInLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsVSwitchInLocalParam DeleteEcsVSwitchInLocal request param
-type DeleteEcsVSwitchInLocalParam struct {
-	BaseParam
-	Params DeleteEcsVSwitchInLocalParamDetail `json:"deleteEcsVSwitchInLocal"`
 }
 // DeleteTagParamDetail DeleteTag detail param
 type DeleteTagParamDetail struct {
@@ -823,17 +719,6 @@ type AddLabelToAlarmParamDetail struct {
 type AddLabelToAlarmParam struct {
 	BaseParam
 	Params AddLabelToAlarmParamDetail `json:"params"`
-}
-// SyncAliyunRouterInterfaceFromRemoteParamDetail SyncAliyunRouterInterfaceFromRemote detail param
-type SyncAliyunRouterInterfaceFromRemoteParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncAliyunRouterInterfaceFromRemoteParam SyncAliyunRouterInterfaceFromRemote request param
-type SyncAliyunRouterInterfaceFromRemoteParam struct {
-	BaseParam
-	Params SyncAliyunRouterInterfaceFromRemoteParamDetail `json:"syncAliyunRouterInterfaceFromRemote"`
 }
 // ExportVmOvaPackageParamDetail ExportVmOvaPackage detail param
 type ExportVmOvaPackageParamDetail struct {
@@ -1028,17 +913,6 @@ type RemoveDnsFromVpcRouterParam struct {
 	BaseParam
 	Params RemoveDnsFromVpcRouterParamDetail `json:"removeDnsFromVpcRouter"`
 }
-// DeleteHybridEipFromLocalParamDetail DeleteHybridEipFromLocal detail param
-type DeleteHybridEipFromLocalParamDetail struct {
-	Type string `json:"type" validate:"required"`
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteHybridEipFromLocalParam DeleteHybridEipFromLocal request param
-type DeleteHybridEipFromLocalParam struct {
-	BaseParam
-	Params DeleteHybridEipFromLocalParamDetail `json:"deleteHybridEipFromLocal"`
-}
 // GetAvailableTriggersParamDetail GetAvailableTriggers detail param
 type GetAvailableTriggersParamDetail struct {
 }
@@ -1056,38 +930,6 @@ type ReimageVmInstanceParamDetail struct {
 type ReimageVmInstanceParam struct {
 	BaseParam
 	Params ReimageVmInstanceParamDetail `json:"reimageVmInstance"`
-}
-// UpdateDatasetsParamDetail UpdateDatasets detail param
-type UpdateDatasetsParamDetail struct {
-	UpdateDatasetStructs []UpdateDatasets_UpdateDatasetStructParam `json:"updateDatasetStructs" validate:"required"`
-}
-
-// UpdateDatasetsParam UpdateDatasets request param
-type UpdateDatasetsParam struct {
-	BaseParam
-	Params UpdateDatasetsParamDetail `json:"updateDatasets"`
-}
-// SyncEcsSecurityGroupRuleFromRemoteParamDetail SyncEcsSecurityGroupRuleFromRemote detail param
-type SyncEcsSecurityGroupRuleFromRemoteParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncEcsSecurityGroupRuleFromRemoteParam SyncEcsSecurityGroupRuleFromRemote request param
-type SyncEcsSecurityGroupRuleFromRemoteParam struct {
-	BaseParam
-	Params SyncEcsSecurityGroupRuleFromRemoteParamDetail `json:"syncEcsSecurityGroupRuleFromRemote"`
-}
-// SyncIdentityFromRemoteParamDetail SyncIdentityFromRemote detail param
-type SyncIdentityFromRemoteParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncIdentityFromRemoteParam SyncIdentityFromRemote request param
-type SyncIdentityFromRemoteParam struct {
-	BaseParam
-	Params SyncIdentityFromRemoteParamDetail `json:"syncIdentityFromRemote"`
 }
 // SetImageStoreBackupStorageQuotaParamDetail SetImageStoreBackupStorageQuota detail param
 type SetImageStoreBackupStorageQuotaParamDetail struct {
@@ -1151,16 +993,6 @@ type GetIAM2OrganizationVirtualIDNumberParam struct {
 	BaseParam
 	Params GetIAM2OrganizationVirtualIDNumberParamDetail `json:"getIAM2OrganizationVirtualIDNumber"`
 }
-// DeleteEcsInstanceLocalParamDetail DeleteEcsInstanceLocal detail param
-type DeleteEcsInstanceLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsInstanceLocalParam DeleteEcsInstanceLocal request param
-type DeleteEcsInstanceLocalParam struct {
-	BaseParam
-	Params DeleteEcsInstanceLocalParamDetail `json:"deleteEcsInstanceLocal"`
-}
 // ChangePortMirrorStateParamDetail ChangePortMirrorState detail param
 type ChangePortMirrorStateParamDetail struct {
 	StateEvent string `json:"stateEvent" validate:"required"`
@@ -1221,31 +1053,6 @@ type GenerateAccountBillingParam struct {
 	BaseParam
 	Params GenerateAccountBillingParamDetail `json:"generateAccountBilling"`
 }
-// SyncAliyunVirtualRouterFromRemoteParamDetail SyncAliyunVirtualRouterFromRemote detail param
-type SyncAliyunVirtualRouterFromRemoteParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncAliyunVirtualRouterFromRemoteParam SyncAliyunVirtualRouterFromRemote request param
-type SyncAliyunVirtualRouterFromRemoteParam struct {
-	BaseParam
-	Params SyncAliyunVirtualRouterFromRemoteParamDetail `json:"syncAliyunVirtualRouterFromRemote"`
-}
-// GetInvocationRecordsParamDetail GetInvocationRecords detail param
-type GetInvocationRecordsParamDetail struct {
-	RecordUuid *string `json:"recordUuid,omitempty"`
-	VmInstanceUuid *string `json:"vmInstanceUuid,omitempty"`
-	IncludeOutput *bool `json:"includeOutput,omitempty"`
-	Limit *int `json:"limit,omitempty"`
-	Start *int `json:"start,omitempty"`
-}
-
-// GetInvocationRecordsParam GetInvocationRecords request param
-type GetInvocationRecordsParam struct {
-	BaseParam
-	Params GetInvocationRecordsParamDetail `json:"getInvocationRecords"`
-}
 // ChangeRoleStateParamDetail ChangeRoleState detail param
 type ChangeRoleStateParamDetail struct {
 	StateEvent string `json:"stateEvent" validate:"required"`
@@ -1264,24 +1071,6 @@ type GetVRouterFlowCounterParamDetail struct {
 type GetVRouterFlowCounterParam struct {
 	BaseParam
 	Params GetVRouterFlowCounterParamDetail `json:"getVRouterFlowCounter"`
-}
-// CreateAliyunRouterInterfaceRemoteParamDetail CreateAliyunRouterInterfaceRemote detail param
-type CreateAliyunRouterInterfaceRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	AccessPointUuid *string `json:"accessPointUuid,omitempty"`
-	Spec *string `json:"spec,omitempty"`
-	VRouterUuid string `json:"vRouterUuid" validate:"required"`
-	RouterType string `json:"routerType" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	Name string `json:"name" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateAliyunRouterInterfaceRemoteParam CreateAliyunRouterInterfaceRemote request param
-type CreateAliyunRouterInterfaceRemoteParam struct {
-	BaseParam
-	Params CreateAliyunRouterInterfaceRemoteParamDetail `json:"params"`
 }
 // GetBareMetal2SupportedBootModeParamDetail GetBareMetal2SupportedBootMode detail param
 type GetBareMetal2SupportedBootModeParamDetail struct {
@@ -1311,17 +1100,6 @@ type GetChainTaskParamDetail struct {
 type GetChainTaskParam struct {
 	BaseParam
 	Params GetChainTaskParamDetail `json:"getChainTask"`
-}
-// UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail UpdateConnectionBetweenL3NetWorkAndAliyunVSwitch detail param
-type UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail struct {
-	Name string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-}
-
-// UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParam UpdateConnectionBetweenL3NetWorkAndAliyunVSwitch request param
-type UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParam struct {
-	BaseParam
-	Params UpdateConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail `json:"updateConnectionBetweenL3NetWorkAndAliyunVSwitch"`
 }
 // ChangeHostPasswordParamDetail ChangeHostPassword detail param
 type ChangeHostPasswordParamDetail struct {
@@ -1459,16 +1237,6 @@ type DetachL3NetworkFromVmParam struct {
 	BaseParam
 	Params DetachL3NetworkFromVmParamDetail `json:"detachL3NetworkFromVm"`
 }
-// DeleteVpcUserVpnGatewayLocalParamDetail DeleteVpcUserVpnGatewayLocal detail param
-type DeleteVpcUserVpnGatewayLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVpcUserVpnGatewayLocalParam DeleteVpcUserVpnGatewayLocal request param
-type DeleteVpcUserVpnGatewayLocalParam struct {
-	BaseParam
-	Params DeleteVpcUserVpnGatewayLocalParamDetail `json:"deleteVpcUserVpnGatewayLocal"`
-}
 // CreateVRouterOspfAreaParamDetail CreateVRouterOspfArea detail param
 type CreateVRouterOspfAreaParamDetail struct {
 	AreaId string `json:"areaId" validate:"required"`
@@ -1594,16 +1362,6 @@ type RemoveTicketTypesFromTicketFlowCollectionParam struct {
 	BaseParam
 	Params RemoveTicketTypesFromTicketFlowCollectionParamDetail `json:"removeTicketTypesFromTicketFlowCollection"`
 }
-// DeleteEcsVSwitchRemoteParamDetail DeleteEcsVSwitchRemote detail param
-type DeleteEcsVSwitchRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsVSwitchRemoteParam DeleteEcsVSwitchRemote request param
-type DeleteEcsVSwitchRemoteParam struct {
-	BaseParam
-	Params DeleteEcsVSwitchRemoteParamDetail `json:"deleteEcsVSwitchRemote"`
-}
 // SetVmStaticIpParamDetail SetVmStaticIp detail param
 type SetVmStaticIpParamDetail struct {
 	L3NetworkUuid string `json:"l3NetworkUuid" validate:"required"`
@@ -1649,16 +1407,6 @@ type ValidateDiskOfferingUserConfigParam struct {
 	BaseParam
 	Params ValidateDiskOfferingUserConfigParamDetail `json:"validateDiskOfferingUserConfig"`
 }
-// DeleteVpcVpnGatewayLocalParamDetail DeleteVpcVpnGatewayLocal detail param
-type DeleteVpcVpnGatewayLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVpcVpnGatewayLocalParam DeleteVpcVpnGatewayLocal request param
-type DeleteVpcVpnGatewayLocalParam struct {
-	BaseParam
-	Params DeleteVpcVpnGatewayLocalParamDetail `json:"deleteVpcVpnGatewayLocal"`
-}
 // SetVmRDPParamDetail SetVmRDP detail param
 type SetVmRDPParamDetail struct {
 	Enable bool `json:"enable" validate:"required"`
@@ -1679,22 +1427,6 @@ type RunSchedulerTriggerParam struct {
 	BaseParam
 	Params RunSchedulerTriggerParamDetail `json:"runSchedulerTrigger"`
 }
-// CreateAliyunVpcVirtualRouterEntryRemoteParamDetail CreateAliyunVpcVirtualRouterEntryRemote detail param
-type CreateAliyunVpcVirtualRouterEntryRemoteParamDetail struct {
-	VRouterUuid string `json:"vRouterUuid" validate:"required"`
-	DstCidrBlock string `json:"dstCidrBlock" validate:"required"`
-	NextHopUuid string `json:"nextHopUuid" validate:"required"`
-	NextHopType string `json:"nextHopType" validate:"required"`
-	VRouterType string `json:"vRouterType" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateAliyunVpcVirtualRouterEntryRemoteParam CreateAliyunVpcVirtualRouterEntryRemote request param
-type CreateAliyunVpcVirtualRouterEntryRemoteParam struct {
-	BaseParam
-	Params CreateAliyunVpcVirtualRouterEntryRemoteParamDetail `json:"params"`
-}
 // PowerOnHostParamDetail PowerOnHost detail param
 type PowerOnHostParamDetail struct {
 	ReturnEarly *bool `json:"returnEarly,omitempty"`
@@ -1704,16 +1436,6 @@ type PowerOnHostParamDetail struct {
 type PowerOnHostParam struct {
 	BaseParam
 	Params PowerOnHostParamDetail `json:"powerOnHost"`
-}
-// DeleteAliyunSnapshotFromRemoteParamDetail DeleteAliyunSnapshotFromRemote detail param
-type DeleteAliyunSnapshotFromRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAliyunSnapshotFromRemoteParam DeleteAliyunSnapshotFromRemote request param
-type DeleteAliyunSnapshotFromRemoteParam struct {
-	BaseParam
-	Params DeleteAliyunSnapshotFromRemoteParamDetail `json:"deleteAliyunSnapshotFromRemote"`
 }
 // RemoveCertificateFromLoadBalancerListenerParamDetail RemoveCertificateFromLoadBalancerListener detail param
 type RemoveCertificateFromLoadBalancerListenerParamDetail struct {
@@ -2102,27 +1824,6 @@ type GetInterfaceServiceTypeStatisticParam struct {
 	BaseParam
 	Params GetInterfaceServiceTypeStatisticParamDetail `json:"getInterfaceServiceTypeStatistic"`
 }
-// StartConnectionBetweenAliyunRouterInterfaceParamDetail StartConnectionBetweenAliyunRouterInterface detail param
-type StartConnectionBetweenAliyunRouterInterfaceParamDetail struct {
-	VrouterInterfaceUuid string `json:"vrouterInterfaceUuid" validate:"required"`
-}
-
-// StartConnectionBetweenAliyunRouterInterfaceParam StartConnectionBetweenAliyunRouterInterface request param
-type StartConnectionBetweenAliyunRouterInterfaceParam struct {
-	BaseParam
-	Params StartConnectionBetweenAliyunRouterInterfaceParamDetail `json:"startConnectionBetweenAliyunRouterInterface"`
-}
-// DeleteModelsParamDetail DeleteModels detail param
-type DeleteModelsParamDetail struct {
-	Uuids []string `json:"uuids" validate:"required"`
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteModelsParam DeleteModels request param
-type DeleteModelsParam struct {
-	BaseParam
-	Params DeleteModelsParamDetail `json:"deleteModels"`
-}
 // ListVmsFromSchedulingStateParamDetail ListVmsFromSchedulingState detail param
 type ListVmsFromSchedulingStateParamDetail struct {
 	RuleUuid string `json:"ruleUuid" validate:"required"`
@@ -2303,15 +2004,6 @@ type GetVolumeIoThreadPinParam struct {
 	BaseParam
 	Params GetVolumeIoThreadPinParamDetail `json:"getVolumeIoThreadPin"`
 }
-// GetConnectionAccessPointFromRemoteParamDetail GetConnectionAccessPointFromRemote detail param
-type GetConnectionAccessPointFromRemoteParamDetail struct {
-}
-
-// GetConnectionAccessPointFromRemoteParam GetConnectionAccessPointFromRemote request param
-type GetConnectionAccessPointFromRemoteParam struct {
-	BaseParam
-	Params GetConnectionAccessPointFromRemoteParamDetail `json:"getConnectionAccessPointFromRemote"`
-}
 // GetVpcAttachedOspfParamDetail GetVpcAttachedOspf detail param
 type GetVpcAttachedOspfParamDetail struct {
 	Limit *int `json:"limit,omitempty"`
@@ -2371,16 +2063,6 @@ type GetIAM2ProjectContainerImageTagsParamDetail struct {
 type GetIAM2ProjectContainerImageTagsParam struct {
 	BaseParam
 	Params GetIAM2ProjectContainerImageTagsParamDetail `json:"getIAM2ProjectContainerImageTags"`
-}
-// DeleteAliyunDiskFromRemoteParamDetail DeleteAliyunDiskFromRemote detail param
-type DeleteAliyunDiskFromRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAliyunDiskFromRemoteParam DeleteAliyunDiskFromRemote request param
-type DeleteAliyunDiskFromRemoteParam struct {
-	BaseParam
-	Params DeleteAliyunDiskFromRemoteParamDetail `json:"deleteAliyunDiskFromRemote"`
 }
 // GetVersionParamDetail GetVersion detail param
 type GetVersionParamDetail struct {
@@ -2554,18 +2236,6 @@ type AddEmailAddressToSNSEmailEndpointParam struct {
 	BaseParam
 	Params AddEmailAddressToSNSEmailEndpointParamDetail `json:"params"`
 }
-// BackupDatabaseToPublicCloudParamDetail BackupDatabaseToPublicCloud detail param
-type BackupDatabaseToPublicCloudParamDetail struct {
-	Type string `json:"type" validate:"required"`
-	RegionId string `json:"regionId" validate:"required"`
-	Local *bool `json:"local,omitempty"`
-}
-
-// BackupDatabaseToPublicCloudParam BackupDatabaseToPublicCloud request param
-type BackupDatabaseToPublicCloudParam struct {
-	BaseParam
-	Params BackupDatabaseToPublicCloudParamDetail `json:"params"`
-}
 // RecoveryImageFromImageStoreBackupStorageParamDetail RecoveryImageFromImageStoreBackupStorage detail param
 type RecoveryImageFromImageStoreBackupStorageParamDetail struct {
 	SrcBackupStorageUuid string `json:"srcBackupStorageUuid" validate:"required"`
@@ -2664,17 +2334,6 @@ type RemoveVRouterNetworksFromOspfAreaParam struct {
 	BaseParam
 	Params RemoveVRouterNetworksFromOspfAreaParamDetail `json:"removeVRouterNetworksFromOspfArea"`
 }
-// GetAliyunNasMountTargetRemoteParamDetail GetAliyunNasMountTargetRemote detail param
-type GetAliyunNasMountTargetRemoteParamDetail struct {
-	NasFSUuid string `json:"nasFSUuid" validate:"required"`
-	MountDomain *string `json:"mountDomain,omitempty"`
-}
-
-// GetAliyunNasMountTargetRemoteParam GetAliyunNasMountTargetRemote request param
-type GetAliyunNasMountTargetRemoteParam struct {
-	BaseParam
-	Params GetAliyunNasMountTargetRemoteParamDetail `json:"getAliyunNasMountTargetRemote"`
-}
 // CreateImageGroupFromVmInstanceParamDetail CreateImageGroupFromVmInstance detail param
 type CreateImageGroupFromVmInstanceParamDetail struct {
 	VmInstanceUuid string `json:"vmInstanceUuid" validate:"required"`
@@ -2688,15 +2347,6 @@ type CreateImageGroupFromVmInstanceParamDetail struct {
 type CreateImageGroupFromVmInstanceParam struct {
 	BaseParam
 	Params CreateImageGroupFromVmInstanceParamDetail `json:"params"`
-}
-// TerminateVirtualBorderRouterRemoteParamDetail TerminateVirtualBorderRouterRemote detail param
-type TerminateVirtualBorderRouterRemoteParamDetail struct {
-}
-
-// TerminateVirtualBorderRouterRemoteParam TerminateVirtualBorderRouterRemote request param
-type TerminateVirtualBorderRouterRemoteParam struct {
-	BaseParam
-	Params TerminateVirtualBorderRouterRemoteParamDetail `json:"terminateVirtualBorderRouterRemote"`
 }
 // DeleteVmBackupParamDetail DeleteVmBackup detail param
 type DeleteVmBackupParamDetail struct {
@@ -2795,28 +2445,6 @@ type UpdateEventDataParam struct {
 	BaseParam
 	Params UpdateEventDataParamDetail `json:"updateEventData"`
 }
-// SyncHybridEipFromRemoteParamDetail SyncHybridEipFromRemote detail param
-type SyncHybridEipFromRemoteParamDetail struct {
-	Type string `json:"type" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncHybridEipFromRemoteParam SyncHybridEipFromRemote request param
-type SyncHybridEipFromRemoteParam struct {
-	BaseParam
-	Params SyncHybridEipFromRemoteParamDetail `json:"syncHybridEipFromRemote"`
-}
-// DeleteAliyunRouteEntryRemoteParamDetail DeleteAliyunRouteEntryRemote detail param
-type DeleteAliyunRouteEntryRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAliyunRouteEntryRemoteParam DeleteAliyunRouteEntryRemote request param
-type DeleteAliyunRouteEntryRemoteParam struct {
-	BaseParam
-	Params DeleteAliyunRouteEntryRemoteParamDetail `json:"deleteAliyunRouteEntryRemote"`
-}
 // UngenerateSriovPciDevicesParamDetail UngenerateSriovPciDevices detail param
 type UngenerateSriovPciDevicesParamDetail struct {
 }
@@ -2846,17 +2474,6 @@ type AttachMonitorTriggerActionToTriggerParamDetail struct {
 type AttachMonitorTriggerActionToTriggerParam struct {
 	BaseParam
 	Params AttachMonitorTriggerActionToTriggerParamDetail `json:"params"`
-}
-// GetAliyunNasFileSystemRemoteParamDetail GetAliyunNasFileSystemRemote detail param
-type GetAliyunNasFileSystemRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	FileSystemId *string `json:"fileSystemId,omitempty"`
-}
-
-// GetAliyunNasFileSystemRemoteParam GetAliyunNasFileSystemRemote request param
-type GetAliyunNasFileSystemRemoteParam struct {
-	BaseParam
-	Params GetAliyunNasFileSystemRemoteParamDetail `json:"getAliyunNasFileSystemRemote"`
 }
 // UpdateOrganizationQuotaParamDetail UpdateOrganizationQuota detail param
 type UpdateOrganizationQuotaParamDetail struct {
@@ -3005,16 +2622,6 @@ type RemoveUserFromGroupParam struct {
 	BaseParam
 	Params RemoveUserFromGroupParamDetail `json:"removeUserFromGroup"`
 }
-// DeleteEcsVpcRemoteParamDetail DeleteEcsVpcRemote detail param
-type DeleteEcsVpcRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsVpcRemoteParam DeleteEcsVpcRemote request param
-type DeleteEcsVpcRemoteParam struct {
-	BaseParam
-	Params DeleteEcsVpcRemoteParamDetail `json:"deleteEcsVpcRemote"`
-}
 // SyncDatabaseBackupFromImageStoreBackupStorageParamDetail SyncDatabaseBackupFromImageStoreBackupStorage detail param
 type SyncDatabaseBackupFromImageStoreBackupStorageParamDetail struct {
 	SrcBackupStorageUuid string `json:"srcBackupStorageUuid" validate:"required"`
@@ -3061,16 +2668,6 @@ type ExportImageFromBackupStorageParamDetail struct {
 type ExportImageFromBackupStorageParam struct {
 	BaseParam
 	Params ExportImageFromBackupStorageParamDetail `json:"exportImageFromBackupStorage"`
-}
-// GetModelCenterServicesParamDetail GetModelCenterServices detail param
-type GetModelCenterServicesParamDetail struct {
-	ModelCenterUuids []string `json:"modelCenterUuids,omitempty"`
-}
-
-// GetModelCenterServicesParam GetModelCenterServices request param
-type GetModelCenterServicesParam struct {
-	BaseParam
-	Params GetModelCenterServicesParamDetail `json:"getModelCenterServices"`
 }
 // CreateFirewallIpSetTemplateParamDetail CreateFirewallIpSetTemplate detail param
 type CreateFirewallIpSetTemplateParamDetail struct {
@@ -3284,21 +2881,6 @@ type ChangeAccessKeyStateParam struct {
 	BaseParam
 	Params ChangeAccessKeyStateParamDetail `json:"changeAccessKeyState"`
 }
-// DeployDistributedModelServiceParamDetail DeployDistributedModelService detail param
-type DeployDistributedModelServiceParamDetail struct {
-	ModelServices []ModelServiceParam `json:"modelServices" validate:"required"`
-	ServiceCreationStrategy string `json:"serviceCreationStrategy" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// DeployDistributedModelServiceParam DeployDistributedModelService request param
-type DeployDistributedModelServiceParam struct {
-	BaseParam
-	Params DeployDistributedModelServiceParamDetail `json:"deployDistributedModelService"`
-}
 // GetIAM2SystemAttributesParamDetail GetIAM2SystemAttributes detail param
 type GetIAM2SystemAttributesParamDetail struct {
 }
@@ -3431,27 +3013,6 @@ type CreateVmFromVolumeBackupParam struct {
 	BaseParam
 	Params CreateVmFromVolumeBackupParamDetail `json:"params"`
 }
-// GetIdentityZoneFromRemoteParamDetail GetIdentityZoneFromRemote detail param
-type GetIdentityZoneFromRemoteParamDetail struct {
-	Type *string `json:"type,omitempty"`
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	RegionId *string `json:"regionId,omitempty"`
-}
-
-// GetIdentityZoneFromRemoteParam GetIdentityZoneFromRemote request param
-type GetIdentityZoneFromRemoteParam struct {
-	BaseParam
-	Params GetIdentityZoneFromRemoteParamDetail `json:"getIdentityZoneFromRemote"`
-}
-// GetEcsInstanceVncUrlParamDetail GetEcsInstanceVncUrl detail param
-type GetEcsInstanceVncUrlParamDetail struct {
-}
-
-// GetEcsInstanceVncUrlParam GetEcsInstanceVncUrl request param
-type GetEcsInstanceVncUrlParam struct {
-	BaseParam
-	Params GetEcsInstanceVncUrlParamDetail `json:"getEcsInstanceVncUrl"`
-}
 // AddMonToCephPrimaryStorageParamDetail AddMonToCephPrimaryStorage detail param
 type AddMonToCephPrimaryStorageParamDetail struct {
 	MonUrls []string `json:"monUrls" validate:"required"`
@@ -3544,17 +3105,6 @@ type CheckBaremetalChassisConfigFileParam struct {
 	BaseParam
 	Params CheckBaremetalChassisConfigFileParamDetail `json:"params"`
 }
-// DeleteOssBucketFileRemoteParamDetail DeleteOssBucketFileRemote detail param
-type DeleteOssBucketFileRemoteParamDetail struct {
-	FileName string `json:"fileName" validate:"required"`
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteOssBucketFileRemoteParam DeleteOssBucketFileRemote request param
-type DeleteOssBucketFileRemoteParam struct {
-	BaseParam
-	Params DeleteOssBucketFileRemoteParamDetail `json:"deleteOssBucketFileRemote"`
-}
 // ChangeMulticastRouterStateParamDetail ChangeMulticastRouterState detail param
 type ChangeMulticastRouterStateParamDetail struct {
 	StateEvent string `json:"stateEvent" validate:"required"`
@@ -3564,15 +3114,6 @@ type ChangeMulticastRouterStateParamDetail struct {
 type ChangeMulticastRouterStateParam struct {
 	BaseParam
 	Params ChangeMulticastRouterStateParamDetail `json:"changeMulticastRouterState"`
-}
-// GetMaaSUsageParamDetail GetMaaSUsage detail param
-type GetMaaSUsageParamDetail struct {
-}
-
-// GetMaaSUsageParam GetMaaSUsage request param
-type GetMaaSUsageParam struct {
-	BaseParam
-	Params GetMaaSUsageParamDetail `json:"getMaaSUsage"`
 }
 // GetFreeIpParamDetail GetFreeIp detail param
 type GetFreeIpParamDetail struct {
@@ -3588,16 +3129,6 @@ type GetFreeIpParamDetail struct {
 type GetFreeIpParam struct {
 	BaseParam
 	Params GetFreeIpParamDetail `json:"getFreeIp"`
-}
-// DeleteOssBucketRemoteParamDetail DeleteOssBucketRemote detail param
-type DeleteOssBucketRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteOssBucketRemoteParam DeleteOssBucketRemote request param
-type DeleteOssBucketRemoteParam struct {
-	BaseParam
-	Params DeleteOssBucketRemoteParamDetail `json:"deleteOssBucketRemote"`
 }
 // CreateL2PortGroupParamDetail CreateL2PortGroup detail param
 type CreateL2PortGroupParamDetail struct {
@@ -3660,43 +3191,6 @@ type CheckBareMetal2IpmiChassisConfigFileParamDetail struct {
 type CheckBareMetal2IpmiChassisConfigFileParam struct {
 	BaseParam
 	Params CheckBareMetal2IpmiChassisConfigFileParamDetail `json:"params"`
-}
-// DeleteVirtualRouterLocalParamDetail DeleteVirtualRouterLocal detail param
-type DeleteVirtualRouterLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVirtualRouterLocalParam DeleteVirtualRouterLocal request param
-type DeleteVirtualRouterLocalParam struct {
-	BaseParam
-	Params DeleteVirtualRouterLocalParamDetail `json:"deleteVirtualRouterLocal"`
-}
-// DeleteVpcIkeConfigLocalParamDetail DeleteVpcIkeConfigLocal detail param
-type DeleteVpcIkeConfigLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVpcIkeConfigLocalParam DeleteVpcIkeConfigLocal request param
-type DeleteVpcIkeConfigLocalParam struct {
-	BaseParam
-	Params DeleteVpcIkeConfigLocalParamDetail `json:"deleteVpcIkeConfigLocal"`
-}
-// CreateOssBucketRemoteParamDetail CreateOssBucketRemote detail param
-type CreateOssBucketRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	BucketName string `json:"bucketName" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	OssDomain *string `json:"ossDomain,omitempty"`
-	OssKey *string `json:"ossKey,omitempty"`
-	OssSecret *string `json:"ossSecret,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateOssBucketRemoteParam CreateOssBucketRemote request param
-type CreateOssBucketRemoteParam struct {
-	BaseParam
-	Params CreateOssBucketRemoteParamDetail `json:"params"`
 }
 // AddSimulatorPrimaryStorageParamDetail AddSimulatorPrimaryStorage detail param
 type AddSimulatorPrimaryStorageParamDetail struct {
@@ -3890,23 +3384,6 @@ type GetAllMetricMetadataParam struct {
 	BaseParam
 	Params GetAllMetricMetadataParamDetail `json:"getAllMetricMetadata"`
 }
-// AddOssBucketFromRemoteParamDetail AddOssBucketFromRemote detail param
-type AddOssBucketFromRemoteParamDetail struct {
-	BucketName string `json:"bucketName" validate:"required"`
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	OssDomain *string `json:"ossDomain,omitempty"`
-	OssKey *string `json:"ossKey,omitempty"`
-	OssSecret *string `json:"ossSecret,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// AddOssBucketFromRemoteParam AddOssBucketFromRemote request param
-type AddOssBucketFromRemoteParam struct {
-	BaseParam
-	Params AddOssBucketFromRemoteParamDetail `json:"params"`
-}
 // SyncVmBackupParamDetail SyncVmBackup detail param
 type SyncVmBackupParamDetail struct {
 }
@@ -3924,28 +3401,6 @@ type RefreshGuestOsMetadataParamDetail struct {
 type RefreshGuestOsMetadataParam struct {
 	BaseParam
 	Params RefreshGuestOsMetadataParamDetail `json:"refreshGuestOsMetadata"`
-}
-// GCAliyunSnapshotRemoteParamDetail GCAliyunSnapshotRemote detail param
-type GCAliyunSnapshotRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// GCAliyunSnapshotRemoteParam GCAliyunSnapshotRemote request param
-type GCAliyunSnapshotRemoteParam struct {
-	BaseParam
-	Params GCAliyunSnapshotRemoteParamDetail `json:"params"`
-}
-// DownloadBackupFileFromPublicCloudParamDetail DownloadBackupFileFromPublicCloud detail param
-type DownloadBackupFileFromPublicCloudParamDetail struct {
-	RegionId string `json:"regionId" validate:"required"`
-	File string `json:"file" validate:"required"`
-	Type string `json:"type" validate:"required"`
-}
-
-// DownloadBackupFileFromPublicCloudParam DownloadBackupFileFromPublicCloud request param
-type DownloadBackupFileFromPublicCloudParam struct {
-	BaseParam
-	Params DownloadBackupFileFromPublicCloudParamDetail `json:"params"`
 }
 // AddIAM2VirtualIDsToProjectsParamDetail AddIAM2VirtualIDsToProjects detail param
 type AddIAM2VirtualIDsToProjectsParamDetail struct {
@@ -4085,19 +3540,6 @@ type CreateIAM2ProjectFromTemplateParam struct {
 	BaseParam
 	Params CreateIAM2ProjectFromTemplateParamDetail `json:"params"`
 }
-// AddConnectionAccessPointFromRemoteParamDetail AddConnectionAccessPointFromRemote detail param
-type AddConnectionAccessPointFromRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	AccessPointId string `json:"accessPointId" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// AddConnectionAccessPointFromRemoteParam AddConnectionAccessPointFromRemote request param
-type AddConnectionAccessPointFromRemoteParam struct {
-	BaseParam
-	Params AddConnectionAccessPointFromRemoteParamDetail `json:"params"`
-}
 // AttachSshKeyPairToVmInstanceParamDetail AttachSshKeyPairToVmInstance detail param
 type AttachSshKeyPairToVmInstanceParamDetail struct {
 }
@@ -4167,16 +3609,6 @@ type ConvertVmFromForeignHypervisorParam struct {
 	BaseParam
 	Params ConvertVmFromForeignHypervisorParamDetail `json:"params"`
 }
-// DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail DeleteConnectionBetweenL3NetWorkAndAliyunVSwitch detail param
-type DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParam DeleteConnectionBetweenL3NetWorkAndAliyunVSwitch request param
-type DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParam struct {
-	BaseParam
-	Params DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchParamDetail `json:"deleteConnectionBetweenL3NetWorkAndAliyunVSwitch"`
-}
 // RestartResourceStackParamDetail RestartResourceStack detail param
 type RestartResourceStackParamDetail struct {
 }
@@ -4185,18 +3617,6 @@ type RestartResourceStackParamDetail struct {
 type RestartResourceStackParam struct {
 	BaseParam
 	Params RestartResourceStackParamDetail `json:"restartResourceStack"`
-}
-// SyncEcsImageFromRemoteParamDetail SyncEcsImageFromRemote detail param
-type SyncEcsImageFromRemoteParamDetail struct {
-	Type *string `json:"type,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncEcsImageFromRemoteParam SyncEcsImageFromRemote request param
-type SyncEcsImageFromRemoteParam struct {
-	BaseParam
-	Params SyncEcsImageFromRemoteParamDetail `json:"params"`
 }
 // AttachPoliciesToUserParamDetail AttachPoliciesToUser detail param
 type AttachPoliciesToUserParamDetail struct {
@@ -4237,15 +3657,6 @@ type ResizeRootVolumeParamDetail struct {
 type ResizeRootVolumeParam struct {
 	BaseParam
 	Params ResizeRootVolumeParamDetail `json:"resizeRootVolume"`
-}
-// GetVpcVpnConfigurationFromRemoteParamDetail GetVpcVpnConfigurationFromRemote detail param
-type GetVpcVpnConfigurationFromRemoteParamDetail struct {
-}
-
-// GetVpcVpnConfigurationFromRemoteParam GetVpcVpnConfigurationFromRemote request param
-type GetVpcVpnConfigurationFromRemoteParam struct {
-	BaseParam
-	Params GetVpcVpnConfigurationFromRemoteParamDetail `json:"getVpcVpnConfigurationFromRemote"`
 }
 // CreateImageGroupFromImageParamDetail CreateImageGroupFromImage detail param
 type CreateImageGroupFromImageParamDetail struct {
@@ -4373,18 +3784,6 @@ type CleanInvalidLdapIAM2BindingParam struct {
 	BaseParam
 	Params CleanInvalidLdapIAM2BindingParamDetail `json:"cleanInvalidLdapIAM2Binding"`
 }
-// UpdateHybridEipParamDetail UpdateHybridEip detail param
-type UpdateHybridEipParamDetail struct {
-	Name string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type string `json:"type" validate:"required"`
-}
-
-// UpdateHybridEipParam UpdateHybridEip request param
-type UpdateHybridEipParam struct {
-	BaseParam
-	Params UpdateHybridEipParamDetail `json:"updateHybridEip"`
-}
 // GetVpcAttachedIpsecParamDetail GetVpcAttachedIpsec detail param
 type GetVpcAttachedIpsecParamDetail struct {
 	Limit *int `json:"limit,omitempty"`
@@ -4434,16 +3833,6 @@ type GetHostMultipathTopologyParam struct {
 	BaseParam
 	Params GetHostMultipathTopologyParamDetail `json:"getHostMultipathTopology"`
 }
-// DeleteEcsImageRemoteParamDetail DeleteEcsImageRemote detail param
-type DeleteEcsImageRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsImageRemoteParam DeleteEcsImageRemote request param
-type DeleteEcsImageRemoteParam struct {
-	BaseParam
-	Params DeleteEcsImageRemoteParamDetail `json:"deleteEcsImageRemote"`
-}
 // GetHostNetworkFactsParamDetail GetHostNetworkFacts detail param
 type GetHostNetworkFactsParamDetail struct {
 }
@@ -4462,24 +3851,6 @@ type CleanUpTrashOnBackupStorageParamDetail struct {
 type CleanUpTrashOnBackupStorageParam struct {
 	BaseParam
 	Params CleanUpTrashOnBackupStorageParamDetail `json:"cleanUpTrashOnBackupStorage"`
-}
-// CreateConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail CreateConnectionBetweenL3NetworkAndAliyunVSwitch detail param
-type CreateConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
-	L3networkUuid string `json:"l3networkUuid" validate:"required"`
-	VpcUuid string `json:"vpcUuid" validate:"required"`
-	VbrUuid string `json:"vbrUuid" validate:"required"`
-	CpeIp string `json:"cpeIp" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	Direction string `json:"direction" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateConnectionBetweenL3NetworkAndAliyunVSwitchParam CreateConnectionBetweenL3NetworkAndAliyunVSwitch request param
-type CreateConnectionBetweenL3NetworkAndAliyunVSwitchParam struct {
-	BaseParam
-	Params CreateConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail `json:"params"`
 }
 // DetachPriceTableFromAccountParamDetail DetachPriceTableFromAccount detail param
 type DetachPriceTableFromAccountParamDetail struct {
@@ -4645,16 +4016,6 @@ type DetachBareMetal2ProvisionNetworkFromClusterParam struct {
 	BaseParam
 	Params DetachBareMetal2ProvisionNetworkFromClusterParamDetail `json:"detachBareMetal2ProvisionNetworkFromCluster"`
 }
-// DeleteAliyunDiskFromLocalParamDetail DeleteAliyunDiskFromLocal detail param
-type DeleteAliyunDiskFromLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAliyunDiskFromLocalParam DeleteAliyunDiskFromLocal request param
-type DeleteAliyunDiskFromLocalParam struct {
-	BaseParam
-	Params DeleteAliyunDiskFromLocalParamDetail `json:"deleteAliyunDiskFromLocal"`
-}
 // GetResourceNamesParamDetail GetResourceNames detail param
 type GetResourceNamesParamDetail struct {
 	Uuids []string `json:"uuids" validate:"required"`
@@ -4694,17 +4055,6 @@ type GetResourceConfigsParamDetail struct {
 type GetResourceConfigsParam struct {
 	BaseParam
 	Params GetResourceConfigsParamDetail `json:"getResourceConfigs"`
-}
-// SyncVpcUserVpnGatewayFromRemoteParamDetail SyncVpcUserVpnGatewayFromRemote detail param
-type SyncVpcUserVpnGatewayFromRemoteParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncVpcUserVpnGatewayFromRemoteParam SyncVpcUserVpnGatewayFromRemote request param
-type SyncVpcUserVpnGatewayFromRemoteParam struct {
-	BaseParam
-	Params SyncVpcUserVpnGatewayFromRemoteParamDetail `json:"syncVpcUserVpnGatewayFromRemote"`
 }
 // DetachPrimaryStorageFromClusterParamDetail DetachPrimaryStorageFromCluster detail param
 type DetachPrimaryStorageFromClusterParamDetail struct {
@@ -4756,55 +4106,6 @@ type GetActiveAlarmStatusParam struct {
 	BaseParam
 	Params GetActiveAlarmStatusParamDetail `json:"getActiveAlarmStatus"`
 }
-// DeployModelEvalServiceParamDetail DeployModelEvalService detail param
-type DeployModelEvalServiceParamDetail struct {
-	TaskType string `json:"taskType" validate:"required"`
-	Limits int `json:"limits" validate:"required"`
-	Temperature *float32 `json:"temperature,omitempty"`
-	TopK *int `json:"topK,omitempty"`
-	TopP *float32 `json:"topP,omitempty"`
-	MaxNewTokens *int `json:"maxNewTokens,omitempty"`
-	RepetitionPenalty *float32 `json:"repetitionPenalty,omitempty"`
-	MaxLength *int `json:"maxLength,omitempty"`
-	Prompt *string `json:"prompt,omitempty"`
-	Model *string `json:"model,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Parallel *int `json:"parallel,omitempty"`
-	LogEveryQuery *int `json:"logEveryQuery,omitempty"`
-	Api *string `json:"api,omitempty"`
-	RequestHeaders map[string]string `json:"requestHeaders,omitempty"`
-	ConnectTimeout *int `json:"connectTimeout,omitempty"`
-	ReadTimeout *int `json:"readTimeout,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ModelUuid *string `json:"modelUuid,omitempty"`
-	ZoneUuid string `json:"zoneUuid" validate:"required"`
-	VmImageUuid *string `json:"vmImageUuid,omitempty"`
-	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
-	DatasetUuids []string `json:"datasetUuids,omitempty"`
-	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
-	DockerImage *string `json:"dockerImage,omitempty"`
-	CpuNum *int `json:"cpuNum,omitempty"`
-	Name string `json:"name" validate:"required"`
-	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
-	StartupParameters map[string]string `json:"startupParameters,omitempty"`
-	Type string `json:"type" validate:"required"`
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
-	MemorySize *int64 `json:"memorySize,omitempty"`
-	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
-	ServiceBootUptime *int `json:"serviceBootUptime,omitempty"`
-	ServiceLivez *string `json:"serviceLivez,omitempty"`
-	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
-	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
-	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// DeployModelEvalServiceParam DeployModelEvalService request param
-type DeployModelEvalServiceParam struct {
-	BaseParam
-	Params DeployModelEvalServiceParamDetail `json:"deployModelEvalService"`
-}
 // AttachNvmeServerToClusterParamDetail AttachNvmeServerToCluster detail param
 type AttachNvmeServerToClusterParamDetail struct {
 }
@@ -4846,18 +4147,6 @@ type GetLicenseAddOnsParamDetail struct {
 type GetLicenseAddOnsParam struct {
 	BaseParam
 	Params GetLicenseAddOnsParamDetail `json:"getLicenseAddOns"`
-}
-// SyncAliyunSnapshotRemoteParamDetail SyncAliyunSnapshotRemote detail param
-type SyncAliyunSnapshotRemoteParamDetail struct {
-	SnapshotId *string `json:"snapshotId,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncAliyunSnapshotRemoteParam SyncAliyunSnapshotRemote request param
-type SyncAliyunSnapshotRemoteParam struct {
-	BaseParam
-	Params SyncAliyunSnapshotRemoteParamDetail `json:"params"`
 }
 // UpdateTicketRequestParamDetail UpdateTicketRequest detail param
 type UpdateTicketRequestParamDetail struct {
@@ -4930,15 +4219,6 @@ type AttachGuestToolsIsoToVmParam struct {
 	BaseParam
 	Params AttachGuestToolsIsoToVmParamDetail `json:"attachGuestToolsIsoToVm"`
 }
-// DetachAliyunKeyParamDetail DetachAliyunKey detail param
-type DetachAliyunKeyParamDetail struct {
-}
-
-// DetachAliyunKeyParam DetachAliyunKey request param
-type DetachAliyunKeyParam struct {
-	BaseParam
-	Params DetachAliyunKeyParamDetail `json:"detachAliyunKey"`
-}
 // DeleteBuildAppParamDetail DeleteBuildApp detail param
 type DeleteBuildAppParamDetail struct {
 	DeleteMode *string `json:"deleteMode,omitempty"`
@@ -4989,16 +4269,6 @@ type GetHostIommuStateParam struct {
 	BaseParam
 	Params GetHostIommuStateParamDetail `json:"getHostIommuState"`
 }
-// DeleteVirtualBorderRouterLocalParamDetail DeleteVirtualBorderRouterLocal detail param
-type DeleteVirtualBorderRouterLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVirtualBorderRouterLocalParam DeleteVirtualBorderRouterLocal request param
-type DeleteVirtualBorderRouterLocalParam struct {
-	BaseParam
-	Params DeleteVirtualBorderRouterLocalParamDetail `json:"deleteVirtualBorderRouterLocal"`
-}
 // GetMetricDataParamDetail GetMetricData detail param
 type GetMetricDataParamDetail struct {
 	Namespace string `json:"namespace" validate:"required"`
@@ -5026,17 +4296,6 @@ type EnableCbtTaskParamDetail struct {
 type EnableCbtTaskParam struct {
 	BaseParam
 	Params EnableCbtTaskParamDetail `json:"params"`
-}
-// GetAliyunNasAccessGroupRemoteParamDetail GetAliyunNasAccessGroupRemote detail param
-type GetAliyunNasAccessGroupRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	GroupName *string `json:"groupName,omitempty"`
-}
-
-// GetAliyunNasAccessGroupRemoteParam GetAliyunNasAccessGroupRemote request param
-type GetAliyunNasAccessGroupRemoteParam struct {
-	BaseParam
-	Params GetAliyunNasAccessGroupRemoteParamDetail `json:"getAliyunNasAccessGroupRemote"`
 }
 // CheckBuildAppParametersParamDetail CheckBuildAppParameters detail param
 type CheckBuildAppParametersParamDetail struct {
@@ -5215,17 +4474,6 @@ type GetZWatchAlertHistogramParam struct {
 	BaseParam
 	Params GetZWatchAlertHistogramParamDetail `json:"getZWatchAlertHistogram"`
 }
-// DeleteAliyunRouterInterfaceRemoteParamDetail DeleteAliyunRouterInterfaceRemote detail param
-type DeleteAliyunRouterInterfaceRemoteParamDetail struct {
-	VRouterType string `json:"vRouterType" validate:"required"`
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAliyunRouterInterfaceRemoteParam DeleteAliyunRouterInterfaceRemote request param
-type DeleteAliyunRouterInterfaceRemoteParam struct {
-	BaseParam
-	Params DeleteAliyunRouterInterfaceRemoteParamDetail `json:"deleteAliyunRouterInterfaceRemote"`
-}
 // SetImageBootModeParamDetail SetImageBootMode detail param
 type SetImageBootModeParamDetail struct {
 	BootMode string `json:"bootMode" validate:"required"`
@@ -5244,22 +4492,6 @@ type DetachAutoScalingTemplateFromGroupParamDetail struct {
 type DetachAutoScalingTemplateFromGroupParam struct {
 	BaseParam
 	Params DetachAutoScalingTemplateFromGroupParamDetail `json:"detachAutoScalingTemplateFromGroup"`
-}
-// UpdateVirtualBorderRouterRemoteParamDetail UpdateVirtualBorderRouterRemote detail param
-type UpdateVirtualBorderRouterRemoteParamDetail struct {
-	LocalGatewayIp *string `json:"localGatewayIp,omitempty"`
-	PeerGatewayIp *string `json:"peerGatewayIp,omitempty"`
-	PeeringSubnetMask *string `json:"peeringSubnetMask,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	VlanId *string `json:"vlanId,omitempty"`
-	CircuitCode *string `json:"circuitCode,omitempty"`
-}
-
-// UpdateVirtualBorderRouterRemoteParam UpdateVirtualBorderRouterRemote request param
-type UpdateVirtualBorderRouterRemoteParam struct {
-	BaseParam
-	Params UpdateVirtualBorderRouterRemoteParamDetail `json:"updateVirtualBorderRouterRemote"`
 }
 // GetVmsCapabilitiesParamDetail GetVmsCapabilities detail param
 type GetVmsCapabilitiesParamDetail struct {
@@ -5312,22 +4544,6 @@ type ShareResourceParamDetail struct {
 type ShareResourceParam struct {
 	BaseParam
 	Params ShareResourceParamDetail `json:"shareResource"`
-}
-// CreateEcsVpcRemoteParamDetail CreateEcsVpcRemote detail param
-type CreateEcsVpcRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	CidrBlock string `json:"cidrBlock" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	VRouterName string `json:"vRouterName" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateEcsVpcRemoteParam CreateEcsVpcRemote request param
-type CreateEcsVpcRemoteParam struct {
-	BaseParam
-	Params CreateEcsVpcRemoteParamDetail `json:"params"`
 }
 // GetAccountQuotaUsageParamDetail GetAccountQuotaUsage detail param
 type GetAccountQuotaUsageParamDetail struct {
@@ -5388,39 +4604,6 @@ type CreateVmFromCdpBackupParamDetail struct {
 type CreateVmFromCdpBackupParam struct {
 	BaseParam
 	Params CreateVmFromCdpBackupParamDetail `json:"createVmFromCdpBackup"`
-}
-// SyncVpcVpnConnectionFromRemoteParamDetail SyncVpcVpnConnectionFromRemote detail param
-type SyncVpcVpnConnectionFromRemoteParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncVpcVpnConnectionFromRemoteParam SyncVpcVpnConnectionFromRemote request param
-type SyncVpcVpnConnectionFromRemoteParam struct {
-	BaseParam
-	Params SyncVpcVpnConnectionFromRemoteParamDetail `json:"syncVpcVpnConnectionFromRemote"`
-}
-// CreateVpnIkeConfigParamDetail CreateVpnIkeConfig detail param
-type CreateVpnIkeConfigParamDetail struct {
-	Name string `json:"name" validate:"required"`
-	Psk string `json:"psk" validate:"required"`
-	Pfs *string `json:"pfs,omitempty"`
-	Version *string `json:"version,omitempty"`
-	Mode *string `json:"mode,omitempty"`
-	EncAlg *string `json:"encAlg,omitempty"`
-	AuthAlg *string `json:"authAlg,omitempty"`
-	Lifetime *int `json:"lifetime,omitempty"`
-	LocalIp string `json:"localIp" validate:"required"`
-	RemoteIp string `json:"remoteIp" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateVpnIkeConfigParam CreateVpnIkeConfig request param
-type CreateVpnIkeConfigParam struct {
-	BaseParam
-	Params CreateVpnIkeConfigParamDetail `json:"params"`
 }
 // SubmitLongJobParamDetail SubmitLongJob detail param
 type SubmitLongJobParamDetail struct {
@@ -5483,17 +4666,6 @@ type GetDebugSignalParamDetail struct {
 type GetDebugSignalParam struct {
 	BaseParam
 	Params GetDebugSignalParamDetail `json:"getDebugSignal"`
-}
-// UpdateAliyunKeySecretParamDetail UpdateAliyunKeySecret detail param
-type UpdateAliyunKeySecretParamDetail struct {
-	Name string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-}
-
-// UpdateAliyunKeySecretParam UpdateAliyunKeySecret request param
-type UpdateAliyunKeySecretParam struct {
-	BaseParam
-	Params UpdateAliyunKeySecretParamDetail `json:"params"`
 }
 // SyncLicenseCapacityParamDetail SyncLicenseCapacity detail param
 type SyncLicenseCapacityParamDetail struct {
@@ -5649,16 +4821,6 @@ type DetachBaremetalPxeServerFromClusterParam struct {
 	BaseParam
 	Params DetachBaremetalPxeServerFromClusterParamDetail `json:"detachBaremetalPxeServerFromCluster"`
 }
-// DeleteVpcUserVpnGatewayRemoteParamDetail DeleteVpcUserVpnGatewayRemote detail param
-type DeleteVpcUserVpnGatewayRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVpcUserVpnGatewayRemoteParam DeleteVpcUserVpnGatewayRemote request param
-type DeleteVpcUserVpnGatewayRemoteParam struct {
-	BaseParam
-	Params DeleteVpcUserVpnGatewayRemoteParamDetail `json:"deleteVpcUserVpnGatewayRemote"`
-}
 // ChangeAccessControlListRedirectRuleParamDetail ChangeAccessControlListRedirectRule detail param
 type ChangeAccessControlListRedirectRuleParamDetail struct {
 	Name string `json:"name,omitempty"`
@@ -5701,25 +4863,6 @@ type GetVpcAttachedLoadBalancerParamDetail struct {
 type GetVpcAttachedLoadBalancerParam struct {
 	BaseParam
 	Params GetVpcAttachedLoadBalancerParamDetail `json:"params"`
-}
-// CreateVpcVpnConnectionRemoteParamDetail CreateVpcVpnConnectionRemote detail param
-type CreateVpcVpnConnectionRemoteParamDetail struct {
-	UserGatewayUuid string `json:"userGatewayUuid" validate:"required"`
-	VpnGatewayUuid string `json:"vpnGatewayUuid" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	LocalCidr string `json:"localCidr" validate:"required"`
-	RemoteCidr string `json:"remoteCidr" validate:"required"`
-	Active bool `json:"active" validate:"required"`
-	IkeConfUuid string `json:"ikeConfUuid" validate:"required"`
-	IpsecConfUuid string `json:"ipsecConfUuid" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateVpcVpnConnectionRemoteParam CreateVpcVpnConnectionRemote request param
-type CreateVpcVpnConnectionRemoteParam struct {
-	BaseParam
-	Params CreateVpcVpnConnectionRemoteParamDetail `json:"params"`
 }
 // GetVpcAttachedPortForwardingRulesParamDetail GetVpcAttachedPortForwardingRules detail param
 type GetVpcAttachedPortForwardingRulesParamDetail struct {
@@ -5834,25 +4977,6 @@ type DeleteIpAddressParam struct {
 	BaseParam
 	Params DeleteIpAddressParamDetail `json:"deleteIpAddress"`
 }
-// DeleteVpcVpnConnectionRemoteParamDetail DeleteVpcVpnConnectionRemote detail param
-type DeleteVpcVpnConnectionRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVpcVpnConnectionRemoteParam DeleteVpcVpnConnectionRemote request param
-type DeleteVpcVpnConnectionRemoteParam struct {
-	BaseParam
-	Params DeleteVpcVpnConnectionRemoteParamDetail `json:"deleteVpcVpnConnectionRemote"`
-}
-// AttachOssBucketToEcsDataCenterParamDetail AttachOssBucketToEcsDataCenter detail param
-type AttachOssBucketToEcsDataCenterParamDetail struct {
-}
-
-// AttachOssBucketToEcsDataCenterParam AttachOssBucketToEcsDataCenter request param
-type AttachOssBucketToEcsDataCenterParam struct {
-	BaseParam
-	Params AttachOssBucketToEcsDataCenterParamDetail `json:"attachOssBucketToEcsDataCenter"`
-}
 // CheckIAM2OrganizationAvailabilityParamDetail CheckIAM2OrganizationAvailability detail param
 type CheckIAM2OrganizationAvailabilityParamDetail struct {
 }
@@ -5882,17 +5006,6 @@ type RemovePolicyStatementsFromRoleParamDetail struct {
 type RemovePolicyStatementsFromRoleParam struct {
 	BaseParam
 	Params RemovePolicyStatementsFromRoleParamDetail `json:"removePolicyStatementsFromRole"`
-}
-// GenerateModelMetadataParamDetail GenerateModelMetadata detail param
-type GenerateModelMetadataParamDetail struct {
-	ModelCenterUuid string `json:"modelCenterUuid" validate:"required"`
-	ModelUuids []string `json:"modelUuids,omitempty"`
-}
-
-// GenerateModelMetadataParam GenerateModelMetadata request param
-type GenerateModelMetadataParam struct {
-	BaseParam
-	Params GenerateModelMetadataParamDetail `json:"generateModelMetadata"`
 }
 // IsReadyToGoParamDetail IsReadyToGo detail param
 type IsReadyToGoParamDetail struct {
@@ -6045,16 +5158,6 @@ type ProtectVmInstanceRecoveryPointParam struct {
 	BaseParam
 	Params ProtectVmInstanceRecoveryPointParamDetail `json:"protectVmInstanceRecoveryPoint"`
 }
-// DeleteConnectionAccessPointLocalParamDetail DeleteConnectionAccessPointLocal detail param
-type DeleteConnectionAccessPointLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteConnectionAccessPointLocalParam DeleteConnectionAccessPointLocal request param
-type DeleteConnectionAccessPointLocalParam struct {
-	BaseParam
-	Params DeleteConnectionAccessPointLocalParamDetail `json:"deleteConnectionAccessPointLocal"`
-}
 // RemoveIAM2VirtualIDsFromProjectParamDetail RemoveIAM2VirtualIDsFromProject detail param
 type RemoveIAM2VirtualIDsFromProjectParamDetail struct {
 	VirtualIDUuids []string `json:"virtualIDUuids" validate:"required"`
@@ -6064,20 +5167,6 @@ type RemoveIAM2VirtualIDsFromProjectParamDetail struct {
 type RemoveIAM2VirtualIDsFromProjectParam struct {
 	BaseParam
 	Params RemoveIAM2VirtualIDsFromProjectParamDetail `json:"removeIAM2VirtualIDsFromProject"`
-}
-// CreateEcsImageFromEcsSnapshotParamDetail CreateEcsImageFromEcsSnapshot detail param
-type CreateEcsImageFromEcsSnapshotParamDetail struct {
-	SnapshotUuid string `json:"snapshotUuid" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateEcsImageFromEcsSnapshotParam CreateEcsImageFromEcsSnapshot request param
-type CreateEcsImageFromEcsSnapshotParam struct {
-	BaseParam
-	Params CreateEcsImageFromEcsSnapshotParamDetail `json:"params"`
 }
 // CreateResourceStackFromAppParamDetail CreateResourceStackFromApp detail param
 type CreateResourceStackFromAppParamDetail struct {
@@ -6105,18 +5194,6 @@ type GetSharedBlockCandidateParamDetail struct {
 type GetSharedBlockCandidateParam struct {
 	BaseParam
 	Params GetSharedBlockCandidateParamDetail `json:"getSharedBlockCandidate"`
-}
-// SyncEcsSecurityGroupFromRemoteParamDetail SyncEcsSecurityGroupFromRemote detail param
-type SyncEcsSecurityGroupFromRemoteParamDetail struct {
-	SecurityGroupId *string `json:"securityGroupId,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncEcsSecurityGroupFromRemoteParam SyncEcsSecurityGroupFromRemote request param
-type SyncEcsSecurityGroupFromRemoteParam struct {
-	BaseParam
-	Params SyncEcsSecurityGroupFromRemoteParamDetail `json:"syncEcsSecurityGroupFromRemote"`
 }
 // ExportBuildAppParamDetail ExportBuildApp detail param
 type ExportBuildAppParamDetail struct {
@@ -6165,17 +5242,6 @@ type AttachDataVolumeToVmParam struct {
 	BaseParam
 	Params AttachDataVolumeToVmParamDetail `json:"params"`
 }
-// UpdateAliyunVirtualRouterParamDetail UpdateAliyunVirtualRouter detail param
-type UpdateAliyunVirtualRouterParamDetail struct {
-	Name string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-}
-
-// UpdateAliyunVirtualRouterParam UpdateAliyunVirtualRouter request param
-type UpdateAliyunVirtualRouterParam struct {
-	BaseParam
-	Params UpdateAliyunVirtualRouterParamDetail `json:"updateAliyunVirtualRouter"`
-}
 // DeleteDataVolumeParamDetail DeleteDataVolume detail param
 type DeleteDataVolumeParamDetail struct {
 	DeleteMode *string `json:"deleteMode,omitempty"`
@@ -6220,16 +5286,6 @@ type SetVolumeQosParamDetail struct {
 type SetVolumeQosParam struct {
 	BaseParam
 	Params SetVolumeQosParamDetail `json:"setVolumeQos"`
-}
-// DetachHybridEipFromEcsParamDetail DetachHybridEipFromEcs detail param
-type DetachHybridEipFromEcsParamDetail struct {
-	Type string `json:"type" validate:"required"`
-}
-
-// DetachHybridEipFromEcsParam DetachHybridEipFromEcs request param
-type DetachHybridEipFromEcsParam struct {
-	BaseParam
-	Params DetachHybridEipFromEcsParamDetail `json:"params"`
 }
 // GetVolumeCapabilitiesParamDetail GetVolumeCapabilities detail param
 type GetVolumeCapabilitiesParamDetail struct {
@@ -6419,15 +5475,6 @@ type UnexportNbdVolumesParam struct {
 	BaseParam
 	Params UnexportNbdVolumesParamDetail `json:"params"`
 }
-// RecoveryVirtualBorderRouterRemoteParamDetail RecoveryVirtualBorderRouterRemote detail param
-type RecoveryVirtualBorderRouterRemoteParamDetail struct {
-}
-
-// RecoveryVirtualBorderRouterRemoteParam RecoveryVirtualBorderRouterRemote request param
-type RecoveryVirtualBorderRouterRemoteParam struct {
-	BaseParam
-	Params RecoveryVirtualBorderRouterRemoteParamDetail `json:"recoveryVirtualBorderRouterRemote"`
-}
 // ExecuteAutoScalingRuleParamDetail ExecuteAutoScalingRule detail param
 type ExecuteAutoScalingRuleParamDetail struct {
 }
@@ -6551,33 +5598,6 @@ type PushLicenseAddOnsUsageParamDetail struct {
 type PushLicenseAddOnsUsageParam struct {
 	BaseParam
 	Params PushLicenseAddOnsUsageParamDetail `json:"pushLicenseAddOnsUsage"`
-}
-// AttachHybridEipToEcsParamDetail AttachHybridEipToEcs detail param
-type AttachHybridEipToEcsParamDetail struct {
-	EcsUuid string `json:"ecsUuid" validate:"required"`
-	Type string `json:"type" validate:"required"`
-}
-
-// AttachHybridEipToEcsParam AttachHybridEipToEcs request param
-type AttachHybridEipToEcsParam struct {
-	BaseParam
-	Params AttachHybridEipToEcsParamDetail `json:"params"`
-}
-// CreateEcsImageFromLocalImageParamDetail CreateEcsImageFromLocalImage detail param
-type CreateEcsImageFromLocalImageParamDetail struct {
-	ImageUuid string `json:"imageUuid" validate:"required"`
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	BackupStorageUuid *string `json:"backupStorageUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Name string `json:"name" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateEcsImageFromLocalImageParam CreateEcsImageFromLocalImage request param
-type CreateEcsImageFromLocalImageParam struct {
-	BaseParam
-	Params CreateEcsImageFromLocalImageParamDetail `json:"params"`
 }
 // AddHostRouteToL3NetworkParamDetail AddHostRouteToL3Network detail param
 type AddHostRouteToL3NetworkParamDetail struct {
@@ -6778,21 +5798,6 @@ type SetVmNicSecurityGroupParam struct {
 	BaseParam
 	Params SetVmNicSecurityGroupParamDetail `json:"setVmNicSecurityGroup"`
 }
-// AddIdentityZoneFromRemoteParamDetail AddIdentityZoneFromRemote detail param
-type AddIdentityZoneFromRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	ZoneId *string `json:"zoneId,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// AddIdentityZoneFromRemoteParam AddIdentityZoneFromRemote request param
-type AddIdentityZoneFromRemoteParam struct {
-	BaseParam
-	Params AddIdentityZoneFromRemoteParamDetail `json:"params"`
-}
 // GetVolumeSnapshotSizeParamDetail GetVolumeSnapshotSize detail param
 type GetVolumeSnapshotSizeParamDetail struct {
 }
@@ -6910,17 +5915,6 @@ type SNSSnmpTestConnectionParam struct {
 	BaseParam
 	Params SNSSnmpTestConnectionParamDetail `json:"params"`
 }
-// GetDataCenterFromRemoteParamDetail GetDataCenterFromRemote detail param
-type GetDataCenterFromRemoteParamDetail struct {
-	Type string `json:"type" validate:"required"`
-	Endpoint *string `json:"endpoint,omitempty"`
-}
-
-// GetDataCenterFromRemoteParam GetDataCenterFromRemote request param
-type GetDataCenterFromRemoteParam struct {
-	BaseParam
-	Params GetDataCenterFromRemoteParamDetail `json:"getDataCenterFromRemote"`
-}
 // CreateHostNetworkServiceTypeParamDetail CreateHostNetworkServiceType detail param
 type CreateHostNetworkServiceTypeParamDetail struct {
 	ServiceType string `json:"serviceType" validate:"required"`
@@ -6933,16 +5927,6 @@ type CreateHostNetworkServiceTypeParamDetail struct {
 type CreateHostNetworkServiceTypeParam struct {
 	BaseParam
 	Params CreateHostNetworkServiceTypeParamDetail `json:"params"`
-}
-// DeleteEcsImageLocalParamDetail DeleteEcsImageLocal detail param
-type DeleteEcsImageLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsImageLocalParam DeleteEcsImageLocal request param
-type DeleteEcsImageLocalParam struct {
-	BaseParam
-	Params DeleteEcsImageLocalParamDetail `json:"deleteEcsImageLocal"`
 }
 // DetachNvmeServerFromClusterParamDetail DetachNvmeServerFromCluster detail param
 type DetachNvmeServerFromClusterParamDetail struct {
@@ -7097,21 +6081,6 @@ type KvmRunShellParam struct {
 	BaseParam
 	Params KvmRunShellParamDetail `json:"kvmRunShell"`
 }
-// CreateAliyunNasAccessGroupRuleParamDetail CreateAliyunNasAccessGroupRule detail param
-type CreateAliyunNasAccessGroupRuleParamDetail struct {
-	AccessGroupUuid string `json:"accessGroupUuid" validate:"required"`
-	SourceCidrIp string `json:"sourceCidrIp" validate:"required"`
-	RwAccessType *string `json:"rwAccessType,omitempty"`
-	Priority *int `json:"priority,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateAliyunNasAccessGroupRuleParam CreateAliyunNasAccessGroupRule request param
-type CreateAliyunNasAccessGroupRuleParam struct {
-	BaseParam
-	Params CreateAliyunNasAccessGroupRuleParamDetail `json:"params"`
-}
 // RecoverBackupFromImageStoreBackupStorageParamDetail RecoverBackupFromImageStoreBackupStorage detail param
 type RecoverBackupFromImageStoreBackupStorageParamDetail struct {
 	SrcBackupStorageUuid string `json:"srcBackupStorageUuid" validate:"required"`
@@ -7215,17 +6184,6 @@ type ChangeAccessControlListServerGroupParam struct {
 	BaseParam
 	Params ChangeAccessControlListServerGroupParamDetail `json:"changeAccessControlListServerGroup"`
 }
-// SyncVirtualBorderRouterFromRemoteParamDetail SyncVirtualBorderRouterFromRemote detail param
-type SyncVirtualBorderRouterFromRemoteParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncVirtualBorderRouterFromRemoteParam SyncVirtualBorderRouterFromRemote request param
-type SyncVirtualBorderRouterFromRemoteParam struct {
-	BaseParam
-	Params SyncVirtualBorderRouterFromRemoteParamDetail `json:"syncVirtualBorderRouterFromRemote"`
-}
 // UpdateAtPersonOfAtFeiShuEndpointParamDetail UpdateAtPersonOfAtFeiShuEndpoint detail param
 type UpdateAtPersonOfAtFeiShuEndpointParamDetail struct {
 	EndpointUuid string `json:"endpointUuid" validate:"required"`
@@ -7269,23 +6227,6 @@ type GetGlobalConfigOptionsParamDetail struct {
 type GetGlobalConfigOptionsParam struct {
 	BaseParam
 	Params GetGlobalConfigOptionsParamDetail `json:"getGlobalConfigOptions"`
-}
-// CreateHybridEipParamDetail CreateHybridEip detail param
-type CreateHybridEipParamDetail struct {
-	Name string `json:"name" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	BandWidthMb int64 `json:"bandWidthMb" validate:"required"`
-	Type string `json:"type" validate:"required"`
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	ChargeType string `json:"chargeType" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateHybridEipParam CreateHybridEip request param
-type CreateHybridEipParam struct {
-	BaseParam
-	Params CreateHybridEipParamDetail `json:"params"`
 }
 // ApplyMonitorTemplateToMonitorGroupParamDetail ApplyMonitorTemplateToMonitorGroup detail param
 type ApplyMonitorTemplateToMonitorGroupParamDetail struct {
@@ -7372,19 +6313,6 @@ type CreateImageGroupFromSnapshotParamDetail struct {
 type CreateImageGroupFromSnapshotParam struct {
 	BaseParam
 	Params CreateImageGroupFromSnapshotParamDetail `json:"params"`
-}
-// GetOssBucketFileFromRemoteParamDetail GetOssBucketFileFromRemote detail param
-type GetOssBucketFileFromRemoteParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	OssDomain *string `json:"ossDomain,omitempty"`
-	OssKey *string `json:"ossKey,omitempty"`
-	OssSecret *string `json:"ossSecret,omitempty"`
-}
-
-// GetOssBucketFileFromRemoteParam GetOssBucketFileFromRemote request param
-type GetOssBucketFileFromRemoteParam struct {
-	BaseParam
-	Params GetOssBucketFileFromRemoteParamDetail `json:"getOssBucketFileFromRemote"`
 }
 // AttachVipToVpcSharedQosParamDetail AttachVipToVpcSharedQos detail param
 type AttachVipToVpcSharedQosParamDetail struct {
@@ -7566,39 +6494,6 @@ type SetIAM2ProjectContainerClusterParam struct {
 	BaseParam
 	Params SetIAM2ProjectContainerClusterParamDetail `json:"setIAM2ProjectContainerCluster"`
 }
-// DeployAppDevelopmentServiceParamDetail DeployAppDevelopmentService detail param
-type DeployAppDevelopmentServiceParamDetail struct {
-	Uuid string `json:"uuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ModelUuid *string `json:"modelUuid,omitempty"`
-	ZoneUuid string `json:"zoneUuid" validate:"required"`
-	VmImageUuid *string `json:"vmImageUuid,omitempty"`
-	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
-	DatasetUuids []string `json:"datasetUuids,omitempty"`
-	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
-	DockerImage *string `json:"dockerImage,omitempty"`
-	CpuNum *int `json:"cpuNum,omitempty"`
-	Name string `json:"name" validate:"required"`
-	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
-	StartupParameters map[string]string `json:"startupParameters,omitempty"`
-	Type string `json:"type" validate:"required"`
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
-	MemorySize *int64 `json:"memorySize,omitempty"`
-	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
-	ServiceBootUptime *int `json:"serviceBootUptime,omitempty"`
-	ServiceLivez *string `json:"serviceLivez,omitempty"`
-	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
-	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
-	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// DeployAppDevelopmentServiceParam DeployAppDevelopmentService request param
-type DeployAppDevelopmentServiceParam struct {
-	BaseParam
-	Params DeployAppDevelopmentServiceParamDetail `json:"deployAppDevelopmentService"`
-}
 // RefreshPluginDriversParamDetail RefreshPluginDrivers detail param
 type RefreshPluginDriversParamDetail struct {
 	Name string `json:"name,omitempty"`
@@ -7638,23 +6533,6 @@ type GetSignatureServerEncryptPublicKeyParam struct {
 	BaseParam
 	Params GetSignatureServerEncryptPublicKeyParamDetail `json:"getSignatureServerEncryptPublicKey"`
 }
-// AddAliyunKeySecretParamDetail AddAliyunKeySecret detail param
-type AddAliyunKeySecretParamDetail struct {
-	Name string `json:"name" validate:"required"`
-	Key string `json:"key" validate:"required"`
-	Secret string `json:"secret" validate:"required"`
-	AccountUuid *string `json:"accountUuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Sync *bool `json:"sync,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// AddAliyunKeySecretParam AddAliyunKeySecret request param
-type AddAliyunKeySecretParam struct {
-	BaseParam
-	Params AddAliyunKeySecretParamDetail `json:"params"`
-}
 // AddBackupStoragesToReplicationGroupParamDetail AddBackupStoragesToReplicationGroup detail param
 type AddBackupStoragesToReplicationGroupParamDetail struct {
 	BackupStorageUuids []string `json:"backupStorageUuids" validate:"required"`
@@ -7666,22 +6544,6 @@ type AddBackupStoragesToReplicationGroupParamDetail struct {
 type AddBackupStoragesToReplicationGroupParam struct {
 	BaseParam
 	Params AddBackupStoragesToReplicationGroupParamDetail `json:"params"`
-}
-// AddDataCenterFromRemoteParamDetail AddDataCenterFromRemote detail param
-type AddDataCenterFromRemoteParamDetail struct {
-	RegionId string `json:"regionId" validate:"required"`
-	Type string `json:"type" validate:"required"`
-	SyncZones *bool `json:"syncZones,omitempty"`
-	Endpoint *string `json:"endpoint,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// AddDataCenterFromRemoteParam AddDataCenterFromRemote request param
-type AddDataCenterFromRemoteParam struct {
-	BaseParam
-	Params AddDataCenterFromRemoteParamDetail `json:"params"`
 }
 // DeleteFirewallRuleSetParamDetail DeleteFirewallRuleSet detail param
 type DeleteFirewallRuleSetParamDetail struct {
@@ -7835,16 +6697,6 @@ type UpdateHybridKeySecretParamDetail struct {
 type UpdateHybridKeySecretParam struct {
 	BaseParam
 	Params UpdateHybridKeySecretParamDetail `json:"params"`
-}
-// PullHuaweiIMasterControllerParamDetail PullHuaweiIMasterController detail param
-type PullHuaweiIMasterControllerParamDetail struct {
-	PullSwitch *bool `json:"pullSwitch,omitempty"`
-}
-
-// PullHuaweiIMasterControllerParam PullHuaweiIMasterController request param
-type PullHuaweiIMasterControllerParam struct {
-	BaseParam
-	Params PullHuaweiIMasterControllerParamDetail `json:"pullHuaweiIMasterController"`
 }
 // RemoveRolesFromIAM2VirtualIDGroupParamDetail RemoveRolesFromIAM2VirtualIDGroup detail param
 type RemoveRolesFromIAM2VirtualIDGroupParamDetail struct {
@@ -8013,19 +6865,6 @@ type UpdateAtPersonOfAtDingTalkEndpointParam struct {
 	BaseParam
 	Params UpdateAtPersonOfAtDingTalkEndpointParamDetail `json:"updateAtPersonOfAtDingTalkEndpoint"`
 }
-// UpdateAliyunMountTargetParamDetail UpdateAliyunMountTarget detail param
-type UpdateAliyunMountTargetParamDetail struct {
-	AccessGroupUuid string `json:"accessGroupUuid" validate:"required"`
-	Uuid string `json:"uuid" validate:"required"`
-	Name string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-}
-
-// UpdateAliyunMountTargetParam UpdateAliyunMountTarget request param
-type UpdateAliyunMountTargetParam struct {
-	BaseParam
-	Params UpdateAliyunMountTargetParamDetail `json:"updateAliyunMountTarget"`
-}
 // GetResourceAccountParamDetail GetResourceAccount detail param
 type GetResourceAccountParamDetail struct {
 	ResourceUuids []string `json:"resourceUuids" validate:"required"`
@@ -8063,15 +6902,6 @@ type AddSimulatorBackupStorageParamDetail struct {
 type AddSimulatorBackupStorageParam struct {
 	BaseParam
 	Params AddSimulatorBackupStorageParamDetail `json:"params"`
-}
-// BindModelToServiceParamDetail BindModelToService detail param
-type BindModelToServiceParamDetail struct {
-}
-
-// BindModelToServiceParam BindModelToService request param
-type BindModelToServiceParam struct {
-	BaseParam
-	Params BindModelToServiceParamDetail `json:"param"`
 }
 // GetCandidateAffinityGroupForCreatingVmParamDetail GetCandidateAffinityGroupForCreatingVm detail param
 type GetCandidateAffinityGroupForCreatingVmParamDetail struct {
@@ -8116,38 +6946,6 @@ type AddStorageProtocolParamDetail struct {
 type AddStorageProtocolParam struct {
 	BaseParam
 	Params AddStorageProtocolParamDetail `json:"params"`
-}
-// DeployModelServiceParamDetail DeployModelService detail param
-type DeployModelServiceParamDetail struct {
-	Description *string `json:"description,omitempty"`
-	ModelUuid *string `json:"modelUuid,omitempty"`
-	ZoneUuid string `json:"zoneUuid" validate:"required"`
-	VmImageUuid *string `json:"vmImageUuid,omitempty"`
-	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
-	DatasetUuids []string `json:"datasetUuids,omitempty"`
-	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
-	DockerImage *string `json:"dockerImage,omitempty"`
-	CpuNum *int `json:"cpuNum,omitempty"`
-	Name string `json:"name" validate:"required"`
-	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
-	StartupParameters map[string]string `json:"startupParameters,omitempty"`
-	Type string `json:"type" validate:"required"`
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
-	MemorySize *int64 `json:"memorySize,omitempty"`
-	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
-	ServiceBootUptime *int `json:"serviceBootUptime,omitempty"`
-	ServiceLivez *string `json:"serviceLivez,omitempty"`
-	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
-	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
-	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// DeployModelServiceParam DeployModelService request param
-type DeployModelServiceParam struct {
-	BaseParam
-	Params DeployModelServiceParamDetail `json:"deployModelService"`
 }
 // GetMonitorItemParamDetail GetMonitorItem detail param
 type GetMonitorItemParamDetail struct {
@@ -8281,16 +7079,6 @@ type FlattenVmInstanceParam struct {
 	BaseParam
 	Params FlattenVmInstanceParamDetail `json:"flattenVmInstance"`
 }
-// DeleteAllEcsInstancesFromDataCenterParamDetail DeleteAllEcsInstancesFromDataCenter detail param
-type DeleteAllEcsInstancesFromDataCenterParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAllEcsInstancesFromDataCenterParam DeleteAllEcsInstancesFromDataCenter request param
-type DeleteAllEcsInstancesFromDataCenterParam struct {
-	BaseParam
-	Params DeleteAllEcsInstancesFromDataCenterParamDetail `json:"deleteAllEcsInstancesFromDataCenter"`
-}
 // GetVpcMulticastRouteParamDetail GetVpcMulticastRoute detail param
 type GetVpcMulticastRouteParamDetail struct {
 }
@@ -8374,17 +7162,6 @@ type GetCandidateMiniHostsParam struct {
 	BaseParam
 	Params GetCandidateMiniHostsParamDetail `json:"getCandidateMiniHosts"`
 }
-// DeleteDatasetsParamDetail DeleteDatasets detail param
-type DeleteDatasetsParamDetail struct {
-	Uuids []string `json:"uuids" validate:"required"`
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteDatasetsParam DeleteDatasets request param
-type DeleteDatasetsParam struct {
-	BaseParam
-	Params DeleteDatasetsParamDetail `json:"deleteDatasets"`
-}
 // RevokeResourceSharingParamDetail RevokeResourceSharing detail param
 type RevokeResourceSharingParamDetail struct {
 	ResourceUuids []string `json:"resourceUuids" validate:"required"`
@@ -8397,17 +7174,6 @@ type RevokeResourceSharingParamDetail struct {
 type RevokeResourceSharingParam struct {
 	BaseParam
 	Params RevokeResourceSharingParamDetail `json:"revokeResourceSharing"`
-}
-// DeleteModelServicesParamDetail DeleteModelServices detail param
-type DeleteModelServicesParamDetail struct {
-	Uuids []string `json:"uuids" validate:"required"`
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteModelServicesParam DeleteModelServices request param
-type DeleteModelServicesParam struct {
-	BaseParam
-	Params DeleteModelServicesParamDetail `json:"deleteModelServices"`
 }
 // ChangeL3NetworkStateParamDetail ChangeL3NetworkState detail param
 type ChangeL3NetworkStateParamDetail struct {
@@ -8479,25 +7245,6 @@ type GetClusterDRSStatusParamDetail struct {
 type GetClusterDRSStatusParam struct {
 	BaseParam
 	Params GetClusterDRSStatusParamDetail `json:"getClusterDRSStatus"`
-}
-// AddAliyunNasPrimaryStorageParamDetail AddAliyunNasPrimaryStorage detail param
-type AddAliyunNasPrimaryStorageParamDetail struct {
-	NasUuid string `json:"nasUuid" validate:"required"`
-	AccessGroupUuid string `json:"accessGroupUuid" validate:"required"`
-	VSwitchUuid *string `json:"vSwitchUuid,omitempty"`
-	Url string `json:"url" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	Type *string `json:"type,omitempty"`
-	ZoneUuid string `json:"zoneUuid" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// AddAliyunNasPrimaryStorageParam AddAliyunNasPrimaryStorage request param
-type AddAliyunNasPrimaryStorageParam struct {
-	BaseParam
-	Params AddAliyunNasPrimaryStorageParamDetail `json:"params"`
 }
 // GetVmNumaParamDetail GetVmNuma detail param
 type GetVmNumaParamDetail struct {
@@ -8594,16 +7341,6 @@ type DetachPolicyFromRoleParamDetail struct {
 type DetachPolicyFromRoleParam struct {
 	BaseParam
 	Params DetachPolicyFromRoleParamDetail `json:"detachPolicyFromRole"`
-}
-// RestartModelServiceGroupsParamDetail RestartModelServiceGroups detail param
-type RestartModelServiceGroupsParamDetail struct {
-	Uuids []string `json:"uuids" validate:"required"`
-}
-
-// RestartModelServiceGroupsParam RestartModelServiceGroups request param
-type RestartModelServiceGroupsParam struct {
-	BaseParam
-	Params RestartModelServiceGroupsParamDetail `json:"restartModelServiceGroups"`
 }
 // GetLoadBalancerOwnerParamDetail GetLoadBalancerOwner detail param
 type GetLoadBalancerOwnerParamDetail struct {
@@ -8811,18 +7548,6 @@ type AddVmNicToSecurityGroupParam struct {
 	BaseParam
 	Params AddVmNicToSecurityGroupParamDetail `json:"params"`
 }
-// SyncAliyunRouteEntryFromRemoteParamDetail SyncAliyunRouteEntryFromRemote detail param
-type SyncAliyunRouteEntryFromRemoteParamDetail struct {
-	VRouterType string `json:"vRouterType" validate:"required"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncAliyunRouteEntryFromRemoteParam SyncAliyunRouteEntryFromRemote request param
-type SyncAliyunRouteEntryFromRemoteParam struct {
-	BaseParam
-	Params SyncAliyunRouteEntryFromRemoteParamDetail `json:"syncAliyunRouteEntryFromRemote"`
-}
 // UpdateEmailAddressOfSNSEmailEndpointParamDetail UpdateEmailAddressOfSNSEmailEndpoint detail param
 type UpdateEmailAddressOfSNSEmailEndpointParamDetail struct {
 	EmailAddressUuid string `json:"emailAddressUuid" validate:"required"`
@@ -9008,16 +7733,6 @@ type GetFaultToleranceVmsParamDetail struct {
 type GetFaultToleranceVmsParam struct {
 	BaseParam
 	Params GetFaultToleranceVmsParamDetail `json:"getFaultToleranceVms"`
-}
-// DeleteAliyunKeySecretParamDetail DeleteAliyunKeySecret detail param
-type DeleteAliyunKeySecretParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAliyunKeySecretParam DeleteAliyunKeySecret request param
-type DeleteAliyunKeySecretParam struct {
-	BaseParam
-	Params DeleteAliyunKeySecretParamDetail `json:"deleteAliyunKeySecret"`
 }
 // CreateVmInstanceFromVolumeSnapshotParamDetail CreateVmInstanceFromVolumeSnapshot detail param
 type CreateVmInstanceFromVolumeSnapshotParamDetail struct {
@@ -9280,44 +7995,6 @@ type FlattenVolumeParam struct {
 	BaseParam
 	Params FlattenVolumeParamDetail `json:"flattenVolume"`
 }
-// CreateAliyunDiskFromRemoteParamDetail CreateAliyunDiskFromRemote detail param
-type CreateAliyunDiskFromRemoteParamDetail struct {
-	IdentityUuid string `json:"identityUuid" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	SizeWithGB *int `json:"sizeWithGB,omitempty"`
-	Description *string `json:"description,omitempty"`
-	DiskCategory *string `json:"diskCategory,omitempty"`
-	SnapshotUuid *string `json:"snapshotUuid,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateAliyunDiskFromRemoteParam CreateAliyunDiskFromRemote request param
-type CreateAliyunDiskFromRemoteParam struct {
-	BaseParam
-	Params CreateAliyunDiskFromRemoteParamDetail `json:"params"`
-}
-// DeleteEcsSecurityGroupRuleRemoteParamDetail DeleteEcsSecurityGroupRuleRemote detail param
-type DeleteEcsSecurityGroupRuleRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsSecurityGroupRuleRemoteParam DeleteEcsSecurityGroupRuleRemote request param
-type DeleteEcsSecurityGroupRuleRemoteParam struct {
-	BaseParam
-	Params DeleteEcsSecurityGroupRuleRemoteParamDetail `json:"deleteEcsSecurityGroupRuleRemote"`
-}
-// DetachAliyunDiskFromEcsParamDetail DetachAliyunDiskFromEcs detail param
-type DetachAliyunDiskFromEcsParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// DetachAliyunDiskFromEcsParam DetachAliyunDiskFromEcs request param
-type DetachAliyunDiskFromEcsParam struct {
-	BaseParam
-	Params DetachAliyunDiskFromEcsParamDetail `json:"params"`
-}
 // GetCandidateAffinityGroupForAttachingVmParamDetail GetCandidateAffinityGroupForAttachingVm detail param
 type GetCandidateAffinityGroupForAttachingVmParamDetail struct {
 	VmUuid string `json:"vmUuid" validate:"required"`
@@ -9366,17 +8043,6 @@ type DetachHostFromHostSchedulingRuleGroupParamDetail struct {
 type DetachHostFromHostSchedulingRuleGroupParam struct {
 	BaseParam
 	Params DetachHostFromHostSchedulingRuleGroupParamDetail `json:"detachHostFromHostSchedulingRuleGroup"`
-}
-// UpdateAliyunRouteInterfaceRemoteParamDetail UpdateAliyunRouteInterfaceRemote detail param
-type UpdateAliyunRouteInterfaceRemoteParamDetail struct {
-	Op string `json:"op" validate:"required"`
-	VRouterType string `json:"vRouterType" validate:"required"`
-}
-
-// UpdateAliyunRouteInterfaceRemoteParam UpdateAliyunRouteInterfaceRemote request param
-type UpdateAliyunRouteInterfaceRemoteParam struct {
-	BaseParam
-	Params UpdateAliyunRouteInterfaceRemoteParamDetail `json:"updateAliyunRouteInterfaceRemote"`
 }
 // GetPciDeviceSpecCandidatesParamDetail GetPciDeviceSpecCandidates detail param
 type GetPciDeviceSpecCandidatesParamDetail struct {
@@ -9528,26 +8194,6 @@ type ExecuteDRSSchedulingParamDetail struct {
 type ExecuteDRSSchedulingParam struct {
 	BaseParam
 	Params ExecuteDRSSchedulingParamDetail `json:"executeDRSScheduling"`
-}
-// CreateEcsSecurityGroupRuleRemoteParamDetail CreateEcsSecurityGroupRuleRemote detail param
-type CreateEcsSecurityGroupRuleRemoteParamDetail struct {
-	GroupUuid string `json:"groupUuid" validate:"required"`
-	Direction string `json:"direction" validate:"required"`
-	Protocol string `json:"protocol" validate:"required"`
-	PortRange string `json:"portRange" validate:"required"`
-	Cidr string `json:"cidr" validate:"required"`
-	Policy *string `json:"policy,omitempty"`
-	Nictype *string `json:"nictype,omitempty"`
-	Priority *int `json:"priority,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateEcsSecurityGroupRuleRemoteParam CreateEcsSecurityGroupRuleRemote request param
-type CreateEcsSecurityGroupRuleRemoteParam struct {
-	BaseParam
-	Params CreateEcsSecurityGroupRuleRemoteParamDetail `json:"params"`
 }
 // GetVmQgaParamDetail GetVmQga detail param
 type GetVmQgaParamDetail struct {
@@ -9772,54 +8418,6 @@ type DetachL2NetworkFromClusterParam struct {
 	BaseParam
 	Params DetachL2NetworkFromClusterParamDetail `json:"detachL2NetworkFromCluster"`
 }
-// SyncAINginxConfigurationParamDetail SyncAINginxConfiguration detail param
-type SyncAINginxConfigurationParamDetail struct {
-	GroupUuids []string `json:"groupUuids,omitempty"`
-	DryRun *bool `json:"dryRun,omitempty"`
-	SyncAll *bool `json:"syncAll,omitempty"`
-}
-
-// SyncAINginxConfigurationParam SyncAINginxConfiguration request param
-type SyncAINginxConfigurationParam struct {
-	BaseParam
-	Params SyncAINginxConfigurationParamDetail `json:"param"`
-}
-// MatchModelServiceTemplateWithModelParamDetail MatchModelServiceTemplateWithModel detail param
-type MatchModelServiceTemplateWithModelParamDetail struct {
-	ModelUuids []string `json:"modelUuids" validate:"required"`
-	ModelServiceUuids []string `json:"modelServiceUuids" validate:"required"`
-	InstanceNumber int `json:"instanceNumber" validate:"required"`
-	Uuid string `json:"uuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ModelUuid *string `json:"modelUuid,omitempty"`
-	ZoneUuid string `json:"zoneUuid" validate:"required"`
-	VmImageUuid *string `json:"vmImageUuid,omitempty"`
-	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
-	DatasetUuids []string `json:"datasetUuids,omitempty"`
-	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
-	DockerImage *string `json:"dockerImage,omitempty"`
-	CpuNum *int `json:"cpuNum,omitempty"`
-	Name string `json:"name" validate:"required"`
-	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
-	StartupParameters map[string]string `json:"startupParameters,omitempty"`
-	Type string `json:"type" validate:"required"`
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
-	MemorySize *int64 `json:"memorySize,omitempty"`
-	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
-	ServiceBootUptime *int `json:"serviceBootUptime,omitempty"`
-	ServiceLivez *string `json:"serviceLivez,omitempty"`
-	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
-	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
-	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// MatchModelServiceTemplateWithModelParam MatchModelServiceTemplateWithModel request param
-type MatchModelServiceTemplateWithModelParam struct {
-	BaseParam
-	Params MatchModelServiceTemplateWithModelParamDetail `json:"param"`
-}
 // ChangeVmNicStateParamDetail ChangeVmNicState detail param
 type ChangeVmNicStateParamDetail struct {
 	State string `json:"state" validate:"required"`
@@ -9966,18 +8564,6 @@ type CreateVpcVRouterParam struct {
 	BaseParam
 	Params CreateVpcVRouterParamDetail `json:"params"`
 }
-// SyncEcsInstanceFromRemoteParamDetail SyncEcsInstanceFromRemote detail param
-type SyncEcsInstanceFromRemoteParamDetail struct {
-	OnlyZstack *bool `json:"onlyZstack,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncEcsInstanceFromRemoteParam SyncEcsInstanceFromRemote request param
-type SyncEcsInstanceFromRemoteParam struct {
-	BaseParam
-	Params SyncEcsInstanceFromRemoteParamDetail `json:"params"`
-}
 // GetMdevDeviceSpecCandidatesParamDetail GetMdevDeviceSpecCandidates detail param
 type GetMdevDeviceSpecCandidatesParamDetail struct {
 	ClusterUuids []string `json:"clusterUuids,omitempty"`
@@ -10106,32 +8692,6 @@ type CreateBareMetal2InstanceFromVolumeBackupParam struct {
 	BaseParam
 	Params CreateBareMetal2InstanceFromVolumeBackupParamDetail `json:"params"`
 }
-// CreateEcsInstanceFromEcsImageParamDetail CreateEcsInstanceFromEcsImage detail param
-type CreateEcsInstanceFromEcsImageParamDetail struct {
-	EcsRootVolumeType *string `json:"ecsRootVolumeType,omitempty"`
-	Description *string `json:"description,omitempty"`
-	EcsRootVolumeGBSize *int64 `json:"ecsRootVolumeGBSize,omitempty"`
-	CreateMode *string `json:"createMode,omitempty"`
-	PrivateIpAddress *string `json:"privateIpAddress,omitempty"`
-	AllocatePublicIp *string `json:"allocatePublicIp,omitempty"`
-	EcsConsolePassword *string `json:"ecsConsolePassword,omitempty"`
-	Name string `json:"name" validate:"required"`
-	EcsImageUuid string `json:"ecsImageUuid" validate:"required"`
-	InstanceOfferingUuid *string `json:"instanceOfferingUuid,omitempty"`
-	InstanceType *string `json:"instanceType,omitempty"`
-	EcsVSwitchUuid string `json:"ecsVSwitchUuid" validate:"required"`
-	EcsSecurityGroupUuid string `json:"ecsSecurityGroupUuid" validate:"required"`
-	EcsRootPassword string `json:"ecsRootPassword" validate:"required"`
-	EcsBandWidth *int64 `json:"ecsBandWidth,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateEcsInstanceFromEcsImageParam CreateEcsInstanceFromEcsImage request param
-type CreateEcsInstanceFromEcsImageParam struct {
-	BaseParam
-	Params CreateEcsInstanceFromEcsImageParamDetail `json:"params"`
-}
 // GetResourceFromResourceStackParamDetail GetResourceFromResourceStack detail param
 type GetResourceFromResourceStackParamDetail struct {
 	Uuid string `json:"uuid" validate:"required"`
@@ -10163,16 +8723,6 @@ type GetSupportedCloudFormationResourcesParamDetail struct {
 type GetSupportedCloudFormationResourcesParam struct {
 	BaseParam
 	Params GetSupportedCloudFormationResourcesParamDetail `json:"getSupportedCloudFormationResources"`
-}
-// DeleteIdentityZoneInLocalParamDetail DeleteIdentityZoneInLocal detail param
-type DeleteIdentityZoneInLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteIdentityZoneInLocalParam DeleteIdentityZoneInLocal request param
-type DeleteIdentityZoneInLocalParam struct {
-	BaseParam
-	Params DeleteIdentityZoneInLocalParamDetail `json:"deleteIdentityZoneInLocal"`
 }
 // ChangeIAM2VirtualIDStateParamDetail ChangeIAM2VirtualIDState detail param
 type ChangeIAM2VirtualIDStateParamDetail struct {
@@ -10325,22 +8875,6 @@ type ChangeLoadBalancerBackendServerParam struct {
 	BaseParam
 	Params ChangeLoadBalancerBackendServerParamDetail `json:"changeLoadBalancerBackendServer"`
 }
-// CreateEcsVSwitchRemoteParamDetail CreateEcsVSwitchRemote detail param
-type CreateEcsVSwitchRemoteParamDetail struct {
-	VpcUuid string `json:"vpcUuid" validate:"required"`
-	IdentityZoneUuid string `json:"identityZoneUuid" validate:"required"`
-	CidrBlock string `json:"cidrBlock" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateEcsVSwitchRemoteParam CreateEcsVSwitchRemote request param
-type CreateEcsVSwitchRemoteParam struct {
-	BaseParam
-	Params CreateEcsVSwitchRemoteParamDetail `json:"params"`
-}
 // GetVmMigrationCandidateHostsParamDetail GetVmMigrationCandidateHosts detail param
 type GetVmMigrationCandidateHostsParamDetail struct {
 }
@@ -10395,36 +8929,6 @@ type GetLatestGuestToolsForVmParamDetail struct {
 type GetLatestGuestToolsForVmParam struct {
 	BaseParam
 	Params GetLatestGuestToolsForVmParamDetail `json:"getLatestGuestToolsForVm"`
-}
-// CreateVpcUserVpnGatewayRemoteParamDetail CreateVpcUserVpnGatewayRemote detail param
-type CreateVpcUserVpnGatewayRemoteParamDetail struct {
-	DataCenterUuid string `json:"dataCenterUuid" validate:"required"`
-	Ip string `json:"ip" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateVpcUserVpnGatewayRemoteParam CreateVpcUserVpnGatewayRemote request param
-type CreateVpcUserVpnGatewayRemoteParam struct {
-	BaseParam
-	Params CreateVpcUserVpnGatewayRemoteParamDetail `json:"params"`
-}
-// CreateOssBackupBucketRemoteParamDetail CreateOssBackupBucketRemote detail param
-type CreateOssBackupBucketRemoteParamDetail struct {
-	RegionId string `json:"regionId" validate:"required"`
-	OssDomain *string `json:"ossDomain,omitempty"`
-	OssKey *string `json:"ossKey,omitempty"`
-	OssSecret *string `json:"ossSecret,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateOssBackupBucketRemoteParam CreateOssBackupBucketRemote request param
-type CreateOssBackupBucketRemoteParam struct {
-	BaseParam
-	Params CreateOssBackupBucketRemoteParamDetail `json:"params"`
 }
 // PowerOffBaremetalChassisParamDetail PowerOffBaremetalChassis detail param
 type PowerOffBaremetalChassisParamDetail struct {
@@ -10506,16 +9010,6 @@ type GetVmAttachableL3NetworkParamDetail struct {
 type GetVmAttachableL3NetworkParam struct {
 	BaseParam
 	Params GetVmAttachableL3NetworkParamDetail `json:"getVmAttachableL3Network"`
-}
-// UpdateEcsInstanceVncPasswordParamDetail UpdateEcsInstanceVncPassword detail param
-type UpdateEcsInstanceVncPasswordParamDetail struct {
-	Password string `json:"password" validate:"required"`
-}
-
-// UpdateEcsInstanceVncPasswordParam UpdateEcsInstanceVncPassword request param
-type UpdateEcsInstanceVncPasswordParam struct {
-	BaseParam
-	Params UpdateEcsInstanceVncPasswordParamDetail `json:"params"`
 }
 // SyncChronyServersParamDetail SyncChronyServers detail param
 type SyncChronyServersParamDetail struct {
@@ -10637,20 +9131,6 @@ type GetLicenseNodeUsageDetailsParam struct {
 	BaseParam
 	Params GetLicenseNodeUsageDetailsParamDetail `json:"getLicenseNodeUsageDetails"`
 }
-// CreateAliyunSnapshotRemoteParamDetail CreateAliyunSnapshotRemote detail param
-type CreateAliyunSnapshotRemoteParamDetail struct {
-	DiskUuid string `json:"diskUuid" validate:"required"`
-	Name string `json:"name" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateAliyunSnapshotRemoteParam CreateAliyunSnapshotRemote request param
-type CreateAliyunSnapshotRemoteParam struct {
-	BaseParam
-	Params CreateAliyunSnapshotRemoteParamDetail `json:"params"`
-}
 // SetVmBootVolumeParamDetail SetVmBootVolume detail param
 type SetVmBootVolumeParamDetail struct {
 	VolumeUuid string `json:"volumeUuid" validate:"required"`
@@ -10680,16 +9160,6 @@ type RenewSessionParamDetail struct {
 type RenewSessionParam struct {
 	BaseParam
 	Params RenewSessionParamDetail `json:"renewSession"`
-}
-// DeleteDataCenterInLocalParamDetail DeleteDataCenterInLocal detail param
-type DeleteDataCenterInLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteDataCenterInLocalParam DeleteDataCenterInLocal request param
-type DeleteDataCenterInLocalParam struct {
-	BaseParam
-	Params DeleteDataCenterInLocalParamDetail `json:"deleteDataCenterInLocal"`
 }
 // SetVmConsoleModeParamDetail SetVmConsoleMode detail param
 type SetVmConsoleModeParamDetail struct {
@@ -10759,26 +9229,6 @@ type CleanV2VConversionCacheParam struct {
 	BaseParam
 	Params CleanV2VConversionCacheParamDetail `json:"cleanV2VConversionCache"`
 }
-// UnbindModelFromServiceParamDetail UnbindModelFromService detail param
-type UnbindModelFromServiceParamDetail struct {
-}
-
-// UnbindModelFromServiceParam UnbindModelFromService request param
-type UnbindModelFromServiceParam struct {
-	BaseParam
-	Params UnbindModelFromServiceParamDetail `json:"unbindModelFromService"`
-}
-// GetEcsInstanceTypeParamDetail GetEcsInstanceType detail param
-type GetEcsInstanceTypeParamDetail struct {
-	IdentityZoneUuid string `json:"identityZoneUuid" validate:"required"`
-	EcsImageUuid *string `json:"ecsImageUuid,omitempty"`
-}
-
-// GetEcsInstanceTypeParam GetEcsInstanceType request param
-type GetEcsInstanceTypeParam struct {
-	BaseParam
-	Params GetEcsInstanceTypeParamDetail `json:"getEcsInstanceType"`
-}
 // GetLicenseUKeyStatusParamDetail GetLicenseUKeyStatus detail param
 type GetLicenseUKeyStatusParamDetail struct {
 }
@@ -10807,17 +9257,6 @@ type SetL3NetworkRouterInterfaceIpParamDetail struct {
 type SetL3NetworkRouterInterfaceIpParam struct {
 	BaseParam
 	Params SetL3NetworkRouterInterfaceIpParamDetail `json:"params"`
-}
-// GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail GetConnectionBetweenL3NetworkAndAliyunVSwitch detail param
-type GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail struct {
-	Uuid string `json:"uuid" validate:"required"`
-	ResourceType string `json:"resourceType" validate:"required"`
-}
-
-// GetConnectionBetweenL3NetworkAndAliyunVSwitchParam GetConnectionBetweenL3NetworkAndAliyunVSwitch request param
-type GetConnectionBetweenL3NetworkAndAliyunVSwitchParam struct {
-	BaseParam
-	Params GetConnectionBetweenL3NetworkAndAliyunVSwitchParamDetail `json:"params"`
 }
 // GetBareMetal2GatewayAllocatorStrategiesParamDetail GetBareMetal2GatewayAllocatorStrategies detail param
 type GetBareMetal2GatewayAllocatorStrategiesParamDetail struct {
@@ -10928,16 +9367,6 @@ type SetVmNumaParam struct {
 	BaseParam
 	Params SetVmNumaParamDetail `json:"setVmNuma"`
 }
-// DeleteAliyunRouterInterfaceLocalParamDetail DeleteAliyunRouterInterfaceLocal detail param
-type DeleteAliyunRouterInterfaceLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAliyunRouterInterfaceLocalParam DeleteAliyunRouterInterfaceLocal request param
-type DeleteAliyunRouterInterfaceLocalParam struct {
-	BaseParam
-	Params DeleteAliyunRouterInterfaceLocalParamDetail `json:"deleteAliyunRouterInterfaceLocal"`
-}
 // UpdateFirewallRuleSetParamDetail UpdateFirewallRuleSet detail param
 type UpdateFirewallRuleSetParamDetail struct {
 	Name string `json:"name,omitempty"`
@@ -10949,15 +9378,6 @@ type UpdateFirewallRuleSetParamDetail struct {
 type UpdateFirewallRuleSetParam struct {
 	BaseParam
 	Params UpdateFirewallRuleSetParamDetail `json:"updateFirewallRuleSet"`
-}
-// AttachAliyunKeyParamDetail AttachAliyunKey detail param
-type AttachAliyunKeyParamDetail struct {
-}
-
-// AttachAliyunKeyParam AttachAliyunKey request param
-type AttachAliyunKeyParam struct {
-	BaseParam
-	Params AttachAliyunKeyParamDetail `json:"attachAliyunKey"`
 }
 // RefreshSearchIndexesParamDetail RefreshSearchIndexes detail param
 type RefreshSearchIndexesParamDetail struct {
@@ -10999,22 +9419,6 @@ type ShutdownHostParamDetail struct {
 type ShutdownHostParam struct {
 	BaseParam
 	Params ShutdownHostParamDetail `json:"shutdownHost"`
-}
-// UpdateVpcVpnConnectionRemoteParamDetail UpdateVpcVpnConnectionRemote detail param
-type UpdateVpcVpnConnectionRemoteParamDetail struct {
-	Name string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	LocalCidr *string `json:"localCidr,omitempty"`
-	RemoteCidr *string `json:"remoteCidr,omitempty"`
-	Active *bool `json:"active,omitempty"`
-	IkeConfUuid *string `json:"ikeConfUuid,omitempty"`
-	IpsecConfUuid *string `json:"ipsecConfUuid,omitempty"`
-}
-
-// UpdateVpcVpnConnectionRemoteParam UpdateVpcVpnConnectionRemote request param
-type UpdateVpcVpnConnectionRemoteParam struct {
-	BaseParam
-	Params UpdateVpcVpnConnectionRemoteParamDetail `json:"updateVpcVpnConnectionRemote"`
 }
 // GetVmTaskParamDetail GetVmTask detail param
 type GetVmTaskParamDetail struct {
@@ -11188,21 +9592,6 @@ type GetVpcVRouterDistributedRoutingEnabledParam struct {
 	BaseParam
 	Params GetVpcVRouterDistributedRoutingEnabledParamDetail `json:"getVpcVRouterDistributedRoutingEnabled"`
 }
-// CreateEcsSecurityGroupRemoteParamDetail CreateEcsSecurityGroupRemote detail param
-type CreateEcsSecurityGroupRemoteParamDetail struct {
-	VpcUuid string `json:"vpcUuid" validate:"required"`
-	Description *string `json:"description,omitempty"`
-	Name string `json:"name" validate:"required"`
-	Strategy *string `json:"strategy,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// CreateEcsSecurityGroupRemoteParam CreateEcsSecurityGroupRemote request param
-type CreateEcsSecurityGroupRemoteParam struct {
-	BaseParam
-	Params CreateEcsSecurityGroupRemoteParamDetail `json:"params"`
-}
 // RemoveAttributesFromIAM2OrganizationParamDetail RemoveAttributesFromIAM2Organization detail param
 type RemoveAttributesFromIAM2OrganizationParamDetail struct {
 	AttributeUuids []string `json:"attributeUuids" validate:"required"`
@@ -11212,16 +9601,6 @@ type RemoveAttributesFromIAM2OrganizationParamDetail struct {
 type RemoveAttributesFromIAM2OrganizationParam struct {
 	BaseParam
 	Params RemoveAttributesFromIAM2OrganizationParamDetail `json:"removeAttributesFromIAM2Organization"`
-}
-// DeleteAliyunSnapshotFromLocalParamDetail DeleteAliyunSnapshotFromLocal detail param
-type DeleteAliyunSnapshotFromLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAliyunSnapshotFromLocalParam DeleteAliyunSnapshotFromLocal request param
-type DeleteAliyunSnapshotFromLocalParam struct {
-	BaseParam
-	Params DeleteAliyunSnapshotFromLocalParamDetail `json:"deleteAliyunSnapshotFromLocal"`
 }
 // GetIAM2ProjectContainerImagesParamDetail GetIAM2ProjectContainerImages detail param
 type GetIAM2ProjectContainerImagesParamDetail struct {
@@ -11262,29 +9641,6 @@ type CreateRootVolumeTemplateFromRootVolumeParamDetail struct {
 type CreateRootVolumeTemplateFromRootVolumeParam struct {
 	BaseParam
 	Params CreateRootVolumeTemplateFromRootVolumeParamDetail `json:"params"`
-}
-// AttachAliyunDiskToEcsParamDetail AttachAliyunDiskToEcs detail param
-type AttachAliyunDiskToEcsParamDetail struct {
-	EcsUuid string `json:"ecsUuid" validate:"required"`
-	DeleteWithInstance *bool `json:"deleteWithInstance,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// AttachAliyunDiskToEcsParam AttachAliyunDiskToEcs request param
-type AttachAliyunDiskToEcsParam struct {
-	BaseParam
-	Params AttachAliyunDiskToEcsParamDetail `json:"params"`
-}
-// DeleteOssBucketNameLocalParamDetail DeleteOssBucketNameLocal detail param
-type DeleteOssBucketNameLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteOssBucketNameLocalParam DeleteOssBucketNameLocal request param
-type DeleteOssBucketNameLocalParam struct {
-	BaseParam
-	Params DeleteOssBucketNameLocalParamDetail `json:"deleteOssBucketNameLocal"`
 }
 // GetObservabilityServerServiceDataParamDetail GetObservabilityServerServiceData detail param
 type GetObservabilityServerServiceDataParamDetail struct {
@@ -11345,16 +9701,6 @@ type ChangeSlbGroupDeployTypeParam struct {
 	BaseParam
 	Params ChangeSlbGroupDeployTypeParamDetail `json:"changeSlbGroupDeployType"`
 }
-// DeleteEcsSecurityGroupInLocalParamDetail DeleteEcsSecurityGroupInLocal detail param
-type DeleteEcsSecurityGroupInLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsSecurityGroupInLocalParam DeleteEcsSecurityGroupInLocal request param
-type DeleteEcsSecurityGroupInLocalParam struct {
-	BaseParam
-	Params DeleteEcsSecurityGroupInLocalParamDetail `json:"deleteEcsSecurityGroupInLocal"`
-}
 // DetachDataVolumeFromHostParamDetail DetachDataVolumeFromHost detail param
 type DetachDataVolumeFromHostParamDetail struct {
 	HostUuid *string `json:"hostUuid,omitempty"`
@@ -11389,15 +9735,6 @@ type CreateSystemTagsParamDetail struct {
 type CreateSystemTagsParam struct {
 	BaseParam
 	Params CreateSystemTagsParamDetail `json:"params"`
-}
-// GetOssBackupBucketFromRemoteParamDetail GetOssBackupBucketFromRemote detail param
-type GetOssBackupBucketFromRemoteParamDetail struct {
-}
-
-// GetOssBackupBucketFromRemoteParam GetOssBackupBucketFromRemote request param
-type GetOssBackupBucketFromRemoteParam struct {
-	BaseParam
-	Params GetOssBackupBucketFromRemoteParamDetail `json:"getOssBackupBucketFromRemote"`
 }
 // GetL3NetworkTypesParamDetail GetL3NetworkTypes detail param
 type GetL3NetworkTypesParamDetail struct {
@@ -11468,16 +9805,6 @@ type GetCandidateVMForAttachingAffinityGroupParamDetail struct {
 type GetCandidateVMForAttachingAffinityGroupParam struct {
 	BaseParam
 	Params GetCandidateVMForAttachingAffinityGroupParamDetail `json:"getCandidateVMForAttachingAffinityGroup"`
-}
-// DeleteVpcVpnConnectionLocalParamDetail DeleteVpcVpnConnectionLocal detail param
-type DeleteVpcVpnConnectionLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVpcVpnConnectionLocalParam DeleteVpcVpnConnectionLocal request param
-type DeleteVpcVpnConnectionLocalParam struct {
-	BaseParam
-	Params DeleteVpcVpnConnectionLocalParamDetail `json:"deleteVpcVpnConnectionLocal"`
 }
 // DetachPolicyFromUserGroupParamDetail DetachPolicyFromUserGroup detail param
 type DetachPolicyFromUserGroupParamDetail struct {
@@ -11623,30 +9950,6 @@ type LocalStorageGetVolumeMigratableHostsParam struct {
 	BaseParam
 	Params LocalStorageGetVolumeMigratableHostsParamDetail `json:"localStorageGetVolumeMigratableHosts"`
 }
-// GetOssBucketNameFromRemoteParamDetail GetOssBucketNameFromRemote detail param
-type GetOssBucketNameFromRemoteParamDetail struct {
-	OssDomain *string `json:"ossDomain,omitempty"`
-	OssKey *string `json:"ossKey,omitempty"`
-	OssSecret *string `json:"ossSecret,omitempty"`
-}
-
-// GetOssBucketNameFromRemoteParam GetOssBucketNameFromRemote request param
-type GetOssBucketNameFromRemoteParam struct {
-	BaseParam
-	Params GetOssBucketNameFromRemoteParamDetail `json:"getOssBucketNameFromRemote"`
-}
-// SyncEcsVpcFromRemoteParamDetail SyncEcsVpcFromRemote detail param
-type SyncEcsVpcFromRemoteParamDetail struct {
-	EcsVpcId *string `json:"ecsVpcId,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncEcsVpcFromRemoteParam SyncEcsVpcFromRemote request param
-type SyncEcsVpcFromRemoteParam struct {
-	BaseParam
-	Params SyncEcsVpcFromRemoteParamDetail `json:"params"`
-}
 // SetServiceTypeOnHostNetworkInterfaceParamDetail SetServiceTypeOnHostNetworkInterface detail param
 type SetServiceTypeOnHostNetworkInterfaceParamDetail struct {
 	InterfaceUuids []string `json:"interfaceUuids" validate:"required"`
@@ -11708,16 +10011,6 @@ type GetBackupStorageCandidatesForImageMigrationParam struct {
 	BaseParam
 	Params GetBackupStorageCandidatesForImageMigrationParamDetail `json:"getBackupStorageCandidatesForImageMigration"`
 }
-// DeleteVpcIpSecConfigLocalParamDetail DeleteVpcIpSecConfigLocal detail param
-type DeleteVpcIpSecConfigLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteVpcIpSecConfigLocalParam DeleteVpcIpSecConfigLocal request param
-type DeleteVpcIpSecConfigLocalParam struct {
-	BaseParam
-	Params DeleteVpcIpSecConfigLocalParamDetail `json:"deleteVpcIpSecConfigLocal"`
-}
 // GenerateSriovPciDevicesParamDetail GenerateSriovPciDevices detail param
 type GenerateSriovPciDevicesParamDetail struct {
 	VirtPartNum int `json:"virtPartNum" validate:"required"`
@@ -11762,18 +10055,6 @@ type GetVipAvailablePortParamDetail struct {
 type GetVipAvailablePortParam struct {
 	BaseParam
 	Params GetVipAvailablePortParamDetail `json:"getVipAvailablePort"`
-}
-// SyncDiskFromAliyunFromRemoteParamDetail SyncDiskFromAliyunFromRemote detail param
-type SyncDiskFromAliyunFromRemoteParamDetail struct {
-	DiskId *string `json:"diskId,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncDiskFromAliyunFromRemoteParam SyncDiskFromAliyunFromRemote request param
-type SyncDiskFromAliyunFromRemoteParam struct {
-	BaseParam
-	Params SyncDiskFromAliyunFromRemoteParamDetail `json:"params"`
 }
 // ChangeVolumeStateParamDetail ChangeVolumeState detail param
 type ChangeVolumeStateParamDetail struct {
@@ -11840,15 +10121,6 @@ type GetClusterHostNetworkFactsParam struct {
 	BaseParam
 	Params GetClusterHostNetworkFactsParamDetail `json:"getClusterHostNetworkFacts"`
 }
-// DetachOssBucketFromEcsDataCenterParamDetail DetachOssBucketFromEcsDataCenter detail param
-type DetachOssBucketFromEcsDataCenterParamDetail struct {
-}
-
-// DetachOssBucketFromEcsDataCenterParam DetachOssBucketFromEcsDataCenter request param
-type DetachOssBucketFromEcsDataCenterParam struct {
-	BaseParam
-	Params DetachOssBucketFromEcsDataCenterParamDetail `json:"detachOssBucketFromEcsDataCenter"`
-}
 // ParseOvfParamDetail ParseOvf detail param
 type ParseOvfParamDetail struct {
 	XmlBase64 string `json:"xmlBase64" validate:"required"`
@@ -11869,16 +10141,6 @@ type AddSchedulerJobGroupToSchedulerTriggerParam struct {
 	BaseParam
 	Params AddSchedulerJobGroupToSchedulerTriggerParamDetail `json:"params"`
 }
-// DeleteAliyunNasAccessGroupRuleParamDetail DeleteAliyunNasAccessGroupRule detail param
-type DeleteAliyunNasAccessGroupRuleParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteAliyunNasAccessGroupRuleParam DeleteAliyunNasAccessGroupRule request param
-type DeleteAliyunNasAccessGroupRuleParam struct {
-	BaseParam
-	Params DeleteAliyunNasAccessGroupRuleParamDetail `json:"deleteAliyunNasAccessGroupRule"`
-}
 // DeleteBondingParamDetail DeleteBonding detail param
 type DeleteBondingParamDetail struct {
 	DeleteMode *string `json:"deleteMode,omitempty"`
@@ -11888,16 +10150,6 @@ type DeleteBondingParamDetail struct {
 type DeleteBondingParam struct {
 	BaseParam
 	Params DeleteBondingParamDetail `json:"deleteBonding"`
-}
-// DeleteEcsSecurityGroupRemoteParamDetail DeleteEcsSecurityGroupRemote detail param
-type DeleteEcsSecurityGroupRemoteParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsSecurityGroupRemoteParam DeleteEcsSecurityGroupRemote request param
-type DeleteEcsSecurityGroupRemoteParam struct {
-	BaseParam
-	Params DeleteEcsSecurityGroupRemoteParamDetail `json:"deleteEcsSecurityGroupRemote"`
 }
 // DeleteVmNicFromSecurityGroupParamDetail DeleteVmNicFromSecurityGroup detail param
 type DeleteVmNicFromSecurityGroupParamDetail struct {
@@ -11974,18 +10226,6 @@ type EnableCdpTaskParam struct {
 	BaseParam
 	Params EnableCdpTaskParamDetail `json:"params"`
 }
-// SyncConnectionAccessPointFromRemoteParamDetail SyncConnectionAccessPointFromRemote detail param
-type SyncConnectionAccessPointFromRemoteParamDetail struct {
-	AccessPointId *string `json:"accessPointId,omitempty"`
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncConnectionAccessPointFromRemoteParam SyncConnectionAccessPointFromRemote request param
-type SyncConnectionAccessPointFromRemoteParam struct {
-	BaseParam
-	Params SyncConnectionAccessPointFromRemoteParamDetail `json:"syncConnectionAccessPointFromRemote"`
-}
 // RegisterLicenseRequestedApplicationParamDetail RegisterLicenseRequestedApplication detail param
 type RegisterLicenseRequestedApplicationParamDetail struct {
 	LicenseRequestCode string `json:"licenseRequestCode" validate:"required"`
@@ -11997,25 +10237,4 @@ type RegisterLicenseRequestedApplicationParamDetail struct {
 type RegisterLicenseRequestedApplicationParam struct {
 	BaseParam
 	Params RegisterLicenseRequestedApplicationParamDetail `json:"params"`
-}
-// SyncVpcVpnGatewayFromRemoteParamDetail SyncVpcVpnGatewayFromRemote detail param
-type SyncVpcVpnGatewayFromRemoteParamDetail struct {
-	ResourceUuid *string `json:"resourceUuid,omitempty"`
-	TagUuids []string `json:"tagUuids,omitempty"`
-}
-
-// SyncVpcVpnGatewayFromRemoteParam SyncVpcVpnGatewayFromRemote request param
-type SyncVpcVpnGatewayFromRemoteParam struct {
-	BaseParam
-	Params SyncVpcVpnGatewayFromRemoteParamDetail `json:"syncVpcVpnGatewayFromRemote"`
-}
-// DeleteEcsVpcInLocalParamDetail DeleteEcsVpcInLocal detail param
-type DeleteEcsVpcInLocalParamDetail struct {
-	DeleteMode *string `json:"deleteMode,omitempty"`
-}
-
-// DeleteEcsVpcInLocalParam DeleteEcsVpcInLocal request param
-type DeleteEcsVpcInLocalParam struct {
-	BaseParam
-	Params DeleteEcsVpcInLocalParamDetail `json:"deleteEcsVpcInLocal"`
 }

@@ -1,6 +1,6 @@
 # ZSTAC-91245 DELETE 接口复核
 
-以 SDK 主分支 `a79c1dd6` 和 Cloud 5.5.48 的 API 快照为基线，复查原来的 81 个候选。两批修改已覆盖 81 项，其中第二批处理了 33 项路径偏差、5 项必填参数缺失和 17 项可选参数未暴露。
+以 SDK 主分支 `a79c1dd6` 和 Cloud 5.5.48 的 API 快照为基线，复查原来的 81 个候选。SDK 当前保留 67 项修复，第二批包含 26 项路径偏差、2 项必填参数缺失和 13 项可选参数未暴露。
 
 ## 首批 26 项
 
@@ -33,7 +33,7 @@
 
 HTTP 契约测试覆盖实际发送的路径、重复查询参数、兼容入口和输入校验。Cloud API 快照用于核实契约。
 
-## 第二批 55 项
+## 第二批 41 项
 
 同一路径的旧方法继续使用默认参数。只有需要调用方明确提供目标时，旧方法才会在发请求前返回迁移错误。集合接口已有明确的单个 ID 时，旧方法将它作为列表的唯一元素发送。
 
@@ -42,20 +42,13 @@ HTTP 契约测试覆盖实际发送的路径、重复查询参数、兼容入口
 - `DetachNetworkServiceFromL3NetworkWithParams` 支持按服务名称解绑或按提供者传入多个服务。
 - `GetVipQosByPort` 从 Cloud 的 QoS 列表定位规则，Terraform 刷新和删除使用同一端口。
 
-### 已修复的路径偏差（33 项）
+### 已修复的路径偏差（26 项）
 
 - `DeleteAlert`
-- `DeleteBackupFileInPublic`
 - `DeleteBilling`
-- `DeleteDatasets`
-- `DeleteHybridEipRemote`
 - `DeleteLicense`
 - `DeleteLogConfiguration`
 - `DeleteMetricData`
-- `DeleteModelEvaluationTasks`
-- `DeleteModelServiceInstanceGroups`
-- `DeleteModelServices`
-- `DeleteModels`
 - `DeleteResourceStackVmPortMonitor`
 - `DetachHostFromHostSchedulingRuleGroup`
 - `DetachNetworkServiceFromL3Network`
@@ -78,24 +71,17 @@ HTTP 契约测试覆盖实际发送的路径、重复查询参数、兼容入口
 - `UnregisterLicenseServer`
 - `WithdrawLicenseCapacityApplication`
 
-### 已补齐的必填参数（5 项）
+### 已补齐的必填参数（2 项）
 
-- `DeleteAliyunRouterInterfaceRemote`
-- `DeleteHybridEipFromLocal`
-- `DeleteOssBucketFileRemote`
 - `DeleteVxlanPoolRemoteVtep`
 - `DetachProvisionNicFromBonding`
 
-### 已暴露的可选参数（17 项）
+### 已暴露的可选参数（13 项）
 
 - `DeleteBuildAppExportHistory`
 - `DeleteCbtTask`
 - `DeleteCdpTask`
 - `DeleteDatabaseBackup`
-- `DeleteHuaweiIMasterFabric`
-- `DeleteHuaweiIMasterTenant`
-- `DeleteHuaweiIMasterVRouter`
-- `DeleteHuaweiIMasterVpc`
 - `DeleteImage`
 - `DeleteResourcePrice`
 - `DeleteVmBackup`

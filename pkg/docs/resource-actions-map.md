@@ -1,6 +1,6 @@
 # 客户端资源操作迁移清单
 
-基于 `913fa91c`。共 1,266 个方法，目标为 `pkg/client` 下的 268 个文件。
+基于 `913fa91c`。共 1,054 个方法，目标为 `pkg/client` 下的 231 个文件。
 
 ## 计算与网络
 
@@ -57,7 +57,7 @@
 | [pci_device_spec_actions.go](../client/pci_device_spec_actions.go) | `AddPciDeviceSpecToVmInstance`, `GetPciDeviceSpecCandidates`, `RemovePciDeviceSpecFromVmInstance` |
 | [port_forwarding_rule_actions.go](../client/port_forwarding_rule_actions.go) | `ChangePortForwardingRuleState`, `GetVpcAttachedPortForwardingRules` |
 | [port_mirror_actions.go](../client/port_mirror_actions.go) | `ChangePortMirrorState`, `GetCandidateVmNicsForPortMirror`, `GetPortMirrorNetworkUsedIp`, `PagePortMirrorNetworkUsedIp`, `QueryPortMirrorNetworkUsedIp` |
-| [sdn_controller_actions.go](../client/sdn_controller_actions.go) | `PullHuaweiIMasterController`, `PullSdnControllerTenant`, `SdnControllerAddHost`, `SdnControllerChangeHost`, `SdnControllerRemoveHost` |
+| [sdn_controller_actions.go](../client/sdn_controller_actions.go) | `PullSdnControllerTenant`, `SdnControllerAddHost`, `SdnControllerChangeHost`, `SdnControllerRemoveHost` |
 | [usb_device_actions.go](../client/usb_device_actions.go) | `AttachUsbDeviceToVm`, `DetachUsbDeviceFromVm`, `GetUsbDeviceCandidatesForAttachingVm` |
 | [v2vconversion_host_actions.go](../client/v2vconversion_host_actions.go) | `ChangeV2VConversionHostState`, `CleanV2VConversionCache`, `ConvertVmFromForeignHypervisor`, `ConvertVmFromForeignHypervisorAsync` |
 | [vip_actions.go](../client/vip_actions.go) | `ChangeVipState`, `CheckVipPortAvailability`, `GetVipAvailablePort`, `GetVipUsedPorts`, `GetVpcAttachedVip` |
@@ -84,18 +84,6 @@
 
 | 目标文件 | 方法 |
 |---|---|
-| [aliyun_connection_access_point_actions.go](../client/aliyun_connection_access_point_actions.go) | `AddConnectionAccessPointFromRemote`, `DeleteConnectionAccessPointLocal`, `GetConnectionAccessPointFromLocal`, `GetConnectionAccessPointFromRemote`, `PageConnectionAccessPointFromLocal`, `QueryConnectionAccessPointFromLocal`, `SyncConnectionAccessPointFromRemote` |
-| [aliyun_disk_actions.go](../client/aliyun_disk_actions.go) | `AttachAliyunDiskToEcs`, `CreateAliyunDiskFromRemote`, `DeleteAliyunDiskFromLocal`, `DeleteAliyunDiskFromRemote`, `DetachAliyunDiskFromEcs`, `GetAliyunDiskFromLocal`, `PageAliyunDiskFromLocal`, `QueryAliyunDiskFromLocal`, `SyncDiskFromAliyunFromRemote` |
-| [aliyun_nas_access_group_actions.go](../client/aliyun_nas_access_group_actions.go) | `GetAliyunNasAccessGroupRemote` |
-| [aliyun_nas_access_group_rule_actions.go](../client/aliyun_nas_access_group_rule_actions.go) | `CreateAliyunNasAccessGroupRule`, `DeleteAliyunNasAccessGroupRule` |
-| [aliyun_nas_file_system_actions.go](../client/aliyun_nas_file_system_actions.go) | `GetAliyunNasFileSystemRemote` |
-| [aliyun_nas_mount_target_actions.go](../client/aliyun_nas_mount_target_actions.go) | `GetAliyunNasMountTargetRemote`, `UpdateAliyunMountTarget` |
-| [aliyun_route_entry_actions.go](../client/aliyun_route_entry_actions.go) | `CreateAliyunVpcVirtualRouterEntryRemote`, `DeleteAliyunRouteEntryRemote`, `GetAliyunRouteEntryFromLocal`, `PageAliyunRouteEntryFromLocal`, `QueryAliyunRouteEntryFromLocal`, `SyncAliyunRouteEntryFromRemote` |
-| [aliyun_router_interface_actions.go](../client/aliyun_router_interface_actions.go) | `CreateAliyunRouterInterfaceRemote`, `DeleteAliyunRouterInterfaceLocal`, `DeleteAliyunRouterInterfaceRemote`, `GetAliyunRouterInterfaceFromLocal`, `PageAliyunRouterInterfaceFromLocal`, `QueryAliyunRouterInterfaceFromLocal`, `StartConnectionBetweenAliyunRouterInterface`, `SyncAliyunRouterInterfaceFromRemote`, `UpdateAliyunRouteInterfaceRemote` |
-| [aliyun_snapshot_actions.go](../client/aliyun_snapshot_actions.go) | `CreateAliyunSnapshotRemote`, `DeleteAliyunSnapshotFromLocal`, `DeleteAliyunSnapshotFromRemote`, `GCAliyunSnapshotRemote`, `GetAliyunSnapshotFromLocal`, `PageAliyunSnapshotFromLocal`, `QueryAliyunSnapshotFromLocal`, `SyncAliyunSnapshotRemote` |
-| [aliyun_virtual_border_router_actions.go](../client/aliyun_virtual_border_router_actions.go) | `DeleteVirtualBorderRouterLocal`, `GetVirtualBorderRouterFromLocal`, `PageVirtualBorderRouterFromLocal`, `QueryVirtualBorderRouterFromLocal`, `RecoveryVirtualBorderRouterRemote`, `SyncVirtualBorderRouterFromRemote`, `TerminateVirtualBorderRouterRemote`, `UpdateVirtualBorderRouterRemote` |
-| [aliyun_virtual_router_actions.go](../client/aliyun_virtual_router_actions.go) | `DeleteVirtualRouterLocal`, `GetAliyunVirtualRouterFromLocal`, `PageAliyunVirtualRouterFromLocal`, `QueryAliyunVirtualRouterFromLocal`, `SyncAliyunVirtualRouterFromRemote`, `UpdateAliyunVirtualRouter` |
-| [aliyun_vswitch_connection_actions.go](../client/aliyun_vswitch_connection_actions.go) | `CreateConnectionBetweenL3NetworkAndAliyunVSwitch`, `DeleteConnectionBetweenL3NetWorkAndAliyunVSwitch`, `GetConnectionBetweenL3NetworkAndAliyunVSwitch`, `PageConnectionBetweenL3NetworkAndAliyunVSwitch`, `QueryConnectionBetweenL3NetworkAndAliyunVSwitch`, `UpdateConnectionBetweenL3NetWorkAndAliyunVSwitch` |
 | [backup_storage_actions.go](../client/backup_storage_actions.go) | `AddSimulatorBackupStorage`, `AttachBackupStorageToZone`, `BackupStorageMigrateImage`, `BackupStorageMigrateImageAsync`, `ChangeBackupStorageState`, `CleanUpTrashOnBackupStorage`, `DeleteExportedImageFromBackupStorage`, `DetachBackupStorageFromZone`, `ExportImageFromBackupStorage`, `ExportImageFromBackupStorageAsync`, `GetBackupStorageCandidatesForImageMigration`, `GetBackupStorageCapacity`, `GetBackupStorageTypes`, `GetCandidateBackupStorageForCreatingImage`, `GetCdpBackupStorageRequirement`, `GetTrashOnBackupStorage`, `MergeDataOnBackupStorage` |
 | [block_primary_storage_actions.go](../client/block_primary_storage_actions.go) | `AddStorageProtocol`, `GetBlockPrimaryStorageMetadata` |
 | [block_volume_actions.go](../client/block_volume_actions.go) | `GetAccessPath` |
@@ -107,21 +95,8 @@
 | [data_integrity_actions.go](../client/data_integrity_actions.go) | `AddIntegrityResource`, `CheckBatchDataIntegrity` |
 | [data_protection_actions.go](../client/data_protection_actions.go) | `StartDataProtection`, `StartDataProtectionAsync` |
 | [database_backup_actions.go](../client/database_backup_actions.go) | `DeleteExportedDatabaseBackupFromBackupStorage`, `ExportDatabaseBackupFromBackupStorage`, `GetDatabaseBackupFromImageStore`, `RecoverDatabaseFromBackup`, `SyncDatabaseBackupFromImageStoreBackupStorage` |
-| [ecs_image_actions.go](../client/ecs_image_actions.go) | `CreateEcsImageFromEcsSnapshot`, `CreateEcsImageFromLocalImage`, `DeleteEcsImageLocal`, `DeleteEcsImageRemote`, `GetCreateEcsImageProgress`, `GetEcsImageFromLocal`, `PageEcsImageFromLocal`, `QueryEcsImageFromLocal`, `SyncEcsImageFromRemote` |
-| [ecs_instance_actions.go](../client/ecs_instance_actions.go) | `CreateEcsInstanceFromEcsImage`, `DeleteEcsInstanceLocal`, `GetEcsInstanceFromLocal`, `GetEcsInstanceType`, `GetEcsInstanceVncUrl`, `PageEcsInstanceFromLocal`, `QueryEcsInstanceFromLocal`, `SyncEcsInstanceFromRemote`, `UpdateEcsInstanceVncPassword` |
-| [ecs_security_group_actions.go](../client/ecs_security_group_actions.go) | `CreateEcsSecurityGroupRemote`, `DeleteEcsSecurityGroupInLocal`, `DeleteEcsSecurityGroupRemote`, `GetEcsSecurityGroupFromLocal`, `PageEcsSecurityGroupFromLocal`, `QueryEcsSecurityGroupFromLocal`, `SyncEcsSecurityGroupFromRemote` |
-| [ecs_security_group_rule_actions.go](../client/ecs_security_group_rule_actions.go) | `CreateEcsSecurityGroupRuleRemote`, `DeleteEcsSecurityGroupRuleRemote`, `GetEcsSecurityGroupRuleFromLocal`, `PageEcsSecurityGroupRuleFromLocal`, `QueryEcsSecurityGroupRuleFromLocal`, `SyncEcsSecurityGroupRuleFromRemote` |
-| [ecs_vpc_actions.go](../client/ecs_vpc_actions.go) | `CreateEcsVpcRemote`, `DeleteEcsVpcInLocal`, `DeleteEcsVpcRemote`, `GetEcsVpcFromLocal`, `PageEcsVpcFromLocal`, `QueryEcsVpcFromLocal`, `SyncEcsVpcFromRemote` |
-| [ecs_vswitch_actions.go](../client/ecs_vswitch_actions.go) | `CreateEcsVSwitchRemote`, `DeleteEcsVSwitchInLocal`, `DeleteEcsVSwitchRemote`, `GetEcsVSwitchFromLocal`, `PageEcsVSwitchFromLocal`, `QueryEcsVSwitchFromLocal`, `SyncEcsVSwitchFromRemote` |
 | [external_primary_storage_actions.go](../client/external_primary_storage_actions.go) | `DiscoverExternalPrimaryStorage` |
-| [hybrid_data_center_actions.go](../client/hybrid_data_center_actions.go) | `AddDataCenterFromRemote`, `DeleteAllEcsInstancesFromDataCenter`, `DeleteDataCenterInLocal`, `GetDataCenterFromLocal`, `GetDataCenterFromRemote`, `PageDataCenterFromLocal`, `QueryDataCenterFromLocal`, `SyncDataCenterFromRemote` |
-| [hybrid_database_backup_actions.go](../client/hybrid_database_backup_actions.go) | `BackupDatabaseToPublicCloud`, `CreateOssBackupBucketRemote`, `DeleteBackupFileInPublic`, `DownloadBackupFileFromPublicCloud`, `GetOssBackupBucketFromRemote` |
-| [hybrid_eip_actions.go](../client/hybrid_eip_actions.go) | `AttachHybridEipToEcs`, `CreateHybridEip`, `DeleteHybridEipFromLocal`, `DeleteHybridEipRemote`, `DetachHybridEipFromEcs`, `GetHybridEipFromLocal`, `PageHybridEipFromLocal`, `QueryHybridEipFromLocal`, `SyncHybridEipFromRemote`, `UpdateHybridEip` |
-| [hybrid_identity_zone_actions.go](../client/hybrid_identity_zone_actions.go) | `AddIdentityZoneFromRemote`, `DeleteIdentityZoneInLocal`, `GetIdentityZoneFromLocal`, `GetIdentityZoneFromRemote`, `PageIdentityZoneFromLocal`, `QueryIdentityZoneFromLocal`, `SyncIdentityFromRemote` |
-| [hybrid_key_actions.go](../client/hybrid_key_actions.go) | `AddAliyunKeySecret`, `AddHybridKeySecret`, `AttachAliyunKey`, `AttachHybridKey`, `DeleteAliyunKeySecret`, `DeleteHybridKeySecret`, `DetachAliyunKey`, `DetachHybridKey`, `GetHybridKeySecret`, `PageHybridKeySecret`, `QueryHybridKeySecret`, `UpdateAliyunKeySecret`, `UpdateHybridKeySecret` |
-| [hybrid_vpc_vpn_connection_actions.go](../client/hybrid_vpc_vpn_connection_actions.go) | `CreateVpcVpnConnectionRemote`, `DeleteVpcVpnConnectionLocal`, `DeleteVpcVpnConnectionRemote`, `GetVpcVpnConfigurationFromRemote`, `GetVpcVpnConnectionFromLocal`, `PageVpcVpnConnectionFromLocal`, `QueryVpcVpnConnectionFromLocal`, `SyncVpcVpnConnectionFromRemote`, `UpdateVpcVpnConnectionRemote` |
-| [hybrid_vpn_ike_config_actions.go](../client/hybrid_vpn_ike_config_actions.go) | `CreateVpnIkeConfig`, `DeleteVpcIkeConfigLocal`, `GetVpcIkeConfigFromLocal`, `PageVpcIkeConfigFromLocal`, `QueryVpcIkeConfigFromLocal` |
-| [hybrid_vpn_ipsec_config_actions.go](../client/hybrid_vpn_ipsec_config_actions.go) | `CreateVpnIpsecConfig`, `DeleteVpcIpSecConfigLocal`, `GetVpcIpSecConfigFromLocal`, `PageVpcIpSecConfigFromLocal`, `QueryVpcIpSecConfigFromLocal` |
+| [hybrid_key_actions.go](../client/hybrid_key_actions.go) | `AddHybridKeySecret`, `AttachHybridKey`, `DeleteHybridKeySecret`, `DetachHybridKey`, `GetHybridKeySecret`, `PageHybridKeySecret`, `QueryHybridKeySecret`, `UpdateHybridKeySecret` |
 | [image_actions.go](../client/image_actions.go) | `CalculateImageHash`, `ChangeImageState`, `CreateDataVolumeTemplateFromVolume`, `CreateDataVolumeTemplateFromVolumeAsync`, `CreateDataVolumeTemplateFromVolumeBackup`, `CreateDataVolumeTemplateFromVolumeSnapshot`, `CreateRootVolumeTemplateFromRootVolume`, `CreateRootVolumeTemplateFromRootVolumeAsync`, `CreateRootVolumeTemplateFromVolumeBackup`, `CreateRootVolumeTemplateFromVolumeSnapshot`, `GetImageCandidatesForVmToChange`, `GetImageQga`, `GetUploadImageJobDetails`, `RecoveryImageFromImageStoreBackupStorage`, `SetImageBootMode`, `SetImageQga`, `SetImageSecurityLevel`, `SyncImageFromImageStoreBackupStorage`, `SyncImageSize` |
 | [image_group_actions.go](../client/image_group_actions.go) | `CreateImageGroupFromImage`, `CreateImageGroupFromSnapshot`, `CreateImageGroupFromVmInstance` |
 | [image_package_actions.go](../client/image_package_actions.go) | `ExportVmOvaPackage`, `ExportVmOvaPackageAsync`, `ParseOvf` |
@@ -133,8 +108,7 @@
 | [mini_storage_actions.go](../client/mini_storage_actions.go) | `RecoverResourceSplitBrain` |
 | [mini_storage_host_ref_actions.go](../client/mini_storage_host_ref_actions.go) | `BootstrapMiniHost`, `GetCandidateMiniHosts` |
 | [nvme_server_actions.go](../client/nvme_server_actions.go) | `AttachNvmeServerToCluster`, `DetachNvmeServerFromCluster` |
-| [oss_bucket_actions.go](../client/oss_bucket_actions.go) | `AddOssBucketFromRemote`, `AttachOssBucketToEcsDataCenter`, `CreateOssBucketRemote`, `DeleteOssBucketFileRemote`, `DeleteOssBucketNameLocal`, `DeleteOssBucketRemote`, `DetachOssBucketFromEcsDataCenter`, `GetOssBucketFileFromRemote`, `GetOssBucketFileName`, `GetOssBucketNameFromRemote`, `PageOssBucketFileName`, `QueryOssBucketFileName` |
-| [primary_storage_actions.go](../client/primary_storage_actions.go) | `AddAliyunNasPrimaryStorage`, `AddLocalPrimaryStorage`, `AddNfsPrimaryStorage`, `AddSharedMountPointPrimaryStorage`, `AddSimulatorPrimaryStorage`, `AttachPrimaryStorageToCluster`, `ChangePrimaryStorageState`, `CleanUpImageCacheOnPrimaryStorage`, `CleanUpStorageTrashOnPrimaryStorage`, `CleanUpTrashOnPrimaryStorage`, `DetachPrimaryStorageFromCluster`, `GetCandidatePrimaryStoragesForCreatingVm`, `GetPrimaryStorageAllocatorStrategies`, `GetPrimaryStorageCandidatesForVmMigration`, `GetPrimaryStorageCandidatesForVolumeMigration`, `GetPrimaryStorageLicenseInfo`, `GetPrimaryStorageTypes`, `GetPrimaryStorageUsageReport`, `GetTrashOnPrimaryStorage`, `PrimaryStorageMigrateVm`, `PrimaryStorageMigrateVmAsync`, `PrimaryStorageMigrateVolume`, `PrimaryStorageMigrateVolumeAsync` |
+| [primary_storage_actions.go](../client/primary_storage_actions.go) | `AddLocalPrimaryStorage`, `AddNfsPrimaryStorage`, `AddSharedMountPointPrimaryStorage`, `AddSimulatorPrimaryStorage`, `AttachPrimaryStorageToCluster`, `ChangePrimaryStorageState`, `CleanUpImageCacheOnPrimaryStorage`, `CleanUpStorageTrashOnPrimaryStorage`, `CleanUpTrashOnPrimaryStorage`, `DetachPrimaryStorageFromCluster`, `GetCandidatePrimaryStoragesForCreatingVm`, `GetPrimaryStorageAllocatorStrategies`, `GetPrimaryStorageCandidatesForVmMigration`, `GetPrimaryStorageCandidatesForVolumeMigration`, `GetPrimaryStorageLicenseInfo`, `GetPrimaryStorageTypes`, `GetPrimaryStorageUsageReport`, `GetTrashOnPrimaryStorage`, `PrimaryStorageMigrateVm`, `PrimaryStorageMigrateVmAsync`, `PrimaryStorageMigrateVolume`, `PrimaryStorageMigrateVolumeAsync` |
 | [scsi_lun_actions.go](../client/scsi_lun_actions.go) | `AttachScsiLunToVmInstance`, `CheckScsiLunClusterStatus`, `DetachScsiLunFromHost`, `DetachScsiLunFromVmInstance`, `GetScsiLunCandidatesForAttachingVm` |
 | [shared_block_actions.go](../client/shared_block_actions.go) | `AddSharedBlockToSharedBlockGroup`, `GetSharedBlockCandidate`, `RefreshSharedblockDeviceCapacity` |
 | [vm_backup_actions.go](../client/vm_backup_actions.go) | `CreateVmBackup`, `CreateVmBackupAsync`, `DeleteVmBackup`, `RecoverVmBackupFromImageStoreBackupStorage`, `RevertVmFromVmBackup`, `SyncVmBackup`, `SyncVmBackupFromImageStoreBackupStorage` |
@@ -142,8 +116,6 @@
 | [volume_backup_actions.go](../client/volume_backup_actions.go) | `RecoverBackupFromImageStoreBackupStorage`, `RevertVolumeFromVolumeBackup`, `SyncBackupFromImageStoreBackupStorage` |
 | [volume_snapshot_actions.go](../client/volume_snapshot_actions.go) | `BatchDeleteVolumeSnapshot`, `CreateVolumesSnapshot`, `GetVolumeSnapshotSize`, `RevertVolumeFromSnapshot`, `RevertVolumeFromSnapshotAsync`, `ShrinkVolumeSnapshot`, `UndoSnapshotCreation`, `ValidateVolumeSnapshotChain` |
 | [volume_snapshot_group_actions.go](../client/volume_snapshot_group_actions.go) | `CheckVolumeSnapshotGroupAvailability`, `GetMemorySnapshotGroupReference`, `RevertVmFromSnapshotGroup`, `UngroupVolumeSnapshotGroup` |
-| [vpc_user_vpn_gateway_actions.go](../client/vpc_user_vpn_gateway_actions.go) | `CreateVpcUserVpnGatewayRemote`, `DeleteVpcUserVpnGatewayLocal`, `DeleteVpcUserVpnGatewayRemote`, `GetVpcUserVpnGatewayFromLocal`, `PageVpcUserVpnGatewayFromLocal`, `QueryVpcUserVpnGatewayFromLocal`, `SyncVpcUserVpnGatewayFromRemote` |
-| [vpc_vpn_gateway_actions.go](../client/vpc_vpn_gateway_actions.go) | `DeleteVpcVpnGatewayLocal`, `GetVpcVpnGatewayFromLocal`, `PageVpcVpnGatewayFromLocal`, `QueryVpcVpnGatewayFromLocal`, `SyncVpcVpnGatewayFromRemote` |
 | [zbox_actions.go](../client/zbox_actions.go) | `EjectZBox`, `SyncZBoxCapacity` |
 | [zbox_backup_actions.go](../client/zbox_backup_actions.go) | `GetZBoxBackupDetails` |
 
@@ -154,7 +126,7 @@
 | [access_control_list_actions.go](../client/access_control_list_actions.go) | `ChangeAccessControlListServerGroup` |
 | [access_control_list_entry_actions.go](../client/access_control_list_entry_actions.go) | `AddAccessControlListRedirectRule`, `ChangeAccessControlListRedirectRule` |
 | [access_key_actions.go](../client/access_key_actions.go) | `ChangeAccessKeyState` |
-| [account_actions.go](../client/account_actions.go) | `CalculateAccountSpending`, `CheckApiPermission`, `CheckResourcePermission`, `CleanInvalidLdapBinding`, `GetAccountQuotaUsage`, `GetResourceAccount`, `LogOut`, `RefreshCaptcha`, `RenewSession`, `UnlockIdentity`, `ValidatePassword` |
+| [account_actions.go](../client/account_actions.go) | `CalculateAccountSpending`, `CheckApiPermission`, `CheckResourcePermission`, `CleanInvalidLdapBinding`, `GetAccountQuotaUsage`, `GetResourceAccount`, `GetSupportedIdentityModels`, `LogOut`, `RefreshCaptcha`, `RenewSession`, `UnlockIdentity`, `ValidatePassword` |
 | [account_resource_ref_actions.go](../client/account_resource_ref_actions.go) | `ChangeResourceOwner`, `RevokeResourceSharing`, `ShareResource` |
 | [active_alarm_actions.go](../client/active_alarm_actions.go) | `ChangeActiveAlarmState`, `GetActiveAlarmStatus` |
 | [affinity_group_actions.go](../client/affinity_group_actions.go) | `AddVmToAffinityGroup`, `ChangeAffinityGroupState`, `GetCandidateAffinityGroupForAttachingVm`, `GetCandidateAffinityGroupForCreatingVm`, `GetCandidateVMForAttachingAffinityGroup`, `RemoveVmFromAffinityGroup` |
@@ -162,7 +134,6 @@
 | [alarm_label_actions.go](../client/alarm_label_actions.go) | `AddLabelToAlarm`, `RemoveLabelFromAlarm` |
 | [alert_data_ack_actions.go](../client/alert_data_ack_actions.go) | `AckAlarmData`, `AckEventData` |
 | [app_build_system_actions.go](../client/app_build_system_actions.go) | `AttachAppBuildSystemToZone`, `ChangeAppBuildSystemState`, `DetachAppBuildSystemToZone`, `GetAppBuildSystemCapacity` |
-| [application_development_service_actions.go](../client/application_development_service_actions.go) | `DeployAppDevelopmentService`, `SyncAINginxConfiguration` |
 | [archive_ticket_actions.go](../client/archive_ticket_actions.go) | `GetArchiveTicketHistory`, `PageArchiveTicketHistory`, `QueryArchiveTicketHistory` |
 | [audit_actions.go](../client/audit_actions.go) | `GetAudit`, `GetAuditData`, `PageAudit`, `QueryAudit` |
 | [billing_actions.go](../client/billing_actions.go) | `CalculateAccountBillingSpending`, `CalculateResourceSpending`, `CleanupBillingUsage`, `GenerateAccountBilling`, `GetAccountBilling`, `PageAccountBilling`, `QueryAccountBilling` |
@@ -175,7 +146,6 @@
 | [chrony_actions.go](../client/chrony_actions.go) | `GetChronyServers`, `SyncChronyServers`, `UpdateChronyServers` |
 | [console_proxy_agent_actions.go](../client/console_proxy_agent_actions.go) | `GetVmConsoleAddress`, `RequestConsoleAccess` |
 | [container_management_endpoint_actions.go](../client/container_management_endpoint_actions.go) | `DeleteContainerResourceFromEndpoint` |
-| [dataset_actions.go](../client/dataset_actions.go) | `DeleteDatasets`, `UpdateDatasets` |
 | [debug_actions.go](../client/debug_actions.go) | `DebugSignal`, `GetDebugSignal` |
 | [directory_actions.go](../client/directory_actions.go) | `AddResourcesToDirectory`, `MoveDirectory`, `MoveResourcesToDirectory`, `RemoveResourcesFromDirectory` |
 | [disk_offering_actions.go](../client/disk_offering_actions.go) | `ChangeDiskOfferingState`, `ValidateDiskOfferingUserConfig` |
@@ -190,7 +160,7 @@
 | [global_config_actions.go](../client/global_config_actions.go) | `GetGlobalConfigOptions` |
 | [guest_os_metadata_actions.go](../client/guest_os_metadata_actions.go) | `GetGuestOsMetadata`, `RefreshGuestOsMetadata` |
 | [guest_tools_state_actions.go](../client/guest_tools_state_actions.go) | `AttachGuestToolsIsoToVm`, `GetLatestGuestToolsForVm`, `GetVmGuestToolsInfo` |
-| [guest_vm_script_actions.go](../client/guest_vm_script_actions.go) | `ExecuteGuestVmScript`, `GetInvocationRecords` |
+| [guest_vm_script_actions.go](../client/guest_vm_script_actions.go) | `ExecuteGuestVmScript` |
 | [hygon_device_actions.go](../client/hygon_device_actions.go) | `GetHygonDevice`, `PageHygonDevice`, `QueryHygonDevice` |
 | [iam2ldap_binding_actions.go](../client/iam2ldap_binding_actions.go) | `CreateIAM2VirtualIDLdapBinding`, `DeleteIAM2VirtualIDLdapBinding`, `GetCandidateLdapEntryForIAM2Binding`, `GetIAM2LdapBinding`, `PageIAM2LdapBinding`, `QueryIAM2LdapBinding` |
 | [iam2organization_actions.go](../client/iam2organization_actions.go) | `ChangeIAM2OrganizationParent`, `ChangeIAM2OrganizationState`, `CheckIAM2OrganizationAvailability`, `GetIAM2OrganizationVirtualIDNumber`, `GetIAM2SystemAttributes`, `GetOrganizationQuotaUsage`, `SetOrganizationOperation`, `SetOrganizationSupervisor` |
@@ -214,12 +184,6 @@
 | [media_actions.go](../client/media_actions.go) | `ChangeMediaState` |
 | [metric_data_http_receiver_actions.go](../client/metric_data_http_receiver_actions.go) | `DeleteMetricData`, `PutMetricData` |
 | [metric_query_actions.go](../client/metric_query_actions.go) | `GetAllMetricMetadata`, `GetMetricData`, `GetMetricLabelValue` |
-| [model_actions.go](../client/model_actions.go) | `BindModelToService`, `DeleteModels`, `GenerateModelMetadata`, `GetSupportedIdentityModels`, `UnbindModelFromService` |
-| [model_center_actions.go](../client/model_center_actions.go) | `GetModelCenterServices` |
-| [model_eval_service_instance_group_actions.go](../client/model_eval_service_instance_group_actions.go) | `DeployModelEvalService` |
-| [model_evaluation_task_actions.go](../client/model_evaluation_task_actions.go) | `DeleteModelEvaluationTasks` |
-| [model_service_actions.go](../client/model_service_actions.go) | `DeleteModelServices`, `DeployDistributedModelService`, `DeployModelService`, `GetMaaSUsage`, `MatchModelServiceTemplateWithModel`, `RestartModelServiceGroups` |
-| [model_service_instance_group_actions.go](../client/model_service_instance_group_actions.go) | `DeleteModelServiceInstanceGroups` |
 | [monitor_group_instance_actions.go](../client/monitor_group_instance_actions.go) | `AddInstanceToMonitorGroup`, `RemoveInstanceFromMonitorGroup` |
 | [monitor_template_actions.go](../client/monitor_template_actions.go) | `ApplyMonitorTemplateToMonitorGroup`, `RevokeMonitorTemplateFromMonitorGroup` |
 | [monitor_trigger_actions.go](../client/monitor_trigger_actions.go) | `AttachMonitorTriggerActionToTrigger`, `ChangeMonitorTriggerState`, `DetachMonitorTriggerActionFromTrigger`, `GetMonitorItem` |
@@ -253,7 +217,6 @@
 | [security_machine_actions.go](../client/security_machine_actions.go) | `ChangeSecurityMachineState`, `SecurityMachineDetectSync`, `SecurityMachineEncrypt`, `SetSecurityMachineKey` |
 | [slb_group_actions.go](../client/slb_group_actions.go) | `ChangeSlbGroupDeployType`, `ChangeSlbGroupMonitorIps` |
 | [slb_vm_instance_actions.go](../client/slb_vm_instance_actions.go) | `CreateSlbInstance`, `ProvisionSlbInstance` |
-| [snsaliyun_sms_endpoint_actions.go](../client/snsaliyun_sms_endpoint_actions.go) | `GetSNSSmsEndpoint`, `PageSNSSmsEndpoint`, `QuerySNSSmsEndpoint` |
 | [snsapplication_endpoint_actions.go](../client/snsapplication_endpoint_actions.go) | `ChangeSNSApplicationEndpointState` |
 | [snsapplication_platform_actions.go](../client/snsapplication_platform_actions.go) | `ChangeSNSApplicationPlatformState` |
 | [snsding_talk_at_person_actions.go](../client/snsding_talk_at_person_actions.go) | `UpdateAtPersonOfAtDingTalkEndpoint` |

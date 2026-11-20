@@ -27,35 +27,11 @@ func TestDeleteActionAdditionalContracts(t *testing.T) {
 			},
 		},
 		{
-			name:  "DeleteBackupFileInPublic",
-			path:  "/zstack/v1/hybrid/backup-mysql",
-			query: url.Values{"deleteMode": {"Permissive"}, "file": {"folder/file & name.sql"}, "regionId": {"selector"}, "type": {"selector"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteBackupFileInPublicWithParams(param.DeleteModePermissive, param.DeleteBackupFileInPublicParamDetail{File: "folder/file & name.sql", RegionId: "selector", Type: "selector"})
-			},
-		},
-		{
 			name:  "DeleteBilling",
 			path:  "/zstack/v1/billings/billings",
 			query: url.Values{"deleteMode": {"Permissive"}, "accountUuid": {"option"}, "endTime": {"1700000001000"}, "startTime": {"1700000000000"}},
 			call: func(cli *ZSClient) error {
 				return cli.DeleteBillingWithParams(param.DeleteModePermissive, param.DeleteBillingParamDetail{AccountUuid: &option, EndTime: &endTime, StartTime: &startTime})
-			},
-		},
-		{
-			name:  "DeleteDatasets",
-			path:  "/zstack/v1/ai/datasets",
-			query: url.Values{"deleteMode": {"Permissive"}, "uuids": {"value-a", "value-b"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteDatasetsWithParams(param.DeleteModePermissive, param.DeleteDatasetsParamDetail{Uuids: []string{"value-a", "value-b"}})
-			},
-		},
-		{
-			name:  "DeleteHybridEipRemote",
-			path:  "/zstack/v1/hybrid/eip/parent-id/remote",
-			query: url.Values{"deleteMode": {"Permissive"}, "type": {"selector"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteHybridEipRemoteWithParams("parent-id", param.DeleteModePermissive, param.DeleteHybridEipRemoteParamDetail{Type: "selector"})
 			},
 		},
 		{
@@ -80,38 +56,6 @@ func TestDeleteActionAdditionalContracts(t *testing.T) {
 			query: url.Values{"deleteMode": {"Permissive"}, "labels": {"value-a", "value-b"}, "metricName": {"selector"}, "namespace": {"selector"}},
 			call: func(cli *ZSClient) error {
 				return cli.DeleteMetricDataWithParams(param.DeleteModePermissive, param.DeleteMetricDataParamDetail{Labels: []string{"value-a", "value-b"}, MetricName: "selector", Namespace: "selector"})
-			},
-		},
-		{
-			name:  "DeleteModelEvaluationTasks",
-			path:  "/zstack/v1/model-evaluation-tasks",
-			query: url.Values{"deleteMode": {"Permissive"}, "uuids": {"value-a", "value-b"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteModelEvaluationTasksWithParams(param.DeleteModePermissive, param.DeleteModelEvaluationTasksParamDetail{Uuids: []string{"value-a", "value-b"}})
-			},
-		},
-		{
-			name:  "DeleteModelServiceInstanceGroups",
-			path:  "/zstack/v1/ai/model-services/instances/groups",
-			query: url.Values{"deleteMode": {"Permissive"}, "uuids": {"value-a", "value-b"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteModelServiceInstanceGroupsWithParams(param.DeleteModePermissive, param.DeleteModelServiceInstanceGroupsParamDetail{Uuids: []string{"value-a", "value-b"}})
-			},
-		},
-		{
-			name:  "DeleteModelServices",
-			path:  "/zstack/v1/ai/model-services/",
-			query: url.Values{"deleteMode": {"Permissive"}, "uuids": {"value-a", "value-b"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteModelServicesWithParams(param.DeleteModePermissive, param.DeleteModelServicesParamDetail{Uuids: []string{"value-a", "value-b"}})
-			},
-		},
-		{
-			name:  "DeleteModels",
-			path:  "/zstack/v1/ai/models",
-			query: url.Values{"deleteMode": {"Permissive"}, "uuids": {"value-a", "value-b"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteModelsWithParams(param.DeleteModePermissive, param.DeleteModelsParamDetail{Uuids: []string{"value-a", "value-b"}})
 			},
 		},
 		{
@@ -275,30 +219,6 @@ func TestDeleteActionAdditionalContracts(t *testing.T) {
 			},
 		},
 		{
-			name:  "DeleteAliyunRouterInterfaceRemote",
-			path:  "/zstack/v1/hybrid/aliyun/router-interface/remote/parent-id",
-			query: url.Values{"deleteMode": {"Permissive"}, "vRouterType": {"selector"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteAliyunRouterInterfaceRemoteWithParams("parent-id", param.DeleteModePermissive, param.DeleteAliyunRouterInterfaceRemoteParamDetail{VRouterType: "selector"})
-			},
-		},
-		{
-			name:  "DeleteHybridEipFromLocal",
-			path:  "/zstack/v1/hybrid/eip/parent-id",
-			query: url.Values{"deleteMode": {"Permissive"}, "type": {"selector"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteHybridEipFromLocalWithParams("parent-id", param.DeleteModePermissive, param.DeleteHybridEipFromLocalParamDetail{Type: "selector"})
-			},
-		},
-		{
-			name:  "DeleteOssBucketFileRemote",
-			path:  "/zstack/v1/hybrid/aliyun/oss-bucket-file/remote/parent-id",
-			query: url.Values{"deleteMode": {"Permissive"}, "fileName": {"folder/file & name"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteOssBucketFileRemoteWithParams("parent-id", param.DeleteModePermissive, param.DeleteOssBucketFileRemoteParamDetail{FileName: "folder/file & name"})
-			},
-		},
-		{
 			name:  "DeleteVxlanPoolRemoteVtep",
 			path:  "/zstack/v1/l2-networks/parent-id/clusters/cluster-id/delete/remote-vtep-ip",
 			query: url.Values{"deleteMode": {"Permissive"}, "remoteVtepIp": {"192.0.2.10"}},
@@ -344,38 +264,6 @@ func TestDeleteActionAdditionalContracts(t *testing.T) {
 			query: url.Values{"deleteMode": {"Permissive"}, "backupStorageUuids": {"value-a", "value-b"}},
 			call: func(cli *ZSClient) error {
 				return cli.DeleteDatabaseBackupWithParams("parent-id", param.DeleteModePermissive, param.DeleteDatabaseBackupParamDetail{BackupStorageUuids: []string{"value-a", "value-b"}})
-			},
-		},
-		{
-			name:  "DeleteHuaweiIMasterFabric",
-			path:  "/zstack/v1/sdn-controller/huawei-imaster/fabrics/parent-id",
-			query: url.Values{"deleteMode": {"Permissive"}, "sdnControllerUuid": {"option"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteHuaweiIMasterFabricWithParams("parent-id", param.DeleteModePermissive, param.DeleteHuaweiIMasterFabricParamDetail{SdnControllerUuid: &option})
-			},
-		},
-		{
-			name:  "DeleteHuaweiIMasterTenant",
-			path:  "/zstack/v1/sdn-controller/huawei-imaster/tenants/parent-id",
-			query: url.Values{"deleteMode": {"Permissive"}, "sdnControllerUuid": {"option"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteHuaweiIMasterTenantWithParams("parent-id", param.DeleteModePermissive, param.DeleteHuaweiIMasterTenantParamDetail{SdnControllerUuid: &option})
-			},
-		},
-		{
-			name:  "DeleteHuaweiIMasterVRouter",
-			path:  "/zstack/v1/sdn-controller/huawei-imaster/vrouters/parent-id",
-			query: url.Values{"deleteMode": {"Permissive"}, "sdnControllerUuid": {"option"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteHuaweiIMasterVRouterWithParams("parent-id", param.DeleteModePermissive, param.DeleteHuaweiIMasterVRouterParamDetail{SdnControllerUuid: &option})
-			},
-		},
-		{
-			name:  "DeleteHuaweiIMasterVpc",
-			path:  "/zstack/v1/sdn-controller/huawei-imaster/vpcs/parent-id",
-			query: url.Values{"deleteMode": {"Permissive"}, "sdnControllerUuid": {"option"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteHuaweiIMasterVpcWithParams("parent-id", param.DeleteModePermissive, param.DeleteHuaweiIMasterVpcParamDetail{SdnControllerUuid: &option})
 			},
 		},
 		{
@@ -480,14 +368,6 @@ func TestDeleteActionAdditionalContracts(t *testing.T) {
 			query: url.Values{"deleteMode": {"Permissive"}, "phoneNumberList": {"+8613800000010", "+8613800000011"}},
 			call: func(cli *ZSClient) error {
 				return cli.RemoveSNSSmsReceiverWithParams("endpoint-id", "", param.DeleteModePermissive, param.RemoveSNSSmsReceiverParamDetail{PhoneNumberList: []string{"+8613800000010", "+8613800000011"}})
-			},
-		},
-		{
-			name:  "single model",
-			path:  "/zstack/v1/ai/models",
-			query: url.Values{"deleteMode": {"Permissive"}, "uuids": {"model-id"}},
-			call: func(cli *ZSClient) error {
-				return cli.DeleteModels("model-id", param.DeleteModePermissive)
 			},
 		},
 		{

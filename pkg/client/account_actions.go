@@ -176,3 +176,12 @@ func (cli *ZSClient) RenewSession(sessionUuid string, params param.RenewSessionP
 	}
 	return &resp, nil
 }
+
+// GetSupportedIdentityModels gets SupportedIdentityModels by uuid
+func (cli *ZSClient) GetSupportedIdentityModels() (*view.GetSupportedIdentityModelsView, error) {
+	var resp view.GetSupportedIdentityModelsView
+	if err := cli.GetWithRespKey("v1/identity-models", "", "", nil, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}

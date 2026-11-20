@@ -105,25 +105,11 @@ type SetVmNicSecurityGroup_VmNicSecurityGroupRefAOParam struct {
 	Priority int `json:"priority,omitempty"`
 }
 
-// UpdateDatasets_UpdateDatasetStructParam UpdateDatasetStruct param struct
-type UpdateDatasets_UpdateDatasetStructParam struct {
-	Uuid string `json:"uuid,omitempty"`
-	UsageScenarios []string `json:"usageScenarios,omitempty"`
-	DataType *string `json:"dataType,omitempty"`
-}
-
 // UpdateResourceConfigs_ResourceConfigAOParam ResourceConfigAO param struct
 type UpdateResourceConfigs_ResourceConfigAOParam struct {
 	Category *string `json:"category,omitempty"`
 	Name string `json:"name,omitempty"`
 	Value *string `json:"value,omitempty"`
-}
-
-// ArchitectureImageMappingParam ArchitectureImageMapping param struct
-type ArchitectureImageMappingParam struct {
-	CpuArchitecture *string `json:"cpuArchitecture,omitempty"`
-	VmImageUuid *string `json:"vmImageUuid,omitempty"`
-	DockerImage *string `json:"dockerImage,omitempty"`
 }
 
 // PolicyStatementParam PolicyStatement param struct
@@ -173,38 +159,6 @@ type CreateVmInstance_DiskAOParam struct {
 	SourceUuid *string `json:"sourceUuid,omitempty"`
 	SystemTags []string `json:"systemTags,omitempty"`
 	Name string `json:"name,omitempty"`
-}
-
-// ModelServiceParam ModelService param struct
-type ModelServiceParam struct {
-	NodeRank *int `json:"nodeRank,omitempty"`
-	TensorParallelSize *int `json:"tensorParallelSize,omitempty"`
-	IsInitialNode *bool `json:"isInitialNode,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ModelUuid *string `json:"modelUuid,omitempty"`
-	ZoneUuid string `json:"zoneUuid,omitempty"`
-	VmImageUuid *string `json:"vmImageUuid,omitempty"`
-	PrimaryStorageUuid *string `json:"primaryStorageUuid,omitempty"`
-	DatasetUuids []string `json:"datasetUuids,omitempty"`
-	ModelServiceGroupUuids []string `json:"modelServiceGroupUuids,omitempty"`
-	DockerImage *string `json:"dockerImage,omitempty"`
-	CpuNum *int `json:"cpuNum,omitempty"`
-	Name string `json:"name,omitempty"`
-	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty"`
-	StartupParameters map[string]string `json:"startupParameters,omitempty"`
-	Type string `json:"type,omitempty"`
-	ClusterUuid *string `json:"clusterUuid,omitempty"`
-	MemorySize *int64 `json:"memorySize,omitempty"`
-	L3NetworkUuids []string `json:"l3NetworkUuids,omitempty"`
-	ServiceBootUptime *int `json:"serviceBootUptime,omitempty"`
-	ServiceLivez *string `json:"serviceLivez,omitempty"`
-	ServiceReadyz *string `json:"serviceReadyz,omitempty"`
-	RootDiskOfferingUuid *string `json:"rootDiskOfferingUuid,omitempty"`
-	RootDiskSize *int64 `json:"rootDiskSize,omitempty"`
-	Session SessionParam `json:"session,omitempty"`
-	SystemTags []string `json:"systemTags,omitempty"`
-	Timeout int64 `json:"timeout,omitempty"`
 }
 
 // CreateIAM2TickFlowCollection_IAM2FlowStructParam IAM2FlowStruct param struct
@@ -292,4 +246,3 @@ type SessionParam struct {
 	ExpiredDate time.Time `json:"expiredDate,omitempty"`
 	CreateDate time.Time `json:"createDate,omitempty"`
 }
-

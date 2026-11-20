@@ -97,17 +97,6 @@ func (cli *ZSClient) PullSdnControllerTenant(uuid string, params param.PullSdnCo
 	return &resp, nil
 }
 
-// PullHuaweiIMasterController operates on PullHuaweiIMasterController
-func (cli *ZSClient) PullHuaweiIMasterController(uuid string, params param.PullHuaweiIMasterControllerParam) (*view.HuaweiIMasterSdnControllerInventoryView, error) {
-	resp := view.HuaweiIMasterSdnControllerInventoryView{}
-	if err := cli.PutWithRespKey("v1/sdn-controller/huawei-imaster", uuid, "", map[string]interface{}{
-		"pullHuaweiIMasterController": params.Params,
-	}, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // SdnControllerRemoveHost sends the action with its default options.
 func (cli *ZSClient) SdnControllerRemoveHost(sdnControllerUuid string, hostUuid string, deleteMode param.DeleteMode) error {
 	return cli.SdnControllerRemoveHostWithParams(sdnControllerUuid, hostUuid, deleteMode, param.SdnControllerRemoveHostParamDetail{})

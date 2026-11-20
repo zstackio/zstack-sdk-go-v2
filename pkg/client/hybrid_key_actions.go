@@ -52,26 +52,6 @@ func (cli *ZSClient) PageHybridKeySecret(params *param.QueryParam) ([]view.Hybri
 	return hybridKeySecrets, total, err
 }
 
-// DetachAliyunKey operates on AliyunKey
-func (cli *ZSClient) DetachAliyunKey(uuid string, params param.DetachAliyunKeyParam) (*view.DetachAliyunKeyEventView, error) {
-	resp := view.DetachAliyunKeyEventView{}
-	if err := cli.PutWithRespKey("v1/hybrid/aliyun/key", uuid, "", map[string]interface{}{
-		"detachAliyunKey": params.Params,
-	}, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
-// UpdateAliyunKeySecret updates AliyunKeySecret
-func (cli *ZSClient) UpdateAliyunKeySecret(uuid string, params param.UpdateAliyunKeySecretParam) (*view.HybridAccountInventoryView, error) {
-	resp := view.HybridAccountInventoryView{}
-	if err := cli.Post(fmt.Sprintf("v1/hybrid/aliyun/%s/key", uuid), params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // DeleteHybridKeySecret deletes HybridKeySecret
 func (cli *ZSClient) DeleteHybridKeySecret(uuid string, deleteMode param.DeleteMode) error {
 	return cli.Delete("v1/hybrid/hybrid/key", uuid, string(deleteMode))
@@ -86,35 +66,10 @@ func (cli *ZSClient) AddHybridKeySecret(params param.AddHybridKeySecretParam) (*
 	return &resp, nil
 }
 
-// AddAliyunKeySecret adds AliyunKeySecret
-func (cli *ZSClient) AddAliyunKeySecret(params param.AddAliyunKeySecretParam) (*view.HybridAccountInventoryView, error) {
-	resp := view.HybridAccountInventoryView{}
-	if err := cli.Post("v1/hybrid/aliyun/key", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // UpdateHybridKeySecret updates HybridKeySecret
 func (cli *ZSClient) UpdateHybridKeySecret(uuid string, params param.UpdateHybridKeySecretParam) (*view.HybridAccountInventoryView, error) {
 	resp := view.HybridAccountInventoryView{}
 	if err := cli.Post(fmt.Sprintf("v1/hybrid/hybrid/%s/key", uuid), params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
-// DeleteAliyunKeySecret deletes AliyunKeySecret
-func (cli *ZSClient) DeleteAliyunKeySecret(uuid string, deleteMode param.DeleteMode) error {
-	return cli.Delete("v1/hybrid/aliyun/key", uuid, string(deleteMode))
-}
-
-// AttachAliyunKey operates on AliyunKey
-func (cli *ZSClient) AttachAliyunKey(uuid string, params param.AttachAliyunKeyParam) (*view.AttachAliyunKeyEventView, error) {
-	resp := view.AttachAliyunKeyEventView{}
-	if err := cli.PutWithRespKey("v1/hybrid/aliyun/key", uuid, "", map[string]interface{}{
-		"attachAliyunKey": params.Params,
-	}, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -26,18 +26,8 @@ type QueryHybridKeySecretView struct {
 	Inventories []HybridAccountInventoryView `json:"inventories,omitempty"`
 }
 
-// UpdateAliyunKeySecretEventView UpdateAliyunKeySecretEvent
-type UpdateAliyunKeySecretEventView struct {
-	Inventory HybridAccountInventoryView `json:"inventory,omitempty"`
-}
-
 // AddHybridKeySecretEventView AddHybridKeySecretEvent
 type AddHybridKeySecretEventView struct {
-	Inventory HybridAccountInventoryView `json:"inventory,omitempty"`
-}
-
-// AddAliyunKeySecretEventView AddAliyunKeySecretEvent
-type AddAliyunKeySecretEventView struct {
 	Inventory HybridAccountInventoryView `json:"inventory,omitempty"`
 }
 
@@ -45,4 +35,3 @@ type AddAliyunKeySecretEventView struct {
 type UpdateHybridKeySecretEventView struct {
 	Inventory HybridAccountInventoryView `json:"inventory,omitempty"`
 }
-

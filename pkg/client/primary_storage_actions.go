@@ -220,15 +220,6 @@ func (cli *ZSClient) AddLocalPrimaryStorage() (*view.PrimaryStorageInventoryView
 	return &resp, nil
 }
 
-// AddAliyunNasPrimaryStorage adds AliyunNasPrimaryStorage
-func (cli *ZSClient) AddAliyunNasPrimaryStorage(params param.AddAliyunNasPrimaryStorageParam) (*view.PrimaryStorageInventoryView, error) {
-	resp := view.PrimaryStorageInventoryView{}
-	if err := cli.Post("v1/primary-storage/aliyun/nas", params, &resp); err != nil {
-		return nil, err
-	}
-	return &resp, nil
-}
-
 // GetPrimaryStorageAllocatorStrategies gets PrimaryStorageAllocatorStrategies by uuid
 func (cli *ZSClient) GetPrimaryStorageAllocatorStrategies() (*view.GetPrimaryStorageAllocatorStrategiesView, error) {
 	var resp view.GetPrimaryStorageAllocatorStrategiesView

@@ -6,11 +6,6 @@ import "time"
 
 var _ = time.Now // avoid unused import
 
-// GetCreateEcsImageProgressView GetCreateEcsImageProgress
-type GetCreateEcsImageProgressView struct {
-	Progress ProgressPropertyView `json:"progress,omitempty"`
-}
-
 // AddAttributesToIAM2OrganizationEventView AddAttributesToIAM2OrganizationEvent
 type AddAttributesToIAM2OrganizationEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -53,11 +48,6 @@ type BatchCreateIAM2VirtualIDFromConfigFileEventView struct {
 	NumberOfImportedUser int `json:"numberOfImportedUser,omitempty"`
 }
 
-// SyncDataCenterFromRemoteEventView SyncDataCenterFromRemoteEvent
-type SyncDataCenterFromRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // SetVmInstanceHygonMdevEventView SetVmInstanceHygonMdevEvent
 type SetVmInstanceHygonMdevEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -96,12 +86,6 @@ type RegisterLicenseServerEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteModelEvaluationTasksEventView DeleteModelEvaluationTasksEvent
-type DeleteModelEvaluationTasksEventView struct {
-	Results []BatchOperationResultView `json:"results,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
 // GetTwoFactorAuthenticationStateView GetTwoFactorAuthenticationState
 type GetTwoFactorAuthenticationStateView struct {
 	State string `json:"state,omitempty"`
@@ -121,17 +105,6 @@ type DetachSshKeyPairFromVmInstanceEventView struct {
 // PrimaryStorageMigrateVolumeEventView PrimaryStorageMigrateVolumeEvent
 type PrimaryStorageMigrateVolumeEventView struct {
 	Inventory VolumeInventoryView `json:"inventory,omitempty"`
-}
-
-// DeleteHybridEipRemoteEventView DeleteHybridEipRemoteEvent
-type DeleteHybridEipRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteModelServiceInstanceGroupsEventView DeleteModelServiceInstanceGroupsEvent
-type DeleteModelServiceInstanceGroupsEventView struct {
-	Results []BatchOperationResultView `json:"results,omitempty"`
-	Success bool `json:"success,omitempty"`
 }
 
 // GetVmBootOrderView GetVmBootOrder
@@ -164,11 +137,6 @@ type AddIAM2VirtualIDGroupToProjectsEventView struct {
 type RefreshCaptchaView struct {
 	CaptchaUuid string `json:"captchaUuid,omitempty"`
 	Captcha string `json:"captcha,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteEcsVSwitchInLocalEventView DeleteEcsVSwitchInLocalEvent
-type DeleteEcsVSwitchInLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -295,24 +263,9 @@ type DetachHybridKeyEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteHybridEipFromLocalEventView DeleteHybridEipFromLocalEvent
-type DeleteHybridEipFromLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // ReimageVmInstanceEventView ReimageVmInstanceEvent
 type ReimageVmInstanceEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
-}
-
-// UpdateDatasetsEventView UpdateDatasetsEvent
-type UpdateDatasetsEventView struct {
-	Results []BatchOperationResultView `json:"results,omitempty"`
-}
-
-// SyncIdentityFromRemoteEventView SyncIdentityFromRemoteEvent
-type SyncIdentityFromRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
 }
 
 // SetImageStoreBackupStorageQuotaEventView SetImageStoreBackupStorageQuotaEvent
@@ -324,11 +277,6 @@ type SetImageStoreBackupStorageQuotaEventView struct {
 type GetIAM2OrganizationVirtualIDNumberView struct {
 	VirtualTotalNumber int `json:"virtualTotalNumber,omitempty"`
 	VirtualDirectNumber int `json:"virtualDirectNumber,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteEcsInstanceLocalEventView DeleteEcsInstanceLocalEvent
-type DeleteEcsInstanceLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -349,13 +297,6 @@ type CancelLongJobEventView struct {
 
 // GenerateAccountBillingEventView GenerateAccountBillingEvent
 type GenerateAccountBillingEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// GetInvocationRecordsView GetInvocationRecords
-type GetInvocationRecordsView struct {
-	Inventories []InvocationRecordView `json:"inventories,omitempty"`
-	Total int64 `json:"total,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 
@@ -419,11 +360,6 @@ type GetVmHostnameView struct {
 	Hostname string `json:"hostname,omitempty"`
 }
 
-// DeleteVpcUserVpnGatewayLocalEventView DeleteVpcUserVpnGatewayLocalEvent
-type DeleteVpcUserVpnGatewayLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // RemoveSchedulerJobFromSchedulerTriggerEventView RemoveSchedulerJobFromSchedulerTriggerEvent
 type RemoveSchedulerJobFromSchedulerTriggerEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -441,11 +377,6 @@ type UpdateVmNetworkConfigEventView struct {
 
 // RemoveTicketTypesFromTicketFlowCollectionEventView RemoveTicketTypesFromTicketFlowCollectionEvent
 type RemoveTicketTypesFromTicketFlowCollectionEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteEcsVSwitchRemoteEventView DeleteEcsVSwitchRemoteEvent
-type DeleteEcsVSwitchRemoteEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -472,11 +403,6 @@ type ValidateDiskOfferingUserConfigEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteVpcVpnGatewayLocalEventView DeleteVpcVpnGatewayLocalEvent
-type DeleteVpcVpnGatewayLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // SetVmRDPEventView SetVmRDPEvent
 type SetVmRDPEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -490,11 +416,6 @@ type RunSchedulerTriggerEventView struct {
 // PowerOnHostEventView PowerOnHostEvent
 type PowerOnHostEventView struct {
 	Inventory HostInventoryView `json:"inventory,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteAliyunSnapshotFromRemoteEventView DeleteAliyunSnapshotFromRemoteEvent
-type DeleteAliyunSnapshotFromRemoteEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -613,12 +534,6 @@ type GetInterfaceServiceTypeStatisticView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteModelsEventView DeleteModelsEvent
-type DeleteModelsEventView struct {
-	Results []BatchOperationResultView `json:"results,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
 // ListVmsFromSchedulingStateView ListVmsFromSchedulingState
 type ListVmsFromSchedulingStateView struct {
 	Uuids []string `json:"uuids,omitempty"`
@@ -696,11 +611,6 @@ type GetIAM2ProjectContainerImageTagsView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteAliyunDiskFromRemoteEventView DeleteAliyunDiskFromRemoteEvent
-type DeleteAliyunDiskFromRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // GetVersionView GetVersion
 type GetVersionView struct {
 	Version string `json:"version,omitempty"`
@@ -763,13 +673,6 @@ type SsoClientPushDataEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// BackupDatabaseToPublicCloudEventView BackupDatabaseToPublicCloudEvent
-type BackupDatabaseToPublicCloudEventView struct {
-	Local string `json:"local,omitempty"`
-	Remote string `json:"remote,omitempty"`
-	RegionId string `json:"regionId,omitempty"`
-}
-
 // LogInView LogIn
 type LogInView struct {
 	Inventory SessionInventoryView `json:"inventory,omitempty"`
@@ -827,16 +730,6 @@ type RemoveVRouterNetworksFromOspfAreaEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// GetAliyunNasMountTargetRemoteView GetAliyunNasMountTargetRemote
-type GetAliyunNasMountTargetRemoteView struct {
-	Inventories []AliyunNasMountTargetPropertyView `json:"inventories,omitempty"`
-}
-
-// TerminateVirtualBorderRouterRemoteEventView TerminateVirtualBorderRouterRemoteEvent
-type TerminateVirtualBorderRouterRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // DeleteVmBackupEventView DeleteVmBackupEvent
 type DeleteVmBackupEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -862,11 +755,6 @@ type UpdateEventDataEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteAliyunRouteEntryRemoteEventView DeleteAliyunRouteEntryRemoteEvent
-type DeleteAliyunRouteEntryRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // UngenerateVirtualPciDevicesEventView UngenerateVirtualPciDevicesEvent
 type UngenerateVirtualPciDevicesEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -875,11 +763,6 @@ type UngenerateVirtualPciDevicesEventView struct {
 // AttachMonitorTriggerActionToTriggerEventView AttachMonitorTriggerActionToTriggerEvent
 type AttachMonitorTriggerActionToTriggerEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// GetAliyunNasFileSystemRemoteView GetAliyunNasFileSystemRemote
-type GetAliyunNasFileSystemRemoteView struct {
-	Inventories []AliyunNasFileSystemPropertyView `json:"inventories,omitempty"`
 }
 
 // SetOrganizationSupervisorEventView SetOrganizationSupervisorEvent
@@ -918,11 +801,6 @@ type RemoveUserFromGroupEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteEcsVpcRemoteEventView DeleteEcsVpcRemoteEvent
-type DeleteEcsVpcRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // DeleteFirewallIpSetTemplateEventView DeleteFirewallIpSetTemplateEvent
 type DeleteFirewallIpSetTemplateEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -939,11 +817,6 @@ type ExportImageFromBackupStorageEventView struct {
 	ImageUrl string `json:"imageUrl,omitempty"`
 	ExportMd5Sum string `json:"exportMd5Sum,omitempty"`
 	Success bool `json:"success,omitempty"`
-}
-
-// GetModelCenterServicesView GetModelCenterServices
-type GetModelCenterServicesView struct {
-	Services []ModelCenterServiceInventoryView `json:"services,omitempty"`
 }
 
 // DetachMonitorTriggerActionFromTriggerEventView DetachMonitorTriggerActionFromTriggerEvent
@@ -1016,11 +889,6 @@ type GetVmCapabilitiesView struct {
 	Capabilities map[string]interface{} `json:"capabilities,omitempty"`
 }
 
-// DeployDistributedModelServiceEventView DeployDistributedModelServiceEvent
-type DeployDistributedModelServiceEventView struct {
-	Inventory ModelServiceInstanceGroupInventoryView `json:"inventory,omitempty"`
-}
-
 // GetIAM2SystemAttributesView GetIAM2SystemAttributes
 type GetIAM2SystemAttributesView struct {
 	Inventories []IAM2AttributeInventoryView `json:"inventories,omitempty"`
@@ -1043,41 +911,14 @@ type UndoSnapshotCreationEventView struct {
 	Inventory VolumeInventoryView `json:"inventory,omitempty"`
 }
 
-// GetIdentityZoneFromRemoteView GetIdentityZoneFromRemote
-type GetIdentityZoneFromRemoteView struct {
-	Inventories []IdentityZonePropertyView `json:"inventories,omitempty"`
-}
-
-// GetEcsInstanceVncUrlView GetEcsInstanceVncUrl
-type GetEcsInstanceVncUrlView struct {
-	EcsId string `json:"ecsId,omitempty"`
-	VncUrl string `json:"vncUrl,omitempty"`
-}
-
 // CheckBaremetalChassisConfigFileView CheckBaremetalChassisConfigFile
 type CheckBaremetalChassisConfigFileView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteOssBucketFileRemoteEventView DeleteOssBucketFileRemoteEvent
-type DeleteOssBucketFileRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// GetMaaSUsageView GetMaaSUsage
-type GetMaaSUsageView struct {
-	Usages []MaaSUsageView `json:"usages,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 
 // GetFreeIpView GetFreeIp
 type GetFreeIpView struct {
 	Inventories []FreeIpInventoryView `json:"inventories,omitempty"`
-}
-
-// DeleteOssBucketRemoteEventView DeleteOssBucketRemoteEvent
-type DeleteOssBucketRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
 }
 
 // LogInByLdapView LogInByLdap
@@ -1109,16 +950,6 @@ type TriggerGCJobEventView struct {
 
 // CheckBareMetal2ChassisConfigFileView CheckBareMetal2ChassisConfigFile
 type CheckBareMetal2ChassisConfigFileView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteVirtualRouterLocalEventView DeleteVirtualRouterLocalEvent
-type DeleteVirtualRouterLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteVpcIkeConfigLocalEventView DeleteVpcIkeConfigLocalEvent
-type DeleteVpcIkeConfigLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -1186,16 +1017,6 @@ type RefreshGuestOsMetadataEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// GCAliyunSnapshotRemoteEventView GCAliyunSnapshotRemoteEvent
-type GCAliyunSnapshotRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DownloadBackupFileFromPublicCloudEventView DownloadBackupFileFromPublicCloudEvent
-type DownloadBackupFileFromPublicCloudEventView struct {
-	Local string `json:"local,omitempty"`
-}
-
 // AddIAM2VirtualIDsToProjectsEventView AddIAM2VirtualIDsToProjectsEvent
 type AddIAM2VirtualIDsToProjectsEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -1226,11 +1047,6 @@ type ConvertVmFromForeignHypervisorEventView struct {
 	Inventory LongJobInventoryView `json:"inventory,omitempty"`
 }
 
-// DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchEventView DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchEvent
-type DeleteConnectionBetweenL3NetWorkAndAliyunVSwitchEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // RestartResourceStackEventView RestartResourceStackEvent
 type RestartResourceStackEventView struct {
 	Inventory ResourceStackInventoryView `json:"inventory,omitempty"`
@@ -1239,12 +1055,6 @@ type RestartResourceStackEventView struct {
 // AttachPoliciesToUserEventView AttachPoliciesToUserEvent
 type AttachPoliciesToUserEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// GetVpcVpnConfigurationFromRemoteView GetVpcVpnConfigurationFromRemote
-type GetVpcVpnConfigurationFromRemoteView struct {
-	IkeConf VpcVpnIkeConfigStructView `json:"ikeConf,omitempty"`
-	IpSecConf VpcVpnIpSecConfigStructView `json:"ipSecConf,omitempty"`
 }
 
 // TokenIntrospectionView TokenIntrospection
@@ -1296,11 +1106,6 @@ type GetHostMultipathTopologyView struct {
 	Results []MultipathTopologyStructView `json:"results,omitempty"`
 }
 
-// DeleteEcsImageRemoteEventView DeleteEcsImageRemoteEvent
-type DeleteEcsImageRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // GetHostNetworkFactsView GetHostNetworkFacts
 type GetHostNetworkFactsView struct {
 	Bondings []HostNetworkBondingInventoryView `json:"bondings,omitempty"`
@@ -1328,11 +1133,6 @@ type SetIAM2ProjectLoginExpiredEventView struct {
 // GetVmEmulatorPinningView GetVmEmulatorPinning
 type GetVmEmulatorPinningView struct {
 	EmulatorPinning string `json:"emulatorPinning,omitempty"`
-}
-
-// DeleteAliyunDiskFromLocalEventView DeleteAliyunDiskFromLocalEvent
-type DeleteAliyunDiskFromLocalEventView struct {
-	Success bool `json:"success,omitempty"`
 }
 
 // GetIAM2VirtualIDAPIPermissionView GetIAM2VirtualIDPermission
@@ -1370,13 +1170,6 @@ type GetActiveAlarmStatusView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeployModelEvalServiceEventView DeployModelEvalServiceEvent
-type DeployModelEvalServiceEventView struct {
-	Inventory ModelEvalServiceInstanceGroupInventoryView `json:"inventory,omitempty"`
-	Tasks []ModelEvaluationTaskInventoryView `json:"tasks,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
 // GetHostResourceAllocationEventView GetHostResourceAllocationEvent
 type GetHostResourceAllocationEventView struct {
 	Name string `json:"name,omitempty"`
@@ -1405,11 +1198,6 @@ type AttachGuestToolsIsoToVmEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DetachAliyunKeyEventView DetachAliyunKeyEvent
-type DetachAliyunKeyEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // DeleteBuildAppEventView DeleteBuildAppEvent
 type DeleteBuildAppEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -1426,11 +1214,6 @@ type GetHostIommuStateView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteVirtualBorderRouterLocalEventView DeleteVirtualBorderRouterLocalEvent
-type DeleteVirtualBorderRouterLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // GetMetricDataView GetMetricData
 type GetMetricDataView struct {
 	Data []DatapointView `json:"data,omitempty"`
@@ -1440,11 +1223,6 @@ type GetMetricDataView struct {
 type EnableCbtTaskEventView struct {
 	VolumeCbtBackupInfos []VolumeCbtBackupInfoView `json:"volumeCbtBackupInfos,omitempty"`
 	Success bool `json:"success,omitempty"`
-}
-
-// GetAliyunNasAccessGroupRemoteView GetAliyunNasAccessGroupRemote
-type GetAliyunNasAccessGroupRemoteView struct {
-	Inventories []AliyunNasAccessGroupPropertyView `json:"inventories,omitempty"`
 }
 
 // CheckBuildAppParametersView CheckBuildAppParameters
@@ -1495,11 +1273,6 @@ type AttachPolicyRouteRuleSetToL3EventView struct {
 // GetZWatchAlertHistogramView GetZWatchAlertHistogram
 type GetZWatchAlertHistogramView struct {
 	Histograms []HistogramView `json:"histograms,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteAliyunRouterInterfaceRemoteEventView DeleteAliyunRouterInterfaceRemoteEvent
-type DeleteAliyunRouterInterfaceRemoteEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -1590,11 +1363,6 @@ type GetSupportAPIsView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteVpcUserVpnGatewayRemoteEventView DeleteVpcUserVpnGatewayRemoteEvent
-type DeleteVpcUserVpnGatewayRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // AddResourceStackVmPortMonitorEventView AddResourceStackVmPortMonitorEvent
 type AddResourceStackVmPortMonitorEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -1623,11 +1391,6 @@ type DeleteIpAddressEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteVpcVpnConnectionRemoteEventView DeleteVpcVpnConnectionRemoteEvent
-type DeleteVpcVpnConnectionRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // CheckIAM2OrganizationAvailabilityView CheckIAM2OrganizationAvailability
 type CheckIAM2OrganizationAvailabilityView struct {
 	Exists bool `json:"exists,omitempty"`
@@ -1641,11 +1404,6 @@ type UnmountVmInstanceRecoveryPointEventView struct {
 
 // RemovePolicyStatementsFromRoleEventView RemovePolicyStatementsFromRoleEvent
 type RemovePolicyStatementsFromRoleEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// GenerateModelMetadataEventView GenerateModelMetadataEvent
-type GenerateModelMetadataEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -1715,11 +1473,6 @@ type ProtectVmInstanceRecoveryPointEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteConnectionAccessPointLocalEventView DeleteConnectionAccessPointLocalEvent
-type DeleteConnectionAccessPointLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // RemoveIAM2VirtualIDsFromProjectEventView RemoveIAM2VirtualIDsFromProjectEvent
 type RemoveIAM2VirtualIDsFromProjectEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -1748,11 +1501,6 @@ type DeleteDataVolumeEventView struct {
 // GetUploadImageJobDetailsView GetUploadImageJobDetails
 type GetUploadImageJobDetailsView struct {
 	ExistingJobDetails []JobDetailsView `json:"existingJobDetails,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
-// DetachHybridEipFromEcsEventView DetachHybridEipFromEcsEvent
-type DetachHybridEipFromEcsEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -1811,11 +1559,6 @@ type DeleteExportedDatabaseBackupFromBackupStorageEventView struct {
 
 // UnexportNbdVolumesEventView UnexportNbdVolumesEvent
 type UnexportNbdVolumesEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// RecoveryVirtualBorderRouterRemoteEventView RecoveryVirtualBorderRouterRemoteEvent
-type RecoveryVirtualBorderRouterRemoteEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -1948,16 +1691,6 @@ type SNSSnmpTestConnectionEventView struct {
 	WebhookResp map[string]interface{} `json:"webhookResp,omitempty"`
 }
 
-// GetDataCenterFromRemoteView GetDataCenterFromRemote
-type GetDataCenterFromRemoteView struct {
-	Inventories []DataCenterPropertyView `json:"inventories,omitempty"`
-}
-
-// DeleteEcsImageLocalEventView DeleteEcsImageLocalEvent
-type DeleteEcsImageLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // GetBackupStorageTypesView GetBackupStorageTypes
 type GetBackupStorageTypesView struct {
 	Types []string `json:"types,omitempty"`
@@ -2080,11 +1813,6 @@ type GetVmUsbRedirectView struct {
 	Enable bool `json:"enable,omitempty"`
 }
 
-// GetOssBucketFileFromRemoteView GetOssBucketFileFromRemote
-type GetOssBucketFileFromRemoteView struct {
-	Files []string `json:"files,omitempty"`
-}
-
 // AttachVipToVpcSharedQosEventView AttachVipToVpcSharedQosEvent
 type AttachVipToVpcSharedQosEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2154,13 +1882,6 @@ type SetIAM2ProjectContainerClusterEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeployAppDevelopmentServiceEventView DeployAppDevelopmentServiceEvent
-type DeployAppDevelopmentServiceEventView struct {
-	Inventory ModelServiceInstanceGroupInventoryView `json:"inventory,omitempty"`
-	App ApplicationDevelopmentServiceInventoryView `json:"app,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
 // RefreshPluginDriversEventView RefreshPluginDriversEvent
 type RefreshPluginDriversEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2222,11 +1943,6 @@ type GetLocalRaidPhysicalDriveSmartView struct {
 	Result []SmartDataStructView `json:"result,omitempty"`
 }
 
-// PullHuaweiIMasterControllerEventView PullHuaweiIMasterControllerEvent
-type PullHuaweiIMasterControllerEventView struct {
-	Inventories []HuaweiIMasterSdnControllerInventoryView `json:"inventories,omitempty"`
-}
-
 // RemoveRolesFromIAM2VirtualIDGroupEventView RemoveRolesFromIAM2VirtualIDGroupEvent
 type RemoveRolesFromIAM2VirtualIDGroupEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2280,11 +1996,6 @@ type GetResourceAccountView struct {
 	Inventories map[string]AccountInventoryView `json:"inventories,omitempty"`
 }
 
-// BindModelToServiceEventView BindModelToServiceEvent
-type BindModelToServiceEventView struct {
-	Inventory ModelServiceInventoryView `json:"inventory,omitempty"`
-}
-
 // CheckNetworkReachableView CheckNetworkReachable
 type CheckNetworkReachableView struct {
 	Results []NetworkReachablePairView `json:"results,omitempty"`
@@ -2299,11 +2010,6 @@ type SetFlowMeterRouterIdEventView struct {
 // AddStorageProtocolEventView AddStorageProtocolEvent
 type AddStorageProtocolEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// DeployModelServiceEventView DeployModelServiceEvent
-type DeployModelServiceEventView struct {
-	Inventory ModelServiceInstanceGroupInventoryView `json:"inventory,omitempty"`
 }
 
 // GetMonitorItemView GetMonitorItem
@@ -2329,11 +2035,6 @@ type ChangeVmPasswordEventView struct {
 // FlattenVmInstanceEventView FlattenVmInstanceEvent
 type FlattenVmInstanceEventView struct {
 	Inventory VmInstanceInventoryView `json:"inventory,omitempty"`
-}
-
-// DeleteAllEcsInstancesFromDataCenterEventView DeleteAllEcsInstancesFromDataCenterEvent
-type DeleteAllEcsInstancesFromDataCenterEventView struct {
-	Success bool `json:"success,omitempty"`
 }
 
 // GetVpcMulticastRouteView GetVpcMulticastRoute
@@ -2366,20 +2067,9 @@ type GetCandidateMiniHostsView struct {
 	Hosts []MiniCandidateHostStructView `json:"hosts,omitempty"`
 }
 
-// DeleteDatasetsEventView DeleteDatasetsEvent
-type DeleteDatasetsEventView struct {
-	Results []BatchOperationResultView `json:"results,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
 // RevokeResourceSharingEventView RevokeResourceSharingEvent
 type RevokeResourceSharingEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// DeleteModelServicesEventView DeleteModelServicesEvent
-type DeleteModelServicesEventView struct {
-	Results []BatchOperationResultView `json:"results,omitempty"`
 }
 
 // GetHostNUMATopologyEventView GetHostNUMATopologyEvent
@@ -2418,11 +2108,6 @@ type DeletePluginDriversEventView struct {
 // DetachPolicyFromRoleEventView DetachPolicyFromRoleEvent
 type DetachPolicyFromRoleEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// RestartModelServiceGroupsEventView RestartModelServiceGroupsEvent
-type RestartModelServiceGroupsEventView struct {
-	Results []BatchOperationResultView `json:"results,omitempty"`
 }
 
 // GetLoadBalancerOwnerView GetLoadBalancerOwner
@@ -2534,11 +2219,6 @@ type GetFaultToleranceVmsView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteAliyunKeySecretEventView DeleteAliyunKeySecretEvent
-type DeleteAliyunKeySecretEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // PowerResetBareMetal2ChassisEventView PowerResetBareMetal2ChassisEvent
 type PowerResetBareMetal2ChassisEventView struct {
 	Inventory BareMetal2ChassisInventoryView `json:"inventory,omitempty"`
@@ -2612,23 +2292,8 @@ type FlattenVolumeEventView struct {
 	Inventory VolumeInventoryView `json:"inventory,omitempty"`
 }
 
-// DeleteEcsSecurityGroupRuleRemoteEventView DeleteEcsSecurityGroupRuleRemoteEvent
-type DeleteEcsSecurityGroupRuleRemoteEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DetachAliyunDiskFromEcsEventView DetachAliyunDiskFromEcsEvent
-type DetachAliyunDiskFromEcsEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // DetachHostFromHostSchedulingRuleGroupEventView DetachHostFromHostSchedulingRuleGroupEvent
 type DetachHostFromHostSchedulingRuleGroupEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// UpdateAliyunRouteInterfaceRemoteEventView UpdateAliyunRouteInterfaceRemoteEvent
-type UpdateAliyunRouteInterfaceRemoteEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -2730,18 +2395,6 @@ type FstrimVmEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// SyncAINginxConfigurationView SyncAINginxConfiguration
-type SyncAINginxConfigurationView struct {
-	UnSyncedRules []NginxRedirectRuleView `json:"unSyncedRules,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
-// MatchModelServiceTemplateWithModelEventView MatchModelServiceTemplateWithModelEvent
-type MatchModelServiceTemplateWithModelEventView struct {
-	Result map[string]interface{} `json:"result,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
 // AddPolicyStatementsToRoleEventView AddPolicyStatementsToRoleEvent
 type AddPolicyStatementsToRoleEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2821,11 +2474,6 @@ type GetSupportedCloudFormationResourcesView struct {
 	Resources []SupportedResourceStructView `json:"resources,omitempty"`
 }
 
-// DeleteIdentityZoneInLocalEventView DeleteIdentityZoneInLocalEvent
-type DeleteIdentityZoneInLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // UnregisterLicenseServerEventView UnregisterLicenseServerEvent
 type UnregisterLicenseServerEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2866,12 +2514,6 @@ type SNSMicrosoftTeamsTestConnectionEventView struct {
 	WebhookResp map[string]interface{} `json:"webhookResp,omitempty"`
 }
 
-// CreateOssBackupBucketRemoteEventView CreateOssBackupBucketRemoteEvent
-type CreateOssBackupBucketRemoteEventView struct {
-	BucketName string `json:"bucketName,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
 // PowerOffBaremetalChassisEventView PowerOffBaremetalChassisEvent
 type PowerOffBaremetalChassisEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -2908,11 +2550,6 @@ type GetCurrentTimeView struct {
 type CalculateAccountSpendingView struct {
 	Total float64 `json:"total,omitempty"`
 	Spending []SpendingView `json:"spending,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
-// UpdateEcsInstanceVncPasswordEventView UpdateEcsInstanceVncPasswordEvent
-type UpdateEcsInstanceVncPasswordEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -2972,11 +2609,6 @@ type RenewSessionEventView struct {
 	Inventory SessionInventoryView `json:"inventory,omitempty"`
 }
 
-// DeleteDataCenterInLocalEventView DeleteDataCenterInLocalEvent
-type DeleteDataCenterInLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // AttachPolicyToUserEventView AttachPolicyToUserEvent
 type AttachPolicyToUserEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -3007,16 +2639,6 @@ type CleanV2VConversionCacheEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// UnbindModelFromServiceEventView UnbindModelFromServiceEvent
-type UnbindModelFromServiceEventView struct {
-	Inventory ModelServiceInventoryView `json:"inventory,omitempty"`
-}
-
-// GetEcsInstanceTypeView GetEcsInstanceType
-type GetEcsInstanceTypeView struct {
-	Types []EcsInstanceTypeView `json:"types,omitempty"`
-}
-
 // GetLicenseUKeyStatusEventView GetLicenseUKeyStatusEvent
 type GetLicenseUKeyStatusEventView struct {
 	Inventories []UKeyInventoryView `json:"inventories,omitempty"`
@@ -3030,11 +2652,6 @@ type AddTicketTypesToTicketFlowCollectionEventView struct {
 // SetL3NetworkRouterInterfaceIpEventView SetL3NetworkRouterInterfaceIpEvent
 type SetL3NetworkRouterInterfaceIpEventView struct {
 	Success bool `json:"success,omitempty"`
-}
-
-// GetConnectionBetweenL3NetworkAndAliyunVSwitchView GetConnectionBetweenL3NetworkAndAliyunVSwitch
-type GetConnectionBetweenL3NetworkAndAliyunVSwitchView struct {
-	Inventories []ConnectionRelationShipPropertyView `json:"inventories,omitempty"`
 }
 
 // GetBareMetal2GatewayAllocatorStrategiesView GetBareMetal2GatewayAllocatorStrategies
@@ -3060,16 +2677,6 @@ type RevertVmFromVmBackupEventView struct {
 
 // SetVmNumaEventView SetVmNumaEvent
 type SetVmNumaEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteAliyunRouterInterfaceLocalEventView DeleteAliyunRouterInterfaceLocalEvent
-type DeleteAliyunRouterInterfaceLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// AttachAliyunKeyEventView AttachAliyunKeyEvent
-type AttachAliyunKeyEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -3124,20 +2731,10 @@ type RemoveAttributesFromIAM2OrganizationEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteAliyunSnapshotFromLocalEventView DeleteAliyunSnapshotFromLocalEvent
-type DeleteAliyunSnapshotFromLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // GetIAM2ProjectContainerImagesView GetIAM2ProjectContainerImages
 type GetIAM2ProjectContainerImagesView struct {
 	Inventories []ZakuImageInventoryView `json:"inventories,omitempty"`
 	Total int `json:"total,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteOssBucketNameLocalEventView DeleteOssBucketNameLocalEvent
-type DeleteOssBucketNameLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -3157,11 +2754,6 @@ type VerifyLicenseServerEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
-// DeleteEcsSecurityGroupInLocalEventView DeleteEcsSecurityGroupInLocalEvent
-type DeleteEcsSecurityGroupInLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // DetachDataVolumeFromHostEventView DetachDataVolumeFromHostEvent
 type DetachDataVolumeFromHostEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -3170,12 +2762,6 @@ type DetachDataVolumeFromHostEventView struct {
 // GetVmInstanceRecoveryPointsView GetVmInstanceRecoveryPoints
 type GetVmInstanceRecoveryPointsView struct {
 	RecoveryPoints map[string]interface{} `json:"recoveryPoints,omitempty"`
-	Success bool `json:"success,omitempty"`
-}
-
-// GetOssBackupBucketFromRemoteView GetOssBackupBucketFromRemote
-type GetOssBackupBucketFromRemoteView struct {
-	Buckets []OssBucketFilesPropertyView `json:"buckets,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
 
@@ -3202,11 +2788,6 @@ type AddHostFromConfigFileEventView struct {
 
 // DeleteVmBootModeEventView DeleteVmBootModeEvent
 type DeleteVmBootModeEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteVpcVpnConnectionLocalEventView DeleteVpcVpnConnectionLocalEvent
-type DeleteVpcVpnConnectionLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -3248,11 +2829,6 @@ type LocalStorageGetVolumeMigratableView struct {
 	Inventories []HostInventoryView `json:"inventories,omitempty"`
 }
 
-// GetOssBucketNameFromRemoteView GetOssBucketNameFromRemote
-type GetOssBucketNameFromRemoteView struct {
-	Inventories []OssBucketPropertyView `json:"inventories,omitempty"`
-}
-
 // AttachUserDefinedXmlHookScriptToVmEventView AttachUserDefinedXmlHookScriptToVmEvent
 type AttachUserDefinedXmlHookScriptToVmEventView struct {
 	Success bool `json:"success,omitempty"`
@@ -3260,11 +2836,6 @@ type AttachUserDefinedXmlHookScriptToVmEventView struct {
 
 // AttachPolicyToRoleEventView AttachPolicyToRoleEvent
 type AttachPolicyToRoleEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteVpcIpSecConfigLocalEventView DeleteVpcIpSecConfigLocalEvent
-type DeleteVpcIpSecConfigLocalEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -3315,11 +2886,6 @@ type ParseOvfView struct {
 	OvfInfo OvfInfoView `json:"ovfInfo,omitempty"`
 }
 
-// DeleteAliyunNasAccessGroupRuleEventView DeleteAliyunNasAccessGroupRuleEvent
-type DeleteAliyunNasAccessGroupRuleEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
 // GetLoginProceduresView GetLoginProcedures
 type GetLoginProceduresView struct {
 	Procedures []LoginAuthenticationProcedureDescView `json:"procedures,omitempty"`
@@ -3327,11 +2893,6 @@ type GetLoginProceduresView struct {
 
 // DeleteBondingEventView DeleteBondingEvent
 type DeleteBondingEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
-// DeleteEcsSecurityGroupRemoteEventView DeleteEcsSecurityGroupRemoteEvent
-type DeleteEcsSecurityGroupRemoteEventView struct {
 	Success bool `json:"success,omitempty"`
 }
 
@@ -3351,9 +2912,3 @@ type RegisterLicenseRequestedApplicationEventView struct {
 	ServicePubKey string `json:"servicePubKey,omitempty"`
 	Success bool `json:"success,omitempty"`
 }
-
-// DeleteEcsVpcInLocalEventView DeleteEcsVpcInLocalEvent
-type DeleteEcsVpcInLocalEventView struct {
-	Success bool `json:"success,omitempty"`
-}
-
